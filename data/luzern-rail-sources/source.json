@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "publisher": "Federal Office of Transport - FOT",
+  "attribution": "© Federal Office of Transport (FOT)",
+  "catalogueLicense": "proprietary",
+  "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+  "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+  "catalogueDate": "2021-07-06T00:00:00Z",
+  "assetUpdated": "2025-01-18T04:23:13.735821Z",
+  "checkedOn": "2026-09-08T18:25:47.784Z",
+  "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "nodes": 3210,
+  "segments": 3424,
+  "files": {
+    "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+    "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+    "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02"
+  },
+  "interpretation": "Undirected infrastructure corridors; source Stand/validity dates retained per segment. Catalogue dates do not establish 2026 service routing or running-track validity.",
+  "transformation": "Existing national XTF parser, 5 m LV95 simplification and approximate swisstopo LV95-to-WGS84 transformation; source coordinates rounded to six decimals."
+}

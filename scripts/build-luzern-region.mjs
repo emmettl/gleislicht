@@ -9,13 +9,14 @@ import { luzernGraphs, matchLuzernPair, directedPatternKey } from './luzern-line
 import { luzernMode, inCanton } from './luzern-timetable.mjs'
 import { sha256, LUZERN_METADATA, LUZERN_TERMS } from './download-luzern-sources.mjs'
 import { roadConsensus, validateLuzernRoadScope } from './luzern-road-geometry.mjs'
+import { loadLuzernRail } from './luzern-rail-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const save = async (path, value, pretty = false) => { await mkdir(dirname(path), { recursive: true }); await writeFile(path, JSON.stringify(value, null, pretty ? 2 : undefined) + (pretty ? '\n' : '')) }
 const ratio = (a, b) => b ? a / b : null
 const gz = value => gzipSync(JSON.stringify(value)).length
 const keyForRoute = r => JSON.stringify([r.agencyId, r.mode, r.line])
-const category = r => r.mode === 'rail' ? r.line.startsWith('S') ? 's-bahn' : r.line.startsWith('RE') ? 'regional-express' : r.line.startsWith('IR') ? 'interregio' : 'regional' : r.mode === 'mountain' ? r.routeType === 116 ? 'other' : r.routeType === 1400 ? 'funicular' : 'cableway' : r.mode
+export const luzernCategory = r => r.mode === 'rail' ? r.line.startsWith('EC') ? 'international' : r.line.startsWith('IC') ? 'intercity' : r.line.startsWith('S') ? 's-bahn' : r.line.startsWith('RE') ? 'regional-express' : r.line.startsWith('IR') || r.line === 'VAE' ? 'interregio' : r.line === 'EXT' ? 'other' : 'regional' : r.mode === 'mountain' ? r.routeType === 116 ? 'other' : r.routeType === 1400 ? 'funicular' : 'cableway' : r.mode
 
 export function compactLuzern(trains, stops, paths, metadata) {
   const ids = [...new Set(trains.flatMap(t => t.calls.map(c => c.id)))].sort(), indices = new Map(ids.map((id, i) => [id, i]))
@@ -64,6 +65,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
     roads = roadConsensus(roadCache, policy.limits)
     sourceHashes.roads = sha256(bytes)
   }
+  const rail = policy.railFallback ? await loadLuzernRail(policy.railFallback, raw) : undefined
+  if (rail) { sourceHashes.rail = rail.source.sha256; sourceHashes.railInputs = policy.railFallback.inputsSha256 }
   const collections = {}, layers = {}
   for (const layer of ['bus', 'rail', 'boat']) { collections[layer] = await json(join(sourceDirectory, `${layer}.geojson`)); layers[layer] = await json(join(sourceDirectory, `${layer}-layer.json`)) }
   const { graphs, inventory: sourceInventory } = luzernGraphs(collections, layers, policy)
@@ -91,6 +94,10 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
               const road = roads.get(key)
               result = road.path ? { ...road, officialAssessment: result } : { ...result, roadAssessment: road }
             }
+            else if (route.mode === 'rail' && rail?.pairs.has(key)) {
+              const fallback = rail.pairs.get(key)
+              result = fallback.path ? { ...fallback, officialAssessment: result } : { ...result, railAssessment: fallback }
+            }
             const { path, ...assessment } = result
             let pathIndex = null
             if (path) { const signature = JSON.stringify(path); if (!pathIndices.has(signature)) { pathIndices.set(signature, paths.length); paths.push(path) } pathIndex = pathIndices.get(signature) }
@@ -115,7 +122,7 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       count.trips++; count.admittedTrips += Number(pattern.admitted); count.segmentOccurrences += pattern.totalPairs; count.matchedSegmentOccurrences += pattern.geometryPairs
       count.carryInTrips += Number(train.sourceServiceDate !== day.date); count.admittedCarryInTrips += Number(pattern.admitted && train.sourceServiceDate !== day.date)
       routeCounts.set(route.routeId, count)
-      if (pattern.admitted) admitted.push({ ...train, route: route.line, agencyId: route.agencyId, routeType: route.routeType, transportMode: route.routeType === 116 ? 'cogwheel' : route.mode, category: category(route), patternId: pattern.id, pathSegments: pattern.pairKeys.map(k => pairCache.get(k).pathIndex), geometrySources: pattern.pairKeys.map(k => pairCache.get(k).geometrySource) })
+      if (pattern.admitted) admitted.push({ ...train, route: route.line, agencyId: route.agencyId, routeType: route.routeType, transportMode: route.routeType === 116 ? 'cogwheel' : route.mode, category: luzernCategory(route), patternId: pattern.id, pathSegments: pattern.pairKeys.map(k => pairCache.get(k).pathIndex), geometrySources: pattern.pairKeys.map(k => pairCache.get(k).geometrySource) })
       else for (const reason of pattern.reasons) reasons.set(reason, (reasons.get(reason) ?? 0) + 1)
     }
     const metadata = { publisher: 'Gleislicht, derived from SBB and official Luzern open data', feedVersion: raw.feed.feed_version, serviceDate: day.date,
@@ -136,6 +143,14 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
         licenseUrl: 'https://opendatacommons.org/licenses/odbl/1-0/',
         consensus: 'Every complete bus pattern containing a pair must yield an identical accepted path',
         limits: policy.limits, pathAttribution: 'Per-journey geometrySources identifies each official or OSM-derived segment' }
+    }
+    if (rail) {
+      metadata.publisher = 'Gleislicht, derived from SBB, Luzern, FOT and OpenStreetMap data'
+      metadata.model = 'scheduled interpolation along cantonal alignments and inferred federal rail / OSM bus corridors'
+      metadata.attribution.push(rail.source.attribution)
+      metadata.geometry.federalRail = { ...rail.source, limits: policy.railFallback.limits,
+        matching: 'Exact operating-point IDs, reviewed route/gauge identities and full-pattern stop-order constraints; consensus across every context',
+        pathAttribution: 'geometrySources = fot-rail-inference; no individual running-track or diversion certification' }
     }
     const snapshot = compactLuzern(admitted, stops, paths, metadata)
     validateLuzernSnapshot(snapshot)
@@ -164,6 +179,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       admittedTripsUsingRepair: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometryRepairIds?.length)).reduce((n, p) => n + p.trips, 0),
       roadDirectedPairs: pairList.filter(p => p.geometrySource === 'osm-road-inference').length,
       admittedTripsUsingRoads: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')).reduce((n, p) => n + p.trips, 0),
+      federalRailDirectedPairs: pairList.filter(p => p.geometrySource === 'fot-rail-inference').length,
+      admittedTripsUsingFederalRail: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'fot-rail-inference')).reduce((n, p) => n + p.trips, 0),
       groups, routes: counts, exclusionReasons: Object.fromEntries(reasons), directedPatterns: ps, directedStopPairs: pairList.map(({ pathIndex, ...p }) => ({ ...p, matched: pathIndex !== null })),
       artifacts: { directory: destination, manifestGzipBytes: gz(manifest), morningGzipBytes: gz(morning), chunks: chunks.map(({ descriptor, payload }) => ({ id: descriptor.id, gzipBytes: gz(payload), trips: descriptor.tripCount })) } })
   }
@@ -186,6 +203,9 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
     ...(roadCache ? { roads: { metadata: roadCache.metadata, agencies: Object.entries(roadCache.agencies).map(([agencyId, a]) => ({ agencyId, patterns: Object.keys(a.identities).length, matcher: a.cache.metadata.matcher, report: a.cache.report })),
       consensusPairs: roads.size, acceptedConsensusPairs: [...roads.values()].filter(r => r.path).length,
       rejectedConsensusPairs: [...roads].filter(([, r]) => !r.path).map(([key, r]) => ({ key, ...r })) } } : {}),
+    ...(rail ? { federalRail: { source: rail.source, sourceInventory: rail.sourceInventory, directedPatterns: rail.patterns,
+      consensusPairs: rail.pairs.size, matchedConsensusPairs: [...rail.pairs.values()].filter(r => r.path).length,
+      rejectedConsensusPairs: [...rail.pairs].filter(([, r]) => !r.path).map(([key, r]) => ({ key, ...r })) } } : {}),
     validation: { passed: true, annualPinnedTimetableInventoryComplete: true, admittedGeometryComplete: true, cantonMotionCoverageComplete: false, publicationReady: false,
       meaning: 'All admitted complete directed patterns pass numerical and artifact checks. Coverage denominators include excluded modes/patterns. This does not certify road direction or establish year-round geometry coverage.',
       pending: ['Resolve every excluded route/pattern before claiming complete cantonal motion coverage', 'Review street directions, loops, rail branches and temporary diversions before presenting paths as direction-certified', 'Validate seasonal and holiday dates', 'Integrate UI selection and refresh separately if requested'] } }

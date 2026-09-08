@@ -7,6 +7,7 @@ import { validateLuzernSnapshot } from './build-luzern-region.mjs'
 import { validatedLuzernRepairs } from './luzern-line-geometry.mjs'
 import { roadConsensus, validateLuzernRoadScope, verifyLuzernRoadEvidence } from './luzern-road-geometry.mjs'
 import { roadPatternId } from './prepare-postbus-road-feed.mjs'
+import { loadLuzernRail } from './luzern-rail-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sum = (items, key) => items.reduce((n, item) => n + item[key], 0)
@@ -59,6 +60,19 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
       for (const key of ['agencyId', 'line', 'routeType', 'annualTripRecords', 'activeSourceTripRecords']) assert.deepEqual(result[key], r[key])
     }
   }
+  const rail = audit.policy.railFallback ? await loadLuzernRail(audit.policy.railFallback, raw) : undefined
+  if (rail) {
+    assert.equal(audit.sourceHashes.rail, rail.source.sha256)
+    assert.equal(audit.sourceHashes.railInputs, audit.policy.railFallback.inputsSha256)
+    assert.deepEqual(audit.federalRail.source, rail.source)
+    assert.deepEqual(audit.federalRail.sourceInventory, rail.sourceInventory)
+    assert.deepEqual(audit.federalRail.directedPatterns, rail.patterns)
+    assert.equal(audit.federalRail.consensusPairs, rail.pairs.size)
+    assert.equal(audit.federalRail.matchedConsensusPairs, [...rail.pairs.values()].filter(p => p.path).length)
+    assert.deepEqual(audit.federalRail.rejectedConsensusPairs, [...rail.pairs].filter(([, r]) => !r.path).map(([key, r]) => ({ key, ...r })))
+    const expected = [...new Set(audit.days.flatMap(d => d.directedPatterns.filter(p => audit.policy.railFallback.routes.some(r => r.routeId === p.routeId)).map(p => p.id)))].sort()
+    assert.deepEqual(rail.patterns.map(p => p.id).sort(), expected, 'Federal rail must cover every fixture pattern context')
+  }
   const summaries = []
   for (const day of audit.days) {
     const manifest = await json(join(day.artifacts.directory, 'luzern-region-day-manifest.json')), trains = new Map()
@@ -88,6 +102,12 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
     assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometryRepairIds?.length)), 'trips'), day.admittedTripsUsingRepair)
     assert.equal(day.directedStopPairs.filter(p => p.geometrySource === 'osm-road-inference').length, day.roadDirectedPairs)
     assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')), 'trips'), day.admittedTripsUsingRoads)
+    assert.equal(day.directedStopPairs.filter(p => p.geometrySource === 'fot-rail-inference').length, day.federalRailDirectedPairs)
+    assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'fot-rail-inference')), 'trips'), day.admittedTripsUsingFederalRail)
+    if (rail) {
+      assert.equal(manifest.metadata.geometry.federalRail.sha256, audit.sourceHashes.rail)
+      assert(manifest.metadata.attribution.includes(rail.source.attribution))
+    }
     if (roadCache) {
       assert.equal(manifest.metadata.geometry.roadFallback.cacheSha256, audit.sourceHashes.roads)
       assert.equal(manifest.metadata.geometry.roadFallback.license, 'ODbL-1.0')
@@ -101,6 +121,12 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
         assert.deepEqual(pair.roadPatternIds, road.roadPatternIds)
         assert.equal(pair.roadContextOccurrences, road.roadContextOccurrences)
       } else if (pair.roadAssessment) assert.deepEqual(pair.roadAssessment, roads.get(pair.key))
+      if (pair.geometrySource === 'fot-rail-inference') {
+        const result = rail?.pairs.get(pair.key); assert(result?.path)
+        assert.equal(pair.mode, 'rail'); assert(pair.officialAssessment.reason)
+        assert.equal(pair.geometrySha256, sha256(JSON.stringify(result.path)))
+        for (const key of ['railPatternIds', 'directedSourceSegments', 'stationAttachmentsMetres', 'fromOperatingPoint', 'toOperatingPoint', 'gauge', 'maximumTopologyAttachmentMetres']) assert.deepEqual(pair[key], result[key])
+      } else if (pair.railAssessment) assert.deepEqual(pair.railAssessment, rail?.pairs.get(pair.key))
     }
     for (const p of pairs.values()) for (const id of p.geometryRepairIds ?? []) assert(repairIds.has(id), 'Unknown geometry repair')
     assert.equal(patterns.size, day.patterns); assert.equal(pairs.size, day.directedPairs)
@@ -176,7 +202,18 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
       const officialPatterns = day.directedPatterns.filter(p => p.admitted && p.pairKeys.every(k => pairs.get(k).geometrySource === 'official-line')).map(p => [p.id, p.trips]).sort()
       assert.equal(sha256(JSON.stringify(officialPairs)), baseline.matchedPairDigest, 'Previously accepted official paths changed')
       assert.equal(sha256(JSON.stringify(officialPatterns)), baseline.admittedPatternDigest, 'Previously admitted patterns changed')
-      assert.equal(day.admittedTrips - day.admittedTripsUsingRoads, baseline.admittedTrips)
+      assert.equal(day.admittedTrips - day.admittedTripsUsingRoads - day.admittedTripsUsingFederalRail, baseline.admittedTrips)
+    }
+  }
+  if (rail) {
+    const regression = await json('data/luzern-rail-regression.json')
+    for (const baseline of regression.days) {
+      const day = audit.days.find(d => d.date === baseline.date), pairs = new Map(day.directedStopPairs.map(p => [p.key, p]))
+      const previousPairs = day.directedStopPairs.filter(p => p.matched && p.geometrySource !== 'fot-rail-inference').map(p => [p.key, p.geometrySha256]).sort()
+      const previousPatterns = day.directedPatterns.filter(p => p.admitted && p.pairKeys.every(k => pairs.get(k).geometrySource !== 'fot-rail-inference')).map(p => [p.id, p.trips]).sort()
+      assert.equal(sha256(JSON.stringify(previousPairs)), baseline.matchedPairDigest, 'Previously accepted cantonal/road paths changed')
+      assert.equal(sha256(JSON.stringify(previousPatterns)), baseline.admittedPatternDigest, 'Previously admitted cantonal/road patterns changed')
+      assert.equal(day.admittedTrips - day.admittedTripsUsingFederalRail, baseline.admittedTrips)
     }
   }
   return { passed: true, annualRoutes: audit.annualRouteRecords, agencies: audit.annualAgencies, days: summaries }

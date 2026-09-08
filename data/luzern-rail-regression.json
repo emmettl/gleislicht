@@ -1,0 +1,18 @@
+{
+  "baselineCommit": "b95f418",
+  "description": "Before federal rail fallback: all cantonal and OSM paths and admitted complete patterns must remain identical.",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "admittedTrips": 8940,
+      "matchedPairDigest": "50303346bb96ec249f52a40a53d25e0aea9d671b933995f904275b0602aaaed5",
+      "admittedPatternDigest": "2eb12295e86973a52ce3b5f887a2eeb83c499992767f9acd40547c5dc276a33d"
+    },
+    {
+      "date": "2026-09-06",
+      "admittedTrips": 6781,
+      "matchedPairDigest": "df3d032f28d829e08b70aa652f11ddcad53209a74fcd2563eb00b85e23e67aa3",
+      "admittedPatternDigest": "e172bc840b9c8b158dc2f505068411986d18ace123a10f56e5ccaa4102488899"
+    }
+  ]
+}

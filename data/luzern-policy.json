@@ -359,5 +359,351 @@
     "cache": "data/luzern-road-cache.json",
     "sha256": "3190a2f3c1fef1dfc0a83f8902ba373721e233902e87990cc83960e43397a385",
     "admission": "Only failed official bus pairs; all complete patterns across both dates must agree on an accepted identical road path. Full journeys and strict Luzern distance limits remain mandatory."
+  },
+  "railFallback": {
+    "sourceDirectory": "data/luzern-rail-sources",
+    "sourceMetadataSha256": "48c4701a87ead6e0bfe1682298ec1cb39f5048352eb073d578a9647e76007279",
+    "limits": {
+      "simplificationMetres": 5,
+      "stationAttachmentMetres": 350,
+      "topologyAttachmentMetres": 120,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 1200
+    },
+    "routes": [
+      {
+        "routeId": "91-1-A-j26-1",
+        "agencyId": "11",
+        "line": "S1",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-1-I-j26-1",
+        "agencyId": "11",
+        "line": "SN1",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-15-B-j26-1",
+        "agencyId": "11",
+        "line": "IR15",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-1J-Y-j26-1",
+        "agencyId": "86",
+        "line": "IR",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-1W-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-21-D-j26-1",
+        "agencyId": "11",
+        "line": "IC21",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-24-F-j26-1",
+        "agencyId": "11",
+        "line": "RE24",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-26-C-j26-1",
+        "agencyId": "82",
+        "line": "IR26",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-26-D-j26-1",
+        "agencyId": "11",
+        "line": "IR26",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-26-E-j26-1",
+        "agencyId": "11",
+        "line": "RE26",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-27-A-j26-1",
+        "agencyId": "11",
+        "line": "IR27",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-29-j26-1",
+        "agencyId": "11",
+        "line": "S29",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-2L-Y-j26-1",
+        "agencyId": "11",
+        "line": "RE",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-3-H-j26-1",
+        "agencyId": "11",
+        "line": "S3",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-35-Y-j26-1",
+        "agencyId": "11",
+        "line": "IR",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-39-Y-j26-1",
+        "agencyId": "82",
+        "line": "IR",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-3M-Y-j26-1",
+        "agencyId": "11",
+        "line": "IR",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-3P-Y-j26-1",
+        "agencyId": "86",
+        "line": "EXT",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-3R-Y-j26-1",
+        "agencyId": "11",
+        "line": "EC",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-4-D-j26-1",
+        "agencyId": "86",
+        "line": "S4",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-41-A-j26-1",
+        "agencyId": "86",
+        "line": "S41",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-44-A-j26-1",
+        "agencyId": "86",
+        "line": "S44",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-46-j26-1",
+        "agencyId": "82",
+        "line": "IR46",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-5-D-j26-1",
+        "agencyId": "86",
+        "line": "S5",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-55-j26-1",
+        "agencyId": "86",
+        "line": "S55",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-5F-Y-j26-1",
+        "agencyId": "11",
+        "line": "IC",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-5G-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-5U-Y-j26-1",
+        "agencyId": "86",
+        "line": "EXT",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-6-B-j26-1",
+        "agencyId": "33",
+        "line": "S6",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-7-D-j26-1",
+        "agencyId": "33",
+        "line": "S7",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-7-L-j26-1",
+        "agencyId": "33",
+        "line": "RE7",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-70-A-j26-1",
+        "agencyId": "11",
+        "line": "IR70",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-75-j26-1",
+        "agencyId": "11",
+        "line": "IR75",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-77-j26-1",
+        "agencyId": "33",
+        "line": "S77",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-9-B-j26-1",
+        "agencyId": "11",
+        "line": "S9",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-98-Y-j26-1",
+        "agencyId": "11",
+        "line": "RE",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-99-j26-1",
+        "agencyId": "11",
+        "line": "S99",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-9T-Y-j26-1",
+        "agencyId": "86",
+        "line": "EXT",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-9Z-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-AI-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-AK-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-AL-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-AP-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-AR-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-AW-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-AZ-Y-j26-1",
+        "agencyId": "86",
+        "line": "EXT",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-BJ-Y-j26-1",
+        "agencyId": "33",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-BN-Y-j26-1",
+        "agencyId": "33",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-CB-Y-j26-1",
+        "agencyId": "11",
+        "line": "IC",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-K-Y-j26-1",
+        "agencyId": "11",
+        "line": "IC",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-LEX-j26-1",
+        "agencyId": "86",
+        "line": "IRLEX",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-LIX-A-j26-1",
+        "agencyId": "86",
+        "line": "IRLIX",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-LIX-j26-1",
+        "agencyId": "86",
+        "line": "LIX",
+        "gauge": "mm1000"
+      },
+      {
+        "routeId": "91-N7-j26-1",
+        "agencyId": "11",
+        "line": "N7",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-VAE-j26-1",
+        "agencyId": "82",
+        "line": "VAE",
+        "gauge": "mm1435"
+      }
+    ],
+    "admission": "Fill only failed official rail pairs using exact operating-point numbers and reviewed route/gauge identities. Every complete pattern blocks other calls out of order; all contexts must agree. Retain full cross-canton journeys and prior official paths.",
+    "inputs": "data/luzern-rail-inputs.json",
+    "inputsSha256": "927e5e20243f93b59af414f7c684f7f4d2f34423ae6d74e439a5b647509ba609"
   }
 }
