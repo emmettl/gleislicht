@@ -21,6 +21,8 @@ test('national PostBus stays lazy, renders the full network and follows the 24-h
   const started = Date.now()
   await openPostbus(page, isMobile)
   await expect(page.locator('.network-card .between')).toContainText('Scheduled PostBus')
+  await expect(page.locator('.network-card .between')).toContainText('inferred road paths')
+  await expect(page.locator('footer')).toContainText('© OpenStreetMap contributors')
   await expect(page.locator('.network-count-row strong').first()).not.toHaveText('—')
   await expect(page.locator('.metric-grid')).toContainText('24h')
   expect(requests.some(url => url.endsWith('06-09.json'))).toBe(true)

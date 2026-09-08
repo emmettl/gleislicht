@@ -3015,7 +3015,10 @@ export function App({ edition }: AppProps) {
           </div>
           <p className="between">
               {isPostbus
-                ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus : text.postbusModes
+                ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus
+                  : network?.metadata.geometry
+                    ? text.postbusRoadModes.replace('{coverage}', (100 * network.metadata.geometry.matchedSegments / network.metadata.geometry.totalSegments).toFixed(1))
+                    : text.postbusModes
                 : networkStudy === 'national' && operationsMode !== 'scheduled'
                 ? operationsDescription
                 : networkStudy !== 'national'
@@ -3719,12 +3722,12 @@ export function App({ edition }: AppProps) {
                 target="_blank"
                 rel="noreferrer"
               >
-                {text.stopGeometry} ·{' '}
+                {isPostbus ? '© OpenStreetMap contributors · ODbL' : <>{text.stopGeometry} ·{' '}
                 {networkStudy === 'national'
                   ? 'BAV / OFT'
                   : networkStudy === 'geneva-tpg'
                     ? 'TPG / SITG'
-                    : 'ZVV'}
+                    : 'ZVV'}</>}
               </a>
             )}
             {isNetwork && networkStudy === 'national' && boundary && (

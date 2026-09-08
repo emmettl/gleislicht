@@ -1,0 +1,39 @@
+// Supplement the Swiss extract around Italy, Austria, Konstanz and Biederthal.
+// Retain complete bus route relations and their members across these boundaries.
+[out:xml][timeout:240];
+(way[highway](45.9,8.1,46.34,8.5);
+relation[route=bus](45.9,8.1,46.34,8.5);
+relation[type~"^restriction"](45.9,8.1,46.34,8.5);
+node[highway=bus_stop](45.9,8.1,46.34,8.5);
+node[public_transport=stop_position](45.9,8.1,46.34,8.5);
+way[highway](45.84,8.6,46.11,9.04);
+relation[route=bus](45.84,8.6,46.11,9.04);
+relation[type~"^restriction"](45.84,8.6,46.11,9.04);
+node[highway=bus_stop](45.84,8.6,46.11,9.04);
+node[public_transport=stop_position](45.84,8.6,46.11,9.04);
+way[highway](45.98,9.02,46.55,9.57);
+relation[route=bus](45.98,9.02,46.55,9.57);
+relation[type~"^restriction"](45.98,9.02,46.55,9.57);
+node[highway=bus_stop](45.98,9.02,46.55,9.57);
+node[public_transport=stop_position](45.98,9.02,46.55,9.57);
+way[highway](46.52,10.3,46.91,10.7);
+relation[route=bus](46.52,10.3,46.91,10.7);
+relation[type~"^restriction"](46.52,10.3,46.91,10.7);
+node[highway=bus_stop](46.52,10.3,46.91,10.7);
+node[public_transport=stop_position](46.52,10.3,46.91,10.7);
+way[highway](47.62,9,47.73,9.25);
+relation[route=bus](47.62,9,47.73,9.25);
+relation[type~"^restriction"](47.62,9,47.73,9.25);
+node[highway=bus_stop](47.62,9,47.73,9.25);
+node[public_transport=stop_position](47.62,9,47.73,9.25);
+way[highway](47.4,7.36,47.56,7.62);
+relation[route=bus](47.4,7.36,47.56,7.62);
+relation[type~"^restriction"](47.4,7.36,47.56,7.62);
+node[highway=bus_stop](47.4,7.36,47.56,7.62);
+node[public_transport=stop_position](47.4,7.36,47.56,7.62);
+);
+(._;
+>>;
+);
+out meta;
+

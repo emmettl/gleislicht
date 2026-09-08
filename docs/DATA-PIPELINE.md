@@ -130,7 +130,7 @@ The line layer is a route-labelled street graph rather than GTFS `shapes.txt`. T
 
 ## Nationwide PostBus
 
-`npm run data:postbus:national -- --archive /path/feed.zip --date YYYY-MM-DD` exports all active agency-801 buses without a geographic crop or route shortlist. It writes `postbus-national-day-manifest.json` and eight three-hour chunks. Bus records retain source route IDs because display numbers repeat across regions. Run `node scripts/audit-postbus.mjs` to validate coverage, continuity, hashes and compressed payload budgets. The **PA** view loads this study on demand. See [POSTBUS-NATIONAL.md](./POSTBUS-NATIONAL.md) for measured coverage and performance.
+`npm run data:postbus:national -- --archive /path/feed.zip --date YYYY-MM-DD` exports all active agency-801 buses without a geographic crop or route shortlist. It writes `postbus-national-day-manifest.json` and eight three-hour chunks. Follow this with `npm run data:postbus:roads` to reuse the committed OSM road cache, then `node scripts/audit-postbus.mjs` to validate coverage, continuity, hashes, path endpoints and compressed payload budgets. Both refresh workflows run these steps. Bus records retain source route IDs because display numbers repeat across regions. Cache reuse requires the same route identity, complete ordered platform sequence and coordinates; a changed pattern falls back, and coverage below 95% blocks publication until the cache is refreshed. The **PA** view loads this study on demand. See [POSTBUS-NATIONAL.md](./POSTBUS-NATIONAL.md) for measured coverage and performance, and [POSTBUS-ROAD-GEOMETRY.md](./POSTBUS-ROAD-GEOMETRY.md) for offline matching and quality checks.
 
 ## Rural PostBus selection and artifact
 

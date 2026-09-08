@@ -18,13 +18,13 @@ The committed study uses Swiss GTFS release **20260902** for **8 September 2026*
 
 Coverage is the selected service day's scheduled network, not every seasonal line on every date. Previous service-day trips continuing after midnight are not added to this snapshot. Empty overnight chunks are valid. The UI displays the study date and identifies the movement as scheduled interpolation; it does not claim live GPS positions.
 
-The national feed supplies no road shapes. This view interpolates between timetable stops, with the shared lake-avoidance fallback. Kiental's existing terrain journey remains the separate road-following study. National road-matched geometry is a subsequent improvement, not part of this coverage claim.
+The national timetable feed supplies no road shapes. An offline pfaedle bus match against OpenStreetMap now supplies **24,472 shared road paths** with **285,938 vertices**. These cover **485,872 of 486,882 scheduled stop-to-stop movements (99.79%)**, across all 821 routes. The remaining 1,010 movements retain the shared stop-based/lake-avoidance fallback. The interface displays the matched percentage and credits OpenStreetMap contributors under ODbL. Paths are inferred from roads and timetable stops, not verified operator trajectories or GPS observations. [POSTBUS-ROAD-GEOMETRY.md](./POSTBUS-ROAD-GEOMETRY.md) describes the pilot, remaining gaps and regeneration.
 
 PostBus repeats display numbers across regions: the snapshot contains five unrelated lines numbered 220. The importer retains each bus's source `routeId`; the Swiss route index groups directions by that identity, and search results include destinations. A selected line isolates that source route in the scene so the shared display-number-based label logic cannot highlight unrelated routes.
 
 ## Loading and measured performance
 
-The topology compresses to **542 KiB**. Eight three-hour chunks range from **60 bytes to 656 KiB compressed**. Entering at 07:45 requests about **1.15 MiB compressed** for topology and current movement data before adjacent-block prefetching. Only the active block enters the renderer. Loaded blocks are cached for revisiting; the renderer already batches bus points and uses a time index for moving vehicles. No fleet thinning or overview suppression was needed.
+The road-enriched topology compresses to **2.09 MiB**, up from 542 KiB. Eight three-hour movement chunks remain below **741 KiB compressed**. Entering at 07:45 requests about **2.8 MiB compressed** for topology and current movement data before adjacent-block prefetching. Only the active block enters the renderer. Loaded blocks are cached for revisiting; the renderer already batches bus points and uses a time index for moving vehicles. Road geometry uses the existing distance-indexed polyline interpolation. No fleet thinning or overview suppression was needed; the opening rail view remains within its original 790 KiB total transfer budget.
 
 For scale, the local All Change bus artifact contains 103,117 daily trips and 19,756 stops, compared with PostBus's 32,390 trips and 21,274 stops. London uses a different compact movement format, so raw chunk sizes are not directly comparable.
 
@@ -32,21 +32,23 @@ Local development measurements on an **Apple M4 Max**, 1280×720, Chromium with 
 
 | View | Mean frame rate | 95th-percentile frame interval | Approx. JS heap |
 | --- | ---: | ---: | ---: |
-| Existing rail morning | 57 FPS | 16.8 ms | 51 MB |
-| National PostBus morning | 59 FPS | 16.8 ms | 95 MB |
+| Existing rail morning, same measurement session | 58 FPS | 16.8 ms | 90 MB |
+| National PostBus before road geometry | 56.3 FPS | 16.8 ms | 91 MB |
+| National PostBus with road geometry | 55.9 FPS | 16.8 ms | 115 MB |
 
-The same Chromium run using SwiftShader software rendering measured roughly 14 FPS for rail and 15 FPS for PostBus. Always report the renderer alongside frame rates. WebKit with the iPhone 13 viewport/device profile on this Mac measured about 60 FPS and a 0.8-second local PostBus transition. This is mobile browser emulation, not a physical iPhone or a cellular-network benchmark. Cold internet transfer, lower-end GPUs and extended all-day heap usage remain practical limits to assess on real devices.
+Local hardware Chromium transition time was 212 ms before and 269 ms after adding roads. These are single-run local comparisons, not a latency guarantee. WebKit with the iPhone 13 viewport/device profile on this Mac measured about 60 FPS and a 0.8-second local PostBus transition with roads. This is mobile browser emulation, not a physical iPhone or a cellular-network benchmark. Software-only Chromium is substantially slower and is unsuitable as a device-performance proxy; see the road-geometry report. Cold internet transfer, lower-end GPUs and extended all-day heap usage remain practical limits to assess on real devices.
 
 ## Regeneration and checks
 
 ```sh
 npm run data:postbus:national -- --archive /path/to/swiss-gtfs.zip --date YYYY-MM-DD
+npm run data:postbus:roads
 node scripts/audit-postbus.mjs
 npm run dev -- --host 127.0.0.1 --port 4180
 # In another terminal; --metal is for macOS with a supported GPU:
 node scripts/benchmark-postbus.mjs --metal
 ```
 
-The audit validates operator/mode scope, source route identities, every movement chunk's length and SHA-256, day continuity, stop references, boundary-trip consistency and compressed topology/chunk budgets of 1 MiB each. `data:validate` includes this audit. Desktop and mobile browser checks cover lazy entry, search, time jumps, empty hours and missing/corrupt data.
+The audit validates operator/mode scope, source route identities, every movement chunk's length and SHA-256, day continuity, stop references, boundary-trip consistency, path references and endpoint alignment, at least 95% road coverage, fewer than 500,000 vertices, and compressed budgets of 3 MiB for topology and 1 MiB per movement chunk. `data:validate` includes this audit. Desktop and mobile browser checks cover lazy entry, search, time jumps, empty hours, road coverage/attribution and missing/corrupt data.
 
 Both daily Pages regeneration and the national refresh review branch now regenerate PostBus from the same downloaded official archive. If the Pages source download fails, the committed PostBus snapshot remains available under its original displayed date, independently of the existing rail recovery mechanism.
