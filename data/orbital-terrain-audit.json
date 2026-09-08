@@ -1,0 +1,827 @@
+{
+  "source": "swissALTIRegio",
+  "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissaltiregio/swissaltiregio/swissaltiregio_2056_5728.tif",
+  "sourceChecksum": "1220E1CADE929D3007D74BE67E5D107E517E40B13E0597A114097744B032FC6527E5",
+  "releaseDate": "2026-05-28",
+  "catalogueUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo.swissaltiregio/items/swissaltiregio",
+  "sourceCrs": "EPSG:2056 / LN02",
+  "outputCrs": "EPSG:4326",
+  "gridSpacingMetres": [
+    506,
+    584
+  ],
+  "model": "Federal ground elevations resampled from a bounded COG overview to an approximately 500 m national grid. Display relief is exaggerated; surface draping is not surveyed rail, bridge, tunnel or cable height.",
+  "attribution": "© swisstopo; swissALTIRegio contributing national datasets: TINITALY 1.1, geoland.at, Bavarian and Baden-Württemberg surveying authorities, IGN France.",
+  "lakeModel": "Flat DEM-derived lake levels; median interior grid-cell height, lower shoreline sample for sub-grid lakes. No live water-level observations.",
+  "lakesSha256": "2ed8ae2942bb9fff570c0266bd1d0da11a7b6c99530e05761934b258594e58b7",
+  "columns": 769,
+  "rows": 449,
+  "elevationRange": [
+    65,
+    4614
+  ],
+  "lakes": [
+    {
+      "id": "24",
+      "name": "Le Léman",
+      "elevation": 372
+    },
+    {
+      "id": "124",
+      "name": "Bodensee",
+      "elevation": 396
+    },
+    {
+      "id": "84",
+      "name": "Lac de Neuchâtel",
+      "elevation": 429
+    },
+    {
+      "id": "18",
+      "name": "Lago Maggiore",
+      "elevation": 193
+    },
+    {
+      "id": "93",
+      "name": "Vierwaldstättersee",
+      "elevation": 434
+    },
+    {
+      "id": "60",
+      "name": "Zürichsee",
+      "elevation": 406
+    },
+    {
+      "id": "17",
+      "name": "Lago di Lugano",
+      "elevation": 272
+    },
+    {
+      "id": "64",
+      "name": "Thuner See",
+      "elevation": 558
+    },
+    {
+      "id": "83",
+      "name": "Bieler See",
+      "elevation": 429
+    },
+    {
+      "id": "91",
+      "name": "Zuger See",
+      "elevation": 414
+    },
+    {
+      "id": "66",
+      "name": "Brienzer See",
+      "elevation": 564
+    },
+    {
+      "id": "115",
+      "name": "Walensee",
+      "elevation": 420
+    },
+    {
+      "id": "123",
+      "name": "Lac de Morat",
+      "elevation": 429
+    },
+    {
+      "id": "87",
+      "name": "Sempacher See",
+      "elevation": 504
+    },
+    {
+      "id": "99",
+      "name": "Sihlsee",
+      "elevation": 890
+    },
+    {
+      "id": "90",
+      "name": "Hallwiler See",
+      "elevation": 449
+    },
+    {
+      "id": "117",
+      "name": "Lac de la Gruyère",
+      "elevation": 681
+    },
+    {
+      "id": "23",
+      "name": "Lac Brenet",
+      "elevation": 1005
+    },
+    {
+      "id": "22",
+      "name": "Lac de Joux",
+      "elevation": 1005
+    },
+    {
+      "id": "59",
+      "name": "Greifensee",
+      "elevation": 435
+    },
+    {
+      "id": "107",
+      "name": "Sarnersee",
+      "elevation": 469
+    },
+    {
+      "id": "116",
+      "name": "Ägerisee",
+      "elevation": 725
+    },
+    {
+      "id": "85",
+      "name": "Baldegger See",
+      "elevation": 464
+    },
+    {
+      "id": "143",
+      "name": "Lago di Livigno",
+      "elevation": 1869
+    },
+    {
+      "id": "121",
+      "name": "Schiffenensee",
+      "elevation": 544
+    },
+    {
+      "id": "100",
+      "name": "Wägitaler See",
+      "elevation": 893
+    },
+    {
+      "id": "141",
+      "name": "Lago di Lei",
+      "elevation": 1982
+    },
+    {
+      "id": "150",
+      "name": "Lej da Segl",
+      "elevation": 1811
+    },
+    {
+      "id": "34",
+      "name": "Lac des Dix",
+      "elevation": 2373
+    },
+    {
+      "id": "62",
+      "name": "Wohlensee",
+      "elevation": 497
+    },
+    {
+      "id": "55",
+      "name": "Pfäffikersee",
+      "elevation": 537
+    },
+    {
+      "id": "110",
+      "name": "Klöntaler See",
+      "elevation": 854
+    },
+    {
+      "id": "44",
+      "name": "Lac d'Emosson",
+      "elevation": 1948
+    },
+    {
+      "id": "147",
+      "name": "Lej da Silvaplauna",
+      "elevation": 1808
+    },
+    {
+      "id": "101",
+      "name": "Lauerzer See",
+      "elevation": 449
+    },
+    {
+      "id": "73",
+      "name": "Grimselsee",
+      "elevation": 1937
+    },
+    {
+      "id": "29",
+      "name": "Lac de Mauvoisin",
+      "elevation": 2007
+    },
+    {
+      "id": "103",
+      "name": "Lungerersee",
+      "elevation": 728
+    },
+    {
+      "id": "138",
+      "name": "Lago di Poschiavo",
+      "elevation": 966
+    },
+    {
+      "id": "45",
+      "name": "Lac de Salanfe",
+      "elevation": 1921
+    },
+    {
+      "id": "158",
+      "name": "Lai da Sontga Maria",
+      "elevation": 1921
+    },
+    {
+      "id": "49",
+      "name": "Stausee Mattmark",
+      "elevation": 2225
+    },
+    {
+      "id": "6",
+      "name": "Lago di Vogorno",
+      "elevation": 525
+    },
+    {
+      "id": "140",
+      "name": "Zervreilasee",
+      "elevation": 1919
+    },
+    {
+      "id": "19",
+      "name": "Lac de l'Hongrin",
+      "elevation": 1257
+    },
+    {
+      "id": "139",
+      "name": "Lago Bianco",
+      "elevation": 2239
+    },
+    {
+      "id": "61",
+      "name": "Stausee Niederried",
+      "elevation": 467
+    },
+    {
+      "id": "2",
+      "name": "Lago Ritom",
+      "elevation": 1952
+    },
+    {
+      "id": "75",
+      "name": "Oberaarsee",
+      "elevation": 2363
+    },
+    {
+      "id": "135",
+      "name": "Lai da Marmorera",
+      "elevation": 1687
+    },
+    {
+      "id": "46",
+      "name": "Lac de Moiry",
+      "elevation": 2248
+    },
+    {
+      "id": "113",
+      "name": "Limmerensee",
+      "elevation": 1846
+    },
+    {
+      "id": "97",
+      "name": "Göscheneralpsee",
+      "elevation": 1806
+    },
+    {
+      "id": "167",
+      "name": "Lago di Luzzone",
+      "elevation": 1722
+    },
+    {
+      "id": "159",
+      "name": "Klingnauer Stausee",
+      "elevation": 314
+    },
+    {
+      "id": "148",
+      "name": "Lägh da l'Albigna",
+      "elevation": 2184
+    },
+    {
+      "id": "15",
+      "name": "Lago del Sambuco",
+      "elevation": 1494
+    },
+    {
+      "id": "65",
+      "name": "Oeschinensee",
+      "elevation": 1590
+    },
+    {
+      "id": "156",
+      "name": "Lai da Nalps",
+      "elevation": 1970
+    },
+    {
+      "id": "142",
+      "name": "Sufnersee",
+      "elevation": 1459
+    },
+    {
+      "id": "36",
+      "name": "Lac de Tseuzier",
+      "elevation": 1804
+    },
+    {
+      "id": "157",
+      "name": "Lai da Curnera",
+      "elevation": 1962
+    },
+    {
+      "id": "145",
+      "name": "Lej da S. Murezzan",
+      "elevation": 1781
+    },
+    {
+      "id": "119",
+      "name": "Lac de Montsalvens",
+      "elevation": 812
+    },
+    {
+      "id": "16",
+      "name": "Lago del Naret",
+      "elevation": 2390
+    },
+    {
+      "id": "133",
+      "name": "Gigerwaldsee",
+      "elevation": 1403
+    },
+    {
+      "id": "37",
+      "name": "Daubensee",
+      "elevation": 2209
+    },
+    {
+      "id": "50",
+      "name": "Lac de Moron",
+      "elevation": 772
+    },
+    {
+      "id": "51",
+      "name": "Lac des Brenets",
+      "elevation": 765
+    },
+    {
+      "id": "72",
+      "name": "Räterichsbodensee",
+      "elevation": 1741
+    },
+    {
+      "id": "71",
+      "name": "Gelmersee",
+      "elevation": 1846
+    },
+    {
+      "id": "28",
+      "name": "Lac des Toules",
+      "elevation": 1816
+    },
+    {
+      "id": "33",
+      "name": "Griessee",
+      "elevation": 2403
+    },
+    {
+      "id": "154",
+      "name": "Davoser See",
+      "elevation": 1569
+    },
+    {
+      "id": "102",
+      "name": "Glattalpsee",
+      "elevation": 1877
+    },
+    {
+      "id": "43",
+      "name": "Lac du Vieux Emosson",
+      "elevation": 2234
+    },
+    {
+      "id": "88",
+      "name": "Mauensee",
+      "elevation": 504
+    },
+    {
+      "id": "169",
+      "name": "Lago di Lucendro",
+      "elevation": 2136
+    },
+    {
+      "id": "104",
+      "name": "Melchsee",
+      "elevation": 1891
+    },
+    {
+      "id": "26",
+      "name": "Lac de Cleuson",
+      "elevation": 2093
+    },
+    {
+      "id": "54",
+      "name": "Türlersee",
+      "elevation": 654
+    },
+    {
+      "id": "86",
+      "name": "Rotsee",
+      "elevation": 442
+    },
+    {
+      "id": "118",
+      "name": "Schwarzsee",
+      "elevation": 1055
+    },
+    {
+      "id": "13",
+      "name": "Lago dei Cavagnöö",
+      "elevation": 2314
+    },
+    {
+      "id": "76",
+      "name": "Arnensee",
+      "elevation": 1560
+    },
+    {
+      "id": "168",
+      "name": "Lago della Sella",
+      "elevation": 2287
+    },
+    {
+      "id": "69",
+      "name": "Engstlensee",
+      "elevation": 1844
+    },
+    {
+      "id": "114",
+      "name": "Muttsee",
+      "elevation": 2467
+    },
+    {
+      "id": "136",
+      "name": "Igl Lai",
+      "elevation": 1489
+    },
+    {
+      "id": "160",
+      "name": "Stausee Ranasca",
+      "elevation": 1504
+    },
+    {
+      "id": "152",
+      "name": "Lago d'Isola",
+      "elevation": 1618
+    },
+    {
+      "id": "80",
+      "name": "Amsoldingersee",
+      "elevation": 643
+    },
+    {
+      "id": "164",
+      "name": "Hüttwilersee",
+      "elevation": 435
+    },
+    {
+      "id": "20",
+      "name": "Lac de Brêt",
+      "elevation": 679
+    },
+    {
+      "id": "1",
+      "name": "Lago Tremorgio",
+      "elevation": 1830
+    },
+    {
+      "id": "144",
+      "name": "Ova Spin",
+      "elevation": 1675
+    },
+    {
+      "id": "105",
+      "name": "Tannensee",
+      "elevation": 1969
+    },
+    {
+      "id": "52",
+      "name": "Lac des Taillères",
+      "elevation": 1042
+    },
+    {
+      "id": "21",
+      "name": "Lac du Vernex",
+      "elevation": 879
+    },
+    {
+      "id": "63",
+      "name": "Moossee",
+      "elevation": 521
+    },
+    {
+      "id": "109",
+      "name": "Trübsee",
+      "elevation": 1758
+    },
+    {
+      "id": "47",
+      "name": "Lac de Sénin",
+      "elevation": 2058
+    },
+    {
+      "id": "163",
+      "name": "Nussbaumersee",
+      "elevation": 436
+    },
+    {
+      "id": "77",
+      "name": "Gerzensee",
+      "elevation": 605
+    },
+    {
+      "id": "3",
+      "name": "Lago Cadagno",
+      "elevation": 1924
+    },
+    {
+      "id": "132",
+      "name": "Mapraggsee",
+      "elevation": 874
+    },
+    {
+      "id": "5",
+      "name": "Lago di Palagnedra",
+      "elevation": 517
+    },
+    {
+      "id": "9",
+      "name": "Lago di Robièi",
+      "elevation": 1920
+    },
+    {
+      "id": "95",
+      "name": "Obersee",
+      "elevation": 1874
+    },
+    {
+      "id": "89",
+      "name": "Soppensee",
+      "elevation": 600
+    },
+    {
+      "id": "81",
+      "name": "Burgäschisee",
+      "elevation": 467
+    },
+    {
+      "id": "7",
+      "name": "Lago di Muzzano",
+      "elevation": 357
+    },
+    {
+      "id": "106",
+      "name": "Wichelsee",
+      "elevation": 462
+    },
+    {
+      "id": "39",
+      "name": "Illsee",
+      "elevation": 2181
+    },
+    {
+      "id": "40",
+      "name": "Lac Supérieur de Fully",
+      "elevation": 2142
+    },
+    {
+      "id": "25",
+      "name": "Stausee Gibidum",
+      "elevation": 1529
+    },
+    {
+      "id": "120",
+      "name": "Lac de Montbovon",
+      "elevation": 789
+    },
+    {
+      "id": "165",
+      "name": "Bacino di Val Malvaglia",
+      "elevation": 1075
+    },
+    {
+      "id": "31",
+      "name": "Geisspfadsee",
+      "elevation": 2480
+    },
+    {
+      "id": "70",
+      "name": "Mattenalpsee",
+      "elevation": 1894
+    },
+    {
+      "id": "98",
+      "name": "Oberalpsee",
+      "elevation": 2099
+    },
+    {
+      "id": "130",
+      "name": "Oberer Murgsee",
+      "elevation": 1845
+    },
+    {
+      "id": "94",
+      "name": "Seeli",
+      "elevation": 780
+    },
+    {
+      "id": "32",
+      "name": "Totensee",
+      "elevation": 2126
+    },
+    {
+      "id": "128",
+      "name": "Gübsensee",
+      "elevation": 671
+    },
+    {
+      "id": "41",
+      "name": "Lac de Tanay",
+      "elevation": 1460
+    },
+    {
+      "id": "153",
+      "name": "Lai da Rims",
+      "elevation": 2276
+    },
+    {
+      "id": "108",
+      "name": "Bannalpsee",
+      "elevation": 1510
+    },
+    {
+      "id": "151",
+      "name": "Lagh de Cama",
+      "elevation": 1308
+    },
+    {
+      "id": "111",
+      "name": "Stausee Garichti",
+      "elevation": 1542
+    },
+    {
+      "id": "112",
+      "name": "Oberblegisee",
+      "elevation": 1444
+    },
+    {
+      "id": "125",
+      "name": "Seealpsee",
+      "elevation": 1194
+    },
+    {
+      "id": "79",
+      "name": "Übeschisee",
+      "elevation": 644
+    },
+    {
+      "id": "129",
+      "name": "Voralpsee",
+      "elevation": 1143
+    },
+    {
+      "id": "56",
+      "name": "Hüttnersee",
+      "elevation": 662
+    },
+    {
+      "id": "8",
+      "name": "Lago Nero",
+      "elevation": 2416
+    },
+    {
+      "id": "68",
+      "name": "Stauweiher Spiezmoos",
+      "elevation": 623
+    },
+    {
+      "id": "14",
+      "name": "Lago del Zött",
+      "elevation": 1982
+    },
+    {
+      "id": "4",
+      "name": "Lago di Tom",
+      "elevation": 2063
+    },
+    {
+      "id": "10",
+      "name": "Lago Sfundau",
+      "elevation": 2441
+    },
+    {
+      "id": "57",
+      "name": "Lützelsee",
+      "elevation": 502
+    },
+    {
+      "id": "126",
+      "name": "Sämtisersee",
+      "elevation": 1246
+    },
+    {
+      "id": "127",
+      "name": "Fälensee",
+      "elevation": 1519
+    },
+    {
+      "id": "82",
+      "name": "Inkwiler See",
+      "elevation": 463
+    },
+    {
+      "id": "149",
+      "name": "Lägh da Cavloc",
+      "elevation": 1922
+    },
+    {
+      "id": "12",
+      "name": "Lago d'Alzasca",
+      "elevation": 1862
+    },
+    {
+      "id": "67",
+      "name": "Oberstockensee",
+      "elevation": 1661
+    },
+    {
+      "id": "27",
+      "name": "Lac de Champex",
+      "elevation": 1482
+    },
+    {
+      "id": "122",
+      "name": "Lac de Seedorf",
+      "elevation": 618
+    },
+    {
+      "id": "42",
+      "name": "Lonza-Stau (Ferden)",
+      "elevation": 1367
+    },
+    {
+      "id": "134",
+      "name": "Bettenauer Weiher",
+      "elevation": 588
+    },
+    {
+      "id": "131",
+      "name": "Chapfensee",
+      "elevation": 994
+    },
+    {
+      "id": "35",
+      "name": "Lac des Audannes",
+      "elevation": 2475
+    },
+    {
+      "id": "170",
+      "name": "Lago di Morghirolo",
+      "elevation": 2297
+    },
+    {
+      "id": "166",
+      "name": "Lago Retico",
+      "elevation": 2407
+    },
+    {
+      "id": "137",
+      "name": "Lai da Ravis-ch-Suot",
+      "elevation": 2530
+    },
+    {
+      "id": "96",
+      "name": "Seewli",
+      "elevation": 2042
+    },
+    {
+      "id": "155",
+      "name": "Stausee Isel",
+      "elevation": 1637
+    },
+    {
+      "id": "74",
+      "name": "Triebtensee",
+      "elevation": 2275
+    },
+    {
+      "id": "38",
+      "name": "Turtmannsee",
+      "elevation": 2164
+    }
+  ],
+  "gzipBytes": 587218,
+  "sha256": "bdbac129bceec41cc1ce9e9466f481c411f9171f3cee825d91a25df1604287c6"
+}

@@ -1,4 +1,6 @@
 export const EXPLORE_EN = {
+  "orbital": "Orbital view",
+  "orbitalDescription": "All available public transport, together above the Swiss Alps",
   "now": "Now",
   "locate": "Near me",
   "clear": "Clear location",

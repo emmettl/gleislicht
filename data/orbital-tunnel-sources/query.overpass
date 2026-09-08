@@ -1,0 +1,1 @@
+[out:json][timeout:180];way["railway"~"^(rail|narrow_gauge|subway|funicular)$"]["tunnel"]["tunnel"!="no"](45.6,5.7,47.95,10.8);out meta geom;

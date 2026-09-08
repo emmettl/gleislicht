@@ -33,3 +33,6 @@ lab/dist/
 data/solothurn-audit/timetable-cache.json.gz
 
 data/solothurn-audit/seasonal-timetable-cache.json.gz
+
+# Generated opt-in orbital movement blocks (rebuilt by prebuild).
+public/data/orbital/

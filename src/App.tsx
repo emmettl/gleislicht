@@ -273,9 +273,10 @@ function trainSearchText(
 
 interface AppProps {
   readonly edition: SwitzerlandEdition
+  readonly suspended?: boolean
 }
 
-export function App({ edition }: AppProps) {
+export function App({ edition, suspended = false }: AppProps) {
   const [webglAvailable] = useState(supportsWebGL)
   const [performanceEnabled] = useState(() =>
     new URLSearchParams(window.location.search).has('perf'),
@@ -297,7 +298,8 @@ export function App({ edition }: AppProps) {
   const [exploreNotice, setExploreNotice] = useState('')
   const [regionalRange, setRegionalRange] = useState<'morning' | 'day'>(initialLink.range)
   const [regionalRetry, setRegionalRetry] = useState(true)
-  const [isPlaying, setIsPlaying] = useState(initialLink.time === undefined && !initialLink.invalidRecording)
+  const [playbackEnabled, setIsPlaying] = useState(initialLink.time === undefined && !initialLink.invalidRecording)
+  const isPlaying = playbackEnabled && !suspended
   const [view, setView] = useState<View>('network')
   const [journeyProgress, setJourneyProgress] = useState(0.11)
   const [journeyEnvironment, setJourneyEnvironment] = useState<JourneyEnvironment>({
@@ -1933,6 +1935,7 @@ export function App({ edition }: AppProps) {
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
+      if (suspended) return
       const target = event.target as HTMLElement | null
       if (
         target?.closest(
@@ -1949,7 +1952,7 @@ export function App({ edition }: AppProps) {
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [handleContextAction, stopNow])
+  }, [handleContextAction, stopNow, suspended])
 
   useEffect(() => {
     if (soundtrackState !== 'on') return
@@ -2062,7 +2065,7 @@ export function App({ edition }: AppProps) {
   }, [timelineTime])
 
   useEffect(() => {
-    if (!directorMode || !hasFullDayTimeline) return
+    if (suspended || !directorMode || !hasFullDayTimeline) return
     let presetIndex = DAY_PRESETS.reduce(
       (closest, preset, index) =>
         Math.abs(preset.time - timelineTimeRef.current) <
@@ -2079,6 +2082,7 @@ export function App({ edition }: AppProps) {
     return () => window.clearInterval(interval)
   }, [
     directorMode,
+    suspended,
     hasFullDayTimeline,
     isNetwork,
     jumpToTime,
@@ -2404,6 +2408,7 @@ export function App({ edition }: AppProps) {
                   ? 'Kiental → Griesalp'
                   : isRigiTerrain ? `${rigiOrigin} → Rigi Kulm` : text.corridorSubtitle}
           </h1>
+          <a className="masthead-orbital" href="?view=orbital" data-tooltip={exploreCopy.orbitalDescription}>{exploreCopy.orbital}<span aria-hidden="true">↗</span></a>
         </div>
         <div className="masthead-meta">
           <div className="masthead-topline">

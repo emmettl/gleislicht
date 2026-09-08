@@ -13,3 +13,8 @@
 .study-preview span { color: #c9d2dd; font-size: 12px; min-height: 32px; line-height: 1.4; }
 .study-preview small { color: #8dfaff; font-size: 10px; margin-top: auto; }
 @media(max-width: 600px) { .study-browser { padding: 16px; } .study-browser-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .study-preview { padding: 12px; } .study-preview strong { font-size: 13px; } }
+
+.study-orbital-entry { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 18px; margin-bottom: 16px; color: #e8edf4; text-decoration: none; border: 1px solid #a6f3ea55; border-radius: 12px; background: linear-gradient(115deg, #12262d, #0a1020); }
+.study-orbital-entry strong { font-size: 17px; font-weight: 500; }
+.study-orbital-entry span { display: block; margin-top: 5px; font-size: 13px; color: #b0c8d3; }
+.study-orbital-entry small { font: 12px 'DM Mono', monospace; color: #9fcad0; }

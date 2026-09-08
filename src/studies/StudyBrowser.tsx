@@ -10,8 +10,9 @@ export default function StudyBrowser({ language, study, onSelect, onClose }: { l
   const dialog = useRef<HTMLDialogElement>(null)
   const copy = EXPLORE_COPY[language]
   useEffect(() => { dialog.current?.showModal() }, [])
-  return <dialog className="study-browser" ref={dialog} onCancel={onClose} aria-labelledby="study-browser-title">
+  return <dialog className="study-browser" ref={dialog} onCancel={onClose} onClose={onClose} aria-labelledby="study-browser-title">
     <header><h2 id="study-browser-title">{copy.browse}</h2><button type="button" onClick={onClose}>{copy.close} ×</button></header>
+    <a className="study-orbital-entry" href="?view=orbital"><div><strong>{copy.orbital} ↗</strong><span>{copy.orbitalDescription}</span></div><small>EXPERIMENT</small></a>
     <div className="study-browser-grid">{STUDY_IDS.map((id, index) => <button type="button" className="study-preview" aria-pressed={id === study} key={id} onClick={() => onSelect(id)}>
       <svg viewBox="0 0 120 72" aria-hidden="true"><path d={patterns[index] ?? 'M8 58L32 38L55 20L72 9 M55 20L90 43L112 60 M32 38L90 43'} /></svg>
       <strong>{copy.names[index]}</strong><span>{copy.descriptions[index]}</span><small>{summaries.find(summary => summary.id === id)?.date} · 00:00–24:00</small>

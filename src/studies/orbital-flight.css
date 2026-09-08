@@ -1,0 +1,13 @@
+.flight-atlas, .flight-orbit { position: fixed; inset: 0; }
+.flight-orbit { z-index: 100; opacity: 0; }
+.flight-orbital .flight-orbit, .flight-returning .flight-orbit { opacity: 1; }
+.flight-orbital .flight-atlas { visibility: hidden; }
+.flight-loading .flight-orbit { pointer-events: none; }
+.flight-departing .flight-atlas .experience > :not(.scene),
+.flight-returning .flight-atlas .experience > :not(.scene) { pointer-events: none; opacity: 0; transition: opacity 180ms; }
+.flight-departing .orbital-view > :not(.orbital-canvas),
+.flight-returning .orbital-view > :not(.orbital-canvas) { opacity: 0; }
+.flight-shield { position: fixed; inset: 0; z-index: 1000; touch-action: none; cursor: progress; }
+.flight-status, .flight-error { position: absolute; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); max-width: calc(100vw - 32px); width: max-content; padding: 8px 16px; border-radius: 24px; background: #07111de6; color: #bacbd9; font: 13px Helvetica, Arial, sans-serif; text-align: center; }
+.flight-status button, .flight-error button { min-width: 44px; min-height: 44px; margin-left: 12px; color: inherit; background: none; border: 0; cursor: pointer; }
+.flight-error { position: fixed; z-index: 1100; }
