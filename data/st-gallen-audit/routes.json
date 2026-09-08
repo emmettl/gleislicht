@@ -3697,20 +3697,16 @@
       {
         "date": "2026-09-04",
         "trips": 58,
-        "admittedTrips": 0,
-        "status": "excluded",
-        "reasons": [
-          "endpoint-gap"
-        ]
+        "admittedTrips": 58,
+        "status": "admitted",
+        "reasons": []
       },
       {
         "date": "2026-09-06",
         "trips": 26,
-        "admittedTrips": 0,
-        "status": "excluded",
-        "reasons": [
-          "endpoint-gap"
-        ]
+        "admittedTrips": 26,
+        "status": "admitted",
+        "reasons": []
       }
     ]
   },

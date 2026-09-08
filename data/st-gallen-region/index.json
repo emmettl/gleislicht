@@ -8,7 +8,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
+    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "attribution": [
@@ -16,6 +16,8 @@
     "Underlying alignment: swissTNE Base, © swisstopo",
     "Timetable: SBB / opentransportdata.swiss",
     "Canton boundary: © swisstopo",
+    "Stop rendering anchor evidence: Mobilitätsverbünde Österreich OG",
+    "Stop rendering anchor evidence: Mobilitätsverbünde Österreich OG / Verkehrsverbund Vorarlberg",
     "Supporting corridor map: PostAuto AG / OSTWIND"
   ],
   "timetable": {
@@ -25,24 +27,65 @@
   },
   "sources": "../st-gallen-sources/sources.json",
   "audit": "../st-gallen-audit/summary.json",
+  "stopAnchors": [
+    {
+      "id": "vmobil-treffpunkt-164",
+      "stopId": "ch:1:sloid:1200511",
+      "name": "Dornbirn, Treffpunkt a.d.Ach",
+      "originalCoordinate": [
+        9.72297836,
+        47.40614449
+      ],
+      "coordinate": [
+        9.72965284,
+        47.41016915
+      ],
+      "sourceStopId": "at:48:570:0:1",
+      "platformSpreadMetres": 8.901186560970062,
+      "shiftMetres": 673.4817780966682,
+      "sourceSha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+      "routeIds": [
+        "92-164-C-j26-1"
+      ],
+      "use": "Representative stop-level rendering anchor from one published platform; not a directional platform assignment. Original Swiss ID, name, calls and times preserved. Opposite source platform is within 15 m. Only reviewed line 164 and fixture dates allowed."
+    }
+  ],
+  "stopAnchorSources": [
+    {
+      "url": "https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/contract_examples/Lizenzvereinbarung_DBP_v1.1_0.pdf",
+      "publisher": "Mobilitätsverbünde Österreich OG",
+      "sha256": "0ebe5104d6f730655394deb695065baaa17fa16c2d6bbf94373e274835c5e298",
+      "retrievedAt": "2026-09-08T19:14:09.544Z",
+      "sourceEditionDate": null,
+      "file": "endpoint-review/vmobil-license.pdf"
+    },
+    {
+      "url": "https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/sample_data/20260703-0010_gtfs_flex_vmobil_2026.zip",
+      "publisher": "Mobilitätsverbünde Österreich OG / Verkehrsverbund Vorarlberg",
+      "sha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+      "retrievedAt": "2026-09-08T19:14:12.507Z",
+      "sourceEditionDate": "2026-07-03",
+      "file": "endpoint-review/vmobil-20260703.zip"
+    }
+  ],
   "days": [
     {
       "date": "2026-09-04",
       "manifest": "local/2026-09-04/st-gallen-region-day-manifest.json",
       "morning": "local/2026-09-04/st-gallen-region-morning.json",
-      "manifestSha256": "b5dedf24447e8c1de0a6eaefbaba404d990b6346e3a379ac3f85f9bf25728c54",
-      "morningSha256": "7ca6c166ffd8e3f195744df161399391e10372fb34306c62833a97701bb29486",
-      "trips": 10566,
-      "patterns": 1000
+      "manifestSha256": "d5e64ea50976dcd355dd2d058baacbdb212aba42b64aa7d52bc468b47a3078ea",
+      "morningSha256": "8fe1ebeb7ac6bbe1614a561243b00862e3bc731c8c98002c1c306a93105b5eb0",
+      "trips": 10624,
+      "patterns": 1002
     },
     {
       "date": "2026-09-06",
       "manifest": "local/2026-09-06/st-gallen-region-day-manifest.json",
       "morning": "local/2026-09-06/st-gallen-region-morning.json",
-      "manifestSha256": "75965c2bad95a0c5730f05f1104a411ef1896c5afbf4fdc576f77f34199dc307",
-      "morningSha256": "45b3d22a00cdd3ac573da706c1e620264cbac909e019aee658b45be085e70d4b",
-      "trips": 7299,
-      "patterns": 771
+      "manifestSha256": "81b44cb9065e93a6587e119712b41359fe9a91a70afe4e9d79fed123aeecd8a9",
+      "morningSha256": "90c77031d49fa705199963f3c6057c93c5f22c530b0e9d3ce5332d2f7cb2b267",
+      "trips": 7325,
+      "patterns": 773
     }
   ],
   "note": "Feed payloads and original/decoded AL_OEV source vectors are generated locally and ignored by Git; they are excluded from public site assets. Resolve publisher permission before redistribution."

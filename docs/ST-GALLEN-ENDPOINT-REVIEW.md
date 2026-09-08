@@ -1,6 +1,6 @@
 # St. Gallen bus endpoint review
 
-All **109 distinct directed bus endpoint-gap pairs** across the pinned Friday **4 September** and Sunday **6 September 2026** fixtures have been replayed. Friday has 100 failed pairs affecting **389 complete trips across 40 patterns**; Sunday has 74 affecting **126 trips across 26 patterns**. These are distinct trips per day, not sums of failed-pair occurrences. The review covers **19 GTFS route records**. All remain excluded, and the local regional feed remains **10,566 Friday / 7,299 Sunday movements**.
+All **105 distinct directed bus endpoint-gap pairs** across the pinned Friday **4 September** and Sunday **6 September 2026** fixtures have been replayed. Friday has 96 failed pairs affecting **331 complete trips across 38 patterns**; Sunday has 70 affecting **100 trips across 24 patterns**. These are distinct trips per day, not sums of failed-pair occurrences. The review covers **18 GTFS route records**. All remain excluded, and the local regional feed remains **10,624 Friday / 7,325 Sunday movements**.
 
 The [machine-readable report](../data/st-gallen-endpoint-review.json) records every directed route/platform pair, source feature, original snap distance, same-agency candidate path hash, evidence retrieval time and affected-pattern binding. The [canton study](ST-GALLEN-STUDY.md) remains the complete annual inventory; this review covers only bus endpoint failures.
 
@@ -8,11 +8,10 @@ The [machine-readable report](../data/st-gallen-endpoint-review.json) records ev
 
 The production graph is replayed with original-precision Swiss GTFS platform coordinates, all existing reviewed repairs/corridors and the unchanged **120 m** snap limit. Each other individual AL_OEV regional or city bus feature mapped to the same GTFS agency is then tested independently with the existing detour limits. This examines every eligible record, including city features; it does not merge different routes into an admission graph.
 
-**41 of 109 pairs** have at least one passing candidate on another source record. The other **68** have none in this search. A passing candidate establishes geometric proximity and connectivity only. It does not establish that the affected route uses the donor's alignment, especially on a construction date. No candidate was added to production policy.
+**41 of 105 pairs** have at least one passing candidate on another source record. The other **64** have none in this search. A passing candidate establishes geometric proximity and connectivity only. It does not establish that the affected route uses the donor's alignment, especially on a construction date. No candidate was added to production policy.
 
 | GTFS route record | Line | Directed failed pairs | Pairs with a candidate | Maximum original snap (m) | Friday / Sunday affected trips |
 | --- | --- | --- | --- | --- | --- |
-| 92-164-C-j26-1 | 164 | 4 | 0 | 675.5 | 58 / 26 |
 | 92-705-D-j26-1 | 705 | 4 | 4 | 121.2 | 58 / 24 |
 | 92-631-j26-1 | 631 | 2 | 0 | 182.6 | 46 / 33 |
 | 92-323-j26-1 | 323 | 4 | 0 | 160.6 | 65 / 0 |
@@ -60,7 +59,7 @@ The official Mobilitätsdaten Österreich catalogue links the public sample `202
 
 `c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed`
 
-The sample includes `at:vvv:164:` (Landbus Unterland, Lustenau–Lauterach–Wolfurt), **142 source trip records**, **seven referenced shapes** and **3,108 shape points**. These are inventory counts, not active Friday/Sunday trips. No external shapes have been admitted or substituted for the pinned Swiss timetable. The subsequent [directed line-164 review](ST-GALLEN-VMOBIL-REVIEW.md) confirms identical fixture calls and times but finds a 673–679 m discrepancy between the feeds at Treffpunkt a.d.Ach. The external shapes still fail at the original Swiss endpoints; no fallback was admitted. Current line-164 endpoint failures affect 58 Friday / 26 Sunday trips.
+The sample includes `at:vvv:164:` (Landbus Unterland, Lustenau–Lauterach–Wolfurt), **142 source trip records**, **seven referenced shapes** and **3,108 shape points**. These are inventory counts, not active Friday/Sunday trips. No external shapes have been admitted or substituted for the pinned Swiss timetable. The subsequent [directed line-164 review](ST-GALLEN-VMOBIL-REVIEW.md) confirms identical fixture calls and times but finds a 673–679 m discrepancy between the feeds at Treffpunkt a.d.Ach. The external shapes still fail at the original Swiss endpoints. A separately reviewed [stop rendering anchor](ST-GALLEN-STOP-ANCHOR-REVIEW.md) now admits all 58 Friday / 26 Sunday line-164 trips on the existing AL_OEV geometry; its four recovered pairs are removed from this remaining-failure review.
 
 ## Source dates, attribution and reuse
 
@@ -68,7 +67,7 @@ The report binds the original March AL_OEV export, Swiss GTFS archive/version, p
 
 Attribution: **© Kanton St.Gallen, Amt für öffentlichen Verkehr / AREG** for AL_OEV; **SBB / opentransportdata.swiss** for Swiss timetable and stops; **RTB Rheintal Bus and WilMobil / BOS Gruppe** for operator evidence; **Mobilitätsverbünde Österreich OG / Verkehrsverbund Vorarlberg** for the external sample; **Mobilitätsdaten Österreich / AustriaTech** for its catalogue.
 
-The external sample has a [custom licence](https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/contract_examples/Lizenzvereinbarung_DBP_v1.1_0.pdf), not an asserted CC licence. Its terms provide free reproduction/adaptation subject to attribution, licence/disclaimer links, change notices and other conditions, including dataset-validity restrictions. It is used here only for local source inventory. The St. Gallen vector/feed redistribution restriction remains unchanged. Tracked review artifacts contain source references, hashes and measurements, not source paths or copied webpage bodies. All raw evidence stays in the ignored local cache. No road-direction certification is implied.
+The external sample has a [custom licence](https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/contract_examples/Lizenzvereinbarung_DBP_v1.1_0.pdf), not an asserted CC licence. Its terms provide free reproduction/adaptation subject to attribution, licence/disclaimer links, change notices and other conditions, including dataset-validity restrictions. This endpoint review uses it for source inventory; the separately documented line-164 anchor adopts one published stop coordinate for the local feed. The St. Gallen vector/feed redistribution restriction remains unchanged. Tracked review artifacts contain source references, hashes and measurements, not source paths or copied webpage bodies. All raw evidence stays in the ignored local cache. No road-direction certification is implied.
 
 ## Reproduce and verify
 

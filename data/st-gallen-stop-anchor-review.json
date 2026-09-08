@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "baselineCommit": "7926448",
+  "baselineCommit": "2e0c599",
   "baselineSourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "1059f9f41a98aa5d734673d3a0c1586e7ffc091efd74c98cccf53c0ed7f74ea3",
+    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "sourceHashes": {
@@ -68,36 +68,34 @@
   "days": [
     {
       "date": "2026-09-04",
-      "beforeTrips": 10500,
+      "beforeTrips": 10566,
       "afterTrips": 10624,
-      "addedTrips": 124,
-      "unchangedExistingTrips": 10500,
-      "addedTripIdsSha256": "820ad9a19c677bb1629419b1954c968bb45de3973c1159e1adffbea0eb51bd80",
-      "addedPatterns": 8,
+      "addedTrips": 58,
+      "unchangedExistingTrips": 10566,
+      "addedTripIdsSha256": "1dadb256558ad5f21b7b3ee40ef479a56396969994a9e7f491b194cdeacb17f6",
+      "addedPatterns": 2,
       "addedTripsByRoute": {
-        "92-164-C-j26-1": 58,
-        "96-250-8-j26-1": 66
+        "92-164-C-j26-1": 58
       },
       "sharedCorridorPairs": 48,
       "recoveredPairs": [],
-      "beforePatterns": 994,
+      "beforePatterns": 1000,
       "afterPatterns": 1002
     },
     {
       "date": "2026-09-06",
-      "beforeTrips": 7264,
+      "beforeTrips": 7299,
       "afterTrips": 7325,
-      "addedTrips": 61,
-      "unchangedExistingTrips": 7264,
-      "addedTripIdsSha256": "1f1f71df3eeda8dec32332ef03fd785bbe8f521e4244bcf9a00744424988fdd3",
-      "addedPatterns": 9,
+      "addedTrips": 26,
+      "unchangedExistingTrips": 7299,
+      "addedTripIdsSha256": "17ef75cc0c1891f7b002351e818b7d72c8e867883582e300d9a44704389e38bd",
+      "addedPatterns": 2,
       "addedTripsByRoute": {
-        "92-164-C-j26-1": 26,
-        "96-250-8-j26-1": 35
+        "92-164-C-j26-1": 26
       },
       "sharedCorridorPairs": 64,
       "recoveredPairs": [],
-      "beforePatterns": 764,
+      "beforePatterns": 771,
       "afterPatterns": 773
     }
   ],

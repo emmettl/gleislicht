@@ -5,7 +5,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
+    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "evidence": [
@@ -761,150 +761,6 @@
           "affectedPatterns": 0,
           "affectedTrips": 0,
           "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
-        }
-      ],
-      "decision": "Retain complete-pattern exclusion."
-    },
-    {
-      "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200598\",\"ch:1:sloid:1200511\"]",
-      "routeId": "92-164-C-j26-1",
-      "agencyId": "81_VVV",
-      "line": "164",
-      "fromId": "ch:1:sloid:1200598",
-      "toId": "ch:1:sloid:1200511",
-      "from": "Dornbirn, Schoren Bahnhof/ORF",
-      "to": "Dornbirn, Treffpunkt a.d.Ach",
-      "sourceFeatures": [
-        "bus:32"
-      ],
-      "production": {
-        "reason": "endpoint-gap",
-        "maximumSnapMetres": 675.451101578808,
-        "pathMetres": null
-      },
-      "sameAgencyCandidates": [],
-      "days": [
-        {
-          "date": "2026-09-04",
-          "occurrences": 29,
-          "affectedPatterns": 1,
-          "affectedTrips": 29,
-          "patternIdsSha256": "ce57a01ca5eb893688cc8a92dc3b102b6f40799b919eefe3bf564907d150a0c8"
-        },
-        {
-          "date": "2026-09-06",
-          "occurrences": 13,
-          "affectedPatterns": 1,
-          "affectedTrips": 13,
-          "patternIdsSha256": "ce57a01ca5eb893688cc8a92dc3b102b6f40799b919eefe3bf564907d150a0c8"
-        }
-      ],
-      "decision": "Retain complete-pattern exclusion."
-    },
-    {
-      "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200511\",\"ch:1:sloid:1200616\"]",
-      "routeId": "92-164-C-j26-1",
-      "agencyId": "81_VVV",
-      "line": "164",
-      "fromId": "ch:1:sloid:1200511",
-      "toId": "ch:1:sloid:1200616",
-      "from": "Dornbirn, Treffpunkt a.d.Ach",
-      "to": "Dornbirn, Steggasse",
-      "sourceFeatures": [
-        "bus:32"
-      ],
-      "production": {
-        "reason": "endpoint-gap",
-        "maximumSnapMetres": 675.451101578808,
-        "pathMetres": null
-      },
-      "sameAgencyCandidates": [],
-      "days": [
-        {
-          "date": "2026-09-04",
-          "occurrences": 29,
-          "affectedPatterns": 1,
-          "affectedTrips": 29,
-          "patternIdsSha256": "ce57a01ca5eb893688cc8a92dc3b102b6f40799b919eefe3bf564907d150a0c8"
-        },
-        {
-          "date": "2026-09-06",
-          "occurrences": 13,
-          "affectedPatterns": 1,
-          "affectedTrips": 13,
-          "patternIdsSha256": "ce57a01ca5eb893688cc8a92dc3b102b6f40799b919eefe3bf564907d150a0c8"
-        }
-      ],
-      "decision": "Retain complete-pattern exclusion."
-    },
-    {
-      "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200616\",\"ch:1:sloid:1200511\"]",
-      "routeId": "92-164-C-j26-1",
-      "agencyId": "81_VVV",
-      "line": "164",
-      "fromId": "ch:1:sloid:1200616",
-      "toId": "ch:1:sloid:1200511",
-      "from": "Dornbirn, Steggasse",
-      "to": "Dornbirn, Treffpunkt a.d.Ach",
-      "sourceFeatures": [
-        "bus:32"
-      ],
-      "production": {
-        "reason": "endpoint-gap",
-        "maximumSnapMetres": 675.451101578808,
-        "pathMetres": null
-      },
-      "sameAgencyCandidates": [],
-      "days": [
-        {
-          "date": "2026-09-04",
-          "occurrences": 29,
-          "affectedPatterns": 1,
-          "affectedTrips": 29,
-          "patternIdsSha256": "564ecc97d9dd5f0f08e32eae9b01565199eab23796df2759b41714e4744cd997"
-        },
-        {
-          "date": "2026-09-06",
-          "occurrences": 13,
-          "affectedPatterns": 1,
-          "affectedTrips": 13,
-          "patternIdsSha256": "564ecc97d9dd5f0f08e32eae9b01565199eab23796df2759b41714e4744cd997"
-        }
-      ],
-      "decision": "Retain complete-pattern exclusion."
-    },
-    {
-      "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200511\",\"ch:1:sloid:1200598\"]",
-      "routeId": "92-164-C-j26-1",
-      "agencyId": "81_VVV",
-      "line": "164",
-      "fromId": "ch:1:sloid:1200511",
-      "toId": "ch:1:sloid:1200598",
-      "from": "Dornbirn, Treffpunkt a.d.Ach",
-      "to": "Dornbirn, Schoren Bahnhof/ORF",
-      "sourceFeatures": [
-        "bus:32"
-      ],
-      "production": {
-        "reason": "endpoint-gap",
-        "maximumSnapMetres": 675.451101578808,
-        "pathMetres": null
-      },
-      "sameAgencyCandidates": [],
-      "days": [
-        {
-          "date": "2026-09-04",
-          "occurrences": 29,
-          "affectedPatterns": 1,
-          "affectedTrips": 29,
-          "patternIdsSha256": "564ecc97d9dd5f0f08e32eae9b01565199eab23796df2759b41714e4744cd997"
-        },
-        {
-          "date": "2026-09-06",
-          "occurrences": 13,
-          "affectedPatterns": 1,
-          "affectedTrips": 13,
-          "patternIdsSha256": "564ecc97d9dd5f0f08e32eae9b01565199eab23796df2759b41714e4744cd997"
         }
       ],
       "decision": "Retain complete-pattern exclusion."
@@ -4627,26 +4483,6 @@
   ],
   "routes": [
     {
-      "routeId": "92-164-C-j26-1",
-      "agencyId": "81_VVV",
-      "line": "164",
-      "reviewedPairs": 4,
-      "pairsWithCandidate": 0,
-      "maximumSnapMetres": 675.451101578808,
-      "days": [
-        {
-          "date": "2026-09-04",
-          "affectedPatterns": 2,
-          "affectedTrips": 58
-        },
-        {
-          "date": "2026-09-06",
-          "affectedPatterns": 2,
-          "affectedTrips": 26
-        }
-      ]
-    },
-    {
       "routeId": "92-705-D-j26-1",
       "agencyId": "138",
       "line": "705",
@@ -5010,19 +4846,19 @@
   "days": [
     {
       "date": "2026-09-04",
-      "reviewedPairs": 100,
-      "affectedPatterns": 40,
-      "affectedTrips": 389,
-      "admittedTrips": 10566,
-      "dayAuditSha256": "a1ff220a0fbe25a942d80208e3fc656c4c946e5141cf5caa4837d274624053b3"
+      "reviewedPairs": 96,
+      "affectedPatterns": 38,
+      "affectedTrips": 331,
+      "admittedTrips": 10624,
+      "dayAuditSha256": "62caed3d7d77c2399c20cf30d75f21c698b762f12f04f5cfacbdf1b3aea3cd38"
     },
     {
       "date": "2026-09-06",
-      "reviewedPairs": 74,
-      "affectedPatterns": 26,
-      "affectedTrips": 126,
-      "admittedTrips": 7299,
-      "dayAuditSha256": "cee7e59ad96551eb804489e31db272e43b3827c9f3fb357bafe7ec6bd782cbb4"
+      "reviewedPairs": 70,
+      "affectedPatterns": 24,
+      "affectedTrips": 100,
+      "admittedTrips": 7325,
+      "dayAuditSha256": "34fa39b4c48b38ba3ba9f974b9157e71164516216649b5847450de8ad56649d7"
     }
   ],
   "validation": {

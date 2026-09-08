@@ -30,13 +30,14 @@ sha = lambda b: hashlib.sha256(b).hexdigest()
 
 
 def prepare_shared_evidence(directory, inspect_cache=False):
-    """Acquire pinned supporting maps without changing the AL_OEV catalogue."""
+    """Acquire pinned corridor/anchor evidence without changing the AL_OEV catalogue."""
     out = Path(directory); out.mkdir(parents=True, exist_ok=True)
     policy = json.loads((ROOT/'data/st-gallen-policy.json').read_text())
     records = []
-    for corridor in policy.get('sharedCorridors', []):
+    for corridor in policy.get('sharedCorridors', []) + policy.get('stopAnchors', []):
         for evidence in corridor['evidence']:
             target = out/evidence['file']
+            target.parent.mkdir(parents=True, exist_ok=True)
             if not target.exists():
                 assert not inspect_cache, 'Missing cached corridor evidence: '+evidence['file']
                 with tempfile.TemporaryDirectory() as tmp:

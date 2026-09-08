@@ -1,0 +1,68 @@
+{
+  "baselineCommit": "2e0c599",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "externalFeed": {
+    "feed_publisher_name": "Mobilitätsverbünde Österreich OG",
+    "feed_publisher_url": "https://data.mobilitaetsverbuende.at/",
+    "feed_lang": "DE",
+    "feed_start_date": "20251214",
+    "feed_end_date": "20261212",
+    "feed_version": "20260703",
+    "feed_contact_email": "services@mobilitaetsverbuende.at",
+    "feed_contact_url": "https://data.mobilitaetsverbuende.at/"
+  },
+  "days": [
+    {
+      "date": "2026-09-04",
+      "swissTrips": 58,
+      "externalTrips": 58,
+      "patterns": [
+        {
+          "patternId": "949a5e22a7e638a259df",
+          "directionId": "1",
+          "swissTrips": 29,
+          "externalTrips": 29,
+          "allCallTimesMatch": true,
+          "orderedStopNamesMatch": true
+        },
+        {
+          "patternId": "2b9266a66c55c95956fe",
+          "directionId": "0",
+          "swissTrips": 29,
+          "externalTrips": 29,
+          "allCallTimesMatch": true,
+          "orderedStopNamesMatch": true
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "swissTrips": 26,
+      "externalTrips": 26,
+      "patterns": [
+        {
+          "patternId": "949a5e22a7e638a259df",
+          "directionId": "1",
+          "swissTrips": 13,
+          "externalTrips": 13,
+          "allCallTimesMatch": true,
+          "orderedStopNamesMatch": true
+        },
+        {
+          "patternId": "2b9266a66c55c95956fe",
+          "directionId": "0",
+          "swissTrips": 13,
+          "externalTrips": 13,
+          "allCallTimesMatch": true,
+          "orderedStopNamesMatch": true
+        }
+      ]
+    }
+  ]
+}

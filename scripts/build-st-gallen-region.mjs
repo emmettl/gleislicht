@@ -8,6 +8,7 @@ import { SERVICE_CATEGORIES } from '@motionstudies/core/theme'
 import { stGallenGraphs, matchStGallenPair, directedPatternKey } from './st-gallen-line-geometry.mjs'
 import { stGallenMode } from './st-gallen-timetable.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
+import { loadStGallenStopAnchors } from './st-gallen-stop-anchors.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const save = async (path, value, pretty = false) => { await mkdir(dirname(path), { recursive: true }); await writeFile(path, JSON.stringify(value, null, pretty ? 2 : undefined) + (pretty ? '\n' : '')) }
@@ -61,7 +62,8 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
   for (const layer of ['bus', 'city', 'rail', 'boat', 'mountain']) collections[layer] = JSON.parse(gunzipSync(await readFile(join(sourceDirectory, `${layer}.geojson.gz`))))
   const { graphs, inventory: sourceInventory } = stGallenGraphs(collections, policy)
   const routes = new Map(raw.inventory.map(r => [r.routeId, { ...r, mode: stGallenMode(r.routeType) }]))
-  const stops = new Map(raw.stops.map(s => [s.stop_id, s])), pairCache = new Map(), paths = [], pathIndices = new Map()
+  const { stops, anchors } = await loadStGallenStopAnchors(raw, policy, sourceDirectory, sourceHashes.timetable)
+  const pairCache = new Map(), paths = [], pathIndices = new Map()
   const days = []
   for (const day of raw.snapshots) {
     console.log(`Matching ${day.date}: ${day.trains.length} full civil-day trips…`)
@@ -78,7 +80,9 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
             const { path, ...assessment } = result
             let pathIndex = null
             if (path) { const signature = JSON.stringify(path); if (!pathIndices.has(signature)) { pathIndices.set(signature, paths.length); paths.push(path) } pathIndex = pathIndices.get(signature) }
-            pairCache.set(key, { key, routeId: route.routeId, agencyId: route.agencyId, mode: route.mode, line: route.line, fromId: from, toId: to, from: a.stop_name, to: b.stop_name, pathIndex, geometrySha256: path ? sha256(JSON.stringify(path)) : null, ...assessment })
+            const stopAnchorIds = anchors.filter(s => s.stopId === from || s.stopId === to).map(s => s.id)
+            pairCache.set(key, { key, routeId: route.routeId, agencyId: route.agencyId, mode: route.mode, line: route.line, fromId: from, toId: to, from: a.stop_name, to: b.stop_name, pathIndex, geometrySha256: path ? sha256(JSON.stringify(path)) : null, ...assessment,
+              ...(stopAnchorIds.length ? { stopAnchorIds } : {}) })
           }
           return key
         })
@@ -108,9 +112,11 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
       label: 'St. Gallen canton — admitted complete stop patterns', model: 'scheduled interpolation along inferred official alignments',
       note: policy.admission, scope: raw.scope.description, exclusions: policy.scopeLimits,
       attribution: ['Timetable: SBB / opentransportdata.swiss', '© Kanton St.Gallen, Amt für öffentlichen Verkehr / AREG; underlying swissTNE Base © swisstopo', 'Canton boundary: © swisstopo',
+        ...new Set((policy.stopAnchors??[]).flatMap(c=>c.evidence.map(e=>`Stop rendering anchor evidence: ${e.publisher}`))),
         ...new Set((policy.sharedCorridors??[]).flatMap(c=>c.evidence.map(e=>`Supporting corridor map: ${e.publisher}`)))],
       sourceUrl: 'https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020', termsUrl: 'https://opentransportdata.swiss/en/terms-of-use/',
       reuse: catalogue.reuse,
+      stopAnchors: anchors, stopAnchorSources: (policy.stopAnchors ?? []).flatMap(a => a.evidence),
       geometry: { license: catalogue.reuse.license, metadataUrl: 'https://www.sg.ch/bauen/geoinformation/gi/geodaten/al.html', termsUrl: catalogue.reuse.termsUrl,
         sharedCorridors: (policy.sharedCorridors??[]).map(c=>({id:c.id,targetFeature:c.targetFeature,donorFeature:c.donorFeature,approvedDirectedPairs:c.approvedPairs.length,evidence:c.evidence})),
         archiveDate: '2026-03-24', geometryVintage: '2026 timetable; no per-feature survey date', documentationDate: '2026-03-24',
@@ -144,6 +150,8 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
       representativeHeadwaySegmentOccurrences: pairList.reduce((n, p) => n + p.representativeHeadwayOccurrences, 0),
       repairedDirectedPairs: pairList.filter(p => p.geometryRepairIds?.length).length,
       admittedTripsUsingRepair: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometryRepairIds?.length)).reduce((n, p) => n + p.trips, 0),
+      anchoredDirectedPairs: pairList.filter(p => p.stopAnchorIds?.length).length,
+      admittedTripsUsingStopAnchor: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).stopAnchorIds?.length)).reduce((n, p) => n + p.trips, 0),
       sharedCorridorDirectedPairs: pairList.filter(p => p.sharedCorridorIds?.length).length,
       admittedTripsUsingSharedCorridor: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).sharedCorridorIds?.length)).reduce((n, p) => n + p.trips, 0),
       groups, routes: counts, exclusionReasons: Object.fromEntries(reasons), directedPatterns: ps, directedStopPairs: pairList.map(({ pathIndex, ...p }) => ({ ...p, matched: pathIndex !== null })),
@@ -163,7 +171,7 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
     source.status = !source.agencyIds ? 'identity-or-vintage-exclusion' : !source.gtfsRoutes.length ? 'no-annual-St-Gallen-calling-route' : source.candidateRouteAdmittedTrips ? 'candidate-graph-for-admitted-patterns' : 'no-admitted-fixture-pattern'
   }
   const report = { schemaVersion: 1, feed: raw.feed, sourceHashes, scope: raw.scope, policy, annualRouteRecords: inventory.length, annualAgencies: new Set(inventory.map(r => r.agencyId)).size,
-    catalogue, sourceInventory, inventory, days,
+    catalogue, sourceInventory, inventory, stopAnchors: anchors, days,
     validation: { passed: true, annualPinnedTimetableInventoryComplete: true, admittedGeometryComplete: true, cantonMotionCoverageComplete: false, publicationReady: false,
       meaning: 'All admitted complete directed patterns pass numerical and artifact checks. Coverage denominators include excluded modes/patterns. This does not certify road direction or establish year-round geometry coverage.',
       pending: ['Resolve St. Gallen raw/derived-vector redistribution permission before publication', 'Resolve every excluded route/pattern before claiming complete cantonal motion coverage', 'Review street directions, loops, rail branches and temporary diversions before presenting paths as direction-certified', 'Validate seasonal and holiday dates', 'Integrate UI selection and refresh separately if requested'] } }
