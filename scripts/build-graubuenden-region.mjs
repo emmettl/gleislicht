@@ -90,7 +90,7 @@ export async function buildGraubuendenRegion({ output = 'public/data/graubuenden
       dayModel: 'civil day with preceding service-day spillover', sourceServiceDates: [previousServiceDate(day.date), day.date],
       windowStart: 0, windowEnd: 86400, focusTime: 27900, modes: [...new Set(admitted.map(t => t.transportMode))],
       label: 'Graubünden · initial rail, bus and cableway study', scope: raw.scope.description, exclusions: policy.scopeLimits, note: policy.admission,
-      model: 'Timetable interpolation on reviewed rail infrastructure and inferred OSM bus paths, with selected reviewed federal cableway axes. Frequency services are representative headway movement, not exact departures or observed cabins.',
+      model: 'Timetable interpolation on reviewed rail infrastructure and inferred OSM bus paths, with selected reviewed federal cableway and funicular axes. Frequency services are representative headway movement, not exact departures or observed cabins.',
       attribution: 'SBB / opentransportdata.swiss · © Federal Office of Transport (FOT) · © swisstopo · © OpenStreetMap contributors',
       sourceUrl: sources.timetable.url, termsUrl: sources.timetable.termsUrl,
       geometry: { publisher: 'FOT / OpenStreetMap contributors', sourceUrl: 'https://www.openstreetmap.org/copyright', license: 'ODbL-1.0 for bus path database; attribution terms for FOT rail and cableways',

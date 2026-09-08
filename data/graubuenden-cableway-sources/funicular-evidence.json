@@ -1,0 +1,32 @@
+{
+  "purpose": "Official funicular identity and summer operating context. Pinned GTFS remains authoritative for this dated study; source pages do not replace times or certify running tracks.",
+  "responses": [
+    {
+      "url": "https://www.schatzalp.ch/funicular/",
+      "effectiveUrl": "https://www.schatzalp.ch/funicular/",
+      "status": 200,
+      "checkedAt": "2026-09-08T21:59:51.144662+00:00",
+      "file": "schatzalp-funicular.html.gz",
+      "sha256": "3ea6891675d554a39e7b61725e31b1b16be7e476a4714b37035c848f4451edc0",
+      "bodySha256": "d316f6e7a803d2ac21361d2c229268f2bcc61ca4885225127e4019a46c413147"
+    },
+    {
+      "url": "https://www.muottasmuragl.ch/de/anlagen/",
+      "effectiveUrl": "https://www.muottasmuragl.ch/de/anlagen/",
+      "status": 200,
+      "checkedAt": "2026-09-08T21:59:52.189622+00:00",
+      "file": "muottas-funicular.html.gz",
+      "sha256": "a51b6a3287e134eef167942c0f7cc229382f9e22030da2183131bd8966189c10",
+      "bodySha256": "4dc3910bb22efba28304e389b5a999c0c9e41d7aea00adba09a80912c5c0bce4"
+    },
+    {
+      "url": "https://www.davosklostersmountains.ch/de/mountains/sommer/live-info/aktuelle-betriebsinfos/sommerbetriebszeiten",
+      "effectiveUrl": "https://www.davosklostersmountains.ch/de/mountains/sommer/live-info/aktuelle-betriebsinfos/sommerbetriebszeiten",
+      "status": 200,
+      "checkedAt": "2026-09-08T21:59:54.369358+00:00",
+      "file": "parsenn-funicular.html.gz",
+      "sha256": "e979235521ea76c35cc997a774d1faca2fc6c62cccd62efa5de6c6244cabda82",
+      "bodySha256": "f3e1d13c0d1839d892087275bab33bb260ab31c7ffd5174fe5816171e8bfcaf4"
+    }
+  ]
+}

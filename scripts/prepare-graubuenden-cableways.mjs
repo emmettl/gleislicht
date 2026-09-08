@@ -15,19 +15,25 @@ const routes = [
   ['93-288-A-j26-1', '236', '2880', '1035', '71.013', ['8530545', '8530546']],
   ['93-292-2-j26-1', '252', '2922', '1176', '72.155', ['8530582', '8530583']],
   ['93-30-Y-j26-1', '238', 'GB', '1029', '72.004', ['8530604', '8509277']],
-].map(([routeId, agencyId, line, sourceOperator, installation, stopNumbers]) => {
-  assert(raw.inventory.some(r => r.routeId === routeId && r.agencyId === agencyId && r.line === line && r.routeType === 1300))
-  return { routeId, agencyId, line, sourceOperator, segments: [{ installation, stopNumbers, sourceStationNumbers: stopNumbers }] }
+  ['93-5Y-Y-j26-1', '111', 'FUN', '417', '61.013', ['8509088', '8509089'], 1400],
+  ['93-6L-Y-j26-1', '133', 'FUN', '1029', '61.031', ['8509275', '8509276'], 1400],
+  ['93-6W-Y-j26-1', '109', 'FUN', '1024', '61.011', ['8509083', '8509084'], 1400],
+].map(([routeId, agencyId, line, sourceOperator, installation, stopNumbers, routeType = 1300]) => {
+  assert(raw.inventory.some(r => r.routeId === routeId && r.agencyId === agencyId && r.line === line && r.routeType === routeType))
+  return { routeId, agencyId, line, sourceOperator, ...(routeType === 1400 ? { routeType } : {}), segments: [{ installation, stopNumbers, sourceStationNumbers: stopNumbers }] }
 })
 const selected = new Set(routes.map(r => r.routeId))
 const review = { schemaVersion: 1, supportingEvidenceSha256: sha256(await readFile('data/graubuenden-cableway-sources/evidence.json')), sourceDirectory: 'data/luzern-cableway-sources', sourceMetadataSha256: sha256(await readFile('data/luzern-cableway-sources/source.json')),
+  funicularEvidenceSha256: sha256(await readFile('data/graubuenden-cableway-sources/funicular-evidence.json')),
+  sixRoutePathsSha256: sha256(await readFile('data/graubuenden-cableway-sources/six-route-paths.json')),
+  sixRoutePolicySha256: sha256(await readFile('data/graubuenden-cableway-sources/six-route-policy.json')),
   initialPolicySha256: sha256(await readFile('data/graubuenden-cableway-sources/initial-policy.json')),
   expansionEvidenceSha256: sha256(await readFile('data/graubuenden-cableway-sources/expansion-evidence.json')),
   blockedRoutes: [{ routeId: '93-7J-Y-j26-1', agencyId: '3161', reason: 'cableway-summer-installation-conflict', installation: '71.098', note: 'Exact-number candidate is the 1995 Ravaisch II installation, consistent with Twinliner L1. Official operator says L1 is refurbished in summer 2026 and L2 operates instead. Do not assign this axis to the summer timetable route.' }],
   inputs, inputsSha256: sha256(await readFile(inputs)), dates: raw.dates, routes,
   patternIds: [...new Set(raw.snapshots.flatMap(d => d.trains.filter(t => selected.has(t.routeId)).map(t => sha256(directedPatternKey(t)).slice(0, 20))))].sort(),
   limits: { stationAttachmentMetres: 10, topologyAttachmentMetres: 1, detourRatio: 4.5, detourFloorMetres: 1200 },
-  interpretation: 'Six exact station-number and operator crosswalks on complete federal 2D axes. No aliases, section splicing, cable sag, altitude, observed cabins or current operating guarantee. Timetable agency IDs and infrastructure operator numbers are separate namespaces.',
+  interpretation: 'Nine exact station-number and operator crosswalks on complete federal 2D axes. No aliases, section splicing, cable sag, altitude, observed cabins or current operating guarantee. Timetable agency IDs and infrastructure operator numbers are separate namespaces.',
   sourceReuse: 'The Luzern directory holds the complete national federal archive, not a regional extract. Verify its catalogue checksum, ZIP member and all file hashes before use.' }
 await saveJson('data/graubuenden-cableway-policy.json', review)
 const policy = await readJson('data/graubuenden-policy.json')

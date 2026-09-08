@@ -32,16 +32,24 @@ export function parseLuzernCableways(xml) {
 }
 
 export function matchLuzernCableway(network, config, route, from, to, dates) {
+  return matchFederalAxis(network, config, route, from, to, dates, 1300, 'Luftseilbahn', 'fot-cableway-inference')
+}
+
+export function matchFederalFunicular(network, config, route, from, to, dates) {
+  return matchFederalAxis(network, config, route, from, to, dates, 1400, 'Standseilbahn', 'fot-funicular-inference')
+}
+
+function matchFederalAxis(network, config, route, from, to, dates, routeType, installationType, geometrySource) {
   const identity = config.routes.find(r => r.routeId === route.routeId)
   if (!identity) return { reason: 'cableway-unreviewed-route' }
-  assert.equal(identity.agencyId, route.agencyId); assert.equal(identity.line, route.line); assert.equal(route.routeType, 1300)
+  assert.equal(identity.agencyId, route.agencyId); assert.equal(identity.line, route.line); assert.equal(route.routeType, routeType)
   const binding = identity.segments.find(s => s.stopNumbers.includes(from.didok) && s.stopNumbers.includes(to.didok) && from.didok !== to.didok)
   if (!binding) return { reason: 'cableway-unreviewed-station-pair' }
   const installations = network.installations.filter(i => i.number === binding.installation)
   assert.equal(installations.length, 1, 'Ambiguous installation number')
   const installation = installations[0]
   assert.equal(installation.operator, identity.sourceOperator, 'Changed cableway operator')
-  assert.equal(installation.type, 'Luftseilbahn'); assert.equal(installation.vehicle, 'Kabine')
+  assert.equal(installation.type, installationType); assert.equal(installation.vehicle, 'Kabine')
   if (installation.validFrom > dates[0] || installation.validUntil && installation.validUntil < dates.at(-1)) return { reason: 'cableway-source-validity' }
   const orderedNumbers = [from.didok, to.didok].map(n => binding.sourceStationNumbers[binding.stopNumbers.indexOf(n)])
   const stations = orderedNumbers.map(number => network.stations.filter(s => s.installation === installation.id && s.number === number))
@@ -52,7 +60,7 @@ export function matchLuzernCableway(network, config, route, from, to, dates) {
   const forward = distanceMetres(selected[0].coordinate, original[0]) + distanceMetres(selected[1].coordinate, original.at(-1)) <= distanceMetres(selected[0].coordinate, original.at(-1)) + distanceMetres(selected[1].coordinate, original[0])
   const line = forward ? original : [...original].reverse()
   const stationAttachmentsMetres = selected.map((s, i) => distanceMetres(coords[i], s.coordinate)), topologyAttachmentsMetres = selected.map((s, i) => distanceMetres(s.coordinate, i ? line.at(-1) : line[0]))
-  const evidence = { geometrySource: 'fot-cableway-inference', installation: installation.number, installationId: installation.id, sourceSegmentId: segments[0].id, sourceStationNumbers: orderedNumbers, stationAttachmentsMetres, topologyAttachmentsMetres,
+  const evidence = { geometrySource, installation: installation.number, installationId: installation.id, sourceSegmentId: segments[0].id, sourceStationNumbers: orderedNumbers, stationAttachmentsMetres, topologyAttachmentsMetres,
     stationAliases: [from.didok, to.didok].flatMap((n, i) => n === orderedNumbers[i] ? [] : [{ timetable: n, source: orderedNumbers[i], reason: binding.aliasReason }]), sourceDate: installation.sourceDate, sourceFeatures: [] }
   assert(evidence.stationAliases.every(a => a.reason), 'Unexplained station alias')
   if (Math.max(...stationAttachmentsMetres) > config.limits.stationAttachmentMetres || Math.max(...topologyAttachmentsMetres) > config.limits.topologyAttachmentMetres) return { ...evidence, reason: 'cableway-endpoint-gap' }

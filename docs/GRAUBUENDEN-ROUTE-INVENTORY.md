@@ -195,12 +195,12 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 93-5J-Y-j26-1 | 3148 / Bergbahnen Piz Mundaun AG | mountain / SL | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Piz Mundaun; Cuolm Sura (Valata) |
 | 93-5K-Y-j26-1 | 336 / Bergün Filisur Tourismus AG | mountain / SL | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Pros da Darlux; Alp Darlux |
 | 93-5L-Y-j26-1 | 3152 / Bergbahnen Piz Mundaun AG | mountain / SL | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Triel; Hitzeggen |
-| 93-5Y-Y-j26-1 | 111 / Sportbahnen Davos | mountain / FUN | 16 | 0/102 | 0/102 | excluded; cableway-unreviewed-route | Davos Platz Schatzalpbahn; Schatzalp |
+| 93-5Y-Y-j26-1 | 111 / Sportbahnen Davos | mountain / FUN | 16 | 102/102 | 102/102 | admitted-all-dated-trips; — | Davos Platz Schatzalpbahn; Schatzalp |
 | 93-62-Y-j26-1 | 218 / Bergbahnen Engadin St. Moritz, Bernina-Diavolezza (lbd) | mountain / PB | 10 | 52/52 | 52/52 | admitted-all-dated-trips; — | Bernina Diavolezza (Talstat.); Diavolezza |
 | 93-6F-Y-j26-1 | 247 / Curtinatsch-Piz Lagalb | mountain / PB | 4 | 0/0 | 0/0 | inactive-on-validation-dates; — | Curtinatsch; Piz Lagalb |
-| 93-6L-Y-j26-1 | 133 / Celeriner Bergbahnen - Punt Muragl-Muottas Muragl | mountain / FUN | 10 | 0/62 | 0/62 | excluded; cableway-unreviewed-route | Punt Muragl (Talstation); Muottas Muragl |
+| 93-6L-Y-j26-1 | 133 / Celeriner Bergbahnen - Punt Muragl-Muottas Muragl | mountain / FUN | 10 | 62/62 | 62/62 | admitted-all-dated-trips; — | Punt Muragl (Talstation); Muottas Muragl |
 | 93-6S-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / PB | 8 | 0/51 | 0/51 | excluded; cableway-unreviewed-route | St. Moritz Bad (Signalbahn); Signal (St. Moritz) |
-| 93-6W-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / FUN | 2 | 0/49 | 0/49 | excluded; cableway-unreviewed-route | Davos Dorf (Parsennbahn); Höhenweg |
+| 93-6W-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / FUN | 2 | 49/49 | 49/49 | admitted-all-dated-trips; — | Davos Dorf (Parsennbahn); Höhenweg |
 | 93-6X-Y-j26-1 | 207 / Davos Klosters Bergbahnen (bbbj) | mountain / PB | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Davos Platz (Jakobshorn); Ischalp |
 | 93-6Z-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / FUN | 4 | 0/0 | 0/0 | inactive-on-validation-dates; — | St. Moritz (Standseilbahn); Chantarella |
 | 93-7-Y-j26-1 | 208 / Davos Klosters Bergbahnen (lkp) | mountain / PB | 6 | 0/33 | 0/33 | excluded; cableway-unreviewed-route | Klosters Platz (Gotschnabahn); Gotschnaboden |
