@@ -1,3 +1,4 @@
+import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { CONTROL_HELP } from './control-help.ts'
 import {
   lazy,
@@ -119,6 +120,10 @@ import { useProgressiveNetworkDay } from '@motionstudies/web/use-progressive-net
 import { useProgressiveAirDay } from '@motionstudies/web/use-progressive-air-day'
 import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road-study'
 import { useLocalPerformance } from '@motionstudies/web/use-local-performance'
+
+const AlpineQuiet = lazy(() =>
+  import('./studies/AlpineQuiet.tsx').then(({ AlpineQuiet: Scene }) => ({ default: Scene })),
+)
 
 const GleislichtScene = lazy(() =>
   import('./studies/GleislichtJourneyScene.tsx').then(({ GleislichtScene: Scene }) => ({
@@ -292,6 +297,8 @@ export function App({ edition }: AppProps) {
   const [selectedTrainId, setSelectedTrainId] = useState<string>()
   const [selectedStationName, setSelectedStationName] = useState<string>()
   const [selectedRouteId, setSelectedRouteId] = useState<string>()
+  const [sbbEnabled, setSbbEnabled] = useState(true)
+  const railVisible = sbbEnabled || networkStudy !== 'national'
   const [airEnabled, setAirEnabled] = useState(false)
   const [airCategorySelected, setAirCategorySelected] = useState(false)
   const [airSnapshot, setAirSnapshot] = useState<AirSnapshot>()
@@ -421,6 +428,12 @@ export function App({ edition }: AppProps) {
     realtimeApplication?.compatible && !realtimeStale,
   )
   const network = realtimeActive ? realtimeApplication?.network : baseNetwork
+  const sceneNetwork = useMemo(
+    () => network && networkWithRailVisibility(network, railVisible),
+    [network, railVisible],
+  )
+  const quietMap = view === 'network' && networkStudy === 'national' &&
+    !sbbEnabled && !airEnabled && !roadEnabled && Boolean(network) && !dataError && webglAvailable
   const activeAirSnapshot = isNationalDay ? airDay.snapshot : airSnapshot
   const activeAirLoadState: AirLoadState = !airEnabled
     ? 'idle'
@@ -561,12 +574,13 @@ export function App({ edition }: AppProps) {
     const stationTrainIds = selectedStationName
       ? new Set(selectedStation?.trainIds ?? [])
       : undefined
+    if (!railVisible) return []
     return network?.trains.filter((train) =>
       (!selectedCategory || train.category === selectedCategory) &&
       (!stationTrainIds || stationTrainIds.has(train.id)) &&
       (!selectedRoute || (train.route === selectedRoute.name && train.category === selectedRoute.category)),
     ) ?? []
-  }, [network, selectedCategory, selectedRoute, selectedStation, selectedStationName])
+  }, [network, railVisible, selectedCategory, selectedRoute, selectedStation, selectedStationName])
   const activeTrainCount = useMemo(
     () =>
       countableTrains.reduce(
@@ -772,6 +786,7 @@ export function App({ edition }: AppProps) {
   }, [])
 
   const selectStation = useCallback((station: StationIndexEntry) => {
+    setSbbEnabled(true)
     setAirCategorySelected(false)
     setRoadCategorySelected(false)
     setSelectedAirTrackId(undefined)
@@ -791,6 +806,7 @@ export function App({ edition }: AppProps) {
 
   const selectRoute = useCallback(
     (route: NetworkRouteIndexEntry) => {
+      setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
       setSelectedTrainId(undefined)
@@ -813,6 +829,7 @@ export function App({ edition }: AppProps) {
   const selectTrain = useCallback(
     (train: NetworkTrain) => {
       if (!network) return
+      setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
       const currentTimeIsActive = train.start <= networkTime && train.end >= networkTime
@@ -865,6 +882,17 @@ export function App({ edition }: AppProps) {
     },
     [activeAirSnapshot, airDay.manifest],
   )
+
+  const toggleSbbLayer = useCallback(() => {
+    setSbbEnabled((current) => !current)
+    setSelectedTrainId(undefined)
+    setSelectedStationName(undefined)
+    setSelectedRouteId(undefined)
+    setSelectedCategory(undefined)
+    setSearchQuery('')
+    setSearchOpen(false)
+    setActiveSearchIndex(-1)
+  }, [])
 
   const toggleAirLayer = useCallback(() => {
     if (airEnabled) {
@@ -1628,6 +1656,9 @@ export function App({ edition }: AppProps) {
 
   return (
     <main
+      data-sbb-enabled={sbbEnabled}
+      data-quiet-map={quietMap}
+      data-quiet-playing={quietMap ? isPlaying : undefined}
       className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
@@ -1698,12 +1729,13 @@ export function App({ edition }: AppProps) {
               </div>
             </section>
           </div>
-        ) : isNetwork && network ? (
+        ) : isNetwork && sceneNetwork ? (
           <NationalNetworkScene
             boundary={boundary}
             lakes={lakes}
-            snapshot={network}
-            referenceSnapshot={nationalNetwork ?? network}
+            groundStyle={quietMap ? 'quiet' : 'grid'}
+            snapshot={sceneNetwork}
+            referenceSnapshot={nationalNetwork ?? sceneNetwork}
             contextSnapshot={
               networkStudy !== 'national' &&
               (networkStudy === 'zurich-city'
@@ -1714,7 +1746,7 @@ export function App({ edition }: AppProps) {
                 ? nationalNetwork
                 : undefined
             }
-            stations={stationIndex}
+            stations={railVisible ? stationIndex : []}
             trainLabelMode={trainLabelMode}
             isPlaying={isPlaying}
             time={networkTime}
@@ -1814,6 +1846,7 @@ export function App({ edition }: AppProps) {
 
       <div className="atmosphere" />
       <div className="scanlines" />
+      {quietMap && <Suspense fallback={null}><AlpineQuiet language={language} /></Suspense>}
 
       <header className="masthead">
         <div>
@@ -2229,6 +2262,17 @@ export function App({ edition }: AppProps) {
                 GE
               </button>
               <button
+                className="sbb-toggle"
+                type="button"
+                data-tooltip={networkStudy !== 'national' ? text.sbbUnavailable : sbbEnabled ? text.hideSbbLayer : text.showSbbLayer}
+                aria-label={sbbEnabled ? text.hideSbbLayer : text.showSbbLayer}
+                aria-pressed={sbbEnabled}
+                disabled={networkStudy !== 'national'}
+                onClick={toggleSbbLayer}
+              >
+                SBB
+              </button>
+              <button
                 className="air-toggle"
                 type="button"
                 data-tooltip={networkStudy !== 'national' ? help.airUnavailable : airEnabled ? text.hideAirLayer : text.showAirLayer}
@@ -2306,6 +2350,17 @@ export function App({ edition }: AppProps) {
                 }
               }}
             />
+            <button
+              className="mobile-sbb-toggle"
+              type="button"
+              data-tooltip={networkStudy !== 'national' ? text.sbbUnavailable : sbbEnabled ? text.hideSbbLayer : text.showSbbLayer}
+              aria-label={sbbEnabled ? text.hideSbbLayer : text.showSbbLayer}
+              aria-pressed={sbbEnabled}
+              disabled={networkStudy !== 'national'}
+              onClick={toggleSbbLayer}
+            >
+              SBB
+            </button>
             <button
               className="mobile-air-toggle"
               type="button"
@@ -3189,7 +3244,7 @@ export function App({ edition }: AppProps) {
                   }
                   options={[
                     { value: '', label: text.allServices },
-                    ...visibleServiceCategories.map((category) => ({
+                    ...(isNetwork && !railVisible ? [] : visibleServiceCategories).map((category) => ({
                       value: category.id,
                       label: serviceCategoryLabel(language, category.id),
                     })),
@@ -3262,7 +3317,7 @@ export function App({ edition }: AppProps) {
           className={`service-legend${selectedCategory || airCategorySelected || roadCategorySelected ? ' has-filter' : ''}`}
           aria-label={text.filterServices}
         >
-          {visibleServiceCategories.map((category) => (
+          {(isNetwork && !railVisible ? [] : visibleServiceCategories).map((category) => (
               <button
                 key={category.id}
                 type="button"

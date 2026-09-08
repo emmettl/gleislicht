@@ -1,0 +1,79 @@
+.alpine-quiet {
+  position: absolute;
+  z-index: 2;
+  top: 46%;
+  left: 50%;
+  width: min(560px, 74vw);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  text-align: center;
+  color: #c8eced;
+  animation: alpine-arrive 1.2s ease-out both;
+}
+
+.alpine-quiet__drawing {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 7px #94eaff44);
+}
+
+.alpine-quiet__ridge { stroke: #caeff4; stroke-width: 1.3; }
+.alpine-quiet__ridge-back { stroke: #9c92c1; stroke-width: 0.8; opacity: 0.45; }
+.alpine-quiet__snow { stroke: #efffff; stroke-width: 1; }
+.alpine-quiet__facets { stroke: #a4dce2; stroke-width: 0.6; opacity: 0.4; }
+.alpine-quiet__cable { stroke: #f6d4dc; stroke-width: 0.7; opacity: 0.65; }
+.alpine-quiet__moon { color: #ffb2be; }
+.alpine-quiet__stars { animation: alpine-shimmer 7s ease-in-out infinite alternate; }
+.alpine-quiet__gondola { animation: alpine-gondola 22s ease-in-out infinite alternate; }
+
+.alpine-quiet h2 {
+  margin: 14px 0 10px;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 400;
+  letter-spacing: 0.025em;
+}
+
+.alpine-quiet p,
+.alpine-quiet small {
+  display: block;
+  margin: 8px auto 0;
+  max-width: 38ch;
+  font: 0.7rem/1.7 'DM Mono', ui-monospace, monospace;
+  color: #d0c6dc;
+}
+
+.alpine-quiet small { color: #a8a4bd; font-size: 0.6rem; }
+.experience[data-quiet-map='true'] .network-card { opacity: 0; pointer-events: none; visibility: hidden; }
+.experience[data-quiet-map='true'] .scene { opacity: 0.45; }
+.experience[data-quiet-playing='false'] .alpine-quiet,
+.experience[data-quiet-playing='false'] .alpine-quiet * { animation-play-state: paused; }
+
+@keyframes alpine-arrive {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes alpine-shimmer {
+  from { opacity: 0.35; }
+  to { opacity: 0.9; }
+}
+@keyframes alpine-gondola {
+  from { transform: translate(145px, 176px); }
+  to { transform: translate(407px, 212px); }
+}
+
+@media (max-width: 700px) {
+  .alpine-quiet { top: 47%; width: min(440px, 88vw); }
+  .alpine-quiet p { font-size: 0.62rem; }
+}
+
+@media (max-height: 500px) {
+  .alpine-quiet { top: 43%; width: 320px; }
+  .alpine-quiet__drawing { height: 100px; }
+  .alpine-quiet h2 { margin: 3px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alpine-quiet, .alpine-quiet * { animation: none; }
+  .alpine-quiet__gondola { transform: translate(276px, 194px); }
+}
