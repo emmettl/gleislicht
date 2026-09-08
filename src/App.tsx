@@ -11,6 +11,7 @@ import { rigiOperator } from './studies/rigi.ts'
 import { rigiTerrainCopy as terrainCopyForRigi } from './studies/rigi-terrain.ts'
 import { isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
 import { airTrafficSummary } from './studies/air-traffic-summary.ts'
+import { createActiveTrainCounter, orderTrainSearchMatches, trainSearchResults } from './studies/network-ui-index.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
 import { CONTROL_HELP } from './control-help.ts'
 import { TransportIcon } from './TransportIcon.tsx'
@@ -592,32 +593,16 @@ export function App({ edition }: AppProps) {
   const soundtrackMode: SoundtrackMode =
     view === 'hub' ? 'hub' : view === 'journey' || selectedTrainId ? 'journey' : 'network'
 
-  const zurichContrastActiveCount = useMemo(
-    () =>
-      zurichContrast.network?.trains.reduce(
-        (count, train) =>
-          (!selectedCategory || train.category === selectedCategory) &&
-          train.realtime?.status !== 'cancelled' &&
-          train.start <= networkTime && train.end >= networkTime
-            ? count + 1
-            : count,
-        0,
-      ) ?? 0,
-    [networkTime, selectedCategory, zurichContrast.network],
+  const zurichContrastCounter = useMemo(
+    () => createActiveTrainCounter(zurichContrast.network?.trains.filter(train => !selectedCategory || train.category === selectedCategory) ?? []),
+    [selectedCategory, zurichContrast.network],
   )
-  const kientalContrastActiveCount = useMemo(
-    () =>
-      kientalContrast.network?.trains.reduce(
-        (count, train) =>
-          (!selectedCategory || train.category === selectedCategory) &&
-          train.realtime?.status !== 'cancelled' &&
-          train.start <= networkTime && train.end >= networkTime
-            ? count + 1
-            : count,
-        0,
-      ) ?? 0,
-    [kientalContrast.network, networkTime, selectedCategory],
+  const kientalContrastCounter = useMemo(
+    () => createActiveTrainCounter(kientalContrast.network?.trains.filter(train => !selectedCategory || train.category === selectedCategory) ?? []),
+    [kientalContrast.network, selectedCategory],
   )
+  const zurichContrastActiveCount = zurichContrastCounter(networkTime)
+  const kientalContrastActiveCount = kientalContrastCounter(networkTime)
   const zurichContrastStations = useMemo(
     () =>
       zurichContrast.network ? buildStationIndex(zurichContrast.network) : [],
@@ -726,19 +711,8 @@ export function App({ edition }: AppProps) {
     ) ?? []
   }, [network, railVisible, selectedCategory, selectedRoute, selectedStation, selectedStationName])
   const selectionHasHeadwayMotion = useMemo(() => countableTrains.some(isHeadwayTrain), [countableTrains])
-  const activeTrainCount = useMemo(
-    () =>
-      countableTrains.reduce(
-        (count, train) =>
-          train.realtime?.status !== 'cancelled' &&
-          train.start <= networkTime &&
-          train.end >= networkTime
-            ? count + 1
-            : count,
-        0,
-      ),
-    [countableTrains, networkTime],
-  )
+  const activeTrainCounter = useMemo(() => createActiveTrainCounter(countableTrains), [countableTrains])
+  const activeTrainCount = activeTrainCounter(networkTime)
   const selectedRoad = useMemo(
     () => (roadTopology?.roads ?? SWITZERLAND_ROADS).find((road) => road.id === selectedRoadId),
     [roadTopology, selectedRoadId],
@@ -790,23 +764,14 @@ export function App({ edition }: AppProps) {
       : undefined
   const selectedTo =
     network && selectedPosition ? network.stops[selectedPosition.toStop]?.[2] : undefined
-  const searchResults = useMemo(() => {
+  const orderedSearchMatches = useMemo(() => {
     const query = foldSearchText(searchQuery)
     if (!network || query.length < 1) return []
-    return trainSearchDocuments
+    return orderTrainSearchMatches(trainSearchDocuments
       .filter((document) => document.text.includes(query))
-      .map((document) => document.train)
-      .sort((first, second) => {
-        const firstActive = first.start <= networkTime && first.end >= networkTime ? 0 : 1
-        const secondActive = second.start <= networkTime && second.end >= networkTime ? 0 : 1
-        return (
-          firstActive - secondActive ||
-          first.start - second.start ||
-          first.route.localeCompare(second.route, LANGUAGE_LOCALES[language])
-        )
-      })
-      .slice(0, 8)
-  }, [language, network, networkTime, searchQuery, trainSearchDocuments])
+      .map((document) => document.train), LANGUAGE_LOCALES[language])
+  }, [language, network, searchQuery, trainSearchDocuments])
+  const searchResults = useMemo(() => trainSearchResults(orderedSearchMatches, networkTime), [orderedSearchMatches, networkTime])
   const stationSearchResults = useMemo(() => {
     const query = foldSearchText(searchQuery)
     if (!query) return []

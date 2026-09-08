@@ -409,3 +409,33 @@ label picking, tram layouts and terrain journeys passed. Four final paused
 geometry checks passed across Chromium and iPhone WebKit, including workers
 blocked at startup. An initial fallback failure was fixed and those four checks
 rerun successfully.
+
+## Clock-driven counts and search
+
+Vehicle counts now use sorted start/end indexes, rebuilt when the selected
+schedule changes, instead of scanning all trips on each clock report. Counts
+retain inclusive start/end boundaries and cancellation filtering. The main
+study and both comparison panels use the same helper.
+
+Train-search matching and locale ordering are cached by query, data and
+language. Each clock report selects up to eight active results from that order,
+then fills any remaining slots with inactive results. This preserves the prior
+active-first, departure-time and locale ordering, including stable ties, without
+filtering and sorting the full result set every tick. No animation cadence or
+rendering-quality setting changed.
+
+`scripts/benchmark-network-ui.mjs` measures these calculations independently of
+the renderer. On the local Mac, 1,000 lookups over the 7,451-trip PostBus chunk
+measured 49.69 → 0.18 ms for counts and 4,190.20 → 3.10 ms for a broad search
+matching all trips. Combined index/order preparation was 4.37 ms. The 2,669-trip
+SBB fixture measured 14.64 → 0.17 ms and 1,044.54 → 0.66 ms, with 6.76 ms
+preparation. These are warmed function benchmarks, not page FPS or INP results;
+empty searches already avoided the expensive sort.
+
+Differential tests compare real rail/PostBus schedules, selection subsets,
+arrival/departure boundaries, cancelled/invalid intervals, backwards seeks and
+four locales. The isolated production build, 313 unit tests and 12 browser
+checks passed, covering search keyboard behaviour, station/route selection,
+comparison studies, tram layouts and PostBus day/chunk transitions. Focused
+helper/test lint and bundle budgets passed (358.6 KiB initial JS, 765.0 KiB total
+gzip). Existing App lint warnings outside this change remain.
