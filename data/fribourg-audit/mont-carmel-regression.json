@@ -1,0 +1,4857 @@
+{
+  "baselineCommit": "abd1fd8b9651fd12154af5156aa6d3fb43e96788",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+    "crosswalk": "ee13423e453c4f4cff253608373233f77e56a42446552551d1722da838f9d1f1",
+    "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
+    "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+    "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
+    "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
+    "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+    "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
+    "bernPlatforms": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac",
+    "railReview": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
+  },
+  "assertions": "Every previously admitted journey retains its original stop identity, coordinates, call permissions, times, direction and segment geometry. Added journeys must carry reviewed terminal road evidence.",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "previousJourneys": 5301,
+      "presentJourneys": 5375,
+      "addedJourneys": 74,
+      "unchangedOriginalSegmentOccurrences": 81784,
+      "lostJourneys": 0,
+      "newJourneys": [
+        {
+          "id": "service:2026-09-03:.ojp-92-3-A.1.TA.1839.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-03",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              120,
+              120
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              180,
+              180
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2332.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              22560,
+              22560
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              22620,
+              22620
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2235.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              25260,
+              25260
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              25320,
+              25320
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2285.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              26160,
+              26160
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              26220,
+              26220
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2302.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              27060,
+              27060
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              27120,
+              27120
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2329.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              27960,
+              27960
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              28020,
+              28020
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2336.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              29760,
+              29760
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              29820,
+              29820
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2360.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              28860,
+              28860
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              28920,
+              28920
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2384.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              23460,
+              23460
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              23520,
+              23520
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2394.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              24360,
+              24360
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              24420,
+              24420
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2333.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              31560,
+              31560
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              31620,
+              31620
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2351.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              30660,
+              30660
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              30720,
+              30720
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2367.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              35160,
+              35160
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              35220,
+              35220
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2371.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              34260,
+              34260
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              34320,
+              34320
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2376.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              36960,
+              36960
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              37020,
+              37020
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2405.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              32460,
+              32460
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              32520,
+              32520
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2427.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              36060,
+              36060
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              36120,
+              36120
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2442.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              33360,
+              33360
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              33420,
+              33420
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2234.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              41460,
+              41460
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              41520,
+              41520
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2239.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              37860,
+              37860
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              37920,
+              37920
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2248.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              40560,
+              40560
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              40620,
+              40620
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2276.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              39660,
+              39660
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              39720,
+              39720
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2368.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              42360,
+              42360
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              42420,
+              42420
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2381.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              38760,
+              38760
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              38820,
+              38820
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2433.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              43260,
+              43260
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              43320,
+              43320
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2447.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              44160,
+              44160
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              44220,
+              44220
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2269.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              50460,
+              50460
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              50520,
+              50520
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2301.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              51360,
+              51360
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              51420,
+              51420
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2363.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              46860,
+              46860
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              46920,
+              46920
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2388.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              49560,
+              49560
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              49620,
+              49620
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2389.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              48660,
+              48660
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              48720,
+              48720
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2400.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              45060,
+              45060
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              45120,
+              45120
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2420.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              47760,
+              47760
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              47820,
+              47820
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2445.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              45960,
+              45960
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              46020,
+              46020
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2233.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              55860,
+              55860
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              55920,
+              55920
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2270.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              52260,
+              52260
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              52320,
+              52320
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2292.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              54960,
+              54960
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              55020,
+              55020
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2294.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              54060,
+              54060
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              54120,
+              54120
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2309.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              53160,
+              53160
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              53220,
+              53220
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2424.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              58560,
+              58560
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              58620,
+              58620
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2430.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              56760,
+              56760
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              56820,
+              56820
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2438.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              57660,
+              57660
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              57720,
+              57720
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2224.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              63960,
+              63960
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              64020,
+              64020
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2280.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              65760,
+              65760
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              65820,
+              65820
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2320.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              64860,
+              64860
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              64920,
+              64920
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2347.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              59460,
+              59460
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              59520,
+              59520
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2379.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              60360,
+              60360
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              60420,
+              60420
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2407.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              63060,
+              63060
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              63120,
+              63120
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2425.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              61260,
+              61260
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              61320,
+              61320
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2441.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              62160,
+              62160
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              62220,
+              62220
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1462.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              70260,
+              70260
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              70320,
+              70320
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1497.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              71160,
+              71160
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              71220,
+              71220
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1551.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              72060,
+              72060
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              72120,
+              72120
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2243.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              68460,
+              68460
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              68520,
+              68520
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2268.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              69360,
+              69360
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              69420,
+              69420
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2322.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              66660,
+              66660
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              66720,
+              66720
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2353.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              69960,
+              69960
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              70020,
+              70020
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2417.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              67560,
+              67560
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              67620,
+              67620
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1502.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              75720,
+              75720
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              75780,
+              75780
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1522.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              73920,
+              73920
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              73980,
+              73980
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1599.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              77520,
+              77520
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              77580,
+              77580
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1652.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              76620,
+              76620
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              76680,
+              76680
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1727.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              79320,
+              79320
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              79380,
+              79380
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1766.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              78420,
+              78420
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              78480,
+              78480
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1769.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              74820,
+              74820
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              74880,
+              74880
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1991.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              73020,
+              73020
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              73080,
+              73080
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1641.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              80220,
+              80220
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              80280,
+              80280
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1771.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              82020,
+              82020
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              82080,
+              82080
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1787.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              82920,
+              82920
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              82980,
+              82980
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1839.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              86520,
+              86520
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              86580,
+              86580
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1867.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              83820,
+              83820
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              83880,
+              83880
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1884.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              84720,
+              84720
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              84780,
+              84780
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1894.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              81120,
+              81120
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              81180,
+              81180
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2075.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              85620,
+              85620
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              85680,
+              85680
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "previousJourneys": 3614,
+      "presentJourneys": 3686,
+      "addedJourneys": 72,
+      "unchangedOriginalSegmentOccurrences": 56923,
+      "lostJourneys": 0,
+      "newJourneys": [
+        {
+          "id": "service:2026-09-05:.ojp-92-3-A.1.TA.1845.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-05",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              1020,
+              1020
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              1080,
+              1080
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": "service:2026-09-05:.ojp-92-3-A.1.TA.2078.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-05",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              120,
+              120
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              180,
+              180
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1507.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              28020,
+              28020
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              28080,
+              28080
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1543.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              27120,
+              27120
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              27180,
+              27180
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1672.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              25320,
+              25320
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              25380,
+              25380
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1764.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              26220,
+              26220
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              26280,
+              26280
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1863.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              23520,
+              23520
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              23580,
+              23580
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1954.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              28920,
+              28920
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              28980,
+              28980
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1487.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              30720,
+              30720
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              30780,
+              30780
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1530.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              34320,
+              34320
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              34380,
+              34380
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1581.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              33420,
+              33420
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              33480,
+              33480
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1709.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              31620,
+              31620
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              31680,
+              31680
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1793.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              35220,
+              35220
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              35280,
+              35280
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1843.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              36120,
+              36120
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              36180,
+              36180
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1990.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              32520,
+              32520
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              32580,
+              32580
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2017.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              29820,
+              29820
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              29880,
+              29880
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1786.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              43320,
+              43320
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              43380,
+              43380
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1822.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              39720,
+              39720
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              39780,
+              39780
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1866.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              42420,
+              42420
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              42480,
+              42480
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1917.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              38820,
+              38820
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              38880,
+              38880
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1918.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              37920,
+              37920
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              37980,
+              37980
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1931.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              41520,
+              41520
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              41580,
+              41580
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1971.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              37020,
+              37020
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              37080,
+              37080
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2048.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              40620,
+              40620
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              40680,
+              40680
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1785.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              47820,
+              47820
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              47880,
+              47880
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1813.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              48720,
+              48720
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              48780,
+              48780
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1829.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              46020,
+              46020
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              46080,
+              46080
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1844.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              50520,
+              50520
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              50580,
+              50580
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1851.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              46920,
+              46920
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              46980,
+              46980
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1852.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              44220,
+              44220
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              44280,
+              44280
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2069.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              49620,
+              49620
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              49680,
+              49680
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2111.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              45120,
+              45120
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              45180,
+              45180
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1452.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              57720,
+              57720
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              57780,
+              57780
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1538.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              55020,
+              55020
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              55080,
+              55080
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1605.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              53220,
+              53220
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              53280,
+              53280
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1638.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              54120,
+              54120
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              54180,
+              54180
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1719.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              56820,
+              56820
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              56880,
+              56880
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1855.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              52320,
+              52320
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              52380,
+              52380
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1868.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              51420,
+              51420
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              51480,
+              51480
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1945.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              55920,
+              55920
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              55980,
+              55980
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1436.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              59520,
+              59520
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              59580,
+              59580
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1456.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              58620,
+              58620
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              58680,
+              58680
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1480.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              62220,
+              62220
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              62280,
+              62280
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1494.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              60420,
+              60420
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              60480,
+              60480
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1516.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              64020,
+              64020
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              64080,
+              64080
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1592.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              64920,
+              64920
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              64980,
+              64980
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1682.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              61320,
+              61320
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              61380,
+              61380
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1979.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              63120,
+              63120
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              63180,
+              63180
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1427.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              66720,
+              66720
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              66780,
+              66780
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1443.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              68520,
+              68520
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              68580,
+              68580
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1460.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              71220,
+              71220
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              71280,
+              71280
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1470.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              70320,
+              70320
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              70380,
+              70380
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1484.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              67620,
+              67620
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              67680,
+              67680
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1553.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              65820,
+              65820
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              65880,
+              65880
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1700.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              69420,
+              69420
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              69480,
+              69480
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2028.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              72120,
+              72120
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              72180,
+              72180
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1514.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              75720,
+              75720
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              75780,
+              75780
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1579.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              74820,
+              74820
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              74880,
+              74880
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1624.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              78420,
+              78420
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              78480,
+              78480
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1635.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              76620,
+              76620
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              76680,
+              76680
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1743.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              77520,
+              77520
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              77580,
+              77580
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1752.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              79320,
+              79320
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              79380,
+              79380
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1964.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              73920,
+              73920
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              73980,
+              73980
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2019.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              73020,
+              73020
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              73080,
+              73080
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1608.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              81120,
+              81120
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              81180,
+              81180
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1666.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              80220,
+              80220
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              80280,
+              80280
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1856.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              83820,
+              83820
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              83880,
+              83880
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1869.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              84720,
+              84720
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              84780,
+              84780
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1874.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              82920,
+              82920
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              82980,
+              82980
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.1876.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              82020,
+              82020
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              82080,
+              82080
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2094.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              86520,
+              86520
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              86580,
+              86580
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        },
+        {
+          "id": ".ojp-92-3-A.1.TA.2099.j26",
+          "routeId": "92-3-A-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "terminalCalls": [
+            [
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              85620,
+              85620
+            ],
+            [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              85680,
+              85680
+            ]
+          ],
+          "reviewKinds": [
+            "mont-carmel-terminal"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -12,7 +12,7 @@
   "days": [
     {
       "date": "2026-09-04",
-      "totalExcludedTrips": 133,
+      "totalExcludedTrips": 132,
       "busComparisons": {
         "within-30m-vertex-distance": {
           "directedPairs": 2080,
@@ -45725,68 +45725,6 @@
               "supplementFailure": "endpoint-gap",
               "supplementAvailable": true,
               "occurrences": 94,
-              "admittedOccurrences": 0,
-              "matched": false
-            }
-          ]
-        },
-        {
-          "id": "231c24ee3d97bc259085467f",
-          "routeId": "91-26-j26-1",
-          "agencyId": "11",
-          "mode": "rail",
-          "line": "S26",
-          "directionId": "1",
-          "stopIds": [
-            "ch:1:sloid:2215:0:1773",
-            "ch:1:sloid:2214:1:2",
-            "ch:1:sloid:2213:2:3",
-            "ch:1:sloid:2212:1:1",
-            "ch:1:sloid:2211:1:1",
-            "ch:1:sloid:2119:2:4",
-            "ch:1:sloid:2114:1:1",
-            "ch:1:sloid:2113:3:5",
-            "ch:1:sloid:218:5:9"
-          ],
-          "segmentCount": 8,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "fot",
-            "solothurn-network"
-          ],
-          "matchedSegments": 7,
-          "trips": 1,
-          "admittedTrips": 0,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "incomplete-directed-pattern": 1
-          },
-          "matchedMask": [
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            false
-          ],
-          "unresolvedPairs": [
-            {
-              "routeId": "91-26-j26-1",
-              "agencyId": "11",
-              "mode": "rail",
-              "fromId": "ch:1:sloid:2113:3:5",
-              "toId": "ch:1:sloid:218:5:9",
-              "from": "Aarau",
-              "to": "Olten",
-              "directMetres": 11653.892597412483,
-              "reason": "disconnected-line",
-              "maximumSnapMetres": 26.018767209026194,
-              "supplementFailure": "rail-disconnected-detour-or-stop-order",
-              "supplementAvailable": true,
-              "occurrences": 1,
               "admittedOccurrences": 0,
               "matched": false
             }

@@ -6,7 +6,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 
 | GTFS agency | Source name | Annual routes | Routes contributing feed | Friday admitted / total | Sunday admitted / total |
 | --- | --- | --- | --- | --- | --- |
-| 11 | Schweizerische Bundesbahnen SBB | 71 | 40 | 940 / 950 | 893 / 903 |
+| 11 | Schweizerische Bundesbahnen SBB | 71 | 40 | 941 / 950 | 893 / 903 |
 | 33 | BLS AG (bls) | 9 | 7 | 158 / 158 | 161 / 161 |
 | 37 | Baselland Transport | 4 | 3 | 266 / 360 | 247 / 350 |
 | 68 | Oensingen-Balsthal-Bahn | 1 | 0 | 0 / 0 | 0 / 0 |
@@ -57,7 +57,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 91-26-C-j26-1 | 82 | IR26 / rail | Olten | admitted-all-dated-trips | 21 / 21 | 20 / 20 | All dated journeys pass |
 | 91-26-D-j26-1 | 11 | IR26 / rail | Olten | admitted-all-dated-trips | 1 / 1 | 1 / 1 | All dated journeys pass |
 | 91-26-E-j26-1 | 11 | RE26 / rail | Olten | inactive-on-validation-dates | 0 / 0 | 0 / 0 | No civil-day instance on either date |
-| 91-26-j26-1 | 11 | S26 / rail | Olten | partially-admitted | 40 / 41 | 39 / 39 | incomplete-directed-pattern |
+| 91-26-j26-1 | 11 | S26 / rail | Olten | admitted-all-dated-trips | 41 / 41 | 39 / 39 | All dated journeys pass |
 | 91-27-A-j26-1 | 11 | IR27 / rail | Olten | admitted-all-dated-trips | 37 / 37 | 32 / 32 | All dated journeys pass |
 | 91-28-j26-1 | 11 | S28 / rail | Olten | inactive-on-validation-dates | 0 / 0 | 0 / 0 | No civil-day instance on either date |
 | 91-29-j26-1 | 11 | S29 / rail | Olten | admitted-all-dated-trips | 86 / 86 | 86 / 86 | All dated journeys pass |

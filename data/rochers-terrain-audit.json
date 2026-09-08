@@ -1,0 +1,777 @@
+{
+  "metadata": {
+    "serviceDate": "2026-09-04",
+    "feedVersion": "20260902",
+    "timetableSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "networkSha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
+    "source": "swissALTIRegio + swissTLM3D",
+    "sourceCrs": "EPSG:2056 / LN02",
+    "terrainRelease": "2026-05-28",
+    "terrainUrl": "https://data.geo.admin.ch/ch.swisstopo.swissaltiregio/swissaltiregio/swissaltiregio_2056_5728.tif",
+    "terrainChecksum": "1220E1CADE929D3007D74BE67E5D107E517E40B13E0597A114097744B032FC6527E5",
+    "terrainProductUrl": "https://www.swisstopo.admin.ch/en/height-model-swissaltiregio",
+    "railSourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swisstlm3d/swisstlm3d_2026-02/swisstlm3d_2026-02_2056_5728.shp.zip",
+    "railSourceSha256": "82e098e238c035015d3cf68c52929616ea3716d124de90074fc3becbc01503b1",
+    "railProductUrl": "https://www.swisstopo.admin.ch/en/landscape-model-swisstlm3d",
+    "model": "Mapped FOT plan alignment with heights interpolated from nearby swissTLM3D rail axes; equal horizontal/vertical scale. Only unmasked outdoor sections use 3D; tunnels, covered structures and offsets above 25 m remain in 2D. Timetable motion, not live or surveyed train positions.",
+    "attribution": "Federal Office of Transport; swisstopo. Terrain: swissALTIRegio (swisstopo and contributing national elevation datasets).",
+    "bounds": {
+      "minEasting": 2556900,
+      "maxEasting": 2567600,
+      "minNorthing": 1139200,
+      "maxNorthing": 1146300
+    },
+    "gridSpacingMetres": [
+      41.796875,
+      41.76470588235294
+    ],
+    "nativeResolutionMetres": 10
+  },
+  "rasterSha256": "3e3215fc2555b387ea3c7ffa9574186ba86cdf2c48e5fc8f3dfec980e093ef35",
+  "gzipBytes": 70813,
+  "routes": [
+    {
+      "routeId": "91-37-F-j26-1",
+      "tripId": ".ojp-91-37-F.1.TA.40.j26",
+      "ascentAudit": {
+        "count": 10,
+        "patterns": [
+          16
+        ],
+        "trips": [
+          {
+            "id": ".ojp-91-37-F.1.TA.40.j26",
+            "calls": 16,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.48.j26",
+            "calls": 16,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.43.j26",
+            "calls": 16,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.45.j26",
+            "calls": 16,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.49.j26",
+            "calls": 16,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.41.j26",
+            "calls": 16,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.47.j26",
+            "calls": 16,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.42.j26",
+            "calls": 16,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.44.j26",
+            "calls": 16,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.46.j26",
+            "calls": 16,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ]
+          }
+        ]
+      },
+      "descentAudit": {
+        "count": 10,
+        "patterns": [
+          16
+        ],
+        "trips": [
+          {
+            "id": ".ojp-91-37-F.1.TA.94.j26",
+            "calls": 16,
+            "paths": [
+              15,
+              14,
+              13,
+              12,
+              11,
+              10,
+              9,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.98.j26",
+            "calls": 16,
+            "paths": [
+              15,
+              14,
+              13,
+              12,
+              11,
+              10,
+              9,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.90.j26",
+            "calls": 16,
+            "paths": [
+              15,
+              14,
+              13,
+              12,
+              11,
+              10,
+              9,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.89.j26",
+            "calls": 16,
+            "paths": [
+              15,
+              14,
+              13,
+              12,
+              11,
+              10,
+              9,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.92.j26",
+            "calls": 16,
+            "paths": [
+              15,
+              14,
+              13,
+              12,
+              11,
+              10,
+              9,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.91.j26",
+            "calls": 16,
+            "paths": [
+              15,
+              14,
+              13,
+              12,
+              11,
+              10,
+              9,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.93.j26",
+            "calls": 16,
+            "paths": [
+              15,
+              14,
+              13,
+              12,
+              11,
+              10,
+              9,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.95.j26",
+            "calls": 16,
+            "paths": [
+              15,
+              14,
+              13,
+              12,
+              11,
+              10,
+              9,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.97.j26",
+            "calls": 16,
+            "paths": [
+              15,
+              14,
+              13,
+              12,
+              11,
+              10,
+              9,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "id": ".ojp-91-37-F.1.TA.96.j26",
+            "calls": 16,
+            "paths": [
+              15,
+              14,
+              13,
+              12,
+              11,
+              10,
+              9,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "maxReverseDifferenceMetres": 0
+      },
+      "points": 728,
+      "length3dMetres": 10343.700992427273,
+      "maxOffsetMetres": 11.78213766186377,
+      "maskedFraction": 0.37510037421963727,
+      "sourceFeatureIds": [
+        "{7A769CA9-C0DC-4D14-8BE9-61E93B4F1E3D}",
+        "{E7CAB607-C18F-436C-9DAA-B76C1FCB0729}",
+        "{77C1525D-C8A7-4BAD-B7F4-216306FEB4E9}",
+        "{B7D47290-CD22-4F50-A146-1E5E02671EA0}",
+        "{876783B4-7180-40AB-B4B2-8E2147434E2F}",
+        "{75BFB470-F197-4D15-834E-54D8376572B4}",
+        "{A7C02B7B-EF4F-4C17-82CB-6BA78B852CC3}",
+        "{382C98F5-A88C-495C-A688-A57EECA5D4D5}",
+        "{A410520E-E5DA-4FCD-BC7D-1ADD0FDC1E2C}",
+        "{A1D9B5D7-54CB-477B-A425-3325171D0EAC}",
+        "{29575C66-6EC3-4EBC-94B3-614956EE1523}",
+        "{370B1B2C-2B8C-48BB-866B-F44F50675A47}",
+        "{7F2A7174-D6CD-418C-BA71-8B2C2B387863}",
+        "{45DF4606-F3C1-41D1-AFE6-574A92F70D4D}",
+        "{13AC405D-F47E-41C4-9071-F84544E5C21D}",
+        "{2FE7D3CE-DF41-4CEE-9232-E802CAB95637}",
+        "{6BCE7E6C-A703-4C04-85B4-0CA6E02F09A8}",
+        "{A6F6D34D-75AA-4586-9EDA-185FEF83F7A6}",
+        "{301EC92A-85B6-4AF3-9C11-9AABD99032DC}",
+        "{59F5DCB7-E17A-4A8E-8A12-9ED27DE2AEB8}",
+        "{93171D8D-B912-4958-A5D3-1C603DA5B61F}",
+        "{05AD66E1-B58F-4131-A351-3FCC33D1281D}",
+        "{78F4BE80-7799-461B-8B26-B03C58DFD647}",
+        "{4C183D80-5F1B-4766-91BA-10B82092D5A5}",
+        "{C8544F24-9121-4E43-ACEF-5AA2227C7BDA}",
+        "{C340B0EC-A95A-49CE-AFCC-A81E66A87582}",
+        "{E900644D-0F2E-4870-9CBC-36C71CC3605B}",
+        "{A9F1EA13-909C-4844-8C2B-73BF498B947C}",
+        "{1B4EA57E-BB04-4DB8-B58A-0D6A22C3F212}",
+        "{FBD774A4-55CE-443E-96FB-7195D074C19A}",
+        "{D27179D1-C4E4-4BCB-8084-154FDE530FBA}",
+        "{97FB3A4E-648B-4E71-9711-60B6BC44ABEB}",
+        "{DA334FB8-831D-4D87-BD81-9602D00F4468}",
+        "{03AC9009-D114-4FD6-A542-E5DE45BD84C7}",
+        "{250E5F82-8954-4DED-9AC9-CB1B29E2E41A}",
+        "{D32DEE23-2A40-4F51-9359-2DB854A4690E}",
+        "{0B2AA0EB-2658-4E24-B736-F774EC049BC5}",
+        "{906B5BB0-C05F-481C-B8C9-11DFDACF3BA1}",
+        "{4138EA6B-9A79-483A-886E-1D0C3A28C404}",
+        "{E2F7125A-F5F7-41DB-96FF-B17E6702658E}",
+        "{B07CCBD4-DF63-48AC-854F-01C7F04AFDA1}",
+        "{F9E4783A-799D-4EE8-A4B6-436AF3B2547B}",
+        "{F4C7C210-A62A-40F9-B66D-A05079DC5C0E}",
+        "{E73267DF-AA76-4149-80B1-D9FFD04188F8}",
+        "{41F62233-0442-4431-8CD5-9AEAC36D52B4}",
+        "{8E6185DA-E0DD-46E0-AF93-8C93DACDBFE0}",
+        "{4ED79C3E-99BB-43B9-9990-7114AD433383}",
+        "{C2D72407-149A-4862-98C1-D94783836CE6}",
+        "{2702BD9B-E0F1-4A8E-8BAB-C0A1946A0D26}",
+        "{87EED791-C336-48F6-BBCD-258A0274A9BC}",
+        "{4E29F9D8-D880-45DA-87AB-FCF4F3A8EDBD}",
+        "{18259FA0-3F08-4057-88F3-6E07DD77A0A7}",
+        "{57DD26F1-971D-4D53-9D42-27BE59C42D71}",
+        "{D230902C-CFFC-4636-8C56-32C39DCA947B}",
+        "{BCF4E046-1E88-4B19-8911-121E5FA5A73F}",
+        "{52E76881-FF60-4D04-BC3A-BC10C4FCEEE5}",
+        "{286A5C7F-A77C-4486-8EAF-F3F2A2B1DAC9}",
+        "{C0593167-87DC-4CF3-AD77-845B5C565305}",
+        "{ACD584A5-1D53-4F7E-AB0C-A793BCF38C8C}",
+        "{9EBCB945-BE60-49A6-83B3-D5C99BF7B2C0}",
+        "{518ADE5E-EE4B-4A32-80B3-813DE0BCB86B}",
+        "{8C4CD332-03B1-47EB-8EFF-1C428F463A0B}",
+        "{B342FD46-BE7F-4318-8C9E-638D5EE1BBEF}",
+        "{069655A0-D209-4780-841E-92A09463CCE7}",
+        "{F375DFE4-D6C2-4DA0-A2FA-E8BE26391FEE}",
+        "{A33CA051-379B-4840-A079-A801D6F41531}",
+        "{EF4A5AC5-C551-4D0C-9CEB-D9938D63C091}",
+        "{74DDBCB8-10D4-4961-93C3-EE57DE80D618}",
+        "{681CCCE3-7EB9-47DF-98FF-0A2E8A8E9318}",
+        "{4F417657-B47A-4480-8C65-32AC29047EF1}",
+        "{3E957C66-E029-4E01-B29B-96C2177FCC96}",
+        "{0EFF9C74-2642-421A-B09D-898ABFF9A3FF}",
+        "{E6912936-B1FE-434C-AEC8-FC19EBBA5045}",
+        "{6B281B41-01E7-4778-9045-9615640BFA4A}",
+        "{88A895A7-3141-4153-B0D4-027B91AD2ED8}"
+      ],
+      "sourceYears": [
+        2010,
+        2020,
+        2023,
+        2016
+      ],
+      "stops": [
+        {
+          "id": "ch:1:sloid:1300:3:8",
+          "name": "Montreux",
+          "progress": 0,
+          "railHeight": 395.1398631269168,
+          "groundHeight": 401.4486157161389
+        },
+        {
+          "id": "ch:1:sloid:1360",
+          "name": "Montreux-Les Planches",
+          "progress": 0.05414856553824354,
+          "railHeight": 451.09151101438124,
+          "groundHeight": 451.49599250014626
+        },
+        {
+          "id": "ch:1:sloid:1361",
+          "name": "Toveyre",
+          "progress": 0.15599475677164976,
+          "railHeight": 576.6629089852946,
+          "groundHeight": 576.2709386526353
+        },
+        {
+          "id": "ch:1:sloid:1362",
+          "name": "Valmont",
+          "progress": 0.20244319192567525,
+          "railHeight": 636.3981515478471,
+          "groundHeight": 637.8472813364432
+        },
+        {
+          "id": "ch:1:sloid:1370",
+          "name": "Glion",
+          "progress": 0.2563110932916562,
+          "railHeight": 688.2805251340283,
+          "groundHeight": 688.726855389421
+        },
+        {
+          "id": "ch:1:sloid:1230",
+          "name": "Glion-Alpes",
+          "progress": 0.28242151356221046,
+          "railHeight": 707.0711953199329,
+          "groundHeight": 707.6818038729548
+        },
+        {
+          "id": "ch:1:sloid:1308",
+          "name": "Glion-Collège",
+          "progress": 0.3072168144987299,
+          "railHeight": 748.1346471146613,
+          "groundHeight": 747.7906266717902
+        },
+        {
+          "id": "ch:1:sloid:1363",
+          "name": "Le Tremblex",
+          "progress": 0.34080366010055424,
+          "railHeight": 815.2232532402047,
+          "groundHeight": 815.9683790594505
+        },
+        {
+          "id": "ch:1:sloid:1371",
+          "name": "Caux",
+          "progress": 0.47295028646134313,
+          "railHeight": 1049.8672259967705,
+          "groundHeight": 1049.9075114099278
+        },
+        {
+          "id": "ch:1:sloid:1364",
+          "name": "Les Echets",
+          "progress": 0.5238503407606845,
+          "railHeight": 1099.437339114634,
+          "groundHeight": 1099.1566418539032
+        },
+        {
+          "id": "ch:1:sloid:1357",
+          "name": "Haut-de-Caux",
+          "progress": 0.5577590896602935,
+          "railHeight": 1173.5233452011303,
+          "groundHeight": 1172.3081661727886
+        },
+        {
+          "id": "ch:1:sloid:1365",
+          "name": "Crêt-d'y-Bau",
+          "progress": 0.6156255020291347,
+          "railHeight": 1283.231476282911,
+          "groundHeight": 1285.3246159223013
+        },
+        {
+          "id": "ch:1:sloid:1366",
+          "name": "Paccot",
+          "progress": 0.6799927837869929,
+          "railHeight": 1423.8656703601669,
+          "groundHeight": 1425.4693946341858
+        },
+        {
+          "id": "ch:1:sloid:1367",
+          "name": "Jaman",
+          "progress": 0.837003176713957,
+          "railHeight": 1737.7607540488846,
+          "groundHeight": 1737.6410926868994
+        },
+        {
+          "id": "ch:1:sloid:1368",
+          "name": "La Perche",
+          "progress": 0.895705405181205,
+          "railHeight": 1794.9436678966597,
+          "groundHeight": 1794.6921107739788
+        },
+        {
+          "id": "ch:1:sloid:1369",
+          "name": "Rochers-de-Naye",
+          "progress": 1,
+          "railHeight": 1967.9371441328196,
+          "groundHeight": 1968.0576879330265
+        }
+      ],
+      "maskedRanges": [
+        {
+          "start": 0,
+          "end": 0.04678814691224119,
+          "names": [],
+          "kinds": [
+            "Unterfuehrung",
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.11195832412077483,
+          "end": 0.12602426855007887,
+          "names": [],
+          "kinds": [
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.1444779192517623,
+          "end": 0.2010969445430103,
+          "names": [],
+          "kinds": [
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.2562650895613791,
+          "end": 0.2697670528253185,
+          "names": [],
+          "kinds": [
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.3744133727823742,
+          "end": 0.39582483145394853,
+          "names": [],
+          "kinds": [
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.45197504283457884,
+          "end": 0.46196208810425254,
+          "names": [],
+          "kinds": [
+            "Unterfuehrung"
+          ]
+        },
+        {
+          "start": 0.7084182093314287,
+          "end": 0.7192448745538289,
+          "names": [],
+          "kinds": [
+            "Galerie"
+          ]
+        },
+        {
+          "start": 0.7490403629323764,
+          "end": 0.7935954085789126,
+          "names": [],
+          "kinds": [
+            "Galerie"
+          ]
+        },
+        {
+          "start": 0.802522775893517,
+          "end": 0.8326084843483683,
+          "names": [],
+          "kinds": [
+            "Galerie",
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.8431562920365892,
+          "end": 0.8724449092931202,
+          "names": [],
+          "kinds": [
+            "Galerie"
+          ]
+        },
+        {
+          "start": 0.8836185444942416,
+          "end": 0.8999633142530273,
+          "names": [],
+          "kinds": [
+            "Galerie"
+          ]
+        },
+        {
+          "start": 0.9089132040399293,
+          "end": 0.9905391880824811,
+          "names": [],
+          "kinds": [
+            "Galerie",
+            "Tunnel"
+          ]
+        }
+      ]
+    }
+  ]
+}

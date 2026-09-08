@@ -4,6 +4,357 @@
     "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
   },
   "sources": {
+    "s26": {
+      "policy": {
+        "schemaVersion": 1,
+        "id": "solothurn-s26-sbb-dk-dko",
+        "fotSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+        "sourceDirectory": "data/solothurn-sources/corridors/sbb",
+        "sourceSha256": "c67745131e337136b47da452650f57c1c0dcc9a16f54fc659e6a0227f6fad030",
+        "feature": [
+          540,
+          "DK",
+          "DKO",
+          45673.43,
+          46100
+        ],
+        "featureSha256": "df26b1c0286f917f20d02f87523b8c4545d6633a8d21296431114b8216d10eb2",
+        "originalSegment": {
+          "id": "ch14uvag00087837",
+          "start": "ch14uvag00089021",
+          "end": "ch14uvag00089022",
+          "length": 426.57032662591087,
+          "points": [
+            [
+              7.978716,
+              47.356458
+            ],
+            [
+              7.983591,
+              47.358392
+            ]
+          ],
+          "gauge": "mm1000",
+          "dataStand": "2021-07-06",
+          "validFrom": "2013-07-03",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS"
+        },
+        "nodes": [
+          {
+            "id": "ch14uvag00089021",
+            "number": "8502111",
+            "name": "Däniken SO",
+            "coordinate": [
+              7.978776,
+              47.356387
+            ]
+          },
+          {
+            "id": "ch14uvag00089022",
+            "number": "8502143",
+            "name": "Däniken Ost",
+            "coordinate": [
+              7.983524,
+              47.358475
+            ]
+          }
+        ],
+        "route": {
+          "routeId": "91-26-j26-1",
+          "agencyId": "11",
+          "line": "S26"
+        },
+        "from": [
+          8.05159989,
+          47.39104625,
+          "Aarau",
+          "5",
+          "ch:1:sloid:2113:3:5"
+        ],
+        "to": [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        "limits": {
+          "stationAttachmentMetres": 350,
+          "topologyAttachmentMetres": 120,
+          "detourRatio": 4.5,
+          "detourFloorMetres": 3000,
+          "simplificationMetres": 5
+        },
+        "method": "Only the exact SBB S26 Aarau platform 5 → Olten platform 9 pair may use a pattern-local standard-gauge FOT graph with the independently sourced, original 44-vertex SBB DK–DKO curve. Keep the metre-gauge FOT record unchanged and excluded. Match the entire ordered stop chain with all intermediate calls blocked against revisiting and require all twelve-date contexts to agree. Preserve prior successful geometry, original calls and all attachment/detour limits; no running-track or effective alignment certification."
+      },
+      "policySha256": "d310829f63e627e79cf9cb5553d7e51506f401a8356df182765f9b5369d3232f",
+      "source": {
+        "publisher": "SBB Infrastructure",
+        "attribution": "SBB Infrastructure / data.sbb.ch",
+        "termsUrl": "https://data.sbb.ch/page/licence/",
+        "license": "terms_by",
+        "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+        "retrieved": "2026-09-08",
+        "modified": "2026-07-29T06:16:28+00:00",
+        "dataProcessed": "2026-09-02T03:01:34+00:00",
+        "metadataProcessed": "2026-09-08T03:00:20.208000+00:00",
+        "alignmentValidity": "Publication and processing dates are not an individual feature survey date or proof of September diversions.",
+        "model": "Complete selected graphical linework with exact operating-point crosswalk and measured timetable endpoint connectors; no midpoint splicing, gauge edits or use of schematic two-point records.",
+        "files": [
+          {
+            "file": "metadata.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon",
+            "sha256": "cbd14d2785da7865f4565fbf9aa37ca274ef3aafc44239bc03dd0992e3fd013c"
+          },
+          {
+            "file": "line540.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=linienr%3D540&limit=100",
+            "sha256": "d655c79dec3dd0407f11924d42de52f8f5debdb3f6ec09cbb1e6247a817f1550"
+          },
+          {
+            "file": "foreign-review.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Konstanz%22%29%20OR%20search%28%22Como%22%29&limit=100",
+            "sha256": "1a3358cc2c58e160a6cf032d199d41d1c92763acf0a440c0a86dcb4086c0debf"
+          },
+          {
+            "file": "schematic-metadata.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie",
+            "sha256": "8a99d0f248ed811245aefbb7fa097cd3b7dfbf8a8a870df570c28b8f1629d553"
+          },
+          {
+            "file": "schematic-line540.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie/records?where=linie%3D540&limit=100",
+            "sha256": "2a37569c4394fcc63846746a2e2cd230d22aca6d00dbc81a7b02e978e69bbdc1"
+          },
+          {
+            "file": "terms.html",
+            "url": "https://data.sbb.ch/page/licence/",
+            "sha256": "985a900c0c0020edaf1dc6239ad3547d9a09db0dc4b72c3a0482ccfd09289f77"
+          },
+          {
+            "file": "federal-daeniken.json",
+            "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=7.978,47.355,7.985,47.360&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=7.978,47.355,7.985,47.360&tolerance=0&layers=all:ch.bav.schienennetz&returnGeometry=true&limit=200&sr=4326",
+            "sha256": "b68bcc6cbf242e2d90d15b1afbaa395235bd8b325e25698472049596fc22953a"
+          }
+        ]
+      },
+      "addedSegment": {
+        "id": "solothurn-s26-sbb-dk-dko",
+        "start": "ch14uvag00089021",
+        "end": "ch14uvag00089022",
+        "points": [
+          [
+            7.978711214818491,
+            47.35646100249422
+          ],
+          [
+            7.978825794663774,
+            47.356506033271
+          ],
+          [
+            7.978940152335148,
+            47.35655132581407
+          ],
+          [
+            7.979054274597967,
+            47.3565968801859
+          ],
+          [
+            7.979168187833764,
+            47.356642687269236
+          ],
+          [
+            7.979281878716781,
+            47.35668873813263
+          ],
+          [
+            7.979395386590854,
+            47.35673499661447
+          ],
+          [
+            7.979508763944422,
+            47.35678141749707
+          ],
+          [
+            7.979622036702893,
+            47.3568279466924
+          ],
+          [
+            7.979735244209476,
+            47.35687454803841
+          ],
+          [
+            7.979848438951885,
+            47.356921176316966
+          ],
+          [
+            7.979961620565247,
+            47.356967795551725
+          ],
+          [
+            7.980074815703895,
+            47.35701442360686
+          ],
+          [
+            7.980187997713487,
+            47.35706104261826
+          ],
+          [
+            7.980301193248326,
+            47.35710767045006
+          ],
+          [
+            7.980414388981302,
+            47.35715429817004
+          ],
+          [
+            7.980527571585178,
+            47.357200916846374
+          ],
+          [
+            7.980640767714392,
+            47.357247544343046
+          ],
+          [
+            7.980753950805808,
+            47.35729417179006
+          ],
+          [
+            7.980867147239906,
+            47.357340790069216
+          ],
+          [
+            7.980980330727541,
+            47.357387417292834
+          ],
+          [
+            7.98109352764931,
+            47.357434044342696
+          ],
+          [
+            7.981206711441697,
+            47.3574806623489
+          ],
+          [
+            7.981319908759704,
+            47.3575272891753
+          ],
+          [
+            7.981433119237375,
+            47.35757388884561
+          ],
+          [
+            7.981546591797483,
+            47.35762020834389
+          ],
+          [
+            7.98166039152097,
+            47.357666139429405
+          ],
+          [
+            7.981774518406088,
+            47.35771168210115
+          ],
+          [
+            7.98188898587049,
+            47.35775685428422
+          ],
+          [
+            7.982003780493349,
+            47.35780163805164
+          ],
+          [
+            7.9821188890369,
+            47.35784603346464
+          ],
+          [
+            7.982234324827118,
+            47.35789004945416
+          ],
+          [
+            7.982350074534613,
+            47.35793367708746
+          ],
+          [
+            7.982466033643449,
+            47.357977051773034
+          ],
+          [
+            7.982581992849378,
+            47.358020417347504
+          ],
+          [
+            7.982697952244131,
+            47.3580637828048
+          ],
+          [
+            7.982813925063795,
+            47.35810714808272
+          ],
+          [
+            7.982929884836059,
+            47.35815051330582
+          ],
+          [
+            7.983045844797146,
+            47.358193878411775
+          ],
+          [
+            7.983161805038731,
+            47.35823725239476
+          ],
+          [
+            7.983277765377389,
+            47.35828061726653
+          ],
+          [
+            7.98339373914101,
+            47.35832398195877
+          ],
+          [
+            7.983509699857177,
+            47.35836734659639
+          ],
+          [
+            7.983585890977072,
+            47.358395841807805
+          ]
+        ],
+        "gauge": "mm1435",
+        "dataStand": null,
+        "validFrom": null,
+        "validUntil": null,
+        "infrastructureOperator": "SBB Infrastructure"
+      },
+      "attachments": [
+        9.577730570135246,
+        9.971545420784185
+      ],
+      "originalSegmentRetained": {
+        "id": "ch14uvag00087837",
+        "start": "ch14uvag00089021",
+        "end": "ch14uvag00089022",
+        "length": 426.57032662591087,
+        "points": [
+          [
+            7.978716,
+            47.356458
+          ],
+          [
+            7.983591,
+            47.358392
+          ]
+        ],
+        "gauge": "mm1000",
+        "dataStand": "2021-07-06",
+        "validFrom": "2013-07-03",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS"
+      },
+      "effectiveAlignmentDateEstablished": false
+    },
     "bernTerminal": {
       "policy": {
         "schemaVersion": 1,
@@ -1110,23 +1461,23 @@
       },
       "after": {
         "trips": 7156,
-        "admittedTrips": 7023,
+        "admittedTrips": 7024,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5945,
+        "admittedScheduledTrips": 5946,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97131,
+        "matchedScheduledSegmentOccurrences": 97132,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98209,
-        "admittedSegmentOccurrences": 93705,
+        "matchedSegmentOccurrences": 98210,
+        "admittedSegmentOccurrences": 93713,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4247,
+        "matchedDirectedPairs": 4248,
         "patterns": 921,
-        "completePatterns": 904,
-        "admittedPatterns": 904,
+        "completePatterns": 905,
+        "admittedPatterns": 905,
         "excludedTrips": {
-          "incomplete-directed-pattern": 133
+          "incomplete-directed-pattern": 132
         }
       },
       "lostAdmittedPatterns": [],
@@ -4810,6 +5161,29 @@
           "admittedTrips": 1,
           "geometrySources": [
             "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "231c24ee3d97bc259085467f",
+          "routeId": "91-26-j26-1",
+          "line": "S26",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2215:0:1773",
+            "ch:1:sloid:2214:1:2",
+            "ch:1:sloid:2213:2:3",
+            "ch:1:sloid:2212:1:1",
+            "ch:1:sloid:2211:1:1",
+            "ch:1:sloid:2119:2:4",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:5:9"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-sbb-reviewed-s26",
             "solothurn-network"
           ]
         },
@@ -19365,7 +19739,7 @@
         },
         "solothurn-network": {
           "directedPairs": 3004,
-          "admittedOccurrences": 78136
+          "admittedOccurrences": 78137
         },
         "bern-official-413": {
           "directedPairs": 10,
@@ -19373,11 +19747,15 @@
         },
         "fot": {
           "directedPairs": 850,
-          "admittedOccurrences": 5655
+          "admittedOccurrences": 5661
         },
         "fot-reviewed-bern-eastern-terminal": {
           "directedPairs": 7,
           "admittedOccurrences": 34
+        },
+        "fot-sbb-reviewed-s26": {
+          "directedPairs": 1,
+          "admittedOccurrences": 1
         },
         "bern-official-450_S_b": {
           "directedPairs": 11,

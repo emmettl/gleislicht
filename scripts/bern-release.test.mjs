@@ -25,9 +25,15 @@ describe('Bern display release', () => {
     try {
       for (const date of ['2026-09-04', '2026-09-06']) {
         const report = await buildBernDay({ date, output })
-        expect(report.movements.total).toBe(date.endsWith('04') ? 36633 : 31855)
+        expect(report.movements.total).toBe(date.endsWith('04') ? 36673 : 31893)
         const { files } = await readRegionalDirectory(output, ['bern-region'], date)
         const archive = JSON.parse(await readFile(`public/data/bern-region/${date}/bern-region-day-manifest.json`))
+        const display = JSON.parse(files.get('bern-region-day-manifest.json'))
+        expect(display.metadata.geometry.ir66Supplement.policySha256).toBe(archive.metadata.geometry.ir66Supplement.policySha256)
+        expect(display.metadata.geometry.ir66Supplement.source).toEqual(archive.metadata.geometry.ir66Supplement.source)
+        expect(display.metadata.geometry.ir66Supplement.documents).toEqual(archive.metadata.geometry.ir66Supplement.policy.documents)
+        expect(archive.metadata.geometry.ir66Supplement.terminalEvidence).toHaveLength(9)
+        expect(display.metadata.geometry.ir66Supplement.terminalEvidence).toBeUndefined()
         for (const chunk of archive.chunks) expect(files.get(`bern-region-${chunk.path}`).equals(await readFile(`public/data/bern-region/${date}/${chunk.path}`))).toBe(true)
         if (date.endsWith('04')) for (const [path, bytes] of files) expect(bytes.equals(await readFile(join('public/data', path)))).toBe(true)
       }
@@ -38,6 +44,9 @@ describe('Bern display release', () => {
     for (const mutate of [
       d => { d.metadata.bernRelease.simplification.maximumDeviationMetres = 6 },
       d => { d.metadata.geometry.attribution = '' },
+      d => { d.metadata.geometry.ir66Supplement.policySha256 = '0'.repeat(64) },
+      d => { d.metadata.geometry.ir66Supplement.source.attribution = '' },
+      d => { d.metadata.geometry.ir66Supplement.fullEvidence.path = 'missing.json' },
       d => { d.metadata.bernRelease.movements.scheduled++ },
       d => { d.metadata.serviceDate = '2026-09-08' },
     ]) {

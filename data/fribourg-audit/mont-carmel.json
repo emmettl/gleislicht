@@ -1,0 +1,2897 @@
+{
+  "policy": {
+    "schemaVersion": 1,
+    "id": "mont-carmel-terminal",
+    "sourceDirectory": "data/fribourg-mont-carmel-sources",
+    "sources": [
+      {
+        "file": "map.osm.gz",
+        "url": "https://www.openstreetmap.org/api/0.6/map?bbox=7.132,46.808,7.141,46.815",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "role": "Complete raw bounding-box response, deterministic gzip; detailed directed road topology and stop identities.",
+        "sha256": "afe8dbfa202e125225adb3034b06856d8c3f86bd4583556467d5a2d09a9a1a63",
+        "retrievedAt": "2026-09-08T20:54:43.664Z"
+      },
+      {
+        "file": "tpf-agglo.html",
+        "url": "https://www.tpf.ch/fr/horaires-et-reseaux/horaire-par-reseaux/agglo",
+        "attribution": "TPF",
+        "role": "Current operator line-3 Mont-Carmel–Charmettes identity, timetable valid from 2025-12-14; not proof of a terminal manoeuvre.",
+        "sha256": "92170b5a5ca729ddcd11853bfc83ed157286151fda9a38027b7d06696455dd40",
+        "retrievedAt": "2026-09-08T20:54:44.568Z"
+      },
+      {
+        "file": "givisiez-works.html",
+        "url": "https://www.givisiez.ch/article/deplacement-provisoire-de-larret-de-bus-mont-carmel-26052026",
+        "attribution": "Commune de Givisiez",
+        "documentDate": "2026-05-26",
+        "role": "Temporary stop displacement towards Belfaux on Route de la Chassotte; does not establish closure of the roundabout or justify moving the original GTFS stops.",
+        "sha256": "98b95b77765a111d7d5c7a6aed72b503dc634f057de3e448527e11bec5bf13b1",
+        "retrievedAt": "2026-09-08T20:54:46.618Z"
+      }
+    ],
+    "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+    "agencyId": "834",
+    "routeId": "92-3-A-j26-1",
+    "dates": [
+      "2026-09-04",
+      "2026-09-06"
+    ],
+    "stops": [
+      [
+        7.13694425,
+        46.81190474,
+        "Givisiez, Mont Carmel",
+        "",
+        "ch:1:sloid:87238:0:15107"
+      ],
+      [
+        7.13709697,
+        46.81168956,
+        "Givisiez, Mont Carmel",
+        "",
+        "ch:1:sloid:87238:0:15108"
+      ]
+    ],
+    "patterns": [
+      {
+        "id": "2cc0f7a654f3dee2adbb7208",
+        "routeId": "92-3-A-j26-1",
+        "stops": [
+          [
+            7.15726414,
+            46.7947121,
+            "Fribourg, Charmettes",
+            "",
+            "ch:1:sloid:77741:0:15044"
+          ],
+          [
+            7.15525192,
+            46.79648942,
+            "Fribourg, Industrie",
+            "",
+            "ch:1:sloid:89154:0:15080"
+          ],
+          [
+            7.15306901,
+            46.79883244,
+            "Fribourg, J. Vogt",
+            "",
+            "ch:1:sloid:88858:0:15171"
+          ],
+          [
+            7.15227849,
+            46.80056043,
+            "Fribourg, Fries",
+            "",
+            "ch:1:sloid:89155:0:15062"
+          ],
+          [
+            7.15203595,
+            46.80310004,
+            "Fribourg/Freiburg, Pl. Gare",
+            "C",
+            "ch:1:sloid:92374:0:3"
+          ],
+          [
+            7.15566514,
+            46.80399165,
+            "Fribourg, St-Pierre",
+            "",
+            "ch:1:sloid:89161:0:15156"
+          ],
+          [
+            7.15575497,
+            46.80487094,
+            "Fribourg, Place Georges Python",
+            "",
+            "ch:1:sloid:77810:0:15136"
+          ],
+          [
+            7.15287138,
+            46.80741649,
+            "Fribourg, Université",
+            "",
+            "ch:1:sloid:77811:0:15161"
+          ],
+          [
+            7.15056271,
+            46.80902124,
+            "Fribourg, Miséricorde",
+            "",
+            "ch:1:sloid:92382:0:15100"
+          ],
+          [
+            7.14829896,
+            46.80950081,
+            "Fribourg, Ste-Thérèse",
+            "",
+            "ch:1:sloid:77812:0:15152"
+          ],
+          [
+            7.14245093,
+            46.80910117,
+            "Fribourg, Champ-des-Fontaines",
+            "",
+            "ch:1:sloid:92369:0:15040"
+          ],
+          [
+            7.14033988,
+            46.80947622,
+            "Fribourg, Champ-Fleuri",
+            "",
+            "ch:1:sloid:92370:0:15038"
+          ],
+          [
+            7.13949547,
+            46.81088416,
+            "Fribourg, Jura Chassotte",
+            "",
+            "ch:1:sloid:92379:0:15088"
+          ],
+          [
+            7.13694425,
+            46.81190474,
+            "Givisiez, Mont Carmel",
+            "",
+            "ch:1:sloid:87238:0:15107"
+          ],
+          [
+            7.13709697,
+            46.81168956,
+            "Givisiez, Mont Carmel",
+            "",
+            "ch:1:sloid:87238:0:15108"
+          ]
+        ]
+      },
+      {
+        "id": "6b32b1bf0b9b2ad1a50a2927",
+        "routeId": "92-3-A-j26-1",
+        "stops": [
+          [
+            7.15203595,
+            46.80310004,
+            "Fribourg/Freiburg, Pl. Gare",
+            "C",
+            "ch:1:sloid:92374:0:3"
+          ],
+          [
+            7.15566514,
+            46.80399165,
+            "Fribourg, St-Pierre",
+            "",
+            "ch:1:sloid:89161:0:15156"
+          ],
+          [
+            7.15575497,
+            46.80487094,
+            "Fribourg, Place Georges Python",
+            "",
+            "ch:1:sloid:77810:0:15136"
+          ],
+          [
+            7.15287138,
+            46.80741649,
+            "Fribourg, Université",
+            "",
+            "ch:1:sloid:77811:0:15161"
+          ],
+          [
+            7.15056271,
+            46.80902124,
+            "Fribourg, Miséricorde",
+            "",
+            "ch:1:sloid:92382:0:15100"
+          ],
+          [
+            7.14829896,
+            46.80950081,
+            "Fribourg, Ste-Thérèse",
+            "",
+            "ch:1:sloid:77812:0:15152"
+          ],
+          [
+            7.14245093,
+            46.80910117,
+            "Fribourg, Champ-des-Fontaines",
+            "",
+            "ch:1:sloid:92369:0:15040"
+          ],
+          [
+            7.14033988,
+            46.80947622,
+            "Fribourg, Champ-Fleuri",
+            "",
+            "ch:1:sloid:92370:0:15038"
+          ],
+          [
+            7.13949547,
+            46.81088416,
+            "Fribourg, Jura Chassotte",
+            "",
+            "ch:1:sloid:92379:0:15088"
+          ],
+          [
+            7.13694425,
+            46.81190474,
+            "Givisiez, Mont Carmel",
+            "",
+            "ch:1:sloid:87238:0:15107"
+          ],
+          [
+            7.13709697,
+            46.81168956,
+            "Givisiez, Mont Carmel",
+            "",
+            "ch:1:sloid:87238:0:15108"
+          ]
+        ]
+      },
+      {
+        "id": "9a96322530f92c8786068589",
+        "routeId": "92-3-A-j26-1",
+        "stops": [
+          [
+            7.13709697,
+            46.81168956,
+            "Givisiez, Mont Carmel",
+            "",
+            "ch:1:sloid:87238:0:15108"
+          ],
+          [
+            7.13932479,
+            46.81079809,
+            "Fribourg, Jura Chassotte",
+            "",
+            "ch:1:sloid:92379:0:15089"
+          ],
+          [
+            7.1403848,
+            46.80939014,
+            "Fribourg, Champ-Fleuri",
+            "",
+            "ch:1:sloid:92370:0:15039"
+          ],
+          [
+            7.14239703,
+            46.80901509,
+            "Fribourg, Champ-des-Fontaines",
+            "",
+            "ch:1:sloid:92369:0:15041"
+          ],
+          [
+            7.14582859,
+            46.80943933,
+            "Fribourg, Vuille",
+            "B",
+            "ch:1:sloid:77820:0:15174"
+          ],
+          [
+            7.1489188,
+            46.8093594,
+            "Fribourg, Ste-Thérèse",
+            "",
+            "ch:1:sloid:77812:0:15153"
+          ],
+          [
+            7.15119153,
+            46.80853552,
+            "Fribourg, Miséricorde",
+            "",
+            "ch:1:sloid:92382:0:15101"
+          ],
+          [
+            7.15312291,
+            46.80676474,
+            "Fribourg, Université",
+            "",
+            "ch:1:sloid:77811:0:15162"
+          ],
+          [
+            7.15558429,
+            46.80466802,
+            "Fribourg, Place Georges Python",
+            "",
+            "ch:1:sloid:77810:0:15137"
+          ],
+          [
+            7.15513514,
+            46.80391171,
+            "Fribourg, St-Pierre",
+            "",
+            "ch:1:sloid:89161:0:15157"
+          ],
+          [
+            7.15136221,
+            46.80288483,
+            "Fribourg/Freiburg, Pl. Gare",
+            "B",
+            "ch:1:sloid:92374:0:2"
+          ],
+          [
+            7.15212578,
+            46.80054198,
+            "Fribourg, Fries",
+            "",
+            "ch:1:sloid:89155:0:15063"
+          ],
+          [
+            7.15303308,
+            46.79856186,
+            "Fribourg, J. Vogt",
+            "",
+            "ch:1:sloid:88858:0:15172"
+          ],
+          [
+            7.15538667,
+            46.79619423,
+            "Fribourg, Industrie",
+            "",
+            "ch:1:sloid:89154:0:15081"
+          ],
+          [
+            7.15726414,
+            46.7947121,
+            "Fribourg, Charmettes",
+            "",
+            "ch:1:sloid:77741:0:15044"
+          ]
+        ]
+      },
+      {
+        "id": "ea7a4bdb395b10c8c6bfdc36",
+        "routeId": "92-3-A-j26-1",
+        "stops": [
+          [
+            7.13709697,
+            46.81168956,
+            "Givisiez, Mont Carmel",
+            "",
+            "ch:1:sloid:87238:0:15108"
+          ],
+          [
+            7.13932479,
+            46.81079809,
+            "Fribourg, Jura Chassotte",
+            "",
+            "ch:1:sloid:92379:0:15089"
+          ],
+          [
+            7.1403848,
+            46.80939014,
+            "Fribourg, Champ-Fleuri",
+            "",
+            "ch:1:sloid:92370:0:15039"
+          ],
+          [
+            7.14239703,
+            46.80901509,
+            "Fribourg, Champ-des-Fontaines",
+            "",
+            "ch:1:sloid:92369:0:15041"
+          ],
+          [
+            7.14582859,
+            46.80943933,
+            "Fribourg, Vuille",
+            "B",
+            "ch:1:sloid:77820:0:15174"
+          ],
+          [
+            7.1489188,
+            46.8093594,
+            "Fribourg, Ste-Thérèse",
+            "",
+            "ch:1:sloid:77812:0:15153"
+          ],
+          [
+            7.15119153,
+            46.80853552,
+            "Fribourg, Miséricorde",
+            "",
+            "ch:1:sloid:92382:0:15101"
+          ],
+          [
+            7.15312291,
+            46.80676474,
+            "Fribourg, Université",
+            "",
+            "ch:1:sloid:77811:0:15162"
+          ],
+          [
+            7.15558429,
+            46.80466802,
+            "Fribourg, Place Georges Python",
+            "",
+            "ch:1:sloid:77810:0:15137"
+          ],
+          [
+            7.15513514,
+            46.80391171,
+            "Fribourg, St-Pierre",
+            "",
+            "ch:1:sloid:89161:0:15157"
+          ],
+          [
+            7.15136221,
+            46.80288483,
+            "Fribourg/Freiburg, Pl. Gare",
+            "B",
+            "ch:1:sloid:92374:0:2"
+          ]
+        ]
+      }
+    ],
+    "maximumAttachmentMetres": 15,
+    "chain": [
+      {
+        "wayId": "1097802067",
+        "from": "947021993",
+        "to": "292013103"
+      },
+      {
+        "wayId": "55700630",
+        "from": "292013103",
+        "to": "699975410"
+      },
+      {
+        "wayId": "1095950865",
+        "from": "699975410",
+        "to": "947021971"
+      }
+    ],
+    "relations": [
+      {
+        "id": "2464722",
+        "stopNode": "947021993",
+        "role": "stop_exit_only"
+      },
+      {
+        "id": "12589725",
+        "stopNode": "947021993",
+        "role": "stop_exit_only"
+      },
+      {
+        "id": "1224330",
+        "stopNode": "947021971",
+        "role": "stop_entry_only"
+      },
+      {
+        "id": "12589724",
+        "stopNode": "947021971",
+        "role": "stop_entry_only"
+      }
+    ],
+    "admission": "One exact final directed pair on TPF 3, in every complete contributing pattern. Three original OSM ways, shared node identity, forward-only one-way/roundabout traversal, trolley wires and no intersecting returned turn restrictions. Preserve both original calls and coordinates; no collapsing duplicate stop names. Inferred centreline movement, not operator-certified running lanes or a guarantee of temporary access. Route-relation j23 references are historical identity evidence only."
+  },
+  "geometry": {
+    "path": [
+      [
+        7.1369442,
+        46.8119047
+      ],
+      [
+        7.1369559,
+        46.811856
+      ],
+      [
+        7.1368407,
+        46.8118858
+      ],
+      [
+        7.1366645,
+        46.8119363
+      ],
+      [
+        7.1366475,
+        46.8119636
+      ],
+      [
+        7.1366198,
+        46.8119865
+      ],
+      [
+        7.1365839,
+        46.8120031
+      ],
+      [
+        7.1365425,
+        46.8120121
+      ],
+      [
+        7.1364979,
+        46.8120126
+      ],
+      [
+        7.1364551,
+        46.8120042
+      ],
+      [
+        7.1364176,
+        46.8119877
+      ],
+      [
+        7.1363884,
+        46.811964
+      ],
+      [
+        7.1363706,
+        46.8119355
+      ],
+      [
+        7.136366,
+        46.8119046
+      ],
+      [
+        7.1363751,
+        46.8118736
+      ],
+      [
+        7.1363976,
+        46.8118459
+      ],
+      [
+        7.1364311,
+        46.8118241
+      ],
+      [
+        7.1364727,
+        46.8118102
+      ],
+      [
+        7.1365213,
+        46.8118055
+      ],
+      [
+        7.1365696,
+        46.8118117
+      ],
+      [
+        7.1366124,
+        46.8118282
+      ],
+      [
+        7.1367967,
+        46.8118067
+      ],
+      [
+        7.1371101,
+        46.8117302
+      ],
+      [
+        7.137097,
+        46.8116896
+      ]
+    ],
+    "lengthMetres": 132.74496656637544,
+    "directMetres": 26.630176622318732,
+    "attachmentsMetres": [
+      5.497855454394272,
+      4.633320329040066
+    ],
+    "directedSourceSegments": [
+      {
+        "wayId": "1097802067",
+        "version": "4",
+        "timestamp": "2026-01-28T08:57:25Z",
+        "from": "947021993",
+        "to": "292013103",
+        "nodeIds": [
+          "947021993",
+          "2511160271",
+          "292013103"
+        ],
+        "direction": "forward",
+        "tags": {
+          "cycleway:right": "lane",
+          "foot": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "50",
+          "name": "Route de la Chassotte",
+          "oneway": "yes",
+          "ref": "12/157",
+          "surface": "asphalt",
+          "trolley_wire": "yes"
+        }
+      },
+      {
+        "wayId": "55700630",
+        "version": "14",
+        "timestamp": "2026-01-28T08:57:25Z",
+        "from": "292013103",
+        "to": "699975410",
+        "nodeIds": [
+          "292013103",
+          "699975394",
+          "292013102",
+          "699975396",
+          "699975303",
+          "699975397",
+          "699975399",
+          "292013101",
+          "699975401",
+          "8529503895",
+          "699975351",
+          "699975403",
+          "699975404",
+          "699975406",
+          "699975324",
+          "699975408",
+          "699975409",
+          "699975410"
+        ],
+        "direction": "forward",
+        "tags": {
+          "cycleway:right": "no",
+          "highway": "primary",
+          "junction": "roundabout",
+          "lanes": "2",
+          "maxspeed": "50",
+          "ref": "12/157",
+          "sidewalk:left": "no",
+          "sidewalk:right": "separate",
+          "surface": "asphalt",
+          "trolley_wire": "yes"
+        }
+      },
+      {
+        "wayId": "1095950865",
+        "version": "4",
+        "timestamp": "2026-01-28T08:57:25Z",
+        "from": "699975410",
+        "to": "947021971",
+        "nodeIds": [
+          "699975410",
+          "2511160270",
+          "947021971"
+        ],
+        "direction": "forward",
+        "tags": {
+          "cycleway:right": "lane",
+          "foot": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "50",
+          "name": "Route de la Chassotte",
+          "oneway": "yes",
+          "ref": "12/157",
+          "surface": "asphalt",
+          "trolley_wire": "yes"
+        }
+      }
+    ],
+    "restrictionRecordsChecked": 10
+  },
+  "contributingPatterns": [
+    "2cc0f7a654f3dee2adbb7208",
+    "6b32b1bf0b9b2ad1a50a2927"
+  ],
+  "primaryFailure": {
+    "agencyId": "834",
+    "geometrySource": "osm-road-inference",
+    "roadPatternIds": [
+      "2cc0f7a654f3dee2adbb7208",
+      "6b32b1bf0b9b2ad1a50a2927"
+    ],
+    "roadContextOccurrences": 2,
+    "reason": "road-matcher-rejected",
+    "sourceFeatures": []
+  },
+  "sourceInventory": {
+    "ways": [
+      {
+        "id": "55700630",
+        "version": "14",
+        "timestamp": "2026-01-28T08:57:25Z",
+        "tags": {
+          "cycleway:right": "no",
+          "highway": "primary",
+          "junction": "roundabout",
+          "lanes": "2",
+          "maxspeed": "50",
+          "ref": "12/157",
+          "sidewalk:left": "no",
+          "sidewalk:right": "separate",
+          "surface": "asphalt",
+          "trolley_wire": "yes"
+        },
+        "nodes": [
+          "292013103",
+          "699975394",
+          "292013102",
+          "699975396",
+          "699975303",
+          "699975397",
+          "699975399",
+          "292013101",
+          "699975401",
+          "8529503895",
+          "699975351",
+          "699975403",
+          "699975404",
+          "699975406",
+          "699975324",
+          "699975408",
+          "699975409",
+          "699975410",
+          "699975361",
+          "699975411",
+          "292013103"
+        ]
+      },
+      {
+        "id": "1095950865",
+        "version": "4",
+        "timestamp": "2026-01-28T08:57:25Z",
+        "tags": {
+          "cycleway:right": "lane",
+          "foot": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "50",
+          "name": "Route de la Chassotte",
+          "oneway": "yes",
+          "ref": "12/157",
+          "surface": "asphalt",
+          "trolley_wire": "yes"
+        },
+        "nodes": [
+          "699975410",
+          "2511160270",
+          "947021971"
+        ]
+      },
+      {
+        "id": "1097802067",
+        "version": "4",
+        "timestamp": "2026-01-28T08:57:25Z",
+        "tags": {
+          "cycleway:right": "lane",
+          "foot": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "maxspeed": "50",
+          "name": "Route de la Chassotte",
+          "oneway": "yes",
+          "ref": "12/157",
+          "surface": "asphalt",
+          "trolley_wire": "yes"
+        },
+        "nodes": [
+          "947021993",
+          "2511160271",
+          "292013103"
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "id": "292013101",
+        "version": "8",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1364176,
+          46.8119877
+        ]
+      },
+      {
+        "id": "292013102",
+        "version": "8",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1366198,
+          46.8119865
+        ]
+      },
+      {
+        "id": "292013103",
+        "version": "8",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1366645,
+          46.8119363
+        ]
+      },
+      {
+        "id": "699975303",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1365425,
+          46.8120121
+        ]
+      },
+      {
+        "id": "699975324",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1364727,
+          46.8118102
+        ]
+      },
+      {
+        "id": "699975351",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.136366,
+          46.8119046
+        ]
+      },
+      {
+        "id": "699975361",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1366502,
+          46.8118586
+        ]
+      },
+      {
+        "id": "699975394",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1366475,
+          46.8119636
+        ]
+      },
+      {
+        "id": "699975396",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1365839,
+          46.8120031
+        ]
+      },
+      {
+        "id": "699975397",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1364979,
+          46.8120126
+        ]
+      },
+      {
+        "id": "699975399",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1364551,
+          46.8120042
+        ]
+      },
+      {
+        "id": "699975401",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1363884,
+          46.811964
+        ]
+      },
+      {
+        "id": "699975403",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1363751,
+          46.8118736
+        ]
+      },
+      {
+        "id": "699975404",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1363976,
+          46.8118459
+        ]
+      },
+      {
+        "id": "699975406",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1364311,
+          46.8118241
+        ]
+      },
+      {
+        "id": "699975408",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1365213,
+          46.8118055
+        ]
+      },
+      {
+        "id": "699975409",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1365696,
+          46.8118117
+        ]
+      },
+      {
+        "id": "699975410",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1366124,
+          46.8118282
+        ]
+      },
+      {
+        "id": "699975411",
+        "version": "4",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1366685,
+          46.8118965
+        ]
+      },
+      {
+        "id": "947021971",
+        "version": "10",
+        "timestamp": "2024-05-30T12:14:19Z",
+        "tags": {
+          "bench": "yes",
+          "bin": "yes",
+          "bus": "yes",
+          "ele": "680",
+          "highway": "bus_stop",
+          "name": "Givisiez, Mont Carmel",
+          "network": "frimobil",
+          "network:short": "TPF",
+          "network:wikidata": "Q2394200",
+          "operator": "TPF",
+          "passenger_information_display": "yes",
+          "public_transport": "stop_position",
+          "shelter": "yes",
+          "trolleybus": "yes",
+          "uic_name": "Givisiez, Mont Carmel",
+          "uic_ref": "8587238"
+        },
+        "coordinate": [
+          7.1371101,
+          46.8117302
+        ]
+      },
+      {
+        "id": "947021993",
+        "version": "9",
+        "timestamp": "2023-03-21T12:17:53Z",
+        "tags": {
+          "bus": "yes",
+          "ele": "680",
+          "highway": "bus_stop",
+          "name": "Givisiez, Mont Carmel",
+          "network": "frimobil",
+          "network:short": "TVF",
+          "network:wikidata": "Q2394200",
+          "network:wikipedia": "de:Tarifverbund Freiburg",
+          "operator": "TPF",
+          "public_transport": "stop_position",
+          "trolleybus": "yes",
+          "uic_name": "Givisiez, Mont Carmel",
+          "uic_ref": "8587238"
+        },
+        "coordinate": [
+          7.1369559,
+          46.811856
+        ]
+      },
+      {
+        "id": "2511160270",
+        "version": "4",
+        "timestamp": "2023-06-20T16:10:41Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:island": "no",
+          "crossing:markings": "zebra",
+          "crossing_ref": "zebra",
+          "highway": "crossing",
+          "kerb": "yes",
+          "tactile_paving": "no"
+        },
+        "coordinate": [
+          7.1367967,
+          46.8118067
+        ]
+      },
+      {
+        "id": "2511160271",
+        "version": "3",
+        "timestamp": "2023-06-20T16:10:41Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:island": "no",
+          "crossing:markings": "zebra",
+          "crossing_ref": "zebra",
+          "highway": "crossing",
+          "kerb": "yes",
+          "tactile_paving": "no"
+        },
+        "coordinate": [
+          7.1368407,
+          46.8118858
+        ]
+      },
+      {
+        "id": "8529503895",
+        "version": "1",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {},
+        "coordinate": [
+          7.1363706,
+          46.8119355
+        ]
+      }
+    ],
+    "restrictions": [
+      {
+        "id": "6896102",
+        "version": "2",
+        "timestamp": "2018-03-31T17:21:08Z",
+        "tags": {
+          "restriction": "no_left_turn",
+          "type": "restriction"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": "467473108",
+            "role": "from"
+          },
+          {
+            "type": "node",
+            "ref": "367994863",
+            "role": "via"
+          },
+          {
+            "type": "way",
+            "ref": "575084389",
+            "role": "to"
+          }
+        ]
+      },
+      {
+        "id": "7107080",
+        "version": "2",
+        "timestamp": "2022-12-07T21:09:00Z",
+        "tags": {
+          "restriction": "no_u_turn",
+          "type": "restriction"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": "55700621",
+            "role": "from"
+          },
+          {
+            "type": "node",
+            "ref": "384725092",
+            "role": "via"
+          },
+          {
+            "type": "way",
+            "ref": "1120205518",
+            "role": "to"
+          }
+        ]
+      },
+      {
+        "id": "7107081",
+        "version": "1",
+        "timestamp": "2017-03-25T13:51:24Z",
+        "tags": {
+          "restriction": "no_u_turn",
+          "type": "restriction"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": "55700625",
+            "role": "from"
+          },
+          {
+            "type": "node",
+            "ref": "192894481",
+            "role": "via"
+          },
+          {
+            "type": "way",
+            "ref": "55700626",
+            "role": "to"
+          }
+        ]
+      },
+      {
+        "id": "7107082",
+        "version": "2",
+        "timestamp": "2021-03-17T18:37:29Z",
+        "tags": {
+          "restriction": "no_u_turn",
+          "type": "restriction"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": "55700627",
+            "role": "from"
+          },
+          {
+            "type": "node",
+            "ref": "1267986892",
+            "role": "via"
+          },
+          {
+            "type": "way",
+            "ref": "55700632",
+            "role": "to"
+          }
+        ]
+      },
+      {
+        "id": "7319375",
+        "version": "1",
+        "timestamp": "2017-06-08T05:09:38Z",
+        "tags": {
+          "restriction": "no_u_turn",
+          "type": "restriction"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": "26591237",
+            "role": "from"
+          },
+          {
+            "type": "node",
+            "ref": "291617617",
+            "role": "via"
+          },
+          {
+            "type": "way",
+            "ref": "26591237",
+            "role": "to"
+          }
+        ]
+      },
+      {
+        "id": "7319376",
+        "version": "1",
+        "timestamp": "2017-06-08T05:09:38Z",
+        "tags": {
+          "restriction": "no_left_turn",
+          "type": "restriction"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": "26591237",
+            "role": "from"
+          },
+          {
+            "type": "node",
+            "ref": "291617617",
+            "role": "via"
+          },
+          {
+            "type": "way",
+            "ref": "122063104",
+            "role": "to"
+          }
+        ]
+      },
+      {
+        "id": "12458592",
+        "version": "1",
+        "timestamp": "2021-03-17T18:37:28Z",
+        "tags": {
+          "restriction": "no_left_turn",
+          "type": "restriction"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": "55700619",
+            "role": "from"
+          },
+          {
+            "type": "node",
+            "ref": "1267986892",
+            "role": "via"
+          },
+          {
+            "type": "way",
+            "ref": "918385034",
+            "role": "to"
+          }
+        ]
+      },
+      {
+        "id": "13844659",
+        "version": "2",
+        "timestamp": "2022-04-27T13:36:37Z",
+        "tags": {
+          "restriction": "no_left_turn",
+          "type": "restriction"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": "81292854",
+            "role": "from"
+          },
+          {
+            "type": "node",
+            "ref": "291617617",
+            "role": "via"
+          },
+          {
+            "type": "way",
+            "ref": "26591237",
+            "role": "to"
+          }
+        ]
+      },
+      {
+        "id": "13844660",
+        "version": "2",
+        "timestamp": "2022-04-27T13:36:37Z",
+        "tags": {
+          "restriction": "no_u_turn",
+          "type": "restriction"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": "81292854",
+            "role": "from"
+          },
+          {
+            "type": "node",
+            "ref": "291617617",
+            "role": "via"
+          },
+          {
+            "type": "way",
+            "ref": "81292854",
+            "role": "to"
+          }
+        ]
+      },
+      {
+        "id": "13844661",
+        "version": "1",
+        "timestamp": "2022-02-23T17:01:57Z",
+        "tags": {
+          "restriction": "no_u_turn",
+          "type": "restriction"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": "122063104",
+            "role": "from"
+          },
+          {
+            "type": "node",
+            "ref": "291617617",
+            "role": "via"
+          },
+          {
+            "type": "way",
+            "ref": "122063104",
+            "role": "to"
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "id": "1224330",
+        "version": "49",
+        "timestamp": "2025-02-04T15:39:22Z",
+        "tags": {
+          "colour": "#ffdd00",
+          "duration": "00:15",
+          "from": "Givisiez, Mont Carmel",
+          "gtfs:feed": "CH-Alle",
+          "gtfs:route_id": "92-3-A-j23-1",
+          "gtfs:trip_id:like": "%92-3-A-j23-1.2.H",
+          "gtfs:trip_id:sample": "182.TA.92-3-A-j23-1.2.H",
+          "name": "Bus 3: Givisiez, Mont Carmel → Fribourg, Charmettes",
+          "nat_ref": "20.003",
+          "network": "Frimobil",
+          "operator": "TPF Auto",
+          "public_transport:version": "2",
+          "ref": "3",
+          "ref_trips": "182.TA.92-3-A-j23-1.2.H",
+          "route": "trolleybus",
+          "state": "alternate",
+          "to": "Fribourg, Charmettes",
+          "type": "route"
+        },
+        "members": [
+          {
+            "type": "node",
+            "ref": "947021971",
+            "role": "stop_entry_only"
+          },
+          {
+            "type": "way",
+            "ref": "931454936",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "302702052",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1095950867",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "947021969",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097089489",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "947021977",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097089491",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "608590269",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097089494",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099956",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564111",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099966",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564114",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099954",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564116",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099952",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "296099950",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089740889",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "947021937",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "713093982",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8635737704",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089740885",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "983851094",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089740883",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8635737705",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089522418",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "297104843",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089522414",
+            "role": "platform"
+          },
+          {
+            "type": "way",
+            "ref": "55700627",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "55700619",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "111262304",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "127212030",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "127212031",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "467473108",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "243742450",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "41213085",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "111255334",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "180767897",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1097089496",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1034558057",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1034558056",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1034558061",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1171321517",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "180767901",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416922",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "203541956",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "203541957",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "122865770",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "66211529",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1170950466",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "18455799",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416936",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "235107280",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317697",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317698",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "120851106",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416955",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "120851108",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317701",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27792576",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27020600",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "17646050",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "17645381",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "17645496",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1184617659",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1356709094",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1124987700",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1126730297",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "184762429",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "931454892",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27020014",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "799059200",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "713142602",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "52072574",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1272845070",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "156337920",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "392972695",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416858",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26605435",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "321884735",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "994029710",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "366830124",
+            "role": ""
+          }
+        ]
+      },
+      {
+        "id": "2464722",
+        "version": "50",
+        "timestamp": "2025-09-21T15:44:01Z",
+        "tags": {
+          "colour": "#ffdd00",
+          "duration": "00:17",
+          "from": "Fribourg, Charmettes",
+          "gtfs:feed": "CH-Alle",
+          "gtfs:route_id": "92-3-A-j23-1",
+          "gtfs:trip_id:like": "%92-3-A-j23-1.4.R",
+          "gtfs:trip_id:sample": "471.TA.92-3-A-j23-1.4.R",
+          "name": "Bus 3: Fribourg, Charmettes → Givisiez, Mont Carmel",
+          "nat_ref": "20.003",
+          "network": "Frimobil",
+          "operator": "TPF Auto",
+          "public_transport:version": "2",
+          "ref": "3",
+          "ref_trips": "471.TA.92-3-A-j23-1.4.R",
+          "route": "trolleybus",
+          "state": "alternate",
+          "to": "Givisiez, Mont Carmel",
+          "type": "route"
+        },
+        "members": [
+          {
+            "type": "node",
+            "ref": "290085400",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089522410",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "297104842",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089522417",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8635719598",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089740882",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "983849650",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089740884",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099947",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "713093981",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099949",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089740888",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099951",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089740891",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099953",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564115",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "4728289817",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "296099955",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564109",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "947021946",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097089492",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "10045754661",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097089490",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "302700966",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1095950868",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "947021993",
+            "role": "stop_exit_only"
+          },
+          {
+            "type": "way",
+            "ref": "931454935",
+            "role": "platform"
+          },
+          {
+            "type": "way",
+            "ref": "1089740892",
+            "role": "platform"
+          },
+          {
+            "type": "way",
+            "ref": "1097564113",
+            "role": "platform"
+          },
+          {
+            "type": "way",
+            "ref": "994029710",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "321884735",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26605435",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416858",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "392972695",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "156337920",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1272845070",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "52072574",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "713142602",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "799059200",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27020014",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "931454892",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "184762429",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1184617658",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1184614059",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "17645381",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "17646050",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27020600",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27792576",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317701",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "120851108",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416955",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "120851106",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317698",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317697",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "235107280",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416936",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "18455799",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1170950466",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "66211529",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "122865770",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "203541957",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "203541956",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416922",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "180767898",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1034558059",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "25122544",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1034558058",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1097089495",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "180767897",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "111255334",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "41213085",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "931454911",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1431714531",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "931454910",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "467473108",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "127212031",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "127212030",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "111262304",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "55700619",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "55700632",
+            "role": ""
+          }
+        ]
+      },
+      {
+        "id": "12589724",
+        "version": "27",
+        "timestamp": "2025-02-04T15:39:22Z",
+        "tags": {
+          "colour": "#ffdd00",
+          "duration": "00:11",
+          "from": "Givisiez, Mont Carmel",
+          "gtfs:feed": "CH-Alle",
+          "gtfs:route_id": "92-3-A-j23-1",
+          "gtfs:trip_id:like": "%92-3-A-j23-1.1.H",
+          "gtfs:trip_id:sample": "1.TA.92-3-A-j23-1.1.H",
+          "name": "Bus 3: Givisiez, Mont Carmel → Fribourg, Place de la Gare",
+          "nat_ref": "20.003",
+          "network": "Frimobil",
+          "operator": "TPF Auto",
+          "public_transport:version": "2",
+          "ref": "3",
+          "ref_trips": "1.TA.92-3-A-j23-1.1.H",
+          "route": "trolleybus",
+          "to": "Fribourg, Place de la Gare",
+          "type": "route"
+        },
+        "members": [
+          {
+            "type": "node",
+            "ref": "947021971",
+            "role": "stop_entry_only"
+          },
+          {
+            "type": "way",
+            "ref": "931454936",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "302702052",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1095950867",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "947021969",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097089489",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "947021977",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097089491",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "608590269",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097089494",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099956",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564111",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099966",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564114",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099954",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564116",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099952",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089740891",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099950",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "947021937",
+            "role": "stop_exit_only"
+          },
+          {
+            "type": "way",
+            "ref": "713093982",
+            "role": "platform"
+          },
+          {
+            "type": "way",
+            "ref": "1089740889",
+            "role": "platform"
+          },
+          {
+            "type": "way",
+            "ref": "55700627",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "55700619",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "111262304",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "127212030",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "127212031",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "467473108",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "243742450",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "41213085",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "111255334",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "180767897",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1097089496",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1034558057",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1034558056",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1034558061",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1171321517",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "180767901",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416922",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "203541956",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "203541957",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "122865770",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "66211529",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1170950466",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "18455799",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416936",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "235107280",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317697",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317698",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "120851106",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416955",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "120851108",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317701",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27792576",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27020600",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "17646050",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "17645381",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "17645496",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1184617659",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1356709094",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1124987700",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1126730297",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "184762429",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "931454892",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27020014",
+            "role": ""
+          }
+        ]
+      },
+      {
+        "id": "12589725",
+        "version": "23",
+        "timestamp": "2025-09-21T15:44:01Z",
+        "tags": {
+          "colour": "#ffdd00",
+          "duration": "00:12",
+          "from": "Fribourg, Place de la Gare",
+          "gtfs:feed": "CH-Alle",
+          "gtfs:route_id": "92-3-A-j23-1",
+          "gtfs:trip_id:like": "%92-3-A-j23-1.3.R",
+          "gtfs:trip_id:sample": "290.TA.92-3-A-j23-1.3.R",
+          "name": "Bus 3: Fribourg, Place de la Gare → Givisiez, Mont Carmel",
+          "nat_ref": "20.003",
+          "network": "Frimobil",
+          "operator": "TPF Auto",
+          "public_transport:version": "2",
+          "ref": "3",
+          "ref_trips": "290.TA.92-3-A-j23-1.3.R",
+          "route": "trolleybus",
+          "to": "Givisiez, Mont Carmel",
+          "type": "route"
+        },
+        "members": [
+          {
+            "type": "node",
+            "ref": "296099947",
+            "role": "stop_entry_only"
+          },
+          {
+            "type": "way",
+            "ref": "713093981",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099949",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089740888",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099951",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1089740892",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099953",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564115",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "4728289817",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564113",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "296099955",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097564109",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "947021946",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097089492",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "10045754661",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1097089490",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "302700966",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "1095950868",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "947021993",
+            "role": "stop_exit_only"
+          },
+          {
+            "type": "way",
+            "ref": "931454935",
+            "role": "platform"
+          },
+          {
+            "type": "way",
+            "ref": "931454892",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "184762429",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1184617658",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1184614059",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "17645381",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "17646050",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27020600",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "27792576",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317701",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "120851108",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416955",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "120851106",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317698",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "965317697",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "235107280",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416936",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "18455799",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1170950466",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "66211529",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "122865770",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "203541957",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "203541956",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "128416922",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "180767898",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1034558059",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "25122544",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1034558058",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1097089495",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "180767897",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "111255334",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "41213085",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "931454911",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1431714531",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "931454910",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "467473108",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "127212031",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "127212030",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "111262304",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "55700619",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "55700632",
+            "role": ""
+          }
+        ]
+      }
+    ],
+    "xmlBounds": {
+      "minlat": "46.8080000",
+      "minlon": "7.1320000",
+      "maxlat": "46.8150000",
+      "maxlon": "7.1410000"
+    },
+    "scope": "Three reviewed road ways and their complete nodes; all restrictions returned by the bbox API; four route-3 relations are stop-identity evidence only, with stale j23 GTFS tags."
+  }
+}

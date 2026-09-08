@@ -6,6 +6,7 @@ import { gunzipSync } from 'node:zlib'
 import { prepareRoadFeed, roadPatternId } from './prepare-postbus-road-feed.mjs'
 import { importLuzernRoads, roadConsensus, verifyLuzernRoadEvidence, LUZERN_ROAD_SOURCE } from './luzern-road-geometry.mjs'
 import { hashFile } from './fribourg-timetable.mjs'
+import { loadMontCarmel } from './fribourg-mont-carmel.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 export const FRIBOURG_ROAD_LIMITS = { detourRatio: 3, detourFloorMetres: 600 }
@@ -66,7 +67,9 @@ export async function loadFribourgRoads(timetable, policy, { verifyEvidence = fa
   }
   if (verifyEvidence) await verifyLuzernRoadEvidence(cache)
   assert.deepEqual(policy.limits, FRIBOURG_ROAD_LIMITS)
-  return { candidates: roadConsensus(cache, policy.limits), metadata: cache.metadata, policy,
+  const baseline = roadConsensus(cache, policy.limits)
+  const review = policy.montCarmel ? await loadMontCarmel(cache, baseline, policy.montCarmel) : undefined
+  return { candidates: review?.candidates ?? baseline, ...(review ? { montCarmel: review.audit } : {}), metadata: cache.metadata, policy,
     inventory: Object.entries(cache.agencies).flatMap(([agencyId, agency]) => Object.entries(agency.identities).map(([id, identity]) => ({ id, agencyId, ...identity }))),
     patterns: Object.values(cache.agencies).reduce((n, a) => n + Object.keys(a.identities).length, 0) }
 }
@@ -97,6 +100,7 @@ export function applyFribourgRoads(result, routes, roads) {
     pattern.pathSegments = pattern.stopIds.slice(1).map((to, i) => pairs.get(JSON.stringify([pattern.routeId, pattern.stopIds[i], to])).pathIndex)
     pattern.matchedSegments = pattern.pathSegments.filter(i => i !== null).length
     pattern.roadSegments = pattern.stopIds.slice(1).filter((to, i) => pairs.get(JSON.stringify([pattern.routeId, pattern.stopIds[i], to])).geometrySource === 'osm-road-inference').length
+    pattern.roadReviewKinds = [...new Set(pattern.stopIds.slice(1).map((to, i) => pairs.get(JSON.stringify([pattern.routeId, pattern.stopIds[i], to])).roadFallback?.roadReview?.kind).filter(Boolean))].sort()
     pattern.admittedTrips = 0; pattern.decisions = {}
   }
   for (const pair of pairs.values()) pair.admittedOccurrences = 0
@@ -110,6 +114,7 @@ export function applyFribourgRoads(result, routes, roads) {
           : pattern.matchedSegments === pattern.segmentCount ? 'admitted' : 'incomplete-directed-pattern'
       train.geometrySource = 'cantonal-lines-with-osm-road-inference'
       train.roadSegmentCount = pattern.roadSegments
+      if (pattern.roadReviewKinds.length) train.roadReviewKinds = pattern.roadReviewKinds
     }
     if (roads.policy.excludedRouteIds.includes(train.routeId)) train.admission = 'provisional-boundary-membership'
     if (route.mode === 'bus' && route.type === 715) train.admission = 'demand-responsive-route-type'

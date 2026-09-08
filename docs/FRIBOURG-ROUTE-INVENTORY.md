@@ -94,7 +94,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 834 | 339 | 92-339-j26-1 | bus | La Sarine | 63 | 39/39; 8/8 | 13/13; 2/2 | All dated trips admitted |
 | 834 | 340 | 92-340-A-j26-1 | bus | La Sarine | 64 | 24/24; 4/4 | 12/12; 2/2 | All dated trips admitted |
 | 834 | 361 | 92-361-A-j26-1 | bus | La Sarine | — | 0/3; 0/2 | 0/3; 0/2 | Excluded |
-| 834 | 3 | 92-3-A-j26-1 | bus | La Sarine | 17 | 73/147; 2/4 | 71/143; 1/2 | Partially admitted |
+| 834 | 3 | 92-3-A-j26-1 | bus | La Sarine | 17 | 147/147; 4/4 | 143/143; 2/2 | All dated trips admitted |
 | 834 | 454 | 92-454-j26-1 | bus | La Glâne, La Gruyère | 68 | 16/33; 3/6 | 18/28; 3/4 | Partially admitted |
 | 834 | 455 | 92-455-j26-1 | bus | La Glâne, La Veveyse | 69 | 34/34; 10/10 | 10/10; 2/2 | All dated trips admitted |
 | 834 | 470 | 92-470-j26-1 | bus | La Glâne, La Sarine | 72 | 32/34; 10/12 | 12/12; 2/2 | Partially admitted |

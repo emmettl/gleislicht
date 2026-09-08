@@ -3,11 +3,14 @@ import { writeFile } from 'node:fs/promises'
 import { hashFile } from './inventory-aargau.mjs'
 import { readJson } from './aargau-seasonal.mjs'
 const root = 'data/aargau-witnesses'
-const inventory = await readJson(`${root}/inventory.json`), geometry = await readJson(`${root}/geometry-summary.json`), verification = await readJson(`${root}/source-verification.json`)
+const inventory = await readJson(`${root}/inventory.json`), geometry = await readJson(`${root}/rail-review-summary.json`), verification = await readJson(`${root}/source-verification.json`)
 assert.equal(geometry.inventorySha256, await hashFile(`${root}/inventory.json`))
 assert.equal(geometry.sourceVerificationSha256, await hashFile(`${root}/source-verification.json`))
 assert.equal(geometry.geometryPatternsSha256, await hashFile(`${root}/${geometry.geometryPatternsFile}`))
 assert(verification.passed)
+assert.equal(geometry.policySha256, await hashFile('data/aargau-witness-rail-policy.json'))
+assert.equal(geometry.originalGeometrySummarySha256, await hashFile(`${root}/geometry-summary.json`))
+assert.equal(geometry.originalGeometryPatternsSha256, await hashFile(`${root}/geometry-patterns.json.gz`))
 const fmt = n => n.toLocaleString('en-US')
 const table = (headers, rows) => `| ${headers.join(' | ')} |\n| ${headers.map(() => '---').join(' | ')} |\n${rows.map(row => `| ${row.join(' | ')} |`).join('\n')}`
 const byRoute = new Map(geometry.routes.map(r => [r.routeId,r]))
@@ -37,7 +40,7 @@ ${table(['Civil date', 'Weekday', 'New route witnesses'], inventory.selectedDate
 
 ## Every previously unsampled route
 
-Compatibility below counts each archived trip template once, across all its complete adjacent calls. It is a separate geometric diagnostic, not the journey total for the selected witness date.
+Compatibility below counts each archived trip template once, across all its complete adjacent calls. It uses the separate rail-review candidate and is not the journey total for the selected witness date.
 
 ${table(['Route record', 'Operator / line', 'Active civil dates', 'Witness civil date / source course', 'Compatible / all template segments'], inventory.routes.map(r => { const g=byRoute.get(r.routeId); return [r.routeId,r.operator+' / '+r.line,r.activeCivilDates.length,r.witnessDate+' / '+r.witness.shortName,fmt(g.compatibleOccurrences)+' / '+fmt(g.segmentOccurrences)] }))}
 
@@ -47,11 +50,23 @@ ${table(['Route record', 'Witness civil date', 'Source service date', 'Source co
 
 ## Geometry still requiring evidence
 
-The existing pinned sources are compatible with **${fmt(geometry.compatibleOccurrences)} of ${fmt(geometry.segmentOccurrences)} template segment occurrences**. **${geometry.fullyCompatiblePatterns} of ${geometry.directedPatterns} directed patterns** have complete geometry; **${fmt(geometry.missingOccurrences)} occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [geometry audit](../data/aargau-witnesses/geometry-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [pattern detail](../data/aargau-witnesses/geometry-patterns.json.gz) retains admitted paths and source evidence.
+The separately scoped rail-review candidate is compatible with **${fmt(geometry.compatibleOccurrences)} of ${fmt(geometry.segmentOccurrences)} template segment occurrences**. **${geometry.fullyCompatiblePatterns} of ${geometry.directedPatterns} directed patterns** have complete geometry; **${fmt(geometry.missingOccurrences)} occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [rail-review audit](../data/aargau-witnesses/rail-review-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [reviewed pattern detail](../data/aargau-witnesses/rail-review-patterns.json.gz) retains admitted paths and source evidence.
 
 ${table(['Mode', 'Routes', 'Trip templates', 'Directed patterns', 'Compatible occurrences', 'Unresolved occurrences'],byMode)}
 
-This probe uses AGIS normal lines, accepted full-pattern OSM bus caches and existing reviewed FOT route identities. It admits no new route alias or geometry exception. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence; rail records outside the existing FOT policy need an exact route and infrastructure review.
+The [original witness baseline](../data/aargau-witnesses/geometry-summary.json) remains unchanged at 12 compatible occurrences and no complete patterns. The [new finite rail policy](../data/aargau-witness-rail-policy.json) reviews **29 exact route records, 194 directed patterns and 635 archived rail trip templates**, adding **3,616 occurrences** and preserving all **12** prior paths. It supplies geometry on **28 route records**; **24 rail routes** now have complete template geometry. All bus assessments are unchanged.
+
+The policy pins the archive-derived SBB (11), THURBO (65), SOB (82) and Oensingen-Balsthal-Bahn (68) identities, full platform-coordinate chains, source trip/course identities, calls, boarding rules and complete active service-date lists. Every template is checked before the shared pattern cache is used. Each inferred path and its directed FOT segment sequence are hashed and checked on replay. Station attachment remains at **350 m**, source topology attachment at **120 m**, with the existing **4.5× detour bound / 3,000 m allowance** and **5 m source simplification**. Another scheduled operating point cannot be traversed out of order. Accepted geometry is an infrastructure inference, not a certification of the special train's actual corridor, track or diversion.
+
+The **173 unresolved rail occurrences** are explicit exclusions:
+
+- **6 Waldshut–Koblenz occurrences**, SBB route 91-36-B-j26-1: foreign operating-point 8014474 has no exact FOT identity. Existing THURBO border rules do not transfer to this route identity or its dates.
+- **5 Bern platform 49 occurrences**, routes 91-3A-Y-j26-1 and 91-4U-Y-j26-1: the source platform is **427.8 m** from the FOT station point, beyond the unchanged 350 m limit. The earlier date-scoped Bern platform fixes are not inherited.
+- **162 Interlaken occurrences**, IC81 route 91-81-A-j26-1 (160) and EXT route 91-4T-Y-j26-1 (2): the bounded FOT graph remains disconnected toward Interlaken Ost. No coordinate-based topology repair or larger attachment limit is introduced.
+
+The **86 bus patterns on 16 routes** still have **7,187 unresolved template occurrences**. Dated operator and road evidence remains necessary for their replacement and special workings. Together with the rail exclusions, **152 patterns** remain incomplete.
+
+This candidate uses the existing AGIS and OSM baseline plus the new exact-template FOT policy. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence; the three remaining rail failure groups need scoped source evidence before filling their gaps.
 
 Source geometry keeps its existing dates and limitations: **AGIS 23 April 2026**, normal timetable only; FOT catalogue **6 July 2021**, asset update **18 January 2025**, current validity unconfirmed; OSM snapshots and routing evidence remain pinned by the referenced cache/source hashes. Required attribution remains **Timetable: opentransportdata.swiss**, **Daten des Kantons Aargau**, **© swisstopo**, **© OpenStreetMap contributors; ODbL-1.0**, and the original FOT attribution recorded in the machine audit.
 
@@ -63,12 +78,15 @@ The original Friday/Sunday feeds and the twelve-date seasonal geometry results a
 python3 scripts/inventory-aargau-witnesses.py /path/GTFS_FP2026_20260902.zip
 node scripts/verify-aargau-witnesses.mjs /path/GTFS_FP2026_20260902.zip
 node scripts/audit-aargau-witnesses.mjs
+node scripts/prepare-aargau-witness-rail.mjs
+node scripts/review-aargau-witness-rail.mjs
 node scripts/document-aargau-witnesses.mjs
 python3 scripts/aargau-witnesses.test.py
+npx vitest run scripts/aargau-witness-rail.test.mjs scripts/aargau-rail-geometry.test.mjs
 # Append --check to each inventory, verification, audit or documentation command to replay without rewriting.
 \`\`\`
 `
 const file='docs/AARGAU-ANNUAL-WITNESSES.md'
 if(process.argv.includes('--check')) { const { readFile } = await import('node:fs/promises'); assert.equal(await readFile(file,'utf8'),doc) }
 else await writeFile(file,doc)
-console.log(`Documented ${inventory.witnessedRoutes} annual witnesses and ${geometry.directedPatterns} complete directed patterns`)
+console.log(`Documented ${inventory.witnessedRoutes} annual witnesses and ${geometry.directedPatterns} directed patterns (${geometry.fullyCompatiblePatterns} with complete geometry)`)

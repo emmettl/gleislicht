@@ -21,6 +21,8 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
   const decodedBytes = await readFile(join(sources, 'decoded.json.gz')), decoded = JSON.parse(gunzipSync(decodedBytes))
   const crosswalk = await json('data/fribourg-policy.json')
   const roads = await loadFribourgRoads(undefined, crosswalk.roads, { verifyEvidence: true })
+  assert.equal(summary.sourceHashes.montCarmel, crosswalk.roads.montCarmel.sha256)
+  assert.deepEqual(await json(join(audit, 'mont-carmel.json')), roads.montCarmel)
   const rail = await loadFribourgRail(undefined, crosswalk.rail)
   assert.equal(summary.sourceHashes.avry, crosswalk.rail.avry.sha256)
   assert.deepEqual(await json(join(audit, 'avry.json')), rail.avry)
@@ -129,6 +131,8 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
           assert.equal(p.roadSnapLimitMetres, 120)
           assert.equal(p.pathMetres, road.lengthMetres)
           assert.deepEqual(p.roadFallback.roadPatternIds, road.roadPatternIds)
+          const { path: _path, ...assessment } = road
+          assert.deepEqual(p.roadFallback, assessment)
         } else if (p.geometrySource === 'fot-rail-inference') {
           const candidate = rail.pairs.get(JSON.stringify([p.routeId, p.fromId, p.toId]))
           assert(candidate?.path && p.officialFailure?.reason)
@@ -186,6 +190,7 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
       assert(pattern?.admittedTrips && pattern.matchedMask.every(Boolean))
       assert.deepEqual(train.stops.map(([i]) => snapshot.stops[i][4]), pattern.stopIds)
       assert.equal(train.roadSegmentCount ?? 0, pattern.roadSegments)
+      assert.deepEqual(train.roadReviewKinds ?? [], pattern.roadReviewKinds ?? [])
       assert.equal(train.railSegmentCount ?? 0, pattern.railSegments ?? 0)
       assert.deepEqual(train.railReviewKinds ?? [], pattern.railReviewKinds ?? [])
       for (let i = 1; i < train.stops.length; i++) {

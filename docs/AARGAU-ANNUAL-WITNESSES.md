@@ -38,39 +38,39 @@ Dates are selected greedily by the number of still-unwitnessed routes they cover
 
 ## Every previously unsampled route
 
-Compatibility below counts each archived trip template once, across all its complete adjacent calls. It is a separate geometric diagnostic, not the journey total for the selected witness date.
+Compatibility below counts each archived trip template once, across all its complete adjacent calls. It uses the separate rail-review candidate and is not the journey total for the selected witness date.
 
 | Route record | Operator / line | Active civil dates | Witness civil date / source course | Compatible / all template segments |
 | --- | --- | --- | --- | --- |
-| 91-1B-Y-j26-1 | Schweizerische Bundesbahnen SBB / IC | 7 | 2026-03-01 / 1582 | 0 / 25 |
-| 91-21-D-j26-1 | Schweizerische Bundesbahnen SBB / IC21 | 4 | 2026-08-09 / 696 | 12 / 24 |
-| 91-22-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 3 | 2026-08-09 / 31410 | 0 / 19 |
-| 91-27-D-j26-1 | THURBO / S27 | 4 | 2026-04-13 / 7774 | 0 / 18 |
+| 91-1B-Y-j26-1 | Schweizerische Bundesbahnen SBB / IC | 7 | 2026-03-01 / 1582 | 25 / 25 |
+| 91-21-D-j26-1 | Schweizerische Bundesbahnen SBB / IC21 | 4 | 2026-08-09 / 696 | 24 / 24 |
+| 91-22-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 3 | 2026-08-09 / 31410 | 19 / 19 |
+| 91-27-D-j26-1 | THURBO / S27 | 4 | 2026-04-13 / 7774 | 18 / 18 |
 | 91-36-B-j26-1 | Schweizerische Bundesbahnen SBB / S36 | 4 | 2026-04-13 / 22891 | 0 / 6 |
-| 91-3A-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 21 | 2026-05-23 / 31392 | 0 / 93 |
-| 91-3T-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 2 | 2026-10-03 / 31499 | 0 / 14 |
-| 91-3V-Y-j26-1 | Schweizerische Bundesbahnen SBB / S | 12 | 2026-05-23 / 14559 | 0 / 1,334 |
-| 91-40-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 4 | 2026-08-09 / 31408 | 0 / 22 |
-| 91-42-F-j26-1 | Schweizerische Südostbahn (sob) / S42 | 3 | 2026-05-22 / 31157 | 0 / 54 |
-| 91-46-j26-1 | Schweizerische Südostbahn (sob) / IR46 | 2 | 2026-03-01 / 2413 | 0 / 40 |
-| 91-4C-Y-j26-1 | Schweizerische Bundesbahnen SBB / IR | 1 | 2026-08-08 / 30515 | 0 / 40 |
-| 91-4T-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 4 | 2026-06-14 / 31010 | 0 / 36 |
-| 91-4U-Y-j26-1 | Schweizerische Bundesbahnen SBB / IR | 4 | 2026-08-16 / 2382 | 0 / 26 |
-| 91-55-C-j26-1 | Schweizerische Bundesbahnen SBB / IR55 | 5 | 2026-05-22 / 1759 | 0 / 150 |
-| 91-5R-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-02-23 / 31300 | 0 / 11 |
-| 91-5V-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 2 | 2026-03-27 / 31376 | 0 / 5 |
-| 91-75-Y-j26-1 | Schweizerische Bundesbahnen SBB / S | 10 | 2026-05-22 / 30989 | 0 / 485 |
-| 91-7Q-Y-j26-1 | Schweizerische Bundesbahnen SBB / IC | 2 | 2026-03-08 / 31102 | 0 / 14 |
-| 91-81-A-j26-1 | Schweizerische Bundesbahnen SBB / IC81 | 17 | 2026-05-23 / 806 | 0 / 1,120 |
-| 91-8F-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-08-09 / 31414 | 0 / 7 |
-| 91-8U-Y-j26-1 | Oensingen-Balsthal-Bahn / EXT | 1 | 2026-04-18 / 31710 | 0 / 2 |
-| 91-98-Y-j26-1 | Schweizerische Bundesbahnen SBB / RE | 4 | 2026-06-16 / 31247 | 0 / 15 |
-| 91-9I-Y-j26-1 | Oensingen-Balsthal-Bahn / EXT | 1 | 2026-08-16 / 31048 | 0 / 86 |
-| 91-9N-Y-j26-1 | Schweizerische Bundesbahnen SBB / IC | 2 | 2026-10-10 / 10512 | 0 / 60 |
-| 91-9Z-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-02-12 / 31408 | 0 / 10 |
-| 91-AK-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 5 | 2026-02-12 / 31211 | 0 / 64 |
-| 91-BM-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-02-23 / 31202 | 0 / 11 |
-| 91-BO-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-02-23 / 31302 | 0 / 10 |
+| 91-3A-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 21 | 2026-05-23 / 31392 | 90 / 93 |
+| 91-3T-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 2 | 2026-10-03 / 31499 | 14 / 14 |
+| 91-3V-Y-j26-1 | Schweizerische Bundesbahnen SBB / S | 12 | 2026-05-23 / 14559 | 1,334 / 1,334 |
+| 91-40-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 4 | 2026-08-09 / 31408 | 22 / 22 |
+| 91-42-F-j26-1 | Schweizerische Südostbahn (sob) / S42 | 3 | 2026-05-22 / 31157 | 54 / 54 |
+| 91-46-j26-1 | Schweizerische Südostbahn (sob) / IR46 | 2 | 2026-03-01 / 2413 | 40 / 40 |
+| 91-4C-Y-j26-1 | Schweizerische Bundesbahnen SBB / IR | 1 | 2026-08-08 / 30515 | 40 / 40 |
+| 91-4T-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 4 | 2026-06-14 / 31010 | 34 / 36 |
+| 91-4U-Y-j26-1 | Schweizerische Bundesbahnen SBB / IR | 4 | 2026-08-16 / 2382 | 24 / 26 |
+| 91-55-C-j26-1 | Schweizerische Bundesbahnen SBB / IR55 | 5 | 2026-05-22 / 1759 | 150 / 150 |
+| 91-5R-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-02-23 / 31300 | 11 / 11 |
+| 91-5V-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 2 | 2026-03-27 / 31376 | 5 / 5 |
+| 91-75-Y-j26-1 | Schweizerische Bundesbahnen SBB / S | 10 | 2026-05-22 / 30989 | 485 / 485 |
+| 91-7Q-Y-j26-1 | Schweizerische Bundesbahnen SBB / IC | 2 | 2026-03-08 / 31102 | 14 / 14 |
+| 91-81-A-j26-1 | Schweizerische Bundesbahnen SBB / IC81 | 17 | 2026-05-23 / 806 | 960 / 1,120 |
+| 91-8F-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-08-09 / 31414 | 7 / 7 |
+| 91-8U-Y-j26-1 | Oensingen-Balsthal-Bahn / EXT | 1 | 2026-04-18 / 31710 | 2 / 2 |
+| 91-98-Y-j26-1 | Schweizerische Bundesbahnen SBB / RE | 4 | 2026-06-16 / 31247 | 15 / 15 |
+| 91-9I-Y-j26-1 | Oensingen-Balsthal-Bahn / EXT | 1 | 2026-08-16 / 31048 | 86 / 86 |
+| 91-9N-Y-j26-1 | Schweizerische Bundesbahnen SBB / IC | 2 | 2026-10-10 / 10512 | 60 / 60 |
+| 91-9Z-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-02-12 / 31408 | 10 / 10 |
+| 91-AK-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 5 | 2026-02-12 / 31211 | 64 / 64 |
+| 91-BM-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-02-23 / 31202 | 11 / 11 |
+| 91-BO-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-02-23 / 31302 | 10 / 10 |
 | 92-A01-N-j26-1 | SBB Infrastruktur AG Bahnersatz / EV4 | 12 | 2026-05-23 / 28142 | 0 / 130 |
 | 92-A01-Q-j26-1 | SBB Infrastruktur AG Bahnersatz / EV2 | 5 | 2026-09-14 / 80070 | 0 / 59 |
 | 92-A01-U-j26-1 | SBB Infrastruktur AG Bahnersatz / EV3 | 5 | 2026-09-14 / 80096 | 0 / 7 |
@@ -100,14 +100,26 @@ The following selected witnesses specifically use the preceding service calendar
 
 ## Geometry still requiring evidence
 
-The existing pinned sources are compatible with **12 of 10,988 template segment occurrences**. **0 of 280 directed patterns** have complete geometry; **10,976 occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [geometry audit](../data/aargau-witnesses/geometry-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [pattern detail](../data/aargau-witnesses/geometry-patterns.json.gz) retains admitted paths and source evidence.
+The separately scoped rail-review candidate is compatible with **3,628 of 10,988 template segment occurrences**. **128 of 280 directed patterns** have complete geometry; **7,360 occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [rail-review audit](../data/aargau-witnesses/rail-review-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [reviewed pattern detail](../data/aargau-witnesses/rail-review-patterns.json.gz) retains admitted paths and source evidence.
 
 | Mode | Routes | Trip templates | Directed patterns | Compatible occurrences | Unresolved occurrences |
 | --- | --- | --- | --- | --- | --- |
-| rail | 29 | 635 | 194 | 12 | 3,789 |
+| rail | 29 | 635 | 194 | 3,628 | 173 |
 | bus | 16 | 1,384 | 86 | 0 | 7,187 |
 
-This probe uses AGIS normal lines, accepted full-pattern OSM bus caches and existing reviewed FOT route identities. It admits no new route alias or geometry exception. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence; rail records outside the existing FOT policy need an exact route and infrastructure review.
+The [original witness baseline](../data/aargau-witnesses/geometry-summary.json) remains unchanged at 12 compatible occurrences and no complete patterns. The [new finite rail policy](../data/aargau-witness-rail-policy.json) reviews **29 exact route records, 194 directed patterns and 635 archived rail trip templates**, adding **3,616 occurrences** and preserving all **12** prior paths. It supplies geometry on **28 route records**; **24 rail routes** now have complete template geometry. All bus assessments are unchanged.
+
+The policy pins the archive-derived SBB (11), THURBO (65), SOB (82) and Oensingen-Balsthal-Bahn (68) identities, full platform-coordinate chains, source trip/course identities, calls, boarding rules and complete active service-date lists. Every template is checked before the shared pattern cache is used. Each inferred path and its directed FOT segment sequence are hashed and checked on replay. Station attachment remains at **350 m**, source topology attachment at **120 m**, with the existing **4.5× detour bound / 3,000 m allowance** and **5 m source simplification**. Another scheduled operating point cannot be traversed out of order. Accepted geometry is an infrastructure inference, not a certification of the special train's actual corridor, track or diversion.
+
+The **173 unresolved rail occurrences** are explicit exclusions:
+
+- **6 Waldshut–Koblenz occurrences**, SBB route 91-36-B-j26-1: foreign operating-point 8014474 has no exact FOT identity. Existing THURBO border rules do not transfer to this route identity or its dates.
+- **5 Bern platform 49 occurrences**, routes 91-3A-Y-j26-1 and 91-4U-Y-j26-1: the source platform is **427.8 m** from the FOT station point, beyond the unchanged 350 m limit. The earlier date-scoped Bern platform fixes are not inherited.
+- **162 Interlaken occurrences**, IC81 route 91-81-A-j26-1 (160) and EXT route 91-4T-Y-j26-1 (2): the bounded FOT graph remains disconnected toward Interlaken Ost. No coordinate-based topology repair or larger attachment limit is introduced.
+
+The **86 bus patterns on 16 routes** still have **7,187 unresolved template occurrences**. Dated operator and road evidence remains necessary for their replacement and special workings. Together with the rail exclusions, **152 patterns** remain incomplete.
+
+This candidate uses the existing AGIS and OSM baseline plus the new exact-template FOT policy. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence; the three remaining rail failure groups need scoped source evidence before filling their gaps.
 
 Source geometry keeps its existing dates and limitations: **AGIS 23 April 2026**, normal timetable only; FOT catalogue **6 July 2021**, asset update **18 January 2025**, current validity unconfirmed; OSM snapshots and routing evidence remain pinned by the referenced cache/source hashes. Required attribution remains **Timetable: opentransportdata.swiss**, **Daten des Kantons Aargau**, **© swisstopo**, **© OpenStreetMap contributors; ODbL-1.0**, and the original FOT attribution recorded in the machine audit.
 
@@ -119,7 +131,10 @@ The original Friday/Sunday feeds and the twelve-date seasonal geometry results a
 python3 scripts/inventory-aargau-witnesses.py /path/GTFS_FP2026_20260902.zip
 node scripts/verify-aargau-witnesses.mjs /path/GTFS_FP2026_20260902.zip
 node scripts/audit-aargau-witnesses.mjs
+node scripts/prepare-aargau-witness-rail.mjs
+node scripts/review-aargau-witness-rail.mjs
 node scripts/document-aargau-witnesses.mjs
 python3 scripts/aargau-witnesses.test.py
+npx vitest run scripts/aargau-witness-rail.test.mjs scripts/aargau-rail-geometry.test.mjs
 # Append --check to each inventory, verification, audit or documentation command to replay without rewriting.
 ```

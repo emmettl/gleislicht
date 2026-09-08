@@ -51,4 +51,31 @@ The production build passes its opening-page limits at **358.1 KiB JavaScript**,
 
 Twenty-two focused tests pass for exact timetable calls, journey admission, source-pinned geometry, edition registration and discovery. Desktop Chromium and iPhone WebKit pass both Rochers journey/retry scenarios, both Pilatus terrain regressions, both cantonal-road scenarios and deferred national-road search. Production screenshots were reviewed: the map uses a closer initial framing, desktop stops scroll within the card, and phone controls can collapse while the current stop and train remain visible. Build/type checks, targeted lint and architecture checks pass; the shared App retains existing React Compiler/memoization warnings.
 
-Measured railway heights, tunnel/covered-section audits and outdoor terrain in both directions are the next scoped increment. Other operating dates and connecting funiculars remain separate.
+Measured outdoor terrain is described below. Other operating dates and connecting funiculars remain separate.
+
+
+## Optional measured outdoor terrain
+
+All **ten ascents and ten descents** are independently audited against a complete, pinned swissTLM3D 2026-02 railway extract. The original 16 source calls remain unchanged. The shorter 17 workings stay on the day map and do not receive a summit terrain journey.
+
+The FOT plan alignment is densified to at most 15 m between samples; heights are interpolated from nearby active narrow-gauge cogwheel axes in **EPSG:2056 / LN02**. All 20 summit trains produce the same **728 railway XYZ samples**, reversed for descents, with identical source feature and structure identities. The maximum horizontal offset is **11.78 m**. Mapped endpoint rail heights are **395.14 m at Montreux** and **1,967.94 m at Rochers-de-Naye**. These are heights at mapped railway endpoints, distinct from visitor or mountain-summit elevations. Every intermediate call, including the two-minute Caux dwell and downhill Glion dwell, retains its actual timetable.
+
+The bounded extract contains **197 railway features**; the matched route uses 75, with source years 2010, 2016, 2020 and 2023. The source archive and four shapefile members retain the hashes already pinned by the shared extraction script. The entire extract’s feature array is also pinned by SHA-256 `07bac208a6f7976f0a66bc3abc0c12a8e3cd628f5d94ee26903295ab7ffa0e49`. Removing a short tunnel axis cannot silently substitute an adjacent outdoor axis. Changed source extracts require renewed review.
+
+**Twelve conservative masks** cover tunnels, galleries and underpasses, including approach margins. They occupy **37.51% of mapped route length**; this is the masked fraction of the model, not a physical tunnel-length claim. The journey continues on the 2D map through these intervals and returns to terrain outdoors. Covered-section geometry is never drawn on top of the landscape. Both directions use independently verified trip IDs, railway XYZ and reversed mask positions.
+
+The surrounding **swissALTIRegio 28 May 2026** landscape is sampled from the native 10 m raster to approximately **42 m** (257 × 171 vertices). Horizontal and vertical scales are equal. The train marker is enlarged and follows interpolated timetable positions. The optional artifact is **69.2 KiB gzip**, under its 120 KiB limit, and loads only when requested. Direction changes, seeking, pause, replay, source evidence and request retry remain available. Missing downhill authorisation or invalid terrain data leaves the journey on the map.
+
+```sh
+python3 scripts/prepare-jungfrau-terrain-source.py \
+  --bounds 2559000 1141500 2565200 1144000 \
+  --output data/rochers-terrain-source.json
+node scripts/ingest-rochers-terrain.mjs
+npx vitest run scripts/rochers-terrain.test.ts scripts/rochers-terrain-geometry.test.mjs
+npx playwright test e2e/rochers-terrain.spec.ts --workers=1
+```
+
+Artifacts: `data/rochers-terrain-source.json`, `data/rochers-terrain-audit.json` and `public/data/rochers-ascent-terrain.json`. The audit retains network/source/raster hashes, both trip lists, station rail/ground comparisons, source feature IDs/years and every masked range. Landscape and railway XYZ: © swisstopo; plan alignment: Federal Office of Transport. Product references: [swissTLM3D](https://www.swisstopo.admin.ch/en/landscape-model-swisstlm3d) and [swissALTIRegio](https://www.swisstopo.admin.ch/en/height-model-swissaltiregio).
+
+
+The terrain increment passes 11 focused timetable, mapping and terrain tests, plus four terrain and four existing map/journey checks across desktop Chromium and iPhone WebKit. Failure retry, unlisted downhill trip IDs, station dwell, gallery/tunnel transitions with continuous playback, arrival pause, replay and map/terrain clock continuity are covered. Production screenshots were reviewed in both directions. The merged production opening remains within budget at **357.1 KiB JavaScript** and **763.6 KiB total gzip**; terrain is excluded until requested. Build/type checks, targeted lint and the edition-boundary check pass. Physical-device and published-site checks remain separate.

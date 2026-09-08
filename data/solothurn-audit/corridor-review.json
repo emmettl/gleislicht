@@ -231,23 +231,23 @@
       },
       "after": {
         "trips": 7156,
-        "admittedTrips": 7023,
+        "admittedTrips": 7024,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5945,
+        "admittedScheduledTrips": 5946,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97131,
+        "matchedScheduledSegmentOccurrences": 97132,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98209,
-        "admittedSegmentOccurrences": 93705,
+        "matchedSegmentOccurrences": 98210,
+        "admittedSegmentOccurrences": 93713,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4247,
+        "matchedDirectedPairs": 4248,
         "patterns": 921,
-        "completePatterns": 904,
-        "admittedPatterns": 904,
+        "completePatterns": 905,
+        "admittedPatterns": 905,
         "excludedTrips": {
-          "incomplete-directed-pattern": 133
+          "incomplete-directed-pattern": 132
         }
       },
       "lostAdmittedPatterns": [],
@@ -700,6 +700,40 @@
             "fot-reviewed-bern-eastern-terminal"
           ],
           "matchedSegments": 5,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "231c24ee3d97bc259085467f",
+          "routeId": "91-26-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S26",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:2215:0:1773",
+            "ch:1:sloid:2214:1:2",
+            "ch:1:sloid:2213:2:3",
+            "ch:1:sloid:2212:1:1",
+            "ch:1:sloid:2211:1:1",
+            "ch:1:sloid:2119:2:4",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:5:9"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "fot-sbb-reviewed-s26",
+            "solothurn-network"
+          ],
+          "matchedSegments": 8,
           "trips": 1,
           "admittedTrips": 1,
           "carryInTrips": 0,

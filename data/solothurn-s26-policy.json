@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "solothurn-s26-sbb-dk-dko",
+  "fotSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+  "sourceDirectory": "data/solothurn-sources/corridors/sbb",
+  "sourceSha256": "c67745131e337136b47da452650f57c1c0dcc9a16f54fc659e6a0227f6fad030",
+  "feature": [
+    540,
+    "DK",
+    "DKO",
+    45673.43,
+    46100
+  ],
+  "featureSha256": "df26b1c0286f917f20d02f87523b8c4545d6633a8d21296431114b8216d10eb2",
+  "originalSegment": {
+    "id": "ch14uvag00087837",
+    "start": "ch14uvag00089021",
+    "end": "ch14uvag00089022",
+    "length": 426.57032662591087,
+    "points": [
+      [
+        7.978716,
+        47.356458
+      ],
+      [
+        7.983591,
+        47.358392
+      ]
+    ],
+    "gauge": "mm1000",
+    "dataStand": "2021-07-06",
+    "validFrom": "2013-07-03",
+    "validUntil": null,
+    "infrastructureOperator": "SBB CFF FFS"
+  },
+  "nodes": [
+    {
+      "id": "ch14uvag00089021",
+      "number": "8502111",
+      "name": "Däniken SO",
+      "coordinate": [
+        7.978776,
+        47.356387
+      ]
+    },
+    {
+      "id": "ch14uvag00089022",
+      "number": "8502143",
+      "name": "Däniken Ost",
+      "coordinate": [
+        7.983524,
+        47.358475
+      ]
+    }
+  ],
+  "route": {
+    "routeId": "91-26-j26-1",
+    "agencyId": "11",
+    "line": "S26"
+  },
+  "from": [
+    8.05159989,
+    47.39104625,
+    "Aarau",
+    "5",
+    "ch:1:sloid:2113:3:5"
+  ],
+  "to": [
+    7.90805809,
+    47.3521954,
+    "Olten",
+    "9",
+    "ch:1:sloid:218:5:9"
+  ],
+  "limits": {
+    "stationAttachmentMetres": 350,
+    "topologyAttachmentMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 3000,
+    "simplificationMetres": 5
+  },
+  "method": "Only the exact SBB S26 Aarau platform 5 → Olten platform 9 pair may use a pattern-local standard-gauge FOT graph with the independently sourced, original 44-vertex SBB DK–DKO curve. Keep the metre-gauge FOT record unchanged and excluded. Match the entire ordered stop chain with all intermediate calls blocked against revisiting and require all twelve-date contexts to agree. Preserve prior successful geometry, original calls and all attachment/detour limits; no running-track or effective alignment certification."
+}

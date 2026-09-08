@@ -1889,24 +1889,22 @@
       {
         "date": "2026-09-04",
         "trips": 41,
-        "admittedTrips": 40,
+        "admittedTrips": 41,
         "scheduledTrips": 41,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 40,
+        "admittedScheduledTrips": 41,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 610,
-        "matchedScheduledSegmentOccurrences": 609,
+        "matchedScheduledSegmentOccurrences": 610,
         "segmentOccurrences": 610,
-        "matchedSegmentOccurrences": 609,
-        "admittedSegmentOccurrences": 602,
+        "matchedSegmentOccurrences": 610,
+        "admittedSegmentOccurrences": 610,
         "directedPairs": 54,
-        "matchedDirectedPairs": 53,
+        "matchedDirectedPairs": 54,
         "patterns": 11,
-        "completePatterns": 10,
-        "admittedPatterns": 10,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 1
-        }
+        "completePatterns": 11,
+        "admittedPatterns": 11,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -1929,7 +1927,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-27-A-j26-1",

@@ -11,6 +11,7 @@ const schilthorn = await json('data/bern-audit/schilthorn-followup.json')
 const rail = await json('data/bern-audit/rail-followup.json')
 const regionalRail = await json('data/bern-audit/regional-rail-followup.json')
 const crosscantonRail = await json('data/bern-audit/crosscanton-rail-followup.json')
+const ir66 = await json('data/bern-audit/ir66-followup.json')
 const days = await Promise.all(summary.days.map(d => json(`data/bern-audit/${d.serviceDate}.json`)))
 const n = value => value.toLocaleString('en-GB')
 const pct = (a, b) => `${(100 * a / b).toFixed(2)}%`
@@ -237,6 +238,26 @@ Three occasional route records now pass every dated journey. **TPF S20/S21 remai
 Accepted federal pairs attach original stops within **102.09 m**, and selected source topology attachments are below **51 m**. Full raw-pattern contexts must agree on the same directed source-segment sequence. All original GTFS coordinates, calls, times and permissions remain intact, including out-of-canton endpoints. Complete geometry is required before a whole journey enters the feed.
 
 This review reuses the retained federal XTF with catalogue date **6 July 2021**, asset update **18 January 2025**, and checksum recheck **8 September 2026**. It introduces no newer geometry or broader validity claim. **© Federal Office of Transport (FOT)**, source dates, original bytes, transformation details and terms link remain in the regional feed's combined provenance. The same **4.5× / 3,000 m** detour rule, 120 m topology guard and output precision apply. Current alignment/running tracks remain unconfirmed, and the seven seasonal audits are unchanged.
+
+## IR66: Bern terminal and Kerzers platform review
+
+The [IR66 audit](../data/bern-audit/ir66-followup.json) compares against release 199a542. It adds **40 Friday / 38 Sunday scheduled journeys**, completing **all 11 Friday / 13 Sunday directed patterns** of BLS route **91-66-A-j26-1**, agency **33**, with its existing OEVTP **223_IR** association. Both directions pass. Every one of the previously admitted **${n(ir66.dates[0].previousJourneysPreserved)} Friday / ${n(ir66.dates[1].previousJourneysPreserved)} Sunday journeys** retains its complete source fields, calls, times and full-detail paths. All previously matched pair assessments, other route exclusions, earlier source hashes and seven seasonal audits remain unchanged.
+
+The [separate policy](../data/bern-ir66-policy.json) pins **41 directed platform pairs** and their ordered segment identities. Two explicit reviews resolve the original failures:
+
+- **Kerzers:** the [BLS platform table](../data/bern-sources/ir66-platforms/bls-platforms-2026.pdf), state **28 May 2026**, valid from **6 June 2026**, identifies physical tracks **4/6** on the Bern–Neuchâtel line (page 1). Only their two original GTFS platform IDs use the federal node **8516192, Kerzers BLS**. The generic Kerzers node remains unchanged, and unreviewed platforms cannot inherit this crosswalk.
+- **Bern:** the [SBB station plan](../data/bern-sources/ir66-platforms/sbb-bern-plan-2026-08.pdf), **August 2026**, labels ordinary platforms and sections on page 1 and the western 49/50 platforms on pages 1/3. Nine exact original GTFS platform records are reviewed as terminal calls. Each may project within **75 m** onto the pinned BLS approach **ch14uvag00087196**. The pattern-local graph clips that original curve at the projection, removes the station-centre portion and every other connection at the local terminal, and retains the western approach. A Bern intermediate/repeated call, unknown platform, changed coordinate or unreviewed adjacent operating point is rejected.
+
+${table(['Original Bern platform', 'GTFS platform ID', 'Attachment to curve (m)', 'Station-centre curve trimmed (m)'], ir66.source.terminalEvidence.map(e => {
+  const stop = ir66.source.policy.terminal.stops.find(s => s[4] === e.stopId)
+  return [stop[3], e.stopId, e.projection.attachmentMetres.toFixed(2), e.projection.removedMetres.toFixed(2)]
+}))}
+
+These are **explicitly inferred terminal centrelines**, not surveyed running tracks or switches. The nine original GTFS records remain in place, including platform **12A–C**; original IDs, labels, coordinates, calls and permissions are never rewritten. The pinned policy bounds the source-curve trim to **50–450 m**; measured trims are **54.79–402.17 m** and projections **12.65–71.92 m**. This is a separately reviewed IR66 scope and does not broaden another route's platform policy.
+
+The eligible graph uses **34 original FOT segments**, with the Bern approach represented by **nine explicitly identified clipped variants**; the audit therefore lists **42 graph segment variants**, not 42 independent source records. Every complete input-pattern context must agree on the path before a missing pair can be filled. The original **120 m station / 120 m topology** and **4.5× / 3,000 m detour** guards remain in force. Maximum accepted station attachment is **88.99 m**, and source topology attachments are below **51 m**. The original XTF remains unchanged at zero-metre simplification tolerance; successful cantonal geometry remains authoritative.
+
+The federal source retains catalogue date **6 July 2021**, asset update **18 January 2025**, and checksum recheck **8 September 2026**; current alignment validity remains unconfirmed. Credit: **© Federal Office of Transport (FOT)**, **SBB / © OpenStreetMap** for the station plan, and **BLS Netz AG** for the platform table. Both original, hashed PDFs accompany the feed under [ir66-platforms](../public/data/bern-region/ir66-platforms/sbb-bern-plan-2026-08.pdf); their URLs, acquisition times, document dates and roles are in the combined [source provenance](../public/data/bern-region/sources.json). The display feed carries source dates, credits and the policy hash with a reference to the full evidence; the archival feed and audit retain every projection and source-segment binding. Both display fixtures still pass the existing payload budgets without changing any path or raising the 5 m display simplification tolerance.
 
 ## Winter and holiday fixtures
 
