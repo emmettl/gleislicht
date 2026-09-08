@@ -9,6 +9,7 @@ import { chunkNetworkSnapshot, extractNetworkWindow } from '@motionstudies/data/
 import { readBernTimetables } from './bern-timetable.mjs'
 import { applyBernGeometry, BERN_LIMITS } from './bern-line-geometry.mjs'
 import { loadBernUrban, applyBernUrban } from './bern-urban-geometry.mjs'
+import { loadBernRegionalRoads, applyBernRegionalRoads } from './bern-regional-roads.mjs'
 import { loadBernMountains, applyBernMountains } from './bern-mountain-geometry.mjs'
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -143,6 +144,10 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   }
   assert.deepEqual(timetable.snapshots.map(s => s.metadata.serviceDate), dates)
   const urban = await loadBernUrban(timetable)
+  const regionalRoads = await loadBernRegionalRoads(timetable)
+  hashes.regionalRoadCache = regionalRoads.metadata.cacheSha256
+  hashes.regionalRoadPolicy = regionalRoads.metadata.policySha256
+  provenance.regionalRoadSupplement = regionalRoads.metadata
   const mountain = await loadBernMountains()
   hashes.mountainPolicy = mountain.metadata.policySha256
   provenance.mountainSupplement = mountain.metadata
@@ -154,7 +159,8 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   let routeCrosswalk
   for (const raw of timetable.snapshots) {
     console.log(`Matching every directed Bern pattern for ${raw.metadata.serviceDate}…`)
-    const result = applyBernMountains(raw, applyBernUrban(raw, applyBernGeometry(raw, routes, source, crosswalk), source, urban), routes, mountain)
+    const base = applyBernUrban(raw, applyBernGeometry(raw, routes, source, crosswalk), source, urban)
+    const result = applyBernMountains(raw, applyBernRegionalRoads(raw, base, source, regionalRoads), routes, mountain)
     routeCrosswalk = result.routeCrosswalk
     const groups = []
     for (const key of [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort()) {
@@ -174,6 +180,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
       geometry: { ...source.metadata, transformation: 'swisstopo approximate CH1903+/WGS84 formula; original LV95 vertices, no simplification, seven-decimal output coordinates',
         crosswalkSupportingDocuments: crosswalk.supportingDocuments ?? [],
         urbanSupplement: urban.metadata,
+        regionalRoadSupplement: regionalRoads.metadata,
         mountainSupplement: mountain.metadata,
         limits: BERN_LIMITS, direction: 'Centreline inference from ordered calls. No road one-way or rail running-track certification. Only the explicitly scoped tram 6 station approach has dated diversion evidence; no realtime verification.',
         localMetadata: '../sources.json', localTerms: ['../terms_of_use_de.pdf', '../terms_of_use_fr.pdf'] },

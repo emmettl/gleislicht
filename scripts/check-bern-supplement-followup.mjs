@@ -7,6 +7,9 @@ import { loadBernUrban } from './bern-urban-geometry.mjs'
 import { loadBernMountains, matchBernMountain } from './bern-mountain-geometry.mjs'
 import { bernGraph, BERN_LIMITS } from './bern-line-geometry.mjs'
 import { matchBaselSegment } from './basel-line-geometry.mjs'
+// Keep this completed urban/mountain batch independently reproducible.
+const RELEASE = 'd8644411b83396e9430e3148638951a2ac2d4ca3'
+const released = path => execFileSync('git', ['show', `${RELEASE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
 const BASELINE = '0c129804feb831b8f8b72300e3bbc3137baf166a'
 const sha = b => createHash('sha256').update(b).digest('hex')
 const previous = path => execFileSync('git', ['show', `${BASELINE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
@@ -20,20 +23,20 @@ async function day(read, date) {
 }
 const canonical = (t, s) => { const { stops, pathSegments, ...rest } = t; return sha(JSON.stringify({ ...rest, stops: stops.map(([i, ...times]) => [s.stops[i], ...times]), paths: pathSegments.map(i => s.paths[i]) })) }
 const urban = await loadBernUrban(), mountain = await loadBernMountains()
-const routes = JSON.parse(await readFile('data/bern-audit/routes.json')), byRoute = new Map(routes.map(r => [r.id, r]))
+const routes = JSON.parse(released('data/bern-audit/routes.json')), byRoute = new Map(routes.map(r => [r.id, r]))
 const targetRoutes = [...urban.policy.roadRouteIds, '91-6-A-j26-1', ...mountain.policy.admittedRouteIds]
 const source = JSON.parse(gunzipSync(await readFile('data/bern-sources/decoded.json.gz')))
 const graph = bernGraph(source.lines.filter(f => f.properties.liniencode === '30_003'))
 const days = []
 for (const date of urban.policy.dates) {
-  const before = await day(previous, date), after = await day(readFile, date)
+  const before = await day(previous, date), after = await day(released, date)
   for (const [id, t] of before.trains) {
     assert(after.trains.has(id), `Lost previously admitted journey ${id}`)
     assert.equal(canonical(t, before.manifest), canonical(after.trains.get(id), after.manifest), `Changed previous movement ${id}`)
   }
   for (const key of ['archive', 'source', 'geometryArchive', 'crosswalk']) assert.equal(after.manifest.metadata.sourceHashes[key], before.manifest.metadata.sourceHashes[key])
   assert.deepEqual(after.manifest.metadata.geometry.limits, before.manifest.metadata.geometry.limits)
-  const report = JSON.parse(await readFile(`data/bern-audit/${date}.json`)), old = JSON.parse(previous(`data/bern-audit/${date}.json`))
+  const report = JSON.parse(released(`data/bern-audit/${date}.json`)), old = JSON.parse(previous(`data/bern-audit/${date}.json`))
   assert.deepEqual(report.directedPairs.filter(p => !targetRoutes.includes(p.routeId)), old.directedPairs.filter(p => !targetRoutes.includes(p.routeId)))
   const pairs = new Map(report.directedPairs.map(p => [JSON.stringify([p.routeId, p.fromId, p.toId]), p]))
   const checked = new Set()

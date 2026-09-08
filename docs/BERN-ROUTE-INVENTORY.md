@@ -69,19 +69,19 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 723 | Aargau Verkehr AG | 1 | 42 / 54 | 25 / 37 |
 | 796 | Service d'automobiles TRN (rvt Auto) | 1 | 0 / 0 | 0 / 3 |
 | 800 | Bergbahnen Adelboden-Lenk AG | 2 | 2,830 / 2,830 | 3,070 / 3,070 |
-| 801 | PostAuto AG | 122 | 2,619 / 3,574 | 1,751 / 2,404 |
+| 801 | PostAuto AG | 122 | 3,061 / 3,574 | 2,071 / 2,404 |
 | 813 | AFA Bus AG | 15 | 232 / 254 | 210 / 230 |
 | 822 | Busbetrieb BOB | 2 | 0 / 3 | 0 / 5 |
-| 827 | Städtische Verkehrsbetriebe Bern | 63 | 4,975 / 5,860 | 3,289 / 4,062 |
+| 827 | Städtische Verkehrsbetriebe Bern | 63 | 5,158 / 5,860 | 3,316 / 4,062 |
 | 833 | Automobiles CJ | 3 | 0 / 64 | 8 / 20 |
 | 834 | Service d'automobiles TPF | 9 | 43 / 78 | 19 / 32 |
 | 850 | Autobusbetrieb RBS | 22 | 1,433 / 1,591 | 687 / 796 |
 | 859 | STI Bus AG | 8 | 113 / 155 | 106 / 149 |
-| 870 | Automobildienste Aare Seeland mobil | 12 | 384 / 664 | 183 / 308 |
-| 871 | Busland AG | 20 | 747 / 917 | 340 / 383 |
+| 870 | Automobildienste Aare Seeland mobil | 12 | 530 / 664 | 254 / 308 |
+| 871 | Busland AG | 20 | 913 / 917 | 355 / 383 |
 | 883 | Busbetrieb Solothurn und Umgebung | 10 | 101 / 138 | 42 / 94 |
-| 889 | Verkehrsbetriebe Biel | 16 | 1,226 / 1,421 | 1,008 / 1,160 |
-| 894 | Busbetrieb Grenchen und Umgebung | 3 | 45 / 149 | 32 / 101 |
+| 889 | Verkehrsbetriebe Biel | 16 | 1,364 / 1,421 | 1,118 / 1,160 |
+| 894 | Busbetrieb Grenchen und Umgebung | 3 | 122 / 149 | 101 / 101 |
 | 3046 | Sesselbahn Riedli - Nüegg (Wiriehorn) | 1 | 930 / 930 | 930 / 930 |
 | 3070 | Sesselbahn Kiental-Ramslauenen | 1 | 0 / 0 | 960 / 960 |
 | 3085 | Genossenschaft Luftseilbahn Sulwald | 1 | 92 / 92 | 92 / 92 |
@@ -436,7 +436,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 96-129-9-j26-1 | 801: 99 | bus | excluded | 0 / 5 | 0 / 0 | — | — | no-verified-operator-line-crosswalk |
 | 96-129-B-j26-1 | 801: 99 | bus | excluded | 0 / 14 | 0 / 17 | — | — | no-verified-operator-line-crosswalk |
 | 96-700-j26-1 | 801: 100 | bus | partially-admitted | 60 / 63 | 37 / 37 | 30_100 | — | incomplete-directed-pattern |
-| 96-701-j26-1 | 801: 101 | bus | partially-admitted | 41 / 258 | 0 / 158 | 30_101, 31_101 | — | incomplete-directed-pattern |
+| 96-701-j26-1 | 801: 101 | bus | admitted-all-dated-trips | 258 / 258 | 158 / 158 | 30_101, 31_101 | bern-regional-osm-20260902 | — |
 | 96-920-j26-1 | 801: 101 | bus | admitted-all-dated-trips | 51 / 51 | 45 / 45 | 30_101, 31_101 | — | — |
 | 96-702-j26-1 | 801: 102 | bus | admitted-all-dated-trips | 68 / 68 | 36 / 36 | 30_102, 31_102 | — | — |
 | 96-926-j26-1 | 801: 102 | bus | partially-admitted | 62 / 67 | 51 / 56 | 30_102, 31_102 | — | incomplete-directed-pattern |
@@ -446,18 +446,18 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 96-703-j26-1 | 801: 104 | bus | admitted-all-dated-trips | 53 / 53 | 37 / 37 | 30_104, 31_104 | — | — |
 | 96-919-j26-1 | 801: 104 | bus | admitted-all-dated-trips | 53 / 53 | 45 / 45 | 30_104, 31_104 | — | — |
 | 96-709-j26-1 | 801: 105 | bus | partially-admitted | 19 / 40 | 1 / 37 | 30_105, 31_105 | — | incomplete-directed-pattern |
-| 96-925-j26-1 | 801: 105 | bus | partially-admitted | 3 / 66 | 2 / 60 | 30_105, 31_105 | — | incomplete-directed-pattern |
+| 96-925-j26-1 | 801: 105 | bus | admitted-all-dated-trips | 66 / 66 | 60 / 60 | 30_105, 31_105 | bern-regional-osm-20260902 | — |
 | 96-704-j26-1 | 801: 106 | bus | admitted-all-dated-trips | 68 / 68 | 38 / 38 | 30_106, 31_106 | — | — |
 | 96-929-j26-1 | 801: 106 | bus | admitted-all-dated-trips | 30 / 30 | 28 / 28 | 30_106, 31_106 | — | — |
-| 96-705-j26-1 | 801: 107 | bus | partially-admitted | 1 / 59 | 0 / 36 | 30_107 | — | incomplete-directed-pattern |
+| 96-705-j26-1 | 801: 107 | bus | partially-admitted | 55 / 59 | 36 / 36 | 30_107 | bern-regional-osm-20260902 | incomplete-directed-pattern |
 | 96-924-j26-1 | 801: 108 | bus | admitted-all-dated-trips | 49 / 49 | 48 / 48 | 31_108 | — | — |
 | 96-922-j26-1 | 801: 111 | bus | admitted-all-dated-trips | 10 / 10 | 8 / 8 | 31_111 | — | — |
-| 96-881-j26-1 | 801: 121 | bus | excluded | 0 / 59 | 0 / 20 | 20_121 | — | incomplete-directed-pattern |
+| 96-881-j26-1 | 801: 121 | bus | partially-admitted | 23 / 59 | 7 / 20 | 20_121 | bern-regional-osm-20260902 | incomplete-directed-pattern |
 | 96-144-9-j26-1 | 801: 129 | bus | admitted-all-dated-trips | 34 / 34 | 26 / 26 | 50_129 | — | — |
 | 96-875-j26-1 | 801: 130 | bus | admitted-all-dated-trips | 48 / 48 | 30 / 30 | 30_130 | — | — |
 | 96-737-j26-1 | 801: 131 | bus | admitted-all-dated-trips | 22 / 22 | 15 / 15 | 21_131, 30_131 | — | — |
 | 96-880-j26-1 | 801: 131 | bus | admitted-all-dated-trips | 39 / 39 | 14 / 14 | 21_131, 30_131 | — | — |
-| 96-738-j26-1 | 801: 132 | bus | partially-admitted | 1 / 41 | 0 / 24 | 21_132 | — | incomplete-directed-pattern |
+| 96-738-j26-1 | 801: 132 | bus | admitted-all-dated-trips | 41 / 41 | 24 / 24 | 21_132 | bern-regional-osm-20260902 | — |
 | 96-735-j26-1 | 801: 134 | bus | partially-admitted | 39 / 58 | 37 / 56 | 21_134 | — | incomplete-directed-pattern |
 | 96-739-j26-1 | 801: 135 | bus | admitted-all-dated-trips | 32 / 32 | 30 / 30 | 21_135 | — | — |
 | 96-923-j26-1 | 801: 141 | bus | admitted-all-dated-trips | 79 / 79 | 81 / 81 | 31_141 | — | — |
@@ -490,7 +490,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 96-750-j26-1 | 801: 321 | bus | partially-admitted | 32 / 39 | 16 / 22 | 30_321 | — | incomplete-directed-pattern |
 | 96-751-j26-1 | 801: 322 | bus | admitted-all-dated-trips | 22 / 22 | 0 / 0 | 30_322 | — | — |
 | 96-752-j26-1 | 801: 323 | bus | partially-admitted | 5 / 6 | 9 / 9 | 30_323 | — | incomplete-directed-pattern |
-| 96-706-j26-1 | 801: 340 | bus | partially-admitted | 9 / 54 | 0 / 37 | 30_340 | — | incomplete-directed-pattern |
+| 96-706-j26-1 | 801: 340 | bus | admitted-all-dated-trips | 54 / 54 | 37 / 37 | 30_340 | bern-regional-osm-20260902 | — |
 | 96-726-j26-1 | 801: 361 | bus | partially-admitted | 38 / 39 | 32 / 32 | 30_361 | — | incomplete-directed-pattern |
 | 96-725-j26-1 | 801: 365 | bus | partially-admitted | 31 / 35 | 17 / 21 | 30_365 | — | incomplete-directed-pattern |
 | 96-724-j26-1 | 801: 369 | bus | admitted-all-dated-trips | 14 / 14 | 0 / 0 | 30_369 | — | — |
@@ -579,12 +579,12 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 92-28-j26-1 | 827: 28 | bus | partially-admitted | 125 / 129 | 31 / 60 | 30_028 | — | incomplete-directed-pattern |
 | 92-29-j26-1 | 827: 29 | bus | admitted-all-dated-trips | 130 / 130 | 88 / 88 | 30_029 | — | — |
 | 92-30-C-j26-1 | 827: 30 | bus | admitted-all-dated-trips | 25 / 25 | 29 / 29 | 30_030 | — | — |
-| 92-31-B-j26-1 | 827: 31 | bus | partially-admitted | 21 / 111 | 0 / 0 | 30_031 | — | incomplete-directed-pattern |
+| 92-31-B-j26-1 | 827: 31 | bus | admitted-all-dated-trips | 111 / 111 | 0 / 0 | 30_031 | bern-regional-osm-20260902 | — |
 | 92-32-B-j26-1 | 827: 32 | bus | admitted-all-dated-trips | 75 / 75 | 65 / 65 | 30_032 | — | — |
 | 92-80-C-j26-1 | 827: 80 | bus | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 92-81-C-j26-1 | 827: 81 | bus | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 92-82-D-j26-1 | 827: 82 | bus | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
-| 92-160-j26-1 | 827: 160 | bus | partially-admitted | 109 / 152 | 75 / 102 | 30_160 | — | incomplete-directed-pattern |
+| 92-160-j26-1 | 827: 160 | bus | admitted-all-dated-trips | 152 / 152 | 102 / 102 | 30_160 | bern-regional-osm-20260902 | — |
 | 92-161-j26-1 | 827: 161 | bus | admitted-all-dated-trips | 30 / 30 | 22 / 22 | 30_161 | — | — |
 | 92-162-j26-1 | 827: 162 | bus | admitted-all-dated-trips | 88 / 88 | 22 / 22 | 30_162 | — | — |
 | 92-163-j26-1 | 827: 163 | bus | admitted-all-dated-trips | 116 / 116 | 64 / 64 | 30_163 | — | — |
@@ -593,7 +593,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 92-167-j26-1 | 827: 167 | bus | admitted-all-dated-trips | 20 / 20 | 0 / 0 | 30_167 | — | — |
 | 92-168-j26-1 | 827: 168 | bus | admitted-all-dated-trips | 15 / 15 | 0 / 0 | 30_168 | — | — |
 | 92-331-A-j26-1 | 827: 331 | bus | admitted-all-dated-trips | 50 / 50 | 0 / 0 | 30_331 | — | — |
-| 92-332-j26-1 | 827: 332 | bus | excluded | 0 / 50 | 0 / 0 | 30_332 | — | incomplete-directed-pattern |
+| 92-332-j26-1 | 827: 332 | bus | admitted-all-dated-trips | 50 / 50 | 0 / 0 | 30_332 | bern-regional-osm-20260902 | — |
 | 92-EXT-j26-1 | 827: EXT | bus | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 92-M15-A-j26-1 | 827: M15 | bus | admitted-all-dated-trips | 0 / 0 | 5 / 5 | 9315 | — | — |
 | 92-M18-j26-1 | 827: M18 | bus | excluded | 0 / 0 | 0 / 6 | 9318 | — | incomplete-directed-pattern |
@@ -663,19 +663,19 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 92-54-j26-1 | 870: 54 | bus | admitted-all-dated-trips | 37 / 37 | 26 / 26 | 40_054 | — | — |
 | 92-58-A-j26-1 | 870: 58 | bus | partially-admitted | 14 / 28 | 10 / 18 | 40_058 | — | incomplete-directed-pattern |
 | 92-63-j26-1 | 870: 63 | bus | admitted-all-dated-trips | 114 / 114 | 18 / 18 | 40_063 | — | — |
-| 92-64-B-j26-1 | 870: 64 | bus | partially-admitted | 1 / 56 | 9 / 28 | 40_064 | — | incomplete-directed-pattern |
+| 92-64-B-j26-1 | 870: 64 | bus | admitted-all-dated-trips | 56 / 56 | 28 / 28 | 40_064 | bern-regional-osm-20260902 | — |
 | 92-72-A-j26-1 | 870: 72 | bus | admitted-all-dated-trips | 86 / 86 | 65 / 65 | 22_072 | — | — |
 | 92-73-j26-1 | 870: 73 | bus | excluded | 0 / 30 | 0 / 0 | 22_073 | — | incomplete-directed-pattern |
-| 92-74-j26-1 | 870: 74 | bus | partially-admitted | 1 / 92 | 0 / 52 | 22_074 | — | incomplete-directed-pattern |
+| 92-74-j26-1 | 870: 74 | bus | admitted-all-dated-trips | 92 / 92 | 52 / 52 | 22_074 | bern-regional-osm-20260902 | — |
 | 92-75-A-j26-1 | 870: 75 | bus | excluded | 0 / 36 | 0 / 26 | 22_075 | — | incomplete-directed-pattern |
 | 92-M12-A-j26-1 | 870: M12 | bus | partially-admitted | 0 / 0 | 2 / 6 | 9312 | — | incomplete-directed-pattern |
 | 92-271-j26-1 | 871: 271 | bus | admitted-all-dated-trips | 50 / 50 | 24 / 24 | 30_271 | — | — |
-| 92-281-j26-1 | 871: 281 | bus | partially-admitted | 2 / 60 | 0 / 0 | 30_281 | — | incomplete-directed-pattern |
+| 92-281-j26-1 | 871: 281 | bus | admitted-all-dated-trips | 60 / 60 | 0 / 0 | 30_281 | bern-regional-osm-20260902 | — |
 | 92-284-j26-1 | 871: 284 | bus | admitted-all-dated-trips | 65 / 65 | 36 / 36 | 30_284 | — | — |
 | 92-285-j26-1 | 871: 285 | bus | admitted-all-dated-trips | 14 / 14 | 8 / 8 | 30_285 | — | — |
 | 92-286-j26-1 | 871: 286 | bus | admitted-all-dated-trips | 12 / 12 | 0 / 0 | 30_286 | — | — |
-| 92-461-A-j26-1 | 871: 461 | bus | excluded | 0 / 58 | 0 / 15 | 30_461 | — | incomplete-directed-pattern |
-| 92-462-j26-1 | 871: 462 | bus | partially-admitted | 2 / 52 | 0 / 0 | 30_462 | — | incomplete-directed-pattern |
+| 92-461-A-j26-1 | 871: 461 | bus | admitted-all-dated-trips | 58 / 58 | 15 / 15 | 30_461 | bern-regional-osm-20260902 | — |
+| 92-462-j26-1 | 871: 462 | bus | admitted-all-dated-trips | 52 / 52 | 0 / 0 | 30_462 | bern-regional-osm-20260902 | — |
 | 92-463-j26-1 | 871: 463 | bus | admitted-all-dated-trips | 92 / 92 | 49 / 49 | 30_463 | — | — |
 | 92-465-j26-1 | 871: 465 | bus | admitted-all-dated-trips | 142 / 142 | 54 / 54 | 30_465 | — | — |
 | 92-466-j26-1 | 871: 466 | bus | admitted-all-dated-trips | 67 / 67 | 35 / 35 | 30_466 | — | — |
@@ -702,11 +702,11 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 92-1-C-j26-1 | 889: 1 | bus | admitted-all-dated-trips | 229 / 229 | 181 / 181 | 22_001 | — | — |
 | 92-2-D-j26-1 | 889: 2 | bus | admitted-all-dated-trips | 210 / 210 | 147 / 147 | 22_002 | bern-urban-osm-20260902 | — |
 | 92-3-F-j26-1 | 889: 3 | bus | admitted-all-dated-trips | 143 / 143 | 115 / 115 | 22_003 | bern-urban-osm-20260902 | — |
-| 92-4-C-j26-1 | 889: 4 | bus | partially-admitted | 70 / 140 | 56 / 112 | 22_004 | — | incomplete-directed-pattern |
+| 92-4-C-j26-1 | 889: 4 | bus | admitted-all-dated-trips | 140 / 140 | 112 / 112 | 22_004 | bern-regional-osm-20260902 | — |
 | 92-5-H-j26-1 | 889: 5 | bus | admitted-all-dated-trips | 135 / 135 | 109 / 109 | 22_005 | — | — |
 | 92-6-F-j26-1 | 889: 6 | bus | admitted-all-dated-trips | 148 / 148 | 120 / 120 | 22_006 | bern-urban-osm-20260902 | — |
 | 92-8-J-j26-1 | 889: 8 | bus | admitted-all-dated-trips | 146 / 146 | 141 / 141 | 22_008 | — | — |
-| 92-9-D-j26-1 | 889: 9 | bus | partially-admitted | 68 / 136 | 54 / 108 | 22_009 | — | incomplete-directed-pattern |
+| 92-9-D-j26-1 | 889: 9 | bus | admitted-all-dated-trips | 136 / 136 | 108 / 108 | 22_009 | bern-regional-osm-20260902 | — |
 | 92-11-G-j26-1 | 889: 11 | bus | admitted-all-dated-trips | 74 / 74 | 70 / 70 | 22_011 | — | — |
 | 92-70-j26-1 | 889: 70 | bus | excluded | 0 / 33 | 0 / 18 | 22_070 | — | incomplete-directed-pattern |
 | 92-71-j26-1 | 889: 71 | bus | partially-admitted | 3 / 27 | 2 / 17 | 22_071 | — | incomplete-directed-pattern |
@@ -716,7 +716,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 92-M34-j26-1 | 889: M34 | bus | excluded | 0 / 0 | 0 / 3 | 9334 | — | incomplete-directed-pattern |
 | 92-M35-j26-1 | 889: M35 | bus | admitted-all-dated-trips | 0 / 0 | 6 / 6 | 9335 | — | — |
 | 92-23-C-j26-1 | 894: 23 | bus | admitted-all-dated-trips | 45 / 45 | 32 / 32 | 40_023 | — | — |
-| 92-24-B-j26-1 | 894: 24 | bus | excluded | 0 / 77 | 0 / 69 | 40_024 | — | incomplete-directed-pattern |
+| 92-24-B-j26-1 | 894: 24 | bus | admitted-all-dated-trips | 77 / 77 | 69 / 69 | 40_024 | bern-regional-osm-20260902 | — |
 | 92-26-A-j26-1 | 894: 26 | bus | excluded | 0 / 27 | 0 / 0 | 40_026 | — | incomplete-directed-pattern |
 | 93-236-5-j26-1 | 3046: 2365 | cableway | admitted-all-dated-trips | 930 / 930 | 930 / 930 | — | 73.213 | — |
 | 93-240-8-j26-1 | 3070: 2408 | cableway | admitted-all-dated-trips | 0 / 0 | 960 / 960 | 2408_1 | — | — |

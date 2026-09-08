@@ -25,11 +25,11 @@ export const BERN_ROAD_SOURCE = {
   license: 'ODbL-1.0', licenseUrl: 'https://www.openstreetmap.org/copyright',
 }
 
-export function bernUrbanInputs(raw) {
+export function bernUrbanInputs(raw, scope = BERN_URBAN_ROUTES) {
   assert.deepEqual(raw.snapshots.map(s => s.metadata.serviceDate), BERN_URBAN_DATES)
   const stops = [], index = new Map(), agencies = new Map()
   for (const snapshot of raw.snapshots) for (const t of snapshot.trains) {
-    if (!BERN_URBAN_ROUTES.includes(t.routeId)) continue
+    if (!scope.includes(t.routeId)) continue
     const shift = Math.max(0, Math.ceil(-t.start / 86400) * 86400), trains = agencies.get(t.agencyId) ?? []
     trains.push({ ...t, id: `${snapshot.metadata.serviceDate}:${t.id}`, stops: t.stops.map(([i, a, d]) => {
       const stop = snapshot.stops[i], key = JSON.stringify(stop)
@@ -39,46 +39,46 @@ export function bernUrbanInputs(raw) {
     agencies.set(t.agencyId, trains)
   }
   return { stops, agencies, metadata: { ...raw.snapshots[0].metadata, sourceHashes: raw.sourceHashes,
-    dates: BERN_URBAN_DATES, scope: BERN_URBAN_ROUTES } }
+    dates: BERN_URBAN_DATES, scope } }
 }
 
-export async function prepareBernUrban(raw, output) {
-  const { stops, agencies, metadata } = bernUrbanInputs(raw)
+export async function prepareBernUrban(raw, output, scope = BERN_URBAN_ROUTES) {
+  const { stops, agencies, metadata } = bernUrbanInputs(raw, scope)
   await mkdir(output, { recursive: true })
   for (const [id, trains] of agencies) await prepareRoadFeed({ manifest: { stops, metadata }, trains, output: join(output, id),
     agency: { id, name: raw.routes.find(r => r.agencyId === id).agency, url: 'https://data.opentransportdata.swiss/' } })
   await writeFile(join(output, 'index.json'), JSON.stringify({ metadata, agencies: [...agencies.keys()] }))
 }
 
-export async function importBernUrban(prepared, matched) {
+export async function importBernUrban(prepared, matched, { cachePath = 'data/bern-urban-cache.json', evidenceDirectory = 'data/bern-urban-evidence' } = {}) {
   const input = await json(join(prepared, 'index.json')), agencies = {}
-  await mkdir('data/bern-urban-evidence', { recursive: true })
+  await mkdir(evidenceDirectory, { recursive: true })
   for (const agencyId of input.agencies) {
     const directory = join(matched, agencyId), patterns = await json(join(directory, 'patterns.json'))
     assert.deepEqual(patterns.metadata, input.metadata)
     const cache = await importRoadShapes(directory, BERN_ROAD_SOURCE.description, BERN_ROAD_LIMITS)
     assert.equal(cache.metadata.sourceSha256, BERN_ROAD_SOURCE.osmSha256)
     const evidence = Object.fromEntries(await Promise.all(files.map(async name => [name, await readFile(join(directory, name), 'utf8')])))
-    const bytes = gzipSync(JSON.stringify(evidence)), file = `data/bern-urban-evidence/${agencyId}.json.gz`
+    const bytes = gzipSync(JSON.stringify(evidence)), file = join(evidenceDirectory, `${agencyId}.json.gz`)
     await writeFile(file, bytes)
     agencies[agencyId] = { evidence: { file, sha256: sha(bytes) }, patternsSha256: sha(evidence['patterns.json']),
       identities: Object.fromEntries(patterns.patterns.map(p => [p.id, { routeId: p.routeId, stops: p.stops.map(([i]) => patterns.stops[i]) }])), cache }
   }
   const result = { schemaVersion: 1, metadata: input.metadata, agencies }
-  await writeFile('data/bern-urban-cache.json', JSON.stringify(result) + '\n')
+  await writeFile(cachePath, JSON.stringify(result) + '\n')
   return result
 }
 
-export async function loadBernUrban(raw) {
-  const bytes = await readFile('data/bern-urban-cache.json'), cache = JSON.parse(bytes)
-  const policyBytes = await readFile('data/bern-urban-policy.json'), policy = JSON.parse(policyBytes)
+export async function loadBernUrban(raw, { cachePath = 'data/bern-urban-cache.json', policyPath = 'data/bern-urban-policy.json', scope = BERN_URBAN_ROUTES } = {}) {
+  const bytes = await readFile(cachePath), cache = JSON.parse(bytes)
+  const policyBytes = await readFile(policyPath), policy = JSON.parse(policyBytes)
   assert.deepEqual(policy.dates, BERN_URBAN_DATES)
   assert.deepEqual(cache.metadata.dates, policy.dates)
-  assert.deepEqual(cache.metadata.scope, BERN_URBAN_ROUTES)
+  assert.deepEqual(cache.metadata.scope, scope)
   assert.deepEqual(policy.roadSource, BERN_ROAD_SOURCE)
   for (const document of policy.documents) assert.equal(sha(await readFile(`data/bern-sources/${document.file}`)), document.sha256)
   if (raw) {
-    const { stops, agencies, metadata } = bernUrbanInputs(raw)
+    const { stops, agencies, metadata } = bernUrbanInputs(raw, scope)
     assert.deepEqual(cache.metadata, metadata)
     assert.deepEqual(Object.keys(cache.agencies).sort(), [...agencies.keys()].sort())
     for (const [id, trains] of agencies) {
@@ -118,7 +118,7 @@ export function applyBernUrban(raw, result, source, urban) {
     let match
     if (urban.policy.roadRouteIds.includes(pair.routeId)) {
       const road = urban.roads.get(key)
-      if (road?.path) match = { ...road, sourceKind: 'osm-road-inference', sourceId: 'bern-urban-osm-20260902' }
+      if (road?.path) match = { ...road, sourceKind: 'osm-road-inference', sourceId: urban.policy.sourceId ?? 'bern-urban-osm-20260902' }
       else if (road) pair.supplementRejection = road.reason
     }
     if (urban.policy.tramPairs.some(p => JSON.stringify(p) === key)) {

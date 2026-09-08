@@ -7,6 +7,7 @@ import { gunzipSync } from 'node:zlib'
 import { bernFeatureMatch, bernPatternId } from './bern-line-geometry.mjs'
 import { validateBernSnapshot, validateBernChunks } from './build-bern-region.mjs'
 import { loadBernUrban } from './bern-urban-geometry.mjs'
+import { loadBernRegionalRoads } from './bern-regional-roads.mjs'
 import { loadBernMountains } from './bern-mountain-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
@@ -19,6 +20,10 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
   const decodedBytes = await readFile(join(sources, 'decoded.json.gz')), decoded = JSON.parse(gunzipSync(decodedBytes))
   const crosswalk = await json('data/bern-operator-crosswalk.json')
   const urban = await loadBernUrban()
+  const regionalRoads = await loadBernRegionalRoads()
+  assert.equal(summary.sourceHashes.regionalRoadCache, regionalRoads.metadata.cacheSha256)
+  assert.equal(summary.sourceHashes.regionalRoadPolicy, regionalRoads.metadata.policySha256)
+  assert.deepEqual(summary.sources.regionalRoadSupplement, regionalRoads.metadata)
   const mountain = await loadBernMountains()
   assert.equal(summary.sourceHashes.mountainPolicy, mountain.metadata.policySha256)
   assert.deepEqual(summary.sources.mountainSupplement, mountain.metadata)
@@ -77,8 +82,9 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
     assert.equal(pairCounts.size, report.directedPairs.length)
     for (const p of report.directedPairs) {
       if (p.sourceKind === 'osm-road-inference') {
-        assert(urban.policy.roadRouteIds.includes(p.routeId) && p.matched && p.originalAssessment.reason)
-        const candidate = urban.roads.get(JSON.stringify([p.routeId, p.fromId, p.toId]))
+        const roadSource = p.sourceId === 'bern-regional-osm-20260902' ? regionalRoads : urban
+        assert(roadSource.policy.roadRouteIds.includes(p.routeId) && p.matched && p.originalAssessment.reason)
+        const candidate = roadSource.roads.get(JSON.stringify([p.routeId, p.fromId, p.toId]))
         assert(candidate?.path)
         assert.deepEqual(p.roadPatternIds, candidate.roadPatternIds)
       } else if (p.sourceKind === 'dated-cantonal-tram-corridor') {

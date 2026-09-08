@@ -6,6 +6,7 @@ const displayRelease = await json('data/bern-audit/display-release.json')
 const sourceLines = await json('data/bern-audit/source-lines.json')
 const supplement = await json('data/bern-audit/supplement-followup.json')
 const seasonal = await json('data/bern-audit/seasonal-summary.json')
+const regionalRoads = await json('data/bern-audit/regional-road-followup.json')
 const days = await Promise.all(summary.days.map(d => json(`data/bern-audit/${d.serviceDate}.json`)))
 const n = value => value.toLocaleString('en-GB')
 const pct = (a, b) => `${(100 * a / b).toFixed(2)}%`
@@ -95,7 +96,7 @@ ${table(['Mode', 'Maximum platform snap', 'Maximum path length'], [
   ['Ferry', '150 m', 'max(1,200 m, 4.5 × straight distance)'],
 ])}
 
-Alternative source-part projections may be at most 5 m farther from each endpoint than its nearest projection, and must still satisfy the snap limit. Collapsed paths fail. Every segment is oriented from its actual preceding call to its next call; the final artifact checker verifies endpoint orientation after all stop/path reindexing. A pattern is admitted only if **every segment** passes. Boats use official water-line geometry and mountain transport its own mode-compatible line. Missing pairs on five explicitly selected Biel/Thun bus routes may use retained OSM road matches. Every complete input-pattern context must agree on the identical valid path; 80 m endpoint and existing detour limits still apply. Tram 6 has two separately identified station-loop pairs from OEVTP line 30_003. Wiriehorn uses the reviewed federal axis 73.213. These supplements keep distinct provenance and never manufacture OEVTP line codes. No unsourced straight-line fallback is inserted.
+Alternative source-part projections may be at most 5 m farther from each endpoint than its nearest projection, and must still satisfy the snap limit. Collapsed paths fail. Every segment is oriented from its actual preceding call to its next call; the final artifact checker verifies endpoint orientation after all stop/path reindexing. A pattern is admitted only if **every segment** passes. Boats use official water-line geometry and mountain transport its own mode-compatible line. Missing pairs on five explicitly selected Biel/Thun bus routes and seventeen separately reviewed regional routes may use retained OSM road matches. Every complete input-pattern context must agree on the identical valid path; 80 m endpoint and existing detour limits still apply. Tram 6 has two separately identified station-loop pairs from OEVTP line 30_003. Wiriehorn uses the reviewed federal axis 73.213. These supplements keep distinct provenance and never manufacture OEVTP line codes. No unsourced straight-line fallback is inserted.
 
 **Physical limits:** these are official centrelines and identified road/cableway supplements with directions inferred from GTFS calls. They do not certify one-way road legality, a particular running track, tunnel level, boat navigation safety or current diversions. They are suitable as dated schematic movement candidates, not operational navigation. No authenticated realtime feed was exercised. The dated BERNMOBIL notice authorizes only the reviewed tram 6 station approach; the replacement-bus conflict below remains excluded. Seven additional winter/holiday fixtures are audited separately and do not establish every calendar day or seasonal alignment.
 
@@ -158,6 +159,21 @@ Tram 6 gains the two directed Bahnhof J / Hirschengraben pairs using the origina
 
 The [mountain policy](../data/bern-mountain-policy.json) reviews exact installation/operator/station identities against the complete federal archive (653 installations). Wiriehorn’s 73.213 axis attaches within 0.47 m and retains both original GTFS endpoints. Eiger Express 75.014 still misses by up to 213.6 m. Grindelwald–Holenstein 72.153 misses the shared Terminal by 143.0 m; its upper 72.154 section fits, but the complete GGM journey still fails. Neither case authorizes replacing timetable interchange coordinates with installation station coordinates. [Mattelift’s operator description](https://www.mattelift.ch/der-mattelift/technik/) identifies a vertical lift with 29.90 m rise; the roughly 4 m horizontal GTFS separation does not establish an axis in this 2D feed.
 
+## Regional bus follow-up
+
+The [regional road audit](../data/bern-audit/regional-road-followup.json) compares against release d864441. All **35,126 Friday / 30,811 Sunday** previously admitted journeys retain byte-equivalent canonical source identities, full calls, times and path coordinates. The separate [regional cache](../data/bern-regional-road-cache.json) retains **120 full directed patterns across six agencies and 17 routes**, with raw matcher output and hashes. Every newly admitted source field and call is independently compared against the pinned timetable cache; all 56 Friday / 48 Sunday used road pairs reproduce from retained evidence.
+
+The batch adds **1,152 Friday / 612 Sunday scheduled journeys** and no representative headway instances. **Fifteen routes pass all journeys on both fixtures** (including routes inactive on Sunday); 121 and 107 remain partial. All 705 annual route records, both dated candidate denominators and all geometry limits remain unchanged. No September road context is applied to the seasonal audit.
+
+${table(['Agency: line / exact route', 'Friday added', 'Sunday added', 'Friday admitted / candidate', 'Sunday admitted / candidate'], regionalRoads.dates[0].routes.map((r, i) => {
+  const sunday = regionalRoads.dates[1].routes[i]
+  return [`${r.agencyId}: ${r.line} / ${r.routeId}`, r.addedScheduledJourneys, sunday.addedScheduledJourneys, `${r.admittedTrips} / ${r.trips}`, `${sunday.admittedTrips} / ${sunday.trips}`]
+}))}
+
+The remaining regional gaps are **Laupen BE, Bahnhof → Bösingen, Abzw. Tuftera on 121** and **a repeated Uettligen, Dorf call on 107**. Candidate road matching rejects the first and collapses the second; no timetable call is dropped to make a journey pass. Across all input contexts, seven directed-pair candidates include a rejected segment and fifteen have differing inferred paths. Those candidates cannot supply missing official geometry even when another occurrence succeeds. Original successful cantonal geometry remains authoritative for its existing pairs.
+
+Each agency’s maximum accepted endpoint snap, every matcher rejection, all full-context pattern IDs, candidate path hashes and remaining route/date gaps are in the audit. The source is the same pinned 2 September OSM extract and matcher as the urban batch, with **© OpenStreetMap contributors / ODbL** attribution. This is inferred geometry, not operational road-direction or current-diversion certification.
+
 ## Winter and holiday fixtures
 
 The [seasonal audit](../data/bern-audit/seasonal-summary.json) and [ordered-pattern evidence](../data/bern-audit/seasonal-patterns.json.gz) cover seven extra civil days. Every admitted pattern passes complete original call, permission, timing and directed-path checks. September road contexts and construction geometry are disabled for these dates; Wiriehorn’s dated federal installation remains independently checked.
@@ -209,14 +225,15 @@ npm run data:bern -- --archive /private/tmp/GTFS_FP2026_20260902.zip
 # Independent offline checks of emitted bytes and all audit denominators.
 npm run data:bern:check
 node scripts/check-bern-corridor-followup.mjs # historical alias-only release
-node scripts/check-bern-supplement-followup.mjs data/bern-audit/timetable-cache.json.gz
+node scripts/check-bern-supplement-followup.mjs data/bern-audit/timetable-cache.json.gz # historical urban/mountain batch
+node scripts/check-bern-regional-roads.mjs data/bern-audit/timetable-cache.json.gz
 node scripts/audit-bern-seasonal.mjs --archive /private/tmp/GTFS_FP2026_20260902.zip
 node scripts/check-bern-seasonal.mjs
 # Publish the reviewed Friday display, or build the Sunday release separately.
 npm run data:bern:release
 npm run data:bern:docs
 npm run data:bern:release -- --date 2026-09-06 --output /private/tmp/bern-sunday-display
-npx vitest run scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/regional-refresh.test.mjs
+npx vitest run scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/bern-regional-roads.test.mjs scripts/regional-refresh.test.mjs
 npx playwright test e2e/bern.spec.ts
 npx vitest run scripts/bern-region.test.mjs scripts/basel-line-geometry.test.mjs \\
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs

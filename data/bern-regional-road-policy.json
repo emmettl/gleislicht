@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "sourceId": "bern-regional-osm-20260902",
+  "roadSource": {
+    "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+    "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+    "swissDate": "2026-09-02",
+    "borderRetrieved": "2026-09-08",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+    "attribution": "© OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "licenseUrl": "https://www.openstreetmap.org/copyright"
+  },
+  "roadRouteIds": [
+    "96-701-j26-1",
+    "92-74-j26-1",
+    "92-31-B-j26-1",
+    "92-24-B-j26-1",
+    "92-4-C-j26-1",
+    "92-9-D-j26-1",
+    "96-925-j26-1",
+    "96-881-j26-1",
+    "92-281-j26-1",
+    "92-461-A-j26-1",
+    "96-705-j26-1",
+    "92-64-B-j26-1",
+    "92-332-j26-1",
+    "92-462-j26-1",
+    "96-706-j26-1",
+    "92-160-j26-1",
+    "96-738-j26-1"
+  ],
+  "tramPairs": [],
+  "documents": [],
+  "baselineCommit": "d8644411b83396e9430e3148638951a2ac2d4ca3",
+  "selection": "Seventeen remaining bus routes with at most eight unmatched directed pairs on Friday, excluding the already reviewed Thun 2 coordinate conflict. Entire candidate patterns from both dates, including spillover and out-of-canton calls, are matched. Existing successful geometry is retained.",
+  "roadRule": "Only missing directed pairs with an existing official operator/mode/line crosswalk. All full-pattern contexts must provide a valid identical path under 80 m snap and max(1200 m, 4.5 times direct distance). No stop relocation, clipped calls, arbitrary gap bridge, or assertion of observed or operator-certified physical direction."
+}

@@ -5,156 +5,156 @@
     {
       "date": "2026-09-04",
       "version": 1,
-      "archiveManifestSha256": "1b0ba9ce47dea9cc4843b673d3d5a4dd3742bbb40cee09916320640c412b46bd",
-      "auditSha256": "d80ebaca0776e151b4692d6f29f597e331e8525046185367bd0eca4641ed3446",
+      "archiveManifestSha256": "ae9b73a7654ff3e7907a1194a9168cdf857da26ac3c34849ff75d6159e598b3e",
+      "auditSha256": "7e4c6d1dbd2402d8e579cf072b65f7b2fed649802932d47fcc12a9a4360c4d9b",
       "movements": {
-        "total": 35126,
-        "scheduled": 20169,
+        "total": 36278,
+        "scheduled": 21321,
         "representativeHeadway": 14957
       },
-      "admittedSegments": 253400,
+      "admittedSegments": 271729,
       "simplification": {
         "algorithm": "Douglas–Peucker; distance to retained chord in approximate LV95 metres",
         "toleranceMetres": 5,
         "maximumDeviationMetres": 4.999919907732299,
-        "originalVertices": 314466,
-        "displayVertices": 84943,
+        "originalVertices": 323917,
+        "displayVertices": 87436,
         "endpointsUnchanged": true
       },
       "payload": {
         "bern-region-day-chunks/00-02.json": {
-          "bytes": 182592,
-          "gzipBytes": 30969
+          "bytes": 195036,
+          "gzipBytes": 33113
         },
         "bern-region-day-chunks/02-04.json": {
           "bytes": 50,
           "gzipBytes": 62
         },
         "bern-region-day-chunks/04-06.json": {
-          "bytes": 458784,
-          "gzipBytes": 71422
+          "bytes": 485742,
+          "gzipBytes": 75851
         },
         "bern-region-day-chunks/06-08.json": {
-          "bytes": 2394963,
-          "gzipBytes": 280712
+          "bytes": 2564225,
+          "gzipBytes": 300251
         },
         "bern-region-day-chunks/08-10.json": {
-          "bytes": 3619915,
-          "gzipBytes": 318921
+          "bytes": 3768663,
+          "gzipBytes": 336861
         },
         "bern-region-day-chunks/10-12.json": {
-          "bytes": 4928660,
-          "gzipBytes": 363731
+          "bytes": 5069585,
+          "gzipBytes": 380473
         },
         "bern-region-day-chunks/12-14.json": {
-          "bytes": 5045152,
-          "gzipBytes": 376801
+          "bytes": 5209895,
+          "gzipBytes": 395367
         },
         "bern-region-day-chunks/14-16.json": {
-          "bytes": 4973370,
-          "gzipBytes": 368301
+          "bytes": 5137037,
+          "gzipBytes": 387231
         },
         "bern-region-day-chunks/16-18.json": {
-          "bytes": 3937953,
-          "gzipBytes": 350528
+          "bytes": 4116991,
+          "gzipBytes": 370576
         },
         "bern-region-day-chunks/18-20.json": {
-          "bytes": 2306310,
-          "gzipBytes": 265946
+          "bytes": 2463391,
+          "gzipBytes": 284191
         },
         "bern-region-day-chunks/20-22.json": {
-          "bytes": 1374294,
-          "gzipBytes": 167707
+          "bytes": 1450277,
+          "gzipBytes": 177179
         },
         "bern-region-day-chunks/22-24.json": {
-          "bytes": 859080,
-          "gzipBytes": 113970
+          "bytes": 911196,
+          "gzipBytes": 120649
         },
         "bern-region-day-manifest.json": {
-          "bytes": 2515722,
-          "gzipBytes": 586151
+          "bytes": 2592276,
+          "gzipBytes": 603644
         },
         "bern-region-morning.json": {
-          "bytes": 5150953,
-          "gzipBytes": 881595
+          "bytes": 5403038,
+          "gzipBytes": 920597
         }
       }
     },
     {
       "date": "2026-09-06",
       "version": 1,
-      "archiveManifestSha256": "19253cfd528bab109daf8bf3ddec1c1a7a8347a57e027939e175d230d92118e8",
-      "auditSha256": "30b580649e43356a388019071e40cbede48e7c33cd868a7a402dc7b2a2d2086a",
+      "archiveManifestSha256": "8b8df4a05e1442874568521e6a37c94d89a5610f73a4c31b26f41d76a14e05bb",
+      "auditSha256": "66fcdac246409170ad9545c66e409de1e8f636d4100f28da428e0ec535757402",
       "movements": {
-        "total": 30811,
-        "scheduled": 14686,
+        "total": 31423,
+        "scheduled": 15298,
         "representativeHeadway": 16125
       },
-      "admittedSegments": 180549,
+      "admittedSegments": 190311,
       "simplification": {
         "algorithm": "Douglas–Peucker; distance to retained chord in approximate LV95 metres",
         "toleranceMetres": 5,
         "maximumDeviationMetres": 4.999814705968677,
-        "originalVertices": 316650,
-        "displayVertices": 84977,
+        "originalVertices": 326371,
+        "displayVertices": 87634,
         "endpointsUnchanged": true
       },
       "payload": {
         "bern-region-day-chunks/00-02.json": {
-          "bytes": 346251,
-          "gzipBytes": 55578
+          "bytes": 364616,
+          "gzipBytes": 58557
         },
         "bern-region-day-chunks/02-04.json": {
           "bytes": 121932,
-          "gzipBytes": 20008
+          "gzipBytes": 20046
         },
         "bern-region-day-chunks/04-06.json": {
-          "bytes": 199123,
-          "gzipBytes": 34115
+          "bytes": 204235,
+          "gzipBytes": 35120
         },
         "bern-region-day-chunks/06-08.json": {
-          "bytes": 1068238,
-          "gzipBytes": 131015
+          "bytes": 1119673,
+          "gzipBytes": 138466
         },
         "bern-region-day-chunks/08-10.json": {
-          "bytes": 3089247,
-          "gzipBytes": 241692
+          "bytes": 3165150,
+          "gzipBytes": 251436
         },
         "bern-region-day-chunks/10-12.json": {
-          "bytes": 4525743,
-          "gzipBytes": 306239
+          "bytes": 4607307,
+          "gzipBytes": 316367
         },
         "bern-region-day-chunks/12-14.json": {
-          "bytes": 4574542,
-          "gzipBytes": 309920
+          "bytes": 4665489,
+          "gzipBytes": 320975
         },
         "bern-region-day-chunks/14-16.json": {
-          "bytes": 4618259,
-          "gzipBytes": 313900
+          "bytes": 4710621,
+          "gzipBytes": 325883
         },
         "bern-region-day-chunks/16-18.json": {
-          "bytes": 3207735,
-          "gzipBytes": 264101
+          "bytes": 3297418,
+          "gzipBytes": 276108
         },
         "bern-region-day-chunks/18-20.json": {
-          "bytes": 1568921,
-          "gzipBytes": 183600
+          "bytes": 1649866,
+          "gzipBytes": 194098
         },
         "bern-region-day-chunks/20-22.json": {
-          "bytes": 1109014,
-          "gzipBytes": 136407
+          "bytes": 1167611,
+          "gzipBytes": 144208
         },
         "bern-region-day-chunks/22-24.json": {
-          "bytes": 758503,
-          "gzipBytes": 101096
+          "bytes": 806876,
+          "gzipBytes": 107593
         },
         "bern-region-day-manifest.json": {
-          "bytes": 2495030,
-          "gzipBytes": 597880
+          "bytes": 2575885,
+          "gzipBytes": 615132
         },
         "bern-region-morning.json": {
-          "bytes": 4025648,
-          "gzipBytes": 761741
+          "bytes": 4171155,
+          "gzipBytes": 788761
         }
       }
     }
