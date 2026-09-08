@@ -10,6 +10,8 @@ AUTO is Gleislicht's third transport grammar. It does not pretend to track cars.
 
 ## Road Study 001
 
+The [regional road source survey](REGIONAL-ROAD-SOURCE-SURVEY.md) documents potential additions to the federal and Zürich cantonal sources, including verified Basel/Thurgau API samples and the requirements for using hourly count archives.
+
 The first study follows the A1 through the Zürich region, from the Aargau side through Zürich to Winterthur. Its path is anchored by georeferenced sites in the current ASTRA / Federal Roads Office Measurement Site Table. It shares the national 06:45–08:45 clock and is a separately loaded static JSON artifact, so the railway-first opening payload is unchanged.
 
 The public national study uses **recorded observations** from 8 September 2026. It contains every minute from 06:45 through 08:45 CEST, covering 718 accepted directional sites and 609 sections; the weakest accepted minute still covers 84.1% of sites. ASTRA's realtime feed retains only the latest complete minute, so Gleislicht records an append-only historical series before compilation. Authenticated A1 collection began on 6 September 2026 and expanded nationally on 7 September.

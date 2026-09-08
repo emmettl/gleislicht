@@ -4,6 +4,8 @@ AUTO now records Zürich cantonal counters and includes **246 cantonal road axes
 
 ## Verified sources
 
+For expansion beyond the Zürich pilot, see the [regional road source survey](REGIONAL-ROAD-SOURCE-SURVEY.md). It checks Basel-Stadt, Thurgau, Zürich city and Winterthur count archives, with additional leads for Aargau, Luzern and Genève, and separates hourly counts from the existing flow-and-speed feed.
+
 - [Traffic counters — static data](https://data.opentransportdata.swiss/en/dataset/trafficcounters): the shared DATEX II Measurement Site Table. The actual Zürich supplier identifier is **`ZH.CH`**, despite the cookbook's illustrative `ZH:` example. Always derive filters from the table rather than guessing the prefix.
 - [Traffic counters — realtime cookbook](https://opentransportdata.swiss/en/cookbook/road-traffic-cookbook/rt-road-traffic-counters/): the same SOAP API already used for federal observations supplies one-minute light/heavy flow and mean speed. Each new minute replaces the previous publication; there is no historical backfill.
 - [Zürich cantonal traffic counts](https://opendata.swiss/de/dataset/verkehrszahldaten-motorisierter-individualverkehr-miv-im-kanton-zurich): the canton's separate API also offers aggregate and individual-vehicle data. This pilot uses the shared aggregate feed; it does not ingest individual-vehicle records.

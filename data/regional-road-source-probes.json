@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "method": "Unauthenticated HTTPS GET of one record per source; no full export, geometry join, source completeness or speed validation. Basel query requests the newest timestamp; Thurgau query is unordered and does not establish freshness.",
+  "probes": [
+    {
+      "id": "basel-miv",
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100006/records?limit=1&order_by=datetimefrom%20DESC",
+      "checkedAt": "2026-09-08T17:29:58.881747+00:00",
+      "httpStatus": 200,
+      "resolvedUrl": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100006/records?limit=1&order_by=datetimefrom%20DESC",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 714,
+      "sha256": "d347200b98f7319fbfef7d3adf2ad1a3dd1d074f0688de269627cdc9cae06e6d",
+      "response": {
+        "total_count": 1912056,
+        "results": [
+          {
+            "zst_nr": 235,
+            "zst_id": 235,
+            "sitecode": "00000235",
+            "sitename": "235 A3-A35, Grenze CH-F",
+            "datetimefrom": "2026-09-06T21:00:00+00:00",
+            "datetimeto": "2026-09-06T22:00:00+00:00",
+            "directionname": "von Frankreich",
+            "lanecode": 1,
+            "lanename": "Spur 1",
+            "valuesapproved": 0,
+            "valuesedited": 0,
+            "traffictype": "MIV",
+            "total": 231,
+            "mr": 2,
+            "pw": 206,
+            "pw0": 0,
+            "lief": 17,
+            "lief0": 0,
+            "lief_aufl": 0,
+            "lw": 1,
+            "lw0": 1,
+            "sattelzug": 3,
+            "bus": 1,
+            "andere": 0,
+            "year": "2026",
+            "month": 9,
+            "day": 6,
+            "weekday": 6,
+            "hourfrom": 23,
+            "date": "06.09.2026",
+            "timefrom": "23:00",
+            "timeto": "00:00",
+            "dayofyear": 249,
+            "geo_point_2d": {
+              "lon": 7.5631579677329555,
+              "lat": 47.5751385211909
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "thurgau-miv",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-2/records?limit=1",
+      "checkedAt": "2026-09-08T17:29:58.881979+00:00",
+      "httpStatus": 200,
+      "resolvedUrl": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-2/records?limit=1",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 448,
+      "sha256": "4877ecb731b640b85338e8e8073d5f03c8a91a599cdd9ffc66e4168dc610abf0",
+      "response": {
+        "total_count": 70704,
+        "results": [
+          {
+            "code": "423",
+            "name": "FRAUENFELD Parkhaus Passage",
+            "gemeinde": "Frauenfeld",
+            "adresse": "Parkhauseinfahrt",
+            "strasse": "H14",
+            "richtung": "vom Einkaufszentrum",
+            "spur_code": 1,
+            "reg_bus": "Nein",
+            "datum": "2026-08-30",
+            "zeit_von": "12:00",
+            "zeit_bis": "13:00",
+            "jahr": "2026",
+            "monat": 8,
+            "wochentag": "Sunday",
+            "stunde": 12,
+            "anzahl": 0,
+            "koordinaten": {
+              "lon": 8.896068335315709,
+              "lat": 47.55749184919047
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
