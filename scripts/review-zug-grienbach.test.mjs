@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { gunzipSync } from 'node:zlib'
 import { sha256 } from './download-luzern-sources.mjs'
-import { reviewZugGrienbach } from './review-zug-grienbach.mjs'
+import { reviewZugGrienbach, grienbachPlatformDistances } from './review-zug-grienbach.mjs'
 
 const json = path => JSON.parse(readFileSync(path))
 const policy = json('data/zug-policy.json'), bytes = readFileSync('data/zug-timetable.json.gz')
@@ -42,5 +42,33 @@ describe('Grienbach negative admission review', () => {
       expect(route.trips - route.admittedTrips).toBe(result.days.find(d => d.date === day.date).affectedTrips)
       expect(day.directedStopPairs.filter(p => p.routeId === route.routeId && !p.matched)).toHaveLength(2)
     }
+  })
+  it('compares all adjacent platform identities and keeps later closures outside both fixtures', async () => {
+    const result = await review(), p = result.platformReview
+    expect(p.coordinateCorrections).toBe(0)
+    expect(p.admittedFromReview).toBe(0)
+    expect(p.platforms).toHaveLength(6)
+    const inbound = p.platforms.find(s => s.stopId === 'ch:1:sloid:93448:0:1')
+    const outbound = p.platforms.find(s => s.stopId === 'ch:1:sloid:93448:0:2')
+    expect(inbound.candidates.map(c => c.distanceMetres)).toEqual([expect.closeTo(199.504, 2), expect.closeTo(188.511, 2)])
+    expect(outbound.minimumSameUicDistanceMetres).toBeCloseTo(3.674, 2)
+    expect(inbound.days.map(d => d.contexts[0].trips)).toEqual([67, 38])
+    expect(outbound.days.map(d => d.contexts[0].trips)).toEqual([66, 38])
+    expect(inbound.days.every(d => d.contexts[0].nextId === 'ch:1:sloid:87279:0:1')).toBe(true)
+    expect(outbound.days.every(d => d.contexts[0].previousId === 'ch:1:sloid:87279:0:2')).toBe(true)
+    expect(p.noticeDates.cityFullClosure[0] > raw.dates[1]).toBe(true)
+    expect(p.noticeDates.outboundRelocation[0] < raw.dates[0]).toBe(true)
+    expect(p.ignoredConstructionPopups).toEqual(['4720c634-cae1-4caa-aebb-dfa54a76845b'])
+  })
+  it('cannot use a nearby stop with another station code or silently accept a newer platform snapshot', () => {
+    const source = json(`${policy.grienbachReview.sourceDirectory}/sources.json`)
+    const osm = JSON.parse(gunzipSync(readFileSync(`${policy.grienbachReview.sourceDirectory}/platforms.json.gz`)))
+    const wrong = structuredClone(osm)
+    wrong.elements.find(n => n.id === 13426824598).tags.uic_ref = '8587279'
+    expect(() => grienbachPlatformDistances(wrong, raw, source.platformReview, source.route.routeId)).toThrow('same-UIC')
+    const newer = structuredClone(osm)
+    newer.elements.find(n => n.id === 13426824598).timestamp = '2026-09-03T00:00:00Z'
+    expect(() => grienbachPlatformDistances(newer, raw, source.platformReview, source.route.routeId)).toThrow('newer')
+    expect(() => grienbachPlatformDistances({ ...osm, elements: osm.elements.slice(1) }, raw, source.platformReview, source.route.routeId)).toThrow('inventory')
   })
 })

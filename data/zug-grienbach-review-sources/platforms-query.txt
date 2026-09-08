@@ -1,0 +1,2 @@
+[out:json][timeout:45][date:"2026-09-02T00:00:00Z"];
+(node[highway=bus_stop](47.178,8.518,47.188,8.533);nwr[public_transport](47.178,8.518,47.188,8.533););out meta geom;

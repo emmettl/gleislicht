@@ -97,6 +97,59 @@
     {
       "file": "coordinate-only-evidence/839.json.gz",
       "sha256": "ffc8a87339633a5b737117eb94ca1087ab5dd32df24cf39a0a946426d5456d76"
+    },
+    {
+      "file": "platforms.json.gz",
+      "url": "https://overpass-api.de/api/interpreter",
+      "sha256": "fe902a199c7ca30fd5d837364778b941a57825c158dc8c92932d6f73630603d1"
+    },
+    {
+      "file": "platforms-query.txt",
+      "url": null,
+      "sha256": "25a638f2797a2a467c4bef32f8058d9bdcad816d710aa36f5de6d411a4130eb2"
+    },
+    {
+      "file": "city-direction-notice.html.gz",
+      "url": "https://www.baudepartement-stadtzug.ch/page/de/news?jumpto=66",
+      "sha256": "2a8c5f9258c57fc125a36a2b9dfbb9dbfbddef706bd31ded23e8b97e19274755"
+    },
+    {
+      "file": "construction-story.html.gz",
+      "url": "https://www.stadtzug.ch/grienbachstrasse",
+      "sha256": "609aee61207bc97ff32a542b1005deda86c3ab42cfcce32291cfc6b92819c3c9"
+    },
+    {
+      "file": "construction-map.json",
+      "url": "https://www.arcgis.com/sharing/rest/content/items/1902ef3e51344275bbf09e7cca122ef1/resources/pub_expressmap_1786351161348.json",
+      "sha256": "3fc70198e71c2f28077a43d91315933360b385aac1407887e7b736118d582855"
+    },
+    {
+      "file": "operator-line604.html.gz",
+      "url": "https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/linie-604-1-1/",
+      "sha256": "de15c3531a8220d6e252292f4d7e5372a1e67fb57a1bedd9dbcc86985f3cb5e4"
     }
-  ]
+  ],
+  "platformReview": {
+    "retrieved": "2026-09-08",
+    "osmSnapshot": "2026-09-02T00:00:00Z",
+    "osmElementCount": 20,
+    "osmStationNumbers": [
+      "8587279",
+      "8587280",
+      "8593448"
+    ],
+    "grienbachNodeIds": [
+      325956809,
+      13426824598
+    ],
+    "cityNoticePublished": "2025-05-27",
+    "cityAttribution": "Baudepartement der Stadt Zug",
+    "operatorAttribution": "Zugerland Verkehrsbetriebe AG",
+    "constructionStoryId": "1902ef3e51344275bbf09e7cca122ef1",
+    "constructionStoryModified": 1788354595000,
+    "operatorNoticesFile": "data/zug-service-road-sources/zvb-notices.html",
+    "operatorNoticesSha256": "342f64c7667b2f9b3f459bcdcc4927ebc5c1373bdd12c99add9e856dffeec962",
+    "decision": "Retain the original source coordinates and all 105 inbound exclusions. Same-UIC OSM positions differ from the failing inbound Grienbach coordinate by 188–200 m, while the outbound coordinate is near the mapped Grienbachstrasse positions. Official dated notices distinguish the outbound Industriestrasse diversion from the inbound alignment and later full closure. This supports a suspected coordinate/direction mismatch but does not establish a corrected SLOID-to-platform mapping. No coordinate substitution, relaxed snap limit or trial admission.",
+    "constructionMapUse": "Context only. No feature supplies an authoritative SLOID platform coordinate. An unrelated Breitenbach popup is retained in the raw source and explicitly ignored."
+  }
 }
