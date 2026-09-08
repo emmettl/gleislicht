@@ -1,0 +1,25 @@
+.journey-card.pilatus-journey { top: 22%; max-height: calc(78vh - 52px); overflow: auto; clip-path: none; background: #0c0b21f2; border-left-color: #efd490; }
+.pilatus-journey header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pilatus-journey h2 { color: #fff0b9; font-size: .9rem; font-weight: 500; }
+.pilatus-journey header button { color: inherit; background: transparent; border: 0; min-width: 44px; min-height: 44px; font-size: 24px; cursor: pointer; }
+.pilatus-journey p, .pilatus-journey details, .pilatus-journey label { color: #c6c4d6; font-size: .65rem; line-height: 1.5; }
+.pilatus-journey label { display: grid; gap: 5px; }
+.pilatus-journey select { width: 100%; min-height: 36px; color: #eeeaff; background: #100e29; border: 1px solid #c1ccff33; font: inherit; font-size: .75rem; }
+.pilatus-journey nav { display: grid; gap: 4px; }
+.pilatus-journey nav button { display: flex; justify-content: space-between; gap: 8px; min-height: 44px; padding: 8px; align-items: center; background: #0c0b21; border: 1px solid #c1ccff33; color: #ccc8e4; font: inherit; font-size: .7rem; cursor: pointer; text-align: left; }
+.pilatus-journey nav strong { font-weight: 500; }
+.pilatus-journey nav button[aria-current] { color: #fff0b9; border-color: #e5ce86; background: #84733822; }
+.pilatus-journey summary { cursor: pointer; padding: 8px 0; }
+.pilatus-journey a { color: #b5dce9; }
+@media(min-width:701px) and (max-width:1500px) { .journey-card.pilatus-journey { left: 24px; width: 240px; padding: 12px; } }
+@media(max-width:700px) {
+ .view-network .journey-card.pilatus-journey { top: calc(184px + env(safe-area-inset-top)); left: 16px; right: 16px; width: auto; padding: 10px 12px; max-height: calc(100dvh - 390px); }
+ .pilatus-journey nav { grid-auto-flow: column; grid-auto-columns: 120px; overflow: auto; }
+ .pilatus-journey nav button { flex-direction: column; align-items: start; min-height: 60px; }
+ .pilatus-journey header { position: sticky; top: -10px; background: #0c0b21; }
+}
+.pilatus-study:has(.pilatus-journey) .mobile-map-tools { display: none; }
+@media(max-width:700px) {
+ .pilatus-study .network-card .between { display: block; }
+ .pilatus-study .network-card { max-width: 210px; }
+}

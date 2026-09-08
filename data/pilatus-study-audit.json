@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "publisher": "SBB",
+    "feedVersion": "20260902",
+    "serviceDate": "2026-09-04",
+    "windowStart": 0,
+    "windowEnd": 86400,
+    "focusTime": 43200,
+    "sourceUrl": "https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/",
+    "model": "Scheduled interpolation on mapped 2D FOT railway alignment; no live positions or measured terrain.",
+    "note": "Exact Pilatusbahnen cogwheel route only. Original service day; no preceding-day spillover or seasonal comparison.",
+    "sources": {
+      "timetable": {
+        "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e"
+      },
+      "rail": {
+        "publisher": "Federal Office of Transport",
+        "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "simplificationToleranceMetres": 10
+      }
+    }
+  },
+  "counts": {
+    "trips": 34,
+    "stops": 3,
+    "paths": 2,
+    "gzipBytes": 2127
+  },
+  "geometry": {
+    "occurrences": 68,
+    "matched": 68,
+    "maxOffsetMetres": 38.64345046269642,
+    "pairs": [
+      {
+        "from": "Alpnachstad PB",
+        "to": "Aemsigen",
+        "fromId": "ch:1:sloid:8458",
+        "toId": "ch:1:sloid:8449",
+        "path": 0,
+        "offsetMetres": 18.473249983278247
+      },
+      {
+        "from": "Aemsigen",
+        "to": "Pilatus Kulm",
+        "fromId": "ch:1:sloid:8449",
+        "toId": "ch:1:sloid:8456",
+        "path": 1,
+        "offsetMetres": 38.64345046269642
+      },
+      {
+        "from": "Pilatus Kulm",
+        "to": "Aemsigen",
+        "fromId": "ch:1:sloid:8456",
+        "toId": "ch:1:sloid:8449",
+        "path": 1,
+        "offsetMetres": 38.64345046269642
+      },
+      {
+        "from": "Aemsigen",
+        "to": "Alpnachstad PB",
+        "fromId": "ch:1:sloid:8449",
+        "toId": "ch:1:sloid:8458",
+        "path": 0,
+        "offsetMetres": 18.473249983278247
+      }
+    ],
+    "passed": true
+  }
+}

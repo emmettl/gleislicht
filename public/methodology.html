@@ -71,6 +71,13 @@
         <p>The browser never receives the source GTFS archive. Repeatable Node scripts validate and compress each study into small static JSON artifacts. National 24-hour data is split so the initial morning view remains fast.</p>
       </section>
 
+      <section id="pilatus">
+        <h2>Pilatus: dated cogwheel journeys</h2>
+        <p>The dedicated Pilatus study retains 34 trains, 17 each way, from Swiss GTFS 20260902 for 4 September 2026. Exact route 93-R83-j26-1, agency 136 and cogwheel type 116 distinguish these services from cableways and connecting transport. Three stops and two FOT paths cover every one of the 68 scheduled segment occurrences, with 10 m plan simplification and a largest endpoint offset of 38.64 m against a 100 m matching gate. The 2.1 KiB compressed map loads only when selected.</p>
+        <p>The journey card selects either direction and its actual dated calls. The default ascent is train 19, Alpnachstad PB 12:15 to Pilatus Kulm 12:42 via Aemsigen 12:25; the default descent is train 18, Pilatus Kulm 12:14 to Alpnachstad PB 12:47. Departure changes pause at the start, station seeking follows the source calls, arrival pauses and replay returns to the same departure. Source date/feed/hash, route identity, call times, boarding flags and complete geometry are checked before offering journeys.</p>
+        <p>GTFS uses the spelling Aemsigen and ordinary pickup/drop-off flags. The <a href="https://pilatus.ch/en/railway-cableways/timetable">operator timetable</a>, checked on 8 September 2026, separately describes Ämsigen as a request stop with boarding subject to space and driver instructions. The original calls remain unchanged and the journey card states this qualification; no actual stop or available seat is guaranteed. This single-day 2D study does not establish measured terrain, railway heights, tunnel coverage, cableways, boat connections or other operating dates. Mapped plan alignment: Federal Office of Transport.</p>
+      </section>
+
       <section id="gornergrat">
         <h2>Gornergrat: a dated map and summit ascent</h2>
         <p>The optional Gornergrat study uses Swiss GTFS 20260902 for 4 September 2026, restricted to Gornergratbahn agency 121, route 93-48-j26-1 and cogwheel type 116. It retains 54 services: 26 each way between Zermatt GGB and Gornergrat, plus one each way between Zermatt GGB and Riffelalp. Seven source stops include Zermatt Ferienhaus legendär on the trains that actually call there. There are no frequency templates in this fixture.</p>

@@ -1,0 +1,17 @@
+{
+  "checkedDate": "2026-09-08",
+  "sourceUrl": "https://pilatus.ch/en/railway-cableways/timetable",
+  "publisher": "Pilatus-Bahnen AG",
+  "scope": "Operator context kept separate from the retained dated GTFS calls.",
+  "cogwheelSeason": { "start": "2026-05-11", "end": "2026-11-29" },
+  "requestStop": {
+    "sourceStopId": "ch:1:sloid:8449",
+    "gtfsName": "Aemsigen",
+    "operatorName": "Ämsigen",
+    "operatorContext": "Request stop; boarding depends on space and driver instructions.",
+    "retainedGtfsPickup": "0",
+    "retainedGtfsDropOff": "0",
+    "interpretation": "Keep the source calls and flags unchanged. Display the operator qualification; do not imply a guaranteed stop or available seat."
+  },
+  "notEstablished": ["measured rail heights", "tunnel coverage", "cableway journeys", "boat or rail connections", "other operating dates", "live vehicle positions"]
+}

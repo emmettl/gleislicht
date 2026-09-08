@@ -52,6 +52,7 @@ export const SWITZERLAND_MAP_FRAMINGS = {
     homeDistanceScale: 1,
     minimumDistanceScale: 0.02,
   },
+  pilatus: { homeDistanceScale: 0.06, minimumDistanceScale: 0.003, portraitMinimumDistanceScale: 0.003 },
   gornergrat: { homeDistanceScale: 0.03, minimumDistanceScale: 0.004, portraitMinimumDistanceScale: 0.003 },
   jungfrau: {
     homeDistanceScale: 0.12,
@@ -112,6 +113,7 @@ export const SWITZERLAND_MAP_FRAMINGS = {
 } as const satisfies Readonly<Record<string, MapCameraFraming>>
 
 export type SwitzerlandRegionalStudyId =
+  | 'pilatus'
   | 'gornergrat'
   | 'jungfrau'
   | 'rigi-lake'
@@ -175,6 +177,7 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
     hubDay: 'swiss-hub-day.json',
     realtimeDemo: 'realtime-demo.json',
     regional: {
+      'pilatus': 'pilatus-day.json',
       'gornergrat': 'gornergrat-day.json',
       'jungfrau': 'jungfrau-day.json',
       'rigi-lake': 'rigi-day.json',
