@@ -44,7 +44,7 @@ Counts are adjacent calls over all complete retained journeys. New-pattern count
 | 92-EV3-B-j26-1 | SBB Infrastruktur AG Bahnersatz / EV3 | 2026-12-11: 32 |
 | 94-370-0-j26-1 | Basler Personenschifffahrt AG / 3700 | 2026-08-01: 2 |
 
-The [complete seasonal inventory](../data/aargau-seasonal/input/inventory.json) retains all 5,142 national routes, their archived canton membership and all twelve daily statuses. The [summary](../data/aargau-seasonal/summary.json) lists all 289 canton-calling route records, their geometry counts and the 45 still-inactive records. Inactivity in this sample is not discontinuation or an exclusion from the archived canton census.
+The [complete seasonal inventory](../data/aargau-seasonal/input/inventory.json) retains all 5,142 national routes, their archived canton membership and all twelve daily statuses. The [summary](../data/aargau-seasonal/summary.json) lists all 289 canton-calling route records, their geometry counts and the 45 still-inactive records. Inactivity in this sample is not discontinuation or an exclusion from the archived canton census. The [annual witness audit](AARGAU-ANNUAL-WITNESSES.md) now finds active canton-calling journeys for all 45 routes, covered by 19 selected civil dates. It independently verifies 2,019 archived trip templates and 13,007 complete calls across all 364 feed dates. Those templates introduce 280 directed patterns; none has complete geometry under the existing reviewed policies, with 10,976 of 10,988 template segment occurrences unresolved. These are separate audit counts, not additional complete regional feeds.
 
 ## Geometry review priorities
 
@@ -168,6 +168,6 @@ npx vitest run scripts/aargau-seasonal.test.mjs scripts/aargau-platform-geometry
 Next work, recorded in the release review:
 
 1. Review AGIS/OSM bus disagreements against dated operator itineraries and legal direction evidence; the 30 m diagnostic alone cannot choose the correct source.
-2. Find active witness dates for the 45 archived routes absent from all twelve samples; do not label them discontinued.
+2. Review geometry for all 280 directed patterns of the 45 newly witnessed routes, then extract and independently validate full civil days before extending the release scope.
 3. Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.
 4. Integrate reviewed fixtures into application study selection, date loading and attribution, then run browser release checks.

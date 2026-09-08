@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "inventorySha256": "2fc02676fab68ad0137a5d4aa1141cf002eeba4c20abbf2c5b69cc313fce38fd",
+  "sourcePatternsSha256": "824d629c8dded53dc086de9ee6477810613e6c3c90a17fe1d1b7891cb3c4defc",
+  "archiveSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "method": "Independent Node GTFS parser scans the complete national stop-time archive, verifies exact target trip-set and full-call equality plus platform coordinates, and recomputes every annual service and civil date from weekly calendars and exceptions.",
+  "nationalStopTimeRows": 34499152,
+  "completeCantonTrips": 2019,
+  "completeCalls": 13007,
+  "annualCalendarDates": 364,
+  "targetRoutes": 45,
+  "passed": true
+}

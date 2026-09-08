@@ -21,7 +21,7 @@ export function applyAargauGeometry(raw, index, cantonStopIds, roads, rails, gap
   const inside = new Set(cantonStopIds), stops = raw.stops, stopIndices = new Map(stops.map((s, i) => [s[4], i]))
   const patterns = new Map(), paths = [], pathIds = new Map(), pairs = new Map(), groups = new Map(), routeStats = new Map(), edges = new Map()
   const trains = raw.trains.map(train => {
-    alignments?.assertJourneyScope(train, train.calls.map(c => stops[stopIndices.get(c[0])]))
+    alignments?.assertJourneyScope?.(train, train.calls.map(c => stops[stopIndices.get(c[0])]))
     const key = JSON.stringify([train.routeId, train.directionId, train.calls.map(c => c[0])])
     if (!patterns.has(key)) {
       const match = matchAargauPattern(index.get(identityKey(train.agencyId, train.category, train.route)), train.calls.map(c => stops[stopIndices.get(c[0])]))

@@ -1,4 +1,5 @@
 import { expect, test } from 'vitest'
+import { applyAargauGeometry } from './build-aargau-study.mjs'
 import { loadSimplon, simplonMatcher, simplonGeometry } from './aargau-simplon.mjs'
 const loaded = await loadSimplon(), policy = loaded.policy
 const train = r => ({ ...r, category: r.mode, route: r.line })
@@ -37,4 +38,15 @@ test('prior accepted geometry is preserved and altered inferred paths fail close
 test('a disconnected source is not repaired by relaxing track-attachment limits', async () => {
   const changed = structuredClone(policy); changed.graph.reviewedCrossoverWayIds = []
   await expect(simplonGeometry(changed)).rejects.toThrow('border-disconnected-detour-or-turn')
+})
+
+
+test('the shared builder accepts the scoped Simplon fallback without a bus-review hook', () => {
+  const r = policy.rules[0]
+  const raw = { metadata: { feed: {} }, stops: r.stops, trains: [{ ...train(r), id: r.sourceTripId }] }
+  const unresolvedRail = { matchPattern: () => r.stops.slice(1).map(() => ({ ...failure })) }
+  const result = applyAargauGeometry(raw, new Map(), [], undefined, unresolvedRail, undefined, undefined, loaded.forDate(r.date))
+  const segment = result.patterns[0].segments[r.segmentIndex]
+  expect(segment.geometrySource).toBe('osm-rail')
+  expect(result.snapshot.paths[segment.pathIndex]).toEqual(loaded.geometry.path)
 })

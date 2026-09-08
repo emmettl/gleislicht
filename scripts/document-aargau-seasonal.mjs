@@ -4,6 +4,11 @@ import { hashFile } from './inventory-aargau.mjs'
 import { readJson, readGzipJson } from './aargau-seasonal.mjs'
 
 const root = 'data/aargau-seasonal'
+const witnesses = await readJson('data/aargau-witnesses/inventory.json')
+const witnessGeometry = await readJson('data/aargau-witnesses/geometry-summary.json')
+assert.equal(witnessGeometry.inventorySha256, await hashFile('data/aargau-witnesses/inventory.json'))
+assert.equal(witnessGeometry.sourceVerificationSha256, await hashFile('data/aargau-witnesses/source-verification.json'))
+assert.equal(witnesses.witnessedRoutes, witnesses.targetRoutes)
 const summary = await readJson(`${root}/summary.json`)
 const alignment = await readJson(`${root}/alignment-review.json`)
 const correctionPolicy = await readJson('data/aargau-alignment-policy.json')
@@ -63,10 +68,10 @@ for (const day of alignment.days) {
   }
 }
 const pendingFlags = [...flags.values()].filter(f => f.contexts.some(c => !c.correctionId))
-const release = { schemaVersion: 1, line344ReviewSha256: await hashFile(`${root}/344-alignment-followup.json`), addedSimplonOccurrences, simplonPolicySha256: await hashFile('data/aargau-simplon-policy.json'), addedScopedGapOccurrences, scopedGapOccurrencesByKind, seasonalGapPolicySha256: await hashFile('data/aargau-seasonal-gap-policy.json'), correctionPolicySha256: await hashFile('data/aargau-alignment-policy.json'), correctionRegressionSha256: await hashFile(`${root}/alignment-correction-regression.json`),
+const release = { schemaVersion: 1, annualWitnessInventorySha256: await hashFile('data/aargau-witnesses/inventory.json'), annualWitnessGeometrySha256: await hashFile('data/aargau-witnesses/geometry-summary.json'), witnessedPreviouslyUnsampledRoutes: witnesses.witnessedRoutes, witnessDates: witnesses.selectedDates.map(s => s.date), unresolvedWitnessTemplateOccurrences: witnessGeometry.missingOccurrences, line344ReviewSha256: await hashFile(`${root}/344-alignment-followup.json`), addedSimplonOccurrences, simplonPolicySha256: await hashFile('data/aargau-simplon-policy.json'), addedScopedGapOccurrences, scopedGapOccurrencesByKind, seasonalGapPolicySha256: await hashFile('data/aargau-seasonal-gap-policy.json'), correctionPolicySha256: await hashFile('data/aargau-alignment-policy.json'), correctionRegressionSha256: await hashFile(`${root}/alignment-correction-regression.json`),
   reviewCandidate: 'fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json', addedRoadOccurrences, pendingAlignmentFlags: pendingFlags.length, summarySha256: await hashFile(`${root}/summary.json`), alignmentReviewSha256: await hashFile(`${root}/alignment-review.json`),
   publicationReady: false, productionFeedsChanged: false,
-  checks: { sampledSourceJourneys: true, septemberReplay: true, dateScopedExceptions: true, everySeasonalPatternHasGeometry: unresolved.length === 0,
+  checks: { annualRouteWitnessesFound: true, witnessPatternGeometryComplete: witnessGeometry.missingOccurrences === 0, sampledSourceJourneys: true, septemberReplay: true, dateScopedExceptions: true, everySeasonalPatternHasGeometry: unresolved.length === 0,
     busAlignmentDisagreementsResolved: pendingFlags.length === 0, physicalRunningDirectionsCertified: false, dstRepeatedHourDisambiguated: false },
   uniqueNewDirectedPatterns: newPatterns.size,
   missingOccurrenceCategories: Object.fromEntries([...categories].sort((a, b) => b[1] - a[1])),
@@ -74,7 +79,7 @@ const release = { schemaVersion: 1, line344ReviewSha256: await hashFile(`${root}
   unresolved, alignmentFlags: [...flags.values()].sort((a, b) => b.maximumVertexSeparationMetres - a.maximumVertexSeparationMetres),
   remainingWork: [
     'Review AGIS/OSM bus disagreements against dated operator itineraries and legal direction evidence; the 30 m diagnostic alone cannot choose the correct source.',
-    'Find active witness dates for the 45 archived routes absent from all twelve samples; do not label them discontinued.',
+    'Review geometry for all 280 directed patterns of the 45 newly witnessed routes, then extract and independently validate full civil days before extending the release scope.',
     'Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.',
     'Integrate reviewed fixtures into application study selection, date loading and attribution, then run browser release checks.'
   ] }
@@ -101,7 +106,7 @@ Counts are adjacent calls over all complete retained journeys. New-pattern count
 
 ${table(['GTFS route record', 'Operator / line', 'Sampled activity'], summary.newlyActiveRoutes.map(id => { const r = routeMap.get(id); return [id, r.operator + ' / ' + r.line, r.days.filter(d => d.trips).map(d => d.date + ': ' + d.trips).join('; ')] }))}
 
-The [complete seasonal inventory](../data/aargau-seasonal/input/inventory.json) retains all 5,142 national routes, their archived canton membership and all twelve daily statuses. The [summary](../data/aargau-seasonal/summary.json) lists all 289 canton-calling route records, their geometry counts and the 45 still-inactive records. Inactivity in this sample is not discontinuation or an exclusion from the archived canton census.
+The [complete seasonal inventory](../data/aargau-seasonal/input/inventory.json) retains all 5,142 national routes, their archived canton membership and all twelve daily statuses. The [summary](../data/aargau-seasonal/summary.json) lists all 289 canton-calling route records, their geometry counts and the 45 still-inactive records. Inactivity in this sample is not discontinuation or an exclusion from the archived canton census. The [annual witness audit](AARGAU-ANNUAL-WITNESSES.md) now finds active canton-calling journeys for all 45 routes, covered by 19 selected civil dates. It independently verifies 2,019 archived trip templates and 13,007 complete calls across all 364 feed dates. Those templates introduce 280 directed patterns; none has complete geometry under the existing reviewed policies, with 10,976 of 10,988 template segment occurrences unresolved. These are separate audit counts, not additional complete regional feeds.
 
 ## Geometry review priorities
 

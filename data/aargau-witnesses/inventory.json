@@ -1,0 +1,2375 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-08",
+  "archiveSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "archiveUrl": "https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip",
+  "feed": {
+    "feed_publisher_name": "SBB",
+    "feed_publisher_url": "https://sbb.ch",
+    "feed_lang": "DE",
+    "feed_start_date": "20251214",
+    "feed_end_date": "20261212",
+    "feed_version": "20260902"
+  },
+  "sourceStopTimeRows": 34499152,
+  "inputHashes": {
+    "data/aargau-seasonal/summary.json": "dcf7e625e8d08087bf3fa65538ab09f2b274ef20ee23ce25e10e4677d547621c",
+    "data/aargau-seasonal/input/inventory.json": "0abc19535b2935917269cba1f83d1be536d0422aaf89bf2cbff87761d1cc122b"
+  },
+  "sourcePatternsFile": "source-patterns.json.gz",
+  "sourcePatternsSha256": "824d629c8dded53dc086de9ee6477810613e6c3c90a17fe1d1b7891cb3c4defc",
+  "scope": "Exhaustive calendar and exception search for the 45 routes absent from the twelve-date sample, retaining only complete trips with a pinned Aargau call. Archived schedule evidence, not actual operation or publication admission. Civil-day membership uses selected and preceding service dates, matching the importer.",
+  "attribution": [
+    "Timetable data: opentransportdata.swiss / SKI; original publisher attribution retained in the canton inventory.",
+    "Canton membership: Daten des Kantons Aargau"
+  ],
+  "selectionMethod": "Deterministic greedy cover: most newly witnessed route records, then earliest civil date. This is a compact cover, not a proof of the minimum number of dates.",
+  "targetRoutes": 45,
+  "witnessedRoutes": 45,
+  "noActiveWitnessRoutes": [],
+  "archivedCantonTrips": 2019,
+  "calendarServices": 1685,
+  "selectedDates": [
+    {
+      "date": "2026-05-23",
+      "newlyWitnessedRoutes": [
+        "91-3A-Y-j26-1",
+        "91-3V-Y-j26-1",
+        "91-81-A-j26-1",
+        "92-A01-N-j26-1",
+        "92-A08-Z-j26-1",
+        "92-EV5-V-j26-1",
+        "92-EV7-R-j26-1",
+        "92-EV8-F-j26-1",
+        "92-EV9-I-j26-1"
+      ]
+    },
+    {
+      "date": "2026-08-09",
+      "newlyWitnessedRoutes": [
+        "91-21-D-j26-1",
+        "91-22-Y-j26-1",
+        "91-40-Y-j26-1",
+        "91-8F-Y-j26-1",
+        "92-A04-9-j26-1",
+        "92-A04-B-j26-1"
+      ]
+    },
+    {
+      "date": "2026-05-22",
+      "newlyWitnessedRoutes": [
+        "91-42-F-j26-1",
+        "91-55-C-j26-1",
+        "91-75-Y-j26-1",
+        "92-A05-X-j26-1"
+      ]
+    },
+    {
+      "date": "2026-09-14",
+      "newlyWitnessedRoutes": [
+        "92-A01-Q-j26-1",
+        "92-A01-U-j26-1",
+        "92-A04-F-j26-1",
+        "92-A07-9-j26-1"
+      ]
+    },
+    {
+      "date": "2026-02-23",
+      "newlyWitnessedRoutes": [
+        "91-5R-Y-j26-1",
+        "91-BM-Y-j26-1",
+        "91-BO-Y-j26-1"
+      ]
+    },
+    {
+      "date": "2026-08-16",
+      "newlyWitnessedRoutes": [
+        "91-4U-Y-j26-1",
+        "91-9I-Y-j26-1",
+        "92-EV1-D-j26-1"
+      ]
+    },
+    {
+      "date": "2026-02-12",
+      "newlyWitnessedRoutes": [
+        "91-9Z-Y-j26-1",
+        "91-AK-Y-j26-1"
+      ]
+    },
+    {
+      "date": "2026-03-01",
+      "newlyWitnessedRoutes": [
+        "91-1B-Y-j26-1",
+        "91-46-j26-1"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "newlyWitnessedRoutes": [
+        "91-27-D-j26-1",
+        "91-36-B-j26-1"
+      ]
+    },
+    {
+      "date": "2026-03-08",
+      "newlyWitnessedRoutes": [
+        "91-7Q-Y-j26-1"
+      ]
+    },
+    {
+      "date": "2026-03-27",
+      "newlyWitnessedRoutes": [
+        "91-5V-Y-j26-1"
+      ]
+    },
+    {
+      "date": "2026-04-18",
+      "newlyWitnessedRoutes": [
+        "91-8U-Y-j26-1"
+      ]
+    },
+    {
+      "date": "2026-04-20",
+      "newlyWitnessedRoutes": [
+        "92-A08-U-j26-1"
+      ]
+    },
+    {
+      "date": "2026-06-14",
+      "newlyWitnessedRoutes": [
+        "91-4T-Y-j26-1"
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "newlyWitnessedRoutes": [
+        "91-98-Y-j26-1"
+      ]
+    },
+    {
+      "date": "2026-08-08",
+      "newlyWitnessedRoutes": [
+        "91-4C-Y-j26-1"
+      ]
+    },
+    {
+      "date": "2026-09-25",
+      "newlyWitnessedRoutes": [
+        "96-138-1-j26-1"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "newlyWitnessedRoutes": [
+        "91-3T-Y-j26-1"
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "newlyWitnessedRoutes": [
+        "91-9N-Y-j26-1"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "routeId": "91-1B-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "IC",
+      "mode": "rail",
+      "archivedCantonTrips": 5,
+      "activeCivilDates": [
+        {
+          "date": "2026-01-11",
+          "journeys": 1
+        },
+        {
+          "date": "2026-01-25",
+          "journeys": 1
+        },
+        {
+          "date": "2026-02-01",
+          "journeys": 1
+        },
+        {
+          "date": "2026-02-08",
+          "journeys": 1
+        },
+        {
+          "date": "2026-02-22",
+          "journeys": 1
+        },
+        {
+          "date": "2026-03-01",
+          "journeys": 1
+        },
+        {
+          "date": "2026-03-08",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-03-01",
+      "witness": {
+        "sourceTripId": ".ojp-91-1B-Y.1.TA.5.j26",
+        "sourceServiceDate": "2026-03-01",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "1582",
+        "callCount": 6,
+        "firstStopId": "ch:1:sloid:9000:4:8",
+        "lastStopId": "ch:1:sloid:218:2:2"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-21-D-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "IC21",
+      "mode": "rail",
+      "archivedCantonTrips": 3,
+      "activeCivilDates": [
+        {
+          "date": "2026-08-06",
+          "journeys": 1
+        },
+        {
+          "date": "2026-08-07",
+          "journeys": 2
+        },
+        {
+          "date": "2026-08-08",
+          "journeys": 2
+        },
+        {
+          "date": "2026-08-09",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-08-09",
+      "witness": {
+        "sourceTripId": ".ojp-91-21-D.1.TA.605.j26",
+        "sourceServiceDate": "2026-08-08",
+        "serviceOffset": -86400,
+        "directionId": "0",
+        "shortName": "696",
+        "callCount": 9,
+        "firstStopId": "ch:1:sloid:5300:2:3",
+        "lastStopId": "ch:1:sloid:10:4:7"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-22-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 3,
+      "activeCivilDates": [
+        {
+          "date": "2026-02-23",
+          "journeys": 1
+        },
+        {
+          "date": "2026-08-08",
+          "journeys": 1
+        },
+        {
+          "date": "2026-08-09",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-08-09",
+      "witness": {
+        "sourceTripId": ".ojp-91-22-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-08-09",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31410",
+        "callCount": 6,
+        "firstStopId": "ch:1:sloid:3000:9:16",
+        "lastStopId": "ch:1:sloid:10:7:14"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-27-D-j26-1",
+      "agencyId": "65",
+      "operator": "THURBO",
+      "line": "S27",
+      "mode": "rail",
+      "archivedCantonTrips": 6,
+      "activeCivilDates": [
+        {
+          "date": "2026-04-13",
+          "journeys": 6
+        },
+        {
+          "date": "2026-04-14",
+          "journeys": 6
+        },
+        {
+          "date": "2026-04-15",
+          "journeys": 6
+        },
+        {
+          "date": "2026-04-16",
+          "journeys": 6
+        }
+      ],
+      "witnessDate": "2026-04-13",
+      "witness": {
+        "sourceTripId": ".ojp-91-27-D.1.TA.1.j26",
+        "sourceServiceDate": "2026-04-13",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "7774",
+        "callCount": 4,
+        "firstStopId": "ch:1:sloid:329:1:1",
+        "lastStopId": "ch:1:sloid:3409:1:1"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-36-B-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "S36",
+      "mode": "rail",
+      "archivedCantonTrips": 6,
+      "activeCivilDates": [
+        {
+          "date": "2026-04-13",
+          "journeys": 6
+        },
+        {
+          "date": "2026-04-14",
+          "journeys": 6
+        },
+        {
+          "date": "2026-04-15",
+          "journeys": 6
+        },
+        {
+          "date": "2026-04-16",
+          "journeys": 6
+        }
+      ],
+      "witnessDate": "2026-04-13",
+      "witness": {
+        "sourceTripId": ".ojp-91-36-B.1.TA.1.j26",
+        "sourceServiceDate": "2026-04-13",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "22891",
+        "callCount": 2,
+        "firstStopId": "8014474_gen:missingSLOID_pf:5",
+        "lastStopId": "ch:1:sloid:329:2:4"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-3A-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 14,
+      "activeCivilDates": [
+        {
+          "date": "2026-05-15",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-16",
+          "journeys": 2
+        },
+        {
+          "date": "2026-05-17",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-18",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-19",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-20",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-21",
+          "journeys": 2
+        },
+        {
+          "date": "2026-05-22",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-23",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-24",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-26",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-27",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-28",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-29",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-30",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-31",
+          "journeys": 2
+        },
+        {
+          "date": "2026-06-01",
+          "journeys": 1
+        },
+        {
+          "date": "2026-06-30",
+          "journeys": 2
+        },
+        {
+          "date": "2026-07-01",
+          "journeys": 1
+        },
+        {
+          "date": "2026-07-14",
+          "journeys": 1
+        },
+        {
+          "date": "2026-08-09",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-05-23",
+      "witness": {
+        "sourceTripId": ".ojp-91-3A-Y.1.TA.7.j26",
+        "sourceServiceDate": "2026-05-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31392",
+        "callCount": 8,
+        "firstStopId": "ch:1:sloid:3001:2:2",
+        "lastStopId": "ch:1:sloid:1120:0:668579"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-3T-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 3,
+      "activeCivilDates": [
+        {
+          "date": "2026-10-03",
+          "journeys": 3
+        },
+        {
+          "date": "2026-10-04",
+          "journeys": 3
+        }
+      ],
+      "witnessDate": "2026-10-03",
+      "witness": {
+        "sourceTripId": ".ojp-91-3T-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-10-02",
+        "serviceOffset": -86400,
+        "directionId": "0",
+        "shortName": "31499",
+        "callCount": 4,
+        "firstStopId": "ch:1:sloid:3501:1:1",
+        "lastStopId": "ch:1:sloid:3504:2:2"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-3V-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "S",
+      "mode": "rail",
+      "archivedCantonTrips": 279,
+      "activeCivilDates": [
+        {
+          "date": "2026-05-09",
+          "journeys": 76
+        },
+        {
+          "date": "2026-05-10",
+          "journeys": 79
+        },
+        {
+          "date": "2026-05-11",
+          "journeys": 3
+        },
+        {
+          "date": "2026-05-14",
+          "journeys": 76
+        },
+        {
+          "date": "2026-05-15",
+          "journeys": 79
+        },
+        {
+          "date": "2026-05-16",
+          "journeys": 79
+        },
+        {
+          "date": "2026-05-17",
+          "journeys": 79
+        },
+        {
+          "date": "2026-05-18",
+          "journeys": 3
+        },
+        {
+          "date": "2026-05-23",
+          "journeys": 76
+        },
+        {
+          "date": "2026-05-24",
+          "journeys": 79
+        },
+        {
+          "date": "2026-05-25",
+          "journeys": 79
+        },
+        {
+          "date": "2026-05-26",
+          "journeys": 3
+        }
+      ],
+      "witnessDate": "2026-05-23",
+      "witness": {
+        "sourceTripId": ".ojp-91-3V-Y.1.TA.136.j26",
+        "sourceServiceDate": "2026-05-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "14559",
+        "callCount": 6,
+        "firstStopId": "ch:1:sloid:2105:2:2",
+        "lastStopId": "ch:1:sloid:3000:503:43"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-40-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 4,
+      "activeCivilDates": [
+        {
+          "date": "2026-06-30",
+          "journeys": 1
+        },
+        {
+          "date": "2026-07-01",
+          "journeys": 1
+        },
+        {
+          "date": "2026-08-08",
+          "journeys": 2
+        },
+        {
+          "date": "2026-08-09",
+          "journeys": 2
+        }
+      ],
+      "witnessDate": "2026-08-09",
+      "witness": {
+        "sourceTripId": ".ojp-91-40-Y.1.TA.44.j26",
+        "sourceServiceDate": "2026-08-09",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31408",
+        "callCount": 6,
+        "firstStopId": "ch:1:sloid:3000:6:10",
+        "lastStopId": "ch:1:sloid:4300:3:5"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-42-F-j26-1",
+      "agencyId": "82",
+      "operator": "Schweizerische Südostbahn (sob)",
+      "line": "S42",
+      "mode": "rail",
+      "archivedCantonTrips": 6,
+      "activeCivilDates": [
+        {
+          "date": "2026-04-02",
+          "journeys": 2
+        },
+        {
+          "date": "2026-05-13",
+          "journeys": 2
+        },
+        {
+          "date": "2026-05-22",
+          "journeys": 2
+        }
+      ],
+      "witnessDate": "2026-05-22",
+      "witness": {
+        "sourceTripId": ".ojp-91-42-F.1.TA.1.j26",
+        "sourceServiceDate": "2026-05-22",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31157",
+        "callCount": 10,
+        "firstStopId": "ch:1:sloid:3000:10:18",
+        "lastStopId": "ch:1:sloid:5004:3:5"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-46-j26-1",
+      "agencyId": "82",
+      "operator": "Schweizerische Südostbahn (sob)",
+      "line": "IR46",
+      "mode": "rail",
+      "archivedCantonTrips": 2,
+      "activeCivilDates": [
+        {
+          "date": "2026-02-28",
+          "journeys": 1
+        },
+        {
+          "date": "2026-03-01",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-03-01",
+      "witness": {
+        "sourceTripId": ".ojp-91-46.1.TA.264.j26",
+        "sourceServiceDate": "2026-03-01",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "2413",
+        "callCount": 21,
+        "firstStopId": "ch:1:sloid:3000:9:17",
+        "lastStopId": "ch:1:sloid:5400:2:2"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-4C-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "IR",
+      "mode": "rail",
+      "archivedCantonTrips": 4,
+      "activeCivilDates": [
+        {
+          "date": "2026-08-08",
+          "journeys": 4
+        }
+      ],
+      "witnessDate": "2026-08-08",
+      "witness": {
+        "sourceTripId": ".ojp-91-4C-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-08-08",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "30515",
+        "callCount": 11,
+        "firstStopId": "ch:1:sloid:1026:1:1",
+        "lastStopId": "ch:1:sloid:3000:8:14"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-4T-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 5,
+      "activeCivilDates": [
+        {
+          "date": "2026-06-14",
+          "journeys": 2
+        },
+        {
+          "date": "2026-08-19",
+          "journeys": 1
+        },
+        {
+          "date": "2026-08-20",
+          "journeys": 1
+        },
+        {
+          "date": "2026-08-23",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-06-14",
+      "witness": {
+        "sourceTripId": ".ojp-91-4T-Y.1.TA.10.j26",
+        "sourceServiceDate": "2026-06-14",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31010",
+        "callCount": 9,
+        "firstStopId": "ch:1:sloid:7492:0:460848",
+        "lastStopId": "ch:1:sloid:3000:6:10"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-4U-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "IR",
+      "mode": "rail",
+      "archivedCantonTrips": 4,
+      "activeCivilDates": [
+        {
+          "date": "2026-08-15",
+          "journeys": 1
+        },
+        {
+          "date": "2026-08-16",
+          "journeys": 1
+        },
+        {
+          "date": "2026-09-26",
+          "journeys": 1
+        },
+        {
+          "date": "2026-09-27",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-08-16",
+      "witness": {
+        "sourceTripId": ".ojp-91-4U-Y.1.TA.51.j26",
+        "sourceServiceDate": "2026-08-16",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "2382",
+        "callCount": 7,
+        "firstStopId": "ch:1:sloid:3000:8:14",
+        "lastStopId": "ch:1:sloid:7000:55:50"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-55-C-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "IR55",
+      "mode": "rail",
+      "archivedCantonTrips": 25,
+      "activeCivilDates": [
+        {
+          "date": "2026-05-18",
+          "journeys": 16
+        },
+        {
+          "date": "2026-05-19",
+          "journeys": 16
+        },
+        {
+          "date": "2026-05-20",
+          "journeys": 16
+        },
+        {
+          "date": "2026-05-21",
+          "journeys": 16
+        },
+        {
+          "date": "2026-05-22",
+          "journeys": 16
+        }
+      ],
+      "witnessDate": "2026-05-22",
+      "witness": {
+        "sourceTripId": ".ojp-91-55-C.1.TA.1654.j26",
+        "sourceServiceDate": "2026-05-22",
+        "serviceOffset": 0,
+        "directionId": "1",
+        "shortName": "1759",
+        "callCount": 7,
+        "firstStopId": "ch:1:sloid:4300:2:3",
+        "lastStopId": "ch:1:sloid:3000:7:13"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-5R-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 1,
+      "activeCivilDates": [
+        {
+          "date": "2026-02-23",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-02-23",
+      "witness": {
+        "sourceTripId": ".ojp-91-5R-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-02-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31300",
+        "callCount": 12,
+        "firstStopId": "ch:1:sloid:2119:3:3",
+        "lastStopId": "ch:1:sloid:10:3:5"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-5V-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 2,
+      "activeCivilDates": [
+        {
+          "date": "2026-03-27",
+          "journeys": 2
+        },
+        {
+          "date": "2026-03-28",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-03-27",
+      "witness": {
+        "sourceTripId": ".ojp-91-5V-Y.1.TA.5.j26",
+        "sourceServiceDate": "2026-03-27",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31376",
+        "callCount": 3,
+        "firstStopId": "ch:1:sloid:3000:9:17",
+        "lastStopId": "ch:1:sloid:38:0:1"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-75-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "S",
+      "mode": "rail",
+      "archivedCantonTrips": 46,
+      "activeCivilDates": [
+        {
+          "date": "2026-05-18",
+          "journeys": 36
+        },
+        {
+          "date": "2026-05-19",
+          "journeys": 36
+        },
+        {
+          "date": "2026-05-20",
+          "journeys": 36
+        },
+        {
+          "date": "2026-05-21",
+          "journeys": 36
+        },
+        {
+          "date": "2026-05-22",
+          "journeys": 36
+        },
+        {
+          "date": "2026-08-27",
+          "journeys": 4
+        },
+        {
+          "date": "2026-10-17",
+          "journeys": 2
+        },
+        {
+          "date": "2026-10-18",
+          "journeys": 2
+        },
+        {
+          "date": "2026-11-21",
+          "journeys": 1
+        },
+        {
+          "date": "2026-11-22",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-05-22",
+      "witness": {
+        "sourceTripId": ".ojp-91-75-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-05-22",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "30989",
+        "callCount": 12,
+        "firstStopId": "ch:1:sloid:8100:1:1",
+        "lastStopId": "ch:1:sloid:2115:0:1"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-7Q-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "IC",
+      "mode": "rail",
+      "archivedCantonTrips": 2,
+      "activeCivilDates": [
+        {
+          "date": "2026-03-08",
+          "journeys": 1
+        },
+        {
+          "date": "2026-03-22",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-03-08",
+      "witness": {
+        "sourceTripId": ".ojp-91-7Q-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-03-08",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31102",
+        "callCount": 8,
+        "firstStopId": "ch:1:sloid:3000:8:15",
+        "lastStopId": "ch:1:sloid:10:6:12"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-81-A-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "IC81",
+      "mode": "rail",
+      "archivedCantonTrips": 160,
+      "activeCivilDates": [
+        {
+          "date": "2026-03-14",
+          "journeys": 15
+        },
+        {
+          "date": "2026-03-15",
+          "journeys": 15
+        },
+        {
+          "date": "2026-05-09",
+          "journeys": 15
+        },
+        {
+          "date": "2026-05-10",
+          "journeys": 15
+        },
+        {
+          "date": "2026-05-14",
+          "journeys": 15
+        },
+        {
+          "date": "2026-05-15",
+          "journeys": 15
+        },
+        {
+          "date": "2026-05-16",
+          "journeys": 15
+        },
+        {
+          "date": "2026-05-17",
+          "journeys": 15
+        },
+        {
+          "date": "2026-05-23",
+          "journeys": 15
+        },
+        {
+          "date": "2026-05-24",
+          "journeys": 15
+        },
+        {
+          "date": "2026-05-25",
+          "journeys": 15
+        },
+        {
+          "date": "2026-08-15",
+          "journeys": 12
+        },
+        {
+          "date": "2026-08-16",
+          "journeys": 9
+        },
+        {
+          "date": "2026-09-26",
+          "journeys": 15
+        },
+        {
+          "date": "2026-09-27",
+          "journeys": 15
+        },
+        {
+          "date": "2026-10-10",
+          "journeys": 15
+        },
+        {
+          "date": "2026-10-11",
+          "journeys": 15
+        }
+      ],
+      "witnessDate": "2026-05-23",
+      "witness": {
+        "sourceTripId": ".ojp-91-81-A.1.TA.173.j26",
+        "sourceServiceDate": "2026-05-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "806",
+        "callCount": 8,
+        "firstStopId": "ch:1:sloid:3000:9:16",
+        "lastStopId": "ch:1:sloid:7492:0:581416"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-8F-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 1,
+      "activeCivilDates": [
+        {
+          "date": "2026-08-09",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-08-09",
+      "witness": {
+        "sourceTripId": ".ojp-91-8F-Y.1.TA.11.j26",
+        "sourceServiceDate": "2026-08-09",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31414",
+        "callCount": 8,
+        "firstStopId": "ch:1:sloid:3000:7:13",
+        "lastStopId": "ch:1:sloid:7000:4:8"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-8U-Y-j26-1",
+      "agencyId": "68",
+      "operator": "Oensingen-Balsthal-Bahn",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 2,
+      "activeCivilDates": [
+        {
+          "date": "2026-04-18",
+          "journeys": 2
+        }
+      ],
+      "witnessDate": "2026-04-18",
+      "witness": {
+        "sourceTripId": ".ojp-91-8U-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-04-18",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31710",
+        "callCount": 2,
+        "firstStopId": "ch:1:sloid:329:1:1",
+        "lastStopId": "ch:1:sloid:322_gen:missingSLOID_pf:3"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-98-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "RE",
+      "mode": "rail",
+      "archivedCantonTrips": 3,
+      "activeCivilDates": [
+        {
+          "date": "2026-06-16",
+          "journeys": 1
+        },
+        {
+          "date": "2026-06-17",
+          "journeys": 1
+        },
+        {
+          "date": "2026-06-18",
+          "journeys": 1
+        },
+        {
+          "date": "2026-06-19",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-06-16",
+      "witness": {
+        "sourceTripId": ".ojp-91-98-Y.1.TA.3.j26",
+        "sourceServiceDate": "2026-06-15",
+        "serviceOffset": -86400,
+        "directionId": "0",
+        "shortName": "31247",
+        "callCount": 6,
+        "firstStopId": "ch:1:sloid:10:1:1",
+        "lastStopId": "ch:1:sloid:2021:1:1"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-9I-Y-j26-1",
+      "agencyId": "68",
+      "operator": "Oensingen-Balsthal-Bahn",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 26,
+      "activeCivilDates": [
+        {
+          "date": "2026-08-16",
+          "journeys": 26
+        }
+      ],
+      "witnessDate": "2026-08-16",
+      "witness": {
+        "sourceTripId": ".ojp-91-9I-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-08-16",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31048",
+        "callCount": 4,
+        "firstStopId": "ch:1:sloid:329:1:1",
+        "lastStopId": "ch:1:sloid:3400:3:6"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-9N-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "IC",
+      "mode": "rail",
+      "archivedCantonTrips": 15,
+      "activeCivilDates": [
+        {
+          "date": "2026-10-10",
+          "journeys": 14
+        },
+        {
+          "date": "2026-10-11",
+          "journeys": 14
+        }
+      ],
+      "witnessDate": "2026-10-10",
+      "witness": {
+        "sourceTripId": ".ojp-91-9N-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-10-10",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "10512",
+        "callCount": 5,
+        "firstStopId": "ch:1:sloid:3000:9:17",
+        "lastStopId": "ch:1:sloid:4300:2:3"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-9Z-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 1,
+      "activeCivilDates": [
+        {
+          "date": "2026-02-12",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-02-12",
+      "witness": {
+        "sourceTripId": ".ojp-91-9Z-Y.1.TA.2.j26",
+        "sourceServiceDate": "2026-02-12",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31408",
+        "callCount": 11,
+        "firstStopId": "ch:1:sloid:218:5:9",
+        "lastStopId": "ch:1:sloid:5000:1:2"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-AK-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 5,
+      "activeCivilDates": [
+        {
+          "date": "2026-02-12",
+          "journeys": 1
+        },
+        {
+          "date": "2026-02-13",
+          "journeys": 1
+        },
+        {
+          "date": "2026-02-17",
+          "journeys": 1
+        },
+        {
+          "date": "2026-02-18",
+          "journeys": 1
+        },
+        {
+          "date": "2026-07-01",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-02-12",
+      "witness": {
+        "sourceTripId": ".ojp-91-AK-Y.1.TA.10.j26",
+        "sourceServiceDate": "2026-02-12",
+        "serviceOffset": 0,
+        "directionId": "1",
+        "shortName": "31211",
+        "callCount": 11,
+        "firstStopId": "ch:1:sloid:2034:1:1",
+        "lastStopId": "ch:1:sloid:5000:1:3"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-BM-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 1,
+      "activeCivilDates": [
+        {
+          "date": "2026-02-23",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-02-23",
+      "witness": {
+        "sourceTripId": ".ojp-91-BM-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-02-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31202",
+        "callCount": 12,
+        "firstStopId": "ch:1:sloid:305:2:3",
+        "lastStopId": "ch:1:sloid:10:6:12"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "91-BO-Y-j26-1",
+      "agencyId": "11",
+      "operator": "Schweizerische Bundesbahnen SBB",
+      "line": "EXT",
+      "mode": "rail",
+      "archivedCantonTrips": 1,
+      "activeCivilDates": [
+        {
+          "date": "2026-02-23",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-02-23",
+      "witness": {
+        "sourceTripId": ".ojp-91-BO-Y.1.TA.1.j26",
+        "sourceServiceDate": "2026-02-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "31302",
+        "callCount": 11,
+        "firstStopId": "ch:1:sloid:7000:5:9",
+        "lastStopId": "ch:1:sloid:10:4:8"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-A01-N-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV4",
+      "mode": "bus",
+      "archivedCantonTrips": 123,
+      "activeCivilDates": [
+        {
+          "date": "2026-05-23",
+          "journeys": 113
+        },
+        {
+          "date": "2026-05-24",
+          "journeys": 118
+        },
+        {
+          "date": "2026-05-25",
+          "journeys": 118
+        },
+        {
+          "date": "2026-05-26",
+          "journeys": 5
+        },
+        {
+          "date": "2026-09-27",
+          "journeys": 5
+        },
+        {
+          "date": "2026-09-28",
+          "journeys": 2
+        },
+        {
+          "date": "2026-10-04",
+          "journeys": 5
+        },
+        {
+          "date": "2026-10-05",
+          "journeys": 2
+        },
+        {
+          "date": "2026-10-11",
+          "journeys": 5
+        },
+        {
+          "date": "2026-10-12",
+          "journeys": 2
+        },
+        {
+          "date": "2026-10-18",
+          "journeys": 5
+        },
+        {
+          "date": "2026-10-19",
+          "journeys": 2
+        }
+      ],
+      "witnessDate": "2026-05-23",
+      "witness": {
+        "sourceTripId": ".ojp-92-A01-N.1.TA.1.j26",
+        "sourceServiceDate": "2026-05-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "28142",
+        "callCount": 2,
+        "firstStopId": "ch:1:sloid:87101",
+        "lastStopId": "ch:1:sloid:78736"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-A01-Q-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV2",
+      "mode": "bus",
+      "archivedCantonTrips": 14,
+      "activeCivilDates": [
+        {
+          "date": "2026-09-14",
+          "journeys": 12
+        },
+        {
+          "date": "2026-09-15",
+          "journeys": 15
+        },
+        {
+          "date": "2026-09-16",
+          "journeys": 15
+        },
+        {
+          "date": "2026-09-17",
+          "journeys": 15
+        },
+        {
+          "date": "2026-09-18",
+          "journeys": 3
+        }
+      ],
+      "witnessDate": "2026-09-14",
+      "witness": {
+        "sourceTripId": ".ojp-92-A01-Q.1.TA.1.j26",
+        "sourceServiceDate": "2026-09-14",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "80070",
+        "callCount": 5,
+        "firstStopId": "ch:1:sloid:3877",
+        "lastStopId": "ch:1:sloid:72531"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-A01-U-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV3",
+      "mode": "bus",
+      "archivedCantonTrips": 1,
+      "activeCivilDates": [
+        {
+          "date": "2026-09-14",
+          "journeys": 1
+        },
+        {
+          "date": "2026-09-15",
+          "journeys": 2
+        },
+        {
+          "date": "2026-09-16",
+          "journeys": 2
+        },
+        {
+          "date": "2026-09-17",
+          "journeys": 2
+        },
+        {
+          "date": "2026-09-18",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-09-14",
+      "witness": {
+        "sourceTripId": ".ojp-92-A01-U.1.TA.1.j26",
+        "sourceServiceDate": "2026-09-14",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "80096",
+        "callCount": 8,
+        "firstStopId": "ch:1:sloid:72503",
+        "lastStopId": "ch:1:sloid:3702::54"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-A04-9-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV2",
+      "mode": "bus",
+      "archivedCantonTrips": 135,
+      "activeCivilDates": [
+        {
+          "date": "2026-03-08",
+          "journeys": 10
+        },
+        {
+          "date": "2026-03-09",
+          "journeys": 16
+        },
+        {
+          "date": "2026-03-10",
+          "journeys": 16
+        },
+        {
+          "date": "2026-03-11",
+          "journeys": 16
+        },
+        {
+          "date": "2026-03-12",
+          "journeys": 16
+        },
+        {
+          "date": "2026-03-13",
+          "journeys": 6
+        },
+        {
+          "date": "2026-03-28",
+          "journeys": 1
+        },
+        {
+          "date": "2026-03-29",
+          "journeys": 1
+        },
+        {
+          "date": "2026-04-19",
+          "journeys": 10
+        },
+        {
+          "date": "2026-04-20",
+          "journeys": 16
+        },
+        {
+          "date": "2026-04-21",
+          "journeys": 16
+        },
+        {
+          "date": "2026-04-22",
+          "journeys": 16
+        },
+        {
+          "date": "2026-04-23",
+          "journeys": 16
+        },
+        {
+          "date": "2026-04-24",
+          "journeys": 6
+        },
+        {
+          "date": "2026-08-09",
+          "journeys": 10
+        },
+        {
+          "date": "2026-08-10",
+          "journeys": 16
+        },
+        {
+          "date": "2026-08-11",
+          "journeys": 16
+        },
+        {
+          "date": "2026-08-12",
+          "journeys": 16
+        },
+        {
+          "date": "2026-08-13",
+          "journeys": 16
+        },
+        {
+          "date": "2026-08-14",
+          "journeys": 6
+        },
+        {
+          "date": "2026-11-01",
+          "journeys": 10
+        },
+        {
+          "date": "2026-11-02",
+          "journeys": 16
+        },
+        {
+          "date": "2026-11-03",
+          "journeys": 16
+        },
+        {
+          "date": "2026-11-04",
+          "journeys": 16
+        },
+        {
+          "date": "2026-11-05",
+          "journeys": 16
+        },
+        {
+          "date": "2026-11-06",
+          "journeys": 6
+        },
+        {
+          "date": "2026-11-21",
+          "journeys": 116
+        },
+        {
+          "date": "2026-11-22",
+          "journeys": 121
+        },
+        {
+          "date": "2026-11-23",
+          "journeys": 6
+        }
+      ],
+      "witnessDate": "2026-08-09",
+      "witness": {
+        "sourceTripId": ".ojp-92-A04-9.1.TA.122.j26",
+        "sourceServiceDate": "2026-08-09",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "1991",
+        "callCount": 5,
+        "firstStopId": "ch:1:sloid:78143:3:7",
+        "lastStopId": "ch:1:sloid:81749:0:938574"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-A04-B-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV1",
+      "mode": "bus",
+      "archivedCantonTrips": 187,
+      "activeCivilDates": [
+        {
+          "date": "2025-12-15",
+          "journeys": 4
+        },
+        {
+          "date": "2025-12-16",
+          "journeys": 5
+        },
+        {
+          "date": "2025-12-17",
+          "journeys": 5
+        },
+        {
+          "date": "2025-12-18",
+          "journeys": 1
+        },
+        {
+          "date": "2026-03-08",
+          "journeys": 11
+        },
+        {
+          "date": "2026-03-09",
+          "journeys": 19
+        },
+        {
+          "date": "2026-03-10",
+          "journeys": 19
+        },
+        {
+          "date": "2026-03-11",
+          "journeys": 19
+        },
+        {
+          "date": "2026-03-12",
+          "journeys": 19
+        },
+        {
+          "date": "2026-03-13",
+          "journeys": 8
+        },
+        {
+          "date": "2026-03-28",
+          "journeys": 79
+        },
+        {
+          "date": "2026-03-29",
+          "journeys": 84
+        },
+        {
+          "date": "2026-03-30",
+          "journeys": 5
+        },
+        {
+          "date": "2026-04-19",
+          "journeys": 11
+        },
+        {
+          "date": "2026-04-20",
+          "journeys": 19
+        },
+        {
+          "date": "2026-04-21",
+          "journeys": 19
+        },
+        {
+          "date": "2026-04-22",
+          "journeys": 19
+        },
+        {
+          "date": "2026-04-23",
+          "journeys": 19
+        },
+        {
+          "date": "2026-04-24",
+          "journeys": 8
+        },
+        {
+          "date": "2026-08-09",
+          "journeys": 11
+        },
+        {
+          "date": "2026-08-10",
+          "journeys": 19
+        },
+        {
+          "date": "2026-08-11",
+          "journeys": 19
+        },
+        {
+          "date": "2026-08-12",
+          "journeys": 19
+        },
+        {
+          "date": "2026-08-13",
+          "journeys": 19
+        },
+        {
+          "date": "2026-08-14",
+          "journeys": 8
+        },
+        {
+          "date": "2026-11-01",
+          "journeys": 11
+        },
+        {
+          "date": "2026-11-02",
+          "journeys": 19
+        },
+        {
+          "date": "2026-11-03",
+          "journeys": 19
+        },
+        {
+          "date": "2026-11-04",
+          "journeys": 19
+        },
+        {
+          "date": "2026-11-05",
+          "journeys": 19
+        },
+        {
+          "date": "2026-11-06",
+          "journeys": 8
+        }
+      ],
+      "witnessDate": "2026-08-09",
+      "witness": {
+        "sourceTripId": ".ojp-92-A04-B.1.TA.168.j26",
+        "sourceServiceDate": "2026-08-09",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "17287",
+        "callCount": 11,
+        "firstStopId": "ch:1:sloid:94994:1:1",
+        "lastStopId": "ch:1:sloid:72403:0:243609"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-A04-F-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV1",
+      "mode": "bus",
+      "archivedCantonTrips": 165,
+      "activeCivilDates": [
+        {
+          "date": "2026-04-13",
+          "journeys": 29
+        },
+        {
+          "date": "2026-04-14",
+          "journeys": 33
+        },
+        {
+          "date": "2026-04-15",
+          "journeys": 33
+        },
+        {
+          "date": "2026-04-16",
+          "journeys": 17
+        },
+        {
+          "date": "2026-04-17",
+          "journeys": 4
+        },
+        {
+          "date": "2026-09-14",
+          "journeys": 106
+        },
+        {
+          "date": "2026-09-15",
+          "journeys": 106
+        },
+        {
+          "date": "2026-09-16",
+          "journeys": 106
+        },
+        {
+          "date": "2026-09-17",
+          "journeys": 106
+        },
+        {
+          "date": "2026-09-18",
+          "journeys": 96
+        },
+        {
+          "date": "2026-09-19",
+          "journeys": 103
+        },
+        {
+          "date": "2026-09-20",
+          "journeys": 74
+        },
+        {
+          "date": "2026-09-21",
+          "journeys": 96
+        },
+        {
+          "date": "2026-09-22",
+          "journeys": 96
+        },
+        {
+          "date": "2026-09-23",
+          "journeys": 96
+        },
+        {
+          "date": "2026-09-24",
+          "journeys": 96
+        },
+        {
+          "date": "2026-09-25",
+          "journeys": 96
+        },
+        {
+          "date": "2026-09-26",
+          "journeys": 103
+        },
+        {
+          "date": "2026-09-27",
+          "journeys": 74
+        },
+        {
+          "date": "2026-09-28",
+          "journeys": 96
+        },
+        {
+          "date": "2026-09-29",
+          "journeys": 96
+        },
+        {
+          "date": "2026-09-30",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-01",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-02",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-03",
+          "journeys": 103
+        },
+        {
+          "date": "2026-10-04",
+          "journeys": 74
+        },
+        {
+          "date": "2026-10-05",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-06",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-07",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-08",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-09",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-10",
+          "journeys": 103
+        },
+        {
+          "date": "2026-10-11",
+          "journeys": 74
+        },
+        {
+          "date": "2026-10-12",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-13",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-14",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-15",
+          "journeys": 96
+        },
+        {
+          "date": "2026-10-16",
+          "journeys": 96
+        }
+      ],
+      "witnessDate": "2026-09-14",
+      "witness": {
+        "sourceTripId": ".ojp-92-A04-F.1.TA.100.j26",
+        "sourceServiceDate": "2026-09-14",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "80117",
+        "callCount": 2,
+        "firstStopId": "ch:1:sloid:72531:0:453423",
+        "lastStopId": "ch:1:sloid:1111135_gen:missingSLOID_pf:1"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-A05-X-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV3",
+      "mode": "bus",
+      "archivedCantonTrips": 8,
+      "activeCivilDates": [
+        {
+          "date": "2026-05-20",
+          "journeys": 6
+        },
+        {
+          "date": "2026-05-21",
+          "journeys": 8
+        },
+        {
+          "date": "2026-05-22",
+          "journeys": 2
+        }
+      ],
+      "witnessDate": "2026-05-22",
+      "witness": {
+        "sourceTripId": ".ojp-92-A05-X.1.TA.132.j26",
+        "sourceServiceDate": "2026-05-22",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "1162",
+        "callCount": 14,
+        "firstStopId": "ch:1:sloid:8450::31",
+        "lastStopId": "ch:1:sloid:80822"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-A07-9-j26-1",
+      "agencyId": "7244",
+      "operator": "Aargau Verkehr AG Ersatzverkehr",
+      "line": "EV",
+      "mode": "bus",
+      "archivedCantonTrips": 336,
+      "activeCivilDates": [
+        {
+          "date": "2026-04-25",
+          "journeys": 149
+        },
+        {
+          "date": "2026-04-26",
+          "journeys": 115
+        },
+        {
+          "date": "2026-04-27",
+          "journeys": 2
+        },
+        {
+          "date": "2026-09-12",
+          "journeys": 147
+        },
+        {
+          "date": "2026-09-13",
+          "journeys": 114
+        },
+        {
+          "date": "2026-09-14",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-09-14",
+      "witness": {
+        "sourceTripId": ".ojp-92-A07-9.1.TA.44.j26",
+        "sourceServiceDate": "2026-09-13",
+        "serviceOffset": -86400,
+        "directionId": "0",
+        "shortName": "9245",
+        "callCount": 14,
+        "firstStopId": "ch:1:sloid:11309",
+        "lastStopId": "ch:1:sloid:72648"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-A08-U-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV1",
+      "mode": "bus",
+      "archivedCantonTrips": 10,
+      "activeCivilDates": [
+        {
+          "date": "2026-04-20",
+          "journeys": 6
+        },
+        {
+          "date": "2026-04-21",
+          "journeys": 8
+        },
+        {
+          "date": "2026-04-22",
+          "journeys": 8
+        },
+        {
+          "date": "2026-04-23",
+          "journeys": 8
+        },
+        {
+          "date": "2026-04-24",
+          "journeys": 8
+        },
+        {
+          "date": "2026-04-25",
+          "journeys": 2
+        },
+        {
+          "date": "2026-11-02",
+          "journeys": 3
+        },
+        {
+          "date": "2026-11-03",
+          "journeys": 4
+        },
+        {
+          "date": "2026-11-04",
+          "journeys": 1
+        }
+      ],
+      "witnessDate": "2026-04-20",
+      "witness": {
+        "sourceTripId": ".ojp-92-A08-U.1.TA.12.j26",
+        "sourceServiceDate": "2026-04-20",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "71523",
+        "callCount": 9,
+        "firstStopId": "ch:1:sloid:73237",
+        "lastStopId": "ch:1:sloid:72585"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-A08-Z-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV2",
+      "mode": "bus",
+      "archivedCantonTrips": 8,
+      "activeCivilDates": [
+        {
+          "date": "2026-03-14",
+          "journeys": 1
+        },
+        {
+          "date": "2026-03-15",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-09",
+          "journeys": 2
+        },
+        {
+          "date": "2026-05-10",
+          "journeys": 2
+        },
+        {
+          "date": "2026-05-14",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-15",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-16",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-17",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-23",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-24",
+          "journeys": 1
+        },
+        {
+          "date": "2026-05-25",
+          "journeys": 1
+        },
+        {
+          "date": "2026-10-10",
+          "journeys": 4
+        },
+        {
+          "date": "2026-10-11",
+          "journeys": 6
+        }
+      ],
+      "witnessDate": "2026-05-23",
+      "witness": {
+        "sourceTripId": ".ojp-92-A08-Z.1.TA.2.j26",
+        "sourceServiceDate": "2026-05-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "19121",
+        "callCount": 3,
+        "firstStopId": "ch:1:sloid:2996",
+        "lastStopId": "ch:1:sloid:78736:0:04"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-EV1-D-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV1",
+      "mode": "bus",
+      "archivedCantonTrips": 146,
+      "activeCivilDates": [
+        {
+          "date": "2026-08-15",
+          "journeys": 7
+        },
+        {
+          "date": "2026-08-16",
+          "journeys": 11
+        },
+        {
+          "date": "2026-08-17",
+          "journeys": 2
+        },
+        {
+          "date": "2026-10-10",
+          "journeys": 128
+        },
+        {
+          "date": "2026-10-11",
+          "journeys": 134
+        },
+        {
+          "date": "2026-10-12",
+          "journeys": 6
+        }
+      ],
+      "witnessDate": "2026-08-16",
+      "witness": {
+        "sourceTripId": ".ojp-92-EV1-D.1.TA.141.j26",
+        "sourceServiceDate": "2026-08-15",
+        "serviceOffset": -86400,
+        "directionId": "1",
+        "shortName": "18190",
+        "callCount": 3,
+        "firstStopId": "ch:1:sloid:77353",
+        "lastStopId": "ch:1:sloid:78736"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-EV5-V-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV5",
+      "mode": "bus",
+      "archivedCantonTrips": 71,
+      "activeCivilDates": [
+        {
+          "date": "2026-05-23",
+          "journeys": 69
+        },
+        {
+          "date": "2026-05-24",
+          "journeys": 72
+        },
+        {
+          "date": "2026-05-25",
+          "journeys": 72
+        },
+        {
+          "date": "2026-05-26",
+          "journeys": 3
+        }
+      ],
+      "witnessDate": "2026-05-23",
+      "witness": {
+        "sourceTripId": ".ojp-92-EV5-V.1.TA.1.j26",
+        "sourceServiceDate": "2026-05-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "22946",
+        "callCount": 7,
+        "firstStopId": "ch:1:sloid:80822",
+        "lastStopId": "ch:1:sloid:78736"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-EV7-R-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV7",
+      "mode": "bus",
+      "archivedCantonTrips": 74,
+      "activeCivilDates": [
+        {
+          "date": "2026-05-23",
+          "journeys": 36
+        },
+        {
+          "date": "2026-05-24",
+          "journeys": 74
+        },
+        {
+          "date": "2026-05-25",
+          "journeys": 75
+        },
+        {
+          "date": "2026-05-26",
+          "journeys": 3
+        }
+      ],
+      "witnessDate": "2026-05-23",
+      "witness": {
+        "sourceTripId": ".ojp-92-EV7-R.1.TA.1.j26",
+        "sourceServiceDate": "2026-05-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "18857",
+        "callCount": 2,
+        "firstStopId": "ch:1:sloid:87753",
+        "lastStopId": "ch:1:sloid:78736"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-EV8-F-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV8",
+      "mode": "bus",
+      "archivedCantonTrips": 35,
+      "activeCivilDates": [
+        {
+          "date": "2026-05-23",
+          "journeys": 35
+        }
+      ],
+      "witnessDate": "2026-05-23",
+      "witness": {
+        "sourceTripId": ".ojp-92-EV8-F.1.TA.1.j26",
+        "sourceServiceDate": "2026-05-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "8783",
+        "callCount": 8,
+        "firstStopId": "ch:1:sloid:5231",
+        "lastStopId": "ch:1:sloid:90281"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "92-EV9-I-j26-1",
+      "agencyId": "7231",
+      "operator": "SBB Infrastruktur AG Bahnersatz",
+      "line": "EV9",
+      "mode": "bus",
+      "archivedCantonTrips": 39,
+      "activeCivilDates": [
+        {
+          "date": "2026-05-23",
+          "journeys": 37
+        },
+        {
+          "date": "2026-05-24",
+          "journeys": 39
+        },
+        {
+          "date": "2026-05-25",
+          "journeys": 39
+        },
+        {
+          "date": "2026-05-26",
+          "journeys": 2
+        }
+      ],
+      "witnessDate": "2026-05-23",
+      "witness": {
+        "sourceTripId": ".ojp-92-EV9-I.1.TA.1.j26",
+        "sourceServiceDate": "2026-05-23",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "28377",
+        "callCount": 3,
+        "firstStopId": "ch:1:sloid:88575",
+        "lastStopId": "ch:1:sloid:87101"
+      },
+      "status": "witness-found"
+    },
+    {
+      "routeId": "96-138-1-j26-1",
+      "agencyId": "801",
+      "operator": "PostAuto AG",
+      "line": "EXT",
+      "mode": "bus",
+      "archivedCantonTrips": 32,
+      "activeCivilDates": [
+        {
+          "date": "2026-09-25",
+          "journeys": 7
+        },
+        {
+          "date": "2026-09-26",
+          "journeys": 10
+        },
+        {
+          "date": "2026-09-27",
+          "journeys": 15
+        }
+      ],
+      "witnessDate": "2026-09-25",
+      "witness": {
+        "sourceTripId": ".ojp-96-138-1.1.TA.1.j26",
+        "sourceServiceDate": "2026-09-25",
+        "serviceOffset": 0,
+        "directionId": "0",
+        "shortName": "81007",
+        "callCount": 3,
+        "firstStopId": "ch:1:sloid:772:0:496058",
+        "lastStopId": "ch:1:sloid:82502:0:525905"
+      },
+      "status": "witness-found"
+    }
+  ],
+  "publicationReady": false
+}
