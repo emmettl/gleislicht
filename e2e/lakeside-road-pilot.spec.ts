@@ -42,6 +42,6 @@ test('the third recording is discoverable and retry retains its identity', async
   await choice.click()
   await expect(page.locator('.cantonal-pilot')).toContainText('Try again')
   await page.unroute('**/kilchberg-thalwil-road-pilot.json')
-  await page.getByRole('button', { name: 'Play Kilchberg–Thalwil afternoon pilot' }).click()
+  await page.getByRole('button', { name: 'Play Kilchberg–Thalwil recording' }).click()
   await expect(page.locator('.cantonal-pilot')).toContainText('142 complete recorded minutes')
 })

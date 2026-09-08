@@ -1,6 +1,6 @@
 # Cantonal roads — Zürich pilot
 
-AUTO now records Zürich cantonal counters and includes **246 cantonal road axes** in its map and search. The geometry builder matches 298 counter stations to these roads. Horgen’s Seestrasse has an optional **1.3 km recorded afternoon pilot**, with both travel directions and explicit coverage gaps. Wallisellen–Bassersdorf adds a **3.46 km pilot with 104 continuous complete minute samples** on ZH 1. Other cantonal cards remain geometry-only; national-road observations retain their existing topology and coverage.
+AUTO now records Zürich cantonal counters and includes **246 cantonal road axes** in its map and search. The geometry builder matches 298 counter stations to these roads. Horgen’s Seestrasse has an optional **1.3 km recorded afternoon pilot**, with both travel directions and explicit coverage gaps. Wallisellen–Bassersdorf adds a **3.46 km pilot with 104 continuous complete minute samples** on ZH 1. Seven recordings across six reviewed corridors are now available, including a separate 61-minute Horgen evening recording. Other cantonal cards remain geometry-only; national-road observations retain their existing topology and coverage.
 
 ## Verified sources
 
@@ -145,7 +145,7 @@ The follow-up passes **187 tests across 49 files**, production build and lint in
 
 ## Horgen afternoon playback
 
-In AUTO, search **Horgen**, select **ZH 3**, then choose **Play Horgen afternoon pilot**. Playback opens paused at 13:44, focuses the 1.3 km section, and switches the timeline to **8 September 2026, 13:23–14:21 CEST**. It displays reconstructed light/heavy vehicles in both directions using the existing road renderer. Rail and air are hidden during this separate observation window. **Return to morning roads** restores the morning timeline; leaving the pilot’s road/study also clears the pilot. Choose **Share study** to copy a link that restores this recording, date and current time, paused. A link into an observation gap preserves the gap and keeps traffic hidden.
+In AUTO, search **Horgen**, select **ZH 3**, then choose **Play Horgen recording**. Playback opens paused at 13:44, focuses the 1.3 km section, and switches the timeline to **8 September 2026, 13:23–14:21 CEST**. It displays reconstructed light/heavy vehicles in both directions using the existing road renderer. Rail and air are hidden during this separate observation window. **Return to morning roads** restores the morning timeline; leaving the pilot’s road/study also clears the pilot. Choose **Share study** to copy a link that restores this recording, date and current time, paused. A link into an observation gap preserves the gap and keeps traffic hidden.
 
 The on-demand `public/data/zurich-cantonal-road-pilot.json` contains four directional sites, two sections and **40 complete minute samples**:
 
@@ -172,7 +172,7 @@ Playback validation: **205 unit tests across 55 files**, **12 desktop Chromium /
 
 ## Wallisellen–Bassersdorf playback
 
-In AUTO, search **Wallisellen** or **Bassersdorf**, select **ZH 1**, then choose **Play Wallisellen–Bassersdorf afternoon pilot**. Playback opens paused at **14:14 CEST on 8 September 2026** and ends at **15:57**. The 3.457 km section contains four directional sites and 104 complete samples in one window, with no observation gaps. The card discloses five mapped junction areas and that turning flows are unmeasured. Only the reviewed counter section has traffic animation; the whole ZH 1 axis does not.
+In AUTO, search **Wallisellen** or **Bassersdorf**, select **ZH 1**, then choose **Play Wallisellen–Bassersdorf recording**. Playback opens paused at **14:14 CEST on 8 September 2026** and ends at **15:57**. The 3.457 km section contains four directional sites and 104 complete samples in one window, with no observation gaps. The card discloses five mapped junction areas and that turning flows are unmeasured. Only the reviewed counter section has traffic animation; the whole ZH 1 axis does not.
 
 The public `wallisellen-bassersdorf-road-pilot.json` artifact is approximately **12.9 kB / 3.6 kB gzip** and is fetched only on choosing the pilot. The Horgen data remains a separate download. Each response must match the selected recording ID, road, date, bounds, counter pair and expected sample count before replacing the morning view. Selecting another road aborts an unfinished download and clears the active pilot. Wrong-corridor responses and failed downloads leave the morning timeline intact and allow retry.
 
@@ -321,3 +321,24 @@ Validation: 50 targeted tests across 11 files, ten desktop Chromium / iPhone Web
 ### Further Oberland candidates
 
 The [Oberland candidate audit](OBERLAND-ROAD-CANDIDATES.md) reviews 14 additional counter pairs using a complete six-settlement inventory for Pfäffikon, Wetzikon and Gossau. Every pair still has a direction or geometry blocker despite complete recording runs of 104–245 minutes. Its Zürich-qualified results are explicitly diagnostic and cannot enable playback. The six published recordings remain unchanged; the document records the specific missing evidence and reproduction commands.
+
+
+### Horgen evening playback
+
+A separate **61-minute recording from 21:10 through 22:10 CEST on 8 September 2026** now provides Horgen's first published uninterrupted hour. Open **Road recordings** and choose the Horgen entry with that window, or select it from the ZH 3 recording menu. The menu includes dates and windows to distinguish recordings of the same corridor. Playback buttons now say “recording” in all four languages so evening observations are labelled accurately.
+
+The new identity is `horgen-evening-2026-09-08`, with on-demand artifact `public/data/horgen-evening-road-pilot.json`. Both counters and all four directional detectors pass the existing per-lane flow/speed checks for all 61 minute samples. It reuses the exact original 1.298 km Horgen topology and direction-source hash. The three mapped junction areas and unmeasured turning-flow limitation still apply. The afternoon identity, its 40 complete samples and two gaps are preserved.
+
+The [evening coverage audit](../data/zurich-cantonal-evening-coverage-audit.json) pins all 637 archive files from 13:23 through 23:59. Every scheduled minute exists; Horgen has 489 simultaneously complete minutes, with 21:10–22:10 its only continuous run of at least an hour. This is a completed civil-day audit from the recorder's deployment time, not a claim of observations before 13:23.
+
+Reproduce after exporting the private archive:
+
+```sh
+node scripts/audit-cantonal-road-coverage.mjs \
+  --date=2026-09-08 --from=13:23 --to=23:59 \
+  --output=data/zurich-cantonal-evening-coverage-audit.json
+node scripts/build-cantonal-road-pilot.mjs \
+  --pilot=horgen-evening-2026-09-08
+```
+
+The audit uses the original automatic direction topology, so other candidate direction statuses describe that baseline. The separate published corridor reviews remain necessary when compiling their later observations. Complete observation coverage alone grants no direction approval.
