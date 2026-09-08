@@ -4,6 +4,7 @@
   "inputHashes": {
     "geometry": "3647bbd230f40391ba3a1ddcba2364ec439183cd0d0cab80c84afcdcf1812e08",
     "catalog": "ffce5a7cc2681d4a87f89a7a579e1eab3dd077e15e61574a0d5506da92479a09",
+    "directions": "dd1c125e6886a7ab61b0323d7174e5cdf15942b16d117a213e8f2276a88b7c55",
     "coverage": "e82703beb1fe81e1cc355c7e3faafc3505eba77641337312daef5b3db8e0248e",
     "manifest": "b872ce9adc220f11034e98b0d071831909ac9bf827dfb68678ebd5066a3a6431",
     "sources": "4db01b1d4f923da6556ccfcec3f7cae9414ff916c6376c61b1ffe358277b9419"
@@ -53,7 +54,30 @@
           "pathId": "ZH:4:5619143618c57169",
           "distanceMetres": 4184.4,
           "longestRunMinutes": 185,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:1301",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:1301.01",
+                  "description": "Normalspur Richtung Opfikon",
+                  "status": "destination-too-close"
+                },
+                {
+                  "id": "ZH.CH:1301.02",
+                  "description": "Normalspur Richtung Kloten",
+                  "status": "destination-extent-conflict"
+                }
+              ]
+            },
+            {
+              "id": "ZH.CH:0110",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         },
         {
           "from": "ZH.CH:0110",
@@ -61,7 +85,30 @@
           "pathId": "ZH:4:5619143618c57169",
           "distanceMetres": 4963.36,
           "longestRunMinutes": 142,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:0110",
+              "status": "unmatched-geometry",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:0490",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:0490.01",
+                  "description": "Normalspur Richtung Bachenbülach",
+                  "status": "destination-too-close"
+                },
+                {
+                  "id": "ZH.CH:0490.02",
+                  "description": "Normalspur Richtung Bülach",
+                  "status": "destination-too-close"
+                }
+              ]
+            }
+          ]
         }
       ],
       "family": "high-speed-road",
@@ -256,7 +303,25 @@
           "pathId": "ZH:4:3a2bce71b3235d64",
           "distanceMetres": 3175.91,
           "longestRunMinutes": 245,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:4087",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:4087.01",
+                  "description": "Normalspur Richtung Zürich",
+                  "status": "destination-extent-conflict"
+                }
+              ]
+            },
+            {
+              "id": "ZH.CH:0197",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         }
       ],
       "family": "city-road",
@@ -640,7 +705,19 @@
           "pathId": "ZH:340:0176d9b8f03adcfd",
           "distanceMetres": 179.17,
           "longestRunMinutes": 145,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:2988",
+              "status": "unmatched-geometry",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:0392",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         },
         {
           "from": "ZH.CH:0392",
@@ -648,7 +725,19 @@
           "pathId": "ZH:340:0176d9b8f03adcfd",
           "distanceMetres": 1038.31,
           "longestRunMinutes": 73,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:0392",
+              "status": "unmatched-geometry",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:2788",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         }
       ],
       "family": "municipal-road",
@@ -750,7 +839,19 @@
           "pathId": "ZH:355:e582bd400bccf4ce",
           "distanceMetres": 1697.32,
           "longestRunMinutes": 245,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:4687",
+              "status": "validated",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:0418",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         },
         {
           "from": "ZH.CH:0418",
@@ -758,7 +859,19 @@
           "pathId": "ZH:355:e582bd400bccf4ce",
           "distanceMetres": 218.9,
           "longestRunMinutes": 245,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:0418",
+              "status": "unmatched-geometry",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:0518",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         }
       ],
       "family": "high-speed-road",
@@ -947,7 +1060,19 @@
           "pathId": "ZH:355:e582bd400bccf4ce",
           "distanceMetres": 218.9,
           "longestRunMinutes": 245,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:0418",
+              "status": "unmatched-geometry",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:0518",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         }
       ],
       "family": "high-speed-road",
@@ -1153,7 +1278,30 @@
           "pathId": "ZH:724:b8b6fa88b5a9e14d",
           "distanceMetres": 3861.78,
           "longestRunMinutes": 101,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:1491",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:1491.01",
+                  "description": "Normalspur Richtung Oetwil am See",
+                  "status": "destination-too-close"
+                },
+                {
+                  "id": "ZH.CH:1491.02",
+                  "description": "Normalspur Richtung Grüningen",
+                  "status": "destination-extent-conflict"
+                }
+              ]
+            },
+            {
+              "id": "ZH.CH:0888",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         }
       ],
       "family": "high-speed-road",
@@ -1594,7 +1742,30 @@
           "pathId": "ZH:618:17a842061ea7f7f2",
           "distanceMetres": 1793.79,
           "longestRunMinutes": 245,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:1921",
+              "status": "unmatched-geometry",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:0214",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:0214.03",
+                  "description": "Normalspur Richtung Dietikon",
+                  "status": "destination-off-axis"
+                },
+                {
+                  "id": "ZH.CH:0214.04",
+                  "description": "Normalspur Richtung Oetwil an der Limmat",
+                  "status": "destination-too-close"
+                }
+              ]
+            }
+          ]
         }
       ],
       "family": "classified-road-ambiguity",
@@ -1696,7 +1867,30 @@
           "pathId": "ZH:15:7ab46270483b3b05",
           "distanceMetres": 1677.85,
           "longestRunMinutes": 104,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:4789",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:4789.01",
+                  "description": "Normalspur Richtung Neftenbach",
+                  "status": "destination-off-axis"
+                },
+                {
+                  "id": "ZH.CH:4789.02",
+                  "description": "Normalspur Richtung Schaffhausen",
+                  "status": "destination-off-axis"
+                }
+              ]
+            },
+            {
+              "id": "ZH.CH:1997",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         },
         {
           "from": "ZH.CH:1997",
@@ -1704,7 +1898,25 @@
           "pathId": "ZH:15:7ab46270483b3b05",
           "distanceMetres": 2606.72,
           "longestRunMinutes": 0,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:1997",
+              "status": "unmatched-geometry",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:1900",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:1900.02",
+                  "description": "Normalspur Richtung Schaffhausen",
+                  "status": "destination-off-axis"
+                }
+              ]
+            }
+          ]
         }
       ],
       "family": "classified-road-ambiguity",
@@ -1886,7 +2098,30 @@
           "pathId": "ZH:766:b12fd51e7208c37d",
           "distanceMetres": 405.5,
           "longestRunMinutes": 104,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:2491",
+              "status": "unmatched-geometry",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:1320",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:1320.03",
+                  "description": "Normalspur Richtung Effretikon",
+                  "status": "destination-too-close"
+                },
+                {
+                  "id": "ZH.CH:1320.04",
+                  "description": "Normalspur Richtung Lindau",
+                  "status": "ambiguous-destination"
+                }
+              ]
+            }
+          ]
         },
         {
           "from": "ZH.CH:1292",
@@ -1894,7 +2129,30 @@
           "pathId": "ZH:766:b12fd51e7208c37d",
           "distanceMetres": 3219.79,
           "longestRunMinutes": 104,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:1292",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:1292.01",
+                  "description": "Normalspur Richtung Illnau",
+                  "status": "destination-too-close"
+                },
+                {
+                  "id": "ZH.CH:1292.02",
+                  "description": "Normalspur Richtung Effretikon",
+                  "status": "destination-extent-conflict"
+                }
+              ]
+            },
+            {
+              "id": "ZH.CH:2491",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         }
       ],
       "family": "classified-road-ambiguity",
@@ -2070,7 +2328,19 @@
           "pathId": "ZH:340:0176d9b8f03adcfd",
           "distanceMetres": 1038.31,
           "longestRunMinutes": 73,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:0392",
+              "status": "unmatched-geometry",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:2788",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         }
       ],
       "family": "municipal-road",
@@ -2166,7 +2436,30 @@
           "pathId": "ZH:340:0176d9b8f03adcfd",
           "distanceMetres": 2304.12,
           "longestRunMinutes": 245,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:0188",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:0188.01",
+                  "description": "Normalspur Richtung Uster",
+                  "status": "destination-extent-conflict"
+                },
+                {
+                  "id": "ZH.CH:0188.02",
+                  "description": "Normalspur Richtung Wetzikon",
+                  "status": "unresolved-destination"
+                }
+              ]
+            },
+            {
+              "id": "ZH.CH:2988",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         },
         {
           "from": "ZH.CH:2988",
@@ -2174,7 +2467,19 @@
           "pathId": "ZH:340:0176d9b8f03adcfd",
           "distanceMetres": 179.17,
           "longestRunMinutes": 145,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:2988",
+              "status": "unmatched-geometry",
+              "detectors": []
+            },
+            {
+              "id": "ZH.CH:0392",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         }
       ],
       "family": "municipal-road",
@@ -2282,7 +2587,25 @@
           "pathId": "ZH:650:38b26812fa0d1e60",
           "distanceMetres": 208.39,
           "longestRunMinutes": 149,
-          "status": "unresolved-endpoint"
+          "status": "unresolved-endpoint",
+          "endpointBlockers": [
+            {
+              "id": "ZH.CH:3287",
+              "status": "unresolved-direction-pair",
+              "detectors": [
+                {
+                  "id": "ZH.CH:3287.01",
+                  "description": "Normalspur Richtung Zürich",
+                  "status": "destination-off-axis"
+                }
+              ]
+            },
+            {
+              "id": "ZH.CH:3387",
+              "status": "unmatched-geometry",
+              "detectors": []
+            }
+          ]
         }
       ],
       "family": "classified-road-ambiguity",

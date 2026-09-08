@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "status": "review-only-no-publication",
+  "scope": {
+    "schemaVersion": 1,
+    "batchScopeSha256": "cf993c04f006aefe5f34f36d22f39ae84daf1fa0825571687ef96721cc028aa3",
+    "classifiedSourceSha256": "23fa7a21d2cb1a8ab4bab5dc6910dc4e31533aa98814beff3671bcfc4c19ad25"
+  },
+  "stationId": "ZH.CH:1921",
+  "name": "Dietikon: Mutschellenstrasse",
+  "stationPointLv95": [
+    2671556.4299999997,
+    1252071.4899999984
+  ],
+  "axes": [
+    {
+      "featureId": 7440,
+      "road": "618",
+      "distanceMetres": 3.99,
+      "projectedLv95": [
+        2671559.5842864728,
+        1252069.0487171253
+      ],
+      "storedTangent": [
+        0.612056346344861,
+        0.790814155727488
+      ],
+      "pointsLv95": [
+        [
+          2671444.617150001,
+          1251923.9333000034
+        ],
+        [
+          2671455.822450001,
+          1251932.2835000008
+        ],
+        [
+          2671486.16505,
+          1251971.8388999999
+        ],
+        [
+          2671500.1449000016,
+          1251990.1074
+        ],
+        [
+          2671511.74185,
+          1252006.7873999998
+        ],
+        [
+          2671526.8337499984,
+          1252026.8033500016
+        ],
+        [
+          2671555.9043000005,
+          1252064.293949999
+        ],
+        [
+          2671573.8550000004,
+          1252087.487350002
+        ],
+        [
+          2671614.7312499993,
+          1252140.7198000029
+        ]
+      ]
+    },
+    {
+      "featureId": 7436,
+      "road": "618.1",
+      "distanceMetres": 4.6,
+      "projectedLv95": [
+        2671552.771419768,
+        1252074.2725298482
+      ],
+      "storedTangent": [
+        -0.6053602628312235,
+        -0.7959516016598698
+      ],
+      "pointsLv95": [
+        [
+          2671606.9690999985,
+          1252146.5133000016
+        ],
+        [
+          2671566.4410500005,
+          1252092.2458999977
+        ],
+        [
+          2671547.894299999,
+          1252067.8598999977
+        ],
+        [
+          2671518.0133000016,
+          1252029.0484500006
+        ],
+        [
+          2671467.8665000014,
+          1251965.8517500013
+        ],
+        [
+          2671447.6016499996,
+          1251939.0618499964
+        ],
+        [
+          2671444.617150001,
+          1251923.9333000034
+        ]
+      ]
+    }
+  ],
+  "axisProjectionSeparationMetres": 8.59,
+  "storedTangentAgreement": -1,
+  "detectorGroups": [
+    {
+      "destinationLabel": "Dietikon",
+      "detectors": [
+        {
+          "id": "ZH.CH:1921.01",
+          "description": "Normalspur Richtung Dietikon",
+          "lane": "lane1",
+          "alertCDirection": null,
+          "coordinate": null
+        },
+        {
+          "id": "ZH.CH:1921.02",
+          "description": "Überholspur Richtung Dietikon",
+          "lane": "lane2",
+          "alertCDirection": null,
+          "coordinate": null
+        }
+      ]
+    },
+    {
+      "destinationLabel": "Autobahn A1",
+      "detectors": [
+        {
+          "id": "ZH.CH:1921.03",
+          "description": "Überholspur Richtung Autobahn A1",
+          "lane": "lane2",
+          "alertCDirection": null,
+          "coordinate": null
+        },
+        {
+          "id": "ZH.CH:1921.04",
+          "description": "Normalspur Richtung Autobahn A1",
+          "lane": "lane1",
+          "alertCDirection": null,
+          "coordinate": null
+        }
+      ]
+    }
+  ],
+  "bindingStatus": "detector-to-axis-mapping-not-established",
+  "geometryFinding": "Two nearby classified axes run alongside the station point, with opposite local vertex order. The four public detector labels form two lane groups. This is consistent with separate carriageways, but neither the central station point nor vertex order proves a detector-to-axis travel-direction mapping.",
+  "observations": {
+    "from": "ZH.CH:1921",
+    "to": "ZH.CH:0214",
+    "distanceMetres": 1793.79,
+    "completeMinutes": 245,
+    "longestRunMinutes": 245,
+    "hourWindows": [
+      {
+        "start": 48180,
+        "end": 62820,
+        "minutes": 245
+      }
+    ]
+  },
+  "otherEndpoint": {
+    "id": "ZH.CH:0214",
+    "road": "ZH:618",
+    "pathId": "ZH:618:17a842061ea7f7f2",
+    "status": "unresolved-direction-pair",
+    "detectors": [
+      {
+        "id": "ZH.CH:0214.03",
+        "description": "Normalspur Richtung Dietikon",
+        "alertCDirection": null,
+        "status": "destination-off-axis",
+        "destination": {
+          "name": "Dietikon",
+          "coordinate": [
+            2673081.65,
+            1251083.6
+          ],
+          "bounds": [
+            2671074.4,
+            1249354.5,
+            2675088.9,
+            1252812.7
+          ],
+          "sourceFeatureId": 435944
+        },
+        "destinationDistanceMetres": 2918.83,
+        "destinationRoadDistanceMetres": 1808.73,
+        "offsetSeparationMetres": -1644.54,
+        "bearingAgreement": -0.61,
+        "offsetMetres": 2218.08
+      },
+      {
+        "id": "ZH.CH:0214.04",
+        "description": "Normalspur Richtung Oetwil an der Limmat",
+        "alertCDirection": null,
+        "status": "destination-too-close",
+        "destination": {
+          "name": "Oetwil an der Limmat",
+          "coordinate": [
+            2672294.45,
+            1253428.1
+          ],
+          "bounds": [
+            2671679,
+            1252851.4,
+            2672909.9,
+            1254004.8
+          ],
+          "sourceFeatureId": 325948
+        },
+        "destinationDistanceMetres": 678.63,
+        "destinationRoadDistanceMetres": 603.9,
+        "offsetSeparationMetres": -656,
+        "bearingAgreement": 0.11,
+        "offsetMetres": 2218.08
+      }
+    ]
+  },
+  "requiredEvidence": [
+    "A station-specific plan or independent detector/channel-to-carriageway reference for all four 1921 detectors, with geographic orientation and both road axes identified.",
+    "Independent direction evidence at 0214: Dietikon is off-axis and Oetwil is too close under the existing gates.",
+    "After those reviews, audit the connecting section and junctions. The 245-minute window alone does not approve a corridor."
+  ],
+  "limitation": "No axis is selected by nearest distance, road-number suffix or stored vertex order. The two-normal-lane extent-review method cannot resolve this four-detector station. No topology, direction mapping or playback is emitted."
+}
