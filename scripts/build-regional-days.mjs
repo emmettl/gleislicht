@@ -9,6 +9,7 @@ import { applyRailGeometry, parseRailNetworkXtf } from './enrich-swiss-rail-geom
 import { readRegionalDirectory, REGIONAL_IDS } from './regional-artifacts.mjs'
 import { serviceDate } from './service-date.mjs'
 import { buildLausanneDay } from './build-lausanne-day.mjs'
+import { refreshBaselDay } from './refresh-basel-day.mjs'
 
 const arg = name => { const index = process.argv.indexOf(`--${name}`); return index < 0 ? undefined : process.argv[index + 1] }
 for (const name of ['archive', 'zvv', 'tpg', 'rail', 'date']) if (!process.argv.includes(`--${name}`)) throw new Error(`Missing --${name}`)
@@ -73,7 +74,14 @@ try {
     console.log(`${id}: ${snapshot.trains.length} services, ${chunks.length} verified chunks`)
   }
 
-  const { files } = await readRegionalDirectory(staged, arg('study') ? [arg('study')] : REGIONAL_IDS, date)
+  const requested = arg('study') ? [arg('study')] : REGIONAL_IDS
+  const dated = requested.filter(id => id !== 'basel-core')
+  const { files } = await readRegionalDirectory(staged, dated, date)
+  if (requested.includes('basel-core')) {
+    await refreshBaselDay({ archive: arg('archive'), railPath: arg('rail'), date, output: staged, sourceDirectory: arg('basel-sources') })
+    const basel = await readRegionalDirectory(staged, ['basel-core'])
+    for (const [path, bytes] of basel.files) files.set(path, bytes)
+  }
   for (const [path, bytes] of files) {
     const destination = join(outputDirectory, path)
     await mkdir(dirname(destination), { recursive: true })

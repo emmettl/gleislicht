@@ -1,5 +1,14 @@
 # Lausanne regional study
 
+**MBC expansion, 8 September 2026:** the application builder now adds complete MBC
+rail and bus journeys through Morges, Bière, L’Isle and Cossonay. Local fixtures
+contain 10,134 weekday / 7,833 Sunday journeys and pass seven geometry gates.
+See the [Vaud integration notes](VAUD-EXPANSION.md) for source-chain checks,
+reviewed alignments and recovery compatibility. The five-group results below
+document the original scope; omit `--include-mbc` to reproduce that audit.
+The application builder includes MBC by default. The expanded integration has
+not been published.
+
 Lausanne is implemented as a lazy full-day study with m1/m2, tl buses, LEB and
 regional rail, search and line selection, Now, share links and four languages.
 The daily regional publication builder and verified recovery include it.

@@ -5,8 +5,10 @@ import { gzipSync } from 'node:zlib'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { previousServiceDate } from './civil-day.mjs'
+import { validateBaselRelease } from './basel-release-validation.mjs'
+import { LAUSANNE_WEST_GROUPS } from './lausanne-mbc.mjs'
 
-export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region']
+export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region', 'basel-core']
 const digest = bytes => createHash('sha256').update(bytes).digest('hex')
 export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDate) {
   const files = new Map()
@@ -39,7 +41,19 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
       assert.equal(morning.metadata.dayModel, day.metadata.dayModel)
       assert.deepEqual(morning.metadata.sourceServiceDates, day.metadata.sourceServiceDates)
       assert.equal(local?.license, 'ODbL-1.0')
-      assert.deepEqual(day.metadata.lausanneGeometry?.map(group => group.id), ['tl-bus', 'm1', 'm2', 'leb', 'rail'])
+      const scope = day.metadata.lausanneScopeVersion
+      assert(scope === undefined || scope === 2, 'Lausanne: unknown scope version')
+      assert.equal(morning.metadata.lausanneScopeVersion, scope, 'Lausanne: mixed scope versions')
+      assert.deepEqual(morning.metadata.sourceHashes, day.metadata.sourceHashes, 'Lausanne: mixed source hashes')
+      assert.deepEqual(morning.metadata.lausanneGeometry, day.metadata.lausanneGeometry, 'Lausanne: mixed geometry reports')
+      if (scope === 2) {
+        assert.deepEqual(day.metadata.completeAgencyIds, ['29', '764'])
+        assert.deepEqual(morning.metadata.completeAgencyIds, day.metadata.completeAgencyIds)
+        assert.deepEqual(day.metadata.localAgencyIds, ['151', '764'])
+        assert.deepEqual(morning.metadata.localAgencyIds, day.metadata.localAgencyIds)
+        assert(day.metadata.sourceHashes.mbcSnapshot && day.metadata.sourceHashes.mbcBusCache0 && day.metadata.sourceHashes.mbcBusCache1, 'Lausanne: missing MBC provenance')
+      }
+      assert.deepEqual(day.metadata.lausanneGeometry?.map(group => group.id), scope === 2 ? LAUSANNE_WEST_GROUPS : ['tl-bus', 'm1', 'm2', 'leb', 'rail'])
       assert(day.metadata.lausanneGeometry.every(group => group.totalSegments > 0 && group.acceptedSegments / group.totalSegments >= .95), 'Lausanne: insufficient per-mode geometry')
       assert(rail?.maximumSnapMetres <= 120, 'Lausanne: rail projection exceeds limit')
     }
@@ -66,7 +80,7 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
     checkGeometry(morning)(morning.trains)
     assert(gzipSync(files.get(`${id}-day-manifest.json`)).length < 650 * 1024, `${id}: manifest budget exceeded`)
     assert(gzipSync(files.get(`${id}-morning.json`)).length < 1600 * 1024, `${id}: morning budget exceeded`)
-    const unique = new Set()
+    const unique = new Map()
     for (let i = 0; i < day.chunks.length; i++) {
       const descriptor = day.chunks[i]
       const filename = `${String(i * 2).padStart(2, '0')}-${String(i * 2 + 2).padStart(2, '0')}.json`
@@ -78,9 +92,13 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
       assert(gzipSync(bytes).length < 450 * 1024, `${id}: chunk budget exceeded`)
       assert(chunk.windowStart === descriptor.windowStart && chunk.windowEnd === descriptor.windowEnd && chunk.trains?.length === descriptor.tripCount, `${id}: chunk metadata mismatch`)
       checkTrains(chunk.trains)
-      chunk.trains.forEach(train => unique.add(train.id))
+      chunk.trains.forEach(train => {
+        if (unique.has(train.id)) assert.deepEqual(unique.get(train.id), train, `${id}: conflicting chunk journey`)
+        unique.set(train.id, train)
+      })
     }
     assert.equal(unique.size, day.tripCount, `${id}: day trip count mismatch`)
+    if (id === 'basel-core') validateBaselRelease(day, morning, [...unique.values()])
   }
   return { files, dates }
 }

@@ -9,8 +9,15 @@ import { REGIONAL_IDS, readRegionalArtifacts } from './regional-artifacts.mjs'
 import { restorePublishedRegionalData } from './restore-published-regional-data.mjs'
 import { buildStudySummaries, STUDY_SOURCES } from './build-study-summaries.mjs'
 import { STUDY_IDS } from '../src/studies/explore.ts'
+import { readFileSync } from 'node:fs'
+import { LAUSANNE_WEST_GROUPS } from './lausanne-mbc.mjs'
 
 function fixture(id = 'zurich-city') {
+  if (id === 'basel-core') {
+    const files = new Map(['basel-core-day-manifest.json', 'basel-core-morning.json'].map(name => [name, readFileSync(join('public/data', name))]))
+    for (const chunk of JSON.parse(files.get('basel-core-day-manifest.json')).chunks) files.set(chunk.path, readFileSync(join('public/data', chunk.path)))
+    return files
+  }
   const metadata = { serviceDate: '2026-09-08', feedVersion: '20260905', windowStart: 0, windowEnd: 86400,
     geometry: { matchedSegments: 100, totalSegments: 100 }, railGeometry: { matchedSegments: 100, totalSegments: 100, sha256: 'a'.repeat(64) }, sourceHashes: { archive: 'b'.repeat(64), zvv: 'c'.repeat(64) } }
   if (id === 'lausanne-region') Object.assign(metadata, { dayModel: 'civil day with preceding service-day spillover', sourceServiceDates: ['2026-09-07', '2026-09-08'], geometry: { ...metadata.geometry, license: 'ODbL-1.0' }, railGeometry: { ...metadata.railGeometry, maximumSnapMetres: 45 }, lausanneGeometry: ['tl-bus', 'm1', 'm2', 'leb', 'rail'].map(id => ({ id, totalSegments: 100, acceptedSegments: 100 })) })
@@ -30,6 +37,20 @@ function fixture(id = 'zurich-city') {
 const modify = (files, path, edit) => { const value = JSON.parse(files.get(path)); edit(value); files.set(path, Buffer.from(JSON.stringify(value))) }
 
 describe('regional refresh', () => {
+  it('accepts complete legacy or expanded Lausanne sets and rejects mixed scope and weak MBC geometry', async () => {
+    const files = fixture('lausanne-region')
+    await expect(readRegionalArtifacts(path => files.get(path), ['lausanne-region'])).resolves.toBeTruthy()
+    for (const name of ['lausanne-region-day-manifest.json', 'lausanne-region-morning.json']) modify(files, name, value => {
+      Object.assign(value.metadata, { lausanneScopeVersion: 2, completeAgencyIds: ['29', '764'], localAgencyIds: ['151', '764'], lausanneGeometry: LAUSANNE_WEST_GROUPS.map(id => ({ id, totalSegments: 100, acceptedSegments: 100 })) })
+      Object.assign(value.metadata.sourceHashes, { mbcSnapshot: 'd'.repeat(64), mbcBusCache0: 'e'.repeat(64), mbcBusCache1: 'f'.repeat(64) })
+    })
+    await expect(readRegionalArtifacts(path => files.get(path), ['lausanne-region'])).resolves.toBeTruthy()
+    const expanded = new Map(files)
+    modify(files, 'lausanne-region-morning.json', value => { delete value.metadata.lausanneScopeVersion })
+    await expect(readRegionalArtifacts(path => files.get(path), ['lausanne-region'])).rejects.toThrow('mixed scope versions')
+    for (const name of ['lausanne-region-day-manifest.json', 'lausanne-region-morning.json']) modify(expanded, name, value => { value.metadata.lausanneGeometry.find(g => g.id === 'mbc-bus').acceptedSegments = 94 })
+    await expect(readRegionalArtifacts(path => expanded.get(path), ['lausanne-region'])).rejects.toThrow('insufficient per-mode geometry')
+  })
   it('uses Swiss civil time and the second Sunday of December for feed rollover', () => {
     expect(serviceDate(undefined, new Date('2026-09-08T23:30:00Z')).date).toBe('2026-09-09')
     expect(serviceDate('2026-12-12').timetableYear).toBe(2026)

@@ -1,0 +1,427 @@
+{
+  "metadata": {
+    "serviceDate": "2026-09-04",
+    "feedVersion": "20260902",
+    "timetableSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "networkSha256": "2a332f08d326fc366c36523def5cf62470014c47b3f0867677d777a3a6a17a1d",
+    "source": "swissALTIRegio + swissTLM3D",
+    "sourceCrs": "EPSG:2056 / LN02",
+    "terrainRelease": "2026-05-28",
+    "terrainUrl": "https://data.geo.admin.ch/ch.swisstopo.swissaltiregio/swissaltiregio/swissaltiregio_2056_5728.tif",
+    "terrainChecksum": "1220E1CADE929D3007D74BE67E5D107E517E40B13E0597A114097744B032FC6527E5",
+    "terrainProductUrl": "https://www.swisstopo.admin.ch/en/height-model-swissaltiregio",
+    "railSourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swisstlm3d/swisstlm3d_2026-02/swisstlm3d_2026-02_2056_5728.shp.zip",
+    "railSourceSha256": "38e9ee4456fd47aadca40bb78b8fd72267181e89ee4a56825230560a6174b1c5",
+    "railProductUrl": "https://www.swisstopo.admin.ch/en/landscape-model-swisstlm3d",
+    "model": "Mapped FOT plan alignment with heights interpolated from nearby swissTLM3D rail axes; equal horizontal/vertical scale. Only unmasked outdoor sections use 3D; tunnels, covered structures and offsets above 25 m remain in 2D. Timetable motion, not live or surveyed train positions.",
+    "attribution": "Federal Office of Transport; swisstopo. Terrain: swissALTIRegio (swisstopo and contributing national elevation datasets).",
+    "bounds": {
+      "minEasting": 2630200,
+      "maxEasting": 2646500,
+      "minNorthing": 1152600,
+      "maxNorthing": 1173800
+    },
+    "gridSpacingMetres": [
+      84.89583333333333,
+      84.8
+    ],
+    "nativeResolutionMetres": 10
+  },
+  "rasterSha256": "3e00f5fd1dd8ec804378b05bfaa182a9bf4c6c37d6f1cb32b3f7b7217b649579",
+  "gzipBytes": 111278,
+  "routes": [
+    {
+      "routeId": "91-62-j26-1",
+      "tripId": ".ojp-91-62.1.TA.29.j26",
+      "points": 862,
+      "length3dMetres": 12432.32468415381,
+      "maxOffsetMetres": 40.83903847949342,
+      "maskedFraction": 0.03576600493000093,
+      "sourceFeatureIds": [
+        "{D9FABCF8-0F3C-499C-8F6D-FDE8358EFDF7}",
+        "{79A98FA3-6E7B-49F6-AC66-BC832CB89299}",
+        "{ADFCE9E6-9D81-45DA-8094-6EDA3EDDE45C}",
+        "{B9274D9F-47DF-4751-BBD0-C1C158B332BC}",
+        "{DC546E5C-7D3D-496D-AAEF-7EC457CE67FF}",
+        "{FE772B58-6A5F-455E-8DA0-90060312F7A9}",
+        "{F9B7E5D0-4451-4BB8-BE8F-094790EA434B}",
+        "{B7ED258D-953A-4124-B46A-18F87909F12C}",
+        "{D142E64F-0812-461F-ABB4-53815D27D5F1}",
+        "{34FBB89E-5962-4BB1-981C-D2DEDF1117BB}",
+        "{7C63ABEE-2BD8-47E5-943C-4F5B8156592F}",
+        "{BFA9E2F1-C085-44A2-B4C6-DBBAE4301FA2}",
+        "{E63464E1-A8DD-4520-B73C-F708BCC37DCC}",
+        "{F6456AA5-7ECC-4EF2-B48C-F2E004801FDD}",
+        "{1E0BBA23-2B9A-478A-B870-7D19F863BCA1}",
+        "{EBE504F5-E29F-4082-AE33-9FBB504D33F1}",
+        "{69BE4E37-AC07-4E9B-B0B5-D95222B5AD3A}",
+        "{BAABC234-484D-4BA9-8867-8E39334F91C7}",
+        "{5125A1D7-AA57-47DC-B96E-71BC6027E8AF}",
+        "{7B49E879-5468-4BBF-AA6E-66CEC3B44A88}",
+        "{D06778D3-9DD5-43F6-801A-5B3228F2F988}",
+        "{CEA6703A-B9BC-4731-9FA9-2C08EFF5995D}",
+        "{E3A91DAF-A74C-402B-98E5-3680613AA70D}",
+        "{F843C004-EB92-4269-AD77-230D56EAB3BD}",
+        "{3CB904AD-92C8-48A6-9FA9-BB51705EF3FA}",
+        "{DB01C99D-8D41-43BE-9F35-F6D38AE9C8A7}",
+        "{0FD9683D-D565-4D64-8F42-71C4F97AF6D3}",
+        "{D26B61E4-69B5-403C-B331-33DDE92549A2}",
+        "{EB393B85-F2A9-4496-8290-A15C9507A117}",
+        "{AB29CD69-599D-4B11-8651-6E5451518A02}",
+        "{95A39D65-D758-4DBA-A5BA-C9C7F066A6F6}",
+        "{195E257D-6E29-46BA-AB79-A932C975564D}",
+        "{0D02EEDC-2AD3-494A-98F7-4264DC393477}",
+        "{786F972A-32AF-40C6-9667-99F311C0209B}",
+        "{2FEA1BFE-8E6E-45E6-A30F-DF31731F8829}",
+        "{873FCDFA-D0A4-4590-9561-D86C9F8591D3}",
+        "{9D9D5D13-8595-40C6-9314-905274D16A60}",
+        "{F62797CB-B52B-44E3-8643-CCE31E8A6DB2}",
+        "{A3F7C530-A651-4EFB-86D4-755BB9F30E3D}",
+        "{82FD2394-038C-4728-8011-4F65D812B7A4}",
+        "{0BF807F0-F0D9-4056-96C3-44BD64A594A4}",
+        "{582C5FBA-2C41-4C0D-B5DD-A4B81B614EA7}",
+        "{69CEE09B-D07E-4072-8DF3-B48872B6B69B}",
+        "{A0F95EC2-F8EE-4B69-BEC9-42A87A5DC152}",
+        "{F07939D8-0C9D-4DA1-A5E2-6A2CC476350F}",
+        "{A61CF516-EC77-4890-AD13-C093DEE89128}",
+        "{CEB28D57-FFF4-4D13-9E27-097BA80ECAF8}",
+        "{D459DFB5-ACAB-466E-8224-3C49BD5AAFFC}",
+        "{E772BB94-8C73-484E-BBD2-A6236CFA9772}",
+        "{89B6790D-7CD2-465C-88C9-4C42391689BA}",
+        "{9AA5D5D6-AFF2-44FD-BD2D-6E9046C088F3}",
+        "{6A3943D1-5F34-4F52-A193-2D1D445102BF}",
+        "{C46BCCB7-09CD-47D6-9B85-FFA6C9CCCAED}",
+        "{7B3AD946-D5BA-4539-BD2E-894CA54D6934}",
+        "{A52E8596-7942-4BE9-8479-DDCDC20FEBA5}",
+        "{097259F8-FD9A-4007-B9B0-2256A692824A}",
+        "{F4D6B4FB-B384-421B-AA69-DCA71C87030C}"
+      ],
+      "sourceYears": [
+        2024,
+        2021
+      ],
+      "stops": [
+        {
+          "id": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "name": "Interlaken Ost",
+          "progress": 0,
+          "railHeight": 566.833,
+          "groundHeight": 567.1314768192804
+        },
+        {
+          "id": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "name": "Matten b. Interlaken",
+          "progress": 0.1813715641462822,
+          "railHeight": 576.0482683829754,
+          "groundHeight": 576.0153295386872
+        },
+        {
+          "id": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "name": "Wilderswil",
+          "progress": 0.2724669311118855,
+          "railHeight": 583.9761274622655,
+          "groundHeight": 584.2874307268677
+        },
+        {
+          "id": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "name": "Zweilütschinen",
+          "progress": 0.6678634060993593,
+          "railHeight": 651.4156001436667,
+          "groundHeight": 651.6548622256247
+        },
+        {
+          "id": "ch:1:sloid:7384:0:556843",
+          "name": "Lauterbrunnen",
+          "progress": 1,
+          "railHeight": 795.7935080920207,
+          "groundHeight": 795.8371665235736
+        }
+      ],
+      "maskedRanges": [
+        {
+          "start": 0.10380232193197982,
+          "end": 0.11697583288609792,
+          "names": [],
+          "kinds": [
+            "Unterfuehrung"
+          ]
+        },
+        {
+          "start": 0.2104929691343076,
+          "end": 0.23308546311019043,
+          "names": [],
+          "kinds": [
+            "Keine",
+            "Bruecke"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "93-63-j26-1",
+      "tripId": ".ojp-93-63.1.TA.119.j26",
+      "points": 730,
+      "length3dMetres": 10473.473563897742,
+      "maxOffsetMetres": 11.722967568246293,
+      "maskedFraction": 0.13150633027611014,
+      "sourceFeatureIds": [
+        "{F4D6B4FB-B384-421B-AA69-DCA71C87030C}",
+        "{EB849CE6-BBB3-41DD-AA58-A45CED8D41FB}",
+        "{A1DEE652-39B8-44B3-A088-2CE32D1CFF19}",
+        "{06A0503B-7246-428F-9010-94699BB71A73}",
+        "{C190594E-CD2E-4541-9743-1E648FB4034F}",
+        "{BE56C2D0-8673-4C68-95F6-013E53E0163E}",
+        "{B7C58B50-BF7C-413D-8F29-E6936DE505A1}",
+        "{449BF89B-2FE8-4AB7-8F31-A18F364FB7A1}",
+        "{1F73E0A5-BB64-4C95-A753-80516FDA1BE0}",
+        "{9C070726-412E-4B6F-AE04-7057CB054090}",
+        "{2988E635-929B-4BF3-A777-16ED14E3660A}",
+        "{F85872B6-3A80-4610-9785-5E1BA322AFEE}",
+        "{6AEED4FD-4009-4E00-BB3B-D345C0F79ABF}",
+        "{CA0C0545-4845-4301-A481-EFEF2B3FD293}",
+        "{36992F5E-3A3B-4868-BF1E-3632895DC8DE}",
+        "{8D652630-9619-498A-AEA2-66976F949262}",
+        "{371EF1ED-A09F-442D-A86E-572A178BDED4}",
+        "{EA1EAE3A-05A3-4BB3-B308-1213F9A2E0FF}",
+        "{953E56AB-38D7-4DE2-9E2A-A4159B318510}",
+        "{9965C987-439C-4B8B-AA09-273877A251CD}",
+        "{2B873FD9-0AFB-45D5-87B4-9A1654E3937C}",
+        "{4596EDD4-3B6F-4708-9CAA-11FC6C6B2BD7}",
+        "{727C9BFB-2B9B-4288-B4E4-DDF6ABB60D4B}",
+        "{9461C082-42CC-4234-B44F-D25892F73DBA}",
+        "{31495E0C-5D54-4109-87AE-D368648328BA}",
+        "{6EC75E63-2172-40D7-8C81-DBE16531F1B5}",
+        "{58B9574F-0145-46D3-A5FE-06FDCA730151}",
+        "{E96BD9E9-CBA3-4754-AD01-3DB9D5BBF969}",
+        "{E1A353E4-DB1F-4AA8-AB38-6917AC46EE67}",
+        "{A60C31B9-052C-48A3-A411-090ED6DC7250}",
+        "{A2C70684-1BC3-4295-9768-B1DBDF2DEEB5}",
+        "{BE66D195-9D62-4137-A0FF-2BFB0FBD0BBA}",
+        "{E7535ECC-0DD0-4E03-B31E-5A42FD2FC35E}",
+        "{31C9C666-234F-4A31-A485-5ED8802F91E6}",
+        "{32D80D3A-D703-4E66-B053-15CFE685DDAE}",
+        "{E7E9E261-026E-45BE-9A9C-F9BA13B127F3}",
+        "{374B0E97-CC68-4E68-ACB4-5E32B034ACA5}",
+        "{6487B82C-6576-44AA-B6B6-622F4ECF26F0}",
+        "{3F31CC3E-482E-43CE-93B8-E30310AF6935}",
+        "{B5C00F9D-8B95-470D-B01D-20A6E060A4F1}",
+        "{C02C045C-34EC-4F1F-91BF-E6A41293C555}",
+        "{CA6C843A-D9DD-4C14-8EB5-AD49D2BDCF00}",
+        "{719CC94A-1514-4EB6-9B68-98C06CD9FE01}",
+        "{0378FB05-411B-481E-B499-EA748DCAC685}",
+        "{88C98C46-B997-4039-A127-E221F2857451}",
+        "{EA41BAD2-BB1B-45D8-A33E-074D240F58B8}",
+        "{04B3624E-28D0-440C-B0CD-E184DEFE200D}",
+        "{CBAF7667-A8B1-4DA9-8364-A5A49A4C407A}",
+        "{55932089-2856-4436-B57B-86EF7187E000}",
+        "{4C0F2F29-6F16-4B2D-B0F3-A65D17DB2B04}",
+        "{A3D88073-004D-4107-96D6-1E5EF70FD5E0}",
+        "{4ECC0FB9-8E46-469B-9AE7-0614AFBCFAD7}",
+        "{072490FC-9DDB-42FA-9183-FFDAFF6E2AFE}",
+        "{0F1A0800-703B-49AC-8CFC-F1F82D1964B1}",
+        "{28C2D3C6-9F7D-4823-B60E-C1D3EC7CE885}",
+        "{4C487094-9C0C-4663-8E3C-24DFEE1B91DA}",
+        "{92F2CB76-7499-4496-988E-507127CCBD38}",
+        "{6A3BE2CA-DDD4-466D-87EB-1702397BFAF4}",
+        "{AB99EF05-26C7-4BC2-B1D0-C3B0EAD3F474}",
+        "{9A3A5E4A-327F-4431-A19A-024CD64C25B2}",
+        "{E4971F9F-9E7D-426C-A203-6AE662708548}",
+        "{EAC03491-3EDA-4FF0-9B2E-A5F357372A0D}",
+        "{132F2538-B7AC-45A0-B2FF-62A4B1F0F131}",
+        "{5F4C2C14-8F20-4C58-9360-36CBC5E93C59}",
+        "{F6D9FA90-53A1-4A02-B415-98E1D3E68AE2}",
+        "{B0C10007-D7D6-49E6-B73C-BC8F1322F3E4}",
+        "{054B63D5-B02F-4E9A-A587-C2E7EADF973B}",
+        "{8DDBFA7C-8119-4BDD-BF11-BBD8A8621D64}",
+        "{2D2FB6A2-4AE2-4EDB-BF17-64BB04327D8C}",
+        "{B2C2B24B-5FEA-488E-9188-E2E3B8E5571F}",
+        "{000F2E20-739D-4301-8228-25B420CA3EDB}",
+        "{3B03E504-8209-4326-A092-B7BAAF30448E}",
+        "{4FF1ADDB-2572-47CB-99A4-B5E55DB80217}",
+        "{1892BDD9-6104-45E9-A6D4-16E4754D2C1B}"
+      ],
+      "sourceYears": [
+        2024,
+        2009
+      ],
+      "stops": [
+        {
+          "id": "ch:1:sloid:7384:0:326658",
+          "name": "Lauterbrunnen",
+          "progress": 0,
+          "railHeight": 795.7935080920207,
+          "groundHeight": 795.8371665235736
+        },
+        {
+          "id": "ch:1:sloid:7555:0:251093",
+          "name": "Wengwald",
+          "progress": 0.28677793517803624,
+          "railHeight": 1180.967828184148,
+          "groundHeight": 1181.781803964962
+        },
+        {
+          "id": "ch:1:sloid:7372:0:185358",
+          "name": "Wengen",
+          "progress": 0.36270606428366786,
+          "railHeight": 1273.9263266951154,
+          "groundHeight": 1274.339072482242
+        },
+        {
+          "id": "ch:1:sloid:7550:0:762109",
+          "name": "Allmend",
+          "progress": 0.5547560566163168,
+          "railHeight": 1501.931893399799,
+          "groundHeight": 1501.8492392086714
+        },
+        {
+          "id": "ch:1:sloid:7373:0:108715",
+          "name": "Wengernalp",
+          "progress": 0.7915023970313003,
+          "railHeight": 1874.4914398320154,
+          "groundHeight": 1874.6257223454797
+        },
+        {
+          "id": "ch:1:sloid:7374:0:564901",
+          "name": "Kleine Scheidegg",
+          "progress": 1,
+          "railHeight": 2061.0198041891367,
+          "groundHeight": 2061.4083170650265
+        }
+      ],
+      "maskedRanges": [
+        {
+          "start": 0.12920708543116874,
+          "end": 0.14932116752444022,
+          "names": [],
+          "kinds": [
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.17501886745702488,
+          "end": 0.21116529174607196,
+          "names": [],
+          "kinds": [
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.2517927460703889,
+          "end": 0.28171990381500045,
+          "names": [],
+          "kinds": [
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.5202436590234782,
+          "end": 0.5446528493483874,
+          "names": [],
+          "kinds": [
+            "Galerie"
+          ]
+        },
+        {
+          "start": 0.8729545378765021,
+          "end": 0.8814349722605167,
+          "names": [],
+          "kinds": [
+            "Unterfuehrung"
+          ]
+        },
+        {
+          "start": 0.9770773560742223,
+          "end": 0.9895063975144787,
+          "names": [],
+          "kinds": [
+            "in/auf Gebaeude"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "93-65-j26-1",
+      "tripId": ".ojp-93-65.1.TA.144.j26",
+      "points": 645,
+      "length3dMetres": 9468.656190755732,
+      "maxOffsetMetres": 26.44635645920007,
+      "maskedFraction": 0.8232348184255494,
+      "sourceFeatureIds": [
+        "{1892BDD9-6104-45E9-A6D4-16E4754D2C1B}",
+        "{244B4C58-446E-4A8E-96EE-95E13123C2EA}",
+        "{68524D43-09CB-4676-9477-BEB50E9D0DB4}",
+        "{F002F5E4-1D25-4829-B50D-CB9595EBC602}",
+        "{4F590838-A7EE-4BF4-B96E-235EF54E81A6}",
+        "{AFF55BAD-E85D-433C-9FDD-EFA24B1AB865}",
+        "{6FA2A009-9BBA-4BF0-839B-B3E968B602F1}",
+        "{1AA9EFCB-F4B1-49C2-A2B2-4DC726D4F81E}",
+        "{F4B9185E-7DDE-4079-BE5F-CB91A8BD8F7F}",
+        "{0D584B55-A0A1-4441-BDFB-30E6472188E8}",
+        "{E899D937-54C9-4E8E-B96E-4A293AAAFBCA}",
+        "{254EA76D-69E4-4C45-98CF-5FA400F0CCE9}",
+        "{00862A9B-06E3-4E36-AF04-D534399D7B8E}",
+        "{C0EF2885-052F-4155-95EA-14B8171B2D18}",
+        "{B132EB7E-415D-4118-B590-9F33647CE915}",
+        "{61242813-9B66-4030-911A-D6C4A9466CEA}",
+        "{3BCFEC50-ED98-43FF-BAC3-31CBD5C19B2F}",
+        "{C363C7E8-6987-4B61-A109-BFEB1B547F43}",
+        "{E8AEAC91-AEC9-4BDC-9567-824C8766F687}",
+        "{AD83AB91-90D8-4B30-9D5F-252DE30BADD3}",
+        "{4922017D-2186-4266-B23C-637A9226D73B}",
+        "{D144104D-7EF9-4EF1-963F-438415771563}",
+        "{E19E963C-D842-44AE-B0D0-7E5F41DC9E03}",
+        "{53CF2176-C693-4C11-A91B-51FCA5EA8419}",
+        "{6484EBD4-0317-4922-B6E7-BA6DF3626D44}"
+      ],
+      "sourceYears": [
+        2024,
+        2021,
+        2017
+      ],
+      "stops": [
+        {
+          "id": "ch:1:sloid:7374:0:533952",
+          "name": "Kleine Scheidegg",
+          "progress": 0,
+          "railHeight": 2061.0198041891367,
+          "groundHeight": 2061.4083170650265
+        },
+        {
+          "id": "ch:1:sloid:7361:0:177364",
+          "name": "Eigergletscher",
+          "progress": 0.2152305770964234,
+          "railHeight": 2320.761964837738,
+          "groundHeight": 2320.8172754632214
+        },
+        {
+          "id": "ch:1:sloid:7364:0:952862",
+          "name": "Jungfraujoch",
+          "progress": 1,
+          "railHeight": 3453.525,
+          "groundHeight": 3476.6338978014087
+        }
+      ],
+      "maskedRanges": [
+        {
+          "start": 0.12541908471711521,
+          "end": 0.17206583575171489,
+          "names": [],
+          "kinds": [
+            "Galerie",
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.2234119326090502,
+          "end": 1,
+          "names": [
+            "Jungfraubahntunnel"
+          ],
+          "kinds": [
+            "Tunnel"
+          ]
+        }
+      ]
+    }
+  ]
+}

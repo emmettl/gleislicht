@@ -5,6 +5,11 @@ import { readStudyLink, withinStudy } from './explore.ts'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 const metadata = (date: string, start = 0, end = 86400) => ({ serviceDate: date, windowStart: start, windowEnd: end }) as NetworkSnapshot['metadata']
 describe('Swiss Now and study links', () => {
+  it('opens Basel as a full civil day while preserving an explicit morning share', () => {
+    expect(readStudyLink('?study=basel-core&time=600')).toMatchObject({ study: 'basel-core', range: 'day', time: 600 })
+    const state = { study: 'basel-core', range: 'morning', date: '2026-09-08', station: 'Basel SBB', time: 27900 } as const
+    expect(readStudyLink(new URL(studyLinkUrl('https://example.org/', state)).search)).toMatchObject(state)
+  })
   it('uses Swiss civil time through both daylight-saving transitions', () => {
     expect(swissInstant(new Date('2026-03-29T00:30:00Z')).time).toBe(5400)
     expect(swissInstant(new Date('2026-03-29T01:30:00Z')).time).toBe(12600)

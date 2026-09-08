@@ -1,0 +1,445 @@
+{
+  "serviceDate": "2026-09-08",
+  "graphSha256": "2ff129472eb5cb90f205e0afcb2bb4265b240eb2566420bfea7634ae2d744795",
+  "railSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "cacheSha256": "457a09ae8fa6dbea8d3b55a99864def6f3b69ec4fd7b1ccebffa3529be21e6b5",
+  "largestSnaps": [
+    {
+      "id": "ch:1:sloid:11590:0:544",
+      "name": "Sévery, Moulin",
+      "stop": [
+        6.44983187,
+        46.568398
+      ],
+      "road": [
+        6.449025,
+        46.567833
+      ],
+      "metres": 88.14233999354322,
+      "route": "740"
+    },
+    {
+      "id": "ch:1:sloid:70093:0:1909",
+      "name": "Aclens, collège",
+      "stop": [
+        6.51121376,
+        46.56679844
+      ],
+      "road": [
+        6.510489,
+        46.567184
+      ],
+      "metres": 70.13480882489024,
+      "route": "735"
+    },
+    {
+      "id": "ch:1:sloid:70142:0:55060",
+      "name": "La Sarraz, gare",
+      "stop": [
+        6.51667552,
+        46.65915578
+      ],
+      "road": [
+        6.517219,
+        46.658661
+      ],
+      "metres": 68.97756739113896,
+      "route": "735"
+    },
+    {
+      "id": "ch:1:sloid:11590:0:545",
+      "name": "Sévery, Moulin",
+      "stop": [
+        6.4495534,
+        46.56823125
+      ],
+      "road": [
+        6.449025,
+        46.567833
+      ],
+      "metres": 60.00643870225684,
+      "route": "740"
+    },
+    {
+      "id": "ch:1:sloid:70076:0:565",
+      "name": "Clarmont, village",
+      "stop": [
+        6.44946357,
+        46.54646944
+      ],
+      "road": [
+        6.449929,
+        46.546886
+      ],
+      "metres": 58.48167407660535,
+      "route": "740"
+    },
+    {
+      "id": "ch:1:sloid:92241:0:26228",
+      "name": "Denges, Sur les Moulins",
+      "stop": [
+        6.54200801,
+        46.51522911
+      ],
+      "road": [
+        6.541661,
+        46.514912
+      ],
+      "metres": 44.190542002793556,
+      "route": "705"
+    },
+    {
+      "id": "ch:1:sloid:10527:0:731252",
+      "name": "St-Sulpice VD, Ochettaz-Ormet",
+      "stop": [
+        6.55622834,
+        46.51381963
+      ],
+      "road": [
+        6.555678,
+        46.513783
+      ],
+      "metres": 42.35727558576672,
+      "route": "701"
+    },
+    {
+      "id": "ch:1:sloid:70142:0:79248",
+      "name": "La Sarraz, gare",
+      "stop": [
+        6.51687314,
+        46.65892766
+      ],
+      "road": [
+        6.517219,
+        46.658661
+      ],
+      "metres": 39.742318257704895,
+      "route": "760"
+    },
+    {
+      "id": "ch:1:sloid:70077:0:650646",
+      "name": "Reverolle, Chaniaz",
+      "stop": [
+        6.4454481,
+        46.54048233
+      ],
+      "road": [
+        6.445821,
+        46.540661
+      ],
+      "metres": 34.79761957644883,
+      "route": "740"
+    },
+    {
+      "id": "ch:1:sloid:11344:0:584",
+      "name": "Lonay-Préverenges, gare nord",
+      "stop": [
+        6.51868774,
+        46.52372851
+      ],
+      "road": [
+        6.519022,
+        46.523567
+      ],
+      "metres": 31.284794598655562,
+      "route": "705"
+    },
+    {
+      "id": "ch:1:sloid:70075:0:381503",
+      "name": "Vaux-sur-Morges, Bugnon",
+      "stop": [
+        6.45354192,
+        46.53995093
+      ],
+      "road": [
+        6.453837,
+        46.539764
+      ],
+      "metres": 30.717046734159027,
+      "route": "740"
+    },
+    {
+      "id": "ch:1:sloid:70114:0:319511",
+      "name": "Mollens VD, village",
+      "stop": [
+        6.36366547,
+        46.57699405
+      ],
+      "road": [
+        6.363509,
+        46.576748
+      ],
+      "metres": 29.892802081989277,
+      "route": "742"
+    },
+    {
+      "id": "ch:1:sloid:11002:0:814859",
+      "name": "Pampigny, village",
+      "stop": [
+        6.42819146,
+        46.57993319
+      ],
+      "road": [
+        6.427905,
+        46.58009
+      ],
+      "metres": 28.020216458133934,
+      "route": "740"
+    },
+    {
+      "id": "ch:1:sloid:70100:0:408816",
+      "name": "St-Saphorin-sur-Morges,village",
+      "stop": [
+        6.48675263,
+        46.54603696
+      ],
+      "road": [
+        6.487113,
+        46.546028
+      ],
+      "metres": 27.608934508909737,
+      "route": "730"
+    },
+    {
+      "id": "ch:1:sloid:83891:0:2864",
+      "name": "Vufflens-Aclens, zone industr.",
+      "stop": [
+        6.52485018,
+        46.56498267
+      ],
+      "road": [
+        6.524766,
+        46.564743
+      ],
+      "metres": 27.446961541552053,
+      "route": "736"
+    },
+    {
+      "id": "ch:1:sloid:95652:0:551",
+      "name": "Bière, collège",
+      "stop": [
+        6.33940198,
+        46.53637933
+      ],
+      "road": [
+        6.339159,
+        46.536556
+      ],
+      "metres": 27.073762283827534,
+      "route": "742"
+    },
+    {
+      "id": "ch:1:sloid:11041:0:553",
+      "name": "Cossonay-Ville, Bicentenaire",
+      "stop": [
+        6.50270671,
+        46.61454872
+      ],
+      "road": [
+        6.502395,
+        46.614639
+      ],
+      "metres": 25.867336916600117,
+      "route": "750"
+    },
+    {
+      "id": "ch:1:sloid:11586:0:1986",
+      "name": "Gollion, grande salle",
+      "stop": [
+        6.51001002,
+        46.58702105
+      ],
+      "road": [
+        6.510111,
+        46.587234
+      ],
+      "metres": 24.932664547020504,
+      "route": "750"
+    },
+    {
+      "id": "ch:1:sloid:77604:0:600",
+      "name": "Etoy, gare",
+      "stop": [
+        6.42581092,
+        46.47510639
+      ],
+      "road": [
+        6.426118,
+        46.475128
+      ],
+      "metres": 23.66417121615483,
+      "route": "724"
+    },
+    {
+      "id": "ch:1:sloid:77604:0:601",
+      "name": "Etoy, gare",
+      "stop": [
+        6.42582889,
+        46.47506308
+      ],
+      "road": [
+        6.426118,
+        46.475128
+      ],
+      "metres": 23.31242405566216,
+      "route": "724"
+    }
+  ],
+  "rejectedPatternSegments": [
+    {
+      "pattern": "3ec88727eb71af72ed2d349d",
+      "routeId": "92-701-j26-1",
+      "route": "701",
+      "segment": 0,
+      "from": "Tolochenaz, La Plantaz",
+      "to": "Tolochenaz, La Plantaz",
+      "fromId": "ch:1:sloid:70082:0:301404",
+      "toId": "ch:1:sloid:70082:0:464727",
+      "trips": 107,
+      "reason": "missing-shape"
+    },
+    {
+      "pattern": "c419382e960b7b163dc0082d",
+      "routeId": "92-701-j26-1",
+      "route": "701",
+      "segment": 0,
+      "from": "Tolochenaz, La Plantaz",
+      "to": "Tolochenaz, La Plantaz",
+      "fromId": "ch:1:sloid:70082:0:301404",
+      "toId": "ch:1:sloid:70082:0:464727",
+      "trips": 7,
+      "reason": "missing-shape"
+    }
+  ],
+  "panels": [
+    {
+      "title": "Sévery, Moulin · 88.1 m",
+      "centre": [
+        6.44983187,
+        46.568398
+      ],
+      "radius": 0.003,
+      "routes": [
+        "740"
+      ],
+      "snap": {
+        "id": "ch:1:sloid:11590:0:544",
+        "name": "Sévery, Moulin",
+        "stop": [
+          6.44983187,
+          46.568398
+        ],
+        "road": [
+          6.449025,
+          46.567833
+        ],
+        "metres": 88.14233999354322,
+        "route": "740"
+      }
+    },
+    {
+      "title": "Aclens, collège · 70.1 m",
+      "centre": [
+        6.51121376,
+        46.56679844
+      ],
+      "radius": 0.003,
+      "routes": [
+        "735"
+      ],
+      "snap": {
+        "id": "ch:1:sloid:70093:0:1909",
+        "name": "Aclens, collège",
+        "stop": [
+          6.51121376,
+          46.56679844
+        ],
+        "road": [
+          6.510489,
+          46.567184
+        ],
+        "metres": 70.13480882489024,
+        "route": "735"
+      }
+    },
+    {
+      "title": "La Sarraz, gare · 69.0 m",
+      "centre": [
+        6.51667552,
+        46.65915578
+      ],
+      "radius": 0.003,
+      "routes": [
+        "735"
+      ],
+      "snap": {
+        "id": "ch:1:sloid:70142:0:55060",
+        "name": "La Sarraz, gare",
+        "stop": [
+          6.51667552,
+          46.65915578
+        ],
+        "road": [
+          6.517219,
+          46.658661
+        ],
+        "metres": 68.97756739113896,
+        "route": "735"
+      }
+    },
+    {
+      "title": "La Plantaz · unresolved platform pair",
+      "centre": [
+        6.47731134,
+        46.50823079
+      ],
+      "radius": 0.004,
+      "routes": [
+        "701"
+      ]
+    },
+    {
+      "title": "Morges station · bus directions",
+      "centre": [
+        6.49457696,
+        46.51009174
+      ],
+      "radius": 0.004,
+      "routes": [
+        "701",
+        "702",
+        "703"
+      ]
+    },
+    {
+      "title": "Cossonay · bus approaches",
+      "centre": [
+        6.50808762,
+        46.61195085
+      ],
+      "radius": 0.008,
+      "routes": [
+        "750",
+        "760"
+      ]
+    },
+    {
+      "title": "MBC railway · Bière and L’Isle branches",
+      "centre": [
+        6.416,
+        46.566
+      ],
+      "radius": 0.11,
+      "rail": true
+    },
+    {
+      "title": "Morges · rail platforms and La Gottaz",
+      "centre": [
+        6.485,
+        46.514
+      ],
+      "radius": 0.013,
+      "rail": true
+    }
+  ]
+}

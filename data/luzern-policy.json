@@ -226,5 +226,133 @@
     "Fixture validation covers Friday and Sunday plus preceding-day carry-in, not all annual seasonal, holiday or diversion patterns.",
     "Services crossing the canton without a stop are outside the passenger-service scope.",
     "No realtime data, one-way street certification or individual running-track validation."
-  ]
+  ],
+  "geometryRepairs": {
+    "sourceBusSha256": "49a88e0544b8ea9067a930fc5b112c14672bcf68ad3bd99bd51c0c4243478e6f",
+    "maximumLengthMetres": 100,
+    "repairs": [
+      {
+        "id": "b111-gap-1",
+        "targetFeature": "bus:B111",
+        "sourceFeatures": [
+          "bus:B110"
+        ],
+        "coordinates": [
+          [
+            8.3504933,
+            47.1220292
+          ],
+          [
+            8.3505377,
+            47.1220521
+          ],
+          [
+            8.3505771,
+            47.122079
+          ],
+          [
+            8.3506107,
+            47.1221093
+          ],
+          [
+            8.3506808,
+            47.1222007
+          ]
+        ],
+        "gapMetres": 23.789897767143664,
+        "pathMetres": 24.145444191354432,
+        "reason": "Short missing piece between disconnected target-line components. Every edge is present verbatim in the cited official bus source feature; endpoints are existing target vertices. Corridor inference only; source is undirected."
+      },
+      {
+        "id": "b081-gap-1",
+        "targetFeature": "bus:B081",
+        "sourceFeatures": [
+          "bus:B086"
+        ],
+        "coordinates": [
+          [
+            8.1145221,
+            47.1696586
+          ],
+          [
+            8.1147684,
+            47.1696579
+          ]
+        ],
+        "gapMetres": 18.64303002799222,
+        "pathMetres": 18.64303002799222,
+        "reason": "Short missing piece between disconnected target-line components. Every edge is present verbatim in the cited official bus source feature; endpoints are existing target vertices. Corridor inference only; source is undirected."
+      },
+      {
+        "id": "b609-gap-1",
+        "targetFeature": "bus:B609",
+        "sourceFeatures": [
+          "bus:B608"
+        ],
+        "coordinates": [
+          [
+            7.9689014,
+            47.2549762
+          ],
+          [
+            7.9689624,
+            47.2548241
+          ]
+        ],
+        "gapMetres": 17.551413651044527,
+        "pathMetres": 17.551413651044527,
+        "reason": "Short missing piece between disconnected target-line components. Every edge is present verbatim in the cited official bus source feature; endpoints are existing target vertices. Corridor inference only; source is undirected."
+      },
+      {
+        "id": "b399-gap-1",
+        "targetFeature": "bus:B399",
+        "sourceFeatures": [
+          "bus:B086"
+        ],
+        "coordinates": [
+          [
+            8.1145221,
+            47.1696586
+          ],
+          [
+            8.1147684,
+            47.1696579
+          ]
+        ],
+        "gapMetres": 18.64303002799222,
+        "pathMetres": 18.64303002799222,
+        "reason": "Short missing piece between disconnected target-line components. Every edge is present verbatim in the cited official bus source feature; endpoints are existing target vertices. Corridor inference only; source is undirected."
+      },
+      {
+        "id": "b399-gap-2",
+        "targetFeature": "bus:B399",
+        "sourceFeatures": [
+          "bus:B398"
+        ],
+        "coordinates": [
+          [
+            8.187471,
+            47.2403329
+          ],
+          [
+            8.1875194,
+            47.2404021
+          ]
+        ],
+        "gapMetres": 8.53000048729206,
+        "pathMetres": 8.53000048729206,
+        "reason": "Short missing piece between disconnected target-line components. Every edge is present verbatim in the cited official bus source feature; endpoints are existing target vertices. Corridor inference only; source is undirected."
+      }
+    ],
+    "rejected": [
+      {
+        "targetFeatures": [
+          "bus:B622",
+          "bus:B653"
+        ],
+        "gapMetres": 9.812311813582587,
+        "reason": "No short connecting path in the official bus line network; the nearest connected route detours about 3.775 km. No bridge inserted."
+      }
+    ]
+  }
 }

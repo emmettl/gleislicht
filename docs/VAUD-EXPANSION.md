@@ -1,9 +1,80 @@
 # Vaud expansion: first implementation
 
-Started **8 September 2026**. The first deliverable is a reproducible civil-day
-candidate audit and new MBC bus geometry. Lausanne's existing application study
-remains the integration baseline. The Vaud candidate is not in the study selector
-and is not ready for publication.
+Started **8 September 2026**. The broader Vaud candidate remains an audit. The
+first application increment now extends the existing Lausanne study with complete
+MBC rail and bus journeys through Morges, Bière, L’Isle and Cossonay. This increment
+is implemented locally; it has not been published.
+
+## Lausanne–MBC application increment
+
+The daily Lausanne builder now imports agencies **29 and 764** independently
+of the original rectangle. The new importer flag `--agencies` filters all selected
+modes; existing `--local-agencies` keeps its bus/tram-only semantics. The supplement
+uses worldwide display bounds and retains complete MBC journeys. Each chain is
+checked against ordered source platforms and times, including the preceding
+service day's offset. The merge replaces clipped MBC rail trips by source identity;
+other Lausanne journeys remain unchanged. Replacement agency 7256, funicular
+agency 344 and lake services remain excluded.
+
+The existing `lausanne-region` URL and lazy-loading flow remain in use. All four
+languages identify Lausanne / Morges, with MBC and Bière in discovery/search copy.
+The overview is widened for both railway branches. Search, line selection,
+seeking, sharing and Now use the existing study machinery.
+
+| Integrated study | Weekday | Sunday |
+| --- | ---: | ---: |
+| Journeys | 10,134 | 7,833 |
+| Platforms | 1,455 | 1,385 |
+| Named stops | 709 | 678 |
+| MBC rail journeys | 106 | 76 |
+| MBC bus journeys | 1,249 | 695 |
+| MBC rail accepted geometry | 100% | 100% |
+| MBC bus accepted geometry | 99.46% | 99.56% |
+
+All seven groups pass the unchanged 95% gate: tl bus, MBC bus, m1, m2, LEB,
+MBC rail and other rail. Every group except MBC bus has 100% accepted geometry
+on both dates. The largest rail-platform projection remains 44.28 m. La Plantaz's
+bus-platform pair remains unshaped.
+
+The [weekday](../data/lausanne-mbc-study-audit.json) and
+[Sunday](../data/lausanne-mbc-study-sunday-audit.json) reports distinguish the
+base rectangle, complete-agency supplement and actual combined bounds. The
+[alignment review](assets/mbc-geometry-review.svg) was rendered and inspected:
+largest bus snaps at Sévery, Aclens and La Sarraz; La Plantaz; Morges station;
+Cossonay; both rail branches and Morges rail platforms. It compares paths with
+the retained OSM/FOT inputs, not independent operator evidence.
+[Review provenance](../data/mbc-geometry-review.json) retains hashes and offsets.
+The largest bus snap is 88.1 m, within the existing 120 m limit.
+
+Artifacts carry `lausanneScopeVersion: 2`, complete-agency IDs and separate MBC
+geometry/provenance. Recovery accepts a complete legacy or complete expanded set,
+rejects mixed versions/hashes/geometry reports, and checks MBC rail and buses
+separately. Legacy recovery retains its original date and coverage.
+
+Fresh weekday and Sunday builds and both fourteen-file integrity checks passed,
+including the weekday's automatic supplemental import. The production build,
+bundle/architecture checks and **349 unit tests** passed in an isolated checkout.
+Isolation avoided concurrent Basel UI edits referencing a not-yet-built manifest.
+No browser/device performance result is claimed for this increment.
+
+Reproduce the application artifacts:
+
+```sh
+node scripts/build-lausanne-day.mjs \
+  --archive /path/swiss-gtfs.zip --rail /path/rail.xtf \
+  --date 2026-09-08 --output-directory /tmp/lausanne-mbc
+```
+
+The same builder runs through `npm run data:regional:days`. For a detailed report,
+add `--include-mbc` to `audit-lausanne-study.mjs` and supply the tl cache; both MBC
+caches are included automatically. `--mbc-snapshot` can reuse a complete supplement
+from the same feed/date. The standalone Vaud-wide audit below retains its broader
+scope and failing geometry gate.
+
+To regenerate the alignment review, use `scripts/review-mbc-geometry.mjs` with
+`--matched`, `--cache`, `--graph`, `--rail`, `--archive`, `--manifest` and `--output`.
+The graph is the retained pfaedle OSM graph; the manifest must be the expanded
+Lausanne day. The source archive supplies MBC rail route identities.
 
 ## Scope and source identity
 
@@ -170,9 +241,8 @@ Import the result with `importRoadShapes` from `enrich-postbus-roads.mjs`, recor
 the actual source/extract dates, and write it to the weekday cache. Repeat using
 the Sunday feed for the Sunday cache. Re-run both audits after cache changes.
 
-The next integration slice should be **Lausanne–Morges–Bière–Cossonay**: review
-the MBC paths and termini, then extend the existing study with those buses and
-the full MBC railway. Audit the Cossonay funicular separately. Follow with
+The **Lausanne–Morges–Bière–Cossonay** slice is now implemented above.
+Audit the Cossonay funicular separately, then follow with
 Nyon/NStCM, the Riviera, and North Vaud, using the per-operator reports to resolve
 geometry before exposing each area. Broader TPC/MOB/TPF corridors and lake
 services need their own boundary and geometry decisions.

@@ -56,9 +56,10 @@ async function readFeedInfo(archive) {
   throw new Error('feed_info.txt contains no data')
 }
 
-async function routesForModes(archive, modes) {
+export async function routesForModes(archive, modes, agencyIds) {
   const routes = new Map()
   for await (const row of rowsFromArchive(archive, 'routes.txt')) {
+    if (agencyIds && !agencyIds.has(row.agency_id)) continue
     const mode = transportModeForRouteType(row.route_type)
     if (!mode || !modes.has(mode)) continue
     const name = row.route_short_name || row.route_long_name || mode
@@ -419,6 +420,7 @@ async function main() {
         '[--modes rail|all|rail,tram,bus] [--bounds minLon,minLat,maxLon,maxLat] ' +
         '[--local-stop-archive /path/regional.zip] [--output morning.json] ' +
         '[--local-agencies 881,199] ' +
+        '[--agencies 29,764 (all selected modes)] ' +
         '[--local-route-ids 96-930-j26-1] ' +
         '[--hub-output day.json|none] [--chunk-hours 3] [--civil-day]',
     )
@@ -445,6 +447,7 @@ async function main() {
     ? resolve(localStopArchiveArgument)
     : undefined
   const allowedLocalAgencyIds = parseAgencyIds(argument('local-agencies'))
+  const agencyIds = parseAgencyIds(argument('agencies'))
   const allowedLocalRouteIds = parseRouteIds(argument('local-route-ids'))
   const displayBounds = parseBounds(argument('bounds'))
   const windowStart = parseClock(windowStartLabel)
@@ -455,7 +458,7 @@ async function main() {
   const [feed, services, routes, sourceStops, allowedLocalStopIds] = await Promise.all([
     readFeedInfo(archive),
     activeServices(archive, serviceDate),
-    routesForModes(archive, modes),
+    routesForModes(archive, modes, agencyIds),
     stopsById(archive),
     localStopArchive ? localStopIds(localStopArchive) : undefined,
   ])
@@ -508,6 +511,7 @@ async function main() {
       note: 'The Swiss GTFS feed contains no shapes.txt; positions follow straight stop segments.' + (headwayTrips ? ' Frequency-based motion uses an illustrative grid anchored to each published operating interval, not exact vehicle departures.' : ''),
       ...(headwayTrips || exactFrequencyTrips ? { frequency: { headwayTrips, exactFrequencyTrips, model: 'source interval anchored grid; exact_times distinguishes headway illustration from scheduled departures' } } : {}),
       modes: [...modes],
+      ...(agencyIds ? { agencyIds: [...agencyIds] } : {}),
       ...(allowedLocalAgencyIds
         ? { localAgencyIds: [...allowedLocalAgencyIds] }
         : {}),
