@@ -464,7 +464,38 @@
         "24602"
       ],
       "supportingDocument": "corridor-2460-2026.pdf",
-      "reason": "Field 2460 (2026, 28 August 2025; 28 March–12 December table) explicitly serves Gimmelwald–Mürren. GTFS line 24602 splits that section from 2460. Preserved 2460_1 geometry contains both via-Gimmelwald and direct Stechelberg–Mürren branches. Upper 24603/24604 identifiers remain unreviewed."
+      "reason": "Field 2460 (2026, 28 August 2025; 28 March–12 December table) explicitly serves Gimmelwald–Mürren. GTFS line 24602 splits that section from 2460. Preserved 2460_1 geometry contains both via-Gimmelwald and direct Stechelberg–Mürren branches. Upper 24603/24604 records use separately reviewed sections of 2460_2; this lower feature never authorizes them."
+    },
+    "2460_2": {
+      "agencyIds": [
+        "256",
+        "268"
+      ],
+      "lines": [
+        "2460"
+      ],
+      "supportingDocument": "corridor-2460-2026.pdf",
+      "reason": "Preserve existing field-2460 identities. Field 2460 (2026, 28 August 2025), pages 5–9, separately publishes Mürren–Birg and Birg–Schilthorn under Luftseilbahn Mürren-Schilthorn. Bind each exact split GTFS record only to its original source part. The two Birg cable endpoints are distinct; do not join them or choose the nearest endpoint on the other installation. Original GTFS calls and the 80 m endpoint limit remain unchanged.",
+      "routeSections": [
+        {
+          "routeId": "93-246-B-j26-1",
+          "agencyId": "268",
+          "line": "24603",
+          "mode": "cableway",
+          "partSha256": "2dbbbe294d058c296febdb337e0f45de39f1931ecb7d38e7d60efa8d5a83943a",
+          "supportingDocument": "corridor-2460-2026.pdf",
+          "section": "Mürren (Schilthornbahn)–Birg (Schilthornbahn)"
+        },
+        {
+          "routeId": "93-246-C-j26-1",
+          "agencyId": "268",
+          "line": "24604",
+          "mode": "cableway",
+          "partSha256": "c8f625287a0a62ec321724e957589edddc84687e1e7a0b5d8601d2b8373557c2",
+          "supportingDocument": "corridor-2460-2026.pdf",
+          "section": "Birg (Schilthornbahn)–Schilthorn"
+        }
+      ]
     }
   },
   "expectedAgencyNames": {

@@ -42052,54 +42052,52 @@
     "districts": [
       "Interlaken-Oberhasli"
     ],
-    "sourceLines": [],
+    "sourceLines": [
+      "2460_2"
+    ],
     "days": [
       {
         "date": "2026-09-04",
         "trips": 39,
-        "admittedTrips": 0,
+        "admittedTrips": 39,
         "scheduledTrips": 39,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 39,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 39,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 39,
         "segmentOccurrences": 39,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 39,
+        "admittedSegmentOccurrences": 39,
         "directedPairs": 2,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 2,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 39
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 39,
-        "admittedTrips": 0,
+        "admittedTrips": 39,
         "scheduledTrips": 39,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 39,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 39,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 39,
         "segmentOccurrences": 39,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 39,
+        "admittedSegmentOccurrences": 39,
         "directedPairs": 2,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 2,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 39
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "93-246-C-j26-1",
@@ -42117,54 +42115,52 @@
     "districts": [
       "Interlaken-Oberhasli"
     ],
-    "sourceLines": [],
+    "sourceLines": [
+      "2460_2"
+    ],
     "days": [
       {
         "date": "2026-09-04",
         "trips": 39,
-        "admittedTrips": 0,
+        "admittedTrips": 39,
         "scheduledTrips": 39,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 39,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 39,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 39,
         "segmentOccurrences": 39,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 39,
+        "admittedSegmentOccurrences": 39,
         "directedPairs": 2,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 2,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 39
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 39,
-        "admittedTrips": 0,
+        "admittedTrips": 39,
         "scheduledTrips": 39,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 39,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 39,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 39,
         "segmentOccurrences": 39,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 39,
+        "admittedSegmentOccurrences": 39,
         "directedPairs": 2,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 2,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 39
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "93-246-D-j26-1",

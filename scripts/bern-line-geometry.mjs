@@ -13,6 +13,18 @@ export const BERN_LIMITS = {
   ferry: { snapMetres: 150, detourRatio: 4.5, detourFloorMetres: 1200, alternativeSnapMetres: 5 },
 }
 const modes = { 1: ['rail'], 2: ['bus'], 3: ['bus'], 4: ['tram'], 5: ['cableway', 'funicular'], 6: ['ferry'] }
+const sectionFor = (route, override) => override?.routeSections?.find(section =>
+  section.routeId === route.id && section.agencyId === route.agencyId && section.line === route.name && section.mode === route.mode)
+
+export function bernSectionFeature(route, feature, crosswalk) {
+  const section = sectionFor(route, crosswalk.featureOverrides?.[feature.properties.liniencode])
+  if (!section) return feature
+  assert(crosswalk.supportingDocuments.some(d => d.file === section.supportingDocument), 'Missing section identity evidence')
+  assert.equal(feature.geometry.type, 'MultiLineString', 'Reviewed section source changed')
+  const parts = feature.geometry.coordinates.filter(part => createHash('sha256').update(JSON.stringify(part)).digest('hex') === section.partSha256)
+  assert.equal(parts.length, 1, 'Reviewed source section missing or ambiguous')
+  return { ...feature, geometry: { type: 'LineString', coordinates: parts[0] } }
+}
 
 export function bernLineNumbers(value) {
   // R61/62 is two numbers with the same prefix; R30/R34 and RE2 / RE3
@@ -30,6 +42,7 @@ export function bernLineNumbers(value) {
 export function bernFeatureMatch(route, feature, crosswalk) {
   const p = feature.properties, override = crosswalk.featureOverrides?.[p.liniencode]
   if (!modes[p.vkmtyp]?.includes(route.mode)) return false
+  if (sectionFor(route, override)) return true
   const agencyIds = override?.agencyIds ?? (p.tucode === 'Moonliner' ? crosswalk.nightOperators[p.tuname] : crosswalk.operators[p.tucode]) ?? []
   if (!agencyIds.includes(route.agencyId)) return false
   if (override) return override.allLines || override.lines.includes(route.name)
@@ -92,7 +105,7 @@ export function bernAdmission(train, pattern) {
 export function applyBernGeometry(raw, routes, source, crosswalk, { featureMatch = bernFeatureMatch, limits = BERN_LIMITS, lineId = f => f.properties.liniencode } = {}) {
   const paths = [], pathIndexes = new Map(), pairs = new Map(), patterns = new Map(), graphs = new Map()
   const routeCrosswalk = [...routes.values()].map(route => {
-    const features = source.lines.filter(f => featureMatch(route, f, crosswalk))
+    const features = source.lines.filter(f => featureMatch(route, f, crosswalk)).map(f => bernSectionFeature(route, f, crosswalk))
     const sourceLines = features.map(lineId).sort()
     return { routeId: route.id, agencyId: route.agencyId, line: route.name, mode: route.mode, sourceLines, features }
   })
@@ -101,7 +114,8 @@ export function applyBernGeometry(raw, routes, source, crosswalk, { featureMatch
     const route = routes.get(train.routeId), cross = byRoute.get(train.routeId)
     const patternId = bernPatternId(train, raw.stops)
     if (!patterns.has(patternId)) {
-      const graphKey = cross.sourceLines.join('|')
+      // Different reviewed sections of one source feature must never share a graph.
+      const graphKey = createHash('sha256').update(JSON.stringify(cross.features.map(f => f.geometry))).digest('hex')
       if (cross.sourceLines.length && !graphs.has(graphKey)) graphs.set(graphKey, bernGraph(cross.features))
       const graph = graphs.get(graphKey)
       const pairKeys = [], pathSegments = train.stops.slice(1).map(([toIndex], i) => {
