@@ -1,12 +1,13 @@
-import { airportBoardMovements } from '@motionstudies/core/domain/airport'
-import { AIRPORT_LABELS, AIRPORT_NOTES } from './studies/airport-copy.ts'
+import { useNowClock } from '@motionstudies/web/use-now-clock'
+import { useBrowserLocation } from '@motionstudies/web/use-browser-location'
+import { REGIONAL_DAYS, isRegionalDayStudy, readStudyLink, withinStudy } from './studies/explore.ts'
+import { EXPLORE_EN, type ExploreUiCopy } from './studies/explore-ui-en.ts'
 import { networkWithRailVisibility } from './studies/network-layers.ts'
-import { COGWHEEL_COPY, COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
+import { COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
-import { RIGI_COPY, rigiOperator } from './studies/rigi.ts'
+import { rigiOperator } from './studies/rigi.ts'
 import { RIGI_TERRAIN_COPY } from './studies/rigi-terrain.ts'
-import { FREQUENCY_COPY, isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
-import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
+import { isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
 import { airTrafficSummary } from './studies/air-traffic-summary.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
 import { CONTROL_HELP } from './control-help.ts'
@@ -37,14 +38,7 @@ import {
   positionForAirTrack,
   type AirSnapshot,
 } from '@motionstudies/core/domain/air'
-import {
-  callsAtHub,
-  callsNearTime,
-  nextHubCall,
-  platformCodeForCall,
-  platformsForCalls,
-  type HubDaySnapshot,
-} from '@motionstudies/core/domain/hub'
+import type { HubDaySnapshot } from '@motionstudies/core/domain/hub'
 import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import { positionOnJourney } from '@motionstudies/core/domain/journey'
 import {
@@ -136,6 +130,8 @@ import { useProgressiveAirDay } from '@motionstudies/web/use-progressive-air-day
 import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road-study'
 import { useLocalPerformance } from '@motionstudies/web/use-local-performance'
 
+const StudyBrowser = lazy(() => import('./studies/StudyBrowser.tsx'))
+
 const RoadTrafficHistory = lazy(() => import('./studies/RoadTrafficHistory.tsx').then(module => ({ default: module.RoadTrafficHistory })))
 
 const AirportHeroCard = lazy(() => import('./studies/AirportCard.tsx'))
@@ -193,6 +189,7 @@ const NEXT_TRAIN_LABEL_MODE: Readonly<Record<TrainLabelMode, TrainLabelMode>> = 
 }
 
 const PLAYBACK_RATES = [
+  { label: '1:1', value: 1 },
   { label: '1×', value: 30 },
   { label: '4×', value: 120 },
   { label: '16×', value: 480 },
@@ -268,7 +265,14 @@ export function App({ edition }: AppProps) {
   const [language, setLanguage] = useState<UiLanguage>(() =>
     initialUiLanguage(edition),
   )
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [initialLink] = useState(() => readStudyLink(window.location.search))
+  const linkPending = useRef(Boolean(initialLink.date || initialLink.time !== undefined || initialLink.station || initialLink.train))
+  const [exploreOpen, setExploreOpen] = useState(false)
+  const [shareUrl, setShareUrl] = useState('')
+  const [exploreNotice, setExploreNotice] = useState('')
+  const [regionalRange, setRegionalRange] = useState<'morning' | 'day'>(initialLink.range)
+  const [regionalRetry, setRegionalRetry] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(initialLink.time === undefined)
   const [view, setView] = useState<View>('network')
   const [journeyProgress, setJourneyProgress] = useState(0.11)
   const [journeyEnvironment, setJourneyEnvironment] = useState<JourneyEnvironment>({
@@ -278,11 +282,27 @@ export function App({ edition }: AppProps) {
     speed: 0.6,
     region: 'plateau',
   })
-  const [networkTime, setNetworkTime] = useState(edition.defaultNetworkTime)
+  const [playbackTime, setNetworkTime] = useState(initialLink.time ?? edition.defaultNetworkTime)
+  const nowRequested = useRef(false)
+  const nowResolver = useRef<typeof import('./studies/swiss-now.ts') | undefined>(undefined)
+  const [nowDate, setNowDate] = useState('')
+  const nowMetadata = useRef<NetworkSnapshot['metadata'] | undefined>(undefined)
+  const { active: nowActive, time: nowTime, unavailable: nowUnavailable, start: startNowClock, stop: stopNowClock } = useNowClock(useCallback((instant: Date) => nowResolver.current?.resolveSwissNow(instant, nowMetadata.current) ?? null, []))
+  const browserLocation = useBrowserLocation()
+  const clearBrowserLocation = browserLocation.clear
+  const networkTime = nowActive && nowTime !== null ? nowTime : playbackTime
+  const stopNow = useCallback(() => {
+    if (nowActive && nowTime !== null) setNetworkTime(nowTime)
+    stopNowClock()
+    nowRequested.current = false
+  }, [nowActive, nowTime, stopNowClock])
+  const togglePlayback = () => { stopNow(); setIsPlaying(value => !value) }
+  const changePlaybackRate = (rate: number) => { stopNow(); setPlaybackRate(rate) }
+
   const [hubTime, setHubTime] = useState(edition.defaultHubTime)
-  const [networkStudy, setNetworkStudy] = useState<NetworkStudy>('national')
+  const [networkStudy, setNetworkStudy] = useState<NetworkStudy>(initialLink.study)
   const [nationalTimeRange, setNationalTimeRange] =
-    useState<NationalTimeRange>('morning')
+    useState<NationalTimeRange>(initialLink.range)
   const [nationalNetwork, setNationalNetwork] = useState<NetworkSnapshot>()
   const [nationalDayManifest, setNationalDayManifest] =
     useState<NetworkDayManifest>()
@@ -295,7 +315,7 @@ export function App({ edition }: AppProps) {
   const [rigiNetwork, setRigiNetwork] = useState<NetworkSnapshot>()
   const [zvvRegionNetwork, setZvvRegionNetwork] = useState<NetworkSnapshot>()
   const [genevaTpgNetwork, setGenevaTpgNetwork] = useState<NetworkSnapshot>()
-  const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(false)
+  const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(initialLink.study !== 'national' && initialLink.study !== 'postbus' && initialLink.study !== 'contrast')
   const [regionalNetworkError, setRegionalNetworkError] = useState(false)
   const [boundary, setBoundary] = useState<MapBoundary>()
   const [lakes, setLakes] = useState<MapWaterBodies>()
@@ -303,6 +323,9 @@ export function App({ edition }: AppProps) {
   const [journeyCorridorId, setJourneyCorridorId] =
     useState<TerrainCorridorId>('zurich-chur')
   const [corridorError, setCorridorError] = useState(false)
+  const [hubFunctions, setHubFunctions] = useState<typeof import('@motionstudies/core/domain/hub')>()
+  useEffect(() => { if (view === 'hub') { void import('@motionstudies/core/domain/hub').then(setHubFunctions); void import('./studies/hub-layout.css') } }, [view])
+  const platformCodeForCall = hubFunctions?.platformCodeForCall ?? (() => '—')
   const [hubDay, setHubDay] = useState<HubDaySnapshot>()
   const [dataError, setDataError] = useState(false)
   const [operationsMode, setOperationsMode] = useState<OperationsMode>(
@@ -326,7 +349,9 @@ export function App({ edition }: AppProps) {
   const [airLoadState, setAirLoadState] = useState<AirLoadState>('idle')
   const [selectedAirTrackId, setSelectedAirTrackId] = useState<string>()
   const [selectedAirport, setSelectedAirport] = useState<StudyAirport>()
+  const [roadSummary, setRoadSummary] = useState<typeof import('./studies/road-traffic-summary.ts')>()
   const [roadEnabled, setRoadEnabled] = useState(false)
+  useEffect(() => { if (roadEnabled) void import('./studies/road-traffic-summary.ts').then(setRoadSummary) }, [roadEnabled])
   const [roadCategorySelected, setRoadCategorySelected] = useState(false)
   const [roadSnapshot, setRoadSnapshot] = useState<RoadTrafficSnapshot>()
   const [roadTopology, setRoadTopology] = useState<RoadTopologySnapshot>()
@@ -360,15 +385,27 @@ export function App({ edition }: AppProps) {
   const roadHistorySeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const postbusSeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const text = UI_TEXT[language]
+  const [exploreCopy, setExploreCopy] = useState<ExploreUiCopy>(EXPLORE_EN)
+  useEffect(() => {
+    let current = true
+    if (language === 'en') setExploreCopy(EXPLORE_EN)
+    else void import('./studies/explore-copy.ts').then(module => { if (current) setExploreCopy(module.EXPLORE_COPY[language]) })
+    return () => { current = false }
+  }, [language])
   const help = CONTROL_HELP[language]
   const performanceSample = useLocalPerformance(performanceEnabled)
   const isRigi = networkStudy === 'rigi-lake'
-  const rigiCopy = RIGI_COPY[language]
+  const [rigiLocale, setRigiLocale] = useState<typeof import('./studies/rigi-copy.ts')>()
+  useEffect(() => { if (isRigi) void import('./studies/rigi-copy.ts').then(setRigiLocale) }, [isRigi])
+  const rigiSelect = { en: 'Explore Lake Lucerne and Rigi', de: 'Vierwaldstättersee und Rigi entdecken', fr: 'Explorer le lac des Quatre-Cantons et le Rigi', it: 'Esplora il Lago dei Quattro Cantoni e il Rigi' }[language]
+  const rigiCopy = rigiLocale?.RIGI_COPY[language] ?? { select: rigiSelect, title: 'Rigi', placeholder: rigiSelect, modes: '', loading: text.loading, unavailable: text.loading, water: '', cable: '' }
   const rigiTerrainCopy = RIGI_TERRAIN_COPY[language]
   const isRigiTerrain = journeyCorridorId === 'vitznau-rigi'
   const isPostbus = networkStudy === 'postbus'
   const isContrast = networkStudy === 'contrast'
   const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : (isRigi || cogwheelEnabled && networkStudy === 'national' && view === 'network') ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, isContrast, isRigi, cogwheelEnabled, networkStudy, view])
+  const isRegionalDay = isRegionalDayStudy(networkStudy) && regionalRange === 'day'
+  const regionalDay = useProgressiveNetworkDay(isRegionalDayStudy(networkStudy) ? REGIONAL_DAYS[networkStudy] : REGIONAL_DAYS['zvv-region'], isRegionalDay && regionalRetry, networkTime, editionDataUrl)
   const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus, networkTime, editionDataUrl)
   const isNationalDay =
     networkStudy === 'national' && nationalTimeRange === 'day'
@@ -424,7 +461,7 @@ export function App({ edition }: AppProps) {
       nationalDayChunks[nationalDayChunkDescriptor.id],
   )
   const baseNetwork =
-    isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
+    isRegionalDay ? regionalDay.network : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
       ? (zurichContrast.network ?? nationalNetwork)
       : networkStudy === 'zurich-city'
       ? (zurichCityNetwork ?? nationalNetwork)
@@ -435,6 +472,17 @@ export function App({ edition }: AppProps) {
           : nationalTimeRange === 'day'
             ? (nationalDayNetwork ?? nationalNetwork)
             : nationalNetwork
+
+  useEffect(() => { nowMetadata.current = view === 'network' && !isContrast && !airEnabled && !roadEnabled ? baseNetwork?.metadata : undefined }, [view, isContrast, airEnabled, roadEnabled, baseNetwork?.metadata])
+  const validLocation = browserLocation.location && withinStudy(browserLocation.location, baseNetwork?.bounds) ? browserLocation.location : undefined
+  useEffect(() => {
+    if (!nowActive && nowUnavailable && nowTime !== null) { setNetworkTime(nowTime); setIsPlaying(false) }
+  }, [nowActive, nowUnavailable, nowTime])
+  useEffect(() => {
+    if (!validLocation) return
+    setMapCameraCommand(current => ({ id: current.id + 1, action: 'focus-location', focus: [validLocation.longitude, validLocation.latitude], distanceScale: 0.025 }))
+  }, [validLocation])
+  useEffect(() => { clearBrowserLocation() }, [networkStudy, clearBrowserLocation])
 
   const realtimeApplication = useMemo<RealtimeApplication | undefined>(
     () =>
@@ -463,19 +511,23 @@ export function App({ edition }: AppProps) {
   const isCogwheel = cogwheelEnabled && networkStudy === 'national' && view === 'network'
   const cogwheel = useCogwheelCatalogue(isCogwheel, unfilteredNetwork)
   const cogwheelCatalogue = cogwheel?.catalogue
-  const cogwheelCopy = COGWHEEL_COPY[language]
+  const [cogwheelLocale, setCogwheelLocale] = useState<typeof import('./studies/cogwheel-copy.ts')>()
+  useEffect(() => { if (isCogwheel) void import('./studies/cogwheel-copy.ts').then(setCogwheelLocale) }, [isCogwheel])
+  const cogwheelLabel = { en: 'Cogwheel', de: 'Zahnrad', fr: 'Crémaillère', it: 'Cremagliera' }[language]
+  const cogwheelCopy = cogwheelLocale?.COGWHEEL_COPY[language] ?? { label: cogwheelLabel, description: cogwheelLabel, placeholder: cogwheelLabel, loading: text.loading, unavailable: text.loading }
   const categoryLabel = useCallback((category: ServiceCategory) => isRigi && category === 'other' ? cogwheelCopy.label : serviceCategoryLabel(language, category), [isRigi, cogwheelCopy.label, language])
   const network = useMemo(() => unfilteredNetwork && isCogwheel
     ? cogwheelNetwork(unfilteredNetwork, cogwheelCatalogue)
     : unfilteredNetwork && withFrequencyFerryPaths(unfilteredNetwork), [unfilteredNetwork, isCogwheel, cogwheelCatalogue])
   const hasHeadwayMotion = useMemo(() => network?.trains.some(isHeadwayTrain) ?? false, [network])
-  const frequencyCopy = FREQUENCY_COPY[language]
+  const [frequencyLocale, setFrequencyLocale] = useState<typeof import('./studies/frequency-copy.ts')>()
+  useEffect(() => { if (hasHeadwayMotion) void import('./studies/frequency-copy.ts').then(setFrequencyLocale) }, [hasHeadwayMotion])
+  const frequencyCopy = frequencyLocale?.FREQUENCY_COPY[language] ?? { label: '≈', mixed: '≈', arrival: '≈', note: '≈', interpolation: '≈' }
   const quietMap = view === 'network' && networkStudy === 'national' &&
     !sbbEnabled && !airEnabled && !roadEnabled && Boolean(network) && !dataError && webglAvailable
   const activeAirSnapshot = isNationalDay ? airDay.snapshot : airSnapshot
   const airOnly = view === 'network' && networkStudy === 'national' && airEnabled && !sbbEnabled && !roadEnabled
   const roadOnly = view === 'network' && networkStudy === 'national' && roadEnabled && !sbbEnabled && !airEnabled
-  const airportMovements = useMemo(() => selectedAirport ? airportBoardMovements(isNationalDay ? airDay.manifest?.aircraft ?? [] : activeAirSnapshot?.tracks ?? [], selectedAirport) : { departures: [], arrivals: [] }, [selectedAirport, isNationalDay, airDay.manifest, activeAirSnapshot])
   const activeAirLoadState: AirLoadState = !airEnabled
     ? 'idle'
     : isNationalDay
@@ -650,16 +702,16 @@ export function App({ edition }: AppProps) {
   const selectedRoadGeometryOnly = selectedRoad?.id.startsWith('ZH:') ?? false
   const selectedRoadTraffic = useMemo(
     () => selectedRoadId && roadEnabled
-      ? roadTrafficSummary(selectedRoadId, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, roadSnapshot)
+      ? roadSummary?.roadTrafficSummary(selectedRoadId, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, roadSnapshot)
       : undefined,
-    [selectedRoadId, roadEnabled, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot],
+    [selectedRoadId, roadEnabled, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot, roadSummary],
   )
   const roadMetricFormat = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language], { maximumFractionDigits: 1 }), [language])
   const roadOverview = useMemo(
     () => roadOnly
-      ? roadTrafficSummary(undefined, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, roadSnapshot)
+      ? roadSummary?.roadTrafficSummary(undefined, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, roadSnapshot)
       : undefined,
-    [roadOnly, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot],
+    [roadOnly, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot, roadSummary],
   )
   const sceneNetwork = useMemo(
     () => network && (isPostbus ? postbusRouteSnapshot(network, selectedRoute) : networkWithRailVisibility(network, railVisible)),
@@ -671,18 +723,18 @@ export function App({ edition }: AppProps) {
   )
   const selectedHub = HUBS.find((hub) => hub.id === selectedHubId) ?? HUBS[0]
   const hubCalls = useMemo(
-    () => hubDay?.hubs[selectedHub.id] ?? (network ? callsAtHub(network, selectedHub) : []),
-    [hubDay, network, selectedHub],
+    () => hubDay?.hubs[selectedHub.id] ?? (network ? hubFunctions?.callsAtHub(network, selectedHub) ?? [] : []),
+    [hubDay, network, selectedHub, hubFunctions],
   )
   const nearbyHubCalls = useMemo(
-    () => callsNearTime(hubCalls, hubTime),
-    [hubCalls, hubTime],
+    () => hubFunctions?.callsNearTime(hubCalls, hubTime) ?? [],
+    [hubCalls, hubTime, hubFunctions],
   )
   const upcomingHubCall = useMemo(
-    () => nextHubCall(hubCalls, hubTime),
-    [hubCalls, hubTime],
+    () => hubFunctions?.nextHubCall(hubCalls, hubTime),
+    [hubCalls, hubTime, hubFunctions],
   )
-  const hubPlatforms = useMemo(() => platformsForCalls(hubCalls), [hubCalls])
+  const hubPlatforms = useMemo(() => hubFunctions?.platformsForCalls(hubCalls) ?? [], [hubCalls, hubFunctions])
   const selectedFrom =
     network && selectedPosition
       ? network.stops[selectedPosition.fromStop]?.[2]
@@ -810,7 +862,7 @@ export function App({ edition }: AppProps) {
   const handleNetworkTime = useCallback(
     (nextTime: number) => {
       roadHistorySeekRef.current = undefined
-      if (isPostbus) postbusSeekRef.current = { time: nextTime, at: performance.now() }
+      if (isPostbus || isRegionalDay) postbusSeekRef.current = { time: nextTime, at: performance.now() }
       if (
         networkStudy === 'national' &&
         nationalTimeRange === 'day' &&
@@ -826,6 +878,7 @@ export function App({ edition }: AppProps) {
     },
     [
       isPostbus,
+      isRegionalDay,
       nationalDayChunks,
       nationalDayManifest,
       nationalTimeRange,
@@ -836,12 +889,12 @@ export function App({ edition }: AppProps) {
     const roadSeek = roadHistorySeekRef.current
     if (roadSeek && !postbusTickFollowsSeek(nextTime, roadSeek.time, (performance.now() - roadSeek.at) / 1000, playbackRate)) return
     roadHistorySeekRef.current = undefined
-    if (!isPostbus) { handleNetworkTime(nextTime); return }
+    if (!isPostbus && !isRegionalDay) { handleNetworkTime(nextTime); return }
     const seek = postbusSeekRef.current
     if (seek && !postbusTickFollowsSeek(nextTime, seek.time, (performance.now() - seek.at) / 1000, playbackRate)) return
     postbusSeekRef.current = undefined
     setNetworkTime(nextTime)
-  }, [handleNetworkTime, isPostbus, playbackRate])
+  }, [handleNetworkTime, isPostbus, isRegionalDay, playbackRate])
   useEffect(() => {
     // Resuming may wrap the two-hour study. The paused seek has already been
     // applied, so subsequent scene ticks can own the playback clock again.
@@ -1105,6 +1158,10 @@ export function App({ edition }: AppProps) {
 
   const selectNetworkStudy = useCallback(
     (study: NetworkStudy, timeRange: NationalTimeRange = nationalTimeRange) => {
+      stopNow()
+      linkPending.current = false
+      setExploreNotice('')
+      setRegionalRetry(true)
       setDirectorMode(false)
       postbusSeekRef.current = undefined
       setNetworkStudy(study)
@@ -1137,7 +1194,7 @@ export function App({ edition }: AppProps) {
       if (study !== 'national' && study !== 'contrast' && study !== 'postbus') {
         setRegionalNetworkError(false)
       }
-      if (study === 'contrast') setNetworkTime(12 * 3600)
+      if (study === 'contrast' || study === 'rigi-lake') setNetworkTime(12 * 3600)
       if (study === 'postbus') setNetworkTime(edition.defaultNetworkTime)
       if (study === 'national' && timeRange === 'day') {
         setNationalDayError(false)
@@ -1153,6 +1210,7 @@ export function App({ edition }: AppProps) {
       if (snapshot) setNetworkTime(snapshot.metadata.focusTime)
     },
     [
+      stopNow,
       edition.defaultNetworkTime,
       nationalDayNetwork,
       genevaTpgNetwork,
@@ -1288,7 +1346,6 @@ export function App({ edition }: AppProps) {
       })
       .then((snapshot) => {
         setNationalNetwork(snapshot)
-        setNetworkTime(snapshot.metadata.focusTime)
       })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') return
@@ -1524,7 +1581,6 @@ export function App({ edition }: AppProps) {
       .then((manifest) => {
         setNationalDayManifest(manifest)
         setNationalDayLoading(true)
-        setNetworkTime(manifest.metadata.focusTime)
       })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') return
@@ -1623,7 +1679,6 @@ export function App({ edition }: AppProps) {
         else if (isCity) setZurichCityNetwork(snapshot)
         else if (isZvv) setZvvRegionNetwork(snapshot)
         else setGenevaTpgNetwork(snapshot)
-        setNetworkTime(snapshot.metadata.focusTime)
       })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') return
@@ -1662,13 +1717,13 @@ export function App({ edition }: AppProps) {
       }
       if (event.key === ' ' || event.key.toLowerCase() === 'p') {
         event.preventDefault()
-        setIsPlaying((value) => !value)
+        stopNow(); setIsPlaying((value) => !value)
       }
       if (event.key.toLowerCase() === 'c') handleContextAction()
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [handleContextAction])
+  }, [handleContextAction, stopNow])
 
   useEffect(() => {
     if (soundtrackState !== 'on') return
@@ -1719,6 +1774,10 @@ export function App({ edition }: AppProps) {
     [],
   )
 
+  useEffect(() => {
+    if (view !== 'network' || airEnabled || roadEnabled || selectedTrainId || directorMode) stopNow()
+  }, [view, airEnabled, roadEnabled, selectedTrainId, directorMode, stopNow])
+
   const isNetwork = view === 'network'
   const isHub = view === 'hub'
   const isTimetable = isNetwork || isHub
@@ -1764,11 +1823,12 @@ export function App({ edition }: AppProps) {
 
   const jumpToTime = useCallback(
     (time: number) => {
+      stopNow()
       setIsPlaying(true)
       if (isHub) setHubTime(time)
       else handleNetworkTime(time)
     },
-    [handleNetworkTime, isHub],
+    [handleNetworkTime, isHub, stopNow],
   )
 
   useEffect(() => {
@@ -1798,6 +1858,54 @@ export function App({ edition }: AppProps) {
     jumpToTime,
     moveMapCamera,
   ])
+
+  useEffect(() => {
+    if (nowRequested.current && ((isNationalDay && nationalDayChunkReady) || (isRegionalDay && regionalDay.chunkReady))) {
+      nowRequested.current = false
+      startNowClock()
+    }
+  }, [isNationalDay, nationalDayChunkReady, isRegionalDay, regionalDay.chunkReady, startNowClock])
+  const startNow = async () => {
+    const clock = await import('./studies/swiss-now.ts')
+    nowResolver.current = clock
+    setNowDate(clock.swissInstant(new Date()).date)
+    if (networkStudy === 'national' && !isNationalDay) {
+      selectNetworkStudy('national', 'day')
+      nowRequested.current = true
+      setNetworkTime(clock.swissInstant(new Date()).time)
+    } else if (isRegionalDayStudy(networkStudy) && !isRegionalDay) {
+      setRegionalRange('day')
+      nowRequested.current = true
+      setNetworkTime(clock.swissInstant(new Date()).time)
+    }
+    releaseSelection()
+    setDirectorMode(false)
+    setPlaybackRate(1)
+    setIsPlaying(true)
+    if (!nowRequested.current) startNowClock()
+  }
+  const shareStudy = async () => {
+    const { studyLinkUrl } = await import('./studies/share-link.ts')
+    const url = studyLinkUrl(window.location.href, { study: networkStudy, range: isNationalDay || isRegionalDay ? 'day' : 'morning', date: network?.metadata.serviceDate, time: networkTime, station: selectedStationName, train: selectedTrainId })
+    setShareUrl(url)
+    try { await navigator.clipboard.writeText(url); setExploreNotice(exploreCopy.copied) } catch { setExploreNotice(exploreCopy.copy) }
+  }
+  useEffect(() => {
+    if (!linkPending.current || !network || (isRegionalDay && !regionalDay.chunkReady) || (isNationalDay && !nationalDayChunkReady) || (isPostbus && !postbusDay.chunkReady) || (networkStudy !== 'national' && !isPostbus && !isRegionalDay && regionalNetworkLoading)) return
+    linkPending.current = false
+    if (initialLink.date && initialLink.date !== network.metadata.serviceDate) setExploreNotice(exploreCopy.dateMismatch)
+    if (initialLink.time !== undefined) setNetworkTime(Math.max(network.metadata.windowStart, Math.min(network.metadata.windowEnd - 1, initialLink.time)))
+    if (initialLink.station) {
+      const station = stationIndex.find(entry => entry.name === initialLink.station)
+      if (station) { setSelectedStationName(station.name); setSearchQuery(station.name) }
+      else setExploreNotice(exploreCopy.focusMissing)
+    }
+    if (initialLink.train) {
+      const train = network.trains.find(entry => entry.id === initialLink.train)
+      if (train) { setSelectedTrainId(train.id); setSearchQuery(train.shortName) }
+      else setExploreNotice(exploreCopy.focusMissing)
+    }
+  }, [network, initialLink, isRegionalDay, regionalDay.chunkReady, isNationalDay, nationalDayChunkReady, isPostbus, postbusDay.chunkReady, networkStudy, regionalNetworkLoading, stationIndex, exploreCopy])
 
   return (
     <main
@@ -1897,7 +2005,8 @@ export function App({ edition }: AppProps) {
             }
             stations={railVisible ? stationIndex : []}
             trainLabelMode={trainLabelMode}
-            isPlaying={isPlaying && (!isPostbus || postbusDay.chunkReady)}
+            isPlaying={isPlaying && !nowActive && (!isPostbus || postbusDay.chunkReady) && (!isRegionalDay || regionalDay.chunkReady)}
+            userLocation={validLocation}
             time={networkTime}
             selectedTrain={selectedTrain}
             onTime={handleSceneNetworkTime}
@@ -2799,12 +2908,11 @@ export function App({ edition }: AppProps) {
         </section>
       ) : isNetwork && selectedAirport ? (
         <Suspense fallback={null}><AirportHeroCard key={selectedAirport.id} className="edition-airport-card"
-          airport={selectedAirport} departures={airportMovements.departures} arrivals={airportMovements.arrivals}
+          airport={selectedAirport} language={language} aircraft={isNationalDay ? airDay.manifest?.aircraft ?? [] : activeAirSnapshot?.tracks ?? []}
           study={{ time: networkTime, windowStart: Math.max(network?.metadata.windowStart ?? 0, activeAirSnapshot?.metadata.windowStart ?? 0), windowEnd: Math.min(network?.metadata.windowEnd ?? 86400, activeAirSnapshot?.metadata.windowEnd ?? 86400) }}
-          maxRows={4} dateLabel="04.09.2026" labels={AIRPORT_LABELS[language]}
+          maxRows={4} dateLabel="04.09.2026"
           loading={isNationalDay ? !airDay.manifest : !airSnapshot} error={activeAirLoadState === 'error' ? text.airUnavailable : undefined}
           onSelectFlight={selectAirTrack}
-          note={<><a href="https://www.adsb.lol/docs/open-data/historical/">ADSB.lol</a> · ODbL · <a href="https://ourairports.com/data/">OurAirports</a> · {AIRPORT_NOTES[language]}</>}
         /></Suspense>
       ) : isNetwork && selectedAirTrack ? (
         <section
@@ -3095,7 +3203,7 @@ export function App({ edition }: AppProps) {
         >
           <div className="network-count-row">
             <strong>
-              {network && (!isCogwheel || cogwheelCatalogue) && (!isNationalDay || nationalDayChunkReady) && (!isPostbus || postbusDay.chunkReady)
+              {network && (!isCogwheel || cogwheelCatalogue) && (!isNationalDay || nationalDayChunkReady) && (!isPostbus || postbusDay.chunkReady) && (!isRegionalDay || regionalDay.chunkReady)
                 ? numberFormat.format(activeTrainCount)
                 : '—'}
             </strong>
@@ -3151,7 +3259,7 @@ export function App({ edition }: AppProps) {
             )}
           </div>
           <p className="between">
-              {isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
+              {isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${network?.metadata.geometry?.publisher ?? 'SBB'}` : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
                 ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus
                   : network?.metadata.geometry
                     ? text.postbusRoadModes.replace('{coverage}', (100 * network.metadata.geometry.matchedSegments / network.metadata.geometry.totalSegments).toFixed(1))
@@ -3192,7 +3300,7 @@ export function App({ edition }: AppProps) {
             <div>
               <span>{text.trips}</span>
               <strong>
-                {isCogwheel ? cogwheelCatalogue ? numberFormat.format(isNationalDay ? Object.keys(cogwheelCatalogue.trips).length : network?.trains.length ?? 0) : '—' : isPostbus ? postbusDay.manifest ? numberFormat.format(postbusDay.manifest.tripCount) : '—' : isNationalDay
+                {isRegionalDay ? regionalDay.manifest ? numberFormat.format(regionalDay.manifest.tripCount) : '—' : isCogwheel ? cogwheelCatalogue ? numberFormat.format(isNationalDay ? Object.keys(cogwheelCatalogue.trips).length : network?.trains.length ?? 0) : '—' : isPostbus ? postbusDay.manifest ? numberFormat.format(postbusDay.manifest.tripCount) : '—' : isNationalDay
                   ? nationalDayManifest
                     ? numberFormat.format(nationalDayManifest.tripCount)
                     : '—'
@@ -3200,7 +3308,7 @@ export function App({ edition }: AppProps) {
                     ? numberFormat.format(network.trains.length)
                     : '—'}
               </strong>
-              <small>{isNationalDay || isPostbus || isRigi ? '24h' : '2h'}</small>
+              <small>{isNationalDay || isPostbus || isRigi || isRegionalDay ? '24h' : '2h'}</small>
             </div>
             <div>
               <span>{text.feed}</span>
@@ -3514,6 +3622,8 @@ export function App({ edition }: AppProps) {
         </div>
       )}
 
+      {exploreOpen && <Suspense fallback={null}><StudyBrowser language={language} study={networkStudy} onClose={() => setExploreOpen(false)} onSelect={id => { setRegionalRange('day'); selectNetworkStudy(id, 'day'); setExploreOpen(false) }} /></Suspense>}
+      <section className="transport" aria-label={text.playbackControls}>
       {isTimetable && !selectedTrain && !selectedAirTrack && !selectedRoute && (
         <div
           className={`service-legend${selectedCategory || isCogwheel || airCategorySelected || roadCategorySelected ? ' has-filter' : ''}`}
@@ -3591,7 +3701,24 @@ export function App({ edition }: AppProps) {
         </div>
       )}
 
-      <section className="transport" aria-label={text.playbackControls}>
+
+        {isNetwork && <>
+          <div className="explore-actions">
+            <button type="button" onClick={() => setExploreOpen(true)}>{exploreCopy.browse}</button>
+            {!isContrast && !airEnabled && !roadEnabled && <button type="button" aria-pressed={nowActive} disabled={!network || (isRegionalDay && !regionalDay.chunkReady) || (isNationalDay && !nationalDayChunkReady)} onClick={nowActive ? stopNow : startNow}>{exploreCopy.now}</button>}
+            {nowActive && <button type="button" onClick={browserLocation.locate} disabled={browserLocation.status === 'locating'}>{exploreCopy.locate}</button>}
+            {browserLocation.status !== 'idle' && <button type="button" onClick={clearBrowserLocation}>{exploreCopy.clear}</button>}
+            {isRegionalDayStudy(networkStudy) && <button type="button" aria-pressed={isRegionalDay} onClick={() => { stopNow(); setRegionalRange(value => value === 'day' ? 'morning' : 'day'); setNetworkTime(edition.defaultNetworkTime); setRegionalRetry(true) }}>{exploreCopy.day}</button>}
+            <button type="button" disabled={!network} onClick={() => void shareStudy()}>{exploreCopy.share}</button>
+          </div>
+          {nowActive && <p className="explore-status">{network?.metadata.serviceDate === nowDate ? exploreCopy.today : exploreCopy.typical}</p>}
+          {nowUnavailable && <p className="explore-status" role="status">{exploreCopy.unavailable}</p>}
+          {browserLocation.status !== 'idle' && <p className="explore-status" role="status">{browserLocation.status === 'locating' ? exploreCopy.locating : browserLocation.status === 'denied' ? exploreCopy.denied : browserLocation.status === 'timeout' ? exploreCopy.timeout : browserLocation.status === 'unavailable' ? exploreCopy.locationError : validLocation ? `${exploreCopy.accuracy}: ±${Math.round(validLocation.accuracy)} m` : exploreCopy.outside}</p>}
+          {exploreNotice && <p className="explore-status" role="status">{exploreNotice}</p>}
+          {shareUrl && <input className="explore-link" aria-label={exploreCopy.copy} readOnly value={shareUrl} onFocus={event => event.target.select()} />}
+          {isRegionalDay && regionalDay.error && <div className="explore-actions"><span role="status">{exploreCopy.error}</span><button type="button" onClick={() => { setRegionalRetry(false); window.setTimeout(() => setRegionalRetry(true), 0) }}>{exploreCopy.retry}</button></div>}
+        </>}
+
         <div className="progress-copy">
           <span>
             {timelineReady
@@ -3620,6 +3747,7 @@ export function App({ edition }: AppProps) {
             disabled={isTimetable && !network}
             onChange={(event) => {
               const value = Number(event.target.value)
+              stopNow()
               if (isHub) setHubTime(value)
               else if (timelineReady) handleNetworkTime(value)
               else setJourneyProgress(value)
@@ -3649,7 +3777,7 @@ export function App({ edition }: AppProps) {
                 className="director-toggle"
                 type="button"
                 data-tooltip={directorMode ? help.directorOff : help.directorOn} aria-pressed={directorMode}
-                onClick={() => setDirectorMode((value) => !value)}
+                onClick={() => { stopNow(); setDirectorMode((value) => !value) }}
               >
                 {directorMode ? text.stopDirector : text.directorMode}
               </button>
@@ -3665,7 +3793,7 @@ export function App({ edition }: AppProps) {
                   key={rate.label}
                   type="button"
                   data-tooltip={`${help.speed} · ${rate.label}`} aria-pressed={playbackRate === rate.value}
-                  onClick={() => setPlaybackRate(rate.value)}
+                  onClick={() => changePlaybackRate(rate.value)}
                 >
                   {rate.label}
                 </button>
@@ -3678,7 +3806,7 @@ export function App({ edition }: AppProps) {
             className="mobile-play"
             type="button"
             aria-label={isPlaying ? text.pauseMotion : text.resumeMotion}
-            onClick={() => setIsPlaying((value) => !value)}
+            onClick={togglePlayback}
           >
             <span aria-hidden="true">{isPlaying ? 'Ⅱ' : '▶'}</span>
           </button>
@@ -3692,7 +3820,7 @@ export function App({ edition }: AppProps) {
                 value: String(rate.value),
                 label: rate.label,
               }))}
-              onChange={(rate) => setPlaybackRate(Number(rate))}
+              onChange={(rate) => changePlaybackRate(Number(rate))}
             />
           )}
           <details className="mobile-more-controls">
@@ -3756,7 +3884,7 @@ export function App({ edition }: AppProps) {
                   <button
                     type="button"
                     data-tooltip={directorMode ? help.directorOff : help.directorOn} aria-pressed={directorMode}
-                    onClick={() => setDirectorMode((value) => !value)}
+                    onClick={() => { stopNow(); setDirectorMode((value) => !value) }}
                   >
                     {directorMode ? text.stopDirector : text.directorMode}
                   </button>
@@ -3778,7 +3906,7 @@ export function App({ edition }: AppProps) {
           </details>
         </div>
         <div className="button-row">
-          <button type="button" onClick={() => setIsPlaying((value) => !value)}>
+          <button type="button" onClick={togglePlayback}>
             <span className="button-icon" aria-hidden="true">
               {isPlaying ? 'Ⅱ' : '▶'}
             </span>

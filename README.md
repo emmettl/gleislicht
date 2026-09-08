@@ -6,7 +6,7 @@
 
 A cinematic browser visualisation of Switzerland's railway network, built from open timetable data and real topography. The long-term idea is to move between a national network view and intimate, camera-led journeys through a luminous low-poly landscape.
 
-**Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.2`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
+**Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.6`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
 
 Other editions have independent repositories: [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances), and a private Local / Express proof whose publication hold remains in place. This repository builds only Switzerland. The former `/london.html` and `/paris.html` URLs redirect to the independent sites.
 
@@ -106,3 +106,12 @@ Airport selections use the shared `AirportHeroCard` from `@motionstudies/web` 0.
 The 4 September 2026 air fixtures include optional origin/destination evidence from cached global ADSB.lol heatmaps and the public-domain [OurAirports reference](https://ourairports.com/data/). These are inferred observed movements, not schedules or confirmed flight plans. Unknown routes remain blank. Full-day manifest entries and playback chunks carry the same evidence; metadata records the input hashes, reference source, and local UTC offset (2 hours for this service date).
 
 After ingesting the base air study, regenerate the enrichment with `npm run data:air:routes -- /path/to/cached-heatmaps /path/to/airports.csv`. Supply heatmaps covering the same local service day and a saved OurAirports `airports.csv`; the command performs no network calls. Raw source files remain outside the repository.
+
+
+### Now, full-day regions and study links
+
+**Explore studies** opens a visual browser with named places, descriptions, previews and available fixture dates. Selecting Zürich city, ZVV or Genève from this browser loads its complete multimodal day in twelve verified two-hour chunks. The existing direct study switches retain their lightweight morning views; **Full day** toggles the selected region's time coverage. Full-day local paths use official ZVV or TPG geometry and rail paths use matched FOT infrastructure.
+
+**Now** moves eligible scheduled studies to the current Swiss local clock at realtime pace. From a morning view it loads the full day first. It uses today's timetable or a clearly labelled representative timetable within 31 days, matching weekday, Saturday or Sunday; it does not turn historical aircraft or road recordings into live observations. Pausing, seeking, changing speed, selecting a moving train or leaving the study releases the wall clock. **Near me** requests browser location only after a click and shows an approximate glowing marker when inside the study bounds. Coordinates stay in memory and are excluded from links.
+
+**Share study** creates a link containing the study, available service date, playback time and supported train or station selection. Opening it restores paused playback; unavailable dates or selections are disclosed. The copyable URL remains available if clipboard permission is denied. See [EXPLORATION.md](docs/EXPLORATION.md) for generation, coverage and validation.

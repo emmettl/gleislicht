@@ -1,6 +1,7 @@
+import { FREQUENCY_COPY } from './frequency-copy.ts'
 import { describe, expect, it } from 'vitest'
 import type { NetworkSnapshot, NetworkTrain } from '@motionstudies/core/domain/network'
-import { FREQUENCY_COPY, isHeadwayTrain, withFrequencyFerryPaths } from './frequency.ts'
+import { isHeadwayTrain, withFrequencyFerryPaths } from './frequency.ts'
 
 const ferry = { id: 'ferry', route: 'F', category: 'ferry', shortName: '', headsign: 'B', start: 0, end: 600, stops: [[0, 0, 0], [1, 600, 600]], frequency: { sourceTripId: 'template', startTime: 0, endTime: 3600, headwaySeconds: 600, exactTimes: 0 } } as const
 const snapshot: NetworkSnapshot = {

@@ -1,0 +1,68 @@
+import { test, expect } from '@playwright/test'
+
+test('Now opens a full day at the Swiss clock, locates only on request, and exits on seek', async ({ page, context }) => {
+  await page.clock.setFixedTime(new Date('2026-09-08T12:00:00Z'))
+  await context.grantPermissions(['geolocation'])
+  await context.setGeolocation({ longitude: 8.54, latitude: 47.38, accuracy: 30 })
+  await page.goto('/?study=national&range=morning')
+  await expect(page.locator('.scene canvas')).toBeVisible()
+  const now = page.getByRole('button', { name: 'Now', exact: true })
+  await expect(now).toBeEnabled()
+  await now.click()
+  await expect(now).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.locator('.scrubber input')).toHaveValue('50400')
+  await expect(page.getByText('Representative timetable · realtime pace', { exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Clear location', exact: true })).toHaveCount(0)
+  await page.getByRole('button', { name: 'Near me', exact: true }).click()
+  await expect(page.getByText('Location accuracy: ±30 m', { exact: true })).toBeVisible()
+  await page.locator('.scrubber input').fill('60000')
+  await expect(now).toHaveAttribute('aria-pressed', 'false')
+  await page.getByRole('button', { name: 'Clear location', exact: true }).click()
+  await expect(page.getByText('Location accuracy: ±30 m', { exact: true })).toHaveCount(0)
+})
+
+test('full-day regional studies stay lazy, browse and seek across chunks, and share a reloadable view', async ({ page }) => {
+  const requests: string[] = []
+  page.on('request', r => requests.push(r.url()))
+  await page.goto('/')
+  await expect(page.locator('.scene canvas')).toBeVisible()
+  expect(requests.some(url => /(?:zvv-region|geneva-tpg|zurich-city)-day/.test(url))).toBe(false)
+  await page.getByRole('button', { name: 'Explore studies', exact: true }).click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+  await page.getByRole('button', { name: /Zürich region · ZVV/ }).click()
+  await expect(page.locator('.scrubber input')).toHaveAttribute('max', '86400')
+  await expect(page.locator('.network-card .between')).toContainText('Full day')
+  await page.locator('.scrubber input').fill('62100')
+  await expect.poll(() => requests.some(url => url.includes('zvv-region-day-chunks/16-18'))).toBe(true)
+  await page.getByRole('button', { name: 'Share study', exact: true }).click()
+  const url = await page.getByRole('textbox', { name: 'Copy this link', exact: true }).inputValue()
+  expect(url).toContain('study=zvv-region')
+  expect(url).toContain('range=day')
+  expect(Number(new URL(url).searchParams.get('time'))).toBeGreaterThanOrEqual(62100)
+  await page.goto(url)
+  await expect(page.locator('.scrubber input')).toHaveAttribute('max', '86400')
+  await expect(page.locator('.network-card .between')).toContainText('Full day')
+  await expect.poll(async () => Math.abs(Number(await page.locator('.scrubber input').inputValue()) - 62100)).toBeLessThan(500)
+})
+
+test('regional chunk failure is explicit and retry recovers', async ({ page }) => {
+  let fail = true
+  await page.route('**/geneva-tpg-day-chunks/06-08.json', route => fail ? route.fulfill({ status: 503, body: '' }) : route.continue())
+  await page.goto('/?study=geneva-tpg&range=day&time=27900')
+  await expect(page.getByRole('button', { name: 'Retry', exact: true })).toBeVisible()
+  fail = false
+  await page.getByRole('button', { name: 'Retry', exact: true }).click()
+  await expect(page.locator('.network-card .between')).toContainText('Full day')
+  await expect(page.getByRole('button', { name: 'Retry', exact: true })).toHaveCount(0)
+})
+
+test('unavailable linked date and out-of-area location are disclosed', async ({ page, context }) => {
+  await page.clock.setFixedTime(new Date('2026-09-08T12:00:00Z'))
+  await context.grantPermissions(['geolocation'])
+  await context.setGeolocation({ longitude: -0.1, latitude: 51.5 })
+  await page.goto('/?study=zurich-city&range=day&time=50400&date=2020-01-01')
+  await expect(page.getByText('The linked date is unavailable; showing the available timetable.', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Now', exact: true }).click()
+  await page.getByRole('button', { name: 'Near me', exact: true }).click()
+  await expect(page.getByText('Your location is outside this study.', { exact: true })).toBeVisible()
+})

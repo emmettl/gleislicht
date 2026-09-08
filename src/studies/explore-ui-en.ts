@@ -1,0 +1,27 @@
+export const EXPLORE_EN = {
+  "now": "Now",
+  "locate": "Near me",
+  "clear": "Clear location",
+  "today": "Today’s timetable · realtime pace",
+  "typical": "Representative timetable · realtime pace",
+  "unavailable": "Now is outside this timetable’s date or time coverage.",
+  "denied": "Location permission denied.",
+  "timeout": "Location request timed out.",
+  "locationError": "Location unavailable.",
+  "locating": "Finding your location…",
+  "outside": "Your location is outside this study.",
+  "accuracy": "Location accuracy",
+  "browse": "Explore studies",
+  "close": "Close",
+  "share": "Share study",
+  "copied": "Link copied",
+  "copy": "Copy this link",
+  "day": "Full day",
+  "morning": "Morning",
+  "loading": "Loading full-day services…",
+  "error": "Full-day services unavailable.",
+  "retry": "Retry",
+  "dateMismatch": "The linked date is unavailable; showing the available timetable.",
+  "focusMissing": "The linked selection is unavailable in this timetable."
+}
+export type ExploreUiCopy = { [K in keyof typeof EXPLORE_EN]: string }

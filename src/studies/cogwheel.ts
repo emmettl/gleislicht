@@ -1,5 +1,4 @@
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
-import type { UiLanguage } from '../i18n.ts'
 
 export const COGWHEEL_ROUTE_COLORS = { 'category:other': '#fff3a6' } as const
 
@@ -7,13 +6,6 @@ export interface CogwheelCatalogue {
   readonly metadata: { readonly feedVersion: string; readonly serviceDate: string }
   readonly routes: Readonly<Record<string, { readonly id: string; readonly name: string; readonly operator: string; readonly agencyId: string; readonly routeType: number; readonly routeDescription: string }>>
   readonly trips: Readonly<Record<string, string>>
-}
-
-export const COGWHEEL_COPY: Record<UiLanguage, { label: string; description: string; loading: string; unavailable: string; placeholder: string }> = {
-  en: { label: 'Cogwheel', description: 'Cogwheel railways · scheduled services. Choose 24H for the full day.', loading: 'Loading cogwheel railways…', unavailable: 'Cogwheel catalogue unavailable for this timetable. Clear the filter to explore all trains.', placeholder: 'Find Rigi, Gornergrat or an operator…' },
-  de: { label: 'Zahnrad', description: 'Zahnradbahnen · Fahrplanfahrten. Für den ganzen Tag 24H wählen.', loading: 'Zahnradbahnen werden geladen…', unavailable: 'Zahnradbahn-Katalog für diesen Fahrplan nicht verfügbar. Filter aufheben, um alle Züge zu erkunden.', placeholder: 'Rigi, Gornergrat oder Betreiber suchen…' },
-  fr: { label: 'Crémaillère', description: 'Chemins de fer à crémaillère · services prévus. Choisir 24H pour la journée entière.', loading: 'Chargement des chemins de fer à crémaillère…', unavailable: 'Catalogue à crémaillère indisponible pour cet horaire. Retirer le filtre pour explorer tous les trains.', placeholder: 'Rechercher Rigi, Gornergrat ou un opérateur…' },
-  it: { label: 'Cremagliera', description: 'Ferrovie a cremagliera · corse previste. Scegliere 24H per la giornata intera.', loading: 'Caricamento delle ferrovie a cremagliera…', unavailable: 'Catalogo delle cremagliere non disponibile per questo orario. Rimuovere il filtro per esplorare tutti i treni.', placeholder: 'Cerca Rigi, Gornergrat o un operatore…' },
 }
 
 export function compatibleCogwheelCatalogue(value: unknown, metadata: Pick<NetworkSnapshot['metadata'], 'feedVersion' | 'serviceDate'>): value is CogwheelCatalogue {
