@@ -231,23 +231,23 @@
       },
       "after": {
         "trips": 7156,
-        "admittedTrips": 6896,
+        "admittedTrips": 6918,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5818,
+        "admittedScheduledTrips": 5840,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97004,
+        "matchedScheduledSegmentOccurrences": 97026,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98082,
-        "admittedSegmentOccurrences": 91154,
+        "matchedSegmentOccurrences": 98104,
+        "admittedSegmentOccurrences": 91365,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4236,
+        "matchedDirectedPairs": 4238,
         "patterns": 921,
-        "completePatterns": 864,
-        "admittedPatterns": 864,
+        "completePatterns": 870,
+        "admittedPatterns": 870,
         "excludedTrips": {
-          "incomplete-directed-pattern": 260
+          "incomplete-directed-pattern": 238
         }
       },
       "lostAdmittedPatterns": [],
@@ -1000,6 +1000,109 @@
           }
         },
         {
+          "id": "c7d89bb80aac4e3329b2ce01",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 8,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "859e689b3d220bd4aa454873",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:3:4"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 8,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 1,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "8bbdddd1af3550c8e67f9953",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 9,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 9,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
           "id": "823ff0a32b0063349263a6c4",
           "routeId": "91-29-j26-1",
           "agencyId": "11",
@@ -1029,6 +1132,76 @@
           "trips": 1,
           "admittedTrips": 1,
           "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "dc31b7d2dbbaf0b312d9d9ad",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 9,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 9,
+          "trips": 16,
+          "admittedTrips": 16,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 16
+          }
+        },
+        {
+          "id": "047c5a3ea0242a4f48930b67",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1"
+          ],
+          "segmentCount": 10,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "solothurn-network"
+          ],
+          "matchedSegments": 10,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 1,
           "representativeHeadwayTrips": 0,
           "decisions": {
             "admitted": 1
@@ -1200,6 +1373,48 @@
           "representativeHeadwayTrips": 0,
           "decisions": {
             "admitted": 1
+          }
+        },
+        {
+          "id": "4f1075d165db6e9b9b89db36",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 16,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 16,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
           }
         },
         {
@@ -2370,6 +2585,25 @@
           "routeId": "91-29-j26-1",
           "agencyId": "11",
           "mode": "rail",
+          "fromId": "ch:1:sloid:218:5:8",
+          "toId": "ch:1:sloid:2113:2:3",
+          "from": "Olten",
+          "to": "Aarau",
+          "directMetres": 11658.030180255628,
+          "maximumSnapMetres": 10.079363084525351,
+          "pathMetres": 13330.10179332423,
+          "geometrySource": "bern-official-450_S_b",
+          "sourceFeature": "450_S_b",
+          "sourcePrecedence": "reviewed-s29-line-over-context-dependent-fot",
+          "contextCount": 7,
+          "primaryReason": "disconnected-line",
+          "occurrences": 19,
+          "admittedOccurrences": 19
+        },
+        {
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
           "fromId": "ch:1:sloid:218:5:9",
           "toId": "ch:1:sloid:2113:2:3",
           "from": "Olten",
@@ -2383,6 +2617,25 @@
           "primaryReason": "disconnected-line",
           "occurrences": 1,
           "admittedOccurrences": 1
+        },
+        {
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:218:5:8",
+          "toId": "ch:1:sloid:2113:1:1",
+          "from": "Olten",
+          "to": "Aarau",
+          "directMetres": 11717.124234050927,
+          "maximumSnapMetres": 7.382853665496501,
+          "pathMetres": 13388.902668839803,
+          "geometrySource": "bern-official-450_S_b",
+          "sourceFeature": "450_S_b",
+          "sourcePrecedence": "reviewed-s29-line-over-context-dependent-fot",
+          "contextCount": 4,
+          "primaryReason": "disconnected-line",
+          "occurrences": 3,
+          "admittedOccurrences": 3
         },
         {
           "routeId": "91-29-j26-1",
@@ -2484,23 +2737,23 @@
       },
       "after": {
         "trips": 5819,
-        "admittedTrips": 5486,
+        "admittedTrips": 5507,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4378,
+        "admittedScheduledTrips": 4399,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67669,
+        "matchedScheduledSegmentOccurrences": 67690,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68777,
-        "admittedSegmentOccurrences": 62536,
+        "matchedSegmentOccurrences": 68798,
+        "admittedSegmentOccurrences": 62727,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4441,
+        "matchedDirectedPairs": 4443,
         "patterns": 777,
-        "completePatterns": 717,
-        "admittedPatterns": 717,
+        "completePatterns": 722,
+        "admittedPatterns": 722,
         "excludedTrips": {
-          "incomplete-directed-pattern": 324,
+          "incomplete-directed-pattern": 303,
           "night-network-excluded-by-source": 9
         }
       },
@@ -3399,6 +3652,109 @@
           }
         },
         {
+          "id": "c7d89bb80aac4e3329b2ce01",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 8,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 1,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
+          }
+        },
+        {
+          "id": "859e689b3d220bd4aa454873",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:3:4"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 8,
+          "trips": 10,
+          "admittedTrips": 10,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 10
+          }
+        },
+        {
+          "id": "8bbdddd1af3550c8e67f9953",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 9,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 9,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
           "id": "823ff0a32b0063349263a6c4",
           "routeId": "91-29-j26-1",
           "agencyId": "11",
@@ -3431,6 +3787,41 @@
           "representativeHeadwayTrips": 0,
           "decisions": {
             "admitted": 1
+          }
+        },
+        {
+          "id": "dc31b7d2dbbaf0b312d9d9ad",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 9,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 9,
+          "trips": 6,
+          "admittedTrips": 6,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 6
           }
         },
         {
@@ -3599,6 +3990,48 @@
           "representativeHeadwayTrips": 0,
           "decisions": {
             "admitted": 5
+          }
+        },
+        {
+          "id": "4f1075d165db6e9b9b89db36",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 16,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 16,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
           }
         },
         {
@@ -4611,6 +5044,25 @@
           "routeId": "91-29-j26-1",
           "agencyId": "11",
           "mode": "rail",
+          "fromId": "ch:1:sloid:218:5:8",
+          "toId": "ch:1:sloid:2113:2:3",
+          "from": "Olten",
+          "to": "Aarau",
+          "directMetres": 11658.030180255628,
+          "maximumSnapMetres": 10.079363084525351,
+          "pathMetres": 13330.10179332423,
+          "geometrySource": "bern-official-450_S_b",
+          "sourceFeature": "450_S_b",
+          "sourcePrecedence": "reviewed-s29-line-over-context-dependent-fot",
+          "contextCount": 7,
+          "primaryReason": "disconnected-line",
+          "occurrences": 19,
+          "admittedOccurrences": 19
+        },
+        {
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
           "fromId": "ch:1:sloid:218:5:9",
           "toId": "ch:1:sloid:2113:2:3",
           "from": "Olten",
@@ -4678,6 +5130,25 @@
           "primaryReason": "disconnected-line",
           "occurrences": 15,
           "admittedOccurrences": 15
+        },
+        {
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:218:5:8",
+          "toId": "ch:1:sloid:2113:1:1",
+          "from": "Olten",
+          "to": "Aarau",
+          "directMetres": 11717.124234050927,
+          "maximumSnapMetres": 7.382853665496501,
+          "pathMetres": 13388.902668839803,
+          "geometrySource": "bern-official-450_S_b",
+          "sourceFeature": "450_S_b",
+          "sourcePrecedence": "reviewed-s29-line-over-context-dependent-fot",
+          "contextCount": 4,
+          "primaryReason": "disconnected-line",
+          "occurrences": 2,
+          "admittedOccurrences": 2
         },
         {
           "routeId": "91-29-j26-1",

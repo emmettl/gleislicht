@@ -405,7 +405,7 @@
       "evidence": "ch.so.avt.oev GeoPackage downloaded: 3,951 MultiLineString network segments and 775 stops in EPSG:2056. Network fields only identify mode and tunnel status; there are no line/operator identifiers. Stops include DiDok. The empty linestructure helper table is not missing network coverage.",
       "vintage": "Published 17 December 2025. Metadata explicitly excludes night services.",
       "reuse": "Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.",
-      "nextAction": "Review remaining platform/foreign-rail gaps and conflicting full-pattern alignments. The exact FOT Interlaken Ost tracks 5–8 crosswalk adds 33 Friday / 19 Sunday IC61 and ICE journeys after the Bern/SBB corridor expansion; twelve seasonal dates audited. Physical direction and year-round coverage remain uncertified.",
+      "nextAction": "Review remaining bus and tram platform gaps, foreign rail connections and failed road-pattern consensus. Exact Bern S29 source precedence completes all 86 S29 journeys on both published dates, adding 22 Friday / 21 Sunday journeys; twelve seasonal dates audited. Physical direction and year-round coverage remain uncertified.",
       "sourceIds": [
         "so-publications",
         "so-lines",
@@ -424,8 +424,8 @@
           "2026-09-06"
         ],
         "admittedMovements": [
-          6896,
-          5486
+          6918,
+          5507
         ],
         "physicalDirectionCertified": false,
         "yearRoundCoverageEstablished": false,
@@ -434,7 +434,8 @@
         "alignmentAudit": "data/solothurn-audit/alignment-review.json",
         "appManifest": "public/data/solothurn-region-day-manifest.json",
         "corridorAudit": "data/solothurn-audit/corridor-review.json",
-        "railPlatformAudit": "data/solothurn-audit/rail-platform-review.json"
+        "railPlatformAudit": "data/solothurn-audit/rail-platform-review.json",
+        "s29PrecedenceAudit": "data/solothurn-audit/s29-precedence-review.json"
       }
     },
     {

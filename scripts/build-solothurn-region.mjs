@@ -38,6 +38,9 @@ export async function buildSolothurnRegion() {
   const railBaseline = JSON.parse(await readFile('data/solothurn-rail-review-baseline.json'))
   assert.deepEqual(railBaseline.sourceHashes, sourceHashes)
   const railReview = { baselineCommit: railBaseline.commit, sourceHashes, sources: supplements.metadata.railReview, days: [] }
+  const s29Baseline = JSON.parse(await readFile('data/solothurn-s29-baseline.json'))
+  assert.deepEqual(s29Baseline.sourceHashes, sourceHashes)
+  const s29Review = { baselineCommit: s29Baseline.commit, sourceHashes, source: supplements.metadata.s29Precedence, alternatives: supplements.s29PrecedenceReview, days: [] }
   const provenance = { supplements: supplements.metadata, ...source.metadata, timetable: {
     publisher: 'SBB / Open data platform mobility Switzerland', attribution: 'opentransportdata.swiss',
     sha256: SO_GTFS_SHA, feed: census.feed, sourceUrl: census.sourceUrl,
@@ -57,6 +60,12 @@ export async function buildSolothurnRegion() {
     const baseResult = applySolothurnGeometry(raw, routes, graphs, matchCache)
     const result = applySolothurnGeometry(raw, routes, graphs, matchCache, supplements)
     const coverage = bernCoverage(result.trains, result.pairs, result.patterns)
+    const s29Before = s29Baseline.days.find(d => d.date === raw.metadata.serviceDate)
+    const s29Previous = new Set(s29Before.admittedPatternIds)
+    const s29Lost = [...s29Previous].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.equal(s29Lost.length, 0, 'S29 precedence regressed an admitted pattern')
+    s29Review.days.push({ date: raw.metadata.serviceDate, before: s29Before.coverage, after: coverage, lostAdmittedPatterns: s29Lost,
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !s29Previous.has(p.id)).map(({ pathSegments, ...p }) => p) })
     const railBefore = railBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const railPrevious = new Set(railBefore.admittedPatternIds)
     const railLost = [...railPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
@@ -196,6 +205,7 @@ export async function buildSolothurnRegion() {
   await writeJson(join(auditDir, 'supplement-review.json'), supplementReview, true)
   await writeJson(join(auditDir, 'corridor-review.json'), corridorReview, true)
   await writeJson(join(auditDir, 'rail-platform-review.json'), railReview, true)
+  await writeJson(join(auditDir, 's29-precedence-review.json'), s29Review, true)
   await writeJson(join(auditDir, 'summary.json'), summary, true)
   await writeJson(join(auditDir, 'routes.json'), inventory, true)
   await writeJson(join(auditDir, 'stops.json'), timetable.sourceStopInventory)

@@ -1,0 +1,865 @@
+{
+  "baselineCommit": "311a924713b3d716f16ce57e3358b6cb8dd8f434",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "source": {
+    "policy": {
+      "schemaVersion": 1,
+      "routeId": "91-29-j26-1",
+      "agencyId": "11",
+      "line": "S29",
+      "mode": "rail",
+      "sourceLine": "450_S_b",
+      "sourceSha256": "6224b50080d4d806dd9beca66904c0911a6cb4ff2218e00c94295112e7272e3e",
+      "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+      "pairs": [
+        {
+          "from": [
+            7.90794131,
+            47.35220757,
+            "Olten",
+            "8",
+            "ch:1:sloid:218:5:8"
+          ],
+          "to": [
+            8.05147413,
+            47.39117396,
+            "Aarau",
+            "3",
+            "ch:1:sloid:2113:2:3"
+          ]
+        },
+        {
+          "from": [
+            7.90794131,
+            47.35220757,
+            "Olten",
+            "8",
+            "ch:1:sloid:218:5:8"
+          ],
+          "to": [
+            8.05212091,
+            47.39150845,
+            "Aarau",
+            "1",
+            "ch:1:sloid:2113:1:1"
+          ]
+        }
+      ],
+      "method": "For these two exact previously unresolved directed S29 platform pairs only, use the official operator/line-specific Bern 450_S_b geometry in every complete seasonal context before consensus. This rejects context-dependent 45 km FOT alternatives in favour of the 13.3 km S29 line. All other sources, successful published paths, original calls, attachment limits and whole-pattern admission rules remain unchanged."
+    },
+    "policySha256": "292f91ec9935a527070cce99b3b4b0ef21f902ae95e657f5544da79a7de36468"
+  },
+  "alternatives": [
+    {
+      "key": "[\"91-29-j26-1\",\"ch:1:sloid:218:5:8\",\"ch:1:sloid:2113:2:3\"]",
+      "from": [
+        7.90794131,
+        47.35220757,
+        "Olten",
+        "8",
+        "ch:1:sloid:218:5:8"
+      ],
+      "to": [
+        8.05147413,
+        47.39117396,
+        "Aarau",
+        "3",
+        "ch:1:sloid:2113:2:3"
+      ],
+      "selectedSource": "bern-official-450_S_b",
+      "selectedPathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0",
+      "selectedPathMetres": 13330.10179332423,
+      "maximumSnapMetres": 10.079363084525351,
+      "contexts": [
+        {
+          "patternId": "c7d89bb80aac4e3329b2ce01",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3"
+          ],
+          "previous": {
+            "source": "bern-official-450_S_b",
+            "reason": null,
+            "pathMetres": 13330.10179332423,
+            "pathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+          },
+          "selectedPathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+        },
+        {
+          "patternId": "859e689b3d220bd4aa454873",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:3:4"
+          ],
+          "previous": {
+            "source": "bern-official-450_S_b",
+            "reason": null,
+            "pathMetres": 13330.10179332423,
+            "pathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+          },
+          "selectedPathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+        },
+        {
+          "patternId": "8bbdddd1af3550c8e67f9953",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "previous": {
+            "source": "bern-official-450_S_b",
+            "reason": null,
+            "pathMetres": 13330.10179332423,
+            "pathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+          },
+          "selectedPathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+        },
+        {
+          "patternId": "dc31b7d2dbbaf0b312d9d9ad",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "previous": {
+            "source": "bern-official-450_S_b",
+            "reason": null,
+            "pathMetres": 13330.10179332423,
+            "pathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+          },
+          "selectedPathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+        },
+        {
+          "patternId": "c4f4588949fd55913c5e6006",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:0:1"
+          ],
+          "previous": {
+            "source": "bern-official-450_S_b",
+            "reason": null,
+            "pathMetres": 13330.10179332423,
+            "pathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+          },
+          "selectedPathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+        },
+        {
+          "patternId": "6e07578e4f08c6b9bc18a77f",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3"
+          ],
+          "previous": {
+            "source": "fot",
+            "reason": null,
+            "pathMetres": 45116.04419956584,
+            "pathSha256": "36893e9f655feb5dc180da3c65ce34946706142e018ce7b546cb63c673eb0618"
+          },
+          "selectedPathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+        },
+        {
+          "patternId": "8d98a991bab72c6181ac7c73",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "previous": {
+            "source": "bern-official-450_S_b",
+            "reason": null,
+            "pathMetres": 13330.10179332423,
+            "pathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+          },
+          "selectedPathSha256": "aa583121e6d4b9a593a4f4f76e34550793bdca50f8c152ed6f94b0ff408ca8e0"
+        }
+      ]
+    },
+    {
+      "key": "[\"91-29-j26-1\",\"ch:1:sloid:218:5:8\",\"ch:1:sloid:2113:1:1\"]",
+      "from": [
+        7.90794131,
+        47.35220757,
+        "Olten",
+        "8",
+        "ch:1:sloid:218:5:8"
+      ],
+      "to": [
+        8.05212091,
+        47.39150845,
+        "Aarau",
+        "1",
+        "ch:1:sloid:2113:1:1"
+      ],
+      "selectedSource": "bern-official-450_S_b",
+      "selectedPathSha256": "2fbd40f2f4375412895a3e343684580458164e5d7752009f378d887aa1cd9a83",
+      "selectedPathMetres": 13388.902668839803,
+      "maximumSnapMetres": 7.382853665496501,
+      "contexts": [
+        {
+          "patternId": "4f1075d165db6e9b9b89db36",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "previous": {
+            "source": "bern-official-450_S_b",
+            "reason": null,
+            "pathMetres": 13388.902668839803,
+            "pathSha256": "2fbd40f2f4375412895a3e343684580458164e5d7752009f378d887aa1cd9a83"
+          },
+          "selectedPathSha256": "2fbd40f2f4375412895a3e343684580458164e5d7752009f378d887aa1cd9a83"
+        },
+        {
+          "patternId": "a9981cac70d5928c70708784",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "previous": {
+            "source": "bern-official-450_S_b",
+            "reason": null,
+            "pathMetres": 13388.902668839803,
+            "pathSha256": "2fbd40f2f4375412895a3e343684580458164e5d7752009f378d887aa1cd9a83"
+          },
+          "selectedPathSha256": "2fbd40f2f4375412895a3e343684580458164e5d7752009f378d887aa1cd9a83"
+        },
+        {
+          "patternId": "aaaa3fe0f6874ef8acfc1b5d",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "previous": {
+            "source": "bern-official-450_S_b",
+            "reason": null,
+            "pathMetres": 13388.902668839803,
+            "pathSha256": "2fbd40f2f4375412895a3e343684580458164e5d7752009f378d887aa1cd9a83"
+          },
+          "selectedPathSha256": "2fbd40f2f4375412895a3e343684580458164e5d7752009f378d887aa1cd9a83"
+        },
+        {
+          "patternId": "047c5a3ea0242a4f48930b67",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1"
+          ],
+          "previous": {
+            "source": "fot",
+            "reason": null,
+            "pathMetres": 45156.713044911514,
+            "pathSha256": "ff7de9e92a7f7a608dddb8b7e68e8886ab0da21af400f198614a8764364e97f5"
+          },
+          "selectedPathSha256": "2fbd40f2f4375412895a3e343684580458164e5d7752009f378d887aa1cd9a83"
+        }
+      ]
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-09-04",
+      "before": {
+        "trips": 7156,
+        "admittedTrips": 6896,
+        "scheduledTrips": 6078,
+        "representativeHeadwayTrips": 1078,
+        "admittedScheduledTrips": 5818,
+        "admittedRepresentativeHeadwayTrips": 1078,
+        "scheduledSegmentOccurrences": 97358,
+        "matchedScheduledSegmentOccurrences": 97004,
+        "segmentOccurrences": 98436,
+        "matchedSegmentOccurrences": 98082,
+        "admittedSegmentOccurrences": 91154,
+        "directedPairs": 4259,
+        "matchedDirectedPairs": 4236,
+        "patterns": 921,
+        "completePatterns": 864,
+        "admittedPatterns": 864,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 260
+        }
+      },
+      "after": {
+        "trips": 7156,
+        "admittedTrips": 6918,
+        "scheduledTrips": 6078,
+        "representativeHeadwayTrips": 1078,
+        "admittedScheduledTrips": 5840,
+        "admittedRepresentativeHeadwayTrips": 1078,
+        "scheduledSegmentOccurrences": 97358,
+        "matchedScheduledSegmentOccurrences": 97026,
+        "segmentOccurrences": 98436,
+        "matchedSegmentOccurrences": 98104,
+        "admittedSegmentOccurrences": 91365,
+        "directedPairs": 4259,
+        "matchedDirectedPairs": 4238,
+        "patterns": 921,
+        "completePatterns": 870,
+        "admittedPatterns": 870,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 238
+        }
+      },
+      "lostAdmittedPatterns": [],
+      "newlyAdmittedPatterns": [
+        {
+          "id": "c7d89bb80aac4e3329b2ce01",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 8,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "859e689b3d220bd4aa454873",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:3:4"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 8,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 1,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "8bbdddd1af3550c8e67f9953",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 9,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 9,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "dc31b7d2dbbaf0b312d9d9ad",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 9,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 9,
+          "trips": 16,
+          "admittedTrips": 16,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 16
+          }
+        },
+        {
+          "id": "047c5a3ea0242a4f48930b67",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1"
+          ],
+          "segmentCount": 10,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "solothurn-network"
+          ],
+          "matchedSegments": 10,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 1,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "4f1075d165db6e9b9b89db36",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 16,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 16,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "before": {
+        "trips": 5819,
+        "admittedTrips": 5486,
+        "scheduledTrips": 4711,
+        "representativeHeadwayTrips": 1108,
+        "admittedScheduledTrips": 4378,
+        "admittedRepresentativeHeadwayTrips": 1108,
+        "scheduledSegmentOccurrences": 68102,
+        "matchedScheduledSegmentOccurrences": 67669,
+        "segmentOccurrences": 69210,
+        "matchedSegmentOccurrences": 68777,
+        "admittedSegmentOccurrences": 62536,
+        "directedPairs": 4467,
+        "matchedDirectedPairs": 4441,
+        "patterns": 777,
+        "completePatterns": 717,
+        "admittedPatterns": 717,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 324,
+          "night-network-excluded-by-source": 9
+        }
+      },
+      "after": {
+        "trips": 5819,
+        "admittedTrips": 5507,
+        "scheduledTrips": 4711,
+        "representativeHeadwayTrips": 1108,
+        "admittedScheduledTrips": 4399,
+        "admittedRepresentativeHeadwayTrips": 1108,
+        "scheduledSegmentOccurrences": 68102,
+        "matchedScheduledSegmentOccurrences": 67690,
+        "segmentOccurrences": 69210,
+        "matchedSegmentOccurrences": 68798,
+        "admittedSegmentOccurrences": 62727,
+        "directedPairs": 4467,
+        "matchedDirectedPairs": 4443,
+        "patterns": 777,
+        "completePatterns": 722,
+        "admittedPatterns": 722,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 303,
+          "night-network-excluded-by-source": 9
+        }
+      },
+      "lostAdmittedPatterns": [],
+      "newlyAdmittedPatterns": [
+        {
+          "id": "c7d89bb80aac4e3329b2ce01",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 8,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 1,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
+          }
+        },
+        {
+          "id": "859e689b3d220bd4aa454873",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:3:4"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 8,
+          "trips": 10,
+          "admittedTrips": 10,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 10
+          }
+        },
+        {
+          "id": "8bbdddd1af3550c8e67f9953",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 9,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 9,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "dc31b7d2dbbaf0b312d9d9ad",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 9,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 9,
+          "trips": 6,
+          "admittedTrips": 6,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 6
+          }
+        },
+        {
+          "id": "4f1075d165db6e9b9b89db36",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "S29",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "segmentCount": 16,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ],
+          "matchedSegments": 16,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
+          }
+        }
+      ]
+    }
+  ]
+}

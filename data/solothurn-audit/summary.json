@@ -6,6 +6,54 @@
   },
   "sources": {
     "supplements": {
+      "s29Precedence": {
+        "policy": {
+          "schemaVersion": 1,
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "line": "S29",
+          "mode": "rail",
+          "sourceLine": "450_S_b",
+          "sourceSha256": "6224b50080d4d806dd9beca66904c0911a6cb4ff2218e00c94295112e7272e3e",
+          "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+          "pairs": [
+            {
+              "from": [
+                7.90794131,
+                47.35220757,
+                "Olten",
+                "8",
+                "ch:1:sloid:218:5:8"
+              ],
+              "to": [
+                8.05147413,
+                47.39117396,
+                "Aarau",
+                "3",
+                "ch:1:sloid:2113:2:3"
+              ]
+            },
+            {
+              "from": [
+                7.90794131,
+                47.35220757,
+                "Olten",
+                "8",
+                "ch:1:sloid:218:5:8"
+              ],
+              "to": [
+                8.05212091,
+                47.39150845,
+                "Aarau",
+                "1",
+                "ch:1:sloid:2113:1:1"
+              ]
+            }
+          ],
+          "method": "For these two exact previously unresolved directed S29 platform pairs only, use the official operator/line-specific Bern 450_S_b geometry in every complete seasonal context before consensus. This rejects context-dependent 45 km FOT alternatives in favour of the 13.3 km S29 line. All other sources, successful published paths, original calls, attachment limits and whole-pattern admission rules remain unchanged."
+        },
+        "policySha256": "292f91ec9935a527070cce99b3b4b0ef21f902ae95e657f5544da79a7de36468"
+      },
       "railReview": {
         "policy": {
           "schemaVersion": 1,
@@ -1492,10 +1540,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 131,
+    "admitted-all-dated-trips": 132,
     "excluded": 5,
     "inactive-on-validation-dates": 42,
-    "partially-admitted": 15
+    "partially-admitted": 14
   },
   "districts": [
     {
@@ -2136,23 +2184,23 @@
       },
       "coverage": {
         "trips": 7156,
-        "admittedTrips": 6896,
+        "admittedTrips": 6918,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5818,
+        "admittedScheduledTrips": 5840,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97004,
+        "matchedScheduledSegmentOccurrences": 97026,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98082,
-        "admittedSegmentOccurrences": 91154,
+        "matchedSegmentOccurrences": 98104,
+        "admittedSegmentOccurrences": 91365,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4236,
+        "matchedDirectedPairs": 4238,
         "patterns": 921,
-        "completePatterns": 864,
-        "admittedPatterns": 864,
+        "completePatterns": 870,
+        "admittedPatterns": 870,
         "excludedTrips": {
-          "incomplete-directed-pattern": 260
+          "incomplete-directed-pattern": 238
         }
       },
       "groups": [
@@ -2160,23 +2208,23 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 950,
-          "admittedTrips": 903,
+          "admittedTrips": 925,
           "scheduledTrips": 950,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 903,
+          "admittedScheduledTrips": 925,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 9782,
-          "matchedScheduledSegmentOccurrences": 9735,
+          "matchedScheduledSegmentOccurrences": 9757,
           "segmentOccurrences": 9782,
-          "matchedSegmentOccurrences": 9735,
-          "admittedSegmentOccurrences": 9262,
+          "matchedSegmentOccurrences": 9757,
+          "admittedSegmentOccurrences": 9473,
           "directedPairs": 994,
-          "matchedDirectedPairs": 979,
+          "matchedDirectedPairs": 981,
           "patterns": 327,
-          "completePatterns": 297,
-          "admittedPatterns": 297,
+          "completePatterns": 303,
+          "admittedPatterns": 303,
           "excludedTrips": {
-            "incomplete-directed-pattern": 47
+            "incomplete-directed-pattern": 25
           }
         },
         {
@@ -2485,7 +2533,7 @@
         }
       ],
       "carryInTrips": 149,
-      "admittedCarryInTrips": 143,
+      "admittedCarryInTrips": 145,
       "admittedOutsideCantonPlatforms": 875,
       "directedPatternChecks": {
         "directionIds": [
@@ -3967,7 +4015,7 @@
         }
       },
       "pairFailureReasons": {
-        "disconnected-line": 5,
+        "disconnected-line": 3,
         "endpoint-gap": 15,
         "implausible-detour": 1,
         "no-compatible-source-mode": 2
@@ -3992,23 +4040,23 @@
       },
       "coverage": {
         "trips": 5819,
-        "admittedTrips": 5486,
+        "admittedTrips": 5507,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4378,
+        "admittedScheduledTrips": 4399,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67669,
+        "matchedScheduledSegmentOccurrences": 67690,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68777,
-        "admittedSegmentOccurrences": 62536,
+        "matchedSegmentOccurrences": 68798,
+        "admittedSegmentOccurrences": 62727,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4441,
+        "matchedDirectedPairs": 4443,
         "patterns": 777,
-        "completePatterns": 717,
-        "admittedPatterns": 717,
+        "completePatterns": 722,
+        "admittedPatterns": 722,
         "excludedTrips": {
-          "incomplete-directed-pattern": 324,
+          "incomplete-directed-pattern": 303,
           "night-network-excluded-by-source": 9
         }
       },
@@ -4017,23 +4065,23 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 903,
-          "admittedTrips": 857,
+          "admittedTrips": 878,
           "scheduledTrips": 903,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 857,
+          "admittedScheduledTrips": 878,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 7943,
-          "matchedScheduledSegmentOccurrences": 7897,
+          "matchedScheduledSegmentOccurrences": 7918,
           "segmentOccurrences": 7943,
-          "matchedSegmentOccurrences": 7897,
-          "admittedSegmentOccurrences": 7453,
+          "matchedSegmentOccurrences": 7918,
+          "admittedSegmentOccurrences": 7644,
           "directedPairs": 999,
-          "matchedDirectedPairs": 988,
+          "matchedDirectedPairs": 990,
           "patterns": 336,
-          "completePatterns": 310,
-          "admittedPatterns": 310,
+          "completePatterns": 315,
+          "admittedPatterns": 315,
           "excludedTrips": {
-            "incomplete-directed-pattern": 46
+            "incomplete-directed-pattern": 25
           }
         },
         {
@@ -4388,7 +4436,7 @@
         }
       ],
       "carryInTrips": 359,
-      "admittedCarryInTrips": 325,
+      "admittedCarryInTrips": 326,
       "admittedOutsideCantonPlatforms": 977,
       "directedPatternChecks": {
         "directionIds": [
@@ -6206,7 +6254,7 @@
         }
       },
       "pairFailureReasons": {
-        "disconnected-line": 5,
+        "disconnected-line": 3,
         "endpoint-gap": 16,
         "night-network-excluded-by-source": 3,
         "no-compatible-source-mode": 2

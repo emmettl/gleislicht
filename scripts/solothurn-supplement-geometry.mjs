@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto'
 import { baselGraphs, matchBaselSegment } from './basel-line-geometry.mjs'
 import { bernGraph, bernPatternId } from './bern-line-geometry.mjs'
 import { loadSolothurnCorridors } from './solothurn-corridor-geometry.mjs'
+import { loadSolothurnS29Precedence } from './solothurn-s29-precedence.mjs'
 import { loadSolothurnRailReview } from './solothurn-rail-review.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { loadSolothurnRoads } from './solothurn-road-geometry.mjs'
@@ -33,6 +34,7 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
   const graphs = { ferry: bernGraph([boat]), tram: baselGraphs([tramCollection]).get('37:tram:10') }
   assert(graphs.tram)
   const corridors = await loadSolothurnCorridors()
+  const s29Precedence = await loadSolothurnS29Precedence(corridors)
   const rail = await loadZugRail(policy.rail, context.snapshots.map(s => s.metadata.serviceDate))
   const railReview = await loadSolothurnRailReview(policy.rail, context.snapshots.map(s => s.metadata.serviceDate))
   const railIds = new Set(policy.rail.routes.map(r => r.routeId)), routes = new Map(timetable.routes.map(r => [r.id, r]))
@@ -60,7 +62,8 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
       for (const [i, result] of results.entries()) {
         const from = raw.stops[train.stops[i][0]], to = raw.stops[train.stops[i + 1][0]], key = keyOf(route, from, to)
         const list = candidates.get(key) ?? []
-        const selected = route.mode === 'rail' ? corridors.match(route, from, to, result) : result
+        const previous = route.mode === 'rail' ? corridors.match(route, from, to, result) : result
+        const selected = s29Precedence.select(route, from, to, previous, { patternId: id, directionId: train.directionId, stopIds: train.stops.map(([j]) => raw.stops[j][4]) })
         list.push({ ...selected, ...(selected.path ? { path: selected.path.map(p => p.slice(0, 2).map(v => Number(v.toFixed(7)))) } : {}), agencyId: route.agencyId })
         candidates.set(key, list)
       }
@@ -72,7 +75,7 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
     road = await loadSolothurnRoads(context, { verifyEvidence })
     for (const [key, value] of road.pairs) pairs.set(key, value)
   }
-  return { pairs, policy, metadata: { railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
+  return { pairs, policy, s29PrecedenceReview: [...s29Precedence.review.values()], metadata: { s29Precedence: s29Precedence.metadata, railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
     ...(road ? { road: road.metadata, roadCacheSha256: road.sha256 } : {}) },
     match(route, from, to) {
       const value = pairs.get(keyOf(route, from, to))
