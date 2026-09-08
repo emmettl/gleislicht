@@ -1,0 +1,125 @@
+{
+  "review": {
+    "routeId": "92-501-A-j26-1",
+    "agencyId": "793",
+    "line": "501",
+    "operator": "BOGG",
+    "relationId": 6455364,
+    "fromNode": 299779370,
+    "toNode": 299778442,
+    "fromUic": "8588076",
+    "toUic": "8578916",
+    "memberOffset": 0,
+    "maximumPathMetres": 1250,
+    "segments": [
+      {
+        "wayId": 1345184956,
+        "fromNode": 299779370,
+        "toNode": 299779367,
+        "direction": 1,
+        "featureSha256": "456cc577f1ba74caf1f163b48da56fa2a26e6ac7b67d8b7d0ed862d879e932c3"
+      },
+      {
+        "wayId": 1345184955,
+        "fromNode": 299779367,
+        "toNode": 615934922,
+        "direction": 1,
+        "featureSha256": "837d2d37246c857ca2c7567011bbdec72e248815362879cdd7694612e8652810"
+      },
+      {
+        "wayId": 1345184954,
+        "fromNode": 615934922,
+        "toNode": 299779344,
+        "direction": 1,
+        "featureSha256": "d19ee96ff072cf21610d600db8a102f0f0abae73d84d787633f2a15c0c449c3f"
+      },
+      {
+        "wayId": 1345184952,
+        "fromNode": 299779344,
+        "toNode": 615934946,
+        "direction": 1,
+        "featureSha256": "8c53a902e1a5fcf11a29f7e0345b884a54150fb34be841eef0165265bd122866"
+      },
+      {
+        "wayId": 1345184953,
+        "fromNode": 615934946,
+        "toNode": 615934818,
+        "direction": 1,
+        "featureSha256": "e0e1e824cd951dbf2c986aa7e98e73fdf8645249e606d7408642e92756b20afa"
+      },
+      {
+        "wayId": 216696620,
+        "fromNode": 615934818,
+        "toNode": 246505310,
+        "direction": 1,
+        "featureSha256": "75e8e32bca9856a569f540a144210119dedc17ec4a96e0ec8617ce06e71f1cba"
+      },
+      {
+        "wayId": 435304535,
+        "fromNode": 246505310,
+        "toNode": 299779137,
+        "direction": 1,
+        "featureSha256": "fd4fd378ff79e290bfd4fcdc93efe7e9056397edb051724cb1c2359441f77da0"
+      },
+      {
+        "wayId": 27309785,
+        "fromNode": 299779137,
+        "toNode": 1505178585,
+        "direction": 1,
+        "featureSha256": "63169486436f0d456c754d4422d41c35211e76f021d77e8b48121470c4c55368"
+      },
+      {
+        "wayId": 27309767,
+        "fromNode": 1505178585,
+        "toNode": 299778021,
+        "direction": 1,
+        "featureSha256": "715fce461631110ec1d3e95e1a4d08b7d645f99cef6afabe82401c63fcd2c799"
+      },
+      {
+        "wayId": 27309648,
+        "fromNode": 299778021,
+        "toNode": 299778470,
+        "direction": 1,
+        "featureSha256": "8b62cf5da5a524ccc0f527461c24b0fb52fefebc7ee1b9fe7f521e97c5a5ad18"
+      },
+      {
+        "wayId": 263982888,
+        "fromNode": 299778470,
+        "toNode": 6048406316,
+        "direction": 1,
+        "featureSha256": "7c61002e54ea8098c8c9bdcc93438a4e1e68cc188f81fb83aebc3dbd589234f5"
+      },
+      {
+        "wayId": 739284976,
+        "fromNode": 6048406316,
+        "toNode": 299778442,
+        "direction": 1,
+        "featureSha256": "48c3ca185c03dd9b31840526b51ff7ef992e24df9824544004f95bce583151df"
+      }
+    ],
+    "from": [
+      7.80344928,
+      47.31707361,
+      "Egerkingen, Gäu Park",
+      "",
+      "ch:1:sloid:88076:0:01"
+    ],
+    "to": [
+      7.80003568,
+      47.31521611,
+      "Egerkingen, Bahnhof",
+      "",
+      "ch:1:sloid:78916:0:02"
+    ],
+    "relationSha256": "7cd9dc1dd62d01c6bfdae1f1eaf12621f16d11ac3f4cccfc79d19a904e4f37ea",
+    "geometrySha256": "5ba3fba98f875f262ecee267c2f5ed5096b04ac4f0113182cfda10abc217f2bf",
+    "roadPatternIds": [
+      "391aec2b2b3a1cc140d197bc",
+      "994b0e7b6a7888e1b43ea65e",
+      "a126a4eae532ed92402e624f"
+    ],
+    "maximumCorridorGapMetres": 20
+  },
+  "decision": "Excluded: both the pfaedle and cantonal candidates disagree with the mapped bus relation. No detour override or alternative corridor is admitted.",
+  "roadCandidateSha256": "5ba3fba98f875f262ecee267c2f5ed5096b04ac4f0113182cfda10abc217f2bf"
+}

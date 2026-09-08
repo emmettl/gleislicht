@@ -62,6 +62,9 @@ export async function buildSolothurnRegion() {
   const delleBaseline = JSON.parse(await readFile('data/solothurn-delle-baseline.json'))
   assert.deepEqual(delleBaseline.sourceHashes, sourceHashes)
   const delleReview = { baselineCommit: delleBaseline.commit, sourceHashes, source: supplements.metadata.delle, days: [] }
+  const roadDetourBaseline = JSON.parse(await readFile('data/solothurn-road-detour-baseline.json'))
+  assert.deepEqual(roadDetourBaseline.sourceHashes, sourceHashes)
+  const roadDetourReview = { baselineCommit: roadDetourBaseline.commit, sourceHashes, source: supplements.metadata.roadDetour, days: [] }
   const provenance = { supplements: supplements.metadata, ...source.metadata, timetable: {
     publisher: 'SBB / Open data platform mobility Switzerland', attribution: 'opentransportdata.swiss',
     sha256: SO_GTFS_SHA, feed: census.feed, sourceUrl: census.sourceUrl,
@@ -123,6 +126,13 @@ export async function buildSolothurnRegion() {
     delleReview.days.push({ date: raw.metadata.serviceDate, before: delleBefore.coverage, after: coverage, lostAdmittedPatterns: delleLost,
       newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !dellePrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
       sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-delle-rail-inference').map(({ pathIndex, ...p }) => p) })
+    const roadDetourBefore = roadDetourBaseline.days.find(d => d.date === raw.metadata.serviceDate)
+    const roadDetourPrevious = new Set(roadDetourBefore.admittedPatternIds)
+    const roadDetourLost = [...roadDetourPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.equal(roadDetourLost.length, 0, 'Road detour review regressed an admitted pattern')
+    roadDetourReview.days.push({ date: raw.metadata.serviceDate, before: roadDetourBefore.coverage, after: coverage, lostAdmittedPatterns: roadDetourLost,
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !roadDetourPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-reviewed-road-detour').map(({ pathIndex, ...p }) => p) })
     const busBefore = busBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const busPrevious = new Set(busBefore.admittedPatternIds)
     const busLost = [...busPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
@@ -283,6 +293,7 @@ export async function buildSolothurnRegion() {
   await writeJson(join(auditDir, 'como-review.json'), comoReview, true)
   await writeJson(join(auditDir, 'simplon-review.json'), simplonReview, true)
   await writeJson(join(auditDir, 'delle-review.json'), delleReview, true)
+  await writeJson(join(auditDir, 'road-detour-review.json'), roadDetourReview, true)
   await writeJson(join(auditDir, 'summary.json'), summary, true)
   await writeJson(join(auditDir, 'routes.json'), inventory, true)
   await writeJson(join(auditDir, 'stops.json'), timetable.sourceStopInventory)

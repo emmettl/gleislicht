@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "sourceDirectory": "data/solothurn-road-detour-sources",
+  "sourceSha256": "265495dd2506ba222b05133b03658919d3346ec92d68336b964e87a76b41b68a",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "accessCacheSha256": "407d5559788eeb751b0d97243f1ae6abbf0b7c748f3585123362288ca3614417",
+  "pairs": [
+    {
+      "routeId": "96-131-8-j26-1",
+      "agencyId": "801",
+      "line": "118",
+      "operator": "PAG",
+      "relationId": 11568519,
+      "fromNode": 983967623,
+      "toNode": 983967630,
+      "fromUic": "8572196",
+      "toUic": "8572197",
+      "memberOffset": 22,
+      "maximumPathMetres": 700,
+      "segments": [
+        {
+          "wayId": 204519958,
+          "fromNode": 983967623,
+          "toNode": 2145136622,
+          "direction": -1,
+          "featureSha256": "8fa06783348ad7ae70e9496747fb5e71b5dd1fbb202d1a6500d8772fa8a27100"
+        },
+        {
+          "wayId": 204513892,
+          "fromNode": 2145136622,
+          "toNode": 983967630,
+          "direction": -1,
+          "featureSha256": "d068a821de0b8e4c9ba170fce9b415d7f63516b43ac2c34af22ee814696afbde"
+        }
+      ],
+      "from": [
+        7.42813315,
+        47.4014507,
+        "Liesberg, Seemättli",
+        "",
+        "ch:1:sloid:72196"
+      ],
+      "to": [
+        7.42916621,
+        47.40297683,
+        "Liesberg, Ochsengasse",
+        "",
+        "ch:1:sloid:72197"
+      ],
+      "relationSha256": "b96358eed28032942cfb2036e589067dfb16387a04120d94fa4b5ef3e108171a",
+      "geometrySha256": "7bc18e4acb1bba0aa8893a8fb9e89b8e25ff8f77662f1fe91f15e2cda0682492",
+      "roadPatternIds": [
+        "e74cd4ea689e3a958b8838e8"
+      ],
+      "maximumCorridorGapMetres": 20
+    }
+  ],
+  "method": "OSM relations corroborate route identity, directed stop order and road corridor; they are community data, not operator certification and not an independent provider from the routing PBF. Timetable PDFs corroborate stop sequence only. Emit the previously rejected full-pattern pfaedle path only for the hash-pinned Liesberg directed pair after bounded corridor comparison; no global detour or consensus relaxation. Arlesheim tram/platform records are retained as negative evidence without changing its excluded original GTFS coordinates."
+}

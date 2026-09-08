@@ -46053,11 +46053,11 @@
     },
     {
       "date": "2026-09-06",
-      "totalExcludedTrips": 131,
+      "totalExcludedTrips": 126,
       "busComparisons": {
         "alignment-disagreement-over-30m": {
-          "directedPairs": 328,
-          "admittedOccurrences": 6610
+          "directedPairs": 329,
+          "admittedOccurrences": 6615
         },
         "within-30m-vertex-distance": {
           "directedPairs": 1788,
@@ -72697,6 +72697,24 @@
           "routeId": "96-131-8-j26-1",
           "agencyId": "801",
           "mode": "bus",
+          "fromId": "ch:1:sloid:72175",
+          "toId": "ch:1:sloid:72194",
+          "from": "Bärschwil, Hölzlirank",
+          "to": "Bärschwil, Station",
+          "directMetres": 1499.6595118187997,
+          "maximumSnapMetres": 5.998080247839747,
+          "pathMetres": 1934.658288158403,
+          "geometrySource": "solothurn-network",
+          "occurrences": 5,
+          "admittedOccurrences": 5,
+          "matched": true,
+          "maximumVertexSeparationMetres": 42.491795882427574,
+          "review": "alignment-disagreement-over-30m"
+        },
+        {
+          "routeId": "96-131-8-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
           "fromId": "ch:1:sloid:72175:0:873531",
           "toId": "ch:1:sloid:79511:0:584833",
           "from": "Bärschwil, Hölzlirank",
@@ -86134,70 +86152,6 @@
               "supplementFailure": "road-pattern-dependent-path",
               "supplementAvailable": true,
               "occurrences": 2,
-              "admittedOccurrences": 0,
-              "matched": false
-            }
-          ]
-        },
-        {
-          "id": "04c95ae6cda5ed7d068f8a53",
-          "routeId": "96-131-8-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "118",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:72175",
-            "ch:1:sloid:72194",
-            "ch:1:sloid:72195",
-            "ch:1:sloid:72196",
-            "ch:1:sloid:72197",
-            "ch:1:sloid:689",
-            "ch:1:sloid:72196",
-            "ch:1:sloid:72195",
-            "ch:1:sloid:80942",
-            "ch:1:sloid:688"
-          ],
-          "segmentCount": 9,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "solothurn-network"
-          ],
-          "matchedSegments": 8,
-          "trips": 5,
-          "admittedTrips": 0,
-          "carryInTrips": 5,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "incomplete-directed-pattern": 5
-          },
-          "matchedMask": [
-            true,
-            true,
-            true,
-            false,
-            true,
-            true,
-            true,
-            true,
-            true
-          ],
-          "unresolvedPairs": [
-            {
-              "routeId": "96-131-8-j26-1",
-              "agencyId": "801",
-              "mode": "bus",
-              "fromId": "ch:1:sloid:72196",
-              "toId": "ch:1:sloid:72197",
-              "from": "Liesberg, Seemättli",
-              "to": "Liesberg, Ochsengasse",
-              "directMetres": 186.8713402033675,
-              "reason": "endpoint-gap",
-              "maximumSnapMetres": 1686.7257974890474,
-              "supplementFailure": "road-excessive-detour",
-              "supplementAvailable": true,
-              "occurrences": 5,
               "admittedOccurrences": 0,
               "matched": false
             }

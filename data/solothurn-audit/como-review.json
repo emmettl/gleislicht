@@ -1904,23 +1904,23 @@
       },
       "after": {
         "trips": 5819,
-        "admittedTrips": 5688,
+        "admittedTrips": 5693,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4580,
+        "admittedScheduledTrips": 4585,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67871,
+        "matchedScheduledSegmentOccurrences": 67876,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68979,
-        "admittedSegmentOccurrences": 65104,
+        "matchedSegmentOccurrences": 68984,
+        "admittedSegmentOccurrences": 65149,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4462,
+        "matchedDirectedPairs": 4463,
         "patterns": 777,
-        "completePatterns": 768,
-        "admittedPatterns": 768,
+        "completePatterns": 769,
+        "admittedPatterns": 769,
         "excludedTrips": {
-          "incomplete-directed-pattern": 129,
+          "incomplete-directed-pattern": 124,
           "night-network-excluded-by-source": 2
         }
       },
@@ -2213,6 +2213,41 @@
           "representativeHeadwayTrips": 0,
           "decisions": {
             "admitted": 1
+          }
+        },
+        {
+          "id": "04c95ae6cda5ed7d068f8a53",
+          "routeId": "96-131-8-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "118",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:72175",
+            "ch:1:sloid:72194",
+            "ch:1:sloid:72195",
+            "ch:1:sloid:72196",
+            "ch:1:sloid:72197",
+            "ch:1:sloid:689",
+            "ch:1:sloid:72196",
+            "ch:1:sloid:72195",
+            "ch:1:sloid:80942",
+            "ch:1:sloid:688"
+          ],
+          "segmentCount": 9,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "osm-solothurn-reviewed-road-detour",
+            "solothurn-network"
+          ],
+          "matchedSegments": 9,
+          "trips": 5,
+          "admittedTrips": 5,
+          "carryInTrips": 5,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 5
           }
         }
       ],

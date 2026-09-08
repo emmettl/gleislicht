@@ -1,0 +1,1 @@
+[out:json][timeout:90][date:"2026-09-02T00:00:00Z"];(way["railway"="tram"](47.486,7.61,47.501,7.625);nwr["public_transport"](47.490,7.615,47.496,7.623);relation["route"="bus"]["ref"="501"](47.30,7.76,47.34,7.83);relation["route"="bus"]["ref"="118"](47.38,7.40,47.44,7.48););out meta;>;out meta;

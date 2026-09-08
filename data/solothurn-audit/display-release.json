@@ -5,7 +5,7 @@
     {
       "date": "2026-09-04",
       "version": 1,
-      "archiveManifestSha256": "e101bb9c571983de6c86f2cffb91c329efeaa744b645196c40a23b4000b65d1d",
+      "archiveManifestSha256": "2d2a95360cad598ccb45e4ddff053804981509eef490c2ce960e0fbecacdcc79",
       "auditSha256": "b5677ac30f42cb803a9afc1f5bb574b38fa545ab1dbfcb93b94de475803c815a",
       "movements": {
         "total": 7033,
@@ -71,90 +71,90 @@
           "gzipBytes": 63813
         },
         "solothurn-region-day-manifest.json": {
-          "bytes": 2031170,
-          "gzipBytes": 394215
+          "bytes": 2047782,
+          "gzipBytes": 399955
         },
         "solothurn-region-morning.json": {
-          "bytes": 2942440,
-          "gzipBytes": 512389
+          "bytes": 2959052,
+          "gzipBytes": 517419
         }
       }
     },
     {
       "date": "2026-09-06",
       "version": 1,
-      "archiveManifestSha256": "15f8127c47188a60415878c670d8102c87a4e4384e3718c5c536696a7cce9fa1",
-      "auditSha256": "b5d4fe062851701c7a6470ea2115516ede09b55a565180d56128c37759fa0551",
+      "archiveManifestSha256": "16337f08f97466ceaa83e516bad51859beb414db8df7705dc20b3dee963e5fef",
+      "auditSha256": "e18801ea447fd48e39c7b7d464a17fb814f7d29b0d84b0ab6d8179b72bb50ad3",
       "movements": {
-        "total": 5688,
-        "scheduled": 4580,
+        "total": 5693,
+        "scheduled": 4585,
         "representativeHeadway": 1108
       },
-      "admittedSegments": 65104,
+      "admittedSegments": 65149,
       "simplification": {
         "algorithm": "Douglas–Peucker; distance to retained chord in approximate LV95 metres",
         "toleranceMetres": 5,
         "maximumDeviationMetres": 4.9964051669253955,
-        "originalVertices": 153548,
-        "displayVertices": 82292,
+        "originalVertices": 153807,
+        "displayVertices": 82448,
         "endpointsUnchanged": true
       },
       "payload": {
         "solothurn-region-day-chunks/00-02.json": {
-          "bytes": 214429,
-          "gzipBytes": 37546
+          "bytes": 215893,
+          "gzipBytes": 37758
         },
         "solothurn-region-day-chunks/02-04.json": {
-          "bytes": 117584,
-          "gzipBytes": 19880
+          "bytes": 119077,
+          "gzipBytes": 20088
         },
         "solothurn-region-day-chunks/04-06.json": {
-          "bytes": 120794,
-          "gzipBytes": 22348
+          "bytes": 121550,
+          "gzipBytes": 22524
         },
         "solothurn-region-day-chunks/06-08.json": {
           "bytes": 423451,
-          "gzipBytes": 61690
+          "gzipBytes": 61697
         },
         "solothurn-region-day-chunks/08-10.json": {
           "bytes": 637595,
-          "gzipBytes": 77863
+          "gzipBytes": 77860
         },
         "solothurn-region-day-chunks/10-12.json": {
           "bytes": 723679,
-          "gzipBytes": 82540
+          "gzipBytes": 82542
         },
         "solothurn-region-day-chunks/12-14.json": {
           "bytes": 722519,
-          "gzipBytes": 81967
+          "gzipBytes": 81979
         },
         "solothurn-region-day-chunks/14-16.json": {
           "bytes": 726561,
-          "gzipBytes": 82604
+          "gzipBytes": 82624
         },
         "solothurn-region-day-chunks/16-18.json": {
           "bytes": 702895,
-          "gzipBytes": 82024
+          "gzipBytes": 82038
         },
         "solothurn-region-day-chunks/18-20.json": {
           "bytes": 537101,
-          "gzipBytes": 74736
+          "gzipBytes": 74771
         },
         "solothurn-region-day-chunks/20-22.json": {
           "bytes": 483872,
-          "gzipBytes": 67809
+          "gzipBytes": 67798
         },
         "solothurn-region-day-chunks/22-24.json": {
           "bytes": 423092,
-          "gzipBytes": 61685
+          "gzipBytes": 61640
         },
         "solothurn-region-day-manifest.json": {
-          "bytes": 2218305,
-          "gzipBytes": 429651
+          "bytes": 2238891,
+          "gzipBytes": 436295
         },
         "solothurn-region-morning.json": {
-          "bytes": 2730440,
-          "gzipBytes": 499284
+          "bytes": 2751026,
+          "gzipBytes": 505366
         }
       }
     }

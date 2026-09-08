@@ -1,0 +1,37 @@
+{
+  "retrievedOn": "2026-09-08",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "attribution": "© OpenStreetMap contributors, ODbL-1.0; BOGG and PostAuto / oev-info.ch for timetable context",
+  "files": [
+    {
+      "file": "osm.json.gz",
+      "sha256": "d68acc542be1e079882e686ddc8cf38ea5a7a6ce7bbfeacc2b0a8558f2eccc31",
+      "url": "https://overpass-api.de/api/interpreter",
+      "sourceDate": "2026-09-02T00:00:00Z"
+    },
+    {
+      "file": "query.txt",
+      "sha256": "00fe7fa7b066cf0b682866b5e0994a30ff730aa53613f363308faedb1776fba3",
+      "url": null,
+      "sourceDate": null
+    },
+    {
+      "file": "bogg-501.pdf",
+      "sha256": "8bc50e516653954b9b08c2ec02e191918b3b469d31f6c4152d1a6fb330b41322",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/50.501.pdf",
+      "sourceDate": "2025-10-29"
+    },
+    {
+      "file": "50.118.pdf",
+      "sha256": "0f52145aeed7639b62e78edb000c2b4192c7b44518d7b1f32eb822c9f4bbd247",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/50.118.pdf",
+      "sourceDate": "2025-12-03"
+    },
+    {
+      "file": "egerkingen-rejected-review.json",
+      "sha256": "b1988f7bdca88b7c5ed2c7d0f06feda53aaa4fa010f4d3402f7ff700126f67b0",
+      "url": null
+    }
+  ],
+  "method": "OSM relations corroborate route identity, directed stop order and road corridor; they are community data, not operator certification and not an independent provider from the routing PBF. Timetable PDFs corroborate stop sequence only. Emit the previously rejected full-pattern pfaedle path only for the hash-pinned Liesberg directed pair after bounded corridor comparison; no global detour or consensus relaxation. Arlesheim tram/platform records are retained as negative evidence without changing its excluded original GTFS coordinates."
+}

@@ -17,7 +17,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 202 | Seilbahn Weissenstein AG | 1 | 1 | 1078 / 1078 | 1108 / 1108 |
 | 723 | Aargau Verkehr AG | 1 | 1 | 0 / 0 | 4 / 4 |
 | 793 | Busbetrieb Olten-Gösgen-Gäu | 16 | 16 | 926 / 955 | 620 / 620 |
-| 801 | PostAuto AG | 30 | 30 | 1394 / 1394 | 956 / 961 |
+| 801 | PostAuto AG | 30 | 30 | 1394 / 1394 | 961 / 961 |
 | 840 | Busbetrieb Aarau | 3 | 3 | 388 / 388 | 300 / 300 |
 | 850 | Autobusbetrieb RBS | 5 | 5 | 205 / 205 | 141 / 141 |
 | 883 | Busbetrieb Solothurn und Umgebung | 17 | 16 | 787 / 787 | 422 / 424 |
@@ -200,7 +200,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 96-131-5-j26-1 | 801 | 115 / bus | Thierstein | admitted-all-dated-trips | 80 / 80 | 86 / 86 | All dated journeys pass |
 | 96-131-6-j26-1 | 801 | 116 / bus | Thierstein | admitted-all-dated-trips | 36 / 36 | 34 / 34 | All dated journeys pass |
 | 96-131-7-j26-1 | 801 | 117 / bus | Thierstein | admitted-all-dated-trips | 54 / 54 | 43 / 43 | All dated journeys pass |
-| 96-131-8-j26-1 | 801 | 118 / bus | Thierstein | partially-admitted | 2 / 2 | 2 / 7 | incomplete-directed-pattern |
+| 96-131-8-j26-1 | 801 | 118 / bus | Thierstein | admitted-all-dated-trips | 2 / 2 | 7 / 7 | All dated journeys pass |
 | 96-136-7-j26-1 | 801 | 67 / bus | Dorneck | admitted-all-dated-trips | 73 / 73 | 70 / 70 | All dated journeys pass |
 | 96-136-8-j26-1 | 801 | 68 / bus | Dorneck | admitted-all-dated-trips | 69 / 69 | 39 / 39 | All dated journeys pass |
 | 96-136-9-j26-1 | 801 | 69 / bus | Dorneck | admitted-all-dated-trips | 80 / 80 | 43 / 43 | All dated journeys pass |

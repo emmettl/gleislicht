@@ -6,6 +6,333 @@
   },
   "timetableCacheSha256": "a5f559bc76649a6878d6f9f77c1a00f684664cb7553536dd92895f060c140aaf",
   "supplementSources": {
+    "roadDetour": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceDirectory": "data/solothurn-road-detour-sources",
+        "sourceSha256": "265495dd2506ba222b05133b03658919d3346ec92d68336b964e87a76b41b68a",
+        "snapshot": "2026-09-02T00:00:00Z",
+        "accessCacheSha256": "407d5559788eeb751b0d97243f1ae6abbf0b7c748f3585123362288ca3614417",
+        "pairs": [
+          {
+            "routeId": "96-131-8-j26-1",
+            "agencyId": "801",
+            "line": "118",
+            "operator": "PAG",
+            "relationId": 11568519,
+            "fromNode": 983967623,
+            "toNode": 983967630,
+            "fromUic": "8572196",
+            "toUic": "8572197",
+            "memberOffset": 22,
+            "maximumPathMetres": 700,
+            "segments": [
+              {
+                "wayId": 204519958,
+                "fromNode": 983967623,
+                "toNode": 2145136622,
+                "direction": -1,
+                "featureSha256": "8fa06783348ad7ae70e9496747fb5e71b5dd1fbb202d1a6500d8772fa8a27100"
+              },
+              {
+                "wayId": 204513892,
+                "fromNode": 2145136622,
+                "toNode": 983967630,
+                "direction": -1,
+                "featureSha256": "d068a821de0b8e4c9ba170fce9b415d7f63516b43ac2c34af22ee814696afbde"
+              }
+            ],
+            "from": [
+              7.42813315,
+              47.4014507,
+              "Liesberg, Seemättli",
+              "",
+              "ch:1:sloid:72196"
+            ],
+            "to": [
+              7.42916621,
+              47.40297683,
+              "Liesberg, Ochsengasse",
+              "",
+              "ch:1:sloid:72197"
+            ],
+            "relationSha256": "b96358eed28032942cfb2036e589067dfb16387a04120d94fa4b5ef3e108171a",
+            "geometrySha256": "7bc18e4acb1bba0aa8893a8fb9e89b8e25ff8f77662f1fe91f15e2cda0682492",
+            "roadPatternIds": [
+              "e74cd4ea689e3a958b8838e8"
+            ],
+            "maximumCorridorGapMetres": 20
+          }
+        ],
+        "method": "OSM relations corroborate route identity, directed stop order and road corridor; they are community data, not operator certification and not an independent provider from the routing PBF. Timetable PDFs corroborate stop sequence only. Emit the previously rejected full-pattern pfaedle path only for the hash-pinned Liesberg directed pair after bounded corridor comparison; no global detour or consensus relaxation. Arlesheim tram/platform records are retained as negative evidence without changing its excluded original GTFS coordinates."
+      },
+      "policySha256": "f46475081f439ebf6138a679409a6ed9aef4ca17ecdfbb0926901dd67487e13a",
+      "source": {
+        "retrievedOn": "2026-09-08",
+        "snapshot": "2026-09-02T00:00:00Z",
+        "attribution": "© OpenStreetMap contributors, ODbL-1.0; BOGG and PostAuto / oev-info.ch for timetable context",
+        "files": [
+          {
+            "file": "osm.json.gz",
+            "sha256": "d68acc542be1e079882e686ddc8cf38ea5a7a6ce7bbfeacc2b0a8558f2eccc31",
+            "url": "https://overpass-api.de/api/interpreter",
+            "sourceDate": "2026-09-02T00:00:00Z"
+          },
+          {
+            "file": "query.txt",
+            "sha256": "00fe7fa7b066cf0b682866b5e0994a30ff730aa53613f363308faedb1776fba3",
+            "url": null,
+            "sourceDate": null
+          },
+          {
+            "file": "bogg-501.pdf",
+            "sha256": "8bc50e516653954b9b08c2ec02e191918b3b469d31f6c4152d1a6fb330b41322",
+            "url": "https://widgets.oev-info.ch/publikation/jahresfpl/50.501.pdf",
+            "sourceDate": "2025-10-29"
+          },
+          {
+            "file": "50.118.pdf",
+            "sha256": "0f52145aeed7639b62e78edb000c2b4192c7b44518d7b1f32eb822c9f4bbd247",
+            "url": "https://widgets.oev-info.ch/publikation/jahresfpl/50.118.pdf",
+            "sourceDate": "2025-12-03"
+          },
+          {
+            "file": "egerkingen-rejected-review.json",
+            "sha256": "b1988f7bdca88b7c5ed2c7d0f06feda53aaa4fa010f4d3402f7ff700126f67b0",
+            "url": null
+          }
+        ],
+        "method": "OSM relations corroborate route identity, directed stop order and road corridor; they are community data, not operator certification and not an independent provider from the routing PBF. Timetable PDFs corroborate stop sequence only. Emit the previously rejected full-pattern pfaedle path only for the hash-pinned Liesberg directed pair after bounded corridor comparison; no global detour or consensus relaxation. Arlesheim tram/platform records are retained as negative evidence without changing its excluded original GTFS coordinates."
+      },
+      "pairs": [
+        {
+          "routeId": "96-131-8-j26-1",
+          "agencyId": "801",
+          "line": "118",
+          "operator": "PAG",
+          "relationId": 11568519,
+          "fromNode": 983967623,
+          "toNode": 983967630,
+          "fromUic": "8572196",
+          "toUic": "8572197",
+          "memberOffset": 22,
+          "maximumPathMetres": 700,
+          "segments": [
+            {
+              "wayId": 204519958,
+              "fromNode": 983967623,
+              "toNode": 2145136622,
+              "direction": -1,
+              "featureSha256": "8fa06783348ad7ae70e9496747fb5e71b5dd1fbb202d1a6500d8772fa8a27100"
+            },
+            {
+              "wayId": 204513892,
+              "fromNode": 2145136622,
+              "toNode": 983967630,
+              "direction": -1,
+              "featureSha256": "d068a821de0b8e4c9ba170fce9b415d7f63516b43ac2c34af22ee814696afbde"
+            }
+          ],
+          "from": [
+            7.42813315,
+            47.4014507,
+            "Liesberg, Seemättli",
+            "",
+            "ch:1:sloid:72196"
+          ],
+          "to": [
+            7.42916621,
+            47.40297683,
+            "Liesberg, Ochsengasse",
+            "",
+            "ch:1:sloid:72197"
+          ],
+          "relationSha256": "b96358eed28032942cfb2036e589067dfb16387a04120d94fa4b5ef3e108171a",
+          "geometrySha256": "7bc18e4acb1bba0aa8893a8fb9e89b8e25ff8f77662f1fe91f15e2cda0682492",
+          "roadPatternIds": [
+            "e74cd4ea689e3a958b8838e8"
+          ],
+          "maximumCorridorGapMetres": 20,
+          "pathMetres": 688.2807896065884,
+          "directMetres": 186.8713402033675,
+          "forwardGapMetres": 17.50155281466827,
+          "reverseGapMetres": 5.217816221255795,
+          "originalFailure": {
+            "agencyId": "all",
+            "geometrySource": "osm-road-inference",
+            "roadPatternIds": [
+              "e74cd4ea689e3a958b8838e8"
+            ],
+            "roadContextOccurrences": 1,
+            "reason": "road-excessive-detour",
+            "sourceFeatures": []
+          },
+          "sourceFeatures": [
+            {
+              "id": 204519958,
+              "tags": {
+                "highway": "residential",
+                "name": "Seemättliweg"
+              },
+              "version": 7,
+              "timestamp": "2026-02-06T22:37:21Z"
+            },
+            {
+              "id": 204513892,
+              "tags": {
+                "highway": "residential",
+                "name": "Im Pfarrgarten"
+              },
+              "version": 13,
+              "timestamp": "2023-03-11T17:24:13Z"
+            }
+          ],
+          "sourcePathSha256": "da5a4c5fa7c2e6e3124363ee1155e5639918e393448c5bb9906ca265a39eff57",
+          "roadContextOccurrences": 1
+        }
+      ],
+      "exclusions": {
+        "egerkingen": {
+          "review": {
+            "routeId": "92-501-A-j26-1",
+            "agencyId": "793",
+            "line": "501",
+            "operator": "BOGG",
+            "relationId": 6455364,
+            "fromNode": 299779370,
+            "toNode": 299778442,
+            "fromUic": "8588076",
+            "toUic": "8578916",
+            "memberOffset": 0,
+            "maximumPathMetres": 1250,
+            "segments": [
+              {
+                "wayId": 1345184956,
+                "fromNode": 299779370,
+                "toNode": 299779367,
+                "direction": 1,
+                "featureSha256": "456cc577f1ba74caf1f163b48da56fa2a26e6ac7b67d8b7d0ed862d879e932c3"
+              },
+              {
+                "wayId": 1345184955,
+                "fromNode": 299779367,
+                "toNode": 615934922,
+                "direction": 1,
+                "featureSha256": "837d2d37246c857ca2c7567011bbdec72e248815362879cdd7694612e8652810"
+              },
+              {
+                "wayId": 1345184954,
+                "fromNode": 615934922,
+                "toNode": 299779344,
+                "direction": 1,
+                "featureSha256": "d19ee96ff072cf21610d600db8a102f0f0abae73d84d787633f2a15c0c449c3f"
+              },
+              {
+                "wayId": 1345184952,
+                "fromNode": 299779344,
+                "toNode": 615934946,
+                "direction": 1,
+                "featureSha256": "8c53a902e1a5fcf11a29f7e0345b884a54150fb34be841eef0165265bd122866"
+              },
+              {
+                "wayId": 1345184953,
+                "fromNode": 615934946,
+                "toNode": 615934818,
+                "direction": 1,
+                "featureSha256": "e0e1e824cd951dbf2c986aa7e98e73fdf8645249e606d7408642e92756b20afa"
+              },
+              {
+                "wayId": 216696620,
+                "fromNode": 615934818,
+                "toNode": 246505310,
+                "direction": 1,
+                "featureSha256": "75e8e32bca9856a569f540a144210119dedc17ec4a96e0ec8617ce06e71f1cba"
+              },
+              {
+                "wayId": 435304535,
+                "fromNode": 246505310,
+                "toNode": 299779137,
+                "direction": 1,
+                "featureSha256": "fd4fd378ff79e290bfd4fcdc93efe7e9056397edb051724cb1c2359441f77da0"
+              },
+              {
+                "wayId": 27309785,
+                "fromNode": 299779137,
+                "toNode": 1505178585,
+                "direction": 1,
+                "featureSha256": "63169486436f0d456c754d4422d41c35211e76f021d77e8b48121470c4c55368"
+              },
+              {
+                "wayId": 27309767,
+                "fromNode": 1505178585,
+                "toNode": 299778021,
+                "direction": 1,
+                "featureSha256": "715fce461631110ec1d3e95e1a4d08b7d645f99cef6afabe82401c63fcd2c799"
+              },
+              {
+                "wayId": 27309648,
+                "fromNode": 299778021,
+                "toNode": 299778470,
+                "direction": 1,
+                "featureSha256": "8b62cf5da5a524ccc0f527461c24b0fb52fefebc7ee1b9fe7f521e97c5a5ad18"
+              },
+              {
+                "wayId": 263982888,
+                "fromNode": 299778470,
+                "toNode": 6048406316,
+                "direction": 1,
+                "featureSha256": "7c61002e54ea8098c8c9bdcc93438a4e1e68cc188f81fb83aebc3dbd589234f5"
+              },
+              {
+                "wayId": 739284976,
+                "fromNode": 6048406316,
+                "toNode": 299778442,
+                "direction": 1,
+                "featureSha256": "48c3ca185c03dd9b31840526b51ff7ef992e24df9824544004f95bce583151df"
+              }
+            ],
+            "from": [
+              7.80344928,
+              47.31707361,
+              "Egerkingen, Gäu Park",
+              "",
+              "ch:1:sloid:88076:0:01"
+            ],
+            "to": [
+              7.80003568,
+              47.31521611,
+              "Egerkingen, Bahnhof",
+              "",
+              "ch:1:sloid:78916:0:02"
+            ],
+            "relationSha256": "7cd9dc1dd62d01c6bfdae1f1eaf12621f16d11ac3f4cccfc79d19a904e4f37ea",
+            "geometrySha256": "5ba3fba98f875f262ecee267c2f5ed5096b04ac4f0113182cfda10abc217f2bf",
+            "roadPatternIds": [
+              "391aec2b2b3a1cc140d197bc",
+              "994b0e7b6a7888e1b43ea65e",
+              "a126a4eae532ed92402e624f"
+            ],
+            "maximumCorridorGapMetres": 20
+          },
+          "decision": "Excluded: both the pfaedle and cantonal candidates disagree with the mapped bus relation. No detour override or alternative corridor is admitted.",
+          "roadCandidateSha256": "5ba3fba98f875f262ecee267c2f5ed5096b04ac4f0113182cfda10abc217f2bf",
+          "forwardGapMetres": 177.79172336215638,
+          "reverseGapMetres": 321.7593163267931
+        },
+        "arlesheim": {
+          "stop": [
+            7.61942041,
+            47.49339586,
+            "Arlesheim, Dorf",
+            "E",
+            "ch:1:sloid:77:1:5"
+          ],
+          "nearestTrackMetres": 120.74674752694243,
+          "limitMetres": 80,
+          "decision": "Excluded; original platform coordinate remains unsupported by retained tram ways."
+        }
+      }
+    },
     "delle": {
       "policy": {
         "schemaVersion": 1,
@@ -7698,23 +8025,23 @@
     {
       "date": "2026-01-18",
       "trips": 5362,
-      "admittedTrips": 5247,
+      "admittedTrips": 5252,
       "scheduledTrips": 4374,
       "representativeHeadwayTrips": 988,
-      "admittedScheduledTrips": 4259,
+      "admittedScheduledTrips": 4264,
       "admittedRepresentativeHeadwayTrips": 988,
       "scheduledSegmentOccurrences": 68390,
-      "matchedScheduledSegmentOccurrences": 68175,
+      "matchedScheduledSegmentOccurrences": 68180,
       "segmentOccurrences": 69378,
-      "matchedSegmentOccurrences": 69163,
-      "admittedSegmentOccurrences": 65270,
+      "matchedSegmentOccurrences": 69168,
+      "admittedSegmentOccurrences": 65315,
       "directedPairs": 4409,
-      "matchedDirectedPairs": 4403,
+      "matchedDirectedPairs": 4404,
       "patterns": 748,
-      "completePatterns": 736,
-      "admittedPatterns": 736,
+      "completePatterns": 737,
+      "admittedPatterns": 737,
       "excludedTrips": {
-        "incomplete-directed-pattern": 109,
+        "incomplete-directed-pattern": 104,
         "night-network-excluded-by-source": 6
       },
       "sourceServiceDates": [
@@ -7733,23 +8060,23 @@
     {
       "date": "2026-04-03",
       "trips": 5450,
-      "admittedTrips": 5335,
+      "admittedTrips": 5340,
       "scheduledTrips": 4462,
       "representativeHeadwayTrips": 988,
-      "admittedScheduledTrips": 4347,
+      "admittedScheduledTrips": 4352,
       "admittedRepresentativeHeadwayTrips": 988,
       "scheduledSegmentOccurrences": 67878,
-      "matchedScheduledSegmentOccurrences": 67663,
+      "matchedScheduledSegmentOccurrences": 67668,
       "segmentOccurrences": 68866,
-      "matchedSegmentOccurrences": 68651,
-      "admittedSegmentOccurrences": 64758,
+      "matchedSegmentOccurrences": 68656,
+      "admittedSegmentOccurrences": 64803,
       "directedPairs": 4346,
-      "matchedDirectedPairs": 4340,
+      "matchedDirectedPairs": 4341,
       "patterns": 751,
-      "completePatterns": 739,
-      "admittedPatterns": 739,
+      "completePatterns": 740,
+      "admittedPatterns": 740,
       "excludedTrips": {
-        "incomplete-directed-pattern": 109,
+        "incomplete-directed-pattern": 104,
         "night-network-excluded-by-source": 6
       },
       "sourceServiceDates": [
@@ -7768,23 +8095,23 @@
     {
       "date": "2026-04-05",
       "trips": 5730,
-      "admittedTrips": 5598,
+      "admittedTrips": 5603,
       "scheduledTrips": 4742,
       "representativeHeadwayTrips": 988,
-      "admittedScheduledTrips": 4610,
+      "admittedScheduledTrips": 4615,
       "admittedRepresentativeHeadwayTrips": 988,
       "scheduledSegmentOccurrences": 67952,
-      "matchedScheduledSegmentOccurrences": 67720,
+      "matchedScheduledSegmentOccurrences": 67725,
       "segmentOccurrences": 68940,
-      "matchedSegmentOccurrences": 68708,
-      "admittedSegmentOccurrences": 64764,
+      "matchedSegmentOccurrences": 68713,
+      "admittedSegmentOccurrences": 64809,
       "directedPairs": 4354,
-      "matchedDirectedPairs": 4347,
+      "matchedDirectedPairs": 4348,
       "patterns": 755,
-      "completePatterns": 742,
-      "admittedPatterns": 742,
+      "completePatterns": 743,
+      "admittedPatterns": 743,
       "excludedTrips": {
-        "incomplete-directed-pattern": 126,
+        "incomplete-directed-pattern": 121,
         "night-network-excluded-by-source": 6
       },
       "sourceServiceDates": [
@@ -7837,23 +8164,23 @@
     {
       "date": "2026-07-19",
       "trips": 5523,
-      "admittedTrips": 5412,
+      "admittedTrips": 5417,
       "scheduledTrips": 4415,
       "representativeHeadwayTrips": 1108,
-      "admittedScheduledTrips": 4304,
+      "admittedScheduledTrips": 4309,
       "admittedRepresentativeHeadwayTrips": 1108,
       "scheduledSegmentOccurrences": 67663,
-      "matchedScheduledSegmentOccurrences": 67452,
+      "matchedScheduledSegmentOccurrences": 67457,
       "segmentOccurrences": 68771,
-      "matchedSegmentOccurrences": 68560,
-      "admittedSegmentOccurrences": 64746,
+      "matchedSegmentOccurrences": 68565,
+      "admittedSegmentOccurrences": 64791,
       "directedPairs": 4402,
-      "matchedDirectedPairs": 4397,
+      "matchedDirectedPairs": 4398,
       "patterns": 754,
-      "completePatterns": 745,
-      "admittedPatterns": 745,
+      "completePatterns": 746,
+      "admittedPatterns": 746,
       "excludedTrips": {
-        "incomplete-directed-pattern": 109,
+        "incomplete-directed-pattern": 104,
         "night-network-excluded-by-source": 2
       },
       "sourceServiceDates": [
@@ -7872,23 +8199,23 @@
     {
       "date": "2026-08-01",
       "trips": 5566,
-      "admittedTrips": 5451,
+      "admittedTrips": 5456,
       "scheduledTrips": 4458,
       "representativeHeadwayTrips": 1108,
-      "admittedScheduledTrips": 4343,
+      "admittedScheduledTrips": 4348,
       "admittedRepresentativeHeadwayTrips": 1108,
       "scheduledSegmentOccurrences": 67653,
-      "matchedScheduledSegmentOccurrences": 67437,
+      "matchedScheduledSegmentOccurrences": 67442,
       "segmentOccurrences": 68761,
-      "matchedSegmentOccurrences": 68545,
-      "admittedSegmentOccurrences": 64765,
+      "matchedSegmentOccurrences": 68550,
+      "admittedSegmentOccurrences": 64810,
       "directedPairs": 4377,
-      "matchedDirectedPairs": 4371,
+      "matchedDirectedPairs": 4372,
       "patterns": 766,
-      "completePatterns": 755,
-      "admittedPatterns": 755,
+      "completePatterns": 756,
+      "admittedPatterns": 756,
       "excludedTrips": {
-        "incomplete-directed-pattern": 113,
+        "incomplete-directed-pattern": 108,
         "night-network-excluded-by-source": 2
       },
       "sourceServiceDates": [
@@ -7941,23 +8268,23 @@
     {
       "date": "2026-09-06",
       "trips": 5819,
-      "admittedTrips": 5688,
+      "admittedTrips": 5693,
       "scheduledTrips": 4711,
       "representativeHeadwayTrips": 1108,
-      "admittedScheduledTrips": 4580,
+      "admittedScheduledTrips": 4585,
       "admittedRepresentativeHeadwayTrips": 1108,
       "scheduledSegmentOccurrences": 68102,
-      "matchedScheduledSegmentOccurrences": 67871,
+      "matchedScheduledSegmentOccurrences": 67876,
       "segmentOccurrences": 69210,
-      "matchedSegmentOccurrences": 68979,
-      "admittedSegmentOccurrences": 65104,
+      "matchedSegmentOccurrences": 68984,
+      "admittedSegmentOccurrences": 65149,
       "directedPairs": 4467,
-      "matchedDirectedPairs": 4462,
+      "matchedDirectedPairs": 4463,
       "patterns": 777,
-      "completePatterns": 768,
-      "admittedPatterns": 768,
+      "completePatterns": 769,
+      "admittedPatterns": 769,
       "excludedTrips": {
-        "incomplete-directed-pattern": 129,
+        "incomplete-directed-pattern": 124,
         "night-network-excluded-by-source": 2
       },
       "sourceServiceDates": [
@@ -8010,23 +8337,23 @@
     {
       "date": "2026-10-25",
       "trips": 5527,
-      "admittedTrips": 5416,
+      "admittedTrips": 5421,
       "scheduledTrips": 4419,
       "representativeHeadwayTrips": 1108,
-      "admittedScheduledTrips": 4308,
+      "admittedScheduledTrips": 4313,
       "admittedRepresentativeHeadwayTrips": 1108,
       "scheduledSegmentOccurrences": 68700,
-      "matchedScheduledSegmentOccurrences": 68489,
+      "matchedScheduledSegmentOccurrences": 68494,
       "segmentOccurrences": 69808,
-      "matchedSegmentOccurrences": 69597,
-      "admittedSegmentOccurrences": 65781,
+      "matchedSegmentOccurrences": 69602,
+      "admittedSegmentOccurrences": 65826,
       "directedPairs": 4370,
-      "matchedDirectedPairs": 4365,
+      "matchedDirectedPairs": 4366,
       "patterns": 742,
-      "completePatterns": 733,
-      "admittedPatterns": 733,
+      "completePatterns": 734,
+      "admittedPatterns": 734,
       "excludedTrips": {
-        "incomplete-directed-pattern": 109,
+        "incomplete-directed-pattern": 104,
         "night-network-excluded-by-source": 2
       },
       "sourceServiceDates": [
@@ -19993,17 +20320,17 @@
         {
           "date": "2026-01-18",
           "trips": 7,
-          "admittedTrips": 2
+          "admittedTrips": 7
         },
         {
           "date": "2026-04-03",
           "trips": 7,
-          "admittedTrips": 2
+          "admittedTrips": 7
         },
         {
           "date": "2026-04-05",
           "trips": 7,
-          "admittedTrips": 2
+          "admittedTrips": 7
         },
         {
           "date": "2026-07-17",
@@ -20013,12 +20340,12 @@
         {
           "date": "2026-07-19",
           "trips": 7,
-          "admittedTrips": 2
+          "admittedTrips": 7
         },
         {
           "date": "2026-08-01",
           "trips": 7,
-          "admittedTrips": 2
+          "admittedTrips": 7
         },
         {
           "date": "2026-09-04",
@@ -20028,7 +20355,7 @@
         {
           "date": "2026-09-06",
           "trips": 7,
-          "admittedTrips": 2
+          "admittedTrips": 7
         },
         {
           "date": "2026-10-23",
@@ -20038,7 +20365,7 @@
         {
           "date": "2026-10-25",
           "trips": 7,
-          "admittedTrips": 2
+          "admittedTrips": 7
         },
         {
           "date": "2026-12-11",
