@@ -106,10 +106,45 @@ The optional artifact is about 669 kB uncompressed / 128 kB gzip. It is fetched 
 
 Geometry validation: **176 tests across 47 files passed**, plus all **8 desktop Chromium / iPhone WebKit road checks**, the production build, lint, artifact validation, architecture and transfer-budget checks. A second build from the pinned source files produced an identical artifact. The browser checks cover lazy loading, source failure, road selection, attribution and existing motorway traffic history. This stage is implemented and verified locally; only the recording Worker has been deployed so far.
 
+## Direction audit and first compiled draft
+
+The follow-up `data/zurich-cantonal-road-directions.json` is a **build-time draft**, separate from the public geometry artifact. It embeds the direction evidence and pinned place results and can be rebuilt without network access:
+
+```sh
+node scripts/validate-cantonal-road-directions.mjs \
+  --places=data/zurich-cantonal-road-directions.json \
+  --output=/tmp/zurich-directions.json
+
+# Refresh the exact place-name source queries when needed:
+node scripts/validate-cantonal-road-directions.mjs --download=/tmp/zh-destinations
+node scripts/validate-cantonal-road-directions.mjs --input=/tmp/zh-destinations
+```
+
+The audit uses [GeoAdmin's exact feature queries](https://docs.geo.admin.ch/access-data/find-features.html) against swissNAMES3D for 190 plain detector destinations. It retains settlement features only, rejects saturated results, and preserves distinct same-name settlement extents as alternatives. Identical bounds are deduplicated. Every query has a URL, retrieval timestamp and response hash. Settlement bounds are treated as uncertainty; a bounding-box midpoint alone is not sufficient evidence.
+
+Both destination position along the road and the local road bearing must agree. The destination must be at least 1.5 km away, project within 1.5 km of the same road path, and differ by at least 750 m along the path. The centre bearing must agree by at least 0.75 cosine; all extent corners must remain on the same side with at least 0.5 cosine and 750 m of offset separation. All non-emergency detector lanes must resolve into complete opposing groups. Compound junction labels, unrecognised names and ambiguous destinations remain unresolved.
+
+**7 stations / 14 directional groups** pass these conservative automated checks. The section builder finds one connected pilot: **1.298 km of Horgen's Seestrasse (ZH 3)** between stations `ZH.CH:4590` and `ZH.CH:4290`, in both directions. It rejects gaps over 5 km, colocated counters, unresolved intervening counters and disconnected paths. The other five validated stations do not form accepted sections. These are inferred orientations supported by source evidence, not manually surveyed turn movements.
+
+Here, `positive` means increasing vertex order in the stored cantonal path; it does **not** reuse Alert-C polarity. For example, the Horgen detectors towards Zürich are Alert-C positive but follow the stored path in the negative direction. Original codes remain in the audit.
+
+The cantonal compiler reuses the recorded-minute/chunk implementation while keeping supplier scopes separate. It includes only sites referenced by accepted sections, requires every lane at every connected site in each accepted minute, checks catalog versions, rejects conflicting duplicate observations, and preserves the Swiss observation date/time. National compilation still rejects cantonal snapshots. Junction turning flows remain unmeasured; reconstructed vehicles interpolate conditions between counters.
+
+A full-period attempt failed correctly: station 4590 was incomplete at 13:37–13:43 and 14:02–14:13 CEST. The longest complete window in the initial export was **18 minutes, 13:44–14:01 CEST on 8 September 2026**. This smaller window was explicitly compiled for a local draft:
+
+```sh
+node scripts/compile-cantonal-road-study.mjs \
+  --date=2026-09-08 --from=13:44 --to=14:01 --minimum-samples=18
+```
+
+The output stays in the ignored `recordings/astra-zurich-cantonal/compiled/` directory, with `publicationStatus: draft`, the direction-artifact hash and the requested sample gate. It contains four connected directional sites, two sections, 18 complete minute samples and 100% site coverage. The existing playback reader consumed it successfully; reconstructed vehicles ranged from 6 to 21. This is a reconstruction, not vehicle tracking. The default minimum remains 60 samples; no observations were filled into the missing periods.
+
+The follow-up passes **187 tests across 49 files**, production build and lint in an isolated copy of the committed road work. The pinned direction artifact rebuilds identically without network access.
+
 ## Playback work remaining
 
-1. Validate detector travel orientation using authoritative destination/location references. Alert-C `positive`/`negative` is relative to its location table, not arbitrary WFS vertex order. The retained lane descriptions provide review evidence; ambiguous descriptions remain unresolved.
-2. Build connected, directed counter-to-counter sections only where geometry and orientation are accepted. Preserve gaps, intersections and unresolved matches explicitly.
-3. Compile recorded minutes against those sections with continuity and coverage gates, then load cantonal playback separately in AUTO. Disclose synthetic vehicle reconstruction as for the national layer.
+1. Expand accepted direction coverage using more precise destination references and reviewed junction geometry. Nearby destinations and settlement extents crossing a station account for many exclusions; weakening checks alone is not a solution.
+2. Support an explicit afternoon observation window in AUTO and expose coverage gaps before publishing the cantonal draft. The current public morning layer must not display afternoon observations under morning timestamps.
+3. Review section assumptions at intersections and select a sufficiently complete recording window before enabling public traffic animation. Recording, geometry and usable playback coverage remain separate measures.
 
 The existing 130 unmatched federal directional groups are a separate follow-up: some may become usable with broader road geometry, but they are not automatically classified as cantonal roads or included in this Zürich supplier scope.

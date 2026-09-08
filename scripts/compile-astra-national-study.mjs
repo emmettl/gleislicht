@@ -27,11 +27,11 @@ function chunkTimeLabel(seconds) {
 function validateRecordedMinutes(records, tableVersions, minimumSamples) {
   if (!records.length) throw new Error('No sufficiently complete ASTRA minutes were found')
   if (tableVersions.size !== 1 || !Number.isInteger([...tableVersions][0])) {
-    throw new Error('National study must use one Measurement Site Table version')
+    throw new Error('Recorded road study must use one Measurement Site Table version')
   }
   const dates = new Set(records.map(({ date }) => date))
   if (dates.size !== 1) {
-    throw new Error('National study must contain one Europe/Zurich service date')
+    throw new Error('Recorded road study must contain one Europe/Zurich service date')
   }
   for (let index = 1; index < records.length; index += 1) {
     const gap =
@@ -40,22 +40,53 @@ function validateRecordedMinutes(records, tableVersions, minimumSamples) {
       1_000
     if (gap > MAXIMUM_MINUTE_GAP_SECONDS) {
       throw new Error(
-        `National study is not continuous (${Math.round(gap)} second gap after ${records[index - 1].measurementTime})`,
+        `Recorded road study is not continuous (${Math.round(gap)} second gap after ${records[index - 1].measurementTime})`,
       )
     }
   }
   if (records.length < minimumSamples) {
     throw new Error(
-      `National study has ${records.length} complete minutes; ${minimumSamples} required`,
+      `Recorded road study has ${records.length} complete minutes; ${minimumSamples} required`,
     )
   }
 }
 
-export function compileNationalRoadStudy(
+export function compileNationalRoadStudy(snapshots, topology, options = {}) {
+  return compileCounterRoadStudy(snapshots, topology, options, 'national')
+}
+
+export function compileCantonalRoadStudy(snapshots, topology, options = {}) {
+  if (topology?.metadata?.recordingScope !== 'zurich-cantonal' || !topology.sections?.length) throw new Error('Cantonal compilation requires directed sections')
+  const connected = new Set(topology.sections.flatMap(s => [s.fromSiteId, s.toSiteId]))
+  const sites = topology.sites.filter(s => connected.has(s.id))
+  if (sites.length !== connected.size || sites.some(s => !s.id.startsWith('ZH.CH:') || s.detectorIds.some(id => !id.startsWith(`${s.stationId}.`)))) throw new Error('Invalid cantonal section sites')
+  const localTimes = new Map()
+  const input = snapshots.filter(s => s?.metadata?.measurementKind === 'recorded' && s.metadata.recordingScope === 'zurich-cantonal').map(s => ({ ...s, measurements: s.measurements.filter(m => {
+    if (!localTimes.has(m.measurementTime)) localTimes.set(m.measurementTime, swissDateAndTime(m.measurementTime).seconds)
+    const time = localTimes.get(m.measurementTime)
+    return time >= (options.windowStart ?? 0) && time <= (options.windowEnd ?? 86399)
+  }) }))
+  const seen = new Map()
+  for (const snapshot of input) {
+    if (snapshot.metadata.measurementSiteTableVersion !== topology.metadata.measurementSiteTableVersion) throw new Error('Cantonal catalog version mismatch')
+    if (snapshot.measurements.some(m => !m.siteId.startsWith('ZH.CH:'))) throw new Error('Unexpected supplier in cantonal recording')
+    for (const measurement of snapshot.measurements) {
+      const key = `${measurement.measurementTime}:${measurement.siteId}`
+      const serialized = JSON.stringify(measurement)
+      if (seen.has(key) && seen.get(key) !== serialized) throw new Error('Conflicting duplicate cantonal measurement')
+      seen.set(key, serialized)
+    }
+  }
+  return compileCounterRoadStudy(input, { ...topology, sites }, options, 'zurich-cantonal')
+}
+
+function compileCounterRoadStudy(
   snapshots,
   topology,
   { serviceDate, minimumSamples = 60 } = {},
+  recordingScope,
 ) {
+  if (!Number.isInteger(minimumSamples) || minimumSamples < 1) throw new Error('Minimum samples must be a positive integer')
   const acceptedSites = topology.sites.filter(
     ({ match }) =>
       match.confidence === 'high' ||
@@ -68,17 +99,19 @@ export function compileNationalRoadStudy(
   )
   const tableVersions = new Set()
   const byMinute = new Map()
+  const localTimes = new Map()
   for (const snapshot of snapshots) {
     if (snapshot?.metadata?.measurementKind !== 'recorded') continue
     if (
       snapshot.metadata.recordingScope &&
-      snapshot.metadata.recordingScope !== 'national'
+      snapshot.metadata.recordingScope !== recordingScope
     ) {
       continue
     }
     tableVersions.add(snapshot.metadata.measurementSiteTableVersion)
     for (const measurement of snapshot.measurements ?? []) {
-      const local = swissDateAndTime(measurement.measurementTime)
+      if (!localTimes.has(measurement.measurementTime)) localTimes.set(measurement.measurementTime, swissDateAndTime(measurement.measurementTime))
+      const local = localTimes.get(measurement.measurementTime)
       if (serviceDate && local.date !== serviceDate) continue
       const entry = byMinute.get(measurement.measurementTime) ?? []
       entry.push(measurement)
@@ -89,7 +122,9 @@ export function compileNationalRoadStudy(
   const records = [...byMinute.entries()]
     .map(([measurementTime, measurements]) => {
       const local = swissDateAndTime(measurementTime)
+      const reportingIds = new Set(measurements.map(m => m.siteId))
       const values = acceptedSites.flatMap((site, index) => {
+        if (recordingScope === 'zurich-cantonal' && site.detectorIds.some(id => !reportingIds.has(id))) return []
         const conditions = aggregateDirection(measurements, [site.detectorIds])
         if (!Number.isFinite(conditions.lightFlowPerHour)) return []
         return [
@@ -110,7 +145,7 @@ export function compileNationalRoadStudy(
         values,
       }
     })
-    .filter(({ coverage }) => coverage >= MINIMUM_SITE_COVERAGE)
+    .filter(({ coverage }) => coverage >= (recordingScope === 'zurich-cantonal' ? 1 : MINIMUM_SITE_COVERAGE))
     .sort((left, right) => left.measurementTime.localeCompare(right.measurementTime))
 
   validateRecordedMinutes(records, tableVersions, minimumSamples)
@@ -134,7 +169,8 @@ export function compileNationalRoadStudy(
 
   return {
     metadata: {
-      publisher: 'Federal Roads Office (ASTRA / FEDRO)',
+      publisher: recordingScope === 'zurich-cantonal' ? 'Tiefbauamt Kanton Zürich' : 'Federal Roads Office (ASTRA / FEDRO)',
+      recordingScope,
       serviceDate: records[0].date,
       windowStart: records[0].time,
       windowEnd: records.at(-1).time,
