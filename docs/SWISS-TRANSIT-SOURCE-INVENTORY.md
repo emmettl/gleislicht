@@ -2,6 +2,8 @@
 
 Survey date: **8 September 2026**. This extends the [initial regional survey](REGIONAL-NETWORK-SURVEY.md) to **all 26 cantons**, with a complete census of **473 agency records** in the pinned national timetable, **90 public endpoint checks**, and all **181 entries** in the national realtime coverage catalogue.
 
+**9 September follow-up:** [Study opportunities for the eleven cantons without dedicated canton studies](UNSTUDIED-CANTONS.md) examines UR, SZ, OW, NW, GL, SH, AR, AI, NE, JU and BL individually. It records existing overlaps, feasible first studies and remaining evidence, including newly resolved BL metadata (41-BL, update state 8 August 2024). The original probe results below remain the dated source-survey baseline.
+
 The geographical source survey is complete. Route-to-geometry validation is not: downloaded files, sample queries, map services and unresolved distribution leads are distinguished below. “Not found” means not verified in the documented sources searched, not that no such data exists. Tariff associations, commissioning authorities, operators and data publishers are different entities; none alone defines a complete service footprint.
 
 The strongest additions are **Aargau's attributed, directed line records; Zug's downloadable bus geometry; Fribourg's queryable bus lines; Solothurn's downloadable network graph; and Bern's decoded GeoPackage schema**. Jura and Nidwalden have explicit transport map layers, but no acquired vector export. Vaud advertises a comprehensive product through an order workflow. Valais lists a transport dataset with no published download channel. These findings change the earlier source ranking, especially for Fribourg.
