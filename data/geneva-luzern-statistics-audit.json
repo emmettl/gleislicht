@@ -1,0 +1,37 @@
+{
+  "sourceManifest": "data/regional-road-expansion-sources/2026-09-08/manifest.json",
+  "acquiredDate": "2026-09-08",
+  "playbackEligible": false,
+  "genevaPoints": 694,
+  "genevaDistinctSiredo": 586,
+  "genevaMissingDailyMeans": 170,
+  "genevaAvailability": {
+    "1 fois tous les 5 ans": 30,
+    "3 semaines/an": 80,
+    "365 jrs/an": 176,
+    "Suspendu": 27,
+    "non": 372,
+    "sur demande": 9
+  },
+  "luzernReviewedProfiles": 1,
+  "luzernCatalogueDiscrepancy": true,
+  "luzernSeparatelyRoundedHours": [
+    4,
+    12,
+    15,
+    18,
+    21
+  ],
+  "files": {
+    "geneva": {
+      "path": "geneva.json",
+      "bytes": 218849,
+      "sha256": "ef26ceba60e55fc8bd8da50ae21726de703fed3aeed5cae0fc9f1d5400c0a2ce"
+    },
+    "luzern": {
+      "path": "luzern.json",
+      "bytes": 828,
+      "sha256": "4d7f74c38184b6d59ca13cbf70465e346b1f744d4e1732e8e32b4cc43a7d3e01"
+    }
+  }
+}
