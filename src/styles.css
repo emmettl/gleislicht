@@ -2145,5 +2145,8 @@
 .explore-actions button:disabled { opacity: .45; cursor: default; }
 .explore-status { margin: 0 0 7px; color: #b6d8de; font-size: 10px; line-height: 1.4; }
 .explore-link { width: 100%; color: #8dfaff; background: #080b17; border: 1px solid #8dfaff44; padding: 6px; }
+.explore-share { flex-wrap: nowrap; }
+.explore-share .explore-link { flex: 1; min-width: 0; width: auto; }
+.explore-share button { flex-shrink: 0; min-height: 32px; }
 @media(max-width: 600px) { .explore-actions { gap: 4px; margin-bottom: 6px; } .explore-actions button { font-size: 10px; padding: 5px 8px; } }
 .transport .service-legend { position: static; transform: none; width: auto; margin: 0 0 10px; }

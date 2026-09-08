@@ -292,6 +292,8 @@ export function App({ edition }: AppProps) {
   const [roadRecordingsOpen, setRoadRecordingsOpen] = useState(false)
   const roadRecordingsButton = useRef<HTMLButtonElement>(null)
   const [shareUrl, setShareUrl] = useState('')
+  const [shareCopied, setShareCopied] = useState(false)
+  const shareButton = useRef<HTMLButtonElement>(null)
   const [exploreNotice, setExploreNotice] = useState('')
   const [regionalRange, setRegionalRange] = useState<'morning' | 'day'>(initialLink.range)
   const [regionalRetry, setRegionalRetry] = useState(true)
@@ -1989,11 +1991,16 @@ export function App({ edition }: AppProps) {
       setSbbEnabled(true)
     }
   }, [linkedPilot, roadEnabled, selectedRoadId, view, networkStudy, sbbEnabled, airEnabled, roadLoadState, selectedRoad])
+  const dismissShare = () => {
+    setShareUrl('')
+    shareButton.current?.focus()
+  }
   const shareStudy = async () => {
     const { studyLinkUrl } = await import('./studies/share-link.ts')
     const url = studyLinkUrl(window.location.href, activePilot ? { study: 'national', range: 'morning', recording: activePilot.metadata.recordingId, date: activePilot.metadata.serviceDate, time: networkTime } : { study: networkStudy, range: isNationalDay || isRegionalDay ? 'day' : 'morning', date: network?.metadata.serviceDate, time: networkTime, station: selectedStationName, train: selectedTrainId })
     setShareUrl(url)
-    try { await navigator.clipboard.writeText(url); setExploreNotice(exploreCopy.copied) } catch { setExploreNotice(exploreCopy.copy) }
+    setShareCopied(false)
+    try { await navigator.clipboard.writeText(url); setShareCopied(true) } catch { /* The visible link can still be copied manually. */ }
   }
   useEffect(() => {
     if (!linkPending.current || !network || (isRegionalDay && !regionalDay.chunkReady) || (isNationalDay && !nationalDayChunkReady) || (isPostbus && !postbusDay.chunkReady) || (networkStudy !== 'national' && !isPostbus && !isRegionalDay && regionalNetworkLoading)) return
@@ -3885,7 +3892,7 @@ export function App({ edition }: AppProps) {
             {nowActive && <button type="button" onClick={browserLocation.locate} disabled={browserLocation.status === 'locating'}>{exploreCopy.locate}</button>}
             {browserLocation.status !== 'idle' && <button type="button" onClick={clearBrowserLocation}>{exploreCopy.clear}</button>}
             {isRegionalDayStudy(networkStudy) && <button type="button" aria-pressed={isRegionalDay} onClick={() => { stopNow(); setRegionalRange(value => value === 'day' ? 'morning' : 'day'); setNetworkTime(edition.defaultNetworkTime); setRegionalRetry(true) }}>{exploreCopy.day}</button>}
-            <button type="button" disabled={!network && !activePilot} onClick={() => void shareStudy()}>{exploreCopy.share}</button>
+            <button ref={shareButton} type="button" aria-expanded={Boolean(shareUrl)} aria-controls={shareUrl ? 'study-share' : undefined} disabled={!network && !activePilot} onClick={() => void shareStudy()}>{exploreCopy.share}</button>
           </div>
           {isBern && <p className="explore-status">{text.bernScope} · {network?.metadata.serviceDate}</p>}
           {nowActive && !isBern && <p className="explore-status">{network?.metadata.serviceDate === nowDate ? exploreCopy.today : exploreCopy.typical}</p>}
@@ -3894,7 +3901,19 @@ export function App({ edition }: AppProps) {
           {(initialLink.invalidRecording || pilotLinkUnavailable) && <p className="explore-status" role="status">{PILOT_LINK_UNAVAILABLE[language]}</p>}
           {pilotLinkUnavailable && <button type="button" onClick={() => window.location.reload()}>{exploreCopy.retry}</button>}
           {exploreNotice && <p className="explore-status" role="status">{exploreNotice}</p>}
-          {shareUrl && <input className="explore-link" aria-label={exploreCopy.copy} readOnly value={shareUrl} onFocus={event => event.target.select()} />}
+          {shareUrl && <div id="study-share" role="group" aria-label={exploreCopy.share} onKeyDown={event => {
+            if (event.key === 'Escape') {
+              event.preventDefault()
+              event.stopPropagation()
+              dismissShare()
+            }
+          }}>
+            <p className="explore-status" role="status">{shareCopied ? exploreCopy.copied : exploreCopy.copy}</p>
+            <div className="explore-actions explore-share">
+              <input autoFocus className="explore-link" aria-label={exploreCopy.copy} readOnly value={shareUrl} onFocus={event => event.target.select()} />
+              <button type="button" onClick={dismissShare}>{exploreCopy.close}</button>
+            </div>
+          </div>}
           {isRegionalDay && regionalDay.error && <div className="explore-actions"><span role="status">{exploreCopy.error}</span><button type="button" onClick={() => { setRegionalRetry(false); window.setTimeout(() => setRegionalRetry(true), 0) }}>{exploreCopy.retry}</button></div>}
         </>}
 
