@@ -64,3 +64,11 @@ Genève uses the same national timetable baseline and the official TPG line laye
 5. ✓ Select Kiental–Griesalp as the measured rural PostBus study.
 6. ✓ Build shape-aware, progressively loaded 24-hour datasets for both sides of the contrast.
 7. ✓ Build the synchronized rural–urban contrast interface.
+
+## Next expansion — 8 September 2026
+
+The canonical [Gleislicht expansion roadmap](https://github.com/emmettl/motionstudies/blob/main/ROADMAP.md#8a--gleislicht-regional-depth-lakes-and-mountain-railways) continues this completed foundation through mountain-service discovery, a full-day Lake Lucerne–Rigi study, broader regional networks and deeper seasonal exploration.
+
+The preferred sequence is to reveal and classify existing mountain services, implement frequency-based service semantics where needed, build the lake-to-summit Rigi composition, then add Lausanne/Vaud or Basel/TNW following a source and geometry audit. Bern, Ticino and Graubünden remain planned regional additions; Jungfrau, Gornergrat, Pilatus, Rochers-de-Naye, Albula/Bernina and further lake networks form the Alpine and water programme.
+
+Existing ZVV, Genève and Zürich city multimodal studies also need full-day expansion and credible rail geometry within their regional artifacts. A study browser, reproducible weekday/weekend and seasonal selections, shareable study links and deliberate transitions between scales should make the growing collection easy to explore. These are planned items, not claims of implemented or published coverage; completion criteria and dependencies live in the canonical roadmap.
