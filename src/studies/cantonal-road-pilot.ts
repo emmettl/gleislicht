@@ -2,6 +2,7 @@ import type { NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-
 import type { RoadTopologySnapshot } from '@motionstudies/core/domain/road'
 import pilotCatalog from '../../data/cantonal-road-pilots.json'
 import { searchRoadCorridors, type RoadSearchCorridor } from '@motionstudies/core/road-search'
+export const cantonalPilotForRecording = (id?: string) => pilotCatalog.find(p => p.id === id)
 export const cantonalPilotForRoad = (road?: string) => pilotCatalog.find(p => p.road === road)
 export type CantonalPilotDefinition = typeof pilotCatalog[number]
 export function searchRoadsWithPilots<Road extends RoadSearchCorridor>(roads: readonly Road[], query: string): readonly Road[] {

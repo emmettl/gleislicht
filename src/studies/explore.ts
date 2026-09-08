@@ -1,3 +1,4 @@
+import pilotCatalog from '../../data/cantonal-road-pilots.json'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 import type { SwitzerlandNetworkStudy } from '../editions/switzerland.ts'
 
@@ -7,9 +8,17 @@ export const isRegionalDayStudy = (id: SwitzerlandNetworkStudy): id is keyof typ
 export function withinStudy(location: { longitude: number; latitude: number }, bounds?: NetworkSnapshot['bounds']) {
   return Boolean(bounds && location.longitude >= bounds.minLongitude && location.longitude <= bounds.maxLongitude && location.latitude >= bounds.minLatitude && location.latitude <= bounds.maxLatitude)
 }
-export interface StudyLink { study: SwitzerlandNetworkStudy; range: 'morning' | 'day'; time?: number; date?: string; station?: string; train?: string }
+export interface StudyLink { study: SwitzerlandNetworkStudy; range: 'morning' | 'day'; time?: number; date?: string; station?: string; train?: string; recording?: string; invalidRecording?: true }
 export function readStudyLink(search: string): StudyLink {
   const p = new URLSearchParams(search)
+  if (p.has('recording')) {
+    const pilot = pilotCatalog.find(entry => entry.id === p.get('recording'))
+    const time = p.has('time') ? Number(p.get('time')) : pilot?.initialTime
+    if (!pilot || (p.has('date') && p.get('date') !== pilot.serviceDate) || time === undefined || !Number.isFinite(time) || time < pilot.windowStart || time > pilot.windowEnd) {
+      return { study: 'national', range: 'morning', invalidRecording: true }
+    }
+    return { study: 'national', range: 'morning', recording: pilot.id, date: pilot.serviceDate, time }
+  }
   const study = STUDY_IDS.includes(p.get('study') as SwitzerlandNetworkStudy) ? p.get('study') as SwitzerlandNetworkStudy : 'national'
   const time = p.has('time') ? Number(p.get('time')) : NaN
   const date = p.get('date') ?? ''

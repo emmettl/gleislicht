@@ -105,7 +105,8 @@ import {
   type RoadTrafficSnapshot,
 } from '@motionstudies/core/domain/road'
 import { reconstructedNationalVehicleCount } from './studies/road-conditions.ts'
-import { cantonalPilotForRoad, cantonalPilotWindow, searchRoadsWithPilots, topologyWithPilot, type CantonalPilot } from './studies/cantonal-road-pilot.ts'
+import { PILOT_LINK_UNAVAILABLE } from './studies/cantonal-pilot-link-copy.ts'
+import { cantonalPilotForRecording, cantonalPilotForRoad, cantonalPilotWindow, searchRoadsWithPilots, topologyWithPilot, type CantonalPilot } from './studies/cantonal-road-pilot.ts'
 import {
   roadCorridorSearchValue,
 } from '@motionstudies/core/road-search'
@@ -276,13 +277,16 @@ export function App({ edition }: AppProps) {
     initialUiLanguage(edition),
   )
   const [initialLink] = useState(() => readStudyLink(window.location.search))
-  const linkPending = useRef(Boolean(initialLink.date || initialLink.time !== undefined || initialLink.station || initialLink.train))
+  const linkedPilot = cantonalPilotForRecording(initialLink.recording)
+  const pilotLinkPending = useRef(Boolean(linkedPilot))
+  const [pilotLinkUnavailable, setPilotLinkUnavailable] = useState(false)
+  const linkPending = useRef(!linkedPilot && Boolean(initialLink.date || initialLink.time !== undefined || initialLink.station || initialLink.train))
   const [exploreOpen, setExploreOpen] = useState(false)
   const [shareUrl, setShareUrl] = useState('')
   const [exploreNotice, setExploreNotice] = useState('')
   const [regionalRange, setRegionalRange] = useState<'morning' | 'day'>(initialLink.range)
   const [regionalRetry, setRegionalRetry] = useState(true)
-  const [isPlaying, setIsPlaying] = useState(initialLink.time === undefined)
+  const [isPlaying, setIsPlaying] = useState(initialLink.time === undefined && !initialLink.invalidRecording)
   const [view, setView] = useState<View>('network')
   const [journeyProgress, setJourneyProgress] = useState(0.11)
   const [journeyEnvironment, setJourneyEnvironment] = useState<JourneyEnvironment>({
@@ -292,7 +296,7 @@ export function App({ edition }: AppProps) {
     speed: 0.6,
     region: 'plateau',
   })
-  const [playbackTime, setNetworkTime] = useState(initialLink.time ?? edition.defaultNetworkTime)
+  const [playbackTime, setNetworkTime] = useState(linkedPilot ? edition.defaultNetworkTime : initialLink.time ?? edition.defaultNetworkTime)
   const nowRequested = useRef(false)
   const nowResolver = useRef<typeof import('./studies/swiss-now.ts') | undefined>(undefined)
   const [nowDate, setNowDate] = useState('')
@@ -355,7 +359,7 @@ export function App({ edition }: AppProps) {
   const [selectedTrainId, setSelectedTrainId] = useState<string>()
   const [selectedStationName, setSelectedStationName] = useState<string>()
   const [selectedRouteId, setSelectedRouteId] = useState<string>()
-  const [sbbEnabled, setSbbEnabled] = useState(true)
+  const [sbbEnabled, setSbbEnabled] = useState(!linkedPilot)
   const railVisible = sbbEnabled || networkStudy !== 'national'
   const [airEnabled, setAirEnabled] = useState(false)
   const [airCategorySelected, setAirCategorySelected] = useState(false)
@@ -364,13 +368,13 @@ export function App({ edition }: AppProps) {
   const [selectedAirTrackId, setSelectedAirTrackId] = useState<string>()
   const [selectedAirport, setSelectedAirport] = useState<StudyAirport>()
   const [roadSummary, setRoadSummary] = useState<typeof import('./studies/road-traffic-summary.ts')>()
-  const [roadEnabled, setRoadEnabled] = useState(false)
+  const [roadEnabled, setRoadEnabled] = useState(Boolean(linkedPilot))
   useEffect(() => { if (roadEnabled) void import('./studies/road-traffic-summary.ts').then(setRoadSummary) }, [roadEnabled])
   const [roadCategorySelected, setRoadCategorySelected] = useState(false)
   const [roadSnapshot, setRoadSnapshot] = useState<RoadTrafficSnapshot>()
   const [roadTopology, setRoadTopology] = useState<RoadTopologySnapshot>()
   const [roadLoadState, setRoadLoadState] = useState<RoadLoadState>('idle')
-  const [selectedRoadId, setSelectedRoadId] = useState<string>()
+  const [selectedRoadId, setSelectedRoadId] = useState<string | undefined>(linkedPilot?.road)
   const pilotClockBounds = useRef<{ windowStart: number; windowEnd: number } | undefined>(undefined)
   const [cantonalPilot, setCantonalPilot] = useState<CantonalPilot>()
   const selectedPilotDefinition = cantonalPilotForRoad(selectedRoadId)
@@ -1942,9 +1946,21 @@ export function App({ edition }: AppProps) {
     setIsPlaying(true)
     if (!nowRequested.current) startNowClock()
   }
+  useEffect(() => {
+    if (!pilotLinkPending.current || !linkedPilot) return
+    if (!roadEnabled || selectedRoadId !== linkedPilot.road || view !== 'network' || networkStudy !== 'national' || sbbEnabled || airEnabled) {
+      pilotLinkPending.current = false
+    } else if (roadLoadState === 'error' || (roadLoadState === 'ready' && !selectedRoad)) {
+      pilotLinkPending.current = false
+      setPilotLinkUnavailable(true)
+      setSelectedRoadId(undefined)
+      setRoadEnabled(false)
+      setSbbEnabled(true)
+    }
+  }, [linkedPilot, roadEnabled, selectedRoadId, view, networkStudy, sbbEnabled, airEnabled, roadLoadState, selectedRoad])
   const shareStudy = async () => {
     const { studyLinkUrl } = await import('./studies/share-link.ts')
-    const url = studyLinkUrl(window.location.href, { study: networkStudy, range: isNationalDay || isRegionalDay ? 'day' : 'morning', date: network?.metadata.serviceDate, time: networkTime, station: selectedStationName, train: selectedTrainId })
+    const url = studyLinkUrl(window.location.href, activePilot ? { study: 'national', range: 'morning', recording: activePilot.metadata.recordingId, date: activePilot.metadata.serviceDate, time: networkTime } : { study: networkStudy, range: isNationalDay || isRegionalDay ? 'day' : 'morning', date: network?.metadata.serviceDate, time: networkTime, station: selectedStationName, train: selectedTrainId })
     setShareUrl(url)
     try { await navigator.clipboard.writeText(url); setExploreNotice(exploreCopy.copied) } catch { setExploreNotice(exploreCopy.copy) }
   }
@@ -3181,10 +3197,11 @@ export function App({ edition }: AppProps) {
           <p className="between">
             {activePilot ? null : selectedRoad.description ?? text.nationalMotorway}
           </p>
-          {selectedPilotDefinition && <Suspense fallback={null}><CantonalPilotControls key={selectedPilotDefinition.id} definition={selectedPilotDefinition} pilot={activePilot} time={networkTime} language={language}
-            onStart={pilot => {
+          {selectedPilotDefinition && <Suspense fallback={null}><CantonalPilotControls key={`${selectedPilotDefinition.id}:${sbbEnabled}:${airEnabled}:${roadEnabled}`} definition={selectedPilotDefinition} pilot={activePilot} time={networkTime} language={language}
+            autoStartTime={pilotLinkPending.current && linkedPilot?.id === selectedPilotDefinition.id ? initialLink.time : undefined}
+            onAutoStart={() => { pilotLinkPending.current = false }}
+            onStart={(pilot, initialTime) => {
               pilotClockBounds.current = pilot.metadata
-              const initialTime = selectedPilotDefinition.initialTime
               roadHistorySeekRef.current = { time: initialTime, at: performance.now() }
               stopNow()
               setSbbEnabled(false)
@@ -3808,11 +3825,13 @@ export function App({ edition }: AppProps) {
             {nowActive && <button type="button" onClick={browserLocation.locate} disabled={browserLocation.status === 'locating'}>{exploreCopy.locate}</button>}
             {browserLocation.status !== 'idle' && <button type="button" onClick={clearBrowserLocation}>{exploreCopy.clear}</button>}
             {isRegionalDayStudy(networkStudy) && <button type="button" aria-pressed={isRegionalDay} onClick={() => { stopNow(); setRegionalRange(value => value === 'day' ? 'morning' : 'day'); setNetworkTime(edition.defaultNetworkTime); setRegionalRetry(true) }}>{exploreCopy.day}</button>}
-            {!activePilot && <button type="button" disabled={!network} onClick={() => void shareStudy()}>{exploreCopy.share}</button>}
+            <button type="button" disabled={!network && !activePilot} onClick={() => void shareStudy()}>{exploreCopy.share}</button>
           </div>
           {nowActive && <p className="explore-status">{network?.metadata.serviceDate === nowDate ? exploreCopy.today : exploreCopy.typical}</p>}
           {nowUnavailable && <p className="explore-status" role="status">{exploreCopy.unavailable}</p>}
           {browserLocation.status !== 'idle' && <p className="explore-status" role="status">{browserLocation.status === 'locating' ? exploreCopy.locating : browserLocation.status === 'denied' ? exploreCopy.denied : browserLocation.status === 'timeout' ? exploreCopy.timeout : browserLocation.status === 'unavailable' ? exploreCopy.locationError : validLocation ? `${exploreCopy.accuracy}: ±${Math.round(validLocation.accuracy)} m` : exploreCopy.outside}</p>}
+          {(initialLink.invalidRecording || pilotLinkUnavailable) && <p className="explore-status" role="status">{PILOT_LINK_UNAVAILABLE[language]}</p>}
+          {pilotLinkUnavailable && <button type="button" onClick={() => window.location.reload()}>{exploreCopy.retry}</button>}
           {exploreNotice && <p className="explore-status" role="status">{exploreNotice}</p>}
           {shareUrl && <input className="explore-link" aria-label={exploreCopy.copy} readOnly value={shareUrl} onFocus={event => event.target.select()} />}
           {isRegionalDay && regionalDay.error && <div className="explore-actions"><span role="status">{exploreCopy.error}</span><button type="button" onClick={() => { setRegionalRetry(false); window.setTimeout(() => setRegionalRetry(true), 0) }}>{exploreCopy.retry}</button></div>}

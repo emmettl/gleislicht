@@ -143,7 +143,7 @@ The follow-up passes **187 tests across 49 files**, production build and lint in
 
 ## Horgen afternoon playback
 
-In AUTO, search **Horgen**, select **ZH 3**, then choose **Play Horgen afternoon pilot**. Playback opens paused at 13:44, focuses the 1.3 km section, and switches the timeline to **8 September 2026, 13:23–14:21 CEST**. It displays reconstructed light/heavy vehicles in both directions using the existing road renderer. Rail and air are hidden during this separate observation window. **Return to morning roads** restores the morning timeline; leaving the pilot’s road/study also clears the pilot. Pilot sharing is unavailable because the current share format cannot represent this recording.
+In AUTO, search **Horgen**, select **ZH 3**, then choose **Play Horgen afternoon pilot**. Playback opens paused at 13:44, focuses the 1.3 km section, and switches the timeline to **8 September 2026, 13:23–14:21 CEST**. It displays reconstructed light/heavy vehicles in both directions using the existing road renderer. Rail and air are hidden during this separate observation window. **Return to morning roads** restores the morning timeline; leaving the pilot’s road/study also clears the pilot. Choose **Share study** to copy a link that restores this recording, date and current time, paused. A link into an observation gap preserves the gap and keeps traffic hidden.
 
 The on-demand `public/data/zurich-cantonal-road-pilot.json` contains four directional sites, two sections and **40 complete minute samples**:
 
@@ -174,7 +174,7 @@ In AUTO, search **Wallisellen** or **Bassersdorf**, select **ZH 1**, then choose
 
 The public `wallisellen-bassersdorf-road-pilot.json` artifact is approximately **12.9 kB / 3.6 kB gzip** and is fetched only on choosing the pilot. The Horgen data remains a separate download. Each response must match the selected recording ID, road, date, bounds, counter pair and expected sample count before replacing the morning view. Selecting another road aborts an unfinished download and clears the active pilot. Wrong-corridor responses and failed downloads leave the morning timeline intact and allow retry.
 
-The shared controls derive dates, lengths and window labels from the selected recording, support all four UI languages, and disclose gaps only where they exist. The pilot place names supplement search without changing the official road description. Horgen retains its existing 40 samples and two gaps; its artifact now additionally carries the explicit recording ID `horgen-2026-09-08`. The new recording ID is `wallisellen-bassersdorf-2026-09-08`. Pilot sharing remains unavailable until the share format supports these recording identities.
+The shared controls derive dates, lengths and window labels from the selected recording, support all four UI languages, and disclose gaps only where they exist. The pilot place names supplement search without changing the official road description. Horgen retains its existing 40 samples and two gaps; its artifact now additionally carries the explicit recording ID `horgen-2026-09-08`. The new recording ID is `wallisellen-bassersdorf-2026-09-08`. Both recording identities are supported by **Share study**. Links reopen the matching corridor with road-only playback, focus its recorded section and preserve the requested time, including the last observation.
 
 Rebuild the second public pilot from the archived observations and pinned review:
 
@@ -198,6 +198,13 @@ The [coverage and junction review](CANTONAL-COVERAGE-REVIEW.md) audits the first
 
 1. Expand accepted direction coverage using more precise destination references and reviewed junction geometry. Nearby destinations and settlement extents crossing a station account for many exclusions; weakening checks alone is not a solution.
 2. Review section assumptions at intersections and find longer complete observation windows before broadening the pilot. Recording, geometry and usable playback coverage remain separate measures.
-3. Add an explicit recording identity to shared study links before enabling pilot sharing.
+3. Extend the recording catalog only after each new corridor passes direction, topology and minute-completeness review; its catalog identity then supports the same share-link format.
 
 The existing 130 unmatched federal directional groups are a separate follow-up: some may become usable with broader road geometry, but they are not automatically classified as cantonal roads or included in this Zürich supplier scope.
+
+
+### Shared pilot links
+
+The `recording` query parameter selects a bundled catalog identity, never a filename or arbitrary URL. For example, `?recording=horgen-2026-09-08&date=2026-09-08&time=49020` opens the 13:37 observation gap; `?recording=wallisellen-bassersdorf-2026-09-08&date=2026-09-08&time=57420` opens the final 15:57 observation. Times are seconds since midnight in the recording's Swiss civil day. Omitting date or time uses the catalog date and initial time. Generated links include both explicitly and omit browser coordinates, transient query parameters and rail focus.
+
+Unknown recordings, conflicting dates and out-of-window or non-finite times produce an explained morning fallback. A failed recording fetch stays in the morning view and can be retried from the corridor card at the linked time. Missing road geometry also produces an explained fallback with a page-reload retry. Navigating away or changing transport layers cancels a pending recording request. Existing railway links retain their previous behavior. Recording JSON remains lazy: normal visits do not fetch pilots; a valid recording link requests its selected artifact after road geometry is available.

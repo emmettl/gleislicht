@@ -31,3 +31,30 @@ describe('Swiss Now and study links', () => {
     expect(withinStudy({ longitude: 0, latitude: 0 }, { minLongitude: 8, maxLongitude: 9, minLatitude: 47, maxLatitude: 48 })).toBe(false)
   })
 })
+
+
+describe('cantonal recording links', () => {
+  for (const [recording, start, end] of [
+    ['horgen-2026-09-08', 48180, 51660],
+    ['wallisellen-bassersdorf-2026-09-08', 51240, 57420],
+  ] as const) {
+    it(`round-trips ${recording}, including its last observation`, () => {
+      for (const time of [start, end]) {
+        const state = { study: 'national', range: 'morning', recording, date: '2026-09-08', time } as const
+        const url = studyLinkUrl('https://example.org/?latitude=47&longitude=8&token=private#location', { ...state, station: 'Zürich HB', train: 'stale' })
+        expect(readStudyLink(new URL(url).search)).toEqual(state)
+        expect(url).not.toMatch(/latitude|longitude|token|private|location|station|train/)
+      }
+    })
+  }
+  it('preserves a gap time and resolves defaults from the recording, ignoring rail focus', () => {
+    expect(readStudyLink('?recording=horgen-2026-09-08&time=49020&study=postbus&range=day&station=Bern')).toEqual({ study: 'national', range: 'morning', recording: 'horgen-2026-09-08', date: '2026-09-08', time: 49020 })
+    expect(readStudyLink('?recording=horgen-2026-09-08').time).toBe(49440)
+  })
+  it('rejects unsupported identities, conflicting dates and times outside the recording', () => {
+    for (const query of ['recording=../../private.json', 'recording=', 'recording=horgen-2026-09-08&date=2026-09-09', ...['', 'NaN', 'Infinity', '-1', '48179', '51661'].map(time => `recording=horgen-2026-09-08&time=${time}`)]) {
+      expect(readStudyLink(`?${query}&study=postbus&station=Bern`)).toEqual({ study: 'national', range: 'morning', invalidRecording: true })
+    }
+    expect(() => studyLinkUrl('https://example.org', { study: 'national', range: 'morning', recording: 'unknown' })).toThrow('Invalid recording link')
+  })
+})
