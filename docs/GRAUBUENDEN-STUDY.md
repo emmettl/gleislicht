@@ -30,7 +30,23 @@ No current canton-wide local bus-line export with verified route/operator identi
 
 Rail routing uses declared source topology and exact operating-point numbers. Reviewed groups isolate standard gauge (SBB/SOB/THURBO/BLS infrastructure) from RhB/MGB metre gauge, including specifically allowed mixed-gauge RhB segments. The mainline RhB graph includes MGB infrastructure for through Glacier Express journeys; no gauge-changing transfer is invented. Other scheduled operating points are blocked during each pair search so a path cannot pass a later call early. Full-pattern identity includes route, direction and every ordered stop and call rule.
 
-Three explicit platform mappings resolve GTFS shared-station IDs to named FOT nodes: **Landquart → Landquart [Gleis 5–8]**; **Chur → Chur [Gleis 10–14]** for reviewed RhB mainline routes; **Chur → Chur Arosabahn** only for R16/RE6. Each mapping pins the source/target operating-point number, target name and route scope in [policy](../data/graubuenden-policy.json). Original GTFS calls remain unchanged. These select existing nodes; they add no graph edges. Sagliains attachments around 532–538 m remain rejected, as do missing new operating points such as Schmitten GR Landwasserviadukt. No tolerance was raised to force their inclusion.
+Three explicit platform mappings resolve GTFS shared-station IDs to named FOT nodes: **Landquart → Landquart [Gleis 5–8]**; **Chur → Chur [Gleis 10–14]** for reviewed RhB mainline routes; **Chur → Chur Arosabahn** only for R16/RE6. Each mapping pins the source/target operating-point number, target name and route scope in [policy](../data/graubuenden-policy.json). Original GTFS calls remain unchanged. These select existing nodes; they add no graph edges. A subsequent, separately pinned review resolves Sagliains and Schmitten GR Landwasserviadukt by attaching their timetable stops to two explicitly identified existing source curves, as detailed below. No primary tolerance was raised.
+
+### Reviewed Sagliains and Landwasserviadukt attachments
+
+[Review policy](../data/graubuenden-rail-review/policy.json) · [Reproducible before/after audit](../data/graubuenden-audit/rail-anchor-review.json) · [Archived official evidence](../data/graubuenden-rail-review/sources.json)
+
+![Reviewed station positions on the original FOT curves](assets/graubuenden-rail-anchors.svg)
+
+RhB documents the [Sagliains station expansion](https://www.rhb.ch/de/aktuelles/blog/sichere-wege-fuer-die-kleinsten/). Its [14 May 2025 announcement](https://www.rhb.ch/it/medien/medienmitteilungen/viaduktshuttle-auf-dem-landwasserviadukt/) establishes the new Schmitten GR Landwasserviadukt stop between Alvaneu and Filisur; the [current station page](https://www.rhb.ch/de/informationen/bahnhoefe/schmitten-gr-landwasserviadukt/) and [Viaduktshuttle page](https://www.rhb.ch/de/ausfluege/viaduktshuttle/) confirm the identity and corridor. These pages support station/service identity; they do not supply replacement alignment or certify the fixture timetable.
+
+For R4, RE4 and R15, the two exact Sagliains timetable platform coordinates identify a position inside FOT segment `ch14uvag00068025` (Sagliains–Lavin). Their mean projects 6.3 m from that curve; the two original platform endpoints are 2.6 m and 12.8 m from the derived anchor. The old FOT Sagliains node stays connected as a junction, but station-number lookup in this route-scoped derived graph uses the inserted anchor. For R28, the Schmitten GR Landwasserviadukt timetable stop projects 1.1 m from segment `ch14uvag00068108` (Alvaneu–Filisur), with the same 1.1 m bounded connector. Its GTFS operating-point identity already exists; the new derived topology node is explicitly distinguished from a FOT source record.
+
+Each reviewed segment is subdivided at a single interior position. Its original vertices, curve and junction connectivity remain intact. The policy pins both source endpoint objects, the simplified curve hash, exact platform IDs/coordinates, four route/operator identities, the timetable hash and both fixture dates. It uses a stricter 20 m platform-to-anchor limit and requires at least 100 m separation from alternative RhB curves. The nearest alternatives are 534.9 m and 409.7 m away. Segment validity, gauge/operator checks, topology attachment, full-pattern stop order and primary detour limits still apply. The audit records derived segment IDs, their original FOT segment, source vertex intervals, direction, and the primary failure. This is an explicit linear-reference inference, not a station-node relocation in the source or proof of a particular running track.
+
+All 724 previously complete Friday rail journeys and 723 Sunday rail journeys retain exactly the same path arrays and evidence. The reviewed anchors recover 100 Friday and 86 Sunday complete journeys: rail admission rises to 824/856 (96.3%) and 809/842 (96.1%). Every call, source time and cross-canton terminus remains intact. The entire-canton denominator and bus admission are unchanged. The comparison is regenerated by running the same pinned pipeline with and without the two reviews.
+
+Alternative-source audit: all 24 records returned by the SBB Sagliains graphical query are schematic two-point records. The four Schmitten search results refer to other locations (including Schmitten FR and Roggwil Schmitten); none is admitted. All 28 records receive explicit dispositions. The direct SBB Bern station-page acquisition returned HTTP 403, recorded as such. Bern platform 50, Basel border topology and the generic Diverse INFO GEX identity remain excluded; proximity or a generic operator label alone is insufficient. This review does not expand seasonal dates or certify local bus vectors.
 
 Rail limits: 350 m stop-to-operating-point attachment, 120 m source-segment topology attachment, max(3,000 m, 4.5 × direct distance) pair detour, 5 m LV95 simplification before the existing swisstopo WGS84 conversion. Accepted source segments must not be expired or future-dated for the fixture interval. These are inferred infrastructure paths with bounded stop connectors; there is no running-track or diversion certification.
 
@@ -45,26 +61,26 @@ If any pair fails, **the whole directed journey is excluded**. No partial fragme
 | Metric | Friday 2026-09-04 | Sunday 2026-09-06 |
 | --- | ---: | ---: |
 | Civil-day movement instances | 39'402 | 38'425 |
-| Admitted complete journeys | 6'270 | 5'088 |
-| Excluded whole journeys | 33'132 | 33'337 |
+| Admitted complete journeys | 6'370 | 5'174 |
+| Excluded whole journeys | 33'032 | 33'251 |
 | Complete directed patterns | 1'567 | 1'292 |
-| Admitted complete patterns | 1'343 | 1'081 |
+| Admitted complete patterns | 1'370 | 1'105 |
 | Pattern-specific directed pairs | 17'605 | 14'862 |
-| Matched pattern-specific directed pairs | 17'279 | 14'559 |
+| Matched pattern-specific directed pairs | 17'330 | 14'604 |
 | All segment occurrences | 119'682 | 105'774 |
-| Matched segment occurrences | 86'218 | 72'125 |
+| Matched segment occurrences | 86'411 | 72'294 |
 | Scheduled segment occurrences | 101'604 | 87'516 |
-| Matched scheduled segment occurrences | 86'218 | 72'125 |
+| Matched scheduled segment occurrences | 86'411 | 72'294 |
 | Representative headway instances | 18'078 | 18'258 |
 | Preceding-day carry-ins | 86 | 242 |
-| Admitted carry-ins | 79 | 228 |
+| Admitted carry-ins | 79 | 230 |
 
 | Mode | Annual routes | Friday admitted / candidates | Sunday admitted / candidates |
 | --- | ---: | ---: | ---: |
 | boat | 1 | 0 / 6 (0.0%) | 0 / 6 (0.0%) |
 | bus | 266 | 5'546 / 5'762 (96.3%) | 4'365 / 4'561 (95.7%) |
 | mountain | 57 | 0 / 32'764 (0.0%) | 0 / 33'002 (0.0%) |
-| rail | 55 | 724 / 856 (84.6%) | 723 / 842 (85.9%) |
+| rail | 55 | 824 / 856 (96.3%) | 809 / 842 (96.1%) |
 | tram | 1 | 0 / 14 (0.0%) | 0 / 14 (0.0%) |
 
 All-mode admission is deliberately low because large mountain-service and headway counts remain in the denominator. All currently admitted journeys are scheduled instances. Pair success within a rejected pattern contributes to pair/occurrence coverage but never to admitted journey counts. Inactive route records: **87**. Friday and Sunday do not establish annual, winter, ski-shuttle, holiday, pass-road or diversion coverage.
@@ -76,7 +92,7 @@ All-mode admission is deliberately low because large mountain-service and headwa
 | 11 | Schweizerische Bundesbahnen SBB | 9 | 62 / 76 | 65 / 79 |
 | 48 | Matterhorn Gotthard Bahn (fo) | 3 | 36 / 36 | 36 / 36 |
 | 65 | THURBO | 3 | 76 / 76 | 72 / 72 |
-| 72 | Rhätische Bahn | 36 | 508 / 608 | 508 / 594 |
+| 72 | Rhätische Bahn | 36 | 608 / 608 | 594 / 594 |
 | 82 | Schweizerische Südostbahn (sob) | 4 | 42 / 58 | 42 / 59 |
 | 109 | Davos Klosters Bergbahnen (dpb) | 4 | 0 / 141 | 0 / 141 |
 | 111 | Sportbahnen Davos | 1 | 0 / 102 | 0 / 102 |
@@ -149,8 +165,7 @@ All-mode admission is deliberately low because large mountain-service and headwa
 | no-reviewed-mountain-geometry | 32'764 | 33'002 |
 | no-reviewed-tram-geometry | 14 | 14 |
 | rail-disconnected-detour-or-stop-order | 3 | 3 |
-| rail-no-exact-operating-point | 28 | 26 |
-| rail-station-attachment-too-far | 99 | 88 |
+| rail-station-attachment-too-far | 27 | 28 |
 | road-excessive-detour | 22 | 20 |
 | road-matcher-fallback | 53 | 61 |
 | road-missing-shape | 67 | 61 |
@@ -189,7 +204,7 @@ node scripts/import-graubuenden-roads.mjs
 node scripts/build-graubuenden-region.mjs
 node scripts/check-graubuenden-region.mjs
 node scripts/document-graubuenden-study.mjs
-npx vitest run scripts/graubuenden-region.test.mjs scripts/zug-rail-geometry.test.mjs
+npx vitest run scripts/graubuenden-region.test.mjs scripts/graubuenden-rail-anchors.test.mjs scripts/zug-rail-geometry.test.mjs
 npm run build
 ```
 

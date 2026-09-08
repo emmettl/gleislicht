@@ -1,0 +1,68 @@
+{
+  "purpose": "Official supporting evidence and rejected alternative geometry. Operator pages establish station/service identity; geometry remains the pinned FOT source. No operator page or SBB geometry is incorporated in the public path database.",
+  "files": [
+    {
+      "file": "rhb-sagliains.response.gz",
+      "url": "https://www.rhb.ch/de/aktuelles/blog/sichere-wege-fuer-die-kleinsten/",
+      "effectiveUrl": "https://www.rhb.ch/de/aktuelles/blog/sichere-wege-fuer-die-kleinsten/",
+      "status": 200,
+      "retrievedAt": "2026-09-08T19:15:56.523011+00:00",
+      "sha256": "cc5b8bbed5df09d2ad3e2d0d9449f511be4b83f0a12c66f891689ffdcfc48d71",
+      "compressedSha256": "39d522a2a19690f77e647912f03b687f61d2aed18d74ab6ccc932464df490588"
+    },
+    {
+      "file": "rhb-landwasser-station.response.gz",
+      "url": "https://www.rhb.ch/de/informationen/bahnhoefe/schmitten-gr-landwasserviadukt/",
+      "effectiveUrl": "https://www.rhb.ch/de/informationen/bahnhoefe/schmitten-gr-landwasserviadukt/",
+      "status": 200,
+      "retrievedAt": "2026-09-08T19:15:56.831632+00:00",
+      "sha256": "db5a6b456fe5c83ecae2aa902dad259d33d26b2ced45242987a55e6fec03e6d5",
+      "compressedSha256": "8b137be1784769c88f9e94b59444087864cec6dc62c44c2586d584d34b2ed859"
+    },
+    {
+      "file": "rhb-landwasser-opening.response.gz",
+      "url": "https://www.rhb.ch/it/medien/medienmitteilungen/viaduktshuttle-auf-dem-landwasserviadukt/",
+      "effectiveUrl": "https://www.rhb.ch/it/medien/medienmitteilungen/viaduktshuttle-auf-dem-landwasserviadukt/",
+      "status": 200,
+      "retrievedAt": "2026-09-08T19:15:57.345257+00:00",
+      "sha256": "c578a7d22bf0e5ab37cf587a0c90e4cc2ec7315f6ffe3bd03b70841531dc7f3f",
+      "compressedSha256": "0549ad76c861df7e413257b45caa2b9b6420bbae7e21d326447584ec4ada3f02"
+    },
+    {
+      "file": "rhb-viaduktshuttle.response.gz",
+      "url": "https://www.rhb.ch/de/ausfluege/viaduktshuttle/",
+      "effectiveUrl": "https://www.rhb.ch/de/ausfluege/viaduktshuttle/",
+      "status": 200,
+      "retrievedAt": "2026-09-08T19:15:57.884615+00:00",
+      "sha256": "d5957b19d28aef787e36451ed731480e8140a01a49e6e62e0de16594b3b8019a",
+      "compressedSha256": "90a3023a791704d08d3395f24c0444be43e41f9f390694b3f67479971a9773a3"
+    },
+    {
+      "file": "sbb-bern-platforms.response.gz",
+      "url": "https://www.sbb.ch/de/reiseinformationen/bahnhoefe/bahnhof-finden/bahnhof-bern/bahnhofsbeschrieb.html",
+      "effectiveUrl": "https://www.sbb.ch/de/reiseinformationen/bahnhoefe/bahnhof-finden/bahnhof-bern/bahnhofsbeschrieb.html",
+      "status": 403,
+      "retrievedAt": "2026-09-08T19:15:58.037628+00:00",
+      "sha256": "803efd091dbdb84f4631f9d1b00428e872c984e98a60789044a25483ed87752b",
+      "compressedSha256": "b2d5eac849c8886e8f24e1e083f51efe8995142d9bbf0d7f0b8b148cf3cb1047"
+    },
+    {
+      "file": "sbb-sagliains.response.gz",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Sagliains%22%29&limit=100",
+      "effectiveUrl": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Sagliains%22%29&limit=100",
+      "status": 200,
+      "retrievedAt": "2026-09-08T19:15:58.315002+00:00",
+      "sha256": "76cb77c40dde382f9f69b35aaec3564dbec2c048f238edaf5ffe272f6156fa6b",
+      "compressedSha256": "5d70a8628e89725008a9af707a290bbfe4b186e257480b003fdcab30a98f4f47"
+    },
+    {
+      "file": "sbb-schmitten.response.gz",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Schmitten%22%29&limit=100",
+      "effectiveUrl": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Schmitten%22%29&limit=100",
+      "status": 200,
+      "retrievedAt": "2026-09-08T19:15:58.725276+00:00",
+      "sha256": "865b1f107e289464dfd2ecfac2087e3cf550723ac9f410ee0117b188a4970bff",
+      "compressedSha256": "2d27658f6d9dd45652cfbdab97b685381ee7e302e6ff0f61d9d77bf9af43d6ed"
+    }
+  ]
+}

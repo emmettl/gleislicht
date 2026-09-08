@@ -407,5 +407,9 @@
     "Official local line geometry not admitted: current export, route crosswalk and dataset-specific reuse terms remain unverified.",
     "Infrastructure vintage and OSM routing do not certify September 2026 service itineraries, track assignment or temporary diversions."
   ],
-  "timetableSha256": "3761903b9a1f27cefca71785356202637be61dedbbe9b45d9204009d15201864"
+  "timetableSha256": "3761903b9a1f27cefca71785356202637be61dedbbe9b45d9204009d15201864",
+  "railAnchorReview": {
+    "policySha256": "c54553e333aff0c50d49746a997685c4a223aaaba5af4e1b876b3281b782e0bf",
+    "description": "Explicit station positions on two existing RhB source curves, confined to R4/RE4/R15/R28 on the pinned fixtures. Both source curves remain intact as two joined slices. The old Sagliains source node stays as a junction, with its station-number lookup redirected to the reviewed derived anchor. Original timetable IDs and coordinates remain unchanged. No running-track or platform access certification."
+  }
 }

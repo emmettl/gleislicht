@@ -107,6 +107,8 @@
     "data:graubuenden:census": "node --max-old-space-size=8192 scripts/graubuenden-timetable.mjs",
     "data:graubuenden": "node scripts/build-graubuenden-region.mjs",
     "data:graubuenden:check": "node scripts/check-graubuenden-region.mjs",
+    "data:graubuenden:review": "node scripts/review-graubuenden-rail.mjs",
+    "data:graubuenden:rail-sources": "python3 scripts/prepare-graubuenden-rail-review.py",
     "data:graubuenden:docs": "node scripts/document-graubuenden-study.mjs",
     "data:valais:sources": "python3 scripts/prepare-valais-sources.py",
     "data:valais:census": "node --max-old-space-size=8192 scripts/valais-timetable.mjs",

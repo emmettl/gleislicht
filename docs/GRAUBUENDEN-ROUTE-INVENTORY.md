@@ -13,7 +13,7 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 91-12-A-j26-1 | 65 / THURBO | rail / S12 | 290 | 76/76 | 72/72 | admitted-all-dated-trips; — | Chur; Landquart; Maienfeld |
 | 91-13-C-j26-1 | 72 / Rhätische Bahn | rail / RE13 | 208 | 28/28 | 28/28 | admitted-all-dated-trips; — | Landquart; Malans GR; Seewis-Pardisla; Grüsch; Schiers |
 | 91-13-I-j26-1 | 82 / Schweizerische Südostbahn (sob) | rail / IR13 | 177 | 32/32 | 32/32 | admitted-all-dated-trips; — | Chur; Landquart; Maienfeld |
-| 91-15-J-j26-1 | 72 / Rhätische Bahn | rail / R15 | 170 | 5/41 | 9/39 | partially-admitted; rail-station-attachment-too-far | Bever; Samedan; Celerina; St. Moritz; Punt Muragl |
+| 91-15-J-j26-1 | 72 / Rhätische Bahn | rail / R15 | 170 | 41/41 | 39/39 | admitted-all-dated-trips; — | Bever; Samedan; Celerina; St. Moritz; Punt Muragl |
 | 91-15-L-j26-1 | 11 / Schweizerische Bundesbahnen SBB | rail / RE15 | 33 | 0/0 | 4/4 | admitted-all-dated-trips; — | Chur; Landquart |
 | 91-15-M-j26-1 | 72 / Rhätische Bahn | rail / 15 | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | S-chanf; Cinuos-chel-Brail; Zernez; Susch; Lavin |
 | 91-16-H-j26-1 | 72 / Rhätische Bahn | rail / R16 | 91 | 35/35 | 34/34 | admitted-all-dated-trips; — | Chur; Chur Altstadt; Lüen-Castiel; St. Peter-Molinis; Peist |
@@ -26,7 +26,7 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 91-2-T-j26-1 | 72 / Rhätische Bahn | rail / R2 | 98 | 10/10 | 10/10 | admitted-all-dated-trips; — | Landquart; Malans GR; Seewis-Pardisla; Grüsch; Schiers |
 | 91-24-B-j26-1 | 72 / Rhätische Bahn | rail / R24 | 5 | 1/1 | 1/1 | admitted-all-dated-trips; — | Landquart; Malans GR; Seewis-Pardisla; Grüsch; Schiers |
 | 91-24-H-j26-1 | 72 / Rhätische Bahn | rail / RE24 | 147 | 26/26 | 26/26 | admitted-all-dated-trips; — | Landquart; Malans GR; Seewis-Pardisla; Grüsch; Schiers |
-| 91-28-A-j26-1 | 72 / Rhätische Bahn | rail / R28 | 61 | 0/28 | 0/26 | excluded; rail-no-exact-operating-point | Schmitten GR Landwasserviadukt; Surava; Alvaneu; Filisur |
+| 91-28-A-j26-1 | 72 / Rhätische Bahn | rail / R28 | 61 | 28/28 | 26/26 | admitted-all-dated-trips; — | Schmitten GR Landwasserviadukt; Surava; Alvaneu; Filisur |
 | 91-2H-Y-j26-1 | 11 / Schweizerische Bundesbahnen SBB | rail / IC | 413 | 0/0 | 10/10 | admitted-all-dated-trips; — | Chur; Landquart |
 | 91-3-C-j26-1 | 11 / Schweizerische Bundesbahnen SBB | rail / IC3 | 2598 | 58/58 | 47/47 | admitted-all-dated-trips; — | Chur; Landquart; Maienfeld |
 | 91-3-P-j26-1 | 11 / Schweizerische Bundesbahnen SBB | rail / 3 | 4 | 0/0 | 0/0 | inactive-on-validation-dates; — | Chur; Landquart |
@@ -39,8 +39,8 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 91-38-C-j26-1 | 72 / Rhätische Bahn | rail / 38 | 2 | 0/0 | 2/2 | admitted-all-dated-trips; — | Chur; Reichenau-Tamins; Thusis; Tiefencastel; Filisur |
 | 91-38-j26-1 | 72 / Rhätische Bahn | rail / IR38 | 249 | 27/27 | 27/27 | admitted-all-dated-trips; — | Chur; Chur West; Domat/Ems; Domat/Ems Werk; Reichenau-Tamins |
 | 91-3O-Y-j26-1 | 72 / Rhätische Bahn | rail / EXT | 1 | 0/0 | 0/0 | inactive-on-validation-dates; — | S-chanf; Cinuos-chel-Brail; Zernez; Susch; Lavin |
-| 91-4-N-j26-1 | 72 / Rhätische Bahn | rail / RE4 | 148 | 0/28 | 2/28 | partially-admitted; rail-station-attachment-too-far | Landquart; Malans GR; Seewis-Pardisla; Grüsch; Schiers |
-| 91-4-O-j26-1 | 72 / Rhätische Bahn | rail / R4 | 95 | 0/8 | 8/12 | partially-admitted; rail-station-attachment-too-far | Klosters Platz; Susch; Lavin; Guarda; Ardez |
+| 91-4-N-j26-1 | 72 / Rhätische Bahn | rail / RE4 | 148 | 28/28 | 28/28 | admitted-all-dated-trips; — | Landquart; Malans GR; Seewis-Pardisla; Grüsch; Schiers |
+| 91-4-O-j26-1 | 72 / Rhätische Bahn | rail / R4 | 95 | 8/8 | 12/12 | admitted-all-dated-trips; — | Klosters Platz; Susch; Lavin; Guarda; Ardez |
 | 91-45-j26-1 | 48 / Matterhorn Gotthard Bahn (fo) | rail / R45 | 30 | 28/28 | 28/28 | admitted-all-dated-trips; — | Tschamut-Selva; Dieni; Rueras; Sedrun; Bugnei |
 | 91-46-B-j26-1 | 48 / Matterhorn Gotthard Bahn (fo) | rail / R46 | 26 | 0/0 | 0/0 | inactive-on-validation-dates; — | Dieni; Rueras; Sedrun; Bugnei; Mumpé Tujetsch |
 | 91-47-Y-j26-1 | 65 / THURBO | rail / S | 3 | 0/0 | 0/0 | inactive-on-validation-dates; — | Landquart; Maienfeld |

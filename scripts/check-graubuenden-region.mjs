@@ -48,7 +48,9 @@ for (const day of raw.snapshots) {
     if (t.calls.some(c => ['2', '3'].includes(c.pickupType) || ['2', '3'].includes(c.dropOffType))) reasons.push('prior-arrangement-call')
     assert.deepEqual(p.reasons, reasons); assert.equal(p.admitted, !reasons.length)
     assert.equal(p.pairs.length, pairs.length)
-    pairs.forEach((pair, i) => { assert.equal(p.pairs[i].matched, Boolean(pair.path)); assert.equal(p.pairs[i].geometrySha256, pair.path ? sha256(JSON.stringify(pair.path)) : null) })
+    pairs.forEach(({ path, ...evidence }, i) => {
+      assert.deepEqual(p.pairs[i], { fromId: t.calls[i].id, toId: t.calls[i + 1].id, matched: Boolean(path), geometrySha256: path ? sha256(JSON.stringify(path)) : null, ...evidence }, 'Changed directed geometry provenance')
+    })
     if (p.admitted) expected.set(t.id, t)
   }
   assert.equal(occurrences.size, pp.size)
@@ -67,6 +69,7 @@ for (const day of raw.snapshots) {
     assert.deepEqual(t.stops.map(([i, arrival, departure], j) => ({ id: snapshot.stops[i][4], arrival, departure, sequence: t.sourceCallSequences[j], pickupType: t.callRules[j][0], dropOffType: t.callRules[j][1] })), source.calls, 'Changed or cropped calls')
     for (const key of ['sourceTripId', 'sourceServiceDate', 'sourceServiceDayOffset', 'frequency', 'directionId', 'routeId', 'headsign', 'shortName']) assert.deepEqual(t[key], source[key], `Changed ${key}`)
     const pattern = pp.get(t.patternId); assert(pattern?.admitted)
+    assert.equal(t.geometrySource, pattern.mode === 'bus' ? 'osm' : pattern.pairs.some(p => p.geometrySource === 'fot-reviewed-stop-anchor') ? 'fot-reviewed-stop-anchor' : 'fot')
     t.pathSegments.forEach((i, j) => assert.equal(sha256(JSON.stringify(snapshot.paths[i])), pattern.pairs[j].geometrySha256))
   }
   assert.equal(manifest.chunks.length, 12)

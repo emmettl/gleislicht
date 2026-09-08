@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "timetableSha256": "3761903b9a1f27cefca71785356202637be61dedbbe9b45d9204009d15201864",
+  "evidenceSha256": "ee05ea9262b0d4442fe56f6d938de4dfb49a12c9965cc769fa1fb5d28c19cea6",
+  "limits": {
+    "snapMetres": 20,
+    "alternativeSeparationMetres": 100
+  },
+  "routes": [
+    {
+      "routeId": "91-15-J-j26-1",
+      "agencyId": "72",
+      "line": "R15"
+    },
+    {
+      "routeId": "91-28-A-j26-1",
+      "agencyId": "72",
+      "line": "R28"
+    },
+    {
+      "routeId": "91-4-N-j26-1",
+      "agencyId": "72",
+      "line": "RE4"
+    },
+    {
+      "routeId": "91-4-O-j26-1",
+      "agencyId": "72",
+      "line": "R4"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "sagliains",
+      "number": "8509269",
+      "name": "Sagliains",
+      "replacesOperatingPoint": "ch14uvag00066738",
+      "stops": [
+        {
+          "id": "ch:1:sloid:9269:0:702997",
+          "coordinate": [
+            10.10304657,
+            46.7647656
+          ]
+        },
+        {
+          "id": "ch:1:sloid:9269:0:863320",
+          "coordinate": [
+            10.10292081,
+            46.76485174
+          ]
+        }
+      ],
+      "referenceCoordinate": [
+        10.10298369,
+        46.764808669999994
+      ],
+      "segment": {
+        "id": "ch14uvag00068025",
+        "pointsSha256": "ae73ead56f120aff7f42bd0e46817142f3fa379969d709791ef1a5c497d111e2",
+        "start": {
+          "id": "ch14uvag00066738",
+          "number": "8509269",
+          "name": "Sagliains",
+          "coordinate": [
+            10.096361,
+            46.763225
+          ]
+        },
+        "end": {
+          "id": "ch14uvag00066309",
+          "number": "8509264",
+          "name": "Lavin",
+          "coordinate": [
+            10.111001,
+            46.769708
+          ]
+        }
+      }
+    },
+    {
+      "id": "landwasserviadukt",
+      "number": "8510456",
+      "name": "Schmitten GR Landwasserviadukt",
+      "replacesOperatingPoint": null,
+      "stops": [
+        {
+          "id": "ch:1:sloid:10456",
+          "coordinate": [
+            9.67223253,
+            46.68028688
+          ]
+        }
+      ],
+      "referenceCoordinate": [
+        9.67223253,
+        46.68028688
+      ],
+      "segment": {
+        "id": "ch14uvag00068108",
+        "pointsSha256": "e0a9a97fecc43bc8d999ba15288ba52e981f4a4fccf4f28d884186ed1f0bde15",
+        "start": {
+          "id": "ch14uvag00065977",
+          "number": "8509194",
+          "name": "Alvaneu",
+          "coordinate": [
+            9.651297,
+            46.671163
+          ]
+        },
+        "end": {
+          "id": "ch14uvag00066206",
+          "number": "8509195",
+          "name": "Filisur",
+          "coordinate": [
+            9.682278,
+            46.675266
+          ]
+        }
+      }
+    }
+  ],
+  "scope": "Explicit station positions on two existing RhB source curves, confined to R4/RE4/R15/R28 on the pinned fixtures. Both source curves remain intact as two joined slices. The old Sagliains source node stays as a junction, with its station-number lookup redirected to the reviewed derived anchor. Original timetable IDs and coordinates remain unchanged. No running-track or platform access certification.",
+  "exclusions": [
+    "Bern platform 50 remains unresolved: multiple nearby standard-gauge station approaches do not establish its through itinerary.",
+    "Diverse INFO GEX remains unreviewed: the generic operator label is not a certified physical service identity.",
+    "SBB graphical search results are evidence only and do not replace the FOT curves."
+  ]
+}

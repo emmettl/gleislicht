@@ -45,7 +45,10 @@ export async function buildGraubuendenRegion({ output = 'public/data/graubuenden
     boundary: { publisher: '© swisstopo', sha256: policy.boundarySha256,
       url: 'https://api3.geo.admin.ch/rest/services/api/MapServer/ch.swisstopo.swissboundaries3d-kanton-flaeche.fill/18?sr=4326&geometryFormat=geojson',
       termsUrl: 'https://www.swisstopo.admin.ch/de/nutzungsbedingungen-kostenlose-geodaten-und-geodienste', vintage: 'No boundary edition supplied in this response.' },
-    rail: railSource, roads: { ...roadSource, derivedDatabase: 'road-paths.json' }, localGeometry: { admitted: false, evidence: 'See docs/GRAUBUENDEN-STUDY.md and data/graubuenden-sources/probes.json' } }
+    rail: railSource, railAnchorReview: geometry.railAnchors ? { policy: geometry.railAnchors.policy, reviews: geometry.railAnchors.reviews,
+      model: 'Explicit stop attachments on two subdivided FOT curves; derived nodes are not original FOT operating-point records.',
+      supportingEvidence: geometry.railAnchors.evidence } : null,
+    roads: { ...roadSource, derivedDatabase: 'road-paths.json' }, localGeometry: { admitted: false, evidence: 'See docs/GRAUBUENDEN-STUDY.md and data/graubuenden-sources/probes.json' } }
   const memo = new Map(), paths = [], pathIndexes = new Map(), reports = [], inventory = raw.inventory.map(r => ({ ...r, days: [] }))
   for (const day of raw.snapshots) {
     const patterns = new Map(), admitted = []
@@ -76,7 +79,7 @@ export async function buildGraubuendenRegion({ output = 'public/data/graubuenden
       const p = patterns.get(key)
       p.trips++; p.carryInTrips += Number(train.sourceServiceDate !== day.date); p.headwayTrips += Number(train.frequency?.exactTimes === 0)
       if (p.admitted) admitted.push({ ...train, route: route.line, agencyId: route.agencyId, routeType: route.routeType,
-        category: luzernCategory(route), transportMode: route.mode, geometrySource: route.mode === 'bus' ? 'osm' : 'fot', patternId: p.id, pathSegments: p.pathSegments })
+        category: luzernCategory(route), transportMode: route.mode, geometrySource: route.mode === 'bus' ? 'osm' : p.pairs.some(pair => pair.geometrySource === 'fot-reviewed-stop-anchor') ? 'fot-reviewed-stop-anchor' : 'fot', patternId: p.id, pathSegments: p.pathSegments })
     }
     const pp = [...patterns.values()], counts = coverage(pp)
     const metadata = { publisher: 'Gleislicht', serviceDate: day.date, feedVersion: raw.feed.feed_version, sourceHashes,
