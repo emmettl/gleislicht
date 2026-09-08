@@ -18,6 +18,7 @@ export const STUDY_SOURCES = [
   ['gornergrat', 'gornergrat-day.json'],
   ['solothurn-region', 'solothurn-region-day-manifest.json'],
   ['nyon-region', 'nyon-region-day-manifest.json'],
+  ['graubuenden-region', 'graubuenden-region/2026-09-04/graubuenden-region-day-manifest.json'],
 ]
 export async function buildStudySummaries(directory = 'public/data') {
   return Promise.all(STUDY_SOURCES.map(async ([id, file]) => {

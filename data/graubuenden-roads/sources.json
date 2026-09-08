@@ -1,0 +1,45 @@
+{
+  "publisher": "OpenStreetMap contributors",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
+  "feedVersion": "d5c675456e93",
+  "sourceSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+  "license": "ODbL-1.0",
+  "model": "pfaedle bus map matching; inferred paths, not operator-verified routes",
+  "source": "Geofabrik Switzerland 2026-09-02 plus OSM border extract 2026-09-08; pfaedle 99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+  "matcher": {
+    "schemaVersion": 1,
+    "completed": true,
+    "noTrie": true,
+    "warnings": true,
+    "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+    "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+    "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "patternsSha256": "7af126601ac9fd8c172dd03b3d687db2faf36fbd977a814650398cb6e556b3c4",
+    "logSha256": "2fee530c7a850b2acede8cd5929d4cb630426041100ebd8d347230691043b6c6",
+    "shapesSha256": "3f9c2e538d8d782c6b6da5ec0c69bade10ba4db42d391a1f13d4d112db602fe1",
+    "tripsSha256": "29c94f036a94c7584076b455f25a49128baac46e2d6d90e7f9a586825ba85ae0",
+    "stopTimesSha256": "a5a5da16c4da6f33900d6e8482b0d3af892c7adedb352f1f4b934c09bdbfd341",
+    "elapsedSeconds": 11
+  },
+  "timetableFeedVersion": "20260902",
+  "serviceDate": "2026-09-04",
+  "limits": {
+    "snapMetres": 120,
+    "maxDetourRatio": 6,
+    "detourAllowanceMetres": 1500,
+    "simplifyMetres": 5
+  },
+  "pilotRoutes": null,
+  "attribution": "© OpenStreetMap contributors",
+  "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "derivedDatabase": "../../graubuenden-region/road-paths.json",
+  "files": {
+    "patterns.json": "7af126601ac9fd8c172dd03b3d687db2faf36fbd977a814650398cb6e556b3c4",
+    "matching.log": "2fee530c7a850b2acede8cd5929d4cb630426041100ebd8d347230691043b6c6",
+    "shapes.txt": "3f9c2e538d8d782c6b6da5ec0c69bade10ba4db42d391a1f13d4d112db602fe1",
+    "trips.txt": "29c94f036a94c7584076b455f25a49128baac46e2d6d90e7f9a586825ba85ae0",
+    "stop_times.txt": "a5a5da16c4da6f33900d6e8482b0d3af892c7adedb352f1f4b934c09bdbfd341",
+    "routing-run.json": "4ddec327113b91572c2f871ff4e28f07f035a37d0561aa99ad648ea5e016f7dd"
+  }
+}

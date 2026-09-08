@@ -102,7 +102,12 @@
     "data:solothurn:seasonal": "node scripts/audit-solothurn-seasonal.mjs",
     "data:solothurn:seasonal:check": "node scripts/check-solothurn-seasonal.mjs",
     "data:solothurn:alignments": "node scripts/review-solothurn-alignments.mjs",
-    "data:solothurn:release": "node scripts/build-solothurn-day.mjs"
+    "data:solothurn:release": "node scripts/build-solothurn-day.mjs",
+    "data:graubuenden:sources": "python3 scripts/prepare-graubuenden-sources.py",
+    "data:graubuenden:census": "node --max-old-space-size=8192 scripts/graubuenden-timetable.mjs",
+    "data:graubuenden": "node scripts/build-graubuenden-region.mjs",
+    "data:graubuenden:check": "node scripts/check-graubuenden-region.mjs",
+    "data:graubuenden:docs": "node scripts/document-graubuenden-study.mjs"
   },
   "engines": {
     "node": ">=24.0.0"

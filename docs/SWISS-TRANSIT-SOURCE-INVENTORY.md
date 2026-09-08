@@ -104,7 +104,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 | [AR — Appenzell Ausserrhoden](#ar) | No line export verified | OSTWIND |
 | [AI — Appenzell Innerrhoden](#ai) | No line export verified | OSTWIND |
 | [SG — St.Gallen](#sg) | Cantonal adapter; local feed with partial admission | OSTWIND, Z-Pass, Bodensee Ticket |
-| [GR — Graubünden / Grigioni / Grischun](#gr) | Catalogue access error | BÜGA, Transreno, Engadin mobil, Verkehrsbetriebe Davos |
+| [GR — Graubünden / Grigioni / Grischun](#gr) | Initial FOT rail / OSM bus study; local catalogue error | BÜGA, Transreno, Engadin mobil, Verkehrsbetriebe Davos |
 | [AG — Aargau](#ag) | Download inspected | A-Welle, TNW, Z-Pass |
 | [TG — Thurgau](#tg) | Cantonal adapter; partial service admission | OSTWIND, Bodensee Ticket |
 | [TI — Ticino](#ti) | No line export verified | Arcobaleno |
@@ -396,17 +396,15 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 ### GR — Graubünden / Grigioni / Grischun
 
-**Authority/publisher:** Amt für Energie und Verkehr; ALG / GeoGR. **Review areas:** Chur/Rheintal; Prättigau/Davos; Surselva; Engadin; Val Müstair; Poschiavo; Mesolcina/Calanca.
+**Initial study:** [Full methodology, reuse and exclusions](GRAUBUENDEN-STUDY.md) · [Every annual route](GRAUBUENDEN-ROUTE-INVENTORY.md) · [Coverage audit](../data/graubuenden-audit/summary.json).
 
-**Evidence:** Cantonal catalogue returned HTTP 200 with an Oracle backend error (ORA-24415), so its body is not a successful catalogue result. GeoGR landing page is reachable; no current regional bus-line export was verified. National rail and existing road matching remain useful baselines.
+The entire pinned national GTFS census finds **380 routes across 67 agency identities** with a call in the complete GR canton polygon. Every fixture journey retains all calls, including external termini. The validated initial application scope admits **6,270 Friday / 5,088 Sunday complete journeys**, using reviewed FOT gauge/operator topology and attributed OSM full-pattern bus matching. Inactive seasonal records and excluded mountain, boat and other services remain in the denominator.
 
-**Vintage:** No local bus-line vintage established; seasonal service dates must be explicit.
+**Official local investigation:** current GeoGR pages and official map-search documentation confirm transport layers, including local/night buses, PostAuto, rail and mountain services. The metadata catalogue and its embedded service inventory still return ORA-24415 inside HTTP 200. No current operational local line export with verified identifiers, vintage and dataset-specific reuse was acquired. All request outcomes and compressed evidence are saved in [source probes](../data/graubuenden-sources/probes.json).
 
-**Reuse:** Public portal availability does not establish a particular bus dataset licence.
+**Vintage and reuse:** GTFS 20260902; FOT segment Stand 2021-07-06 (asset timestamp 2025-01-18); OSM Switzerland 2026-09-02 plus border 2026-09-08. Attribution accompanies the study; its derived OSM bus database is supplied under ODbL. No unverified local vectors are included. Neither a source retrieval date nor two September fixtures establish year-round/current alignment validity.
 
-**Next action:** Retry functioning catalogue/export discovery and review Chur, Davos, Engadin and valley operators independently, including Tirano/Livigno border geometry. Representative GTFS agencies: `48`, `72`, `712`, `716`, `740`, `766`, `801`, `815`, `865`.
-
-**Checked references:** [gr-catalogue](https://katalog.geo.gr.ch/), [gr-geogr](https://geogr.ch/geodaten).
+**Next action:** obtain and review official local line exports and terms; resolve rejected rail anchors, missing operating points, border/valley bus geometry and seasonal or mountain-service coverage. Existing graph limits remain unchanged.
 
 <a id="ag"></a>
 

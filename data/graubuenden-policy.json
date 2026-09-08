@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "feedSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "boundarySha256": "b403c35f07ebc31127eb5d32c2c800f6b5cfe60d46ff3fdc22632928f1ed77ec",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "rail": {
+    "sourceDirectory": "data/zug-rail-sources",
+    "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+    "sourceMetadataSha256": "deeaa5552be1c671511cee21d9ba2787d5787d008dda4d4a36b82d4d4e64462c",
+    "limits": {
+      "stationAttachmentMetres": 350,
+      "topologyAttachmentMetres": 120,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 3000,
+      "simplificationMetres": 5
+    }
+  },
+  "railGroups": [
+    {
+      "id": "rhb",
+      "gauges": [
+        "mm1000",
+        "mm1000_1435"
+      ],
+      "infrastructureOperators": [
+        "RhB FR VR",
+        "MGI",
+        "MGB"
+      ],
+      "note": "RhB metre gauge, including mixed-gauge RhB segments and through Glacier Express on MGB infrastructure. Exact operating-point topology; no gauge transfer.",
+      "routes": [
+        {
+          "routeId": "91-1-G-j26-1",
+          "agencyId": "72",
+          "line": "S1"
+        },
+        {
+          "routeId": "91-1-J-j26-1",
+          "agencyId": "72",
+          "line": "RE1"
+        },
+        {
+          "routeId": "91-1-L-j26-1",
+          "agencyId": "72",
+          "line": "1"
+        },
+        {
+          "routeId": "91-1-O-j26-1",
+          "agencyId": "72",
+          "line": "R1"
+        },
+        {
+          "routeId": "91-1-Q-j26-1",
+          "agencyId": "72",
+          "line": "RE1"
+        },
+        {
+          "routeId": "91-11-K-j26-1",
+          "agencyId": "72",
+          "line": "R11"
+        },
+        {
+          "routeId": "91-13-C-j26-1",
+          "agencyId": "72",
+          "line": "RE13"
+        },
+        {
+          "routeId": "91-15-J-j26-1",
+          "agencyId": "72",
+          "line": "R15"
+        },
+        {
+          "routeId": "91-15-M-j26-1",
+          "agencyId": "72",
+          "line": "15"
+        },
+        {
+          "routeId": "91-16-H-j26-1",
+          "agencyId": "72",
+          "line": "R16"
+        },
+        {
+          "routeId": "91-19-G-j26-1",
+          "agencyId": "72",
+          "line": "R19"
+        },
+        {
+          "routeId": "91-1A-Y-j26-1",
+          "agencyId": "72",
+          "line": "S"
+        },
+        {
+          "routeId": "91-2-F-j26-1",
+          "agencyId": "72",
+          "line": "S2"
+        },
+        {
+          "routeId": "91-2-S-j26-1",
+          "agencyId": "72",
+          "line": "RE2"
+        },
+        {
+          "routeId": "91-2-T-j26-1",
+          "agencyId": "72",
+          "line": "R2"
+        },
+        {
+          "routeId": "91-24-B-j26-1",
+          "agencyId": "72",
+          "line": "R24"
+        },
+        {
+          "routeId": "91-24-H-j26-1",
+          "agencyId": "72",
+          "line": "RE24"
+        },
+        {
+          "routeId": "91-28-A-j26-1",
+          "agencyId": "72",
+          "line": "R28"
+        },
+        {
+          "routeId": "91-3-U-j26-1",
+          "agencyId": "72",
+          "line": "RE3"
+        },
+        {
+          "routeId": "91-38-A-j26-1",
+          "agencyId": "72",
+          "line": "R38"
+        },
+        {
+          "routeId": "91-38-B-j26-1",
+          "agencyId": "72",
+          "line": "RE38"
+        },
+        {
+          "routeId": "91-38-C-j26-1",
+          "agencyId": "72",
+          "line": "38"
+        },
+        {
+          "routeId": "91-38-j26-1",
+          "agencyId": "72",
+          "line": "IR38"
+        },
+        {
+          "routeId": "91-3O-Y-j26-1",
+          "agencyId": "72",
+          "line": "EXT"
+        },
+        {
+          "routeId": "91-4-N-j26-1",
+          "agencyId": "72",
+          "line": "RE4"
+        },
+        {
+          "routeId": "91-4-O-j26-1",
+          "agencyId": "72",
+          "line": "R4"
+        },
+        {
+          "routeId": "91-5-E-j26-1",
+          "agencyId": "72",
+          "line": "RE5"
+        },
+        {
+          "routeId": "91-6-U-j26-1",
+          "agencyId": "72",
+          "line": "R6"
+        },
+        {
+          "routeId": "91-6-X-j26-1",
+          "agencyId": "72",
+          "line": "RE6"
+        },
+        {
+          "routeId": "91-7-M-j26-1",
+          "agencyId": "72",
+          "line": "RE7"
+        },
+        {
+          "routeId": "91-7-O-j26-1",
+          "agencyId": "72",
+          "line": "R7"
+        },
+        {
+          "routeId": "91-8-K-j26-1",
+          "agencyId": "72",
+          "line": "RE8"
+        },
+        {
+          "routeId": "91-9-M-j26-1",
+          "agencyId": "72",
+          "line": "RE9"
+        },
+        {
+          "routeId": "91-BEX-j26-1",
+          "agencyId": "72",
+          "line": "BEX"
+        },
+        {
+          "routeId": "91-GEX-j26-1",
+          "agencyId": "72",
+          "line": "GEX"
+        }
+      ],
+      "operatingPointOverrides": [
+        {
+          "sourceNumber": "8509002",
+          "targetNumber": "8519332",
+          "expectedName": "Landquart [Gleis 5-8]",
+          "note": "FOT names the RhB platform group explicitly; common GTFS Landquart identity is retained in every emitted call."
+        },
+        {
+          "sourceNumber": "8509000",
+          "targetNumber": "8518220",
+          "expectedName": "Chur Arosabahn",
+          "routeIds": [
+            "91-16-H-j26-1",
+            "91-6-X-j26-1"
+          ],
+          "note": "Only reviewed R16/RE6 Arosa routes; no connection invented between mainline and Arosa terminal."
+        },
+        {
+          "sourceNumber": "8509000",
+          "targetNumber": "8519331",
+          "expectedName": "Chur [Gleis 10-14]",
+          "routeIds": [
+            "91-1-G-j26-1",
+            "91-1-J-j26-1",
+            "91-1-L-j26-1",
+            "91-1-O-j26-1",
+            "91-1-Q-j26-1",
+            "91-11-K-j26-1",
+            "91-13-C-j26-1",
+            "91-15-J-j26-1",
+            "91-15-M-j26-1",
+            "91-19-G-j26-1",
+            "91-1A-Y-j26-1",
+            "91-2-F-j26-1",
+            "91-2-S-j26-1",
+            "91-2-T-j26-1",
+            "91-24-B-j26-1",
+            "91-24-H-j26-1",
+            "91-28-A-j26-1",
+            "91-3-U-j26-1",
+            "91-38-A-j26-1",
+            "91-38-B-j26-1",
+            "91-38-C-j26-1",
+            "91-38-j26-1",
+            "91-3O-Y-j26-1",
+            "91-4-N-j26-1",
+            "91-4-O-j26-1",
+            "91-5-E-j26-1",
+            "91-6-U-j26-1",
+            "91-7-M-j26-1",
+            "91-7-O-j26-1",
+            "91-8-K-j26-1",
+            "91-9-M-j26-1",
+            "91-BEX-j26-1",
+            "91-GEX-j26-1"
+          ],
+          "note": "RhB mainline platform group, explicitly named in the pinned FOT infrastructure source."
+        }
+      ]
+    },
+    {
+      "id": "mgb",
+      "gauges": [
+        "mm1000",
+        "mm1000_1435"
+      ],
+      "infrastructureOperators": [
+        "MGI",
+        "MGB",
+        "RhB FR VR"
+      ],
+      "note": "MGB and through Glacier Express metre-gauge infrastructure.",
+      "routes": [
+        {
+          "routeId": "91-45-j26-1",
+          "agencyId": "48",
+          "line": "R45"
+        },
+        {
+          "routeId": "91-46-B-j26-1",
+          "agencyId": "48",
+          "line": "R46"
+        },
+        {
+          "routeId": "91-GEX-A-j26-1",
+          "agencyId": "48",
+          "line": "GEX"
+        }
+      ]
+    },
+    {
+      "id": "standard",
+      "gauges": [
+        "mm1435"
+      ],
+      "infrastructureOperators": [
+        "SBB CFF FFS",
+        "SOB",
+        "THURBO",
+        "BLSN",
+        "BLS"
+      ],
+      "note": "Standard-gauge domestic infrastructure only; foreign points without exact infrastructure remain excluded.",
+      "routes": [
+        {
+          "routeId": "91-12-A-j26-1",
+          "agencyId": "65",
+          "line": "S12"
+        },
+        {
+          "routeId": "91-13-I-j26-1",
+          "agencyId": "82",
+          "line": "IR13"
+        },
+        {
+          "routeId": "91-15-L-j26-1",
+          "agencyId": "11",
+          "line": "RE15"
+        },
+        {
+          "routeId": "91-1B-Y-j26-1",
+          "agencyId": "11",
+          "line": "IC"
+        },
+        {
+          "routeId": "91-1H-Y-j26-1",
+          "agencyId": "65",
+          "line": "RE"
+        },
+        {
+          "routeId": "91-2H-Y-j26-1",
+          "agencyId": "11",
+          "line": "IC"
+        },
+        {
+          "routeId": "91-3-C-j26-1",
+          "agencyId": "11",
+          "line": "IC3"
+        },
+        {
+          "routeId": "91-3-P-j26-1",
+          "agencyId": "11",
+          "line": "3"
+        },
+        {
+          "routeId": "91-35-A-j26-1",
+          "agencyId": "82",
+          "line": "IR35"
+        },
+        {
+          "routeId": "91-35-B-j26-1",
+          "agencyId": "11",
+          "line": "IR35"
+        },
+        {
+          "routeId": "91-35-C-j26-1",
+          "agencyId": "82",
+          "line": "RE35"
+        },
+        {
+          "routeId": "91-47-Y-j26-1",
+          "agencyId": "65",
+          "line": "S"
+        },
+        {
+          "routeId": "91-8J-Y-j26-1",
+          "agencyId": "11",
+          "line": "EXT"
+        },
+        {
+          "routeId": "91-9B-Y-j26-1",
+          "agencyId": "11",
+          "line": "EXT"
+        },
+        {
+          "routeId": "91-EV-Y-j26-1",
+          "agencyId": "82",
+          "line": "EXT"
+        },
+        {
+          "routeId": "91-N-Y-j26-1",
+          "agencyId": "11",
+          "line": "ICE"
+        }
+      ]
+    }
+  ],
+  "roads": {
+    "cacheSha256": "21ebe0081044471f85e71404fce09327f5fde01d9d116a74187dc09a086674c8",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4"
+  },
+  "admission": "Every ordered pair must pass within its complete directed pattern. No conditional calls, cropped journeys or unreviewed modes. Paths are inferred, not observed.",
+  "scopeLimits": [
+    "Entire annual national GTFS canton-calling inventory; not services absent from GTFS or nonstopping through traffic.",
+    "Friday and Sunday in September do not validate winter, holidays, ski shuttles or all seasonal patterns.",
+    "Official local line geometry not admitted: current export, route crosswalk and dataset-specific reuse terms remain unverified.",
+    "Infrastructure vintage and OSM routing do not certify September 2026 service itineraries, track assignment or temporary diversions."
+  ],
+  "timetableSha256": "3761903b9a1f27cefca71785356202637be61dedbbe9b45d9204009d15201864"
+}

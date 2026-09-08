@@ -54,7 +54,7 @@ export function zugRailMatcher(network, config, dateRange) {
     const reverse=distanceMetres(a.coordinate,segment.points.at(-1))+distanceMetres(b.coordinate,segment.points[0]) < distanceMetres(a.coordinate,segment.points[0])+distanceMetres(b.coordinate,segment.points.at(-1))
     const points=reverse?[...segment.points].reverse():segment.points
     const attachment=Math.max(distanceMetres(a.coordinate,points[0]),distanceMetres(b.coordinate,points.at(-1)))
-    const reason=segment.gauge!=='mm1435'?'non-standard-gauge':segment.validUntil&&segment.validUntil<dateRange[1]?'expired-source-segment':segment.validFrom>dateRange[0]?'future-source-segment':attachment>limits.topologyAttachmentMetres?'source-topology-attachment-too-far':null
+    const reason=!(config.gauges ?? ['mm1435']).includes(segment.gauge)?'non-standard-gauge':config.infrastructureOperators&&!config.infrastructureOperators.includes(segment.infrastructureOperator)?'unreviewed-infrastructure-operator':segment.validUntil&&segment.validUntil<dateRange[1]?'expired-source-segment':segment.validFrom>dateRange[0]?'future-source-segment':attachment>limits.topologyAttachmentMetres?'source-topology-attachment-too-far':null
     sourceInventory.push({id:segment.id,gauge:segment.gauge,dataStand:segment.dataStand,validFrom:segment.validFrom,validUntil:segment.validUntil,infrastructureOperator:segment.infrastructureOperator,attachmentMetres:attachment,reason})
     if(reason)continue
     const path=[a.coordinate,...points,b.coordinate]
@@ -71,9 +71,13 @@ export function zugRailMatcher(network, config, dateRange) {
     const selected=train.calls.map(c=>stops.get(c.id))
     const coords=selected.map(s=>[Number(s.stop_lon),Number(s.stop_lat)])
     const anchors=selected.map((s,i)=>{
-      const number=operatingPointNumber(s.stop_id), candidates=numbers.get(number)??[]
+      const originalNumber=operatingPointNumber(s.stop_id)
+      const overrides=(config.operatingPointOverrides??[]).filter(o=>o.sourceNumber===originalNumber&&(!o.routeIds||o.routeIds.includes(train.routeId)))
+      assert(overrides.length<=1,'Ambiguous operating-point review')
+      const override=overrides[0], number=override?.targetNumber??originalNumber, candidates=numbers.get(number)??[]
       if(candidates.length!==1)return {number,reason:candidates.length?'ambiguous-operating-point':'no-exact-operating-point'}
       const node=candidates[0],attachment=distanceMetres(coords[i],node.coordinate)
+      if(override) assert.equal(node.name,override.expectedName,'Changed reviewed operating-point identity')
       return attachment>limits.stationAttachmentMetres?{number,attachment,reason:'station-attachment-too-far'}:{number,attachment,node}
     })
     const blocked=new Set(anchors.filter(a=>a.node).map(a=>a.node.id))

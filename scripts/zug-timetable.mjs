@@ -45,9 +45,9 @@ export function civilInstances(id, trip, intervals, offsets, date) {
 
 // Two streamed passes avoid loading the national stop_times table. First census
 // EVERY timetable record calling in the polygon, then keep complete fixture trips.
-export async function readZugTimetable(archive, boundaryPath, dates) {
+export async function readZugTimetable(archive, boundaryPath, dates, { cantonCode = 'ZG', cantonName = 'Zug' } = {}) {
   const boundaryBytes = await readFile(boundaryPath), boundary = JSON.parse(boundaryBytes).feature
-  assert.equal(boundary.properties.ak, 'ZG')
+  assert.equal(boundary.properties.ak, cantonCode)
   const calendars = new Map()
   for (const date of new Set(dates.flatMap(date => [previousServiceDate(date), date]))) calendars.set(date, await activeServices(archive, date))
   const active = new Set([...calendars.values()].flatMap(set => [...set]))
@@ -61,7 +61,7 @@ export async function readZugTimetable(archive, boundaryPath, dates) {
     const point = [Number(row.stop_lon), Number(row.stop_lat)], box = boundary.bbox
     if (point[0] >= box[0] && point[0] <= box[2] && point[1] >= box[1] && point[1] <= box[3] && inCanton(point, boundary.geometry)) cantonStops.add(row.stop_id)
   }
-  console.log(`Census: ${cantonStops.size} GTFS stop records in the Zug polygon; scanning all annual stop times…`)
+  console.log(`Census: ${cantonStops.size} GTFS stop records in the ${cantonName} polygon; scanning all annual stop times…`)
   const calledStops = new Set(), scopedCalls = new Map(), routeCantonStops = new Map()
   let annualStopTimeRows = 0
   for await (const row of rowsFromArchive(archive, 'stop_times.txt')) {
@@ -109,7 +109,7 @@ export async function readZugTimetable(archive, boundaryPath, dates) {
     return { date, trains }
   })
   return { schemaVersion: 1, feed, dates, sourceHashes: { archive: sha256(await readFile(archive)), boundary: sha256(boundaryBytes) },
-    scope: { description: 'Every annual GTFS trip with at least one source stop inside the complete official Zug polygon, across every agency and mode. Fixture trips retain every source call, including cross-canton termini. No straight-line crossing test for nonstopping through traffic.',
+    scope: { description: `Every annual GTFS trip with at least one source stop inside the complete official ${cantonName} polygon, across every agency and mode. Fixture trips retain every source call, including cross-canton termini. No straight-line crossing test for nonstopping through traffic.`,
       annualStopTimeRows, annualScopedTripRecords: scopedIds.size, cantonStopRecords: cantonStops.size, calledCantonStopRecords: calledStops.size },
     inventory: [...inventory.values()].map(r => ({ ...r, annualCantonStopIds: [...routeCantonStops.get(r.routeId)].sort() })).sort((a, b) => a.routeId.localeCompare(b.routeId)),
     cantonStops: [...cantonStops].map(id => stops.get(id)),

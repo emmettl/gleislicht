@@ -655,15 +655,17 @@
         "815",
         "865"
       ],
-      "geometryStatus": "access-error",
-      "evidence": "Cantonal catalogue returned HTTP 200 with an Oracle backend error (ORA-24415), so its body is not a successful catalogue result. GeoGR landing page is reachable; no current regional bus-line export was verified. National rail and existing road matching remain useful baselines.",
-      "vintage": "No local bus-line vintage established; seasonal service dates must be explicit.",
-      "reuse": "Public portal availability does not establish a particular bus dataset licence.",
-      "nextAction": "Retry functioning catalogue/export discovery and review Chur, Davos, Engadin and valley operators independently, including Tirano/Livigno border geometry.",
+      "geometryStatus": "initial-regional-study",
+      "evidence": "Entire annual pinned GTFS census: 380 routes / 67 agencies. Numerically validated initial FOT rail and attributed OSM bus scope: 6270 Friday and 5088 Sunday complete journeys. All candidates, inactive records and whole-pattern exclusions retained. Catalogue and embedded service inventory still return ORA-24415; official search documentation confirms local transport layers, but no current operational line export with verified reuse was acquired.",
+      "vintage": "GTFS 20260902; FOT segment Stand 2021-07-06 / asset updated 2025-01-18; OSM Switzerland 2026-09-02 plus border 2026-09-08. Local bus-line vintage unverified.",
+      "reuse": "Timetable platform terms; attributed FOT and swisstopo data; attributed OSM derived bus path database under ODbL. No unverified GR local vectors incorporated.",
+      "nextAction": "Resolve local layer export/crosswalk/reuse, Sagliains and missing new rail operating points, rejected border/valley bus patterns and seasonal/mountain geometry. See docs/GRAUBUENDEN-STUDY.md.",
       "sourceIds": [
         "gr-catalogue",
         "gr-geogr"
-      ]
+      ],
+      "study": "docs/GRAUBUENDEN-STUDY.md",
+      "audit": "data/graubuenden-audit/summary.json"
     },
     {
       "code": "AG",
