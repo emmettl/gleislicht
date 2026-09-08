@@ -5,38 +5,38 @@ Generated from the pinned 2026 GTFS canton census. See [study and method](THURGA
 | Agency | Line | Mode | GTFS route ID | Districts | Friday | Sunday | Status / exclusion evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 11 Schweizerische Bundesbahnen SBB | EXT | rail | 91-1S-Y-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
-| 11 Schweizerische Bundesbahnen SBB | IC8 | rail | 91-8-E-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 23 | 0 / 38 | Excluded: incomplete-directed-pattern |
-| 11 Schweizerische Bundesbahnen SBB | IC9 | rail | 91-9-P-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 0 | 0 / 1 | Excluded: incomplete-directed-pattern |
-| 11 Schweizerische Bundesbahnen SBB | IC81 | rail | 91-81-A-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 15 | 0 / 0 | Excluded: incomplete-directed-pattern |
-| 11 Schweizerische Bundesbahnen SBB | IR75 | rail | 91-75-j26-1 | Arbon, Frauenfeld, Kreuzlingen, Weinfelden | 0 / 35 | 0 / 34 | Excluded: incomplete-directed-pattern |
-| 11 Schweizerische Bundesbahnen SBB | S12 | rail | 91-12-j26-1 | Münchwilen | 0 / 34 | 0 / 0 | Excluded: incomplete-directed-pattern |
-| 11 Schweizerische Bundesbahnen SBB | S23 | rail | 91-23-B-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 4 | 0 / 0 | Excluded: incomplete-directed-pattern |
-| 11 Schweizerische Bundesbahnen SBB | S24 | rail | 91-24-j26-1 | Frauenfeld, Weinfelden | 0 / 33 | 0 / 33 | Excluded: incomplete-directed-pattern |
+| 11 Schweizerische Bundesbahnen SBB | IC8 | rail | 91-8-E-j26-1 | Arbon, Frauenfeld, Weinfelden | 23 / 23 | 38 / 38 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | IC9 | rail | 91-9-P-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 0 | 1 / 1 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | IC81 | rail | 91-81-A-j26-1 | Arbon, Frauenfeld, Weinfelden | 15 / 15 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | IR75 | rail | 91-75-j26-1 | Arbon, Frauenfeld, Kreuzlingen, Weinfelden | 0 / 35 | 0 / 34 | Excluded: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 11 Schweizerische Bundesbahnen SBB | S12 | rail | 91-12-j26-1 | Münchwilen | 34 / 34 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | S23 | rail | 91-23-B-j26-1 | Arbon, Frauenfeld, Weinfelden | 4 / 4 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | S24 | rail | 91-24-j26-1 | Frauenfeld, Weinfelden | 33 / 33 | 33 / 33 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
 | 11 Schweizerische Bundesbahnen SBB | S30 | rail | 91-30-C-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
 | 22 Appenzeller Bahnen (ab) | S15 | rail | 91-15-I-j26-1 | Frauenfeld, Münchwilen | 98 / 98 | 82 / 82 | All dated journeys admitted: Every dated pattern complete |
 | 65 THURBO | IR75 | rail | 91-75-A-j26-1 | Kreuzlingen | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
-| 65 THURBO | RE1 | rail | 91-1-P-j26-1 | Arbon, Kreuzlingen | 0 / 32 | 0 / 32 | Excluded: incomplete-directed-pattern |
-| 65 THURBO | RE8 | rail | 91-8-N-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 1 | 0 / 0 | Excluded: incomplete-directed-pattern |
-| 65 THURBO | RE75 | rail | 91-75-B-j26-1 | Arbon, Frauenfeld, Kreuzlingen, Weinfelden | 0 / 4 | 0 / 4 | Excluded: incomplete-directed-pattern |
+| 65 THURBO | RE1 | rail | 91-1-P-j26-1 | Arbon, Kreuzlingen | 0 / 32 | 0 / 32 | Excluded: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 65 THURBO | RE8 | rail | 91-8-N-j26-1 | Arbon, Frauenfeld, Weinfelden | 1 / 1 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | RE75 | rail | 91-75-B-j26-1 | Arbon, Frauenfeld, Kreuzlingen, Weinfelden | 0 / 4 | 0 / 4 | Excluded: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
 | 65 THURBO | S | rail | 91-CH-Y-j26-1 | Arbon, Frauenfeld, Kreuzlingen | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
-| 65 THURBO | S1 | rail | 91-1-C-j26-1 | Arbon, Frauenfeld, Kreuzlingen | 2 / 94 | 3 / 94 | Some complete patterns admitted: incomplete-directed-pattern |
+| 65 THURBO | S1 | rail | 91-1-C-j26-1 | Arbon, Frauenfeld, Kreuzlingen | 94 / 94 | 94 / 94 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
 | 65 THURBO | S3 | rail | 91-3-X-j26-1 | Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
-| 65 THURBO | S5 | rail | 91-5-B-j26-1 | Weinfelden | 44 / 80 | 43 / 79 | Some complete patterns admitted: incomplete-directed-pattern |
-| 65 THURBO | S7 | rail | 91-7-B-j26-1 | Arbon, Weinfelden | 0 / 82 | 0 / 82 | Excluded: incomplete-directed-pattern |
-| 65 THURBO | S10 | rail | 91-10-C-j26-1 | Arbon, Münchwilen, Weinfelden | 75 / 75 | 45 / 45 | All dated journeys admitted: Every dated pattern complete |
-| 65 THURBO | S14 | rail | 91-14-B-j26-1 | Kreuzlingen, Münchwilen, Weinfelden | 0 / 122 | 0 / 117 | Excluded: incomplete-directed-pattern |
+| 65 THURBO | S5 | rail | 91-5-B-j26-1 | Weinfelden | 80 / 80 | 79 / 79 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | S7 | rail | 91-7-B-j26-1 | Arbon, Weinfelden | 72 / 82 | 68 / 82 | Some complete patterns admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 65 THURBO | S10 | rail | 91-10-C-j26-1 | Arbon, Münchwilen, Weinfelden | 75 / 75 | 45 / 45 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | S14 | rail | 91-14-B-j26-1 | Kreuzlingen, Münchwilen, Weinfelden | 0 / 122 | 0 / 117 | Excluded: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
 | 65 THURBO | S24 | rail | 91-24-E-j26-1 | Frauenfeld, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
-| 65 THURBO | S29 | rail | 91-29-A-j26-1 | Frauenfeld | 0 / 71 | 0 / 72 | Excluded: incomplete-directed-pattern |
-| 65 THURBO | S30 | rail | 91-30-A-j26-1 | Frauenfeld, Weinfelden | 0 / 48 | 0 / 49 | Excluded: incomplete-directed-pattern |
-| 65 THURBO | S35 | rail | 91-35-j26-1 | Münchwilen | 0 / 47 | 0 / 81 | Excluded: incomplete-directed-pattern |
-| 65 THURBO | S44 | rail | 91-44-C-j26-1 | Kreuzlingen, Weinfelden | 0 / 19 | 0 / 19 | Excluded: incomplete-directed-pattern |
-| 65 THURBO | S82 | rail | 91-82-j26-1 | Arbon | 2 / 2 | 0 / 0 | All dated journeys admitted: Every dated pattern complete |
-| 65 THURBO | SN3 | rail | 91-3-I-j26-1 | Frauenfeld | 0 / 0 | 0 / 4 | Excluded: incomplete-directed-pattern |
-| 65 THURBO | SN14 | rail | 91-14-I-j26-1 | Frauenfeld, Kreuzlingen, Münchwilen, Weinfelden | 0 / 0 | 5 / 6 | Some complete patterns admitted: incomplete-directed-pattern |
-| 65 THURBO | SN21 | rail | 91-21-F-j26-1 | Münchwilen | 0 / 0 | 0 / 7 | Excluded: incomplete-directed-pattern |
-| 65 THURBO | SN30 | rail | 91-30-L-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 0 | 1 / 7 | Some complete patterns admitted: incomplete-directed-pattern |
-| 65 THURBO | SN71 | rail | 91-71-B-j26-1 | Arbon, Kreuzlingen | 0 / 0 | 4 / 4 | All dated journeys admitted: Every dated pattern complete |
-| 65 THURBO | SN72 | rail | 91-72-B-j26-1 | Arbon | 0 / 0 | 1 / 5 | Some complete patterns admitted: incomplete-directed-pattern |
+| 65 THURBO | S29 | rail | 91-29-A-j26-1 | Frauenfeld | 71 / 71 | 72 / 72 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | S30 | rail | 91-30-A-j26-1 | Frauenfeld, Weinfelden | 48 / 48 | 49 / 49 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | S35 | rail | 91-35-j26-1 | Münchwilen | 47 / 47 | 81 / 81 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | S44 | rail | 91-44-C-j26-1 | Kreuzlingen, Weinfelden | 0 / 19 | 0 / 19 | Excluded: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 65 THURBO | S82 | rail | 91-82-j26-1 | Arbon | 2 / 2 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | SN3 | rail | 91-3-I-j26-1 | Frauenfeld | 0 / 0 | 4 / 4 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | SN14 | rail | 91-14-I-j26-1 | Frauenfeld, Kreuzlingen, Münchwilen, Weinfelden | 0 / 0 | 5 / 6 | Some complete patterns admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 65 THURBO | SN21 | rail | 91-21-F-j26-1 | Münchwilen | 0 / 0 | 7 / 7 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | SN30 | rail | 91-30-L-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 0 | 7 / 7 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | SN71 | rail | 91-71-B-j26-1 | Arbon, Kreuzlingen | 0 / 0 | 4 / 4 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | SN72 | rail | 91-72-B-j26-1 | Arbon | 0 / 0 | 5 / 5 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
 | 138 Bus Ostschweiz | 702 | bus | 92-702-D-j26-1 | Münchwilen | 114 / 114 | 24 / 24 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
 | 138 Bus Ostschweiz | 706 | bus | 92-706-C-j26-1 | Münchwilen | 52 / 52 | 36 / 36 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
 | 138 Bus Ostschweiz | 722 | bus | 92-722-A-j26-1 | Weinfelden | 27 / 27 | 40 / 40 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
@@ -68,7 +68,7 @@ Generated from the pinned 2026 GTFS canton census. See [study and method](THURGA
 | 727 Verkehrsbetriebe Kreuzlingen | 906 | bus | 92-906-j26-1 | Kreuzlingen | 9 / 9 | 2 / 2 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
 | 727 Verkehrsbetriebe Kreuzlingen | 907 | bus | 92-907-j26-1 | Kreuzlingen | 67 / 67 | 46 / 46 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
 | 744 Automobildienst Appenzeller Bahnen | 841 | bus | 92-841-j26-1 | Frauenfeld, Münchwilen | 1 / 1 | 0 / 0 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
-| 744 Automobildienst Appenzeller Bahnen | EV | bus | 92-A05-Z-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: Complete official patterns retained; whole OSM regional patterns supplement gaps |
+| 744 Automobildienst Appenzeller Bahnen | EV | bus | 92-A05-Z-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
 | 797 Stadtbus Frauenfeld | 801 | bus | 92-801-A-j26-1 | Frauenfeld | 119 / 119 | 0 / 0 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
 | 797 Stadtbus Frauenfeld | 802 | bus | 92-802-A-j26-1 | Frauenfeld | 118 / 118 | 0 / 0 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
 | 797 Stadtbus Frauenfeld | 803 | bus | 92-803-A-j26-1 | Frauenfeld | 116 / 116 | 0 / 0 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
@@ -122,17 +122,17 @@ Generated from the pinned 2026 GTFS canton census. See [study and method](THURGA
 | 801 PostAuto AG | N65 | bus | 96-185-9-j26-1 | Frauenfeld | 0 / 0 | 2 / 2 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
 | 896 Regiobus Gossau SG | 731 | bus | 92-731-j26-1 | Münchwilen | 58 / 58 | 0 / 0 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
 | 3182 Solarfährbetrieb Thomas Geiger Reichenau | BAT | ferry | 94-T-Y-j26-1 | Kreuzlingen | 0 / 18 | 0 / 18 | Excluded: No water-compatible geometry in acquired sources |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV | bus | 92-A01-O-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV1 | bus | 92-A01-T-j26-1 | Frauenfeld, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV1 | bus | 92-A02-R-j26-1 | Arbon, Frauenfeld, Kreuzlingen | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV1 | bus | 92-A04-5-j26-1 | Arbon, Frauenfeld, Kreuzlingen, Münchwilen, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV2 | bus | 92-A02-Q-j26-1 | Frauenfeld, Kreuzlingen, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV2 | bus | 92-A04-7-j26-1 | Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV2 | bus | 92-A05-6-j26-1 | Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV2 | bus | 92-A07-8-j26-1 | Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV3 | bus | 92-EV3-C-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV3 | bus | 92-EV3-E-j26-1 | Münchwilen, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV3 | bus | 92-EV3-W-j26-1 | Frauenfeld, Kreuzlingen, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV4 | bus | 92-EV4-I-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7231 SBB Infrastruktur AG Bahnersatz | EV4 | bus | 92-EV4-L-j26-1 | Kreuzlingen, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 7252 Appenzeller Bahnen Ersatzverkehr | EV15 | bus | 92-A0A-6-j26-1 | Frauenfeld, Münchwilen | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV | bus | 92-A01-O-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV1 | bus | 92-A01-T-j26-1 | Frauenfeld, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV1 | bus | 92-A02-R-j26-1 | Arbon, Frauenfeld, Kreuzlingen | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV1 | bus | 92-A04-5-j26-1 | Arbon, Frauenfeld, Kreuzlingen, Münchwilen, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV2 | bus | 92-A02-Q-j26-1 | Frauenfeld, Kreuzlingen, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV2 | bus | 92-A04-7-j26-1 | Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV2 | bus | 92-A05-6-j26-1 | Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV2 | bus | 92-A07-8-j26-1 | Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV3 | bus | 92-EV3-C-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV3 | bus | 92-EV3-E-j26-1 | Münchwilen, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV3 | bus | 92-EV3-W-j26-1 | Frauenfeld, Kreuzlingen, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV4 | bus | 92-EV4-I-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7231 SBB Infrastruktur AG Bahnersatz | EV4 | bus | 92-EV4-L-j26-1 | Kreuzlingen, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
+| 7252 Appenzeller Bahnen Ersatzverkehr | EV15 | bus | 92-A0A-6-j26-1 | Frauenfeld, Münchwilen | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |

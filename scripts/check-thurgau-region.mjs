@@ -8,6 +8,7 @@ import { thurgauFeatureMatch, thurgauPatternId } from './thurgau-line-geometry.m
 import { compactBernFeed, validateBernSnapshot, validateBernChunks } from './build-bern-region.mjs'
 import { thurgauTimingDiagnostics } from './build-thurgau-region.mjs'
 import { checkThurgauRegionalRoads } from './check-thurgau-regional-roads.mjs'
+import { loadThurgauRail } from './thurgau-rail-geometry.mjs'
 import { checkThurgauCityRoads } from './check-thurgau-city-roads.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
@@ -55,6 +56,11 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
   assert.equal(sha(cacheBytes), summary.sourceHashes.timetableCache)
   const cache = JSON.parse(gunzipSync(cacheBytes))
   assert.deepEqual(cache.sourceHashes, { archive: summary.sourceHashes.archive, source: summary.sourceHashes.source })
+  const rail = await loadThurgauRail(cache)
+  assert.equal(rail.policySha256, summary.sourceHashes.railPolicy)
+  assert.equal(rail.policy.sourceMetadataSha256, summary.sourceHashes.railSourceMetadata)
+  assert.deepEqual(await json(join(audit, 'rail-source-segments.json')), rail.sourceInventory)
+  for (const file of ['source.json', 'catalogue.json', 'collection.json']) assert.deepEqual(await readFile(join(output, 'rail-sources', file)), await readFile(join('data/thurgau-rail-sources', file)))
   const { thurgauCrosswalk } = await import('./crosswalk-thurgau.mjs')
   const { applyThurgauGeometry } = await import('./thurgau-line-geometry.mjs')
   assert.deepEqual(thurgauCrosswalk(cache, decoded), crosswalk)
@@ -67,7 +73,17 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
     const report = await json(join(audit, `${day.serviceDate}.json`))
     assert.deepEqual(report.sourceHashes, summary.sourceHashes)
     assert.deepEqual(report.coverage, day.coverage)
-    const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads)
+    const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, rail)
+    const baseline = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads)
+    const replayTrains = new Map(replay.trains.map(t => [t.id, t]))
+    for (const train of baseline.trains.filter(t => t.admission === 'admitted')) {
+      const after = replayTrains.get(train.id)
+      assert.equal(after.admission, 'admitted', 'Rail supplement removed a previously admitted journey')
+      assert.deepEqual(after.pathSegments.map(i => replay.paths[i]), train.pathSegments.map(i => baseline.paths[i]), 'Rail supplement changed complete existing paths')
+    }
+    assert.equal(report.railCoverage.trips, replay.trains.filter(t => t.geometrySource === 'fot-rail-inference' && t.admission === 'admitted').length)
+    assert.equal(report.railCoverage.patterns, replay.patterns.filter(p => p.geometrySource === 'fot-rail-inference').length)
+    assert.equal(report.railCoverage.rejectedPatterns, replay.patterns.filter(p => p.railSupplement?.status === 'rejected-incomplete-pattern').length)
     assert.deepEqual(report.patterns, replay.patterns.map(({ pathSegments, ...p }) => ({ ...p, matchedMask: pathSegments.map(i => i !== null) })))
     assert.deepEqual(report.directedPairs, replay.pairs.map(({ pathIndex, ...p }) => ({ ...p, matched: pathIndex !== null })))
     assert.deepEqual(report.timing, thurgauTimingDiagnostics(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), replay, new Map(cache.routes.map(r => [r.id, r]))))

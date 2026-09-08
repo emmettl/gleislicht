@@ -47,6 +47,11 @@ export function applyThurgauRegionalRoads(raw, result, bundle, routes) {
       train.pathSegments = pattern.pathSegments; train.admission = 'admitted'; train.geometrySource = pattern.geometrySource
     }
   }
+  return reconcileThurgauGeometry(raw, result)
+}
+
+export function reconcileThurgauGeometry(raw, result) {
+  const patterns = new Map(result.patterns.map(p => [p.id, p]))
   // Pair coverage means a path exists in at least one full-pattern context.
   // Occurrence coverage is counted from each pattern, never from this union.
   const pairs = new Map(result.pairs.map(p => [JSON.stringify([p.routeId, p.fromId, p.toId]), p]))

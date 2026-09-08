@@ -4,6 +4,8 @@ import { readFile, writeFile } from 'node:fs/promises'
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const summary = await json('data/thurgau-audit/summary.json')
 const regionalRoads = JSON.parse(gunzipSync(await readFile('data/thurgau-regional-roads/cache.json.gz')))
+const railSource = await json('data/thurgau-rail-sources/source.json')
+const railPolicy = await json('data/thurgau-rail-policy.json')
 const routes = await json('data/thurgau-audit/routes.json')
 const sourceLines = await json('data/thurgau-audit/source-lines.json')
 const reports = await Promise.all(summary.days.map(d => json(`data/thurgau-audit/${d.serviceDate}.json`)))
@@ -20,6 +22,8 @@ const gapReasons = ['missing-line', 'endpoint-gap', 'disconnected-line', 'collap
 const cross = summary.weekdaySundayPatterns
 const admitted = routes.filter(r => r.days.some(d => d.admittedTrips)).sort((a, b) => a.agencyId.localeCompare(b.agencyId, undefined, { numeric: true }) || a.name.localeCompare(b.name, undefined, { numeric: true }))
 
+const usedRailIds = new Set(reports.flatMap(r => r.patterns.filter(p => p.geometrySource === 'fot-rail-inference').flatMap(p => p.railSupplement.segments.flatMap(s => s.directedSourceSegments.map(s => s.id)))))
+
 const doc = `# Thurgau canton transit study
 
 Audit date: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#tg).
@@ -33,6 +37,7 @@ The complete canton-scoped GTFS inventory contains **${summary.routeCount} route
 - [Audit summary](../data/thurgau-audit/summary.json), [route records](../data/thurgau-audit/routes.json), [Friday patterns/pairs](../data/thurgau-audit/2026-09-04.json), [Sunday patterns/pairs](../data/thurgau-audit/2026-09-06.json).
 - [All source line records](../data/thurgau-audit/source-lines.json), [all 718 source stops](../data/thurgau-audit/source-stops.json), [canton GTFS stop inventory](../data/thurgau-audit/stops.json), [reviewed route crosswalk](../data/thurgau-line-crosswalk.json).
 - [Source metadata and request hashes](../data/thurgau-sources/sources.json), [raw request receipts](../data/thurgau-sources/requests.json). Original responses, boundary rows and the selected timetable fixture are preserved as gzip files in the repository.
+- [Federal rail source](../data/thurgau-rail-sources/source.json), [exact rail policy](../data/thurgau-rail-policy.json) and [all federal source segments](../data/thurgau-audit/rail-source-segments.json).
 - [Regional bus road evidence](../data/thurgau-regional-roads/sources.json), [review notes](../data/thurgau-regional-roads/review-sources.json), and [OSM-derived regional path database](../public/data/thurgau-region/regional-road-paths.json).
 - [City road source evidence](../data/thurgau-city-roads/sources.json), [OSM-derived city path database](../public/data/thurgau-region/city-road-paths.json), and [16-line geometry review](assets/thurgau-city-road-review.png).
 
@@ -59,6 +64,7 @@ ${table(['Source', 'Pinned evidence / vintage', 'Credit and reuse'], [
   ['Cantonal catalogue', 'Modified ' + summary.sources.catalogueModified + '; creation 2000-01-01 is not a geometry vintage', 'Pinned catalogue.json records the dataset-specific licence and publisher'],
   ['Thurgau general terms', '2018-02-20; preserved alongside the catalogue declaration', 'Visible attribution on publication/redistribution; retain dataset-specific CC BY evidence'],
   ['swissBOUNDARIES3D', '2026-01; all original canton and district geometry rows retained', '© swisstopo; free-geodata terms'],
+  ['Federal rail network', 'Checksum-verified FOT XTF; catalogue 2021-07-06, asset updated 2025-01-18, reused 2026-09-08; used segment Stand dates 2021-07-06', '© Federal Office of Transport (FOT); opendata.swiss terms_by, source attribution required; retain proprietary catalogue label without relabelling it CC'],
   ['City and regional road supplements', 'Geofabrik Switzerland 2026-09-02 plus OSM border extract 2026-09-08; pinned PBF SHA d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b', '© OpenStreetMap contributors; derived path database under ODbL 1.0'],
 ])}
 
@@ -82,7 +88,7 @@ Bus joins require an exact prefixed line number, a reviewed operator label, and 
 
 Comma-separated source numbers are parsed independently. Parenthetical **nur zeitweise**, **Abendkurs** and **Kantibus** tokens are excluded from that route's graph because no operating-time rule is supplied; an unqualified token for another line on the same feature can still be used. **BN820** is not assumed to mean the GTFS line 820. Day and night labels are respected. The official line source lacks Frauenfeld and Kreuzlingen city routes; the separate OSM supplement below covers their fixed-route patterns. Replacement route records remain inventoried; the dated fixed service of operator 744 receives an independently identified GTFS/OSM pattern in the regional supplement.
 
-For rail, SBB/THURBO use the 15 unlabelled regional corridor features as a routing graph; these are not preassigned GTFS line shapes. AB **S15** uses only its two explicitly labelled Frauenfeld–Wängi–Wil features, separately from the other rail graph. Full stop-chain geometry tests determine admission. Lake services have no acquired water-compatible geometry and receive no road or rail substitute.
+For rail, SBB/THURBO use the 15 unlabelled regional corridor features as a routing graph; these are not preassigned GTFS line shapes. AB **S15** uses only its two explicitly labelled Frauenfeld–Wängi–Wil features, separately from the other rail graph. Full stop-chain geometry tests determine admission. Incomplete SBB/THURBO patterns can use the separately audited federal rail supplement below; complete cantonal paths remain unchanged. Lake services have no acquired water-compatible geometry and receive no road or rail substitute.
 
 Original **EPSG:2056 east/north** vertices form the graph. The parser asserts CRS, axis ranges, unique IDs and full WFS returned/matched counts. Exact source vertices define connectivity; no gap is bridged and no near-coincident tracks are merged. The established swisstopo approximate LV95/WGS84 conversion has metre-level precision. Output coordinates round to seven decimals.
 
@@ -119,6 +125,26 @@ Complete official patterns retain their original paths. For an incomplete offici
 **RUB:** route 92-8-Y-j26-1 is GTFS type **715**, which denotes demand-responsive bus service in the [extended GTFS route reference](https://developers.google.com/transit/gtfs/reference/extended-route-types), last updated 16 October 2024 and checked 8 September 2026. Ordinary pickup/drop-off flags alone do not establish fixed operation. Its **30 Friday and 29 Sunday** instances remain excluded, alongside Frauenfeld NT. [Review notes](../data/thurgau-regional-roads/review-sources.json) preserve the source interpretation; they do not claim an original HTML snapshot.
 
 The review plots overlay all 296 routing patterns across 59 route records: [page 1](assets/thurgau-regional-road-review-1.png), [page 2](assets/thurgau-regional-road-review-2.png), [page 3](assets/thurgau-regional-road-review-3.png), [page 4](assets/thurgau-regional-road-review-4.png). Every panel was inspected for branch shapes and endpoint loops. Grey paths include valid segments from incomplete patterns; their presence in a review plot is not feed admission. The plots have no basemap and do not certify temporary diversions or physical street restrictions. The complete regional derived database is distributed under **ODbL 1.0**, credited to **OpenStreetMap contributors**, separately from the cantonal CC BY geometry.
+
+## Federal rail supplement
+
+The federal infrastructure supplement adds **${summary.days[0].railCoverage.trips} Friday and ${summary.days[1].railCoverage.trips} Sunday journeys** to the preceding 3545 / 1938 feed. Its 169 unique newly admitted full patterns cover 17 route identities across the two dates. The policy inventories all **${railPolicy.routes.length}** annual SBB/THURBO rail route identities; inactive records remain visible. The original AB S15 and complete SBB/THURBO cantonal paths are preserved byte-for-byte.
+
+The reused **Federal Office of Transport railway network** contains **${railSource.nodes} operating points and ${railSource.segments} infrastructure segments**. Original XTF, collection and asset metadata are retained. The uncompressed XTF SHA-256 is **${railSource.sha256}**, matching the published STAC asset checksum. This extension reuses the previously acquired bytes; it does not claim a new network download. The catalogue date is **6 July 2021**, the asset update is **18 January 2025**, and every segment used by this extension has **Stand 2021-07-06**. These dates do not establish alignment validity for the September 2026 timetable.
+
+**${usedRailIds.size} distinct source segments** appear in admitted supplemental paths. The [complete source-segment inventory](../data/thurgau-audit/rail-source-segments.json) retains gauge, source Stand, validity interval, infrastructure operator, endpoint-attachment distance and exclusion reason for all ${railSource.segments} records. Gauge is **1435 mm** for the reviewed SBB (11) and THURBO (65) routes. Mixed-gauge segments must explicitly include 1435 mm. Future/expired segments, other gauges and excessive source endpoint gaps are excluded from the graph.
+
+Each original platform is joined by exact operating-point number, with a **350 m station-to-operating-point limit**. Source geometry can attach to its explicitly referenced topology nodes within **120 m**; this is not a nearest-coordinate merge between separate networks. Paths may not exceed **max(3000 m, 4.5 × direct distance)** including station attachments. Source vertices receive **5 m LV95 simplification** and the established approximate swisstopo conversion, rounded to six decimals before final output. The largest accepted station attachment is **302.0 m** and topology attachment **90.6 m** (rounded upwards). These station-centre attachments are a different model from the 120 m cantonal rail projection limit; no existing cantonal threshold was increased.
+
+The complete ordered stop chain constrains every directed search: other scheduled operating points are blocked until their turn. The matcher cannot pass a later call early just to shorten a path. The entire supplemental pattern must pass; no individual successful segment is borrowed to repair another failed pattern. Per-pattern evidence records ordered source segment IDs, directed topology endpoints, station attachment distances and hashes of the derived paths. The feed retains the original platform IDs, times and outside-canton calls.
+
+**Interlaken Ost IC81:** the generic operating point 8507492 is disconnected from the standard-gauge graph. FOT separately identifies **8519309 / ch14uvag00165678** as **Interlaken Ost [Gleis 5-8]**, connected to the 1435 mm Interlaken West segment **ch14uvag00087489**. The policy maps only original IC81 platforms **ch:1:sloid:7492:0:460848 (7)** and **ch:1:sloid:7492:0:581416 (5)** to that source node. Source number, node name, gauge, route and platform labels are asserted; a changed or different platform cannot inherit the mapping. This admits all **15 Friday IC81 journeys**, preserving every original call. It is an explicit platform-group crosswalk, not a name or proximity guess.
+
+**Remaining rail exclusions:** the source has no exact operating point for **Konstanz (8014586)** or **Bregenz (8102336)**. Thus **222 Friday / 221 Sunday rail journeys** still fail complete-pattern admission, affecting S14, RE1, S44, RE75, IR75 and Bregenz-reaching S7; one Sunday SN14 also remains excluded. Border nodes named Kreuzlingen Grenze are not treated as substitutes for Konstanz. Entire journeys remain inventoried and excluded; the feed does not truncate them at the last Swiss call.
+
+The [rail review overview, page 1](assets/thurgau-rail-review-1.png) and [page 2](assets/thurgau-rail-review-2.png) overlay all 169 newly admitted patterns. Both were inspected for complete branches, termini and the long cross-canton IC8/IC81/IC9 paths. These are infrastructure-centreline inferences, not certified running tracks, actual train positions or temporary diversion geometry. The plots have no basemap. Timetable precision and physically plausible speeds remain separate from geometric admission.
+
+Credit is **© Federal Office of Transport (FOT), Railway network**, with the [source asset](https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf) and [source-attribution terms](https://opendata.swiss/terms-of-use/#terms_by). The collection's literal licence field is **proprietary**, while its licence link selects **terms_by**; this audit preserves both rather than assigning a Creative Commons licence. The [official terms page](https://opendata.swiss/en/terms-of-use), checked 8 September 2026, allows commercial and non-commercial reuse under that attribution condition. Source metadata and catalogue declarations accompany the feed in its rail-sources directory. The federal rail component retains these terms separately from the ODbL road databases and CC BY cantonal geometry.
 
 ## Weekday and Sunday directed validation
 
@@ -174,7 +200,7 @@ node scripts/build-thurgau-region.mjs \\
 # stop, path, edge and journey; reconcile routes, groups, patterns and chunks.
 node scripts/check-thurgau-region.mjs
 node scripts/document-thurgau-study.mjs
-npx vitest run scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
 python3 scripts/test_thurgau_sources.py
 \`\`\`
 
@@ -183,6 +209,8 @@ For a new acquisition, use \`python3 scripts/prepare-thurgau-sources.py --downlo
 To rebuild the city supplement, run \`node scripts/prepare-thurgau-city-roads.mjs\`, then \`scripts/match-postbus-roads.mjs\` separately for agency directories 727 and 797 with the pinned binary/config/PBF described in [PostBus road geometry](POSTBUS-ROAD-GEOMETRY.md). Use \`--output /private/tmp/thurgau-city-road-matched/AGENCY\`, then run \`node scripts/import-thurgau-city-roads.mjs\` and \`node scripts/check-thurgau-city-roads.mjs\`. The plot generator \`scripts/review-thurgau-city-roads.py\` uses Pillow and the macOS Helvetica font. Review every changed path before replacing the committed complete-pattern supplement.
 
 To rebuild the regional supplement, run \`node scripts/prepare-thurgau-regional-roads.mjs\`, then the same matcher separately for agency directories 138, 744, 801 and 896, using input \`/private/tmp/thurgau-regional-road-feeds/AGENCY\` and output \`/private/tmp/thurgau-regional-road-matched/AGENCY\`. Run \`node scripts/import-thurgau-regional-roads.mjs\`, \`node scripts/check-thurgau-regional-roads.mjs\` and \`scripts/review-thurgau-regional-roads.py\` with a Pillow-enabled Python, inspect every panel and rejection, then rebuild and check the regional feed. Pinned review notes distinguish source dates and admission decisions.
+
+To reproduce federal rail preparation from the existing pinned national snapshot, run \`node scripts/prepare-thurgau-rail.mjs data/aargau-rail-sources\`, then rebuild and run the Thurgau checker. The committed \`data/thurgau-rail-sources\` files already support an entirely offline feed build; the Aargau directory is only the default acquisition-reuse input. Generate the supplemental review with \`scripts/review-thurgau-rail.py\` using a Pillow-enabled Python. The checker replays all rail paths and additionally proves every previously admitted cantonal/city/regional-road path unchanged.
 
 Validation covers source hashes, GML counts/axes/IDs, full canton/district membership, operator/line identity, direction and loop preservation, midnight spillover, whole-pattern rejection, repeated geometry replay, exact exported paths, complete calls, finite ordered times, all 24 chunk hashes and trip identities. **Two September days do not establish public-holiday, winter, summer-only or year-round completeness.** Temporary diversions and physical one-way/track legality remain unverified.
 `
@@ -194,7 +222,7 @@ Generated from the pinned 2026 GTFS canton census. See [study and method](THURGA
 
 ${table(['Agency', 'Line', 'Mode', 'GTFS route ID', 'Districts', 'Friday', 'Sunday', 'Status / exclusion evidence'], [...routes].sort((a, b) => a.agencyId.localeCompare(b.agencyId, undefined, { numeric: true }) || a.name.localeCompare(b.name, undefined, { numeric: true }) || a.id.localeCompare(b.id)).map(r => {
   const reasons = [...new Set(r.days.flatMap(d => Object.keys(d.excludedTrips)))]
-  const reason = r.type === 715 && r.name !== 'NT' ? 'GTFS type 715: demand-responsive route; ordinary call flags do not establish fixed paths' : r.roadSupplement?.startsWith('osm-regional-road') ? 'Complete official patterns retained; whole OSM regional patterns supplement gaps' + (reasons.length ? '; exclusions: ' + reasons.join('; ') : '') : r.roadSupplement ? 'Complete OSM-inferred city patterns; official line geometry absent' : r.name === 'NT' && r.agencyId === '797' ? 'Demand-responsive night taxi; fixed drop-off paths not inferred' : r.crosswalk.exclusionReason ?? (r.status === 'inactive-on-validation-dates' ? 'No service on these dates; annual membership retained' : reasons.join('; ') || 'Every dated pattern complete')
+  const reason = r.status === 'inactive-on-validation-dates' ? 'No service on these dates; annual membership retained' : r.railSupplement ? 'Complete cantonal patterns retained; full FOT rail patterns supplement gaps' + (reasons.length ? '; exclusions: ' + reasons.join('; ') : '') : r.type === 715 && r.name !== 'NT' ? 'GTFS type 715: demand-responsive route; ordinary call flags do not establish fixed paths' : r.roadSupplement?.startsWith('osm-regional-road') ? 'Complete official patterns retained; whole OSM regional patterns supplement gaps' + (reasons.length ? '; exclusions: ' + reasons.join('; ') : '') : r.roadSupplement ? 'Complete OSM-inferred city patterns; official line geometry absent' : r.name === 'NT' && r.agencyId === '797' ? 'Demand-responsive night taxi; fixed drop-off paths not inferred' : r.crosswalk.exclusionReason ?? (r.status === 'inactive-on-validation-dates' ? 'No service on these dates; annual membership retained' : reasons.join('; ') || 'Every dated pattern complete')
   return [r.agencyId + ' ' + clean(r.agency), clean(r.name), r.mode, r.id, r.districts.join(', '), ...r.days.map(d => d.admittedTrips + ' / ' + d.trips), labels[r.status] + ': ' + clean(reason)]
 }))}
 `

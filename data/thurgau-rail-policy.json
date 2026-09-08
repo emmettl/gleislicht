@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "sourceMetadataSha256": "c187cb48201066a32774fa524905dc96577721dd1a3087391d2fdabb71180d26",
+  "timetableSha256": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "limits": {
+    "simplificationMetres": 5,
+    "stationAttachmentMetres": 350,
+    "topologyAttachmentMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 3000
+  },
+  "scope": "SBB (11) and THURBO (65) standard-gauge routes, exact original route IDs. Complete cantonal patterns take priority. Full-pattern infrastructure inference only; no stop removal, reverse/pair cache borrowing, name matching or nearest-network identity fallback. The two explicit Interlaken IC81 platform overrides are separately evidenced against the FOT tracks 5–8 node.",
+  "operatingPointOverrides": [
+    {
+      "stopId": "ch:1:sloid:7492:0:460848",
+      "platform": "7",
+      "routeId": "91-81-A-j26-1",
+      "sourceNumber": "8507492",
+      "targetNumber": "8519309",
+      "expectedName": "Interlaken Ost [Gleis 5-8]",
+      "evidence": "FOT node ch14uvag00165678 explicitly names tracks 5–8 and connects to the mm1435 Interlaken West segment ch14uvag00087489. Exact IC81 GTFS platform IDs 5/7 only; generic station node is disconnected."
+    },
+    {
+      "stopId": "ch:1:sloid:7492:0:581416",
+      "platform": "5",
+      "routeId": "91-81-A-j26-1",
+      "sourceNumber": "8507492",
+      "targetNumber": "8519309",
+      "expectedName": "Interlaken Ost [Gleis 5-8]",
+      "evidence": "FOT node ch14uvag00165678 explicitly names tracks 5–8 and connects to the mm1435 Interlaken West segment ch14uvag00087489. Exact IC81 GTFS platform IDs 5/7 only; generic station node is disconnected."
+    }
+  ],
+  "routes": [
+    {
+      "routeId": "91-1-C-j26-1",
+      "agencyId": "65",
+      "line": "S1",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-1-P-j26-1",
+      "agencyId": "65",
+      "line": "RE1",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-10-C-j26-1",
+      "agencyId": "65",
+      "line": "S10",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-12-j26-1",
+      "agencyId": "11",
+      "line": "S12",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-14-B-j26-1",
+      "agencyId": "65",
+      "line": "S14",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-14-I-j26-1",
+      "agencyId": "65",
+      "line": "SN14",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-1S-Y-j26-1",
+      "agencyId": "11",
+      "line": "EXT",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-21-F-j26-1",
+      "agencyId": "65",
+      "line": "SN21",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-23-B-j26-1",
+      "agencyId": "11",
+      "line": "S23",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-24-E-j26-1",
+      "agencyId": "65",
+      "line": "S24",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-24-j26-1",
+      "agencyId": "11",
+      "line": "S24",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-29-A-j26-1",
+      "agencyId": "65",
+      "line": "S29",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-3-I-j26-1",
+      "agencyId": "65",
+      "line": "SN3",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-3-X-j26-1",
+      "agencyId": "65",
+      "line": "S3",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-30-A-j26-1",
+      "agencyId": "65",
+      "line": "S30",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-30-C-j26-1",
+      "agencyId": "11",
+      "line": "S30",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-30-L-j26-1",
+      "agencyId": "65",
+      "line": "SN30",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-35-j26-1",
+      "agencyId": "65",
+      "line": "S35",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-44-C-j26-1",
+      "agencyId": "65",
+      "line": "S44",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-5-B-j26-1",
+      "agencyId": "65",
+      "line": "S5",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-7-B-j26-1",
+      "agencyId": "65",
+      "line": "S7",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-71-B-j26-1",
+      "agencyId": "65",
+      "line": "SN71",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-72-B-j26-1",
+      "agencyId": "65",
+      "line": "SN72",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-75-A-j26-1",
+      "agencyId": "65",
+      "line": "IR75",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-75-B-j26-1",
+      "agencyId": "65",
+      "line": "RE75",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-75-j26-1",
+      "agencyId": "11",
+      "line": "IR75",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-8-E-j26-1",
+      "agencyId": "11",
+      "line": "IC8",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-8-N-j26-1",
+      "agencyId": "65",
+      "line": "RE8",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-81-A-j26-1",
+      "agencyId": "11",
+      "line": "IC81",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-82-j26-1",
+      "agencyId": "65",
+      "line": "S82",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-9-P-j26-1",
+      "agencyId": "11",
+      "line": "IC9",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-CH-Y-j26-1",
+      "agencyId": "65",
+      "line": "S",
+      "gauge": "mm1435"
+    }
+  ]
+}

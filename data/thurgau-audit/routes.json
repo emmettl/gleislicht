@@ -66,6 +66,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-10-C-j26-1",
       "agencyId": "65",
@@ -174,6 +175,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-12-j26-1",
       "agencyId": "11",
@@ -202,24 +204,22 @@
       {
         "date": "2026-09-04",
         "trips": 34,
-        "admittedTrips": 0,
+        "admittedTrips": 34,
         "scheduledTrips": 34,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 34,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 802,
-        "matchedScheduledSegmentOccurrences": 306,
+        "matchedScheduledSegmentOccurrences": 802,
         "segmentOccurrences": 802,
-        "matchedSegmentOccurrences": 306,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 802,
+        "admittedSegmentOccurrences": 802,
         "directedPairs": 51,
-        "matchedDirectedPairs": 21,
+        "matchedDirectedPairs": 51,
         "patterns": 6,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 34
-        }
+        "completePatterns": 6,
+        "admittedPatterns": 6,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -242,7 +242,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-14-B-j26-1",
@@ -308,6 +308,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-14-B-j26-1",
       "agencyId": "65",
@@ -452,6 +453,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-14-I-j26-1",
       "agencyId": "65",
@@ -555,6 +557,7 @@
       "bahnlinie_takt.6"
     ],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "91-15-I-j26-1",
       "agencyId": "22",
@@ -692,6 +695,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-1-C-j26-1",
       "agencyId": "65",
@@ -720,49 +724,45 @@
       {
         "date": "2026-09-04",
         "trips": 94,
-        "admittedTrips": 2,
+        "admittedTrips": 94,
         "scheduledTrips": 94,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 2,
+        "admittedScheduledTrips": 94,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 3636,
-        "matchedScheduledSegmentOccurrences": 3309,
+        "matchedScheduledSegmentOccurrences": 3636,
         "segmentOccurrences": 3636,
-        "matchedSegmentOccurrences": 3309,
-        "admittedSegmentOccurrences": 28,
+        "matchedSegmentOccurrences": 3636,
+        "admittedSegmentOccurrences": 3636,
         "directedPairs": 120,
-        "matchedDirectedPairs": 102,
+        "matchedDirectedPairs": 120,
         "patterns": 41,
-        "completePatterns": 2,
-        "admittedPatterns": 2,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 92
-        }
+        "completePatterns": 41,
+        "admittedPatterns": 41,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 94,
-        "admittedTrips": 3,
+        "admittedTrips": 94,
         "scheduledTrips": 94,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 3,
+        "admittedScheduledTrips": 94,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 3607,
-        "matchedScheduledSegmentOccurrences": 3289,
+        "matchedScheduledSegmentOccurrences": 3607,
         "segmentOccurrences": 3607,
-        "matchedSegmentOccurrences": 3289,
-        "admittedSegmentOccurrences": 47,
+        "matchedSegmentOccurrences": 3607,
+        "admittedSegmentOccurrences": 3607,
         "directedPairs": 118,
-        "matchedDirectedPairs": 101,
+        "matchedDirectedPairs": 118,
         "patterns": 39,
-        "completePatterns": 3,
-        "admittedPatterns": 3,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 91
-        }
+        "completePatterns": 39,
+        "admittedPatterns": 39,
+        "excludedTrips": {}
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-1-P-j26-1",
@@ -805,6 +805,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-1-P-j26-1",
       "agencyId": "65",
@@ -912,6 +913,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-1S-Y-j26-1",
       "agencyId": "11",
@@ -1020,6 +1022,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-21-F-j26-1",
       "agencyId": "65",
@@ -1068,27 +1071,25 @@
       {
         "date": "2026-09-06",
         "trips": 7,
-        "admittedTrips": 0,
+        "admittedTrips": 7,
         "scheduledTrips": 7,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 7,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 84,
-        "matchedScheduledSegmentOccurrences": 58,
+        "matchedScheduledSegmentOccurrences": 84,
         "segmentOccurrences": 84,
-        "matchedSegmentOccurrences": 58,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 84,
+        "admittedSegmentOccurrences": 84,
         "directedPairs": 30,
-        "matchedDirectedPairs": 21,
+        "matchedDirectedPairs": 30,
         "patterns": 5,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 7
-        }
+        "completePatterns": 5,
+        "admittedPatterns": 5,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-23-B-j26-1",
@@ -1133,6 +1134,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-23-B-j26-1",
       "agencyId": "11",
@@ -1161,24 +1163,22 @@
       {
         "date": "2026-09-04",
         "trips": 4,
-        "admittedTrips": 0,
+        "admittedTrips": 4,
         "scheduledTrips": 4,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 4,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 28,
-        "matchedScheduledSegmentOccurrences": 16,
+        "matchedScheduledSegmentOccurrences": 28,
         "segmentOccurrences": 28,
-        "matchedSegmentOccurrences": 16,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 28,
+        "admittedSegmentOccurrences": 28,
         "directedPairs": 15,
-        "matchedDirectedPairs": 9,
+        "matchedDirectedPairs": 15,
         "patterns": 3,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 4
-        }
+        "completePatterns": 3,
+        "admittedPatterns": 3,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -1201,7 +1201,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-24-E-j26-1",
@@ -1242,6 +1242,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-24-E-j26-1",
       "agencyId": "65",
@@ -1359,6 +1360,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-24-j26-1",
       "agencyId": "11",
@@ -1387,49 +1389,45 @@
       {
         "date": "2026-09-04",
         "trips": 33,
-        "admittedTrips": 0,
+        "admittedTrips": 33,
         "scheduledTrips": 33,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 33,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 857,
-        "matchedScheduledSegmentOccurrences": 297,
+        "matchedScheduledSegmentOccurrences": 857,
         "segmentOccurrences": 857,
-        "matchedSegmentOccurrences": 297,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 857,
+        "admittedSegmentOccurrences": 857,
         "directedPairs": 56,
-        "matchedDirectedPairs": 18,
+        "matchedDirectedPairs": 56,
         "patterns": 4,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 33
-        }
+        "completePatterns": 4,
+        "admittedPatterns": 4,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 33,
-        "admittedTrips": 0,
+        "admittedTrips": 33,
         "scheduledTrips": 33,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 33,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 857,
-        "matchedScheduledSegmentOccurrences": 297,
+        "matchedScheduledSegmentOccurrences": 857,
         "segmentOccurrences": 857,
-        "matchedSegmentOccurrences": 297,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 857,
+        "admittedSegmentOccurrences": 857,
         "directedPairs": 59,
-        "matchedDirectedPairs": 19,
+        "matchedDirectedPairs": 59,
         "patterns": 7,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 33
-        }
+        "completePatterns": 7,
+        "admittedPatterns": 7,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-29-A-j26-1",
@@ -1465,6 +1463,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-29-A-j26-1",
       "agencyId": "65",
@@ -1493,49 +1492,45 @@
       {
         "date": "2026-09-04",
         "trips": 71,
-        "admittedTrips": 0,
+        "admittedTrips": 71,
         "scheduledTrips": 71,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 71,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 710,
-        "matchedScheduledSegmentOccurrences": 639,
+        "matchedScheduledSegmentOccurrences": 710,
         "segmentOccurrences": 710,
-        "matchedSegmentOccurrences": 639,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 710,
+        "admittedSegmentOccurrences": 710,
         "directedPairs": 23,
-        "matchedDirectedPairs": 18,
+        "matchedDirectedPairs": 23,
         "patterns": 5,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 71
-        }
+        "completePatterns": 5,
+        "admittedPatterns": 5,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 72,
-        "admittedTrips": 0,
+        "admittedTrips": 72,
         "scheduledTrips": 72,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 72,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 720,
-        "matchedScheduledSegmentOccurrences": 648,
+        "matchedScheduledSegmentOccurrences": 720,
         "segmentOccurrences": 720,
-        "matchedSegmentOccurrences": 648,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 720,
+        "admittedSegmentOccurrences": 720,
         "directedPairs": 23,
-        "matchedDirectedPairs": 18,
+        "matchedDirectedPairs": 23,
         "patterns": 5,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 72
-        }
+        "completePatterns": 5,
+        "admittedPatterns": 5,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-30-A-j26-1",
@@ -1588,6 +1583,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-30-A-j26-1",
       "agencyId": "65",
@@ -1616,49 +1612,45 @@
       {
         "date": "2026-09-04",
         "trips": 48,
-        "admittedTrips": 0,
+        "admittedTrips": 48,
         "scheduledTrips": 48,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 48,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 480,
-        "matchedScheduledSegmentOccurrences": 432,
+        "matchedScheduledSegmentOccurrences": 480,
         "segmentOccurrences": 480,
-        "matchedSegmentOccurrences": 432,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 480,
+        "admittedSegmentOccurrences": 480,
         "directedPairs": 28,
-        "matchedDirectedPairs": 24,
+        "matchedDirectedPairs": 28,
         "patterns": 8,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 48
-        }
+        "completePatterns": 8,
+        "admittedPatterns": 8,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 49,
-        "admittedTrips": 0,
+        "admittedTrips": 49,
         "scheduledTrips": 49,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 49,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 490,
-        "matchedScheduledSegmentOccurrences": 441,
+        "matchedScheduledSegmentOccurrences": 490,
         "segmentOccurrences": 490,
-        "matchedSegmentOccurrences": 441,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 490,
+        "admittedSegmentOccurrences": 490,
         "directedPairs": 28,
-        "matchedDirectedPairs": 26,
+        "matchedDirectedPairs": 28,
         "patterns": 7,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 49
-        }
+        "completePatterns": 7,
+        "admittedPatterns": 7,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-30-C-j26-1",
@@ -1696,6 +1688,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-30-C-j26-1",
       "agencyId": "11",
@@ -1827,6 +1820,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-30-L-j26-1",
       "agencyId": "65",
@@ -1875,27 +1869,25 @@
       {
         "date": "2026-09-06",
         "trips": 7,
-        "admittedTrips": 1,
+        "admittedTrips": 7,
         "scheduledTrips": 7,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 1,
+        "admittedScheduledTrips": 7,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 96,
-        "matchedScheduledSegmentOccurrences": 90,
+        "matchedScheduledSegmentOccurrences": 96,
         "segmentOccurrences": 96,
-        "matchedSegmentOccurrences": 90,
-        "admittedSegmentOccurrences": 6,
+        "matchedSegmentOccurrences": 96,
+        "admittedSegmentOccurrences": 96,
         "directedPairs": 34,
-        "matchedDirectedPairs": 32,
+        "matchedDirectedPairs": 34,
         "patterns": 5,
-        "completePatterns": 1,
-        "admittedPatterns": 1,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 6
-        }
+        "completePatterns": 5,
+        "admittedPatterns": 5,
+        "excludedTrips": {}
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-35-j26-1",
@@ -1937,6 +1929,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-35-j26-1",
       "agencyId": "65",
@@ -1965,49 +1958,45 @@
       {
         "date": "2026-09-04",
         "trips": 47,
-        "admittedTrips": 0,
+        "admittedTrips": 47,
         "scheduledTrips": 47,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 47,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 470,
-        "matchedScheduledSegmentOccurrences": 416,
+        "matchedScheduledSegmentOccurrences": 470,
         "segmentOccurrences": 470,
-        "matchedSegmentOccurrences": 416,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 470,
+        "admittedSegmentOccurrences": 470,
         "directedPairs": 29,
-        "matchedDirectedPairs": 22,
+        "matchedDirectedPairs": 29,
         "patterns": 13,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 47
-        }
+        "completePatterns": 13,
+        "admittedPatterns": 13,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 81,
-        "admittedTrips": 0,
+        "admittedTrips": 81,
         "scheduledTrips": 81,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 81,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 810,
-        "matchedScheduledSegmentOccurrences": 723,
+        "matchedScheduledSegmentOccurrences": 810,
         "segmentOccurrences": 810,
-        "matchedSegmentOccurrences": 723,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 810,
+        "admittedSegmentOccurrences": 810,
         "directedPairs": 30,
-        "matchedDirectedPairs": 22,
+        "matchedDirectedPairs": 30,
         "patterns": 14,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 81
-        }
+        "completePatterns": 14,
+        "admittedPatterns": 14,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-3-I-j26-1",
@@ -2046,6 +2035,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-3-I-j26-1",
       "agencyId": "65",
@@ -2094,27 +2084,25 @@
       {
         "date": "2026-09-06",
         "trips": 4,
-        "admittedTrips": 0,
+        "admittedTrips": 4,
         "scheduledTrips": 4,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 4,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 64,
-        "matchedScheduledSegmentOccurrences": 28,
+        "matchedScheduledSegmentOccurrences": 64,
         "segmentOccurrences": 64,
-        "matchedSegmentOccurrences": 28,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 64,
+        "admittedSegmentOccurrences": 64,
         "directedPairs": 34,
-        "matchedDirectedPairs": 14,
+        "matchedDirectedPairs": 34,
         "patterns": 3,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 4
-        }
+        "completePatterns": 3,
+        "admittedPatterns": 3,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-3-X-j26-1",
@@ -2160,6 +2148,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-3-X-j26-1",
       "agencyId": "65",
@@ -2266,6 +2255,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-44-C-j26-1",
       "agencyId": "65",
@@ -2387,6 +2377,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-5-B-j26-1",
       "agencyId": "65",
@@ -2415,49 +2406,45 @@
       {
         "date": "2026-09-04",
         "trips": 80,
-        "admittedTrips": 44,
+        "admittedTrips": 80,
         "scheduledTrips": 80,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 44,
+        "admittedScheduledTrips": 80,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1209,
-        "matchedScheduledSegmentOccurrences": 996,
+        "matchedScheduledSegmentOccurrences": 1209,
         "segmentOccurrences": 1209,
-        "matchedSegmentOccurrences": 996,
-        "admittedSegmentOccurrences": 528,
+        "matchedSegmentOccurrences": 1209,
+        "admittedSegmentOccurrences": 1209,
         "directedPairs": 57,
-        "matchedDirectedPairs": 41,
+        "matchedDirectedPairs": 57,
         "patterns": 21,
-        "completePatterns": 6,
-        "admittedPatterns": 6,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 36
-        }
+        "completePatterns": 21,
+        "admittedPatterns": 21,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 79,
-        "admittedTrips": 43,
+        "admittedTrips": 79,
         "scheduledTrips": 79,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 43,
+        "admittedScheduledTrips": 79,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 975,
-        "matchedScheduledSegmentOccurrences": 762,
+        "matchedScheduledSegmentOccurrences": 975,
         "segmentOccurrences": 975,
-        "matchedSegmentOccurrences": 762,
-        "admittedSegmentOccurrences": 294,
+        "matchedSegmentOccurrences": 975,
+        "admittedSegmentOccurrences": 975,
         "directedPairs": 52,
-        "matchedDirectedPairs": 35,
+        "matchedDirectedPairs": 52,
         "patterns": 17,
-        "completePatterns": 8,
-        "admittedPatterns": 8,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 36
-        }
+        "completePatterns": 17,
+        "admittedPatterns": 17,
+        "excludedTrips": {}
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-71-B-j26-1",
@@ -2513,6 +2500,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-71-B-j26-1",
       "agencyId": "65",
@@ -2622,6 +2610,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-72-B-j26-1",
       "agencyId": "65",
@@ -2670,27 +2659,25 @@
       {
         "date": "2026-09-06",
         "trips": 5,
-        "admittedTrips": 1,
+        "admittedTrips": 5,
         "scheduledTrips": 5,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 1,
+        "admittedScheduledTrips": 5,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 58,
-        "matchedScheduledSegmentOccurrences": 40,
+        "matchedScheduledSegmentOccurrences": 58,
         "segmentOccurrences": 58,
-        "matchedSegmentOccurrences": 40,
-        "admittedSegmentOccurrences": 8,
+        "matchedSegmentOccurrences": 58,
+        "admittedSegmentOccurrences": 58,
         "directedPairs": 26,
-        "matchedDirectedPairs": 17,
+        "matchedDirectedPairs": 26,
         "patterns": 3,
-        "completePatterns": 1,
-        "admittedPatterns": 1,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 4
-        }
+        "completePatterns": 3,
+        "admittedPatterns": 3,
+        "excludedTrips": {}
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-75-A-j26-1",
@@ -2727,6 +2714,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-75-A-j26-1",
       "agencyId": "65",
@@ -2843,6 +2831,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-75-B-j26-1",
       "agencyId": "65",
@@ -2959,6 +2948,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-75-j26-1",
       "agencyId": "11",
@@ -3083,6 +3073,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-7-B-j26-1",
       "agencyId": "65",
@@ -3111,49 +3102,49 @@
       {
         "date": "2026-09-04",
         "trips": 82,
-        "admittedTrips": 0,
+        "admittedTrips": 72,
         "scheduledTrips": 82,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 72,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 674,
-        "matchedScheduledSegmentOccurrences": 572,
+        "matchedScheduledSegmentOccurrences": 644,
         "segmentOccurrences": 674,
-        "matchedSegmentOccurrences": 572,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 644,
+        "admittedSegmentOccurrences": 584,
         "directedPairs": 39,
-        "matchedDirectedPairs": 25,
+        "matchedDirectedPairs": 28,
         "patterns": 17,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 11,
+        "admittedPatterns": 11,
         "excludedTrips": {
-          "incomplete-directed-pattern": 82
+          "incomplete-directed-pattern": 10
         }
       },
       {
         "date": "2026-09-06",
         "trips": 82,
-        "admittedTrips": 0,
+        "admittedTrips": 68,
         "scheduledTrips": 82,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 68,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 682,
-        "matchedScheduledSegmentOccurrences": 572,
+        "matchedScheduledSegmentOccurrences": 640,
         "segmentOccurrences": 682,
-        "matchedSegmentOccurrences": 572,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 640,
+        "admittedSegmentOccurrences": 556,
         "directedPairs": 39,
-        "matchedDirectedPairs": 24,
+        "matchedDirectedPairs": 29,
         "patterns": 17,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 11,
+        "admittedPatterns": 11,
         "excludedTrips": {
-          "incomplete-directed-pattern": 82
+          "incomplete-directed-pattern": 14
         }
       }
     ],
-    "status": "excluded"
+    "status": "partially-admitted"
   },
   {
     "id": "91-81-A-j26-1",
@@ -3196,6 +3187,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-81-A-j26-1",
       "agencyId": "11",
@@ -3224,24 +3216,22 @@
       {
         "date": "2026-09-04",
         "trips": 15,
-        "admittedTrips": 0,
+        "admittedTrips": 15,
         "scheduledTrips": 15,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 15,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 165,
-        "matchedScheduledSegmentOccurrences": 45,
+        "matchedScheduledSegmentOccurrences": 165,
         "segmentOccurrences": 165,
-        "matchedSegmentOccurrences": 45,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 165,
+        "admittedSegmentOccurrences": 165,
         "directedPairs": 28,
-        "matchedDirectedPairs": 6,
+        "matchedDirectedPairs": 28,
         "patterns": 6,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 15
-        }
+        "completePatterns": 6,
+        "admittedPatterns": 6,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -3264,7 +3254,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-82-j26-1",
@@ -3302,6 +3292,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-82-j26-1",
       "agencyId": "65",
@@ -3415,6 +3406,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-8-E-j26-1",
       "agencyId": "11",
@@ -3443,49 +3435,45 @@
       {
         "date": "2026-09-04",
         "trips": 23,
-        "admittedTrips": 0,
+        "admittedTrips": 23,
         "scheduledTrips": 23,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 23,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 213,
-        "matchedScheduledSegmentOccurrences": 69,
+        "matchedScheduledSegmentOccurrences": 213,
         "segmentOccurrences": 213,
-        "matchedSegmentOccurrences": 69,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 213,
+        "admittedSegmentOccurrences": 213,
         "directedPairs": 37,
-        "matchedDirectedPairs": 6,
+        "matchedDirectedPairs": 37,
         "patterns": 13,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 23
-        }
+        "completePatterns": 13,
+        "admittedPatterns": 13,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 38,
-        "admittedTrips": 0,
+        "admittedTrips": 38,
         "scheduledTrips": 38,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 38,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 374,
-        "matchedScheduledSegmentOccurrences": 115,
+        "matchedScheduledSegmentOccurrences": 374,
         "segmentOccurrences": 374,
-        "matchedSegmentOccurrences": 115,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 374,
+        "admittedSegmentOccurrences": 374,
         "directedPairs": 45,
-        "matchedDirectedPairs": 9,
+        "matchedDirectedPairs": 45,
         "patterns": 18,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 38
-        }
+        "completePatterns": 18,
+        "admittedPatterns": 18,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-8-N-j26-1",
@@ -3535,6 +3523,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-8-N-j26-1",
       "agencyId": "65",
@@ -3563,24 +3552,22 @@
       {
         "date": "2026-09-04",
         "trips": 1,
-        "admittedTrips": 0,
+        "admittedTrips": 1,
         "scheduledTrips": 1,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 1,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 7,
-        "matchedScheduledSegmentOccurrences": 4,
+        "matchedScheduledSegmentOccurrences": 7,
         "segmentOccurrences": 7,
-        "matchedSegmentOccurrences": 4,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 7,
+        "admittedSegmentOccurrences": 7,
         "directedPairs": 7,
-        "matchedDirectedPairs": 4,
+        "matchedDirectedPairs": 7,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 1
-        }
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -3603,7 +3590,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-9-P-j26-1",
@@ -3643,6 +3630,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-9-P-j26-1",
       "agencyId": "11",
@@ -3691,27 +3679,25 @@
       {
         "date": "2026-09-06",
         "trips": 1,
-        "admittedTrips": 0,
+        "admittedTrips": 1,
         "scheduledTrips": 1,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 1,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 11,
-        "matchedScheduledSegmentOccurrences": 3,
+        "matchedScheduledSegmentOccurrences": 11,
         "segmentOccurrences": 11,
-        "matchedSegmentOccurrences": 3,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 11,
+        "admittedSegmentOccurrences": 11,
         "directedPairs": 11,
-        "matchedDirectedPairs": 3,
+        "matchedDirectedPairs": 11,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 1
-        }
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-CH-Y-j26-1",
@@ -3767,6 +3753,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-CH-Y-j26-1",
       "agencyId": "65",
@@ -3859,6 +3846,7 @@
       "buslinie.2200"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-702-D-j26-1",
       "agencyId": "138",
@@ -3955,6 +3943,7 @@
       "buslinie.2201"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-706-C-j26-1",
       "agencyId": "138",
@@ -4079,6 +4068,7 @@
       "buslinie.1893"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-722-A-j26-1",
       "agencyId": "138",
@@ -4176,6 +4166,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-731-j26-1",
       "agencyId": "896",
@@ -4260,6 +4251,7 @@
       "buslinie.1864"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-732-M-j26-1",
       "agencyId": "138",
@@ -4354,6 +4346,7 @@
       "buslinie.1864"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-732-N-j26-1",
       "agencyId": "138",
@@ -4451,6 +4444,7 @@
       "buslinie.1984"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-733-I-j26-1",
       "agencyId": "138",
@@ -4566,6 +4560,7 @@
       "buslinie.2227"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-734-K-j26-1",
       "agencyId": "138",
@@ -4713,6 +4708,7 @@
       "buslinie.2030"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-735-C-j26-1",
       "agencyId": "138",
@@ -4874,6 +4870,7 @@
       "buslinie.2059"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-736-A-j26-1",
       "agencyId": "138",
@@ -5016,6 +5013,7 @@
       "buslinie.2058"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-739-B-j26-1",
       "agencyId": "138",
@@ -5157,6 +5155,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-801-A-j26-1",
       "agencyId": "797",
@@ -5264,6 +5263,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-802-A-j26-1",
       "agencyId": "797",
@@ -5364,6 +5364,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-803-A-j26-1",
       "agencyId": "797",
@@ -5456,6 +5457,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-804-A-j26-1",
       "agencyId": "797",
@@ -5556,6 +5558,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-805-C-j26-1",
       "agencyId": "797",
@@ -5637,6 +5640,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-811-B-j26-1",
       "agencyId": "797",
@@ -5729,6 +5733,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-812-A-j26-1",
       "agencyId": "797",
@@ -5817,6 +5822,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-813-B-j26-1",
       "agencyId": "797",
@@ -5907,6 +5913,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-814-B-j26-1",
       "agencyId": "797",
@@ -6000,6 +6007,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-815-B-j26-1",
       "agencyId": "797",
@@ -6076,6 +6084,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-820-A-j26-1",
       "agencyId": "138",
@@ -6156,6 +6165,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-841-j26-1",
       "agencyId": "744",
@@ -6230,6 +6240,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-8-Y-j26-1",
       "agencyId": "138",
@@ -6326,6 +6337,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-901-j26-1",
       "agencyId": "727",
@@ -6420,6 +6432,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-902-j26-1",
       "agencyId": "727",
@@ -6507,6 +6520,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-903-j26-1",
       "agencyId": "727",
@@ -6605,6 +6619,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-905-j26-1",
       "agencyId": "727",
@@ -6694,6 +6709,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-906-j26-1",
       "agencyId": "727",
@@ -6795,6 +6811,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-907-j26-1",
       "agencyId": "727",
@@ -6954,6 +6971,7 @@
       "buslinie.2270"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-940-B-j26-1",
       "agencyId": "138",
@@ -7161,6 +7179,7 @@
       "buslinie.2220"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-941-A-j26-1",
       "agencyId": "138",
@@ -7313,6 +7332,7 @@
       "buslinie.1888"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-942-A-j26-1",
       "agencyId": "138",
@@ -7450,6 +7470,7 @@
       "buslinie.1737"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-943-A-j26-1",
       "agencyId": "138",
@@ -7586,6 +7607,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A01-O-j26-1",
       "agencyId": "7231",
@@ -7664,6 +7686,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A01-T-j26-1",
       "agencyId": "7231",
@@ -7741,6 +7764,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A02-Q-j26-1",
       "agencyId": "7231",
@@ -7833,6 +7857,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A02-R-j26-1",
       "agencyId": "7231",
@@ -7994,6 +8019,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A04-5-j26-1",
       "agencyId": "7231",
@@ -8074,6 +8100,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A04-7-j26-1",
       "agencyId": "7231",
@@ -8146,6 +8173,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A05-6-j26-1",
       "agencyId": "7231",
@@ -8216,6 +8244,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A05-Z-j26-1",
       "agencyId": "744",
@@ -8286,6 +8315,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A07-8-j26-1",
       "agencyId": "7231",
@@ -8376,6 +8406,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A0A-6-j26-1",
       "agencyId": "7252",
@@ -8450,6 +8481,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-EV3-C-j26-1",
       "agencyId": "7231",
@@ -8521,6 +8553,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-EV3-E-j26-1",
       "agencyId": "7231",
@@ -8609,6 +8642,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-EV3-W-j26-1",
       "agencyId": "7231",
@@ -8679,6 +8713,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-EV4-I-j26-1",
       "agencyId": "7231",
@@ -8758,6 +8793,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-EV4-L-j26-1",
       "agencyId": "7231",
@@ -8844,6 +8880,7 @@
       "buslinie.2142"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-N50-A-j26-1",
       "agencyId": "138",
@@ -8937,6 +8974,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-N90-B-j26-1",
       "agencyId": "138",
@@ -9080,6 +9118,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "92-NT-A-j26-1",
       "agencyId": "797",
@@ -9161,6 +9200,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "94-380-0-j26-1",
       "agencyId": "195",
@@ -9238,6 +9278,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "94-380-1-j26-1",
       "agencyId": "195",
@@ -9311,6 +9352,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "94-381-0-j26-1",
       "agencyId": "195",
@@ -9384,6 +9426,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "94-381-A-j26-1",
       "agencyId": "360",
@@ -9466,6 +9509,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "94-382-0-j26-1",
       "agencyId": "193",
@@ -9539,6 +9583,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "94-382-A-j26-1",
       "agencyId": "360",
@@ -9612,6 +9657,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "94-T-Y-j26-1",
       "agencyId": "3182",
@@ -9698,6 +9744,7 @@
       "buslinie.2189"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-184-9-j26-1",
       "agencyId": "801",
@@ -9785,6 +9832,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-185-1-j26-1",
       "agencyId": "801",
@@ -9859,6 +9907,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-185-9-j26-1",
       "agencyId": "801",
@@ -9944,6 +9993,7 @@
       "buslinie.2236"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-189-4-j26-1",
       "agencyId": "801",
@@ -10089,6 +10139,7 @@
       "buslinie.2108"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-2-j26-1",
       "agencyId": "801",
@@ -10277,6 +10328,7 @@
       "buslinie.2236"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-3-j26-1",
       "agencyId": "801",
@@ -10488,6 +10540,7 @@
       "buslinie.2223"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-4-j26-1",
       "agencyId": "801",
@@ -10716,6 +10769,7 @@
       "buslinie.2231"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-6-j26-1",
       "agencyId": "801",
@@ -10906,6 +10960,7 @@
       "buslinie.1964"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-7-j26-1",
       "agencyId": "801",
@@ -11104,6 +11159,7 @@
       "buslinie.2126"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-8-j26-1",
       "agencyId": "801",
@@ -11280,6 +11336,7 @@
       "buslinie.2209"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-9-j26-1",
       "agencyId": "801",
@@ -11469,6 +11526,7 @@
       "buslinie.2109"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-201-0-j26-1",
       "agencyId": "801",
@@ -11633,6 +11691,7 @@
       "buslinie.2210"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-201-2-j26-1",
       "agencyId": "801",
@@ -11776,6 +11835,7 @@
       "buslinie.2125"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-201-3-j26-1",
       "agencyId": "801",
@@ -11935,6 +11995,7 @@
       "buslinie.2125"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-201-4-j26-1",
       "agencyId": "801",
@@ -12124,6 +12185,7 @@
       "buslinie.1893"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-202-0-j26-1",
       "agencyId": "801",
@@ -12308,6 +12370,7 @@
       "buslinie.1853"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-202-1-j26-1",
       "agencyId": "801",
@@ -12507,6 +12570,7 @@
       "buslinie.2248"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-202-5-j26-1",
       "agencyId": "801",
@@ -12639,6 +12703,7 @@
       "buslinie.2099"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-202-7-j26-1",
       "agencyId": "801",
@@ -12766,6 +12831,7 @@
       "buslinie.1960"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-0-j26-1",
       "agencyId": "801",
@@ -12966,6 +13032,7 @@
       "buslinie.2217"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-1-j26-1",
       "agencyId": "801",
@@ -13183,6 +13250,7 @@
       "buslinie.2016"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-2-j26-1",
       "agencyId": "801",
@@ -13382,6 +13450,7 @@
       "buslinie.2249"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-3-j26-1",
       "agencyId": "801",
@@ -13606,6 +13675,7 @@
       "buslinie.2257"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-5-j26-1",
       "agencyId": "801",
@@ -13831,6 +13901,7 @@
       "buslinie.2219"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-6-j26-1",
       "agencyId": "801",
@@ -13982,6 +14053,7 @@
       "buslinie.2039"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-7-j26-1",
       "agencyId": "801",
@@ -14130,6 +14202,7 @@
       "buslinie.2263"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-8-j26-1",
       "agencyId": "801",
@@ -14263,6 +14336,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-9-j26-1",
       "agencyId": "801",
@@ -14357,6 +14431,7 @@
       "buslinie.2111"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-204-0-j26-1",
       "agencyId": "801",
@@ -14501,6 +14576,7 @@
       "buslinie.2220"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-220-5-j26-1",
       "agencyId": "801",
@@ -14639,6 +14715,7 @@
       "buslinie.2115"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-220-6-j26-1",
       "agencyId": "801",
@@ -14772,6 +14849,7 @@
       "buslinie.2266"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-220-8-j26-1",
       "agencyId": "801",
@@ -14889,6 +14967,7 @@
       "buslinie.2220"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-220-A-j26-1",
       "agencyId": "801",
@@ -15013,6 +15092,7 @@
       "buslinie.2266"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-220-B-j26-1",
       "agencyId": "801",
@@ -15108,6 +15188,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-221-4-j26-1",
       "agencyId": "801",
@@ -15192,6 +15273,7 @@
       "buslinie.2141"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-228-3-j26-1",
       "agencyId": "801",
@@ -15300,6 +15382,7 @@
       "buslinie.1849"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-228-7-j26-1",
       "agencyId": "801",
@@ -15409,6 +15492,7 @@
       "buslinie.2141"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-228-B-j26-1",
       "agencyId": "801",
@@ -15505,6 +15589,7 @@
       "buslinie.2266"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-250-8-j26-1",
       "agencyId": "801",
@@ -15616,6 +15701,7 @@
       "buslinie.2114"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "railSupplement": null,
     "crosswalk": {
       "routeId": "96-250-A-j26-1",
       "agencyId": "801",

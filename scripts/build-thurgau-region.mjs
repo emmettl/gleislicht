@@ -11,6 +11,7 @@ import { applyThurgauGeometry, THURGAU_LIMITS, thurgauLineTokens } from './thurg
 import { thurgauCrosswalk } from './crosswalk-thurgau.mjs'
 import { compactBernFeed, bernCoverage, validateBernSnapshot, validateBernChunks } from './build-bern-region.mjs'
 import { THURGAU_REGIONAL_BUS_AGENCIES } from './thurgau-regional-roads.mjs'
+import { loadThurgauRail } from './thurgau-rail-geometry.mjs'
 import { distanceMetres } from './enrich-postbus-roads.mjs'
 
 async function hashFile(path) {
@@ -78,6 +79,11 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     timetable = await readThurgauTimetables(archive, dates, source)
     timetable.sourceHashes = { archive: hashes.archive, source: hashes.source }
   }
+  const rail = await loadThurgauRail(timetable)
+  hashes.railPolicy = rail.policySha256
+  hashes.railSourceMetadata = rail.policy.sourceMetadataSha256
+  provenance.rail = { ...rail.source, limits: rail.policy.limits, policy: rail.policy.scope }
+  await writeJson(join(auditDirectory, 'rail-source-segments.json'), rail.sourceInventory, true)
   assert.deepEqual(timetable.snapshots.map(s => s.metadata.serviceDate), dates)
   assert.deepEqual(thurgauCrosswalk(timetable, source), crosswalk, 'Crosswalk evidence does not reproduce')
   await mkdir(auditDirectory, { recursive: true })
@@ -88,7 +94,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   let routeCrosswalk
   for (const raw of timetable.snapshots) {
     console.log(`Matching every directed Thurgau pattern for ${raw.metadata.serviceDate}…`)
-    const result = applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads, regionalRoads)
+    const result = applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads, regionalRoads, rail)
     routeCrosswalk = result.routeCrosswalk
     const groups = []
     for (const key of [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort()) {
@@ -102,10 +108,11 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     }
     const snapshot = compactBernFeed(raw, result)
     snapshot.metadata = { ...snapshot.metadata, publisher: 'Gleislicht', timetablePublisher: 'SBB', attribution: 'opentransportdata.swiss',
-      label: 'Thurgau canton — official geometry and inferred bus roads', sourceHashes: hashes, timetable: provenance.timetable,
-      model: 'Scheduled interpolation along cantonal centrelines and OSM-inferred bus roads, with bounded stop-access connectors; not observed vehicles.',
+      label: 'Thurgau canton — cantonal geometry, inferred bus roads and federal rail', sourceHashes: hashes, timetable: provenance.timetable,
+      model: 'Scheduled interpolation along cantonal centrelines, OSM-inferred bus roads and FOT rail infrastructure, with bounded stop-access connectors; not observed vehicles.',
       cityRoads: { ...cityRoads.metadata, localPathDatabase: '../city-road-paths.json' },
       regionalRoads: { ...regionalRoads.metadata, localPathDatabase: '../regional-road-paths.json' },
+      rail: { ...provenance.rail, localSourceMetadata: '../rail-sources/source.json' },
       scope: timetable.census.boundaryRule, admission: 'Only complete directed patterns with every segment passing geometry limits and no reservation/on-demand call. Exclusions retained in the canton audit.',
       geometry: { ...source.metadata, transformation: 'swisstopo approximate CH1903+/WGS84 formula; original LV95 vertices, no simplification, seven-decimal output coordinates',
         modifications: 'Gleislicht: line selection, route graphs, shortest source paths between ordered stop projections, inferred stop-access connectors bounded by snapMetres, conversion to WGS84 and output rounding.',
@@ -134,6 +141,11 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
         directedPairs: result.pairs.filter(p => p.geometrySources?.includes('osm-regional-road')).length,
         rejectedPatterns: result.patterns.filter(p => p.roadSupplement?.status === 'rejected-incomplete-pattern').length,
         scheduledSegmentOccurrences: snapshot.trains.filter(t => t.geometrySource === 'osm-regional-road').reduce((n, t) => n + t.pathSegments.length, 0) },
+      railCoverage: { trips: snapshot.trains.filter(t => t.geometrySource === 'fot-rail-inference').length,
+        patterns: result.patterns.filter(p => p.geometrySource === 'fot-rail-inference').length,
+        rejectedPatterns: result.patterns.filter(p => p.railSupplement?.status === 'rejected-incomplete-pattern').length,
+        directedPairs: result.pairs.filter(p => p.geometrySources?.includes('fot-rail-inference')).length,
+        scheduledSegmentOccurrences: snapshot.trains.filter(t => t.geometrySource === 'fot-rail-inference').reduce((n, t) => n + t.pathSegments.length, 0) },
       timing: thurgauTimingDiagnostics(raw, result, routes),
       carryInTrips: result.trains.filter(t => t.sourceServiceDate !== raw.metadata.serviceDate).length,
       admittedCarryInTrips: snapshot.trains.filter(t => t.sourceServiceDate !== raw.metadata.serviceDate).length,
@@ -161,6 +173,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     return { ...route, sourceLines: routeCrosswalk.find(c => c.routeId === route.id).sourceLines,
       roadSupplement: ['727', '797'].includes(route.agencyId) && route.name !== 'NT' ? 'osm-city-road; full ordered pattern and coordinates required'
         : THURGAU_REGIONAL_BUS_AGENCIES.includes(route.agencyId) && route.mode === 'bus' && route.type !== 715 ? 'osm-regional-road; complete official patterns take priority; complete road patterns only' : null,
+      railSupplement: rail.policy.routes.some(r => r.routeId === route.id) ? 'fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required' : null,
       crosswalk: crosswalk.routes.find(c => c.routeId === route.id), days,
       status: !total ? 'inactive-on-validation-dates' : !admitted ? 'excluded' : admitted === total ? 'admitted-all-dated-trips' : 'partially-admitted' }
   })
@@ -195,7 +208,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     scopeLimits: ['GTFS fixed-stop archive and all Thurgau WFS transit layers inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.',
       'Two September civil days do not establish holiday, winter or year-round pattern coverage.',
       'Cross-boundary journeys keep all calls. Entire patterns failing any segment are excluded, including source extents shorter than their timetable journeys.',
-      'Geometry combines official-line centreline inference and OSM bus-road matching, not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation.'],
+      'Geometry combines official-line centreline inference, OSM bus-road matching and FOT rail infrastructure, not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation.'],
   }
   await writeJson(join(auditDirectory, 'summary.json'), summary, true)
   await writeJson(join(auditDirectory, 'routes.json'), inventory, true)
@@ -205,6 +218,8 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   await writeJson(join(output, 'sources.json'), provenance, true)
   await writeJson(join(output, 'city-road-paths.json'), cityRoads)
   await writeJson(join(output, 'regional-road-paths.json'), regionalRoads)
+  await mkdir(join(output, 'rail-sources'), { recursive: true })
+  for (const file of ['source.json', 'catalogue.json', 'collection.json']) await writeFile(join(output, 'rail-sources', file), await readFile(join('data/thurgau-rail-sources', file)))
   for (const name of source.metadata.termsFiles) await writeFile(join(output, name), gunzipSync(await readFile(join(sourceDirectory, name + '.gz'))))
   await writeJson(join(output, 'index.json'), { label: 'Thurgau canton regional feed', sourceHashes: hashes, dates: dates.map(date => ({ date,
     manifest: `${date}/thurgau-region-day-manifest.json`, morning: `${date}/thurgau-region-morning.json` })), admission: 'Complete geometry patterns only; see docs/THURGAU-STUDY.md and data/thurgau-audit for exclusions.' }, true)

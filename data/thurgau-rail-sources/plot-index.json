@@ -1,0 +1,172 @@
+[
+  {
+    "routeId": "91-1-C-j26-1",
+    "line": "S1",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 44,
+    "representativePattern": "82996c0781eec1eb19f7c8b5",
+    "first": "Wil SG",
+    "last": "Schaffhausen"
+  },
+  {
+    "routeId": "91-12-j26-1",
+    "line": "S12",
+    "agencyId": "11",
+    "page": 1,
+    "patterns": 6,
+    "representativePattern": "b1092e3b63c563b784532ac0",
+    "first": "Wil SG",
+    "last": "Brugg AG"
+  },
+  {
+    "routeId": "91-21-F-j26-1",
+    "line": "SN21",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 5,
+    "representativePattern": "e0c609c5b35e9bb6c8843e43",
+    "first": "Winterthur",
+    "last": "St. Gallen"
+  },
+  {
+    "routeId": "91-23-B-j26-1",
+    "line": "S23",
+    "agencyId": "11",
+    "page": 1,
+    "patterns": 3,
+    "representativePattern": "22aeab66e3fb35e15d0cb02f",
+    "first": "Romanshorn",
+    "last": "Zürich HB"
+  },
+  {
+    "routeId": "91-24-j26-1",
+    "line": "S24",
+    "agencyId": "11",
+    "page": 1,
+    "patterns": 8,
+    "representativePattern": "262c29d40a549eaf7025b492",
+    "first": "Weinfelden",
+    "last": "Zug"
+  },
+  {
+    "routeId": "91-29-A-j26-1",
+    "line": "S29",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 5,
+    "representativePattern": "b83630703abb9e91053817dc",
+    "first": "Winterthur",
+    "last": "Stein am Rhein"
+  },
+  {
+    "routeId": "91-3-I-j26-1",
+    "line": "SN3",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 3,
+    "representativePattern": "f345cf632f2a24618a1a172f",
+    "first": "Winterthur",
+    "last": "Stein am Rhein"
+  },
+  {
+    "routeId": "91-30-A-j26-1",
+    "line": "S30",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 11,
+    "representativePattern": "f5bb5f5ec2b4ecece140e52a",
+    "first": "Weinfelden",
+    "last": "Winterthur"
+  },
+  {
+    "routeId": "91-30-L-j26-1",
+    "line": "SN30",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 4,
+    "representativePattern": "e076b54f1ff199333ef52334",
+    "first": "Romanshorn",
+    "last": "Winterthur"
+  },
+  {
+    "routeId": "91-35-j26-1",
+    "line": "S35",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 19,
+    "representativePattern": "e62269bc28386ae64a44d25f",
+    "first": "Wil SG",
+    "last": "Winterthur"
+  },
+  {
+    "routeId": "91-5-B-j26-1",
+    "line": "S5",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 18,
+    "representativePattern": "7cb3cfe0cecf96f814e16216",
+    "first": "St. Margrethen SG",
+    "last": "Weinfelden"
+  },
+  {
+    "routeId": "91-7-B-j26-1",
+    "line": "S7",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 14,
+    "representativePattern": "e19dbcf37c776d7ee66a735c",
+    "first": "Weinfelden",
+    "last": "Rorschach"
+  },
+  {
+    "routeId": "91-72-B-j26-1",
+    "line": "SN72",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 2,
+    "representativePattern": "ee9841bb51a3eaf58dbeaa79",
+    "first": "Romanshorn",
+    "last": "Lichtensteig"
+  },
+  {
+    "routeId": "91-8-E-j26-1",
+    "line": "IC8",
+    "agencyId": "11",
+    "page": 1,
+    "patterns": 19,
+    "representativePattern": "dff15255a98b8d608065b113",
+    "first": "Brig",
+    "last": "Romanshorn"
+  },
+  {
+    "routeId": "91-8-N-j26-1",
+    "line": "RE8",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 1,
+    "representativePattern": "d98984c637298edb77785b8b",
+    "first": "Zürich HB",
+    "last": "Romanshorn"
+  },
+  {
+    "routeId": "91-81-A-j26-1",
+    "line": "IC81",
+    "agencyId": "11",
+    "page": 1,
+    "patterns": 6,
+    "representativePattern": "bf42c31570b98b5310253f25",
+    "first": "Romanshorn",
+    "last": "Interlaken Ost"
+  },
+  {
+    "routeId": "91-9-P-j26-1",
+    "line": "IC9",
+    "agencyId": "11",
+    "page": 2,
+    "patterns": 1,
+    "representativePattern": "0cdc9ea9d32f98b5409b48fd",
+    "first": "Brig",
+    "last": "Romanshorn"
+  }
+]
