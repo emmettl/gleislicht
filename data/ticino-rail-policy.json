@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact Ticino-calling rail route identities; FOT operating-point IDs only. Entire ordered stop patterns constrain topology; no nearest-name station or track matching. Complete geometry journeys alone may enter the app.",
+  "inputTimetableHashes": {
+    "2026-09-04": "20a1a67cb7a1a3e28b4d61845cdfac41d23dc5aac684c93648879c0b842398c0",
+    "2026-09-06": "336e6acae279a264744711353cd63d128b2b209bdd9d7a789c4254d3c55989e1"
+  },
+  "routes": [
+    {
+      "routeId": "91-10-B-j26-1",
+      "agencyId": "11",
+      "line": "S10",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-10-D-j26-1",
+      "agencyId": "11",
+      "line": "10",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-11-I-j26-1",
+      "agencyId": "11",
+      "line": "S11",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-20-C-j26-1",
+      "agencyId": "11",
+      "line": "20",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-20-j26-1",
+      "agencyId": "11",
+      "line": "S20",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-21-D-j26-1",
+      "agencyId": "11",
+      "line": "IC21",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-26-C-j26-1",
+      "agencyId": "82",
+      "line": "IR26",
+      "operator": "Schweizerische S\u00fcdostbahn (sob)"
+    },
+    {
+      "routeId": "91-2A-Y-j26-1",
+      "agencyId": "11",
+      "line": "EC",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-2C-Y-j26-1",
+      "agencyId": "11",
+      "line": "EC",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-2-G-j26-1",
+      "agencyId": "11",
+      "line": "IC2",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-2Y-Y-j26-1",
+      "agencyId": "11",
+      "line": "EC",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-30-B-j26-1",
+      "agencyId": "11",
+      "line": "S30",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-3R-Y-j26-1",
+      "agencyId": "11",
+      "line": "EC",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-40-A-j26-1",
+      "agencyId": "11",
+      "line": "S40",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-44-Y-j26-1",
+      "agencyId": "11",
+      "line": "EC",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-46-j26-1",
+      "agencyId": "82",
+      "line": "IR46",
+      "operator": "Schweizerische S\u00fcdostbahn (sob)"
+    },
+    {
+      "routeId": "91-50-A-j26-1",
+      "agencyId": "11",
+      "line": "S50",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-5E-Y-j26-1",
+      "agencyId": "11",
+      "line": "S",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-5F-Y-j26-1",
+      "agencyId": "11",
+      "line": "IC",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-5G-Y-j26-1",
+      "agencyId": "11",
+      "line": "EXT",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-60-A-j26-1",
+      "agencyId": "47",
+      "line": "S60",
+      "operator": "Lugano-Ponte Tresa"
+    },
+    {
+      "routeId": "91-70-C-j26-1",
+      "agencyId": "49",
+      "line": "R70",
+      "operator": "Ferrovie Autolinee Regionali Ticinesi"
+    },
+    {
+      "routeId": "91-72-A-j26-1",
+      "agencyId": "49",
+      "line": "72",
+      "operator": "Ferrovie Autolinee Regionali Ticinesi"
+    },
+    {
+      "routeId": "91-73-j26-1",
+      "agencyId": "49",
+      "line": "RE73",
+      "operator": "Ferrovie Autolinee Regionali Ticinesi"
+    },
+    {
+      "routeId": "91-80-j26-1",
+      "agencyId": "11",
+      "line": "RE80",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-84-j26-1",
+      "agencyId": "11",
+      "line": "RE84",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-8I-Y-j26-1",
+      "agencyId": "11",
+      "line": "PE",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-8K-Y-j26-1",
+      "agencyId": "11",
+      "line": "RE",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-8M-Y-j26-1",
+      "agencyId": "82",
+      "line": "IR",
+      "operator": "Schweizerische S\u00fcdostbahn (sob)"
+    },
+    {
+      "routeId": "91-8P-Y-j26-1",
+      "agencyId": "11",
+      "line": "RE",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-8X-Y-j26-1",
+      "agencyId": "11",
+      "line": "RE",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-90-A-j26-1",
+      "agencyId": "11",
+      "line": "S90",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-9E-Y-j26-1",
+      "agencyId": "11",
+      "line": "RE",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-9U-Y-j26-1",
+      "agencyId": "11",
+      "line": "EXT",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-A6-Y-j26-1",
+      "agencyId": "82",
+      "line": "EXT",
+      "operator": "Schweizerische S\u00fcdostbahn (sob)"
+    },
+    {
+      "routeId": "91-C8-Y-j26-1",
+      "agencyId": "11",
+      "line": "EXT",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-CB-Y-j26-1",
+      "agencyId": "11",
+      "line": "IC",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-CE-Y-j26-1",
+      "agencyId": "11",
+      "line": "EXT",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "91-R-Y-j26-1",
+      "agencyId": "11",
+      "line": "S",
+      "operator": "Schweizerische Bundesbahnen SBB"
+    },
+    {
+      "routeId": "93-87-j26-1",
+      "agencyId": "129",
+      "line": "87",
+      "operator": "Ferrovia Monte Generoso"
+    }
+  ]
+}

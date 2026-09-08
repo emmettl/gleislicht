@@ -16,7 +16,7 @@ export async function hashFile(path) {
   return hash.digest('hex')
 }
 
-export async function inventoryAargau({ archive, sources, dates, output }) {
+export async function inventoryAargau({ archive, sources, dates, output, cantonName = 'Aargau' }) {
   await mkdir(output, { recursive: true })
   const catalogue = JSON.parse(await readFile(join(sources, 'sources.json'), 'utf8'))
   for (const [name, file] of Object.entries(catalogue.files)) assert.equal(await hashFile(join(sources, name)), file.sha256, `Changed source: ${name}`)
@@ -83,7 +83,7 @@ export async function inventoryAargau({ archive, sources, dates, output }) {
       }
     })
   }
-  console.log(`Streaming all national stop times; ${inside.size} source stop records inside Aargau…`)
+  console.log(`Streaming all national stop times; ${inside.size} source stop records inside ${cantonName}…`)
   for await (const row of rowsFromArchive(archive, 'stop_times.txt')) {
     if (row.trip_id !== current) { flush(); current = row.trip_id; calls = []; cantonIds = new Set() }
     if (inside.has(row.stop_id)) cantonIds.add(row.stop_id)
@@ -93,7 +93,7 @@ export async function inventoryAargau({ archive, sources, dates, output }) {
   flush()
   const sourceHash = await hashFile(archive)
   const metadata = { feed: feeds[0], archiveSha256: sourceHash, sourceCatalogueSha256: await hashFile(join(sources, 'sources.json')), archiveUrl: 'https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip', dates, sourceServiceDates: [...new Set(sourceDays.map(d => d.date))], dayModel: 'civil day [00:00,24:00): current and preceding service calendars; entire intersecting journeys retained, including calls before/after midnight', sourceRows: { routes: routes.length, trips: trips.size, stopTimes: read, tripsWithStopTimes: finished.size }, boundary: catalogue.boundary }
-  const inventory = { schemaVersion: 1, metadata, scope: 'All national GTFS route records. Canton membership requires at least one scheduled call inside the complete Aargau polygon on any archived trip, independent of operator or selected dates. Each daily feed retains only trips that themselves call in Aargau, with their entire stop chain. Non-stopping through traffic and services absent from this GTFS are outside the timetable denominator.', cantonStopIds: [...inside].sort(), agencies: [...agencies.values()], routes: routes.map(r => ({ ...r, cantonStopIds: [...r.cantonStopIds].sort(), admission: !r.cantonSourceTrips ? 'excluded-no-canton-call' : r.mode === 'unsupported' ? 'excluded-unsupported-mode' : r.days.some(d => d.trips) ? 'admitted' : 'inventoried-inactive-on-selected-dates' })) }
+  const inventory = { schemaVersion: 1, metadata, scope: `All national GTFS route records. Canton membership requires at least one scheduled call inside the complete ${cantonName} polygon on any archived trip, independent of operator or selected dates. Each daily feed retains only trips that themselves call in ${cantonName}, with their entire stop chain. Non-stopping through traffic and services absent from this GTFS are outside the timetable denominator.`, cantonStopIds: [...inside].sort(), agencies: [...agencies.values()], routes: routes.map(r => ({ ...r, cantonStopIds: [...r.cantonStopIds].sort(), admission: !r.cantonSourceTrips ? 'excluded-no-canton-call' : r.mode === 'unsupported' ? 'excluded-unsupported-mode' : r.days.some(d => d.trips) ? 'admitted' : 'inventoried-inactive-on-selected-dates' })) }
   await writeFile(join(output, 'inventory.json'), JSON.stringify(inventory, null, 2)+'\n')
   for (let i = 0; i < dates.length; i++) {
     const used = new Set(days[i].flatMap(t => t.calls.map(c => c[0])))

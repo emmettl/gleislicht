@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "timetable": {
+    "publisher": "SBB / Open data platform mobility Switzerland",
+    "attribution": "opentransportdata.swiss",
+    "sourceUrl": "https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip",
+    "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "feed": {
+      "feed_publisher_name": "SBB",
+      "feed_publisher_url": "https://sbb.ch",
+      "feed_lang": "DE",
+      "feed_start_date": "20251214",
+      "feed_end_date": "20261212",
+      "feed_version": "20260902"
+    },
+    "termsUrl": "https://opentransportdata.swiss/en/terms-of-use/",
+    "processedBy": "Gleislicht",
+    "archivalStudy": true
+  },
+  "boundary": {
+    "source": "swissBOUNDARIES3D",
+    "edition": "2026-01",
+    "url": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+    "sourceGpkgSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+    "recordUuid": "{95F10F52-8B2F-4D6A-AF7E-D4F915E42F89}",
+    "recordModified": "2025-11-19T00:00:00.000",
+    "cantonNumber": 21,
+    "attribution": "© swisstopo",
+    "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+  },
+  "rail": {
+    "schemaVersion": 1,
+    "publisher": "Federal Office of Transport - FOT",
+    "attribution": "© Federal Office of Transport (FOT)",
+    "license": "proprietary",
+    "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+    "catalogueDate": "2021-07-06T00:00:00Z",
+    "assetUpdated": "2025-01-18T04:23:13.735821Z",
+    "catalogueCheckedOn": "2026-09-08",
+    "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+    "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+    "publishedChecksum": "12202895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+    "validOn": null,
+    "validityNote": "Catalogue dates and verified bytes do not establish September 2026 alignment validity. Inferred infrastructure paths, not certified service running tracks.",
+    "nodes": 3210,
+    "segments": 3424,
+    "transformation": "Existing XTF parser; LV95 simplification 5 m and swisstopo approximate LV95-to-WGS84 transformation rounded to 6 decimals.",
+    "files": {
+      "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+      "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+      "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02"
+    },
+    "limits": {
+      "stationAttachmentMetres": 350,
+      "topologyAttachmentMetres": 120,
+      "detourRatio": 4.5,
+      "detourAllowanceMetres": 3000,
+      "simplificationMetres": 5
+    },
+    "policy": "Exact national rail route and operating-point identities; full ordered stop chains constrain infrastructure paths. Catalogue dated 2021-07-06, present alignment validity unknown. No actual running-track certification."
+  },
+  "roads": {
+    "publisher": "OpenStreetMap contributors",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "feedVersion": "d5c675456e93",
+    "sourceSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "license": "ODbL-1.0",
+    "model": "pfaedle bus map matching; inferred paths, not operator-verified routes",
+    "source": {
+      "publisher": "OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "termsUrl": "https://www.openstreetmap.org/copyright",
+      "sha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+      "bytes": 79200441,
+      "source": "Geofabrik Switzerland 2026-09-02 plus Overpass border extract retrieved 2026-09-08; merged by scripts/merge-postbus-osm.py",
+      "switzerlandUrl": "https://download.geofabrik.de/europe/switzerland-260902.osm.pbf",
+      "borderQuery": "scripts/postbus-border-roads.overpass",
+      "borderQuerySha256": "77f2c54e01bf67a1aa801a969c3b4c3ed92d86339cb8905e28cc7699bea11d05",
+      "sourceDates": {
+        "switzerland": "2026-09-02",
+        "borderRetrieved": "2026-09-08"
+      },
+      "matcher": "pfaedle 99f2cd466696ecc6bdb73b2b3bb9008557fcb84a; unmodified bus profile",
+      "derivedDatabase": "../ticino-road-cache.json.gz",
+      "inference": "Ordered route/platform/coordinate matching, not an operator route or diversion certificate."
+    },
+    "matcher": {
+      "schemaVersion": 1,
+      "completed": true,
+      "noTrie": true,
+      "warnings": true,
+      "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+      "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+      "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+      "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+      "patternsSha256": "b210e0e0f3dbb448e6e476c352d0551412b3ecf56038a20c4a36b790ccd32e6b",
+      "logSha256": "ece2715e4b6123695421808d3cfd42f4664666fee291d143e2487c7d780c2b75",
+      "shapesSha256": "7f2fb149089a95dfc71ca01d6812f94ef1c1ec87d7b7e0c43b348301b74ba9fc",
+      "tripsSha256": "e9e8954289dd6407feddbaae620a2e061a4918608b83635df6db2ea6cd9da0a8",
+      "stopTimesSha256": "553030fc19b220ffb0bec7a6a8b2069083770f0fdb44ea7d725e0bda777c7838",
+      "elapsedSeconds": 8
+    },
+    "timetableFeedVersion": "20260902",
+    "serviceDate": "2026-09-04",
+    "limits": {
+      "snapMetres": 120,
+      "maxDetourRatio": 6,
+      "detourAllowanceMetres": 1500,
+      "simplifyMetres": 5
+    },
+    "pilotRoutes": null,
+    "inputTimetableHashes": {
+      "2026-09-04": "20a1a67cb7a1a3e28b4d61845cdfac41d23dc5aac684c93648879c0b842398c0",
+      "2026-09-06": "336e6acae279a264744711353cd63d128b2b209bdd9d7a789c4254d3c55989e1"
+    },
+    "derivedDatabase": "road-paths.json.gz",
+    "attribution": "© OpenStreetMap contributors",
+    "modifications": "Gleislicht: pfaedle matching of complete GTFS patterns, warning rejection, bounded connectors, monotone shape-distance slicing and 5 m simplification. OSM inference, not an operator alignment or diversion certificate."
+  },
+  "officialLocalInvestigation": {
+    "checkedOn": "2026-09-08",
+    "publisher": "Amministrazione cantonale - Canton Ticino",
+    "catalogueCorrection": "Rete dei trasporti pubblici is TI-12, access A with download indicated; TI-11 denotes cantonal road axes. Corrects earlier national inventory.",
+    "status": "No TI-12 transport-line layer advertised in the acquired WFS, WMS or download catalogue; no local line geometry imported.",
+    "evidence": [
+      {
+        "file": "wfs-capabilities.xml",
+        "sha256": "c1a11eaf5a2476f5780c2ee2740a8a69d04f90f1cc9edc97f5375e54e5781b9f"
+      },
+      {
+        "file": "wms-capabilities.xml",
+        "sha256": "63b1a8eab6c7109ebc8d45deb95a192a90f0e5c8289a81e02f6f7d12c106476c"
+      },
+      {
+        "file": "download-catalogue.html",
+        "sha256": "1729ed83c56dd9c8599fb841203823e79608e0a42923d8c7102309e26abe4d07"
+      },
+      {
+        "file": "terms.html",
+        "sha256": "71922ae0c3fe2c70accd4166576a472d9722643ce862afbd39666e0630ed3dbc"
+      },
+      {
+        "file": "legal-catalogue.html",
+        "sha256": "46cd0d3b4711e52783884efac721c27a3d6aa7ca028fcd8ea5eaebc41276b72c"
+      }
+    ],
+    "urls": {
+      "wfs": "https://wfs.geo.ti.ch/service?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities",
+      "wms": "https://wms.geo.ti.ch/service?SERVICE=WMS&REQUEST=GetCapabilities",
+      "downloads": "https://data.geo.ti.ch/",
+      "terms": "https://www4.ti.ch/dt/sg/sai/ugeo/temi/geoportale-ticino/geoportale/condizioni-utilizzo",
+      "legalCatalogue": "https://www3.ti.ch/CAN/RLeggi/public/index.php/raccolta-leggi/legge/num/565"
+    },
+    "wfsFeatureTypes": 314,
+    "wfsAccessConstraint": "Richiesta formale a ccgeo@ti.ch",
+    "wfsFees": "no conditions apply",
+    "relatedLayers": [
+      {
+        "Name": "ac_010_1_v1_0_qualita_trasporti_pubblici_fermate",
+        "Title": "[AC-010.1] Qualità dei trasporti pubblici - Fermate",
+        "Abstract": "Fermate"
+      },
+      {
+        "Name": "ac_010_1_v1_0_qualita_trasporti_pubblici_qualita",
+        "Title": "[AC-010.1] Qualità dei trasporti pubblici - Qualità",
+        "Abstract": "Qualità"
+      },
+      {
+        "Name": "ac_051_1_v1_0_piani_mobilita_scolastica",
+        "Title": "[AC-051.1] Piani di mobilità scolastica",
+        "Abstract": "Piani di mobilità scolastica"
+      },
+      {
+        "Name": "ch_038_1_v2_1_swisstlm3d_rete_trasporti_pubblici_fermate",
+        "Title": "[CH-038.1] SwissTLM3D - Rete trasporti pubblici - Fermate",
+        "Abstract": "Rete trasporti pubblici - Fermate"
+      },
+      {
+        "Name": "ch_038_1_v2_1_swisstlm3d_rete_trasporti_pubblici_ferrovie",
+        "Title": "[CH-038.1] SwissTLM3D - Rete trasporti pubblici - Ferrovie",
+        "Abstract": "Rete trasporti pubblici - Ferrovie"
+      },
+      {
+        "Name": "ch_038_1_v2_1_swisstlm3d_rete_trasporti_pubblici_trasporti_fune",
+        "Title": "[CH-038.1] SwissTLM3D - Rete trasporti pubblici - Trasporti a fune",
+        "Abstract": "Rete trasporti pubblici - Trasporti a fune"
+      },
+      {
+        "Name": "ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_trasporti_pubblici_fermate",
+        "Title": "[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete trasporti pubblici - Fermate",
+        "Abstract": "Rete trasporti pubblici - Fermate"
+      },
+      {
+        "Name": "ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_trasporti_pubblici_ferrovie",
+        "Title": "[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete trasporti pubblici - Ferrovie",
+        "Abstract": "Rete trasporti pubblici - Ferrovie"
+      },
+      {
+        "Name": "ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_trasporti_pubblici_trasporti_fune",
+        "Title": "[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete trasporti pubblici - Trasporti a fune",
+        "Abstract": "Rete trasporti pubblici - Trasporti a fune"
+      },
+      {
+        "Name": "ti_005_1_v1_0_impianti_fune_metallica_linee",
+        "Title": "[TI-005.1] Impianti a fune metallica - Linee",
+        "Abstract": "Linee"
+      },
+      {
+        "Name": "ti_005_1_v1_0_impianti_fune_metallica_stazioni",
+        "Title": "[TI-005.1] Impianti a fune metallica - Stazioni",
+        "Abstract": "Stazioni"
+      },
+      {
+        "Name": "ti_011_1_v1_1_assi_strade_cantonali_assi_stradali",
+        "Title": "[TI-011.1] Assi delle strade cantonali - Assi stradali",
+        "Abstract": "Assi stradali"
+      },
+      {
+        "Name": "ti_011_1_v1_1_assi_strade_cantonali_punti_ettometrici",
+        "Title": "[TI-011.1] Assi delle strade cantonali - Punti ettometrici",
+        "Abstract": "Punti ettometrici"
+      },
+      {
+        "Name": "ti_011_1_v1_1_assi_strade_cantonali_punti_riferimento",
+        "Title": "[TI-011.1] Assi delle strade cantonali - Punti di riferimento",
+        "Abstract": "Punti di riferimento"
+      },
+      {
+        "Name": "ti_011_1_v1_1_assi_strade_cantonali_segmenti",
+        "Title": "[TI-011.1] Assi delle strade cantonali - Segmenti",
+        "Abstract": "Segmenti"
+      },
+      {
+        "Name": "ti_011_2_v2_1_assi_strade_cantonali_rete_oate_nodi",
+        "Title": "[TI-011.2] Assi delle strade cantonali - Rete OATE - Nodi di rete",
+        "Abstract": "Nodi di rete"
+      }
+    ],
+    "reuse": "Official terms permit use, modification, redistribution and commercial use of access-A cantonal geodata with source attribution. B/C layers have specific restrictions. WFS service access statement requests formal contact. Availability and a dataset-specific export are unresolved; this is not a claim that all cantonal data lack reuse rights.",
+    "requiredAttribution": "Fonte: Amministrazione cantonale - Canton Ticino",
+    "excludedSources": [
+      {
+        "id": "TI-12",
+        "reason": "Legal catalogue discovery record; distribution and vintage unestablished."
+      },
+      {
+        "id": "TI-11",
+        "reason": "Cantonal road axes, not public-transport line paths."
+      },
+      {
+        "id": "AC-010.1",
+        "reason": "Public transport stop/accessibility layers, not route geometry."
+      },
+      {
+        "id": "CH-038.1",
+        "reason": "SwissTLM topographic rail/cable infrastructure, not dated bus lines; existing hash-verified FOT used for rail."
+      },
+      {
+        "id": "TI-005.1",
+        "reason": "Cable installations inventory includes infrastructure beyond scheduled passenger services; no timetable identity crosswalk reviewed."
+      }
+    ],
+    "nextAction": "Request TI-12 distribution URL, current vintage, full cross-border extent and identifiers from CCgeo/UTP; compare TPL, FART, ARL, AMSA and valley operators with all 209 archived route candidates. No message sent."
+  },
+  "refreshPolicy": "Pinned 4 and 6 September 2026 civil days only; never relabel with the current date. Refresh requires new census, geometry review and admission checks."
+}

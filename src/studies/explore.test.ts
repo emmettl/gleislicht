@@ -89,3 +89,18 @@ it('opens Solothurn as a full civil day and keeps explicit morning shares', () =
   expect(readStudyLink('?study=solothurn-region&date=2026-09-04&time=62100')).toMatchObject({ study: 'solothurn-region', range: 'day', date: '2026-09-04', time: 62100 })
   expect(readStudyLink('?study=solothurn-region&range=morning').range).toBe('morning')
 })
+
+
+it('preserves both Ticino fixture dates in morning and full-day shares', () => {
+  expect(readStudyLink('?study=ticino-region')).toMatchObject({ study: 'ticino-region', range: 'day' })
+  for (const date of ['2026-09-04', '2026-09-06']) for (const range of ['morning', 'day'] as const) {
+    const state = { study: 'ticino-region', range, date, station: 'Lugano', time: 62100 } as const
+    expect(readStudyLink(new URL(studyLinkUrl('https://example.org/', state)).search)).toMatchObject(state)
+  }
+  const index = STUDY_IDS.indexOf('ticino-region')
+  for (const copy of Object.values(EXPLORE_COPY)) {
+    expect(copy.names[index]).toMatch(/Ticino|Tessin/)
+    expect(copy.names).toHaveLength(STUDY_IDS.length)
+    expect(copy.descriptions).toHaveLength(STUDY_IDS.length)
+  }
+})

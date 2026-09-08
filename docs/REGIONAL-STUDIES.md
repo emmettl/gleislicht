@@ -82,3 +82,5 @@ ZVV, Genève and Zürich city now have separate full-day multimodal artifacts wi
 ## Valais / Wallis initial study
 
 [Whole-canton census and source/geometry audit](VALAIS-STUDY.md): 385 route records, 78 agency identities, all 13 districts. The application’s VS selection offers 4 and 6 September 2026, admitting 5,102 / 3,445 complete rail and bus journeys. The [full inventory](VALAIS-ROUTE-INVENTORY.md) retains all excluded/inactive candidates; this is partial geometry coverage. `npm run data:valais:check` reproduces candidate admission and validates both dates offline.
+
+The [initial Ticino rail and bus study](TICINO-STUDY.md) now combines a complete canton timetable inventory with whole-journey admission, eight-district coverage audits, OSM/FOT provenance and weekday/Sunday application fixtures. Lake, mountain and unresolved geometry candidates remain explicit in the inventory.
