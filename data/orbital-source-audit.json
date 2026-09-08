@@ -1,0 +1,335 @@
+{
+  "policy": "Every public full-day transport network; newest weekday per feed, top-level alias preferred on equal dates. Local archives, non-transport datasets and weekend alternatives are excluded.",
+  "sources": [
+    {
+      "id": "national",
+      "file": "swiss-rail-day-manifest.json",
+      "sha256": "a39a1eefe376affa4e0217df3a2f2db1293bae09d729ae1371fb0bb74714bd2f",
+      "inputSha256": "ac030a382341a9679b73c0799a1069cc18ae5ca352c331c0638e3616bc185bab",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 16529,
+      "retainedJourneys": 16527
+    },
+    {
+      "id": "postbus",
+      "file": "postbus-national-day-manifest.json",
+      "sha256": "bbf59395cfe35cd2712e370136b4eab4a6d066fdaf8bdd1841d9b539d4925558",
+      "inputSha256": "e2062d4196c6faaf8eab6acb5ff8877060011c79a7e41533dc6b4baee42c28eb",
+      "date": "2026-09-08",
+      "feedVersion": "20260902",
+      "journeys": 32390,
+      "retainedJourneys": 32390
+    },
+    {
+      "id": "zvv-region",
+      "file": "zvv-region-day-manifest.json",
+      "sha256": "24ee37e462d10409f56bbb32e6d2fc5df224c23d20f42166dd8fc66b791ff5ce",
+      "inputSha256": "8c6f941a8ea639c58e2a18d148fb9382685a0f2cdae92f631591dd3647ef573b",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 34612,
+      "retainedJourneys": 29948
+    },
+    {
+      "id": "geneva-tpg",
+      "file": "geneva-tpg-day-manifest.json",
+      "sha256": "00b6cc8b0960f48609e9459a7f2389d6f9457b25dff8aa9c53672ab0329e49c2",
+      "inputSha256": "b4b8cc5d00e40f1005a5e918c84ed904535b3d4cc5c6a9950fcb8681789a67b2",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 10805,
+      "retainedJourneys": 10223
+    },
+    {
+      "id": "zurich-city",
+      "file": "zurich-city-day-manifest.json",
+      "sha256": "29a5782c98cac3069e1afaca29f5fe7aa4e79f52bcb17de644b084dfb1b0f630",
+      "inputSha256": "c8cbd0533eee833e09634957db28955a7d5230208b875b0437dd5a351a2223bc",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 18398,
+      "retainedJourneys": 54
+    },
+    {
+      "id": "rigi-lake",
+      "file": "rigi-day.json",
+      "sha256": "2873aa0ee0a22ccb1a143987c706d053ab3da091bd0dce4c4ca0f2956cff68a7",
+      "inputSha256": "2873aa0ee0a22ccb1a143987c706d053ab3da091bd0dce4c4ca0f2956cff68a7",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 190,
+      "retainedJourneys": 140
+    },
+    {
+      "id": "contrast",
+      "file": "zurich-tram-day-manifest.json",
+      "sha256": "1469afe14b94dbb5eff891fbd1fbd0a380d3896c80b611172fa52255ce37ba4b",
+      "inputSha256": "1c10730078d90b8ce4daf90d20f3aa5d7c1541c715d2a882afd3548a831d3398",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 5329,
+      "retainedJourneys": 0
+    },
+    {
+      "id": "jungfrau",
+      "file": "jungfrau-day.json",
+      "sha256": "2a332f08d326fc366c36523def5cf62470014c47b3f0867677d777a3a6a17a1d",
+      "inputSha256": "2a332f08d326fc366c36523def5cf62470014c47b3f0867677d777a3a6a17a1d",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 1563,
+      "retainedJourneys": 1237
+    },
+    {
+      "id": "lausanne-region",
+      "file": "lausanne-region-day-manifest.json",
+      "sha256": "3a0b825ee1ffbbcfe3cf2cd73d6465e453bc42d116509ff62b22dd64f6ae610b",
+      "inputSha256": "e8b4219c8214b96f43b45d9bcede2e09d9f44d1e654faf2d5147ffb422153ca6",
+      "date": "2026-09-08",
+      "feedVersion": "20260905",
+      "journeys": 10546,
+      "retainedJourneys": 10428
+    },
+    {
+      "id": "basel-core",
+      "file": "basel-core-day-manifest.json",
+      "sha256": "4b23c3e83c19af465a33b4eff07fd0ca085906401d3c7417281573021d8b8d27",
+      "inputSha256": "fb7c9fedb21c37cbe747d01342adfb8600998ffeef83db58b936ce2cce75f836",
+      "date": "2026-09-08",
+      "feedVersion": "20260905",
+      "journeys": 8808,
+      "retainedJourneys": 8654
+    },
+    {
+      "id": "bern-region",
+      "file": "bern-region-day-manifest.json",
+      "sha256": "3a1ed5887a51a843b78388211bfc735dc2bb5db4e94972f8aacbcf05e9af9ac4",
+      "inputSha256": "fd6c8fac61f8433457b73cdbde79c623a98cb03eedf39b390584923d79bf8a63",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 36831,
+      "retainedJourneys": 30460
+    },
+    {
+      "id": "gornergrat",
+      "file": "gornergrat-day.json",
+      "sha256": "d2f9ab8d4bd4b1af409818502f597fc95cccb14cb950eda4a4b9fe2b5bf24abf",
+      "inputSha256": "d2f9ab8d4bd4b1af409818502f597fc95cccb14cb950eda4a4b9fe2b5bf24abf",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 54,
+      "retainedJourneys": 0
+    },
+    {
+      "id": "solothurn-region",
+      "file": "solothurn-region-day-manifest.json",
+      "sha256": "c89dac9bfec9fde803c3a9943d6b87b854738462ad52afbfedbdc036db86a9a6",
+      "inputSha256": "4d617e5248b5317f7eb57288f80624d69549fe69b1cc6b40321926112d5f8439",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 7033,
+      "retainedJourneys": 3819
+    },
+    {
+      "id": "nyon-region",
+      "file": "nyon-region-day-manifest.json",
+      "sha256": "e16a1f9ec15db89e38c043346eaacf3a64132bae4a7fd6d6db896d2f8de95fde",
+      "inputSha256": "81adb673d2b3188df1373ba4614a6d0bc07d7a30a97413ff5dd98d493d036df2",
+      "date": "2026-09-08",
+      "feedVersion": "20260905",
+      "journeys": 955,
+      "retainedJourneys": 947
+    },
+    {
+      "id": "ticino-region",
+      "file": "ticino-region/2026-09-04/ticino-region-day-manifest.json",
+      "sha256": "f8f67b82feb7dd5f5ebef0817cff38d4d9d876f8692d3a4f15762b94f8f6c0f9",
+      "inputSha256": "413e65d67004e2af6719aaff46e0cdcf68c3e7ea8bc91cf704820e5331ae3031",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 6660,
+      "retainedJourneys": 3343
+    },
+    {
+      "id": "valais-region",
+      "file": "valais-region-day-manifest.json",
+      "sha256": "69da91a35ff0702f79bebe9dd238125e58cad4c72fcc6f3cdbc7b2bded453148",
+      "inputSha256": "ba0fe0f46302650a7dc0af5caa397338296eb8e14f49cf7c481aceb33a75e28a",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 5102,
+      "retainedJourneys": 2388
+    },
+    {
+      "id": "graubuenden-region",
+      "file": "graubuenden-region/2026-09-04/graubuenden-region-day-manifest.json",
+      "sha256": "9f3bdbc87322cc808cf7075cd050152069b4b9b4f75ddd6e30ccd3e265b41faa",
+      "inputSha256": "586518b20a77ac6ca7786a2107daba0812961743b7383d5b70910109cd978647",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 10110,
+      "retainedJourneys": 6027
+    },
+    {
+      "id": "pilatus",
+      "file": "pilatus-day.json",
+      "sha256": "1119b4a727a73bf9083e890796dc7939fc75479f54042eab267fb1c051e390fa",
+      "inputSha256": "1119b4a727a73bf9083e890796dc7939fc75479f54042eab267fb1c051e390fa",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 34,
+      "retainedJourneys": 0
+    },
+    {
+      "id": "rochers",
+      "file": "rochers-day.json",
+      "sha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
+      "inputSha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 37,
+      "retainedJourneys": 0
+    },
+    {
+      "id": "territet",
+      "file": "territet-day.json",
+      "sha256": "fd5bfd43481f836b1bfdc74723c1914afb48cf4eafe896c238194160e8b44e9a",
+      "inputSha256": "fd5bfd43481f836b1bfdc74723c1914afb48cf4eafe896c238194160e8b44e9a",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 140,
+      "retainedJourneys": 140
+    },
+    {
+      "id": "riviera-region",
+      "file": "riviera-region-day-manifest.json",
+      "sha256": "c99200ff35676746896194ce9243b30b262bfa6864be210ece05591d59c4bf00",
+      "inputSha256": "22e8a4e0b3f130207e2a5c2910ed9ede68fa14abdb6b25307fe7d12c9fc12ee7",
+      "date": "2026-09-08",
+      "feedVersion": "20260905",
+      "journeys": 1907,
+      "retainedJourneys": 1568
+    },
+    {
+      "id": "luzern",
+      "file": "luzern-region/2026-09-04/luzern-region-day-manifest.json",
+      "sha256": "553a6ee6e0528869d109490e46ce8b21d998550196652e3690df3f1e68b21f7b",
+      "inputSha256": "2ddd5c0b1968a389c569f3e7d779361decaca2f303cbd9cc990dc1cdb06807bb",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 12585,
+      "retainedJourneys": 9954
+    },
+    {
+      "id": "zug",
+      "file": "zug-region/2026-09-04/zug-region-day-manifest.json",
+      "sha256": "0096beeccc4dc7ae95af2ec389aff0d67216e28f9d002fbe855b68328127491e",
+      "inputSha256": "512dcb915aedf823527598ebd5d1f833b2c581b42424e770e7bf8d4f1b3a1633",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 3530,
+      "retainedJourneys": 2702
+    },
+    {
+      "id": "thurgau",
+      "file": "thurgau-region/2026-09-04/thurgau-region-day-manifest.json",
+      "sha256": "c951198d0e4345de89498f37f8e8381086cbe5959f49292ea389627acb6b7291",
+      "inputSha256": "f5214cf0da369a8084406a005891fa0d49462bf02f99c995da7c681824b32fbc",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 4360,
+      "retainedJourneys": 2163
+    },
+    {
+      "id": "kiental-postbus",
+      "file": "kiental-postbus-day-manifest.json",
+      "sha256": "befcce30c1bafc1372ffb43003d375cdcf8157a2242466fc4d3951c769aefc01",
+      "inputSha256": "25b2cc264ca7eff36972a4af6709c00bc38fe859564198eeb528c67058bc094c",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 68,
+      "retainedJourneys": 0
+    }
+  ],
+  "excluded": [
+    {
+      "file": "bern-region/2026-09-06/bern-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
+      "file": "graubuenden-region/2026-09-06/graubuenden-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
+      "file": "luzern-region/2026-09-06/luzern-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
+      "file": "solothurn-region/2026-09-06/solothurn-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
+      "file": "swiss-air-day-manifest.json",
+      "reason": "not a public-transport network snapshot"
+    },
+    {
+      "file": "swiss-hub-day.json",
+      "reason": "not a public-transport network snapshot"
+    },
+    {
+      "file": "thurgau-region/2026-09-06/thurgau-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
+      "file": "ticino-region/2026-09-06/ticino-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
+      "file": "valais-region/2026-09-06/valais-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
+      "file": "zug-region/2026-09-06/zug-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
+      "id": "bern-region",
+      "file": "bern-region/2026-09-04/bern-region-day-manifest.json",
+      "date": "2026-09-04",
+      "sha256": "26409262012a9a3dd8e89c81a9fc15ce3a2038356de64e8697c89fa7800e68b3",
+      "reason": "alternate copy or older weekday",
+      "selectedFile": "bern-region-day-manifest.json"
+    },
+    {
+      "id": "solothurn-region",
+      "file": "solothurn-region/2026-09-04/solothurn-region-day-manifest.json",
+      "date": "2026-09-04",
+      "sha256": "f80ed60918e1dc255334f3f461fba8520c77e421c6247f342340127efb884868",
+      "reason": "alternate copy or older weekday",
+      "selectedFile": "solothurn-region-day-manifest.json"
+    },
+    {
+      "id": "valais-region",
+      "file": "valais-region/2026-09-04/valais-region-day-manifest.json",
+      "date": "2026-09-04",
+      "sha256": "5b07ee332e4a73e4bf89953e05d23c34be4313bab2e39ea90b2432fa11b0ef7a",
+      "reason": "alternate copy or older weekday",
+      "selectedFile": "valais-region-day-manifest.json"
+    }
+  ],
+  "journeys": 173112,
+  "peak": 5222,
+  "dates": [
+    "2026-09-04",
+    "2026-09-08"
+  ]
+}
