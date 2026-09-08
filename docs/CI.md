@@ -46,3 +46,9 @@ Each hosted job uploads an `e2e-report-<project>-<shard>` artifact. Its Actions 
 Local validation used the working tree, including other pending feature work, and passed 199 unit tests, typechecking, lint, edition boundaries, both worker dry builds, the application build and publication budgets. The three browser partitions passed 99 cases with six existing device-specific skips, and exposed a WebKit station-selection timing failure. That test now waits for a settled camera and validates rounded coordinates using the correct touch picking rules. All 12 repeated station/train checks across both browsers then passed with retries disabled. A hosted run of the revised workflow remains necessary to measure the actual CI saving.
 
 References: [Playwright test sharding](https://playwright.dev/docs/test-sharding) and [GitHub Actions job dependencies](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idneeds).
+
+## Node version and language payloads
+
+Use the Node version selected by `.nvmrc` for local bundle checks. Node 24.20.0 reproduced the hosted JavaScript measurement of 361.0 KiB for commit `5404341`; Node 26's gzip output understated it by about 1 KiB. The 360 KiB JavaScript limit remains unchanged. German, French and Italian interface dictionaries now load individually when selected, with English available immediately and retained if a translation cannot load. Browser regressions cover lazy requests, all four languages, saved language restoration and a delayed translation arriving after another selection.
+
+On Node 24.20.0 the isolated fix measures 351.8 KiB of opening JavaScript. The language regression also exposed a phone menu beneath the search controls; the open language menu now raises the masthead above them.

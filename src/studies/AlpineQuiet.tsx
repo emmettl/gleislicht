@@ -1,8 +1,9 @@
-import { UI_TEXT, type UiLanguage } from '../i18n.ts'
+import { useUiText } from '../use-ui-text.ts'
+import { type UiLanguage } from '../i18n.ts'
 import './alpine-quiet.css'
 
 export function AlpineQuiet({ language }: { language: UiLanguage }) {
-  const text = UI_TEXT[language]
+  const text = useUiText(language)
   return (
     <section className="alpine-quiet" role="status">
       <svg className="alpine-quiet__drawing" viewBox="0 0 600 300" fill="none" aria-hidden="true">

@@ -1,9 +1,10 @@
+import { useUiText } from '../use-ui-text.ts'
 import { useEffect, useMemo, useState } from 'react'
 import type { NationalRoadMinuteChunk, NationalRoadStudyManifest, NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day'
 import type { RoadTrafficSnapshot } from '@motionstudies/core/domain/road'
 import { formatServiceTime } from '@motionstudies/core/domain/network'
 import { editionDataUrl } from '../editions/data-url.ts'
-import { LANGUAGE_LOCALES, UI_TEXT, type UiLanguage } from '../i18n.ts'
+import { LANGUAGE_LOCALES, type UiLanguage } from '../i18n.ts'
 import { roadTrafficSummary } from './road-traffic-summary.ts'
 import { roadHistoryPath, roadTrafficHistory } from './road-traffic-history.ts'
 import './road-traffic-history.css'
@@ -40,7 +41,7 @@ export function RoadTrafficHistory({ road, manifest, fallback, time, language, o
   const source = manifest ? snapshot : fallback
   const points = useMemo(() => roadTrafficHistory(road, snapshot, manifest ? undefined : fallback), [road, snapshot, manifest, fallback])
   const current = useMemo(() => roadTrafficSummary(road, time, snapshot, manifest ? undefined : fallback), [road, time, snapshot, manifest, fallback])
-  const copy = COPY[language], text = UI_TEXT[language]
+  const copy = COPY[language], text = useUiText(language)
   const number = new Intl.NumberFormat(LANGUAGE_LOCALES[language], { maximumFractionDigits: 1 })
   const peak = points.reduce((best, point) => point.summary && point.summary.density > (best?.summary?.density ?? -1) ? point : best, undefined as typeof points[number] | undefined)
   if (!source || !peak?.summary) return <div className="road-history" role="status">

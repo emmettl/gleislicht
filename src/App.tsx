@@ -1,3 +1,4 @@
+import { useUiText } from './use-ui-text.ts'
 import { useNowClock } from '@motionstudies/web/use-now-clock'
 import { useBrowserLocation } from '@motionstudies/web/use-browser-location'
 import { REGIONAL_DAYS, isRegionalDayStudy, readStudyLink, withinStudy } from './studies/explore.ts'
@@ -112,7 +113,6 @@ import {
   resolveUiLanguage,
   serviceCategoryLabel,
   UI_LANGUAGES,
-  UI_TEXT,
   type UiLanguage,
 } from './i18n.ts'
 import type {
@@ -387,7 +387,7 @@ export function App({ edition }: AppProps) {
   const timelineTimeRef = useRef(networkTime)
   const roadHistorySeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const postbusSeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
-  const text = UI_TEXT[language]
+  const text = useUiText(language)
   const [exploreCopy, setExploreCopy] = useState<ExploreUiCopy>(EXPLORE_EN)
   useEffect(() => {
     let current = true

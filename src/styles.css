@@ -1526,6 +1526,10 @@
     display: none;
   }
 
+  .masthead:has(.mobile-language-picker [aria-expanded="true"]) {
+    z-index: 9;
+  }
+
   .mobile-language-picker {
     display: block;
   }
