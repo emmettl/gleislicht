@@ -1,0 +1,119 @@
+{
+  "retrieved": "2026-09-08",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "url": "https://overpass-api.de/api/interpreter",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL 1.0",
+  "termsUrl": "https://www.openstreetmap.org/copyright",
+  "timetableSha256": "4e06a722d5403334a733d79f3332d204fbeeb0d05ede5c0344dbe7c16c05398d",
+  "boatSourceSha256": "64af90150d88c4e2c86f30a08ff0a092fbe7946d5f33a4b9841608c05760e4ab",
+  "method": "Two explicit original OSM ferry ways only, bound to exact operator/GTFS route tags and complete ordered relation stop identities. All original source vertices plus actual GTFS endpoint connectors; no graph routing, synthetic shortcuts or changes to previously successful geometry. Historical OSM route tags reference the December 2025 GTFS release and may retain 2025 notes; current calendar and intervals come exclusively from the frozen September 2026 timetable.",
+  "relations": [
+    {
+      "routeId": "94-366-0-j26-1",
+      "agencyId": "186",
+      "line": "3660",
+      "operator": "SGZ",
+      "relationIds": [
+        18609132,
+        18609133,
+        18609134,
+        18609135,
+        18609136,
+        18609137,
+        18609138,
+        18609139
+      ]
+    },
+    {
+      "routeId": "94-366-1-j26-1",
+      "agencyId": "179",
+      "line": "3661",
+      "operator": "AeS",
+      "relationIds": [
+        18594576,
+        20610445
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "routeId": "94-366-0-j26-1",
+      "relationId": 18609138,
+      "wayId": 1354042139,
+      "fromId": "ch:1:sloid:2251",
+      "toId": "ch:1:sloid:2258",
+      "fromNode": 324735453,
+      "toNode": 333120990
+    },
+    {
+      "routeId": "94-366-0-j26-1",
+      "relationId": 18609134,
+      "wayId": 1354042135,
+      "fromId": "ch:1:sloid:2254",
+      "toId": "ch:1:sloid:2251",
+      "fromNode": 12534903734,
+      "toNode": 324735453
+    }
+  ],
+  "limits": {
+    "maximumDockMetres": 30,
+    "maximumMeanKmh": 25
+  },
+  "independentTopography": {
+    "title": "swissTLM3D 2026-02, complete TLM_SCHIFFFAHRT class",
+    "catalogueUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo.swisstlm3d/items/swisstlm3d_2026-02",
+    "assetUrl": "https://data.geo.admin.ch/ch.swisstopo.swisstlm3d/swisstlm3d_2026-02/swisstlm3d_2026-02_2056_5728.shp.zip",
+    "catalogueDate": "2026-02-24T00:00:00Z",
+    "assetUpdated": "2026-08-20T11:00:52.010422Z",
+    "retrievedOn": "2026-09-08",
+    "sourceCrs": "EPSG:2056 / LN02",
+    "attribution": "© swisstopo",
+    "termsUrl": "https://www.swisstopo.admin.ch/en/terms-and-conditions",
+    "objectCatalogueUrl": "https://www.swisstopo.admin.ch/dam/de/sd-web/A3kQ2dAgenqG/2025-03",
+    "acquisition": "Complete DBF/SHP/SHX/PRJ members extracted using bounded HTTP Range requests and ZIP CRC checks. Member SHA-256 values below were measured locally. The multi-gigabyte parent archive was not downloaded or independently hash-verified.",
+    "publishedParentArchiveChecksum": "122075086B5AA7E721F5AD2EA080E14E9E3F42D5E0AFDEE31C2E3C162F412FAB4114",
+    "sha256": {
+      "catalogue.json": "ed1c47dd78b804829232ccf7d7449598b77fda5f8ca5bd1846c082a09202d4de",
+      "swissTLM3D_TLM_SCHIFFFAHRT.dbf": "b21d3cad6f7f65597b788dbbda060dd0220e08ef03713f2cb5b34de6df3f29d6",
+      "swissTLM3D_TLM_SCHIFFFAHRT.prj": "f160fd6f149ff8288abd2a59f56556d034e87a0fda3dbf463761faf4210c30f5",
+      "swissTLM3D_TLM_SCHIFFFAHRT.shp": "4c37fadd3050034ff26c5543f2d47de1aa189be09816c1d1cecf40aa049baa2b",
+      "swissTLM3D_TLM_SCHIFFFAHRT.shx": "44d7456f951c3a596af0ec93c3e9e3468f599dee23591906951d5b7a788b6de0"
+    },
+    "review": "Complete 27-feature national class retained. Bounding-box inventory of all source vertices establishes no overlap with either reviewed lake envelope; it supplies ferry crossings rather than replacement course-shipping geometry."
+  },
+  "files": [
+    {
+      "file": "ferries.json.gz",
+      "sha256": "e1efd41adae34694deabb09cc54f2356aa34ac02964e228161f6c8cb79dccc7d"
+    },
+    {
+      "file": "query.txt",
+      "sha256": "1466ca337ac0dc7c0d58e3308ba6966ab1a7e1f77645f5030cdd8b1f8803a611"
+    },
+    {
+      "file": "scope.json",
+      "sha256": "87470ab108ed431b38f0108f3de1f647283552757037c82d99e3ebc144e51c7d"
+    },
+    {
+      "file": "catalogue.json",
+      "sha256": "ed1c47dd78b804829232ccf7d7449598b77fda5f8ca5bd1846c082a09202d4de"
+    },
+    {
+      "file": "swissTLM3D_TLM_SCHIFFFAHRT.dbf",
+      "sha256": "b21d3cad6f7f65597b788dbbda060dd0220e08ef03713f2cb5b34de6df3f29d6"
+    },
+    {
+      "file": "swissTLM3D_TLM_SCHIFFFAHRT.shp",
+      "sha256": "4c37fadd3050034ff26c5543f2d47de1aa189be09816c1d1cecf40aa049baa2b"
+    },
+    {
+      "file": "swissTLM3D_TLM_SCHIFFFAHRT.shx",
+      "sha256": "44d7456f951c3a596af0ec93c3e9e3468f599dee23591906951d5b7a788b6de0"
+    },
+    {
+      "file": "swissTLM3D_TLM_SCHIFFFAHRT.prj",
+      "sha256": "f160fd6f149ff8288abd2a59f56556d034e87a0fda3dbf463761faf4210c30f5"
+    }
+  ]
+}
