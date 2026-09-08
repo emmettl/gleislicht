@@ -1,0 +1,23 @@
+{
+  "retrievedOn": "2026-09-08",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "attribution": "© OpenStreetMap contributors, ODbL-1.0; SNCF TER and SBB official station/works context; timetable opentransportdata.swiss",
+  "files": [
+    {
+      "file": "osm.json.gz",
+      "sha256": "4f78b57f378c9bca35f554cae4382c8f447a61bd2f2dc3946ad4d6fb2a83d437",
+      "url": "https://overpass-api.de/api/interpreter"
+    },
+    {
+      "file": "query.txt",
+      "sha256": "05bc409507c9adea0f8e9e4c5d3505265465bc857fec9c27cf0ff63b3b6432fc",
+      "url": null
+    },
+    {
+      "file": "official-station-review.json",
+      "sha256": "b85eb92c69a6f822e8b31ff216a840ab711ef926a017dcb595e9a445d9007c7f",
+      "url": null
+    }
+  ],
+  "method": "Historical bounded Overpass extract. Station nodes assert exact UIC identities and names; no crosswalk from Delle passenger station to the distinct Delle-Frontière border operating point. All 12 used source ways are passenger-tagged standard-gauge branch running lines; exact shared nodes, no siding exception. Retained source metadata and hashes are replayed offline. Snapshot is not proof of historical operational alignment or platform assignment."
+}

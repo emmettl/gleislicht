@@ -953,27 +953,220 @@
       },
       "after": {
         "trips": 7156,
-        "admittedTrips": 7026,
+        "admittedTrips": 7033,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5948,
+        "admittedScheduledTrips": 5955,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97134,
+        "matchedScheduledSegmentOccurrences": 97141,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98212,
-        "admittedSegmentOccurrences": 93727,
+        "matchedSegmentOccurrences": 98219,
+        "admittedSegmentOccurrences": 93785,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4250,
+        "matchedDirectedPairs": 4256,
         "patterns": 921,
-        "completePatterns": 907,
-        "admittedPatterns": 907,
+        "completePatterns": 914,
+        "admittedPatterns": 914,
         "excludedTrips": {
-          "incomplete-directed-pattern": 130
+          "incomplete-directed-pattern": 123
         }
       },
       "lostAdmittedPatterns": [],
       "newlyAdmittedPatterns": [
+        {
+          "id": "e7c1c9e95ff171f1083891eb",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:10:4:8"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "4422cb3441e2b022446618e4",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:3:6",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:10:4:7"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "2e00bf3fc541b5b24e2220a9",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:2:4",
+            "ch:1:sloid:1605:3:5",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:5:10"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 8,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "3f85dd4be9032de870cc4664",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:4:7",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:8",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:3:5",
+            "ch:1:sloid:1609:4:8",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "5e70f90482262127d4985f34",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "a6298d7168b98151a4c8026a",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:5:9",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:792557",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
         {
           "id": "a9253bcaf8bf56d58d6ef0ee",
           "routeId": "91-3R-Y-j26-1",
@@ -1030,6 +1223,47 @@
             "osm-solothurn-como-rail-inference"
           ],
           "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "4fea4d4a337f4c35a81f8219",
+          "routeId": "91-54-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "RE",
+          "directionId": "0",
+          "stopIds": [
+            "8718444",
+            "ch:1:sloid:128:2:3",
+            "ch:1:sloid:144:0:59",
+            "ch:1:sloid:127:0:2",
+            "ch:1:sloid:141:0:60",
+            "ch:1:sloid:126:1:1",
+            "ch:1:sloid:125:0:2",
+            "ch:1:sloid:124",
+            "ch:1:sloid:123:0:2",
+            "ch:1:sloid:122:2:2",
+            "ch:1:sloid:121:2:2",
+            "ch:1:sloid:120:0:1",
+            "ch:1:sloid:109:2:2",
+            "ch:1:sloid:105:1:2",
+            "ch:1:sloid:159:0:877577",
+            "ch:1:sloid:4300:3:5"
+          ],
+          "segmentCount": 15,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-delle-rail-inference",
+            "solothurn-network"
+          ],
+          "matchedSegments": 15,
           "trips": 1,
           "admittedTrips": 1,
           "carryInTrips": 0,
@@ -1670,28 +1904,253 @@
       },
       "after": {
         "trips": 5819,
-        "admittedTrips": 5680,
+        "admittedTrips": 5688,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4572,
+        "admittedScheduledTrips": 4580,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67863,
+        "matchedScheduledSegmentOccurrences": 67871,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68971,
-        "admittedSegmentOccurrences": 65047,
+        "matchedSegmentOccurrences": 68979,
+        "admittedSegmentOccurrences": 65104,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4459,
+        "matchedDirectedPairs": 4462,
         "patterns": 777,
-        "completePatterns": 761,
-        "admittedPatterns": 761,
+        "completePatterns": 768,
+        "admittedPatterns": 768,
         "excludedTrips": {
-          "incomplete-directed-pattern": 137,
+          "incomplete-directed-pattern": 129,
           "night-network-excluded-by-source": 2
         }
       },
       "lostAdmittedPatterns": [],
       "newlyAdmittedPatterns": [
+        {
+          "id": "a3b40467ab09ea4a4201fb74",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:138485",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:3:5"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "daf990a257d22f48cd6d2816",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:6:11"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "f18fc4fa3b8eddd5b962312d",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:3:6"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "3574425948118fe2b31f1e77",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:138485",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:2:3",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:7:14"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 8,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "219e5ffc98e7bc195209f008",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
+          }
+        },
+        {
+          "id": "998463167a920e8f8373e450",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:5:9",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "753005911e8f579866852225",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:3:6",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:3:5",
+            "ch:1:sloid:1609:4:9",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
         {
           "id": "a9253bcaf8bf56d58d6ef0ee",
           "routeId": "91-3R-Y-j26-1",

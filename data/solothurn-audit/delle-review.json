@@ -1,0 +1,1817 @@
+{
+  "baselineCommit": "cd3f03b24ce7e2939ad71fc9910d2c3db6b90595",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "source": {
+    "policy": {
+      "schemaVersion": 1,
+      "sourceDirectory": "data/solothurn-delle-sources",
+      "sourceSha256": "dfc9feb443f5afb6204d47ca7b7cb4255b4e7a98dc1dafdda7f2b1c0ad731440",
+      "snapshot": "2026-09-02T00:00:00Z",
+      "stations": [
+        {
+          "nodeId": 3080770163,
+          "number": "8718444",
+          "name": "Delle"
+        },
+        {
+          "nodeId": 3080770156,
+          "number": "8500128",
+          "name": "Boncourt"
+        }
+      ],
+      "limits": {
+        "stationIdentityMetres": 350,
+        "trackAttachmentMetres": 60,
+        "projectionAlternativeMetres": 5,
+        "maximumTurnDegrees": 45,
+        "maximumPathMetres": 8000
+      },
+      "route": {
+        "id": "91-54-Y-j26-1",
+        "agencyId": "11",
+        "name": "RE",
+        "mode": "rail",
+        "type": 106
+      },
+      "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+      "timetableSourceHashes": {
+        "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+        "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+      },
+      "patternIds": [
+        "0bb94f43759e715046be10af",
+        "0eac49c377d4a324f1a9fc4b",
+        "18c79dc244e905fc6487fc65",
+        "4fea4d4a337f4c35a81f8219",
+        "9445d61f276761f93157ae1a",
+        "b7d3a1de031b1b789dd026f8",
+        "b832aeb2832c3f148a423b60",
+        "f6179cc1ffe074a1f1f18586"
+      ],
+      "pairs": [
+        {
+          "from": [
+            7.010174,
+            47.50579478,
+            "Delle",
+            "",
+            "8718444"
+          ],
+          "to": [
+            7.01636339,
+            47.49246112,
+            "Boncourt",
+            "3",
+            "ch:1:sloid:128:2:3"
+          ],
+          "pathSha256": "ef68032c8d2b931dc7258fbb750478f4d41c0f73a82a4f0a550df0e4e381fefd",
+          "sourceWayIds": [
+            1129534648,
+            613316324,
+            847111885,
+            35921723,
+            181618256,
+            238174303,
+            238174304,
+            1335057424,
+            1335057423,
+            1126683495,
+            1126683494,
+            181618272
+          ]
+        }
+      ],
+      "method": "Exact SBB RE route 91-54-Y-j26-1 and original Delle 8718444 → Boncourt platform 3 only; all eight complete retained twelve-date route patterns checked, including four contexts using the pair. Foreign stop must be a single terminal call. Preserve all previous successes; same full-context consensus and bounded attachments, no coordinate replacement or running-track certification."
+    },
+    "policySha256": "74e3df00f4f456583e6a0d2b1c71326311cd45f5ce2d815bd31055f567a91ff9",
+    "source": {
+      "retrievedOn": "2026-09-08",
+      "snapshot": "2026-09-02T00:00:00Z",
+      "attribution": "© OpenStreetMap contributors, ODbL-1.0; SNCF TER and SBB official station/works context; timetable opentransportdata.swiss",
+      "files": [
+        {
+          "file": "osm.json.gz",
+          "sha256": "4f78b57f378c9bca35f554cae4382c8f447a61bd2f2dc3946ad4d6fb2a83d437",
+          "url": "https://overpass-api.de/api/interpreter"
+        },
+        {
+          "file": "query.txt",
+          "sha256": "05bc409507c9adea0f8e9e4c5d3505265465bc857fec9c27cf0ff63b3b6432fc",
+          "url": null
+        },
+        {
+          "file": "official-station-review.json",
+          "sha256": "b85eb92c69a6f822e8b31ff216a840ab711ef926a017dcb595e9a445d9007c7f",
+          "url": null
+        }
+      ],
+      "method": "Historical bounded Overpass extract. Station nodes assert exact UIC identities and names; no crosswalk from Delle passenger station to the distinct Delle-Frontière border operating point. All 12 used source ways are passenger-tagged standard-gauge branch running lines; exact shared nodes, no siding exception. Retained source metadata and hashes are replayed offline. Snapshot is not proof of historical operational alignment or platform assignment."
+    },
+    "patterns": [
+      {
+        "id": "9445d61f276761f93157ae1a",
+        "directionId": "0",
+        "stops": [
+          [
+            7.010174,
+            47.50579478,
+            "Delle",
+            "",
+            "8718444"
+          ],
+          [
+            7.01636339,
+            47.49246112,
+            "Boncourt",
+            "3",
+            "ch:1:sloid:128:2:3"
+          ],
+          [
+            7.03047592,
+            47.47896622,
+            "Buix",
+            "1",
+            "ch:1:sloid:144:0:59"
+          ],
+          [
+            7.05561977,
+            47.45570776,
+            "Courtemaîche",
+            "1",
+            "ch:1:sloid:127:0:1"
+          ],
+          [
+            7.05785657,
+            47.43926882,
+            "Courchavon",
+            "1",
+            "ch:1:sloid:141:0:60"
+          ],
+          [
+            7.08024259,
+            47.42102566,
+            "Porrentruy",
+            "1",
+            "ch:1:sloid:126:1:1"
+          ],
+          [
+            7.12474513,
+            47.40573714,
+            "Courgenay",
+            "2",
+            "ch:1:sloid:125:0:2"
+          ],
+          [
+            7.16595984,
+            47.36770023,
+            "St-Ursanne",
+            "",
+            "ch:1:sloid:124"
+          ],
+          [
+            7.21022881,
+            47.3350301,
+            "Glovelier",
+            "2",
+            "ch:1:sloid:123:0:2"
+          ],
+          [
+            7.24811975,
+            47.33657033,
+            "Bassecourt",
+            "2",
+            "ch:1:sloid:122:2:2"
+          ],
+          [
+            7.2921911,
+            47.33522491,
+            "Courfaivre",
+            "2",
+            "ch:1:sloid:121:2:2"
+          ],
+          [
+            7.31838597,
+            47.34287692,
+            "Courtételle",
+            "1",
+            "ch:1:sloid:120:0:1"
+          ],
+          [
+            7.35053668,
+            47.36195643,
+            "Delémont",
+            "2",
+            "ch:1:sloid:109:2:2"
+          ],
+          [
+            7.3810255,
+            47.28046586,
+            "Moutier",
+            "2",
+            "ch:1:sloid:105:1:2"
+          ],
+          [
+            7.38949661,
+            47.19185433,
+            "Grenchen Nord",
+            "2",
+            "ch:1:sloid:159:0:877577"
+          ],
+          [
+            7.24307122,
+            47.13243079,
+            "Biel/Bienne",
+            "5",
+            "ch:1:sloid:4300:3:5"
+          ]
+        ],
+        "foreignTerminal": true
+      },
+      {
+        "id": "0bb94f43759e715046be10af",
+        "directionId": "1",
+        "stops": [
+          [
+            7.24328682,
+            47.13258968,
+            "Biel/Bienne",
+            "2",
+            "ch:1:sloid:4300:2:2"
+          ],
+          [
+            7.38963136,
+            47.1918116,
+            "Grenchen Nord",
+            "1",
+            "ch:1:sloid:159:0:469914"
+          ],
+          [
+            7.3810255,
+            47.28046586,
+            "Moutier",
+            "2",
+            "ch:1:sloid:105:1:2"
+          ],
+          [
+            7.35053668,
+            47.36195643,
+            "Delémont",
+            "2",
+            "ch:1:sloid:109:2:2"
+          ],
+          [
+            7.31838597,
+            47.34287692,
+            "Courtételle",
+            "1",
+            "ch:1:sloid:120:0:1"
+          ],
+          [
+            7.2921911,
+            47.33522491,
+            "Courfaivre",
+            "2",
+            "ch:1:sloid:121:2:2"
+          ],
+          [
+            7.24811975,
+            47.33664339,
+            "Bassecourt",
+            "1",
+            "ch:1:sloid:122:1:1"
+          ],
+          [
+            7.21022881,
+            47.3350301,
+            "Glovelier",
+            "2",
+            "ch:1:sloid:123:0:2"
+          ],
+          [
+            7.16595984,
+            47.36770023,
+            "St-Ursanne",
+            "",
+            "ch:1:sloid:124"
+          ],
+          [
+            7.12479005,
+            47.40571282,
+            "Courgenay",
+            "1",
+            "ch:1:sloid:125:0:1"
+          ],
+          [
+            7.08034141,
+            47.42100743,
+            "Porrentruy",
+            "2",
+            "ch:1:sloid:126:2:2"
+          ]
+        ],
+        "foreignTerminal": false
+      },
+      {
+        "id": "f6179cc1ffe074a1f1f18586",
+        "directionId": "0",
+        "stops": [
+          [
+            7.010174,
+            47.50579478,
+            "Delle",
+            "",
+            "8718444"
+          ],
+          [
+            7.01636339,
+            47.49246112,
+            "Boncourt",
+            "3",
+            "ch:1:sloid:128:2:3"
+          ],
+          [
+            7.03047592,
+            47.47896622,
+            "Buix",
+            "1",
+            "ch:1:sloid:144:0:59"
+          ],
+          [
+            7.05561977,
+            47.45570776,
+            "Courtemaîche",
+            "1",
+            "ch:1:sloid:127:0:1"
+          ],
+          [
+            7.05785657,
+            47.43926882,
+            "Courchavon",
+            "1",
+            "ch:1:sloid:141:0:60"
+          ],
+          [
+            7.08024259,
+            47.42102566,
+            "Porrentruy",
+            "1",
+            "ch:1:sloid:126:1:1"
+          ],
+          [
+            7.12474513,
+            47.40573714,
+            "Courgenay",
+            "2",
+            "ch:1:sloid:125:0:2"
+          ],
+          [
+            7.16595984,
+            47.36770023,
+            "St-Ursanne",
+            "",
+            "ch:1:sloid:124"
+          ],
+          [
+            7.21022881,
+            47.3350301,
+            "Glovelier",
+            "2",
+            "ch:1:sloid:123:0:2"
+          ],
+          [
+            7.24811975,
+            47.33657033,
+            "Bassecourt",
+            "2",
+            "ch:1:sloid:122:2:2"
+          ],
+          [
+            7.2921911,
+            47.33522491,
+            "Courfaivre",
+            "2",
+            "ch:1:sloid:121:2:2"
+          ],
+          [
+            7.31838597,
+            47.34287692,
+            "Courtételle",
+            "1",
+            "ch:1:sloid:120:0:1"
+          ],
+          [
+            7.35053668,
+            47.36195643,
+            "Delémont",
+            "2",
+            "ch:1:sloid:109:2:2"
+          ],
+          [
+            7.3810255,
+            47.28046586,
+            "Moutier",
+            "2",
+            "ch:1:sloid:105:1:2"
+          ],
+          [
+            7.38949661,
+            47.19185433,
+            "Grenchen Nord",
+            "2",
+            "ch:1:sloid:159:0:877577"
+          ],
+          [
+            7.24266698,
+            47.13240634,
+            "Biel/Bienne",
+            "7",
+            "ch:1:sloid:4300:4:7"
+          ]
+        ],
+        "foreignTerminal": true
+      },
+      {
+        "id": "18c79dc244e905fc6487fc65",
+        "directionId": "1",
+        "stops": [
+          [
+            7.24328682,
+            47.13258968,
+            "Biel/Bienne",
+            "2",
+            "ch:1:sloid:4300:2:2"
+          ],
+          [
+            7.38963136,
+            47.1918116,
+            "Grenchen Nord",
+            "1",
+            "ch:1:sloid:159:0:469914"
+          ],
+          [
+            7.3810255,
+            47.28046586,
+            "Moutier",
+            "2",
+            "ch:1:sloid:105:1:2"
+          ],
+          [
+            7.35053668,
+            47.36195643,
+            "Delémont",
+            "2",
+            "ch:1:sloid:109:2:2"
+          ],
+          [
+            7.31838597,
+            47.34287692,
+            "Courtételle",
+            "1",
+            "ch:1:sloid:120:0:1"
+          ],
+          [
+            7.2921911,
+            47.33522491,
+            "Courfaivre",
+            "2",
+            "ch:1:sloid:121:2:2"
+          ],
+          [
+            7.24811975,
+            47.33664339,
+            "Bassecourt",
+            "1",
+            "ch:1:sloid:122:1:1"
+          ],
+          [
+            7.21022881,
+            47.3350301,
+            "Glovelier",
+            "2",
+            "ch:1:sloid:123:0:2"
+          ],
+          [
+            7.16595984,
+            47.36770023,
+            "St-Ursanne",
+            "",
+            "ch:1:sloid:124"
+          ],
+          [
+            7.12474513,
+            47.40573714,
+            "Courgenay",
+            "2",
+            "ch:1:sloid:125:0:2"
+          ],
+          [
+            7.08024259,
+            47.42102566,
+            "Porrentruy",
+            "1",
+            "ch:1:sloid:126:1:1"
+          ]
+        ],
+        "foreignTerminal": false
+      },
+      {
+        "id": "0eac49c377d4a324f1a9fc4b",
+        "directionId": "0",
+        "stops": [
+          [
+            7.010174,
+            47.50579478,
+            "Delle",
+            "",
+            "8718444"
+          ],
+          [
+            7.01636339,
+            47.49246112,
+            "Boncourt",
+            "3",
+            "ch:1:sloid:128:2:3"
+          ],
+          [
+            7.03047592,
+            47.47896622,
+            "Buix",
+            "1",
+            "ch:1:sloid:144:0:59"
+          ],
+          [
+            7.05561977,
+            47.45570776,
+            "Courtemaîche",
+            "1",
+            "ch:1:sloid:127:0:1"
+          ],
+          [
+            7.05785657,
+            47.43926882,
+            "Courchavon",
+            "1",
+            "ch:1:sloid:141:0:60"
+          ],
+          [
+            7.08024259,
+            47.42102566,
+            "Porrentruy",
+            "1",
+            "ch:1:sloid:126:1:1"
+          ],
+          [
+            7.12474513,
+            47.40573714,
+            "Courgenay",
+            "2",
+            "ch:1:sloid:125:0:2"
+          ],
+          [
+            7.16595984,
+            47.36770023,
+            "St-Ursanne",
+            "",
+            "ch:1:sloid:124"
+          ],
+          [
+            7.21022881,
+            47.3350301,
+            "Glovelier",
+            "2",
+            "ch:1:sloid:123:0:2"
+          ],
+          [
+            7.24811975,
+            47.33657033,
+            "Bassecourt",
+            "2",
+            "ch:1:sloid:122:2:2"
+          ],
+          [
+            7.2921911,
+            47.33522491,
+            "Courfaivre",
+            "2",
+            "ch:1:sloid:121:2:2"
+          ],
+          [
+            7.31838597,
+            47.34287692,
+            "Courtételle",
+            "1",
+            "ch:1:sloid:120:0:1"
+          ],
+          [
+            7.35053668,
+            47.36195643,
+            "Delémont",
+            "2",
+            "ch:1:sloid:109:2:2"
+          ],
+          [
+            7.3810255,
+            47.28046586,
+            "Moutier",
+            "2",
+            "ch:1:sloid:105:1:2"
+          ],
+          [
+            7.38949661,
+            47.19185433,
+            "Grenchen Nord",
+            "2",
+            "ch:1:sloid:159:0:877577"
+          ],
+          [
+            7.243188,
+            47.13246745,
+            "Biel/Bienne",
+            "4",
+            "ch:1:sloid:4300:3:4"
+          ]
+        ],
+        "foreignTerminal": true
+      },
+      {
+        "id": "b7d3a1de031b1b789dd026f8",
+        "directionId": "1",
+        "stops": [
+          [
+            7.243188,
+            47.13246745,
+            "Biel/Bienne",
+            "4",
+            "ch:1:sloid:4300:3:4"
+          ],
+          [
+            7.38963136,
+            47.1918116,
+            "Grenchen Nord",
+            "1",
+            "ch:1:sloid:159:0:469914"
+          ],
+          [
+            7.3810255,
+            47.28046586,
+            "Moutier",
+            "2",
+            "ch:1:sloid:105:1:2"
+          ],
+          [
+            7.349297,
+            47.36154874,
+            "Delémont",
+            "5",
+            "ch:1:sloid:109:3:5"
+          ],
+          [
+            7.31838597,
+            47.34287692,
+            "Courtételle",
+            "1",
+            "ch:1:sloid:120:0:1"
+          ],
+          [
+            7.2921911,
+            47.33522491,
+            "Courfaivre",
+            "2",
+            "ch:1:sloid:121:2:2"
+          ],
+          [
+            7.24811975,
+            47.33664339,
+            "Bassecourt",
+            "1",
+            "ch:1:sloid:122:1:1"
+          ],
+          [
+            7.21022881,
+            47.3350301,
+            "Glovelier",
+            "2",
+            "ch:1:sloid:123:0:2"
+          ],
+          [
+            7.16595984,
+            47.36770023,
+            "St-Ursanne",
+            "",
+            "ch:1:sloid:124"
+          ],
+          [
+            7.12474513,
+            47.40573714,
+            "Courgenay",
+            "2",
+            "ch:1:sloid:125:0:2"
+          ],
+          [
+            7.08024259,
+            47.42102566,
+            "Porrentruy",
+            "1",
+            "ch:1:sloid:126:1:1"
+          ]
+        ],
+        "foreignTerminal": false
+      },
+      {
+        "id": "4fea4d4a337f4c35a81f8219",
+        "directionId": "0",
+        "stops": [
+          [
+            7.010174,
+            47.50579478,
+            "Delle",
+            "",
+            "8718444"
+          ],
+          [
+            7.01636339,
+            47.49246112,
+            "Boncourt",
+            "3",
+            "ch:1:sloid:128:2:3"
+          ],
+          [
+            7.03047592,
+            47.47896622,
+            "Buix",
+            "1",
+            "ch:1:sloid:144:0:59"
+          ],
+          [
+            7.05553892,
+            47.45589606,
+            "Courtemaîche",
+            "2",
+            "ch:1:sloid:127:0:2"
+          ],
+          [
+            7.05785657,
+            47.43926882,
+            "Courchavon",
+            "1",
+            "ch:1:sloid:141:0:60"
+          ],
+          [
+            7.08024259,
+            47.42102566,
+            "Porrentruy",
+            "1",
+            "ch:1:sloid:126:1:1"
+          ],
+          [
+            7.12474513,
+            47.40573714,
+            "Courgenay",
+            "2",
+            "ch:1:sloid:125:0:2"
+          ],
+          [
+            7.16595984,
+            47.36770023,
+            "St-Ursanne",
+            "",
+            "ch:1:sloid:124"
+          ],
+          [
+            7.21022881,
+            47.3350301,
+            "Glovelier",
+            "2",
+            "ch:1:sloid:123:0:2"
+          ],
+          [
+            7.24811975,
+            47.33657033,
+            "Bassecourt",
+            "2",
+            "ch:1:sloid:122:2:2"
+          ],
+          [
+            7.2921911,
+            47.33522491,
+            "Courfaivre",
+            "2",
+            "ch:1:sloid:121:2:2"
+          ],
+          [
+            7.31838597,
+            47.34287692,
+            "Courtételle",
+            "1",
+            "ch:1:sloid:120:0:1"
+          ],
+          [
+            7.35053668,
+            47.36195643,
+            "Delémont",
+            "2",
+            "ch:1:sloid:109:2:2"
+          ],
+          [
+            7.3810255,
+            47.28046586,
+            "Moutier",
+            "2",
+            "ch:1:sloid:105:1:2"
+          ],
+          [
+            7.38949661,
+            47.19185433,
+            "Grenchen Nord",
+            "2",
+            "ch:1:sloid:159:0:877577"
+          ],
+          [
+            7.24307122,
+            47.13243079,
+            "Biel/Bienne",
+            "5",
+            "ch:1:sloid:4300:3:5"
+          ]
+        ],
+        "foreignTerminal": true
+      },
+      {
+        "id": "b832aeb2832c3f148a423b60",
+        "directionId": "1",
+        "stops": [
+          [
+            7.38963136,
+            47.1918116,
+            "Grenchen Nord",
+            "1",
+            "ch:1:sloid:159:0:469914"
+          ],
+          [
+            7.3810255,
+            47.28046586,
+            "Moutier",
+            "2",
+            "ch:1:sloid:105:1:2"
+          ],
+          [
+            7.349297,
+            47.36154874,
+            "Delémont",
+            "5",
+            "ch:1:sloid:109:3:5"
+          ],
+          [
+            7.31838597,
+            47.34287692,
+            "Courtételle",
+            "1",
+            "ch:1:sloid:120:0:1"
+          ],
+          [
+            7.2921911,
+            47.33522491,
+            "Courfaivre",
+            "2",
+            "ch:1:sloid:121:2:2"
+          ],
+          [
+            7.24811975,
+            47.33664339,
+            "Bassecourt",
+            "1",
+            "ch:1:sloid:122:1:1"
+          ],
+          [
+            7.21022881,
+            47.3350301,
+            "Glovelier",
+            "2",
+            "ch:1:sloid:123:0:2"
+          ],
+          [
+            7.16595984,
+            47.36770023,
+            "St-Ursanne",
+            "",
+            "ch:1:sloid:124"
+          ],
+          [
+            7.12474513,
+            47.40573714,
+            "Courgenay",
+            "2",
+            "ch:1:sloid:125:0:2"
+          ],
+          [
+            7.08024259,
+            47.42102566,
+            "Porrentruy",
+            "1",
+            "ch:1:sloid:126:1:1"
+          ]
+        ],
+        "foreignTerminal": false
+      }
+    ],
+    "pairEvidence": [
+      {
+        "pathMetres": 1603.9347058902579,
+        "geometrySource": "osm-solothurn-delle-rail-inference",
+        "gauge": "mm1435",
+        "fromOperatingPoint": "8718444",
+        "toOperatingPoint": "8500128",
+        "stationAttachmentsMetres": [
+          34.10768388514447,
+          28.646214886460584
+        ],
+        "trackAttachmentsMetres": [
+          13.232854193010745,
+          1.3332847120225624
+        ],
+        "sourceWayIds": [
+          1129534648,
+          613316324,
+          847111885,
+          35921723,
+          181618256,
+          238174303,
+          238174304,
+          1335057424,
+          1335057423,
+          1126683495,
+          1126683494,
+          181618272
+        ],
+        "from": [
+          7.010174,
+          47.50579478,
+          "Delle",
+          "",
+          "8718444"
+        ],
+        "to": [
+          7.01636339,
+          47.49246112,
+          "Boncourt",
+          "3",
+          "ch:1:sloid:128:2:3"
+        ],
+        "geometrySha256": "ef68032c8d2b931dc7258fbb750478f4d41c0f73a82a4f0a550df0e4e381fefd",
+        "contextPatternIds": [
+          "0eac49c377d4a324f1a9fc4b",
+          "4fea4d4a337f4c35a81f8219",
+          "9445d61f276761f93157ae1a",
+          "f6179cc1ffe074a1f1f18586"
+        ],
+        "directedSourceSegmentsSha256": "a42e2169611bab280236f6679f52c3b2b80a884afd4c96d64522fa916e8e56d5"
+      }
+    ]
+  },
+  "days": [
+    {
+      "date": "2026-09-04",
+      "before": {
+        "trips": 7156,
+        "admittedTrips": 7026,
+        "scheduledTrips": 6078,
+        "representativeHeadwayTrips": 1078,
+        "admittedScheduledTrips": 5948,
+        "admittedRepresentativeHeadwayTrips": 1078,
+        "scheduledSegmentOccurrences": 97358,
+        "matchedScheduledSegmentOccurrences": 97134,
+        "segmentOccurrences": 98436,
+        "matchedSegmentOccurrences": 98212,
+        "admittedSegmentOccurrences": 93727,
+        "directedPairs": 4259,
+        "matchedDirectedPairs": 4250,
+        "patterns": 921,
+        "completePatterns": 907,
+        "admittedPatterns": 907,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 130
+        }
+      },
+      "after": {
+        "trips": 7156,
+        "admittedTrips": 7033,
+        "scheduledTrips": 6078,
+        "representativeHeadwayTrips": 1078,
+        "admittedScheduledTrips": 5955,
+        "admittedRepresentativeHeadwayTrips": 1078,
+        "scheduledSegmentOccurrences": 97358,
+        "matchedScheduledSegmentOccurrences": 97141,
+        "segmentOccurrences": 98436,
+        "matchedSegmentOccurrences": 98219,
+        "admittedSegmentOccurrences": 93785,
+        "directedPairs": 4259,
+        "matchedDirectedPairs": 4256,
+        "patterns": 921,
+        "completePatterns": 914,
+        "admittedPatterns": 914,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 123
+        }
+      },
+      "lostAdmittedPatterns": [],
+      "newlyAdmittedPatterns": [
+        {
+          "id": "e7c1c9e95ff171f1083891eb",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:10:4:8"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "4422cb3441e2b022446618e4",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:3:6",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:10:4:7"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "2e00bf3fc541b5b24e2220a9",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:2:4",
+            "ch:1:sloid:1605:3:5",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:5:10"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 8,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "3f85dd4be9032de870cc4664",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:4:7",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:8",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:3:5",
+            "ch:1:sloid:1609:4:8",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "5e70f90482262127d4985f34",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "a6298d7168b98151a4c8026a",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:5:9",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:792557",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "4fea4d4a337f4c35a81f8219",
+          "routeId": "91-54-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "RE",
+          "directionId": "0",
+          "stopIds": [
+            "8718444",
+            "ch:1:sloid:128:2:3",
+            "ch:1:sloid:144:0:59",
+            "ch:1:sloid:127:0:2",
+            "ch:1:sloid:141:0:60",
+            "ch:1:sloid:126:1:1",
+            "ch:1:sloid:125:0:2",
+            "ch:1:sloid:124",
+            "ch:1:sloid:123:0:2",
+            "ch:1:sloid:122:2:2",
+            "ch:1:sloid:121:2:2",
+            "ch:1:sloid:120:0:1",
+            "ch:1:sloid:109:2:2",
+            "ch:1:sloid:105:1:2",
+            "ch:1:sloid:159:0:877577",
+            "ch:1:sloid:4300:3:5"
+          ],
+          "segmentCount": 15,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-delle-rail-inference",
+            "solothurn-network"
+          ],
+          "matchedSegments": 15,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        }
+      ],
+      "sourcePairs": [
+        {
+          "routeId": "91-54-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "8718444",
+          "toId": "ch:1:sloid:128:2:3",
+          "from": "Delle",
+          "to": "Boncourt",
+          "directMetres": 1555.582744934544,
+          "pathMetres": 1603.9347058902579,
+          "geometrySource": "osm-solothurn-delle-rail-inference",
+          "gauge": "mm1435",
+          "fromOperatingPoint": "8718444",
+          "toOperatingPoint": "8500128",
+          "stationAttachmentsMetres": [
+            34.10768388514447,
+            28.646214886460584
+          ],
+          "trackAttachmentsMetres": [
+            13.232854193010745,
+            1.3332847120225624
+          ],
+          "directedSourceSegments": [
+            {
+              "id": "osm-way:1129534648",
+              "from": "start",
+              "to": 7180958621
+            },
+            {
+              "id": "osm-way:1129534648",
+              "from": 7180958621,
+              "to": 10302310300
+            },
+            {
+              "id": "osm-way:1129534648",
+              "from": 10302310300,
+              "to": 5803462297
+            },
+            {
+              "id": "osm-way:1129534648",
+              "from": 5803462297,
+              "to": 10302248784
+            },
+            {
+              "id": "osm-way:1129534648",
+              "from": 10302248784,
+              "to": 10425684103
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 10425684103,
+              "to": 5803462298
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 5803462298,
+              "to": 5803462299
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 5803462299,
+              "to": 7180958624
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 7180958624,
+              "to": 7180958626
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 7180958626,
+              "to": 7180958625
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 7180958625,
+              "to": 5803462300
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 5803462300,
+              "to": 7180958627
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 7180958627,
+              "to": 7180958631
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 7180958631,
+              "to": 7180958629
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 7180958629,
+              "to": 7180958628
+            },
+            {
+              "id": "osm-way:613316324",
+              "from": 7180958628,
+              "to": 338838389
+            },
+            {
+              "id": "osm-way:847111885",
+              "from": 338838389,
+              "to": 4453210398
+            },
+            {
+              "id": "osm-way:35921723",
+              "from": 4453210398,
+              "to": 10425684104
+            },
+            {
+              "id": "osm-way:35921723",
+              "from": 10425684104,
+              "to": 4453210397
+            },
+            {
+              "id": "osm-way:35921723",
+              "from": 4453210397,
+              "to": 4453210396
+            },
+            {
+              "id": "osm-way:35921723",
+              "from": 4453210396,
+              "to": 419894771
+            },
+            {
+              "id": "osm-way:35921723",
+              "from": 419894771,
+              "to": 2447689055
+            },
+            {
+              "id": "osm-way:181618256",
+              "from": 2447689055,
+              "to": 1750878941
+            },
+            {
+              "id": "osm-way:238174303",
+              "from": 1750878941,
+              "to": 2460279263
+            },
+            {
+              "id": "osm-way:238174304",
+              "from": 2460279263,
+              "to": 419894777
+            },
+            {
+              "id": "osm-way:238174304",
+              "from": 419894777,
+              "to": 419894778
+            },
+            {
+              "id": "osm-way:238174304",
+              "from": 419894778,
+              "to": 1750878935
+            },
+            {
+              "id": "osm-way:238174304",
+              "from": 1750878935,
+              "to": 419894779
+            },
+            {
+              "id": "osm-way:238174304",
+              "from": 419894779,
+              "to": 419894780
+            },
+            {
+              "id": "osm-way:238174304",
+              "from": 419894780,
+              "to": 419894781
+            },
+            {
+              "id": "osm-way:238174304",
+              "from": 419894781,
+              "to": 419894782
+            },
+            {
+              "id": "osm-way:238174304",
+              "from": 419894782,
+              "to": 1750845974
+            },
+            {
+              "id": "osm-way:238174304",
+              "from": 1750845974,
+              "to": 419894783
+            },
+            {
+              "id": "osm-way:1335057424",
+              "from": 419894783,
+              "to": 12351210861
+            },
+            {
+              "id": "osm-way:1335057423",
+              "from": 12351210861,
+              "to": 419894784
+            },
+            {
+              "id": "osm-way:1335057423",
+              "from": 419894784,
+              "to": 1750845488
+            },
+            {
+              "id": "osm-way:1335057423",
+              "from": 1750845488,
+              "to": 10302396474
+            },
+            {
+              "id": "osm-way:1126683495",
+              "from": 10302396474,
+              "to": 10302396473
+            },
+            {
+              "id": "osm-way:1126683494",
+              "from": 10302396473,
+              "to": 1750845360
+            },
+            {
+              "id": "osm-way:181618272",
+              "from": 1750845360,
+              "to": 10302396482
+            },
+            {
+              "id": "osm-way:181618272",
+              "from": 10302396482,
+              "to": 10302396483
+            },
+            {
+              "id": "osm-way:181618272",
+              "from": 10302396483,
+              "to": 10302396484
+            },
+            {
+              "id": "osm-way:181618272",
+              "from": 10302396484,
+              "to": 419894785
+            },
+            {
+              "id": "osm-way:181618272",
+              "from": 419894785,
+              "to": 10302396485
+            },
+            {
+              "id": "osm-way:181618272",
+              "from": 10302396485,
+              "to": 419894786
+            },
+            {
+              "id": "osm-way:181618272",
+              "from": 419894786,
+              "to": 13351562351
+            },
+            {
+              "id": "osm-way:181618272",
+              "from": 13351562351,
+              "to": "end"
+            }
+          ],
+          "sourceWayIds": [
+            1129534648,
+            613316324,
+            847111885,
+            35921723,
+            181618256,
+            238174303,
+            238174304,
+            1335057424,
+            1335057423,
+            1126683495,
+            1126683494,
+            181618272
+          ],
+          "geometrySha256": "ef68032c8d2b931dc7258fbb750478f4d41c0f73a82a4f0a550df0e4e381fefd",
+          "reviewedPatternId": "4fea4d4a337f4c35a81f8219",
+          "previousSupplementFailure": "rail-no-exact-operating-point",
+          "contextCount": 4,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 1,
+          "admittedOccurrences": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "before": {
+        "trips": 5819,
+        "admittedTrips": 5680,
+        "scheduledTrips": 4711,
+        "representativeHeadwayTrips": 1108,
+        "admittedScheduledTrips": 4572,
+        "admittedRepresentativeHeadwayTrips": 1108,
+        "scheduledSegmentOccurrences": 68102,
+        "matchedScheduledSegmentOccurrences": 67863,
+        "segmentOccurrences": 69210,
+        "matchedSegmentOccurrences": 68971,
+        "admittedSegmentOccurrences": 65047,
+        "directedPairs": 4467,
+        "matchedDirectedPairs": 4459,
+        "patterns": 777,
+        "completePatterns": 761,
+        "admittedPatterns": 761,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 137,
+          "night-network-excluded-by-source": 2
+        }
+      },
+      "after": {
+        "trips": 5819,
+        "admittedTrips": 5688,
+        "scheduledTrips": 4711,
+        "representativeHeadwayTrips": 1108,
+        "admittedScheduledTrips": 4580,
+        "admittedRepresentativeHeadwayTrips": 1108,
+        "scheduledSegmentOccurrences": 68102,
+        "matchedScheduledSegmentOccurrences": 67871,
+        "segmentOccurrences": 69210,
+        "matchedSegmentOccurrences": 68979,
+        "admittedSegmentOccurrences": 65104,
+        "directedPairs": 4467,
+        "matchedDirectedPairs": 4462,
+        "patterns": 777,
+        "completePatterns": 768,
+        "admittedPatterns": 768,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 129,
+          "night-network-excluded-by-source": 2
+        }
+      },
+      "lostAdmittedPatterns": [],
+      "newlyAdmittedPatterns": [
+        {
+          "id": "a3b40467ab09ea4a4201fb74",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:138485",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:3:5"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "daf990a257d22f48cd6d2816",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:6:11"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "f18fc4fa3b8eddd5b962312d",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:3:6"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "3574425948118fe2b31f1e77",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:138485",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:2:3",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:7:14"
+          ],
+          "segmentCount": 8,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 8,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "219e5ffc98e7bc195209f008",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
+          }
+        },
+        {
+          "id": "998463167a920e8f8373e450",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:5:9",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "753005911e8f579866852225",
+          "routeId": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:10:3:6",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:3:5",
+            "ch:1:sloid:1609:4:9",
+            "8301003"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        }
+      ],
+      "sourcePairs": []
+    }
+  ]
+}

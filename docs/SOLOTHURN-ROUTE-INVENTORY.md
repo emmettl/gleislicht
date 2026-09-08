@@ -6,7 +6,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 
 | GTFS agency | Source name | Annual routes | Routes contributing feed | Friday admitted / total | Sunday admitted / total |
 | --- | --- | --- | --- | --- | --- |
-| 11 | Schweizerische Bundesbahnen SBB | 71 | 41 | 943 / 950 | 895 / 903 |
+| 11 | Schweizerische Bundesbahnen SBB | 71 | 42 | 950 / 950 | 903 / 903 |
 | 33 | BLS AG (bls) | 9 | 7 | 158 / 158 | 161 / 161 |
 | 37 | Baselland Transport | 4 | 3 | 266 / 360 | 247 / 350 |
 | 68 | Oensingen-Balsthal-Bahn | 1 | 0 | 0 / 0 | 0 / 0 |
@@ -65,7 +65,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 91-2F-Y-j26-1 | 33 | S / rail | Solothurn, Wasseramt | inactive-on-validation-dates | 0 / 0 | 0 / 0 | No civil-day instance on either date |
 | 91-2H-Y-j26-1 | 11 | IC / rail | Olten | inactive-on-validation-dates | 0 / 0 | 0 / 0 | No civil-day instance on either date |
 | 91-2J-Y-j26-1 | 11 | IC / rail | Olten | inactive-on-validation-dates | 0 / 0 | 0 / 0 | No civil-day instance on either date |
-| 91-2W-Y-j26-1 | 11 | EC / rail | Olten | excluded | 0 / 6 | 0 / 8 | incomplete-directed-pattern |
+| 91-2W-Y-j26-1 | 11 | EC / rail | Olten | admitted-all-dated-trips | 6 / 6 | 8 / 8 | All dated journeys pass |
 | 91-35-A-j26-1 | 82 | IR35 / rail | Olten | admitted-all-dated-trips | 20 / 20 | 20 / 20 | All dated journeys pass |
 | 91-35-B-j26-1 | 11 | IR35 / rail | Olten | admitted-all-dated-trips | 16 / 16 | 16 / 16 | All dated journeys pass |
 | 91-35-D-j26-1 | 33 | IR35 / rail | Olten | admitted-all-dated-trips | 1 / 1 | 1 / 1 | All dated journeys pass |
@@ -89,7 +89,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 91-51-B-j26-1 | 11 | IC51 / rail | Lebern | admitted-all-dated-trips | 37 / 37 | 16 / 16 | All dated journeys pass |
 | 91-51-E-j26-1 | 33 | IC51 / rail | Lebern | admitted-all-dated-trips | 1 / 1 | 22 / 22 | All dated journeys pass |
 | 91-52-Y-j26-1 | 11 | S / rail | Lebern, Solothurn | inactive-on-validation-dates | 0 / 0 | 0 / 0 | No civil-day instance on either date |
-| 91-54-Y-j26-1 | 11 | RE / rail | Lebern | partially-admitted | 0 / 1 | 1 / 1 | incomplete-directed-pattern |
+| 91-54-Y-j26-1 | 11 | RE / rail | Lebern | admitted-all-dated-trips | 1 / 1 | 1 / 1 | All dated journeys pass |
 | 91-55-C-j26-1 | 11 | IR55 / rail | Gäu, Lebern, Olten, Solothurn | admitted-all-dated-trips | 36 / 36 | 36 / 36 | All dated journeys pass |
 | 91-55-E-j26-1 | 11 | RE55 / rail | Gäu, Lebern, Olten, Solothurn | admitted-all-dated-trips | 0 / 0 | 1 / 1 | All dated journeys pass |
 | 91-56-B-j26-1 | 11 | RE56 / rail | Lebern | admitted-all-dated-trips | 2 / 2 | 0 / 0 | All dated journeys pass |

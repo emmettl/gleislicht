@@ -1,0 +1,98 @@
+{
+  "retrievedOn": "2026-09-08",
+  "snapshot": "2026-09-08T00:00:00Z",
+  "attribution": "© OpenStreetMap contributors, ODbL-1.0; SBB Infrastructure / opentransportdata.swiss; BLS works context",
+  "files": [
+    {
+      "file": "osm.json.gz",
+      "sha256": "e71ad63e8ca955ccb43528f5c7eea6334ac846502206a82691ca9e8a4946ea3d",
+      "url": "https://overpass-api.de/api/interpreter",
+      "sourceDate": "2026-09-08T00:00:00Z"
+    },
+    {
+      "file": "rail.overpass",
+      "sha256": "0905ac79a9e7bf3ce2ab46d2f383153f90c8a6d9d972973905265f1d8b91a784",
+      "url": null,
+      "sourceDate": "2026-09-08T00:00:00Z"
+    },
+    {
+      "file": "sbb-domodossola-stations.json",
+      "sha256": "6030e87a90fab4a2c62a6aca647eb3c7431966fd0a9252da0fea8460fad72899",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/dienststellen-gemass-opentransportdataswiss/records?where=search(%22Domodossola%22)&limit=20",
+      "sourceDate": "2024-09-19T15:24:12+00:00"
+    },
+    {
+      "file": "sbb-station-catalogue.json",
+      "sha256": "4950eebe245762e21127cf8bff778adf0a6a99eba2578bf3fbf8d7d4dde5c3cc",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets",
+      "sourceDate": null
+    },
+    {
+      "file": "sbb-domodossola.pdf",
+      "sha256": "084eef06c89fcb2c742414b5b2fce36584c9a85d28115f72fb50e4788cb1d00a",
+      "url": "https://company.sbb.ch/content/dam/internet/corporate/downloads/en/sbb-als-geschaeftspartner/flotte-unterhalt/onestopshop/Factsheet_Domodossola.pdf.sbbdownload.pdf",
+      "sourceDate": "2024-08-06"
+    },
+    {
+      "file": "145-2026.pdf",
+      "sha256": "92be93d476d595034adc6bcf4c4870a1674401c2247fd1c710c3f5fc1a6b0d0d",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/145.pdf",
+      "sourceDate": "2026-05-26"
+    },
+    {
+      "file": "bls-closures.html.gz",
+      "sha256": "1c0d63fab25878ce81f42db4f1c422adf792ff5f348df9a5c3e89f76a5a4d0f8",
+      "url": "https://www.bls.ch/de/unternehmen/projekte-und-hintergruende/bauprojekte/simplontunnel",
+      "sourceDate": null
+    }
+  ],
+  "evidence": [
+    {
+      "file": "osm.json.gz",
+      "url": "https://overpass-api.de/api/interpreter",
+      "sourceDate": "2026-09-08T00:00:00Z",
+      "attribution": "© OpenStreetMap contributors, ODbL-1.0",
+      "finding": "Pinned bounded rail ways, stop areas, UIC station nodes and complete referenced nodes. Exact shared-node topology only. Main standard-gauge lines plus the specifically reviewed 1435 mm passenger crossover 643956810; sidings, yards, spurs and non-rail features excluded. The other Simplon crossover is not admitted. No source tags or coordinates are edited."
+    },
+    {
+      "file": "rail.overpass",
+      "url": null,
+      "sourceDate": "2026-09-08T00:00:00Z",
+      "finding": "Exact reproducible Overpass query with snapshot and full element metadata."
+    },
+    {
+      "file": "sbb-domodossola-stations.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/dienststellen-gemass-opentransportdataswiss/records?where=search(%22Domodossola%22)&limit=20",
+      "sourceDate": "2024-09-19T15:24:12+00:00",
+      "attribution": "SBB Infrastruktur / opentransportdata.swiss / FOT service points",
+      "finding": "Exact record 8501607, Domodossola, assigned operating point, valid from 15 December 2024: FOT comment explicitly identifies timetable under 8301003 (foreign). This establishes the narrowly scoped code association; neither number is inferred from proximity or name alone."
+    },
+    {
+      "file": "sbb-station-catalogue.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets",
+      "sourceDate": null,
+      "finding": "Archived dataset metadata; acquisition date is not the station record edition date."
+    },
+    {
+      "file": "sbb-domodossola.pdf",
+      "url": "https://company.sbb.ch/content/dam/internet/corporate/downloads/en/sbb-als-geschaeftspartner/flotte-unterhalt/onestopshop/Factsheet_Domodossola.pdf.sbbdownload.pdf",
+      "sourceDate": "2024-08-06",
+      "visuallyReviewedPage": 3,
+      "finding": "SBB Infrastructure diagram distinguishes passenger station Domodossola FS, 83-01003-3, from Domodossola FM and Domodossola II. These other operating points cannot substitute for the timetable destination."
+    },
+    {
+      "file": "145-2026.pdf",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/145.pdf",
+      "sourceDate": "2026-05-26",
+      "visuallyReviewedPage": 1,
+      "finding": "Official field 145 shows SBB IC 1303 from Zürich, Brig 09:39 to Domodossola without intermediate calls. Its first seasonal panel is limited to 14 December–28 May. The PDF has 10:07/10:09 arrivals; pinned GTFS has 10:09 on 3 April and 10:16 on 1 August. No PDF time or calendar is substituted for GTFS."
+    },
+    {
+      "file": "bls-closures.html.gz",
+      "url": "https://www.bls.ch/de/unternehmen/projekte-und-hintergruende/bauprojekte/simplontunnel",
+      "sourceDate": null,
+      "finding": "Rechecked 8 September. Operator describes 2026 construction and replacement services between Iselle and Domodossola, including weekday closures from 10:30. This mutable page is context only; the two pinned GTFS journeys and call times define admission, not a general all-date rail assumption."
+    }
+  ],
+  "scope": "Source evidence copied byte-for-byte from the Aargau Simplon review. Its IC 1303 timetable and calendar findings are parent-review context, not Solothurn EC admission. Solothurn uses its own complete twelve-date patterns and original GTFS times."
+}

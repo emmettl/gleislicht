@@ -4,6 +4,5236 @@
     "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
   },
   "sources": {
+    "delle": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceDirectory": "data/solothurn-delle-sources",
+        "sourceSha256": "dfc9feb443f5afb6204d47ca7b7cb4255b4e7a98dc1dafdda7f2b1c0ad731440",
+        "snapshot": "2026-09-02T00:00:00Z",
+        "stations": [
+          {
+            "nodeId": 3080770163,
+            "number": "8718444",
+            "name": "Delle"
+          },
+          {
+            "nodeId": 3080770156,
+            "number": "8500128",
+            "name": "Boncourt"
+          }
+        ],
+        "limits": {
+          "stationIdentityMetres": 350,
+          "trackAttachmentMetres": 60,
+          "projectionAlternativeMetres": 5,
+          "maximumTurnDegrees": 45,
+          "maximumPathMetres": 8000
+        },
+        "route": {
+          "id": "91-54-Y-j26-1",
+          "agencyId": "11",
+          "name": "RE",
+          "mode": "rail",
+          "type": 106
+        },
+        "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+        "timetableSourceHashes": {
+          "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+          "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+        },
+        "patternIds": [
+          "0bb94f43759e715046be10af",
+          "0eac49c377d4a324f1a9fc4b",
+          "18c79dc244e905fc6487fc65",
+          "4fea4d4a337f4c35a81f8219",
+          "9445d61f276761f93157ae1a",
+          "b7d3a1de031b1b789dd026f8",
+          "b832aeb2832c3f148a423b60",
+          "f6179cc1ffe074a1f1f18586"
+        ],
+        "pairs": [
+          {
+            "from": [
+              7.010174,
+              47.50579478,
+              "Delle",
+              "",
+              "8718444"
+            ],
+            "to": [
+              7.01636339,
+              47.49246112,
+              "Boncourt",
+              "3",
+              "ch:1:sloid:128:2:3"
+            ],
+            "pathSha256": "ef68032c8d2b931dc7258fbb750478f4d41c0f73a82a4f0a550df0e4e381fefd",
+            "sourceWayIds": [
+              1129534648,
+              613316324,
+              847111885,
+              35921723,
+              181618256,
+              238174303,
+              238174304,
+              1335057424,
+              1335057423,
+              1126683495,
+              1126683494,
+              181618272
+            ]
+          }
+        ],
+        "method": "Exact SBB RE route 91-54-Y-j26-1 and original Delle 8718444 → Boncourt platform 3 only; all eight complete retained twelve-date route patterns checked, including four contexts using the pair. Foreign stop must be a single terminal call. Preserve all previous successes; same full-context consensus and bounded attachments, no coordinate replacement or running-track certification."
+      },
+      "policySha256": "74e3df00f4f456583e6a0d2b1c71326311cd45f5ce2d815bd31055f567a91ff9",
+      "source": {
+        "retrievedOn": "2026-09-08",
+        "snapshot": "2026-09-02T00:00:00Z",
+        "attribution": "© OpenStreetMap contributors, ODbL-1.0; SNCF TER and SBB official station/works context; timetable opentransportdata.swiss",
+        "files": [
+          {
+            "file": "osm.json.gz",
+            "sha256": "4f78b57f378c9bca35f554cae4382c8f447a61bd2f2dc3946ad4d6fb2a83d437",
+            "url": "https://overpass-api.de/api/interpreter"
+          },
+          {
+            "file": "query.txt",
+            "sha256": "05bc409507c9adea0f8e9e4c5d3505265465bc857fec9c27cf0ff63b3b6432fc",
+            "url": null
+          },
+          {
+            "file": "official-station-review.json",
+            "sha256": "b85eb92c69a6f822e8b31ff216a840ab711ef926a017dcb595e9a445d9007c7f",
+            "url": null
+          }
+        ],
+        "method": "Historical bounded Overpass extract. Station nodes assert exact UIC identities and names; no crosswalk from Delle passenger station to the distinct Delle-Frontière border operating point. All 12 used source ways are passenger-tagged standard-gauge branch running lines; exact shared nodes, no siding exception. Retained source metadata and hashes are replayed offline. Snapshot is not proof of historical operational alignment or platform assignment."
+      },
+      "patterns": [
+        {
+          "id": "9445d61f276761f93157ae1a",
+          "directionId": "0",
+          "stops": [
+            [
+              7.010174,
+              47.50579478,
+              "Delle",
+              "",
+              "8718444"
+            ],
+            [
+              7.01636339,
+              47.49246112,
+              "Boncourt",
+              "3",
+              "ch:1:sloid:128:2:3"
+            ],
+            [
+              7.03047592,
+              47.47896622,
+              "Buix",
+              "1",
+              "ch:1:sloid:144:0:59"
+            ],
+            [
+              7.05561977,
+              47.45570776,
+              "Courtemaîche",
+              "1",
+              "ch:1:sloid:127:0:1"
+            ],
+            [
+              7.05785657,
+              47.43926882,
+              "Courchavon",
+              "1",
+              "ch:1:sloid:141:0:60"
+            ],
+            [
+              7.08024259,
+              47.42102566,
+              "Porrentruy",
+              "1",
+              "ch:1:sloid:126:1:1"
+            ],
+            [
+              7.12474513,
+              47.40573714,
+              "Courgenay",
+              "2",
+              "ch:1:sloid:125:0:2"
+            ],
+            [
+              7.16595984,
+              47.36770023,
+              "St-Ursanne",
+              "",
+              "ch:1:sloid:124"
+            ],
+            [
+              7.21022881,
+              47.3350301,
+              "Glovelier",
+              "2",
+              "ch:1:sloid:123:0:2"
+            ],
+            [
+              7.24811975,
+              47.33657033,
+              "Bassecourt",
+              "2",
+              "ch:1:sloid:122:2:2"
+            ],
+            [
+              7.2921911,
+              47.33522491,
+              "Courfaivre",
+              "2",
+              "ch:1:sloid:121:2:2"
+            ],
+            [
+              7.31838597,
+              47.34287692,
+              "Courtételle",
+              "1",
+              "ch:1:sloid:120:0:1"
+            ],
+            [
+              7.35053668,
+              47.36195643,
+              "Delémont",
+              "2",
+              "ch:1:sloid:109:2:2"
+            ],
+            [
+              7.3810255,
+              47.28046586,
+              "Moutier",
+              "2",
+              "ch:1:sloid:105:1:2"
+            ],
+            [
+              7.38949661,
+              47.19185433,
+              "Grenchen Nord",
+              "2",
+              "ch:1:sloid:159:0:877577"
+            ],
+            [
+              7.24307122,
+              47.13243079,
+              "Biel/Bienne",
+              "5",
+              "ch:1:sloid:4300:3:5"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "0bb94f43759e715046be10af",
+          "directionId": "1",
+          "stops": [
+            [
+              7.24328682,
+              47.13258968,
+              "Biel/Bienne",
+              "2",
+              "ch:1:sloid:4300:2:2"
+            ],
+            [
+              7.38963136,
+              47.1918116,
+              "Grenchen Nord",
+              "1",
+              "ch:1:sloid:159:0:469914"
+            ],
+            [
+              7.3810255,
+              47.28046586,
+              "Moutier",
+              "2",
+              "ch:1:sloid:105:1:2"
+            ],
+            [
+              7.35053668,
+              47.36195643,
+              "Delémont",
+              "2",
+              "ch:1:sloid:109:2:2"
+            ],
+            [
+              7.31838597,
+              47.34287692,
+              "Courtételle",
+              "1",
+              "ch:1:sloid:120:0:1"
+            ],
+            [
+              7.2921911,
+              47.33522491,
+              "Courfaivre",
+              "2",
+              "ch:1:sloid:121:2:2"
+            ],
+            [
+              7.24811975,
+              47.33664339,
+              "Bassecourt",
+              "1",
+              "ch:1:sloid:122:1:1"
+            ],
+            [
+              7.21022881,
+              47.3350301,
+              "Glovelier",
+              "2",
+              "ch:1:sloid:123:0:2"
+            ],
+            [
+              7.16595984,
+              47.36770023,
+              "St-Ursanne",
+              "",
+              "ch:1:sloid:124"
+            ],
+            [
+              7.12479005,
+              47.40571282,
+              "Courgenay",
+              "1",
+              "ch:1:sloid:125:0:1"
+            ],
+            [
+              7.08034141,
+              47.42100743,
+              "Porrentruy",
+              "2",
+              "ch:1:sloid:126:2:2"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "f6179cc1ffe074a1f1f18586",
+          "directionId": "0",
+          "stops": [
+            [
+              7.010174,
+              47.50579478,
+              "Delle",
+              "",
+              "8718444"
+            ],
+            [
+              7.01636339,
+              47.49246112,
+              "Boncourt",
+              "3",
+              "ch:1:sloid:128:2:3"
+            ],
+            [
+              7.03047592,
+              47.47896622,
+              "Buix",
+              "1",
+              "ch:1:sloid:144:0:59"
+            ],
+            [
+              7.05561977,
+              47.45570776,
+              "Courtemaîche",
+              "1",
+              "ch:1:sloid:127:0:1"
+            ],
+            [
+              7.05785657,
+              47.43926882,
+              "Courchavon",
+              "1",
+              "ch:1:sloid:141:0:60"
+            ],
+            [
+              7.08024259,
+              47.42102566,
+              "Porrentruy",
+              "1",
+              "ch:1:sloid:126:1:1"
+            ],
+            [
+              7.12474513,
+              47.40573714,
+              "Courgenay",
+              "2",
+              "ch:1:sloid:125:0:2"
+            ],
+            [
+              7.16595984,
+              47.36770023,
+              "St-Ursanne",
+              "",
+              "ch:1:sloid:124"
+            ],
+            [
+              7.21022881,
+              47.3350301,
+              "Glovelier",
+              "2",
+              "ch:1:sloid:123:0:2"
+            ],
+            [
+              7.24811975,
+              47.33657033,
+              "Bassecourt",
+              "2",
+              "ch:1:sloid:122:2:2"
+            ],
+            [
+              7.2921911,
+              47.33522491,
+              "Courfaivre",
+              "2",
+              "ch:1:sloid:121:2:2"
+            ],
+            [
+              7.31838597,
+              47.34287692,
+              "Courtételle",
+              "1",
+              "ch:1:sloid:120:0:1"
+            ],
+            [
+              7.35053668,
+              47.36195643,
+              "Delémont",
+              "2",
+              "ch:1:sloid:109:2:2"
+            ],
+            [
+              7.3810255,
+              47.28046586,
+              "Moutier",
+              "2",
+              "ch:1:sloid:105:1:2"
+            ],
+            [
+              7.38949661,
+              47.19185433,
+              "Grenchen Nord",
+              "2",
+              "ch:1:sloid:159:0:877577"
+            ],
+            [
+              7.24266698,
+              47.13240634,
+              "Biel/Bienne",
+              "7",
+              "ch:1:sloid:4300:4:7"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "18c79dc244e905fc6487fc65",
+          "directionId": "1",
+          "stops": [
+            [
+              7.24328682,
+              47.13258968,
+              "Biel/Bienne",
+              "2",
+              "ch:1:sloid:4300:2:2"
+            ],
+            [
+              7.38963136,
+              47.1918116,
+              "Grenchen Nord",
+              "1",
+              "ch:1:sloid:159:0:469914"
+            ],
+            [
+              7.3810255,
+              47.28046586,
+              "Moutier",
+              "2",
+              "ch:1:sloid:105:1:2"
+            ],
+            [
+              7.35053668,
+              47.36195643,
+              "Delémont",
+              "2",
+              "ch:1:sloid:109:2:2"
+            ],
+            [
+              7.31838597,
+              47.34287692,
+              "Courtételle",
+              "1",
+              "ch:1:sloid:120:0:1"
+            ],
+            [
+              7.2921911,
+              47.33522491,
+              "Courfaivre",
+              "2",
+              "ch:1:sloid:121:2:2"
+            ],
+            [
+              7.24811975,
+              47.33664339,
+              "Bassecourt",
+              "1",
+              "ch:1:sloid:122:1:1"
+            ],
+            [
+              7.21022881,
+              47.3350301,
+              "Glovelier",
+              "2",
+              "ch:1:sloid:123:0:2"
+            ],
+            [
+              7.16595984,
+              47.36770023,
+              "St-Ursanne",
+              "",
+              "ch:1:sloid:124"
+            ],
+            [
+              7.12474513,
+              47.40573714,
+              "Courgenay",
+              "2",
+              "ch:1:sloid:125:0:2"
+            ],
+            [
+              7.08024259,
+              47.42102566,
+              "Porrentruy",
+              "1",
+              "ch:1:sloid:126:1:1"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "0eac49c377d4a324f1a9fc4b",
+          "directionId": "0",
+          "stops": [
+            [
+              7.010174,
+              47.50579478,
+              "Delle",
+              "",
+              "8718444"
+            ],
+            [
+              7.01636339,
+              47.49246112,
+              "Boncourt",
+              "3",
+              "ch:1:sloid:128:2:3"
+            ],
+            [
+              7.03047592,
+              47.47896622,
+              "Buix",
+              "1",
+              "ch:1:sloid:144:0:59"
+            ],
+            [
+              7.05561977,
+              47.45570776,
+              "Courtemaîche",
+              "1",
+              "ch:1:sloid:127:0:1"
+            ],
+            [
+              7.05785657,
+              47.43926882,
+              "Courchavon",
+              "1",
+              "ch:1:sloid:141:0:60"
+            ],
+            [
+              7.08024259,
+              47.42102566,
+              "Porrentruy",
+              "1",
+              "ch:1:sloid:126:1:1"
+            ],
+            [
+              7.12474513,
+              47.40573714,
+              "Courgenay",
+              "2",
+              "ch:1:sloid:125:0:2"
+            ],
+            [
+              7.16595984,
+              47.36770023,
+              "St-Ursanne",
+              "",
+              "ch:1:sloid:124"
+            ],
+            [
+              7.21022881,
+              47.3350301,
+              "Glovelier",
+              "2",
+              "ch:1:sloid:123:0:2"
+            ],
+            [
+              7.24811975,
+              47.33657033,
+              "Bassecourt",
+              "2",
+              "ch:1:sloid:122:2:2"
+            ],
+            [
+              7.2921911,
+              47.33522491,
+              "Courfaivre",
+              "2",
+              "ch:1:sloid:121:2:2"
+            ],
+            [
+              7.31838597,
+              47.34287692,
+              "Courtételle",
+              "1",
+              "ch:1:sloid:120:0:1"
+            ],
+            [
+              7.35053668,
+              47.36195643,
+              "Delémont",
+              "2",
+              "ch:1:sloid:109:2:2"
+            ],
+            [
+              7.3810255,
+              47.28046586,
+              "Moutier",
+              "2",
+              "ch:1:sloid:105:1:2"
+            ],
+            [
+              7.38949661,
+              47.19185433,
+              "Grenchen Nord",
+              "2",
+              "ch:1:sloid:159:0:877577"
+            ],
+            [
+              7.243188,
+              47.13246745,
+              "Biel/Bienne",
+              "4",
+              "ch:1:sloid:4300:3:4"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "b7d3a1de031b1b789dd026f8",
+          "directionId": "1",
+          "stops": [
+            [
+              7.243188,
+              47.13246745,
+              "Biel/Bienne",
+              "4",
+              "ch:1:sloid:4300:3:4"
+            ],
+            [
+              7.38963136,
+              47.1918116,
+              "Grenchen Nord",
+              "1",
+              "ch:1:sloid:159:0:469914"
+            ],
+            [
+              7.3810255,
+              47.28046586,
+              "Moutier",
+              "2",
+              "ch:1:sloid:105:1:2"
+            ],
+            [
+              7.349297,
+              47.36154874,
+              "Delémont",
+              "5",
+              "ch:1:sloid:109:3:5"
+            ],
+            [
+              7.31838597,
+              47.34287692,
+              "Courtételle",
+              "1",
+              "ch:1:sloid:120:0:1"
+            ],
+            [
+              7.2921911,
+              47.33522491,
+              "Courfaivre",
+              "2",
+              "ch:1:sloid:121:2:2"
+            ],
+            [
+              7.24811975,
+              47.33664339,
+              "Bassecourt",
+              "1",
+              "ch:1:sloid:122:1:1"
+            ],
+            [
+              7.21022881,
+              47.3350301,
+              "Glovelier",
+              "2",
+              "ch:1:sloid:123:0:2"
+            ],
+            [
+              7.16595984,
+              47.36770023,
+              "St-Ursanne",
+              "",
+              "ch:1:sloid:124"
+            ],
+            [
+              7.12474513,
+              47.40573714,
+              "Courgenay",
+              "2",
+              "ch:1:sloid:125:0:2"
+            ],
+            [
+              7.08024259,
+              47.42102566,
+              "Porrentruy",
+              "1",
+              "ch:1:sloid:126:1:1"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "4fea4d4a337f4c35a81f8219",
+          "directionId": "0",
+          "stops": [
+            [
+              7.010174,
+              47.50579478,
+              "Delle",
+              "",
+              "8718444"
+            ],
+            [
+              7.01636339,
+              47.49246112,
+              "Boncourt",
+              "3",
+              "ch:1:sloid:128:2:3"
+            ],
+            [
+              7.03047592,
+              47.47896622,
+              "Buix",
+              "1",
+              "ch:1:sloid:144:0:59"
+            ],
+            [
+              7.05553892,
+              47.45589606,
+              "Courtemaîche",
+              "2",
+              "ch:1:sloid:127:0:2"
+            ],
+            [
+              7.05785657,
+              47.43926882,
+              "Courchavon",
+              "1",
+              "ch:1:sloid:141:0:60"
+            ],
+            [
+              7.08024259,
+              47.42102566,
+              "Porrentruy",
+              "1",
+              "ch:1:sloid:126:1:1"
+            ],
+            [
+              7.12474513,
+              47.40573714,
+              "Courgenay",
+              "2",
+              "ch:1:sloid:125:0:2"
+            ],
+            [
+              7.16595984,
+              47.36770023,
+              "St-Ursanne",
+              "",
+              "ch:1:sloid:124"
+            ],
+            [
+              7.21022881,
+              47.3350301,
+              "Glovelier",
+              "2",
+              "ch:1:sloid:123:0:2"
+            ],
+            [
+              7.24811975,
+              47.33657033,
+              "Bassecourt",
+              "2",
+              "ch:1:sloid:122:2:2"
+            ],
+            [
+              7.2921911,
+              47.33522491,
+              "Courfaivre",
+              "2",
+              "ch:1:sloid:121:2:2"
+            ],
+            [
+              7.31838597,
+              47.34287692,
+              "Courtételle",
+              "1",
+              "ch:1:sloid:120:0:1"
+            ],
+            [
+              7.35053668,
+              47.36195643,
+              "Delémont",
+              "2",
+              "ch:1:sloid:109:2:2"
+            ],
+            [
+              7.3810255,
+              47.28046586,
+              "Moutier",
+              "2",
+              "ch:1:sloid:105:1:2"
+            ],
+            [
+              7.38949661,
+              47.19185433,
+              "Grenchen Nord",
+              "2",
+              "ch:1:sloid:159:0:877577"
+            ],
+            [
+              7.24307122,
+              47.13243079,
+              "Biel/Bienne",
+              "5",
+              "ch:1:sloid:4300:3:5"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "b832aeb2832c3f148a423b60",
+          "directionId": "1",
+          "stops": [
+            [
+              7.38963136,
+              47.1918116,
+              "Grenchen Nord",
+              "1",
+              "ch:1:sloid:159:0:469914"
+            ],
+            [
+              7.3810255,
+              47.28046586,
+              "Moutier",
+              "2",
+              "ch:1:sloid:105:1:2"
+            ],
+            [
+              7.349297,
+              47.36154874,
+              "Delémont",
+              "5",
+              "ch:1:sloid:109:3:5"
+            ],
+            [
+              7.31838597,
+              47.34287692,
+              "Courtételle",
+              "1",
+              "ch:1:sloid:120:0:1"
+            ],
+            [
+              7.2921911,
+              47.33522491,
+              "Courfaivre",
+              "2",
+              "ch:1:sloid:121:2:2"
+            ],
+            [
+              7.24811975,
+              47.33664339,
+              "Bassecourt",
+              "1",
+              "ch:1:sloid:122:1:1"
+            ],
+            [
+              7.21022881,
+              47.3350301,
+              "Glovelier",
+              "2",
+              "ch:1:sloid:123:0:2"
+            ],
+            [
+              7.16595984,
+              47.36770023,
+              "St-Ursanne",
+              "",
+              "ch:1:sloid:124"
+            ],
+            [
+              7.12474513,
+              47.40573714,
+              "Courgenay",
+              "2",
+              "ch:1:sloid:125:0:2"
+            ],
+            [
+              7.08024259,
+              47.42102566,
+              "Porrentruy",
+              "1",
+              "ch:1:sloid:126:1:1"
+            ]
+          ],
+          "foreignTerminal": false
+        }
+      ],
+      "pairEvidence": [
+        {
+          "pathMetres": 1603.9347058902579,
+          "geometrySource": "osm-solothurn-delle-rail-inference",
+          "gauge": "mm1435",
+          "fromOperatingPoint": "8718444",
+          "toOperatingPoint": "8500128",
+          "stationAttachmentsMetres": [
+            34.10768388514447,
+            28.646214886460584
+          ],
+          "trackAttachmentsMetres": [
+            13.232854193010745,
+            1.3332847120225624
+          ],
+          "sourceWayIds": [
+            1129534648,
+            613316324,
+            847111885,
+            35921723,
+            181618256,
+            238174303,
+            238174304,
+            1335057424,
+            1335057423,
+            1126683495,
+            1126683494,
+            181618272
+          ],
+          "from": [
+            7.010174,
+            47.50579478,
+            "Delle",
+            "",
+            "8718444"
+          ],
+          "to": [
+            7.01636339,
+            47.49246112,
+            "Boncourt",
+            "3",
+            "ch:1:sloid:128:2:3"
+          ],
+          "geometrySha256": "ef68032c8d2b931dc7258fbb750478f4d41c0f73a82a4f0a550df0e4e381fefd",
+          "contextPatternIds": [
+            "0eac49c377d4a324f1a9fc4b",
+            "4fea4d4a337f4c35a81f8219",
+            "9445d61f276761f93157ae1a",
+            "f6179cc1ffe074a1f1f18586"
+          ],
+          "directedSourceSegmentsSha256": "a42e2169611bab280236f6679f52c3b2b80a884afd4c96d64522fa916e8e56d5"
+        }
+      ]
+    },
+    "simplon": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceDirectory": "data/solothurn-simplon-sources",
+        "sourceSha256": "8c9008cbd1795fa8af4d8b64de872786c2f470efbe51401049eff4dce439f034",
+        "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+        "timetableSourceHashes": {
+          "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+          "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+        },
+        "route": {
+          "id": "91-2W-Y-j26-1",
+          "agencyId": "11",
+          "name": "EC",
+          "mode": "rail",
+          "type": 102
+        },
+        "patternIds": [
+          "0af296f1d3cbd7d3dbbc4fd4",
+          "0b9bee4e6ba236b42ca37d16",
+          "14b7f4428828497477ade9bb",
+          "219e5ffc98e7bc195209f008",
+          "2cfa6603fef80f176eeaa196",
+          "2d90575a44cbd878bda65a36",
+          "2e00bf3fc541b5b24e2220a9",
+          "3574425948118fe2b31f1e77",
+          "3a7757995063f65ac80f710c",
+          "3f85dd4be9032de870cc4664",
+          "4422cb3441e2b022446618e4",
+          "471001787db99b08bd09b429",
+          "4a4f2e5a21de15563e7dd0c0",
+          "542014361a1c1fa6cb39aa3f",
+          "59a906f8988fa47c876d0ef5",
+          "5c0018f79e59b3f2a25692a3",
+          "5e70f90482262127d4985f34",
+          "63d5b11617124b365bff1713",
+          "68504a500e8dd5fe9e140798",
+          "6be11e52d39b9de276206482",
+          "73ac82fff40638e723bafaba",
+          "753005911e8f579866852225",
+          "7b6794f8e066801bceed7e7d",
+          "7eab6d235e31a5e8137b937f",
+          "8712d9f42f67058b9cf67ae4",
+          "8986696966b92e9575d5c0ac",
+          "8e3934b90ff0ecce3f7c1220",
+          "8eba432a4f5cfc23a88d6fe8",
+          "9025b9de9014d4914b2afded",
+          "918b3eb92715362422531885",
+          "94aa96a7ecd36df5db6ab7fe",
+          "998463167a920e8f8373e450",
+          "9f1a426513ca1147521a8fd6",
+          "a0e2b0edc7a100b3a7a3eff4",
+          "a0fe31edc272293e67e58e7d",
+          "a3b40467ab09ea4a4201fb74",
+          "a6298d7168b98151a4c8026a",
+          "b7b8b8f25c5077240201ca3e",
+          "be7f4123f1fdf787c2e8c47f",
+          "c27b0c98ce3f83d1cfc864c5",
+          "cab89edaf8136e8a737a9a77",
+          "d401461e6244d97106a90cc0",
+          "dace8f77abd7dd9a83b4f519",
+          "daf990a257d22f48cd6d2816",
+          "de3ac654e33068f80c5a6633",
+          "df220db9687c36b4ce6ebc39",
+          "e0fac6e2835eef581c453d69",
+          "e5b9538bbd7e052314ef6bd3",
+          "e7999c27f984e1a90b0a4b0f",
+          "e7c1c9e95ff171f1083891eb",
+          "e9fa2d57afcba39884744c96",
+          "ef402ae277ca98319466bb80",
+          "ef79017d2230bba6727058d4",
+          "f04e34a356352e397ee1d584",
+          "f18fc4fa3b8eddd5b962312d",
+          "f5376227846e8525ec525a35"
+        ],
+        "graph": {
+          "snapshot": "2026-09-08T00:00:00Z",
+          "stations": [
+            {
+              "nodeId": 6771438097,
+              "number": "8501609",
+              "name": "Brig"
+            },
+            {
+              "nodeId": 2837216238,
+              "number": "8501607",
+              "name": "Domodossola"
+            }
+          ],
+          "reviewedCrossoverWayIds": [
+            643956810
+          ],
+          "limits": {
+            "stationIdentityMetres": 350,
+            "trackAttachmentMetres": 120,
+            "projectionAlternativeMetres": 5,
+            "maximumTurnDegrees": 90,
+            "maximumPathMetres": 50000
+          }
+        },
+        "stationRecordSha256": "0664d9b5e8fc4aace49cf46d09f2bdce2988a53f76a2d791e69d0bc84d176ce0",
+        "crossoverSha256": "b3f12f633ee0f48eaa46abe42c3dc852f21dd3593d2326f3976d326d1450660a",
+        "pairs": [
+          {
+            "from": [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            "to": [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            "pathSha256": "2b6422c82568210671de3a27d6b67300296e341f22f19c7574f03f9c684cb0e3",
+            "segmentsSha256": "e75599e0b5097030d7db416c91b7751357cb5980d88ec18090ad719f4b050e7a",
+            "crossoverUsed": false
+          },
+          {
+            "from": [
+              7.99057733,
+              46.32002124,
+              "Brig",
+              "9",
+              "ch:1:sloid:1609:4:9"
+            ],
+            "to": [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            "pathSha256": "2a13886424dc071c3ab57226c3bf2fd03c6d282064fd5b5397a326cca11b5b7f",
+            "segmentsSha256": "955b24108077228f29b0385ba46d5347265b72a25f7246f0a78f01988a254e12",
+            "crossoverUsed": true
+          },
+          {
+            "from": [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            "to": [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            "pathSha256": "9fb9a2b4c734434ef25c0e3c9ae2288a3ee5b1060c91529b8bb2b0fc9d9e9f70",
+            "segmentsSha256": "dabc55be2528bcefeba922eea24f6e2d416b94e54463134ec73d8347ccf1e030",
+            "crossoverUsed": true
+          },
+          {
+            "from": [
+              7.9881429,
+              46.31958075,
+              "Brig",
+              "3",
+              "ch:1:sloid:1609:2:3"
+            ],
+            "to": [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            "pathSha256": "6c554fd41a6e311bca9482c7f01648afff126c987952bbbbe78a537106e3d098",
+            "segmentsSha256": "966d4af1f523744b6c2dbedb22b361083b060171802a67e635688426b2a256ae",
+            "crossoverUsed": false
+          },
+          {
+            "from": [
+              7.9905953,
+              46.31993438,
+              "Brig",
+              "8",
+              "ch:1:sloid:1609:4:8"
+            ],
+            "to": [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            "pathSha256": "5f76c080ddbce250c7baa1330ed6ada2fab8914b9086fa678276ac3cb6b5195f",
+            "segmentsSha256": "955b24108077228f29b0385ba46d5347265b72a25f7246f0a78f01988a254e12",
+            "crossoverUsed": true
+          },
+          {
+            "from": [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            "to": [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            "pathSha256": "dadaf119d8aa04549c4389d6863088d2ff29bb1caf24affad675218f76d947e9",
+            "segmentsSha256": "966d4af1f523744b6c2dbedb22b361083b060171802a67e635688426b2a256ae",
+            "crossoverUsed": false
+          },
+          {
+            "from": [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            "to": [
+              7.98911308,
+              46.31977928,
+              "Brig",
+              "6",
+              "ch:1:sloid:1609:3:6"
+            ],
+            "pathSha256": "7753a15121af937b3aaf86e033500152628ff21999935b7ce05453eb4f5b55ba",
+            "segmentsSha256": "3682980381f151d1af7e1a7c379df5de9cea2dc50aa7eda0a8d3d1099dc6d0f9",
+            "crossoverUsed": true
+          },
+          {
+            "from": [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            "to": [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            "pathSha256": "700feacfd43b0c3586fb6699b5df3cd23ba1c15eb90517aeaa5162d112f7be43",
+            "segmentsSha256": "3682980381f151d1af7e1a7c379df5de9cea2dc50aa7eda0a8d3d1099dc6d0f9",
+            "crossoverUsed": true
+          }
+        ],
+        "method": "Eight exact original directed Brig–Domodossola platform pairs, SBB EC route 91-2W-Y-j26-1 only. All 56 retained twelve-date patterns remain in scope; require a single foreign terminal call. Official record 8501607 explicitly maps to timetable 8301003 at the internal graph boundary only. Use original OSM shared-node standard-gauge running lines and the one pinned Simplon crossover; no source edits, arbitrary joins, siding or yard shortcuts. Pin every directed path and source-edge order and preserve all prior successful paths. The 8 September source snapshot is not proof of historical or current operator alignment; original GTFS dates/times govern the archival feed."
+      },
+      "policySha256": "44e47b355ae915991b13e62b0f04f2ad90b05dfab1f33fc8a08a22aea93a23d4",
+      "source": {
+        "retrievedOn": "2026-09-08",
+        "snapshot": "2026-09-08T00:00:00Z",
+        "attribution": "© OpenStreetMap contributors, ODbL-1.0; SBB Infrastructure / opentransportdata.swiss; BLS works context",
+        "files": [
+          {
+            "file": "osm.json.gz",
+            "sha256": "e71ad63e8ca955ccb43528f5c7eea6334ac846502206a82691ca9e8a4946ea3d",
+            "url": "https://overpass-api.de/api/interpreter",
+            "sourceDate": "2026-09-08T00:00:00Z"
+          },
+          {
+            "file": "rail.overpass",
+            "sha256": "0905ac79a9e7bf3ce2ab46d2f383153f90c8a6d9d972973905265f1d8b91a784",
+            "url": null,
+            "sourceDate": "2026-09-08T00:00:00Z"
+          },
+          {
+            "file": "sbb-domodossola-stations.json",
+            "sha256": "6030e87a90fab4a2c62a6aca647eb3c7431966fd0a9252da0fea8460fad72899",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/dienststellen-gemass-opentransportdataswiss/records?where=search(%22Domodossola%22)&limit=20",
+            "sourceDate": "2024-09-19T15:24:12+00:00"
+          },
+          {
+            "file": "sbb-station-catalogue.json",
+            "sha256": "4950eebe245762e21127cf8bff778adf0a6a99eba2578bf3fbf8d7d4dde5c3cc",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets",
+            "sourceDate": null
+          },
+          {
+            "file": "sbb-domodossola.pdf",
+            "sha256": "084eef06c89fcb2c742414b5b2fce36584c9a85d28115f72fb50e4788cb1d00a",
+            "url": "https://company.sbb.ch/content/dam/internet/corporate/downloads/en/sbb-als-geschaeftspartner/flotte-unterhalt/onestopshop/Factsheet_Domodossola.pdf.sbbdownload.pdf",
+            "sourceDate": "2024-08-06"
+          },
+          {
+            "file": "145-2026.pdf",
+            "sha256": "92be93d476d595034adc6bcf4c4870a1674401c2247fd1c710c3f5fc1a6b0d0d",
+            "url": "https://widgets.oev-info.ch/publikation/jahresfpl/145.pdf",
+            "sourceDate": "2026-05-26"
+          },
+          {
+            "file": "bls-closures.html.gz",
+            "sha256": "1c0d63fab25878ce81f42db4f1c422adf792ff5f348df9a5c3e89f76a5a4d0f8",
+            "url": "https://www.bls.ch/de/unternehmen/projekte-und-hintergruende/bauprojekte/simplontunnel",
+            "sourceDate": null
+          }
+        ],
+        "evidence": [
+          {
+            "file": "osm.json.gz",
+            "url": "https://overpass-api.de/api/interpreter",
+            "sourceDate": "2026-09-08T00:00:00Z",
+            "attribution": "© OpenStreetMap contributors, ODbL-1.0",
+            "finding": "Pinned bounded rail ways, stop areas, UIC station nodes and complete referenced nodes. Exact shared-node topology only. Main standard-gauge lines plus the specifically reviewed 1435 mm passenger crossover 643956810; sidings, yards, spurs and non-rail features excluded. The other Simplon crossover is not admitted. No source tags or coordinates are edited."
+          },
+          {
+            "file": "rail.overpass",
+            "url": null,
+            "sourceDate": "2026-09-08T00:00:00Z",
+            "finding": "Exact reproducible Overpass query with snapshot and full element metadata."
+          },
+          {
+            "file": "sbb-domodossola-stations.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/dienststellen-gemass-opentransportdataswiss/records?where=search(%22Domodossola%22)&limit=20",
+            "sourceDate": "2024-09-19T15:24:12+00:00",
+            "attribution": "SBB Infrastruktur / opentransportdata.swiss / FOT service points",
+            "finding": "Exact record 8501607, Domodossola, assigned operating point, valid from 15 December 2024: FOT comment explicitly identifies timetable under 8301003 (foreign). This establishes the narrowly scoped code association; neither number is inferred from proximity or name alone."
+          },
+          {
+            "file": "sbb-station-catalogue.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets",
+            "sourceDate": null,
+            "finding": "Archived dataset metadata; acquisition date is not the station record edition date."
+          },
+          {
+            "file": "sbb-domodossola.pdf",
+            "url": "https://company.sbb.ch/content/dam/internet/corporate/downloads/en/sbb-als-geschaeftspartner/flotte-unterhalt/onestopshop/Factsheet_Domodossola.pdf.sbbdownload.pdf",
+            "sourceDate": "2024-08-06",
+            "visuallyReviewedPage": 3,
+            "finding": "SBB Infrastructure diagram distinguishes passenger station Domodossola FS, 83-01003-3, from Domodossola FM and Domodossola II. These other operating points cannot substitute for the timetable destination."
+          },
+          {
+            "file": "145-2026.pdf",
+            "url": "https://widgets.oev-info.ch/publikation/jahresfpl/145.pdf",
+            "sourceDate": "2026-05-26",
+            "visuallyReviewedPage": 1,
+            "finding": "Official field 145 shows SBB IC 1303 from Zürich, Brig 09:39 to Domodossola without intermediate calls. Its first seasonal panel is limited to 14 December–28 May. The PDF has 10:07/10:09 arrivals; pinned GTFS has 10:09 on 3 April and 10:16 on 1 August. No PDF time or calendar is substituted for GTFS."
+          },
+          {
+            "file": "bls-closures.html.gz",
+            "url": "https://www.bls.ch/de/unternehmen/projekte-und-hintergruende/bauprojekte/simplontunnel",
+            "sourceDate": null,
+            "finding": "Rechecked 8 September. Operator describes 2026 construction and replacement services between Iselle and Domodossola, including weekday closures from 10:30. This mutable page is context only; the two pinned GTFS journeys and call times define admission, not a general all-date rail assumption."
+          }
+        ],
+        "scope": "Source evidence copied byte-for-byte from the Aargau Simplon review. Its IC 1303 timetable and calendar findings are parent-review context, not Solothurn EC admission. Solothurn uses its own complete twelve-date patterns and original GTFS times."
+      },
+      "identityEvidence": {
+        "recordNumber": 8501607,
+        "timetableNumber": "8301003",
+        "comment": "Fahrplan unter 8301003 (Ausland)",
+        "editionDate": "2024-09-19T15:24:12+00:00",
+        "validFrom": "2024-12-15"
+      },
+      "patterns": [
+        {
+          "id": "de3ac654e33068f80c5a6633",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.59005448,
+              47.54681232,
+              "Basel SBB",
+              "7",
+              "ch:1:sloid:10:4:7"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "e7c1c9e95ff171f1083891eb",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.59009041,
+              47.54671531,
+              "Basel SBB",
+              "8",
+              "ch:1:sloid:10:4:8"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "2d90575a44cbd878bda65a36",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.7309193,
+              47.48436945,
+              "Liestal",
+              "4",
+              "ch:1:sloid:23:2:4"
+            ],
+            [
+              7.59171637,
+              47.54598768,
+              "Basel SBB",
+              "10",
+              "ch:1:sloid:10:5:10"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "8712d9f42f67058b9cf67ae4",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59005448,
+              47.54681232,
+              "Basel SBB",
+              "7",
+              "ch:1:sloid:10:4:7"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.99057733,
+              46.32002124,
+              "Brig",
+              "9",
+              "ch:1:sloid:1609:4:9"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "5e70f90482262127d4985f34",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59009041,
+              47.54671531,
+              "Basel SBB",
+              "8",
+              "ch:1:sloid:10:4:8"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "4a4f2e5a21de15563e7dd0c0",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5923362,
+              47.54584821,
+              "Basel SBB",
+              "9",
+              "ch:1:sloid:10:5:9"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31958075,
+              "Brig",
+              "3",
+              "ch:1:sloid:1609:2:3"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "918b3eb92715362422531885",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.58909328,
+              47.54678807,
+              "Basel SBB",
+              "11",
+              "ch:1:sloid:10:6:11"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "e7999c27f984e1a90b0a4b0f",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "c27b0c98ce3f83d1cfc864c5",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.67947279,
+              46.68641878,
+              "Spiez",
+              "5",
+              "ch:1:sloid:7483:0:792557"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.90780656,
+              47.35203716,
+              "Olten",
+              "7",
+              "ch:1:sloid:218:4:7"
+            ],
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "73ac82fff40638e723bafaba",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.67953567,
+              46.68645575,
+              "Spiez",
+              "4",
+              "ch:1:sloid:7483:0:138485"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90734842,
+              47.35215888,
+              "Olten",
+              "3",
+              "ch:1:sloid:218:2:3"
+            ],
+            [
+              7.7309193,
+              47.48436945,
+              "Liestal",
+              "4",
+              "ch:1:sloid:23:2:4"
+            ],
+            [
+              7.59171637,
+              47.54598768,
+              "Basel SBB",
+              "10",
+              "ch:1:sloid:10:5:10"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "7eab6d235e31a5e8137b937f",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59009041,
+              47.54671531,
+              "Basel SBB",
+              "8",
+              "ch:1:sloid:10:4:8"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "8e3934b90ff0ecce3f7c1220",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5923362,
+              47.54584821,
+              "Basel SBB",
+              "9",
+              "ch:1:sloid:10:5:9"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31958075,
+              "Brig",
+              "3",
+              "ch:1:sloid:1609:2:3"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "542014361a1c1fa6cb39aa3f",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.9905953,
+              46.31993438,
+              "Brig",
+              "8",
+              "ch:1:sloid:1609:4:8"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "0b9bee4e6ba236b42ca37d16",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59009041,
+              47.54671531,
+              "Basel SBB",
+              "8",
+              "ch:1:sloid:10:4:8"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "cab89edaf8136e8a737a9a77",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5923362,
+              47.54584821,
+              "Basel SBB",
+              "9",
+              "ch:1:sloid:10:5:9"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "8eba432a4f5cfc23a88d6fe8",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.99057733,
+              46.32002124,
+              "Brig",
+              "9",
+              "ch:1:sloid:1609:4:9"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "9f1a426513ca1147521a8fd6",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.67953567,
+              46.68645575,
+              "Spiez",
+              "4",
+              "ch:1:sloid:7483:0:138485"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43714325,
+              46.94856127,
+              "Bern",
+              "6",
+              "ch:1:sloid:7000:3:6"
+            ],
+            [
+              7.90780656,
+              47.35203716,
+              "Olten",
+              "7",
+              "ch:1:sloid:218:4:7"
+            ],
+            [
+              7.59026109,
+              47.54692146,
+              "Basel SBB",
+              "5",
+              "ch:1:sloid:10:3:5"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "0af296f1d3cbd7d3dbbc4fd4",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.7309193,
+              47.48436945,
+              "Liestal",
+              "4",
+              "ch:1:sloid:23:2:4"
+            ],
+            [
+              7.59171637,
+              47.54598768,
+              "Basel SBB",
+              "10",
+              "ch:1:sloid:10:5:10"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "3a7757995063f65ac80f710c",
+          "directionId": "0",
+          "stops": [
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.59005448,
+              47.54681232,
+              "Basel SBB",
+              "7",
+              "ch:1:sloid:10:4:7"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "be7f4123f1fdf787c2e8c47f",
+          "directionId": "0",
+          "stops": [
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.59135704,
+              47.54663648,
+              "Basel SBB",
+              "4",
+              "ch:1:sloid:10:2:4"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "e5b9538bbd7e052314ef6bd3",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59009041,
+              47.54671531,
+              "Basel SBB",
+              "8",
+              "ch:1:sloid:10:4:8"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "ef79017d2230bba6727058d4",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5923362,
+              47.54584821,
+              "Basel SBB",
+              "9",
+              "ch:1:sloid:10:5:9"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.67947279,
+              46.68641878,
+              "Spiez",
+              "5",
+              "ch:1:sloid:7483:0:792557"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "f04e34a356352e397ee1d584",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59135704,
+              47.54663648,
+              "Basel SBB",
+              "4",
+              "ch:1:sloid:10:2:4"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "6be11e52d39b9de276206482",
+          "directionId": "0",
+          "stops": [
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.7309193,
+              47.48436945,
+              "Liestal",
+              "4",
+              "ch:1:sloid:23:2:4"
+            ],
+            [
+              7.59171637,
+              47.54598768,
+              "Basel SBB",
+              "10",
+              "ch:1:sloid:10:5:10"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "2cfa6603fef80f176eeaa196",
+          "directionId": "0",
+          "stops": [
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.67953567,
+              46.68645575,
+              "Spiez",
+              "4",
+              "ch:1:sloid:7483:0:138485"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43714325,
+              46.94856127,
+              "Bern",
+              "6",
+              "ch:1:sloid:7000:3:6"
+            ],
+            [
+              7.90780656,
+              47.35203716,
+              "Olten",
+              "7",
+              "ch:1:sloid:218:4:7"
+            ],
+            [
+              7.59026109,
+              47.54692146,
+              "Basel SBB",
+              "5",
+              "ch:1:sloid:10:3:5"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "59a906f8988fa47c876d0ef5",
+          "directionId": "0",
+          "stops": [
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "b7b8b8f25c5077240201ca3e",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59009041,
+              47.54671531,
+              "Basel SBB",
+              "8",
+              "ch:1:sloid:10:4:8"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "df220db9687c36b4ce6ebc39",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5923362,
+              47.54584821,
+              "Basel SBB",
+              "9",
+              "ch:1:sloid:10:5:9"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "8986696966b92e9575d5c0ac",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "68504a500e8dd5fe9e140798",
+          "directionId": "0",
+          "stops": [
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.67953567,
+              46.68645575,
+              "Spiez",
+              "4",
+              "ch:1:sloid:7483:0:138485"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90734842,
+              47.35215888,
+              "Olten",
+              "3",
+              "ch:1:sloid:218:2:3"
+            ],
+            [
+              7.7309193,
+              47.48436945,
+              "Liestal",
+              "4",
+              "ch:1:sloid:23:2:4"
+            ],
+            [
+              7.59009041,
+              47.54671531,
+              "Basel SBB",
+              "8",
+              "ch:1:sloid:10:4:8"
+            ]
+          ],
+          "foreignTerminal": false
+        },
+        {
+          "id": "7b6794f8e066801bceed7e7d",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.67953567,
+              46.68645575,
+              "Spiez",
+              "4",
+              "ch:1:sloid:7483:0:138485"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.7309193,
+              47.48436945,
+              "Liestal",
+              "4",
+              "ch:1:sloid:23:2:4"
+            ],
+            [
+              7.59171637,
+              47.54598768,
+              "Basel SBB",
+              "10",
+              "ch:1:sloid:10:5:10"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "ef402ae277ca98319466bb80",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59005448,
+              47.54681232,
+              "Basel SBB",
+              "7",
+              "ch:1:sloid:10:4:7"
+            ],
+            [
+              7.73110795,
+              47.48455765,
+              "Liestal",
+              "1",
+              "ch:1:sloid:23:1:1"
+            ],
+            [
+              7.90832759,
+              47.35252404,
+              "Olten",
+              "11",
+              "ch:1:sloid:218:6:11"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "f5376227846e8525ec525a35",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59005448,
+              47.54681232,
+              "Basel SBB",
+              "7",
+              "ch:1:sloid:10:4:7"
+            ],
+            [
+              7.73110795,
+              47.48455765,
+              "Liestal",
+              "1",
+              "ch:1:sloid:23:1:1"
+            ],
+            [
+              7.90832759,
+              47.35252404,
+              "Olten",
+              "11",
+              "ch:1:sloid:218:6:11"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.99057733,
+              46.32002124,
+              "Brig",
+              "9",
+              "ch:1:sloid:1609:4:9"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "d401461e6244d97106a90cc0",
+          "directionId": "1",
+          "stops": [
+            [
+              7.58909328,
+              47.54678807,
+              "Basel SBB",
+              "11",
+              "ch:1:sloid:10:6:11"
+            ],
+            [
+              7.73110795,
+              47.48455765,
+              "Liestal",
+              "1",
+              "ch:1:sloid:23:1:1"
+            ],
+            [
+              7.90832759,
+              47.35252404,
+              "Olten",
+              "11",
+              "ch:1:sloid:218:6:11"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "9025b9de9014d4914b2afded",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ],
+            [
+              7.73110795,
+              47.48455765,
+              "Liestal",
+              "1",
+              "ch:1:sloid:23:1:1"
+            ],
+            [
+              7.90832759,
+              47.35252404,
+              "Olten",
+              "11",
+              "ch:1:sloid:218:6:11"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "5c0018f79e59b3f2a25692a3",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43714325,
+              46.94856127,
+              "Bern",
+              "6",
+              "ch:1:sloid:7000:3:6"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.58909328,
+              47.54678807,
+              "Basel SBB",
+              "11",
+              "ch:1:sloid:10:6:11"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "4422cb3441e2b022446618e4",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98911308,
+              46.31977928,
+              "Brig",
+              "6",
+              "ch:1:sloid:1609:3:6"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.59005448,
+              47.54681232,
+              "Basel SBB",
+              "7",
+              "ch:1:sloid:10:4:7"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "2e00bf3fc541b5b24e2220a9",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90743825,
+              47.35206151,
+              "Olten",
+              "4",
+              "ch:1:sloid:218:3:4"
+            ],
+            [
+              7.7309193,
+              47.48436945,
+              "Liestal",
+              "4",
+              "ch:1:sloid:23:2:4"
+            ],
+            [
+              7.59171637,
+              47.54598768,
+              "Basel SBB",
+              "10",
+              "ch:1:sloid:10:5:10"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "3f85dd4be9032de870cc4664",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59005448,
+              47.54681232,
+              "Basel SBB",
+              "7",
+              "ch:1:sloid:10:4:7"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.9905953,
+              46.31993438,
+              "Brig",
+              "8",
+              "ch:1:sloid:1609:4:8"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "a6298d7168b98151a4c8026a",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5923362,
+              47.54584821,
+              "Basel SBB",
+              "9",
+              "ch:1:sloid:10:5:9"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.67947279,
+              46.68641878,
+              "Spiez",
+              "5",
+              "ch:1:sloid:7483:0:792557"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "a3b40467ab09ea4a4201fb74",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.67953567,
+              46.68645575,
+              "Spiez",
+              "4",
+              "ch:1:sloid:7483:0:138485"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90780656,
+              47.35203716,
+              "Olten",
+              "7",
+              "ch:1:sloid:218:4:7"
+            ],
+            [
+              7.59026109,
+              47.54692146,
+              "Basel SBB",
+              "5",
+              "ch:1:sloid:10:3:5"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "daf990a257d22f48cd6d2816",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43714325,
+              46.94856127,
+              "Bern",
+              "6",
+              "ch:1:sloid:7000:3:6"
+            ],
+            [
+              7.90780656,
+              47.35203716,
+              "Olten",
+              "7",
+              "ch:1:sloid:218:4:7"
+            ],
+            [
+              7.58909328,
+              47.54678807,
+              "Basel SBB",
+              "11",
+              "ch:1:sloid:10:6:11"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "f18fc4fa3b8eddd5b962312d",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43714325,
+              46.94856127,
+              "Bern",
+              "6",
+              "ch:1:sloid:7000:3:6"
+            ],
+            [
+              7.90780656,
+              47.35203716,
+              "Olten",
+              "7",
+              "ch:1:sloid:218:4:7"
+            ],
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "3574425948118fe2b31f1e77",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.67953567,
+              46.68645575,
+              "Spiez",
+              "4",
+              "ch:1:sloid:7483:0:138485"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90734842,
+              47.35215888,
+              "Olten",
+              "3",
+              "ch:1:sloid:218:2:3"
+            ],
+            [
+              7.7309193,
+              47.48436945,
+              "Liestal",
+              "4",
+              "ch:1:sloid:23:2:4"
+            ],
+            [
+              7.58779971,
+              47.54700029,
+              "Basel SBB",
+              "14",
+              "ch:1:sloid:10:7:14"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "219e5ffc98e7bc195209f008",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59009041,
+              47.54671531,
+              "Basel SBB",
+              "8",
+              "ch:1:sloid:10:4:8"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43757445,
+              46.94892921,
+              "Bern",
+              "9",
+              "ch:1:sloid:7000:5:9"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "998463167a920e8f8373e450",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5923362,
+              47.54584821,
+              "Basel SBB",
+              "9",
+              "ch:1:sloid:10:5:9"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43757445,
+              46.94892921,
+              "Bern",
+              "9",
+              "ch:1:sloid:7000:5:9"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "753005911e8f579866852225",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43757445,
+              46.94892921,
+              "Bern",
+              "9",
+              "ch:1:sloid:7000:5:9"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.99057733,
+              46.32002124,
+              "Brig",
+              "9",
+              "ch:1:sloid:1609:4:9"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "471001787db99b08bd09b429",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90780656,
+              47.35203716,
+              "Olten",
+              "7",
+              "ch:1:sloid:218:4:7"
+            ],
+            [
+              7.7309193,
+              47.48436945,
+              "Liestal",
+              "4",
+              "ch:1:sloid:23:2:4"
+            ],
+            [
+              7.59171637,
+              47.54598768,
+              "Basel SBB",
+              "10",
+              "ch:1:sloid:10:5:10"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "14b7f4428828497477ade9bb",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.67953567,
+              46.68645575,
+              "Spiez",
+              "4",
+              "ch:1:sloid:7483:0:138485"
+            ],
+            [
+              7.63022714,
+              46.75419299,
+              "Thun",
+              "2",
+              "ch:1:sloid:7100:2:2"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90780656,
+              47.35203716,
+              "Olten",
+              "7",
+              "ch:1:sloid:218:4:7"
+            ],
+            [
+              7.7309193,
+              47.48436945,
+              "Liestal",
+              "4",
+              "ch:1:sloid:23:2:4"
+            ],
+            [
+              7.59171637,
+              47.54598768,
+              "Basel SBB",
+              "10",
+              "ch:1:sloid:10:5:10"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "94aa96a7ecd36df5db6ab7fe",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59009041,
+              47.54671531,
+              "Basel SBB",
+              "8",
+              "ch:1:sloid:10:4:8"
+            ],
+            [
+              7.73110795,
+              47.48455765,
+              "Liestal",
+              "1",
+              "ch:1:sloid:23:1:1"
+            ],
+            [
+              7.90832759,
+              47.35252404,
+              "Olten",
+              "11",
+              "ch:1:sloid:218:6:11"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "e9fa2d57afcba39884744c96",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59009041,
+              47.54671531,
+              "Basel SBB",
+              "8",
+              "ch:1:sloid:10:4:8"
+            ],
+            [
+              7.73110795,
+              47.48455765,
+              "Liestal",
+              "1",
+              "ch:1:sloid:23:1:1"
+            ],
+            [
+              7.90832759,
+              47.35252404,
+              "Olten",
+              "11",
+              "ch:1:sloid:218:6:11"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "dace8f77abd7dd9a83b4f519",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90780656,
+              47.35203716,
+              "Olten",
+              "7",
+              "ch:1:sloid:218:4:7"
+            ],
+            [
+              7.58909328,
+              47.54678807,
+              "Basel SBB",
+              "11",
+              "ch:1:sloid:10:6:11"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "a0e2b0edc7a100b3a7a3eff4",
+          "directionId": "0",
+          "stops": [
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ],
+            [
+              7.98778357,
+              46.31947528,
+              "Brig",
+              "1",
+              "ch:1:sloid:1609:1:1"
+            ],
+            [
+              7.88229441,
+              46.29400775,
+              "Visp",
+              "4",
+              "ch:1:sloid:1605:3:4"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.63017324,
+              46.75411913,
+              "Thun",
+              "3",
+              "ch:1:sloid:7100:2:3"
+            ],
+            [
+              7.43720614,
+              46.94850608,
+              "Bern",
+              "5",
+              "ch:1:sloid:7000:3:5"
+            ],
+            [
+              7.90780656,
+              47.35203716,
+              "Olten",
+              "7",
+              "ch:1:sloid:218:4:7"
+            ],
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "a0fe31edc272293e67e58e7d",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5923362,
+              47.54584821,
+              "Basel SBB",
+              "9",
+              "ch:1:sloid:10:5:9"
+            ],
+            [
+              7.73110795,
+              47.48455765,
+              "Liestal",
+              "1",
+              "ch:1:sloid:23:1:1"
+            ],
+            [
+              7.90832759,
+              47.35252404,
+              "Olten",
+              "11",
+              "ch:1:sloid:218:6:11"
+            ],
+            [
+              7.43682884,
+              46.9485674,
+              "Bern",
+              "7",
+              "ch:1:sloid:7000:4:7"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "e0fac6e2835eef581c453d69",
+          "directionId": "1",
+          "stops": [
+            [
+              7.5898299,
+              47.54697604,
+              "Basel SBB",
+              "6",
+              "ch:1:sloid:10:3:6"
+            ],
+            [
+              7.73110795,
+              47.48455765,
+              "Liestal",
+              "1",
+              "ch:1:sloid:23:1:1"
+            ],
+            [
+              7.90832759,
+              47.35252404,
+              "Olten",
+              "11",
+              "ch:1:sloid:218:6:11"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88229441,
+              46.29407603,
+              "Visp",
+              "5",
+              "ch:1:sloid:1605:3:5"
+            ],
+            [
+              7.9905953,
+              46.31993438,
+              "Brig",
+              "8",
+              "ch:1:sloid:1609:4:8"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        },
+        {
+          "id": "63d5b11617124b365bff1713",
+          "directionId": "1",
+          "stops": [
+            [
+              7.59005448,
+              47.54681232,
+              "Basel SBB",
+              "7",
+              "ch:1:sloid:10:4:7"
+            ],
+            [
+              7.90845335,
+              47.35263359,
+              "Olten",
+              "12",
+              "ch:1:sloid:218:7:12"
+            ],
+            [
+              7.43677494,
+              46.94864099,
+              "Bern",
+              "8",
+              "ch:1:sloid:7000:4:8"
+            ],
+            [
+              7.63045172,
+              46.7541376,
+              "Thun",
+              "1",
+              "ch:1:sloid:7100:1:1"
+            ],
+            [
+              7.6796255,
+              46.68651121,
+              "Spiez",
+              "3",
+              "ch:1:sloid:7483:0:954324"
+            ],
+            [
+              7.88230339,
+              46.29421258,
+              "Visp",
+              "7",
+              "ch:1:sloid:1605:4:7"
+            ],
+            [
+              7.9881429,
+              46.31967381,
+              "Brig",
+              "4",
+              "ch:1:sloid:1609:2:4"
+            ],
+            [
+              8.29623809,
+              46.11529118,
+              "Domodossola (I)",
+              "",
+              "8301003"
+            ]
+          ],
+          "foreignTerminal": true
+        }
+      ],
+      "pairEvidence": [
+        {
+          "pathMetres": 40876.52017243209,
+          "geometrySource": "osm-solothurn-simplon-inference",
+          "gauge": "mm1435",
+          "fromOperatingPoint": "8301003",
+          "toOperatingPoint": "8501609",
+          "stationAttachmentsMetres": [
+            19.24352592205202,
+            47.88165462442592
+          ],
+          "trackAttachmentsMetres": [
+            33.97658845563373,
+            5.942078237216925
+          ],
+          "sourceStationNumber": "8501607",
+          "crossoverUsed": false,
+          "geometrySha256": "2b6422c82568210671de3a27d6b67300296e341f22f19c7574f03f9c684cb0e3",
+          "from": [
+            8.29623809,
+            46.11529118,
+            "Domodossola (I)",
+            "",
+            "8301003"
+          ],
+          "to": [
+            7.98778357,
+            46.31947528,
+            "Brig",
+            "1",
+            "ch:1:sloid:1609:1:1"
+          ],
+          "contextPatternIds": [
+            "0af296f1d3cbd7d3dbbc4fd4",
+            "14b7f4428828497477ade9bb",
+            "2d90575a44cbd878bda65a36",
+            "3574425948118fe2b31f1e77",
+            "5c0018f79e59b3f2a25692a3",
+            "73ac82fff40638e723bafaba",
+            "7b6794f8e066801bceed7e7d",
+            "918b3eb92715362422531885",
+            "9f1a426513ca1147521a8fd6",
+            "a0e2b0edc7a100b3a7a3eff4",
+            "a3b40467ab09ea4a4201fb74",
+            "c27b0c98ce3f83d1cfc864c5",
+            "dace8f77abd7dd9a83b4f519",
+            "daf990a257d22f48cd6d2816",
+            "de3ac654e33068f80c5a6633",
+            "e7999c27f984e1a90b0a4b0f",
+            "e7c1c9e95ff171f1083891eb",
+            "f18fc4fa3b8eddd5b962312d"
+          ],
+          "directedSourceSegmentsSha256": "e75599e0b5097030d7db416c91b7751357cb5980d88ec18090ad719f4b050e7a"
+        },
+        {
+          "pathMetres": 40682.13811528026,
+          "geometrySource": "osm-solothurn-simplon-inference",
+          "gauge": "mm1435",
+          "fromOperatingPoint": "8501609",
+          "toOperatingPoint": "8301003",
+          "stationAttachmentsMetres": [
+            182.0473636846366,
+            19.24352592205202
+          ],
+          "trackAttachmentsMetres": [
+            16.0762665681734,
+            33.97658845563373
+          ],
+          "sourceStationNumber": "8501607",
+          "crossoverUsed": true,
+          "geometrySha256": "2a13886424dc071c3ab57226c3bf2fd03c6d282064fd5b5397a326cca11b5b7f",
+          "from": [
+            7.99057733,
+            46.32002124,
+            "Brig",
+            "9",
+            "ch:1:sloid:1609:4:9"
+          ],
+          "to": [
+            8.29623809,
+            46.11529118,
+            "Domodossola (I)",
+            "",
+            "8301003"
+          ],
+          "contextPatternIds": [
+            "753005911e8f579866852225",
+            "8712d9f42f67058b9cf67ae4",
+            "8eba432a4f5cfc23a88d6fe8",
+            "f5376227846e8525ec525a35"
+          ],
+          "directedSourceSegmentsSha256": "955b24108077228f29b0385ba46d5347265b72a25f7246f0a78f01988a254e12"
+        },
+        {
+          "pathMetres": 40860.36856203007,
+          "geometrySource": "osm-solothurn-simplon-inference",
+          "gauge": "mm1435",
+          "fromOperatingPoint": "8501609",
+          "toOperatingPoint": "8301003",
+          "stationAttachmentsMetres": [
+            12.921007753237474,
+            19.24352592205202
+          ],
+          "trackAttachmentsMetres": [
+            12.921007753237474,
+            33.97658845563373
+          ],
+          "sourceStationNumber": "8501607",
+          "crossoverUsed": true,
+          "geometrySha256": "9fb9a2b4c734434ef25c0e3c9ae2288a3ee5b1060c91529b8bb2b0fc9d9e9f70",
+          "from": [
+            7.9881429,
+            46.31967381,
+            "Brig",
+            "4",
+            "ch:1:sloid:1609:2:4"
+          ],
+          "to": [
+            8.29623809,
+            46.11529118,
+            "Domodossola (I)",
+            "",
+            "8301003"
+          ],
+          "contextPatternIds": [
+            "0b9bee4e6ba236b42ca37d16",
+            "219e5ffc98e7bc195209f008",
+            "5e70f90482262127d4985f34",
+            "63d5b11617124b365bff1713",
+            "7eab6d235e31a5e8137b937f",
+            "9025b9de9014d4914b2afded",
+            "94aa96a7ecd36df5db6ab7fe",
+            "998463167a920e8f8373e450",
+            "a0fe31edc272293e67e58e7d",
+            "a6298d7168b98151a4c8026a",
+            "cab89edaf8136e8a737a9a77",
+            "e9fa2d57afcba39884744c96",
+            "ef402ae277ca98319466bb80"
+          ],
+          "directedSourceSegmentsSha256": "dabc55be2528bcefeba922eea24f6e2d416b94e54463134ec73d8347ccf1e030"
+        },
+        {
+          "pathMetres": 40849.05485089088,
+          "geometrySource": "osm-solothurn-simplon-inference",
+          "gauge": "mm1435",
+          "fromOperatingPoint": "8501609",
+          "toOperatingPoint": "8301003",
+          "stationAttachmentsMetres": [
+            22.258339053429918,
+            19.24352592205202
+          ],
+          "trackAttachmentsMetres": [
+            6.0063477578353694,
+            33.97658845563373
+          ],
+          "sourceStationNumber": "8501607",
+          "crossoverUsed": false,
+          "geometrySha256": "6c554fd41a6e311bca9482c7f01648afff126c987952bbbbe78a537106e3d098",
+          "from": [
+            7.9881429,
+            46.31958075,
+            "Brig",
+            "3",
+            "ch:1:sloid:1609:2:3"
+          ],
+          "to": [
+            8.29623809,
+            46.11529118,
+            "Domodossola (I)",
+            "",
+            "8301003"
+          ],
+          "contextPatternIds": [
+            "4a4f2e5a21de15563e7dd0c0",
+            "8e3934b90ff0ecce3f7c1220"
+          ],
+          "directedSourceSegmentsSha256": "966d4af1f523744b6c2dbedb22b361083b060171802a67e635688426b2a256ae"
+        },
+        {
+          "pathMetres": 40671.04106977079,
+          "geometrySource": "osm-solothurn-simplon-inference",
+          "gauge": "mm1435",
+          "fromOperatingPoint": "8501609",
+          "toOperatingPoint": "8301003",
+          "stationAttachmentsMetres": [
+            182.1873270729149,
+            19.24352592205202
+          ],
+          "trackAttachmentsMetres": [
+            6.416459078069392,
+            33.97658845563373
+          ],
+          "sourceStationNumber": "8501607",
+          "crossoverUsed": true,
+          "geometrySha256": "5f76c080ddbce250c7baa1330ed6ada2fab8914b9086fa678276ac3cb6b5195f",
+          "from": [
+            7.9905953,
+            46.31993438,
+            "Brig",
+            "8",
+            "ch:1:sloid:1609:4:8"
+          ],
+          "to": [
+            8.29623809,
+            46.11529118,
+            "Domodossola (I)",
+            "",
+            "8301003"
+          ],
+          "contextPatternIds": [
+            "3f85dd4be9032de870cc4664",
+            "542014361a1c1fa6cb39aa3f",
+            "e0fac6e2835eef581c453d69"
+          ],
+          "directedSourceSegmentsSha256": "955b24108077228f29b0385ba46d5347265b72a25f7246f0a78f01988a254e12"
+        },
+        {
+          "pathMetres": 40876.520172432094,
+          "geometrySource": "osm-solothurn-simplon-inference",
+          "gauge": "mm1435",
+          "fromOperatingPoint": "8501609",
+          "toOperatingPoint": "8301003",
+          "stationAttachmentsMetres": [
+            47.88165462442592,
+            19.24352592205202
+          ],
+          "trackAttachmentsMetres": [
+            5.942078237216925,
+            33.97658845563373
+          ],
+          "sourceStationNumber": "8501607",
+          "crossoverUsed": false,
+          "geometrySha256": "dadaf119d8aa04549c4389d6863088d2ff29bb1caf24affad675218f76d947e9",
+          "from": [
+            7.98778357,
+            46.31947528,
+            "Brig",
+            "1",
+            "ch:1:sloid:1609:1:1"
+          ],
+          "to": [
+            8.29623809,
+            46.11529118,
+            "Domodossola (I)",
+            "",
+            "8301003"
+          ],
+          "contextPatternIds": [
+            "d401461e6244d97106a90cc0"
+          ],
+          "directedSourceSegmentsSha256": "966d4af1f523744b6c2dbedb22b361083b060171802a67e635688426b2a256ae"
+        },
+        {
+          "pathMetres": 40781.830685208806,
+          "geometrySource": "osm-solothurn-simplon-inference",
+          "gauge": "mm1435",
+          "fromOperatingPoint": "8301003",
+          "toOperatingPoint": "8501609",
+          "stationAttachmentsMetres": [
+            19.24352592205202,
+            67.3164439714096
+          ],
+          "trackAttachmentsMetres": [
+            33.97658845563373,
+            1.676576557773049
+          ],
+          "sourceStationNumber": "8501607",
+          "crossoverUsed": true,
+          "geometrySha256": "7753a15121af937b3aaf86e033500152628ff21999935b7ce05453eb4f5b55ba",
+          "from": [
+            8.29623809,
+            46.11529118,
+            "Domodossola (I)",
+            "",
+            "8301003"
+          ],
+          "to": [
+            7.98911308,
+            46.31977928,
+            "Brig",
+            "6",
+            "ch:1:sloid:1609:3:6"
+          ],
+          "contextPatternIds": [
+            "4422cb3441e2b022446618e4"
+          ],
+          "directedSourceSegmentsSha256": "3682980381f151d1af7e1a7c379df5de9cea2dc50aa7eda0a8d3d1099dc6d0f9"
+        },
+        {
+          "pathMetres": 40860.36856203007,
+          "geometrySource": "osm-solothurn-simplon-inference",
+          "gauge": "mm1435",
+          "fromOperatingPoint": "8301003",
+          "toOperatingPoint": "8501609",
+          "stationAttachmentsMetres": [
+            19.24352592205202,
+            12.921007753237474
+          ],
+          "trackAttachmentsMetres": [
+            33.97658845563373,
+            12.921007753237474
+          ],
+          "sourceStationNumber": "8501607",
+          "crossoverUsed": true,
+          "geometrySha256": "700feacfd43b0c3586fb6699b5df3cd23ba1c15eb90517aeaa5162d112f7be43",
+          "from": [
+            8.29623809,
+            46.11529118,
+            "Domodossola (I)",
+            "",
+            "8301003"
+          ],
+          "to": [
+            7.9881429,
+            46.31967381,
+            "Brig",
+            "4",
+            "ch:1:sloid:1609:2:4"
+          ],
+          "contextPatternIds": [
+            "2e00bf3fc541b5b24e2220a9",
+            "471001787db99b08bd09b429"
+          ],
+          "directedSourceSegmentsSha256": "3682980381f151d1af7e1a7c379df5de9cea2dc50aa7eda0a8d3d1099dc6d0f9"
+        }
+      ]
+    },
     "como": {
       "policy": {
         "schemaVersion": 1,
@@ -2384,23 +7614,23 @@
       },
       "after": {
         "trips": 7156,
-        "admittedTrips": 7026,
+        "admittedTrips": 7033,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5948,
+        "admittedScheduledTrips": 5955,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97134,
+        "matchedScheduledSegmentOccurrences": 97141,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98212,
-        "admittedSegmentOccurrences": 93727,
+        "matchedSegmentOccurrences": 98219,
+        "admittedSegmentOccurrences": 93785,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4250,
+        "matchedDirectedPairs": 4256,
         "patterns": 921,
-        "completePatterns": 907,
-        "admittedPatterns": 907,
+        "completePatterns": 914,
+        "admittedPatterns": 914,
         "excludedTrips": {
-          "incomplete-directed-pattern": 130
+          "incomplete-directed-pattern": 123
         }
       },
       "lostAdmittedPatterns": [],
@@ -7325,6 +12555,133 @@
           ]
         },
         {
+          "id": "e7c1c9e95ff171f1083891eb",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:10:4:8"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "4422cb3441e2b022446618e4",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:3:6",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:10:4:7"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "2e00bf3fc541b5b24e2220a9",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:2:4",
+            "ch:1:sloid:1605:3:5",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:5:10"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "3f85dd4be9032de870cc4664",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:7",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:8",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:3:5",
+            "ch:1:sloid:1609:4:8",
+            "8301003"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "5e70f90482262127d4985f34",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "a6298d7168b98151a4c8026a",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:5:9",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:792557",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
           "id": "6ef9ddc9a3fb70d18b3fae3d",
           "routeId": "91-35-A-j26-1",
           "line": "IR35",
@@ -9994,6 +15351,36 @@
           "admittedTrips": 1,
           "geometrySources": [
             "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "4fea4d4a337f4c35a81f8219",
+          "routeId": "91-54-Y-j26-1",
+          "line": "RE",
+          "mode": "rail",
+          "stopIds": [
+            "8718444",
+            "ch:1:sloid:128:2:3",
+            "ch:1:sloid:144:0:59",
+            "ch:1:sloid:127:0:2",
+            "ch:1:sloid:141:0:60",
+            "ch:1:sloid:126:1:1",
+            "ch:1:sloid:125:0:2",
+            "ch:1:sloid:124",
+            "ch:1:sloid:123:0:2",
+            "ch:1:sloid:122:2:2",
+            "ch:1:sloid:121:2:2",
+            "ch:1:sloid:120:0:1",
+            "ch:1:sloid:109:2:2",
+            "ch:1:sloid:105:1:2",
+            "ch:1:sloid:159:0:877577",
+            "ch:1:sloid:4300:3:5"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-delle-rail-inference",
             "solothurn-network"
           ]
         },
@@ -20704,7 +26091,7 @@
         },
         "solothurn-network": {
           "directedPairs": 3004,
-          "admittedOccurrences": 78137
+          "admittedOccurrences": 78139
         },
         "bern-official-413": {
           "directedPairs": 10,
@@ -20712,7 +26099,7 @@
         },
         "fot": {
           "directedPairs": 850,
-          "admittedOccurrences": 5673
+          "admittedOccurrences": 5722
         },
         "fot-reviewed-bern-eastern-terminal": {
           "directedPairs": 7,
@@ -20726,6 +26113,10 @@
           "directedPairs": 11,
           "admittedOccurrences": 81
         },
+        "osm-solothurn-simplon-inference": {
+          "directedPairs": 5,
+          "admittedOccurrences": 6
+        },
         "osm-solothurn-como-rail-inference": {
           "directedPairs": 2,
           "admittedOccurrences": 2
@@ -20733,6 +26124,10 @@
         "fot-reviewed-interlaken-platforms": {
           "directedPairs": 6,
           "admittedOccurrences": 33
+        },
+        "osm-solothurn-delle-rail-inference": {
+          "directedPairs": 1,
+          "admittedOccurrences": 1
         },
         "osm-road-inference": {
           "directedPairs": 266,
@@ -20779,23 +26174,23 @@
       },
       "after": {
         "trips": 5819,
-        "admittedTrips": 5680,
+        "admittedTrips": 5688,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4572,
+        "admittedScheduledTrips": 4580,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67863,
+        "matchedScheduledSegmentOccurrences": 67871,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68971,
-        "admittedSegmentOccurrences": 65047,
+        "matchedSegmentOccurrences": 68979,
+        "admittedSegmentOccurrences": 65104,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4459,
+        "matchedDirectedPairs": 4462,
         "patterns": 777,
-        "completePatterns": 761,
-        "admittedPatterns": 761,
+        "completePatterns": 768,
+        "admittedPatterns": 768,
         "excludedTrips": {
-          "incomplete-directed-pattern": 137,
+          "incomplete-directed-pattern": 129,
           "night-network-excluded-by-source": 2
         }
       },
@@ -25896,6 +31291,154 @@
           "admittedTrips": 1,
           "geometrySources": [
             "fot"
+          ]
+        },
+        {
+          "id": "a3b40467ab09ea4a4201fb74",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:138485",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:3:5"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "daf990a257d22f48cd6d2816",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:6:11"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "f18fc4fa3b8eddd5b962312d",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:3:6"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "3574425948118fe2b31f1e77",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "8301003",
+            "ch:1:sloid:1609:1:1",
+            "ch:1:sloid:1605:3:4",
+            "ch:1:sloid:7483:0:138485",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:2:3",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:7:14"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "219e5ffc98e7bc195209f008",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "998463167a920e8f8373e450",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:5:9",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:4:7",
+            "ch:1:sloid:1609:2:4",
+            "8301003"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
+          ]
+        },
+        {
+          "id": "753005911e8f579866852225",
+          "routeId": "91-2W-Y-j26-1",
+          "line": "EC",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:3:6",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:954324",
+            "ch:1:sloid:1605:3:5",
+            "ch:1:sloid:1609:4:9",
+            "8301003"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-simplon-inference"
           ]
         },
         {
@@ -36235,7 +41778,7 @@
         },
         "fot": {
           "directedPairs": 887,
-          "admittedOccurrences": 4770
+          "admittedOccurrences": 4819
         },
         "sbb-rail-inference": {
           "directedPairs": 2,
@@ -36256,6 +41799,10 @@
         "bern-official-450_S_b": {
           "directedPairs": 12,
           "admittedOccurrences": 79
+        },
+        "osm-solothurn-simplon-inference": {
+          "directedPairs": 3,
+          "admittedOccurrences": 8
         },
         "osm-solothurn-como-rail-inference": {
           "directedPairs": 2,

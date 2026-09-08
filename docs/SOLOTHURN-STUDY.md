@@ -1,6 +1,6 @@
 # Solothurn canton transit study
 
-Built from the pinned 2026 timetable, the cantonal public-transport network and separately attributed road, rail, boat and tram supplements. **All 193 canton-serving route records across 19 GTFS agency identities and all ten districts are inventoried. 149 route records contribute admitted journeys.** This is a whole-canton census with partial geometry admission, not complete service coverage.
+Built from the pinned 2026 timetable, the cantonal public-transport network and separately attributed road, rail, boat and tram supplements. **All 193 canton-serving route records across 19 GTFS agency identities and all ten districts are inventoried. 150 route records contribute admitted journeys.** This is a whole-canton census with partial geometry admission, not complete service coverage.
 
 Start with the [complete route admission/exclusion inventory](SOLOTHURN-ROUTE-INVENTORY.md), [machine audit](../data/solothurn-audit/summary.json) and [regional feed index](../public/data/solothurn-region/index.json). The original [national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#so) explains source discovery.
 
@@ -19,15 +19,15 @@ The 42 inactive route records remain in the annual inventory. “Annual” means
 | Civil-day journey instances | 7'156 | 5'819 |
 | Scheduled instances | 6'078 | 4'711 |
 | Representative headway instances | 1'078 | 1'108 |
-| Admitted scheduled instances | 5'948 | 4'572 |
+| Admitted scheduled instances | 5'955 | 4'580 |
 | Admitted representative headway instances | 1'078 | 1'108 |
-| Total admitted instances | 7'026 | 5'680 |
+| Total admitted instances | 7'033 | 5'688 |
 | Distinct directed patterns | 921 | 777 |
-| Admitted complete patterns | 907 | 761 |
-| Matched route-specific directed stop pairs | 4'250 / 4'259 (99.8%) | 4'459 / 4'467 (99.8%) |
-| Matched scheduled segment occurrences | 97'134 / 97'358 (99.8%) | 67'863 / 68'102 (99.6%) |
-| Matched all segment occurrences | 98'212 / 98'436 (99.8%) | 68'971 / 69'210 (99.7%) |
-| Segment occurrences in admitted whole journeys | 93'727 | 65'047 |
+| Admitted complete patterns | 914 | 768 |
+| Matched route-specific directed stop pairs | 4'256 / 4'259 (99.9%) | 4'462 / 4'467 (99.9%) |
+| Matched scheduled segment occurrences | 97'141 / 97'358 (99.8%) | 67'871 / 68'102 (99.7%) |
+| Matched all segment occurrences | 98'219 / 98'436 (99.8%) | 68'979 / 69'210 (99.7%) |
+| Segment occurrences in admitted whole journeys | 93'785 | 65'104 |
 | Previous-day carry-in / admitted | 149 / 145 | 359 / 341 |
 | Patterns revisiting a platform / admitted | 21 / 21 | 18 / 17 |
 | Explicit night journeys / admitted | 0 / 0 | 72 / 70 |
@@ -52,7 +52,7 @@ Original GTFS times can place distinct calls in the same minute. The admitted fe
 | Gösgen | 161 | 13 | 12 | 112 |
 | Thal | 129 | 7 | 5 | 129 |
 | Solothurn | 69 | 53 | 38 | 64 |
-| Olten | 354 | 94 | 64 | 275 |
+| Olten | 354 | 94 | 65 | 275 |
 | Bucheggberg | 108 | 10 | 10 | 108 |
 
 District route counts overlap because one route may serve multiple districts. Feed columns require an actually admitted journey calling the district; admission elsewhere on the same route does not count. The source polygon, not town-name matching, assigns districts. The census discloses 13 GTFS records within 10 metres of the boundary, including both sides at Salhöhe, Dornach Bahnhof, Bärschwil Station, Nuglar and Erlinsbach. They are reported without silently buffering the canton. The approximate coordinate transform has metre-level precision; this is a disclosed membership sensitivity, not a survey-accuracy claim.
@@ -81,12 +81,12 @@ The path must be no longer than the greater of the ratio limit and absolute allo
 
 | Journey exclusion | Friday | Sunday |
 | --- | --- | --- |
-| incomplete-directed-pattern | 130 | 137 |
+| incomplete-directed-pattern | 123 | 129 |
 | night-network-excluded-by-source | 0 | 2 |
 
 | Unmatched directed-pair reason | Friday | Sunday |
 | --- | --- | --- |
-| endpoint-gap | 6 | 5 |
+| endpoint-gap | 0 | 2 |
 | implausible-detour | 1 | 0 |
 | night-network-excluded-by-source | 0 | 1 |
 | no-compatible-source-mode | 2 | 2 |
@@ -112,8 +112,8 @@ The [topology review](../data/solothurn-audit/topology-review.json) preserves ea
 
 | Date | Cantonal-only admission | With supplements | Additional complete patterns | Prior patterns lost |
 | --- | --- | --- | --- | --- |
-| 2026-09-04 | 3142 | 7026 | 684 | 0 |
-| 2026-09-06 | 2574 | 5680 | 605 | 0 |
+| 2026-09-04 | 3142 | 7033 | 691 | 0 |
+| 2026-09-06 | 2574 | 5688 | 612 | 0 |
 
 | Geometry source | Friday directed pairs / admitted occurrences | Sunday directed pairs / admitted occurrences |
 | --- | --- | --- |
@@ -121,15 +121,17 @@ The [topology review](../data/solothurn-audit/topology-review.json) preserves ea
 | bern-official-413 | 10 / 370 | 10 / 238 |
 | bern-official-450_S_b | 11 / 81 | 12 / 79 |
 | bern-official-boat-3216 | 14 / 28 | 14 / 28 |
-| fot | 850 / 5673 | 887 / 4770 |
+| fot | 850 / 5722 | 887 / 4819 |
 | fot-reviewed-bern-eastern-terminal | 7 / 34 | 7 / 34 |
 | fot-reviewed-interlaken-platforms | 6 / 33 | 6 / 19 |
 | fot-sbb-reviewed-s26 | 1 / 1 | 0 / 0 |
 | osm-road-inference | 266 / 5588 | 824 / 5254 |
 | osm-solothurn-access-road-inference | 1 / 34 | 6 / 119 |
 | osm-solothurn-como-rail-inference | 2 / 2 | 2 / 2 |
+| osm-solothurn-delle-rail-inference | 1 / 1 | 0 / 0 |
+| osm-solothurn-simplon-inference | 5 / 6 | 3 / 8 |
 | sbb-rail-inference | 0 / 0 | 2 / 4 |
-| solothurn-network | 3004 / 78137 | 2611 / 50555 |
+| solothurn-network | 3004 / 78139 | 2611 / 50555 |
 | solothurn-reviewed-bus-junction | 1 / 37 | 1 / 18 |
 
 - **Roads:** 805 complete bus patterns from 96 original route IDs across all twelve dates are matched with pfaedle, retaining real agency and platform identities. The bus profile respects supported OSM access, direction and turn restrictions. Every occurrence of a route-specific directed pair across complete pattern contexts must have a successful, identical path; failed matcher warnings, context disagreement and detours are rejected. Bus detours remain bounded by 3 × direct distance or 600 m. Raw routing inputs/results, logs, binary/config/source hashes and derived cache are retained in [road evidence](../data/solothurn-road-evidence/all.json.gz). This is inferred road geometry, not an operator itinerary certificate.
@@ -145,16 +147,16 @@ The [supplement review](../data/solothurn-audit/supplement-review.json) records 
 | no-consensus-comparator | 75 | 55 |
 | within-30m-vertex-distance | 2080 | 1788 |
 
-**130 Friday and 139 Sunday journeys remain excluded.** Source gaps, unverified foreign rail connections, platform gaps and failed full-pattern consensus remain explicit. Disagreement with OSM remains a review flag on already admitted cantonal paths. Current operator itineraries, temporary diversions and physical direction are not certified by these internal checks.
+**123 Friday and 131 Sunday journeys remain excluded.** Source gaps, unverified foreign rail connections, platform gaps and failed full-pattern consensus remain explicit. Disagreement with OSM remains a review flag on already admitted cantonal paths. Current operator itineraries, temporary diversions and physical direction are not certified by these internal checks.
 
 ## Reviewed rail corridor follow-up
 
 | Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
 | --- | --- | --- | --- | --- |
-| 2026-09-04 | 6654 | 7026 | 96 | 0 |
-| 2026-09-06 | 5310 | 5680 | 93 | 0 |
+| 2026-09-04 | 6654 | 7033 | 103 | 0 |
+| 2026-09-06 | 5310 | 5688 | 100 | 0 |
 
-The table shows cumulative admission since the pre-corridor baseline, including the subsequent platform, S29 precedence, bus-junction, access-road, Bern terminal, S26 and Como reviews below. The [corridor review](../data/solothurn-audit/corridor-review.json) and [source policy](../data/solothurn-corridor-policy.json) add three exact associations without broadening snap/detour limits:
+The table shows cumulative admission since the pre-corridor baseline, including the subsequent platform, S29 precedence, bus-junction, access-road, Bern terminal, S26, Como, Simplon and Delle reviews below. The [corridor review](../data/solothurn-audit/corridor-review.json) and [source policy](../data/solothurn-corridor-policy.json) add three exact associations without broadening snap/detour limits:
 
 - **asm S11:** Bern feature **413**, operator **ASm**, line **S11**, original GTFS route **91-11-M-j26-1 / agency 81**. All 51 distinct directed platform pairs in the twelve-date sample match within 13 m. Only gaps in the earlier cantonal geometry use this operator-specific graph. **150 Friday and 95 Sunday journeys are now admitted**, preserving the full Solothurn–Oensingen–Langenthal stop chain.
 - **SBB S29:** Bern feature **450_S_b**, operator **SBB**, line **S29**, route **91-29-j26-1 / agency 11**. The Aarau–Olten return legs now have line-specific geometry, with platform snaps below 48 m on the two published dates. The initial corridor pass admitted **64/86 Friday and 65/86 Sunday** journeys. The bounded source-precedence review below resolves the remaining two conflicting directed platform pairs and admits **86/86 on both dates**.
@@ -166,10 +168,10 @@ Every earlier admitted pattern remains admitted. These are bounded source-alignm
 
 | Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
 | --- | --- | --- | --- | --- |
-| 2026-09-04 | 6863 | 7026 | 69 | 0 |
-| 2026-09-06 | 5467 | 5680 | 61 | 0 |
+| 2026-09-04 | 6863 | 7033 | 76 | 0 |
+| 2026-09-06 | 5467 | 5688 | 68 | 0 |
 
-The table shows cumulative admission since the pre-platform baseline, including the later S29 precedence, bus-junction, access-road, Bern terminal, S26 and Como reviews. The [platform review](../data/solothurn-audit/rail-platform-review.json) uses the existing pinned FOT source, with an explicit [route/platform crosswalk](../data/solothurn-rail-review-policy.json). The generic Interlaken Ost operating point **8507492** cannot route to Interlaken West in the selected standard-gauge graph. FOT separately identifies **8519309 / ch14uvag00165678** as **Interlaken Ost [Gleis 5-8]**, connected by **1435 mm segment ch14uvag00087489**. The review maps only original platform IDs **ch:1:sloid:7492:0:581416 (5)** and **ch:1:sloid:7492:0:460848 (7)** on exact SBB agency **11**, **IC61 route 91-61-A-j26-1** and **ICE route 91-3-Y-j26-1**. The twelve-date ICE sample uses platform 5; IC61 uses 5 and 7.
+The table shows cumulative admission since the pre-platform baseline, including the later S29 precedence, bus-junction, access-road, Bern terminal, S26, Como, Simplon and Delle reviews. The [platform review](../data/solothurn-audit/rail-platform-review.json) uses the existing pinned FOT source, with an explicit [route/platform crosswalk](../data/solothurn-rail-review-policy.json). The generic Interlaken Ost operating point **8507492** cannot route to Interlaken West in the selected standard-gauge graph. FOT separately identifies **8519309 / ch14uvag00165678** as **Interlaken Ost [Gleis 5-8]**, connected by **1435 mm segment ch14uvag00087489**. The review maps only original platform IDs **ch:1:sloid:7492:0:581416 (5)** and **ch:1:sloid:7492:0:460848 (7)** on exact SBB agency **11**, **IC61 route 91-61-A-j26-1** and **ICE route 91-3-Y-j26-1**. The twelve-date ICE sample uses platform 5; IC61 uses 5 and 7.
 
 This adds **33 Friday and 19 Sunday complete journeys**, retaining every original platform ID, coordinate, time and ordered call. The source-node identity, connected segment and gauge are asserted. A changed known platform fails validation; an unknown platform or another route cannot inherit the crosswalk. Successful earlier paths remain unchanged, and the same 350 m station attachment, 120 m topology attachment, full-pattern stop-order constraints and all-context consensus apply. Both Interlaken West→Ost and Ost→West paths are tested across the retained seasonal contexts. Source dates and FOT attribution are unchanged; this corrects an operating-point association and does not certify a particular running track.
 
@@ -177,10 +179,10 @@ This adds **33 Friday and 19 Sunday complete journeys**, retaining every origina
 
 | Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
 | --- | --- | --- | --- | --- |
-| 2026-09-04 | 6896 | 7026 | 43 | 0 |
-| 2026-09-06 | 5486 | 5680 | 44 | 0 |
+| 2026-09-04 | 6896 | 7033 | 50 | 0 |
+| 2026-09-06 | 5486 | 5688 | 51 | 0 |
 
-The table shows cumulative admission since the pre-S29 baseline, including the later bus-junction, access-road, Bern terminal, S26 and Como reviews. The [precedence audit](../data/solothurn-audit/s29-precedence-review.json) retains every complete context and the prior candidate source, path length and geometry hash. For **SBB S29 / agency 11 / route 91-29-j26-1**, the two unresolved pairs run from **Olten platform ch:1:sloid:218:5:8** to **Aarau ch:1:sloid:2113:2:3** or **ch:1:sloid:2113:1:1**. FOT selects approximately **45.1 km** alternatives for some terminating patterns; longer patterns reject that path under their full stop-order constraints and use the **13.3 km** Bern S29 geometry. Those different candidates previously failed global consensus.
+The table shows cumulative admission since the pre-S29 baseline, including the later bus-junction, access-road, Bern terminal, S26, Como, Simplon and Delle reviews. The [precedence audit](../data/solothurn-audit/s29-precedence-review.json) retains every complete context and the prior candidate source, path length and geometry hash. For **SBB S29 / agency 11 / route 91-29-j26-1**, the two unresolved pairs run from **Olten platform ch:1:sloid:218:5:8** to **Aarau ch:1:sloid:2113:2:3** or **ch:1:sloid:2113:1:1**. FOT selects approximately **45.1 km** alternatives for some terminating patterns; longer patterns reject that path under their full stop-order constraints and use the **13.3 km** Bern S29 geometry. Those different candidates previously failed global consensus.
 
 The explicit [policy](../data/solothurn-s29-precedence-policy.json) now chooses Bern's exact **450_S_b / SBB / S29** line for these two pairs in every retained context before applying consensus. Both paths remain within the existing snap and detour limits, with maximum platform snaps below 11 m. Original platform records and source/context hashes are asserted. Reverse pairs, other platforms, operators, modes and route identities cannot inherit this precedence. No general consensus rule is relaxed and no source edge is invented. This adds **22 Friday and 21 Sunday journeys**, completing **all 86 S29 journeys on each published date** while preserving all previously emitted calls and paths. The Bern source dates, attribution and inference limitations above still apply.
 
@@ -190,10 +192,10 @@ At this stage, the remaining bus gaps included divergent road candidates at Lies
 
 | Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
 | --- | --- | --- | --- | --- |
-| 2026-09-04 | 6918 | 7026 | 37 | 0 |
-| 2026-09-06 | 5507 | 5680 | 39 | 0 |
+| 2026-09-04 | 6918 | 7033 | 44 | 0 |
+| 2026-09-06 | 5507 | 5688 | 46 | 0 |
 
-The table shows cumulative admission since the pre-junction baseline, including the later access-road, Bern terminal, S26 and Como reviews. The [junction audit](../data/solothurn-audit/bus-junction-review.json) and [explicit policy](../data/solothurn-bus-junction-policy.json) review just **PostAuto / agency 801 / line 126 / route 96-145-2-j26-1**, from **Oberbuchsiten Bahnhof ch:1:sloid:89885:0:01** to **Oberbuchsiten Löwen ch:1:sloid:81284:0:390682**. Two original, non-tunnel Bus features—**4562863f-1da7-42ea-9cf8-f580fb14b86c** and **64c5c5c2-6512-4ef1-a06e-4bac13d29b5d**—end at LV95 **[2624747.100, 1239883.090]** and **[2624747.099, 1239883.092]**, separated by **2.236 mm**.
+The table shows cumulative admission since the pre-junction baseline, including the later access-road, Bern terminal, S26, Como, Simplon and Delle reviews. The [junction audit](../data/solothurn-audit/bus-junction-review.json) and [explicit policy](../data/solothurn-bus-junction-policy.json) review just **PostAuto / agency 801 / line 126 / route 96-145-2-j26-1**, from **Oberbuchsiten Bahnhof ch:1:sloid:89885:0:01** to **Oberbuchsiten Löwen ch:1:sloid:81284:0:390682**. Two original, non-tunnel Bus features—**4562863f-1da7-42ea-9cf8-f580fb14b86c** and **64c5c5c2-6512-4ef1-a06e-4bac13d29b5d**—end at LV95 **[2624747.100, 1239883.090]** and **[2624747.099, 1239883.092]**, separated by **2.236 mm**.
 
 A supplementary graph retains both features' original vertices and adds **one explicitly inferred connector, zero new vertices**, bounded by **3 mm**. The primary canton graph is unchanged; this is not global near-endpoint stitching. Feature hashes, mode, tunnel flags, endpoint positions, exact route/operator and original platform coordinates are checked. Unknown routes/platforms, reverse-pair reuse, larger gaps, altered geometry and tunnel endpoints cannot inherit the review. The existing bus snap/detour limits apply; the observed platform snaps remain below 7 m. All observed complete contexts receive the same source path. This admits **37 Friday and 18 Sunday additional whole journeys** without changing previously emitted calls or geometry.
 
@@ -203,12 +205,12 @@ The original Arlesheim and Liestal gaps, source hashes, endpoint coordinates, ca
 
 ## Service-road and stop-candidate review
 
-This table is cumulative from its recorded baseline and includes the later Bern terminal, S26 and Como follow-ups. The service-road contribution remains 34 Friday / 119 Sunday journeys.
+This table is cumulative from its recorded baseline and includes the later Bern terminal, S26, Como, Simplon and Delle follow-ups. The service-road contribution remains 34 Friday / 119 Sunday journeys.
 
 | Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
 | --- | --- | --- | --- | --- |
-| 2026-09-04 | 6955 | 7026 | 33 | 0 |
-| 2026-09-06 | 5525 | 5680 | 37 | 0 |
+| 2026-09-04 | 6955 | 7033 | 40 | 0 |
+| 2026-09-06 | 5525 | 5688 | 44 | 0 |
 
 The [access-road audit](../data/solothurn-audit/access-road-review.json) retains all candidate decisions from a new extraction of the pinned **Geofabrik Switzerland 2026-09-02** PBF, SHA-256 **39257b1c92a45da38ca94ddb745bdcf53551d0e66b02d89f3de3e7c064c3a29f**. The [source bundle](../data/solothurn-access-roads/source.json) retains the graph, exact filter/routing configurations, original routing input, raw matcher output, hashes and licence. It covers **all 72 complete twelve-date patterns on eight explicitly selected bus route records**, including the rejected alternatives. The [admission policy](../data/solothurn-access-policy.json) selects only six previously missing directed pairs; all earlier successful cantonal and supplementary paths take priority.
 
@@ -225,12 +227,12 @@ Attribution is **© OpenStreetMap contributors, ODbL-1.0**; [copyright and terms
 
 ## Bern platforms 49/50 and the eastern approach
 
-This table is cumulative from its recorded baseline and includes the later S26 and Como follow-ups. The Bern terminal contribution remains 34 journeys on each published date.
+This table is cumulative from its recorded baseline and includes the later S26, Como, Simplon and Delle follow-ups. The Bern terminal contribution remains 34 journeys on each published date.
 
 | Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
 | --- | --- | --- | --- | --- |
-| 2026-09-04 | 6989 | 7026 | 30 | 0 |
-| 2026-09-06 | 5644 | 5680 | 28 | 0 |
+| 2026-09-04 | 6989 | 7033 | 37 | 0 |
+| 2026-09-06 | 5644 | 5688 | 35 | 0 |
 
 The [Bern terminal audit](../data/solothurn-audit/bern-terminal-review.json) adds **34 complete journeys on each published date**: 18 SOB IR35, 13 SBB IR35, one BLS IR35, one SBB IR and one SBB IR16. All previous journey stops, timestamps, permissions and paths are retained. The five route/operator identities stay separate. This resolves every published-date exclusion on these five route records.
 
@@ -240,16 +242,16 @@ The [reviewed policy](../data/solothurn-bern-terminal-policy.json) projects thos
 
 Only a single terminal Bern call on one of the two exact platforms can use this graph. IR16 must have adjacent **Olten**; the other four identities must have adjacent **Burgdorf**. Through calls, unknown platforms, other operators and changed coordinates cannot inherit the review. Every complete retained pattern across all twelve dates participates in consensus, with the original FOT validity, **350 m station / 120 m topology** attachment, detour and stop-order rules unchanged. Only previously failed terminal pairs can change. Full source hashes, original and projected coordinates, removed connection IDs and emitted source-pair evidence are retained in the audit.
 
-**130 Friday / 139 Sunday journeys remain excluded.** Arlesheim platform E still exceeds the original tram attachment limit; foreign rail connections and unresolved bus alternatives remain explicit. The S26 source conflict is addressed below.
+**123 Friday / 131 Sunday journeys remain excluded.** Arlesheim platform E still exceeds the original tram attachment limit; foreign rail connections and unresolved bus alternatives remain explicit. The S26 source conflict is addressed below.
 
 ## S26 Aarau–Olten source conflict
 
-This table is cumulative from its recorded baseline and includes the later Como review. The S26 contribution remains one Friday journey.
+This table is cumulative from its recorded baseline and includes the later Como, Simplon and Delle reviews. The S26 contribution remains one Friday journey.
 
 | Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
 | --- | --- | --- | --- | --- |
-| 2026-09-04 | 7023 | 7026 | 3 | 0 |
-| 2026-09-06 | 5678 | 5680 | 2 | 0 |
+| 2026-09-04 | 7023 | 7033 | 10 | 0 |
+| 2026-09-06 | 5678 | 5688 | 9 | 0 |
 
 The [S26 review](../data/solothurn-audit/s26-review.json) resolves the final **one Friday S26 journey**; Sunday admission is unchanged. It also resolves **one journey on each of 16 January, 23 October and 11 December** in the seasonal sample. All **41 Friday / 39 Sunday S26 journeys** are now admitted. Both full patterns run Muri AG–Wohlen–Lenzburg–Rupperswil–Aarau–Olten, with different Muri platforms. Their final **Aarau platform 5 → Olten platform 9** pair now follows the same **13,699.1 m** geometry. Every earlier journey keeps its original calls, timestamps, permissions and paths.
 
@@ -259,14 +261,16 @@ The independent, retained **SBB Infrastructure** graphical line **540 / DK–DKO
 
 All twelve retained dates participate in supplementary consensus; this exact pair occurs in two complete contexts and produces identical geometry. Source bytes, hashes, gauge conflict, added curve, measured attachments and whole-journey admission changes are retained. SBB metadata was modified **2026-07-29**, data processed **2026-09-02**, and the source acquired **2026-09-08**. These are publication/processing dates, not per-feature alignment validity. Attribution: **SBB Infrastructure / data.sbb.ch**, [retained source catalogue and terms](../data/solothurn-sources/corridors/sbb/sources.json); FOT source dates and attribution remain as listed below. Exact running track, switch geometry and effective seasonal alignment remain unverified.
 
-**130 Friday / 139 Sunday journeys remain excluded.** These are the Arlesheim tram platform gap, foreign rail connections and unresolved bus alternatives.
+**123 Friday / 131 Sunday journeys remain excluded.** These are the Arlesheim tram platform gap, foreign rail connections and unresolved bus alternatives.
 
 ## Chiasso–Como passenger corridor
 
+This table is cumulative from its baseline and includes the later Simplon and Delle reviews. The Como contribution remains two journeys per published date.
+
 | Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
 | --- | --- | --- | --- | --- |
-| 2026-09-04 | 7024 | 7026 | 2 | 0 |
-| 2026-09-06 | 5678 | 5680 | 2 | 0 |
+| 2026-09-04 | 7024 | 7033 | 9 | 0 |
+| 2026-09-06 | 5678 | 5688 | 9 | 0 |
 
 The [Como review](../data/solothurn-audit/como-review.json) adds **two complete EC journeys on each published date**, retaining every earlier journey unchanged. It reviews only SBB agency **11**, EC route **91-3R-Y-j26-1**, and exact directed pairs **Chiasso platform 1 → Como S. Giovanni (8301307)** and **Como S. Giovanni → Chiasso platform 6**. The entire retained twelve-date scope contains **eight complete route patterns**; three contexts in each direction contain the foreign pair. Como must be a single terminal call. Other routes, unknown platforms, shortened patterns and changed original coordinates cannot inherit admission.
 
@@ -276,24 +280,60 @@ The independent Regione Lombardia 1:10,000 rail inventory is complete against it
 
 Feed geometry attribution is **© OpenStreetMap contributors, ODbL-1.0**, with [retained terms](../data/solothurn-como-sources/osm-terms.html.gz). The independent comparison is attributed to **Regione Lombardia**. The [Solothurn policy](../data/solothurn-como-policy.json) pins both directed path hashes, ordered way IDs, station identities, exact platforms and all eight context IDs. The source bundle's copied scope.json records the parent Zug source review; it does not define Solothurn admission. Seasonal application does not establish historical operation or year-round physical alignment.
 
-**130 Friday / 139 Sunday journeys remain excluded.** These include Arlesheim platform E, Brig–Domodossola and Delle–Boncourt rail connections, and the unresolved bus alternatives.
+**123 Friday / 131 Sunday journeys remain excluded.** These include Arlesheim platform E, Brig–Domodossola and Delle–Boncourt rail connections, and the unresolved bus alternatives.
+
+## Brig–Domodossola passenger corridor
+
+The table is cumulative from the shared pre-Simplon/Delle baseline. The Simplon contribution is six Friday and eight Sunday journeys; Delle contributes one further Friday journey.
+
+| Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
+| --- | --- | --- | --- | --- |
+| 2026-09-04 | 7026 | 7033 | 7 | 0 |
+| 2026-09-06 | 5680 | 5688 | 7 | 0 |
+
+The [Simplon audit](../data/solothurn-audit/simplon-review.json) adds **six Friday / eight Sunday complete EC journeys**. It checks all **56 complete retained twelve-date patterns** on SBB agency **11**, EC route **91-2W-Y-j26-1**, including every previously unsuccessful platform variant. Eight exact directed Brig–Domodossola pairs are reviewed; the foreign call must occur exactly once at a journey terminal. Original calls, platform coordinates, permissions, times and every earlier successful path remain unchanged.
+
+The retained SBB/FOT [station record](../data/solothurn-simplon-sources/sbb-domodossola-stations.json) explicitly links **8501607 Domodossola** to timetable number **8301003**, with edition **2024-09-19** and validity beginning **2024-12-15**. This is an exact source association, not a name/proximity guess. The SBB **2024-08-06** [station factsheet](../data/solothurn-simplon-sources/sbb-domodossola.pdf), target-status diagram on page 3, distinguishes **Domodossola FS 83-01003-3** from the separate FM and Domodossola II facilities. The crosswalk applies only at the internal graph boundary: the original GTFS foreign ID remains in every emitted call.
+
+The [source bundle](../data/solothurn-simplon-sources/sources.json) retains an OSM snapshot at **2026-09-08 00:00 UTC**, including source tags, versions, timestamps and complete referenced nodes. Original shared-node topology supplies standard-gauge running lines. The one explicitly pinned passenger crossover **643956810**, gauge **1435**, passenger_lines **2**, inside the **Simplontunnel**, is used by five of the eight platform-pair paths. The other three use the connected running lines without it. No siding, yard or arbitrary coordinate connection is admitted. Every directed path and source-edge order is hash-pinned. Paths measure **40,671.0–40,876.5 m**, with track attachments no greater than **34.0 m**. Source limits remain **350 m station identity**, **120 m track attachment**, **5 m projection alternatives**, **90° maximum turn** and **50 km maximum path**.
+
+The retained BLS [works notice](../data/solothurn-simplon-sources/bls-closures.html.gz), rechecked **8 September**, describes the Iselle–Domodossola weekday closure **27 July–11 December, 10:30–13:30**, plus a later October/November extension and specified November night closures. The six published Friday EC legs run **08:44–09:12, 08:48–09:16, 14:44–15:12, 16:48–17:16, 19:44–20:12 and 19:48–20:16**; none overlaps the applicable Friday window. The eight Sunday legs are outside the notice's weekday scope. This is a consistency check, not operator confirmation of every historical journey or passage time within a seasonal work zone. The copied field-145 timetable PDF concerns the parent Aargau IC 1303 review and does not set this EC route's times or calendars.
+
+Attribution: **© OpenStreetMap contributors, ODbL-1.0** for emitted geometry; **SBB Infrastructure / opentransportdata.swiss** for station identity and the SBB diagram; **BLS** for works context. No open licence is invented for the retained SBB document. The [policy](../data/solothurn-simplon-policy.json) records original IDs, coordinates, full-pattern scope, source hashes and the crossover exception. The September 8 OSM snapshot postdates the published September 4/6 timetable sample. Applying it to those dates or other seasons remains an explicitly unproven historical alignment inference; running tracks and legal physical directions are not certified.
+
+**123 Friday / 131 Sunday journeys remain excluded.** The following Delle review closes the last rail gap on the published dates. Arlesheim platform E and unresolved bus alternatives remain excluded.
+
+## Delle–Boncourt passenger corridor
+
+| Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
+| --- | --- | --- | --- | --- |
+| 2026-09-04 | 7026 | 7033 | 7 | 0 |
+| 2026-09-06 | 5680 | 5688 | 7 | 0 |
+
+This table shares the pre-Simplon baseline and includes both border reviews. The [Delle audit](../data/solothurn-audit/delle-review.json) adds **one Friday journey and no Sunday journeys**, for exact SBB agency **11**, **RE route 91-54-Y-j26-1**, **Delle 8718444 → Boncourt platform 3 / ch:1:sloid:128:2:3**. All **eight complete retained route patterns** are checked; four contain this directed pair. Delle must occur once at a terminal. The opposite direction, unknown platforms and other routes cannot inherit admission. All previous paths, stop coordinates, original IDs, calls and times are preserved.
+
+The [source bundle](../data/solothurn-delle-sources/sources.json) retains the exact bounded Overpass query, original response and SHA-256 hashes, retrieved **8 September 2026** at historical snapshot **2 September 2026 00:00 UTC**. OSM station nodes **3080770163 / Delle / 8718444** and **3080770156 / Boncourt / 8500128** supply exact identities. The passenger station is not conflated with the distinct FOT **8500129 Delle-Frontière** operating point. Twelve original **1435 mm passenger branch-line ways**, connected at shared source nodes, form the **1,603.9 m** path. Station identity offsets are **34.1 / 28.6 m**; track attachments are **13.2 / 1.3 m**. There are no siding, yard or spur exceptions and no added junctions. The [policy](../data/solothurn-delle-policy.json) retains the **350 m station identity**, **60 m track attachment**, **5 m projection alternatives**, **45° turn** and **8 km maximum path** bounds. Full-pattern and all-context consensus checks remain in force.
+
+The official [SNCF TER Delle station page](https://www.ter.sncf.com/bourgogne-franche-comte/se-deplacer/prochains-departs/delle-87184440), reviewed **8 September**, identifies the passenger station and lists trains toward Porrentruy/Delémont. This supplies station/passenger-service context; live platform displays do not prove the archived journey's running track. The [SBB Boncourt works notice](https://news.sbb.ch/fr/019d7b77-1725-7b43-86b8-b37fb2c2d611/modernisation-de-la-gare-de-boncourt), published **8 January 2025**, describes central-platform and track renewal, planned commissioning in late 2025 and finishing works through summer 2026. It is planned works context, not proof of completion. The retained [review observations](../data/solothurn-delle-sources/official-station-review.json) are clearly identified as web-reviewed notes: direct SNCF download returned 403, so no raw page body is claimed retained.
+
+Geometry attribution is **© OpenStreetMap contributors, ODbL-1.0**; timetable attribution remains **opentransportdata.swiss**, with **SNCF TER / SBB** credited for official review context. Applying this OSM snapshot to other seasons remains a historical alignment inference. No exact running track or physical direction is certified. **All rail journeys in the two published-date canton-serving samples now have complete geometry**; this does not assert that every rail service runs on those dates or that every seasonal pattern is admitted.
 
 ## Seasonal and holiday sample
 
 | Civil date | Source journeys | Admitted journeys | Complete admitted patterns |
 | --- | --- | --- | --- |
-| 2026-01-16 | 7031 | 6838 | 877 |
-| 2026-01-18 | 5362 | 5239 | 728 |
-| 2026-04-03 | 5450 | 5328 | 732 |
-| 2026-04-05 | 5730 | 5590 | 734 |
-| 2026-07-17 | 7127 | 6993 | 839 |
+| 2026-01-16 | 7031 | 6845 | 884 |
+| 2026-01-18 | 5362 | 5247 | 736 |
+| 2026-04-03 | 5450 | 5335 | 739 |
+| 2026-04-05 | 5730 | 5598 | 742 |
+| 2026-07-17 | 7127 | 6994 | 840 |
 | 2026-07-19 | 5523 | 5412 | 745 |
-| 2026-08-01 | 5566 | 5442 | 746 |
-| 2026-09-04 | 7156 | 7026 | 907 |
-| 2026-09-06 | 5819 | 5680 | 761 |
-| 2026-10-23 | 7146 | 7016 | 903 |
-| 2026-10-25 | 5527 | 5408 | 725 |
-| 2026-12-11 | 7025 | 6895 | 878 |
+| 2026-08-01 | 5566 | 5451 | 755 |
+| 2026-09-04 | 7156 | 7033 | 914 |
+| 2026-09-06 | 5819 | 5688 | 768 |
+| 2026-10-23 | 7146 | 7023 | 910 |
+| 2026-10-25 | 5527 | 5416 | 733 |
+| 2026-12-11 | 7025 | 6902 | 885 |
 
 The sample applies the pinned GTFS calendars and exceptions to winter weekdays/Sundays, Good Friday, Easter Sunday, summer, Swiss National Day and autumn. **9** of the September-inactive route records become active; **33** remain inactive on all twelve dates. The [seasonal inventory](../data/solothurn-audit/seasonal-summary.json) lists every annual route on every date, and the [pattern audit](../data/solothurn-audit/seasonal-patterns.json.gz) retains every directed stop chain, decision and matched mask. A durable [context snapshot](../data/solothurn-pattern-contexts.json.gz) retains 2,824 complete representative source patterns for offline revalidation and supplementary consensus.
 
@@ -317,7 +357,7 @@ Solothurn's saved terms allow commercial and noncommercial use and recommend att
 
 The [feed index](../public/data/solothurn-region/index.json) links a full-day manifest and 06:45–08:45 morning snapshot for each date. Each day uses twelve two-hour chunks. The manifest carries stops, paths, edges, provenance and exact chunk hashes. Solothurn is available in the app's study picker and opens as a full civil day. Its feeds load on selection. Search covers admitted routes and out-of-canton stops; shares retain study, date, time and focus. English, German, French and Italian copy explicitly labels partial coverage and representative headway motion. Source credits and local terms remain accessible.
 
-The app release uses the Friday fixture in [top-level manifest](../public/data/solothurn-region-day-manifest.json), morning snapshot and twelve verified chunks. [Display release proof](../data/solothurn-audit/display-release.json) records both dates: display simplification is bounded by 5 m with unchanged endpoints, calls and movements. The Friday manifest is 371'773 bytes gzipped. Source archives remain unchanged by display simplification; FOT has its separately declared 5 m source transformation.
+The app release uses the Friday fixture in [top-level manifest](../public/data/solothurn-region-day-manifest.json), morning snapshot and twelve verified chunks. [Display release proof](../data/solothurn-audit/display-release.json) records both dates: display simplification is bounded by 5 m with unchanged endpoints, calls and movements. The Friday manifest is 394'215 bytes gzipped. Source archives remain unchanged by display simplification; FOT has its separately declared 5 m source transformation.
 
 Regional refresh integration can promote only the two reviewed dates. For another date or a failed candidate build it retains a complete, validated published study (or the reviewed fixture on first-deployment 404), keeping its actual service date. A damaged published chunk never gets silently combined with another release. This integration is ready for deployment; no live deployment is part of this task.
 
@@ -349,7 +389,7 @@ npm run data:solothurn:seasonal:check
 npm run data:solothurn:alignments
 npm run data:solothurn:release
 npm run data:solothurn:docs
-npx vitest run scripts/solothurn-region.test.mjs scripts/solothurn-corridor.test.mjs scripts/solothurn-rail-review.test.mjs scripts/solothurn-s29-precedence.test.mjs scripts/solothurn-bus-junction.test.mjs scripts/solothurn-access-roads.test.mjs scripts/solothurn-bern-terminal.test.mjs scripts/solothurn-s26-review.test.mjs scripts/solothurn-como-rail.test.mjs scripts/solothurn-release.test.mjs
+npx vitest run scripts/solothurn-region.test.mjs scripts/solothurn-corridor.test.mjs scripts/solothurn-rail-review.test.mjs scripts/solothurn-s29-precedence.test.mjs scripts/solothurn-bus-junction.test.mjs scripts/solothurn-access-roads.test.mjs scripts/solothurn-bern-terminal.test.mjs scripts/solothurn-s26-review.test.mjs scripts/solothurn-como-rail.test.mjs scripts/solothurn-simplon-rail.test.mjs scripts/solothurn-delle-rail.test.mjs scripts/solothurn-release.test.mjs
 npx playwright test --config playwright.solothurn.config.ts
 python3 -m unittest discover -s scripts -p 'test_bern_sources.py'
 ```

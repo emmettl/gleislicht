@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "sourceDirectory": "data/solothurn-simplon-sources",
+  "sourceSha256": "8c9008cbd1795fa8af4d8b64de872786c2f470efbe51401049eff4dce439f034",
+  "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+  "timetableSourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "route": {
+    "id": "91-2W-Y-j26-1",
+    "agencyId": "11",
+    "name": "EC",
+    "mode": "rail",
+    "type": 102
+  },
+  "patternIds": [
+    "0af296f1d3cbd7d3dbbc4fd4",
+    "0b9bee4e6ba236b42ca37d16",
+    "14b7f4428828497477ade9bb",
+    "219e5ffc98e7bc195209f008",
+    "2cfa6603fef80f176eeaa196",
+    "2d90575a44cbd878bda65a36",
+    "2e00bf3fc541b5b24e2220a9",
+    "3574425948118fe2b31f1e77",
+    "3a7757995063f65ac80f710c",
+    "3f85dd4be9032de870cc4664",
+    "4422cb3441e2b022446618e4",
+    "471001787db99b08bd09b429",
+    "4a4f2e5a21de15563e7dd0c0",
+    "542014361a1c1fa6cb39aa3f",
+    "59a906f8988fa47c876d0ef5",
+    "5c0018f79e59b3f2a25692a3",
+    "5e70f90482262127d4985f34",
+    "63d5b11617124b365bff1713",
+    "68504a500e8dd5fe9e140798",
+    "6be11e52d39b9de276206482",
+    "73ac82fff40638e723bafaba",
+    "753005911e8f579866852225",
+    "7b6794f8e066801bceed7e7d",
+    "7eab6d235e31a5e8137b937f",
+    "8712d9f42f67058b9cf67ae4",
+    "8986696966b92e9575d5c0ac",
+    "8e3934b90ff0ecce3f7c1220",
+    "8eba432a4f5cfc23a88d6fe8",
+    "9025b9de9014d4914b2afded",
+    "918b3eb92715362422531885",
+    "94aa96a7ecd36df5db6ab7fe",
+    "998463167a920e8f8373e450",
+    "9f1a426513ca1147521a8fd6",
+    "a0e2b0edc7a100b3a7a3eff4",
+    "a0fe31edc272293e67e58e7d",
+    "a3b40467ab09ea4a4201fb74",
+    "a6298d7168b98151a4c8026a",
+    "b7b8b8f25c5077240201ca3e",
+    "be7f4123f1fdf787c2e8c47f",
+    "c27b0c98ce3f83d1cfc864c5",
+    "cab89edaf8136e8a737a9a77",
+    "d401461e6244d97106a90cc0",
+    "dace8f77abd7dd9a83b4f519",
+    "daf990a257d22f48cd6d2816",
+    "de3ac654e33068f80c5a6633",
+    "df220db9687c36b4ce6ebc39",
+    "e0fac6e2835eef581c453d69",
+    "e5b9538bbd7e052314ef6bd3",
+    "e7999c27f984e1a90b0a4b0f",
+    "e7c1c9e95ff171f1083891eb",
+    "e9fa2d57afcba39884744c96",
+    "ef402ae277ca98319466bb80",
+    "ef79017d2230bba6727058d4",
+    "f04e34a356352e397ee1d584",
+    "f18fc4fa3b8eddd5b962312d",
+    "f5376227846e8525ec525a35"
+  ],
+  "graph": {
+    "snapshot": "2026-09-08T00:00:00Z",
+    "stations": [
+      {
+        "nodeId": 6771438097,
+        "number": "8501609",
+        "name": "Brig"
+      },
+      {
+        "nodeId": 2837216238,
+        "number": "8501607",
+        "name": "Domodossola"
+      }
+    ],
+    "reviewedCrossoverWayIds": [
+      643956810
+    ],
+    "limits": {
+      "stationIdentityMetres": 350,
+      "trackAttachmentMetres": 120,
+      "projectionAlternativeMetres": 5,
+      "maximumTurnDegrees": 90,
+      "maximumPathMetres": 50000
+    }
+  },
+  "stationRecordSha256": "0664d9b5e8fc4aace49cf46d09f2bdce2988a53f76a2d791e69d0bc84d176ce0",
+  "crossoverSha256": "b3f12f633ee0f48eaa46abe42c3dc852f21dd3593d2326f3976d326d1450660a",
+  "pairs": [
+    {
+      "from": [
+        8.29623809,
+        46.11529118,
+        "Domodossola (I)",
+        "",
+        "8301003"
+      ],
+      "to": [
+        7.98778357,
+        46.31947528,
+        "Brig",
+        "1",
+        "ch:1:sloid:1609:1:1"
+      ],
+      "pathSha256": "2b6422c82568210671de3a27d6b67300296e341f22f19c7574f03f9c684cb0e3",
+      "segmentsSha256": "e75599e0b5097030d7db416c91b7751357cb5980d88ec18090ad719f4b050e7a",
+      "crossoverUsed": false
+    },
+    {
+      "from": [
+        7.99057733,
+        46.32002124,
+        "Brig",
+        "9",
+        "ch:1:sloid:1609:4:9"
+      ],
+      "to": [
+        8.29623809,
+        46.11529118,
+        "Domodossola (I)",
+        "",
+        "8301003"
+      ],
+      "pathSha256": "2a13886424dc071c3ab57226c3bf2fd03c6d282064fd5b5397a326cca11b5b7f",
+      "segmentsSha256": "955b24108077228f29b0385ba46d5347265b72a25f7246f0a78f01988a254e12",
+      "crossoverUsed": true
+    },
+    {
+      "from": [
+        7.9881429,
+        46.31967381,
+        "Brig",
+        "4",
+        "ch:1:sloid:1609:2:4"
+      ],
+      "to": [
+        8.29623809,
+        46.11529118,
+        "Domodossola (I)",
+        "",
+        "8301003"
+      ],
+      "pathSha256": "9fb9a2b4c734434ef25c0e3c9ae2288a3ee5b1060c91529b8bb2b0fc9d9e9f70",
+      "segmentsSha256": "dabc55be2528bcefeba922eea24f6e2d416b94e54463134ec73d8347ccf1e030",
+      "crossoverUsed": true
+    },
+    {
+      "from": [
+        7.9881429,
+        46.31958075,
+        "Brig",
+        "3",
+        "ch:1:sloid:1609:2:3"
+      ],
+      "to": [
+        8.29623809,
+        46.11529118,
+        "Domodossola (I)",
+        "",
+        "8301003"
+      ],
+      "pathSha256": "6c554fd41a6e311bca9482c7f01648afff126c987952bbbbe78a537106e3d098",
+      "segmentsSha256": "966d4af1f523744b6c2dbedb22b361083b060171802a67e635688426b2a256ae",
+      "crossoverUsed": false
+    },
+    {
+      "from": [
+        7.9905953,
+        46.31993438,
+        "Brig",
+        "8",
+        "ch:1:sloid:1609:4:8"
+      ],
+      "to": [
+        8.29623809,
+        46.11529118,
+        "Domodossola (I)",
+        "",
+        "8301003"
+      ],
+      "pathSha256": "5f76c080ddbce250c7baa1330ed6ada2fab8914b9086fa678276ac3cb6b5195f",
+      "segmentsSha256": "955b24108077228f29b0385ba46d5347265b72a25f7246f0a78f01988a254e12",
+      "crossoverUsed": true
+    },
+    {
+      "from": [
+        7.98778357,
+        46.31947528,
+        "Brig",
+        "1",
+        "ch:1:sloid:1609:1:1"
+      ],
+      "to": [
+        8.29623809,
+        46.11529118,
+        "Domodossola (I)",
+        "",
+        "8301003"
+      ],
+      "pathSha256": "dadaf119d8aa04549c4389d6863088d2ff29bb1caf24affad675218f76d947e9",
+      "segmentsSha256": "966d4af1f523744b6c2dbedb22b361083b060171802a67e635688426b2a256ae",
+      "crossoverUsed": false
+    },
+    {
+      "from": [
+        8.29623809,
+        46.11529118,
+        "Domodossola (I)",
+        "",
+        "8301003"
+      ],
+      "to": [
+        7.98911308,
+        46.31977928,
+        "Brig",
+        "6",
+        "ch:1:sloid:1609:3:6"
+      ],
+      "pathSha256": "7753a15121af937b3aaf86e033500152628ff21999935b7ce05453eb4f5b55ba",
+      "segmentsSha256": "3682980381f151d1af7e1a7c379df5de9cea2dc50aa7eda0a8d3d1099dc6d0f9",
+      "crossoverUsed": true
+    },
+    {
+      "from": [
+        8.29623809,
+        46.11529118,
+        "Domodossola (I)",
+        "",
+        "8301003"
+      ],
+      "to": [
+        7.9881429,
+        46.31967381,
+        "Brig",
+        "4",
+        "ch:1:sloid:1609:2:4"
+      ],
+      "pathSha256": "700feacfd43b0c3586fb6699b5df3cd23ba1c15eb90517aeaa5162d112f7be43",
+      "segmentsSha256": "3682980381f151d1af7e1a7c379df5de9cea2dc50aa7eda0a8d3d1099dc6d0f9",
+      "crossoverUsed": true
+    }
+  ],
+  "method": "Eight exact original directed Brig–Domodossola platform pairs, SBB EC route 91-2W-Y-j26-1 only. All 56 retained twelve-date patterns remain in scope; require a single foreign terminal call. Official record 8501607 explicitly maps to timetable 8301003 at the internal graph boundary only. Use original OSM shared-node standard-gauge running lines and the one pinned Simplon crossover; no source edits, arbitrary joins, siding or yard shortcuts. Pin every directed path and source-edge order and preserve all prior successful paths. The 8 September source snapshot is not proof of historical or current operator alignment; original GTFS dates/times govern the archival feed."
+}

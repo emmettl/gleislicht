@@ -1,0 +1,907 @@
+{
+  "visibility": "domain",
+  "fields": [
+    {
+      "name": "lod",
+      "description": "Linked Open Data representation of the stop",
+      "annotations": {
+        "facetsort": "-count"
+      },
+      "label": "lod",
+      "type": "text",
+      "label_en": "lod",
+      "label_fr": "LOD",
+      "label_it": "LOD",
+      "label_de": "lod",
+      "description_en": "Linked Open Data representation of the stop",
+      "description_fr": "Donn\u00e9es ouvertes li\u00e9es Repr\u00e9sentation de la halte",
+      "description_it": "Rappresentazione Linked Open Data della fermata",
+      "description_de": "Linked Open Data Repr\u00e4sentation der Haltestelle"
+    },
+    {
+      "name": "geopos",
+      "description": "Geoposition of the data set",
+      "annotations": {
+        "facetsort": "-count"
+      },
+      "label": "Geopos",
+      "type": "geo_point_2d",
+      "label_en": "Geopos",
+      "label_fr": "geopos",
+      "label_it": "Geopos.",
+      "label_de": "Geoposition",
+      "description_en": "Geoposition of the data set",
+      "description_fr": "G\u00e9opositionnement du jeu de donn\u00e9es",
+      "description_it": "Geoposizionamento del record",
+      "description_de": "Geoposition des Datensatz"
+    },
+    {
+      "name": "numbershort",
+      "description": null,
+      "annotations": {},
+      "label": "\ufeffnumberShort",
+      "type": "int",
+      "label_en": "\ufeffnumberShort",
+      "label_fr": "\ufeffnumberShort",
+      "label_it": "\ufeffnumberShort",
+      "label_de": "\ufeffnumberShort",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "uiccountrycode",
+      "description": null,
+      "annotations": {},
+      "label": "uicCountryCode",
+      "type": "int",
+      "label_en": "uicCountryCode",
+      "label_fr": "uicCountryCode",
+      "label_it": "uicCountryCode",
+      "label_de": "uicCountryCode",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "sloid",
+      "description": null,
+      "annotations": {},
+      "label": "sloid",
+      "type": "text",
+      "label_en": "sloid",
+      "label_fr": "sloid",
+      "label_it": "sloid",
+      "label_de": "sloid",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "number",
+      "description": null,
+      "annotations": {},
+      "label": "number",
+      "type": "int",
+      "label_en": "number",
+      "label_fr": "number",
+      "label_it": "number",
+      "label_de": "number",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "validfrom",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "validFrom",
+      "type": "date",
+      "label_en": "validFrom",
+      "label_fr": "validFrom",
+      "label_it": "validFrom",
+      "label_de": "validFrom",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "validto",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "validTo",
+      "type": "date",
+      "label_en": "validTo",
+      "label_fr": "validTo",
+      "label_it": "validTo",
+      "label_de": "validTo",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "designationofficial",
+      "description": null,
+      "annotations": {},
+      "label": "designationOfficial",
+      "type": "text",
+      "label_en": "designationOfficial",
+      "label_fr": "designationOfficial",
+      "label_it": "designationOfficial",
+      "label_de": "designationOfficial",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "designationlong",
+      "description": null,
+      "annotations": {},
+      "label": "designationLong",
+      "type": "text",
+      "label_en": "designationLong",
+      "label_fr": "designationLong",
+      "label_it": "designationLong",
+      "label_de": "designationLong",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "abbreviation",
+      "description": null,
+      "annotations": {},
+      "label": "abbreviation",
+      "type": "text",
+      "label_en": "abbreviation",
+      "label_fr": "abbreviation",
+      "label_it": "abbreviation",
+      "label_de": "abbreviation",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "operatingpoint",
+      "description": null,
+      "annotations": {},
+      "label": "operatingPoint",
+      "type": "text",
+      "label_en": "operatingPoint",
+      "label_fr": "operatingPoint",
+      "label_it": "operatingPoint",
+      "label_de": "operatingPoint",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "operatingpointwithtimetable",
+      "description": null,
+      "annotations": {},
+      "label": "operatingPointWithTimetable",
+      "type": "text",
+      "label_en": "operatingPointWithTimetable",
+      "label_fr": "operatingPointWithTimetable",
+      "label_it": "operatingPointWithTimetable",
+      "label_de": "operatingPointWithTimetable",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "stoppoint",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "stopPoint",
+      "type": "text",
+      "label_en": "stopPoint",
+      "label_fr": "stopPoint",
+      "label_it": "stopPoint",
+      "label_de": "stopPoint",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "stoppointtype",
+      "description": null,
+      "annotations": {},
+      "label": "stopPointType",
+      "type": "text",
+      "label_en": "stopPointType",
+      "label_fr": "stopPointType",
+      "label_it": "stopPointType",
+      "label_de": "stopPointType",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "freightservicepoint",
+      "description": null,
+      "annotations": {},
+      "label": "freightServicePoint",
+      "type": "text",
+      "label_en": "freightServicePoint",
+      "label_fr": "freightServicePoint",
+      "label_it": "freightServicePoint",
+      "label_de": "freightServicePoint",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "trafficpoint",
+      "description": null,
+      "annotations": {},
+      "label": "trafficPoint",
+      "type": "text",
+      "label_en": "trafficPoint",
+      "label_fr": "trafficPoint",
+      "label_it": "trafficPoint",
+      "label_de": "trafficPoint",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "borderpoint",
+      "description": null,
+      "annotations": {},
+      "label": "borderPoint",
+      "type": "text",
+      "label_en": "borderPoint",
+      "label_fr": "borderPoint",
+      "label_it": "borderPoint",
+      "label_de": "borderPoint",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "hasgeolocation",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "hasGeolocation",
+      "type": "text",
+      "label_en": "hasGeolocation",
+      "label_fr": "hasGeolocation",
+      "label_it": "hasGeolocation",
+      "label_de": "hasGeolocation",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "isocountrycode",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "isoCountryCode",
+      "type": "text",
+      "label_en": "isoCountryCode",
+      "label_fr": "isoCountryCode",
+      "label_it": "isoCountryCode",
+      "label_de": "isoCountryCode",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "cantonname",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "cantonName",
+      "type": "text",
+      "label_en": "cantonName",
+      "label_fr": "cantonName",
+      "label_it": "cantonName",
+      "label_de": "cantonName",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "cantonfsonumber",
+      "description": null,
+      "annotations": {},
+      "label": "cantonFsoNumber",
+      "type": "text",
+      "label_en": "cantonFsoNumber",
+      "label_fr": "cantonFsoNumber",
+      "label_it": "cantonFsoNumber",
+      "label_de": "cantonFsoNumber",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "cantonabbreviation",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "cantonAbbreviation",
+      "type": "text",
+      "label_en": "cantonAbbreviation",
+      "label_fr": "cantonAbbreviation",
+      "label_it": "cantonAbbreviation",
+      "label_de": "cantonAbbreviation",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "districtname",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "districtName",
+      "type": "text",
+      "label_en": "districtName",
+      "label_fr": "districtName",
+      "label_it": "districtName",
+      "label_de": "districtName",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "districtfsonumber",
+      "description": null,
+      "annotations": {},
+      "label": "districtFsoNumber",
+      "type": "text",
+      "label_en": "districtFsoNumber",
+      "label_fr": "districtFsoNumber",
+      "label_it": "districtFsoNumber",
+      "label_de": "districtFsoNumber",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "municipalityname",
+      "description": null,
+      "annotations": {},
+      "label": "municipalityName",
+      "type": "text",
+      "label_en": "municipalityName",
+      "label_fr": "municipalityName",
+      "label_it": "municipalityName",
+      "label_de": "municipalityName",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "fsonumber",
+      "description": null,
+      "annotations": {},
+      "label": "fsoNumber",
+      "type": "text",
+      "label_en": "fsoNumber",
+      "label_fr": "fsoNumber",
+      "label_it": "fsoNumber",
+      "label_de": "fsoNumber",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "localityname",
+      "description": null,
+      "annotations": {},
+      "label": "localityName",
+      "type": "text",
+      "label_en": "localityName",
+      "label_fr": "localityName",
+      "label_it": "localityName",
+      "label_de": "localityName",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "operatingpointtype",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "operatingPointType",
+      "type": "text",
+      "label_en": "operatingPointType",
+      "label_fr": "operatingPointType",
+      "label_it": "operatingPointType",
+      "label_de": "operatingPointType",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "operatingpointtechnicaltimetabletype",
+      "description": null,
+      "annotations": {},
+      "label": "operatingPointTechnicalTimetableType",
+      "type": "text",
+      "label_en": "operatingPointTechnicalTimetableType",
+      "label_fr": "operatingPointTechnicalTimetableType",
+      "label_it": "operatingPointTechnicalTimetableType",
+      "label_de": "operatingPointTechnicalTimetableType",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "meansoftransport",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "meansOfTransport",
+      "type": "text",
+      "label_en": "meansOfTransport",
+      "label_fr": "meansOfTransport",
+      "label_it": "meansOfTransport",
+      "label_de": "meansOfTransport",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "categories",
+      "description": null,
+      "annotations": {},
+      "label": "categories",
+      "type": "text",
+      "label_en": "categories",
+      "label_fr": "categories",
+      "label_it": "categories",
+      "label_de": "categories",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "operatingpointtrafficpointtype",
+      "description": null,
+      "annotations": {},
+      "label": "operatingPointTrafficPointType",
+      "type": "text",
+      "label_en": "operatingPointTrafficPointType",
+      "label_fr": "operatingPointTrafficPointType",
+      "label_it": "operatingPointTrafficPointType",
+      "label_de": "operatingPointTrafficPointType",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "operatingpointroutenetwork",
+      "description": null,
+      "annotations": {},
+      "label": "operatingPointRouteNetwork",
+      "type": "text",
+      "label_en": "operatingPointRouteNetwork",
+      "label_fr": "operatingPointRouteNetwork",
+      "label_it": "operatingPointRouteNetwork",
+      "label_de": "operatingPointRouteNetwork",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "operatingpointkilometer",
+      "description": null,
+      "annotations": {},
+      "label": "operatingPointKilometer",
+      "type": "text",
+      "label_en": "operatingPointKilometer",
+      "label_fr": "operatingPointKilometer",
+      "label_it": "operatingPointKilometer",
+      "label_de": "operatingPointKilometer",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "operatingpointkilometermasternumber",
+      "description": null,
+      "annotations": {},
+      "label": "operatingPointKilometerMasterNumber",
+      "type": "text",
+      "label_en": "operatingPointKilometerMasterNumber",
+      "label_fr": "operatingPointKilometerMasterNumber",
+      "label_it": "operatingPointKilometerMasterNumber",
+      "label_de": "operatingPointKilometerMasterNumber",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "sortcodeofdestinationstation",
+      "description": null,
+      "annotations": {},
+      "label": "sortCodeOfDestinationStation",
+      "type": "text",
+      "label_en": "sortCodeOfDestinationStation",
+      "label_fr": "sortCodeOfDestinationStation",
+      "label_it": "sortCodeOfDestinationStation",
+      "label_de": "sortCodeOfDestinationStation",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "businessorganisation",
+      "description": null,
+      "annotations": {},
+      "label": "businessOrganisation",
+      "type": "text",
+      "label_en": "businessOrganisation",
+      "label_fr": "businessOrganisation",
+      "label_it": "businessOrganisation",
+      "label_de": "businessOrganisation",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "businessorganisationnumber",
+      "description": null,
+      "annotations": {},
+      "label": "businessOrganisationNumber",
+      "type": "int",
+      "label_en": "businessOrganisationNumber",
+      "label_fr": "businessOrganisationNumber",
+      "label_it": "businessOrganisationNumber",
+      "label_de": "businessOrganisationNumber",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "businessorganisationabbreviationde",
+      "description": null,
+      "annotations": {
+        "facet": true
+      },
+      "label": "businessOrganisationAbbreviationDe",
+      "type": "text",
+      "label_en": "businessOrganisationAbbreviationDe",
+      "label_fr": "businessOrganisationAbbreviationDe",
+      "label_it": "businessOrganisationAbbreviationDe",
+      "label_de": "businessOrganisationAbbreviationDe",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "businessorganisationabbreviationfr",
+      "description": null,
+      "annotations": {},
+      "label": "businessOrganisationAbbreviationFr",
+      "type": "text",
+      "label_en": "businessOrganisationAbbreviationFr",
+      "label_fr": "businessOrganisationAbbreviationFr",
+      "label_it": "businessOrganisationAbbreviationFr",
+      "label_de": "businessOrganisationAbbreviationFr",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "businessorganisationdescriptionde",
+      "description": null,
+      "annotations": {},
+      "label": "businessOrganisationDescriptionDe",
+      "type": "text",
+      "label_en": "businessOrganisationDescriptionDe",
+      "label_fr": "businessOrganisationDescriptionDe",
+      "label_it": "businessOrganisationDescriptionDe",
+      "label_de": "businessOrganisationDescriptionDe",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "businessorganisationdescriptionfr",
+      "description": null,
+      "annotations": {},
+      "label": "businessOrganisationDescriptionFr",
+      "type": "text",
+      "label_en": "businessOrganisationDescriptionFr",
+      "label_fr": "businessOrganisationDescriptionFr",
+      "label_it": "businessOrganisationDescriptionFr",
+      "label_de": "businessOrganisationDescriptionFr",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "fotcomment",
+      "description": null,
+      "annotations": {},
+      "label": "fotComment",
+      "type": "text",
+      "label_en": "fotComment",
+      "label_fr": "fotComment",
+      "label_it": "fotComment",
+      "label_de": "fotComment",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "height",
+      "description": null,
+      "annotations": {},
+      "label": "height",
+      "type": "double",
+      "label_en": "height",
+      "label_fr": "height",
+      "label_it": "height",
+      "label_de": "height",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "creationdate",
+      "description": null,
+      "annotations": {},
+      "label": "creationDate",
+      "type": "datetime",
+      "label_en": "creationDate",
+      "label_fr": "creationDate",
+      "label_it": "creationDate",
+      "label_de": "creationDate",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    },
+    {
+      "name": "editiondate",
+      "description": null,
+      "annotations": {},
+      "label": "editionDate",
+      "type": "datetime",
+      "label_en": "editionDate",
+      "label_fr": "editionDate",
+      "label_it": "editionDate",
+      "label_de": "editionDate",
+      "description_en": null,
+      "description_fr": null,
+      "description_it": null,
+      "description_de": null
+    }
+  ],
+  "dataset_id": "dienststellen-gemass-opentransportdataswiss",
+  "dataset_uid": "da_yb2a8a",
+  "has_records": true,
+  "features": [
+    "geo",
+    "analyze",
+    "timeserie"
+  ],
+  "attachments": [],
+  "alternative_exports": [],
+  "data_visible": true,
+  "metas": {
+    "dcat": {
+      "created": null,
+      "issued": null,
+      "creator": null,
+      "contributor": null,
+      "contact_name": "Ansprechstelle fuer Daten",
+      "contact_email": "data@sbb.ch",
+      "accrualperiodicity": null,
+      "spatial": null,
+      "temporal": null,
+      "granularity": null,
+      "dataquality": null,
+      "publisher_type": null,
+      "conforms_to": null,
+      "temporal_coverage_start": null,
+      "temporal_coverage_end": null,
+      "accessRights": null,
+      "relation": null
+    },
+    "dcat_ap_ch": {
+      "domain": "schweizerische-bundesbahnen-sbb",
+      "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+      "license": "terms_by"
+    },
+    "semantic": {
+      "rml_mapping": null,
+      "classes": null,
+      "properties": null
+    },
+    "default": {
+      "title": "Service Points (Didok) based on opentransportdata.swiss",
+      "title_en": "Service Points (Didok) based on opentransportdata.swiss",
+      "title_fr": "Dienststellen (DiDok) gem\u00e4ss opentransportdata.swiss",
+      "title_it": "Dienststellen (DiDok) gem\u00e4ss opentransportdata.swiss",
+      "title_de": "Dienststellen (DiDok) gem\u00e4ss opentransportdata.swiss",
+      "description": "<p>Liste der Haltestellen der Schweiz. Die Didok-Liste wird vom Bundesamt f\u00fcr Verkehr erstellt. Das Original kann unter <a href=\"https://opendata.swiss/de/dataset/haltestellen-des-offentlichen-verkehrs\">https://opendata.swiss/de/dataset/haltestellen-des-offentlichen-verkehrs</a> bezogen werden.</p><p><br></p>",
+      "description_en": "<p>Liste der Haltestellen der Schweiz. Die Didok-Liste wird vom Bundesamt f\u00fcr Verkehr erstellt. Das Original kann unter <a href=\"https://opendata.swiss/de/dataset/haltestellen-des-offentlichen-verkehrs\">https://opendata.swiss/de/dataset/haltestellen-des-offentlichen-verkehrs</a> bezogen werden.</p><p><br></p>",
+      "description_fr": "<p>Liste der Haltestellen der Schweiz. Die Didok-Liste wird vom Bundesamt f\u00fcr Verkehr erstellt. Das Original kann unter <a href=\"https://opendata.swiss/de/dataset/haltestellen-des-offentlichen-verkehrs\">https://opendata.swiss/de/dataset/haltestellen-des-offentlichen-verkehrs</a> bezogen werden.</p><p><br></p>",
+      "description_it": "<p>Liste der Haltestellen der Schweiz. Die Didok-Liste wird vom Bundesamt f\u00fcr Verkehr erstellt. Das Original kann unter <a href=\"https://opendata.swiss/de/dataset/haltestellen-des-offentlichen-verkehrs\">https://opendata.swiss/de/dataset/haltestellen-des-offentlichen-verkehrs</a> bezogen werden.</p><p><br></p>",
+      "description_de": "<p>Liste der Haltestellen der Schweiz. Die Didok-Liste wird vom Bundesamt f\u00fcr Verkehr erstellt. Das Original kann unter <a href=\"https://opendata.swiss/de/dataset/haltestellen-des-offentlichen-verkehrs\">https://opendata.swiss/de/dataset/haltestellen-des-offentlichen-verkehrs</a> bezogen werden.</p><p><br></p>",
+      "theme": [
+        "Mobility and Transport"
+      ],
+      "theme_en": [
+        "Mobility and Transport"
+      ],
+      "theme_fr": [
+        "Mobilit\u00e9 et transports"
+      ],
+      "theme_it": [
+        "Mobilit\u00e0 e trasporti"
+      ],
+      "theme_de": [
+        "Mobilit\u00e4t und Verkehr"
+      ],
+      "keyword": [
+        "Infrastruktur",
+        "Verkehr"
+      ],
+      "keyword_en": [
+        "Infrastruktur",
+        "Verkehr"
+      ],
+      "keyword_fr": [
+        "Infrastruktur",
+        "Verkehr"
+      ],
+      "keyword_it": [
+        "Infrastruktur",
+        "Verkehr"
+      ],
+      "keyword_de": [
+        "Infrastruktur",
+        "Verkehr"
+      ],
+      "license": "https://data.sbb.ch/page/licence",
+      "license_en": "https://data.sbb.ch/page/licence",
+      "license_fr": "https://data.sbb.ch/page/licence",
+      "license_it": "https://data.sbb.ch/page/licence",
+      "license_de": "https://data.sbb.ch/page/licence",
+      "license_url": null,
+      "license_url_en": null,
+      "license_url_fr": null,
+      "license_url_it": null,
+      "license_url_de": null,
+      "language": "de",
+      "metadata_languages": [
+        "de",
+        "it",
+        "fr",
+        "en"
+      ],
+      "timezone": "Europe/Berlin",
+      "modified": "2026-07-29T10:05:00+00:00",
+      "modified_updates_on_metadata_change": true,
+      "modified_updates_on_data_change": true,
+      "data_processed": "2026-07-29T04:05:26+00:00",
+      "metadata_processed": "2026-09-08T04:02:20.947000+00:00",
+      "geographic_reference": [
+        "world"
+      ],
+      "geographic_reference_auto": true,
+      "territory": [
+        "World"
+      ],
+      "geometry_types": [
+        "Point"
+      ],
+      "bbox": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                47.13194084353745,
+                54.90594087168574
+              ],
+              [
+                -4.779999637976289,
+                54.90594087168574
+              ],
+              [
+                -4.779999637976289,
+                7.10789508651942
+              ],
+              [
+                47.13194084353745,
+                7.10789508651942
+              ],
+              [
+                47.13194084353745,
+                54.90594087168574
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "properties": {}
+      },
+      "publisher": "SBB Infrastruktur",
+      "publisher_en": "SBB Infrastruktur",
+      "publisher_fr": "SBB Infrastruktur",
+      "publisher_it": "SBB Infrastruktur",
+      "publisher_de": "SBB Infrastruktur",
+      "references": null,
+      "records_count": 59530,
+      "attributions": [
+        "Bundesamt f\u00fcr Landestopografie swisstopo Office f\u00e9d\u00e9ral de topographie swisstopo Ufficio federale di topografia swisstopo Uffizi federal da topografia swisstopo Federal Office of Topography swisstopo"
+      ],
+      "source_domain": null,
+      "source_domain_title": null,
+      "source_domain_address": null,
+      "source_dataset": null,
+      "shared_catalog": null,
+      "federated": false,
+      "parent_domain": null,
+      "update_frequency": "DAILY"
+    }
+  }
+}

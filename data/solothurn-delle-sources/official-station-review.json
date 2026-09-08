@@ -1,0 +1,16 @@
+{
+  "reviewedOn": "2026-09-08",
+  "method": "Official pages inspected via web retrieval; direct SNCF HTTP fetch returned 403. These are review observations, not retained raw page bodies.",
+  "evidence": [
+    {
+      "url": "https://www.ter.sncf.com/bourgogne-franche-comte/se-deplacer/prochains-departs/delle-87184440",
+      "sourceDate": null,
+      "finding": "Official SNCF TER station page identifies Gare Delle. The station URL includes 87184440. Live departures to Porrentruy and Delémont on voie E provide passenger-service context only, not historical timetable or running-track proof."
+    },
+    {
+      "url": "https://news.sbb.ch/fr/019d7b77-1725-7b43-86b8-b37fb2c2d611/modernisation-de-la-gare-de-boncourt",
+      "sourceDate": "2025-01-08",
+      "finding": "SBB reports rebuilding the central passenger platform and tracks, commissioning planned for late 2025 and finishing work through summer 2026. This is planned works context, not confirmation of historical completion or an authoritative alignment."
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "sourceDirectory": "data/solothurn-delle-sources",
+  "sourceSha256": "dfc9feb443f5afb6204d47ca7b7cb4255b4e7a98dc1dafdda7f2b1c0ad731440",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "stations": [
+    {
+      "nodeId": 3080770163,
+      "number": "8718444",
+      "name": "Delle"
+    },
+    {
+      "nodeId": 3080770156,
+      "number": "8500128",
+      "name": "Boncourt"
+    }
+  ],
+  "limits": {
+    "stationIdentityMetres": 350,
+    "trackAttachmentMetres": 60,
+    "projectionAlternativeMetres": 5,
+    "maximumTurnDegrees": 45,
+    "maximumPathMetres": 8000
+  },
+  "route": {
+    "id": "91-54-Y-j26-1",
+    "agencyId": "11",
+    "name": "RE",
+    "mode": "rail",
+    "type": 106
+  },
+  "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+  "timetableSourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "patternIds": [
+    "0bb94f43759e715046be10af",
+    "0eac49c377d4a324f1a9fc4b",
+    "18c79dc244e905fc6487fc65",
+    "4fea4d4a337f4c35a81f8219",
+    "9445d61f276761f93157ae1a",
+    "b7d3a1de031b1b789dd026f8",
+    "b832aeb2832c3f148a423b60",
+    "f6179cc1ffe074a1f1f18586"
+  ],
+  "pairs": [
+    {
+      "from": [
+        7.010174,
+        47.50579478,
+        "Delle",
+        "",
+        "8718444"
+      ],
+      "to": [
+        7.01636339,
+        47.49246112,
+        "Boncourt",
+        "3",
+        "ch:1:sloid:128:2:3"
+      ],
+      "pathSha256": "ef68032c8d2b931dc7258fbb750478f4d41c0f73a82a4f0a550df0e4e381fefd",
+      "sourceWayIds": [
+        1129534648,
+        613316324,
+        847111885,
+        35921723,
+        181618256,
+        238174303,
+        238174304,
+        1335057424,
+        1335057423,
+        1126683495,
+        1126683494,
+        181618272
+      ]
+    }
+  ],
+  "method": "Exact SBB RE route 91-54-Y-j26-1 and original Delle 8718444 → Boncourt platform 3 only; all eight complete retained twelve-date route patterns checked, including four contexts using the pair. Foreign stop must be a single terminal call. Preserve all previous successes; same full-context consensus and bounded attachments, no coordinate replacement or running-track certification."
+}

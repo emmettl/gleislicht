@@ -1,0 +1,1 @@
+[out:json][timeout:60][date:"2026-09-02T00:00:00Z"];(way["railway"="rail"](47.48,6.99,47.52,7.035);node["uic_ref"](47.48,6.99,47.52,7.035););out meta;>;out meta;

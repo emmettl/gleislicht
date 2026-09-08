@@ -56,6 +56,12 @@ export async function buildSolothurnRegion() {
   const comoBaseline = JSON.parse(await readFile('data/solothurn-como-baseline.json'))
   assert.deepEqual(comoBaseline.sourceHashes, sourceHashes)
   const comoReview = { baselineCommit: comoBaseline.commit, sourceHashes, source: supplements.metadata.como, days: [] }
+  const simplonBaseline = JSON.parse(await readFile('data/solothurn-simplon-baseline.json'))
+  assert.deepEqual(simplonBaseline.sourceHashes, sourceHashes)
+  const simplonReview = { baselineCommit: simplonBaseline.commit, sourceHashes, source: supplements.metadata.simplon, days: [] }
+  const delleBaseline = JSON.parse(await readFile('data/solothurn-delle-baseline.json'))
+  assert.deepEqual(delleBaseline.sourceHashes, sourceHashes)
+  const delleReview = { baselineCommit: delleBaseline.commit, sourceHashes, source: supplements.metadata.delle, days: [] }
   const provenance = { supplements: supplements.metadata, ...source.metadata, timetable: {
     publisher: 'SBB / Open data platform mobility Switzerland', attribution: 'opentransportdata.swiss',
     sha256: SO_GTFS_SHA, feed: census.feed, sourceUrl: census.sourceUrl,
@@ -103,6 +109,20 @@ export async function buildSolothurnRegion() {
     comoReview.days.push({ date: raw.metadata.serviceDate, before: comoBefore.coverage, after: coverage, lostAdmittedPatterns: comoLost,
       newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !comoPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
       sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-como-rail-inference').map(({ pathIndex, ...p }) => p) })
+    const simplonBefore = simplonBaseline.days.find(d => d.date === raw.metadata.serviceDate)
+    const simplonPrevious = new Set(simplonBefore.admittedPatternIds)
+    const simplonLost = [...simplonPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.equal(simplonLost.length, 0, 'Simplon review regressed an admitted pattern')
+    simplonReview.days.push({ date: raw.metadata.serviceDate, before: simplonBefore.coverage, after: coverage, lostAdmittedPatterns: simplonLost,
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !simplonPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-simplon-inference').map(({ pathIndex, ...p }) => p) })
+    const delleBefore = delleBaseline.days.find(d => d.date === raw.metadata.serviceDate)
+    const dellePrevious = new Set(delleBefore.admittedPatternIds)
+    const delleLost = [...dellePrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.equal(delleLost.length, 0, 'Delle review regressed an admitted pattern')
+    delleReview.days.push({ date: raw.metadata.serviceDate, before: delleBefore.coverage, after: coverage, lostAdmittedPatterns: delleLost,
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !dellePrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-delle-rail-inference').map(({ pathIndex, ...p }) => p) })
     const busBefore = busBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const busPrevious = new Set(busBefore.admittedPatternIds)
     const busLost = [...busPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
@@ -261,6 +281,8 @@ export async function buildSolothurnRegion() {
   await writeJson(join(auditDir, 'bern-terminal-review.json'), terminalReview, true)
   await writeJson(join(auditDir, 's26-review.json'), s26Review, true)
   await writeJson(join(auditDir, 'como-review.json'), comoReview, true)
+  await writeJson(join(auditDir, 'simplon-review.json'), simplonReview, true)
+  await writeJson(join(auditDir, 'delle-review.json'), delleReview, true)
   await writeJson(join(auditDir, 'summary.json'), summary, true)
   await writeJson(join(auditDir, 'routes.json'), inventory, true)
   await writeJson(join(auditDir, 'stops.json'), timetable.sourceStopInventory)

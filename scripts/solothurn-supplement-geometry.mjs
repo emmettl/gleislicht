@@ -9,6 +9,8 @@ import { loadSolothurnS29Precedence } from './solothurn-s29-precedence.mjs'
 import { loadSolothurnRailReview } from './solothurn-rail-review.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { loadSolothurnAccessRoads } from './solothurn-access-roads.mjs'
+import { loadSolothurnDelleRail } from './solothurn-delle-rail.mjs'
+import { loadSolothurnSimplonRail } from './solothurn-simplon-rail.mjs'
 import { loadSolothurnComoRail } from './solothurn-como-rail.mjs'
 import { loadSolothurnS26Review } from './solothurn-s26-review.mjs'
 import { loadSolothurnBernTerminal } from './solothurn-bern-terminal.mjs'
@@ -42,6 +44,8 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
   const corridors = await loadSolothurnCorridors()
   const s29Precedence = await loadSolothurnS29Precedence(corridors)
   const rail = await loadZugRail(policy.rail, context.snapshots.map(s => s.metadata.serviceDate))
+  const delle = await loadSolothurnDelleRail(context)
+  const simplon = await loadSolothurnSimplonRail(context)
   const como = await loadSolothurnComoRail(context)
   const s26 = await loadSolothurnS26Review(policy.rail, context.snapshots.map(s => s.metadata.serviceDate))
   const bernTerminal = await loadSolothurnBernTerminal(policy.rail, context.snapshots.map(s => s.metadata.serviceDate))
@@ -72,6 +76,8 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
         results = bernTerminal.matchPattern(train, raw.stops, route, results)
         results = s26.matchPattern(train, raw.stops, route, results)
         results = como.matchPattern(train, raw.stops, route, results)
+        results = simplon.matchPattern(train, raw.stops, route, results)
+        results = delle.matchPattern(train, raw.stops, route, results)
       }
       for (const [i, result] of results.entries()) {
         const from = raw.stops[train.stops[i][0]], to = raw.stops[train.stops[i + 1][0]], key = keyOf(route, from, to)
@@ -90,7 +96,7 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
     road = await loadSolothurnRoads(context, { verifyEvidence })
     for (const [key, value] of road.pairs) pairs.set(key, value)
   }
-  return { pairs, policy, s29PrecedenceReview: [...s29Precedence.review.values()], accessRoadReview: accessRoads ? [...accessRoads.all].map(([key, { path, ...assessment }]) => ({ key, ...assessment, pathSha256: path ? sha(path) : null, selected: accessRoads.pairs.has(key) })) : [], metadata: { como: como.metadata, s26: s26.metadata, bernTerminal: bernTerminal.metadata, ...(accessRoads ? { accessRoads: accessRoads.metadata } : {}), busJunction: busJunction.metadata, s29Precedence: s29Precedence.metadata, railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
+  return { pairs, policy, s29PrecedenceReview: [...s29Precedence.review.values()], accessRoadReview: accessRoads ? [...accessRoads.all].map(([key, { path, ...assessment }]) => ({ key, ...assessment, pathSha256: path ? sha(path) : null, selected: accessRoads.pairs.has(key) })) : [], metadata: { delle: delle.metadata, simplon: simplon.metadata, como: como.metadata, s26: s26.metadata, bernTerminal: bernTerminal.metadata, ...(accessRoads ? { accessRoads: accessRoads.metadata } : {}), busJunction: busJunction.metadata, s29Precedence: s29Precedence.metadata, railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
     ...(road ? { road: road.metadata, roadCacheSha256: road.sha256 } : {}) },
     match(route, from, to) {
       const previous = busJunction.match(route, from, to, pairs.get(keyOf(route, from, to)))

@@ -413,7 +413,7 @@
       "evidence": "ch.so.avt.oev GeoPackage downloaded: 3,951 MultiLineString network segments and 775 stops in EPSG:2056. Network fields only identify mode and tunnel status; there are no line/operator identifiers. Stops include DiDok. The empty linestructure helper table is not missing network coverage.",
       "vintage": "Published 17 December 2025. Metadata explicitly excludes night services.",
       "reuse": "Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.",
-      "nextAction": "Review remaining Arlesheim tram platform gaps, Brig–Domodossola and Delle–Boncourt rail connections, and matcher-rejected bus patterns. Reviewed Chiasso–Como passenger geometry adds two EC journeys per published date; 130 Friday / 139 Sunday remain excluded. Twelve seasonal dates audited. Physical direction and year-round coverage remain uncertified.",
+      "nextAction": "Review remaining Arlesheim tram platform gaps and matcher-rejected bus patterns. Scoped Simplon and Delle reviews resolve all rail geometry exclusions on the two published dates, adding seven Friday / eight Sunday journeys; 123 Friday / 131 Sunday tram and bus journeys remain excluded. Twelve seasonal dates audited. Physical direction and year-round coverage remain uncertified.",
       "sourceIds": [
         "so-publications",
         "so-lines",
@@ -426,14 +426,14 @@
         "audit": "data/solothurn-audit/summary.json",
         "annualRouteRecords": 193,
         "agencyIdentities": 19,
-        "admittedRouteRecords": 149,
+        "admittedRouteRecords": 150,
         "serviceDates": [
           "2026-09-04",
           "2026-09-06"
         ],
         "admittedMovements": [
-          7026,
-          5680
+          7033,
+          5688
         ],
         "physicalDirectionCertified": false,
         "yearRoundCoverageEstablished": false,
@@ -449,7 +449,9 @@
         "accessRoadAudit": "data/solothurn-audit/access-road-review.json",
         "bernTerminalAudit": "data/solothurn-audit/bern-terminal-review.json",
         "s26Audit": "data/solothurn-audit/s26-review.json",
-        "comoAudit": "data/solothurn-audit/como-review.json"
+        "comoAudit": "data/solothurn-audit/como-review.json",
+        "simplonAudit": "data/solothurn-audit/simplon-review.json",
+        "delleAudit": "data/solothurn-audit/delle-review.json"
       }
     },
     {
