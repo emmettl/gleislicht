@@ -342,3 +342,5 @@ node scripts/build-cantonal-road-pilot.mjs \
 ```
 
 The audit uses the original automatic direction topology, so other candidate direction statuses describe that baseline. The separate published corridor reviews remain necessary when compiling their later observations. Complete observation coverage alone grants no direction approval.
+
+Validation in the isolated publication worktree: 19 focused tests across five files, all 16 desktop Chromium / iPhone WebKit recording checks, TypeScript, production build, artifact validation, architecture and lint checks pass. The new evening and preserved afternoon artifacts rebuild byte-for-byte from the archive. Desktop and mobile screenshots were inspected. First-view transfer is 765.6 KiB gzip within the 790 KiB budget; the evening JSON remains an on-demand download.
