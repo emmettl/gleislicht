@@ -326,7 +326,8 @@
         "Romont/Glâne",
         "Broye",
         "Murten/Morat",
-        "Sense"
+        "Sense",
+        "Châtel-St-Denis/Veveyse"
       ],
       "representativeAgencyIds": [
         "11",
@@ -339,7 +340,7 @@
       "evidence": "ArcGIS Theme_mobilite layer 2 is a queryable polyline source: 128 total features. GeoJSON samples include rail and actual TPF urban buses. NUMERO_LIGNE values such as 20.002 are timetable-field identifiers, not simply display line 2. Other fields include type, enterprise and name.",
       "vintage": "Current geometry vintage not established; service response date is only an access check.",
       "reuse": "General portal terms allow attributed map imagery (Source: Etat de Fribourg) but refer to supplier conditions; raw-vector redistribution remains unresolved.",
-      "nextAction": "Acquire all pages and metadata/terms, map timetable-field IDs to agency/route IDs, and measure TPF bus patterns. This supersedes the earlier no-export-found result.",
+      "nextAction": "Resolve actual geometry vintage and dataset-specific vector redistribution, review failed full directed patterns, and add seasonal dates. Full acquisition and two-date canton census now documented in docs/FRIBOURG-STUDY.md.",
       "sourceIds": [
         "fr-layer",
         "fr-count",
@@ -347,7 +348,29 @@
         "fr-bus-sample",
         "fr-catalogue",
         "fr-terms-canonical"
-      ]
+      ],
+      "implementation": {
+        "study": "docs/FRIBOURG-STUDY.md",
+        "routeInventory": "docs/FRIBOURG-ROUTE-INVENTORY.md",
+        "audit": "data/fribourg-audit/summary.json",
+        "feed": "data/fribourg-region/index.json",
+        "status": "local-archival-feed-partial-admission",
+        "routeRecords": 207,
+        "agencyIdentities": 17,
+        "districts": 7,
+        "provisionalBoundaryRouteIds": [
+          "96-247-j26-1"
+        ],
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "admittedTrips": [
+          2452,
+          1541
+        ],
+        "publicRedistributionCleared": false
+      }
     },
     {
       "code": "SO",

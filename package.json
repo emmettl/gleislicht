@@ -93,7 +93,12 @@
     "data:thurgau:sources": "python3 scripts/prepare-thurgau-sources.py",
     "data:thurgau": "node --max-old-space-size=8192 scripts/build-thurgau-region.mjs",
     "data:thurgau:check": "node scripts/check-thurgau-region.mjs",
-    "data:thurgau:docs": "node scripts/document-thurgau-study.mjs"
+    "data:thurgau:docs": "node scripts/document-thurgau-study.mjs",
+    "data:fribourg:sources": "python3 scripts/prepare-fribourg-sources.py",
+    "data:fribourg:census": "node --max-old-space-size=8192 scripts/fribourg-timetable.mjs",
+    "data:fribourg": "node --max-old-space-size=8192 scripts/build-fribourg-region.mjs",
+    "data:fribourg:check": "node scripts/check-fribourg-region.mjs",
+    "data:fribourg:docs": "node scripts/write-fribourg-audit.mjs"
   },
   "engines": {
     "node": ">=24.0.0"

@@ -1,0 +1,1852 @@
+{
+  "schemaVersion": 1,
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+    "crosswalk": "c3c28f0f3952c03f4695ee6331cf80a6224ff1df87ee10a4efcb69fadb99063d",
+    "provenance": "4a4bb2dae3fc541b91018097cd82dbcc91c259b327cf52d19b8d5b17919077c9"
+  },
+  "sources": {
+    "schemaVersion": 1,
+    "publisher": "Etat de Fribourg / Service de la mobilité / SIT",
+    "sourceUrl": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2",
+    "metadataUrl": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/metadata",
+    "attribution": "Source: Etat de Fribourg",
+    "sourceCrs": "EPSG:2056",
+    "dataUpdated": null,
+    "metadataCreated": "2022-07-14",
+    "vintageNote": "The embedded Esri CreaDate dates metadata only. No geometry update date is declared. PDF timetable dates do not date line geometry.",
+    "acquiredAt": "2026-09-08T18:02:36.135027+00:00",
+    "sourceSnapshotSha256": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+    "acquisition": {
+      "schemaVersion": 1,
+      "sources": [
+        {
+          "file": "layer.json",
+          "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2?f=pjson",
+          "retrievedAt": "2026-09-08T18:02:36.135027+00:00",
+          "sha256": "c16291b80f3e37c1a80e6cc19ab1f55e7986be3119494ac42b79df760d1759f4",
+          "bytes": 5485
+        },
+        {
+          "file": "metadata.xml",
+          "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/metadata",
+          "retrievedAt": "2026-09-08T18:02:36.613107+00:00",
+          "sha256": "b0baa381f0a36d0d8b4356ca41c50187c9073f88f5d1a68a2c84521fd4477106",
+          "bytes": 475
+        },
+        {
+          "file": "portal-terms.html",
+          "url": "https://map.geo.fr.ch/help/fr/conditions_utilisation.htm",
+          "retrievedAt": "2026-09-08T18:02:36.990857+00:00",
+          "sha256": "ba38f4f44cb302dad197916de064d64cad8508edf25a125f646bd6061f42d142",
+          "bytes": 5691
+        },
+        {
+          "file": "geoinformation-ordinance.pdf",
+          "url": "https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes",
+          "retrievedAt": "2026-09-08T18:02:37.171453+00:00",
+          "sha256": "b2125375db200bb0ac11557983998d1c1ed6c64bac2d55cd6f246a5fa86db909",
+          "bytes": 1007146
+        },
+        {
+          "file": "timetable-10.213.pdf",
+          "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.213.pdf",
+          "retrievedAt": "2026-09-08T18:02:37.589928+00:00",
+          "sha256": "5606a8360594cb897ad011446f7b3e1f479c8f1b081deb271f53d8253f3bb586",
+          "bytes": 831835
+        },
+        {
+          "file": "timetable-10.216.pdf",
+          "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.216.pdf",
+          "retrievedAt": "2026-09-08T18:02:37.894388+00:00",
+          "sha256": "03f94e534d735e1503f986bda82d29dc04a755ce4e06e05be4c6e31d2fbd9a2f",
+          "bytes": 507491
+        },
+        {
+          "file": "timetable-10.217.pdf",
+          "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.217.pdf",
+          "retrievedAt": "2026-09-08T18:02:38.124169+00:00",
+          "sha256": "c9f5680e046bdee5409196b9996f77342e00633f8e0b7435dc2d839df8181d35",
+          "bytes": 1075850
+        },
+        {
+          "file": "timetable-254.pdf",
+          "url": "https://widgets.oev-info.ch/publikation/jahresfpl/254.pdf",
+          "retrievedAt": "2026-09-08T18:02:38.443703+00:00",
+          "sha256": "2b093ab62c8c54f2a320eb2ce4ef2c6563ee39f5794bb46737e756ce2f87ffa8",
+          "bytes": 515647
+        },
+        {
+          "file": "ids.json",
+          "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnIdsOnly=true&f=json",
+          "retrievedAt": "2026-09-08T18:02:38.897597+00:00",
+          "sha256": "00a1a1985cb71689cd6eb18ada00d64a4bbeb28b6e3c2c52ac891041f69dce14",
+          "bytes": 450
+        },
+        {
+          "file": "count.json",
+          "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnCountOnly=true&f=json",
+          "retrievedAt": "2026-09-08T18:02:39.244933+00:00",
+          "sha256": "dbd046824ac239bc2fa79b152b1152a43bdfc4e110a96862cefe043d9f57270a",
+          "bytes": 13
+        },
+        {
+          "file": "lines-page-0.json",
+          "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?objectIds=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50&outFields=%2A&outSR=2056&returnGeometry=true&f=json",
+          "retrievedAt": "2026-09-08T18:02:41.302605+00:00",
+          "sha256": "723585b580c61c02731e09eaa7f06e4de7cd152d6cd85a7591836d1d46cfedbc",
+          "bytes": 2969543
+        },
+        {
+          "file": "lines-page-1.json",
+          "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?objectIds=51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100&outFields=%2A&outSR=2056&returnGeometry=true&f=json",
+          "retrievedAt": "2026-09-08T18:02:43.345293+00:00",
+          "sha256": "8be2391a880f3b2e88b793d5b0629bd1ab1b20732416d5214f6f4ff238c92d19",
+          "bytes": 2843905
+        },
+        {
+          "file": "lines-page-2.json",
+          "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?objectIds=101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128&outFields=%2A&outSR=2056&returnGeometry=true&f=json",
+          "retrievedAt": "2026-09-08T18:02:47.472110+00:00",
+          "sha256": "3080714e01b49acac734b6feba6029f44a52f172454b3397b31ccc8f0bb3b263",
+          "bytes": 2102008
+        },
+        {
+          "file": "ids-after.json",
+          "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnIdsOnly=true&f=json",
+          "retrievedAt": "2026-09-08T18:02:48.519572+00:00",
+          "sha256": "00a1a1985cb71689cd6eb18ada00d64a4bbeb28b6e3c2c52ac891041f69dce14",
+          "bytes": 450
+        }
+      ],
+      "lineCount": 128,
+      "sourceCrs": "EPSG:2056",
+      "boundary": {
+        "edition": "2026-01",
+        "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc"
+      },
+      "derivedHashes": {
+        "decoded.json.gz": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+        "boundary.json.gz": "3886ae85651c711dd0f45c327cb96d08f00afa92edb8a9431b4b3bcbb6a5dbf5"
+      }
+    },
+    "termsFiles": [
+      "portal-terms.html",
+      "geoinformation-ordinance.pdf",
+      "metadata.xml"
+    ],
+    "license": "Dataset-specific vector redistribution terms unresolved; no Creative Commons licence assigned",
+    "publicRedistributionCleared": false,
+    "reuseEvidence": {
+      "portalTerms": "https://map.geo.fr.ch/help/fr/conditions_utilisation.htm",
+      "ordinanceUrl": "https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes",
+      "ordinanceEffective": "2024-03-01",
+      "assessment": "OCGéo art. 12 requires attribution for reproduction; annex 2 classifies the cantonal public transport plan 56-FR as level A. The service metadata does not establish that this line layer is that exact dataset or supply vector terms. Preserve this supporting evidence without claiming a dataset-specific licence. Local archival research feed only until clarified."
+    },
+    "boundary": {
+      "edition": "2026-01",
+      "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+      "snapshotSha256": "3886ae85651c711dd0f45c327cb96d08f00afa92edb8a9431b4b3bcbb6a5dbf5",
+      "attribution": "© swisstopo",
+      "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+      "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+    },
+    "crosswalkSupportingDocuments": [
+      {
+        "file": "timetable-10.213.pdf",
+        "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.213.pdf",
+        "retrievedAt": "2026-09-08T18:02:37.589928+00:00",
+        "sha256": "5606a8360594cb897ad011446f7b3e1f479c8f1b081deb271f53d8253f3bb586",
+        "bytes": 831835,
+        "timetableYear": 2026,
+        "dataUpdated": "2025-12-19"
+      },
+      {
+        "file": "timetable-10.216.pdf",
+        "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.216.pdf",
+        "retrievedAt": "2026-09-08T18:02:37.894388+00:00",
+        "sha256": "03f94e534d735e1503f986bda82d29dc04a755ce4e06e05be4c6e31d2fbd9a2f",
+        "bytes": 507491,
+        "timetableYear": 2026,
+        "dataUpdated": "2025-12-19"
+      },
+      {
+        "file": "timetable-10.217.pdf",
+        "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.217.pdf",
+        "retrievedAt": "2026-09-08T18:02:38.124169+00:00",
+        "sha256": "c9f5680e046bdee5409196b9996f77342e00633f8e0b7435dc2d839df8181d35",
+        "bytes": 1075850,
+        "timetableYear": 2026,
+        "dataUpdated": "2026-05-28"
+      },
+      {
+        "file": "timetable-254.pdf",
+        "url": "https://widgets.oev-info.ch/publikation/jahresfpl/254.pdf",
+        "retrievedAt": "2026-09-08T18:02:38.443703+00:00",
+        "sha256": "2b093ab62c8c54f2a320eb2ce4ef2c6563ee39f5794bb46737e756ce2f87ffa8",
+        "bytes": 515647,
+        "timetableYear": 2026,
+        "dataUpdated": "2025-09-25"
+      }
+    ],
+    "timetable": {
+      "publisher": "SBB / Open data platform mobility Switzerland",
+      "attribution": "opentransportdata.swiss",
+      "sourceUrl": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+      "feed": {
+        "feed_publisher_name": "SBB",
+        "feed_publisher_url": "https://sbb.ch",
+        "feed_lang": "DE",
+        "feed_start_date": "20251214",
+        "feed_end_date": "20261212",
+        "feed_version": "20260902"
+      },
+      "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+      "downloadUrl": "https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip",
+      "termsUrl": "https://opentransportdata.swiss/en/terms-of-use/",
+      "processedBy": "Gleislicht",
+      "archivalStudy": true,
+      "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
+    }
+  },
+  "census": {
+    "allYearTrips": 2143227,
+    "stopTimeRows": 34499152,
+    "selectedAllYearRoutes": 207,
+    "datedSourceTrips": 10813,
+    "frequencyTemplates": 12,
+    "boundaryRule": "At least one original GTFS call coordinate in the unsimplified 2026 Fribourg canton polygon. Full journey retained, including every call outside Fribourg. No operator whitelist.",
+    "allYearMeaning": "All trip records in the pinned annual archive, including records inactive on both validation dates; not a claim of operating every day.",
+    "nearBoundary": [
+      {
+        "id": "ch:1:sloid:4892:0:17122",
+        "name": "Mur, village",
+        "point": [
+          7.06127916,
+          46.94425002
+        ],
+        "inside": false,
+        "gapMetres": 6.386496766657052
+      },
+      {
+        "id": "ch:1:sloid:4892:0:17123",
+        "name": "Mur, village",
+        "point": [
+          7.06136,
+          46.94429295
+        ],
+        "inside": true,
+        "gapMetres": 0.25615806683107395
+      },
+      {
+        "id": "ch:1:sloid:70404:0:452002",
+        "name": "Sassel, Chapalettaz",
+        "point": [
+          6.84866589,
+          46.7711217
+        ],
+        "inside": false,
+        "gapMetres": 3.975402365502172
+      },
+      {
+        "id": "ch:1:sloid:70404:0:710788",
+        "name": "Sassel, Chapalettaz",
+        "point": [
+          6.84880064,
+          46.77110324
+        ],
+        "inside": true,
+        "gapMetres": 0.16550629303726716
+      },
+      {
+        "id": "ch:1:sloid:77639:0:15640",
+        "name": "Rueyres-les-Prés, bif.",
+        "point": [
+          6.91301222,
+          46.86577752
+        ],
+        "inside": false,
+        "gapMetres": 0.4251895402899225
+      },
+      {
+        "id": "ch:1:sloid:77639:0:15641",
+        "name": "Rueyres-les-Prés, bif.",
+        "point": [
+          6.91303018,
+          46.8658328
+        ],
+        "inside": false,
+        "gapMetres": 4.711769311037537
+      },
+      {
+        "id": "Parentch:1:sloid:4892",
+        "name": "Mur, village",
+        "point": [
+          7.06131509,
+          46.94426842
+        ],
+        "inside": false,
+        "gapMetres": 3.442440106013574
+      },
+      {
+        "id": "Parentch:1:sloid:70404",
+        "name": "Sassel, Chapalettaz",
+        "point": [
+          6.84878268,
+          46.77115862
+        ],
+        "inside": true,
+        "gapMetres": 2.715725253040195
+      },
+      {
+        "id": "Parentch:1:sloid:77639",
+        "name": "Rueyres-les-Prés, bif.",
+        "point": [
+          6.91301222,
+          46.86580823
+        ],
+        "inside": false,
+        "gapMetres": 2.1500201978060725
+      }
+    ]
+  },
+  "boundarySensitivity": {
+    "routeIds": [
+      "96-247-j26-1"
+    ],
+    "note": "Metre-level WGS84/LV95 approximation; platforms within 10 m of the boundary are flagged on both sides. Routes supported only by those platforms are provisional geographic members. No polygon buffer applied."
+  },
+  "routeCount": 207,
+  "agencyCount": 17,
+  "weekdaySundayPatterns": {
+    "shared": 327,
+    "weekdayOnly": 522,
+    "sundayOnly": 261,
+    "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
+  },
+  "routesByStatus": {
+    "excluded": 82,
+    "inactive-on-validation-dates": 48,
+    "partially-admitted": 40,
+    "admitted-all-dated-trips": 37
+  },
+  "districts": [
+    {
+      "district": "La Gruyère",
+      "calledPlatforms": 352,
+      "routeIds": [
+        "91-2-M-j26-1",
+        "91-30-J-j26-1",
+        "91-30-K-j26-1",
+        "91-34-A-j26-1",
+        "91-39-A-j26-1",
+        "91-39-j26-1",
+        "91-3-M-j26-1",
+        "91-50-j26-1",
+        "91-51-A-j26-1",
+        "91-96-Y-j26-1",
+        "91-EXT-C-j26-1",
+        "91-GPX-j26-1",
+        "91-L-Y-j26-1",
+        "92-201-A-j26-1",
+        "92-202-A-j26-1",
+        "92-203-A-j26-1",
+        "92-234-j26-1",
+        "92-235-A-j26-1",
+        "92-236-A-j26-1",
+        "92-245-j26-1",
+        "92-258-j26-1",
+        "92-259-j26-1",
+        "92-260-j26-1",
+        "92-262-j26-1",
+        "92-263-j26-1",
+        "92-264-j26-1",
+        "92-265-A-j26-1",
+        "92-267-A-j26-1",
+        "92-336-j26-1",
+        "92-454-j26-1",
+        "92-471-A-j26-1",
+        "92-A03-A-j26-1",
+        "92-A03-M-j26-1",
+        "92-A03-W-j26-1",
+        "92-B50-A-j26-1",
+        "92-EV2-C-j26-1",
+        "92-EV3-R-j26-1",
+        "92-EV7-T-j26-1",
+        "92-EV7-V-j26-1",
+        "92-EV8-J-j26-1",
+        "92-N21-D-j26-1",
+        "92-N22-A-j26-1",
+        "92-N23-F-j26-1",
+        "92-N24-C-j26-1",
+        "92-N25-D-j26-1",
+        "93-1T-Y-j26-1",
+        "93-204-2-j26-1",
+        "93-204-5-j26-1",
+        "93-204-A-j26-1",
+        "96-235-j26-1",
+        "96-954-j26-1"
+      ]
+    },
+    {
+      "district": "Sense",
+      "calledPlatforms": 290,
+      "routeIds": [
+        "91-15-B-j26-1",
+        "91-1D-Y-j26-1",
+        "91-1-E-j26-1",
+        "91-2-A-j26-1",
+        "91-2-M-j26-1",
+        "91-3A-Y-j26-1",
+        "91-3-M-j26-1",
+        "92-120-A-j26-1",
+        "92-123-A-j26-1",
+        "92-124-j26-1",
+        "92-125-j26-1",
+        "92-127-j26-1",
+        "92-129-j26-1",
+        "92-12-E-j26-1",
+        "92-130-j26-1",
+        "92-13-C-j26-1",
+        "92-181-j26-1",
+        "92-182-j26-1",
+        "92-A02-9-j26-1",
+        "92-EV2-C-j26-1",
+        "92-EV3-Z-j26-1",
+        "92-EV4-C-j26-1",
+        "92-EV5-T-j26-1",
+        "92-N11-j26-1",
+        "92-N15-j26-1",
+        "92-N16-j26-1",
+        "92-N17-B-j26-1",
+        "93-1T-Y-j26-1",
+        "96-752-j26-1",
+        "96-880-j26-1",
+        "96-881-j26-1",
+        "96-882-j26-1",
+        "96-883-j26-1"
+      ]
+    },
+    {
+      "district": "La Glâne",
+      "calledPlatforms": 229,
+      "routeIds": [
+        "91-15-B-j26-1",
+        "91-1-D-j26-1",
+        "91-2B-Y-j26-1",
+        "91-2-M-j26-1",
+        "91-3A-Y-j26-1",
+        "91-3-M-j26-1",
+        "91-3Y-Y-j26-1",
+        "91-40-C-j26-1",
+        "91-41-D-j26-1",
+        "91-4C-Y-j26-1",
+        "91-4N-Y-j26-1",
+        "91-4P-Y-j26-1",
+        "91-7-N-j26-1",
+        "91-7N-Y-j26-1",
+        "91-8-J-j26-1",
+        "91-9-K-j26-1",
+        "91-AG-Y-j26-1",
+        "91-CB-Y-j26-1",
+        "91-L-Y-j26-1",
+        "91-N1-j26-1",
+        "91-O-Y-j26-1",
+        "91-T-Y-j26-1",
+        "92-258-j26-1",
+        "92-454-j26-1",
+        "92-455-j26-1",
+        "92-470-j26-1",
+        "92-471-A-j26-1",
+        "92-472-j26-1",
+        "92-473-j26-1",
+        "92-474-j26-1",
+        "92-476-A-j26-1",
+        "92-478-j26-1",
+        "92-479-j26-1",
+        "92-480-j26-1",
+        "92-482-j26-1",
+        "92-A02-9-j26-1",
+        "92-A03-E-j26-1",
+        "92-EV2-C-j26-1",
+        "92-EV3-R-j26-1",
+        "92-EV4-N-j26-1",
+        "92-EV5-G-j26-1",
+        "92-EV9-j26-1",
+        "92-N12-D-j26-1",
+        "92-N24-C-j26-1",
+        "96-215-j26-1",
+        "96-216-j26-1",
+        "96-217-j26-1",
+        "96-221-j26-1"
+      ]
+    },
+    {
+      "district": "See",
+      "calledPlatforms": 199,
+      "routeIds": [
+        "91-20-B-j26-1",
+        "91-21-A-j26-1",
+        "91-35-F-j26-1",
+        "91-3C-Y-j26-1",
+        "91-4P-Y-j26-1",
+        "91-52-j26-1",
+        "91-5-j26-1",
+        "91-5O-Y-j26-1",
+        "91-66-A-j26-1",
+        "91-7N-Y-j26-1",
+        "91-8S-Y-j26-1",
+        "91-8T-Y-j26-1",
+        "91-9-K-j26-1",
+        "92-520-j26-1",
+        "92-530-j26-1",
+        "92-544-j26-1",
+        "92-545-j26-1",
+        "92-546-j26-1",
+        "92-548-j26-1",
+        "92-549-j26-1",
+        "92-558-j26-1",
+        "92-A02-F-j26-1",
+        "92-A04-N-j26-1",
+        "92-A07-D-j26-1",
+        "92-A07-K-j26-1",
+        "92-A0B-X-j26-1",
+        "92-EV2-R-j26-1",
+        "92-EV3-D-j26-1",
+        "92-EV5-G-j26-1",
+        "92-M22-j26-1",
+        "92-N14-D-j26-1",
+        "92-N15-j26-1",
+        "94-321-2-j26-1",
+        "94-321-3-j26-1",
+        "94-321-5-j26-1",
+        "94-321-A-j26-1",
+        "96-882-j26-1",
+        "96-883-j26-1",
+        "96-884-j26-1"
+      ]
+    },
+    {
+      "district": "La Veveyse",
+      "calledPlatforms": 127,
+      "routeIds": [
+        "91-50-j26-1",
+        "91-51-A-j26-1",
+        "92-213-j26-1",
+        "92-216-j26-1",
+        "92-217-j26-1",
+        "92-258-j26-1",
+        "92-455-j26-1",
+        "92-472-j26-1",
+        "92-481-B-j26-1",
+        "92-491-C-j26-1",
+        "92-492-j26-1",
+        "92-496-j26-1",
+        "92-A03-A-j26-1",
+        "92-A03-M-j26-1",
+        "92-B50-A-j26-1",
+        "92-EV4-V-j26-1",
+        "92-EV6-S-j26-1",
+        "92-EV7-T-j26-1",
+        "92-EV8-J-j26-1",
+        "92-N23-F-j26-1",
+        "96-203-j26-1",
+        "96-213-j26-1"
+      ]
+    },
+    {
+      "district": "La Sarine",
+      "calledPlatforms": 600,
+      "routeIds": [
+        "91-15-B-j26-1",
+        "91-1-D-j26-1",
+        "91-1-E-j26-1",
+        "91-20-B-j26-1",
+        "91-21-A-j26-1",
+        "91-2B-Y-j26-1",
+        "91-2H-Y-j26-1",
+        "91-2-M-j26-1",
+        "91-30-j26-1",
+        "91-3A-Y-j26-1",
+        "91-3C-Y-j26-1",
+        "91-3-M-j26-1",
+        "91-3Y-Y-j26-1",
+        "91-40-C-j26-1",
+        "91-41-D-j26-1",
+        "91-4C-Y-j26-1",
+        "91-4N-Y-j26-1",
+        "91-7C-Y-j26-1",
+        "91-8F-Y-j26-1",
+        "91-8S-Y-j26-1",
+        "91-9H-Y-j26-1",
+        "91-AG-Y-j26-1",
+        "91-CB-Y-j26-1",
+        "91-L-Y-j26-1",
+        "91-N1-j26-1",
+        "91-O-Y-j26-1",
+        "91-T-Y-j26-1",
+        "92-11-E-j26-1",
+        "92-123-A-j26-1",
+        "92-124-j26-1",
+        "92-127-j26-1",
+        "92-129-j26-1",
+        "92-181-j26-1",
+        "92-182-j26-1",
+        "92-1-A-j26-1",
+        "92-231-j26-1",
+        "92-233-j26-1",
+        "92-234-j26-1",
+        "92-236-A-j26-1",
+        "92-245-j26-1",
+        "92-2-A-j26-1",
+        "92-336-j26-1",
+        "92-337-j26-1",
+        "92-339-j26-1",
+        "92-340-A-j26-1",
+        "92-361-A-j26-1",
+        "92-3-A-j26-1",
+        "92-470-j26-1",
+        "92-4-A-j26-1",
+        "92-542-A-j26-1",
+        "92-544-j26-1",
+        "92-545-j26-1",
+        "92-5-A-j26-1",
+        "92-6-B-j26-1",
+        "92-8-D-j26-1",
+        "92-9-E-j26-1",
+        "92-A00-O-j26-1",
+        "92-A02-9-j26-1",
+        "92-A07-E-j26-1",
+        "92-EV2-C-j26-1",
+        "92-EV3-Z-j26-1",
+        "92-EV4-C-j26-1",
+        "92-EV4-N-j26-1",
+        "92-EV5-G-j26-1",
+        "92-EV5-T-j26-1",
+        "92-EV7-V-j26-1",
+        "92-N11-j26-1",
+        "92-N12-D-j26-1",
+        "92-N13-D-j26-1",
+        "92-N14-D-j26-1",
+        "92-N15-j26-1",
+        "92-N16-j26-1",
+        "92-N17-B-j26-1",
+        "92-N1-M-j26-1",
+        "92-N21-D-j26-1",
+        "92-N25-D-j26-1",
+        "92-N2-L-j26-1",
+        "92-N3-L-j26-1",
+        "92-N5-F-j26-1",
+        "93-203-0-j26-1",
+        "96-216-j26-1",
+        "96-217-j26-1",
+        "96-219-j26-1"
+      ]
+    },
+    {
+      "district": "La Broye",
+      "calledPlatforms": 207,
+      "routeIds": [
+        "91-30-j26-1",
+        "91-4P-Y-j26-1",
+        "91-52-j26-1",
+        "91-7C-Y-j26-1",
+        "91-7N-Y-j26-1",
+        "91-9H-Y-j26-1",
+        "91-9-K-j26-1",
+        "91-X-Y-j26-1",
+        "92-544-j26-1",
+        "92-551-j26-1",
+        "92-552-j26-1",
+        "92-553-j26-1",
+        "92-554-j26-1",
+        "92-555-A-j26-1",
+        "92-556-j26-1",
+        "92-557-j26-1",
+        "92-558-j26-1",
+        "92-A00-O-j26-1",
+        "92-A02-F-j26-1",
+        "92-A07-D-j26-1",
+        "92-A07-E-j26-1",
+        "92-EV1-F-j26-1",
+        "92-EV5-G-j26-1",
+        "92-N13-D-j26-1",
+        "92-N14-D-j26-1",
+        "94-321-0-j26-1",
+        "94-321-4-j26-1",
+        "96-180-j26-1",
+        "96-220-j26-1",
+        "96-231-j26-1",
+        "96-232-j26-1",
+        "96-233-j26-1",
+        "96-247-j26-1",
+        "96-286-j26-1"
+      ]
+    }
+  ],
+  "days": [
+    {
+      "schemaVersion": 1,
+      "serviceDate": "2026-09-04",
+      "sourceHashes": {
+        "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+        "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+        "crosswalk": "c3c28f0f3952c03f4695ee6331cf80a6224ff1df87ee10a4efcb69fadb99063d",
+        "provenance": "4a4bb2dae3fc541b91018097cd82dbcc91c259b327cf52d19b8d5b17919077c9"
+      },
+      "coverage": {
+        "trips": 8556,
+        "admittedTrips": 2452,
+        "scheduledTrips": 5812,
+        "representativeHeadwayTrips": 2744,
+        "admittedScheduledTrips": 2452,
+        "admittedRepresentativeHeadwayTrips": 0,
+        "scheduledSegmentOccurrences": 89328,
+        "matchedScheduledSegmentOccurrences": 76952,
+        "segmentOccurrences": 92072,
+        "matchedSegmentOccurrences": 76952,
+        "admittedSegmentOccurrences": 34595,
+        "directedPairs": 4509,
+        "matchedDirectedPairs": 3348,
+        "patterns": 849,
+        "completePatterns": 338,
+        "admittedPatterns": 338,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 2886,
+          "no-verified-operator-line-crosswalk": 3218
+        }
+      },
+      "groups": [
+        {
+          "id": "11:rail",
+          "agency": "Schweizerische Bundesbahnen SBB",
+          "trips": 334,
+          "admittedTrips": 160,
+          "scheduledTrips": 334,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 160,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 4424,
+          "matchedScheduledSegmentOccurrences": 3378,
+          "segmentOccurrences": 4424,
+          "matchedSegmentOccurrences": 3378,
+          "admittedSegmentOccurrences": 2672,
+          "directedPairs": 356,
+          "matchedDirectedPairs": 216,
+          "patterns": 107,
+          "completePatterns": 39,
+          "admittedPatterns": 39,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 93,
+            "no-verified-operator-line-crosswalk": 81
+          }
+        },
+        {
+          "id": "182:ferry",
+          "agency": "Bielersee-Schifffahrts-Gesellschaft AG",
+          "trips": 2,
+          "admittedTrips": 0,
+          "scheduledTrips": 2,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 30,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 30,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 30,
+          "matchedDirectedPairs": 0,
+          "patterns": 2,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 2
+          }
+        },
+        {
+          "id": "189:ferry",
+          "agency": "Lacs de Neuchâtel et Morat",
+          "trips": 16,
+          "admittedTrips": 0,
+          "scheduledTrips": 16,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 77,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 77,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 41,
+          "matchedDirectedPairs": 0,
+          "patterns": 8,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 16
+          }
+        },
+        {
+          "id": "3005:cableway",
+          "agency": "Kaisereggbahnen Schwarzsee AG",
+          "trips": 1020,
+          "admittedTrips": 0,
+          "scheduledTrips": 0,
+          "representativeHeadwayTrips": 1020,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 1020,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "patterns": 2,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 1020
+          }
+        },
+        {
+          "id": "3009:cableway",
+          "agency": "Centre Touristique Moléson",
+          "trips": 51,
+          "admittedTrips": 0,
+          "scheduledTrips": 0,
+          "representativeHeadwayTrips": 51,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 51,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "patterns": 2,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 51
+          }
+        },
+        {
+          "id": "3009:funicular",
+          "agency": "Centre Touristique Moléson",
+          "trips": 53,
+          "admittedTrips": 0,
+          "scheduledTrips": 0,
+          "representativeHeadwayTrips": 53,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 53,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "patterns": 2,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 53
+          }
+        },
+        {
+          "id": "3258:cableway",
+          "agency": "TéléCharmey SA",
+          "trips": 1620,
+          "admittedTrips": 0,
+          "scheduledTrips": 0,
+          "representativeHeadwayTrips": 1620,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 1620,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "patterns": 2,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 1620
+          }
+        },
+        {
+          "id": "33:rail",
+          "agency": "BLS AG (bls)",
+          "trips": 443,
+          "admittedTrips": 89,
+          "scheduledTrips": 443,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 89,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 4830,
+          "matchedScheduledSegmentOccurrences": 2278,
+          "segmentOccurrences": 4830,
+          "matchedSegmentOccurrences": 2278,
+          "admittedSegmentOccurrences": 411,
+          "directedPairs": 277,
+          "matchedDirectedPairs": 124,
+          "patterns": 83,
+          "completePatterns": 19,
+          "admittedPatterns": 19,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 276,
+            "no-verified-operator-line-crosswalk": 78
+          }
+        },
+        {
+          "id": "53:rail",
+          "agency": "Transports publics fribourgeois",
+          "trips": 265,
+          "admittedTrips": 55,
+          "scheduledTrips": 265,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 55,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 2616,
+          "matchedScheduledSegmentOccurrences": 1877,
+          "segmentOccurrences": 2616,
+          "matchedSegmentOccurrences": 1877,
+          "admittedSegmentOccurrences": 317,
+          "directedPairs": 210,
+          "matchedDirectedPairs": 141,
+          "patterns": 88,
+          "completePatterns": 27,
+          "admittedPatterns": 27,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 169,
+            "no-verified-operator-line-crosswalk": 41
+          }
+        },
+        {
+          "id": "64:rail",
+          "agency": "Montreux-Oberland Bernois",
+          "trips": 50,
+          "admittedTrips": 0,
+          "scheduledTrips": 50,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 1135,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 1135,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 152,
+          "matchedDirectedPairs": 0,
+          "patterns": 25,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 50
+          }
+        },
+        {
+          "id": "7223:bus",
+          "agency": "Transports publics fribourgeois Ersatzverkehr",
+          "trips": 2,
+          "admittedTrips": 0,
+          "scheduledTrips": 2,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 8,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 8,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 4,
+          "matchedDirectedPairs": 0,
+          "patterns": 1,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 2
+          }
+        },
+        {
+          "id": "7231:bus",
+          "agency": "SBB Infrastruktur AG Bahnersatz",
+          "trips": 32,
+          "admittedTrips": 0,
+          "scheduledTrips": 32,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 153,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 153,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 38,
+          "matchedDirectedPairs": 0,
+          "patterns": 11,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 32
+          }
+        },
+        {
+          "id": "801:bus",
+          "agency": "PostAuto AG",
+          "trips": 602,
+          "admittedTrips": 311,
+          "scheduledTrips": 602,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 311,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 7865,
+          "matchedScheduledSegmentOccurrences": 6049,
+          "segmentOccurrences": 7865,
+          "matchedSegmentOccurrences": 6049,
+          "admittedSegmentOccurrences": 4695,
+          "directedPairs": 721,
+          "matchedDirectedPairs": 535,
+          "patterns": 110,
+          "completePatterns": 56,
+          "admittedPatterns": 56,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 178,
+            "no-verified-operator-line-crosswalk": 113
+          }
+        },
+        {
+          "id": "834:bus",
+          "agency": "Service d'automobiles TPF",
+          "trips": 3918,
+          "admittedTrips": 1800,
+          "scheduledTrips": 3918,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 1800,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 65387,
+          "matchedScheduledSegmentOccurrences": 60790,
+          "segmentOccurrences": 65387,
+          "matchedSegmentOccurrences": 60790,
+          "admittedSegmentOccurrences": 25796,
+          "directedPairs": 2555,
+          "matchedDirectedPairs": 2223,
+          "patterns": 396,
+          "completePatterns": 195,
+          "admittedPatterns": 195,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 2059,
+            "no-verified-operator-line-crosswalk": 59
+          }
+        },
+        {
+          "id": "876:bus",
+          "agency": "Transports publics Vevey-Montreux-Chillon-Villeneuve",
+          "trips": 148,
+          "admittedTrips": 37,
+          "scheduledTrips": 148,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 37,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 2803,
+          "matchedScheduledSegmentOccurrences": 2580,
+          "segmentOccurrences": 2803,
+          "matchedSegmentOccurrences": 2580,
+          "admittedSegmentOccurrences": 704,
+          "directedPairs": 117,
+          "matchedDirectedPairs": 109,
+          "patterns": 10,
+          "completePatterns": 2,
+          "admittedPatterns": 2,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 111
+          }
+        }
+      ],
+      "timing": {
+        "zeroDurationSegmentOccurrences": 2380,
+        "zeroDurationOver100m": 2380,
+        "maximumPositiveDurationSpeedKmh": 132.4075795155743,
+        "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
+      },
+      "pairFailures": {
+        "collapsed-path": {
+          "directedPairs": 9,
+          "segmentOccurrences": 66
+        },
+        "disconnected-line": {
+          "directedPairs": 42,
+          "segmentOccurrences": 1055
+        },
+        "endpoint-gap": {
+          "directedPairs": 378,
+          "segmentOccurrences": 5955
+        },
+        "implausible-detour": {
+          "directedPairs": 6,
+          "segmentOccurrences": 90
+        },
+        "missing-line": {
+          "directedPairs": 726,
+          "segmentOccurrences": 7954
+        }
+      },
+      "carryInTrips": 97,
+      "admittedCarryInTrips": 29,
+      "admittedOutsideCantonPlatforms": 227,
+      "directedPatternChecks": {
+        "directionIds": [
+          "0",
+          "1"
+        ],
+        "patternsRevisitingPlatforms": 9,
+        "admittedPatternsRevisitingPlatforms": 2,
+        "nightRouteTrips": 0,
+        "admittedNightRouteTrips": 0
+      },
+      "payload": {
+        "manifest": {
+          "bytes": 3897671,
+          "gzipBytes": 980332
+        },
+        "morning": {
+          "trips": 415,
+          "gzipBytes": 1025940
+        },
+        "chunks": [
+          {
+            "id": "00-02",
+            "windowStart": 0,
+            "windowEnd": 7200,
+            "path": "day-chunks/00-02.json",
+            "tripCount": 29,
+            "bytes": 23319,
+            "sha256": "e6b407974aeb19170397d3ebfdefd0d82978b5082bbde32fbef7280483d67118",
+            "gzipBytes": 4923
+          },
+          {
+            "id": "02-04",
+            "windowStart": 7200,
+            "windowEnd": 14400,
+            "path": "day-chunks/02-04.json",
+            "tripCount": 0,
+            "bytes": 50,
+            "sha256": "e02cd1fe8fa4533c5a8c598577052d6a8fe5236c265f0cfa8d5816b7fd86aa93",
+            "gzipBytes": 62
+          },
+          {
+            "id": "04-06",
+            "windowStart": 14400,
+            "windowEnd": 21600,
+            "path": "day-chunks/04-06.json",
+            "tripCount": 101,
+            "bytes": 88362,
+            "sha256": "53ba2f75af6c7cfa45710e455ae425694099acf1bc87f00853f6041b59402e08",
+            "gzipBytes": 15302
+          },
+          {
+            "id": "06-08",
+            "windowStart": 21600,
+            "windowEnd": 28800,
+            "path": "day-chunks/06-08.json",
+            "tripCount": 424,
+            "bytes": 356185,
+            "sha256": "70066b0b2451466734eab4d82a6239a0dab6b52bf8a59ee1f86c3ed86567e870",
+            "gzipBytes": 47919
+          },
+          {
+            "id": "08-10",
+            "windowStart": 28800,
+            "windowEnd": 36000,
+            "path": "day-chunks/08-10.json",
+            "tripCount": 310,
+            "bytes": 278167,
+            "sha256": "08ea4e08b92e43c827fce05156033ff9b89b150d8ee92548d2debddfe69c3784",
+            "gzipBytes": 38895
+          },
+          {
+            "id": "10-12",
+            "windowStart": 36000,
+            "windowEnd": 43200,
+            "path": "day-chunks/10-12.json",
+            "tripCount": 292,
+            "bytes": 262469,
+            "sha256": "3ce07b804a21dd9c3c18321fc1b1722e4d23c9918ffac07a9a335d6da9bd9d79",
+            "gzipBytes": 36690
+          },
+          {
+            "id": "12-14",
+            "windowStart": 43200,
+            "windowEnd": 50400,
+            "path": "day-chunks/12-14.json",
+            "tripCount": 378,
+            "bytes": 323327,
+            "sha256": "6958a4331b09ff3ce6f7f51dcdd236455342799c8dc67c19be6dfad52da0c9b5",
+            "gzipBytes": 44540
+          },
+          {
+            "id": "14-16",
+            "windowStart": 50400,
+            "windowEnd": 57600,
+            "path": "day-chunks/14-16.json",
+            "tripCount": 310,
+            "bytes": 276107,
+            "sha256": "c077cbd55b173aed8c04469aba75c0c823fcd53ebfca3855d0f772996b8a2b1e",
+            "gzipBytes": 38302
+          },
+          {
+            "id": "16-18",
+            "windowStart": 57600,
+            "windowEnd": 64800,
+            "path": "day-chunks/16-18.json",
+            "tripCount": 418,
+            "bytes": 360339,
+            "sha256": "5f8298d7b957a3195fc7ddb011a049784885ec6968daed9b93de6d0e13a35573",
+            "gzipBytes": 48328
+          },
+          {
+            "id": "18-20",
+            "windowStart": 64800,
+            "windowEnd": 72000,
+            "path": "day-chunks/18-20.json",
+            "tripCount": 369,
+            "bytes": 322728,
+            "sha256": "6bc12b798dc8a792b274dc5f74c39b8ca7163ba43682e85a4867a5ded76e637f",
+            "gzipBytes": 43664
+          },
+          {
+            "id": "20-22",
+            "windowStart": 72000,
+            "windowEnd": 79200,
+            "path": "day-chunks/20-22.json",
+            "tripCount": 197,
+            "bytes": 183869,
+            "sha256": "015745aa964f5ac58aa3eefb2c2c15d7254398b7156da5e84dfade8b6cfa17d3",
+            "gzipBytes": 26549
+          },
+          {
+            "id": "22-24",
+            "windowStart": 79200,
+            "windowEnd": 86400,
+            "path": "day-chunks/22-24.json",
+            "tripCount": 137,
+            "bytes": 128146,
+            "sha256": "9871c563c3dafd4b5990afa2a494a0bdc977916bd1daf8990c0202eb50cf8645",
+            "gzipBytes": 19187
+          }
+        ]
+      },
+      "validation": {
+        "completeSourceCalls": true,
+        "directedEndpoints": true,
+        "finiteOrderedTimes": true,
+        "chunkHashesAndTripIdentity": true,
+        "admittedGeometryCoverage": 1,
+        "unsourcedInterpolationInFeed": false,
+        "physicalDirectionCertified": false,
+        "yearRoundCoverageEstablished": false
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "serviceDate": "2026-09-06",
+      "sourceHashes": {
+        "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+        "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+        "crosswalk": "c3c28f0f3952c03f4695ee6331cf80a6224ff1df87ee10a4efcb69fadb99063d",
+        "provenance": "4a4bb2dae3fc541b91018097cd82dbcc91c259b327cf52d19b8d5b17919077c9"
+      },
+      "coverage": {
+        "trips": 6326,
+        "admittedTrips": 1541,
+        "scheduledTrips": 4062,
+        "representativeHeadwayTrips": 2264,
+        "admittedScheduledTrips": 1541,
+        "admittedRepresentativeHeadwayTrips": 0,
+        "scheduledSegmentOccurrences": 62231,
+        "matchedScheduledSegmentOccurrences": 52740,
+        "segmentOccurrences": 64495,
+        "matchedSegmentOccurrences": 52740,
+        "admittedSegmentOccurrences": 24547,
+        "directedPairs": 4607,
+        "matchedDirectedPairs": 3422,
+        "patterns": 588,
+        "completePatterns": 196,
+        "admittedPatterns": 196,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 1998,
+          "no-verified-operator-line-crosswalk": 2787
+        }
+      },
+      "groups": [
+        {
+          "id": "11:rail",
+          "agency": "Schweizerische Bundesbahnen SBB",
+          "trips": 334,
+          "admittedTrips": 163,
+          "scheduledTrips": 334,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 163,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 4519,
+          "matchedScheduledSegmentOccurrences": 3502,
+          "segmentOccurrences": 4519,
+          "matchedSegmentOccurrences": 3502,
+          "admittedSegmentOccurrences": 2716,
+          "directedPairs": 452,
+          "matchedDirectedPairs": 219,
+          "patterns": 118,
+          "completePatterns": 47,
+          "admittedPatterns": 47,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 82,
+            "no-verified-operator-line-crosswalk": 89
+          }
+        },
+        {
+          "id": "182:ferry",
+          "agency": "Bielersee-Schifffahrts-Gesellschaft AG",
+          "trips": 2,
+          "admittedTrips": 0,
+          "scheduledTrips": 2,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 30,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 30,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 30,
+          "matchedDirectedPairs": 0,
+          "patterns": 2,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 2
+          }
+        },
+        {
+          "id": "189:ferry",
+          "agency": "Lacs de Neuchâtel et Morat",
+          "trips": 16,
+          "admittedTrips": 0,
+          "scheduledTrips": 16,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 77,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 77,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 41,
+          "matchedDirectedPairs": 0,
+          "patterns": 8,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 16
+          }
+        },
+        {
+          "id": "3005:cableway",
+          "agency": "Kaisereggbahnen Schwarzsee AG",
+          "trips": 1080,
+          "admittedTrips": 0,
+          "scheduledTrips": 0,
+          "representativeHeadwayTrips": 1080,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 1080,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "patterns": 2,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 1080
+          }
+        },
+        {
+          "id": "3009:cableway",
+          "agency": "Centre Touristique Moléson",
+          "trips": 51,
+          "admittedTrips": 0,
+          "scheduledTrips": 0,
+          "representativeHeadwayTrips": 51,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 51,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "patterns": 2,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 51
+          }
+        },
+        {
+          "id": "3009:funicular",
+          "agency": "Centre Touristique Moléson",
+          "trips": 53,
+          "admittedTrips": 0,
+          "scheduledTrips": 0,
+          "representativeHeadwayTrips": 53,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 53,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "patterns": 2,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 53
+          }
+        },
+        {
+          "id": "3258:cableway",
+          "agency": "TéléCharmey SA",
+          "trips": 1080,
+          "admittedTrips": 0,
+          "scheduledTrips": 0,
+          "representativeHeadwayTrips": 1080,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 1080,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "patterns": 2,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 1080
+          }
+        },
+        {
+          "id": "33:rail",
+          "agency": "BLS AG (bls)",
+          "trips": 384,
+          "admittedTrips": 33,
+          "scheduledTrips": 384,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 33,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 4390,
+          "matchedScheduledSegmentOccurrences": 1927,
+          "segmentOccurrences": 4390,
+          "matchedSegmentOccurrences": 1927,
+          "admittedSegmentOccurrences": 67,
+          "directedPairs": 259,
+          "matchedDirectedPairs": 93,
+          "patterns": 84,
+          "completePatterns": 7,
+          "admittedPatterns": 7,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 275,
+            "no-verified-operator-line-crosswalk": 76
+          }
+        },
+        {
+          "id": "53:rail",
+          "agency": "Transports publics fribourgeois",
+          "trips": 280,
+          "admittedTrips": 59,
+          "scheduledTrips": 280,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 59,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 1904,
+          "matchedScheduledSegmentOccurrences": 1683,
+          "segmentOccurrences": 1904,
+          "matchedSegmentOccurrences": 1683,
+          "admittedSegmentOccurrences": 332,
+          "directedPairs": 142,
+          "matchedDirectedPairs": 121,
+          "patterns": 60,
+          "completePatterns": 24,
+          "admittedPatterns": 24,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 221
+          }
+        },
+        {
+          "id": "64:rail",
+          "agency": "Montreux-Oberland Bernois",
+          "trips": 50,
+          "admittedTrips": 0,
+          "scheduledTrips": 50,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 1071,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 1071,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 147,
+          "matchedDirectedPairs": 0,
+          "patterns": 25,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 50
+          }
+        },
+        {
+          "id": "7040:bus",
+          "agency": "Montreux-Oberland Bernois Ersatzverkehr",
+          "trips": 9,
+          "admittedTrips": 0,
+          "scheduledTrips": 9,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 120,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 120,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 30,
+          "matchedDirectedPairs": 0,
+          "patterns": 4,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 9
+          }
+        },
+        {
+          "id": "7223:bus",
+          "agency": "Transports publics fribourgeois Ersatzverkehr",
+          "trips": 10,
+          "admittedTrips": 0,
+          "scheduledTrips": 10,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 21,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 21,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 10,
+          "matchedDirectedPairs": 0,
+          "patterns": 5,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 10
+          }
+        },
+        {
+          "id": "7231:bus",
+          "agency": "SBB Infrastruktur AG Bahnersatz",
+          "trips": 155,
+          "admittedTrips": 0,
+          "scheduledTrips": 155,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 485,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 485,
+          "matchedSegmentOccurrences": 0,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 27,
+          "matchedDirectedPairs": 0,
+          "patterns": 13,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "no-verified-operator-line-crosswalk": 155
+          }
+        },
+        {
+          "id": "801:bus",
+          "agency": "PostAuto AG",
+          "trips": 272,
+          "admittedTrips": 189,
+          "scheduledTrips": 272,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 189,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 4343,
+          "matchedScheduledSegmentOccurrences": 3672,
+          "segmentOccurrences": 4343,
+          "matchedSegmentOccurrences": 3672,
+          "admittedSegmentOccurrences": 3197,
+          "directedPairs": 547,
+          "matchedDirectedPairs": 421,
+          "patterns": 45,
+          "completePatterns": 24,
+          "admittedPatterns": 24,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 50,
+            "no-verified-operator-line-crosswalk": 33
+          }
+        },
+        {
+          "id": "834:bus",
+          "agency": "Service d'automobiles TPF",
+          "trips": 2435,
+          "admittedTrips": 1060,
+          "scheduledTrips": 2435,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 1060,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 43081,
+          "matchedScheduledSegmentOccurrences": 39907,
+          "segmentOccurrences": 43081,
+          "matchedSegmentOccurrences": 39907,
+          "admittedSegmentOccurrences": 17529,
+          "directedPairs": 2797,
+          "matchedDirectedPairs": 2459,
+          "patterns": 205,
+          "completePatterns": 92,
+          "admittedPatterns": 92,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 1292,
+            "no-verified-operator-line-crosswalk": 83
+          }
+        },
+        {
+          "id": "876:bus",
+          "agency": "Transports publics Vevey-Montreux-Chillon-Villeneuve",
+          "trips": 115,
+          "admittedTrips": 37,
+          "scheduledTrips": 115,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 37,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 2190,
+          "matchedScheduledSegmentOccurrences": 2049,
+          "segmentOccurrences": 2190,
+          "matchedSegmentOccurrences": 2049,
+          "admittedSegmentOccurrences": 706,
+          "directedPairs": 117,
+          "matchedDirectedPairs": 109,
+          "patterns": 11,
+          "completePatterns": 2,
+          "admittedPatterns": 2,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 78
+          }
+        }
+      ],
+      "timing": {
+        "zeroDurationSegmentOccurrences": 1697,
+        "zeroDurationOver100m": 1697,
+        "maximumPositiveDurationSpeedKmh": 160.05716324720422,
+        "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
+      },
+      "pairFailures": {
+        "collapsed-path": {
+          "directedPairs": 6,
+          "segmentOccurrences": 38
+        },
+        "disconnected-line": {
+          "directedPairs": 29,
+          "segmentOccurrences": 645
+        },
+        "endpoint-gap": {
+          "directedPairs": 380,
+          "segmentOccurrences": 4346
+        },
+        "implausible-detour": {
+          "directedPairs": 3,
+          "segmentOccurrences": 57
+        },
+        "missing-line": {
+          "directedPairs": 767,
+          "segmentOccurrences": 6669
+        }
+      },
+      "carryInTrips": 179,
+      "admittedCarryInTrips": 49,
+      "admittedOutsideCantonPlatforms": 182,
+      "directedPatternChecks": {
+        "directionIds": [
+          "0",
+          "1"
+        ],
+        "patternsRevisitingPlatforms": 6,
+        "admittedPatternsRevisitingPlatforms": 0,
+        "nightRouteTrips": 53,
+        "admittedNightRouteTrips": 10
+      },
+      "payload": {
+        "manifest": {
+          "bytes": 3253881,
+          "gzipBytes": 846800
+        },
+        "morning": {
+          "trips": 207,
+          "gzipBytes": 873704
+        },
+        "chunks": [
+          {
+            "id": "00-02",
+            "windowStart": 0,
+            "windowEnd": 7200,
+            "path": "day-chunks/00-02.json",
+            "tripCount": 44,
+            "bytes": 36456,
+            "sha256": "be81e26e80039ba610a5223d035eeb1bb9ee0d75b03ff7de2d0dec3bc913537e",
+            "gzipBytes": 7659
+          },
+          {
+            "id": "02-04",
+            "windowStart": 7200,
+            "windowEnd": 14400,
+            "path": "day-chunks/02-04.json",
+            "tripCount": 6,
+            "bytes": 7379,
+            "sha256": "eb1ba812edd7d13b015870922ffd13d5f621851e1a8a4db261b50a2ebb7bb1d1",
+            "gzipBytes": 2020
+          },
+          {
+            "id": "04-06",
+            "windowStart": 14400,
+            "windowEnd": 21600,
+            "path": "day-chunks/04-06.json",
+            "tripCount": 46,
+            "bytes": 43751,
+            "sha256": "2c9973723ff77861d7f983040849a888ae9fc32a21cdcdc6cb3c03036f3cc5ca",
+            "gzipBytes": 7677
+          },
+          {
+            "id": "06-08",
+            "windowStart": 21600,
+            "windowEnd": 28800,
+            "path": "day-chunks/06-08.json",
+            "tripCount": 171,
+            "bytes": 155802,
+            "sha256": "920d2ed59797e3e57fc72c45529943632b881a084e6b1e091c976d58f1bd3804",
+            "gzipBytes": 23734
+          },
+          {
+            "id": "08-10",
+            "windowStart": 28800,
+            "windowEnd": 36000,
+            "path": "day-chunks/08-10.json",
+            "tripCount": 221,
+            "bytes": 201815,
+            "sha256": "e240465fc6d5389539033190439dd0c2bec601bbc54d29e9293c448fde342347",
+            "gzipBytes": 29835
+          },
+          {
+            "id": "10-12",
+            "windowStart": 36000,
+            "windowEnd": 43200,
+            "path": "day-chunks/10-12.json",
+            "tripCount": 220,
+            "bytes": 202434,
+            "sha256": "933d14e8a7d43a1768302d14c7631ec953cf8071864c96327f35e227b735353d",
+            "gzipBytes": 30006
+          },
+          {
+            "id": "12-14",
+            "windowStart": 43200,
+            "windowEnd": 50400,
+            "path": "day-chunks/12-14.json",
+            "tripCount": 224,
+            "bytes": 203747,
+            "sha256": "342781f3a1150e66c03ef49c0ed7334323f308eb420029f1b085d10bc026ecfe",
+            "gzipBytes": 30036
+          },
+          {
+            "id": "14-16",
+            "windowStart": 50400,
+            "windowEnd": 57600,
+            "path": "day-chunks/14-16.json",
+            "tripCount": 216,
+            "bytes": 199058,
+            "sha256": "7afda669eeb92c5eac5ed81748e93b89d870ae8073454509827ed8bdb2035032",
+            "gzipBytes": 29324
+          },
+          {
+            "id": "16-18",
+            "windowStart": 57600,
+            "windowEnd": 64800,
+            "path": "day-chunks/16-18.json",
+            "tripCount": 236,
+            "bytes": 213494,
+            "sha256": "935f5bd3626f09e0b9646689e5bd5cfa0ceab6a1f7fd435e234a5f18bc709720",
+            "gzipBytes": 31472
+          },
+          {
+            "id": "18-20",
+            "windowStart": 64800,
+            "windowEnd": 72000,
+            "path": "day-chunks/18-20.json",
+            "tripCount": 215,
+            "bytes": 196853,
+            "sha256": "b78eea1e873454cfe349a2a3512e1524bb1c7ed7ef3b8668f0b2e0f60259464d",
+            "gzipBytes": 29115
+          },
+          {
+            "id": "20-22",
+            "windowStart": 72000,
+            "windowEnd": 79200,
+            "path": "day-chunks/20-22.json",
+            "tripCount": 165,
+            "bytes": 158232,
+            "sha256": "53b2653ff6bb8f20d6d84ba5939a04798c6daa2bbd23f85ba03dde861c9a1f70",
+            "gzipBytes": 23472
+          },
+          {
+            "id": "22-24",
+            "windowStart": 79200,
+            "windowEnd": 86400,
+            "path": "day-chunks/22-24.json",
+            "tripCount": 127,
+            "bytes": 120850,
+            "sha256": "8daaf5fcaaf6c90535edd95dc3ea8064a6ca14d9fe7bd7a3cd2c3d45d5d555d7",
+            "gzipBytes": 18281
+          }
+        ]
+      },
+      "validation": {
+        "completeSourceCalls": true,
+        "directedEndpoints": true,
+        "finiteOrderedTimes": true,
+        "chunkHashesAndTripIdentity": true,
+        "admittedGeometryCoverage": 1,
+        "unsourcedInterpolationInFeed": false,
+        "physicalDirectionCertified": false,
+        "yearRoundCoverageEstablished": false
+      }
+    }
+  ],
+  "scopeLimits": [
+    "GTFS fixed-stop archive and all cantonal line records inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.",
+    "Two September civil days do not establish holiday, winter or year-round pattern coverage.",
+    "Cross-boundary journeys keep all calls. Entire patterns failing any segment are excluded, including source extents shorter than their timetable journeys.",
+    "Geometry is official-line centreline inference, not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation."
+  ]
+}

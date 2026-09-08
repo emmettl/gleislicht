@@ -96,7 +96,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 | [NW — Nidwalden](#nw) | Map layer only | Passepartout |
 | [GL — Glarus](#gl) | No line export verified | OSTWIND |
 | [ZG — Zug](#zg) | Cantonal inventory and bus/rail adapters; partial admission | Tarifverbund Zug, Z-Pass |
-| [FR — Fribourg / Freiburg](#fr) | Vector sample verified | Frimobil |
+| [FR — Fribourg / Freiburg](#fr) | Cantonal adapter; local archival feed | Frimobil |
 | [SO — Solothurn](#so) | Network adapter; partial service admission | Libero, A-Welle, TNW |
 | [BS — Basel-Stadt](#bs) | Existing integration in part | TNW, Triregio, HochRhein Ticket |
 | [BL — Basel-Landschaft](#bl) | Metadata / export unresolved | TNW, Triregio |
@@ -266,7 +266,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 ### FR — Fribourg / Freiburg
 
-**Authority/publisher:** Canton Fribourg mobility planning; cantonal geoportal / SIT. **Review areas:** Fribourg/Freiburg; Bulle/Gruyère; Romont/Glâne; Broye; Murten/Morat; Sense.
+**Authority/publisher:** Canton Fribourg mobility planning; cantonal geoportal / SIT. **Review areas:** Fribourg/Freiburg; Bulle/Gruyère; Romont/Glâne; Broye; Murten/Morat; Sense; Châtel-St-Denis/Veveyse.
 
 **Evidence:** ArcGIS Theme_mobilite layer 2 is a queryable polyline source: 128 total features. GeoJSON samples include rail and actual TPF urban buses. NUMERO_LIGNE values such as 20.002 are timetable-field identifiers, not simply display line 2. Other fields include type, enterprise and name.
 
@@ -274,7 +274,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 **Reuse:** General portal terms allow attributed map imagery (Source: Etat de Fribourg) but refer to supplier conditions; raw-vector redistribution remains unresolved.
 
-**Next action:** Acquire all pages and metadata/terms, map timetable-field IDs to agency/route IDs, and measure TPF bus patterns. This supersedes the earlier no-export-found result. Representative GTFS agencies: `11`, `53`, `801`, `834`, `3004`.
+**Implementation follow-up:** The [Fribourg cantonal study](FRIBOURG-STUDY.md) now inventories 207 annual canton-serving GTFS route records across 17 agency identities and all seven districts, including one explicitly provisional boundary membership. All 128 source features were acquired and every Friday/Sunday directed pattern tested. The [regional feed](../data/fribourg-region/index.json) admits 2,452 Friday and 1,541 Sunday journeys with complete geometry; the [full route/source inventory](FRIBOURG-ROUTE-INVENTORY.md) retains every exclusion. It is a local archival research artifact: actual geometry vintage and dataset-specific vector redistribution remain unresolved. Embedded metadata creation (14 July 2022) is not a line update date. Current OCGéo attribution/access provisions are preserved as supporting evidence, without assigning a dataset-specific licence. Next steps are those source questions, failed-pattern alignment review and additional seasonal dates. Representative GTFS agencies from the original survey: `11`, `53`, `801`, `834`, `3004`.
 
 **Checked references:** [fr-layer](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2?f=pjson), [fr-count](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnCountOnly=true&f=json), [fr-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-bus-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=TYPE_LIGNE_VALEUR%20LIKE%20%27%25Bus%25%27&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-catalogue](https://geo.fr.ch/), [fr-terms-canonical](https://map.geo.fr.ch/help/fr/conditions_utilisation.htm).
 
@@ -544,7 +544,7 @@ This ordering is engineering judgement based on the evidence above, not a measur
 
 1. **Complete the existing Basel and Lausanne audits on their own terms.** Their latest detailed reports take precedence over this broad survey for measured route/path admission. Keep Zürich and Genève source refreshes distinct from geographical expansion.
 2. **Implement reusable official-line adapters for Bern and Aargau; extend to Luzern.** Bern has line/operator attributes and documented reuse, Aargau adds direction and GO codes, and Luzern has explicit 2026 line identifiers. Do not assume their code systems are interchangeable. These are the most useful next full joins.
-3. **Continue Zug coverage; evaluate Fribourg and Thurgau.** Zug's archive/WFS reconciliation and full-canton timetable inventory now support a partial regional bus/rail feed; the [detailed audit](ZUG-STUDY.md) records remaining branches, modes and vintage limits. Fribourg needs full retrieval, licensing and timetable-field mapping; Thurgau now has a full source adapter and dated admission audit; city/lake geometry, source gaps and true geometry vintage remain unresolved.
+3. **Continue Zug coverage; evaluate Fribourg and Thurgau.** Zug's archive/WFS reconciliation and full-canton timetable inventory now support a partial regional bus/rail feed; the [detailed audit](ZUG-STUDY.md) records remaining branches, modes and vintage limits. Fribourg now has a full census, source adapter and local archival feed; vector reuse, geometry vintage and failed-pattern coverage remain unresolved; Thurgau now has a full source adapter and dated admission audit; city/lake geometry, source gaps and true geometry vintage remain unresolved.
 4. **Continue Solothurn network coverage.** The full-canton census, mode-filtered graph and exact-junction audit now produce complete Friday/Sunday stop patterns. Resolve remaining disconnected and out-of-extent paths, unsupported modes and the explicitly excluded night network; source segments are not operator route shapes.
 5. **Resolve SG redistribution and distribution for BL, VD, JU and NW.** SG now has an acquired source adapter and audited local feed, with publication permission unresolved; BL advertises an export; VD has a priced order workflow; JU/NW expose transport maps. The canton entries record the precise next action without pretending acquisition succeeded.
 6. **Continue source discovery or measured road matching for UR, SZ, OW, GL, SH, AR, AI, TI, GR, VS and NE.** Prioritise a regional route inventory first so that an official source, operator contribution or inferred path can be judged against an explicit denominator.

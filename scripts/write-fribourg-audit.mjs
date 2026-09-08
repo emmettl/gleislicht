@@ -1,0 +1,165 @@
+import { readFile, writeFile } from 'node:fs/promises'
+
+const json = async path => JSON.parse(await readFile(path, 'utf8'))
+const summary = await json('data/fribourg-audit/summary.json')
+const routes = await json('data/fribourg-audit/routes.json')
+const lines = await json('data/fribourg-audit/source-lines.json')
+const reports = await Promise.all(summary.days.map(d => json(`data/fribourg-audit/${d.serviceDate}.json`)))
+const n = value => value.toLocaleString('en-GB')
+const pct = (a, b) => b ? `${(a / b * 100).toFixed(1)}%` : '—'
+const esc = text => String(text ?? '').replaceAll('|', '\\|').replaceAll('\n', ' ').replaceAll('\r', ' ')
+const table = (headers, rows) => [headers, headers.map(() => '---'), ...rows].map(r => `| ${r.map(esc).join(' | ')} |`).join('\n')
+const days = reports.map(r => r.coverage)
+const measure = (title, field) => [title, ...days.map(d => n(d[field]))]
+const agencies = [...new Set(routes.map(r => r.agencyId))].sort((a, b) => Number(a) - Number(b))
+const agencyRows = agencies.map(id => {
+  const rs = routes.filter(r => r.agencyId === id)
+  return [id, rs[0].agency, rs.length, ...reports.map(report => {
+    const groups = report.groups.filter(g => g.id.startsWith(`${id}:`))
+    return `${n(groups.reduce((v, g) => v + g.admittedTrips, 0))} / ${n(groups.reduce((v, g) => v + g.trips, 0))}`
+  })]
+})
+const statuses = { excluded: 'Excluded', 'inactive-on-validation-dates': 'Inactive on both dates',
+  'partially-admitted': 'Partially admitted', 'admitted-all-dated-trips': 'All dated trips admitted' }
+const sourceStatus = `${lines.filter(l => l.routeIds.length).length} source records have a route-identity candidate; ${lines.filter(l => l.admittedRouteIds.length).length} support at least one admitted journey; ${lines.filter(l => !l.routeIds.length).length} have no matched canton-serving route identity.`
+const districtRows = summary.districts.map(d => [d.district, d.calledPlatforms, d.routeIds.length,
+  ...reports.map((_, i) => routes.filter(r => d.routeIds.includes(r.id) && r.days[i].admittedTrips).length)])
+const failureReasons = [...new Set(reports.flatMap(r => Object.keys(r.pairFailures)))].sort()
+const failureRows = failureReasons.map(reason => [reason, ...reports.map(r => {
+  const p = r.pairFailures[reason]; return p ? `${n(p.directedPairs)} / ${n(p.segmentOccurrences)}` : '0 / 0'
+})])
+const doc = `# Fribourg / Freiburg cantonal source study
+
+Fixture audit: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#fr).
+
+The entire canton is inventoried against the pinned annual national GTFS: **${summary.routeCount} route records, ${summary.agencyCount} agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **${n(days[0].admittedTrips)} Friday journeys and ${n(days[1].admittedTrips)} Sunday journeys** with complete source-backed directed stop patterns. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
+
+The [regional feed index](../data/fribourg-region/index.json) points to both civil-day manifests, twelve two-hour chunks per date, and 06:45–08:45 extracts. It uses the existing network snapshot format, **not a new GTFS ZIP**. It is saved under \`data/\` as a **local archival research artifact**. Dataset-specific vector redistribution clearance and geometry vintage remain unresolved, so this study does not add it to public hosting or the application's study selector.
+
+## Deliverables and scope
+
+- [Every admitted, partly admitted, excluded and inactive route](FRIBOURG-ROUTE-INVENTORY.md); [machine-readable routes](../data/fribourg-audit/routes.json).
+- [Source feature inventory](../data/fribourg-audit/source-lines.json): all 128 records, raw timetable fields, operator/line interpretation, source geometry size, candidate routes and admitted routes.
+- [Friday directed-pattern and pair audit](../data/fribourg-audit/2026-09-04.json), [Sunday audit](../data/fribourg-audit/2026-09-06.json), [summary](../data/fribourg-audit/summary.json), [in-canton stop records](../data/fribourg-audit/stops.json).
+- [Acquisition evidence](../data/fribourg-sources/acquisition.json), [source dates/credits/terms](../data/fribourg-sources/sources.json), [reviewed mapping policy](../data/fribourg-policy.json).
+
+Every annual trip with at least one original GTFS call coordinate inside the unsimplified swissBOUNDARIES3D Fribourg polygon contributes to membership. No operator whitelist, tariff-zone rectangle or geometry match selects the denominator. The census scans **${n(summary.census.stopTimeRows)} national stop-time rows**; route membership includes inactive annual records. Full calls outside Fribourg are retained on the two validation dates. District route counts overlap because journeys can serve several districts.
+
+${table(['District', 'Called in-canton platforms (annual)', 'Annual routes', 'Routes admitting Friday trips', 'Routes admitting Sunday trips'], districtRows)}
+
+The source is the national fixed-stop timetable, not a verified census of every real-world service. School, seasonal, night, replacement bus, lake, funicular and cableway records present in the archive are included; services absent from that archive and GTFS-Flex service areas remain outside its evidence. Agency 3004 (Fribourg funicular) is present in the annual inventory but inactive on both fixture dates. This is not an assertion about its year-round operation.
+
+### Boundary sensitivity
+
+The canton and district polygons retain all rings and disconnected components. Source geometry is original LV95 XY; GTFS WGS84 points are classified using the repository's metre-level swisstopo approximation. Nine stop records within ten metres of the boundary are retained in the summary, on both sides, including parent records. **PostAuto 661 (\`96-247-j26-1\`) has only Sassel, Chapalettaz platform \`ch:1:sloid:70404:0:710788\` inside, at approximately 0.17 m from the polygon edge.** Its geographic membership is provisional pending a higher-accuracy coordinate/boundary review. The other 206 route memberships have at least one platform beyond that uncertainty band. Route 661 is excluded from the geometry feed. The polygon is not buffered to hide this ambiguity.
+
+## Friday and Sunday validation
+
+Civil days are **Friday 4 September and Sunday 6 September 2026**, with calendar exceptions and preceding-service-day carry-in. Frequency templates are expanded according to GTFS \`exact_times\`; representative headway instances are counted separately from scheduled journeys. The same route, direction ID and **full ordered original platform IDs**, including repeats, define a directed pattern. Direction 0 and 1 are never merged or assumed to be simple reversals.
+
+${table(['Measure', 'Friday 2026-09-04', 'Sunday 2026-09-06'], [
+  measure('Civil trip instances', 'trips'), measure('Scheduled instances', 'scheduledTrips'), measure('Representative headway instances', 'representativeHeadwayTrips'),
+  measure('Admitted scheduled instances', 'admittedScheduledTrips'), measure('Admitted headway instances', 'admittedRepresentativeHeadwayTrips'),
+  measure('Directed patterns tested', 'patterns'), measure('Complete/admitted directed patterns', 'admittedPatterns'),
+  ['Matched unique directed route/platform pairs', ...days.map(d => `${n(d.matchedDirectedPairs)} / ${n(d.directedPairs)} (${pct(d.matchedDirectedPairs, d.directedPairs)})`)],
+  ['Matched scheduled segment occurrences (before whole-pattern exclusion)', ...days.map(d => `${n(d.matchedScheduledSegmentOccurrences)} / ${n(d.scheduledSegmentOccurrences)} (${pct(d.matchedScheduledSegmentOccurrences, d.scheduledSegmentOccurrences)})`)],
+  ['Matched occurrences including representative headways', ...days.map(d => `${n(d.matchedSegmentOccurrences)} / ${n(d.segmentOccurrences)} (${pct(d.matchedSegmentOccurrences, d.segmentOccurrences)})`)],
+  measure('Segment occurrences retained in admitted complete journeys', 'admittedSegmentOccurrences'),
+  ['Carry-in instances / admitted', ...reports.map(r => `${r.carryInTrips} / ${r.admittedCarryInTrips}`)],
+  ['Night instances / admitted', ...reports.map(r => `${r.directedPatternChecks.nightRouteTrips} / ${r.directedPatternChecks.admittedNightRouteTrips}`)],
+  ['Patterns revisiting platforms / admitted', ...reports.map(r => `${r.directedPatternChecks.patternsRevisitingPlatforms} / ${r.directedPatternChecks.admittedPatternsRevisitingPlatforms}`)],
+])}
+
+There are **${summary.weekdaySundayPatterns.shared} shared patterns, ${summary.weekdaySundayPatterns.weekdayOnly} Friday-only patterns and ${summary.weekdaySundayPatterns.sundayOnly} Sunday-only patterns**. These comparisons include failed and headway patterns. A matched segment in a failed journey contributes to source coverage, but that journey is excluded in full. Thus source-pair coverage must not be presented as the percentage of service admitted. Every segment actually emitted in the feed has geometry.
+
+The Friday civil day ends before Friday-night departures after midnight; Sunday includes Saturday-night carry-in. Two September dates establish neither public-holiday nor winter/summer/year-round completeness. No authenticated realtime data or vehicle GPS positions are used.
+
+## Source adapter and identity
+
+The [cantonal ArcGIS layer](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2) contains **128 lines**: bus and rail centrelines. Retrieval requests object IDs and a count independently, downloads explicit pages of 50 IDs in EPSG:2056, verifies every ID exactly once, rejects transfer-limit/error/invalid-coordinate responses and compares IDs again after acquisition. Original response bytes and SHA-256 hashes are retained; an ID-stable service is not an immutable historical snapshot. \`OBJECTID\` is used only within that hashed acquisition.
+
+${sourceStatus}
+
+- \`20.002\` is timetable field 20.002. Its reviewed TPF bus interpretation maps to display line **2**, agency **834**; it is not parsed as a decimal passenger number. Prefixes 10, 20 and 30 are accepted only for reviewed bus records.
+- TPF rail uses agency **53**, buses **834**; \`Post Auto\` and \`Car Postal\` map to **801**. SBB, BLS and MOB remain separate identities. Replacement agencies never inherit their parent brand's paths.
+- Named night labels in \`NOM_LIGNE\` take priority: field 20.143 maps to **N1**, and the source's regionally typed field 20.463 maps to **N24**. Anonymous Noctambus records remain unresolved. Source field 20.922 links to PDF 30.922; the raw mismatch is retained, while its explicit **M22** label controls the candidate match.
+- Features 43–45 say \`Autre\`. The preserved official 2026 timetable PDFs identify **VMCV 213, 216, 217 (agency 876)**. Feature 3's field 254 PDF identifies **TPF RE2/RE3**. Exceptions require the exact source number, name, enterprise and mode. PDF identity evidence does not extend the source geometry to missing termini such as Broc-Chocolaterie.
+- Explicit rail labels such as S20/S21 and R8 are matched exactly. Generic IC/IR, RE or Regio fields and unlabelled MOB services do not become universal rail graphs. No global nearest-line match or cross-operator geometry borrowing is used.
+
+Graph vertices join only at identical original LV95 coordinates. Separate line parts remain separate; no nearest-endpoint bridge or crossing-node inference is added. Ordered calls orient each inferred path along the undirected source centreline. Bus projection limit: **80 m**; rail: **120 m**. Paths exceeding the greater of **4.5× straight-line distance** or **1,200 m bus / 3,000 m rail** are rejected. An alternative source-part projection is considered only within **5 m** of the nearest gap after a topology/detour failure. Collapsed paths are rejected. Endpoint connectors are bounded projections, not observed vehicle tracks. Output uses the shared approximate LV95/WGS84 transform and seven-decimal coordinates without line simplification.
+
+Road one-way legality, rail running-track choice, bridge/tunnel topology and temporary diversions are **not certified** by these undirected source records. Exact source topology prevents invented connections at visual crossings, but does not prove physical direction. Original repeated calls remain in each pattern. Reservation/on-demand pickup or drop-off excludes an entire journey; none is silently converted to an ordinary fixed departure.
+
+GTFS times remain unchanged. Among admitted journeys there are **${n(reports[0].timing.zeroDurationSegmentOccurrences)} Friday and ${n(reports[1].timing.zeroDurationSegmentOccurrences)} Sunday zero-duration segments**, of which ${n(reports[0].timing.zeroDurationOver100m)} / ${n(reports[1].timing.zeroDurationOver100m)} exceed 100 m of source centreline. Minute-rounded equal timestamps are not instantaneous-speed measurements; a renderer may jump at those transitions. Maximum positive-duration implied speeds are ${reports[0].timing.maximumPositiveDurationSpeedKmh.toFixed(1)} / ${reports[1].timing.maximumPositiveDurationSpeedKmh.toFixed(1)} km/h across all admitted modes. The Sunday maximum is TPF bus 544, Domdidier, gare → Avenches, Le Paon (2,668 m in a published 60 s interval); it is a source-time plausibility flag, not a validated bus speed. Geometry admission does not certify travel-time precision. No travel-time smoothing or invented call times are applied.
+
+## Admission and exclusions
+
+${table(['Agency ID', 'National feed identity', 'Annual route records', 'Friday admitted / all instances', 'Sunday admitted / all instances'], agencyRows)}
+
+${table(['Route status across both dates', 'Records'], Object.entries(summary.routesByStatus).map(([status, count]) => [statuses[status], count]))}
+
+${table(['Failed segment reason', 'Friday directed pairs / occurrences', 'Sunday directed pairs / occurrences'], failureRows)}
+
+Failures remain route-scoped and directed. The machine audit names both original platforms and records projection gaps, detour lengths and fallback projection choices when available. \`missing-line\` means no verified source identity; it does not claim that a road or railway is absent. \`endpoint-gap\`, \`disconnected-line\`, \`implausible-detour\` and \`collapsed-path\` cause whole-pattern exclusion. Night, replacement, mountain and boat services are not silently dropped from the denominator. This adapter supplies no boat or mountain-mode geometry, and no rail geometry is repurposed for replacement buses.
+
+## Dates, reuse and attribution
+
+${table(['Source', 'Pinned date / vintage', 'Attribution / reuse'], [
+  ['National GTFS', 'Feed 20260902; valid 2025-12-14–2026-12-12', 'opentransportdata.swiss; processed by Gleislicht; platform terms, not an assigned CC licence'],
+  ['Fribourg line layer', `${summary.sources.acquiredAt}; actual geometry vintage unknown`, 'Source: Etat de Fribourg; dataset-specific vector redistribution unresolved'],
+  ['Embedded Esri metadata', 'Created 2022-07-14', 'Metadata creation, not geometry vintage'],
+  ['swissBOUNDARIES3D', '2026-01; original canton and seven district polygons', '© swisstopo; free geodata terms'],
+  ...summary.sources.crosswalkSupportingDocuments.map(d => [d.file, `Timetable 2026; state ${d.dataUpdated}`, 'Official tp-info / oev-info timetable; identity evidence only']),
+])}
+
+GTFS SHA-256: \`${summary.sourceHashes.archive}\`. Decoded source snapshot: \`${summary.sourceHashes.source}\`. The acquisition and feed metadata retain every raw-response hash, URL and UTC retrieval timestamp. Mutable PDF URLs and live ArcGIS responses are not claimed to be permanent release URLs. Refreshing either source requires a new census, mapping review and both full directed-pattern validations.
+
+The [portal terms](https://map.geo.fr.ch/help/fr/conditions_utilisation.htm) explicitly permit attributed map images and defer to data suppliers. The [current geoinformation ordinance](https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes), effective 1 March 2024, requires attribution for reproduction and lists the cantonal transport plan (56-FR) as level A. The layer metadata does not identify itself conclusively as that product or supply vector terms. This is supporting evidence, not a claimed dataset-specific licence; both documents are preserved with the feed. **The feed remains local research-only until that mapping/reuse question and a suitable geometry vintage are resolved.**
+
+Timetable reuse follows the [national platform terms](https://opentransportdata.swiss/en/terms-of-use/); boundary reuse follows [swisstopo's terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices). These credits are distinct and are embedded in both manifests and the feed's source record. No live-service accuracy or real-time position claim is made.
+
+## Reproduction and checks
+
+From the repository root (Node 24+, installed dependencies, Python 3, curl and unzip):
+
+\`\`\`sh
+# Offline source-byte verification and deterministic decoding.
+python3 scripts/prepare-fribourg-sources.py --offline
+
+# Full national census; temporary cache stays outside public hosting.
+node --max-old-space-size=8192 scripts/fribourg-timetable.mjs \\
+  /private/tmp/GTFS_FP2026_20260902.zip /private/tmp/fribourg-timetable.json.gz
+
+# Both civil-day feeds and complete route/pattern audit.
+node --max-old-space-size=8192 scripts/build-fribourg-region.mjs \\
+  --archive /private/tmp/GTFS_FP2026_20260902.zip \\
+  --timetable-cache /private/tmp/fribourg-timetable.json.gz
+node scripts/check-fribourg-region.mjs
+node scripts/write-fribourg-audit.mjs
+python3 scripts/test_fribourg_sources.py
+npx vitest run scripts/fribourg-region.test.mjs scripts/bern-region.test.mjs
+
+# Fresh acquisition changes hashes and requires renewed source review.
+python3 scripts/prepare-fribourg-sources.py --boundary \\
+  /private/tmp/swissboundaries3d-2026/swissBOUNDARIES3D_1_5_LV95_LN02.gpkg
+\`\`\`
+
+The checker independently reconciles all routes, source identities, seven districts, both pattern sets and directed-pair occurrence counts. It reconstructs both full-day feeds from all 24 chunks, checks chunk hashes and trip identity, validates full original call counts, path direction, finite coordinates and ordered times, and reconciles every admitted pattern against the manifest. Focused tests cover source paging failures, coordinate-order errors, detached territory membership, bus/night/rail identity collisions, changed operator overrides, reverse/loop call chains, disconnected lines and whole-journey exclusion. Shared Bern behavior is regression-tested because Fribourg reuses its census, topology, calendar/frequency and snapshot validators.
+`
+await writeFile('docs/FRIBOURG-STUDY.md', doc)
+
+const routeRows = routes.map(r => [r.agencyId, r.name, r.id, r.mode, r.districts.join(', '),
+  r.sourceLines.join(', ') || '—', ...r.days.map(d => `${d.admittedTrips}/${d.trips}; ${d.admittedPatterns}/${d.patterns}`),
+  `${statuses[r.status]}${r.boundarySensitive ? '; boundary-sensitive' : ''}`])
+const inventory = `# Fribourg: complete annual route admission inventory
+
+Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the ${routes.length} annual canton-serving route records occurs once; agencies are feed identities, not counts of legal companies. Trip counts include representative headways. Each daily cell is **admitted/all trip instances; admitted/all directed patterns**. Zero/zero means inactive on that civil day, not absent from the annual feed. Source IDs refer to the 128-feature hashed ArcGIS snapshot. Districts are annual membership and overlap. PostAuto 661 is explicitly provisional at a sub-metre boundary; it is not admitted.
+
+${table(['Agency', 'Line', 'GTFS route ID', 'Mode', 'Districts', 'Source feature IDs', 'Friday trips; patterns', 'Sunday trips; patterns', 'Status'], routeRows)}
+
+## Every source feature
+
+${table(['Snapshot ID', 'Timetable field', 'Source operator / type', 'Source name', 'Candidate routes', 'Routes with admitted trips', 'Unmapped reason'], lines.map(l => [l.OBJECTID, l.NUMERO_LIGNE, `${l.ENTREPRISE_VALEUR} / ${l.TYPE_LIGNE_VALEUR}`, l.NOM_LIGNE, l.routeIds.join(', ') || '—', l.admittedRouteIds.join(', ') || '—', l.exclusionReason || '—']))}
+`
+await writeFile('docs/FRIBOURG-ROUTE-INVENTORY.md', inventory)
+console.log(`Documented ${routes.length} routes, ${lines.length} source features and both directed-pattern audits`)

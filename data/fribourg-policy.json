@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "operators": {
+    "TPF": {
+      "bus": [
+        "834"
+      ],
+      "rail": [
+        "53"
+      ]
+    },
+    "Post Auto": {
+      "bus": [
+        "801"
+      ]
+    },
+    "Car Postal": {
+      "bus": [
+        "801"
+      ]
+    },
+    "CFF": {
+      "rail": [
+        "11"
+      ]
+    },
+    "BLS": {
+      "rail": [
+        "33"
+      ]
+    },
+    "MOB": {
+      "rail": [
+        "64"
+      ]
+    }
+  },
+  "expectedAgencyNames": {
+    "834": "Service d'automobiles TPF",
+    "53": "Transports publics fribourgeois",
+    "801": "PostAuto AG",
+    "11": "Schweizerische Bundesbahnen SBB",
+    "33": "BLS AG (bls)",
+    "64": "Montreux-Oberland Bernois",
+    "876": "Transports publics Vevey-Montreux-Chillon-Villeneuve"
+  },
+  "featureOverrides": {
+    "43": {
+      "expectedNumber": "10.213",
+      "expectedName": "Vevey-Châtel-St-Denis",
+      "agencyIds": [
+        "876"
+      ],
+      "lines": [
+        "213"
+      ],
+      "evidence": "Official 2026 timetable field 10.213: passenger line and transport enterprise; see timetable-10.213.pdf. Candidate identity only: full journey geometry must still pass.",
+      "expectedEnterprise": "Autre",
+      "expectedType": "Bus régional"
+    },
+    "44": {
+      "expectedNumber": "10.216",
+      "expectedName": "Vevey - Bossonnens",
+      "agencyIds": [
+        "876"
+      ],
+      "lines": [
+        "216"
+      ],
+      "evidence": "Official 2026 timetable field 10.216: passenger line and transport enterprise; see timetable-10.216.pdf. Candidate identity only: full journey geometry must still pass.",
+      "expectedEnterprise": "Autre",
+      "expectedType": "Bus régional"
+    },
+    "45": {
+      "expectedNumber": "10.217",
+      "expectedName": "Vevey-Jongny-Attalens-Palézieux",
+      "agencyIds": [
+        "876"
+      ],
+      "lines": [
+        "217"
+      ],
+      "evidence": "Official 2026 timetable field 10.217: passenger line and transport enterprise; see timetable-10.217.pdf. Candidate identity only: full journey geometry must still pass.",
+      "expectedEnterprise": "Autre",
+      "expectedType": "Bus régional"
+    },
+    "3": {
+      "expectedNumber": "254",
+      "expectedName": "RE Bulle - Romont - Fribourg/Freiburg - Bern",
+      "agencyIds": [
+        "53"
+      ],
+      "lines": [
+        "RE2",
+        "RE3"
+      ],
+      "evidence": "Official 2026 timetable field 254: passenger line and transport enterprise; see timetable-254.pdf. Candidate identity only: full journey geometry must still pass.",
+      "expectedEnterprise": "TPF",
+      "expectedType": "RE"
+    }
+  },
+  "identityPolicy": "Exact source enterprise, transport mode and reviewed display-label interpretation. Autre is not an operator. Generic IC/IR/RE/Regio labels are not automatically matched to every railway service. Source OBJECTID is only an identity within the hashed snapshot.",
+  "admissionPolicy": "Complete directed platform sequence only; every segment must pass source projection/topology/detour checks. All original calls and repeat visits retained. Reservation/on-demand calls excluded. No unsourced gap interpolation.",
+  "releasePolicy": "Local archival research feed. Geometry vintage and dataset-specific vector redistribution terms remain unresolved; public deployment is not enabled by this study.",
+  "supportingDocuments": [
+    {
+      "file": "timetable-10.213.pdf",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.213.pdf",
+      "retrievedAt": "2026-09-08T18:02:37.589928+00:00",
+      "sha256": "5606a8360594cb897ad011446f7b3e1f479c8f1b081deb271f53d8253f3bb586",
+      "bytes": 831835,
+      "timetableYear": 2026,
+      "dataUpdated": "2025-12-19"
+    },
+    {
+      "file": "timetable-10.216.pdf",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.216.pdf",
+      "retrievedAt": "2026-09-08T18:02:37.894388+00:00",
+      "sha256": "03f94e534d735e1503f986bda82d29dc04a755ce4e06e05be4c6e31d2fbd9a2f",
+      "bytes": 507491,
+      "timetableYear": 2026,
+      "dataUpdated": "2025-12-19"
+    },
+    {
+      "file": "timetable-10.217.pdf",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.217.pdf",
+      "retrievedAt": "2026-09-08T18:02:38.124169+00:00",
+      "sha256": "c9f5680e046bdee5409196b9996f77342e00633f8e0b7435dc2d839df8181d35",
+      "bytes": 1075850,
+      "timetableYear": 2026,
+      "dataUpdated": "2026-05-28"
+    },
+    {
+      "file": "timetable-254.pdf",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/254.pdf",
+      "retrievedAt": "2026-09-08T18:02:38.443703+00:00",
+      "sha256": "2b093ab62c8c54f2a320eb2ce4ef2c6563ee39f5794bb46737e756ce2f87ffa8",
+      "bytes": 515647,
+      "timetableYear": 2026,
+      "dataUpdated": "2025-09-25"
+    }
+  ]
+}

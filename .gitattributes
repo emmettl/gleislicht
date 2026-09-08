@@ -1,0 +1,8 @@
+# Preserve acquired Fribourg evidence byte-for-byte, including signed PDFs
+# whose long ASCII signature can precede the first NUL byte.
+data/fribourg-sources/*.pdf binary
+data/fribourg-region/*.pdf binary
+data/fribourg-sources/*.html -text -whitespace
+data/fribourg-sources/*.xml -text -whitespace
+data/fribourg-region/*.html -text -whitespace
+data/fribourg-region/*.xml -text -whitespace

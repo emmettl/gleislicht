@@ -1,0 +1,122 @@
+"""Acquire complete Fribourg line records and decode the pinned canton/district boundary.
+
+Uses curl for public HTTPS and the shared lossless GeoPackage decoder. Raw
+responses and retrieval hashes are retained; acquisition is not data vintage.
+"""
+import argparse
+from datetime import datetime, timezone
+import gzip
+import importlib.util
+import json
+from pathlib import Path
+import sqlite3
+import subprocess
+from urllib.parse import urlencode
+spec = importlib.util.spec_from_file_location('bern_sources', Path(__file__).with_name('prepare-bern-sources.py'))
+decoder = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(decoder)
+features, rows, sha = decoder.features, decoder.rows, decoder.sha
+
+LAYER = 'https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2'
+
+
+def validate_page(page, ids):
+    assert not page.get('error') and not page.get('exceededTransferLimit'), 'Incomplete/error response'
+    assert page['spatialReference']['wkid'] == 2056
+    actual = [f['attributes']['OBJECTID'] for f in page['features']]
+    assert sorted(actual) == sorted(ids) and len(set(actual)) == len(actual), 'Missing/duplicate IDs'
+    for f in page['features']:
+        assert f['geometry']['paths']
+        for path in f['geometry']['paths']:
+            assert len(path) >= 2
+            assert all(len(p) == 2 and 2400000 < p[0] < 2900000 and 1000000 < p[1] < 1400000 for p in path)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--boundary', default='/private/tmp/swissboundaries3d-2026/swissBOUNDARIES3D_1_5_LV95_LN02.gpkg')
+    parser.add_argument('--output', default='data/fribourg-sources')
+    parser.add_argument('--offline', action='store_true', help='Validate/redecode saved bytes without network')
+    args = parser.parse_args()
+    output = Path(args.output)
+    output.mkdir(parents=True, exist_ok=True)
+    previous = json.loads((output / 'acquisition.json').read_text()) if args.offline else None
+    records = previous['sources'] if previous else []
+
+    def save(name, url):
+        path = output / name
+        if args.offline:
+            record = next(r for r in records if r['file'] == name)
+            assert record['url'] == url and sha(path.read_bytes()) == record['sha256']
+        else:
+            subprocess.run(['curl', '-fLsS', '--max-time', '60', url, '-o', str(path)], check=True)
+            records.append({'file': name, 'url': url, 'retrievedAt': datetime.now(timezone.utc).isoformat(),
+                            'sha256': sha(path.read_bytes()), 'bytes': path.stat().st_size})
+        return path.read_bytes()
+
+    save('layer.json', LAYER + '?f=pjson')
+    save('metadata.xml', LAYER + '/metadata')
+    save('portal-terms.html', 'https://map.geo.fr.ch/help/fr/conditions_utilisation.htm')
+    save('geoinformation-ordinance.pdf', 'https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes')
+    for field in ['10.213', '10.216', '10.217', '254']:
+        save(f'timetable-{field}.pdf', f'https://widgets.oev-info.ch/publikation/jahresfpl/{field}.pdf')
+    ids_url = LAYER + '/query?' + urlencode({'where': '1=1', 'returnIdsOnly': 'true', 'f': 'json'})
+    ids = sorted(json.loads(save('ids.json', ids_url))['objectIds'])
+    count = json.loads(save('count.json', LAYER + '/query?' + urlencode({'where': '1=1', 'returnCountOnly': 'true', 'f': 'json'})))['count']
+    assert len(ids) == len(set(ids)) == count and count > 0
+    lines = []
+    for start in range(0, len(ids), 50):
+        selected = ids[start:start + 50]
+        url = LAYER + '/query?' + urlencode({'objectIds': ','.join(map(str, selected)), 'outFields': '*', 'outSR': 2056, 'returnGeometry': 'true', 'f': 'json'})
+        page = json.loads(save(f'lines-page-{start // 50}.json', url))
+        validate_page(page, selected)
+        lines.extend({'type': 'Feature', 'properties': f['attributes'], 'geometry': {'type': 'MultiLineString', 'coordinates': f['geometry']['paths']}} for f in page['features'])
+    assert sorted(json.loads(save('ids-after.json', ids_url))['objectIds']) == ids, 'Source IDs changed during acquisition'
+    boundary_path = output / 'boundary.json.gz'
+    if args.offline:
+        assert sha(boundary_path.read_bytes()) == previous['derivedHashes']['boundary.json.gz'], 'Changed boundary snapshot'
+    if not args.offline:
+        assert sha(Path(args.boundary).read_bytes()) == '1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc', 'Unreviewed boundary edition'
+        with sqlite3.connect(args.boundary) as connection:
+            canton = features(rows(connection, 'tlm_kantonsgebiet', 'kantonsnummer=10'), 'geom')
+            districts = features(rows(connection, 'tlm_bezirksgebiet', 'kantonsnummer=10'), 'geom')
+        assert len(canton) == 1 and len(districts) == 7
+        boundary = {'edition': '2026-01', 'sourceSha256': sha(Path(args.boundary).read_bytes()), 'canton': canton, 'districts': districts}
+        boundary_path.write_bytes(gzip.compress(json.dumps(boundary, ensure_ascii=False).encode(), mtime=0))
+    boundary = json.loads(gzip.decompress(boundary_path.read_bytes()))
+    result = {'lines': lines, 'canton': boundary['canton'], 'districts': boundary['districts']}
+    (output / 'decoded.json.gz').write_bytes(gzip.compress(json.dumps(result, ensure_ascii=False, separators=(',', ':')).encode(), mtime=0))
+    acquisition = {'schemaVersion': 1, 'sources': records, 'lineCount': len(lines), 'sourceCrs': 'EPSG:2056',
+                   'boundary': {k: v for k, v in boundary.items() if k not in ['canton', 'districts']},
+                   'derivedHashes': {name: sha((output / name).read_bytes()) for name in ['decoded.json.gz', 'boundary.json.gz']}}
+    if args.offline:
+        assert acquisition == previous, 'Decoded data differ from the reviewed acquisition'
+    (output / 'acquisition.json').write_text(json.dumps(acquisition, ensure_ascii=False, indent=2) + '\n')
+    metadata = {
+        'schemaVersion': 1, 'publisher': 'Etat de Fribourg / Service de la mobilité / SIT',
+        'sourceUrl': LAYER, 'metadataUrl': LAYER + '/metadata', 'attribution': 'Source: Etat de Fribourg',
+        'sourceCrs': 'EPSG:2056', 'dataUpdated': None, 'metadataCreated': '2022-07-14',
+        'vintageNote': 'The embedded Esri CreaDate dates metadata only. No geometry update date is declared. PDF timetable dates do not date line geometry.',
+        'acquiredAt': next(r['retrievedAt'] for r in records if r['file'] == 'layer.json'),
+        'sourceSnapshotSha256': acquisition['derivedHashes']['decoded.json.gz'],
+        'acquisition': acquisition,
+        'termsFiles': ['portal-terms.html', 'geoinformation-ordinance.pdf', 'metadata.xml'],
+        'license': 'Dataset-specific vector redistribution terms unresolved; no Creative Commons licence assigned',
+        'publicRedistributionCleared': False,
+        'reuseEvidence': {
+            'portalTerms': 'https://map.geo.fr.ch/help/fr/conditions_utilisation.htm',
+            'ordinanceUrl': 'https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes',
+            'ordinanceEffective': '2024-03-01',
+            'assessment': 'OCGéo art. 12 requires attribution for reproduction; annex 2 classifies the cantonal public transport plan 56-FR as level A. The service metadata does not establish that this line layer is that exact dataset or supply vector terms. Preserve this supporting evidence without claiming a dataset-specific licence. Local archival research feed only until clarified.',
+        },
+        'boundary': {**acquisition['boundary'], 'snapshotSha256': acquisition['derivedHashes']['boundary.json.gz'],
+                     'attribution': '© swisstopo',
+                     'sourceUrl': 'https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip',
+                     'termsUrl': 'https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices'},
+    }
+    (output / 'sources.json').write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + '\n')
+    print(f'Validated {len(lines)} line features and all seven Fribourg districts')
+
+
+if __name__ == '__main__':
+    main()

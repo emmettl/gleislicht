@@ -1,0 +1,264 @@
+{
+ "currentVersion": 10.81,
+ "cimVersion": "2.6.0",
+ "id": 2,
+ "name": "Lignes de transport public",
+ "type": "Feature Layer",
+ "description": "DESCRIPTION_SMO6000L_LIGNE_TP",
+ "geometryType": "esriGeometryPolyline",
+ "sourceSpatialReference": {
+  "wkid": 2056,
+  "latestWkid": 2056,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -27386400,
+  "falseY": -32067900,
+  "xyUnits": 10000,
+  "falseZ": 0,
+  "zUnits": 1,
+  "falseM": 0,
+  "mUnits": 1
+ },
+ "copyrightText": "",
+ "parentLayer": {
+  "id": 0,
+  "name": "Transport public"
+ },
+ "subLayers": [],
+ "minScale": 1000000,
+ "maxScale": 0,
+ "referenceScale": 0.0,
+ "drawingInfo": {
+  "renderer": {
+   "type": "classBreaks",
+   "authoringInfo": {
+    "type": "classedColor",
+    "colorRamp": {
+     "type": "multipart",
+     "colorRamps": [
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        56,
+        161,
+        207,
+        255
+       ],
+       "toColor": [
+        241,
+        250,
+        120,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        241,
+        250,
+        120,
+        255
+       ],
+       "toColor": [
+        240,
+        18,
+        2,
+        255
+       ]
+      }
+     ]
+    },
+    "classificationMethod": "esriClassifyManual"
+   },
+   "field": "TYPE_LIGNE",
+   "classificationMethod": "esriClassifyManual",
+   "minValue": 1,
+   "classBreakInfos": [
+    {
+     "symbol": {
+      "type": "esriSLS",
+      "style": "esriSLSDash",
+      "color": [
+       255,
+       170,
+       0,
+       255
+      ],
+      "width": 3
+     },
+     "classMaxValue": 3,
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriSLS",
+      "style": "esriSLSDash",
+      "color": [
+       0,
+       92,
+       230,
+       255
+      ],
+      "width": 3
+     },
+     "classMaxValue": 99,
+     "label": "Train"
+    }
+   ],
+   "legendOptions": {"order": "descendingValues"}
+  },
+  "scaleSymbols": true,
+  "transparency": 0,
+  "labelingInfo": null
+ },
+ "defaultVisibility": true,
+ "extent": {
+  "xmin": 2520168.8649999984,
+  "ymin": 1142676.0960000008,
+  "xmax": 2605785.800999999,
+  "ymax": 1208217.3649999984,
+  "spatialReference": {
+   "wkid": 2056,
+   "latestWkid": 2056,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -27386400,
+   "falseY": -32067900,
+   "xyUnits": 1.4099656955187955E8,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "hasAttachments": false,
+ "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+ "displayField": "NOM_LIGNE",
+ "typeIdField": null,
+ "subtypeFieldName": null,
+ "subtypeField": null,
+ "defaultSubtypeCode": null,
+ "fields": [
+  {
+   "name": "OBJECTID",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID",
+   "domain": null
+  },
+  {
+   "name": "SHAPE",
+   "type": "esriFieldTypeGeometry",
+   "alias": "Shape",
+   "domain": null
+  },
+  {
+   "name": "NUMERO_LIGNE",
+   "type": "esriFieldTypeString",
+   "alias": "N° de la ligne",
+   "length": 32,
+   "domain": null
+  },
+  {
+   "name": "NOM_LIGNE",
+   "type": "esriFieldTypeString",
+   "alias": "Nom de la ligne",
+   "length": 64,
+   "domain": null
+  },
+  {
+   "name": "HORAIRE",
+   "type": "esriFieldTypeString",
+   "alias": "Horaire",
+   "length": 128,
+   "domain": null
+  },
+  {
+   "name": "TYPE_LIGNE_VALEUR",
+   "type": "esriFieldTypeString",
+   "alias": "Type de transport",
+   "length": 254,
+   "domain": null
+  },
+  {
+   "name": "ENTREPRISE_VALEUR",
+   "type": "esriFieldTypeString",
+   "alias": "Entreprise",
+   "length": 254,
+   "domain": null
+  }
+ ],
+ "geometryField": {
+  "name": "SHAPE",
+  "type": "esriFieldTypeGeometry",
+  "alias": "Shape"
+ },
+ "indexes": [
+  {
+   "name": "R933_pk",
+   "fields": "OBJECTID",
+   "isAscending": true,
+   "isUnique": true,
+   "description": ""
+  },
+  {
+   "name": "S720_idx",
+   "fields": "SHAPE",
+   "isAscending": true,
+   "isUnique": true,
+   "description": ""
+  }
+ ],
+ "subtypes": [],
+ "relationships": [
+  {
+   "id": 0,
+   "name": "SDQDIS.SDEUSER.SMO6001P_ARRET_TP",
+   "relatedTableId": 1,
+   "role": "esriRelRoleOrigin",
+   "keyField": "LIGNE_ID",
+   "cardinality": "esriRelCardinalityManyToMany",
+   "composite": false
+  }
+ ],
+ "canModifyLayer": false,
+ "canScaleSymbols": false,
+ "hasLabels": false,
+ "capabilities": "Map,Query,Data",
+ "maxRecordCount": 1000,
+ "supportsStatistics": true,
+ "supportsExceedsLimitStatistics": true,
+ "supportsAdvancedQueries": true,
+ "supportedQueryFormats": "JSON, geoJSON, PBF",
+ "isDataVersioned": false,
+ "ownershipBasedAccessControlForFeatures": {"allowOthersToQuery": true},
+ "useStandardizedQueries": true,
+ "advancedQueryCapabilities": {
+  "useStandardizedQueries": true,
+  "supportsStatistics": true,
+  "supportsPercentileStatistics": true,
+  "supportsHavingClause": true,
+  "supportsOrderBy": true,
+  "supportsDistinct": true,
+  "supportsCountDistinct": true,
+  "supportsPagination": true,
+  "supportsTrueCurve": true,
+  "supportsQueryWithDatumTransformation": true,
+  "supportsReturningQueryExtent": true,
+  "supportsQueryWithDistance": true,
+  "supportsSqlExpression": true
+ },
+ "supportsDatumTransformation": true,
+ "dateFieldsTimeReference": null,
+ "hasMetadata": true,
+ "isDataArchived": false,
+ "archivingInfo": {
+  "supportsQueryWithHistoricMoment": false,
+  "startArchivingMoment": -1
+ },
+ "supportsCoordinatesQuantization": true,
+ "supportsDynamicLegends": true
+}

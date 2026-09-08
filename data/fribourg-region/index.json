@@ -1,0 +1,23 @@
+{
+  "label": "Fribourg canton local archival regional feed",
+  "publicRedistributionCleared": false,
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+    "crosswalk": "c3c28f0f3952c03f4695ee6331cf80a6224ff1df87ee10a4efcb69fadb99063d",
+    "provenance": "4a4bb2dae3fc541b91018097cd82dbcc91c259b327cf52d19b8d5b17919077c9"
+  },
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "manifest": "2026-09-04/fribourg-region-day-manifest.json",
+      "morning": "2026-09-04/fribourg-region-morning.json"
+    },
+    {
+      "date": "2026-09-06",
+      "manifest": "2026-09-06/fribourg-region-day-manifest.json",
+      "morning": "2026-09-06/fribourg-region-morning.json"
+    }
+  ],
+  "admission": "Complete geometry patterns only; see docs/FRIBOURG-STUDY.md and data/fribourg-audit for exclusions."
+}

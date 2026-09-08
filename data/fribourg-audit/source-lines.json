@@ -1,0 +1,3836 @@
+[
+  {
+    "OBJECTID": 1,
+    "NUMERO_LIGNE": "250",
+    "NOM_LIGNE": "IC/IR Genève Aéroport  - Lucerne/Zurich",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/250.pdf",
+    "TYPE_LIGNE_VALEUR": "IC/IR",
+    "ENTREPRISE_VALEUR": "CFF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 3882,
+      "lengthMetres": 96712.39300371865
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "11"
+      ],
+      "lines": [],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "unresolved-passenger-line-identity"
+  },
+  {
+    "OBJECTID": 2,
+    "NUMERO_LIGNE": "120",
+    "NOM_LIGNE": "Montreux-Zweisimmen",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/120.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "MOB",
+    "geometry": {
+      "parts": 8,
+      "vertices": 3558,
+      "lengthMetres": 62411.73738704584
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "64"
+      ],
+      "lines": [],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "unresolved-passenger-line-identity"
+  },
+  {
+    "OBJECTID": 3,
+    "NUMERO_LIGNE": "254",
+    "NOM_LIGNE": "RE Bulle - Romont - Fribourg/Freiburg - Bern",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/254.pdf",
+    "TYPE_LIGNE_VALEUR": "RE",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 2434,
+      "lengthMetres": 76969.6954559451
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "53"
+      ],
+      "lines": [
+        "RE2",
+        "RE3"
+      ],
+      "evidence": "Official 2026 timetable field 254: passenger line and transport enterprise; see timetable-254.pdf. Candidate identity only: full journey geometry must still pass."
+    },
+    "routeIds": [
+      "91-2-M-j26-1",
+      "91-3-M-j26-1"
+    ],
+    "admittedRouteIds": [
+      "91-2-M-j26-1",
+      "91-3-M-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 4,
+    "NUMERO_LIGNE": "305",
+    "NOM_LIGNE": "RE Bern - Neuchâtel ",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/305.pdf",
+    "TYPE_LIGNE_VALEUR": "RE",
+    "ENTREPRISE_VALEUR": "BLS",
+    "geometry": {
+      "parts": 3,
+      "vertices": 735,
+      "lengthMetres": 42246.55373755942
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "33"
+      ],
+      "lines": [],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "unresolved-passenger-line-identity"
+  },
+  {
+    "OBJECTID": 5,
+    "NUMERO_LIGNE": "291",
+    "NOM_LIGNE": "Regio Kerzers - Lyss",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/291.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "BLS",
+    "geometry": {
+      "parts": 1,
+      "vertices": 68,
+      "lengthMetres": 6491.379270286153
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "33"
+      ],
+      "lines": [],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "unresolved-passenger-line-identity"
+  },
+  {
+    "OBJECTID": 6,
+    "NUMERO_LIGNE": "203",
+    "NOM_LIGNE": "S40/S41 Fribourg - Romont - Lausanne",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/203.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "CFF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 5495,
+      "lengthMetres": 65831.54323865927
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "11"
+      ],
+      "lines": [
+        "S40",
+        "S41"
+      ],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [
+      "91-40-C-j26-1",
+      "91-41-D-j26-1"
+    ],
+    "admittedRouteIds": [
+      "91-40-C-j26-1",
+      "91-41-D-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 7,
+    "NUMERO_LIGNE": "205",
+    "NOM_LIGNE": "R8 Allaman - Lausanne - Palézieux - Payerne",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/205.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "CFF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 4424,
+      "lengthMetres": 79984.03783711359
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "11"
+      ],
+      "lines": [
+        "R8"
+      ],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [
+      "91-8-J-j26-1"
+    ],
+    "admittedRouteIds": [
+      "91-8-J-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 8,
+    "NUMERO_LIGNE": "205",
+    "NOM_LIGNE": "R9 Allaman - Lausanne - Palézieux - Payerne - Murten/Morat",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/205.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "CFF",
+    "geometry": {
+      "parts": 3,
+      "vertices": 4731,
+      "lengthMetres": 98233.32748807102
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "11"
+      ],
+      "lines": [
+        "R9"
+      ],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [
+      "91-9-K-j26-1"
+    ],
+    "admittedRouteIds": [
+      "91-9-K-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 9,
+    "NUMERO_LIGNE": "252",
+    "NOM_LIGNE": "S30 Fribourg/Freiburg - Payerne - Yverdon-les-Bains",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/252.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "CFF",
+    "geometry": {
+      "parts": 5,
+      "vertices": 1195,
+      "lengthMetres": 43905.53746433528
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "11"
+      ],
+      "lines": [
+        "S30"
+      ],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [
+      "91-30-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 10,
+    "NUMERO_LIGNE": "255",
+    "NOM_LIGNE": "S20/S21 Fribourg/Freiburg - Morat - Ins - Neuchâtel",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/255.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 5,
+      "vertices": 1352,
+      "lengthMetres": 45239.893751719406
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "53"
+      ],
+      "lines": [
+        "S20",
+        "S21"
+      ],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [
+      "91-20-B-j26-1",
+      "91-21-A-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 11,
+    "NUMERO_LIGNE": "253",
+    "NOM_LIGNE": "S50 Montbovon - Bulle - Châtel-St-Denis - Palézieux",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/253.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 1936,
+      "lengthMetres": 43029.67019438555
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "53"
+      ],
+      "lines": [
+        "S50"
+      ],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [
+      "91-50-j26-1"
+    ],
+    "admittedRouteIds": [
+      "91-50-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 12,
+    "NUMERO_LIGNE": "301",
+    "NOM_LIGNE": "S1 Fribourg/Freiburg - Bern",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/301.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "BLS",
+    "geometry": {
+      "parts": 1,
+      "vertices": 578,
+      "lengthMetres": 27921.911684772556
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "33"
+      ],
+      "lines": [
+        "S1"
+      ],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [
+      "91-1-E-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 13,
+    "NUMERO_LIGNE": "301",
+    "NOM_LIGNE": "S2 Bern - Flamatt - Laupen",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/301.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "BLS",
+    "geometry": {
+      "parts": 1,
+      "vertices": 349,
+      "lengthMetres": 16583.64213789763
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "33"
+      ],
+      "lines": [
+        "S2"
+      ],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [
+      "91-2-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "91-2-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 14,
+    "NUMERO_LIGNE": "305",
+    "NOM_LIGNE": "S5 Bern - Kerzers - Avenches / Bern - Kerzers - Neuchâtel",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/305.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "BLS",
+    "geometry": {
+      "parts": 3,
+      "vertices": 1046,
+      "lengthMetres": 54048.136150878956
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "33"
+      ],
+      "lines": [
+        "S5"
+      ],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [
+      "91-5-j26-1"
+    ],
+    "admittedRouteIds": [
+      "91-5-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 15,
+    "NUMERO_LIGNE": "305",
+    "NOM_LIGNE": "S52 Bern - Kerzers - Payerne / Bern - Kerzers - Ins",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/305.pdf",
+    "TYPE_LIGNE_VALEUR": "Train régional",
+    "ENTREPRISE_VALEUR": "BLS",
+    "geometry": {
+      "parts": 3,
+      "vertices": 971,
+      "lengthMetres": 55492.45131877117
+    },
+    "identity": {
+      "mode": "rail",
+      "agencyIds": [
+        "33"
+      ],
+      "lines": [
+        "S52"
+      ],
+      "evidence": "Explicit passenger line token in NOM_LIGNE; unnamed rail fields remain unresolved"
+    },
+    "routeIds": [
+      "91-52-j26-1"
+    ],
+    "admittedRouteIds": [
+      "91-52-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 16,
+    "NUMERO_LIGNE": "20.002",
+    "NOM_LIGNE": "Dailles-Moncor-Fribourg gare-St-Pierre-Schoenberg",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.002.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 41,
+      "vertices": 1058,
+      "lengthMetres": 6676.138427350573
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "2"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-2-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-2-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 17,
+    "NUMERO_LIGNE": "20.003",
+    "NOM_LIGNE": "Givisiez Mont-Carmel-Fribourg gare-Pérolles",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.003.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 16,
+      "vertices": 274,
+      "lengthMetres": 3333.7357195999366
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "3"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-3-A-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 18,
+    "NUMERO_LIGNE": "20.004",
+    "NOM_LIGNE": "Fribourg Auge-Fribourg gare",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.004.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 5,
+      "vertices": 239,
+      "lengthMetres": 2908.6284812160957
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "4"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-4-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-4-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 19,
+    "NUMERO_LIGNE": "20.005",
+    "NOM_LIGNE": "Villars-sur-Glâne gare-Fribourg gare-Torry",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.005.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 33,
+      "vertices": 802,
+      "lengthMetres": 7311.216228906177
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "5"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-5-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-5-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 20,
+    "NUMERO_LIGNE": "20.006",
+    "NOM_LIGNE": "Guintzet-Fribourg gare-Musy",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.006.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 28,
+      "vertices": 718,
+      "lengthMetres": 6687.1300362653465
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "6"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-6-B-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-6-B-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 21,
+    "NUMERO_LIGNE": "20.008",
+    "NOM_LIGNE": "Marly-Fribourg - Givisiez - Corminboeuf ",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.008.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 35,
+      "vertices": 1402,
+      "lengthMetres": 13612.57544540559
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "8"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-8-D-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-8-D-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 22,
+    "NUMERO_LIGNE": "20.009",
+    "NOM_LIGNE": "Petit-Moncor - Pérolles - Fribourg - Granges-Paccot - Givisiez ",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.009.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 16,
+      "vertices": 1279,
+      "lengthMetres": 13735.466217641331
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "9"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-9-E-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 23,
+    "NUMERO_LIGNE": "20.010",
+    "NOM_LIGNE": "Fribourg - Granges-Paccot - Givisiez",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.010.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 579,
+      "lengthMetres": 6879.266307549713
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "10"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "no-matching-canton-serving-gtfs-route"
+  },
+  {
+    "OBJECTID": 24,
+    "NUMERO_LIGNE": "20.011",
+    "NOM_LIGNE": "Fribourg-Matran-Rosé",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.011.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 46,
+      "vertices": 1663,
+      "lengthMetres": 10716.788146831925
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "11"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-11-E-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-11-E-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 25,
+    "NUMERO_LIGNE": "20.012",
+    "NOM_LIGNE": "Düdingen, Warpel - Düdingen, Gantrischweg",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.012.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 512,
+      "lengthMetres": 4359.468257982563
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "12"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-12-E-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-12-E-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 26,
+    "NUMERO_LIGNE": "20.013",
+    "NOM_LIGNE": "Ortsbus Düdingen Bahnhof - Leimacker",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.013.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 223,
+      "lengthMetres": 1566.6780715751045
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "13"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-13-C-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-13-C-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 27,
+    "NUMERO_LIGNE": "20.120",
+    "NOM_LIGNE": "Tafers-Schmitten",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.120.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 14,
+      "vertices": 732,
+      "lengthMetres": 9650.139032221718
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "120"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-120-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-120-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 28,
+    "NUMERO_LIGNE": "20.121",
+    "NOM_LIGNE": "Düdingen-Bösingen-Laupen",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.121.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Post Auto",
+    "geometry": {
+      "parts": 16,
+      "vertices": 727,
+      "lengthMetres": 7862.966792290207
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "121"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-881-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 29,
+    "NUMERO_LIGNE": "20.122",
+    "NOM_LIGNE": "Düdingen–Gurmels–Kerzers",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.122.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Post Auto",
+    "geometry": {
+      "parts": 28,
+      "vertices": 1905,
+      "lengthMetres": 20265.395215767952
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "122"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-882-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-882-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 30,
+    "NUMERO_LIGNE": "20.123",
+    "NOM_LIGNE": "Fribourg-Tafers-Plaffeien-Schwarzsee",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.123.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 32,
+      "vertices": 2354,
+      "lengthMetres": 29458.63687804556
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "123"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-123-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-123-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 31,
+    "NUMERO_LIGNE": "20.124",
+    "NOM_LIGNE": "Fribourg-St.Ursen-Tafers-Düdingen",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.124.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 43,
+      "vertices": 1296,
+      "lengthMetres": 15270.272224265571
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "124"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-124-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-124-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 32,
+    "NUMERO_LIGNE": "20.125",
+    "NOM_LIGNE": "Düdingen-Alterswil-Plaffeien-Schwarzsee",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.125.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 2080,
+      "lengthMetres": 27903.75110981324
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "125"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-125-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 33,
+    "NUMERO_LIGNE": "20.127",
+    "NOM_LIGNE": "Fribourg-Rechthalten-Plaffeien",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.127.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 21,
+      "vertices": 1335,
+      "lengthMetres": 17252.860117904278
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "127"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-127-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 34,
+    "NUMERO_LIGNE": "20.129",
+    "NOM_LIGNE": "Fribourg-Marly-Giffers-Plaffeien",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.129.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 24,
+      "vertices": 1398,
+      "lengthMetres": 17514.86305274979
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "129"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-129-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 35,
+    "NUMERO_LIGNE": "20.130",
+    "NOM_LIGNE": "Giffers-St.Silvester",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.130.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 457,
+      "lengthMetres": 6886.244441750984
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "130"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-130-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-130-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 36,
+    "NUMERO_LIGNE": "30.131",
+    "NOM_LIGNE": "Flamatt–Albligen",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/30.131.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Post Auto",
+    "geometry": {
+      "parts": 8,
+      "vertices": 1060,
+      "lengthMetres": 15216.067811077177
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "131"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-880-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-880-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 37,
+    "NUMERO_LIGNE": "20.143",
+    "NOM_LIGNE": "N1 Fribourg - Belfaux",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.143.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 28,
+      "vertices": 1544,
+      "lengthMetres": 14473.405787056969
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N1"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N1-M-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 38,
+    "NUMERO_LIGNE": "20.181",
+    "NOM_LIGNE": "Fribourg-Heitenried-Schwarzenburg",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.181.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 29,
+      "vertices": 1249,
+      "lengthMetres": 19244.87672932744
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "181"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-181-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-181-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 39,
+    "NUMERO_LIGNE": "20.182",
+    "NOM_LIGNE": "Fribourg - Tafers - Heitenried - Schmitten - Wünnewil",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.182.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 38,
+      "vertices": 1576,
+      "lengthMetres": 22714.364965656794
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "182"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-182-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-182-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 40,
+    "NUMERO_LIGNE": "20.201",
+    "NOM_LIGNE": "Epagny – La Tour-de-Trême – Bulle – Riaz – Vuippens – Marsens ",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.201.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 39,
+      "vertices": 1739,
+      "lengthMetres": 12074.073869327394
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "201"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-201-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-201-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 41,
+    "NUMERO_LIGNE": "20.202",
+    "NOM_LIGNE": "Morlon-Bulle-Vuadens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.202.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 32,
+      "vertices": 1375,
+      "lengthMetres": 9419.420811191205
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "202"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-202-A-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 42,
+    "NUMERO_LIGNE": "20.203",
+    "NOM_LIGNE": "Bulle Gare-Planchy",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.203.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 10,
+      "vertices": 564,
+      "lengthMetres": 3698.8590304890595
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "203"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-203-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-203-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 43,
+    "NUMERO_LIGNE": "10.213",
+    "NOM_LIGNE": "Vevey-Châtel-St-Denis",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/10.213.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Autre",
+    "geometry": {
+      "parts": 12,
+      "vertices": 1149,
+      "lengthMetres": 13707.281525967914
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "876"
+      ],
+      "lines": [
+        "213"
+      ],
+      "evidence": "Official 2026 timetable field 10.213: passenger line and transport enterprise; see timetable-10.213.pdf. Candidate identity only: full journey geometry must still pass."
+    },
+    "routeIds": [
+      "92-213-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 44,
+    "NUMERO_LIGNE": "10.216",
+    "NOM_LIGNE": "Vevey - Bossonnens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/10.216.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Autre",
+    "geometry": {
+      "parts": 9,
+      "vertices": 1068,
+      "lengthMetres": 13065.564338807877
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "876"
+      ],
+      "lines": [
+        "216"
+      ],
+      "evidence": "Official 2026 timetable field 10.216: passenger line and transport enterprise; see timetable-10.216.pdf. Candidate identity only: full journey geometry must still pass."
+    },
+    "routeIds": [
+      "92-216-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-216-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 45,
+    "NUMERO_LIGNE": "10.217",
+    "NOM_LIGNE": "Vevey-Jongny-Attalens-Palézieux",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/10.217.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Autre",
+    "geometry": {
+      "parts": 1,
+      "vertices": 1173,
+      "lengthMetres": 15160.385633128699
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "876"
+      ],
+      "lines": [
+        "217"
+      ],
+      "evidence": "Official 2026 timetable field 10.217: passenger line and transport enterprise; see timetable-10.217.pdf. Candidate identity only: full journey geometry must still pass."
+    },
+    "routeIds": [
+      "92-217-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-217-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 46,
+    "NUMERO_LIGNE": "20.231",
+    "NOM_LIGNE": "Fribourg-Le Mouret-Bonnefontaine",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.231.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 20,
+      "vertices": 962,
+      "lengthMetres": 11448.450635714511
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "231"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-231-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 47,
+    "NUMERO_LIGNE": "20.233",
+    "NOM_LIGNE": "Fribourg-Treyvaux-Le Pratzey",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.233.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 20,
+      "vertices": 1372,
+      "lengthMetres": 16448.2109732868
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "233"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-233-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-233-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 48,
+    "NUMERO_LIGNE": "20.234",
+    "NOM_LIGNE": "Fribourg-La Roche-Bulle",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.234.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 49,
+      "vertices": 2566,
+      "lengthMetres": 27592.53452626898
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "234"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-234-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 49,
+    "NUMERO_LIGNE": "20.235",
+    "NOM_LIGNE": "Pont-la-Ville-La Roche FR-La Berra",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.235.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 587,
+      "lengthMetres": 7521.128480925255
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "235"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-235-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-235-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 50,
+    "NUMERO_LIGNE": "20.245",
+    "NOM_LIGNE": "Fribourg-La Roche-Charmey (Gruyère)-Jaun",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.245.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 32,
+      "vertices": 2934,
+      "lengthMetres": 42426.807248791025
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "245"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-245-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 51,
+    "NUMERO_LIGNE": "20.258",
+    "NOM_LIGNE": "Bulle-Vaulruz-Vuisternens-dt-Romont-Oron-la-Ville",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.258.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 1945,
+      "lengthMetres": 29864.325401085433
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "258"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-258-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-258-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 52,
+    "NUMERO_LIGNE": "20.260",
+    "NOM_LIGNE": "Bulle-Charmey (Gruyère)-Jaun-Jaunpass-Boltigen",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.260.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 18,
+      "vertices": 3708,
+      "lengthMetres": 48721.54155262091
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "260"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-260-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-260-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 53,
+    "NUMERO_LIGNE": "20.262",
+    "NOM_LIGNE": "Bulle-Corbières-Broc",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.262.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 5,
+      "vertices": 1507,
+      "lengthMetres": 15477.376954974734
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "262"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-262-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-262-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 54,
+    "NUMERO_LIGNE": "20.264",
+    "NOM_LIGNE": "Bulle-Estavannens-Grandvillard",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.264.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 17,
+      "vertices": 1071,
+      "lengthMetres": 11741.570540144083
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "264"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-264-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 55,
+    "NUMERO_LIGNE": "20.266",
+    "NOM_LIGNE": "Bus de nuit-Intyamon",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.266.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 13,
+      "vertices": 1795,
+      "lengthMetres": 25298.788787765774
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "unresolved-passenger-line-identity"
+  },
+  {
+    "OBJECTID": 56,
+    "NUMERO_LIGNE": "20.281",
+    "NOM_LIGNE": "N2 Fribourg - Corminboeuf",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.281.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 29,
+      "vertices": 938,
+      "lengthMetres": 8584.28631642983
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N2"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N2-L-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 57,
+    "NUMERO_LIGNE": "20.290",
+    "NOM_LIGNE": "La Valsainte-Cerniat-Charmey",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.290.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 1,
+      "vertices": 643,
+      "lengthMetres": 7970.129294416103
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "290"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-235-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-235-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 58,
+    "NUMERO_LIGNE": "30.323",
+    "NOM_LIGNE": "Thurnen - Gurnigel - Plaffeien - Schwarzenburg ",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/30.323.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 1,
+      "vertices": 4471,
+      "lengthMetres": 52280.906196138065
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "323"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-752-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 59,
+    "NUMERO_LIGNE": "20.334",
+    "NOM_LIGNE": "Cousset-Montagny-Mannens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.334.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 9,
+      "vertices": 755,
+      "lengthMetres": 12237.988905453327
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "334"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-220-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 60,
+    "NUMERO_LIGNE": "20.335",
+    "NOM_LIGNE": "Cottens - Rueyres-St-Laurent - Farvagny-le-Grand",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.335.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 1,
+      "vertices": 689,
+      "lengthMetres": 10375.798813253428
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "335"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-219-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-219-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 61,
+    "NUMERO_LIGNE": "20.336",
+    "NOM_LIGNE": "Fribourg-Farvagny-Bulle",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.336.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 59,
+      "vertices": 3261,
+      "lengthMetres": 40323.589324968656
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "336"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-336-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 62,
+    "NUMERO_LIGNE": "20.337",
+    "NOM_LIGNE": "Fribourg-Posat-Farvagny",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.337.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 15,
+      "vertices": 1228,
+      "lengthMetres": 17502.70516926811
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "337"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-337-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 63,
+    "NUMERO_LIGNE": "20.339",
+    "NOM_LIGNE": "Avry-Matran-Chénens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.339.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 20,
+      "vertices": 1008,
+      "lengthMetres": 13483.772888234216
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "339"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-339-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-339-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 64,
+    "NUMERO_LIGNE": "20.340",
+    "NOM_LIGNE": "Avry-Matran-Grolley",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.340.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 13,
+      "vertices": 913,
+      "lengthMetres": 12818.426088760023
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "340"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-340-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-340-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 65,
+    "NUMERO_LIGNE": "20.361",
+    "NOM_LIGNE": "Région Ouest de Fribourg (Noctambus)",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.361.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 78,
+      "vertices": 3786,
+      "lengthMetres": 39740.4500384447
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "unresolved-passenger-line-identity"
+  },
+  {
+    "OBJECTID": 66,
+    "NUMERO_LIGNE": "20.362",
+    "NOM_LIGNE": "N3 Fribourg - Rosé - Prez-vers-Noréaz",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.362.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 67,
+      "vertices": 2904,
+      "lengthMetres": 30668.311074113
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N3"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N3-L-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-N3-L-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 67,
+    "NUMERO_LIGNE": "10.384",
+    "NOM_LIGNE": "Oron-la-Ville - St-Martin",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/10.384.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 12,
+      "vertices": 524,
+      "lengthMetres": 7770.106553794729
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "384"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-213-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 68,
+    "NUMERO_LIGNE": "20.454",
+    "NOM_LIGNE": "Bulle-Sâles-Villariaz-Romont FR",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.454.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 34,
+      "vertices": 1964,
+      "lengthMetres": 22939.25993968577
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "454"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-454-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-454-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 69,
+    "NUMERO_LIGNE": "20.455",
+    "NOM_LIGNE": "Romont FR-La Joux-La Verrerie",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.455.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 1075,
+      "lengthMetres": 17990.020398965255
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "455"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-455-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-455-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 70,
+    "NUMERO_LIGNE": "20.460",
+    "NOM_LIGNE": "Romont FR-Villaz-St-Pierre-Sédeilles-Avry-Matran",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.460.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 25,
+      "vertices": 1658,
+      "lengthMetres": 26547.09982363859
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "460"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "no-matching-canton-serving-gtfs-route"
+  },
+  {
+    "OBJECTID": 71,
+    "NUMERO_LIGNE": "20.462",
+    "NOM_LIGNE": "Romont FR-Sédeilles- Avry-Matran",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.462.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 22,
+      "vertices": 1453,
+      "lengthMetres": 23095.531638292403
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "462"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-216-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-216-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 72,
+    "NUMERO_LIGNE": "20.470",
+    "NOM_LIGNE": "Fribourg - Farvagny - Romont",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.470.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 37,
+      "vertices": 2585,
+      "lengthMetres": 37320.44550124464
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "470"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-470-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-470-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 73,
+    "NUMERO_LIGNE": "20.471",
+    "NOM_LIGNE": "Romont FR-Le Châtelard-d'en-Haut-Sorens-Bulle",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.471.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 26,
+      "vertices": 2526,
+      "lengthMetres": 29269.57500219337
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "471"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-471-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-471-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 74,
+    "NUMERO_LIGNE": "20.472",
+    "NOM_LIGNE": "Romont FR-Bouloz-Palézieux",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.472.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 21,
+      "vertices": 1630,
+      "lengthMetres": 27515.97961821923
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "472"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-472-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-472-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 75,
+    "NUMERO_LIGNE": "20.473",
+    "NOM_LIGNE": "Romont FR-Ursy-Palézieux",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.473.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 27,
+      "vertices": 1472,
+      "lengthMetres": 23604.65776931213
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "473"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-473-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 76,
+    "NUMERO_LIGNE": "20.474",
+    "NOM_LIGNE": "Romont FR-Vauderens-Moudon",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.474.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 5,
+      "vertices": 1160,
+      "lengthMetres": 21459.959345518917
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "474"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-474-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 77,
+    "NUMERO_LIGNE": "20.476",
+    "NOM_LIGNE": "Romont FR-Prez-vers-Siviriez-Romont FR",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.476.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 15,
+      "vertices": 910,
+      "lengthMetres": 15958.882781192384
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "476"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-476-A-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 78,
+    "NUMERO_LIGNE": "20.478",
+    "NOM_LIGNE": "Romont - Hennens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.478.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 6,
+      "vertices": 471,
+      "lengthMetres": 6711.564322527343
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "478"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-478-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-478-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 79,
+    "NUMERO_LIGNE": "20.479",
+    "NOM_LIGNE": "Romont - La Maula - Billens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.479.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 12,
+      "vertices": 569,
+      "lengthMetres": 7750.510118816695
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "479"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-479-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-479-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 80,
+    "NUMERO_LIGNE": "20.480",
+    "NOM_LIGNE": "Romont - Berlens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.480.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 436,
+      "lengthMetres": 6869.774009916647
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "480"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-480-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-480-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 81,
+    "NUMERO_LIGNE": "20.481",
+    "NOM_LIGNE": "Palézieux-Attalens-Bossonnens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.481.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 7,
+      "vertices": 756,
+      "lengthMetres": 10365.579010322192
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "481"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-481-B-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-481-B-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 82,
+    "NUMERO_LIGNE": "20.482",
+    "NOM_LIGNE": "Estévenens-Sommentier",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.482.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 11,
+      "vertices": 772,
+      "lengthMetres": 12156.66142657589
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "482"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-482-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-482-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 83,
+    "NUMERO_LIGNE": "20.491",
+    "NOM_LIGNE": "Châtel-St-Denis - Palézieux",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.491.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 7,
+      "vertices": 1255,
+      "lengthMetres": 10294.201161935638
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "491"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-491-C-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-491-C-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 84,
+    "NUMERO_LIGNE": "20.492",
+    "NOM_LIGNE": "Châtel-St-Denis-Les Paccots",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.492.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 6,
+      "vertices": 891,
+      "lengthMetres": 9282.672948330975
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "492"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-492-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 85,
+    "NUMERO_LIGNE": "20.496",
+    "NOM_LIGNE": "Châtel-St-Denis – La Verrerie",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.496.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 1185,
+      "lengthMetres": 20515.578992115097
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "496"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-496-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-496-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 86,
+    "NUMERO_LIGNE": "20.501",
+    "NOM_LIGNE": "Transport urbain Estavayer-le-Lac",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.501.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 1,
+      "vertices": 350,
+      "lengthMetres": 3958.7909018770138
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "501"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-233-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-233-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 87,
+    "NUMERO_LIGNE": "20.520",
+    "NOM_LIGNE": "Murten - Gümmenen",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.520.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 6,
+      "vertices": 1151,
+      "lengthMetres": 15361.54528745402
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "520"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-520-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 88,
+    "NUMERO_LIGNE": "20.530",
+    "NOM_LIGNE": "Ins - Sugiez - Lugnorre",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.530.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 14,
+      "vertices": 965,
+      "lengthMetres": 14362.740984805549
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "530"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-530-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-530-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 89,
+    "NUMERO_LIGNE": "20.533",
+    "NOM_LIGNE": "Aventibus Avenches-Oleyres",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.533.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 14,
+      "vertices": 761,
+      "lengthMetres": 8019.376618139153
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "533"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "no-matching-canton-serving-gtfs-route"
+  },
+  {
+    "OBJECTID": 90,
+    "NUMERO_LIGNE": "20.535",
+    "NOM_LIGNE": "Avenches-Salavaux-Cudrefin-Ins",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.535.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 16,
+      "vertices": 1188,
+      "lengthMetres": 22544.358341247556
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "535"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "no-matching-canton-serving-gtfs-route"
+  },
+  {
+    "OBJECTID": 91,
+    "NUMERO_LIGNE": "20.538",
+    "NOM_LIGNE": "(Avenches)-Salavaux-Mur",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.538.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 23,
+      "vertices": 1352,
+      "lengthMetres": 21054.08332855524
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "538"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "no-matching-canton-serving-gtfs-route"
+  },
+  {
+    "OBJECTID": 92,
+    "NUMERO_LIGNE": "20.540",
+    "NOM_LIGNE": "Avenches-Villars-le-Grand-Cudrefin",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.540.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 20,
+      "vertices": 1136,
+      "lengthMetres": 16660.762700476687
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "540"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [],
+    "admittedRouteIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "no-matching-canton-serving-gtfs-route"
+  },
+  {
+    "OBJECTID": 93,
+    "NUMERO_LIGNE": "30.541",
+    "NOM_LIGNE": "Kerzers-Golaten-Wileroltigen-Gurbrü",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/30.541.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Post Auto",
+    "geometry": {
+      "parts": 15,
+      "vertices": 1124,
+      "lengthMetres": 14946.131115169172
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "541"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-884-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-884-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 94,
+    "NUMERO_LIGNE": "20.542",
+    "NOM_LIGNE": "Chésopelloz - Belfaux - La Corbaz",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.542.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 478,
+      "lengthMetres": 6283.0037397470405
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "542"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-542-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-542-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 95,
+    "NUMERO_LIGNE": "20.543",
+    "NOM_LIGNE": "N5 Fribourg - Marly",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.543.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 17,
+      "vertices": 560,
+      "lengthMetres": 4931.039736981107
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N5"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N5-F-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-N5-F-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 96,
+    "NUMERO_LIGNE": "20.544",
+    "NOM_LIGNE": "Fribourg-Avenches-Domdidier-Gletterens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.544.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 55,
+      "vertices": 2890,
+      "lengthMetres": 32731.256102896707
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "544"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-544-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-544-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 97,
+    "NUMERO_LIGNE": "20.545",
+    "NOM_LIGNE": "Fribourg-Misery-Courtepin",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.545.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 37,
+      "vertices": 1634,
+      "lengthMetres": 17051.203938222887
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "545"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-545-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-545-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 98,
+    "NUMERO_LIGNE": "20.546",
+    "NOM_LIGNE": "Murten-Courlevon-Courtepin",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.546.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 11,
+      "vertices": 855,
+      "lengthMetres": 9623.405660909462
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "546"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-546-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 99,
+    "NUMERO_LIGNE": "20.547",
+    "NOM_LIGNE": "Düdingen–Gurmels–Murten–Meyriez Hôpital",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.547.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Post Auto",
+    "geometry": {
+      "parts": 49,
+      "vertices": 2167,
+      "lengthMetres": 22165.862137027234
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "547"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-883-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-883-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 100,
+    "NUMERO_LIGNE": "20.548",
+    "NOM_LIGNE": "Murten-Gümmenen",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.548.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 12,
+      "vertices": 972,
+      "lengthMetres": 13813.899407045928
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "548"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-548-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 101,
+    "NUMERO_LIGNE": "20.549",
+    "NOM_LIGNE": "Courtepin-Gurmels",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.549.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 2,
+      "vertices": 587,
+      "lengthMetres": 7933.667771482743
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "549"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-549-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-549-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 102,
+    "NUMERO_LIGNE": "20.551",
+    "NOM_LIGNE": "Estavayer-le-Lac - Forel FR - Rueyres-les-Prés - Gletterens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.551.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 24,
+      "vertices": 1414,
+      "lengthMetres": 22513.695879245897
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "551"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-551-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-551-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 103,
+    "NUMERO_LIGNE": "20.552",
+    "NOM_LIGNE": "Estavayer-le-Lac - Cugy FR - Combremont - Granges-près-Marnand",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.552.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 19,
+      "vertices": 1863,
+      "lengthMetres": 31475.106789937377
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "552"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-552-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-552-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 104,
+    "NUMERO_LIGNE": "20.553",
+    "NOM_LIGNE": "Estavayer-le-Lac-Châbles FR-Cheyres",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.553.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 6,
+      "vertices": 540,
+      "lengthMetres": 6973.123743534879
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "553"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-553-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-553-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 105,
+    "NUMERO_LIGNE": "20.554",
+    "NOM_LIGNE": "Estavayer-le-Lac – Bussy – Rueyres-les-Prés – Payerne ",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.554.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 33,
+      "vertices": 1409,
+      "lengthMetres": 14931.663851461331
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "554"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-554-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-554-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 106,
+    "NUMERO_LIGNE": "20.555",
+    "NOM_LIGNE": "Estavayer-le-Lac-Murist-Vuissens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.555.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 18,
+      "vertices": 1491,
+      "lengthMetres": 20570.62863449284
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "555"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-555-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-555-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 107,
+    "NUMERO_LIGNE": "20.556",
+    "NOM_LIGNE": "Gletterens – Vallon – Domdidier",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.556.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 11,
+      "vertices": 664,
+      "lengthMetres": 9145.680273652159
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "556"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-556-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-556-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 108,
+    "NUMERO_LIGNE": "20.557",
+    "NOM_LIGNE": "Domdidier - Russy - Léchelles",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.557.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 20,
+      "vertices": 1688,
+      "lengthMetres": 29114.8841151386
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "557"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-557-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-557-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 109,
+    "NUMERO_LIGNE": "20.558",
+    "NOM_LIGNE": "Domdidier - Avenches - Villarepos",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.558.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 9,
+      "vertices": 1004,
+      "lengthMetres": 12297.555555650664
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "558"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-558-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-558-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 110,
+    "NUMERO_LIGNE": "20.560",
+    "NOM_LIGNE": "Payerne-Grandcour-Chevroux",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.560.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 25,
+      "vertices": 1035,
+      "lengthMetres": 14070.13688823929
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "560"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-231-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-231-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 111,
+    "NUMERO_LIGNE": "20.561",
+    "NOM_LIGNE": "Romont FR-Sédeilles-Payerne",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.561.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 17,
+      "vertices": 1448,
+      "lengthMetres": 23953.024717255157
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "561"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-215-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-215-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 112,
+    "NUMERO_LIGNE": "20.562",
+    "NOM_LIGNE": "Payerne - Combremont-le-Petit - Thierrens - Moudon",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.562.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 17,
+      "vertices": 1952,
+      "lengthMetres": 32990.977704949066
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "562"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-286-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-286-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 113,
+    "NUMERO_LIGNE": "20.564",
+    "NOM_LIGNE": "Granges-près-Marnand-Sédeilles",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.564.pdf\r\n.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 2,
+      "vertices": 1161,
+      "lengthMetres": 23180.28564871585
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "564"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-221-j26-1"
+    ],
+    "admittedRouteIds": [
+      "96-221-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 114,
+    "NUMERO_LIGNE": "20.565",
+    "NOM_LIGNE": "Lucens – Granges-près-Marnand – Cugy",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.565.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "Car Postal",
+    "geometry": {
+      "parts": 3,
+      "vertices": 1124,
+      "lengthMetres": 22366.031933183494
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "565"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "96-180-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 115,
+    "NUMERO_LIGNE": "20.917",
+    "NOM_LIGNE": "N17 Fribourg-Berne",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.917.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 7,
+      "vertices": 3052,
+      "lengthMetres": 44688.030549547395
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N17"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N17-B-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 116,
+    "NUMERO_LIGNE": "20.922",
+    "NOM_LIGNE": "M22 Bern-Kerzers-Murten-Ins",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/30.922.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 9,
+      "vertices": 2855,
+      "lengthMetres": 50375.60961093951
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "M22"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-M22-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 117,
+    "NUMERO_LIGNE": "20.142",
+    "NOM_LIGNE": "N11 Fribourg - Giffers - Plaffeien",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.142.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 1,
+      "vertices": 2426,
+      "lengthMetres": 31030.59576863082
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N11"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N11-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-N11-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 118,
+    "NUMERO_LIGNE": "20.477",
+    "NOM_LIGNE": "N12 Fribourg - Neyruz - Romont",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.477.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 2,
+      "vertices": 1906,
+      "lengthMetres": 27560.226542411165
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N12"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N12-D-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 119,
+    "NUMERO_LIGNE": "20.559",
+    "NOM_LIGNE": "N13 Fribourg - Payerne - Estavayer-le-Lac",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.559.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 88,
+      "vertices": 3987,
+      "lengthMetres": 47697.47894363025
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N13"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N13-D-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 120,
+    "NUMERO_LIGNE": "20.541",
+    "NOM_LIGNE": "N14 Fribourg - Courtepin - Avenches - Gletterens",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.541.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 5,
+      "vertices": 3072,
+      "lengthMetres": 37936.79599482829
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N14"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N14-D-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 121,
+    "NUMERO_LIGNE": "20.145",
+    "NOM_LIGNE": "N15 Fribourg - Düdingen - Murten - Sugiez",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.145.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 72,
+      "vertices": 2803,
+      "lengthMetres": 31818.238231034033
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N15"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N15-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-N15-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 122,
+    "NUMERO_LIGNE": "20.141",
+    "NOM_LIGNE": "N16 Fribourg - St.Ursen - Alterswil - Heitenried",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.141.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 34,
+      "vertices": 1261,
+      "lengthMetres": 20773.931260113946
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N16"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N16-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 123,
+    "NUMERO_LIGNE": "20.280",
+    "NOM_LIGNE": "N21 Bulle - La Roche - Fribourg",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.280.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 49,
+      "vertices": 3297,
+      "lengthMetres": 36564.4020907306
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N21"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N21-D-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 124,
+    "NUMERO_LIGNE": "20.261",
+    "NOM_LIGNE": "N22 Bulle - Gruyères, gare - Charmey",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.261.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 22,
+      "vertices": 1463,
+      "lengthMetres": 16452.103281315052
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N22"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N22-A-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 125,
+    "NUMERO_LIGNE": "20.223",
+    "NOM_LIGNE": "N23 Bulle - Châtel - Palézieux",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.223.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 32,
+      "vertices": 2536,
+      "lengthMetres": 31472.54618671174
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N23"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N23-F-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 126,
+    "NUMERO_LIGNE": "20.463",
+    "NOM_LIGNE": "N24 Bulle - Romont - Ursy - Palézieux",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.463.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus régional",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 34,
+      "vertices": 2843,
+      "lengthMetres": 41834.55178327478
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N24"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N24-C-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 127,
+    "NUMERO_LIGNE": "20.331",
+    "NOM_LIGNE": "N25 Bulle - Farvagny - Fribourg",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.331.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus de nuit",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 19,
+      "vertices": 2691,
+      "lengthMetres": 36004.62497330585
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "N25"
+      ],
+      "evidence": "Explicit night label in NOM_LIGNE"
+    },
+    "routeIds": [
+      "92-N25-D-j26-1"
+    ],
+    "admittedRouteIds": [],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  },
+  {
+    "OBJECTID": 128,
+    "NUMERO_LIGNE": "20.001",
+    "NOM_LIGNE": "Marly- Pérolles-Fribourg gare-Portes-de-Fribourg",
+    "HORAIRE": "https://widgets.oev-info.ch/publikation/jahresfpl/20.001.pdf",
+    "TYPE_LIGNE_VALEUR": "Bus urbain",
+    "ENTREPRISE_VALEUR": "TPF",
+    "geometry": {
+      "parts": 46,
+      "vertices": 1340,
+      "lengthMetres": 9672.49016157528
+    },
+    "identity": {
+      "mode": "bus",
+      "agencyIds": [
+        "834"
+      ],
+      "lines": [
+        "1"
+      ],
+      "evidence": "Reviewed timetable-field prefix/suffix plus exact source operator and GTFS display line"
+    },
+    "routeIds": [
+      "92-1-A-j26-1"
+    ],
+    "admittedRouteIds": [
+      "92-1-A-j26-1"
+    ],
+    "status": "crosswalk-candidate",
+    "exclusionReason": null
+  }
+]

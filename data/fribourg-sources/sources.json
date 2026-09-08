@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "publisher": "Etat de Fribourg / Service de la mobilité / SIT",
+  "sourceUrl": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2",
+  "metadataUrl": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/metadata",
+  "attribution": "Source: Etat de Fribourg",
+  "sourceCrs": "EPSG:2056",
+  "dataUpdated": null,
+  "metadataCreated": "2022-07-14",
+  "vintageNote": "The embedded Esri CreaDate dates metadata only. No geometry update date is declared. PDF timetable dates do not date line geometry.",
+  "acquiredAt": "2026-09-08T18:02:36.135027+00:00",
+  "sourceSnapshotSha256": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+  "acquisition": {
+    "schemaVersion": 1,
+    "sources": [
+      {
+        "file": "layer.json",
+        "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2?f=pjson",
+        "retrievedAt": "2026-09-08T18:02:36.135027+00:00",
+        "sha256": "c16291b80f3e37c1a80e6cc19ab1f55e7986be3119494ac42b79df760d1759f4",
+        "bytes": 5485
+      },
+      {
+        "file": "metadata.xml",
+        "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/metadata",
+        "retrievedAt": "2026-09-08T18:02:36.613107+00:00",
+        "sha256": "b0baa381f0a36d0d8b4356ca41c50187c9073f88f5d1a68a2c84521fd4477106",
+        "bytes": 475
+      },
+      {
+        "file": "portal-terms.html",
+        "url": "https://map.geo.fr.ch/help/fr/conditions_utilisation.htm",
+        "retrievedAt": "2026-09-08T18:02:36.990857+00:00",
+        "sha256": "ba38f4f44cb302dad197916de064d64cad8508edf25a125f646bd6061f42d142",
+        "bytes": 5691
+      },
+      {
+        "file": "geoinformation-ordinance.pdf",
+        "url": "https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes",
+        "retrievedAt": "2026-09-08T18:02:37.171453+00:00",
+        "sha256": "b2125375db200bb0ac11557983998d1c1ed6c64bac2d55cd6f246a5fa86db909",
+        "bytes": 1007146
+      },
+      {
+        "file": "timetable-10.213.pdf",
+        "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.213.pdf",
+        "retrievedAt": "2026-09-08T18:02:37.589928+00:00",
+        "sha256": "5606a8360594cb897ad011446f7b3e1f479c8f1b081deb271f53d8253f3bb586",
+        "bytes": 831835
+      },
+      {
+        "file": "timetable-10.216.pdf",
+        "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.216.pdf",
+        "retrievedAt": "2026-09-08T18:02:37.894388+00:00",
+        "sha256": "03f94e534d735e1503f986bda82d29dc04a755ce4e06e05be4c6e31d2fbd9a2f",
+        "bytes": 507491
+      },
+      {
+        "file": "timetable-10.217.pdf",
+        "url": "https://widgets.oev-info.ch/publikation/jahresfpl/10.217.pdf",
+        "retrievedAt": "2026-09-08T18:02:38.124169+00:00",
+        "sha256": "c9f5680e046bdee5409196b9996f77342e00633f8e0b7435dc2d839df8181d35",
+        "bytes": 1075850
+      },
+      {
+        "file": "timetable-254.pdf",
+        "url": "https://widgets.oev-info.ch/publikation/jahresfpl/254.pdf",
+        "retrievedAt": "2026-09-08T18:02:38.443703+00:00",
+        "sha256": "2b093ab62c8c54f2a320eb2ce4ef2c6563ee39f5794bb46737e756ce2f87ffa8",
+        "bytes": 515647
+      },
+      {
+        "file": "ids.json",
+        "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnIdsOnly=true&f=json",
+        "retrievedAt": "2026-09-08T18:02:38.897597+00:00",
+        "sha256": "00a1a1985cb71689cd6eb18ada00d64a4bbeb28b6e3c2c52ac891041f69dce14",
+        "bytes": 450
+      },
+      {
+        "file": "count.json",
+        "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnCountOnly=true&f=json",
+        "retrievedAt": "2026-09-08T18:02:39.244933+00:00",
+        "sha256": "dbd046824ac239bc2fa79b152b1152a43bdfc4e110a96862cefe043d9f57270a",
+        "bytes": 13
+      },
+      {
+        "file": "lines-page-0.json",
+        "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?objectIds=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50&outFields=%2A&outSR=2056&returnGeometry=true&f=json",
+        "retrievedAt": "2026-09-08T18:02:41.302605+00:00",
+        "sha256": "723585b580c61c02731e09eaa7f06e4de7cd152d6cd85a7591836d1d46cfedbc",
+        "bytes": 2969543
+      },
+      {
+        "file": "lines-page-1.json",
+        "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?objectIds=51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100&outFields=%2A&outSR=2056&returnGeometry=true&f=json",
+        "retrievedAt": "2026-09-08T18:02:43.345293+00:00",
+        "sha256": "8be2391a880f3b2e88b793d5b0629bd1ab1b20732416d5214f6f4ff238c92d19",
+        "bytes": 2843905
+      },
+      {
+        "file": "lines-page-2.json",
+        "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?objectIds=101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128&outFields=%2A&outSR=2056&returnGeometry=true&f=json",
+        "retrievedAt": "2026-09-08T18:02:47.472110+00:00",
+        "sha256": "3080714e01b49acac734b6feba6029f44a52f172454b3397b31ccc8f0bb3b263",
+        "bytes": 2102008
+      },
+      {
+        "file": "ids-after.json",
+        "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnIdsOnly=true&f=json",
+        "retrievedAt": "2026-09-08T18:02:48.519572+00:00",
+        "sha256": "00a1a1985cb71689cd6eb18ada00d64a4bbeb28b6e3c2c52ac891041f69dce14",
+        "bytes": 450
+      }
+    ],
+    "lineCount": 128,
+    "sourceCrs": "EPSG:2056",
+    "boundary": {
+      "edition": "2026-01",
+      "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc"
+    },
+    "derivedHashes": {
+      "decoded.json.gz": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+      "boundary.json.gz": "3886ae85651c711dd0f45c327cb96d08f00afa92edb8a9431b4b3bcbb6a5dbf5"
+    }
+  },
+  "termsFiles": [
+    "portal-terms.html",
+    "geoinformation-ordinance.pdf",
+    "metadata.xml"
+  ],
+  "license": "Dataset-specific vector redistribution terms unresolved; no Creative Commons licence assigned",
+  "publicRedistributionCleared": false,
+  "reuseEvidence": {
+    "portalTerms": "https://map.geo.fr.ch/help/fr/conditions_utilisation.htm",
+    "ordinanceUrl": "https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes",
+    "ordinanceEffective": "2024-03-01",
+    "assessment": "OCGéo art. 12 requires attribution for reproduction; annex 2 classifies the cantonal public transport plan 56-FR as level A. The service metadata does not establish that this line layer is that exact dataset or supply vector terms. Preserve this supporting evidence without claiming a dataset-specific licence. Local archival research feed only until clarified."
+  },
+  "boundary": {
+    "edition": "2026-01",
+    "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+    "snapshotSha256": "3886ae85651c711dd0f45c327cb96d08f00afa92edb8a9431b4b3bcbb6a5dbf5",
+    "attribution": "© swisstopo",
+    "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+    "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+  }
+}
