@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="OpenStreetMap server" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+<way id="86162950" visible="true" version="10" changeset="169522888" timestamp="2025-07-26T18:51:09Z" user="ach90" uid="20369340">
+  <nd ref="1000021109"/>
+  <nd ref="3978156585"/>
+  <nd ref="6647693183"/>
+  <nd ref="1412113561"/>
+  <tag k="highway" v="tertiary"/>
+  <tag k="maxspeed" v="30"/>
+  <tag k="name" v="Murtenstrasse"/>
+  <tag k="name:etymology:wikidata" v="Q68283"/>
+  <tag k="ref" v="1201"/>
+</way>
+</osm>

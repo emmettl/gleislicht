@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="OpenStreetMap server" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+<way id="916903750" visible="true" version="5" changeset="186358667" timestamp="2026-07-25T17:26:28Z" user="d_berger" uid="1234273">
+  <nd ref="36161435"/>
+  <nd ref="279600247"/>
+  <nd ref="14049547713"/>
+  <nd ref="36161410"/>
+  <tag k="highway" v="tertiary"/>
+  <tag k="maxspeed" v="30"/>
+  <tag k="name" v="Bärenplatz"/>
+  <tag k="ref" v="1201"/>
+  <tag k="surface" v="asphalt"/>
+</way>
+</osm>

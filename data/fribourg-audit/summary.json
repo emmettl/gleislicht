@@ -3,11 +3,12 @@
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "c3be9e15e633d44c32d3bd439469f2ef5979fe1fcd9764c102170ca3d751f343",
+    "crosswalk": "2e5162674534b65c4c4381689c5f4260a4cca8973d440712dd477b0f8de5563a",
     "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
     "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
     "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
     "jongny": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f",
+    "laupen": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4",
     "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
     "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
     "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -313,6 +314,1036 @@
       "license": "ODbL-1.0",
       "licenseUrl": "https://www.openstreetmap.org/copyright",
       "model": "Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified",
+      "laupen": {
+        "schemaVersion": 1,
+        "id": "laupen-western-bypass",
+        "sourceDirectory": "data/fribourg-laupen-sources",
+        "sources": [
+          {
+            "file": "map.osm.gz",
+            "url": "https://www.openstreetmap.org/api/0.6/map?bbox=7.220,46.890,7.251,46.912",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Complete original OSM bbox response, deterministic gzip. Detailed road geometry and direction tags; individual object edits are not survey dates. Two ways and four nodes edited on 7 September are restored from separately retained historical versions covering both fixture dates.",
+            "sha256": "344169ef2f9b0ac7bb8194a882f34fa790f8e0eea8b8e2876fc8cb5374dba54d",
+            "retrievedAt": "2026-09-08T21:25:00.023Z"
+          },
+          {
+            "file": "sense-bridge-works-2025.pdf",
+            "url": "https://www.in-zukunft-laupen.ch/wp-content/uploads/beitragsbilder/brueckenbauten/flyer-a4-baustart-neubau-sensebruecke-fuer-webseite-30.07.2025.pdf",
+            "published": null,
+            "filenameDate": "2025-07-30",
+            "attribution": "Kanton Bern / Gemeinde Laupen",
+            "role": "Filename dated 2025-07-30; no separately verified publication timestamp. Page 4 explicitly identifies PostAuto 121 and its Cholholz shuttle using Bauumfahrung West. Page 3 schedules bridge reopening in summer 2027. Visually reviewed; no schematic map geometry extracted.",
+            "sha256": "68d22595876e3d6b051d52b66da472ee155dfbe83f43a3669382197b1bd62917",
+            "retrievedAt": "2026-09-08T21:22:41.565Z"
+          },
+          {
+            "file": "sense-bridge-update-2026.html",
+            "url": "https://www.in-zukunft-laupen.ch/neubau-sensebruecke/",
+            "published": "2026-08-24",
+            "attribution": "Projekt In Zukunft Laupen / Kanton Bern / Gemeinde Laupen",
+            "role": "Contemporary notice confirms bridge construction September–December 2026 and planned reopening summer 2027.",
+            "sha256": "5c318114d42da2071463502aef07c303316fd2f92b441f2644b2b3f5247253ae",
+            "retrievedAt": "2026-09-08T21:25:09.157Z"
+          },
+          {
+            "file": "western-bypass.html",
+            "url": "https://www.in-zukunft-laupen.ch/teilprojekte/bauumfahrungen/",
+            "published": null,
+            "attribution": "Projekt In Zukunft Laupen / Kanton Bern / Gemeinde Laupen",
+            "role": "Explicit route-121 western diversion and temporary Industriestrasse Tuftera stop. Page publication date unknown.",
+            "sha256": "068fb06edec83e5897132b7750f7981ef3a5821e850b2f2c57e7d200b5aba3b8",
+            "retrievedAt": "2026-09-08T21:25:08.755Z"
+          },
+          {
+            "file": "station-entrance-works-2026.html",
+            "url": "https://www.in-zukunft-laupen.ch/baustart-der-sanierung-neueneggstrasse/",
+            "published": "2026-05-29",
+            "attribution": "Projekt In Zukunft Laupen / Kanton Bern / Gemeinde Laupen",
+            "role": "Station entrance closure and temporary PostAuto stops planned 3–14 August 2026, outside both fixture dates. Neueneggstrasse works continue; this is no guarantee that dates were not amended.",
+            "sha256": "9c1c1a265611a5843dbfe8e3e27d19645182479222470dfcaabeec77db3441bf",
+            "retrievedAt": "2026-09-08T21:25:06.649Z"
+          },
+          {
+            "file": "way-86162950-v10.osm",
+            "url": "https://www.openstreetmap.org/api/0.6/way/86162950/10",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Original road-way version covering both fixture dates, before the 7 September edit.",
+            "sha256": "b9e4c609c5bf1b8ca2e268fb35c577fa7207731e129637fb83b670d2fd6bcd0d",
+            "retrievedAt": "2026-09-08T21:32:37.351Z"
+          },
+          {
+            "file": "way-916903750-v5.osm",
+            "url": "https://www.openstreetmap.org/api/0.6/way/916903750/5",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Original road-way version covering both fixture dates, before the 7 September edit.",
+            "sha256": "fbc0a25ea125ba7280b7ca3fd7a736c05ff063cc5b0e3447d246b14411c8f5be",
+            "retrievedAt": "2026-09-08T21:32:32.977Z"
+          },
+          {
+            "file": "node-3978156585-history.osm",
+            "url": "https://www.openstreetmap.org/api/0.6/node/3978156585/history",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+            "sha256": "354b465dd8389aec28995636c9dde176f8d7f4f966b46f894de4b318eef2bab2",
+            "retrievedAt": "2026-09-08T21:33:16.291Z"
+          },
+          {
+            "file": "node-279600247-history.osm",
+            "url": "https://www.openstreetmap.org/api/0.6/node/279600247/history",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+            "sha256": "6469f64148389a3bd7484ddf824c83f92b4fb9d4dfa34ce7155f7798bc409db2",
+            "retrievedAt": "2026-09-08T21:33:16.672Z"
+          },
+          {
+            "file": "node-2952325480-history.osm",
+            "url": "https://www.openstreetmap.org/api/0.6/node/2952325480/history",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+            "sha256": "6db9da935f5d9f4545e112894273372451de20b53b12b06f786c06c9c6f6ae40",
+            "retrievedAt": "2026-09-08T21:33:17.781Z"
+          },
+          {
+            "file": "node-14049536298-history.osm",
+            "url": "https://www.openstreetmap.org/api/0.6/node/14049536298/history",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+            "sha256": "69cec78d6c73d7f8d64de83df59a1423502c1ac34da966cb368861a0cc61a78b",
+            "retrievedAt": "2026-09-08T21:33:15.721Z"
+          }
+        ],
+        "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+        "agencyId": "801",
+        "routeId": "96-881-j26-1",
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "patterns": [
+          {
+            "id": "09498bcb49c92b7e48953f10",
+            "routeId": "96-881-j26-1",
+            "stops": [
+              [
+                7.22348795,
+                46.88897649,
+                "Bösingen, Cholholz",
+                "",
+                "ch:1:sloid:81035:0:957142"
+              ],
+              [
+                7.22806935,
+                46.89265989,
+                "Bösingen, Dorf",
+                "",
+                "ch:1:sloid:4767:0:534961"
+              ],
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              [
+                7.24155307,
+                46.90148061,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:83983"
+              ]
+            ]
+          },
+          {
+            "id": "4e51d1b875eb54a76bb660a8",
+            "routeId": "96-881-j26-1",
+            "stops": [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              [
+                7.22758426,
+                46.892267,
+                "Bösingen, Dorf",
+                "",
+                "ch:1:sloid:4767:0:312840"
+              ],
+              [
+                7.22288608,
+                46.88865725,
+                "Bösingen, Cholholz",
+                "",
+                "ch:1:sloid:81035:0:22096"
+              ],
+              [
+                7.22086487,
+                46.88477096,
+                "Bösingen, Riederberg",
+                "",
+                "ch:1:sloid:70553:0:192432"
+              ],
+              [
+                7.22188895,
+                46.87601504,
+                "Bösingen, Litzistorf",
+                "",
+                "ch:1:sloid:70552:0:548756"
+              ],
+              [
+                7.21072289,
+                46.86779201,
+                "Düdingen, Bundtels",
+                "",
+                "ch:1:sloid:70551:0:874266"
+              ],
+              [
+                7.20138041,
+                46.86153946,
+                "Düdingen, Luggiwil",
+                "",
+                "ch:1:sloid:70535:0:155995"
+              ],
+              [
+                7.20051803,
+                46.8581672,
+                "Düdingen, Warpel",
+                "",
+                "ch:1:sloid:82486:0:992957"
+              ],
+              [
+                7.18964841,
+                46.85045137,
+                "Düdingen, Bahnhof",
+                "B",
+                "ch:1:sloid:4769:0:19607"
+              ]
+            ]
+          },
+          {
+            "id": "68c02db4bf2e3ea4d0327871",
+            "routeId": "96-881-j26-1",
+            "stops": [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              [
+                7.22758426,
+                46.892267,
+                "Bösingen, Dorf",
+                "",
+                "ch:1:sloid:4767:0:312840"
+              ],
+              [
+                7.22288608,
+                46.88865725,
+                "Bösingen, Cholholz",
+                "",
+                "ch:1:sloid:81035:0:22096"
+              ]
+            ]
+          },
+          {
+            "id": "76757748754ea4204d1d8e22",
+            "routeId": "96-881-j26-1",
+            "stops": [
+              [
+                7.18957654,
+                46.85048823,
+                "Düdingen, Bahnhof",
+                "C",
+                "ch:1:sloid:4769:0:19608"
+              ],
+              [
+                7.20040124,
+                46.85777407,
+                "Düdingen, Warpel",
+                "",
+                "ch:1:sloid:82486:0:114015"
+              ],
+              [
+                7.20138041,
+                46.86153946,
+                "Düdingen, Luggiwil",
+                "",
+                "ch:1:sloid:70535:0:155995"
+              ],
+              [
+                7.21081272,
+                46.86779816,
+                "Düdingen, Bundtels",
+                "",
+                "ch:1:sloid:70551:0:294617"
+              ],
+              [
+                7.22197878,
+                46.87605188,
+                "Bösingen, Litzistorf",
+                "",
+                "ch:1:sloid:70552:0:835252"
+              ],
+              [
+                7.22111639,
+                46.88510864,
+                "Bösingen, Riederberg",
+                "",
+                "ch:1:sloid:70553:0:489707"
+              ],
+              [
+                7.22348795,
+                46.88897649,
+                "Bösingen, Cholholz",
+                "",
+                "ch:1:sloid:81035:0:957142"
+              ],
+              [
+                7.22806935,
+                46.89265989,
+                "Bösingen, Dorf",
+                "",
+                "ch:1:sloid:4767:0:534961"
+              ],
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              [
+                7.24155307,
+                46.90148061,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:83983"
+              ]
+            ]
+          },
+          {
+            "id": "7a780caad22f0fcc75b075b1",
+            "routeId": "96-881-j26-1",
+            "stops": [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              [
+                7.22758426,
+                46.892267,
+                "Bösingen, Dorf",
+                "",
+                "ch:1:sloid:4767:0:312840"
+              ],
+              [
+                7.22288608,
+                46.88865725,
+                "Bösingen, Cholholz",
+                "",
+                "ch:1:sloid:81035:0:22096"
+              ],
+              [
+                7.22086487,
+                46.88477096,
+                "Bösingen, Riederberg",
+                "",
+                "ch:1:sloid:70553:0:192432"
+              ],
+              [
+                7.22188895,
+                46.87601504,
+                "Bösingen, Litzistorf",
+                "",
+                "ch:1:sloid:70552:0:548756"
+              ],
+              [
+                7.21072289,
+                46.86779201,
+                "Düdingen, Bundtels",
+                "",
+                "ch:1:sloid:70551:0:874266"
+              ],
+              [
+                7.20138041,
+                46.86153946,
+                "Düdingen, Luggiwil",
+                "",
+                "ch:1:sloid:70535:0:155995"
+              ],
+              [
+                7.20051803,
+                46.8581672,
+                "Düdingen, Warpel",
+                "",
+                "ch:1:sloid:82486:0:992957"
+              ],
+              [
+                7.18957654,
+                46.85048823,
+                "Düdingen, Bahnhof",
+                "C",
+                "ch:1:sloid:4769:0:19608"
+              ]
+            ]
+          },
+          {
+            "id": "9113c440d8af3be6e27b05cd",
+            "routeId": "96-881-j26-1",
+            "stops": [
+              [
+                7.18957654,
+                46.85048823,
+                "Düdingen, Bahnhof",
+                "C",
+                "ch:1:sloid:4769:0:19608"
+              ],
+              [
+                7.20040124,
+                46.85777407,
+                "Düdingen, Warpel",
+                "",
+                "ch:1:sloid:82486:0:114015"
+              ],
+              [
+                7.20138041,
+                46.86153946,
+                "Düdingen, Luggiwil",
+                "",
+                "ch:1:sloid:70535:0:155995"
+              ],
+              [
+                7.21081272,
+                46.86779816,
+                "Düdingen, Bundtels",
+                "",
+                "ch:1:sloid:70551:0:294617"
+              ],
+              [
+                7.22197878,
+                46.87605188,
+                "Bösingen, Litzistorf",
+                "",
+                "ch:1:sloid:70552:0:835252"
+              ],
+              [
+                7.22111639,
+                46.88510864,
+                "Bösingen, Riederberg",
+                "",
+                "ch:1:sloid:70553:0:489707"
+              ],
+              [
+                7.22348795,
+                46.88897649,
+                "Bösingen, Cholholz",
+                "",
+                "ch:1:sloid:81035:0:957142"
+              ],
+              [
+                7.22806935,
+                46.89265989,
+                "Bösingen, Dorf",
+                "",
+                "ch:1:sloid:4767:0:534961"
+              ],
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ]
+            ]
+          }
+        ],
+        "maximumAttachmentMetres": 15,
+        "pairs": [
+          {
+            "stops": [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              [
+                7.24155307,
+                46.90148061,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:83983"
+              ]
+            ],
+            "chain": [
+              {
+                "wayId": "1218962118",
+                "from": "308077056",
+                "to": "1038308039",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1218962505",
+                "from": "1038308039",
+                "to": "11295023853",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1218962506",
+                "from": "11295023853",
+                "to": "11295023854",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1218939917",
+                "from": "11295023854",
+                "to": "588522233",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1003262061",
+                "from": "588522233",
+                "to": "308076980",
+                "direction": "backward"
+              },
+              {
+                "wayId": "187800171",
+                "from": "308076980",
+                "to": "308076972",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1218944698",
+                "from": "308076972",
+                "to": "11294819663",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1311028303",
+                "from": "11294819663",
+                "to": "12135658365",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1311028296",
+                "from": "12135658365",
+                "to": "12135658366",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1311028295",
+                "from": "12135658366",
+                "to": "11294819658",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1531474223",
+                "from": "11294819658",
+                "to": "13958322400",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1531474220",
+                "from": "13958322400",
+                "to": "12135658364",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1531474222",
+                "from": "12135658364",
+                "to": "588556941",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1417597462",
+                "from": "588556941",
+                "to": "3978156597",
+                "direction": "backward"
+              },
+              {
+                "wayId": "543954973",
+                "from": "3978156597",
+                "to": "1412113561",
+                "direction": "backward"
+              },
+              {
+                "wayId": "86162950",
+                "from": "1412113561",
+                "to": "1000021109",
+                "direction": "backward"
+              },
+              {
+                "wayId": "86162922",
+                "from": "1000021109",
+                "to": "36161414",
+                "direction": "backward"
+              },
+              {
+                "wayId": "916903749",
+                "from": "36161414",
+                "to": "308076858",
+                "direction": "backward"
+              },
+              {
+                "wayId": "28058028",
+                "from": "308076858",
+                "to": "36161411",
+                "direction": "backward"
+              },
+              {
+                "wayId": "28057895",
+                "from": "36161411",
+                "to": "36161410",
+                "direction": "backward"
+              },
+              {
+                "wayId": "916903750",
+                "from": "36161410",
+                "to": "36161435",
+                "direction": "backward"
+              },
+              {
+                "wayId": "335414139",
+                "from": "36161435",
+                "to": "36161408",
+                "direction": "backward"
+              },
+              {
+                "wayId": "933369889",
+                "from": "36161408",
+                "to": "36161407",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1328072093",
+                "from": "36161407",
+                "to": "8616810772",
+                "direction": "backward"
+              },
+              {
+                "wayId": "933369888",
+                "from": "8616810772",
+                "to": "1408214299",
+                "direction": "forward"
+              }
+            ],
+            "maximumLengthMetres": 2000
+          },
+          {
+            "stops": [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ]
+            ],
+            "chain": [
+              {
+                "wayId": "1218962118",
+                "from": "308077056",
+                "to": "1038308039",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1218962505",
+                "from": "1038308039",
+                "to": "11295023853",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1218962506",
+                "from": "11295023853",
+                "to": "11295023854",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1218939917",
+                "from": "11295023854",
+                "to": "588522233",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1003262061",
+                "from": "588522233",
+                "to": "308076980",
+                "direction": "backward"
+              },
+              {
+                "wayId": "187800171",
+                "from": "308076980",
+                "to": "308076972",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1218944698",
+                "from": "308076972",
+                "to": "11294819663",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1311028303",
+                "from": "11294819663",
+                "to": "12135658365",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1311028296",
+                "from": "12135658365",
+                "to": "12135658366",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1311028295",
+                "from": "12135658366",
+                "to": "11294819658",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1531474223",
+                "from": "11294819658",
+                "to": "13958322400",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1531474220",
+                "from": "13958322400",
+                "to": "12135658364",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1531474222",
+                "from": "12135658364",
+                "to": "588556941",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1417597462",
+                "from": "588556941",
+                "to": "3978156597",
+                "direction": "backward"
+              },
+              {
+                "wayId": "543954973",
+                "from": "3978156597",
+                "to": "1412113561",
+                "direction": "backward"
+              },
+              {
+                "wayId": "86162950",
+                "from": "1412113561",
+                "to": "1000021109",
+                "direction": "backward"
+              },
+              {
+                "wayId": "86162922",
+                "from": "1000021109",
+                "to": "36161414",
+                "direction": "backward"
+              },
+              {
+                "wayId": "916903749",
+                "from": "36161414",
+                "to": "308076858",
+                "direction": "backward"
+              },
+              {
+                "wayId": "28058028",
+                "from": "308076858",
+                "to": "36161411",
+                "direction": "backward"
+              },
+              {
+                "wayId": "28057895",
+                "from": "36161411",
+                "to": "36161410",
+                "direction": "backward"
+              },
+              {
+                "wayId": "916903750",
+                "from": "36161410",
+                "to": "36161435",
+                "direction": "backward"
+              },
+              {
+                "wayId": "335414139",
+                "from": "36161435",
+                "to": "36161408",
+                "direction": "backward"
+              },
+              {
+                "wayId": "933369889",
+                "from": "36161408",
+                "to": "36161407",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1328072093",
+                "from": "36161407",
+                "to": "8616810772",
+                "direction": "backward"
+              },
+              {
+                "wayId": "933369888",
+                "from": "8616810772",
+                "to": "1408214299",
+                "direction": "forward"
+              },
+              {
+                "wayId": "315755631",
+                "from": "1408214299",
+                "to": "983847733",
+                "direction": "forward"
+              }
+            ],
+            "maximumLengthMetres": 2000
+          },
+          {
+            "stops": [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ]
+            ],
+            "chain": [
+              {
+                "wayId": "315755631",
+                "from": "983847733",
+                "to": "8616810766",
+                "direction": "forward"
+              },
+              {
+                "wayId": "933369890",
+                "from": "8616810766",
+                "to": "8616810772",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1328072093",
+                "from": "8616810772",
+                "to": "36161407",
+                "direction": "forward"
+              },
+              {
+                "wayId": "933369889",
+                "from": "36161407",
+                "to": "36161408",
+                "direction": "forward"
+              },
+              {
+                "wayId": "335414139",
+                "from": "36161408",
+                "to": "36161435",
+                "direction": "forward"
+              },
+              {
+                "wayId": "916903750",
+                "from": "36161435",
+                "to": "36161410",
+                "direction": "forward"
+              },
+              {
+                "wayId": "28057895",
+                "from": "36161410",
+                "to": "36161411",
+                "direction": "forward"
+              },
+              {
+                "wayId": "28058028",
+                "from": "36161411",
+                "to": "308076858",
+                "direction": "forward"
+              },
+              {
+                "wayId": "916903749",
+                "from": "308076858",
+                "to": "36161414",
+                "direction": "forward"
+              },
+              {
+                "wayId": "86162922",
+                "from": "36161414",
+                "to": "1000021109",
+                "direction": "forward"
+              },
+              {
+                "wayId": "86162950",
+                "from": "1000021109",
+                "to": "1412113561",
+                "direction": "forward"
+              },
+              {
+                "wayId": "543954973",
+                "from": "1412113561",
+                "to": "3978156597",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1417597462",
+                "from": "3978156597",
+                "to": "588556941",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1531474222",
+                "from": "588556941",
+                "to": "13958322396",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1531474223",
+                "from": "13958322396",
+                "to": "11294819658",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1311028295",
+                "from": "11294819658",
+                "to": "12135658366",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1311028296",
+                "from": "12135658366",
+                "to": "12135658365",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1311028303",
+                "from": "12135658365",
+                "to": "11294819663",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1218944698",
+                "from": "11294819663",
+                "to": "308076972",
+                "direction": "forward"
+              },
+              {
+                "wayId": "187800171",
+                "from": "308076972",
+                "to": "308076980",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1003262061",
+                "from": "308076980",
+                "to": "588522233",
+                "direction": "forward"
+              },
+              {
+                "wayId": "1218939917",
+                "from": "588522233",
+                "to": "11295023854",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1218962506",
+                "from": "11295023854",
+                "to": "11295023853",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1218962505",
+                "from": "11295023853",
+                "to": "1038308039",
+                "direction": "backward"
+              },
+              {
+                "wayId": "1218962118",
+                "from": "1038308039",
+                "to": "814092554",
+                "direction": "forward"
+              },
+              {
+                "wayId": "67409690",
+                "from": "814092554",
+                "to": "814092549",
+                "direction": "forward"
+              },
+              {
+                "wayId": "83160711",
+                "from": "814092549",
+                "to": "8945081564",
+                "direction": "backward"
+              }
+            ],
+            "maximumLengthMetres": 2500
+          }
+        ],
+        "admission": "Only the three exact directed station pairs in all six complete PostAuto-121 patterns on 4/6 September 2026. Both directions follow the full documented western diversion; original platforms are attached within 15 m to reviewed road nodes, retaining distinct station arrivals. Require exact source-node joins, forward one-way/roundabout travel, ordinary bus access and no touching returned restrictions. No current OSM bus-121 relation was returned; project documents identify the corridor, not a surveyed lane path. The specific 2.0/2.5 km ceilings do not relax general detour guards. Preserve all prior failures and original calls/times. No map geometry extracted from project documents.",
+        "exclusions": [
+          "Closed original Sense bridge and adjacent temporary foot/cycle bridge",
+          "Bauumfahrung Stedtli construction sections",
+          "Parking-aisle and residential shortcuts outside the documented full western diversion",
+          "Automatic admission on other dates or for other routes/platforms",
+          "Temporary August station-stop relocation: dates outside both fixtures; original GTFS platforms remain unchanged"
+        ]
+      },
       "jongny": {
         "schemaVersion": 1,
         "id": "jongny-route-chain",
@@ -2635,6 +3666,10 @@
         "jongny": {
           "file": "data/fribourg-jongny-policy.json",
           "sha256": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f"
+        },
+        "laupen": {
+          "file": "data/fribourg-laupen-policy.json",
+          "sha256": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4"
         }
       },
       "completePatternsTested": 614
@@ -3677,9 +4712,9 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 117,
+    "admitted-all-dated-trips": 118,
     "inactive-on-validation-dates": 48,
-    "excluded": 21,
+    "excluded": 20,
     "partially-admitted": 21
   },
   "districts": [
@@ -4043,11 +5078,12 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "c3be9e15e633d44c32d3bd439469f2ef5979fe1fcd9764c102170ca3d751f343",
+        "crosswalk": "2e5162674534b65c4c4381689c5f4260a4cca8973d440712dd477b0f8de5563a",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
         "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
         "jongny": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f",
+        "laupen": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
         "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -4056,23 +5092,23 @@
       },
       "coverage": {
         "trips": 8556,
-        "admittedTrips": 5449,
+        "admittedTrips": 5508,
         "scheduledTrips": 5812,
         "representativeHeadwayTrips": 2744,
-        "admittedScheduledTrips": 5449,
+        "admittedScheduledTrips": 5508,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 89328,
-        "matchedScheduledSegmentOccurrences": 87403,
+        "matchedScheduledSegmentOccurrences": 87462,
         "segmentOccurrences": 92072,
-        "matchedSegmentOccurrences": 87403,
-        "admittedSegmentOccurrences": 84146,
+        "matchedSegmentOccurrences": 87462,
+        "admittedSegmentOccurrences": 84587,
         "directedPairs": 4509,
-        "matchedDirectedPairs": 4205,
+        "matchedDirectedPairs": 4208,
         "patterns": 849,
-        "completePatterns": 721,
-        "admittedPatterns": 721,
+        "completePatterns": 727,
+        "admittedPatterns": 727,
         "excludedTrips": {
-          "incomplete-directed-pattern": 242,
+          "incomplete-directed-pattern": 183,
           "no-verified-operator-line-crosswalk": 2856,
           "provisional-boundary-membership": 9
         }
@@ -4354,23 +5390,23 @@
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 602,
-          "admittedTrips": 507,
+          "admittedTrips": 566,
           "scheduledTrips": 602,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 507,
+          "admittedScheduledTrips": 566,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 7865,
-          "matchedScheduledSegmentOccurrences": 7770,
+          "matchedScheduledSegmentOccurrences": 7829,
           "segmentOccurrences": 7865,
-          "matchedSegmentOccurrences": 7770,
-          "admittedSegmentOccurrences": 7004,
+          "matchedSegmentOccurrences": 7829,
+          "admittedSegmentOccurrences": 7445,
           "directedPairs": 721,
-          "matchedDirectedPairs": 712,
+          "matchedDirectedPairs": 715,
           "patterns": 110,
-          "completePatterns": 90,
-          "admittedPatterns": 90,
+          "completePatterns": 96,
+          "admittedPatterns": 96,
           "excludedTrips": {
-            "incomplete-directed-pattern": 86,
+            "incomplete-directed-pattern": 27,
             "provisional-boundary-membership": 9
           }
         },
@@ -4420,8 +5456,8 @@
         }
       ],
       "timing": {
-        "zeroDurationSegmentOccurrences": 5921,
-        "zeroDurationOver100m": 5917,
+        "zeroDurationSegmentOccurrences": 5965,
+        "zeroDurationOver100m": 5961,
         "maximumPositiveDurationSpeedKmh": 144.56527036688541,
         "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
       },
@@ -4538,11 +5574,11 @@
           }
         },
         "patternsTestedAcrossBothDates": 614,
-        "newlyAdmittedTrips": 2211,
+        "newlyAdmittedTrips": 2270,
         "lostAdmittedTrips": 0,
-        "matchedDirectedPairs": 537,
-        "matchedSegmentOccurrences": 6437,
-        "admittedSegmentOccurrences": 5890
+        "matchedDirectedPairs": 540,
+        "matchedSegmentOccurrences": 6496,
+        "admittedSegmentOccurrences": 5972
       },
       "railEffect": {
         "patternsTestedAcrossBothDates": 412,
@@ -4560,8 +5596,8 @@
           "segmentOccurrences": 32
         },
         "endpoint-gap": {
-          "directedPairs": 25,
-          "segmentOccurrences": 192
+          "directedPairs": 22,
+          "segmentOccurrences": 133
         },
         "missing-line": {
           "directedPairs": 276,
@@ -4570,7 +5606,7 @@
       },
       "carryInTrips": 97,
       "admittedCarryInTrips": 93,
-      "admittedOutsideCantonPlatforms": 568,
+      "admittedOutsideCantonPlatforms": 570,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -4583,12 +5619,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 6258702,
-          "gzipBytes": 1500010
+          "bytes": 6304078,
+          "gzipBytes": 1508469
         },
         "morning": {
-          "trips": 913,
-          "gzipBytes": 1609813
+          "trips": 920,
+          "gzipBytes": 1620677
         },
         "chunks": [
           {
@@ -4598,8 +5634,8 @@
             "path": "day-chunks/00-02.json",
             "tripCount": 97,
             "bytes": 84435,
-            "sha256": "a1dcdceff2cf93114196da39ea3cf533929aa51383e7a378c2e21257ec3bf4db",
-            "gzipBytes": 15003
+            "sha256": "81fc7e709ef4a797ae69b62a44ca3474eb80594c0942adda6819f13e45aca057",
+            "gzipBytes": 15022
           },
           {
             "id": "02-04",
@@ -4616,100 +5652,100 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 233,
-            "bytes": 225707,
-            "sha256": "1df434a106d9c892350c7bcf7b4a705706fc45a948808d6daa127cb6e7515d08",
-            "gzipBytes": 35826
+            "tripCount": 235,
+            "bytes": 227226,
+            "sha256": "2efda501501afdd1ff2485b0413361fa7dfc3b162dcc3420e199bdaeb1f26e36",
+            "gzipBytes": 36111
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 910,
-            "bytes": 859047,
-            "sha256": "2f3ad6273c676a3e75144a3dc8d6f6b4c45f947dd52c95ee9aa4e5745fdf438d",
-            "gzipBytes": 109981
+            "tripCount": 920,
+            "bytes": 867369,
+            "sha256": "2344e942d1c0d7a6b83a5d5ce353bed21f80349a049c1b6fa642ae935bafabb2",
+            "gzipBytes": 110857
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 723,
-            "bytes": 713789,
-            "sha256": "3a67ddc745e01681f818eb38d01dcff87c6c6c49165f4f826cd8be4be1b6f53d",
-            "gzipBytes": 93698
+            "tripCount": 728,
+            "bytes": 718037,
+            "sha256": "274dc979b00d79d13649ba705326791c6b5e3e369772ac9665e47a497472eeaf",
+            "gzipBytes": 94228
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 691,
-            "bytes": 685919,
-            "sha256": "4d72a9ebcebdc097d505d33ed26680ed9f1b8f801a133bdff5ab17c4a959d8af",
-            "gzipBytes": 90172
+            "tripCount": 695,
+            "bytes": 689321,
+            "sha256": "bc4e6790112e2d433041a11fce180e6595efe23f54c5ce1294d081ade5e18647",
+            "gzipBytes": 90646
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 822,
-            "bytes": 787993,
-            "sha256": "7c6f6ee0913ae11e72d56c9651ee6408ece3e319faedea2cac4144d98e996bf4",
-            "gzipBytes": 103000
+            "tripCount": 829,
+            "bytes": 793586,
+            "sha256": "2a61ef62547f751493dd6936cee874277607a45b6e708f8a4f14939d773bd806",
+            "gzipBytes": 103630
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 707,
-            "bytes": 696039,
-            "sha256": "f341fc7a816790a390ceaab6ba8f6a3674b6314ac2ec60ce1d5bc35a85ef5231",
-            "gzipBytes": 91647
+            "tripCount": 716,
+            "bytes": 703153,
+            "sha256": "398171e0497f5657286145018e9443c414d1230f870fa6c445b1b898dc7fc95b",
+            "gzipBytes": 92433
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 910,
-            "bytes": 876641,
-            "sha256": "dcaf75eab392df4116dcfceedf5d6a8c39a216f05bda4594473bb41d29ad5e68",
-            "gzipBytes": 111804
+            "tripCount": 924,
+            "bytes": 887827,
+            "sha256": "99be3bf47ddeda05a684ebffb629f9fd1f729a1b31220287710ae653a7fe4464",
+            "gzipBytes": 112846
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 832,
-            "bytes": 807157,
-            "sha256": "5dfc3d660241f6f51e1f1540bb9a827cbbbf247286096385e0afb7a8ca467a04",
-            "gzipBytes": 103305
+            "tripCount": 843,
+            "bytes": 815968,
+            "sha256": "27a18326e4deb62a154e8228f69c2248276b6031653463007fc72155b42ae168",
+            "gzipBytes": 104219
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 499,
-            "bytes": 495562,
-            "sha256": "5244e2376f0efc70c7fbee7e918a70653284960a917a353f4b751f06b7103f79",
-            "gzipBytes": 66434
+            "tripCount": 506,
+            "bytes": 501154,
+            "sha256": "f81a1fb14de8ff5b80b1f40c7f5bd965060456bcfa6319d277d971391ad16c0e",
+            "gzipBytes": 67137
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 384,
-            "bytes": 371904,
-            "sha256": "722aed04d7bfa15cd0a546d6283ec900a37ce1f6f7c88393857eb21b9eff7450",
-            "gzipBytes": 50698
+            "tripCount": 386,
+            "bytes": 373605,
+            "sha256": "e21b4694ad1fa6930df740123c743b00845063e6053a59de25b0a606cbb7b0a3",
+            "gzipBytes": 50977
           }
         ]
       },
@@ -4731,11 +5767,12 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "c3be9e15e633d44c32d3bd439469f2ef5979fe1fcd9764c102170ca3d751f343",
+        "crosswalk": "2e5162674534b65c4c4381689c5f4260a4cca8973d440712dd477b0f8de5563a",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
         "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
         "jongny": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f",
+        "laupen": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
         "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -4744,23 +5781,23 @@
       },
       "coverage": {
         "trips": 6326,
-        "admittedTrips": 3743,
+        "admittedTrips": 3763,
         "scheduledTrips": 4062,
         "representativeHeadwayTrips": 2264,
-        "admittedScheduledTrips": 3743,
+        "admittedScheduledTrips": 3763,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 62231,
-        "matchedScheduledSegmentOccurrences": 60702,
+        "matchedScheduledSegmentOccurrences": 60722,
         "segmentOccurrences": 64495,
-        "matchedSegmentOccurrences": 60702,
-        "admittedSegmentOccurrences": 58729,
+        "matchedSegmentOccurrences": 60722,
+        "admittedSegmentOccurrences": 58879,
         "directedPairs": 4607,
-        "matchedDirectedPairs": 4355,
+        "matchedDirectedPairs": 4357,
         "patterns": 588,
-        "completePatterns": 503,
-        "admittedPatterns": 503,
+        "completePatterns": 507,
+        "admittedPatterns": 507,
         "excludedTrips": {
-          "incomplete-directed-pattern": 218,
+          "incomplete-directed-pattern": 198,
           "no-verified-operator-line-crosswalk": 2365
         }
       },
@@ -5063,23 +6100,23 @@
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 272,
-          "admittedTrips": 244,
+          "admittedTrips": 264,
           "scheduledTrips": 272,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 244,
+          "admittedScheduledTrips": 264,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 4343,
-          "matchedScheduledSegmentOccurrences": 4315,
+          "matchedScheduledSegmentOccurrences": 4335,
           "segmentOccurrences": 4343,
-          "matchedSegmentOccurrences": 4315,
-          "admittedSegmentOccurrences": 4081,
+          "matchedSegmentOccurrences": 4335,
+          "admittedSegmentOccurrences": 4231,
           "directedPairs": 547,
-          "matchedDirectedPairs": 543,
+          "matchedDirectedPairs": 545,
           "patterns": 45,
-          "completePatterns": 39,
-          "admittedPatterns": 39,
+          "completePatterns": 43,
+          "admittedPatterns": 43,
           "excludedTrips": {
-            "incomplete-directed-pattern": 28
+            "incomplete-directed-pattern": 8
           }
         },
         {
@@ -5128,8 +6165,8 @@
         }
       ],
       "timing": {
-        "zeroDurationSegmentOccurrences": 4584,
-        "zeroDurationOver100m": 4584,
+        "zeroDurationSegmentOccurrences": 4599,
+        "zeroDurationOver100m": 4599,
         "maximumPositiveDurationSpeedKmh": 160.05716324720422,
         "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
       },
@@ -5218,11 +6255,11 @@
           }
         },
         "patternsTestedAcrossBothDates": 614,
-        "newlyAdmittedTrips": 1345,
+        "newlyAdmittedTrips": 1365,
         "lostAdmittedTrips": 0,
-        "matchedDirectedPairs": 513,
-        "matchedSegmentOccurrences": 4147,
-        "admittedSegmentOccurrences": 3484
+        "matchedDirectedPairs": 515,
+        "matchedSegmentOccurrences": 4167,
+        "admittedSegmentOccurrences": 3511
       },
       "railEffect": {
         "patternsTestedAcrossBothDates": 412,
@@ -5240,8 +6277,8 @@
           "segmentOccurrences": 16
         },
         "endpoint-gap": {
-          "directedPairs": 11,
-          "segmentOccurrences": 81
+          "directedPairs": 9,
+          "segmentOccurrences": 61
         },
         "missing-line": {
           "directedPairs": 240,
@@ -5250,7 +6287,7 @@
       },
       "carryInTrips": 179,
       "admittedCarryInTrips": 159,
-      "admittedOutsideCantonPlatforms": 527,
+      "admittedOutsideCantonPlatforms": 528,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -5263,12 +6300,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 6053330,
-          "gzipBytes": 1491522
+          "bytes": 6094642,
+          "gzipBytes": 1500369
         },
         "morning": {
-          "trips": 484,
-          "gzipBytes": 1556452
+          "trips": 486,
+          "gzipBytes": 1565224
         },
         "chunks": [
           {
@@ -5278,7 +6315,7 @@
             "path": "day-chunks/00-02.json",
             "tripCount": 139,
             "bytes": 130605,
-            "sha256": "656f8029b674afab87b260cc9f8362df69353607999c3bea4f741073bb2a5b27",
+            "sha256": "b6cc9d2c7e37fa5f3567d7dac7a8598633c964e24cba575bec5385a2d598a905",
             "gzipBytes": 23596
           },
           {
@@ -5288,7 +6325,7 @@
             "path": "day-chunks/02-04.json",
             "tripCount": 45,
             "bytes": 56330,
-            "sha256": "d4b5d3d18a9efe2c65f93bc2419ef334c3e92cac2059a8127d39f884c5949af2",
+            "sha256": "b272037e2e8404b257a78b56fa78ae0528e41f9a11a0779d9da409391ca94a7c",
             "gzipBytes": 11282
           },
           {
@@ -5298,88 +6335,88 @@
             "path": "day-chunks/04-06.json",
             "tripCount": 115,
             "bytes": 114274,
-            "sha256": "0fcecaa1264f2c2daa22897b91fbf9b7113ba4b13b7f50d9509051bb2980d99a",
-            "gzipBytes": 18986
+            "sha256": "ba9f8b5a4130f7f64837f5b7741e48caa2b98949462806d158ad90b96b4dc9ee",
+            "gzipBytes": 18990
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 402,
-            "bytes": 387461,
-            "sha256": "057ef255c44cb6c52c56d1d31e062fa6691d1727bbc201c397422d3bd425d964",
-            "gzipBytes": 54554
+            "tripCount": 403,
+            "bytes": 388312,
+            "sha256": "c2c99c8ad4d83b5c5fd2cf63d7b054fd79832501aeaab4b6dd9f7ed12f97f102",
+            "gzipBytes": 54737
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 520,
-            "bytes": 510393,
-            "sha256": "19639f32b1e20d5ffd321c6ba15872e222cdb053cc34804e4ef04da37abf3da3",
-            "gzipBytes": 69274
+            "tripCount": 522,
+            "bytes": 512093,
+            "sha256": "b440ca2a90795bd10babc5cc3ae5dbd6000775ea14b92405b9a6237bfce68fb3",
+            "gzipBytes": 69535
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 533,
-            "bytes": 519846,
-            "sha256": "6ead0d704167053a7c859e55693ffded3f9f7f6ec14fdc0c2c06f257efce1983",
-            "gzipBytes": 70092
+            "tripCount": 535,
+            "bytes": 521545,
+            "sha256": "7ecac5335334c4a5c3cb435fb04eabc524ae88d977cf1015259b32887c7294f9",
+            "gzipBytes": 70374
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 534,
-            "bytes": 519239,
-            "sha256": "22aeed1b2e38066ae053b24ac00e13839a34d70421971a034f08b5127c890c19",
-            "gzipBytes": 70309
+            "tripCount": 537,
+            "bytes": 521611,
+            "sha256": "b9dbfdeaf1a453263c1edec9abe041d557ac330b511d5e3b6792b8c259af8fab",
+            "gzipBytes": 70717
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 522,
-            "bytes": 509894,
-            "sha256": "eb02e73c9edb85826bc09e9250e9caa43727708c0986c4c93c25ac2b8d8784f1",
-            "gzipBytes": 68793
+            "tripCount": 525,
+            "bytes": 512266,
+            "sha256": "300d13eb5e030b41aaef509de1ce8d796d771d2d5dc9d34a1bcc0a2876f9047a",
+            "gzipBytes": 69193
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 559,
-            "bytes": 541623,
-            "sha256": "44b1703e7a6fc6b381a9e6b2dad5335fd6995a0bd0607796d6671c7c92229993",
-            "gzipBytes": 73007
+            "tripCount": 562,
+            "bytes": 543995,
+            "sha256": "fd78b5ba5317759ca5a9ede75603b17f68ae1d52cf590e38a93d36dcd2672826",
+            "gzipBytes": 73400
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 516,
-            "bytes": 503705,
-            "sha256": "fb392d2da8330f66060266018d2f8a9821ba4a725afb3149a9df4878287a49d8",
-            "gzipBytes": 68099
+            "tripCount": 519,
+            "bytes": 506075,
+            "sha256": "e7972eac44a4093d7877e4e445a4cccc83e5854e749bf5943e1a9dcee0f29bc3",
+            "gzipBytes": 68524
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 435,
-            "bytes": 431787,
-            "sha256": "4a1f170c346449b78d5876b40756b767778b8ef301ff4c33ce291cec4c9552d1",
-            "gzipBytes": 58401
+            "tripCount": 438,
+            "bytes": 434157,
+            "sha256": "353b25e60addce77120fd0c67e1f2ace2120ced348e9df17af506ce7b2bc4e93",
+            "gzipBytes": 58849
           },
           {
             "id": "22-24",
@@ -5388,8 +6425,8 @@
             "path": "day-chunks/22-24.json",
             "tripCount": 367,
             "bytes": 356800,
-            "sha256": "8f6c7134cbfa5a971f9c29990cd69211f2c1ad1f5b9d3c26ee21eda5f5a40e1d",
-            "gzipBytes": 48633
+            "sha256": "ee912e2e03404b10e2b0bb8c660e8b29040b77d0b11b75a482a8ac241a3bddc6",
+            "gzipBytes": 48640
           }
         ]
       },

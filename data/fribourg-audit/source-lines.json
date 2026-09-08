@@ -842,7 +842,9 @@
     "routeIds": [
       "96-881-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "96-881-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },

@@ -206,7 +206,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 801 | 562 | 96-286-j26-1 | bus | La Broye | 112 | 28/28; 6/6 | 14/14; 2/2 | All dated trips admitted |
 | 801 | 323 | 96-752-j26-1 | bus | Sense | 58 | 4/4; 2/2 | 4/4; 3/3 | All dated trips admitted |
 | 801 | 131 | 96-880-j26-1 | bus | Sense | 36 | 51/51; 11/11 | 14/14; 4/4 | All dated trips admitted |
-| 801 | 121 | 96-881-j26-1 | bus | Sense | 28 | 0/59; 0/6 | 0/20; 0/4 | Excluded |
+| 801 | 121 | 96-881-j26-1 | bus | Sense | 28 | 59/59; 6/6 | 20/20; 4/4 | All dated trips admitted |
 | 801 | 122 | 96-882-j26-1 | bus | See, Sense | 29 | 36/36; 4/4 | 34/34; 3/3 | All dated trips admitted |
 | 801 | 547 | 96-883-j26-1 | bus | See, Sense | 99 | 37/37; 5/5 | 32/32; 3/3 | All dated trips admitted |
 | 801 | 541 | 96-884-j26-1 | bus | See | 93 | 30/30; 8/8 | 0/0; 0/0 | All dated trips admitted |
@@ -243,7 +243,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 25 | 20.012 | TPF / Bus urbain | Düdingen, Warpel - Düdingen, Gantrischweg | 92-12-E-j26-1 | 92-12-E-j26-1 | — |
 | 26 | 20.013 | TPF / Bus urbain | Ortsbus Düdingen Bahnhof - Leimacker | 92-13-C-j26-1 | 92-13-C-j26-1 | — |
 | 27 | 20.120 | TPF / Bus régional | Tafers-Schmitten | 92-120-A-j26-1 | 92-120-A-j26-1 | — |
-| 28 | 20.121 | Post Auto / Bus régional | Düdingen-Bösingen-Laupen | 96-881-j26-1 | — | — |
+| 28 | 20.121 | Post Auto / Bus régional | Düdingen-Bösingen-Laupen | 96-881-j26-1 | 96-881-j26-1 | — |
 | 29 | 20.122 | Post Auto / Bus régional | Düdingen–Gurmels–Kerzers | 96-882-j26-1 | 96-882-j26-1 | — |
 | 30 | 20.123 | TPF / Bus régional | Fribourg-Tafers-Plaffeien-Schwarzsee | 92-123-A-j26-1 | 92-123-A-j26-1 | — |
 | 31 | 20.124 | TPF / Bus régional | Fribourg-St.Ursen-Tafers-Düdingen | 92-124-j26-1 | 92-124-j26-1 | — |

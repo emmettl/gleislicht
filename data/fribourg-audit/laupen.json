@@ -1,0 +1,7242 @@
+{
+  "policy": {
+    "schemaVersion": 1,
+    "id": "laupen-western-bypass",
+    "sourceDirectory": "data/fribourg-laupen-sources",
+    "sources": [
+      {
+        "file": "map.osm.gz",
+        "url": "https://www.openstreetmap.org/api/0.6/map?bbox=7.220,46.890,7.251,46.912",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "role": "Complete original OSM bbox response, deterministic gzip. Detailed road geometry and direction tags; individual object edits are not survey dates. Two ways and four nodes edited on 7 September are restored from separately retained historical versions covering both fixture dates.",
+        "sha256": "344169ef2f9b0ac7bb8194a882f34fa790f8e0eea8b8e2876fc8cb5374dba54d",
+        "retrievedAt": "2026-09-08T21:25:00.023Z"
+      },
+      {
+        "file": "sense-bridge-works-2025.pdf",
+        "url": "https://www.in-zukunft-laupen.ch/wp-content/uploads/beitragsbilder/brueckenbauten/flyer-a4-baustart-neubau-sensebruecke-fuer-webseite-30.07.2025.pdf",
+        "published": null,
+        "filenameDate": "2025-07-30",
+        "attribution": "Kanton Bern / Gemeinde Laupen",
+        "role": "Filename dated 2025-07-30; no separately verified publication timestamp. Page 4 explicitly identifies PostAuto 121 and its Cholholz shuttle using Bauumfahrung West. Page 3 schedules bridge reopening in summer 2027. Visually reviewed; no schematic map geometry extracted.",
+        "sha256": "68d22595876e3d6b051d52b66da472ee155dfbe83f43a3669382197b1bd62917",
+        "retrievedAt": "2026-09-08T21:22:41.565Z"
+      },
+      {
+        "file": "sense-bridge-update-2026.html",
+        "url": "https://www.in-zukunft-laupen.ch/neubau-sensebruecke/",
+        "published": "2026-08-24",
+        "attribution": "Projekt In Zukunft Laupen / Kanton Bern / Gemeinde Laupen",
+        "role": "Contemporary notice confirms bridge construction September–December 2026 and planned reopening summer 2027.",
+        "sha256": "5c318114d42da2071463502aef07c303316fd2f92b441f2644b2b3f5247253ae",
+        "retrievedAt": "2026-09-08T21:25:09.157Z"
+      },
+      {
+        "file": "western-bypass.html",
+        "url": "https://www.in-zukunft-laupen.ch/teilprojekte/bauumfahrungen/",
+        "published": null,
+        "attribution": "Projekt In Zukunft Laupen / Kanton Bern / Gemeinde Laupen",
+        "role": "Explicit route-121 western diversion and temporary Industriestrasse Tuftera stop. Page publication date unknown.",
+        "sha256": "068fb06edec83e5897132b7750f7981ef3a5821e850b2f2c57e7d200b5aba3b8",
+        "retrievedAt": "2026-09-08T21:25:08.755Z"
+      },
+      {
+        "file": "station-entrance-works-2026.html",
+        "url": "https://www.in-zukunft-laupen.ch/baustart-der-sanierung-neueneggstrasse/",
+        "published": "2026-05-29",
+        "attribution": "Projekt In Zukunft Laupen / Kanton Bern / Gemeinde Laupen",
+        "role": "Station entrance closure and temporary PostAuto stops planned 3–14 August 2026, outside both fixture dates. Neueneggstrasse works continue; this is no guarantee that dates were not amended.",
+        "sha256": "9c1c1a265611a5843dbfe8e3e27d19645182479222470dfcaabeec77db3441bf",
+        "retrievedAt": "2026-09-08T21:25:06.649Z"
+      },
+      {
+        "file": "way-86162950-v10.osm",
+        "url": "https://www.openstreetmap.org/api/0.6/way/86162950/10",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "role": "Original road-way version covering both fixture dates, before the 7 September edit.",
+        "sha256": "b9e4c609c5bf1b8ca2e268fb35c577fa7207731e129637fb83b670d2fd6bcd0d",
+        "retrievedAt": "2026-09-08T21:32:37.351Z"
+      },
+      {
+        "file": "way-916903750-v5.osm",
+        "url": "https://www.openstreetmap.org/api/0.6/way/916903750/5",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "role": "Original road-way version covering both fixture dates, before the 7 September edit.",
+        "sha256": "fbc0a25ea125ba7280b7ca3fd7a736c05ff063cc5b0e3447d246b14411c8f5be",
+        "retrievedAt": "2026-09-08T21:32:32.977Z"
+      },
+      {
+        "file": "node-3978156585-history.osm",
+        "url": "https://www.openstreetmap.org/api/0.6/node/3978156585/history",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+        "sha256": "354b465dd8389aec28995636c9dde176f8d7f4f966b46f894de4b318eef2bab2",
+        "retrievedAt": "2026-09-08T21:33:16.291Z"
+      },
+      {
+        "file": "node-279600247-history.osm",
+        "url": "https://www.openstreetmap.org/api/0.6/node/279600247/history",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+        "sha256": "6469f64148389a3bd7484ddf824c83f92b4fb9d4dfa34ce7155f7798bc409db2",
+        "retrievedAt": "2026-09-08T21:33:16.672Z"
+      },
+      {
+        "file": "node-2952325480-history.osm",
+        "url": "https://www.openstreetmap.org/api/0.6/node/2952325480/history",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+        "sha256": "6db9da935f5d9f4545e112894273372451de20b53b12b06f786c06c9c6f6ae40",
+        "retrievedAt": "2026-09-08T21:33:17.781Z"
+      },
+      {
+        "file": "node-14049536298-history.osm",
+        "url": "https://www.openstreetmap.org/api/0.6/node/14049536298/history",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+        "sha256": "69cec78d6c73d7f8d64de83df59a1423502c1ac34da966cb368861a0cc61a78b",
+        "retrievedAt": "2026-09-08T21:33:15.721Z"
+      }
+    ],
+    "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+    "agencyId": "801",
+    "routeId": "96-881-j26-1",
+    "dates": [
+      "2026-09-04",
+      "2026-09-06"
+    ],
+    "patterns": [
+      {
+        "id": "09498bcb49c92b7e48953f10",
+        "routeId": "96-881-j26-1",
+        "stops": [
+          [
+            7.22348795,
+            46.88897649,
+            "Bösingen, Cholholz",
+            "",
+            "ch:1:sloid:81035:0:957142"
+          ],
+          [
+            7.22806935,
+            46.89265989,
+            "Bösingen, Dorf",
+            "",
+            "ch:1:sloid:4767:0:534961"
+          ],
+          [
+            7.2347618,
+            46.8991973,
+            "Bösingen, Abzw. Tuftera",
+            "",
+            "ch:1:sloid:70554:0:323303"
+          ],
+          [
+            7.24155307,
+            46.90148061,
+            "Laupen BE, Bahnhof",
+            "",
+            "ch:1:sloid:70555:0:83983"
+          ]
+        ]
+      },
+      {
+        "id": "4e51d1b875eb54a76bb660a8",
+        "routeId": "96-881-j26-1",
+        "stops": [
+          [
+            7.24199324,
+            46.9013824,
+            "Laupen BE, Bahnhof",
+            "",
+            "ch:1:sloid:70555:0:602697"
+          ],
+          [
+            7.23569605,
+            46.89741724,
+            "Bösingen, Abzw. Tuftera",
+            "",
+            "ch:1:sloid:70554:0:65751"
+          ],
+          [
+            7.22758426,
+            46.892267,
+            "Bösingen, Dorf",
+            "",
+            "ch:1:sloid:4767:0:312840"
+          ],
+          [
+            7.22288608,
+            46.88865725,
+            "Bösingen, Cholholz",
+            "",
+            "ch:1:sloid:81035:0:22096"
+          ],
+          [
+            7.22086487,
+            46.88477096,
+            "Bösingen, Riederberg",
+            "",
+            "ch:1:sloid:70553:0:192432"
+          ],
+          [
+            7.22188895,
+            46.87601504,
+            "Bösingen, Litzistorf",
+            "",
+            "ch:1:sloid:70552:0:548756"
+          ],
+          [
+            7.21072289,
+            46.86779201,
+            "Düdingen, Bundtels",
+            "",
+            "ch:1:sloid:70551:0:874266"
+          ],
+          [
+            7.20138041,
+            46.86153946,
+            "Düdingen, Luggiwil",
+            "",
+            "ch:1:sloid:70535:0:155995"
+          ],
+          [
+            7.20051803,
+            46.8581672,
+            "Düdingen, Warpel",
+            "",
+            "ch:1:sloid:82486:0:992957"
+          ],
+          [
+            7.18964841,
+            46.85045137,
+            "Düdingen, Bahnhof",
+            "B",
+            "ch:1:sloid:4769:0:19607"
+          ]
+        ]
+      },
+      {
+        "id": "68c02db4bf2e3ea4d0327871",
+        "routeId": "96-881-j26-1",
+        "stops": [
+          [
+            7.24199324,
+            46.9013824,
+            "Laupen BE, Bahnhof",
+            "",
+            "ch:1:sloid:70555:0:602697"
+          ],
+          [
+            7.23569605,
+            46.89741724,
+            "Bösingen, Abzw. Tuftera",
+            "",
+            "ch:1:sloid:70554:0:65751"
+          ],
+          [
+            7.22758426,
+            46.892267,
+            "Bösingen, Dorf",
+            "",
+            "ch:1:sloid:4767:0:312840"
+          ],
+          [
+            7.22288608,
+            46.88865725,
+            "Bösingen, Cholholz",
+            "",
+            "ch:1:sloid:81035:0:22096"
+          ]
+        ]
+      },
+      {
+        "id": "76757748754ea4204d1d8e22",
+        "routeId": "96-881-j26-1",
+        "stops": [
+          [
+            7.18957654,
+            46.85048823,
+            "Düdingen, Bahnhof",
+            "C",
+            "ch:1:sloid:4769:0:19608"
+          ],
+          [
+            7.20040124,
+            46.85777407,
+            "Düdingen, Warpel",
+            "",
+            "ch:1:sloid:82486:0:114015"
+          ],
+          [
+            7.20138041,
+            46.86153946,
+            "Düdingen, Luggiwil",
+            "",
+            "ch:1:sloid:70535:0:155995"
+          ],
+          [
+            7.21081272,
+            46.86779816,
+            "Düdingen, Bundtels",
+            "",
+            "ch:1:sloid:70551:0:294617"
+          ],
+          [
+            7.22197878,
+            46.87605188,
+            "Bösingen, Litzistorf",
+            "",
+            "ch:1:sloid:70552:0:835252"
+          ],
+          [
+            7.22111639,
+            46.88510864,
+            "Bösingen, Riederberg",
+            "",
+            "ch:1:sloid:70553:0:489707"
+          ],
+          [
+            7.22348795,
+            46.88897649,
+            "Bösingen, Cholholz",
+            "",
+            "ch:1:sloid:81035:0:957142"
+          ],
+          [
+            7.22806935,
+            46.89265989,
+            "Bösingen, Dorf",
+            "",
+            "ch:1:sloid:4767:0:534961"
+          ],
+          [
+            7.2347618,
+            46.8991973,
+            "Bösingen, Abzw. Tuftera",
+            "",
+            "ch:1:sloid:70554:0:323303"
+          ],
+          [
+            7.24155307,
+            46.90148061,
+            "Laupen BE, Bahnhof",
+            "",
+            "ch:1:sloid:70555:0:83983"
+          ]
+        ]
+      },
+      {
+        "id": "7a780caad22f0fcc75b075b1",
+        "routeId": "96-881-j26-1",
+        "stops": [
+          [
+            7.24199324,
+            46.9013824,
+            "Laupen BE, Bahnhof",
+            "",
+            "ch:1:sloid:70555:0:602697"
+          ],
+          [
+            7.23569605,
+            46.89741724,
+            "Bösingen, Abzw. Tuftera",
+            "",
+            "ch:1:sloid:70554:0:65751"
+          ],
+          [
+            7.22758426,
+            46.892267,
+            "Bösingen, Dorf",
+            "",
+            "ch:1:sloid:4767:0:312840"
+          ],
+          [
+            7.22288608,
+            46.88865725,
+            "Bösingen, Cholholz",
+            "",
+            "ch:1:sloid:81035:0:22096"
+          ],
+          [
+            7.22086487,
+            46.88477096,
+            "Bösingen, Riederberg",
+            "",
+            "ch:1:sloid:70553:0:192432"
+          ],
+          [
+            7.22188895,
+            46.87601504,
+            "Bösingen, Litzistorf",
+            "",
+            "ch:1:sloid:70552:0:548756"
+          ],
+          [
+            7.21072289,
+            46.86779201,
+            "Düdingen, Bundtels",
+            "",
+            "ch:1:sloid:70551:0:874266"
+          ],
+          [
+            7.20138041,
+            46.86153946,
+            "Düdingen, Luggiwil",
+            "",
+            "ch:1:sloid:70535:0:155995"
+          ],
+          [
+            7.20051803,
+            46.8581672,
+            "Düdingen, Warpel",
+            "",
+            "ch:1:sloid:82486:0:992957"
+          ],
+          [
+            7.18957654,
+            46.85048823,
+            "Düdingen, Bahnhof",
+            "C",
+            "ch:1:sloid:4769:0:19608"
+          ]
+        ]
+      },
+      {
+        "id": "9113c440d8af3be6e27b05cd",
+        "routeId": "96-881-j26-1",
+        "stops": [
+          [
+            7.18957654,
+            46.85048823,
+            "Düdingen, Bahnhof",
+            "C",
+            "ch:1:sloid:4769:0:19608"
+          ],
+          [
+            7.20040124,
+            46.85777407,
+            "Düdingen, Warpel",
+            "",
+            "ch:1:sloid:82486:0:114015"
+          ],
+          [
+            7.20138041,
+            46.86153946,
+            "Düdingen, Luggiwil",
+            "",
+            "ch:1:sloid:70535:0:155995"
+          ],
+          [
+            7.21081272,
+            46.86779816,
+            "Düdingen, Bundtels",
+            "",
+            "ch:1:sloid:70551:0:294617"
+          ],
+          [
+            7.22197878,
+            46.87605188,
+            "Bösingen, Litzistorf",
+            "",
+            "ch:1:sloid:70552:0:835252"
+          ],
+          [
+            7.22111639,
+            46.88510864,
+            "Bösingen, Riederberg",
+            "",
+            "ch:1:sloid:70553:0:489707"
+          ],
+          [
+            7.22348795,
+            46.88897649,
+            "Bösingen, Cholholz",
+            "",
+            "ch:1:sloid:81035:0:957142"
+          ],
+          [
+            7.22806935,
+            46.89265989,
+            "Bösingen, Dorf",
+            "",
+            "ch:1:sloid:4767:0:534961"
+          ],
+          [
+            7.2347618,
+            46.8991973,
+            "Bösingen, Abzw. Tuftera",
+            "",
+            "ch:1:sloid:70554:0:323303"
+          ],
+          [
+            7.24199324,
+            46.9013824,
+            "Laupen BE, Bahnhof",
+            "",
+            "ch:1:sloid:70555:0:602697"
+          ]
+        ]
+      }
+    ],
+    "maximumAttachmentMetres": 15,
+    "pairs": [
+      {
+        "stops": [
+          [
+            7.2347618,
+            46.8991973,
+            "Bösingen, Abzw. Tuftera",
+            "",
+            "ch:1:sloid:70554:0:323303"
+          ],
+          [
+            7.24155307,
+            46.90148061,
+            "Laupen BE, Bahnhof",
+            "",
+            "ch:1:sloid:70555:0:83983"
+          ]
+        ],
+        "chain": [
+          {
+            "wayId": "1218962118",
+            "from": "308077056",
+            "to": "1038308039",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1218962505",
+            "from": "1038308039",
+            "to": "11295023853",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1218962506",
+            "from": "11295023853",
+            "to": "11295023854",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1218939917",
+            "from": "11295023854",
+            "to": "588522233",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1003262061",
+            "from": "588522233",
+            "to": "308076980",
+            "direction": "backward"
+          },
+          {
+            "wayId": "187800171",
+            "from": "308076980",
+            "to": "308076972",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1218944698",
+            "from": "308076972",
+            "to": "11294819663",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1311028303",
+            "from": "11294819663",
+            "to": "12135658365",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1311028296",
+            "from": "12135658365",
+            "to": "12135658366",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1311028295",
+            "from": "12135658366",
+            "to": "11294819658",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1531474223",
+            "from": "11294819658",
+            "to": "13958322400",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1531474220",
+            "from": "13958322400",
+            "to": "12135658364",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1531474222",
+            "from": "12135658364",
+            "to": "588556941",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1417597462",
+            "from": "588556941",
+            "to": "3978156597",
+            "direction": "backward"
+          },
+          {
+            "wayId": "543954973",
+            "from": "3978156597",
+            "to": "1412113561",
+            "direction": "backward"
+          },
+          {
+            "wayId": "86162950",
+            "from": "1412113561",
+            "to": "1000021109",
+            "direction": "backward"
+          },
+          {
+            "wayId": "86162922",
+            "from": "1000021109",
+            "to": "36161414",
+            "direction": "backward"
+          },
+          {
+            "wayId": "916903749",
+            "from": "36161414",
+            "to": "308076858",
+            "direction": "backward"
+          },
+          {
+            "wayId": "28058028",
+            "from": "308076858",
+            "to": "36161411",
+            "direction": "backward"
+          },
+          {
+            "wayId": "28057895",
+            "from": "36161411",
+            "to": "36161410",
+            "direction": "backward"
+          },
+          {
+            "wayId": "916903750",
+            "from": "36161410",
+            "to": "36161435",
+            "direction": "backward"
+          },
+          {
+            "wayId": "335414139",
+            "from": "36161435",
+            "to": "36161408",
+            "direction": "backward"
+          },
+          {
+            "wayId": "933369889",
+            "from": "36161408",
+            "to": "36161407",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1328072093",
+            "from": "36161407",
+            "to": "8616810772",
+            "direction": "backward"
+          },
+          {
+            "wayId": "933369888",
+            "from": "8616810772",
+            "to": "1408214299",
+            "direction": "forward"
+          }
+        ],
+        "maximumLengthMetres": 2000
+      },
+      {
+        "stops": [
+          [
+            7.2347618,
+            46.8991973,
+            "Bösingen, Abzw. Tuftera",
+            "",
+            "ch:1:sloid:70554:0:323303"
+          ],
+          [
+            7.24199324,
+            46.9013824,
+            "Laupen BE, Bahnhof",
+            "",
+            "ch:1:sloid:70555:0:602697"
+          ]
+        ],
+        "chain": [
+          {
+            "wayId": "1218962118",
+            "from": "308077056",
+            "to": "1038308039",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1218962505",
+            "from": "1038308039",
+            "to": "11295023853",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1218962506",
+            "from": "11295023853",
+            "to": "11295023854",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1218939917",
+            "from": "11295023854",
+            "to": "588522233",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1003262061",
+            "from": "588522233",
+            "to": "308076980",
+            "direction": "backward"
+          },
+          {
+            "wayId": "187800171",
+            "from": "308076980",
+            "to": "308076972",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1218944698",
+            "from": "308076972",
+            "to": "11294819663",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1311028303",
+            "from": "11294819663",
+            "to": "12135658365",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1311028296",
+            "from": "12135658365",
+            "to": "12135658366",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1311028295",
+            "from": "12135658366",
+            "to": "11294819658",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1531474223",
+            "from": "11294819658",
+            "to": "13958322400",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1531474220",
+            "from": "13958322400",
+            "to": "12135658364",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1531474222",
+            "from": "12135658364",
+            "to": "588556941",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1417597462",
+            "from": "588556941",
+            "to": "3978156597",
+            "direction": "backward"
+          },
+          {
+            "wayId": "543954973",
+            "from": "3978156597",
+            "to": "1412113561",
+            "direction": "backward"
+          },
+          {
+            "wayId": "86162950",
+            "from": "1412113561",
+            "to": "1000021109",
+            "direction": "backward"
+          },
+          {
+            "wayId": "86162922",
+            "from": "1000021109",
+            "to": "36161414",
+            "direction": "backward"
+          },
+          {
+            "wayId": "916903749",
+            "from": "36161414",
+            "to": "308076858",
+            "direction": "backward"
+          },
+          {
+            "wayId": "28058028",
+            "from": "308076858",
+            "to": "36161411",
+            "direction": "backward"
+          },
+          {
+            "wayId": "28057895",
+            "from": "36161411",
+            "to": "36161410",
+            "direction": "backward"
+          },
+          {
+            "wayId": "916903750",
+            "from": "36161410",
+            "to": "36161435",
+            "direction": "backward"
+          },
+          {
+            "wayId": "335414139",
+            "from": "36161435",
+            "to": "36161408",
+            "direction": "backward"
+          },
+          {
+            "wayId": "933369889",
+            "from": "36161408",
+            "to": "36161407",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1328072093",
+            "from": "36161407",
+            "to": "8616810772",
+            "direction": "backward"
+          },
+          {
+            "wayId": "933369888",
+            "from": "8616810772",
+            "to": "1408214299",
+            "direction": "forward"
+          },
+          {
+            "wayId": "315755631",
+            "from": "1408214299",
+            "to": "983847733",
+            "direction": "forward"
+          }
+        ],
+        "maximumLengthMetres": 2000
+      },
+      {
+        "stops": [
+          [
+            7.24199324,
+            46.9013824,
+            "Laupen BE, Bahnhof",
+            "",
+            "ch:1:sloid:70555:0:602697"
+          ],
+          [
+            7.23569605,
+            46.89741724,
+            "Bösingen, Abzw. Tuftera",
+            "",
+            "ch:1:sloid:70554:0:65751"
+          ]
+        ],
+        "chain": [
+          {
+            "wayId": "315755631",
+            "from": "983847733",
+            "to": "8616810766",
+            "direction": "forward"
+          },
+          {
+            "wayId": "933369890",
+            "from": "8616810766",
+            "to": "8616810772",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1328072093",
+            "from": "8616810772",
+            "to": "36161407",
+            "direction": "forward"
+          },
+          {
+            "wayId": "933369889",
+            "from": "36161407",
+            "to": "36161408",
+            "direction": "forward"
+          },
+          {
+            "wayId": "335414139",
+            "from": "36161408",
+            "to": "36161435",
+            "direction": "forward"
+          },
+          {
+            "wayId": "916903750",
+            "from": "36161435",
+            "to": "36161410",
+            "direction": "forward"
+          },
+          {
+            "wayId": "28057895",
+            "from": "36161410",
+            "to": "36161411",
+            "direction": "forward"
+          },
+          {
+            "wayId": "28058028",
+            "from": "36161411",
+            "to": "308076858",
+            "direction": "forward"
+          },
+          {
+            "wayId": "916903749",
+            "from": "308076858",
+            "to": "36161414",
+            "direction": "forward"
+          },
+          {
+            "wayId": "86162922",
+            "from": "36161414",
+            "to": "1000021109",
+            "direction": "forward"
+          },
+          {
+            "wayId": "86162950",
+            "from": "1000021109",
+            "to": "1412113561",
+            "direction": "forward"
+          },
+          {
+            "wayId": "543954973",
+            "from": "1412113561",
+            "to": "3978156597",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1417597462",
+            "from": "3978156597",
+            "to": "588556941",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1531474222",
+            "from": "588556941",
+            "to": "13958322396",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1531474223",
+            "from": "13958322396",
+            "to": "11294819658",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1311028295",
+            "from": "11294819658",
+            "to": "12135658366",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1311028296",
+            "from": "12135658366",
+            "to": "12135658365",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1311028303",
+            "from": "12135658365",
+            "to": "11294819663",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1218944698",
+            "from": "11294819663",
+            "to": "308076972",
+            "direction": "forward"
+          },
+          {
+            "wayId": "187800171",
+            "from": "308076972",
+            "to": "308076980",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1003262061",
+            "from": "308076980",
+            "to": "588522233",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1218939917",
+            "from": "588522233",
+            "to": "11295023854",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1218962506",
+            "from": "11295023854",
+            "to": "11295023853",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1218962505",
+            "from": "11295023853",
+            "to": "1038308039",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1218962118",
+            "from": "1038308039",
+            "to": "814092554",
+            "direction": "forward"
+          },
+          {
+            "wayId": "67409690",
+            "from": "814092554",
+            "to": "814092549",
+            "direction": "forward"
+          },
+          {
+            "wayId": "83160711",
+            "from": "814092549",
+            "to": "8945081564",
+            "direction": "backward"
+          }
+        ],
+        "maximumLengthMetres": 2500
+      }
+    ],
+    "admission": "Only the three exact directed station pairs in all six complete PostAuto-121 patterns on 4/6 September 2026. Both directions follow the full documented western diversion; original platforms are attached within 15 m to reviewed road nodes, retaining distinct station arrivals. Require exact source-node joins, forward one-way/roundabout travel, ordinary bus access and no touching returned restrictions. No current OSM bus-121 relation was returned; project documents identify the corridor, not a surveyed lane path. The specific 2.0/2.5 km ceilings do not relax general detour guards. Preserve all prior failures and original calls/times. No map geometry extracted from project documents.",
+    "exclusions": [
+      "Closed original Sense bridge and adjacent temporary foot/cycle bridge",
+      "Bauumfahrung Stedtli construction sections",
+      "Parking-aisle and residential shortcuts outside the documented full western diversion",
+      "Automatic admission on other dates or for other routes/platforms",
+      "Temporary August station-stop relocation: dates outside both fixtures; original GTFS platforms remain unchanged"
+    ]
+  },
+  "assessments": [
+    {
+      "key": "[\"96-881-j26-1\",\"ch:1:sloid:70554:0:323303\",\"ch:1:sloid:70555:0:83983\"]",
+      "path": [
+        [
+          7.2347618,
+          46.8991973
+        ],
+        [
+          7.2346953,
+          46.8992001
+        ],
+        [
+          7.2340643,
+          46.8994582
+        ],
+        [
+          7.2331247,
+          46.8998237
+        ],
+        [
+          7.2327385,
+          46.8999983
+        ],
+        [
+          7.2326591,
+          46.9000753
+        ],
+        [
+          7.2326896,
+          46.900166
+        ],
+        [
+          7.2326552,
+          46.900269
+        ],
+        [
+          7.2325332,
+          46.9004007
+        ],
+        [
+          7.2320505,
+          46.9008223
+        ],
+        [
+          7.2317277,
+          46.9011026
+        ],
+        [
+          7.2315605,
+          46.9012385
+        ],
+        [
+          7.2314223,
+          46.9014013
+        ],
+        [
+          7.2312572,
+          46.9017259
+        ],
+        [
+          7.2312021,
+          46.9019115
+        ],
+        [
+          7.2311963,
+          46.902011
+        ],
+        [
+          7.2312239,
+          46.9021691
+        ],
+        [
+          7.2312772,
+          46.9022944
+        ],
+        [
+          7.2314181,
+          46.9024559
+        ],
+        [
+          7.2315295,
+          46.9025344
+        ],
+        [
+          7.2317817,
+          46.902652
+        ],
+        [
+          7.232051,
+          46.9027311
+        ],
+        [
+          7.2322884,
+          46.9028059
+        ],
+        [
+          7.2326012,
+          46.9028993
+        ],
+        [
+          7.2329208,
+          46.9029942
+        ],
+        [
+          7.2330728,
+          46.9030389
+        ],
+        [
+          7.2332985,
+          46.9031139
+        ],
+        [
+          7.2334914,
+          46.9031854
+        ],
+        [
+          7.2336787,
+          46.9032639
+        ],
+        [
+          7.2338201,
+          46.9033261
+        ],
+        [
+          7.2339591,
+          46.9033937
+        ],
+        [
+          7.2341984,
+          46.9035212
+        ],
+        [
+          7.2344772,
+          46.9036891
+        ],
+        [
+          7.2346936,
+          46.9038285
+        ],
+        [
+          7.2347428,
+          46.9038578
+        ],
+        [
+          7.2347408,
+          46.9039187
+        ],
+        [
+          7.2347262,
+          46.9040167
+        ],
+        [
+          7.2346328,
+          46.9041315
+        ],
+        [
+          7.2336176,
+          46.9048987
+        ],
+        [
+          7.2335667,
+          46.9049985
+        ],
+        [
+          7.2336145,
+          46.9050986
+        ],
+        [
+          7.2341279,
+          46.905339
+        ],
+        [
+          7.234208,
+          46.9053803
+        ],
+        [
+          7.2347335,
+          46.9056511
+        ],
+        [
+          7.234937,
+          46.9057797
+        ],
+        [
+          7.2350587,
+          46.9058797
+        ],
+        [
+          7.2351358,
+          46.9059573
+        ],
+        [
+          7.2353064,
+          46.9060995
+        ],
+        [
+          7.235335,
+          46.9060794
+        ],
+        [
+          7.235372,
+          46.9060671
+        ],
+        [
+          7.2354128,
+          46.9060643
+        ],
+        [
+          7.2354801,
+          46.9060189
+        ],
+        [
+          7.2355764,
+          46.9059392
+        ],
+        [
+          7.2356216,
+          46.9057941
+        ],
+        [
+          7.2357284,
+          46.905485
+        ],
+        [
+          7.2357945,
+          46.9053556
+        ],
+        [
+          7.2359147,
+          46.9051837
+        ],
+        [
+          7.2360101,
+          46.9050599
+        ],
+        [
+          7.2361159,
+          46.9049341
+        ],
+        [
+          7.2361931,
+          46.9048428
+        ],
+        [
+          7.23631,
+          46.9047004
+        ],
+        [
+          7.2363949,
+          46.9046014
+        ],
+        [
+          7.2364642,
+          46.904519
+        ],
+        [
+          7.2365501,
+          46.9044371
+        ],
+        [
+          7.2367057,
+          46.9043148
+        ],
+        [
+          7.2368169,
+          46.904252
+        ],
+        [
+          7.2368675,
+          46.904225
+        ],
+        [
+          7.236941,
+          46.9041943
+        ],
+        [
+          7.2370747,
+          46.9041471
+        ],
+        [
+          7.2372183,
+          46.9041068
+        ],
+        [
+          7.2374386,
+          46.9040395
+        ],
+        [
+          7.2377656,
+          46.9039288
+        ],
+        [
+          7.2378088,
+          46.9039147
+        ],
+        [
+          7.237845,
+          46.9039029
+        ],
+        [
+          7.2380781,
+          46.9038231
+        ],
+        [
+          7.2382177,
+          46.9037746
+        ],
+        [
+          7.2383438,
+          46.9037267
+        ],
+        [
+          7.2384556,
+          46.9036786
+        ],
+        [
+          7.2385448,
+          46.903636
+        ],
+        [
+          7.2385657,
+          46.9036255
+        ],
+        [
+          7.2386548,
+          46.9035729
+        ],
+        [
+          7.2387439,
+          46.9035096
+        ],
+        [
+          7.238807,
+          46.9034575
+        ],
+        [
+          7.238858,
+          46.9034079
+        ],
+        [
+          7.2388786,
+          46.9033861
+        ],
+        [
+          7.2389321,
+          46.9033163
+        ],
+        [
+          7.2390113,
+          46.903185
+        ],
+        [
+          7.2390268,
+          46.9031411
+        ],
+        [
+          7.23906,
+          46.90302
+        ],
+        [
+          7.2390735,
+          46.9029671
+        ],
+        [
+          7.2390934,
+          46.9028893
+        ],
+        [
+          7.2391091,
+          46.9028279
+        ],
+        [
+          7.2391611,
+          46.9026788
+        ],
+        [
+          7.2391992,
+          46.9026093
+        ],
+        [
+          7.239262,
+          46.9025295
+        ],
+        [
+          7.2392957,
+          46.9024941
+        ],
+        [
+          7.2394332,
+          46.9023869
+        ],
+        [
+          7.2398513,
+          46.9021028
+        ],
+        [
+          7.2399313,
+          46.9020484
+        ],
+        [
+          7.2400326,
+          46.9019899
+        ],
+        [
+          7.2401357,
+          46.9019396
+        ],
+        [
+          7.2403641,
+          46.9018501
+        ],
+        [
+          7.240496,
+          46.9018134
+        ],
+        [
+          7.2406318,
+          46.9017839
+        ],
+        [
+          7.2407292,
+          46.9017684
+        ],
+        [
+          7.2407692,
+          46.901762
+        ],
+        [
+          7.2411499,
+          46.9017313
+        ],
+        [
+          7.24126,
+          46.9016807
+        ],
+        [
+          7.2412963,
+          46.9016611
+        ],
+        [
+          7.2415594,
+          46.9015197
+        ],
+        [
+          7.2415531,
+          46.9014806
+        ]
+      ],
+      "lengthMetres": 1881.5573683590408,
+      "directMetres": 575.7040083825486,
+      "attachmentsMetres": [
+        5.067795571322667,
+        4.3780526250509935
+      ],
+      "directedSourceSegments": [
+        {
+          "wayId": "1218962118",
+          "from": "308077056",
+          "to": "1038308039",
+          "direction": "backward",
+          "version": "4",
+          "timestamp": "2026-03-31T08:02:04Z",
+          "nodeIds": [
+            "308077056",
+            "3218961482",
+            "588522149",
+            "12570849778",
+            "1038308039"
+          ],
+          "tags": {
+            "highway": "residential",
+            "is_in": "Bösingen,Bezirk Sense,Fribourg;Freiburg,Schweiz;Suisse;Switzerland;CH,Europe",
+            "maxspeed": "30",
+            "name": "Industriestrasse",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218962505",
+          "from": "1038308039",
+          "to": "11295023853",
+          "direction": "forward",
+          "version": "4",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "1038308039",
+            "11327589878",
+            "12570849772",
+            "12570849777",
+            "11295023853"
+          ],
+          "tags": {
+            "embankment": "no",
+            "highway": "tertiary",
+            "lanes": "2",
+            "lit": "yes",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "oneway": "no",
+            "start_date": "2023-10-13",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218962506",
+          "from": "11295023853",
+          "to": "11295023854",
+          "direction": "forward",
+          "version": "3",
+          "timestamp": "2026-06-23T05:31:37Z",
+          "nodeIds": [
+            "11295023853",
+            "13959241208",
+            "13959212289",
+            "11295023854"
+          ],
+          "tags": {
+            "embankment": "yes",
+            "highway": "tertiary",
+            "lanes": "2",
+            "lit": "yes",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "oneway": "no",
+            "start_date": "2023-10-13",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218939917",
+          "from": "11295023854",
+          "to": "588522233",
+          "direction": "forward",
+          "version": "6",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "11295023854",
+            "12570849776",
+            "12570849774",
+            "11294677312",
+            "12570849773",
+            "11294807328",
+            "11294677313",
+            "11294677314",
+            "11379127115",
+            "588522233"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "lit": "yes",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1003262061",
+          "from": "588522233",
+          "to": "308076980",
+          "direction": "backward",
+          "version": "3",
+          "timestamp": "2024-08-25T11:58:35Z",
+          "nodeIds": [
+            "588522233",
+            "308076984",
+            "10109749364",
+            "308076983",
+            "10109749363",
+            "10109749361",
+            "10109749362",
+            "308076980"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Gillenauweg",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "187800171",
+          "from": "308076980",
+          "to": "308076972",
+          "direction": "backward",
+          "version": "7",
+          "timestamp": "2024-08-25T12:02:16Z",
+          "nodeIds": [
+            "308076980",
+            "10109749360",
+            "10109749359",
+            "308076976",
+            "4641857086",
+            "10109749354",
+            "308076972"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Gillenauweg",
+            "oneway": "no",
+            "sidewalk": "separate",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218944698",
+          "from": "308076972",
+          "to": "11294819663",
+          "direction": "backward",
+          "version": "6",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "308076972",
+            "11294819668",
+            "11294819667",
+            "11294819666",
+            "11294819663"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1311028303",
+          "from": "11294819663",
+          "to": "12135658365",
+          "direction": "backward",
+          "version": "3",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "11294819663",
+            "11294819662",
+            "11294819661",
+            "11294819660",
+            "12135658365"
+          ],
+          "tags": {
+            "embankment": "yes",
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1311028296",
+          "from": "12135658365",
+          "to": "12135658366",
+          "direction": "backward",
+          "version": "2",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "12135658365",
+            "12135658366"
+          ],
+          "tags": {
+            "bridge": "yes",
+            "highway": "tertiary",
+            "lanes": "2",
+            "layer": "1",
+            "maxspeed": "30",
+            "motor_vehicle": "yes",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1311028295",
+          "from": "12135658366",
+          "to": "11294819658",
+          "direction": "backward",
+          "version": "4",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "12135658366",
+            "13958322387",
+            "11294819659",
+            "3615100882",
+            "11294819658"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1531474223",
+          "from": "11294819658",
+          "to": "13958322400",
+          "direction": "forward",
+          "version": "1",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "11294819658",
+            "13958377502",
+            "13958377501",
+            "13958322400"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "oneway": "yes"
+          }
+        },
+        {
+          "wayId": "1531474220",
+          "from": "13958322400",
+          "to": "12135658364",
+          "direction": "forward",
+          "version": "1",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "13958322400",
+            "13958322386",
+            "12135658364"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "50",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "oneway": "yes",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "1531474222",
+          "from": "12135658364",
+          "to": "588556941",
+          "direction": "backward",
+          "version": "1",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "12135658364",
+            "10880322192",
+            "588556941"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "50",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "1417597462",
+          "from": "588556941",
+          "to": "3978156597",
+          "direction": "backward",
+          "version": "1",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "588556941",
+            "279600237",
+            "3978156597"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "543954973",
+          "from": "3978156597",
+          "to": "1412113561",
+          "direction": "backward",
+          "version": "3",
+          "timestamp": "2024-01-16T06:01:43Z",
+          "nodeIds": [
+            "3978156597",
+            "1412113561"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "50",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "86162950",
+          "from": "1412113561",
+          "to": "1000021109",
+          "direction": "backward",
+          "version": "10",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "1412113561",
+            "6647693183",
+            "3978156585",
+            "1000021109"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "86162922",
+          "from": "1000021109",
+          "to": "36161414",
+          "direction": "backward",
+          "version": "11",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "1000021109",
+            "10880322184",
+            "8516054371",
+            "10880322183",
+            "36161414"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "916903749",
+          "from": "36161414",
+          "to": "308076858",
+          "direction": "backward",
+          "version": "6",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "36161414",
+            "12287454379",
+            "10880322182",
+            "8516054370",
+            "10880322181",
+            "308076858"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "28058028",
+          "from": "308076858",
+          "to": "36161411",
+          "direction": "backward",
+          "version": "16",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "308076858",
+            "10880322180",
+            "36161412",
+            "7467357105",
+            "7467357100",
+            "2127243263",
+            "1840776623",
+            "10880322179",
+            "2952325480",
+            "10880322178",
+            "36161411"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "28057895",
+          "from": "36161411",
+          "to": "36161410",
+          "direction": "backward",
+          "version": "11",
+          "timestamp": "2026-07-25T17:26:27Z",
+          "nodeIds": [
+            "36161411",
+            "10880322149",
+            "2952325478",
+            "10880322148",
+            "308076864",
+            "308076880",
+            "10880322147",
+            "308076866",
+            "14049536298",
+            "36161410"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Bärenplatz",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "916903750",
+          "from": "36161410",
+          "to": "36161435",
+          "direction": "backward",
+          "version": "5",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "36161410",
+            "14049547713",
+            "279600247",
+            "36161435"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Bärenplatz",
+            "ref": "1201",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "335414139",
+          "from": "36161435",
+          "to": "36161408",
+          "direction": "backward",
+          "version": "11",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "36161435",
+            "10880322145",
+            "308076922",
+            "10880322144",
+            "308076935",
+            "3993563841",
+            "13427018663",
+            "2952325466",
+            "36161408"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Neuengasse",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "933369889",
+          "from": "36161408",
+          "to": "36161407",
+          "direction": "backward",
+          "version": "7",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "36161408",
+            "1224006721",
+            "567181938",
+            "8651680442",
+            "36161407"
+          ],
+          "tags": {
+            "highway": "secondary",
+            "maxspeed": "30",
+            "name": "Neueneggstrasse",
+            "name:etymology:wikidata": "Q66125",
+            "ref": "233",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1328072093",
+          "from": "36161407",
+          "to": "8616810772",
+          "direction": "backward",
+          "version": "1",
+          "timestamp": "2024-10-25T06:13:56Z",
+          "nodeIds": [
+            "36161407",
+            "12287454386",
+            "12287454388",
+            "8616810772"
+          ],
+          "tags": {
+            "highway": "secondary",
+            "maxspeed": "50",
+            "name": "Neueneggstrasse",
+            "name:etymology:wikidata": "Q66125",
+            "ref": "233",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "933369888",
+          "from": "8616810772",
+          "to": "1408214299",
+          "direction": "forward",
+          "version": "4",
+          "timestamp": "2023-07-31T22:28:05Z",
+          "nodeIds": [
+            "8616810772",
+            "11079574453",
+            "10301102556",
+            "1408214299"
+          ],
+          "tags": {
+            "highway": "service",
+            "oneway": "yes"
+          }
+        }
+      ],
+      "restrictionRecordsChecked": 0,
+      "contributingPatterns": [
+        "09498bcb49c92b7e48953f10",
+        "76757748754ea4204d1d8e22"
+      ],
+      "primaryFailure": {
+        "agencyId": "801",
+        "geometrySource": "osm-road-inference",
+        "roadPatternIds": [
+          "09498bcb49c92b7e48953f10",
+          "76757748754ea4204d1d8e22"
+        ],
+        "roadContextOccurrences": 2,
+        "reason": "road-excessive-detour",
+        "sourceFeatures": []
+      }
+    },
+    {
+      "key": "[\"96-881-j26-1\",\"ch:1:sloid:70554:0:323303\",\"ch:1:sloid:70555:0:602697\"]",
+      "path": [
+        [
+          7.2347618,
+          46.8991973
+        ],
+        [
+          7.2346953,
+          46.8992001
+        ],
+        [
+          7.2340643,
+          46.8994582
+        ],
+        [
+          7.2331247,
+          46.8998237
+        ],
+        [
+          7.2327385,
+          46.8999983
+        ],
+        [
+          7.2326591,
+          46.9000753
+        ],
+        [
+          7.2326896,
+          46.900166
+        ],
+        [
+          7.2326552,
+          46.900269
+        ],
+        [
+          7.2325332,
+          46.9004007
+        ],
+        [
+          7.2320505,
+          46.9008223
+        ],
+        [
+          7.2317277,
+          46.9011026
+        ],
+        [
+          7.2315605,
+          46.9012385
+        ],
+        [
+          7.2314223,
+          46.9014013
+        ],
+        [
+          7.2312572,
+          46.9017259
+        ],
+        [
+          7.2312021,
+          46.9019115
+        ],
+        [
+          7.2311963,
+          46.902011
+        ],
+        [
+          7.2312239,
+          46.9021691
+        ],
+        [
+          7.2312772,
+          46.9022944
+        ],
+        [
+          7.2314181,
+          46.9024559
+        ],
+        [
+          7.2315295,
+          46.9025344
+        ],
+        [
+          7.2317817,
+          46.902652
+        ],
+        [
+          7.232051,
+          46.9027311
+        ],
+        [
+          7.2322884,
+          46.9028059
+        ],
+        [
+          7.2326012,
+          46.9028993
+        ],
+        [
+          7.2329208,
+          46.9029942
+        ],
+        [
+          7.2330728,
+          46.9030389
+        ],
+        [
+          7.2332985,
+          46.9031139
+        ],
+        [
+          7.2334914,
+          46.9031854
+        ],
+        [
+          7.2336787,
+          46.9032639
+        ],
+        [
+          7.2338201,
+          46.9033261
+        ],
+        [
+          7.2339591,
+          46.9033937
+        ],
+        [
+          7.2341984,
+          46.9035212
+        ],
+        [
+          7.2344772,
+          46.9036891
+        ],
+        [
+          7.2346936,
+          46.9038285
+        ],
+        [
+          7.2347428,
+          46.9038578
+        ],
+        [
+          7.2347408,
+          46.9039187
+        ],
+        [
+          7.2347262,
+          46.9040167
+        ],
+        [
+          7.2346328,
+          46.9041315
+        ],
+        [
+          7.2336176,
+          46.9048987
+        ],
+        [
+          7.2335667,
+          46.9049985
+        ],
+        [
+          7.2336145,
+          46.9050986
+        ],
+        [
+          7.2341279,
+          46.905339
+        ],
+        [
+          7.234208,
+          46.9053803
+        ],
+        [
+          7.2347335,
+          46.9056511
+        ],
+        [
+          7.234937,
+          46.9057797
+        ],
+        [
+          7.2350587,
+          46.9058797
+        ],
+        [
+          7.2351358,
+          46.9059573
+        ],
+        [
+          7.2353064,
+          46.9060995
+        ],
+        [
+          7.235335,
+          46.9060794
+        ],
+        [
+          7.235372,
+          46.9060671
+        ],
+        [
+          7.2354128,
+          46.9060643
+        ],
+        [
+          7.2354801,
+          46.9060189
+        ],
+        [
+          7.2355764,
+          46.9059392
+        ],
+        [
+          7.2356216,
+          46.9057941
+        ],
+        [
+          7.2357284,
+          46.905485
+        ],
+        [
+          7.2357945,
+          46.9053556
+        ],
+        [
+          7.2359147,
+          46.9051837
+        ],
+        [
+          7.2360101,
+          46.9050599
+        ],
+        [
+          7.2361159,
+          46.9049341
+        ],
+        [
+          7.2361931,
+          46.9048428
+        ],
+        [
+          7.23631,
+          46.9047004
+        ],
+        [
+          7.2363949,
+          46.9046014
+        ],
+        [
+          7.2364642,
+          46.904519
+        ],
+        [
+          7.2365501,
+          46.9044371
+        ],
+        [
+          7.2367057,
+          46.9043148
+        ],
+        [
+          7.2368169,
+          46.904252
+        ],
+        [
+          7.2368675,
+          46.904225
+        ],
+        [
+          7.236941,
+          46.9041943
+        ],
+        [
+          7.2370747,
+          46.9041471
+        ],
+        [
+          7.2372183,
+          46.9041068
+        ],
+        [
+          7.2374386,
+          46.9040395
+        ],
+        [
+          7.2377656,
+          46.9039288
+        ],
+        [
+          7.2378088,
+          46.9039147
+        ],
+        [
+          7.237845,
+          46.9039029
+        ],
+        [
+          7.2380781,
+          46.9038231
+        ],
+        [
+          7.2382177,
+          46.9037746
+        ],
+        [
+          7.2383438,
+          46.9037267
+        ],
+        [
+          7.2384556,
+          46.9036786
+        ],
+        [
+          7.2385448,
+          46.903636
+        ],
+        [
+          7.2385657,
+          46.9036255
+        ],
+        [
+          7.2386548,
+          46.9035729
+        ],
+        [
+          7.2387439,
+          46.9035096
+        ],
+        [
+          7.238807,
+          46.9034575
+        ],
+        [
+          7.238858,
+          46.9034079
+        ],
+        [
+          7.2388786,
+          46.9033861
+        ],
+        [
+          7.2389321,
+          46.9033163
+        ],
+        [
+          7.2390113,
+          46.903185
+        ],
+        [
+          7.2390268,
+          46.9031411
+        ],
+        [
+          7.23906,
+          46.90302
+        ],
+        [
+          7.2390735,
+          46.9029671
+        ],
+        [
+          7.2390934,
+          46.9028893
+        ],
+        [
+          7.2391091,
+          46.9028279
+        ],
+        [
+          7.2391611,
+          46.9026788
+        ],
+        [
+          7.2391992,
+          46.9026093
+        ],
+        [
+          7.239262,
+          46.9025295
+        ],
+        [
+          7.2392957,
+          46.9024941
+        ],
+        [
+          7.2394332,
+          46.9023869
+        ],
+        [
+          7.2398513,
+          46.9021028
+        ],
+        [
+          7.2399313,
+          46.9020484
+        ],
+        [
+          7.2400326,
+          46.9019899
+        ],
+        [
+          7.2401357,
+          46.9019396
+        ],
+        [
+          7.2403641,
+          46.9018501
+        ],
+        [
+          7.240496,
+          46.9018134
+        ],
+        [
+          7.2406318,
+          46.9017839
+        ],
+        [
+          7.2407292,
+          46.9017684
+        ],
+        [
+          7.2407692,
+          46.901762
+        ],
+        [
+          7.2411499,
+          46.9017313
+        ],
+        [
+          7.24126,
+          46.9016807
+        ],
+        [
+          7.2412963,
+          46.9016611
+        ],
+        [
+          7.2415594,
+          46.9015197
+        ],
+        [
+          7.241747,
+          46.9014625
+        ],
+        [
+          7.2418926,
+          46.9014337
+        ],
+        [
+          7.2419932,
+          46.9013824
+        ]
+      ],
+      "lengthMetres": 1913.8804329325014,
+      "directMetres": 601.420718259891,
+      "attachmentsMetres": [
+        5.067795571322667,
+        9.550206210226278
+      ],
+      "directedSourceSegments": [
+        {
+          "wayId": "1218962118",
+          "from": "308077056",
+          "to": "1038308039",
+          "direction": "backward",
+          "version": "4",
+          "timestamp": "2026-03-31T08:02:04Z",
+          "nodeIds": [
+            "308077056",
+            "3218961482",
+            "588522149",
+            "12570849778",
+            "1038308039"
+          ],
+          "tags": {
+            "highway": "residential",
+            "is_in": "Bösingen,Bezirk Sense,Fribourg;Freiburg,Schweiz;Suisse;Switzerland;CH,Europe",
+            "maxspeed": "30",
+            "name": "Industriestrasse",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218962505",
+          "from": "1038308039",
+          "to": "11295023853",
+          "direction": "forward",
+          "version": "4",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "1038308039",
+            "11327589878",
+            "12570849772",
+            "12570849777",
+            "11295023853"
+          ],
+          "tags": {
+            "embankment": "no",
+            "highway": "tertiary",
+            "lanes": "2",
+            "lit": "yes",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "oneway": "no",
+            "start_date": "2023-10-13",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218962506",
+          "from": "11295023853",
+          "to": "11295023854",
+          "direction": "forward",
+          "version": "3",
+          "timestamp": "2026-06-23T05:31:37Z",
+          "nodeIds": [
+            "11295023853",
+            "13959241208",
+            "13959212289",
+            "11295023854"
+          ],
+          "tags": {
+            "embankment": "yes",
+            "highway": "tertiary",
+            "lanes": "2",
+            "lit": "yes",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "oneway": "no",
+            "start_date": "2023-10-13",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218939917",
+          "from": "11295023854",
+          "to": "588522233",
+          "direction": "forward",
+          "version": "6",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "11295023854",
+            "12570849776",
+            "12570849774",
+            "11294677312",
+            "12570849773",
+            "11294807328",
+            "11294677313",
+            "11294677314",
+            "11379127115",
+            "588522233"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "lit": "yes",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1003262061",
+          "from": "588522233",
+          "to": "308076980",
+          "direction": "backward",
+          "version": "3",
+          "timestamp": "2024-08-25T11:58:35Z",
+          "nodeIds": [
+            "588522233",
+            "308076984",
+            "10109749364",
+            "308076983",
+            "10109749363",
+            "10109749361",
+            "10109749362",
+            "308076980"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Gillenauweg",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "187800171",
+          "from": "308076980",
+          "to": "308076972",
+          "direction": "backward",
+          "version": "7",
+          "timestamp": "2024-08-25T12:02:16Z",
+          "nodeIds": [
+            "308076980",
+            "10109749360",
+            "10109749359",
+            "308076976",
+            "4641857086",
+            "10109749354",
+            "308076972"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Gillenauweg",
+            "oneway": "no",
+            "sidewalk": "separate",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218944698",
+          "from": "308076972",
+          "to": "11294819663",
+          "direction": "backward",
+          "version": "6",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "308076972",
+            "11294819668",
+            "11294819667",
+            "11294819666",
+            "11294819663"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1311028303",
+          "from": "11294819663",
+          "to": "12135658365",
+          "direction": "backward",
+          "version": "3",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "11294819663",
+            "11294819662",
+            "11294819661",
+            "11294819660",
+            "12135658365"
+          ],
+          "tags": {
+            "embankment": "yes",
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1311028296",
+          "from": "12135658365",
+          "to": "12135658366",
+          "direction": "backward",
+          "version": "2",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "12135658365",
+            "12135658366"
+          ],
+          "tags": {
+            "bridge": "yes",
+            "highway": "tertiary",
+            "lanes": "2",
+            "layer": "1",
+            "maxspeed": "30",
+            "motor_vehicle": "yes",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1311028295",
+          "from": "12135658366",
+          "to": "11294819658",
+          "direction": "backward",
+          "version": "4",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "12135658366",
+            "13958322387",
+            "11294819659",
+            "3615100882",
+            "11294819658"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1531474223",
+          "from": "11294819658",
+          "to": "13958322400",
+          "direction": "forward",
+          "version": "1",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "11294819658",
+            "13958377502",
+            "13958377501",
+            "13958322400"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "oneway": "yes"
+          }
+        },
+        {
+          "wayId": "1531474220",
+          "from": "13958322400",
+          "to": "12135658364",
+          "direction": "forward",
+          "version": "1",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "13958322400",
+            "13958322386",
+            "12135658364"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "50",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "oneway": "yes",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "1531474222",
+          "from": "12135658364",
+          "to": "588556941",
+          "direction": "backward",
+          "version": "1",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "12135658364",
+            "10880322192",
+            "588556941"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "50",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "1417597462",
+          "from": "588556941",
+          "to": "3978156597",
+          "direction": "backward",
+          "version": "1",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "588556941",
+            "279600237",
+            "3978156597"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "543954973",
+          "from": "3978156597",
+          "to": "1412113561",
+          "direction": "backward",
+          "version": "3",
+          "timestamp": "2024-01-16T06:01:43Z",
+          "nodeIds": [
+            "3978156597",
+            "1412113561"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "50",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "86162950",
+          "from": "1412113561",
+          "to": "1000021109",
+          "direction": "backward",
+          "version": "10",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "1412113561",
+            "6647693183",
+            "3978156585",
+            "1000021109"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "86162922",
+          "from": "1000021109",
+          "to": "36161414",
+          "direction": "backward",
+          "version": "11",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "1000021109",
+            "10880322184",
+            "8516054371",
+            "10880322183",
+            "36161414"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "916903749",
+          "from": "36161414",
+          "to": "308076858",
+          "direction": "backward",
+          "version": "6",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "36161414",
+            "12287454379",
+            "10880322182",
+            "8516054370",
+            "10880322181",
+            "308076858"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "28058028",
+          "from": "308076858",
+          "to": "36161411",
+          "direction": "backward",
+          "version": "16",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "308076858",
+            "10880322180",
+            "36161412",
+            "7467357105",
+            "7467357100",
+            "2127243263",
+            "1840776623",
+            "10880322179",
+            "2952325480",
+            "10880322178",
+            "36161411"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "28057895",
+          "from": "36161411",
+          "to": "36161410",
+          "direction": "backward",
+          "version": "11",
+          "timestamp": "2026-07-25T17:26:27Z",
+          "nodeIds": [
+            "36161411",
+            "10880322149",
+            "2952325478",
+            "10880322148",
+            "308076864",
+            "308076880",
+            "10880322147",
+            "308076866",
+            "14049536298",
+            "36161410"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Bärenplatz",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "916903750",
+          "from": "36161410",
+          "to": "36161435",
+          "direction": "backward",
+          "version": "5",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "36161410",
+            "14049547713",
+            "279600247",
+            "36161435"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Bärenplatz",
+            "ref": "1201",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "335414139",
+          "from": "36161435",
+          "to": "36161408",
+          "direction": "backward",
+          "version": "11",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "36161435",
+            "10880322145",
+            "308076922",
+            "10880322144",
+            "308076935",
+            "3993563841",
+            "13427018663",
+            "2952325466",
+            "36161408"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Neuengasse",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "933369889",
+          "from": "36161408",
+          "to": "36161407",
+          "direction": "backward",
+          "version": "7",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "36161408",
+            "1224006721",
+            "567181938",
+            "8651680442",
+            "36161407"
+          ],
+          "tags": {
+            "highway": "secondary",
+            "maxspeed": "30",
+            "name": "Neueneggstrasse",
+            "name:etymology:wikidata": "Q66125",
+            "ref": "233",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1328072093",
+          "from": "36161407",
+          "to": "8616810772",
+          "direction": "backward",
+          "version": "1",
+          "timestamp": "2024-10-25T06:13:56Z",
+          "nodeIds": [
+            "36161407",
+            "12287454386",
+            "12287454388",
+            "8616810772"
+          ],
+          "tags": {
+            "highway": "secondary",
+            "maxspeed": "50",
+            "name": "Neueneggstrasse",
+            "name:etymology:wikidata": "Q66125",
+            "ref": "233",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "933369888",
+          "from": "8616810772",
+          "to": "1408214299",
+          "direction": "forward",
+          "version": "4",
+          "timestamp": "2023-07-31T22:28:05Z",
+          "nodeIds": [
+            "8616810772",
+            "11079574453",
+            "10301102556",
+            "1408214299"
+          ],
+          "tags": {
+            "highway": "service",
+            "oneway": "yes"
+          }
+        },
+        {
+          "wayId": "315755631",
+          "from": "1408214299",
+          "to": "983847733",
+          "direction": "forward",
+          "version": "8",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "1408214299",
+            "8616810776",
+            "983847733"
+          ],
+          "tags": {
+            "highway": "service",
+            "oneway": "yes"
+          }
+        }
+      ],
+      "restrictionRecordsChecked": 0,
+      "contributingPatterns": [
+        "9113c440d8af3be6e27b05cd"
+      ],
+      "primaryFailure": {
+        "agencyId": "801",
+        "geometrySource": "osm-road-inference",
+        "roadPatternIds": [
+          "9113c440d8af3be6e27b05cd"
+        ],
+        "roadContextOccurrences": 1,
+        "reason": "road-excessive-detour",
+        "sourceFeatures": []
+      }
+    },
+    {
+      "key": "[\"96-881-j26-1\",\"ch:1:sloid:70555:0:602697\",\"ch:1:sloid:70554:0:65751\"]",
+      "path": [
+        [
+          7.2419932,
+          46.9013824
+        ],
+        [
+          7.2418926,
+          46.9014337
+        ],
+        [
+          7.241975,
+          46.9014174
+        ],
+        [
+          7.2422138,
+          46.9013701
+        ],
+        [
+          7.2422945,
+          46.9013536
+        ],
+        [
+          7.2424348,
+          46.901325
+        ],
+        [
+          7.2426792,
+          46.901278
+        ],
+        [
+          7.2427757,
+          46.9015123
+        ],
+        [
+          7.242798,
+          46.9015612
+        ],
+        [
+          7.2425562,
+          46.9016088
+        ],
+        [
+          7.2423073,
+          46.9016453
+        ],
+        [
+          7.242014,
+          46.9016766
+        ],
+        [
+          7.241668,
+          46.9017032
+        ],
+        [
+          7.2415041,
+          46.9017118
+        ],
+        [
+          7.2412817,
+          46.9017234
+        ],
+        [
+          7.2411499,
+          46.9017313
+        ],
+        [
+          7.2407692,
+          46.901762
+        ],
+        [
+          7.2407292,
+          46.9017684
+        ],
+        [
+          7.2406318,
+          46.9017839
+        ],
+        [
+          7.240496,
+          46.9018134
+        ],
+        [
+          7.2403641,
+          46.9018501
+        ],
+        [
+          7.2401357,
+          46.9019396
+        ],
+        [
+          7.2400326,
+          46.9019899
+        ],
+        [
+          7.2399313,
+          46.9020484
+        ],
+        [
+          7.2398513,
+          46.9021028
+        ],
+        [
+          7.2394332,
+          46.9023869
+        ],
+        [
+          7.2392957,
+          46.9024941
+        ],
+        [
+          7.239262,
+          46.9025295
+        ],
+        [
+          7.2391992,
+          46.9026093
+        ],
+        [
+          7.2391611,
+          46.9026788
+        ],
+        [
+          7.2391091,
+          46.9028279
+        ],
+        [
+          7.2390934,
+          46.9028893
+        ],
+        [
+          7.2390735,
+          46.9029671
+        ],
+        [
+          7.23906,
+          46.90302
+        ],
+        [
+          7.2390268,
+          46.9031411
+        ],
+        [
+          7.2390113,
+          46.903185
+        ],
+        [
+          7.2389321,
+          46.9033163
+        ],
+        [
+          7.2388786,
+          46.9033861
+        ],
+        [
+          7.238858,
+          46.9034079
+        ],
+        [
+          7.238807,
+          46.9034575
+        ],
+        [
+          7.2387439,
+          46.9035096
+        ],
+        [
+          7.2386548,
+          46.9035729
+        ],
+        [
+          7.2385657,
+          46.9036255
+        ],
+        [
+          7.2385448,
+          46.903636
+        ],
+        [
+          7.2384556,
+          46.9036786
+        ],
+        [
+          7.2383438,
+          46.9037267
+        ],
+        [
+          7.2382177,
+          46.9037746
+        ],
+        [
+          7.2380781,
+          46.9038231
+        ],
+        [
+          7.237845,
+          46.9039029
+        ],
+        [
+          7.2378088,
+          46.9039147
+        ],
+        [
+          7.2377656,
+          46.9039288
+        ],
+        [
+          7.2374386,
+          46.9040395
+        ],
+        [
+          7.2372183,
+          46.9041068
+        ],
+        [
+          7.2370747,
+          46.9041471
+        ],
+        [
+          7.236941,
+          46.9041943
+        ],
+        [
+          7.2368675,
+          46.904225
+        ],
+        [
+          7.2368169,
+          46.904252
+        ],
+        [
+          7.2367057,
+          46.9043148
+        ],
+        [
+          7.2365501,
+          46.9044371
+        ],
+        [
+          7.2364642,
+          46.904519
+        ],
+        [
+          7.2363949,
+          46.9046014
+        ],
+        [
+          7.23631,
+          46.9047004
+        ],
+        [
+          7.2361931,
+          46.9048428
+        ],
+        [
+          7.2361159,
+          46.9049341
+        ],
+        [
+          7.2360101,
+          46.9050599
+        ],
+        [
+          7.2359147,
+          46.9051837
+        ],
+        [
+          7.2357945,
+          46.9053556
+        ],
+        [
+          7.2357284,
+          46.905485
+        ],
+        [
+          7.2356216,
+          46.9057941
+        ],
+        [
+          7.2355764,
+          46.9059392
+        ],
+        [
+          7.2355525,
+          46.9060253
+        ],
+        [
+          7.2355219,
+          46.9061366
+        ],
+        [
+          7.235519,
+          46.9061645
+        ],
+        [
+          7.2355022,
+          46.9061901
+        ],
+        [
+          7.2354736,
+          46.9062103
+        ],
+        [
+          7.2354367,
+          46.9062225
+        ],
+        [
+          7.2353958,
+          46.9062254
+        ],
+        [
+          7.235356,
+          46.9062186
+        ],
+        [
+          7.235322,
+          46.9062028
+        ],
+        [
+          7.235298,
+          46.9061801
+        ],
+        [
+          7.2352867,
+          46.9061531
+        ],
+        [
+          7.2352897,
+          46.9061251
+        ],
+        [
+          7.2353064,
+          46.9060995
+        ],
+        [
+          7.2351358,
+          46.9059573
+        ],
+        [
+          7.2350587,
+          46.9058797
+        ],
+        [
+          7.234937,
+          46.9057797
+        ],
+        [
+          7.2347335,
+          46.9056511
+        ],
+        [
+          7.234208,
+          46.9053803
+        ],
+        [
+          7.2341279,
+          46.905339
+        ],
+        [
+          7.2336145,
+          46.9050986
+        ],
+        [
+          7.2335667,
+          46.9049985
+        ],
+        [
+          7.2336176,
+          46.9048987
+        ],
+        [
+          7.2346328,
+          46.9041315
+        ],
+        [
+          7.2347262,
+          46.9040167
+        ],
+        [
+          7.2347408,
+          46.9039187
+        ],
+        [
+          7.2347428,
+          46.9038578
+        ],
+        [
+          7.2346936,
+          46.9038285
+        ],
+        [
+          7.2344772,
+          46.9036891
+        ],
+        [
+          7.2341984,
+          46.9035212
+        ],
+        [
+          7.2339591,
+          46.9033937
+        ],
+        [
+          7.2338201,
+          46.9033261
+        ],
+        [
+          7.2336787,
+          46.9032639
+        ],
+        [
+          7.2334914,
+          46.9031854
+        ],
+        [
+          7.2332985,
+          46.9031139
+        ],
+        [
+          7.2330728,
+          46.9030389
+        ],
+        [
+          7.2329208,
+          46.9029942
+        ],
+        [
+          7.2326012,
+          46.9028993
+        ],
+        [
+          7.2322884,
+          46.9028059
+        ],
+        [
+          7.232051,
+          46.9027311
+        ],
+        [
+          7.2317817,
+          46.902652
+        ],
+        [
+          7.2315295,
+          46.9025344
+        ],
+        [
+          7.2314181,
+          46.9024559
+        ],
+        [
+          7.2312772,
+          46.9022944
+        ],
+        [
+          7.2312239,
+          46.9021691
+        ],
+        [
+          7.2311963,
+          46.902011
+        ],
+        [
+          7.2312021,
+          46.9019115
+        ],
+        [
+          7.2312572,
+          46.9017259
+        ],
+        [
+          7.2314223,
+          46.9014013
+        ],
+        [
+          7.2315605,
+          46.9012385
+        ],
+        [
+          7.2317277,
+          46.9011026
+        ],
+        [
+          7.2320505,
+          46.9008223
+        ],
+        [
+          7.2325332,
+          46.9004007
+        ],
+        [
+          7.2326552,
+          46.900269
+        ],
+        [
+          7.2326896,
+          46.900166
+        ],
+        [
+          7.2326591,
+          46.9000753
+        ],
+        [
+          7.2327385,
+          46.8999983
+        ],
+        [
+          7.2331247,
+          46.8998237
+        ],
+        [
+          7.2340643,
+          46.8994582
+        ],
+        [
+          7.2346953,
+          46.8992001
+        ],
+        [
+          7.2349192,
+          46.8991017
+        ],
+        [
+          7.2350825,
+          46.8990025
+        ],
+        [
+          7.2350954,
+          46.8989946
+        ],
+        [
+          7.2352777,
+          46.898831
+        ],
+        [
+          7.2355183,
+          46.8985578
+        ],
+        [
+          7.2355445,
+          46.8985236
+        ],
+        [
+          7.2358946,
+          46.89807
+        ],
+        [
+          7.2360357,
+          46.8978921
+        ],
+        [
+          7.2360926,
+          46.8978047
+        ],
+        [
+          7.2360608,
+          46.8977909
+        ],
+        [
+          7.2360358,
+          46.8977717
+        ],
+        [
+          7.2360195,
+          46.8977486
+        ],
+        [
+          7.236013,
+          46.8977233
+        ],
+        [
+          7.2360157,
+          46.8977015
+        ],
+        [
+          7.2360257,
+          46.8976808
+        ],
+        [
+          7.2360426,
+          46.8976622
+        ],
+        [
+          7.2360653,
+          46.8976468
+        ],
+        [
+          7.2360073,
+          46.8975619
+        ],
+        [
+          7.2359406,
+          46.8975001
+        ],
+        [
+          7.2358032,
+          46.8973994
+        ],
+        [
+          7.235696,
+          46.8974172
+        ]
+      ],
+      "lengthMetres": 2348.408359484358,
+      "directMetres": 651.3521141737103,
+      "attachmentsMetres": [
+        9.550206210226278,
+        8.38890240933857
+      ],
+      "directedSourceSegments": [
+        {
+          "wayId": "315755631",
+          "from": "983847733",
+          "to": "8616810766",
+          "direction": "forward",
+          "version": "8",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "983847733",
+            "8616810778",
+            "8616810780",
+            "11079574460",
+            "8616810774",
+            "8616810767",
+            "12287454393",
+            "8616810766"
+          ],
+          "tags": {
+            "highway": "service",
+            "oneway": "yes"
+          }
+        },
+        {
+          "wayId": "933369890",
+          "from": "8616810766",
+          "to": "8616810772",
+          "direction": "forward",
+          "version": "7",
+          "timestamp": "2025-04-25T12:49:34Z",
+          "nodeIds": [
+            "8616810766",
+            "1224009500",
+            "1224007236",
+            "36161406",
+            "8651680443",
+            "11079574459",
+            "1224007758",
+            "8616810772"
+          ],
+          "tags": {
+            "highway": "secondary",
+            "lanes": "2",
+            "maxspeed": "50",
+            "name": "Neueneggstrasse",
+            "name:etymology:wikidata": "Q66125",
+            "ref": "233",
+            "sidewalk": "left",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1328072093",
+          "from": "8616810772",
+          "to": "36161407",
+          "direction": "forward",
+          "version": "1",
+          "timestamp": "2024-10-25T06:13:56Z",
+          "nodeIds": [
+            "8616810772",
+            "12287454388",
+            "12287454386",
+            "36161407"
+          ],
+          "tags": {
+            "highway": "secondary",
+            "maxspeed": "50",
+            "name": "Neueneggstrasse",
+            "name:etymology:wikidata": "Q66125",
+            "ref": "233",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "933369889",
+          "from": "36161407",
+          "to": "36161408",
+          "direction": "forward",
+          "version": "7",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "36161407",
+            "8651680442",
+            "567181938",
+            "1224006721",
+            "36161408"
+          ],
+          "tags": {
+            "highway": "secondary",
+            "maxspeed": "30",
+            "name": "Neueneggstrasse",
+            "name:etymology:wikidata": "Q66125",
+            "ref": "233",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "335414139",
+          "from": "36161408",
+          "to": "36161435",
+          "direction": "forward",
+          "version": "11",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "36161408",
+            "2952325466",
+            "13427018663",
+            "3993563841",
+            "308076935",
+            "10880322144",
+            "308076922",
+            "10880322145",
+            "36161435"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Neuengasse",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "916903750",
+          "from": "36161435",
+          "to": "36161410",
+          "direction": "forward",
+          "version": "5",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "nodeIds": [
+            "36161435",
+            "279600247",
+            "14049547713",
+            "36161410"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Bärenplatz",
+            "ref": "1201",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "28057895",
+          "from": "36161410",
+          "to": "36161411",
+          "direction": "forward",
+          "version": "11",
+          "timestamp": "2026-07-25T17:26:27Z",
+          "nodeIds": [
+            "36161410",
+            "14049536298",
+            "308076866",
+            "10880322147",
+            "308076880",
+            "308076864",
+            "10880322148",
+            "2952325478",
+            "10880322149",
+            "36161411"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Bärenplatz",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "28058028",
+          "from": "36161411",
+          "to": "308076858",
+          "direction": "forward",
+          "version": "16",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "36161411",
+            "10880322178",
+            "2952325480",
+            "10880322179",
+            "1840776623",
+            "2127243263",
+            "7467357100",
+            "7467357105",
+            "36161412",
+            "10880322180",
+            "308076858"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "916903749",
+          "from": "308076858",
+          "to": "36161414",
+          "direction": "forward",
+          "version": "6",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "308076858",
+            "10880322181",
+            "8516054370",
+            "10880322182",
+            "12287454379",
+            "36161414"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "86162922",
+          "from": "36161414",
+          "to": "1000021109",
+          "direction": "forward",
+          "version": "11",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "36161414",
+            "10880322183",
+            "8516054371",
+            "10880322184",
+            "1000021109"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "86162950",
+          "from": "1000021109",
+          "to": "1412113561",
+          "direction": "forward",
+          "version": "10",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "1000021109",
+            "3978156585",
+            "6647693183",
+            "1412113561"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "543954973",
+          "from": "1412113561",
+          "to": "3978156597",
+          "direction": "forward",
+          "version": "3",
+          "timestamp": "2024-01-16T06:01:43Z",
+          "nodeIds": [
+            "1412113561",
+            "3978156597"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "50",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "1417597462",
+          "from": "3978156597",
+          "to": "588556941",
+          "direction": "forward",
+          "version": "1",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "nodeIds": [
+            "3978156597",
+            "279600237",
+            "588556941"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "1531474222",
+          "from": "588556941",
+          "to": "13958322396",
+          "direction": "forward",
+          "version": "1",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "588556941",
+            "10880322192",
+            "12135658364",
+            "13958322385",
+            "13958322396"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "50",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          }
+        },
+        {
+          "wayId": "1531474223",
+          "from": "13958322396",
+          "to": "11294819658",
+          "direction": "forward",
+          "version": "1",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "13958322396",
+            "13958377503",
+            "13958322395",
+            "13958322394",
+            "13958322393",
+            "13958322392",
+            "13958322391",
+            "13958322388",
+            "13958322390",
+            "13958322389",
+            "13958377504",
+            "11294819658"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "oneway": "yes"
+          }
+        },
+        {
+          "wayId": "1311028295",
+          "from": "11294819658",
+          "to": "12135658366",
+          "direction": "forward",
+          "version": "4",
+          "timestamp": "2026-06-22T17:50:47Z",
+          "nodeIds": [
+            "11294819658",
+            "3615100882",
+            "11294819659",
+            "13958322387",
+            "12135658366"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1311028296",
+          "from": "12135658366",
+          "to": "12135658365",
+          "direction": "forward",
+          "version": "2",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "12135658366",
+            "12135658365"
+          ],
+          "tags": {
+            "bridge": "yes",
+            "highway": "tertiary",
+            "lanes": "2",
+            "layer": "1",
+            "maxspeed": "30",
+            "motor_vehicle": "yes",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1311028303",
+          "from": "12135658365",
+          "to": "11294819663",
+          "direction": "forward",
+          "version": "3",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "12135658365",
+            "11294819660",
+            "11294819661",
+            "11294819662",
+            "11294819663"
+          ],
+          "tags": {
+            "embankment": "yes",
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218944698",
+          "from": "11294819663",
+          "to": "308076972",
+          "direction": "forward",
+          "version": "6",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "11294819663",
+            "11294819666",
+            "11294819667",
+            "11294819668",
+            "308076972"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "187800171",
+          "from": "308076972",
+          "to": "308076980",
+          "direction": "forward",
+          "version": "7",
+          "timestamp": "2024-08-25T12:02:16Z",
+          "nodeIds": [
+            "308076972",
+            "10109749354",
+            "4641857086",
+            "308076976",
+            "10109749359",
+            "10109749360",
+            "308076980"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Gillenauweg",
+            "oneway": "no",
+            "sidewalk": "separate",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1003262061",
+          "from": "308076980",
+          "to": "588522233",
+          "direction": "forward",
+          "version": "3",
+          "timestamp": "2024-08-25T11:58:35Z",
+          "nodeIds": [
+            "308076980",
+            "10109749362",
+            "10109749361",
+            "10109749363",
+            "308076983",
+            "10109749364",
+            "308076984",
+            "588522233"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "maxspeed": "30",
+            "name": "Gillenauweg",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218939917",
+          "from": "588522233",
+          "to": "11295023854",
+          "direction": "backward",
+          "version": "6",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "588522233",
+            "11379127115",
+            "11294677314",
+            "11294677313",
+            "11294807328",
+            "12570849773",
+            "11294677312",
+            "12570849774",
+            "12570849776",
+            "11295023854"
+          ],
+          "tags": {
+            "highway": "tertiary",
+            "lanes": "2",
+            "lit": "yes",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218962506",
+          "from": "11295023854",
+          "to": "11295023853",
+          "direction": "backward",
+          "version": "3",
+          "timestamp": "2026-06-23T05:31:37Z",
+          "nodeIds": [
+            "11295023854",
+            "13959212289",
+            "13959241208",
+            "11295023853"
+          ],
+          "tags": {
+            "embankment": "yes",
+            "highway": "tertiary",
+            "lanes": "2",
+            "lit": "yes",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "oneway": "no",
+            "start_date": "2023-10-13",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218962505",
+          "from": "11295023853",
+          "to": "1038308039",
+          "direction": "backward",
+          "version": "4",
+          "timestamp": "2025-02-09T16:50:46Z",
+          "nodeIds": [
+            "11295023853",
+            "12570849777",
+            "12570849772",
+            "11327589878",
+            "1038308039"
+          ],
+          "tags": {
+            "embankment": "no",
+            "highway": "tertiary",
+            "lanes": "2",
+            "lit": "yes",
+            "maxspeed": "30",
+            "name": "Bauumfahrung West",
+            "oneway": "no",
+            "start_date": "2023-10-13",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "1218962118",
+          "from": "1038308039",
+          "to": "814092554",
+          "direction": "forward",
+          "version": "4",
+          "timestamp": "2026-03-31T08:02:04Z",
+          "nodeIds": [
+            "1038308039",
+            "12570849778",
+            "588522149",
+            "3218961482",
+            "308077056",
+            "308077059",
+            "12135658392",
+            "1224006341",
+            "1038308022",
+            "3218956307",
+            "3652836340",
+            "13694741639",
+            "3218902979",
+            "814092554"
+          ],
+          "tags": {
+            "highway": "residential",
+            "is_in": "Bösingen,Bezirk Sense,Fribourg;Freiburg,Schweiz;Suisse;Switzerland;CH,Europe",
+            "maxspeed": "30",
+            "name": "Industriestrasse",
+            "surface": "asphalt"
+          }
+        },
+        {
+          "wayId": "67409690",
+          "from": "814092554",
+          "to": "814092549",
+          "direction": "forward",
+          "version": "7",
+          "timestamp": "2021-07-23T20:36:47Z",
+          "nodeIds": [
+            "814092554",
+            "814092569",
+            "4620811000",
+            "8945081595",
+            "814092553",
+            "814092558",
+            "4620811001",
+            "4620811002",
+            "814092549"
+          ],
+          "tags": {
+            "highway": "secondary",
+            "is_in": "Bösingen,Bezirk Sense,Fribourg;Freiburg,Schweiz;Suisse;Switzerland;CH,Europe",
+            "junction": "roundabout",
+            "maxspeed": "50"
+          }
+        },
+        {
+          "wayId": "83160711",
+          "from": "814092549",
+          "to": "8945081564",
+          "direction": "backward",
+          "version": "9",
+          "timestamp": "2024-01-16T06:00:54Z",
+          "nodeIds": [
+            "814092549",
+            "3218902967",
+            "8945081565",
+            "8945081564"
+          ],
+          "tags": {
+            "cycleway:left": "lane",
+            "highway": "secondary",
+            "loc_ref": "3220",
+            "maxspeed": "50",
+            "name": "Laupenstrasse",
+            "name:etymology:wikidata": "Q67112",
+            "nat_ref": "179",
+            "ref": "179"
+          }
+        }
+      ],
+      "restrictionRecordsChecked": 0,
+      "contributingPatterns": [
+        "4e51d1b875eb54a76bb660a8",
+        "68c02db4bf2e3ea4d0327871",
+        "7a780caad22f0fcc75b075b1"
+      ],
+      "primaryFailure": {
+        "agencyId": "801",
+        "geometrySource": "osm-road-inference",
+        "roadPatternIds": [
+          "4e51d1b875eb54a76bb660a8",
+          "68c02db4bf2e3ea4d0327871",
+          "7a780caad22f0fcc75b075b1"
+        ],
+        "roadContextOccurrences": 3,
+        "reason": "road-matcher-rejected",
+        "sourceFeatures": []
+      }
+    }
+  ],
+  "sourceInventory": {
+    "temporalRestoration": [
+      {
+        "type": "way",
+        "id": "86162950",
+        "current": {
+          "id": "86162950",
+          "version": "11",
+          "timestamp": "2026-09-07T09:43:26Z",
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          },
+          "nodes": [
+            "1000021109",
+            "6647693183",
+            "1412113561"
+          ]
+        },
+        "selected": {
+          "id": "86162950",
+          "version": "10",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Murtenstrasse",
+            "name:etymology:wikidata": "Q68283",
+            "ref": "1201"
+          },
+          "nodes": [
+            "1000021109",
+            "3978156585",
+            "6647693183",
+            "1412113561"
+          ]
+        },
+        "supersededAt": "2026-09-07T09:43:26Z"
+      },
+      {
+        "type": "way",
+        "id": "916903750",
+        "current": {
+          "id": "916903750",
+          "version": "6",
+          "timestamp": "2026-09-07T09:43:26Z",
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Bärenplatz",
+            "ref": "1201",
+            "surface": "asphalt"
+          },
+          "nodes": [
+            "36161435",
+            "14049547713",
+            "36161410"
+          ]
+        },
+        "selected": {
+          "id": "916903750",
+          "version": "5",
+          "timestamp": "2026-07-25T17:26:28Z",
+          "tags": {
+            "highway": "tertiary",
+            "maxspeed": "30",
+            "name": "Bärenplatz",
+            "ref": "1201",
+            "surface": "asphalt"
+          },
+          "nodes": [
+            "36161435",
+            "279600247",
+            "14049547713",
+            "36161410"
+          ]
+        },
+        "supersededAt": "2026-09-07T09:43:26Z"
+      },
+      {
+        "type": "node",
+        "id": "3978156585",
+        "current": null,
+        "selected": {
+          "id": "3978156585",
+          "version": "3",
+          "timestamp": "2021-03-14T08:09:43Z",
+          "tags": {},
+          "coordinate": [
+            7.2361931,
+            46.9048428
+          ]
+        },
+        "supersededAt": "2026-09-07T09:43:26Z"
+      },
+      {
+        "type": "node",
+        "id": "279600247",
+        "current": null,
+        "selected": {
+          "id": "279600247",
+          "version": "5",
+          "timestamp": "2023-05-09T07:31:44Z",
+          "tags": {},
+          "coordinate": [
+            7.2390934,
+            46.9028893
+          ]
+        },
+        "supersededAt": "2026-09-07T09:43:26Z"
+      },
+      {
+        "type": "node",
+        "id": "2952325480",
+        "current": {
+          "id": "2952325480",
+          "version": "7",
+          "timestamp": "2026-09-07T09:43:26Z",
+          "tags": {},
+          "coordinate": [
+            7.2384528,
+            46.9036798
+          ]
+        },
+        "selected": {
+          "id": "2952325480",
+          "version": "6",
+          "timestamp": "2025-07-26T18:51:09Z",
+          "tags": {},
+          "coordinate": [
+            7.2384556,
+            46.9036786
+          ]
+        },
+        "supersededAt": "2026-09-07T09:43:26Z"
+      },
+      {
+        "type": "node",
+        "id": "14049536298",
+        "current": {
+          "id": "14049536298",
+          "version": "2",
+          "timestamp": "2026-09-07T09:43:26Z",
+          "tags": {
+            "crossing": "uncontrolled",
+            "crossing:markings": "zebra",
+            "highway": "crossing"
+          },
+          "coordinate": [
+            7.2390256,
+            46.9031443
+          ]
+        },
+        "selected": {
+          "id": "14049536298",
+          "version": "1",
+          "timestamp": "2026-07-25T17:26:25Z",
+          "tags": {
+            "crossing": "uncontrolled",
+            "crossing:markings": "zebra",
+            "highway": "crossing"
+          },
+          "coordinate": [
+            7.2390268,
+            46.9031411
+          ]
+        },
+        "supersededAt": "2026-09-07T09:43:26Z"
+      }
+    ],
+    "ways": [
+      {
+        "id": "28057895",
+        "version": "11",
+        "timestamp": "2026-07-25T17:26:27Z",
+        "tags": {
+          "highway": "tertiary",
+          "maxspeed": "30",
+          "name": "Bärenplatz",
+          "ref": "1201"
+        },
+        "nodes": [
+          "36161410",
+          "14049536298",
+          "308076866",
+          "10880322147",
+          "308076880",
+          "308076864",
+          "10880322148",
+          "2952325478",
+          "10880322149",
+          "36161411"
+        ]
+      },
+      {
+        "id": "28058028",
+        "version": "16",
+        "timestamp": "2025-07-26T18:51:09Z",
+        "tags": {
+          "highway": "tertiary",
+          "maxspeed": "30",
+          "name": "Murtenstrasse",
+          "name:etymology:wikidata": "Q68283",
+          "ref": "1201"
+        },
+        "nodes": [
+          "36161411",
+          "10880322178",
+          "2952325480",
+          "10880322179",
+          "1840776623",
+          "2127243263",
+          "7467357100",
+          "7467357105",
+          "36161412",
+          "10880322180",
+          "308076858"
+        ]
+      },
+      {
+        "id": "67409690",
+        "version": "7",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {
+          "highway": "secondary",
+          "is_in": "Bösingen,Bezirk Sense,Fribourg;Freiburg,Schweiz;Suisse;Switzerland;CH,Europe",
+          "junction": "roundabout",
+          "maxspeed": "50"
+        },
+        "nodes": [
+          "814092550",
+          "4620811003",
+          "4620811004",
+          "814092520",
+          "814092523",
+          "814092499",
+          "4620810996",
+          "4620810997",
+          "814092492",
+          "814092518",
+          "814092490",
+          "4620810998",
+          "4620810999",
+          "814092554",
+          "814092569",
+          "4620811000",
+          "8945081595",
+          "814092553",
+          "814092558",
+          "4620811001",
+          "4620811002",
+          "814092549",
+          "814092550"
+        ]
+      },
+      {
+        "id": "83160711",
+        "version": "9",
+        "timestamp": "2024-01-16T06:00:54Z",
+        "tags": {
+          "cycleway:left": "lane",
+          "highway": "secondary",
+          "loc_ref": "3220",
+          "maxspeed": "50",
+          "name": "Laupenstrasse",
+          "name:etymology:wikidata": "Q67112",
+          "nat_ref": "179",
+          "ref": "179"
+        },
+        "nodes": [
+          "588495360",
+          "186993747",
+          "3218942333",
+          "399124165",
+          "1224007903",
+          "11375582043",
+          "186993751",
+          "3218902982",
+          "186993754",
+          "588495603",
+          "11375582018",
+          "3218902988",
+          "8945081564",
+          "8945081565",
+          "3218902967",
+          "814092549"
+        ]
+      },
+      {
+        "id": "86162922",
+        "version": "11",
+        "timestamp": "2025-07-26T18:51:09Z",
+        "tags": {
+          "highway": "tertiary",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "Murtenstrasse",
+          "name:etymology:wikidata": "Q68283",
+          "ref": "1201",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "36161414",
+          "10880322183",
+          "8516054371",
+          "10880322184",
+          "1000021109"
+        ]
+      },
+      {
+        "id": "86162950",
+        "version": "10",
+        "timestamp": "2025-07-26T18:51:09Z",
+        "tags": {
+          "highway": "tertiary",
+          "maxspeed": "30",
+          "name": "Murtenstrasse",
+          "name:etymology:wikidata": "Q68283",
+          "ref": "1201"
+        },
+        "nodes": [
+          "1000021109",
+          "3978156585",
+          "6647693183",
+          "1412113561"
+        ]
+      },
+      {
+        "id": "187800171",
+        "version": "7",
+        "timestamp": "2024-08-25T12:02:16Z",
+        "tags": {
+          "highway": "tertiary",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "Gillenauweg",
+          "oneway": "no",
+          "sidewalk": "separate",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "308076972",
+          "10109749354",
+          "4641857086",
+          "308076976",
+          "10109749359",
+          "10109749360",
+          "308076980"
+        ]
+      },
+      {
+        "id": "315755631",
+        "version": "8",
+        "timestamp": "2026-07-25T17:26:28Z",
+        "tags": {
+          "highway": "service",
+          "oneway": "yes"
+        },
+        "nodes": [
+          "1408214299",
+          "8616810776",
+          "983847733",
+          "8616810778",
+          "8616810780",
+          "11079574460",
+          "8616810774",
+          "8616810767",
+          "12287454393",
+          "8616810766"
+        ]
+      },
+      {
+        "id": "335414139",
+        "version": "11",
+        "timestamp": "2026-07-25T17:26:28Z",
+        "tags": {
+          "highway": "tertiary",
+          "maxspeed": "30",
+          "name": "Neuengasse",
+          "ref": "1201"
+        },
+        "nodes": [
+          "36161408",
+          "2952325466",
+          "13427018663",
+          "3993563841",
+          "308076935",
+          "10880322144",
+          "308076922",
+          "10880322145",
+          "36161435"
+        ]
+      },
+      {
+        "id": "543954973",
+        "version": "3",
+        "timestamp": "2024-01-16T06:01:43Z",
+        "tags": {
+          "highway": "tertiary",
+          "maxspeed": "50",
+          "name": "Murtenstrasse",
+          "name:etymology:wikidata": "Q68283",
+          "ref": "1201"
+        },
+        "nodes": [
+          "1412113561",
+          "3978156597"
+        ]
+      },
+      {
+        "id": "916903749",
+        "version": "6",
+        "timestamp": "2025-07-26T18:51:09Z",
+        "tags": {
+          "highway": "tertiary",
+          "maxspeed": "30",
+          "name": "Murtenstrasse",
+          "name:etymology:wikidata": "Q68283",
+          "ref": "1201"
+        },
+        "nodes": [
+          "308076858",
+          "10880322181",
+          "8516054370",
+          "10880322182",
+          "12287454379",
+          "36161414"
+        ]
+      },
+      {
+        "id": "916903750",
+        "version": "5",
+        "timestamp": "2026-07-25T17:26:28Z",
+        "tags": {
+          "highway": "tertiary",
+          "maxspeed": "30",
+          "name": "Bärenplatz",
+          "ref": "1201",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "36161435",
+          "279600247",
+          "14049547713",
+          "36161410"
+        ]
+      },
+      {
+        "id": "933369888",
+        "version": "4",
+        "timestamp": "2023-07-31T22:28:05Z",
+        "tags": {
+          "highway": "service",
+          "oneway": "yes"
+        },
+        "nodes": [
+          "8616810772",
+          "11079574453",
+          "10301102556",
+          "1408214299"
+        ]
+      },
+      {
+        "id": "933369889",
+        "version": "7",
+        "timestamp": "2026-07-25T17:26:28Z",
+        "tags": {
+          "highway": "secondary",
+          "maxspeed": "30",
+          "name": "Neueneggstrasse",
+          "name:etymology:wikidata": "Q66125",
+          "ref": "233",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "36161407",
+          "8651680442",
+          "567181938",
+          "1224006721",
+          "36161408"
+        ]
+      },
+      {
+        "id": "933369890",
+        "version": "7",
+        "timestamp": "2025-04-25T12:49:34Z",
+        "tags": {
+          "highway": "secondary",
+          "lanes": "2",
+          "maxspeed": "50",
+          "name": "Neueneggstrasse",
+          "name:etymology:wikidata": "Q66125",
+          "ref": "233",
+          "sidewalk": "left",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "8616810766",
+          "1224009500",
+          "1224007236",
+          "36161406",
+          "8651680443",
+          "11079574459",
+          "1224007758",
+          "8616810772"
+        ]
+      },
+      {
+        "id": "1003262061",
+        "version": "3",
+        "timestamp": "2024-08-25T11:58:35Z",
+        "tags": {
+          "highway": "tertiary",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "Gillenauweg",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "308076980",
+          "10109749362",
+          "10109749361",
+          "10109749363",
+          "308076983",
+          "10109749364",
+          "308076984",
+          "588522233"
+        ]
+      },
+      {
+        "id": "1218939917",
+        "version": "6",
+        "timestamp": "2025-02-09T16:50:46Z",
+        "tags": {
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "30",
+          "name": "Bauumfahrung West",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "11295023854",
+          "12570849776",
+          "12570849774",
+          "11294677312",
+          "12570849773",
+          "11294807328",
+          "11294677313",
+          "11294677314",
+          "11379127115",
+          "588522233"
+        ]
+      },
+      {
+        "id": "1218944698",
+        "version": "6",
+        "timestamp": "2025-02-09T16:50:46Z",
+        "tags": {
+          "highway": "tertiary",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "Bauumfahrung West",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "11294819663",
+          "11294819666",
+          "11294819667",
+          "11294819668",
+          "308076972"
+        ]
+      },
+      {
+        "id": "1218962118",
+        "version": "4",
+        "timestamp": "2026-03-31T08:02:04Z",
+        "tags": {
+          "highway": "residential",
+          "is_in": "Bösingen,Bezirk Sense,Fribourg;Freiburg,Schweiz;Suisse;Switzerland;CH,Europe",
+          "maxspeed": "30",
+          "name": "Industriestrasse",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "1038308039",
+          "12570849778",
+          "588522149",
+          "3218961482",
+          "308077056",
+          "308077059",
+          "12135658392",
+          "1224006341",
+          "1038308022",
+          "3218956307",
+          "3652836340",
+          "13694741639",
+          "3218902979",
+          "814092554"
+        ]
+      },
+      {
+        "id": "1218962505",
+        "version": "4",
+        "timestamp": "2025-02-09T16:50:46Z",
+        "tags": {
+          "embankment": "no",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "30",
+          "name": "Bauumfahrung West",
+          "oneway": "no",
+          "start_date": "2023-10-13",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "1038308039",
+          "11327589878",
+          "12570849772",
+          "12570849777",
+          "11295023853"
+        ]
+      },
+      {
+        "id": "1218962506",
+        "version": "3",
+        "timestamp": "2026-06-23T05:31:37Z",
+        "tags": {
+          "embankment": "yes",
+          "highway": "tertiary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "30",
+          "name": "Bauumfahrung West",
+          "oneway": "no",
+          "start_date": "2023-10-13",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "11295023853",
+          "13959241208",
+          "13959212289",
+          "11295023854"
+        ]
+      },
+      {
+        "id": "1311028295",
+        "version": "4",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {
+          "highway": "tertiary",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "Bauumfahrung West",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "11294819658",
+          "3615100882",
+          "11294819659",
+          "13958322387",
+          "12135658366"
+        ]
+      },
+      {
+        "id": "1311028296",
+        "version": "2",
+        "timestamp": "2025-02-09T16:50:46Z",
+        "tags": {
+          "bridge": "yes",
+          "highway": "tertiary",
+          "lanes": "2",
+          "layer": "1",
+          "maxspeed": "30",
+          "motor_vehicle": "yes",
+          "name": "Bauumfahrung West",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "12135658366",
+          "12135658365"
+        ]
+      },
+      {
+        "id": "1311028303",
+        "version": "3",
+        "timestamp": "2025-02-09T16:50:46Z",
+        "tags": {
+          "embankment": "yes",
+          "highway": "tertiary",
+          "lanes": "2",
+          "maxspeed": "30",
+          "name": "Bauumfahrung West",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "12135658365",
+          "11294819660",
+          "11294819661",
+          "11294819662",
+          "11294819663"
+        ]
+      },
+      {
+        "id": "1328072093",
+        "version": "1",
+        "timestamp": "2024-10-25T06:13:56Z",
+        "tags": {
+          "highway": "secondary",
+          "maxspeed": "50",
+          "name": "Neueneggstrasse",
+          "name:etymology:wikidata": "Q66125",
+          "ref": "233",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "8616810772",
+          "12287454388",
+          "12287454386",
+          "36161407"
+        ]
+      },
+      {
+        "id": "1417597462",
+        "version": "1",
+        "timestamp": "2025-07-26T18:51:09Z",
+        "tags": {
+          "highway": "tertiary",
+          "maxspeed": "30",
+          "name": "Murtenstrasse",
+          "name:etymology:wikidata": "Q68283",
+          "ref": "1201"
+        },
+        "nodes": [
+          "3978156597",
+          "279600237",
+          "588556941"
+        ]
+      },
+      {
+        "id": "1531474220",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {
+          "highway": "tertiary",
+          "maxspeed": "50",
+          "name": "Murtenstrasse",
+          "name:etymology:wikidata": "Q68283",
+          "oneway": "yes",
+          "ref": "1201"
+        },
+        "nodes": [
+          "13958322400",
+          "13958322386",
+          "12135658364"
+        ]
+      },
+      {
+        "id": "1531474222",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {
+          "highway": "tertiary",
+          "maxspeed": "50",
+          "name": "Murtenstrasse",
+          "name:etymology:wikidata": "Q68283",
+          "ref": "1201"
+        },
+        "nodes": [
+          "588556941",
+          "10880322192",
+          "12135658364",
+          "13958322385",
+          "13958322396"
+        ]
+      },
+      {
+        "id": "1531474223",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {
+          "highway": "tertiary",
+          "oneway": "yes"
+        },
+        "nodes": [
+          "13958377504",
+          "11294819658",
+          "13958377502",
+          "13958377501",
+          "13958322400",
+          "13958322399",
+          "13958322398",
+          "13958322397",
+          "13958322396",
+          "13958377503",
+          "13958322395",
+          "13958322394",
+          "13958322393",
+          "13958322392",
+          "13958322391",
+          "13958322388",
+          "13958322390",
+          "13958322389",
+          "13958377504"
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "id": "36161406",
+        "version": "4",
+        "timestamp": "2021-04-21T14:44:10Z",
+        "tags": {},
+        "coordinate": [
+          7.242014,
+          46.9016766
+        ]
+      },
+      {
+        "id": "36161407",
+        "version": "4",
+        "timestamp": "2011-03-29T08:47:00Z",
+        "tags": {},
+        "coordinate": [
+          7.2406318,
+          46.9017839
+        ]
+      },
+      {
+        "id": "36161408",
+        "version": "8",
+        "timestamp": "2026-07-25T17:26:25Z",
+        "tags": {},
+        "coordinate": [
+          7.2400326,
+          46.9019899
+        ]
+      },
+      {
+        "id": "36161410",
+        "version": "6",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.23906,
+          46.90302
+        ]
+      },
+      {
+        "id": "36161411",
+        "version": "6",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2385657,
+          46.9036255
+        ]
+      },
+      {
+        "id": "36161412",
+        "version": "3",
+        "timestamp": "2012-07-28T05:56:31Z",
+        "tags": {},
+        "coordinate": [
+          7.2377656,
+          46.9039288
+        ]
+      },
+      {
+        "id": "36161414",
+        "version": "5",
+        "timestamp": "2024-10-25T06:13:56Z",
+        "tags": {},
+        "coordinate": [
+          7.2367057,
+          46.9043148
+        ]
+      },
+      {
+        "id": "36161435",
+        "version": "8",
+        "timestamp": "2026-07-25T17:26:25Z",
+        "tags": {
+          "bus": "yes",
+          "name": "Bärenplatz",
+          "network": "Libero",
+          "network:wikidata": "Q2394193",
+          "operator": "PAG",
+          "public_transport": "stop_position",
+          "uic_name": "Laupen BE, Bärenplatz",
+          "uic_ref": "8511751"
+        },
+        "coordinate": [
+          7.2391091,
+          46.9028279
+        ]
+      },
+      {
+        "id": "186993747",
+        "version": "2",
+        "timestamp": "2009-12-13T14:14:28Z",
+        "tags": {},
+        "coordinate": [
+          7.2299076,
+          46.8938206
+        ]
+      },
+      {
+        "id": "186993751",
+        "version": "3",
+        "timestamp": "2023-11-25T16:46:20Z",
+        "tags": {},
+        "coordinate": [
+          7.2328767,
+          46.8954108
+        ]
+      },
+      {
+        "id": "186993754",
+        "version": "2",
+        "timestamp": "2009-12-13T14:47:26Z",
+        "tags": {},
+        "coordinate": [
+          7.2342031,
+          46.8962932
+        ]
+      },
+      {
+        "id": "279600237",
+        "version": "4",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2357945,
+          46.9053556
+        ]
+      },
+      {
+        "id": "308076858",
+        "version": "5",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2372183,
+          46.9041068
+        ]
+      },
+      {
+        "id": "308076864",
+        "version": "2",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.238858,
+          46.9034079
+        ]
+      },
+      {
+        "id": "308076866",
+        "version": "4",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2390113,
+          46.903185
+        ]
+      },
+      {
+        "id": "308076880",
+        "version": "1",
+        "timestamp": "2008-10-27T20:50:08Z",
+        "tags": {},
+        "coordinate": [
+          7.2388786,
+          46.9033861
+        ]
+      },
+      {
+        "id": "308076922",
+        "version": "1",
+        "timestamp": "2008-10-27T20:50:11Z",
+        "tags": {},
+        "coordinate": [
+          7.2391992,
+          46.9026093
+        ]
+      },
+      {
+        "id": "308076935",
+        "version": "4",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2392957,
+          46.9024941
+        ]
+      },
+      {
+        "id": "308076972",
+        "version": "3",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2347428,
+          46.9038578
+        ]
+      },
+      {
+        "id": "308076976",
+        "version": "2",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2341984,
+          46.9035212
+        ]
+      },
+      {
+        "id": "308076980",
+        "version": "4",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2336787,
+          46.9032639
+        ]
+      },
+      {
+        "id": "308076983",
+        "version": "3",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2329208,
+          46.9029942
+        ]
+      },
+      {
+        "id": "308076984",
+        "version": "4",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2322884,
+          46.9028059
+        ]
+      },
+      {
+        "id": "308077056",
+        "version": "3",
+        "timestamp": "2011-03-29T08:46:31Z",
+        "tags": {},
+        "coordinate": [
+          7.2346953,
+          46.8992001
+        ]
+      },
+      {
+        "id": "308077059",
+        "version": "3",
+        "timestamp": "2011-03-29T08:45:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2349192,
+          46.8991017
+        ]
+      },
+      {
+        "id": "308077071",
+        "version": "7",
+        "timestamp": "2023-11-25T16:46:20Z",
+        "tags": {
+          "bus": "yes",
+          "ele": "520",
+          "highway": "bus_stop",
+          "name": "Bösingen, Tuftera",
+          "operator": "PAG",
+          "operator:de": "PostAuto Schweiz AG",
+          "operator:fr": "CarPostal Suisse SA",
+          "operator:it": "AutoPostale Svizzera SA",
+          "public_transport": "platform",
+          "uic_name": "Bösingen, Abzw. Tuftera",
+          "uic_ref": "8570554"
+        },
+        "coordinate": [
+          7.2365545,
+          46.8978354
+        ]
+      },
+      {
+        "id": "399124165",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2312702,
+          46.8945104
+        ]
+      },
+      {
+        "id": "567181938",
+        "version": "2",
+        "timestamp": "2011-03-29T08:47:03Z",
+        "tags": {},
+        "coordinate": [
+          7.2403641,
+          46.9018501
+        ]
+      },
+      {
+        "id": "588495360",
+        "version": "3",
+        "timestamp": "2023-05-22T08:50:07Z",
+        "tags": {},
+        "coordinate": [
+          7.2295822,
+          46.8936595
+        ]
+      },
+      {
+        "id": "588495603",
+        "version": "5",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2351419,
+          46.8969391
+        ]
+      },
+      {
+        "id": "588522149",
+        "version": "6",
+        "timestamp": "2023-10-28T06:29:07Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:island": "yes",
+          "crossing:markings": "zebra",
+          "crossing_ref": "zebra",
+          "highway": "crossing",
+          "tactile_paving": "no",
+          "traffic_calming": "table"
+        },
+        "coordinate": [
+          7.2331247,
+          46.8998237
+        ]
+      },
+      {
+        "id": "588522233",
+        "version": "3",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.232051,
+          46.9027311
+        ]
+      },
+      {
+        "id": "588556941",
+        "version": "3",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2357284,
+          46.905485
+        ]
+      },
+      {
+        "id": "814092490",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2362066,
+          46.8978043
+        ]
+      },
+      {
+        "id": "814092492",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2362645,
+          46.8977692
+        ]
+      },
+      {
+        "id": "814092499",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2362797,
+          46.8976943
+        ]
+      },
+      {
+        "id": "814092518",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2362393,
+          46.8977896
+        ]
+      },
+      {
+        "id": "814092520",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2362398,
+          46.8976509
+        ]
+      },
+      {
+        "id": "814092523",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2362642,
+          46.8976707
+        ]
+      },
+      {
+        "id": "814092549",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2360653,
+          46.8976468
+        ]
+      },
+      {
+        "id": "814092550",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.236107,
+          46.8976317
+        ]
+      },
+      {
+        "id": "814092553",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.236013,
+          46.8977233
+        ]
+      },
+      {
+        "id": "814092554",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2360926,
+          46.8978047
+        ]
+      },
+      {
+        "id": "814092558",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2360157,
+          46.8977015
+        ]
+      },
+      {
+        "id": "814092569",
+        "version": "6",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2360608,
+          46.8977909
+        ]
+      },
+      {
+        "id": "983847733",
+        "version": "9",
+        "timestamp": "2026-07-25T17:26:26Z",
+        "tags": {
+          "bus": "yes",
+          "ele": "490",
+          "highway": "bus_stop",
+          "name": "Laupen Bahnhof",
+          "network": "Libero",
+          "network:wikidata": "Q2394193",
+          "operator": "PAG",
+          "public_transport": "stop_position",
+          "uic_name": "Laupen BE, Bahnhof",
+          "uic_ref": "8570555"
+        },
+        "coordinate": [
+          7.2418926,
+          46.9014337
+        ]
+      },
+      {
+        "id": "1000021109",
+        "version": "2",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.23631,
+          46.9047004
+        ]
+      },
+      {
+        "id": "1038308022",
+        "version": "3",
+        "timestamp": "2014-12-04T15:40:58Z",
+        "tags": {},
+        "coordinate": [
+          7.2352777,
+          46.898831
+        ]
+      },
+      {
+        "id": "1038308039",
+        "version": "6",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {
+          "direction": "anticlockwise",
+          "highway": "mini_roundabout"
+        },
+        "coordinate": [
+          7.2326591,
+          46.9000753
+        ]
+      },
+      {
+        "id": "1224006341",
+        "version": "1",
+        "timestamp": "2011-03-29T08:43:05Z",
+        "tags": {},
+        "coordinate": [
+          7.2350954,
+          46.8989946
+        ]
+      },
+      {
+        "id": "1224006721",
+        "version": "2",
+        "timestamp": "2021-04-21T14:44:10Z",
+        "tags": {},
+        "coordinate": [
+          7.2401357,
+          46.9019396
+        ]
+      },
+      {
+        "id": "1224007236",
+        "version": "3",
+        "timestamp": "2021-11-16T21:02:35Z",
+        "tags": {},
+        "coordinate": [
+          7.2423073,
+          46.9016453
+        ]
+      },
+      {
+        "id": "1224007758",
+        "version": "2",
+        "timestamp": "2021-04-21T14:44:10Z",
+        "tags": {},
+        "coordinate": [
+          7.2412817,
+          46.9017234
+        ]
+      },
+      {
+        "id": "1224007903",
+        "version": "1",
+        "timestamp": "2011-03-29T08:43:59Z",
+        "tags": {},
+        "coordinate": [
+          7.2319041,
+          46.8948277
+        ]
+      },
+      {
+        "id": "1224009500",
+        "version": "3",
+        "timestamp": "2021-11-16T21:02:35Z",
+        "tags": {},
+        "coordinate": [
+          7.2425562,
+          46.9016088
+        ]
+      },
+      {
+        "id": "1408214299",
+        "version": "7",
+        "timestamp": "2026-07-25T17:26:26Z",
+        "tags": {
+          "bus": "yes",
+          "ele": "490",
+          "highway": "bus_stop",
+          "name": "Laupen Bahnhof",
+          "network": "Libero",
+          "network:wikidata": "Q2394193",
+          "operator": "PAG",
+          "public_transport": "stop_position",
+          "tactile_paving": "yes",
+          "uic_name": "Laupen BE, Bahnhof",
+          "uic_ref": "8570555"
+        },
+        "coordinate": [
+          7.2415594,
+          46.9015197
+        ]
+      },
+      {
+        "id": "1412113561",
+        "version": "4",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2360101,
+          46.9050599
+        ]
+      },
+      {
+        "id": "1840776623",
+        "version": "2",
+        "timestamp": "2023-05-09T07:31:45Z",
+        "tags": {},
+        "coordinate": [
+          7.2382177,
+          46.9037746
+        ]
+      },
+      {
+        "id": "2127243263",
+        "version": "2",
+        "timestamp": "2023-05-09T07:31:45Z",
+        "tags": {},
+        "coordinate": [
+          7.2380781,
+          46.9038231
+        ]
+      },
+      {
+        "id": "2952325466",
+        "version": "2",
+        "timestamp": "2023-05-09T07:31:45Z",
+        "tags": {},
+        "coordinate": [
+          7.2399313,
+          46.9020484
+        ]
+      },
+      {
+        "id": "2952325478",
+        "version": "1",
+        "timestamp": "2014-07-07T11:37:56Z",
+        "tags": {},
+        "coordinate": [
+          7.2387439,
+          46.9035096
+        ]
+      },
+      {
+        "id": "3218902967",
+        "version": "4",
+        "timestamp": "2026-01-21T12:29:24Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:island": "yes",
+          "crossing:markings": "zebra",
+          "highway": "crossing"
+        },
+        "coordinate": [
+          7.2360073,
+          46.8975619
+        ]
+      },
+      {
+        "id": "3218902979",
+        "version": "5",
+        "timestamp": "2026-03-31T08:02:04Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:island": "yes",
+          "crossing:markings": "zebra",
+          "highway": "crossing",
+          "tactile_paving": "no"
+        },
+        "coordinate": [
+          7.2360357,
+          46.8978921
+        ]
+      },
+      {
+        "id": "3218902982",
+        "version": "1",
+        "timestamp": "2014-12-04T15:08:37Z",
+        "tags": {},
+        "coordinate": [
+          7.2339694,
+          46.8961382
+        ]
+      },
+      {
+        "id": "3218902988",
+        "version": "5",
+        "timestamp": "2026-01-21T12:29:24Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:markings": "zebra",
+          "highway": "crossing"
+        },
+        "coordinate": [
+          7.2352338,
+          46.8970017
+        ]
+      },
+      {
+        "id": "3218942333",
+        "version": "3",
+        "timestamp": "2023-11-25T16:46:20Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:island": "yes",
+          "crossing:markings": "zebra",
+          "highway": "crossing"
+        },
+        "coordinate": [
+          7.2310566,
+          46.894405
+        ]
+      },
+      {
+        "id": "3218956307",
+        "version": "1",
+        "timestamp": "2014-12-04T15:40:57Z",
+        "tags": {},
+        "coordinate": [
+          7.2355183,
+          46.8985578
+        ]
+      },
+      {
+        "id": "3218961482",
+        "version": "2",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2340643,
+          46.8994582
+        ]
+      },
+      {
+        "id": "3615100882",
+        "version": "5",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2351358,
+          46.9059573
+        ]
+      },
+      {
+        "id": "3652836340",
+        "version": "1",
+        "timestamp": "2015-07-15T13:31:24Z",
+        "tags": {},
+        "coordinate": [
+          7.2355445,
+          46.8985236
+        ]
+      },
+      {
+        "id": "3978156597",
+        "version": "4",
+        "timestamp": "2025-03-28T14:03:31Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:island": "yes",
+          "crossing:markings": "zebra",
+          "highway": "crossing",
+          "tactile_paving": "no"
+        },
+        "coordinate": [
+          7.2359147,
+          46.9051837
+        ]
+      },
+      {
+        "id": "3993563841",
+        "version": "2",
+        "timestamp": "2023-05-09T07:31:45Z",
+        "tags": {},
+        "coordinate": [
+          7.2394332,
+          46.9023869
+        ]
+      },
+      {
+        "id": "4620810996",
+        "version": "2",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.236285,
+          46.8977199
+        ]
+      },
+      {
+        "id": "4620810997",
+        "version": "2",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2362798,
+          46.8977455
+        ]
+      },
+      {
+        "id": "4620810998",
+        "version": "2",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2361692,
+          46.8978121
+        ]
+      },
+      {
+        "id": "4620810999",
+        "version": "2",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2361301,
+          46.8978122
+        ]
+      },
+      {
+        "id": "4620811000",
+        "version": "2",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2360358,
+          46.8977717
+        ]
+      },
+      {
+        "id": "4620811001",
+        "version": "2",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2360257,
+          46.8976808
+        ]
+      },
+      {
+        "id": "4620811002",
+        "version": "2",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2360426,
+          46.8976622
+        ]
+      },
+      {
+        "id": "4620811003",
+        "version": "2",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2361537,
+          46.8976272
+        ]
+      },
+      {
+        "id": "4620811004",
+        "version": "2",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2361998,
+          46.8976339
+        ]
+      },
+      {
+        "id": "4641857086",
+        "version": "2",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2344772,
+          46.9036891
+        ]
+      },
+      {
+        "id": "6647693183",
+        "version": "1",
+        "timestamp": "2019-07-25T18:47:32Z",
+        "tags": {},
+        "coordinate": [
+          7.2361159,
+          46.9049341
+        ]
+      },
+      {
+        "id": "7467357100",
+        "version": "1",
+        "timestamp": "2020-04-30T13:50:28Z",
+        "tags": {},
+        "coordinate": [
+          7.237845,
+          46.9039029
+        ]
+      },
+      {
+        "id": "7467357105",
+        "version": "1",
+        "timestamp": "2020-04-30T13:50:28Z",
+        "tags": {},
+        "coordinate": [
+          7.2378088,
+          46.9039147
+        ]
+      },
+      {
+        "id": "8516054370",
+        "version": "3",
+        "timestamp": "2025-07-26T18:51:09Z",
+        "tags": {},
+        "coordinate": [
+          7.236941,
+          46.9041943
+        ]
+      },
+      {
+        "id": "8516054371",
+        "version": "2",
+        "timestamp": "2023-05-09T07:31:45Z",
+        "tags": {},
+        "coordinate": [
+          7.2364642,
+          46.904519
+        ]
+      },
+      {
+        "id": "8616810766",
+        "version": "2",
+        "timestamp": "2021-11-16T21:02:35Z",
+        "tags": {},
+        "coordinate": [
+          7.242798,
+          46.9015612
+        ]
+      },
+      {
+        "id": "8616810767",
+        "version": "3",
+        "timestamp": "2026-07-25T17:26:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2426792,
+          46.901278
+        ]
+      },
+      {
+        "id": "8616810772",
+        "version": "3",
+        "timestamp": "2021-11-16T21:02:35Z",
+        "tags": {},
+        "coordinate": [
+          7.2411499,
+          46.9017313
+        ]
+      },
+      {
+        "id": "8616810774",
+        "version": "3",
+        "timestamp": "2022-04-09T16:50:54Z",
+        "tags": {},
+        "coordinate": [
+          7.2424348,
+          46.901325
+        ]
+      },
+      {
+        "id": "8616810776",
+        "version": "2",
+        "timestamp": "2021-11-16T21:02:35Z",
+        "tags": {},
+        "coordinate": [
+          7.241747,
+          46.9014625
+        ]
+      },
+      {
+        "id": "8616810778",
+        "version": "2",
+        "timestamp": "2021-11-16T21:02:35Z",
+        "tags": {},
+        "coordinate": [
+          7.241975,
+          46.9014174
+        ]
+      },
+      {
+        "id": "8616810780",
+        "version": "2",
+        "timestamp": "2021-11-16T21:02:35Z",
+        "tags": {},
+        "coordinate": [
+          7.2422138,
+          46.9013701
+        ]
+      },
+      {
+        "id": "8651680442",
+        "version": "1",
+        "timestamp": "2021-04-21T14:44:10Z",
+        "tags": {},
+        "coordinate": [
+          7.240496,
+          46.9018134
+        ]
+      },
+      {
+        "id": "8651680443",
+        "version": "1",
+        "timestamp": "2021-04-21T14:44:10Z",
+        "tags": {},
+        "coordinate": [
+          7.241668,
+          46.9017032
+        ]
+      },
+      {
+        "id": "8945081564",
+        "version": "1",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2358032,
+          46.8973994
+        ]
+      },
+      {
+        "id": "8945081565",
+        "version": "1",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2359406,
+          46.8975001
+        ]
+      },
+      {
+        "id": "8945081595",
+        "version": "1",
+        "timestamp": "2021-07-23T20:36:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2360195,
+          46.8977486
+        ]
+      },
+      {
+        "id": "10109749354",
+        "version": "1",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2346936,
+          46.9038285
+        ]
+      },
+      {
+        "id": "10109749359",
+        "version": "1",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2339591,
+          46.9033937
+        ]
+      },
+      {
+        "id": "10109749360",
+        "version": "1",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2338201,
+          46.9033261
+        ]
+      },
+      {
+        "id": "10109749361",
+        "version": "1",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2332985,
+          46.9031139
+        ]
+      },
+      {
+        "id": "10109749362",
+        "version": "1",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2334914,
+          46.9031854
+        ]
+      },
+      {
+        "id": "10109749363",
+        "version": "1",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2330728,
+          46.9030389
+        ]
+      },
+      {
+        "id": "10109749364",
+        "version": "1",
+        "timestamp": "2022-10-17T18:19:36Z",
+        "tags": {},
+        "coordinate": [
+          7.2326012,
+          46.9028993
+        ]
+      },
+      {
+        "id": "10301102556",
+        "version": "1",
+        "timestamp": "2023-01-02T19:20:34Z",
+        "tags": {},
+        "coordinate": [
+          7.2412963,
+          46.9016611
+        ]
+      },
+      {
+        "id": "10880322144",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.239262,
+          46.9025295
+        ]
+      },
+      {
+        "id": "10880322145",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2391611,
+          46.9026788
+        ]
+      },
+      {
+        "id": "10880322147",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2389321,
+          46.9033163
+        ]
+      },
+      {
+        "id": "10880322148",
+        "version": "3",
+        "timestamp": "2026-07-25T17:26:27Z",
+        "tags": {},
+        "coordinate": [
+          7.238807,
+          46.9034575
+        ]
+      },
+      {
+        "id": "10880322149",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2386548,
+          46.9035729
+        ]
+      },
+      {
+        "id": "10880322178",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2385448,
+          46.903636
+        ]
+      },
+      {
+        "id": "10880322179",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2383438,
+          46.9037267
+        ]
+      },
+      {
+        "id": "10880322180",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2374386,
+          46.9040395
+        ]
+      },
+      {
+        "id": "10880322181",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2370747,
+          46.9041471
+        ]
+      },
+      {
+        "id": "10880322182",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2368675,
+          46.904225
+        ]
+      },
+      {
+        "id": "10880322183",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2365501,
+          46.9044371
+        ]
+      },
+      {
+        "id": "10880322184",
+        "version": "1",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2363949,
+          46.9046014
+        ]
+      },
+      {
+        "id": "10880322192",
+        "version": "2",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2356216,
+          46.9057941
+        ]
+      },
+      {
+        "id": "11079574453",
+        "version": "2",
+        "timestamp": "2024-10-25T06:13:56Z",
+        "tags": {},
+        "coordinate": [
+          7.24126,
+          46.9016807
+        ]
+      },
+      {
+        "id": "11079574459",
+        "version": "1",
+        "timestamp": "2023-07-31T22:28:05Z",
+        "tags": {},
+        "coordinate": [
+          7.2415041,
+          46.9017118
+        ]
+      },
+      {
+        "id": "11079574460",
+        "version": "2",
+        "timestamp": "2026-07-25T17:26:27Z",
+        "tags": {
+          "bus": "yes",
+          "description": "Haltestelle Postauto 121 nach Düdingen und 130 nach Thörishaus",
+          "ele": "490",
+          "highway": "bus_stop",
+          "name": "Laupen Bahnhof",
+          "network": "Libero",
+          "network:wikidata": "Q2394193",
+          "operator": "PAG",
+          "public_transport": "stop_position",
+          "uic_name": "Laupen BE, Bahnhof",
+          "uic_ref": "8570555"
+        },
+        "coordinate": [
+          7.2422945,
+          46.9013536
+        ]
+      },
+      {
+        "id": "11294677312",
+        "version": "2",
+        "timestamp": "2023-11-05T14:46:00Z",
+        "tags": {},
+        "coordinate": [
+          7.2311963,
+          46.902011
+        ]
+      },
+      {
+        "id": "11294677313",
+        "version": "3",
+        "timestamp": "2023-11-05T14:46:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2314181,
+          46.9024559
+        ]
+      },
+      {
+        "id": "11294677314",
+        "version": "3",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2315295,
+          46.9025344
+        ]
+      },
+      {
+        "id": "11294807328",
+        "version": "3",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2312772,
+          46.9022944
+        ]
+      },
+      {
+        "id": "11294819658",
+        "version": "2",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2353064,
+          46.9060995
+        ]
+      },
+      {
+        "id": "11294819659",
+        "version": "3",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {
+          "highway": "traffic_signals",
+          "start_date": "20240902",
+          "traffic_signals": "on_demand",
+          "traffic_signals:direction": "forward"
+        },
+        "coordinate": [
+          7.2350587,
+          46.9058797
+        ]
+      },
+      {
+        "id": "11294819660",
+        "version": "2",
+        "timestamp": "2024-08-25T11:58:35Z",
+        "tags": {
+          "highway": "traffic_signals",
+          "start_date": "20240902",
+          "traffic_signals": "on_demand",
+          "traffic_signals:direction": "backward"
+        },
+        "coordinate": [
+          7.2341279,
+          46.905339
+        ]
+      },
+      {
+        "id": "11294819661",
+        "version": "2",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2336145,
+          46.9050986
+        ]
+      },
+      {
+        "id": "11294819662",
+        "version": "2",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2335667,
+          46.9049985
+        ]
+      },
+      {
+        "id": "11294819663",
+        "version": "2",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2336176,
+          46.9048987
+        ]
+      },
+      {
+        "id": "11294819666",
+        "version": "2",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2346328,
+          46.9041315
+        ]
+      },
+      {
+        "id": "11294819667",
+        "version": "2",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2347262,
+          46.9040167
+        ]
+      },
+      {
+        "id": "11294819668",
+        "version": "1",
+        "timestamp": "2023-10-28T07:12:33Z",
+        "tags": {},
+        "coordinate": [
+          7.2347408,
+          46.9039187
+        ]
+      },
+      {
+        "id": "11295023853",
+        "version": "2",
+        "timestamp": "2023-11-05T14:46:00Z",
+        "tags": {},
+        "coordinate": [
+          7.2320505,
+          46.9008223
+        ]
+      },
+      {
+        "id": "11295023854",
+        "version": "2",
+        "timestamp": "2023-11-05T14:46:00Z",
+        "tags": {},
+        "coordinate": [
+          7.2314223,
+          46.9014013
+        ]
+      },
+      {
+        "id": "11327589878",
+        "version": "2",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2326896,
+          46.900166
+        ]
+      },
+      {
+        "id": "11375582018",
+        "version": "1",
+        "timestamp": "2023-11-25T16:46:20Z",
+        "tags": {},
+        "coordinate": [
+          7.2351984,
+          46.8969777
+        ]
+      },
+      {
+        "id": "11375582043",
+        "version": "1",
+        "timestamp": "2023-11-25T16:46:20Z",
+        "tags": {},
+        "coordinate": [
+          7.2323763,
+          46.8951033
+        ]
+      },
+      {
+        "id": "11379127115",
+        "version": "1",
+        "timestamp": "2023-11-27T08:30:51Z",
+        "tags": {},
+        "coordinate": [
+          7.2317817,
+          46.902652
+        ]
+      },
+      {
+        "id": "12135658364",
+        "version": "2",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2355764,
+          46.9059392
+        ]
+      },
+      {
+        "id": "12135658365",
+        "version": "1",
+        "timestamp": "2024-08-25T11:58:35Z",
+        "tags": {},
+        "coordinate": [
+          7.234208,
+          46.9053803
+        ]
+      },
+      {
+        "id": "12135658366",
+        "version": "1",
+        "timestamp": "2024-08-25T11:58:35Z",
+        "tags": {},
+        "coordinate": [
+          7.2347335,
+          46.9056511
+        ]
+      },
+      {
+        "id": "12135658380",
+        "version": "1",
+        "timestamp": "2024-08-25T11:58:35Z",
+        "tags": {
+          "bus": "yes",
+          "highway": "bus_stop",
+          "name": "Bösingen, Tuftera (Ersatzhaltekante)",
+          "operator": "PostAuto Schweiz AG",
+          "operator:de": "PostAuto Schweiz AG",
+          "operator:fr": "CarPostal Suisse SA",
+          "operator:it": "AutoPostale Svizzera SA",
+          "public_transport": "platform",
+          "uic_name": "Bösingen, Abzw. Tuftera",
+          "uic_ref": "8570554"
+        },
+        "coordinate": [
+          7.2350581,
+          46.8990657
+        ]
+      },
+      {
+        "id": "12135658392",
+        "version": "1",
+        "timestamp": "2024-08-25T11:58:35Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:island": "yes",
+          "crossing:markings": "zebra",
+          "highway": "crossing",
+          "tactile_paving": "no"
+        },
+        "coordinate": [
+          7.2350825,
+          46.8990025
+        ]
+      },
+      {
+        "id": "12287454379",
+        "version": "2",
+        "timestamp": "2025-07-26T18:51:09Z",
+        "tags": {},
+        "coordinate": [
+          7.2368169,
+          46.904252
+        ]
+      },
+      {
+        "id": "12287454386",
+        "version": "2",
+        "timestamp": "2025-07-26T18:51:09Z",
+        "tags": {},
+        "coordinate": [
+          7.2407292,
+          46.9017684
+        ]
+      },
+      {
+        "id": "12287454388",
+        "version": "1",
+        "timestamp": "2024-10-25T06:13:56Z",
+        "tags": {},
+        "coordinate": [
+          7.2407692,
+          46.901762
+        ]
+      },
+      {
+        "id": "12287454393",
+        "version": "2",
+        "timestamp": "2025-08-13T12:05:30Z",
+        "tags": {},
+        "coordinate": [
+          7.2427757,
+          46.9015123
+        ]
+      },
+      {
+        "id": "12570849772",
+        "version": "1",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2326552,
+          46.900269
+        ]
+      },
+      {
+        "id": "12570849773",
+        "version": "1",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2312239,
+          46.9021691
+        ]
+      },
+      {
+        "id": "12570849774",
+        "version": "1",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2312021,
+          46.9019115
+        ]
+      },
+      {
+        "id": "12570849776",
+        "version": "1",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2312572,
+          46.9017259
+        ]
+      },
+      {
+        "id": "12570849777",
+        "version": "1",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2325332,
+          46.9004007
+        ]
+      },
+      {
+        "id": "12570849778",
+        "version": "1",
+        "timestamp": "2025-02-09T12:01:27Z",
+        "tags": {},
+        "coordinate": [
+          7.2327385,
+          46.8999983
+        ]
+      },
+      {
+        "id": "13427018663",
+        "version": "2",
+        "timestamp": "2026-07-25T17:26:27Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:markings": "zebra",
+          "highway": "crossing"
+        },
+        "coordinate": [
+          7.2398513,
+          46.9021028
+        ]
+      },
+      {
+        "id": "13694741639",
+        "version": "1",
+        "timestamp": "2026-03-31T08:02:04Z",
+        "tags": {},
+        "coordinate": [
+          7.2358946,
+          46.89807
+        ]
+      },
+      {
+        "id": "13958322385",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2355525,
+          46.9060253
+        ]
+      },
+      {
+        "id": "13958322386",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2354801,
+          46.9060189
+        ]
+      },
+      {
+        "id": "13958322387",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.234937,
+          46.9057797
+        ]
+      },
+      {
+        "id": "13958322388",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.235322,
+          46.9062028
+        ]
+      },
+      {
+        "id": "13958322389",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2352867,
+          46.9061531
+        ]
+      },
+      {
+        "id": "13958322390",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.235298,
+          46.9061801
+        ]
+      },
+      {
+        "id": "13958322391",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.235356,
+          46.9062186
+        ]
+      },
+      {
+        "id": "13958322392",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2353958,
+          46.9062254
+        ]
+      },
+      {
+        "id": "13958322393",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2354367,
+          46.9062225
+        ]
+      },
+      {
+        "id": "13958322394",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2354736,
+          46.9062103
+        ]
+      },
+      {
+        "id": "13958322395",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2355022,
+          46.9061901
+        ]
+      },
+      {
+        "id": "13958322396",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2355219,
+          46.9061366
+        ]
+      },
+      {
+        "id": "13958322397",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2355107,
+          46.9061096
+        ]
+      },
+      {
+        "id": "13958322398",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2354866,
+          46.9060868
+        ]
+      },
+      {
+        "id": "13958322399",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2354526,
+          46.9060711
+        ]
+      },
+      {
+        "id": "13958322400",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2354128,
+          46.9060643
+        ]
+      },
+      {
+        "id": "13958377501",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.235372,
+          46.9060671
+        ]
+      },
+      {
+        "id": "13958377502",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.235335,
+          46.9060794
+        ]
+      },
+      {
+        "id": "13958377503",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.235519,
+          46.9061645
+        ]
+      },
+      {
+        "id": "13958377504",
+        "version": "1",
+        "timestamp": "2026-06-22T17:50:47Z",
+        "tags": {},
+        "coordinate": [
+          7.2352897,
+          46.9061251
+        ]
+      },
+      {
+        "id": "13959212289",
+        "version": "1",
+        "timestamp": "2026-06-23T05:31:37Z",
+        "tags": {},
+        "coordinate": [
+          7.2315605,
+          46.9012385
+        ]
+      },
+      {
+        "id": "13959241208",
+        "version": "1",
+        "timestamp": "2026-06-23T05:31:37Z",
+        "tags": {},
+        "coordinate": [
+          7.2317277,
+          46.9011026
+        ]
+      },
+      {
+        "id": "14049547713",
+        "version": "1",
+        "timestamp": "2026-07-25T17:26:25Z",
+        "tags": {
+          "bus": "yes",
+          "name": "Bärenplatz",
+          "network": "Libero",
+          "network:wikidata": "Q2394193",
+          "operator": "PAG",
+          "public_transport": "stop_position",
+          "uic_name": "Laupen BE, Bärenplatz",
+          "uic_ref": "8511751"
+        },
+        "coordinate": [
+          7.2390735,
+          46.9029671
+        ]
+      },
+      {
+        "id": "3978156585",
+        "version": "3",
+        "timestamp": "2021-03-14T08:09:43Z",
+        "tags": {},
+        "coordinate": [
+          7.2361931,
+          46.9048428
+        ]
+      },
+      {
+        "id": "279600247",
+        "version": "5",
+        "timestamp": "2023-05-09T07:31:44Z",
+        "tags": {},
+        "coordinate": [
+          7.2390934,
+          46.9028893
+        ]
+      },
+      {
+        "id": "2952325480",
+        "version": "6",
+        "timestamp": "2025-07-26T18:51:09Z",
+        "tags": {},
+        "coordinate": [
+          7.2384556,
+          46.9036786
+        ]
+      },
+      {
+        "id": "14049536298",
+        "version": "1",
+        "timestamp": "2026-07-25T17:26:25Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:markings": "zebra",
+          "highway": "crossing"
+        },
+        "coordinate": [
+          7.2390268,
+          46.9031411
+        ]
+      }
+    ],
+    "restrictions": [],
+    "xmlBounds": {
+      "minlat": "46.8900000",
+      "minlon": "7.2200000",
+      "maxlat": "46.9120000",
+      "maxlon": "7.2510000"
+    },
+    "scope": "Complete selected road ways and original nodes, five stop-identity evidence nodes, and every restriction relation returned by the bbox API. No current OSM bus-121 relation was returned. Project documents establish the western diversion corridor; road and platform attachments remain inference."
+  }
+}

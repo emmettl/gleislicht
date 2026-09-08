@@ -366,8 +366,8 @@
           "2026-09-06"
         ],
         "admittedTrips": [
-          5449,
-          3743
+          5508,
+          3763
         ],
         "publicRedistributionCleared": true,
         "roadPatternsTested": 614,
@@ -379,7 +379,8 @@
         "bernPlatformReview": "data/fribourg-bern-platform-policy.json",
         "avryReview": "data/fribourg-avry-policy.json",
         "montCarmelReview": "data/fribourg-mont-carmel-policy.json",
-        "jongnyReview": "data/fribourg-jongny-policy.json"
+        "jongnyReview": "data/fribourg-jongny-policy.json",
+        "laupenReview": "data/fribourg-laupen-policy.json"
       }
     },
     {

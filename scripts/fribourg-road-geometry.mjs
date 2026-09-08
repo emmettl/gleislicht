@@ -8,6 +8,7 @@ import { importLuzernRoads, roadConsensus, verifyLuzernRoadEvidence, LUZERN_ROAD
 import { hashFile } from './fribourg-timetable.mjs'
 import { loadMontCarmel } from './fribourg-mont-carmel.mjs'
 import { loadJongny } from './fribourg-jongny.mjs'
+import { loadLaupen } from './fribourg-laupen.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 export const FRIBOURG_ROAD_LIMITS = { detourRatio: 3, detourFloorMetres: 600 }
@@ -71,7 +72,8 @@ export async function loadFribourgRoads(timetable, policy, { verifyEvidence = fa
   const baseline = roadConsensus(cache, policy.limits)
   const review = policy.montCarmel ? await loadMontCarmel(cache, baseline, policy.montCarmel) : undefined
   const jongny = policy.jongny ? await loadJongny(cache, review?.candidates ?? baseline, policy.jongny) : undefined
-  return { candidates: jongny?.candidates ?? review?.candidates ?? baseline, ...(review ? { montCarmel: review.audit } : {}), ...(jongny ? { jongny: jongny.audit } : {}), metadata: cache.metadata, policy,
+  const laupen = policy.laupen ? await loadLaupen(cache, jongny?.candidates ?? review?.candidates ?? baseline, policy.laupen) : undefined
+  return { ...(laupen ? { laupen: laupen.audit } : {}), candidates: laupen?.candidates ?? jongny?.candidates ?? review?.candidates ?? baseline, ...(review ? { montCarmel: review.audit } : {}), ...(jongny ? { jongny: jongny.audit } : {}), metadata: cache.metadata, policy,
     inventory: Object.entries(cache.agencies).flatMap(([agencyId, agency]) => Object.entries(agency.identities).map(([id, identity]) => ({ id, agencyId, ...identity }))),
     patterns: Object.values(cache.agencies).reduce((n, a) => n + Object.keys(a.identities).length, 0) }
 }

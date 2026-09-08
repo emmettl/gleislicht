@@ -1,0 +1,2648 @@
+{
+  "baselineCommit": "71f8a5ef4c0e432c650d1c3f71754a02fe402514",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+    "crosswalk": "2e5162674534b65c4c4381689c5f4260a4cca8973d440712dd477b0f8de5563a",
+    "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
+    "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+    "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
+    "jongny": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f",
+    "laupen": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4",
+    "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
+    "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+    "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
+    "bernPlatforms": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac",
+    "railReview": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
+  },
+  "assertions": "Every previously admitted journey retains its original stop identity, coordinates, call permissions, times, direction and segment geometry. Added journeys must carry reviewed Laupen road evidence.",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "previousJourneys": 5449,
+      "presentJourneys": 5508,
+      "addedJourneys": 59,
+      "unchangedOriginalSegmentOccurrences": 84146,
+      "lostJourneys": 0,
+      "newJourneys": [
+        {
+          "id": ".ojp-96-881.1.TA.1.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              21660,
+              21660
+            ],
+            [
+              [
+                7.24155307,
+                46.90148061,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:83983"
+              ],
+              21960,
+              21960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.72.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              20820,
+              20820
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              21060,
+              21060
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.10.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              27060,
+              27060
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              27360,
+              27360
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.11.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              23460,
+              23460
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              23760,
+              23760
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.26.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              25260,
+              25260
+            ],
+            [
+              [
+                7.24155307,
+                46.90148061,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:83983"
+              ],
+              25560,
+              25560
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.64.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              24420,
+              24420
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              24660,
+              24660
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.70.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              28020,
+              28020
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              28260,
+              28260
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.77.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              22620,
+              22620
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              22860,
+              22860
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.8.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              28860,
+              28860
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              29160,
+              29160
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.80.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              26220,
+              26220
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              26460,
+              26460
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.3.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              30660,
+              30660
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              30960,
+              30960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.6.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              34260,
+              34260
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              34560,
+              34560
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.87.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              31620,
+              31620
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              31860,
+              31860
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.20.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              43860,
+              43860
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              44160,
+              44160
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.27.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              39660,
+              39660
+            ],
+            [
+              [
+                7.24155307,
+                46.90148061,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:83983"
+              ],
+              39960,
+              39960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.69.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              40620,
+              40620
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              40860,
+              40860
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.79.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              37020,
+              37020
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              37260,
+              37260
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.15.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              50460,
+              50460
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              50760,
+              50760
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.16.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              46860,
+              46860
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              47160,
+              47160
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.32.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              48120,
+              48120
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              48360,
+              48360
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.42.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              44520,
+              44520
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              44760,
+              44760
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.65.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              47820,
+              47820
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              48060,
+              48060
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.71.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              44220,
+              44220
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              44460,
+              44460
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.14.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              54060,
+              54060
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              54360,
+              54360
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.24.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              57660,
+              57660
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              57960,
+              57960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.33.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              55320,
+              55320
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              55560,
+              55560
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.36.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              51720,
+              51720
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              51960,
+              51960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.43.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              57120,
+              57120
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              57360,
+              57360
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.62.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              51420,
+              51420
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              51660,
+              51660
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.66.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              55020,
+              55020
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              55260,
+              55260
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.82.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              56820,
+              56820
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              57060,
+              57060
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.18.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              64860,
+              64860
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              65160,
+              65160
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.21.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              63060,
+              63060
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              63360,
+              63360
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.22.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              61260,
+              61260
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              61560,
+              61560
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.23.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              59460,
+              59460
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              59760,
+              59760
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.29.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              60720,
+              60720
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              60960,
+              60960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.30.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              64320,
+              64320
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              64560,
+              64560
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.31.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              58920,
+              58920
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              59160,
+              59160
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.35.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              62520,
+              62520
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              62760,
+              62760
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.68.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              60420,
+              60420
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              60660,
+              60660
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.73.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              58620,
+              58620
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              58860,
+              58860
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.75.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              62220,
+              62220
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              62460,
+              62460
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.78.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              64020,
+              64020
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              64260,
+              64260
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.25.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              68460,
+              68460
+            ],
+            [
+              [
+                7.24155307,
+                46.90148061,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:83983"
+              ],
+              68760,
+              68760
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.34.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              66120,
+              66120
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              66360,
+              66360
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.40.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              67920,
+              67920
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              68160,
+              68160
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.44.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              71520,
+              71520
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              71760,
+              71760
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.5.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              70260,
+              70260
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              70560,
+              70560
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.63.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              67620,
+              67620
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              67860,
+              67860
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.76.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              65820,
+              65820
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              66060,
+              66060
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.89.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              71220,
+              71220
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              71460,
+              71460
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.9.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              66660,
+              66660
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              66960,
+              66960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.17.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              77460,
+              77460
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              77760,
+              77760
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.2.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              73860,
+              73860
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              74160,
+              74160
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.37.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              75120,
+              75120
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              75360,
+              75360
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.38.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              78720,
+              78720
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              78960,
+              78960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.67.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              78420,
+              78420
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              78660,
+              78660
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.90.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              74820,
+              74820
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              75060,
+              75060
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.19.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              81060,
+              81060
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              81360,
+              81360
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "previousJourneys": 3743,
+      "presentJourneys": 3763,
+      "addedJourneys": 20,
+      "unchangedOriginalSegmentOccurrences": 58729,
+      "lostJourneys": 0,
+      "newJourneys": [
+        {
+          "id": ".ojp-96-881.1.TA.84.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              24420,
+              24420
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              24660,
+              24660
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.3.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              30660,
+              30660
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              30960,
+              30960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.87.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              31620,
+              31620
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              31860,
+              31860
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.4.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              37860,
+              37860
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              38160,
+              38160
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.61.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              38820,
+              38820
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              39060,
+              39060
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.13.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              45060,
+              45060
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              45360,
+              45360
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.39.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              46320,
+              46320
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              46560,
+              46560
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.83.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              46020,
+              46020
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              46260,
+              46260
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.12.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              52260,
+              52260
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              52560,
+              52560
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.41.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              53520,
+              53520
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              53760,
+              53760
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.81.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              53220,
+              53220
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              53460,
+              53460
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.23.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              59460,
+              59460
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              59760,
+              59760
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.29.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              60720,
+              60720
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              60960,
+              60960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.86.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              60420,
+              60420
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              60660,
+              60660
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.40.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              67920,
+              67920
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              68160,
+              68160
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.88.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              67620,
+              67620
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              67860,
+              67860
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.9.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              66660,
+              66660
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              66960,
+              66960
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.2.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.2347618,
+                46.8991973,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:323303"
+              ],
+              73860,
+              73860
+            ],
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              74160,
+              74160
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.37.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              75120,
+              75120
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              75360,
+              75360
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        },
+        {
+          "id": ".ojp-96-881.1.TA.90.j26",
+          "routeId": "96-881-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                7.24199324,
+                46.9013824,
+                "Laupen BE, Bahnhof",
+                "",
+                "ch:1:sloid:70555:0:602697"
+              ],
+              74820,
+              74820
+            ],
+            [
+              [
+                7.23569605,
+                46.89741724,
+                "Bösingen, Abzw. Tuftera",
+                "",
+                "ch:1:sloid:70554:0:65751"
+              ],
+              75060,
+              75060
+            ]
+          ],
+          "reviewKinds": [
+            "laupen-western-bypass"
+          ]
+        }
+      ]
+    }
+  ]
+}

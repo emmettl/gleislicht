@@ -18190,55 +18190,51 @@
       {
         "date": "2026-09-04",
         "trips": 59,
-        "admittedTrips": 0,
+        "admittedTrips": 59,
         "scheduledTrips": 59,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 59,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 441,
-        "matchedScheduledSegmentOccurrences": 382,
+        "matchedScheduledSegmentOccurrences": 441,
         "segmentOccurrences": 441,
-        "matchedSegmentOccurrences": 382,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 441,
+        "admittedSegmentOccurrences": 441,
         "directedPairs": 20,
-        "matchedDirectedPairs": 17,
+        "matchedDirectedPairs": 20,
         "patterns": 6,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 59
-        },
-        "admittedRoadSegmentOccurrences": 0,
+        "completePatterns": 6,
+        "admittedPatterns": 6,
+        "excludedTrips": {},
+        "admittedRoadSegmentOccurrences": 82,
         "admittedRailSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedOfficialSegmentOccurrences": 359
       },
       {
         "date": "2026-09-06",
         "trips": 20,
-        "admittedTrips": 0,
+        "admittedTrips": 20,
         "scheduledTrips": 20,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 20,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 150,
-        "matchedScheduledSegmentOccurrences": 130,
+        "matchedScheduledSegmentOccurrences": 150,
         "segmentOccurrences": 150,
-        "matchedSegmentOccurrences": 130,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 150,
+        "admittedSegmentOccurrences": 150,
         "directedPairs": 19,
-        "matchedDirectedPairs": 17,
+        "matchedDirectedPairs": 19,
         "patterns": 4,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 20
-        },
-        "admittedRoadSegmentOccurrences": 0,
+        "completePatterns": 4,
+        "admittedPatterns": 4,
+        "excludedTrips": {},
+        "admittedRoadSegmentOccurrences": 27,
         "admittedRailSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedOfficialSegmentOccurrences": 123
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "96-882-j26-1",

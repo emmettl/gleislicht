@@ -6,6 +6,8 @@ const routes = await json('data/fribourg-audit/routes.json')
 const lines = await json('data/fribourg-audit/source-lines.json')
 const works = await json('data/fribourg-audit/works.json')
 const railReview = await json('data/fribourg-audit/rail-review.json')
+const laupen = await json('data/fribourg-audit/laupen.json')
+const laupenRegression = await json('data/fribourg-audit/laupen-regression.json')
 const jongny = await json('data/fribourg-audit/jongny.json')
 const jongnyRegression = await json('data/fribourg-audit/jongny-regression.json')
 const montCarmel = await json('data/fribourg-audit/mont-carmel.json')
@@ -127,7 +129,7 @@ The [reproducible topology diagnostic](../data/fribourg-audit/topology-followup.
 
 The [road adapter](../scripts/fribourg-road-geometry.mjs) prepares all **${summary.sources.roads.completePatternsTested} distinct full bus patterns** across both civil days and six active bus agency identities: TPF, PostAuto, VMCV and the three active replacement operators. Inactive annual agencies remain in the canton census. All source calls, out-of-canton termini, repeated platforms, short branches and night patterns are retained. Routing-only carry-in timestamps are shifted by whole days to satisfy GTFS input constraints; delivered timestamps are unchanged.
 
-The matcher uses the pinned Geofabrik Switzerland **2 September 2026** road extract plus the **8 September 2026** border extract, SHA-256 **${summary.sources.roads.source.osmSha256}**, and pfaedle commit **${summary.sources.roads.source.matcherCommit}**. The copied configuration, binary hash, routing inputs, shapes, trips, stop times, complete warning logs and run hashes are retained in [road evidence](../data/fribourg-road-evidence). The checker reimports those outputs and verifies emitted pfaedle segments against them. The separately hashed Mont-Carmel and Jongny reviews below reconstruct their source paths directly from retained OSM XML; rejected pfaedle geometry remains excluded.
+The matcher uses the pinned Geofabrik Switzerland **2 September 2026** road extract plus the **8 September 2026** border extract, SHA-256 **${summary.sources.roads.source.osmSha256}**, and pfaedle commit **${summary.sources.roads.source.matcherCommit}**. The copied configuration, binary hash, routing inputs, shapes, trips, stop times, complete warning logs and run hashes are retained in [road evidence](../data/fribourg-road-evidence). The checker reimports those outputs and verifies emitted pfaedle segments against them. The separately hashed Mont-Carmel, Jongny and Laupen reviews below reconstruct their source paths directly from retained OSM XML; rejected pfaedle geometry remains excluded.
 
 A failed cantonal pair receives a road path only when **every complete pattern context containing the same agency/route/directed-platform pair has a valid, identical path**. A successful context cannot hide a failed context. Differing branch paths remain rejected; no context exception is added. Source-matched pairs retain their original paths. Explicit pfaedle fallback hops are rejected even if the matcher writes a straight segment. Monotone shape-distance slicing preserves direction and loops. Road projection is limited to 120 m; simplification is 5 m, followed by the stricter final detour guard of max(600 m, 3 × direct distance). These tolerances apply to inferred roads, separately from the cantonal 80 m bus projection guard.
 
@@ -144,7 +146,7 @@ The original cantonal failure is preserved as officialFailure and the road asses
 
 ![Urban corridor geometry review](assets/fribourg-road-review.svg)
 
-The four updated urban panels and the Mont-Carmel terminal diagram were rendered and visually inspected for continuity, direction arrows, original endpoints and source/fallback separation; they are not independent operator evidence. Both dates and all other bus patterns are covered by the automated full-sequence and retained-output checks. The Mont-Carmel review below resolves the remaining TPF 3 terminal pair. The Jongny review below also resolves the remaining VMCV 213/216/217 gaps. Remaining larger exclusion groups include PostAuto 121 and Sunday replacement patterns; every failed pair and trip count remains in the machine audit.
+The four updated urban panels and the Mont-Carmel terminal diagram were rendered and visually inspected for continuity, direction arrows, original endpoints and source/fallback separation; they are not independent operator evidence. Both dates and all other bus patterns are covered by the automated full-sequence and retained-output checks. The Mont-Carmel review below resolves the remaining TPF 3 terminal pair. The Jongny review below also resolves the remaining VMCV 213/216/217 gaps. The Laupen review below resolves PostAuto 121; remaining larger exclusion groups include Sunday replacement patterns; every failed pair and trip count remains in the machine audit.
 
 ### Mont-Carmel: directed terminal review for TPF 3
 
@@ -174,9 +176,28 @@ ${table(['Cantonal source', 'Original length', 'Cantonal vertices → OSM curve'
 
 The [official VMCV 2026 network plan](../data/fribourg-jongny-sources/vmcv-network-2026.pdf), valid **14 December 2025–12 December 2026**, was visually inspected. It supports the three line identities and consecutive stop relationship; no schematic geometry is extracted. The operator’s individual line-213 webpage returned HTTP 403 on direct acquisition and is recorded as unused. Source object edits span **2021–2026** and do not establish physical survey dates. Every exact version and timestamp is retained in the [source and full-pattern audit](../data/fribourg-audit/jongny.json). The reviewed path remains inferred centreline geometry, not operator-certified running lanes or temporary access.
 
-The change adds **74 Friday / 57 Sunday journeys**: 213 adds **36 / 21**, 216 adds **19 / 16**, and 217 adds **19 / 20**. All three routes now admit every dated journey: **73/73, 37/37, 38/38 Friday; 42/42, 33/33, 40/40 Sunday**. Original call intervals remain 120 or 180 seconds on Friday and 120 seconds on Sunday, with explicit \`jongny-route-chain\` markers. The [current regression checkpoint](../data/fribourg-audit/jongny-regression.json), against **102d51f**, preserves all **${n(jongnyRegression.days.reduce((n, d) => n + d.previousJourneys, 0))} previous journeys and ${n(jongnyRegression.days.reduce((n, d) => n + d.unchangedOriginalSegmentOccurrences, 0))} segment occurrences**, including identical call identities, coordinates, permissions, times, directions and geometry.
+The change adds **74 Friday / 57 Sunday journeys**: 213 adds **36 / 21**, 216 adds **19 / 16**, and 217 adds **19 / 20**. All three routes now admit every dated journey: **73/73, 37/37, 38/38 Friday; 42/42, 33/33, 40/40 Sunday**. Original call intervals remain 120 or 180 seconds on Friday and 120 seconds on Sunday, with explicit \`jongny-route-chain\` markers. At commit 71f8a5e, the [Jongny regression checkpoint](../data/fribourg-audit/jongny-regression.json), against **102d51f**, preserves all **${n(jongnyRegression.days.reduce((n, d) => n + d.previousJourneys, 0))} previous journeys and ${n(jongnyRegression.days.reduce((n, d) => n + d.unchangedOriginalSegmentOccurrences, 0))} segment occurrences**, including identical call identities, coordinates, permissions, times, directions and geometry.
 
 ![Jongny source-chain and rejected matcher review](assets/fribourg-jongny.svg)
+
+### Laupen: dated western construction bypass for PostAuto 121
+
+All **59 Friday / 20 Sunday** PostAuto 121 journeys originally failed a station pair. The [official construction notice](../data/fribourg-laupen-sources/sense-bridge-works-2025.pdf), page 4, explicitly assigns route 121 and its Cholholz shuttle to **Bauumfahrung West**. The [24 August 2026 update](../data/fribourg-laupen-sources/sense-bridge-update-2026.html) confirms bridge construction during September–December 2026 and planned reopening in summer 2027. The [project corridor description](../data/fribourg-laupen-sources/western-bypass.html) also identifies the temporary Industriestrasse stop. These establish the diversion corridor; their schematic maps provide no geometry.
+
+The [hashed policy](../data/fribourg-laupen-policy.json) and [complete audit](../data/fribourg-audit/laupen.json) retain **29 detailed OSM road ways**, three exact directed platform pairs and all **six full route patterns**. Arrival follows Industriestrasse and the full western bypass to the station's one-way entrance. Departure continues forward around the station loop, returns over the full western bypass and reaches the distinct southbound Tuftera platform through its roundabout. It is not a reversal of the arrival path. Every selected source-node join is exact; one-way roads and roundabouts require forward traversal. Construction roads, parking aisles, conditional/restricted access, barriers and touching returned turn restrictions fail review. This bounding-box response returns zero restriction relations; it does not prove that no restrictions exist.
+
+${table(['Original directed platform pair', 'Source-backed path', 'Original platform attachments', 'Full contexts'], laupen.assessments.map((a, i) => [laupen.policy.pairs[i].stops.map(s => s[4].split(':').at(-1)).join(' → '), a.lengthMetres.toFixed(1) + ' m', a.attachmentsMetres.map(m => m.toFixed(1)).join(' / ') + ' m', a.contributingPatterns.length]))}
+
+Original GTFS station platforms **83983 and 602697** remain separate, with UIC 8570555 OSM stop-position evidence. Tuftera's original calls retain their coordinates and attach to reviewed road nodes within the fixed **15 m** limit. Platform-to-road assignment is inference, not a surveyed platform equivalence. No current OSM bus-121 relation was returned. The independently documented corridor supports the specific **2.0 km arrival / 2.5 km departure ceilings**; general road and cantonal detour guards are unchanged, and both original failures remain in the audit. The original Sense bridge, temporary footbridge and residential shortcuts outside the full western bypass remain excluded.
+
+Two road ways and four nodes were edited on **7 September 2026**, after both fixture dates. The decoder restores their preceding versions from separately retained OSM way records and complete node histories, including two nodes removed from the later way sequences. It checks that all selected road/node versions predate 4 September and that the replaced versions remain valid through 6 September. All six restorations retain selected versions, available current records and next-edit timestamps; complete histories retain the subsequent deletion records for removed nodes. This establishes source-version chronology, not physical survey vintage; the remaining source-object dates and every original response hash are retained.
+
+The [29 May station-access notice](../data/fribourg-laupen-sources/station-entrance-works-2026.html) schedules a full entrance closure and temporary PostAuto stops for **3–14 August**, outside these fixtures, while Neueneggstrasse works continue. No altered stop coordinates or assumed temporary traffic scheme are introduced. This review is restricted to **4 and 6 September 2026** and does not certify that announced construction dates remained unchanged or that the inferred centreline is the operator's exact running lane.
+
+The feed now admits **59/59 Friday and 20/20 Sunday** route-121 journeys, all carrying \`laupen-western-bypass\` markers and retaining their original four- or five-minute station-pair intervals. The [current regression checkpoint](../data/fribourg-audit/laupen-regression.json), against **71f8a5e**, preserves all **${n(laupenRegression.days.reduce((n, d) => n + d.previousJourneys, 0))} previously admitted journeys and ${n(laupenRegression.days.reduce((n, d) => n + d.unchangedOriginalSegmentOccurrences, 0))} segment occurrences**, including original platform identities, coordinates, permissions, times, directions and paths. The source PDF and the directed geometry diagram were rendered and visually inspected.
+
+![Laupen western bypass and station loop](assets/fribourg-laupen.svg)
+
 
 ## Federal railway supplement and dated works review
 
@@ -253,6 +274,8 @@ ${table(['Source', 'Pinned date / vintage', 'Attribution / reuse'], [
   ['Mont-Carmel road topology', 'OSM API acquired 2026-09-08; three ways edited 2026-01-28; survey vintage unknown', '© OpenStreetMap contributors; ODbL 1.0'],
   ['Mont-Carmel operator / works evidence', 'TPF timetable from 2025-12-14; municipal notice 2026-05-26', 'TPF / Commune de Givisiez; supporting identity and works evidence'],
   ['Jongny road / route relations', 'OSM API acquired 2026-09-08; individual way edits 2021–2026; survey vintage unknown', '© OpenStreetMap contributors; ODbL 1.0'],
+  ['Laupen OSM roads and object histories', 'Acquired September 2026; pre-fixture versions restored for two ways and four nodes edited 7 September; survey vintage unknown', '© OpenStreetMap contributors; ODbL 1.0'],
+  ['Laupen construction evidence', 'PDF filename 2025-07-30 (publication timestamp unverified); updates 2026-05-29 / 2026-08-24; undated corridor page', 'Kanton Bern / Gemeinde Laupen; supporting corridor/date evidence only'],
   ['VMCV network-plan evidence', 'Valid 2025-12-14–2026-12-12', 'VMCV; schematic identity evidence only'],
   ['SBB reviewed Däniken curve', `${railReview.source.dataProcessed}; individual survey vintage unknown`, 'SBB Infrastructure / data.sbb.ch; terms_by, reference required'],
   ...avry.policy.metadata.map(m => [`Avry SBB ${m.dataset}`, `Processed ${m.dataProcessed}; modified ${m.modified}; survey vintage unknown`, 'SBB Infrastructure / data.sbb.ch; terms_by, reference required']),
@@ -290,7 +313,7 @@ node --max-old-space-size=8192 scripts/build-fribourg-region.mjs \\
   --archive /private/tmp/GTFS_FP2026_20260902.zip \\
   --timetable-cache /private/tmp/fribourg-timetable.json.gz
 node scripts/check-fribourg-region.mjs
-node scripts/check-fribourg-jongny-regression.mjs
+node scripts/check-fribourg-laupen-regression.mjs
 node scripts/audit-fribourg-topology.mjs
 node scripts/review-fribourg-roads.mjs
 node scripts/review-fribourg-rail.mjs
@@ -298,9 +321,11 @@ node scripts/review-fribourg-bern-platforms.mjs
 node scripts/review-fribourg-avry.mjs
 node scripts/review-fribourg-mont-carmel.mjs
 node scripts/review-fribourg-jongny.mjs
+node scripts/review-fribourg-laupen.mjs
 node scripts/write-fribourg-audit.mjs
 python3 scripts/test_fribourg_sources.py
-npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/fribourg-avry.test.mjs scripts/fribourg-mont-carmel.test.mjs scripts/fribourg-jongny.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
+python3 scripts/test_fribourg_laupen.py
+npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/fribourg-avry.test.mjs scripts/fribourg-mont-carmel.test.mjs scripts/fribourg-jongny.test.mjs scripts/fribourg-laupen.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
 
 # Optional rail-input regeneration from the complete timetable cache and retained source bytes.
 node scripts/fribourg-rail-geometry.mjs /private/tmp/fribourg-timetable.json.gz
@@ -309,6 +334,7 @@ node scripts/prepare-fribourg-bern-platforms.mjs
 node scripts/prepare-fribourg-avry.mjs
 node scripts/prepare-fribourg-mont-carmel.mjs
 node scripts/prepare-fribourg-jongny.mjs
+node scripts/prepare-fribourg-laupen.mjs
 
 # Optional offline road rebuild: prepare all patterns, match each agency directory
 # with scripts/match-postbus-roads.mjs --no-trie/-W wrapper and the pinned extract,

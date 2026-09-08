@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (244696 spike-07.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="2952325480" visible="true" version="1" changeset="24002222" timestamp="2014-07-07T11:37:56Z" user="efred" uid="125339" lat="46.9036708" lon="7.2384565">
+  <tag k="crossing_ref" v="zebra"/>
+  <tag k="highway" v="crossing"/>
+ </node>
+ <node id="2952325480" visible="true" version="2" changeset="100979483" timestamp="2021-03-14T08:09:43Z" user="sovereign_ch" uid="5755216" lat="46.9036778" lon="7.2384521">
+  <tag k="crossing_ref" v="zebra"/>
+  <tag k="highway" v="crossing"/>
+ </node>
+ <node id="2952325480" visible="true" version="3" changeset="117742878" timestamp="2022-02-22T20:11:39Z" user="RuediB" uid="12438114" lat="46.9036778" lon="7.2384521">
+  <tag k="crossing" v="marked"/>
+  <tag k="crossing_ref" v="zebra"/>
+  <tag k="highway" v="crossing"/>
+ </node>
+ <node id="2952325480" visible="true" version="4" changeset="135881318" timestamp="2023-05-09T07:31:45Z" user="habi" uid="15671" lat="46.9036786" lon="7.2384556">
+  <tag k="crossing" v="marked"/>
+  <tag k="crossing_ref" v="zebra"/>
+  <tag k="highway" v="crossing"/>
+ </node>
+ <node id="2952325480" visible="true" version="5" changeset="156568395" timestamp="2024-09-13T11:55:02Z" user="LukeHell" uid="20623793" lat="46.9036786" lon="7.2384556">
+  <tag k="crossing" v="marked"/>
+  <tag k="crossing:island" v="no"/>
+  <tag k="crossing:markings" v="zebra"/>
+  <tag k="crossing_ref" v="zebra"/>
+  <tag k="highway" v="crossing"/>
+ </node>
+ <node id="2952325480" visible="true" version="6" changeset="169522888" timestamp="2025-07-26T18:51:09Z" user="ach90" uid="20369340" lat="46.9036786" lon="7.2384556"/>
+ <node id="2952325480" visible="true" version="7" changeset="188660840" timestamp="2026-09-07T09:43:26Z" user="fredjunod" uid="84054" lat="46.9036798" lon="7.2384528"/>
+</osm>

@@ -297,6 +297,1036 @@
     "license": "ODbL-1.0",
     "licenseUrl": "https://www.openstreetmap.org/copyright",
     "model": "Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified",
+    "laupen": {
+      "schemaVersion": 1,
+      "id": "laupen-western-bypass",
+      "sourceDirectory": "data/fribourg-laupen-sources",
+      "sources": [
+        {
+          "file": "map.osm.gz",
+          "url": "https://www.openstreetmap.org/api/0.6/map?bbox=7.220,46.890,7.251,46.912",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "ODbL-1.0",
+          "role": "Complete original OSM bbox response, deterministic gzip. Detailed road geometry and direction tags; individual object edits are not survey dates. Two ways and four nodes edited on 7 September are restored from separately retained historical versions covering both fixture dates.",
+          "sha256": "344169ef2f9b0ac7bb8194a882f34fa790f8e0eea8b8e2876fc8cb5374dba54d",
+          "retrievedAt": "2026-09-08T21:25:00.023Z"
+        },
+        {
+          "file": "sense-bridge-works-2025.pdf",
+          "url": "https://www.in-zukunft-laupen.ch/wp-content/uploads/beitragsbilder/brueckenbauten/flyer-a4-baustart-neubau-sensebruecke-fuer-webseite-30.07.2025.pdf",
+          "published": null,
+          "filenameDate": "2025-07-30",
+          "attribution": "Kanton Bern / Gemeinde Laupen",
+          "role": "Filename dated 2025-07-30; no separately verified publication timestamp. Page 4 explicitly identifies PostAuto 121 and its Cholholz shuttle using Bauumfahrung West. Page 3 schedules bridge reopening in summer 2027. Visually reviewed; no schematic map geometry extracted.",
+          "sha256": "68d22595876e3d6b051d52b66da472ee155dfbe83f43a3669382197b1bd62917",
+          "retrievedAt": "2026-09-08T21:22:41.565Z"
+        },
+        {
+          "file": "sense-bridge-update-2026.html",
+          "url": "https://www.in-zukunft-laupen.ch/neubau-sensebruecke/",
+          "published": "2026-08-24",
+          "attribution": "Projekt In Zukunft Laupen / Kanton Bern / Gemeinde Laupen",
+          "role": "Contemporary notice confirms bridge construction September–December 2026 and planned reopening summer 2027.",
+          "sha256": "5c318114d42da2071463502aef07c303316fd2f92b441f2644b2b3f5247253ae",
+          "retrievedAt": "2026-09-08T21:25:09.157Z"
+        },
+        {
+          "file": "western-bypass.html",
+          "url": "https://www.in-zukunft-laupen.ch/teilprojekte/bauumfahrungen/",
+          "published": null,
+          "attribution": "Projekt In Zukunft Laupen / Kanton Bern / Gemeinde Laupen",
+          "role": "Explicit route-121 western diversion and temporary Industriestrasse Tuftera stop. Page publication date unknown.",
+          "sha256": "068fb06edec83e5897132b7750f7981ef3a5821e850b2f2c57e7d200b5aba3b8",
+          "retrievedAt": "2026-09-08T21:25:08.755Z"
+        },
+        {
+          "file": "station-entrance-works-2026.html",
+          "url": "https://www.in-zukunft-laupen.ch/baustart-der-sanierung-neueneggstrasse/",
+          "published": "2026-05-29",
+          "attribution": "Projekt In Zukunft Laupen / Kanton Bern / Gemeinde Laupen",
+          "role": "Station entrance closure and temporary PostAuto stops planned 3–14 August 2026, outside both fixture dates. Neueneggstrasse works continue; this is no guarantee that dates were not amended.",
+          "sha256": "9c1c1a265611a5843dbfe8e3e27d19645182479222470dfcaabeec77db3441bf",
+          "retrievedAt": "2026-09-08T21:25:06.649Z"
+        },
+        {
+          "file": "way-86162950-v10.osm",
+          "url": "https://www.openstreetmap.org/api/0.6/way/86162950/10",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "ODbL-1.0",
+          "role": "Original road-way version covering both fixture dates, before the 7 September edit.",
+          "sha256": "b9e4c609c5bf1b8ca2e268fb35c577fa7207731e129637fb83b670d2fd6bcd0d",
+          "retrievedAt": "2026-09-08T21:32:37.351Z"
+        },
+        {
+          "file": "way-916903750-v5.osm",
+          "url": "https://www.openstreetmap.org/api/0.6/way/916903750/5",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "ODbL-1.0",
+          "role": "Original road-way version covering both fixture dates, before the 7 September edit.",
+          "sha256": "fbc0a25ea125ba7280b7ca3fd7a736c05ff063cc5b0e3447d246b14411c8f5be",
+          "retrievedAt": "2026-09-08T21:32:32.977Z"
+        },
+        {
+          "file": "node-3978156585-history.osm",
+          "url": "https://www.openstreetmap.org/api/0.6/node/3978156585/history",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "ODbL-1.0",
+          "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+          "sha256": "354b465dd8389aec28995636c9dde176f8d7f4f966b46f894de4b318eef2bab2",
+          "retrievedAt": "2026-09-08T21:33:16.291Z"
+        },
+        {
+          "file": "node-279600247-history.osm",
+          "url": "https://www.openstreetmap.org/api/0.6/node/279600247/history",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "ODbL-1.0",
+          "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+          "sha256": "6469f64148389a3bd7484ddf824c83f92b4fb9d4dfa34ce7155f7798bc409db2",
+          "retrievedAt": "2026-09-08T21:33:16.672Z"
+        },
+        {
+          "file": "node-2952325480-history.osm",
+          "url": "https://www.openstreetmap.org/api/0.6/node/2952325480/history",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "ODbL-1.0",
+          "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+          "sha256": "6db9da935f5d9f4545e112894273372451de20b53b12b06f786c06c9c6f6ae40",
+          "retrievedAt": "2026-09-08T21:33:17.781Z"
+        },
+        {
+          "file": "node-14049536298-history.osm",
+          "url": "https://www.openstreetmap.org/api/0.6/node/14049536298/history",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "ODbL-1.0",
+          "role": "Complete returned node history; select the last visible coordinate before 4 September and assert its next edit is after both fixture dates.",
+          "sha256": "69cec78d6c73d7f8d64de83df59a1423502c1ac34da966cb368861a0cc61a78b",
+          "retrievedAt": "2026-09-08T21:33:15.721Z"
+        }
+      ],
+      "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+      "agencyId": "801",
+      "routeId": "96-881-j26-1",
+      "dates": [
+        "2026-09-04",
+        "2026-09-06"
+      ],
+      "patterns": [
+        {
+          "id": "09498bcb49c92b7e48953f10",
+          "routeId": "96-881-j26-1",
+          "stops": [
+            [
+              7.22348795,
+              46.88897649,
+              "Bösingen, Cholholz",
+              "",
+              "ch:1:sloid:81035:0:957142"
+            ],
+            [
+              7.22806935,
+              46.89265989,
+              "Bösingen, Dorf",
+              "",
+              "ch:1:sloid:4767:0:534961"
+            ],
+            [
+              7.2347618,
+              46.8991973,
+              "Bösingen, Abzw. Tuftera",
+              "",
+              "ch:1:sloid:70554:0:323303"
+            ],
+            [
+              7.24155307,
+              46.90148061,
+              "Laupen BE, Bahnhof",
+              "",
+              "ch:1:sloid:70555:0:83983"
+            ]
+          ]
+        },
+        {
+          "id": "4e51d1b875eb54a76bb660a8",
+          "routeId": "96-881-j26-1",
+          "stops": [
+            [
+              7.24199324,
+              46.9013824,
+              "Laupen BE, Bahnhof",
+              "",
+              "ch:1:sloid:70555:0:602697"
+            ],
+            [
+              7.23569605,
+              46.89741724,
+              "Bösingen, Abzw. Tuftera",
+              "",
+              "ch:1:sloid:70554:0:65751"
+            ],
+            [
+              7.22758426,
+              46.892267,
+              "Bösingen, Dorf",
+              "",
+              "ch:1:sloid:4767:0:312840"
+            ],
+            [
+              7.22288608,
+              46.88865725,
+              "Bösingen, Cholholz",
+              "",
+              "ch:1:sloid:81035:0:22096"
+            ],
+            [
+              7.22086487,
+              46.88477096,
+              "Bösingen, Riederberg",
+              "",
+              "ch:1:sloid:70553:0:192432"
+            ],
+            [
+              7.22188895,
+              46.87601504,
+              "Bösingen, Litzistorf",
+              "",
+              "ch:1:sloid:70552:0:548756"
+            ],
+            [
+              7.21072289,
+              46.86779201,
+              "Düdingen, Bundtels",
+              "",
+              "ch:1:sloid:70551:0:874266"
+            ],
+            [
+              7.20138041,
+              46.86153946,
+              "Düdingen, Luggiwil",
+              "",
+              "ch:1:sloid:70535:0:155995"
+            ],
+            [
+              7.20051803,
+              46.8581672,
+              "Düdingen, Warpel",
+              "",
+              "ch:1:sloid:82486:0:992957"
+            ],
+            [
+              7.18964841,
+              46.85045137,
+              "Düdingen, Bahnhof",
+              "B",
+              "ch:1:sloid:4769:0:19607"
+            ]
+          ]
+        },
+        {
+          "id": "68c02db4bf2e3ea4d0327871",
+          "routeId": "96-881-j26-1",
+          "stops": [
+            [
+              7.24199324,
+              46.9013824,
+              "Laupen BE, Bahnhof",
+              "",
+              "ch:1:sloid:70555:0:602697"
+            ],
+            [
+              7.23569605,
+              46.89741724,
+              "Bösingen, Abzw. Tuftera",
+              "",
+              "ch:1:sloid:70554:0:65751"
+            ],
+            [
+              7.22758426,
+              46.892267,
+              "Bösingen, Dorf",
+              "",
+              "ch:1:sloid:4767:0:312840"
+            ],
+            [
+              7.22288608,
+              46.88865725,
+              "Bösingen, Cholholz",
+              "",
+              "ch:1:sloid:81035:0:22096"
+            ]
+          ]
+        },
+        {
+          "id": "76757748754ea4204d1d8e22",
+          "routeId": "96-881-j26-1",
+          "stops": [
+            [
+              7.18957654,
+              46.85048823,
+              "Düdingen, Bahnhof",
+              "C",
+              "ch:1:sloid:4769:0:19608"
+            ],
+            [
+              7.20040124,
+              46.85777407,
+              "Düdingen, Warpel",
+              "",
+              "ch:1:sloid:82486:0:114015"
+            ],
+            [
+              7.20138041,
+              46.86153946,
+              "Düdingen, Luggiwil",
+              "",
+              "ch:1:sloid:70535:0:155995"
+            ],
+            [
+              7.21081272,
+              46.86779816,
+              "Düdingen, Bundtels",
+              "",
+              "ch:1:sloid:70551:0:294617"
+            ],
+            [
+              7.22197878,
+              46.87605188,
+              "Bösingen, Litzistorf",
+              "",
+              "ch:1:sloid:70552:0:835252"
+            ],
+            [
+              7.22111639,
+              46.88510864,
+              "Bösingen, Riederberg",
+              "",
+              "ch:1:sloid:70553:0:489707"
+            ],
+            [
+              7.22348795,
+              46.88897649,
+              "Bösingen, Cholholz",
+              "",
+              "ch:1:sloid:81035:0:957142"
+            ],
+            [
+              7.22806935,
+              46.89265989,
+              "Bösingen, Dorf",
+              "",
+              "ch:1:sloid:4767:0:534961"
+            ],
+            [
+              7.2347618,
+              46.8991973,
+              "Bösingen, Abzw. Tuftera",
+              "",
+              "ch:1:sloid:70554:0:323303"
+            ],
+            [
+              7.24155307,
+              46.90148061,
+              "Laupen BE, Bahnhof",
+              "",
+              "ch:1:sloid:70555:0:83983"
+            ]
+          ]
+        },
+        {
+          "id": "7a780caad22f0fcc75b075b1",
+          "routeId": "96-881-j26-1",
+          "stops": [
+            [
+              7.24199324,
+              46.9013824,
+              "Laupen BE, Bahnhof",
+              "",
+              "ch:1:sloid:70555:0:602697"
+            ],
+            [
+              7.23569605,
+              46.89741724,
+              "Bösingen, Abzw. Tuftera",
+              "",
+              "ch:1:sloid:70554:0:65751"
+            ],
+            [
+              7.22758426,
+              46.892267,
+              "Bösingen, Dorf",
+              "",
+              "ch:1:sloid:4767:0:312840"
+            ],
+            [
+              7.22288608,
+              46.88865725,
+              "Bösingen, Cholholz",
+              "",
+              "ch:1:sloid:81035:0:22096"
+            ],
+            [
+              7.22086487,
+              46.88477096,
+              "Bösingen, Riederberg",
+              "",
+              "ch:1:sloid:70553:0:192432"
+            ],
+            [
+              7.22188895,
+              46.87601504,
+              "Bösingen, Litzistorf",
+              "",
+              "ch:1:sloid:70552:0:548756"
+            ],
+            [
+              7.21072289,
+              46.86779201,
+              "Düdingen, Bundtels",
+              "",
+              "ch:1:sloid:70551:0:874266"
+            ],
+            [
+              7.20138041,
+              46.86153946,
+              "Düdingen, Luggiwil",
+              "",
+              "ch:1:sloid:70535:0:155995"
+            ],
+            [
+              7.20051803,
+              46.8581672,
+              "Düdingen, Warpel",
+              "",
+              "ch:1:sloid:82486:0:992957"
+            ],
+            [
+              7.18957654,
+              46.85048823,
+              "Düdingen, Bahnhof",
+              "C",
+              "ch:1:sloid:4769:0:19608"
+            ]
+          ]
+        },
+        {
+          "id": "9113c440d8af3be6e27b05cd",
+          "routeId": "96-881-j26-1",
+          "stops": [
+            [
+              7.18957654,
+              46.85048823,
+              "Düdingen, Bahnhof",
+              "C",
+              "ch:1:sloid:4769:0:19608"
+            ],
+            [
+              7.20040124,
+              46.85777407,
+              "Düdingen, Warpel",
+              "",
+              "ch:1:sloid:82486:0:114015"
+            ],
+            [
+              7.20138041,
+              46.86153946,
+              "Düdingen, Luggiwil",
+              "",
+              "ch:1:sloid:70535:0:155995"
+            ],
+            [
+              7.21081272,
+              46.86779816,
+              "Düdingen, Bundtels",
+              "",
+              "ch:1:sloid:70551:0:294617"
+            ],
+            [
+              7.22197878,
+              46.87605188,
+              "Bösingen, Litzistorf",
+              "",
+              "ch:1:sloid:70552:0:835252"
+            ],
+            [
+              7.22111639,
+              46.88510864,
+              "Bösingen, Riederberg",
+              "",
+              "ch:1:sloid:70553:0:489707"
+            ],
+            [
+              7.22348795,
+              46.88897649,
+              "Bösingen, Cholholz",
+              "",
+              "ch:1:sloid:81035:0:957142"
+            ],
+            [
+              7.22806935,
+              46.89265989,
+              "Bösingen, Dorf",
+              "",
+              "ch:1:sloid:4767:0:534961"
+            ],
+            [
+              7.2347618,
+              46.8991973,
+              "Bösingen, Abzw. Tuftera",
+              "",
+              "ch:1:sloid:70554:0:323303"
+            ],
+            [
+              7.24199324,
+              46.9013824,
+              "Laupen BE, Bahnhof",
+              "",
+              "ch:1:sloid:70555:0:602697"
+            ]
+          ]
+        }
+      ],
+      "maximumAttachmentMetres": 15,
+      "pairs": [
+        {
+          "stops": [
+            [
+              7.2347618,
+              46.8991973,
+              "Bösingen, Abzw. Tuftera",
+              "",
+              "ch:1:sloid:70554:0:323303"
+            ],
+            [
+              7.24155307,
+              46.90148061,
+              "Laupen BE, Bahnhof",
+              "",
+              "ch:1:sloid:70555:0:83983"
+            ]
+          ],
+          "chain": [
+            {
+              "wayId": "1218962118",
+              "from": "308077056",
+              "to": "1038308039",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1218962505",
+              "from": "1038308039",
+              "to": "11295023853",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1218962506",
+              "from": "11295023853",
+              "to": "11295023854",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1218939917",
+              "from": "11295023854",
+              "to": "588522233",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1003262061",
+              "from": "588522233",
+              "to": "308076980",
+              "direction": "backward"
+            },
+            {
+              "wayId": "187800171",
+              "from": "308076980",
+              "to": "308076972",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1218944698",
+              "from": "308076972",
+              "to": "11294819663",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1311028303",
+              "from": "11294819663",
+              "to": "12135658365",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1311028296",
+              "from": "12135658365",
+              "to": "12135658366",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1311028295",
+              "from": "12135658366",
+              "to": "11294819658",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1531474223",
+              "from": "11294819658",
+              "to": "13958322400",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1531474220",
+              "from": "13958322400",
+              "to": "12135658364",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1531474222",
+              "from": "12135658364",
+              "to": "588556941",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1417597462",
+              "from": "588556941",
+              "to": "3978156597",
+              "direction": "backward"
+            },
+            {
+              "wayId": "543954973",
+              "from": "3978156597",
+              "to": "1412113561",
+              "direction": "backward"
+            },
+            {
+              "wayId": "86162950",
+              "from": "1412113561",
+              "to": "1000021109",
+              "direction": "backward"
+            },
+            {
+              "wayId": "86162922",
+              "from": "1000021109",
+              "to": "36161414",
+              "direction": "backward"
+            },
+            {
+              "wayId": "916903749",
+              "from": "36161414",
+              "to": "308076858",
+              "direction": "backward"
+            },
+            {
+              "wayId": "28058028",
+              "from": "308076858",
+              "to": "36161411",
+              "direction": "backward"
+            },
+            {
+              "wayId": "28057895",
+              "from": "36161411",
+              "to": "36161410",
+              "direction": "backward"
+            },
+            {
+              "wayId": "916903750",
+              "from": "36161410",
+              "to": "36161435",
+              "direction": "backward"
+            },
+            {
+              "wayId": "335414139",
+              "from": "36161435",
+              "to": "36161408",
+              "direction": "backward"
+            },
+            {
+              "wayId": "933369889",
+              "from": "36161408",
+              "to": "36161407",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1328072093",
+              "from": "36161407",
+              "to": "8616810772",
+              "direction": "backward"
+            },
+            {
+              "wayId": "933369888",
+              "from": "8616810772",
+              "to": "1408214299",
+              "direction": "forward"
+            }
+          ],
+          "maximumLengthMetres": 2000
+        },
+        {
+          "stops": [
+            [
+              7.2347618,
+              46.8991973,
+              "Bösingen, Abzw. Tuftera",
+              "",
+              "ch:1:sloid:70554:0:323303"
+            ],
+            [
+              7.24199324,
+              46.9013824,
+              "Laupen BE, Bahnhof",
+              "",
+              "ch:1:sloid:70555:0:602697"
+            ]
+          ],
+          "chain": [
+            {
+              "wayId": "1218962118",
+              "from": "308077056",
+              "to": "1038308039",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1218962505",
+              "from": "1038308039",
+              "to": "11295023853",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1218962506",
+              "from": "11295023853",
+              "to": "11295023854",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1218939917",
+              "from": "11295023854",
+              "to": "588522233",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1003262061",
+              "from": "588522233",
+              "to": "308076980",
+              "direction": "backward"
+            },
+            {
+              "wayId": "187800171",
+              "from": "308076980",
+              "to": "308076972",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1218944698",
+              "from": "308076972",
+              "to": "11294819663",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1311028303",
+              "from": "11294819663",
+              "to": "12135658365",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1311028296",
+              "from": "12135658365",
+              "to": "12135658366",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1311028295",
+              "from": "12135658366",
+              "to": "11294819658",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1531474223",
+              "from": "11294819658",
+              "to": "13958322400",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1531474220",
+              "from": "13958322400",
+              "to": "12135658364",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1531474222",
+              "from": "12135658364",
+              "to": "588556941",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1417597462",
+              "from": "588556941",
+              "to": "3978156597",
+              "direction": "backward"
+            },
+            {
+              "wayId": "543954973",
+              "from": "3978156597",
+              "to": "1412113561",
+              "direction": "backward"
+            },
+            {
+              "wayId": "86162950",
+              "from": "1412113561",
+              "to": "1000021109",
+              "direction": "backward"
+            },
+            {
+              "wayId": "86162922",
+              "from": "1000021109",
+              "to": "36161414",
+              "direction": "backward"
+            },
+            {
+              "wayId": "916903749",
+              "from": "36161414",
+              "to": "308076858",
+              "direction": "backward"
+            },
+            {
+              "wayId": "28058028",
+              "from": "308076858",
+              "to": "36161411",
+              "direction": "backward"
+            },
+            {
+              "wayId": "28057895",
+              "from": "36161411",
+              "to": "36161410",
+              "direction": "backward"
+            },
+            {
+              "wayId": "916903750",
+              "from": "36161410",
+              "to": "36161435",
+              "direction": "backward"
+            },
+            {
+              "wayId": "335414139",
+              "from": "36161435",
+              "to": "36161408",
+              "direction": "backward"
+            },
+            {
+              "wayId": "933369889",
+              "from": "36161408",
+              "to": "36161407",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1328072093",
+              "from": "36161407",
+              "to": "8616810772",
+              "direction": "backward"
+            },
+            {
+              "wayId": "933369888",
+              "from": "8616810772",
+              "to": "1408214299",
+              "direction": "forward"
+            },
+            {
+              "wayId": "315755631",
+              "from": "1408214299",
+              "to": "983847733",
+              "direction": "forward"
+            }
+          ],
+          "maximumLengthMetres": 2000
+        },
+        {
+          "stops": [
+            [
+              7.24199324,
+              46.9013824,
+              "Laupen BE, Bahnhof",
+              "",
+              "ch:1:sloid:70555:0:602697"
+            ],
+            [
+              7.23569605,
+              46.89741724,
+              "Bösingen, Abzw. Tuftera",
+              "",
+              "ch:1:sloid:70554:0:65751"
+            ]
+          ],
+          "chain": [
+            {
+              "wayId": "315755631",
+              "from": "983847733",
+              "to": "8616810766",
+              "direction": "forward"
+            },
+            {
+              "wayId": "933369890",
+              "from": "8616810766",
+              "to": "8616810772",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1328072093",
+              "from": "8616810772",
+              "to": "36161407",
+              "direction": "forward"
+            },
+            {
+              "wayId": "933369889",
+              "from": "36161407",
+              "to": "36161408",
+              "direction": "forward"
+            },
+            {
+              "wayId": "335414139",
+              "from": "36161408",
+              "to": "36161435",
+              "direction": "forward"
+            },
+            {
+              "wayId": "916903750",
+              "from": "36161435",
+              "to": "36161410",
+              "direction": "forward"
+            },
+            {
+              "wayId": "28057895",
+              "from": "36161410",
+              "to": "36161411",
+              "direction": "forward"
+            },
+            {
+              "wayId": "28058028",
+              "from": "36161411",
+              "to": "308076858",
+              "direction": "forward"
+            },
+            {
+              "wayId": "916903749",
+              "from": "308076858",
+              "to": "36161414",
+              "direction": "forward"
+            },
+            {
+              "wayId": "86162922",
+              "from": "36161414",
+              "to": "1000021109",
+              "direction": "forward"
+            },
+            {
+              "wayId": "86162950",
+              "from": "1000021109",
+              "to": "1412113561",
+              "direction": "forward"
+            },
+            {
+              "wayId": "543954973",
+              "from": "1412113561",
+              "to": "3978156597",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1417597462",
+              "from": "3978156597",
+              "to": "588556941",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1531474222",
+              "from": "588556941",
+              "to": "13958322396",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1531474223",
+              "from": "13958322396",
+              "to": "11294819658",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1311028295",
+              "from": "11294819658",
+              "to": "12135658366",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1311028296",
+              "from": "12135658366",
+              "to": "12135658365",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1311028303",
+              "from": "12135658365",
+              "to": "11294819663",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1218944698",
+              "from": "11294819663",
+              "to": "308076972",
+              "direction": "forward"
+            },
+            {
+              "wayId": "187800171",
+              "from": "308076972",
+              "to": "308076980",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1003262061",
+              "from": "308076980",
+              "to": "588522233",
+              "direction": "forward"
+            },
+            {
+              "wayId": "1218939917",
+              "from": "588522233",
+              "to": "11295023854",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1218962506",
+              "from": "11295023854",
+              "to": "11295023853",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1218962505",
+              "from": "11295023853",
+              "to": "1038308039",
+              "direction": "backward"
+            },
+            {
+              "wayId": "1218962118",
+              "from": "1038308039",
+              "to": "814092554",
+              "direction": "forward"
+            },
+            {
+              "wayId": "67409690",
+              "from": "814092554",
+              "to": "814092549",
+              "direction": "forward"
+            },
+            {
+              "wayId": "83160711",
+              "from": "814092549",
+              "to": "8945081564",
+              "direction": "backward"
+            }
+          ],
+          "maximumLengthMetres": 2500
+        }
+      ],
+      "admission": "Only the three exact directed station pairs in all six complete PostAuto-121 patterns on 4/6 September 2026. Both directions follow the full documented western diversion; original platforms are attached within 15 m to reviewed road nodes, retaining distinct station arrivals. Require exact source-node joins, forward one-way/roundabout travel, ordinary bus access and no touching returned restrictions. No current OSM bus-121 relation was returned; project documents identify the corridor, not a surveyed lane path. The specific 2.0/2.5 km ceilings do not relax general detour guards. Preserve all prior failures and original calls/times. No map geometry extracted from project documents.",
+      "exclusions": [
+        "Closed original Sense bridge and adjacent temporary foot/cycle bridge",
+        "Bauumfahrung Stedtli construction sections",
+        "Parking-aisle and residential shortcuts outside the documented full western diversion",
+        "Automatic admission on other dates or for other routes/platforms",
+        "Temporary August station-stop relocation: dates outside both fixtures; original GTFS platforms remain unchanged"
+      ]
+    },
     "jongny": {
       "schemaVersion": 1,
       "id": "jongny-route-chain",
@@ -2619,6 +3649,10 @@
       "jongny": {
         "file": "data/fribourg-jongny-policy.json",
         "sha256": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f"
+      },
+      "laupen": {
+        "file": "data/fribourg-laupen-policy.json",
+        "sha256": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4"
       }
     },
     "completePatternsTested": 614

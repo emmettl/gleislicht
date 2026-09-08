@@ -191,6 +191,10 @@
     "jongny": {
       "file": "data/fribourg-jongny-policy.json",
       "sha256": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f"
+    },
+    "laupen": {
+      "file": "data/fribourg-laupen-policy.json",
+      "sha256": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4"
     }
   },
   "rail": {
