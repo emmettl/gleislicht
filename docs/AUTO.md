@@ -12,13 +12,13 @@ AUTO is Gleislicht's third transport grammar. It does not pretend to track cars.
 
 The first study follows the A1 through the Zürich region, from the Aargau side through Zürich to Winterthur. Its path is anchored by georeferenced sites in the current ASTRA / Federal Roads Office Measurement Site Table. It shares the national 06:45–08:45 clock and is a separately loaded static JSON artifact, so the railway-first opening payload is unchanged.
 
-The committed traffic values are **representative calibration**, not historical observations. ASTRA's realtime feed retains only the latest complete minute. The prototype uses deterministic morning curves to test the visual and interaction model over authentic detector geography. Authenticated A1 collection began on 6 September 2026 and was expanded to national collection on 7 September; those archives do not retroactively turn the committed calibration into observations.
+The public national study uses **recorded observations** from 8 September 2026. It contains every minute from 06:45 through 08:45 CEST, covering 718 accepted directional sites and 609 sections; the weakest accepted minute still covers 84.1% of sites. ASTRA's realtime feed retains only the latest complete minute, so Gleislicht records an append-only historical series before compilation. Authenticated A1 collection began on 6 September 2026 and expanded nationally on 7 September.
 
 The artifact says this in machine-readable metadata:
 
 ```text
-measurementKind: representative-calibration
-model: Traffic-flow reconstruction / no vehicle tracking
+measurementKind: recorded
+model: Section traffic-flow reconstruction / no vehicle tracking
 ```
 
 ## Reconstruction
@@ -29,8 +29,8 @@ The number shown in the status card is an approximate corridor occupancy derived
 
 ## Artifact
 
-- Builder: `npm run data:road`
-- Output: `public/data/swiss-road-morning.json`
+- Builder: `npm run data:road:compile:national`
+- Output: `public/data/swiss-road-national-manifest.json` and `public/data/swiss-road-national/`
 - Cadence: one minute
 - Window: 06:45–08:45 on the shared study day
 - Loading: only after AUTO is selected
@@ -55,7 +55,7 @@ npm run data:road:topology -- \
 
 Coordinates in the counter table are coarse, so a match is considered directly high confidence only within 800 metres and when a competing numbered road is at least 180 metres farther away. A second pass may accept a candidate when nearby directly accepted stations overwhelmingly support the same road. Remaining interchange ambiguity is resolved only when the Measurement Site Table's Alert-C location code maps to exactly one national road in FEDRO's TMC table. Anything farther than 1,500 metres remains `unmatched`. Direct, continuity-resolved and authoritative TMC-resolved sites participate in the section model.
 
-## From calibration to recorded data
+## Recorded data pipeline
 
 The repository includes an authenticated recorder for ASTRA's DATEX II 2.3 SOAP feed. It asks only for the eleven A1 counter groups used by this study, makes one pull after each minute publication, and writes append-only snapshots with receipt time, source publication time and detector-table version. The API key is read only from the process environment and the ignored recording directory is created with owner-only files.
 
@@ -86,7 +86,7 @@ npm run data:road:compile:national -- \
 
 The national renderer uses at most 1,500 light and 520 heavy vehicle marks across the network. Combined with hourly data chunks loaded on demand, this bounds the client workload while preserving one-minute source measurements. Road selection increases the visual sampling density of the selected corridor. These limits are implementation bounds, not a substitute for checking frame times on real devices.
 
-The output is deliberately separate from the public calibration until its date can be paired with matching rail and air studies and reviewed on real devices. Once the manifest is present, AUTO detects it automatically and replaces the calibration particles with observed minute conditions while retaining the disclosure that individual vehicles are synthetic.
+The recorded output remains separate from the A1 calibration. AUTO detects the manifest automatically and replaces the fallback particles with observed minute conditions while retaining the disclosure that individual vehicles are synthetic. The first public road recording is dated 8 September 2026; the currently committed rail and air studies retain their own source dates and share only the 06:45–08:45 playback clock.
 
 Each directional cross-section can contain several lanes. The compiler sums those parallel lane flows and uses a flow-weighted lane speed. The A1 compiler then takes the median across successive counter sites, because summing those sites would count essentially the same motorway stream repeatedly. A minute is usable only when at least 60% of the configured sites in both A1 directions, or 60% of accepted national directional sites, report usable light and heavy conditions. An explicitly zero vehicle flow remains usable when mean speed is absent: the compiled numeric speed is zero as an empty-class playback placeholder. Missing flows and positive flows without speed remain incomplete. The first national samples had approximately 88% usable directional-site coverage.
 
@@ -97,6 +97,6 @@ npm run data:road:compile -- \
   --output=public/data/swiss-road-recorded.json
 ```
 
-Compilation requires at least 60 complete, consecutive minutes by default and rejects gaps over 75 seconds, mixed Swiss service dates and sparse directions. Its output uses the existing browser contract but declares `measurementKind: recorded` plus the precise UTC range, complete-minute count and minimum coverage. It does not overwrite the calibration artifact by default: a measured road study should be paired with rail data for the same service date and reviewed before becoming the public default.
+Compilation requires at least 60 complete, consecutive minutes by default and rejects gaps over 75 seconds, mixed Swiss service dates and sparse directions. Its output uses the existing browser contract but declares `measurementKind: recorded` plus the precise UTC range, complete-minute count and minimum coverage. Publishing the manifest does not overwrite the calibration artifact, which remains a resilient fallback.
 
 Possible later studies include the A2 Gotthard approach and a full recorded day. `Fahrstrom` remains an appealing artwork title, but AUTO is the unambiguous interface name while the project also depicts railway traction infrastructure.

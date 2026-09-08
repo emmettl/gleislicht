@@ -131,7 +131,7 @@ test('LUFT can be isolated like a rail service category', async ({
   }
 })
 
-test('AUTO stays lazy, discloses reconstruction, and can be isolated', async ({
+test('AUTO stays lazy, discloses recorded reconstruction, and can be isolated', async ({
   page,
 }, testInfo) => {
   const roadRequests: string[] = []
@@ -168,7 +168,7 @@ test('AUTO stays lazy, discloses reconstruction, and can be isolated', async ({
     'Traffic-flow reconstruction / no vehicle tracking',
   )
   await expect(page.locator('.prototype-note')).toContainText(
-    'representative calibration',
+    'ASTRA one-minute observations',
   )
   await expect(page.locator('.prototype-note')).toContainText(
     '379/458 federal sites aligned',

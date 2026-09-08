@@ -64,6 +64,8 @@ The recorder was expanded to `national` on 7 September 2026 after verifying 991 
 
 National coverage means the accepted federal counters on the national-road topology, not every Swiss road. The topology has 718 accepted directional sites and 609 counter-to-counter sections; unmatched federal sites remain excluded.
 
+The first published national morning is 8 September 2026 from 06:45 through 08:45 CEST. All 121 expected minute snapshots passed the compiler's continuity gate, and accepted-site coverage ranged from 84.1% upward. The generated manifest and progressive chunks are public static artifacts; the raw R2 archive remains private.
+
 To export a complete Swiss civil day for compilation, create an R2 object read token scoped to `gleislicht-observations`, then expose its S3-compatible values only to the command process:
 
 ```sh

@@ -103,6 +103,20 @@ describe('national ASTRA study compilation', () => {
     expect(split.chunks[0].body.minutes).toHaveLength(2)
   })
 
+  it('keeps an inclusive final boundary in the preceding chunk', () => {
+    const study = {
+      metadata: { windowStart: 24_300, windowEnd: 31_500 },
+      siteIds: [],
+      sections: [],
+      minutes: [[24_300, []], [27_900, []], [31_500, []]],
+    }
+    const split = splitNationalRoadStudy(study, { chunkSeconds: 3_600 })
+    expect(split.manifest.chunks.map(({ id, minuteCount }) => [id, minuteCount])).toEqual([
+      ['0645-0745', 1],
+      ['0745-0845', 2],
+    ])
+  })
+
   it('retains national sites reporting no heavy vehicles without inventing missing flows', () => {
     const recorded = snapshot('45')
     for (const lane of recorded.measurements) {

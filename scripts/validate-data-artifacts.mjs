@@ -20,6 +20,7 @@ const air = await readJson('swiss-air-morning.json')
 const airDay = await readJson('swiss-air-day-manifest.json')
 const road = await readJson('swiss-road-morning.json')
 const roadTopology = await readJson('swiss-road-topology.json')
+const nationalRoad = await readJson('swiss-road-national-manifest.json')
 
 const artifacts = [morning, hubs, day]
 const serviceDates = new Set(artifacts.map((artifact) => artifact.metadata?.serviceDate))
@@ -250,11 +251,69 @@ assert(
   'National road topology contains malformed paths',
 )
 
+assert(
+  nationalRoad.metadata?.publisher === 'Federal Roads Office (ASTRA / FEDRO)',
+  'Recorded national road study has no ASTRA provenance',
+)
+assert(
+  nationalRoad.metadata?.measurementKind === 'recorded' &&
+    nationalRoad.metadata?.model === 'Section traffic-flow reconstruction / no vehicle tracking',
+  'Recorded national road study is missing its observation disclosure',
+)
+assert(
+  nationalRoad.metadata?.windowStart === 24_300 &&
+    nationalRoad.metadata?.windowEnd === 31_500 &&
+    nationalRoad.metadata?.sampleIntervalSeconds === 60 &&
+    nationalRoad.metadata?.completeMinutes === 121,
+  'Recorded national road study does not cover the complete 06:45–08:45 window',
+)
+assert(
+  nationalRoad.metadata?.minimumSiteCoverage >= 0.6 &&
+    nationalRoad.siteIds.length === nationalRoad.metadata.acceptedSites &&
+    nationalRoad.sections.length === nationalRoad.metadata.sections,
+  'Recorded national road study has insufficient site or section coverage',
+)
+assert(
+  Array.isArray(nationalRoad.chunks) &&
+    nationalRoad.chunks.length >= 2 &&
+    nationalRoad.chunks[0].windowStart === nationalRoad.metadata.windowStart &&
+    nationalRoad.chunks.at(-1).windowEnd === nationalRoad.metadata.windowEnd,
+  'Recorded national road study has incomplete progressive chunks',
+)
+
+const nationalRoadMinutes = []
+for (const [index, descriptor] of nationalRoad.chunks.entries()) {
+  const chunk = await readJson(descriptor.path)
+  assert(descriptor.windowStart < descriptor.windowEnd, `${descriptor.id} has an empty time window`)
+  assert(chunk.windowStart === descriptor.windowStart, `${descriptor.id} start time differs from its manifest`)
+  assert(chunk.windowEnd === descriptor.windowEnd, `${descriptor.id} end time differs from its manifest`)
+  assert(chunk.minutes.length === descriptor.minuteCount, `${descriptor.id} minute count differs from its manifest`)
+  assert(
+    chunk.minutes.reduce((sum, minute) => sum + minute[1].length, 0) === descriptor.valueCount,
+    `${descriptor.id} value count differs from its manifest`,
+  )
+  if (index > 0) {
+    assert(
+      descriptor.windowStart === nationalRoad.chunks[index - 1].windowEnd,
+      `${descriptor.id} is not contiguous with the preceding chunk`,
+    )
+  }
+  nationalRoadMinutes.push(...chunk.minutes)
+}
+assert(
+  nationalRoadMinutes.length === nationalRoad.metadata.completeMinutes &&
+    nationalRoadMinutes.every((minute, index) =>
+      index === 0 || minute[0] - nationalRoadMinutes[index - 1][0] === 60
+    ),
+  'Recorded national road minutes are incomplete or discontinuous',
+)
+
 console.log(
   `Validated national GTFS ${[...feedVersions][0]} for ${[...serviceDates][0]}: ` +
     `${morning.trains.length.toLocaleString('en')} morning trips, ` +
     `${day.tripCount.toLocaleString('en')} day trips, ${day.chunks.length} chunks and ` +
     `${air.tracks.length.toLocaleString('en')} morning aircraft and ` +
-    `${airDay.trackCount.toLocaleString('en')} day aircraft, and ` +
-    `${road.corridors[0].directions.length} reconstructed road directions.`,
+    `${airDay.trackCount.toLocaleString('en')} day aircraft, ` +
+    `${road.corridors[0].directions.length} calibration directions and ` +
+    `${nationalRoad.metadata.completeMinutes} recorded national road minutes.`,
 )

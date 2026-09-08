@@ -168,10 +168,14 @@ export function splitNationalRoadStudy(
   }
   const chunkGroups = new Map()
   for (const minute of study.minutes) {
+    const elapsed = minute[0] - study.metadata.windowStart
+    const finalBoundary =
+      elapsed > 0 &&
+      minute[0] === study.metadata.windowEnd &&
+      elapsed % chunkSeconds === 0
     const chunkStart =
       study.metadata.windowStart +
-      Math.floor((minute[0] - study.metadata.windowStart) / chunkSeconds) *
-        chunkSeconds
+      (Math.floor(elapsed / chunkSeconds) - (finalBoundary ? 1 : 0)) * chunkSeconds
     const minutes = chunkGroups.get(chunkStart) ?? []
     minutes.push(minute)
     chunkGroups.set(chunkStart, minutes)
