@@ -276,7 +276,11 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 **Next action:** Acquire all pages and metadata/terms, map timetable-field IDs to agency/route IDs, and measure TPF bus patterns. This supersedes the earlier no-export-found result. Representative GTFS agencies: `11`, `53`, `801`, `834`, `3004`.
 
-**Checked references:** [fr-layer](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2?f=pjson), [fr-count](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnCountOnly=true&f=json), [fr-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-bus-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=TYPE_LIGNE_VALEUR%20LIKE%20%27%25Bus%25%27&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-catalogue](https://geo.fr.ch/), [fr-terms-canonical](https://map.geo.fr.ch/help/fr/conditions_utilisation.### SO — Solothurn
+**Checked references:** [fr-layer](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2?f=pjson), [fr-count](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnCountOnly=true&f=json), [fr-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-bus-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=TYPE_LIGNE_VALEUR%20LIKE%20%27%25Bus%25%27&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-catalogue](https://geo.fr.ch/), [fr-terms-canonical](https://map.geo.fr.ch/help/fr/conditions_utilisation.htm).
+
+<a id="so"></a>
+
+### SO — Solothurn
 
 **Authority/publisher:** Amt für Verkehr und Tiefbau; Amt für Geoinformation Solothurn. **Review areas:** Solothurn/Grenchen; Olten/Gösgen/Gäu; Thal; Dorneck/Thierstein.
 
