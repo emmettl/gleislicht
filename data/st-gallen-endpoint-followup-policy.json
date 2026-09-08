@@ -41,6 +41,56 @@
       "validFrom": "2025-12-14",
       "pdfModifiedDate": "2026-01-12",
       "reviewedPage": 1
+    },
+    {
+      "id": "sommerau-extension",
+      "file": "gossau-sommerau-extension.html",
+      "url": "https://gossau24.ch/articles/376666-bessere-oev-erschliessung-fuer-die-sommerau",
+      "title": "Bessere ÖV-Erschliessung für die Sommerau",
+      "publisher": "Stadt Gossau, published via gossau24.ch",
+      "sha256": "ac1468005b2cf7cc903ec61f3910f3c6dda28493e3fba09dd827483d792650fd",
+      "bytes": 45634,
+      "retrievedAt": "2026-09-08T22:18:07.814224+00:00",
+      "publishedOn": "2026-04-27",
+      "effectiveFrom": "2026-06-01",
+      "reviewedPage": null
+    },
+    {
+      "id": "rueti-may",
+      "file": "rueti-construction-202605.pdf",
+      "url": "https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/planen-bauen/tiefbau/baustellen/grosse-baustellen/rueti/R%C3%BCti%20-%20Baustelleninfo%20Ferrachstr%20H%C3%A4rtiplatz%20Dorfstr%2001.06.2026%20bis%20Ende%20Okt.%2026.pdf",
+      "title": "Baustelleninfo Rüti/Dürnten, Mai 2026",
+      "publisher": "Kanton Zürich, Baudirektion, Tiefbauamt",
+      "sha256": "5868b7385af0b955992e19decf84824068ec674e26a354fd7f87f4a360c9bdd6",
+      "bytes": 3002451,
+      "retrievedAt": "2026-09-08T22:18:12.536222+00:00",
+      "publishedMonth": "2026-05",
+      "pdfModifiedDate": "2026-05-13",
+      "effectiveFrom": "2026-06-01",
+      "effectiveThrough": "2026-10-31",
+      "endDatePrecision": "Publisher says end of October; normalized to final calendar day.",
+      "reviewedPages": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "rueti-august",
+      "file": "rueti-construction-202608.pdf",
+      "url": "https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/planen-bauen/tiefbau/baustellen/grosse-baustellen/rueti/rueti_tann_vollsperrung_haertiplatz_belagseinbau_24_08_28_08_2026.pdf",
+      "title": "Baustelleninfo Dürnten/Rüti, August 2026",
+      "publisher": "Kanton Zürich, Baudirektion, Tiefbauamt",
+      "sha256": "5daec84b652763d5339dfed95bd1c92100088f0c0e25005b47e951199b29a5e9",
+      "bytes": 766700,
+      "retrievedAt": "2026-09-08T22:18:16.884884+00:00",
+      "publishedMonth": "2026-08",
+      "pdfModifiedDate": "2026-08-17",
+      "effectiveFrom": "2026-08-24",
+      "effectiveThrough": "2026-08-28",
+      "endDatePrecision": "Expected end; weather extension possible, no extension date asserted.",
+      "reviewedPages": [
+        1
+      ]
     }
   ],
   "cases": [
@@ -125,6 +175,94 @@
           }
         ]
       }
+    },
+    {
+      "routeId": "92-150-A-j26-1",
+      "evidenceId": "sommerau-extension",
+      "donorFeature": null,
+      "scanAllOperators": true,
+      "expectedPairs": [
+        {
+          "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:90327\",\"ch:1:sloid:12618\"]",
+          "geometrySha256": null
+        },
+        {
+          "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:12618\",\"ch:1:sloid:90327\"]",
+          "geometrySha256": null
+        }
+      ],
+      "expectedAllOperatorCandidates": [
+        {
+          "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:90327\",\"ch:1:sloid:12618\"]",
+          "candidates": []
+        },
+        {
+          "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:12618\",\"ch:1:sloid:90327\"]",
+          "candidates": []
+        }
+      ],
+      "decision": "Retain exclusion. The city announcement places the Sommerau extension on 1 June 2026, after the pinned March AL_OEV export. No individual regional/city source record, even across operators, supplies a passing path for either missing pair. Preserve the new timetable calls; obtain updated extension geometry.",
+      "events": [
+        {
+          "evidenceId": "sommerau-extension",
+          "expectedFixtureDates": [
+            "2026-09-04",
+            "2026-09-06"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "92-631-j26-1",
+      "evidenceId": "rueti-may",
+      "donorFeature": null,
+      "scanAllOperators": true,
+      "expectedPairs": [
+        {
+          "key": "[\"92-631-j26-1\",\"ch:1:sloid:76103::52\",\"ch:1:sloid:88036::50\"]",
+          "geometrySha256": null
+        },
+        {
+          "key": "[\"92-631-j26-1\",\"ch:1:sloid:88036::50\",\"ch:1:sloid:78564:0:404557\"]",
+          "geometrySha256": null
+        }
+      ],
+      "expectedAllOperatorCandidates": [
+        {
+          "key": "[\"92-631-j26-1\",\"ch:1:sloid:76103::52\",\"ch:1:sloid:88036::50\"]",
+          "candidates": [
+            {
+              "feature": "bus:138",
+              "name": "885 Rapperswil SG - Rüti ZH - Wald ZH - Goldingen - Atzmännig",
+              "operator": "ZVV",
+              "agencyIds": [
+                "838"
+              ],
+              "geometrySha256": "9cc3cd93f4c185f963be15c034e70136bfba9d2acd1c1c4746d6c0ebcba0e9df",
+              "maximumSnapMetres": 111.67181330510246,
+              "pathMetres": 484.0486237947878
+            }
+          ]
+        },
+        {
+          "key": "[\"92-631-j26-1\",\"ch:1:sloid:88036::50\",\"ch:1:sloid:78564:0:404557\"]",
+          "candidates": []
+        }
+      ],
+      "decision": "Retain exclusion. The May notice moves the Eschenbach-bound line-631 stop to Bandwiesstrasse from June through October, encompassing both fixtures. Across all operators, line 885 provides only a numerical Bahnhof-to-Bandwies candidate; no individual source record passes Bandwies-to-Ferrach. A complete verified diversion alignment remains necessary.",
+      "events": [
+        {
+          "evidenceId": "rueti-may",
+          "expectedFixtureDates": [
+            "2026-09-04",
+            "2026-09-06"
+          ]
+        },
+        {
+          "evidenceId": "rueti-august",
+          "expectedFixtureDates": []
+        }
+      ]
     }
   ]
 }

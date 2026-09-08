@@ -16,6 +16,7 @@ const ir16 = await json('data/bern-audit/ir16-followup.json')
 const tpfTerminal = await json('data/bern-audit/tpf-terminal-followup.json')
 const morges = await json('data/bern-audit/morges-followup.json')
 const interlaken = await json('data/bern-audit/interlaken-followup.json')
+const ic61 = await json('data/bern-audit/ic61-followup.json')
 const days = await Promise.all(summary.days.map(d => json(`data/bern-audit/${d.serviceDate}.json`)))
 const n = value => value.toLocaleString('en-GB')
 const pct = (a, b) => `${(100 * a / b).toFixed(2)}%`
@@ -341,6 +342,28 @@ The existing pinned federal acquisition is reused: **© Federal Office of Transp
 
 The rebuilt regional feed contains **36,803 Friday / 32,004 Sunday movements**, including unchanged representative headway motion. Both display dates pass the existing payload budgets and **5 m** display simplification bound. Full platform/topology evidence remains in the regional archive, source file and audit; compact display metadata retains its hash, dates, attribution and evidence reference. Remaining work includes IC5 through Zürich HB and the separately inventoried rail, bus and mountain failures.
 
+
+## IC61 corridor identity and remaining Interlaken routes
+
+The [IC61 follow-up audit](../data/bern-audit/ic61-followup.json), compared with release **8394320**, adds **one Friday / eight Sunday scheduled journeys**. All **36,803 Friday / 32,004 Sunday prior movements** retain every original source field, call/time and full-detail path. The feed now contains **36,804 / 32,012 movements**; headway instances are unchanged. The study still inventories every one of the 705 annual route records.
+
+The canton labels source **310_IC** generically as **IC**, with SBB as operator and the Basel–Bern–Thun–Interlaken corridor. Exact SBB **91-61-A-j26-1**, agency **11**, passenger line **IC61**, previously had no accepted operator/line association. The source feature links to official [timetable sheet 310](../data/bern-sources/ic61/timetable-310-2026.pdf). Its **2026 edition, dated 16 March 2026**, shows the numbered IC61 service and SBB operator in both directions on the corridor, including Basel and the original Bern/Thun/Spiez/Interlaken station order (pages **2 and 8** visually checked). The retained source is credited to **öv-info.ch / SBB**, acquired **8 September 2026 at 22:12:21 UTC**; exact URL, bytes and SHA-256 are pinned. The timetable supports identity only: its schedules and footnotes do not replace the pinned September GTFS calls, times or permissions.
+
+The [separate IC61 policy](../data/bern-ic61-policy.json) adds an exact route/agency/line/mode association with **310_IC** only within the two reviewed September fixtures. Generic IC matching is preserved, while other numbered IC, ICE and GPX records cannot inherit this association. The original crosswalk file and all seven seasonal results remain unchanged; the new dated association is covered by the IC61 policy hash. Full federal review pins **59 dated patterns** (**25 Friday / 34 Sunday**), **37 original stop records**, **71 directed bindings**, and **56 original standard-gauge source curves**. Every original full stop sequence and coordinate is checked; successful cantonal paths retain precedence. Interlaken platforms **5** and **7** bind to explicitly named FOT operating point **8519309**, tracks **5–8**. The depot continuation and metre-gauge groups remain excluded.
+
+IC61 admits **1 / 32 Friday** journeys and **8 / 65 Sunday** journeys. Both input direction IDs are tested on both dates; the admitted Friday journey is direction **0**, while Sunday admissions include **0 and 1**. Friday has **20** and Sunday **18** remaining unmatched directed pairs, with the federal review retaining Bern/Basel station-attachment failures under the unchanged **120 m** bound. The geometry review adds **16 Friday / 20 Sunday federal pair paths**, alongside newly associated successful cantonal pairs. No incomplete journey is admitted and no reverse Friday service is invented. All other route decisions and previously matched pair assessments remain unchanged.
+
+The wider Interlaken identity inventory is retained in the same audit. Counts below cover each entire route record on each date; the final column counts journeys actually calling Interlaken Ost. These records require their own reviewed associations and complete geometry; a compatible platform group alone is insufficient.
+
+${table(['Route / line', 'Friday admitted / candidate', 'Sunday admitted / candidate', 'Friday / Sunday Ost calls'], ic61.interlakenIdentityInventory.filter(r => r.date === '2026-09-04').map(r => {
+  const sunday = ic61.interlakenIdentityInventory.find(x => x.date === '2026-09-06' && x.routeId === r.routeId)
+  return [r.routeId + ' / ' + r.line, r.admittedJourneys + ' / ' + r.candidateJourneys, sunday.admittedJourneys + ' / ' + sunday.candidateJourneys, r.journeysCallingInterlakenOst + ' / ' + sunday.journeysCallingInterlakenOst]
+}))}
+
+Federal provenance remains **© Federal Office of Transport (FOT)**: catalogue **6 July 2021**, asset update **18 January 2025**, retained checksum recheck **8 September 2026**. The original acquisition, source-file inventory, transformation and attributed reuse terms remain in [sources.json](../public/data/bern-region/sources.json). Current alignment and individual running tracks remain unconfirmed. Original GTFS dates and source hashes are unchanged.
+
+Both display dates pass the existing budgets and **5 m** simplification bound. To accommodate the added geometry, display metadata now keeps source dates, credits, terms, hashes, documents and full-evidence references while the full road/cableway policies, rail model descriptions and source-file inventories stay in the archive and source file. This changes no coordinates, call endpoints, paths or journey fields. The Sunday manifest has **468 bytes** of remaining gzip budget; further expansion will need another measured payload review. Remaining priorities are Bern/Basel station attachments on IC61, through-station IC5 geometry at Zürich, and the separately inventoried route associations and bus/mountain failures.
+
 ## Winter and holiday fixtures
 
 The [seasonal audit](../data/bern-audit/seasonal-summary.json) and [ordered-pattern evidence](../data/bern-audit/seasonal-patterns.json.gz) cover seven extra civil days. Every admitted pattern passes complete original call, permission, timing and directed-path checks. September road contexts and construction geometry are disabled for these dates; Wiriehorn’s dated federal installation remains independently checked. The reviewed Schilthorn sections also pass the seven extra fixtures, adding 72 scheduled journeys per fixture except 1 August, which adds 78; these remain audit-only seasonal results.
@@ -405,14 +428,15 @@ node scripts/check-bern-ir66.mjs data/bern-audit/timetable-cache.json.gz # histo
 node scripts/check-bern-ir16.mjs data/bern-audit/timetable-cache.json.gz # historical IR16 batch
 node scripts/check-bern-tpf-terminal.mjs data/bern-audit/timetable-cache.json.gz # historical TPF terminal batch
 node scripts/check-bern-morges.mjs data/bern-audit/timetable-cache.json.gz # historical Morges batch
-node scripts/check-bern-interlaken.mjs data/bern-audit/timetable-cache.json.gz
+node scripts/check-bern-interlaken.mjs data/bern-audit/timetable-cache.json.gz # historical RE8 batch
+node scripts/check-bern-ic61.mjs data/bern-audit/timetable-cache.json.gz
 node scripts/audit-bern-seasonal.mjs --archive /private/tmp/GTFS_FP2026_20260902.zip
 node scripts/check-bern-seasonal.mjs
 # Publish the reviewed Friday display, or build the Sunday release separately.
 npm run data:bern:release
 npm run data:bern:docs
 npm run data:bern:release -- --date 2026-09-06 --output /private/tmp/bern-sunday-display
-npx vitest run scripts/bern-interlaken-geometry.test.mjs scripts/bern-morges-geometry.test.mjs scripts/bern-tpf-terminal.test.mjs scripts/bern-ir16-geometry.test.mjs scripts/bern-ir66-geometry.test.mjs scripts/bern-crosscanton-rail.test.mjs scripts/bern-regional-rail.test.mjs scripts/bern-rail-geometry.test.mjs scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/bern-regional-roads.test.mjs scripts/regional-refresh.test.mjs
+npx vitest run scripts/bern-ic61-geometry.test.mjs scripts/bern-interlaken-geometry.test.mjs scripts/bern-morges-geometry.test.mjs scripts/bern-tpf-terminal.test.mjs scripts/bern-ir16-geometry.test.mjs scripts/bern-ir66-geometry.test.mjs scripts/bern-crosscanton-rail.test.mjs scripts/bern-regional-rail.test.mjs scripts/bern-rail-geometry.test.mjs scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/bern-regional-roads.test.mjs scripts/regional-refresh.test.mjs
 npx playwright test e2e/bern.spec.ts
 npx vitest run scripts/bern-region.test.mjs scripts/basel-line-geometry.test.mjs \\
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs

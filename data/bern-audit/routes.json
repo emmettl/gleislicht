@@ -7930,54 +7930,56 @@
       "Interlaken-Oberhasli",
       "Thun"
     ],
-    "sourceLines": [],
+    "sourceLines": [
+      "310_IC"
+    ],
     "days": [
       {
         "date": "2026-09-04",
         "trips": 32,
-        "admittedTrips": 0,
+        "admittedTrips": 1,
         "scheduledTrips": 32,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 1,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 199,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 138,
         "segmentOccurrences": 199,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 138,
+        "admittedSegmentOccurrences": 7,
         "directedPairs": 49,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 29,
         "patterns": 25,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 1,
+        "admittedPatterns": 1,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 32
+          "incomplete-directed-pattern": 31
         }
       },
       {
         "date": "2026-09-06",
         "trips": 65,
-        "admittedTrips": 0,
+        "admittedTrips": 8,
         "scheduledTrips": 65,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 8,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 292,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 225,
         "segmentOccurrences": 292,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 225,
+        "admittedSegmentOccurrences": 46,
         "directedPairs": 56,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 38,
         "patterns": 34,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 8,
+        "admittedPatterns": 8,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 65
+          "incomplete-directed-pattern": 57
         }
       }
     ],
-    "status": "excluded"
+    "status": "partially-admitted"
   },
   {
     "id": "91-61-D-j26-1",

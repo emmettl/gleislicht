@@ -25,23 +25,33 @@ describe('Bern display release', () => {
     try {
       for (const date of ['2026-09-04', '2026-09-06']) {
         const report = await buildBernDay({ date, output })
-        expect(report.movements.total).toBe(date.endsWith('04') ? 36803 : 32004)
+        expect(report.movements.total).toBe(date.endsWith('04') ? 36804 : 32012)
         const { files } = await readRegionalDirectory(output, ['bern-region'], date)
         const archive = JSON.parse(await readFile(`public/data/bern-region/${date}/bern-region-day-manifest.json`))
         const display = JSON.parse(files.get('bern-region-day-manifest.json'))
-        for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement', 'interlakenSupplement']) {
+        for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement', 'interlakenSupplement', 'ic61Supplement']) {
           const compact = display.metadata.geometry[field], full = archive.metadata.geometry[field]
           expect(compact.policySha256).toBe(full.policySha256)
-          expect(compact.source).toEqual(full.source)
+          const { files: _files, ...source } = full.source
+          expect(compact.source).toEqual(source)
           expect(compact.sourceId).toBe(full.policy.sourceId)
-          expect(compact.model).toBe(full.policy.model)
+          expect(compact.model).toBeUndefined()
           expect(compact.limits).toEqual(full.policy.limits)
           expect(compact.documents).toEqual(full.policy.documents ?? [])
           expect(compact.fullEvidence).toEqual({ path: 'bern-region/sources.json', field })
           expect(compact.policy).toBeUndefined()
         }
+        for (const field of ['urbanSupplement', 'regionalRoadSupplement', 'mountainSupplement']) {
+          const compact = display.metadata.geometry[field], full = archive.metadata.geometry[field]
+          const { files: _files, ...source } = full.source ?? full.policy.roadSource
+          expect(compact.source).toEqual(source)
+          expect(compact.policySha256).toBe(full.policySha256)
+          expect(compact.documents).toEqual(full.policy.documents ?? [])
+          expect(compact.fullEvidence).toEqual({ path: 'bern-region/sources.json', field })
+          expect(compact.policy).toBeUndefined()
+        }
         expect(display.metadata.geometry.ir66Supplement.policySha256).toBe(archive.metadata.geometry.ir66Supplement.policySha256)
-        expect(display.metadata.geometry.ir66Supplement.source).toEqual(archive.metadata.geometry.ir66Supplement.source)
+        expect(display.metadata.geometry.ir66Supplement.source.sha256).toBe(archive.metadata.geometry.ir66Supplement.source.sha256)
         expect(display.metadata.geometry.ir66Supplement.documents).toEqual(archive.metadata.geometry.ir66Supplement.policy.documents)
         expect(archive.metadata.geometry.ir66Supplement.terminalEvidence).toHaveLength(9)
         expect(display.metadata.geometry.ir66Supplement.terminalEvidence).toBeUndefined()
@@ -73,6 +83,13 @@ describe('Bern display release', () => {
       d => { d.metadata.geometry.interlakenSupplement.policySha256 = '0'.repeat(64) },
       d => { d.metadata.geometry.interlakenSupplement.source.attribution = '' },
       d => { d.metadata.geometry.interlakenSupplement.fullEvidence.path = 'missing.json' },
+      d => { d.metadata.geometry.ic61Supplement.policySha256 = '0'.repeat(64) },
+      d => { d.metadata.geometry.ic61Supplement.documents = [] },
+      d => { d.metadata.geometry.ic61Supplement.source.attribution = '' },
+      d => { d.metadata.geometry.urbanSupplement.source.attribution = '' },
+      d => { d.metadata.geometry.urbanSupplement.policy = {}; d.metadata.geometry.urbanSupplement.source.attribution = '' },
+      d => { d.metadata.geometry.regionalRoadSupplement.fullEvidence.path = 'missing.json' },
+      d => { d.metadata.geometry.mountainSupplement.source.termsUrl = '' },
       d => { d.metadata.bernRelease.movements.scheduled++ },
       d => { d.metadata.serviceDate = '2026-09-08' },
     ]) {

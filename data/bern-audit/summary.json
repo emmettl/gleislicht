@@ -16,6 +16,7 @@
     "tpfTerminalPolicy": "3823828434d9b1b4ee97147c77a121f8c43eb6a1489b1d15a7bcf2ffcc9c78d8",
     "morgesPolicy": "ccd74bff8cca2457eee74f072f913c2773ff545fb68e20e146b0ded8ba5e16c3",
     "interlakenPolicy": "4a1c73b985e1e5f214a7051dcebea540a837a5c0e219b10e5bd62d42fe356e67",
+    "ic61Policy": "9d48fb385304c7c2ef73f77b76a8c3847ede3e3e40932ddc5c15117f1a20a393",
     "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
     "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
   },
@@ -25452,6 +25453,3750 @@
         }
       ]
     },
+    "ic61Supplement": {
+      "policySha256": "9d48fb385304c7c2ef73f77b76a8c3847ede3e3e40932ddc5c15117f1a20a393",
+      "policy": {
+        "schemaVersion": 1,
+        "sourceId": "bern-ic61-reviewed-fot-rail-20210706",
+        "sourceDirectory": "data/bern-sources/fot-rail",
+        "sourceMetadataSha256": "46ab3ed91471fde35bcb1b678410efe7ecab6bf1cf02027729f547545b94aaad",
+        "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "limits": {
+          "stationAttachmentMetres": 120,
+          "topologyAttachmentMetres": 120,
+          "detourRatio": 4.5,
+          "detourFloorMetres": 3000,
+          "simplificationMetres": 0
+        },
+        "gauges": [
+          "mm1435"
+        ],
+        "infrastructureOperators": [
+          "SBB CFF FFS",
+          "BLSN",
+          "BLS"
+        ],
+        "routes": [
+          {
+            "routeId": "91-61-A-j26-1",
+            "agencyId": "11",
+            "line": "IC61",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:10:0:19",
+                "toId": "ch:1:sloid:23:1:1",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500023"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:23:1:1",
+                "toId": "ch:1:sloid:26:1:1",
+                "operatingPointPair": [
+                  "8500023",
+                  "8500026"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087757",
+                  "ch14uvag00087758",
+                  "ch14uvag00087759"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:26:1:1",
+                "toId": "ch:1:sloid:218:7:12",
+                "operatingPointPair": [
+                  "8500026",
+                  "8500218"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087760",
+                  "ch14uvag00087761",
+                  "ch14uvag00087762",
+                  "ch14uvag00087763",
+                  "ch14uvag00087764",
+                  "ch14uvag00087765",
+                  "ch14uvag00240327"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:7:12",
+                "toId": "ch:1:sloid:7000:4:7",
+                "operatingPointPair": [
+                  "8500218",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7000:4:7",
+                "toId": "ch:1:sloid:7100:1:1",
+                "operatingPointPair": [
+                  "8507000",
+                  "8507100"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7100:1:1",
+                "toId": "ch:1:sloid:7483:0:90840",
+                "operatingPointPair": [
+                  "8507100",
+                  "8507483"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087443",
+                  "ch14uvag00087478",
+                  "ch14uvag00087479",
+                  "ch14uvag00087480",
+                  "ch14uvag00087481"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7483:0:90840",
+                "toId": "ch:1:sloid:7493:0:470772",
+                "operatingPointPair": [
+                  "8507483",
+                  "8507493"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087482",
+                  "ch14uvag00087483",
+                  "ch14uvag00087484",
+                  "ch14uvag00087485",
+                  "ch14uvag00087486",
+                  "ch14uvag00087487",
+                  "ch14uvag00087488"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7493:0:470772",
+                "toId": "ch:1:sloid:7492:0:581416",
+                "operatingPointPair": [
+                  "8507493",
+                  "8507492"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087489"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7492:0:460848",
+                "toId": "ch:1:sloid:7493:0:470772",
+                "operatingPointPair": [
+                  "8507492",
+                  "8507493"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087489"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7493:0:470772",
+                "toId": "ch:1:sloid:7483:0:341164",
+                "operatingPointPair": [
+                  "8507493",
+                  "8507483"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087488",
+                  "ch14uvag00087487",
+                  "ch14uvag00087486",
+                  "ch14uvag00087485",
+                  "ch14uvag00087484",
+                  "ch14uvag00087483",
+                  "ch14uvag00087482"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7483:0:341164",
+                "toId": "ch:1:sloid:7100:2:3",
+                "operatingPointPair": [
+                  "8507483",
+                  "8507100"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087481",
+                  "ch14uvag00087480",
+                  "ch14uvag00087479",
+                  "ch14uvag00087478",
+                  "ch14uvag00087443"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7100:2:3",
+                "toId": "ch:1:sloid:7000:3:6",
+                "operatingPointPair": [
+                  "8507100",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7483:0:341164",
+                "toId": "ch:1:sloid:7100:2:2",
+                "operatingPointPair": [
+                  "8507483",
+                  "8507100"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087481",
+                  "ch14uvag00087480",
+                  "ch14uvag00087479",
+                  "ch14uvag00087478",
+                  "ch14uvag00087443"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7100:2:2",
+                "toId": "ch:1:sloid:7000:3:5",
+                "operatingPointPair": [
+                  "8507100",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7100:2:2",
+                "toId": "ch:1:sloid:7000:4:7",
+                "operatingPointPair": [
+                  "8507100",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7492:0:581416",
+                "toId": "ch:1:sloid:7493:0:470772",
+                "operatingPointPair": [
+                  "8507492",
+                  "8507493"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087489"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7100:2:3",
+                "toId": "ch:1:sloid:7000:3:5",
+                "operatingPointPair": [
+                  "8507100",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7000:3:5",
+                "toId": "ch:1:sloid:218:3:4",
+                "operatingPointPair": [
+                  "8507000",
+                  "8500218"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:218:3:4",
+                "toId": "ch:1:sloid:10:4:8",
+                "operatingPointPair": [
+                  "8500218",
+                  "8500010"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00240327",
+                  "ch14uvag00087765",
+                  "ch14uvag00087764",
+                  "ch14uvag00087763",
+                  "ch14uvag00087762",
+                  "ch14uvag00087761",
+                  "ch14uvag00087760",
+                  "ch14uvag00087759",
+                  "ch14uvag00087758",
+                  "ch14uvag00087757",
+                  "ch14uvag00087756",
+                  "ch14uvag00240325",
+                  "ch14uvag00087749",
+                  "ch14uvag00087825",
+                  "ch14uvag00240365",
+                  "ch14uvag00240382",
+                  "ch14uvag00087813",
+                  "ch14uvag00087812",
+                  "ch14uvag00087811",
+                  "ch14uvag00087745"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:3:4",
+                "toId": "ch:1:sloid:10:3:6",
+                "operatingPointPair": [
+                  "8500218",
+                  "8500010"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00240327",
+                  "ch14uvag00087765",
+                  "ch14uvag00087764",
+                  "ch14uvag00087763",
+                  "ch14uvag00087762",
+                  "ch14uvag00087761",
+                  "ch14uvag00087760",
+                  "ch14uvag00087759",
+                  "ch14uvag00087758",
+                  "ch14uvag00087757",
+                  "ch14uvag00087756",
+                  "ch14uvag00240325",
+                  "ch14uvag00087749",
+                  "ch14uvag00087825",
+                  "ch14uvag00240365",
+                  "ch14uvag00240382",
+                  "ch14uvag00087813",
+                  "ch14uvag00087812",
+                  "ch14uvag00087811",
+                  "ch14uvag00087745"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:3:4",
+                "toId": "ch:1:sloid:10:4:7",
+                "operatingPointPair": [
+                  "8500218",
+                  "8500010"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00240327",
+                  "ch14uvag00087765",
+                  "ch14uvag00087764",
+                  "ch14uvag00087763",
+                  "ch14uvag00087762",
+                  "ch14uvag00087761",
+                  "ch14uvag00087760",
+                  "ch14uvag00087759",
+                  "ch14uvag00087758",
+                  "ch14uvag00087757",
+                  "ch14uvag00087756",
+                  "ch14uvag00240325",
+                  "ch14uvag00087749",
+                  "ch14uvag00087825",
+                  "ch14uvag00240365",
+                  "ch14uvag00240382",
+                  "ch14uvag00087813",
+                  "ch14uvag00087812",
+                  "ch14uvag00087811",
+                  "ch14uvag00087745"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7000:3:5",
+                "toId": "ch:1:sloid:218:4:7",
+                "operatingPointPair": [
+                  "8507000",
+                  "8500218"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:218:4:7",
+                "toId": "ch:1:sloid:23:2:4",
+                "operatingPointPair": [
+                  "8500218",
+                  "8500023"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00240327",
+                  "ch14uvag00087765",
+                  "ch14uvag00087764",
+                  "ch14uvag00087763",
+                  "ch14uvag00087762",
+                  "ch14uvag00087761",
+                  "ch14uvag00087760",
+                  "ch14uvag00087759",
+                  "ch14uvag00087758",
+                  "ch14uvag00087757"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:23:2:4",
+                "toId": "ch:1:sloid:10:4:7",
+                "operatingPointPair": [
+                  "8500023",
+                  "8500010"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087756",
+                  "ch14uvag00240325",
+                  "ch14uvag00087749",
+                  "ch14uvag00087825",
+                  "ch14uvag00240365",
+                  "ch14uvag00240382",
+                  "ch14uvag00087813",
+                  "ch14uvag00087812",
+                  "ch14uvag00087811",
+                  "ch14uvag00087745"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:23:2:4",
+                "toId": "ch:1:sloid:10:4:8",
+                "operatingPointPair": [
+                  "8500023",
+                  "8500010"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087756",
+                  "ch14uvag00240325",
+                  "ch14uvag00087749",
+                  "ch14uvag00087825",
+                  "ch14uvag00240365",
+                  "ch14uvag00240382",
+                  "ch14uvag00087813",
+                  "ch14uvag00087812",
+                  "ch14uvag00087811",
+                  "ch14uvag00087745"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:23:2:4",
+                "toId": "ch:1:sloid:10:3:6",
+                "operatingPointPair": [
+                  "8500023",
+                  "8500010"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087756",
+                  "ch14uvag00240325",
+                  "ch14uvag00087749",
+                  "ch14uvag00087825",
+                  "ch14uvag00240365",
+                  "ch14uvag00240382",
+                  "ch14uvag00087813",
+                  "ch14uvag00087812",
+                  "ch14uvag00087811",
+                  "ch14uvag00087745"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:23:2:4",
+                "toId": "ch:1:sloid:10:7:14",
+                "operatingPointPair": [
+                  "8500023",
+                  "8500010"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7000:3:6",
+                "toId": "ch:1:sloid:7006:1:1",
+                "operatingPointPair": [
+                  "8507000",
+                  "8507006"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7006:1:1",
+                "toId": "ch:1:sloid:7100:1:1",
+                "operatingPointPair": [
+                  "8507006",
+                  "8507100"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7493:0:470772",
+                "toId": "ch:1:sloid:7492:0:460848",
+                "operatingPointPair": [
+                  "8507493",
+                  "8507492"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087489"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7100:2:2",
+                "toId": "ch:1:sloid:7006:2:2",
+                "operatingPointPair": [
+                  "8507100",
+                  "8507006"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087408",
+                  "ch14uvag00087407",
+                  "ch14uvag00087406",
+                  "ch14uvag00087405",
+                  "ch14uvag00087404"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7006:2:2",
+                "toId": "ch:1:sloid:7000:3:5",
+                "operatingPointPair": [
+                  "8507006",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:218:3:4",
+                "toId": "ch:1:sloid:23:2:4",
+                "operatingPointPair": [
+                  "8500218",
+                  "8500023"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00240327",
+                  "ch14uvag00087765",
+                  "ch14uvag00087764",
+                  "ch14uvag00087763",
+                  "ch14uvag00087762",
+                  "ch14uvag00087761",
+                  "ch14uvag00087760",
+                  "ch14uvag00087759",
+                  "ch14uvag00087758",
+                  "ch14uvag00087757"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:23:2:4",
+                "toId": "ch:1:sloid:10:8:16",
+                "operatingPointPair": [
+                  "8500023",
+                  "8500010"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:10:4:7",
+                "toId": "ch:1:sloid:218:7:12",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500218"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087745",
+                  "ch14uvag00087811",
+                  "ch14uvag00087812",
+                  "ch14uvag00087813",
+                  "ch14uvag00240382",
+                  "ch14uvag00240365",
+                  "ch14uvag00087825",
+                  "ch14uvag00087749",
+                  "ch14uvag00240325",
+                  "ch14uvag00087756",
+                  "ch14uvag00087757",
+                  "ch14uvag00087758",
+                  "ch14uvag00087759",
+                  "ch14uvag00087760",
+                  "ch14uvag00087761",
+                  "ch14uvag00087762",
+                  "ch14uvag00087763",
+                  "ch14uvag00087764",
+                  "ch14uvag00087765",
+                  "ch14uvag00240327"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:10:4:8",
+                "toId": "ch:1:sloid:218:7:12",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500218"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087745",
+                  "ch14uvag00087811",
+                  "ch14uvag00087812",
+                  "ch14uvag00087813",
+                  "ch14uvag00240382",
+                  "ch14uvag00240365",
+                  "ch14uvag00087825",
+                  "ch14uvag00087749",
+                  "ch14uvag00240325",
+                  "ch14uvag00087756",
+                  "ch14uvag00087757",
+                  "ch14uvag00087758",
+                  "ch14uvag00087759",
+                  "ch14uvag00087760",
+                  "ch14uvag00087761",
+                  "ch14uvag00087762",
+                  "ch14uvag00087763",
+                  "ch14uvag00087764",
+                  "ch14uvag00087765",
+                  "ch14uvag00240327"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:7:12",
+                "toId": "ch:1:sloid:7000:3:6",
+                "operatingPointPair": [
+                  "8500218",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7000:3:6",
+                "toId": "ch:1:sloid:7100:1:1",
+                "operatingPointPair": [
+                  "8507000",
+                  "8507100"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:10:5:10",
+                "toId": "ch:1:sloid:218:7:12",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500218"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:10:4:7",
+                "toId": "ch:1:sloid:23:1:1",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500023"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087745",
+                  "ch14uvag00087811",
+                  "ch14uvag00087812",
+                  "ch14uvag00087813",
+                  "ch14uvag00240382",
+                  "ch14uvag00240365",
+                  "ch14uvag00087825",
+                  "ch14uvag00087749",
+                  "ch14uvag00240325",
+                  "ch14uvag00087756"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:23:1:1",
+                "toId": "ch:1:sloid:218:6:11",
+                "operatingPointPair": [
+                  "8500023",
+                  "8500218"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087757",
+                  "ch14uvag00087758",
+                  "ch14uvag00087759",
+                  "ch14uvag00087760",
+                  "ch14uvag00087761",
+                  "ch14uvag00087762",
+                  "ch14uvag00087763",
+                  "ch14uvag00087764",
+                  "ch14uvag00087765",
+                  "ch14uvag00240327"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:6:11",
+                "toId": "ch:1:sloid:7000:3:6",
+                "operatingPointPair": [
+                  "8500218",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:23:1:1",
+                "toId": "ch:1:sloid:218:6:10",
+                "operatingPointPair": [
+                  "8500023",
+                  "8500218"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087757",
+                  "ch14uvag00087758",
+                  "ch14uvag00087759",
+                  "ch14uvag00087760",
+                  "ch14uvag00087761",
+                  "ch14uvag00087762",
+                  "ch14uvag00087763",
+                  "ch14uvag00087764",
+                  "ch14uvag00087765",
+                  "ch14uvag00240327"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:6:10",
+                "toId": "ch:1:sloid:7000:5:9",
+                "operatingPointPair": [
+                  "8500218",
+                  "8507000"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087767",
+                  "ch14uvag00087637",
+                  "ch14uvag00087638",
+                  "ch14uvag00087524",
+                  "ch14uvag00087523",
+                  "ch14uvag00087522",
+                  "ch14uvag00087660",
+                  "ch14uvag00087661",
+                  "ch14uvag00087662",
+                  "ch14uvag00139692",
+                  "ch14uvag00139673"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7000:5:9",
+                "toId": "ch:1:sloid:7100:1:1",
+                "operatingPointPair": [
+                  "8507000",
+                  "8507100"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00139673",
+                  "ch14uvag00139692",
+                  "ch14uvag00087397",
+                  "ch14uvag00087398",
+                  "ch14uvag00087399",
+                  "ch14uvag00087400",
+                  "ch14uvag00087401",
+                  "ch14uvag00087402",
+                  "ch14uvag00087403",
+                  "ch14uvag00087404",
+                  "ch14uvag00087405",
+                  "ch14uvag00087406",
+                  "ch14uvag00087407",
+                  "ch14uvag00087408"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:10:2:3",
+                "toId": "ch:1:sloid:23:1:1",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500023"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:218:6:11",
+                "toId": "ch:1:sloid:7000:4:8",
+                "operatingPointPair": [
+                  "8500218",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7000:4:8",
+                "toId": "ch:1:sloid:7100:1:1",
+                "operatingPointPair": [
+                  "8507000",
+                  "8507100"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:10:3:6",
+                "toId": "ch:1:sloid:23:1:1",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500023"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087745",
+                  "ch14uvag00087811",
+                  "ch14uvag00087812",
+                  "ch14uvag00087813",
+                  "ch14uvag00240382",
+                  "ch14uvag00240365",
+                  "ch14uvag00087825",
+                  "ch14uvag00087749",
+                  "ch14uvag00240325",
+                  "ch14uvag00087756"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:7:12",
+                "toId": "ch:1:sloid:7000:5:9",
+                "operatingPointPair": [
+                  "8500218",
+                  "8507000"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087767",
+                  "ch14uvag00087637",
+                  "ch14uvag00087638",
+                  "ch14uvag00087524",
+                  "ch14uvag00087523",
+                  "ch14uvag00087522",
+                  "ch14uvag00087660",
+                  "ch14uvag00087661",
+                  "ch14uvag00087662",
+                  "ch14uvag00139692",
+                  "ch14uvag00139673"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7000:3:5",
+                "toId": "ch:1:sloid:7100:1:1",
+                "operatingPointPair": [
+                  "8507000",
+                  "8507100"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7000:4:8",
+                "toId": "ch:1:sloid:218:4:7",
+                "operatingPointPair": [
+                  "8507000",
+                  "8500218"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7100:2:2",
+                "toId": "ch:1:sloid:7000:3:6",
+                "operatingPointPair": [
+                  "8507100",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7100:2:2",
+                "toId": "ch:1:sloid:7000:1:2",
+                "operatingPointPair": [
+                  "8507100",
+                  "8507000"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087408",
+                  "ch14uvag00087407",
+                  "ch14uvag00087406",
+                  "ch14uvag00087405",
+                  "ch14uvag00087404",
+                  "ch14uvag00087403",
+                  "ch14uvag00087402",
+                  "ch14uvag00087401",
+                  "ch14uvag00087400",
+                  "ch14uvag00087399",
+                  "ch14uvag00087398",
+                  "ch14uvag00087397",
+                  "ch14uvag00139692",
+                  "ch14uvag00139673"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7000:3:6",
+                "toId": "ch:1:sloid:218:4:7",
+                "operatingPointPair": [
+                  "8507000",
+                  "8500218"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:218:4:7",
+                "toId": "ch:1:sloid:10:4:7",
+                "operatingPointPair": [
+                  "8500218",
+                  "8500010"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00240327",
+                  "ch14uvag00087765",
+                  "ch14uvag00087764",
+                  "ch14uvag00087763",
+                  "ch14uvag00087762",
+                  "ch14uvag00087761",
+                  "ch14uvag00087760",
+                  "ch14uvag00087759",
+                  "ch14uvag00087758",
+                  "ch14uvag00087757",
+                  "ch14uvag00087756",
+                  "ch14uvag00240325",
+                  "ch14uvag00087749",
+                  "ch14uvag00087825",
+                  "ch14uvag00240365",
+                  "ch14uvag00240382",
+                  "ch14uvag00087813",
+                  "ch14uvag00087812",
+                  "ch14uvag00087811",
+                  "ch14uvag00087745"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:4:7",
+                "toId": "ch:1:sloid:10:4:8",
+                "operatingPointPair": [
+                  "8500218",
+                  "8500010"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00240327",
+                  "ch14uvag00087765",
+                  "ch14uvag00087764",
+                  "ch14uvag00087763",
+                  "ch14uvag00087762",
+                  "ch14uvag00087761",
+                  "ch14uvag00087760",
+                  "ch14uvag00087759",
+                  "ch14uvag00087758",
+                  "ch14uvag00087757",
+                  "ch14uvag00087756",
+                  "ch14uvag00240325",
+                  "ch14uvag00087749",
+                  "ch14uvag00087825",
+                  "ch14uvag00240365",
+                  "ch14uvag00240382",
+                  "ch14uvag00087813",
+                  "ch14uvag00087812",
+                  "ch14uvag00087811",
+                  "ch14uvag00087745"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:4:7",
+                "toId": "ch:1:sloid:10:3:5",
+                "operatingPointPair": [
+                  "8500218",
+                  "8500010"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00240327",
+                  "ch14uvag00087765",
+                  "ch14uvag00087764",
+                  "ch14uvag00087763",
+                  "ch14uvag00087762",
+                  "ch14uvag00087761",
+                  "ch14uvag00087760",
+                  "ch14uvag00087759",
+                  "ch14uvag00087758",
+                  "ch14uvag00087757",
+                  "ch14uvag00087756",
+                  "ch14uvag00240325",
+                  "ch14uvag00087749",
+                  "ch14uvag00087825",
+                  "ch14uvag00240365",
+                  "ch14uvag00240382",
+                  "ch14uvag00087813",
+                  "ch14uvag00087812",
+                  "ch14uvag00087811",
+                  "ch14uvag00087745"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:4:7",
+                "toId": "ch:1:sloid:10_gen:ch:1:sloid:10:4:8_pf:8AB",
+                "operatingPointPair": [
+                  "8500218",
+                  "8500010"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00240327",
+                  "ch14uvag00087765",
+                  "ch14uvag00087764",
+                  "ch14uvag00087763",
+                  "ch14uvag00087762",
+                  "ch14uvag00087761",
+                  "ch14uvag00087760",
+                  "ch14uvag00087759",
+                  "ch14uvag00087758",
+                  "ch14uvag00087757",
+                  "ch14uvag00087756",
+                  "ch14uvag00240325",
+                  "ch14uvag00087749",
+                  "ch14uvag00087825",
+                  "ch14uvag00240365",
+                  "ch14uvag00240382",
+                  "ch14uvag00087813",
+                  "ch14uvag00087812",
+                  "ch14uvag00087811",
+                  "ch14uvag00087745"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7006:2:2",
+                "toId": "ch:1:sloid:7000:4:7",
+                "operatingPointPair": [
+                  "8507006",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:7000:4:7",
+                "toId": "ch:1:sloid:218:3:4",
+                "operatingPointPair": [
+                  "8507000",
+                  "8500218"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:10:5:9",
+                "toId": "ch:1:sloid:218:7:12",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500218"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:218:6:11",
+                "toId": "ch:1:sloid:7000:4:7",
+                "operatingPointPair": [
+                  "8500218",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:10:3:6",
+                "toId": "ch:1:sloid:218:7:12",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500218"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087745",
+                  "ch14uvag00087811",
+                  "ch14uvag00087812",
+                  "ch14uvag00087813",
+                  "ch14uvag00240382",
+                  "ch14uvag00240365",
+                  "ch14uvag00087825",
+                  "ch14uvag00087749",
+                  "ch14uvag00240325",
+                  "ch14uvag00087756",
+                  "ch14uvag00087757",
+                  "ch14uvag00087758",
+                  "ch14uvag00087759",
+                  "ch14uvag00087760",
+                  "ch14uvag00087761",
+                  "ch14uvag00087762",
+                  "ch14uvag00087763",
+                  "ch14uvag00087764",
+                  "ch14uvag00087765",
+                  "ch14uvag00240327"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7000:1:2",
+                "toId": "ch:1:sloid:7002:2:2",
+                "operatingPointPair": [
+                  "8507000",
+                  "8507002"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00139673",
+                  "ch14uvag00139692",
+                  "ch14uvag00087397",
+                  "ch14uvag00087398",
+                  "ch14uvag00087399"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7002:2:2",
+                "toId": "ch:1:sloid:7003:2:2",
+                "operatingPointPair": [
+                  "8507002",
+                  "8507003"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087400"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7003:2:2",
+                "toId": "ch:1:sloid:7006:1:1",
+                "operatingPointPair": [
+                  "8507003",
+                  "8507006"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:10:7:14",
+                "toId": "ch:1:sloid:23:1:1",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500023"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              },
+              {
+                "fromId": "ch:1:sloid:10:3:5",
+                "toId": "ch:1:sloid:23:1:1",
+                "operatingPointPair": [
+                  "8500010",
+                  "8500023"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087745",
+                  "ch14uvag00087811",
+                  "ch14uvag00087812",
+                  "ch14uvag00087813",
+                  "ch14uvag00240382",
+                  "ch14uvag00240365",
+                  "ch14uvag00087825",
+                  "ch14uvag00087749",
+                  "ch14uvag00240325",
+                  "ch14uvag00087756"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:23:1:1",
+                "toId": "ch:1:sloid:218:7:12",
+                "operatingPointPair": [
+                  "8500023",
+                  "8500218"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087757",
+                  "ch14uvag00087758",
+                  "ch14uvag00087759",
+                  "ch14uvag00087760",
+                  "ch14uvag00087761",
+                  "ch14uvag00087762",
+                  "ch14uvag00087763",
+                  "ch14uvag00087764",
+                  "ch14uvag00087765",
+                  "ch14uvag00240327"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:218:7:12",
+                "toId": "ch:1:sloid:7000:3:5",
+                "operatingPointPair": [
+                  "8500218",
+                  "8507000"
+                ],
+                "sourceSegments": [],
+                "rejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contextReason": "rail-station-attachment-too-far"
+                }
+              }
+            ]
+          }
+        ],
+        "admission": "Exact SBB IC61 91-61-A-j26-1, agency 11, associated with cantonal 310_IC using its linked official 2026 timetable sheet. Every full dated input pattern and original coordinate is pinned. Only missing pairs may use reviewed federal geometry; only complete unconditional journeys are admitted.",
+        "model": "Exact IC61 route identity and full original stop patterns; explicit Interlaken Ost tracks 5–8 operating point; selected original FOT standard-gauge SBB/BLSN/BLS curves. Unchanged limits; unresolved Bern/Basel attachments remain rejected. FOT catalogue 2021-07-06, asset updated 2025-01-18, checksum rechecked 2026-09-08; current running tracks unconfirmed.",
+        "operatingPointOverrides": [
+          {
+            "sourceNumber": "8507492",
+            "targetNumber": "8519309",
+            "expectedName": "Interlaken Ost [Gleis 5-8]",
+            "routeIds": [
+              "91-61-A-j26-1"
+            ]
+          }
+        ],
+        "interlaken": {
+          "genericNode": {
+            "id": "ch14uvag00139699",
+            "number": "8507492",
+            "name": "Interlaken Ost",
+            "coordinate": [
+              7.869016,
+              46.690505
+            ]
+          },
+          "targetNode": {
+            "id": "ch14uvag00165678",
+            "number": "8519309",
+            "name": "Interlaken Ost [Gleis 5-8]",
+            "coordinate": [
+              7.868937,
+              46.690837
+            ]
+          },
+          "curve": {
+            "id": "ch14uvag00087489",
+            "start": "ch14uvag00089321",
+            "end": "ch14uvag00165678",
+            "length": 1948.023915934484,
+            "points": [
+              [
+                7.851334,
+                46.682636
+              ],
+              [
+                7.851353,
+                46.682725
+              ],
+              [
+                7.851373,
+                46.682813
+              ],
+              [
+                7.851393,
+                46.682902
+              ],
+              [
+                7.851413,
+                46.682991
+              ],
+              [
+                7.851433,
+                46.68308
+              ],
+              [
+                7.851453,
+                46.683169
+              ],
+              [
+                7.851472,
+                46.683258
+              ],
+              [
+                7.851492,
+                46.683347
+              ],
+              [
+                7.851512,
+                46.683436
+              ],
+              [
+                7.851532,
+                46.683525
+              ],
+              [
+                7.851552,
+                46.683614
+              ],
+              [
+                7.851572,
+                46.683703
+              ],
+              [
+                7.851592,
+                46.683792
+              ],
+              [
+                7.851611,
+                46.68388
+              ],
+              [
+                7.851631,
+                46.683969
+              ],
+              [
+                7.851651,
+                46.684058
+              ],
+              [
+                7.851672,
+                46.684147
+              ],
+              [
+                7.851693,
+                46.684236
+              ],
+              [
+                7.851715,
+                46.684324
+              ],
+              [
+                7.851739,
+                46.684413
+              ],
+              [
+                7.851765,
+                46.684501
+              ],
+              [
+                7.851793,
+                46.684589
+              ],
+              [
+                7.851823,
+                46.684677
+              ],
+              [
+                7.851856,
+                46.684764
+              ],
+              [
+                7.851892,
+                46.68485
+              ],
+              [
+                7.851932,
+                46.684936
+              ],
+              [
+                7.851975,
+                46.685021
+              ],
+              [
+                7.852023,
+                46.685104
+              ],
+              [
+                7.852074,
+                46.685187
+              ],
+              [
+                7.852129,
+                46.685269
+              ],
+              [
+                7.852189,
+                46.685349
+              ],
+              [
+                7.852252,
+                46.685428
+              ],
+              [
+                7.852319,
+                46.685505
+              ],
+              [
+                7.852389,
+                46.68558
+              ],
+              [
+                7.852464,
+                46.685654
+              ],
+              [
+                7.852541,
+                46.685727
+              ],
+              [
+                7.852623,
+                46.685797
+              ],
+              [
+                7.852707,
+                46.685866
+              ],
+              [
+                7.852793,
+                46.685934
+              ],
+              [
+                7.85288,
+                46.686001
+              ],
+              [
+                7.852968,
+                46.686067
+              ],
+              [
+                7.853056,
+                46.686134
+              ],
+              [
+                7.853144,
+                46.6862
+              ],
+              [
+                7.853584,
+                46.686533
+              ],
+              [
+                7.853672,
+                46.6866
+              ],
+              [
+                7.853759,
+                46.686667
+              ],
+              [
+                7.853844,
+                46.686735
+              ],
+              [
+                7.853928,
+                46.686804
+              ],
+              [
+                7.85401,
+                46.686874
+              ],
+              [
+                7.854088,
+                46.686946
+              ],
+              [
+                7.854162,
+                46.68702
+              ],
+              [
+                7.854233,
+                46.687096
+              ],
+              [
+                7.8543,
+                46.687173
+              ],
+              [
+                7.854363,
+                46.687252
+              ],
+              [
+                7.854422,
+                46.687332
+              ],
+              [
+                7.854477,
+                46.687414
+              ],
+              [
+                7.854529,
+                46.687496
+              ],
+              [
+                7.854578,
+                46.68758
+              ],
+              [
+                7.854625,
+                46.687664
+              ],
+              [
+                7.854671,
+                46.687748
+              ],
+              [
+                7.854716,
+                46.687832
+              ],
+              [
+                7.854761,
+                46.687917
+              ],
+              [
+                7.854851,
+                46.688086
+              ],
+              [
+                7.854896,
+                46.68817
+              ],
+              [
+                7.854941,
+                46.688254
+              ],
+              [
+                7.854986,
+                46.688339
+              ],
+              [
+                7.855032,
+                46.688423
+              ],
+              [
+                7.855078,
+                46.688507
+              ],
+              [
+                7.855126,
+                46.688591
+              ],
+              [
+                7.855175,
+                46.688675
+              ],
+              [
+                7.855225,
+                46.688758
+              ],
+              [
+                7.855276,
+                46.68884
+              ],
+              [
+                7.855327,
+                46.688923
+              ],
+              [
+                7.855378,
+                46.689006
+              ],
+              [
+                7.855633,
+                46.68942
+              ],
+              [
+                7.855684,
+                46.689503
+              ],
+              [
+                7.855737,
+                46.689585
+              ],
+              [
+                7.855792,
+                46.689667
+              ],
+              [
+                7.855851,
+                46.689747
+              ],
+              [
+                7.855914,
+                46.689826
+              ],
+              [
+                7.855982,
+                46.689903
+              ],
+              [
+                7.856055,
+                46.689978
+              ],
+              [
+                7.856132,
+                46.69005
+              ],
+              [
+                7.856213,
+                46.69012
+              ],
+              [
+                7.856299,
+                46.690188
+              ],
+              [
+                7.856389,
+                46.690254
+              ],
+              [
+                7.856483,
+                46.690316
+              ],
+              [
+                7.85658,
+                46.690376
+              ],
+              [
+                7.856681,
+                46.690433
+              ],
+              [
+                7.856786,
+                46.690487
+              ],
+              [
+                7.856894,
+                46.690538
+              ],
+              [
+                7.857004,
+                46.690586
+              ],
+              [
+                7.857118,
+                46.69063
+              ],
+              [
+                7.857234,
+                46.690672
+              ],
+              [
+                7.857353,
+                46.690709
+              ],
+              [
+                7.857474,
+                46.690744
+              ],
+              [
+                7.857596,
+                46.690775
+              ],
+              [
+                7.85772,
+                46.690803
+              ],
+              [
+                7.857846,
+                46.690828
+              ],
+              [
+                7.857973,
+                46.690849
+              ],
+              [
+                7.858101,
+                46.690867
+              ],
+              [
+                7.85823,
+                46.690882
+              ],
+              [
+                7.85836,
+                46.690894
+              ],
+              [
+                7.85849,
+                46.690902
+              ],
+              [
+                7.85862,
+                46.690906
+              ],
+              [
+                7.858751,
+                46.690907
+              ],
+              [
+                7.858882,
+                46.690904
+              ],
+              [
+                7.859012,
+                46.690897
+              ],
+              [
+                7.859142,
+                46.690886
+              ],
+              [
+                7.859271,
+                46.690871
+              ],
+              [
+                7.859399,
+                46.690853
+              ],
+              [
+                7.859525,
+                46.69083
+              ],
+              [
+                7.85965,
+                46.690804
+              ],
+              [
+                7.859774,
+                46.690776
+              ],
+              [
+                7.859897,
+                46.690745
+              ],
+              [
+                7.860019,
+                46.690713
+              ],
+              [
+                7.860141,
+                46.690681
+              ],
+              [
+                7.860263,
+                46.690648
+              ],
+              [
+                7.860385,
+                46.690616
+              ],
+              [
+                7.860507,
+                46.690583
+              ],
+              [
+                7.860629,
+                46.690552
+              ],
+              [
+                7.860752,
+                46.690521
+              ],
+              [
+                7.860876,
+                46.690492
+              ],
+              [
+                7.861,
+                46.690464
+              ],
+              [
+                7.861126,
+                46.690439
+              ],
+              [
+                7.861252,
+                46.690416
+              ],
+              [
+                7.86138,
+                46.690397
+              ],
+              [
+                7.861508,
+                46.690379
+              ],
+              [
+                7.861637,
+                46.690365
+              ],
+              [
+                7.861767,
+                46.690353
+              ],
+              [
+                7.861897,
+                46.690344
+              ],
+              [
+                7.862027,
+                46.690337
+              ],
+              [
+                7.862158,
+                46.690334
+              ],
+              [
+                7.862289,
+                46.690333
+              ],
+              [
+                7.862419,
+                46.690334
+              ],
+              [
+                7.86255,
+                46.690339
+              ],
+              [
+                7.86268,
+                46.690346
+              ],
+              [
+                7.86281,
+                46.690355
+              ],
+              [
+                7.86294,
+                46.690365
+              ],
+              [
+                7.86307,
+                46.690376
+              ],
+              [
+                7.863199,
+                46.690388
+              ],
+              [
+                7.863329,
+                46.690399
+              ],
+              [
+                7.863459,
+                46.690411
+              ],
+              [
+                7.863588,
+                46.690423
+              ],
+              [
+                7.863717,
+                46.690437
+              ],
+              [
+                7.863846,
+                46.690453
+              ],
+              [
+                7.863973,
+                46.690473
+              ],
+              [
+                7.864099,
+                46.690497
+              ],
+              [
+                7.864224,
+                46.690525
+              ],
+              [
+                7.864347,
+                46.690556
+              ],
+              [
+                7.864468,
+                46.690589
+              ],
+              [
+                7.864589,
+                46.690622
+              ],
+              [
+                7.86471,
+                46.690656
+              ],
+              [
+                7.864832,
+                46.69069
+              ],
+              [
+                7.864954,
+                46.690722
+              ],
+              [
+                7.865077,
+                46.690752
+              ],
+              [
+                7.865202,
+                46.690779
+              ],
+              [
+                7.865328,
+                46.690803
+              ],
+              [
+                7.865455,
+                46.690824
+              ],
+              [
+                7.865583,
+                46.690841
+              ],
+              [
+                7.865713,
+                46.690854
+              ],
+              [
+                7.865843,
+                46.690863
+              ],
+              [
+                7.865973,
+                46.690868
+              ],
+              [
+                7.866104,
+                46.690869
+              ],
+              [
+                7.866235,
+                46.690865
+              ],
+              [
+                7.866365,
+                46.690858
+              ],
+              [
+                7.866495,
+                46.690849
+              ],
+              [
+                7.866625,
+                46.690838
+              ],
+              [
+                7.866754,
+                46.690826
+              ],
+              [
+                7.867273,
+                46.69078
+              ],
+              [
+                7.867403,
+                46.690769
+              ],
+              [
+                7.867533,
+                46.690759
+              ],
+              [
+                7.867663,
+                46.690753
+              ],
+              [
+                7.867794,
+                46.690751
+              ],
+              [
+                7.867924,
+                46.690752
+              ],
+              [
+                7.868055,
+                46.690756
+              ],
+              [
+                7.868185,
+                46.690765
+              ],
+              [
+                7.868315,
+                46.690776
+              ],
+              [
+                7.868574,
+                46.6908
+              ],
+              [
+                7.868703,
+                46.690812
+              ],
+              [
+                7.868833,
+                46.690825
+              ],
+              [
+                7.868937,
+                46.690837
+              ]
+            ],
+            "gauge": "mm1435",
+            "dataStand": "2021-07-06",
+            "validFrom": "2014-09-03",
+            "validUntil": null,
+            "infrastructureOperator": "BLS"
+          },
+          "excludedPlatformGroups": [
+            {
+              "id": "ch14uvag00165679",
+              "number": "8515183",
+              "name": "Interlaken Ost [Gleis 3-4]",
+              "coordinate": [
+                7.868969,
+                46.690703
+              ]
+            },
+            {
+              "id": "ch14uvag00066282",
+              "number": "8519310",
+              "name": "Interlaken Ost [Gleis 1-2]",
+              "coordinate": [
+                7.869015,
+                46.690595
+              ]
+            }
+          ],
+          "excludedDepotCurve": "ch14uvag00087490"
+        },
+        "originalStops": [
+          [
+            7.58749428,
+            47.54667892,
+            "Basel SBB",
+            "19",
+            "ch:1:sloid:10:0:19"
+          ],
+          [
+            7.73110795,
+            47.48455765,
+            "Liestal",
+            "1",
+            "ch:1:sloid:23:1:1"
+          ],
+          [
+            7.81181259,
+            47.46274711,
+            "Sissach",
+            "1",
+            "ch:1:sloid:26:1:1"
+          ],
+          [
+            7.90845335,
+            47.35263359,
+            "Olten",
+            "12",
+            "ch:1:sloid:218:7:12"
+          ],
+          [
+            7.43682884,
+            46.9485674,
+            "Bern",
+            "7",
+            "ch:1:sloid:7000:4:7"
+          ],
+          [
+            7.63045172,
+            46.7541376,
+            "Thun",
+            "1",
+            "ch:1:sloid:7100:1:1"
+          ],
+          [
+            7.67977821,
+            46.68659749,
+            "Spiez",
+            "1",
+            "ch:1:sloid:7483:0:90840"
+          ],
+          [
+            7.85146423,
+            46.68262879,
+            "Interlaken West",
+            "1",
+            "ch:1:sloid:7493:0:470772"
+          ],
+          [
+            7.86973596,
+            46.69089863,
+            "Interlaken Ost",
+            "5",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          [
+            7.86979884,
+            46.69105267,
+            "Interlaken Ost",
+            "7",
+            "ch:1:sloid:7492:0:460848"
+          ],
+          [
+            7.6796794,
+            46.68654202,
+            "Spiez",
+            "2",
+            "ch:1:sloid:7483:0:341164"
+          ],
+          [
+            7.63017324,
+            46.75411913,
+            "Thun",
+            "3",
+            "ch:1:sloid:7100:2:3"
+          ],
+          [
+            7.43714325,
+            46.94856127,
+            "Bern",
+            "6",
+            "ch:1:sloid:7000:3:6"
+          ],
+          [
+            7.63022714,
+            46.75419299,
+            "Thun",
+            "2",
+            "ch:1:sloid:7100:2:2"
+          ],
+          [
+            7.43720614,
+            46.94850608,
+            "Bern",
+            "5",
+            "ch:1:sloid:7000:3:5"
+          ],
+          [
+            7.90743825,
+            47.35206151,
+            "Olten",
+            "4",
+            "ch:1:sloid:218:3:4"
+          ],
+          [
+            7.59009041,
+            47.54671531,
+            "Basel SBB",
+            "8",
+            "ch:1:sloid:10:4:8"
+          ],
+          [
+            7.5898299,
+            47.54697604,
+            "Basel SBB",
+            "6",
+            "ch:1:sloid:10:3:6"
+          ],
+          [
+            7.59005448,
+            47.54681232,
+            "Basel SBB",
+            "7",
+            "ch:1:sloid:10:4:7"
+          ],
+          [
+            7.90780656,
+            47.35203716,
+            "Olten",
+            "7",
+            "ch:1:sloid:218:4:7"
+          ],
+          [
+            7.7309193,
+            47.48436945,
+            "Liestal",
+            "4",
+            "ch:1:sloid:23:2:4"
+          ],
+          [
+            7.58779971,
+            47.54700029,
+            "Basel SBB",
+            "14",
+            "ch:1:sloid:10:7:14"
+          ],
+          [
+            7.55905362,
+            46.87446756,
+            "Münsingen",
+            "1",
+            "ch:1:sloid:7006:1:1"
+          ],
+          [
+            7.5592782,
+            46.87336833,
+            "Münsingen",
+            "2",
+            "ch:1:sloid:7006:2:2"
+          ],
+          [
+            7.58723377,
+            47.54696997,
+            "Basel SBB",
+            "16",
+            "ch:1:sloid:10:8:16"
+          ],
+          [
+            7.59171637,
+            47.54598768,
+            "Basel SBB",
+            "10",
+            "ch:1:sloid:10:5:10"
+          ],
+          [
+            7.90832759,
+            47.35252404,
+            "Olten",
+            "11",
+            "ch:1:sloid:218:6:11"
+          ],
+          [
+            7.90821081,
+            47.35253621,
+            "Olten",
+            "10",
+            "ch:1:sloid:218:6:10"
+          ],
+          [
+            7.43757445,
+            46.94892921,
+            "Bern",
+            "9",
+            "ch:1:sloid:7000:5:9"
+          ],
+          [
+            7.59226434,
+            47.5464,
+            "Basel SBB",
+            "3",
+            "ch:1:sloid:10:2:3"
+          ],
+          [
+            7.43677494,
+            46.94864099,
+            "Bern",
+            "8",
+            "ch:1:sloid:7000:4:8"
+          ],
+          [
+            7.43783496,
+            46.94845702,
+            "Bern",
+            "2",
+            "ch:1:sloid:7000:1:2"
+          ],
+          [
+            7.59026109,
+            47.54692146,
+            "Basel SBB",
+            "5",
+            "ch:1:sloid:10:3:5"
+          ],
+          [
+            7.59009041,
+            47.54671531,
+            "Basel SBB",
+            "8AB",
+            "ch:1:sloid:10_gen:ch:1:sloid:10:4:8_pf:8AB"
+          ],
+          [
+            7.5923362,
+            47.54584821,
+            "Basel SBB",
+            "9",
+            "ch:1:sloid:10:5:9"
+          ],
+          [
+            7.48171766,
+            46.95672286,
+            "Ostermundigen",
+            "2",
+            "ch:1:sloid:7002:2:2"
+          ],
+          [
+            7.50557691,
+            46.93412367,
+            "Gümligen",
+            "2",
+            "ch:1:sloid:7003:2:2"
+          ]
+        ],
+        "originalPatterns": [
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:0:19",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:26:1:1",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:4:7",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "06719d7889f8d52d714f28be"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:6"
+            ],
+            "patternId": "e9f1da8981bd276a3e15bef8"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7000:3:5"
+            ],
+            "patternId": "932384c5b72460703e705185"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7000:4:7"
+            ],
+            "patternId": "94cf29c7b1a9e9ed8669d4cf"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7000:3:5"
+            ],
+            "patternId": "c0ba483c9b5fda91dec351d0"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:218:3:4",
+              "ch:1:sloid:10:4:8"
+            ],
+            "patternId": "f4bb72f0b08b2604bde9559e"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:218:3:4",
+              "ch:1:sloid:10:3:6"
+            ],
+            "patternId": "af5f677df6e70bc53cb0eb85"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:218:3:4",
+              "ch:1:sloid:10:4:7"
+            ],
+            "patternId": "bc5df788fc4d0b05da66b295"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:218:3:4",
+              "ch:1:sloid:10:4:8"
+            ],
+            "patternId": "67b18347f41a3d1a926827ec"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:23:2:4",
+              "ch:1:sloid:10:4:7"
+            ],
+            "patternId": "2e45582fb56ecef6470d3711"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:23:2:4",
+              "ch:1:sloid:10:4:8"
+            ],
+            "patternId": "acfe98d22560f999f8891cb1"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:23:2:4",
+              "ch:1:sloid:10:3:6"
+            ],
+            "patternId": "0ccf6f973e3495da90f8dbc1"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:23:2:4",
+              "ch:1:sloid:10:7:14"
+            ],
+            "patternId": "38c31436cf59b1f3492cc490"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:7000:3:6",
+              "ch:1:sloid:7006:1:1",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:460848"
+            ],
+            "patternId": "f7408cb1b72ec98ccb041ab4"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7006:2:2",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:218:3:4",
+              "ch:1:sloid:23:2:4",
+              "ch:1:sloid:10:8:16"
+            ],
+            "patternId": "8a44de9ef0c75395bda16706"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:4:7",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:4:7",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "194eb9a9ea783f8d116f21b0"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:4:8",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:3:6",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "fabde9a9006db6c9494b9d72"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:4:8",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:4:7",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "ebe70df51cf04d6a2ba05c2e"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:5:10",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:4:7",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "b6223bb8e82951136c3cdd49"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:4:7",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:11",
+              "ch:1:sloid:7000:3:6",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "400ef0cf4ff247312b1bf46b"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:4:7",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:10",
+              "ch:1:sloid:7000:5:9",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "e799eb596aaf8554db85ff6e"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:2:3",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:11",
+              "ch:1:sloid:7000:4:8",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "f1672e18ea7e9fce79096e9d"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:2:3",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:10",
+              "ch:1:sloid:7000:5:9",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "5b81a79ef725732271d6f97c"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:3:6",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:11",
+              "ch:1:sloid:7000:4:8",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:460848"
+            ],
+            "patternId": "3607c46f1ab5e4dac2949c3f"
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:3:6",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:11",
+              "ch:1:sloid:7000:4:8",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "484d76f0dba3f11d5a2738da"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:3:6",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:26:1:1",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:5:9",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "fb7a2c949442ead472dcffa3"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:460848"
+            ],
+            "patternId": "27b456b8fbc74d243d4f4392"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "34b997bb92a86a3615e984ea"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7000:4:8",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:23:2:4",
+              "ch:1:sloid:10:4:7"
+            ],
+            "patternId": "bdb7db172b1b143965e53a17"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7000:4:8",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:23:2:4",
+              "ch:1:sloid:10:4:8"
+            ],
+            "patternId": "ff0b267b79194e5927f5cb46"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7000:4:8",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:23:2:4",
+              "ch:1:sloid:10:3:6"
+            ],
+            "patternId": "56a831da1cb4c0c64484ad9e"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:5"
+            ],
+            "patternId": "0b20e401334fc9483a50ff99"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7000:3:6"
+            ],
+            "patternId": "93285f1f8b6b26b0831a7d09"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7000:3:5"
+            ],
+            "patternId": "932384c5b72460703e705185"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:5"
+            ],
+            "patternId": "6f8284732f1974af32cca210"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7000:1:2"
+            ],
+            "patternId": "bb5cb4270d70ca9bb4f501c3"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7000:3:5"
+            ],
+            "patternId": "c0ba483c9b5fda91dec351d0"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:6",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:10:4:7"
+            ],
+            "patternId": "f576e93b5c4facdbd15e2d12"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:6",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:10:4:8"
+            ],
+            "patternId": "766d1041d05cb403657d709b"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:6",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:10:3:5"
+            ],
+            "patternId": "f4b3802caf00b71634266265"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:6",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:10_gen:ch:1:sloid:10:4:8_pf:8AB"
+            ],
+            "patternId": "cbdfd4899fdc916bcc4154c9"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:460848",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:3",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:218:4:7",
+              "ch:1:sloid:23:2:4",
+              "ch:1:sloid:10:4:7"
+            ],
+            "patternId": "9a58c940796a26561e55dba9"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:7000:3:6",
+              "ch:1:sloid:7006:1:1",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:460848"
+            ],
+            "patternId": "f7408cb1b72ec98ccb041ab4"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:581416",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7483:0:341164",
+              "ch:1:sloid:7100:2:2",
+              "ch:1:sloid:7006:2:2",
+              "ch:1:sloid:7000:4:7",
+              "ch:1:sloid:218:3:4",
+              "ch:1:sloid:23:2:4",
+              "ch:1:sloid:10:4:8"
+            ],
+            "patternId": "0e84343f2870b6cf2db95a7e"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:4:7",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:5:9",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "7ee1d96a5af79a4a87ea6eee"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:4:8",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:5:9",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:460848"
+            ],
+            "patternId": "c68e6e3ef58b96b5faf2912c"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:4:8",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:5:9",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "de8759923f932d1a57740b4d"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:5:9",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:5:9",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:460848"
+            ],
+            "patternId": "5377ac8a2614f1528a2c513d"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:5:10",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:5:9",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "5bf4627f89bd312645ddbfff"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:4:7",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:11",
+              "ch:1:sloid:7000:4:7"
+            ],
+            "patternId": "e19f9d92631d75e1a9615e81"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:4:7",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:11",
+              "ch:1:sloid:7000:4:8"
+            ],
+            "patternId": "881dcc6c9a4512dc1bc4d836"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:3:6",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:5:9",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:460848"
+            ],
+            "patternId": "88b35aa3ef374c114a3913a6"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:7000:1:2",
+              "ch:1:sloid:7002:2:2",
+              "ch:1:sloid:7003:2:2",
+              "ch:1:sloid:7006:1:1",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:460848"
+            ],
+            "patternId": "e845990ea74d8468c1e566c3"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:7:14",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:10",
+              "ch:1:sloid:7000:5:9",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ],
+            "patternId": "49c169bde403468244217b9d"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:2:3",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:11",
+              "ch:1:sloid:7000:4:8"
+            ],
+            "patternId": "da3b98cf0b516f9cff881c73"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:3:6",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:11",
+              "ch:1:sloid:7000:4:8"
+            ],
+            "patternId": "957f6335776930a782f92cc7"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:3:6",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:10",
+              "ch:1:sloid:7000:5:9"
+            ],
+            "patternId": "dd7b828ee28d1d500758c688"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:3:5",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:6:11",
+              "ch:1:sloid:7000:4:8"
+            ],
+            "patternId": "91c64ec9a71c19f520c326c6"
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:10:3:6",
+              "ch:1:sloid:23:1:1",
+              "ch:1:sloid:218:7:12",
+              "ch:1:sloid:7000:3:5",
+              "ch:1:sloid:7100:1:1",
+              "ch:1:sloid:7483:0:90840",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:460848"
+            ],
+            "patternId": "48ce15dc535c2a507cdbed6b"
+          }
+        ],
+        "documents": [
+          {
+            "file": "ic61/timetable-310-2026.pdf",
+            "url": "https://widgets.oev-info.ch/publikation/jahresfpl/310.pdf",
+            "sha256": "fccf70b01af2cdde869eb814fba06e3203a19da7108d9b50306e95052184fb93",
+            "bytes": 833959,
+            "documentDate": "2026-03-16",
+            "retrievedAt": "2026-09-08T22:12:21.553005+00:00",
+            "attribution": "Official Swiss timetable, öv-info.ch / SBB; retained for corridor identity evidence",
+            "scope": "Timetable sheet 310, 2026, pages 2 and 8 show IC61 operated by SBB between Basel SBB, Bern, Thun, Spiez and Interlaken Ost in both directions. Timetable times and dated footnotes are not substituted for the pinned September GTFS."
+          }
+        ],
+        "documentsDirectory": "data/bern-sources",
+        "cantonalAssociation": {
+          "routeId": "91-61-A-j26-1",
+          "agencyId": "11",
+          "line": "IC61",
+          "mode": "rail",
+          "sourceLine": "310_IC",
+          "supportingDocument": "ic61/timetable-310-2026.pdf"
+        },
+        "cantonalFeatureProperties": {
+          "fid": 181,
+          "objectid": 188,
+          "vkmtyp": 1,
+          "verkmitt_bez_vkm_de": "Bahn",
+          "verkmitt_bez_vkm_fr": "Chemins de fer",
+          "liniencode": "310_IC",
+          "linienbez": "Basel - Bern - Thun - Interlaken Ost",
+          "liniennr": "IC",
+          "suchname": "310/450   IC   Basel - Bern - Thun - Interlaken Ost",
+          "tucode": "SBB",
+          "tuname": "Schweizerische Bundesbahnen, 3000 Bern",
+          "tuurl": "https://sbb.ch",
+          "kubunr": "310/450",
+          "kubuurl": "https://widgets.oev-info.ch/publikation/jahresfpl/310.pdf",
+          "standard": 1,
+          "libero": 0,
+          "linienlaen": 129210
+        }
+      },
+      "source": {
+        "schemaVersion": 1,
+        "publisher": "Federal Office of Transport - FOT",
+        "attribution": "© Federal Office of Transport (FOT)",
+        "license": "proprietary",
+        "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+        "catalogueDate": "2021-07-06T00:00:00Z",
+        "assetUpdated": "2025-01-18T04:23:13.735821Z",
+        "catalogueCheckedOn": "2026-09-08",
+        "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+        "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "publishedChecksum": "12202895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "validOn": null,
+        "validityNote": "Catalogue dates and verified bytes do not establish September 2026 alignment validity. Inferred infrastructure paths, not certified service running tracks.",
+        "nodes": 3210,
+        "segments": 3424,
+        "transformation": "Existing XTF parser with zero-metre Douglas–Peucker tolerance; collinear vertices may be removed. Approximate LV95-to-WGS84 transformation rounded to six decimals. Bern preserves original GTFS coordinates and rounds only final attachment endpoints to seven decimals.",
+        "files": {
+          "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+          "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+          "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02",
+          "catalogue-check-20260908.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60"
+        },
+        "retainedForBernAt": "2026-09-08T19:43:28.383642+00:00",
+        "catalogueRecheckedOn": "2026-09-08",
+        "catalogueCheckUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz"
+      },
+      "sourceSegments": [
+        {
+          "id": "ch14uvag00087481",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-25",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 9.073432835692621,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00240327",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-11-24",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 44.16605766871333,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087443",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2002-02-28",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 32.18948659878739,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087522",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-01-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 2.9833229977853226,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087756",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1999-11-22",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.012891362873763,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087749",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1999-11-22",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.909720375910164,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087745",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-02-19",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 25.485504480206366,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087825",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-12-07",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 50.00335942803731,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00240382",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-04-10",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 1.2312279310349556,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00240365",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-04-10",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 4.569659347768935,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087489",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2014-09-03",
+          "validUntil": null,
+          "infrastructureOperator": "BLS",
+          "attachmentMetres": 9.202513384655338,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087407",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2005-06-10",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.527314511991058,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00139692",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2015-10-21",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.27993114659942,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087399",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-04-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.143881943009337,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087484",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-25",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 12.642528056834939,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087480",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-25",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 15.756437957314063,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087762",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1991-12-02",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.970151678186154,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087760",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1991-12-02",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 17.549249482592664,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087479",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-25",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 15.756437957314063,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087812",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-05-31",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087757",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2009-01-29",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 15.457165534100012,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087485",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-25",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 12.642528056834939,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087483",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-25",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 10.784346245925919,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087662",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-11-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.27993114659942,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087763",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1991-12-02",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087401",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-04-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.892883622853068,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087811",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-12-07",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0.732433620146428,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087482",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-25",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 9.073432835692621,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087759",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1991-12-02",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.580069684030708,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087397",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-11-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 4.146242980859292,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00240325",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1999-11-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087764",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1991-12-02",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087638",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2002-02-28",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.310248708484345,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087478",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-26",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 9.969246330682113,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087403",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1992-12-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.711463021417508,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087758",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2009-01-29",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 15.457165534100012,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087523",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-03-22",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 2.1803432987549667,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087637",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2018-06-27",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.310248708484345,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087765",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-11-24",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087767",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1991-12-02",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 44.16605766871333,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087813",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-11-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087661",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-11-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 8.183910375921268,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087660",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-01-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 8.183910375921268,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087487",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-25",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 24.712497183342737,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087406",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1992-12-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.527314511991058,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087404",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1992-12-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.71874015008587,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00139673",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2015-10-21",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 55.24405007731446,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087486",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-25",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 24.712497183342737,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087402",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-04-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.711463021417508,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087405",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1992-12-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.71874015008587,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087524",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-03-22",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 2.205348124640341,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087398",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-11-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 4.146242980859292,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087488",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-02-25",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 12.465061014893438,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087408",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-05-11",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.956916355507694,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087400",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-04-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.892883622853068,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087761",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1991-12-02",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 17.549249482592664,
+          "reason": null
+        }
+      ]
+    },
     "urbanSupplement": {
       "policy": {
         "schemaVersion": 1,
@@ -25613,9 +29358,9 @@
   },
   "routesByStatus": {
     "admitted-all-dated-trips": 324,
-    "excluded": 120,
+    "excluded": 119,
     "inactive-on-validation-dates": 183,
-    "partially-admitted": 78
+    "partially-admitted": 79
   },
   "districts": [
     {
@@ -26671,29 +30416,30 @@
         "tpfTerminalPolicy": "3823828434d9b1b4ee97147c77a121f8c43eb6a1489b1d15a7bcf2ffcc9c78d8",
         "morgesPolicy": "ccd74bff8cca2457eee74f072f913c2773ff545fb68e20e146b0ded8ba5e16c3",
         "interlakenPolicy": "4a1c73b985e1e5f214a7051dcebea540a837a5c0e219b10e5bd62d42fe356e67",
+        "ic61Policy": "9d48fb385304c7c2ef73f77b76a8c3847ede3e3e40932ddc5c15117f1a20a393",
         "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
         "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
       },
       "coverage": {
         "trips": 43653,
-        "admittedTrips": 36803,
+        "admittedTrips": 36804,
         "scheduledTrips": 28696,
         "representativeHeadwayTrips": 14957,
-        "admittedScheduledTrips": 21846,
+        "admittedScheduledTrips": 21847,
         "admittedRepresentativeHeadwayTrips": 14957,
         "scheduledSegmentOccurrences": 295359,
-        "matchedScheduledSegmentOccurrences": 275943,
+        "matchedScheduledSegmentOccurrences": 276081,
         "segmentOccurrences": 314668,
-        "matchedSegmentOccurrences": 295252,
-        "admittedSegmentOccurrences": 276690,
+        "matchedSegmentOccurrences": 295390,
+        "admittedSegmentOccurrences": 276697,
         "directedPairs": 12321,
-        "matchedDirectedPairs": 10805,
+        "matchedDirectedPairs": 10834,
         "patterns": 2582,
-        "completePatterns": 1988,
-        "admittedPatterns": 1988,
+        "completePatterns": 1989,
+        "admittedPatterns": 1989,
         "excludedTrips": {
-          "incomplete-directed-pattern": 3819,
-          "no-verified-operator-line-crosswalk": 3031
+          "incomplete-directed-pattern": 3850,
+          "no-verified-operator-line-crosswalk": 2999
         }
       },
       "groups": [
@@ -26829,24 +30575,24 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 846,
-          "admittedTrips": 483,
+          "admittedTrips": 484,
           "scheduledTrips": 846,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 483,
+          "admittedScheduledTrips": 484,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 8123,
-          "matchedScheduledSegmentOccurrences": 5740,
+          "matchedScheduledSegmentOccurrences": 5878,
           "segmentOccurrences": 8123,
-          "matchedSegmentOccurrences": 5740,
-          "admittedSegmentOccurrences": 4938,
+          "matchedSegmentOccurrences": 5878,
+          "admittedSegmentOccurrences": 4945,
           "directedPairs": 948,
-          "matchedDirectedPairs": 448,
+          "matchedDirectedPairs": 477,
           "patterns": 342,
-          "completePatterns": 135,
-          "admittedPatterns": 135,
+          "completePatterns": 136,
+          "admittedPatterns": 136,
           "excludedTrips": {
-            "incomplete-directed-pattern": 101,
-            "no-verified-operator-line-crosswalk": 262
+            "incomplete-directed-pattern": 132,
+            "no-verified-operator-line-crosswalk": 230
           }
         },
         {
@@ -28618,7 +32364,7 @@
       ],
       "carryInTrips": 334,
       "admittedCarryInTrips": 253,
-      "admittedOutsideCantonPlatforms": 801,
+      "admittedOutsideCantonPlatforms": 803,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -28631,12 +32377,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 11489169,
-          "gzipBytes": 2522481
+          "bytes": 11657841,
+          "gzipBytes": 2564982
         },
         "morning": {
           "trips": 3457,
-          "gzipBytes": 2849850
+          "gzipBytes": 2892465
         },
         "chunks": [
           {
@@ -28645,9 +32391,9 @@
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
             "tripCount": 257,
-            "bytes": 207593,
-            "sha256": "852d79a56a7e280c20b9dfd52fab04659e93f5b0c8b8162b3f4f6a11d73388d6",
-            "gzipBytes": 35402
+            "bytes": 207597,
+            "sha256": "7250634fdbb07ab42f7f245ce4d3e713ea76a64ac151d0b476dcda8644fb4a17",
+            "gzipBytes": 35393
           },
           {
             "id": "02-04",
@@ -28665,9 +32411,9 @@
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
             "tripCount": 594,
-            "bytes": 508770,
-            "sha256": "5a4634b0ca13294db6b0a6d1c02faa2b008c2b14ff1dcecf24fa9585e27d072e",
-            "gzipBytes": 80018
+            "bytes": 508790,
+            "sha256": "0a2ca7aa04b4289ca9acfa13bdff8a96515ce07066c62b43d752246f5d8e698e",
+            "gzipBytes": 79998
           },
           {
             "id": "06-08",
@@ -28675,9 +32421,9 @@
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
             "tripCount": 3119,
-            "bytes": 2628948,
-            "sha256": "caaca7f8b2e66a50210e9ecf80a0729fed2618d59631827ba1672680d2a39d8c",
-            "gzipBytes": 310180
+            "bytes": 2629044,
+            "sha256": "a4e33756f00ebb2869142314b08a20bf94e306ac2847b87edab32fd47e6ecf16",
+            "gzipBytes": 310219
           },
           {
             "id": "08-10",
@@ -28685,9 +32431,9 @@
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
             "tripCount": 5092,
-            "bytes": 3833817,
-            "sha256": "a212336f6738001318d0ac33081f0136b6d90c3e35586531b4db108b2c04129d",
-            "gzipBytes": 346091
+            "bytes": 3833887,
+            "sha256": "5640669acf2e15d6dc964c1561540ef9c4fd2721edc12e780a794ad942dfdd96",
+            "gzipBytes": 346053
           },
           {
             "id": "10-12",
@@ -28695,9 +32441,9 @@
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
             "tripCount": 7200,
-            "bytes": 5131901,
-            "sha256": "15b40228c0f587ef07a6015157a3cc128f9ba258ce10b1129f53fb4891f1741d",
-            "gzipBytes": 388612
+            "bytes": 5131965,
+            "sha256": "39f6a224b653248982f6a82dde732bf8912a1cd834a4a26943ecc4e0d9367465",
+            "gzipBytes": 388464
           },
           {
             "id": "12-14",
@@ -28705,9 +32451,9 @@
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
             "tripCount": 7375,
-            "bytes": 5272850,
-            "sha256": "d9ed9b7e115c9b7764d3225673dfe085b00cf119823a01f7a0a1a7bad820ccec",
-            "gzipBytes": 404189
+            "bytes": 5272914,
+            "sha256": "6b4853e5a1409642e47dd2481aef4a13e6008e1edc8d7315a26fa29767d098e9",
+            "gzipBytes": 404109
           },
           {
             "id": "14-16",
@@ -28715,9 +32461,9 @@
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
             "tripCount": 7291,
-            "bytes": 5199272,
-            "sha256": "4724d6832e2854bb3098e149e40ef838b7c25d9af6653c3147a550815fd22567",
-            "gzipBytes": 395639
+            "bytes": 5199346,
+            "sha256": "176b6ae86ec736fe537dcde8e7010c53163f3b82691e0817c87282971eae7ffe",
+            "gzipBytes": 395684
           },
           {
             "id": "16-18",
@@ -28725,9 +32471,9 @@
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
             "tripCount": 5511,
-            "bytes": 4189897,
-            "sha256": "d925f580474c1481c405c29456a5c6a1e3aec1d666547742fb0eb50827f46c9a",
-            "gzipBytes": 381859
+            "bytes": 4190003,
+            "sha256": "54e72a3ddf7923524bbb0002843f7afd9bbbfefcfbcc4b88319a76b8e95f0d39",
+            "gzipBytes": 381662
           },
           {
             "id": "18-20",
@@ -28735,29 +32481,29 @@
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
             "tripCount": 3012,
-            "bytes": 2524858,
-            "sha256": "f4414e466a69df97b169530a831be1e73cbaa73fc14f3200ba3c0fa9ce4ddb0a",
-            "gzipBytes": 293288
+            "bytes": 2524932,
+            "sha256": "3b9416893e96104a8fb5683ddb60b9ba73474061ab3231ed3e9b20d88845d8b7",
+            "gzipBytes": 293157
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 1764,
-            "bytes": 1501588,
-            "sha256": "7df1d2657f6f8be211d6413364a0ba0f34740e28d4f042a59e0b37d26bc7db54",
-            "gzipBytes": 184677
+            "tripCount": 1765,
+            "bytes": 1502286,
+            "sha256": "01df5336c79f8ab09a6511ee80a15aa4e7663047cf418a57963eb1a52afb68a8",
+            "gzipBytes": 184886
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 1102,
-            "bytes": 955172,
-            "sha256": "b657201f4f330c2d98713aeb7e1dfb97fab57cc794aca1ac81eef748f6a919e9",
-            "gzipBytes": 127912
+            "tripCount": 1103,
+            "bytes": 955868,
+            "sha256": "76723d9e24d25f7051aa0979c4785938f534d07f06ad3a804b520bdd8e68c5bd",
+            "gzipBytes": 128040
           }
         ]
       },
@@ -28791,29 +32537,30 @@
         "tpfTerminalPolicy": "3823828434d9b1b4ee97147c77a121f8c43eb6a1489b1d15a7bcf2ffcc9c78d8",
         "morgesPolicy": "ccd74bff8cca2457eee74f072f913c2773ff545fb68e20e146b0ded8ba5e16c3",
         "interlakenPolicy": "4a1c73b985e1e5f214a7051dcebea540a837a5c0e219b10e5bd62d42fe356e67",
+        "ic61Policy": "9d48fb385304c7c2ef73f77b76a8c3847ede3e3e40932ddc5c15117f1a20a393",
         "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
         "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
       },
       "coverage": {
         "trips": 38587,
-        "admittedTrips": 32004,
+        "admittedTrips": 32012,
         "scheduledTrips": 22462,
         "representativeHeadwayTrips": 16125,
-        "admittedScheduledTrips": 15879,
+        "admittedScheduledTrips": 15887,
         "admittedRepresentativeHeadwayTrips": 16125,
         "scheduledSegmentOccurrences": 209388,
-        "matchedScheduledSegmentOccurrences": 191450,
+        "matchedScheduledSegmentOccurrences": 191675,
         "segmentOccurrences": 229859,
-        "matchedSegmentOccurrences": 211921,
-        "admittedSegmentOccurrences": 194599,
+        "matchedSegmentOccurrences": 212146,
+        "admittedSegmentOccurrences": 194645,
         "directedPairs": 13244,
-        "matchedDirectedPairs": 11462,
+        "matchedDirectedPairs": 11500,
         "patterns": 2108,
-        "completePatterns": 1551,
-        "admittedPatterns": 1551,
+        "completePatterns": 1559,
+        "admittedPatterns": 1559,
         "excludedTrips": {
-          "incomplete-directed-pattern": 3526,
-          "no-verified-operator-line-crosswalk": 3057
+          "incomplete-directed-pattern": 3583,
+          "no-verified-operator-line-crosswalk": 2992
         }
       },
       "groups": [
@@ -28949,24 +32696,24 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 771,
-          "admittedTrips": 460,
+          "admittedTrips": 468,
           "scheduledTrips": 771,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 460,
+          "admittedScheduledTrips": 468,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 6047,
-          "matchedScheduledSegmentOccurrences": 4095,
+          "matchedScheduledSegmentOccurrences": 4320,
           "segmentOccurrences": 6047,
-          "matchedSegmentOccurrences": 4095,
-          "admittedSegmentOccurrences": 3853,
+          "matchedSegmentOccurrences": 4320,
+          "admittedSegmentOccurrences": 3899,
           "directedPairs": 810,
-          "matchedDirectedPairs": 349,
+          "matchedDirectedPairs": 387,
           "patterns": 288,
-          "completePatterns": 123,
-          "admittedPatterns": 123,
+          "completePatterns": 131,
+          "admittedPatterns": 131,
           "excludedTrips": {
-            "incomplete-directed-pattern": 64,
-            "no-verified-operator-line-crosswalk": 247
+            "incomplete-directed-pattern": 121,
+            "no-verified-operator-line-crosswalk": 182
           }
         },
         {
@@ -30803,8 +34550,8 @@
         }
       ],
       "carryInTrips": 816,
-      "admittedCarryInTrips": 557,
-      "admittedOutsideCantonPlatforms": 796,
+      "admittedCarryInTrips": 559,
+      "admittedOutsideCantonPlatforms": 801,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -30817,12 +34564,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 11624049,
-          "gzipBytes": 2664074
+          "bytes": 12101947,
+          "gzipBytes": 2795309
         },
         "morning": {
-          "trips": 2129,
-          "gzipBytes": 2846660
+          "trips": 2131,
+          "gzipBytes": 2978876
         },
         "chunks": [
           {
@@ -30830,90 +34577,90 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 457,
-            "bytes": 380745,
-            "sha256": "cc7c4cf20e21901c17fb9c33c5c140ae252be942adbea319a2bf5068bd2bb890",
-            "gzipBytes": 61287
+            "tripCount": 459,
+            "bytes": 381981,
+            "sha256": "8db9bac3229b027d858ddbd654519fda63ada3cef98f9b90bbd1dd86899543f5",
+            "gzipBytes": 61491
           },
           {
             "id": "02-04",
             "windowStart": 7200,
             "windowEnd": 14400,
             "path": "day-chunks/02-04.json",
-            "tripCount": 125,
-            "bytes": 121932,
-            "sha256": "8c24007c3ca9e8ae4d892b452128eb5562fec5ac5c1fe569b4aaf5f6f3b3839f",
-            "gzipBytes": 20047
+            "tripCount": 126,
+            "bytes": 122587,
+            "sha256": "ec21bfae631c9bc41db8fe780e289ea0c72d9cb510a7295ce94c6246b13bedb9",
+            "gzipBytes": 20262
           },
           {
             "id": "04-06",
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 258,
-            "bytes": 218328,
-            "sha256": "52b85c925a91f78a6c465602320252a7088bf18929e8af063aa6bdfec12c02c3",
-            "gzipBytes": 37590
+            "tripCount": 259,
+            "bytes": 219023,
+            "sha256": "bb72671f04af0b0391b670d908693df5e2393772d3e800516dce4ed788582a35",
+            "gzipBytes": 37728
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 1457,
-            "bytes": 1170422,
-            "sha256": "692ff887fff464b1030067b307fd54e487f344728974951e202277bf423d492e",
-            "gzipBytes": 146260
+            "tripCount": 1459,
+            "bytes": 1171764,
+            "sha256": "15bd3c76132910c4935b538ec26c737bb73f25e1ba44d89daceb6f09e1947f15",
+            "gzipBytes": 146451
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 4563,
-            "bytes": 3229633,
-            "sha256": "8bf9dae18a7db4f1e5d8f52778ff806b25485198bddf6382bd7209244813778b",
-            "gzipBytes": 260140
+            "tripCount": 4564,
+            "bytes": 3230311,
+            "sha256": "4c5fc7b454ee56fb004e2f27211871e6ff60b21f6645aff12474bdb2b7036435",
+            "gzipBytes": 260487
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 6796,
-            "bytes": 4671206,
-            "sha256": "01cfb2e840126f58fd16c61888e52670b281459597024049b2bdd3740fb7c62e",
-            "gzipBytes": 323901
+            "tripCount": 6797,
+            "bytes": 4671902,
+            "sha256": "efca45b6bb4e115550c653259878b273e94a29193440a1d6f1d0550f385963ce",
+            "gzipBytes": 324279
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 6845,
-            "bytes": 4729276,
-            "sha256": "b326010640fa11e3c94b7ea6c0d6c3ef211180d7842e9ea678642afca7f02f62",
-            "gzipBytes": 329365
+            "tripCount": 6847,
+            "bytes": 4730589,
+            "sha256": "4848b34f37a59952081c804e191bbcbc29b728d6df4154677304668d18240cfb",
+            "gzipBytes": 329883
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 6897,
-            "bytes": 4774492,
-            "sha256": "7dd2c21f17cb855279abdbd3bdb49e313a5be71105571679ee2fe22fe5c22a5b",
-            "gzipBytes": 334193
+            "tripCount": 6899,
+            "bytes": 4775790,
+            "sha256": "2ca34e8b094252f3e9c3645c192bd5071dcd34ebe34c44f6e6b1d40aaf6e2da9",
+            "gzipBytes": 334631
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 4602,
-            "bytes": 3359883,
-            "sha256": "63dcb019a3004deca11e2f410ef124d3af3770dd66535fea6328d41740514b56",
-            "gzipBytes": 283750
+            "tripCount": 4603,
+            "bytes": 3360550,
+            "sha256": "148f6277930dc812e94dc5e4765aad928b93828c8b63734a00261b5291ba8536",
+            "gzipBytes": 284011
           },
           {
             "id": "18-20",
@@ -30921,29 +34668,29 @@
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
             "tripCount": 2074,
-            "bytes": 1705783,
-            "sha256": "dfea84722d778f730ace92ec51dde69c3d127a90ac4358c7aeeeae0209404288",
-            "gzipBytes": 201615
+            "bytes": 1705806,
+            "sha256": "cd82f85db450415185855155c55d32e345f24cea95c8d334af2ac3ba0c4ce66e",
+            "gzipBytes": 201713
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 1454,
-            "bytes": 1220849,
-            "sha256": "869f7dbe5690331bb32958df9a66cb6aaa56247503048d64bac08609485df4d6",
-            "gzipBytes": 151590
+            "tripCount": 1455,
+            "bytes": 1221402,
+            "sha256": "eef18ee3a5c4604a831fb01fd3a735eb52bd8fe70a5b0ca5a6809447a61d5a0a",
+            "gzipBytes": 151646
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 997,
-            "bytes": 852326,
-            "sha256": "67bd699e477f6147e8aabc2ffce8181c98a44458f76a1d250f9e48fc11bbf7d3",
-            "gzipBytes": 114410
+            "tripCount": 998,
+            "bytes": 852879,
+            "sha256": "7d576b0d9e0b74db71828e1728bcfb5af0fb180d8467d2b3a0a33ca8405e3c6f",
+            "gzipBytes": 114387
           }
         ]
       },

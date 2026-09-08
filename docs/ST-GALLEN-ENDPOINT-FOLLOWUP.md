@@ -1,6 +1,6 @@
-# St. Gallen: operator-map follow-up for lines 451, 420 and 729
+# St. Gallen: endpoint evidence follow-up
 
-Retain all **ten reviewed directed endpoint pairs**, affecting **18 Friday / 12 Sunday complete trips**. The operator maps provide no basis for admitting these candidates. The Uzwil comparison additionally identifies why a numerically passing N72 path is unsuitable for line 729.
+The follow-up now covers **14 directed endpoint pairs**, affecting **120 Friday / 45 Sunday complete trips**, all retained as exclusions. The original operator-map review below covers ten pairs on lines 451, 420 and 729 (18 / 12 trips). The subsequent [service-change review](ST-GALLEN-SERVICE-CHANGE-REVIEW.md) adds four pairs on lines 150 and 631 (102 / 33 trips), with all-operator geometry searches and explicit construction-period checks.
 
 The regional feed remains **10,652 Friday / 7,325 Sunday movements**, across **1,004 / 773 admitted complete directed patterns**. The remaining bus endpoint inventory stays at **103 pairs across 17 route records**, affecting **303 / 100 trips**. These totals are distinct complete trips, not sums of pair occurrences.
 
@@ -40,6 +40,8 @@ All three PDFs were visually reviewed on **9 September 2026, Europe/Zurich**. Th
 | [Buchs/Sargans](https://www.bsw-bus.ch/fileadmin/bsw/reisen/liniennetzplaene/Liniennetzplan_Buchs_Sargans.pdf) | 2025-12-14 | 2025-11-14 | 2026-09-08T22:05:10.383561+00:00 | 40cd88047ca0186cd35c6daa72579a510b2a885a662d5d32f58c6ec3466a02a6 |
 | [Ortsbus Uzwil](https://www.postauto.ch/-/media/postauto/fahrplan-und-netz/liniennetz/dokumente/ostschweiz/liniennetz-ortsbus-uzwil.pdf) | 2025-12-14 | 2026-01-12 | 2026-09-08T22:05:42.737736+00:00 | 43cd8aca304f4c903bb696b8a3de3d4a7c032b167a8195290439f3f1677705c0 |
 
+The subsequent [service-change review](ST-GALLEN-SERVICE-CHANGE-REVIEW.md) documents the additional Gossau announcement and Rüti notices with their own source dates and attribution.
+
 The [review policy](../data/st-gallen-endpoint-followup-policy.json) also records byte counts, publishers, exact candidate hashes and checkpoint IDs. Source PDFs remain in the ignored local cache. The [machine-readable follow-up](../data/st-gallen-endpoint-followup.json) binds the policy, original timetable/source hashes, endpoint inventory and local feed artifact hashes.
 
 Attribution: **PostAuto AG / OSTWIND** for Bad Ragaz and Uzwil maps; **BUS Sarganserland Werdenberg / BOS Gruppe / OSTWIND** for Buchs/Sargans; **© Kanton St.Gallen, Amt für öffentlichen Verkehr / AREG**, underlying **swissTNE Base / © swisstopo**, for candidate geometry; **SBB / opentransportdata.swiss** for timetable and stop coordinates. This audit does not redistribute source paths or grant feed publication rights. The [canton study](ST-GALLEN-STUDY.md) retains the source restrictions and direction-certification limits.
@@ -51,6 +53,6 @@ node scripts/review-st-gallen-endpoint-followup.mjs --fetch-evidence --check
 node scripts/check-st-gallen-region.mjs --audit-only
 ```
 
-The first command acquires only missing evidence files and rejects changed bytes. It replays all ten candidate paths on the pinned source graph, checks the three Uzwil checkpoints against the original Swiss stops, and verifies both manifests, morning windows and every feed chunk against their existing hashes. The audit-only checker validates the tracked review, source bindings, all reviewed pair identities, candidate hashes and weekday/Sunday affected-pattern totals without requiring the large source cache.
+The first command acquires only missing evidence files and rejects changed bytes. It replays the original ten candidate paths and all 179 regional/city records for the four added failures, checks the three Uzwil checkpoints against the original Swiss stops, and verifies both manifests, morning windows and every feed chunk against their existing hashes. The audit-only checker validates the tracked review, source bindings, all reviewed pair identities, candidate hashes and weekday/Sunday affected-pattern totals without requiring the large source cache.
 
 No feed rebuild or admission-policy change is made by this follow-up.

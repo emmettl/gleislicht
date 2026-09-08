@@ -11,6 +11,7 @@ import { sha256, LUZERN_METADATA, LUZERN_TERMS } from './download-luzern-sources
 import { roadConsensus, validateLuzernRoadScope, reviewedRoadContexts, luzernRoadPatternId, roadContextKey } from './luzern-road-geometry.mjs'
 import { loadLuzernRail } from './luzern-rail-geometry.mjs'
 import { loadLuzernCableways, matchLuzernCableway } from './luzern-cableway-geometry.mjs'
+import { loadLuzernBoats } from './luzern-boat-geometry.mjs'
 import { loadLuzernBorderRail } from './luzern-border-rail.mjs'
 import { loadLuzernAccessRoads } from './luzern-access-roads.mjs'
 
@@ -19,7 +20,7 @@ const save = async (path, value, pretty = false) => { await mkdir(dirname(path),
 const ratio = (a, b) => b ? a / b : null
 const gz = value => gzipSync(JSON.stringify(value)).length
 const keyForRoute = r => JSON.stringify([r.agencyId, r.mode, r.line])
-export const luzernCategory = r => r.mode === 'rail' ? r.line.startsWith('EC') ? 'international' : r.line.startsWith('IC') ? 'intercity' : r.line.startsWith('S') ? 's-bahn' : r.line.startsWith('RE') ? 'regional-express' : r.line.startsWith('IR') || r.line === 'VAE' ? 'interregio' : r.line === 'EXT' ? 'other' : 'regional' : r.mode === 'mountain' ? r.routeType === 116 ? 'other' : r.routeType === 1400 ? 'funicular' : 'cableway' : r.mode
+export const luzernCategory = r => r.mode === 'rail' ? r.line.startsWith('EC') ? 'international' : r.line.startsWith('IC') ? 'intercity' : r.line.startsWith('S') ? 's-bahn' : r.line.startsWith('RE') ? 'regional-express' : r.line.startsWith('IR') || r.line === 'VAE' ? 'interregio' : r.line === 'EXT' ? 'other' : 'regional' : r.mode === 'mountain' ? r.routeType === 116 ? 'other' : r.routeType === 1400 ? 'funicular' : 'cableway' : r.mode === 'boat' ? 'ferry' : r.mode
 
 export function compactLuzern(trains, stops, paths, metadata) {
   const ids = [...new Set(trains.flatMap(t => t.calls.map(c => c.id)))].sort(), indices = new Map(ids.map((id, i) => [id, i]))
@@ -70,6 +71,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
     sourceHashes.roads = sha256(bytes)
   }
   const rail = policy.railFallback ? await loadLuzernRail(policy.railFallback, raw) : undefined
+  const boats = policy.boatFallback ? await loadLuzernBoats(policy.boatFallback, raw) : undefined
+  if (boats) sourceHashes.boats = policy.boatFallback.sha256
   const borderRail = policy.borderRailFallback ? await loadLuzernBorderRail(policy.borderRailFallback, raw) : undefined
   if (borderRail) sourceHashes.borderRail = policy.borderRailFallback.sha256
   const accessRoads = policy.accessRoadFallback ? await loadLuzernAccessRoads(policy.accessRoadFallback, raw) : undefined
@@ -103,6 +106,7 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
             const a = stops.get(from), b = stops.get(to)
             let result = route.mode === 'boat' ? { reason: 'stale-or-missing-boat-source' } : matchLuzernPair(candidate, [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], policy.limits)
             if (result.path) result.geometrySource = 'official-line'
+            else if (route.mode === 'boat' && boats?.pairs.has(baseKey)) result = { ...boats.pairs.get(baseKey), officialAssessment: result }
             else if (route.mode === 'bus' && roads.has(baseKey)) {
               const road = context ?? roads.get(baseKey)
               const access = !road.path && accessRoads?.pairs.get(baseKey)
@@ -185,6 +189,13 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       metadata.geometry.borderRail = { ...borderRail.source, policySha256: sourceHashes.borderRail, policy: borderRail.policy,
         pathAttribution: 'geometrySources = sbb-border-rail-inference; reviewed terminal pairs only, preserving successful cantonal and federal paths' }
     }
+    if (boats) {
+      metadata.model = 'scheduled interpolation along official rail, cableway and cartographic shipping alignments, with inferred OSM bus roads'
+      metadata.attribution.push(boats.source.attribution)
+      metadata.geometry.license = 'Attribution terms (cantonal, FOT, SBB, swisstopo and FOEN sources); ODbL-1.0 (OSM-derived bus segments)'
+      metadata.geometry.shipping = { ...boats.source, policySha256: sourceHashes.boats, limits: boats.policy.limits, dockZoneMetres: boats.policy.dockZoneMetres,
+        shorelineRule: boats.policy.shorelineRule, pathAttribution: 'geometrySources = swisstopo-boat-inference; full source curves with bounded original-dock attachments and disclosed shoreline discrepancies' }
+    }
     if (accessRoads) metadata.geometry.accessRoadFallback = { ...accessRoads.source, cacheSha256: sourceHashes.accessRoads,
       reviewedPairs: policy.accessRoadFallback.pairs, limits: policy.accessRoadFallback.limits,
       pathAttribution: 'geometrySources = osm-access-road-inference; exact reviewed pairs only, after cantonal and original OSM matching fail' }
@@ -217,6 +228,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       admittedTripsUsingRoads: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')).reduce((n, p) => n + p.trips, 0),
       roadContextDirectedPairs: pairList.filter(p => p.geometrySource === 'osm-road-pattern-inference').length,
       admittedTripsUsingRoadContexts: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-pattern-inference')).reduce((n, p) => n + p.trips, 0),
+      boatDirectedPairs: pairList.filter(p => p.geometrySource === 'swisstopo-boat-inference' && p.pathIndex !== null).length,
+      admittedBoatTrips: ps.filter(p => p.admitted && p.mode === 'boat').reduce((n, p) => n + p.trips, 0),
       borderRailDirectedPairs: pairList.filter(p => p.geometrySource === 'sbb-border-rail-inference').length,
       admittedTripsUsingBorderRail: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'sbb-border-rail-inference')).reduce((n, p) => n + p.trips, 0),
       accessRoadDirectedPairs: pairList.filter(p => p.geometrySource === 'osm-access-road-inference').length,
@@ -248,6 +261,7 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
     sourceProbes: [{ file: shippingProbeFile, sha256: sha256(shippingProbe), sourceOnlyExclusions: JSON.parse(shippingProbe).sourceOnlyExclusions }],
     feed: raw.feed, sourceHashes, scope: raw.scope, policy, annualRouteRecords: inventory.length, annualAgencies: new Set(inventory.map(r => r.agencyId)).size,
     catalogue, sourceInventory, sourceStopReview, inventory, days,
+    ...(boats ? { boats: { source: boats.source, policy: boats.policy, sourceInventory: boats.inventory, directedPatterns: boats.patterns, consensusPairs: boats.pairs.size, matchedConsensusPairs: [...boats.pairs.values()].filter(p => p.path).length } } : {}),
     ...(borderRail ? { borderRail: { policy: borderRail.policy, source: borderRail.source, sourceInventory: borderRail.inventory, directedPatterns: borderRail.patterns, reviewedPairs: [...borderRail.pairs.keys()] } } : {}),
     ...(accessRoads ? { accessRoads: { source: accessRoads.source,
       agencies: Object.entries(accessRoads.cache.agencies).map(([agencyId, a]) => ({ agencyId, patterns: Object.keys(a.identities).length, report: a.cache.report, matcher: a.cache.metadata.matcher })),

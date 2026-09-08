@@ -17,6 +17,7 @@ import { loadBernIr16 } from './bern-ir16-geometry.mjs'
 import { loadBernTpfTerminal } from './bern-tpf-terminal.mjs'
 import { loadBernMorges } from './bern-morges-geometry.mjs'
 import { loadBernInterlaken } from './bern-interlaken-geometry.mjs'
+import { loadBernIc61, bernIc61Crosswalk } from './bern-ic61-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -55,7 +56,12 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
   const interlaken = await loadBernInterlaken()
   assert.equal(summary.sourceHashes.interlakenPolicy, interlaken.metadata.policySha256)
   assert.deepEqual(summary.sources.interlakenSupplement, interlaken.metadata)
-  const railSuppliers = [rail, regionalRail, crosscantonRail, ir66, ir16, tpfTerminal, morges, interlaken]
+  const ic61 = await loadBernIc61()
+  assert.equal(summary.sourceHashes.ic61Policy, ic61.metadata.policySha256)
+  assert.deepEqual(summary.sources.ic61Supplement, ic61.metadata)
+  for (const doc of ic61.policy.documents) assert.equal(sha(await readFile(join(output, doc.file))), doc.sha256)
+  const reviewedCrosswalk = bernIc61Crosswalk(crosswalk, ic61.policy, ['2026-09-04', '2026-09-06'])
+  const railSuppliers = [rail, regionalRail, crosscantonRail, ir66, ir16, tpfTerminal, morges, interlaken, ic61]
   assert.equal(summary.sourceHashes.crosscantonRailPolicy, crosscantonRail.metadata.policySha256)
   assert.deepEqual(summary.sources.crosscantonRailSupplement, crosscantonRail.metadata)
   assert.equal(summary.sourceHashes.regionalRailPolicy, regionalRail.metadata.policySha256)
@@ -85,7 +91,7 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
   assert(summary.districts.every(d => d.calledPlatforms > 0 && d.routeIds.length > 0))
   for (const route of routes) {
     assert(route.allYearTripRecords > 0 && route.inCantonStops.length > 0 && route.districts.length > 0)
-    assert.deepEqual(decoded.lines.filter(f => bernFeatureMatch(route, f, crosswalk)).map(f => f.properties.liniencode).sort(), route.sourceLines)
+    assert.deepEqual(decoded.lines.filter(f => bernFeatureMatch(route, f, reviewedCrosswalk)).map(f => f.properties.liniencode).sort(), route.sourceLines)
     const trips = sum(route.days, d => d.trips), admitted = sum(route.days, d => d.admittedTrips)
     assert.equal(route.status, !trips ? 'inactive-on-validation-dates' : !admitted ? 'excluded' : admitted === trips ? 'admitted-all-dated-trips' : 'partially-admitted')
   }

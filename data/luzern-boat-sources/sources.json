@@ -1,0 +1,293 @@
+{
+  "publisher": "swisstopo; FOEN",
+  "attribution": "Shipping geometry: © swisstopo; shoreline validation: © FOEN, swisstopo",
+  "productUrl": "https://www.swisstopo.admin.ch/en/landscape-model-swisstlmregio",
+  "license": "proprietary",
+  "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+  "geometryRetrieved": "2026-09-09",
+  "metadataRetrieved": "2026-09-08",
+  "collectionTemporalExtent": [
+    [
+      "2020-01-01T00:00:00Z",
+      "2025-12-02T00:00:00Z"
+    ]
+  ],
+  "collectionUpdated": "2026-06-25T20:00:03.726130Z",
+  "shorelineDataStatus": "2007-01-01",
+  "featureSourceDates": "Not supplied by the shipping API; collection dates do not establish individual feature vintage.",
+  "acquisition": "Fourteen adjoining bounded shipping queries cover the full dock areas: twelve for Lake Lucerne and two for Hallwilersee. Every response is below the 200 feature cap and shared features must agree byte-for-byte. One full lake query retains all polygon parts and holes. This is a scoped regional source census, not a national shipping census.",
+  "model": "Gleislicht cartographic inference on generalized official passenger-shipping linework, with source-vertex connectivity, explicit GTFS dock attachments and full shoreline-intersection checks. Not navigational, operator-certified shipping lanes or current-diversion evidence.",
+  "files": [
+    {
+      "file": "lucerne-0-0.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.25,
+        46.85,
+        8.35,
+        46.94
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.25%2C46.85%2C8.35%2C46.94&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.25%2C46.85%2C8.35%2C46.94&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "460454537da4ed4e77f94ff38ebc19f5c124795568a14c37b881bda51035eb90",
+      "count": 12,
+      "retrieved": "2026-09-09",
+      "sha256": "d16ccaa73dd069b464d5b2e0d612c024bb96eb5fd22f1f7d844d3a14656dad01"
+    },
+    {
+      "file": "lucerne-0-1.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.25,
+        46.94,
+        8.35,
+        47.03
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.25%2C46.94%2C8.35%2C47.03&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.25%2C46.94%2C8.35%2C47.03&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "f4805464c74fc3c10092fc6b4425a2c893d1e2fed4de350d35a1877f9d01e6c3",
+      "count": 76,
+      "retrieved": "2026-09-09",
+      "sha256": "f4bbb82db859a0abe364cb2d223fe1680d27977023f2a42d07b01aed4ab4272b"
+    },
+    {
+      "file": "lucerne-0-2.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.25,
+        47.03,
+        8.35,
+        47.12
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.25%2C47.03%2C8.35%2C47.12&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.25%2C47.03%2C8.35%2C47.12&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "7bf4a5c9453e2629eecb5d575c17a961d8242886a81db8307ac2f1e8024dc53c",
+      "count": 102,
+      "retrieved": "2026-09-09",
+      "sha256": "6832fd37e730b08c0ae0477484703dc05264cefeeacc6c1f46585f0402cd4c6b"
+    },
+    {
+      "file": "lucerne-1-0.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.35,
+        46.85,
+        8.45,
+        46.94
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.35%2C46.85%2C8.45%2C46.94&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.35%2C46.85%2C8.45%2C46.94&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "dc05f2c546f05d2efe1a0b7c5b5ba7e5d8c8461e5e5e834bf2774d6353d033a2",
+      "count": 66,
+      "retrieved": "2026-09-09",
+      "sha256": "238f34113e31964d8445a0c6c22326be1c61f97cdb8f615917a8dd6bc8fccea4"
+    },
+    {
+      "file": "lucerne-1-1.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.35,
+        46.94,
+        8.45,
+        47.03
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.35%2C46.94%2C8.45%2C47.03&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.35%2C46.94%2C8.45%2C47.03&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "63a8367713c8bf921337e5560b8bf219acc8893df27127a6b26d638700a4dff3",
+      "count": 42,
+      "retrieved": "2026-09-09",
+      "sha256": "54167e9ac8645d622df30dca5d4e95657dc53ed7f2cf0976a63ffb61a9ab53b4"
+    },
+    {
+      "file": "lucerne-1-2.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.35,
+        47.03,
+        8.45,
+        47.12
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.35%2C47.03%2C8.45%2C47.12&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.35%2C47.03%2C8.45%2C47.12&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "feca9e60e52a4f20a52a8e40478fee3b8ecdf026ad1a36f32a7bba4e1349c320",
+      "count": 50,
+      "retrieved": "2026-09-09",
+      "sha256": "52a25958703df31cf350fac04ff618b89784118242149fcf71777b8c28f2f74d"
+    },
+    {
+      "file": "lucerne-2-0.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.45,
+        46.85,
+        8.55,
+        46.94
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.45%2C46.85%2C8.55%2C46.94&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.45%2C46.85%2C8.55%2C46.94&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "d7d4fc48f23e20ca366f6470c8386877fac269775178b892120f4a79d55abdaa",
+      "count": 22,
+      "retrieved": "2026-09-09",
+      "sha256": "8f1cebeda6a170d59ed185dead81a9b630cb1952f2eeb62769f8724959c31a57"
+    },
+    {
+      "file": "lucerne-2-1.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.45,
+        46.94,
+        8.55,
+        47.03
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.45%2C46.94%2C8.55%2C47.03&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.45%2C46.94%2C8.55%2C47.03&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "c8b6a64e24b1482bb0c0c9f19ab460194faace9bb3e78f040b6107e6339f5277",
+      "count": 53,
+      "retrieved": "2026-09-09",
+      "sha256": "2d3fc208b74485b7fb63250edfa8767dc56751dba5473ac30f24e3bf162116ba"
+    },
+    {
+      "file": "lucerne-2-2.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.45,
+        47.03,
+        8.55,
+        47.12
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.45%2C47.03%2C8.55%2C47.12&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.45%2C47.03%2C8.55%2C47.12&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "1c71b98cadb2103a74b13b36abf2bd9fa58ee828d7694e16e052baebf8237d18",
+      "count": 96,
+      "retrieved": "2026-09-09",
+      "sha256": "11e332f700aade66edf369be7468aa31d8af1c8a95c7289f29847110e01bda7b"
+    },
+    {
+      "file": "lucerne-3-0.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.55,
+        46.85,
+        8.65,
+        46.94
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.55%2C46.85%2C8.65%2C46.94&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.55%2C46.85%2C8.65%2C46.94&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "ed2241f51c3914372ca37e614732b36d675be4c895425eebefd169bf3c410212",
+      "count": 66,
+      "retrieved": "2026-09-09",
+      "sha256": "c87bc9afa4502bccbacfcf65e84ba7e803324bb82488b47bf3de2e358bb5c8af"
+    },
+    {
+      "file": "lucerne-3-1.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.55,
+        46.94,
+        8.65,
+        47.03
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.55%2C46.94%2C8.65%2C47.03&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.55%2C46.94%2C8.65%2C47.03&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "1269959318a15a35450c76d2d5e110ebfcc7ca1dc070e32f17cd81b7c12d4c9e",
+      "count": 51,
+      "retrieved": "2026-09-09",
+      "sha256": "e8ccd46143aaac2d7a53a68099381de552fa93c520d3499e94155168e1f96f07"
+    },
+    {
+      "file": "lucerne-3-2.json.gz",
+      "lake": "lucerne",
+      "bounds": [
+        8.55,
+        47.03,
+        8.65,
+        47.12
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.55%2C47.03%2C8.65%2C47.12&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.55%2C47.03%2C8.65%2C47.12&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "11288cd319398bcb52b96f9db1bffea0579e10e376ee9b672be35c1904b09990",
+      "count": 46,
+      "retrieved": "2026-09-09",
+      "sha256": "7e1807536538cf68e7bae04052e06e45b2bbfcbff20d6cb955a185f6d7731cff"
+    },
+    {
+      "file": "hallwil-0-0.json.gz",
+      "lake": "hallwil",
+      "bounds": [
+        8.18,
+        47.23,
+        8.26,
+        47.28
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.18%2C47.23%2C8.26%2C47.28&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.18%2C47.23%2C8.26%2C47.28&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "641ac72091f3b7e88f59c1bec8cfb07e87a6574dc6dfbfb3b927b47711fc286c",
+      "count": 27,
+      "retrieved": "2026-09-09",
+      "sha256": "f6109815633b8b194f8213a9894075e59c3183a6a3cb3103f16b3c5fba2e75b9"
+    },
+    {
+      "file": "hallwil-0-1.json.gz",
+      "lake": "hallwil",
+      "bounds": [
+        8.18,
+        47.28,
+        8.26,
+        47.33
+      ],
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.18%2C47.28%2C8.26%2C47.33&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.18%2C47.28%2C8.26%2C47.33&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "09aab3a1ea548e8f19f50219d724f9b57e8d9c97140f5e48bbf85b7e32f92bab",
+      "count": 21,
+      "retrieved": "2026-09-09",
+      "sha256": "0e35331e0bd9a258cf0e72904bd1fc1151331a2d0fd13993430a61a56521cec5"
+    },
+    {
+      "file": "lakes.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.15%2C46.85%2C8.66%2C47.34&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.15%2C46.85%2C8.66%2C47.34&tolerance=0&layers=all%3Ach.bafu.vec25-seen&returnGeometry=true&limit=200&sr=4326",
+      "rawSha256": "da465f6d2edf373ee34b96747e1922ddd2afeecee8d4737b0ce36ec1b1774d38",
+      "count": 15,
+      "retrieved": "2026-09-09",
+      "sha256": "5cbd34796097596a6cd7350e9b74b509821169135f51d0de8b7a6eccd4f1618b"
+    },
+    {
+      "file": "requests.json",
+      "sha256": "468b26d2c1a744d854b90ed0c14efde3f8216ce0458342a6b02369a16014f5b0",
+      "description": "Acquisition receipts and source query envelopes"
+    },
+    {
+      "file": "layer.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.swisstopo.vec200-transportation-oeffentliche-verkehr?lang=en",
+      "retrieved": "2026-09-08",
+      "rawSha256": "4b4367b1bdd2e5320bf07b7b0da274831f798a7d92f8b43475dc0ec46587ff75",
+      "sha256": "e70779270bcbf38135ecbaf39a29176a9ba65aa80f5150529f2ff29ccbc63947",
+      "reusedFrom": "data/zug-boat-sources/layer.json"
+    },
+    {
+      "file": "collection.json.gz",
+      "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo.swisstlmregio",
+      "retrieved": "2026-09-08",
+      "rawSha256": "226392dc53ec9ff1341e6fc15fd47208fd79fba3ba3ae9faffbc7a01fdedbad4",
+      "sha256": "156c3d6e9b5235fe3173deb7501f3b5941e1196119f415e7faff5f7e5dbc28e8",
+      "reusedFrom": "data/zug-boat-sources/collection.json"
+    },
+    {
+      "file": "lake-layer.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.bafu.vec25-seen?lang=en",
+      "retrieved": "2026-09-08",
+      "rawSha256": "8a70b3a7091871abfd6fd327eb5818b70d0cb3dd39ad5c6fba25723b66e8fc5a",
+      "sha256": "0ddf8916d5a8152d8e76fcf5fe7a9fface7393831a3bb230865dc800c86f4fef",
+      "reusedFrom": "data/zug-boat-sources/lake-layer.json"
+    },
+    {
+      "file": "shoreline-legend.html.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.bafu.vec25-seen/legend?lang=en",
+      "retrieved": "2026-09-08",
+      "rawSha256": "5b54cf6acecdab60c0a66f8ac3b0cd24d40919a1df9d54047d46eda99645e5d6",
+      "sha256": "9b0df40d17f6a72d0eadf9ae84f33b96387b47ff202630685da83481000b9e7f",
+      "reusedFrom": "data/zug-boat-sources/shoreline-legend.html"
+    },
+    {
+      "file": "shoreline-product.html.gz",
+      "url": "https://www.bafu.admin.ch/en/the-swiss-hydrographic-network",
+      "retrieved": "2026-09-08",
+      "rawSha256": "5b93a6895e1fc407be8951e1392e84fd0c783b624bc763bb5f61e71e2846aea4",
+      "sha256": "6bf53f8888f57d31a169cdba8b305bfc30260cb49e9a6ae59b16fdfe1f19e764",
+      "reusedFrom": "data/zug-boat-sources/shoreline-product.html"
+    },
+    {
+      "file": "terms.html.gz",
+      "url": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+      "retrieved": "2026-09-08",
+      "rawSha256": "9f677abfdead1294bf88d822b3fc20aaecfb923e3b8744e0abea98eca70f5b84",
+      "sha256": "cc5a522bf57c02341123520198e1eae85a15a1159c9d75522f3f85249c4a0ff7",
+      "reusedFrom": "data/zug-boat-sources/terms.html"
+    }
+  ]
+}
