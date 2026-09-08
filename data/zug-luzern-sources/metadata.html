@@ -1,0 +1,2364 @@
+<!doctype html>
+<html lang="de-CH">
+
+  <head data-hook="inside_head">
+    <meta charset="utf-8">
+<title>Öffentlicher Verkehr: Haltestellen und Liniennetze Bahn, Bus und Schiff - Geoportal Kanton Luzern</title>
+<link rel="apple-touch-icon" type="image/png" href="/assets/favicon/apple-touch-icon-56153469a6a46558bb8e6aa1d2e82a0926c9c5e601c75814244bb4917d804f10.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96-707c012ab2b118c271f363b381c024d8983fac977528bf0aa0be320ef8ef8fe2.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32-be0713d5229278483faa9f4eb232e985a9523b53136895e30a7607111f0e582c.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16-4b1d4a58e9eaf71b1b8fb6ee9fa69be9bd0ce934d858657c6b31923c13f20b34.png" sizes="16x16" />
+<link rel="mask-icon" type="image/svg" href="/assets/favicon/safari-pinned-tab-6b945fb6fc3e9677d8eff8a2cffcaf3cb213abe9b8db9a8097a945c9d465dc7b.svg" color="#009fe3" />
+<link rel="icon" type="image/x-icon" href="/assets/favicon/favicon-7cfeb21679379fbf42014be049f2abaea113dae0c16bbc57e7bfa4905042758b.ico" />
+<link rel="manifest" href="/assets/favicon/site-7916660488a64931e8d1ad2dc5a53826fbb5ee970e2067f75b74302a4081e4aa.webmanifest">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig-c736b46a292a4403eac62cebdd146f3b53dcca05ce830bf3230d1de2b615736e.xml">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+
+<meta name="keywords" content="Bergbahnen, Netzstruktur, Öffentlicher Verkehr, Schienenverkehr, Schifffahrt, Verkehr" />
+<meta name="description" content="&lt;p&gt;Zeigt Haltestellen und Haltekanten des öffentlichen Verkehrs, sowie Bahn-, Schiffs- und Buslinien.&lt;/p&gt;" />
+
+<link href="https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5" rel="canonical" />
+<link rel="preload" href="/assets/webfont_luzern-102114eab0c69b4fd904bf6f85b11da4f42ccf6ee924526c0dfff871768a95e2.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/assets/datenshop/frontend/application-5924a50c7678db7374ee38e616cfc245ba13f7a6588a7070ae300cd3780a8f3a.css" media="all" data-turbo-track="reload" />
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="J7-rfkW8tluR3JfPza6qMix_l-fT1H4t3gYwdYGbCZUYOROdqXqZKT3l0swI_78IPnfIlRPZgM7bFKVkoUsgYg" />
+<script type="importmap" data-turbo-track="reload">{
+  "imports": {
+    "application-spree-frontend": "/assets/spree/frontend/application-a1da2f0e4d654593b5114c7c90992fb3d7949cab198b7cec74880a166dcfa1f1.js",
+    "@hotwired/turbo-rails": "/assets/turbo.min-cc7426fef62444479b06a23c52b80e74f3954dce549e83d8b343d9973919d721.js",
+    "application-spree-backend": "/assets/spree/backend/application-43b40652ac5676473e3958492a9d6c7e96aa056ceecc5fd99d7f5d2c295f5992.js",
+    "@hotwired/stimulus": "/assets/stimulus.min-976b4e166c7f712397cad15409e0b976dfd9f2373f5e04d9f4520f0d5a7597f5.js",
+    "@hotwired/stimulus-loading": "/assets/stimulus-loading-39227295c8a6d71e10ca2a94dede18522ced047f6ccbf8788e926f8be14aff1b.js",
+    "@rails/request.js": "/assets/requestjs-70fd0737c355e2e64a03d84f56a7ebd10bc63e8caad319919ba3239493572bd8.js",
+    "sortablejs": "/assets/sortablejs-6ab62cf5b04c5024e2375cedde9a64f80fce36bb6e5f10b0f7d8e1e87e2696cf.js",
+    "application": "/assets/application-9b5e0af911aebfd343d02f4987574e9d84779ea51e9fb36d25e8f8da501b94be.js",
+    "controllers/clipboard_controller": "/assets/spree/backend/controllers/clipboard_controller-f997ef45e0456f475df337eb9eb9085c44f1397e78936c85c6d5bf84b83d4e47.js",
+    "controllers": "/assets/controllers/index-d92597c94be3b5a5adba9c0f17fb1601585e59e54ed1e242cd99ce6f935198e5.js",
+    "controllers/password_toggle_controller": "/assets/spree/backend/controllers/password_toggle_controller-f5916d02f2eec4cd95e3e4f0817eb2df8b8cd120eea7e645cee82f9bfdfbc8d5.js",
+    "controllers/product_edit_controller": "/assets/spree/backend/controllers/product_edit_controller-d9059b6976283b135de9f9239390d47e6d5625d2801ea648e9794ae75ae380b8.js",
+    "controllers/sortable_tree_controller": "/assets/spree/backend/controllers/sortable_tree_controller-6e979bf1684be8c23fae8ffafe533ba0f47da46a0afc63cd36300090ca0f4ab6.js",
+    "controllers/spree_controller": "/assets/spree/backend/controllers/spree_controller-a6372e717c57b1a00bb8e5bfabe1fe517f9fa87c88ee656ead16445e6dafac44.js",
+    "controllers/upload_button_controller": "/assets/spree/backend/controllers/upload_button_controller-f0836f96a94eeb4157918a4e1c8ab5da79d4dc430c32949a5f9256a9938e4c63.js",
+    "controllers/webhooks_subscriber_events_controller": "/assets/spree/backend/controllers/webhooks_subscriber_events_controller-4a64ff06c8743ed821a5dac5df4e687623a711316b79d67f6a372aa65b3ea786.js",
+    "helpers": "/assets/spree/backend/helpers/index-3f33b9cb7c57f531c2d6055c20c86d73da948a0724368f7b4de66ab1728e9cc5.js",
+    "helpers/request_utility": "/assets/spree/backend/helpers/request_utility-778361c7ce22d85170bdac8dea89d212d07d8d415e05197aac40c1a5648bb6de.js",
+    "controllers/application": "/assets/controllers/application-44e5edd38372876617b8ba873a82d48737d4c089e5180f706bdea0bb7b6370be.js",
+    "controllers/geo_clipboard_controller": "/assets/controllers/geo_clipboard_controller-ba66b0fc247892f145010d40bec9b000f3e643bfb6aa1b15a46d43919c89ce15.js",
+    "controllers/geo_contracts_controller": "/assets/controllers/geo_contracts_controller-c2af779ab63af2395b783c40f6994bedeb95cc0d6ff26dfd222d3ca72d08e6c9.js"
+  }
+}</script>
+<link rel="modulepreload" href="/assets/spree/frontend/application-a1da2f0e4d654593b5114c7c90992fb3d7949cab198b7cec74880a166dcfa1f1.js">
+<link rel="modulepreload" href="/assets/turbo.min-cc7426fef62444479b06a23c52b80e74f3954dce549e83d8b343d9973919d721.js">
+<link rel="modulepreload" href="/assets/spree/backend/application-43b40652ac5676473e3958492a9d6c7e96aa056ceecc5fd99d7f5d2c295f5992.js">
+<link rel="modulepreload" href="/assets/stimulus.min-976b4e166c7f712397cad15409e0b976dfd9f2373f5e04d9f4520f0d5a7597f5.js">
+<link rel="modulepreload" href="/assets/stimulus-loading-39227295c8a6d71e10ca2a94dede18522ced047f6ccbf8788e926f8be14aff1b.js">
+<link rel="modulepreload" href="/assets/requestjs-70fd0737c355e2e64a03d84f56a7ebd10bc63e8caad319919ba3239493572bd8.js">
+<link rel="modulepreload" href="/assets/sortablejs-6ab62cf5b04c5024e2375cedde9a64f80fce36bb6e5f10b0f7d8e1e87e2696cf.js">
+<link rel="modulepreload" href="/assets/application-9b5e0af911aebfd343d02f4987574e9d84779ea51e9fb36d25e8f8da501b94be.js">
+<link rel="modulepreload" href="/assets/spree/backend/controllers/clipboard_controller-f997ef45e0456f475df337eb9eb9085c44f1397e78936c85c6d5bf84b83d4e47.js">
+<link rel="modulepreload" href="/assets/controllers/index-d92597c94be3b5a5adba9c0f17fb1601585e59e54ed1e242cd99ce6f935198e5.js">
+<link rel="modulepreload" href="/assets/spree/backend/controllers/password_toggle_controller-f5916d02f2eec4cd95e3e4f0817eb2df8b8cd120eea7e645cee82f9bfdfbc8d5.js">
+<link rel="modulepreload" href="/assets/spree/backend/controllers/product_edit_controller-d9059b6976283b135de9f9239390d47e6d5625d2801ea648e9794ae75ae380b8.js">
+<link rel="modulepreload" href="/assets/spree/backend/controllers/sortable_tree_controller-6e979bf1684be8c23fae8ffafe533ba0f47da46a0afc63cd36300090ca0f4ab6.js">
+<link rel="modulepreload" href="/assets/spree/backend/controllers/spree_controller-a6372e717c57b1a00bb8e5bfabe1fe517f9fa87c88ee656ead16445e6dafac44.js">
+<link rel="modulepreload" href="/assets/spree/backend/controllers/upload_button_controller-f0836f96a94eeb4157918a4e1c8ab5da79d4dc430c32949a5f9256a9938e4c63.js">
+<link rel="modulepreload" href="/assets/spree/backend/controllers/webhooks_subscriber_events_controller-4a64ff06c8743ed821a5dac5df4e687623a711316b79d67f6a372aa65b3ea786.js">
+<link rel="modulepreload" href="/assets/spree/backend/helpers/index-3f33b9cb7c57f531c2d6055c20c86d73da948a0724368f7b4de66ab1728e9cc5.js">
+<link rel="modulepreload" href="/assets/spree/backend/helpers/request_utility-778361c7ce22d85170bdac8dea89d212d07d8d415e05197aac40c1a5648bb6de.js">
+<link rel="modulepreload" href="/assets/controllers/application-44e5edd38372876617b8ba873a82d48737d4c089e5180f706bdea0bb7b6370be.js">
+<link rel="modulepreload" href="/assets/controllers/geo_clipboard_controller-ba66b0fc247892f145010d40bec9b000f3e643bfb6aa1b15a46d43919c89ce15.js">
+<link rel="modulepreload" href="/assets/controllers/geo_contracts_controller-c2af779ab63af2395b783c40f6994bedeb95cc0d6ff26dfd222d3ca72d08e6c9.js">
+<script type="module">import "application-spree-frontend"</script>
+<script>
+    SpreePaths = {"mounted_at":"/","admin":"bestellverwaltung/"}
+</script>
+
+<script>
+  var SPREE_LOCALE = 'de-CH'
+  var SPREE_CURRENCY = 'CHF'
+  var SPREE_DEFAULT_CURRENCY = 'CHF'
+  var SPREE_DEFAULT_LOCALE = 'de-CH'
+</script>
+
+<script>// Set the locale before the JSAPI loads
+esriConfig = {
+    locale: "de-CH",
+};
+</script>
+<script src="/assets/spree/frontend/all-73fbd17acce6cc7de79dc276cf4f3678cb785e4c3cff963d585b0773afd57a5f.js" data-turbo-track="reload"></script>
+<script src="/assets/datenshop/frontend/application-63920430cc65423df08eec091750805e8bbcdcdfadbbf1e225834b0ba99753cc.js" data-turbo-track="reload"></script>
+  <!-- Matomo -->
+  <script>
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+          var u="https://www.geo.lu.ch/matomo/";
+          _paq.push(['setTrackerUrl', u+'matomo.php']);
+          _paq.push(['setSiteId', '4']);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+  </script>
+  <!-- End Matomo Code -->
+
+    
+  </head>
+  <body class="" id="product-details">
+    <div id="mobileNav" class="mobilenavigation">
+      <div class="mobilenavigation__header">
+        <button class="no-focusborder offside-button mobilenavigation__close-button" type="button">
+          <span class="sprite sprite--cross">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+	<path d="M279.7 250L493.9 35.7c7.8-8.6 7.1-21.9-1.5-29.6-8-7.2-20.2-7.2-28.2 0L250 220.1 35.7 6.1C27.5-2 14.3-2 6.1 6.1-2 14.3-2 27.5 6.1 35.7l214 214.3-214 214.2c-8.2 8.2-8.2 21.5 0 29.7 8.2 8.1 21.4 8.1 29.6 0L250 279.6l214.2 214.2c8.2 8.2 21.5 8.2 29.7 0s8.2-21.5 0-29.7L279.7 250z">
+	</path>
+</svg>
+          </span>
+        </button>
+      </div>
+      <div class="mobilenavigation__inner">
+              <div data-hook="taxon_sidebar_navigation">
+    <div class="navigation">
+  <div class="homepage">
+      <a class="navigation__back-link" href="/">
+          <span class="sprite sprite--right-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+	<path fill="currentcolor" d="M345.6 107.5l-21.2 21.21 94.39 94.4H0v30h418.79l-94.4 94.39 21.22 21.21 130.6-130.6z"></path>
+</svg>
+          </span>
+        Geodatenshop
+</a>  </div>
+  <!-- <div class="catalogue">Alle Produkte</div> -->
+</div>
+<div class="navigation taxonomies">
+  <ul class="navigation__list">
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/basiskarten">
+        <span class="taxonomy-name">Basiskarten</span>
+        <span class="filter-product-count">
+          21
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/bodenbedeckung-nutzung">
+        <span class="taxonomy-name">Bodenbedeckung, -nutzung</span>
+        <span class="filter-product-count">
+          1
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/luft-satellitenbilder">
+        <span class="taxonomy-name">Luft-, Satellitenbilder</span>
+        <span class="filter-product-count">
+          10
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/ortsangaben">
+        <span class="taxonomy-name">Ortsangaben</span>
+        <span class="filter-product-count">
+          8
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/hohen">
+        <span class="taxonomy-name">Höhen</span>
+        <span class="filter-product-count">
+          48
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/grenzen">
+        <span class="taxonomy-name">Grenzen</span>
+        <span class="filter-product-count">
+          34
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/raumplanung">
+        <span class="taxonomy-name">Raumplanung</span>
+        <span class="filter-product-count">
+          35
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/geologie">
+        <span class="taxonomy-name">Geologie</span>
+        <span class="filter-product-count">
+          2
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/boden">
+        <span class="taxonomy-name">Boden</span>
+        <span class="filter-product-count">
+          13
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/naturbedingte-risiken">
+        <span class="taxonomy-name">Naturbedingte Risiken</span>
+        <span class="filter-product-count">
+          14
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/wald-flora-fauna">
+        <span class="taxonomy-name">Wald, Flora, Fauna</span>
+        <span class="filter-product-count">
+          35
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/gewasser">
+        <span class="taxonomy-name">Gewässer</span>
+        <span class="filter-product-count">
+          20
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/atmosphare-luft-klima">
+        <span class="taxonomy-name">Atmosphäre, Luft, Klima</span>
+        <span class="filter-product-count">
+          5
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/umweltschutz-larm">
+        <span class="taxonomy-name">Umweltschutz, Lärm</span>
+        <span class="filter-product-count">
+          6
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/natur-und-landschaftsschutz">
+        <span class="taxonomy-name">Natur- und Landschaftsschutz</span>
+        <span class="filter-product-count">
+          27
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/gesellschaft-kultur">
+        <span class="taxonomy-name">Gesellschaft, Kultur</span>
+        <span class="filter-product-count">
+          3
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/gebaude-anlagen">
+        <span class="taxonomy-name">Gebäude, Anlagen</span>
+        <span class="filter-product-count">
+          10
+        </span>
+</a>    </li>
+    <li class="navigation__list-item current">
+      <a class="navigation__child-list-item-link" href="/kategorie/verkehr">
+        <span class="taxonomy-name">Verkehr</span>
+        <span class="filter-product-count">
+          21
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/energie">
+        <span class="taxonomy-name">Energie</span>
+        <span class="filter-product-count">
+          17
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/wasser-und-abfallsysteme">
+        <span class="taxonomy-name">Wasser- und Abfallsysteme</span>
+        <span class="filter-product-count">
+          8
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/kommunikation">
+        <span class="taxonomy-name">Kommunikation</span>
+        <span class="filter-product-count">
+          1
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/landwirtschaft">
+        <span class="taxonomy-name">Landwirtschaft</span>
+        <span class="filter-product-count">
+          19
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/wirtschaftliche-aktivitaten">
+        <span class="taxonomy-name">Wirtschaftliche Aktivitäten</span>
+        <span class="filter-product-count">
+          5
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/militar-sicherheit">
+        <span class="taxonomy-name">Militär, Sicherheit</span>
+        <span class="filter-product-count">
+          6
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/gesundheit">
+        <span class="taxonomy-name">Gesundheit</span>
+        <span class="filter-product-count">
+          1
+        </span>
+</a>    </li>
+  </ul>
+</div>
+  </div>
+
+      </div>
+    </div>
+    <div class="page">
+      <div class="maintanace_info">
+  <div class="flash">
+  </div>
+</div>
+
+      <header class="header">
+        <a href="/" class="header-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" id="Ebene_1" viewBox="0 0 482.3 144.06" width="248" height="74"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#009fe3;}</style></defs><path class="cls-1" d="m179.3,131.44h-23.36v-51.56h-14.21v63.08h37.57v-11.52h0Zm32.4,12.62h.27c17.56-.05,26.34-9.52,26.34-28.42v-35.76h-14.21v37.13c0,9.85-3.92,14.78-11.75,14.78s-11.97-5.1-11.97-15.31v-36.6h-14.25v36.42c0,18.46,8.52,27.71,25.56,27.76h0Zm270.6-1.1v-63.08h-13.37v34.88c0,4.31.12,7.2.35,8.67h-.18c-.97-1.7-2.02-3.42-3.17-5.15l-25.03-38.4h-15.31v63.08h13.42v-34.66c0-4.57-.12-7.98-.35-10.21h.18c.59,1.17,1.64,2.92,3.17,5.23l26,39.64h14.3Zm-182.96-11.52h-31.72l31.63-43.59v-7.96h-48.39v11.57h30l-32.33,43.33v8.18h50.81v-11.52h0Zm50.61,0h-23.62v-14.43h20.63v-11.53h-20.63v-14.03h22.17v-11.57h-36.38v63.08h37.83v-11.52h0Zm55.62-7.13c-.62-.97-1.3-1.96-2.05-2.97-.75-1.01-1.53-1.96-2.35-2.84-.82-.88-1.67-1.65-2.55-2.31-.88-.66-1.79-1.14-2.73-1.43v-.18c2.14-.62,4.08-1.47,5.83-2.55,1.74-1.08,3.23-2.37,4.47-3.87,1.23-1.5,2.18-3.17,2.86-5.04.67-1.86,1.01-3.89,1.01-6.09,0-11.44-7.65-17.16-22.96-17.16h-22.52v63.08h14.21v-24.15h3.83c.88,0,1.69.18,2.44.55.75.37,1.47.89,2.16,1.58.69.69,1.37,1.52,2.05,2.49.67.97,1.38,2.07,2.11,3.3l9.81,16.23h16.32l-11.92-18.65h0Zm-20.37-33.78c6.6,0,9.9,2.76,9.9,8.27,0,2.64-.94,4.85-2.81,6.64-1.85,1.76-4.3,2.64-7.35,2.64h-6.16v-17.55h6.42Z"></path><path class="cls-1" d="m156.69,31.32L183.74,1.06h-9.19l-23.58,27.49c-.7.79-1.26,1.51-1.67,2.15h-.18V1.06h-7.39v63.08h7.39v-31.06h.18c.2.38.76,1.12,1.67,2.2l24.37,28.86h10.29l-28.94-32.82h0Zm325.61,32.82V1.06h-7.35v44.43c0,4.37.15,7.46.44,9.28h-.18c-.38-.76-1.23-2.17-2.55-4.22L441.08,1.06h-9.59v63.08h7.39V18.56c0-4.43-.12-7.32-.35-8.67h.26c.53,1.38,1.2,2.7,2.02,3.96l32.46,50.28h9.02ZM390.26,0h-.42c-9.34.05-16.73,3.07-22.17,9.06-5.48,6.04-8.23,14.14-8.23,24.28,0,9.44,2.69,17.11,8.07,23.01,5.38,5.89,12.54,8.84,21.49,8.84s16.45-2.99,21.91-8.97c5.46-5.98,8.18-14.12,8.18-24.41,0-9.47-2.66-17.14-7.98-23.01-5.28-5.82-12.23-8.75-20.85-8.8h0Zm-170.66,1.06h-7.65l-24.2,63.08h8.23l6.29-17.68h26.75l6.68,17.68h8.18L219.59,1.06h0Zm-14.87,38.75l9.81-26.88c.38-1.03.72-2.43,1.01-4.22h.18c.32,1.94.64,3.34.97,4.22l9.9,26.88h-21.86ZM304.01,1.06h-7.39v44.43c0,4.37.15,7.46.44,9.28h-.18c-.38-.76-1.23-2.17-2.55-4.22L262.75,1.06h-9.59v63.08h7.39V18.56c0-4.43-.12-7.32-.35-8.67h.26c.53,1.38,1.2,2.7,2.02,3.96l32.46,50.28h9.06V1.06h0Zm53.04,0h-43.77v6.69h18.17v56.39h7.39V7.74h18.21V1.06h0Zm48.48,12.45c3.87,4.55,5.81,10.98,5.81,19.31s-2,14.44-5.98,18.96c-3.99,4.52-9.44,6.77-16.36,6.77-6.48,0-11.74-2.37-15.77-7.1-4.03-4.74-6.05-10.99-6.05-18.76s2.07-14.05,6.2-18.83c4.13-4.78,9.52-7.17,16.14-7.17s12.14,2.27,16.01,6.82h0Z"></path><polygon class="cls-2" points="0 142.83 70.87 142.83 70.87 1.1 0 1.1 0 142.83 0 142.83"></polygon></svg>
+        </a>
+        <button class="no-focusborder menu-btn-1 offside-button header__mobilenavigation-button" type="button">
+          <span class="header__mobilenavigation-button-text">Navigation</span>
+        </button>
+
+        <a href="/" id="ctl02_lnkTag" class="header__label">
+          <span class="header__label-name"><br/>Geodatenshop</span>
+        </a>
+        <div class="layout__search-bar-wrapper search_form-wrapper">
+  <form autocomplete="off" class="search-form" onblur="checkTextField(this);" role="search" data-search-id="products" action="/produkt" accept-charset="UTF-8" data-remote="true" method="get">
+    <input type="hidden" name="turbo_action" value="advance" autocomplete="off" />
+    <div class="layout__search-bar header__search-bar">
+      <input type="search" name="search" class="search-field header__search-input" placeholder="Suchen nach Produktname, Schlagwort, ..." />
+      <button type="submit" class="run-search no-focusborder header__search-submit">Suchen</button>
+    </div>
+</form></div>
+        <nav id="geo-login-cart-bar">
+  <ul>
+    <li id="link-to-login" class="link-to-login"><a href="/login">
+        <div class="icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="28" height="28" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="nonzero" clip-rule="nonzero" viewBox="0 0 5800 5800" class="login"><title>Anmelden</title>
+	
+	<desc>user icon from the IconExperience.com I-Collection. Copyright by INCORS GmbH (www.incors.com).</desc>
+		<path fill="currentcolor" d="M1639 1856l-39 -598c-3,-54 3,-123 12,-176 40,-250 179,-450 369,-587 186,-135 423,-210 664,-215 204,-3 366,30 539,137 90,-34 182,-45 272,-36 286,27 544,240 667,493 59,119 88,249 78,376l-40 606c56,219 -16,475 -213,599 -66,220 -193,511 -347,684 3,82 9,181 30,270 20,88 55,166 115,202 125,66 180,94 317,135 186,56 462,146 590,270 111,108 196,243 254,389 62,153 93,318 93,475 0,225 -254,370 -605,461 -465,121 -1113,159 -1495,159 -382,0 -1030,-38 -1495,-159 -351,-91 -605,-236 -605,-461 0,-157 31,-322 93,-476 58,-145 143,-280 254,-388 128,-124 404,-214 590,-270 127,-38 198,-66 313,-133 59,-33 96,-112 118,-201 21,-94 30,-178 32,-273 -153,-172 -282,-465 -348,-684 -196,-124 -269,-381 -213,-599z"></path>
+</svg>
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="28" height="28" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="nonzero" clip-rule="nonzero" viewBox="0 0 5800 5800" class="login"><title>Anmelden</title>
+	
+	<desc>user icon from the IconExperience.com I-Collection. Copyright by INCORS GmbH (www.incors.com).</desc>
+		<path fill="currentcolor" d="M3121 613c-54,-34 -96,-60 -139,-79 -98,-43 -228,-56 -334,-55 -383,8 -774,232 -839,635 -7,42 -11,86 -10,132l40 614c1,13 -1,27 -6,39 -21,77 -17,165 12,242 25,67 71,125 136,157 27,14 45,37 52,64 30,112 87,261 157,397 55,110 118,209 180,270 20,19 30,45 30,71 0,97 -7,230 -38,357 -35,139 -98,264 -212,330 -137,84 -238,115 -356,150 -65,20 -129,40 -193,64 -108,39 -243,88 -315,158 -91,88 -160,199 -208,319 -52,129 -78,269 -78,402 0,111 191,200 455,268 444,116 1073,152 1445,152 372,0 1001,-36 1445,-152 264,-68 455,-157 455,-268 0,-134 -26,-273 -78,-402 -47,-120 -117,-231 -208,-319 -72,-70 -207,-119 -315,-158 -196,-71 -371,-103 -553,-217 -117,-70 -178,-194 -210,-329 -28,-122 -33,-253 -36,-353 0,-28 11,-54 30,-73 63,-62 125,-161 180,-269 71,-137 127,-287 157,-398 8,-30 29,-53 56,-65 63,-33 108,-90 133,-156 29,-78 32,-168 9,-247 -3,-12 -4,-23 -4,-34l41 -624c8,-93 -15,-187 -58,-275 -48,-99 -124,-191 -214,-260 -148,-112 -338,-167 -512,-82 -32,16 -69,12 -97,-6zm628 3000c167,104 338,133 518,200 126,46 283,104 386,203 111,108 196,243 254,389 62,153 93,318 93,475 0,225 -254,370 -605,461 -465,121 -1113,159 -1495,159 -382,0 -1030,-38 -1495,-159 -351,-91 -605,-236 -605,-461 0,-157 31,-322 93,-476 58,-145 143,-280 254,-388 103,-99 260,-157 386,-203 68,-25 135,-46 204,-67 104,-32 193,-58 310,-131 62,-35 99,-114 121,-205 23,-91 30,-190 32,-271 -68,-76 -133,-179 -188,-289 -68,-133 -125,-278 -160,-395 -92,-58 -157,-145 -194,-244 -42,-112 -49,-240 -19,-355l-39 -598c-3,-54 3,-123 12,-176 81,-501 551,-793 1033,-802 136,-2 293,17 417,71 41,19 79,40 122,66 230,-87 476,-20 667,126 114,87 210,203 272,331 59,119 88,249 78,376l-40 606c30,115 24,243 -19,355 -37,99 -101,186 -194,244 -35,117 -91,262 -159,396 -56,108 -120,211 -188,288 3,82 9,181 30,270 20,88 55,166 118,204z"></path>
+</svg>
+        </div>
+</a>    </li>
+    <li id="link-to-cart" class="geo-cart">
+      <a class="cart-info nav-link empty" href="/warenkorb"><span class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="28" height="28" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="nonzero" clip-rule="nonzero" viewBox="0 0 5800 5800" class="login"><title>Warenkorb</title>
+	
+	<desc>shopping_cart icon from the IconExperience.com I-Collection. Copyright by INCORS GmbH (www.incors.com).</desc>
+		<path fill="currentcolor" d="M1418 4550c167,81 282,252 282,450 0,276 -224,500 -500,500 -276,0 -500,-224 -500,-500 0,-198 115,-369 282,-450l-282 0 0 -300 3326 0c63,0 112,-32 138,-89 25,-57 16,-115 -26,-161l-449 -500 -2082 0c-255,0 -476,-155 -563,-395l-632 -1737c-22,-62 -13,-128 24,-182 39,-55 97,-86 164,-86l3701 0 93 -323c55,-195 230,-327 432,-327l674 0 0 300 -674 0c-69,0 -125,42 -144,109l-715 2503 394 437c120,134 149,320 76,484 -73,164 -231,267 -411,267l-8 0c167,81 282,252 282,450 0,276 -224,500 -500,500 -276,0 -500,-224 -500,-500 0,-198 115,-369 282,-450l-2164 0z"></path>
+</svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="28" height="28" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="nonzero" clip-rule="nonzero" viewBox="0 0 5800 5800" class="login"><title>Warenkorb</title>
+	
+	<desc>shopping_cart icon from the IconExperience.com I-Collection. Copyright by INCORS GmbH (www.incors.com).</desc>
+		<path fill="currentcolor" d="M3756 3500l-2149 0c-255,0 -476,-155 -563,-395l-632 -1737c-47,-130 49,-268 188,-268l3753 0 89 -310c49,-173 204,-290 384,-290l674 0 0 200 -674 0c-91,0 -167,57 -192,145l-723 2529 413 459c229,254 51,667 -298,667l-226 0c276,0 500,224 500,500 0,276 -224,500 -500,500 -276,0 -500,-224 -500,-500 0,-276 224,-500 500,-500l-2598 0c275,1 498,225 498,500 0,276 -224,500 -500,500 -276,0 -500,-224 -500,-500 0,-275 223,-499 498,-500l-498 0 0 -200 3326 0c177,0 264,-206 149,-334l-419 -466zm540 -2200l-3696 0c-2,0 563,1550 631,1737 59,162 204,263 376,263l2118 0 571 -2000zm-3096 3400c-166,0 -300,134 -300,300 0,166 134,300 300,300 166,0 300,-134 300,-300 0,-166 -134,-300 -300,-300zm2600 0c-166,0 -300,134 -300,300 0,166 134,300 300,300 166,0 300,-134 300,-300 0,-166 -134,-300 -300,-300z"></path>
+</svg></span> Warenkorb<span class="item-count">: (leer)</span></a>
+    </li>
+ </ul>
+</nav>
+      </header>
+      <div id="layout" class="wrapper container layout">
+        <nav id="mainNav" class="layout__navigation">
+                <div data-hook="taxon_sidebar_navigation">
+    <div class="navigation">
+  <div class="homepage">
+      <a class="navigation__back-link" href="/">
+          <span class="sprite sprite--right-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+	<path fill="currentcolor" d="M345.6 107.5l-21.2 21.21 94.39 94.4H0v30h418.79l-94.4 94.39 21.22 21.21 130.6-130.6z"></path>
+</svg>
+          </span>
+        Geodatenshop
+</a>  </div>
+  <!-- <div class="catalogue">Alle Produkte</div> -->
+</div>
+<div class="navigation taxonomies">
+  <ul class="navigation__list">
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/basiskarten">
+        <span class="taxonomy-name">Basiskarten</span>
+        <span class="filter-product-count">
+          21
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/bodenbedeckung-nutzung">
+        <span class="taxonomy-name">Bodenbedeckung, -nutzung</span>
+        <span class="filter-product-count">
+          1
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/luft-satellitenbilder">
+        <span class="taxonomy-name">Luft-, Satellitenbilder</span>
+        <span class="filter-product-count">
+          10
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/ortsangaben">
+        <span class="taxonomy-name">Ortsangaben</span>
+        <span class="filter-product-count">
+          8
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/hohen">
+        <span class="taxonomy-name">Höhen</span>
+        <span class="filter-product-count">
+          48
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/grenzen">
+        <span class="taxonomy-name">Grenzen</span>
+        <span class="filter-product-count">
+          34
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/raumplanung">
+        <span class="taxonomy-name">Raumplanung</span>
+        <span class="filter-product-count">
+          35
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/geologie">
+        <span class="taxonomy-name">Geologie</span>
+        <span class="filter-product-count">
+          2
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/boden">
+        <span class="taxonomy-name">Boden</span>
+        <span class="filter-product-count">
+          13
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/naturbedingte-risiken">
+        <span class="taxonomy-name">Naturbedingte Risiken</span>
+        <span class="filter-product-count">
+          14
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/wald-flora-fauna">
+        <span class="taxonomy-name">Wald, Flora, Fauna</span>
+        <span class="filter-product-count">
+          35
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/gewasser">
+        <span class="taxonomy-name">Gewässer</span>
+        <span class="filter-product-count">
+          20
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/atmosphare-luft-klima">
+        <span class="taxonomy-name">Atmosphäre, Luft, Klima</span>
+        <span class="filter-product-count">
+          5
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/umweltschutz-larm">
+        <span class="taxonomy-name">Umweltschutz, Lärm</span>
+        <span class="filter-product-count">
+          6
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/natur-und-landschaftsschutz">
+        <span class="taxonomy-name">Natur- und Landschaftsschutz</span>
+        <span class="filter-product-count">
+          27
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/gesellschaft-kultur">
+        <span class="taxonomy-name">Gesellschaft, Kultur</span>
+        <span class="filter-product-count">
+          3
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/gebaude-anlagen">
+        <span class="taxonomy-name">Gebäude, Anlagen</span>
+        <span class="filter-product-count">
+          10
+        </span>
+</a>    </li>
+    <li class="navigation__list-item current">
+      <a class="navigation__child-list-item-link" href="/kategorie/verkehr">
+        <span class="taxonomy-name">Verkehr</span>
+        <span class="filter-product-count">
+          21
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/energie">
+        <span class="taxonomy-name">Energie</span>
+        <span class="filter-product-count">
+          17
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/wasser-und-abfallsysteme">
+        <span class="taxonomy-name">Wasser- und Abfallsysteme</span>
+        <span class="filter-product-count">
+          8
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/kommunikation">
+        <span class="taxonomy-name">Kommunikation</span>
+        <span class="filter-product-count">
+          1
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/landwirtschaft">
+        <span class="taxonomy-name">Landwirtschaft</span>
+        <span class="filter-product-count">
+          19
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/wirtschaftliche-aktivitaten">
+        <span class="taxonomy-name">Wirtschaftliche Aktivitäten</span>
+        <span class="filter-product-count">
+          5
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/militar-sicherheit">
+        <span class="taxonomy-name">Militär, Sicherheit</span>
+        <span class="filter-product-count">
+          6
+        </span>
+</a>    </li>
+    <li class="navigation__list-item">
+      <a class="navigation__child-list-item-link" href="/kategorie/gesundheit">
+        <span class="taxonomy-name">Gesundheit</span>
+        <span class="filter-product-count">
+          1
+        </span>
+</a>    </li>
+  </ul>
+</div>
+  </div>
+
+        </nav>
+        <main class="layout__main">
+          <div id="overlay" class="overlay hide-on-esc"></div>
+          <div class="breadcrumb-section">
+  <div class="breadcrumb">
+    <ul class="breadcrumb__list">
+      <li class="breadcrumb__list-entry parent">
+        <a class="breadcrumb__link" href="https://www.lu.ch">
+          Kanton
+        </a>
+      </li>
+      <li class="breadcrumb__list-entry parent">
+        <a class="breadcrumb__link" href="https://www.lu.ch/verwaltung/BUWD">
+          BUWD
+        </a>
+      </li>
+      <li class="breadcrumb__list-entry parent">
+        <a class="breadcrumb__link" href="https://rawi.lu.ch">
+          rawi
+        </a>
+      </li>
+      <li class="breadcrumb__list-entry parent">
+        <a class="breadcrumb__link" href="https://geoportal.lu.ch/">
+          Geoportal
+        </a>
+      </li>
+      <li class="breadcrumb__list-entry parent">
+        <a class="breadcrumb__link" href="/">Geodatenshop</a>
+      </li>
+        <li class="breadcrumb__list-entry parent">
+              <a href="/kategorie/verkehr">
+                Verkehr
+</a>        </li>
+          <li class="breadcrumb__list-entry current">
+            <a href="/produkt/oevxxxxx_col_v5">
+              Öffentlicher Verkehr: Haltestellen und Liniennetze Bahn, Bus und Schiff
+</a>          </li>
+    </ul>
+  </div>
+</div>
+          <div class="content one-col">
+            <div class="mid-content-column">
+              <div class="flash">
+                
+              </div>
+              
+
+<small class="greyed geo-product_type">
+    <img width="16" height="16" class="feature-type-icon" title="Kollektion" alt="Kollektion" src="/assets/product/produkttyp_kollektion-1cce09ccffa75c0c0830b5362319a4b811bf2e436aedfe0708ddf59a5e86a9d2.svg" />
+  &nbsp;Kollektion OEVXXXXX_COL
+  <span class="badge update-product-badge text-white leading-none flex items-center">Update</span></small>
+<h2>Öffentlicher Verkehr: Haltestellen und Liniennetze Bahn, Bus und Schiff
+</h2>
+<div class="keywords">
+  <span class="keywords"><span class="keyword"><a href="/produkt?keyword_names=Bergbahnen&amp;search=">#Bergbahnen</a></span>, <span class="keyword"><a href="/produkt?keyword_names=Netzstruktur&amp;search=">#Netzstruktur</a></span>, <span class="keyword"><a href="/produkt?keyword_names=%C3%96ffentlicher+Verkehr&amp;search=">#Öffentlicher Verkehr</a></span>, <span class="keyword"><a href="/produkt?keyword_names=Schienenverkehr&amp;search=">#Schienenverkehr</a></span>, <span class="keyword"><a href="/produkt?keyword_names=Schifffahrt&amp;search=">#Schifffahrt</a></span>, <span class="keyword"><a href="/produkt?keyword_names=Verkehr&amp;search=">#Verkehr</a></span></span>
+</div>
+<div class="image-holder">
+  <div>
+    <picture class="product-image widescreen"><source srcset="/images/previews/1200x400/OEVXXXXX_COL_V5_datenshop_1200x400.webp" type="image/webp"><source srcset="/images/previews/1200x400/OEVXXXXX_COL_V5_datenshop_1200x400.png" type="image/png"><img alt="Vorschau" width="1200" height="400" class="product-image widescreen" src="/images/previews/1200x400/OEVXXXXX_COL_V5_datenshop_1200x400.png" /></picture>
+    <picture class="product-image large"><source srcset="/images/previews/1200x1200/OEVXXXXX_COL_V5_datenshop_1200x1200.webp" type="image/webp"><source srcset="/images/previews/1200x1200/OEVXXXXX_COL_V5_datenshop_1200x1200.png" type="image/png"><img alt="Vorschau" width="1200" height="1200" class="product-image large" src="/images/previews/1200x1200/OEVXXXXX_COL_V5_datenshop_1200x1200.png" /></picture>
+  </div>
+</div>
+<div class="dataset-description">
+  <div class="lead">
+    <p>Zeigt Haltestellen und Haltekanten des öffentlichen Verkehrs, sowie Bahn-, Schiffs- und Buslinien.</p>
+  </div>
+  <h4>Haltestellen und Haltekanten</h4><p>Bus-, Schiff-, Bahn- und Bergbahnhaltestellen. Nebst den Luzerner Haltestellen sind auch ausserkantonale Haltestellen mit Bezug zum kantonalen ÖV-Netz integriert. <br>Zusätzlich sind Angaben zu Anzahl Einwohner und Arbeitsplätzen im Einzugsbereich der Haltestellen enthalten.</p><h4>Bahnlinien</h4><p>Bahnlinien des S-Bahn-, Regional- und Fernverkehrs mit dem Zweck der Siedlungserschliessung</p><h4>Schiffslinien</h4><p>Linienführung der Schiffslinien im Kanton Luzern, welche mit dem Zweck der Siedlungserschliessung betrieben werden.</p><h4>Buslinien</h4><p>Überblick über die Linienführung sämtlicher Buslinien mit mind. einer Teilstrecke im Kanton Luzern.<br></p>
+      <div class="richtext">
+        <a target="_blank" class="underline" title="Webseite Verkehrsverbund Luzern VVL" href="https://www.vvl.ch">
+          <span class="linked">Webseite Verkehrsverbund Luzern VVL</span>
+        </a></div>
+  <div class="attributes">
+    
+
+      <div class="collection">
+        <h5>Diese Kollektion enthält folgende Datensätze:</h5>
+        <div>
+  <div class="accordion" id="OEVBAHNL_DS">
+    <input id="medium-tab-multi-oevbahnl_ds" type="checkbox" name="tab-multi-oevbahnl_ds" />
+    <label for="medium-tab-multi-oevbahnl_ds">
+      <span>Öffentlicher Verkehr: Bahnlinien</span>
+    </label>
+    <div id="medium_accordion-content-oevbahnl_ds"
+         class="medium-accordion-content accordion-content">
+      <div class="accordion-content-wrapper">
+        <div class="image-holder">
+          <div>
+            <picture class="product-image widescreen"><source srcset="/images/previews/1200x400/OEVBAHNL_DS_V2_datenshop_1200x400.webp" type="image/webp"><source srcset="/images/previews/1200x400/OEVBAHNL_DS_V2_datenshop_1200x400.png" type="image/png"><img alt="Vorschau" width="1200" height="400" class="product-image widescreen" src="/images/previews/1200x400/OEVBAHNL_DS_V2_datenshop_1200x400.png" /></picture>
+            <picture class="product-image large"><source srcset="/images/previews/1200x1200/OEVBAHNL_DS_V2_datenshop_1200x1200.webp" type="image/webp"><source srcset="/images/previews/1200x1200/OEVBAHNL_DS_V2_datenshop_1200x1200.png" type="image/png"><img alt="Vorschau" width="1200" height="1200" class="product-image large" src="/images/previews/1200x1200/OEVBAHNL_DS_V2_datenshop_1200x1200.png" /></picture>
+          </div>
+        </div>
+        <div class="abstract">Bahnlinien mit mindestens einer Teilstrecke im Kanton Luzern</div>
+        <div class="purpose"><p>Interessierte erhalten einen Überblick über die Linienführung und Fahrpläne sämtlicher Bahnlinien im Kanton Luzern.</p><p>Da Änderungen mit dem jährlichen Fahrplanwechsel im Dezember stattfinden, wird dieser Datensatz in einem Jahresrhythmus nachgeführt, um so die Aktualität des Datensatzes zu gewährleisten.</p><p>So wie aus den Strassenachsen die Buslinien erstellt werden, werden aus den Bahnstrecken die Bahnlinien erstellt. Die Bahnlinien werden in die Kollektion "Öffentlicher Verkehr: Haltestellen und Liniennetze Bahn, Bus und Schiff" aufgenommen.</p></div>
+          <table class="plain">
+            <tbody>
+              <tr>
+                <td>Zugangsberechtigung:</td>
+                <td>A: öffentlich</td>
+              </tr>
+              <tr>
+                <td>Nutzungsbedingungen:</td>
+                <td>Open-By</td>
+              </tr>
+              <tr>
+                <td>zuletzt aktualisiert:</td>
+                <td class="last-update">
+                  08.05.2026 (Version 2, Revision 3)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="amount-files"><em>Dieser Polyline-Datensatz enthält 29&nbsp;Objekte und wird in einer Datei (OEVBAHNL_V2_LI) ausgeliefert</em></div>
+          <!-- <p>
+            Dieser Datensatz besteht aus einer Datei (OEVBAHNL_V2_LI)
+          </p>
+          <p>
+            Die Inhalte dieses Datensatzes werden in einer Datei ausgeliefert.
+          </p> -->
+              <div class="elements">
+    <!-- Tabs: -->
+    <ul class="tabs no-action">
+        <li id="tab_OEVBAHNL_V2_LI" class="active medium-tabmenu">
+          <div title="Linien">
+            <span class="">Linien</span>
+          </div>
+        </li>
+    </ul>
+
+    <!-- Tab-Content -->
+      <div id="tab_content_OEVBAHNL_V2_LI" class="tab-content">
+        <div id="polyline-OEVBAHNL_V2_LI" class="tab-content-wrapper">
+          <table class="plain">
+            <tr><td>Dateiname: </td><td>OEVBAHNL_V2_LI</td></tr>
+            
+            <tr><td>Inhalt: </td><td><span class="geo-feature-type"><img class="feature-type-icon" alt="Polyline" width="30" height="25" src="/assets/product/datentyp_polyline-47e1799458507a147a0f60e5c3169860116ca0d4b8919af1cf0409ffc1daf57d.svg" /> Polyline</span>,
+              29&nbsp;Objekte
+            </td></tr>
+          </table>
+            <table class="small attributes">
+              <thead>
+              <tr>
+                <th>Attribut</th>
+                <th>Alias (Typ) /
+                  <em>Beschreibung</em>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="name"><div>BAHN_ROUTE</div></td>
+                  <td class="description">
+                      <div>
+                        Bahnlinie (Text)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>FP_JAHR</div></td>
+                  <td class="description">
+                      <div>
+                        Fahrplanjahr (ganze Zahl)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>FP_URL</div></td>
+                  <td class="description">
+                      <div>
+                        Link zum Fahrplan (Text)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>KURSBUCHNR</div></td>
+                  <td class="description">
+                      <div>
+                        Kursbuchnummer (Text)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>LINIENBEZ</div></td>
+                  <td class="description">
+                      <div>
+                        Linienbezeichnung (Text)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>LINIENNR</div></td>
+                  <td class="description">
+                      <div>
+                        Liniennummer (Text)</div>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>TP_URL</div></td>
+                  <td class="description">
+                      <div>
+                        Link zu Tarife und Preise (<span class="domaincodevalues_tp_url">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_tp_url">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">http://www.passepartout.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">http://www.aagu.ch/angebote-und-service/tellbus.html</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>TU_URL</div></td>
+                  <td class="description">
+                      <div>
+                        Link zum Transportunternehmen (<span class="domaincodevalues_tu_url">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_tu_url">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">http://www.autoag.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">http://www.rottal.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">http://www.postauto.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">http://www.zvb.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">6</td>
+                              <td class="value">http://www.sbb.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">7</td>
+                              <td class="value">http://www.aags.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">9</td>
+                              <td class="value">http://www.aargauverkehr.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">8</td>
+                              <td class="value">http://www.aagu.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">10</td>
+                              <td class="value">https://www.bls.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">11</td>
+                              <td class="value">http://www.vbl.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">12</td>
+                              <td class="value">https://www.zentralbahn.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">13</td>
+                              <td class="value">https://www.sob.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">14</td>
+                              <td class="value">https://www.lakelucerne.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">15</td>
+                              <td class="value">https://www.rigi.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">16</td>
+                              <td class="value">https://www.chateau-guetsch.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">5</td>
+                              <td class="value">http://www.asmobil.ch</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>TU</div></td>
+                  <td class="description">
+                      <div>
+                        Transportunternehmen (<span class="domaincodevalues_tu">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_tu">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">Auto AG Rothenburg (AAGR)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">Rottal Auto AG (ARAG)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">PostAuto AG (PAG)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">Zugerland Verkehrsbetriebe AG (ZVB)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">5</td>
+                              <td class="value">Aare Seeland mobil AG (ASM)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">6</td>
+                              <td class="value">Schweizerische Bundesbahnen (SBB)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">7</td>
+                              <td class="value">Auto AG Schwyz (AAGS)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">8</td>
+                              <td class="value">AUTO AG URI (AAGU)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">9</td>
+                              <td class="value">Aargau Verkehr AG (AVA)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">10</td>
+                              <td class="value">BLS AG (BLS)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">11</td>
+                              <td class="value">Verkehrsbetriebe Luzern AG (vbl)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">12</td>
+                              <td class="value">Zentralbahn AG (zb)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">13</td>
+                              <td class="value">Schweizerische Südostbahn AG (SOB)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">14</td>
+                              <td class="value">Schifffahrtsgesellschaft des Vierwaldstättersees AG (SGV)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">15</td>
+                              <td class="value">RIGI BAHNEN AG</td>
+                            </tr>
+                            <tr>
+                              <td class="code">16</td>
+                              <td class="value">Château Gütsch AG</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  <div class="accordion" id="OEVBUSLN_DS">
+    <input id="medium-tab-multi-oevbusln_ds" type="checkbox" name="tab-multi-oevbusln_ds" />
+    <label for="medium-tab-multi-oevbusln_ds">
+      <span>Öffentlicher Verkehr: Buslinien</span>
+    </label>
+    <div id="medium_accordion-content-oevbusln_ds"
+         class="medium-accordion-content accordion-content">
+      <div class="accordion-content-wrapper">
+        <div class="image-holder">
+          <div>
+            <picture class="product-image widescreen"><source srcset="/images/previews/1200x400/OEVBUSLN_DS_V4_datenshop_1200x400.webp" type="image/webp"><source srcset="/images/previews/1200x400/OEVBUSLN_DS_V4_datenshop_1200x400.png" type="image/png"><img alt="Vorschau" width="1200" height="400" class="product-image widescreen" src="/images/previews/1200x400/OEVBUSLN_DS_V4_datenshop_1200x400.png" /></picture>
+            <picture class="product-image large"><source srcset="/images/previews/1200x1200/OEVBUSLN_DS_V4_datenshop_1200x1200.webp" type="image/webp"><source srcset="/images/previews/1200x1200/OEVBUSLN_DS_V4_datenshop_1200x1200.png" type="image/png"><img alt="Vorschau" width="1200" height="1200" class="product-image large" src="/images/previews/1200x1200/OEVBUSLN_DS_V4_datenshop_1200x1200.png" /></picture>
+          </div>
+        </div>
+        <div class="abstract">Buslinien mit mindestens einer Teilstrecke im Kanton Luzern</div>
+        <div class="purpose"><p>Interessierte erhalten einen Überblick über die Linienführung sämtlicher Buslinien im Kanton Luzern. </p><p>Dieser Datensatz dient zudem für die Planung von Baustellen und Schneeräumung durch die genaue Angabe des Linienverlaufs. </p><p>Da Änderungen im Verlauf der Buslinien mit dem jährlichen Fahrplanwechsel im Dezember stattfinden, wird dieser Datensatz in einem Jahresrhythmus nachgeführt, um so die Aktualität des Datensatzes zu gewährleisten.</p></div>
+          <table class="plain">
+            <tbody>
+              <tr>
+                <td>Zugangsberechtigung:</td>
+                <td>A: öffentlich</td>
+              </tr>
+              <tr>
+                <td>Nutzungsbedingungen:</td>
+                <td>Open-By</td>
+              </tr>
+              <tr>
+                <td>zuletzt aktualisiert:</td>
+                <td class="last-update">
+                  26.05.2026 (Version 4, Revision 2)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="amount-files"><em>Dieser Polyline-Datensatz enthält 114&nbsp;Objekte und wird in einer Datei (OEVBUSLN_V4_LI) ausgeliefert</em></div>
+          <!-- <p>
+            Dieser Datensatz besteht aus einer Datei (OEVBUSLN_V4_LI)
+          </p>
+          <p>
+            Die Inhalte dieses Datensatzes werden in einer Datei ausgeliefert.
+          </p> -->
+              <div class="elements">
+    <!-- Tabs: -->
+    <ul class="tabs no-action">
+        <li id="tab_OEVBUSLN_V4_LI" class="active medium-tabmenu">
+          <div title="Linien">
+            <span class="">Linien</span>
+          </div>
+        </li>
+    </ul>
+
+    <!-- Tab-Content -->
+      <div id="tab_content_OEVBUSLN_V4_LI" class="tab-content">
+        <div id="polyline-OEVBUSLN_V4_LI" class="tab-content-wrapper">
+          <table class="plain">
+            <tr><td>Dateiname: </td><td>OEVBUSLN_V4_LI</td></tr>
+            
+            <tr><td>Inhalt: </td><td><span class="geo-feature-type"><img class="feature-type-icon" alt="Polyline" width="30" height="25" src="/assets/product/datentyp_polyline-47e1799458507a147a0f60e5c3169860116ca0d4b8919af1cf0409ffc1daf57d.svg" /> Polyline</span>,
+              114&nbsp;Objekte
+            </td></tr>
+          </table>
+            <table class="small attributes">
+              <thead>
+              <tr>
+                <th>Attribut</th>
+                <th>Alias (Typ) /
+                  <em>Beschreibung</em>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="name"><div>BUL_ROUTE</div></td>
+                  <td class="description">
+                      <div>
+                        Buslinie (Text)</div>
+                      <em>Abgeleitete Buslinie aus der Routen-ID. Es handelt sich um die kurzmöglichste Version, so dass alle Buslinien eindeutig identifizierbar sind.</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>FP_JAHR</div></td>
+                  <td class="description">
+                      <div>
+                        Fahrplanjahr (ganze Zahl)</div>
+                      <em>Nachführungsstand der Buslinien nach Kalenderjahr</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>KURSBUCHNR</div></td>
+                  <td class="description">
+                      <div>
+                        Kursbuchnummer (Text)</div>
+                      <em>Nummer zur Führung der Buslinie im Kursbuch</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>LINIENNR</div></td>
+                  <td class="description">
+                      <div>
+                        Liniennummer (Text)</div>
+                      <em>Gibt die Busliniennummer gemäss der Anschrift der Busse wieder</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>LINIENBEZ</div></td>
+                  <td class="description">
+                      <div>
+                        Linienbezeichnung (Text)</div>
+                      <em>Gibt den groben Linienverlauf in Worten wieder</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>FP_URL</div></td>
+                  <td class="description">
+                      <div>
+                        Link zum Fahrplan (Text)</div>
+                      <em>Link zur URL mit dem Fahrplan</em>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>TU_URL</div></td>
+                  <td class="description">
+                      <div>
+                        Link zum Transportunternehmen (<span class="domaincodevalues_tu_url">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_tu_url">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">http://www.autoag.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">http://www.rottal.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">http://www.postauto.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">http://www.zvb.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">6</td>
+                              <td class="value">http://www.sbb.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">7</td>
+                              <td class="value">http://www.aags.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">9</td>
+                              <td class="value">http://www.aargauverkehr.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">8</td>
+                              <td class="value">http://www.aagu.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">10</td>
+                              <td class="value">https://www.bls.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">11</td>
+                              <td class="value">http://www.vbl.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">12</td>
+                              <td class="value">https://www.zentralbahn.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">13</td>
+                              <td class="value">https://www.sob.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">14</td>
+                              <td class="value">https://www.lakelucerne.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">15</td>
+                              <td class="value">https://www.rigi.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">16</td>
+                              <td class="value">https://www.chateau-guetsch.ch/</td>
+                            </tr>
+                            <tr>
+                              <td class="code">5</td>
+                              <td class="value">http://www.asmobil.ch</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                      <em>URL zum Transportunternehmen, welches die Buslinie bedient</em>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>TP_URL</div></td>
+                  <td class="description">
+                      <div>
+                        Link zu Tarife und Preise (<span class="domaincodevalues_tp_url">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_tp_url">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">http://www.passepartout.ch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">http://www.aagu.ch/angebote-und-service/tellbus.html</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                      <em>Link zur URL mit den Tarifen und Preisen</em>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>TU</div></td>
+                  <td class="description">
+                      <div>
+                        Transportunternehmen (<span class="domaincodevalues_tu">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_tu">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">Auto AG Rothenburg (AAGR)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">Rottal Auto AG (ARAG)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">PostAuto AG (PAG)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">Zugerland Verkehrsbetriebe AG (ZVB)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">5</td>
+                              <td class="value">Aare Seeland mobil AG (ASM)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">6</td>
+                              <td class="value">Schweizerische Bundesbahnen (SBB)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">7</td>
+                              <td class="value">Auto AG Schwyz (AAGS)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">8</td>
+                              <td class="value">AUTO AG URI (AAGU)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">9</td>
+                              <td class="value">Aargau Verkehr AG (AVA)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">10</td>
+                              <td class="value">BLS AG (BLS)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">11</td>
+                              <td class="value">Verkehrsbetriebe Luzern AG (vbl)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">12</td>
+                              <td class="value">Zentralbahn AG (zb)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">13</td>
+                              <td class="value">Schweizerische Südostbahn AG (SOB)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">14</td>
+                              <td class="value">Schifffahrtsgesellschaft des Vierwaldstättersees AG (SGV)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">15</td>
+                              <td class="value">RIGI BAHNEN AG</td>
+                            </tr>
+                            <tr>
+                              <td class="code">16</td>
+                              <td class="value">Château Gütsch AG</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  <div class="accordion" id="OEVHKTOF_DS">
+    <input id="medium-tab-multi-oevhktof_ds" type="checkbox" name="tab-multi-oevhktof_ds" />
+    <label for="medium-tab-multi-oevhktof_ds">
+      <span>Öffentlicher Verkehr: Haltekanten (öffentlich)</span>
+    </label>
+    <div id="medium_accordion-content-oevhktof_ds"
+         class="medium-accordion-content accordion-content">
+      <div class="accordion-content-wrapper">
+        <div class="image-holder">
+          <div>
+            <picture class="product-image widescreen"><source srcset="/images/previews/1200x400/OEVHKTOF_DS_V4_datenshop_1200x400.webp" type="image/webp"><source srcset="/images/previews/1200x400/OEVHKTOF_DS_V4_datenshop_1200x400.png" type="image/png"><img alt="Vorschau" width="1200" height="400" class="product-image widescreen" src="/images/previews/1200x400/OEVHKTOF_DS_V4_datenshop_1200x400.png" /></picture>
+            <picture class="product-image large"><source srcset="/images/previews/1200x1200/OEVHKTOF_DS_V4_datenshop_1200x1200.webp" type="image/webp"><source srcset="/images/previews/1200x1200/OEVHKTOF_DS_V4_datenshop_1200x1200.png" type="image/png"><img alt="Vorschau" width="1200" height="1200" class="product-image large" src="/images/previews/1200x1200/OEVHKTOF_DS_V4_datenshop_1200x1200.png" /></picture>
+          </div>
+        </div>
+        <div class="abstract"><p>Enthält Angaben zur Barrierefreiheit der Haltekanten von Bushaltestellen des öffentlichen Verkehrs.</p></div>
+        <div class="purpose"><p>Das Bundesgesetz zur Behindertengleichstellung (BehiG) ist seit 1. Januar 2004 in Kraft. Es zielt darauf ab, Benachteiligungen von Menschen mit Behinderungen zu beseitigen. Es enthält ein Benachteiligungsverbot, das sich u.a. auf öffentlich zugängliche Einrichtungen des öffentlichen Verkehrs bezieht. Die Umsetzung behinderten-konformen Massnahmen liegt in der Verantwortung der Strasseneigentümer. Dies betrifft den öffentlichen Verkehr (Busse), Bushaltestellen, Bushubs und weitere Anlagen wie z.B. Unterführungen. </p><p>Die Daten dienen zur Planung, Priorisierung und Umsetzung der Haltekanten, gemäss BehiG.&nbsp;</p><p>Die Daten zur Barrierefreiheit bauen auf den bestehenden Haltestellen (Dienststellen öv-Schweiz) auf. Die Pflege erfolgt durch die Transportunternehmen in der Applikation atlas. Die Referenz zwischen den Haltestellen und Haltekanten wird mittels Swiss Location ID (SLOID) hergestellt. Die atlas-Daten werden über ein API Schnittstelle bezogen.</p><p>Daten werden in der öffentlichen Webkarte verwendet.</p></div>
+          <table class="plain">
+            <tbody>
+              <tr>
+                <td>Zugangsberechtigung:</td>
+                <td>A: öffentlich</td>
+              </tr>
+              <tr>
+                <td>Nutzungsbedingungen:</td>
+                <td>Open-By</td>
+              </tr>
+              <tr>
+                <td>zuletzt aktualisiert:</td>
+                <td class="last-update">
+                  06.09.2026 (Version 4, Revision 35)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="amount-files"><em>Dieser Punkt-Datensatz enthält 1'755&nbsp;Objekte und wird in einer Datei (OEVHKTOF_V4_PT) ausgeliefert</em></div>
+          <!-- <p>
+            Dieser Datensatz besteht aus einer Datei (OEVHKTOF_V4_PT)
+          </p>
+          <p>
+            Die Inhalte dieses Datensatzes werden in einer Datei ausgeliefert.
+          </p> -->
+              <div class="elements">
+    <!-- Tabs: -->
+    <ul class="tabs no-action">
+        <li id="tab_OEVHKTOF_V4_PT" class="active medium-tabmenu">
+          <div title="Punkte">
+            <span class="">Punkte</span>
+          </div>
+        </li>
+    </ul>
+
+    <!-- Tab-Content -->
+      <div id="tab_content_OEVHKTOF_V4_PT" class="tab-content">
+        <div id="point-OEVHKTOF_V4_PT" class="tab-content-wrapper">
+          <table class="plain">
+            <tr><td>Dateiname: </td><td>OEVHKTOF_V4_PT</td></tr>
+            
+            <tr><td>Inhalt: </td><td><span class="geo-feature-type"><img class="feature-type-icon" alt="Punkt" width="30" height="25" src="/assets/product/datentyp_punkt-d51b9aed40637765f81214e2c8b478c0f7421d992497de6dc1ea03ceb53e7208.svg" /> Punkte</span>,
+              1'755&nbsp;Objekte
+            </td></tr>
+          </table>
+            <table class="small attributes">
+              <thead>
+              <tr>
+                <th>Attribut</th>
+                <th>Alias (Typ) /
+                  <em>Beschreibung</em>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>STATUS</div></td>
+                  <td class="description">
+                      <div>
+                        Veloabstellanlagen und öffentliche Parkplätze (<span class="domaincodevalues_status">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_status">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">Parkplätze und Veloabstellplätze</td>
+                            </tr>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">Parkplätze</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">Veloabstellplätze</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">keine Parkplätze</td>
+                            </tr>
+                            <tr>
+                              <td class="code">100</td>
+                              <td class="value">-</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>DESIGNTN</div></td>
+                  <td class="description">
+                      <div>
+                        Kante (Text)</div>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>FAHRINFO</div></td>
+                  <td class="description">
+                      <div>
+                        Fahrgastinformationen (<span class="domaincodevalues_fahrinfo">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_fahrinfo">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">keine</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">digital</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">statisch</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">statisch und digital</td>
+                            </tr>
+                            <tr>
+                              <td class="code">100</td>
+                              <td class="value">-</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>GEMEINDE</div></td>
+                  <td class="description">
+                      <div>
+                        Gemeindename (Text)</div>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>HALTTYP</div></td>
+                  <td class="description">
+                      <div>
+                        Haltestellentyp (<span class="domaincodevalues_halttyp">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_halttyp">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">Busbucht</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">Bushub</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">Busspur (externe Fahrbahn)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">Halbbucht</td>
+                            </tr>
+                            <tr>
+                              <td class="code">5</td>
+                              <td class="value">Wendehaltestelle</td>
+                            </tr>
+                            <tr>
+                              <td class="code">6</td>
+                              <td class="value">Fahrbahnhaltestelle (überholbar)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">7</td>
+                              <td class="value">Fahrbahnhaltestelle (nicht überholbar)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">100</td>
+                              <td class="value">-</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>HSTNAME</div></td>
+                  <td class="description">
+                      <div>
+                        Haltestellenname (Text)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>INCL_LON</div></td>
+                  <td class="description">
+                      <div>
+                        Längsneigung der Haltekante [%] (Gleitkommazahl)</div>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>KANTAUST</div></td>
+                  <td class="description">
+                      <div>
+                        Kantenausstattung (<span class="domaincodevalues_kantaust">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_kantaust">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">Kissen (22cm bis und mit 2. Türe)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">100</td>
+                              <td class="value">-</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">minimal (16cm)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">verkürzt (22cm bis und mit 3. Türe)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">Standard (22cm)</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>KANTENID</div></td>
+                  <td class="description">
+                      <div>
+                        Kanten ID (SLOID) (Text)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>KTSTR</div></td>
+                  <td class="description">
+                      <div>
+                        Kantonsstrasse (Text)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>QUERNEIG</div></td>
+                  <td class="description">
+                      <div>
+                        Querneigung der Haltekante [%] (Gleitkommazahl)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>Shape</div></td>
+                  <td class="description">
+                      <div>
+                        Shape (<span class="translation_missing" title="translation missing: de-CH.attribute_type.SE_SHAPE_TYPE">Se Shape Type</span>)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>SLOID</div></td>
+                  <td class="description">
+                      <div>
+                        Swiss Location Identification (Text)</div>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>STFL_ZUGN</div></td>
+                  <td class="description">
+                      <div>
+                        Stufenloser Zugang (<span class="domaincodevalues_stfl_zugn">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_stfl_zugn">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">100</td>
+                              <td class="value">-</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">ja (beidseitig)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">ja (einseitig)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">nein</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>VEHIGACC</div></td>
+                  <td class="description">
+                      <div>
+                        Barrierefreiheit (öV Datenbank) (<span class="domaincodevalues_vehigacc">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_vehigacc">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">100</td>
+                              <td class="value">-</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">Ein- / Ausstieg mit Personalhilfe, vorher anmelden</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">autonomer Ein- / Ausstieg</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">mit Hilfe Fahrpersonal</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">mit Shuttle</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>WHCHALEN</div></td>
+                  <td class="description">
+                      <div>
+                        Kantenlänge [m] (Gleitkommazahl)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>WHCHAWID</div></td>
+                  <td class="description">
+                      <div>
+                        Kantenbreite (bei zweiter Türe) [m] (Gleitkommazahl)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>P_HEIGHT</div></td>
+                  <td class="description">
+                      <div>
+                        Kantenhöhe (bei zweiter Türe) [cm] (Gleitkommazahl)</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  <div class="accordion" id="OEVHSTXX_DS">
+    <input id="medium-tab-multi-oevhstxx_ds" type="checkbox" name="tab-multi-oevhstxx_ds" />
+    <label for="medium-tab-multi-oevhstxx_ds">
+      <span>Öffentlicher Verkehr: Haltestellen (öffentlich)</span>
+    </label>
+    <div id="medium_accordion-content-oevhstxx_ds"
+         class="medium-accordion-content accordion-content">
+      <div class="accordion-content-wrapper">
+        <div class="image-holder">
+          <div>
+            <picture class="product-image widescreen"><source srcset="/images/previews/1200x400/OEVHSTXX_DS_V5_datenshop_1200x400.webp" type="image/webp"><source srcset="/images/previews/1200x400/OEVHSTXX_DS_V5_datenshop_1200x400.png" type="image/png"><img alt="Vorschau" width="1200" height="400" class="product-image widescreen" src="/images/previews/1200x400/OEVHSTXX_DS_V5_datenshop_1200x400.png" /></picture>
+            <picture class="product-image large"><source srcset="/images/previews/1200x1200/OEVHSTXX_DS_V5_datenshop_1200x1200.webp" type="image/webp"><source srcset="/images/previews/1200x1200/OEVHSTXX_DS_V5_datenshop_1200x1200.png" type="image/png"><img alt="Vorschau" width="1200" height="1200" class="product-image large" src="/images/previews/1200x1200/OEVHSTXX_DS_V5_datenshop_1200x1200.png" /></picture>
+          </div>
+        </div>
+        <div class="abstract">Bus-, Schiff-, Bahn- und Bergbahnhaltestellen des öffentlichen Verkehrs. Nebst den Luzerner Haltestellen sind auch ausserkantonale Haltestellen mit Bezug zum ÖV-Netz des Kantons Luzerns integriert. Zusätzlich Angaben zu Anzahl Einwohner und Arbeitsplätzen im Einzugsbereich der Haltestellen (aus jährlicher Haltestellenstatistik des Verkehrsverbunds Luzern).</div>
+        <div class="purpose"><p>Der Verkehrsverbund Luzern (VVL) benötigt zur Berechnung eines Kostenverteilers für das kommende Fahrplanjahr eine Auswertung nach Einwohnern und Arbeitsplätzen im Einzugsbereich der Haltestellen (300m: Bushaltestellen, 1km: Bahnhöfe und Schiffshaltestellen). </p><p>Anpassungen des Haltestellen-Datensatzes werden jeweils jährlich vor der Berechnung der Statistik gemäss Vorgaben VVL vorgenommen.
+<br>Die Einwohnerzahlen beruhen auf dem kantonalen Gebäude- und Wohnungsregister (kGWR), die Arbeitsplatzzahlen auf der Bundesstatistik der Unternehmensstruktur (STATENT).</p></div>
+          <table class="plain">
+            <tbody>
+              <tr>
+                <td>Zugangsberechtigung:</td>
+                <td>A: öffentlich</td>
+              </tr>
+              <tr>
+                <td>Nutzungsbedingungen:</td>
+                <td>Open-By</td>
+              </tr>
+              <tr>
+                <td>zuletzt aktualisiert:</td>
+                <td class="last-update">
+                  06.08.2026 (Version 5, Revision 3)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="amount-files"><em>Dieser Punkt-Datensatz enthält 1'448&nbsp;Objekte und wird in einer Datei (OEVHSTXX_V5_PT) ausgeliefert</em></div>
+          <!-- <p>
+            Dieser Datensatz besteht aus einer Datei (OEVHSTXX_V5_PT)
+          </p>
+          <p>
+            Die Inhalte dieses Datensatzes werden in einer Datei ausgeliefert.
+          </p> -->
+              <div class="elements">
+    <!-- Tabs: -->
+    <ul class="tabs no-action">
+        <li id="tab_OEVHSTXX_V5_PT" class="active medium-tabmenu">
+          <div title="Punkte">
+            <span class="">Punkte</span>
+          </div>
+        </li>
+    </ul>
+
+    <!-- Tab-Content -->
+      <div id="tab_content_OEVHSTXX_V5_PT" class="tab-content">
+        <div id="point-OEVHSTXX_V5_PT" class="tab-content-wrapper">
+          <table class="plain">
+            <tr><td>Dateiname: </td><td>OEVHSTXX_V5_PT</td></tr>
+            <tr><td>Beschrieb: </td><td>Öffentlicher Verkehr: Haltestellen </td></tr>
+            <tr><td>Inhalt: </td><td><span class="geo-feature-type"><img class="feature-type-icon" alt="Punkt" width="30" height="25" src="/assets/product/datentyp_punkt-d51b9aed40637765f81214e2c8b478c0f7421d992497de6dc1ea03ceb53e7208.svg" /> Punkte</span>,
+              1'448&nbsp;Objekte
+            </td></tr>
+          </table>
+            <table class="small attributes">
+              <thead>
+              <tr>
+                <th>Attribut</th>
+                <th>Alias (Typ) /
+                  <em>Beschreibung</em>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="name"><div>BFS_NR</div></td>
+                  <td class="description">
+                      <div>
+                        BFS-Gemeindenummer (ganze Zahl)</div>
+                      <em>BFS-Gemeindenr.</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>SLOID</div></td>
+                  <td class="description">
+                      <div>
+                        Swiss Location Identification (Text)</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>ARBEITSPL</div></td>
+                  <td class="description">
+                      <div>
+                        Arbeitsplätze im Einzugsgebiet (ganze Zahl)</div>
+                      <em>Arbeitsplätze pro Haltestelleneinzugsgebiet pro Gemeinde</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>RADIUS</div></td>
+                  <td class="description">
+                      <div>
+                        Radius [m] (ganze Zahl)</div>
+                      <em>Einzugsradius für Einwohner- und Arbeitsplätzeberechnung. 300m für Busse, 100m für Bahn und Schiff.</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>DIDOKNR</div></td>
+                  <td class="description">
+                      <div>
+                        Eidg. Haltestellen-ID (ganze Zahl)</div>
+                      <em>vom Bund vergebener Haltestellenidentifikator</em>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>ANGSTUFE</div></td>
+                  <td class="description">
+                      <div>
+                        Angebotsstufe (<span class="domaincodevalues_angstufe">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_angstufe">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">Keine Kurspaare Werktags</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">Angebotsstufe 1 (&lt;1 Kurspaar/ Std./ 1-17 Kurspaare/Tag)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">Angebotsstufe 2 (Mind. 1 Kurspaar/ Std./ 18-31 Kurspaare/Tag)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">Angebotsstufe 3 (Mind. 2 Kurspaare/ Std./ 32-61 Kurspaare/Tag)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">Angebotsstufe 4 (Mind. 4 Kurspaare/ Std./ 62-127 Kurspaare/Tag)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">5</td>
+                              <td class="value">Angebotsstufe 5 (Mind. 8 Kurspaare/ Std./ Mind. 128 Kurspaare/Tag)</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                      <em>Kurspaare pro Tag, welche die Haltestelle anfahren</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>UUID</div></td>
+                  <td class="description">
+                      <div>
+                        Universally Unique Identifier (Text)</div>
+                      <em>Universally Unique Identifier der Haltestelle. UUID von VVL.</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>HSTNAME</div></td>
+                  <td class="description">
+                      <div>
+                        Haltestellenname (Text)</div>
+                      <em>Haltestellenname</em>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>VMITTEL</div></td>
+                  <td class="description">
+                      <div>
+                        Verkehrsmittel (<span class="domaincodevalues_vmittel">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_vmittel">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">Bahn</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">Bus</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">Schiff</td>
+                            </tr>
+                            <tr>
+                              <td class="code">5</td>
+                              <td class="value">Trolleybus</td>
+                            </tr>
+                            <tr>
+                              <td class="code">6</td>
+                              <td class="value">Seil- und Zahnradbahn</td>
+                            </tr>
+                            <tr>
+                              <td class="code">7</td>
+                              <td class="value">eBus</td>
+                            </tr>
+                            <tr>
+                              <td class="code">8</td>
+                              <td class="value">Bus, eBus</td>
+                            </tr>
+                            <tr>
+                              <td class="code">9</td>
+                              <td class="value">Bus, eBus, Trolleybus</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">Bus, Trolleybus</td>
+                            </tr>
+                            <tr>
+                              <td class="code">10</td>
+                              <td class="value">Bus, eBus, teilweise eBus</td>
+                            </tr>
+                            <tr>
+                              <td class="code">11</td>
+                              <td class="value">Bus, teilweise eBus</td>
+                            </tr>
+                            <tr>
+                              <td class="code">12</td>
+                              <td class="value">eBus, teilweise eBus</td>
+                            </tr>
+                            <tr>
+                              <td class="code">13</td>
+                              <td class="value">teilweise eBus</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                      <em>Verkehrsmittel (Bahn, Bus, Schiff, Seil- und Zahnradbahn)</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>GEMEINDE</div></td>
+                  <td class="description">
+                      <div>
+                        Gemeindename (Text)</div>
+                      <em>Gemeindename</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>EINWOHNER</div></td>
+                  <td class="description">
+                      <div>
+                        Einwohner im Einzugsgebiet (ganze Zahl)</div>
+                      <em>Einwohner pro Haltestelleneinzugsgebiet pro Gemeinde</em>
+                  </td>
+                </tr>
+                <tr class="domain domaincodevalues-hide">
+                  <td class="name"><div>TU</div></td>
+                  <td class="description">
+                      <div>
+                        Transportunternehmen (<span class="domaincodevalues_tu">codierte Werte</span>)</div>
+                      <div class="domaincodevalues">
+                        <table class="domaincodevalues-table medium_domaincodevalues_tu">
+                          <thead>
+                          <tr>
+                            <th>Wert</th>
+                            <th>Bedeutung</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="code">0</td>
+                              <td class="value">keine Angaben</td>
+                            </tr>
+                            <tr>
+                              <td class="code">1</td>
+                              <td class="value">Auto AG Rothenburg (AAGR)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">2</td>
+                              <td class="value">Rottal Auto AG (ARAG)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">3</td>
+                              <td class="value">PostAuto AG (PAG)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">4</td>
+                              <td class="value">Zugerland Verkehrsbetriebe AG (ZVB)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">5</td>
+                              <td class="value">Aare Seeland mobil AG (ASM)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">6</td>
+                              <td class="value">Schweizerische Bundesbahnen (SBB)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">7</td>
+                              <td class="value">Auto AG Schwyz (AAGS)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">8</td>
+                              <td class="value">AUTO AG URI (AAGU)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">9</td>
+                              <td class="value">Aargau Verkehr AG (AVA)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">10</td>
+                              <td class="value">BLS AG (BLS)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">11</td>
+                              <td class="value">Verkehrsbetriebe Luzern AG (vbl)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">12</td>
+                              <td class="value">Zentralbahn AG (zb)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">13</td>
+                              <td class="value">Schweizerische Südostbahn AG (SOB)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">14</td>
+                              <td class="value">Schifffahrtsgesellschaft des Vierwaldstättersees AG (SGV)</td>
+                            </tr>
+                            <tr>
+                              <td class="code">15</td>
+                              <td class="value">RIGI BAHNEN AG</td>
+                            </tr>
+                            <tr>
+                              <td class="code">16</td>
+                              <td class="value">Château Gütsch AG</td>
+                            </tr>
+                          </tbody>
+                        </table></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  <div class="accordion" id="OEVSCHIF_DS">
+    <input id="medium-tab-multi-oevschif_ds" type="checkbox" name="tab-multi-oevschif_ds" />
+    <label for="medium-tab-multi-oevschif_ds">
+      <span>Öffentlicher Verkehr: Schiffslinien</span>
+    </label>
+    <div id="medium_accordion-content-oevschif_ds"
+         class="medium-accordion-content accordion-content">
+      <div class="accordion-content-wrapper">
+        <div class="image-holder">
+          <div>
+            <picture class="product-image widescreen"><source srcset="/images/previews/1200x400/OEVSCHIF_DS_V1_datenshop_1200x400.webp" type="image/webp"><source srcset="/images/previews/1200x400/OEVSCHIF_DS_V1_datenshop_1200x400.png" type="image/png"><img alt="Vorschau" width="1200" height="400" class="product-image widescreen" src="/images/previews/1200x400/OEVSCHIF_DS_V1_datenshop_1200x400.png" /></picture>
+            <picture class="product-image large"><source srcset="/images/previews/1200x1200/OEVSCHIF_DS_V1_datenshop_1200x1200.webp" type="image/webp"><source srcset="/images/previews/1200x1200/OEVSCHIF_DS_V1_datenshop_1200x1200.png" type="image/png"><img alt="Vorschau" width="1200" height="1200" class="product-image large" src="/images/previews/1200x1200/OEVSCHIF_DS_V1_datenshop_1200x1200.png" /></picture>
+          </div>
+        </div>
+        <div class="abstract">Schiffslinien mit Zweck der Siedlungserschliessung</div>
+        <div class="purpose">Interessierte erhalten einen Überblick über die Linienführung der Schiffslinien im Kanton Luzern, welche mit dem Zweck der Siedlungserschliessung betrieben werden.</div>
+          <table class="plain">
+            <tbody>
+              <tr>
+                <td>Zugangsberechtigung:</td>
+                <td>A: öffentlich</td>
+              </tr>
+              <tr>
+                <td>Nutzungsbedingungen:</td>
+                <td>Open-By</td>
+              </tr>
+              <tr>
+                <td>zuletzt aktualisiert:</td>
+                <td class="last-update">
+                  05.08.2015 (Version 1, Revision 1)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="amount-files"><em>Dieser Polyline-Datensatz enthält 1 Objekt und wird in einer Datei (OEVSCHIF_V1_LI) ausgeliefert</em></div>
+          <!-- <p>
+            Dieser Datensatz besteht aus einer Datei (OEVSCHIF_V1_LI)
+          </p>
+          <p>
+            Die Inhalte dieses Datensatzes werden in einer Datei ausgeliefert.
+          </p> -->
+              <div class="elements">
+    <!-- Tabs: -->
+    <ul class="tabs no-action">
+        <li id="tab_OEVSCHIF_V1_LI" class="active medium-tabmenu">
+          <div title="Linien">
+            <span class="">Linien</span>
+          </div>
+        </li>
+    </ul>
+
+    <!-- Tab-Content -->
+      <div id="tab_content_OEVSCHIF_V1_LI" class="tab-content">
+        <div id="polyline-OEVSCHIF_V1_LI" class="tab-content-wrapper">
+          <table class="plain">
+            <tr><td>Dateiname: </td><td>OEVSCHIF_V1_LI</td></tr>
+            <tr><td>Beschrieb: </td><td>Öffentlicher Verkehr: Schiffslinien</td></tr>
+            <tr><td>Inhalt: </td><td><span class="geo-feature-type"><img class="feature-type-icon" alt="Polyline" width="30" height="25" src="/assets/product/datentyp_polyline-47e1799458507a147a0f60e5c3169860116ca0d4b8919af1cf0409ffc1daf57d.svg" /> Polyline</span>,
+              1 Objekt
+            </td></tr>
+          </table>
+            <table class="small attributes">
+              <thead>
+              <tr>
+                <th>Attribut</th>
+                <th>Alias (Typ) /
+                  <em>Beschreibung</em>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="name"><div>LINIENBEZ</div></td>
+                  <td class="description">
+                      <div>
+                        Linienbezeichnung (Text)</div>
+                      <em>	Gibt den groben Linienverlauf in Worten wieder</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>FP_URL</div></td>
+                  <td class="description">
+                      <div>
+                        Link zum Fahrplan (Text)</div>
+                      <em>Link zur URL mit dem Fahrplan</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>TP_URL</div></td>
+                  <td class="description">
+                      <div>
+                        Link zu Tarife und Preise (Text)</div>
+                      <em>Link zur URL mit den Tarifen und Preisen</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>TU</div></td>
+                  <td class="description">
+                      <div>
+                        Transportunternehmen (Text)</div>
+                      <em>Name des Transportunternehmens, welches die Schiffslinie bedient</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name"><div>TU_URL</div></td>
+                  <td class="description">
+                      <div>
+                        Link zum Transportunternehmen (Text)</div>
+                      <em>URL zum Transportunternehmen, welches die Schiffslinie bedient</em>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+
+        </div>
+      </div>
+    </div>
+</div>
+
+      </div>
+
+      <p class="richtext complete_metadata"><a target="_blank" class="ext" href="https://www.geo.lu.ch/metadaten?metauid=OEVXXXXX_COL">vollständige Metadaten</a></p>
+
+    <p class="last-update">
+      <em>
+        <small>letzte Aktualisierung dieser Seite (Stand der
+          Metadaten): 05.09.2026</small>
+      </em>
+    </p>
+  </div>
+</div>
+
+            </div>
+          </div>
+        </main>
+        <aside id="rightContent" class="layout__aside">
+            <div class="right-content-column">
+  <div class="portlet">
+<div class="order_button"><a class="ref-download-link" href="/download/oevxxxxx_col_v5">Datenbezug</a></div>  </div>
+
+  <div class="portlet terms_of_use">
+    <p>
+      
+      <small>(zuletzt aktualisiert:&nbsp;06.09.2026,
+        Version&nbsp;5, Revision&nbsp;16)</small>
+    </p>
+        <div>
+          <em>Datenformate:</em>
+            <form id="download-form-right" class="download-form-right" action="/download/oevxxxxx_col_v5" accept-charset="UTF-8" data-remote="true" method="post"><input type="hidden" name="authenticity_token" value="jw9O_yAQr4hxmD38kyLExgBggceptt-ANn5579QwEgKmsMbgN7SJc6uHya9kBtrwDHOZp0VjBBWbgQZzFnzL9A" autocomplete="off" />
+              <input type="hidden" name="authenticity_token" id="authenticity_token" value="qYL_FRSMYAb1wWXDX38EYL8unk7LyUgWutehUUfR3ICWBEf2-EpPdFn4IMCaLhFarSbBPAvEtvW_xTRAZwH1dw" autocomplete="off" />
+              <ul class="geo-product-formats">
+                  <li><button name="format" type="submit" value="fgdb" class="badge geo-format-badge fgdb" title="ESRI Geodatabase (.gdb)" data-id="fgdb">fgdb</button></li>
+                  <li><button name="format" type="submit" value="shp" class="badge geo-format-badge shp" title="ESRI Shapefile (.shp)" data-id="shp">shp</button></li>
+                  <li><button name="format" type="submit" value="gpkg" class="badge geo-format-badge gpkg" title="OGC GeoPackage (.gpkg)" data-id="gpkg">gpkg</button></li>
+</form>            </ul>
+        </div>
+        <div>
+          <em>Geodienste:</em>
+          <ul class="geo-product-formats">
+                <li><a class="badge geo-service-badge WMS" title="Web Map Service" target="_blank" href="https://public.geo.lu.ch/ogd/services/managed/OEVXXXXX_COL_V5_MP/MapServer/WMSServer?request=GetCapabilities&amp;service=WMS">WMS</a></li>
+                <li><a class="badge geo-service-badge WFS" title="Web Feature Service" target="_blank" href="https://public.geo.lu.ch/ogd/services/managed/OEVXXXXX_COL_V5_MP/MapServer/WFSServer?request=GetCapabilities&amp;service=WFS">WFS</a></li>
+                <li><a class="badge geo-service-badge ESRI" title="ESRI MapServer" target="_blank" href="https://public.geo.lu.ch/ogd/rest/services/managed/OEVXXXXX_COL_V5_MP/MapServer">ESRI</a></li>
+          </ul>
+        </div>
+        <div>
+          <em>API-Schnittstelle:</em>
+          <ul class="geo-product-formats">
+                <li><a class="badge geo-api-badge STAC" title="Spatio-Temporal Asset Catalog" target="_blank" href="https://daten.geo.lu.ch/browser/#/collections/OEVXXXXX_COL_V5/">STAC</a></li>
+          </ul>
+        </div>
+    <em>Nutzungsbedingung:</em>
+    <div><a target="_blank" href="https://geoportal.lu.ch/Nutzungsbedingungen"><img class="tos-icon" title="Open-By" src="/assets/tos/TOS_open-by-93c6649d7d55868a49e2dc9085ecd28d3c21c2d8db9ab6fbb31d4eee29713495.svg" /></a></div>
+  </div>
+
+  <div class="portlet contact">
+    <div class="responsible-department">
+      <h3>Zuständige Stelle</h3>
+      <em>Verkehrsverbund Luzern</em>
+      <br/>
+        Telefon
+        <a class="tel" href="tel:+41412284720">041 228 47 20</a>
+      <div class="gt"><a class="email" href="mailto:info@vvl.ch">E-Mail</a></div>
+    </div>
+      <div class="technical-contact">
+        <h3>Technischer Kontakt</h3>
+        <a class="no-bullet" href="#"><em>Dienststelle Raum und Wirtschaft (rawi)</em></a>
+        <br/>
+        Gumanan Thiyagalingam
+        <br/>
+          Telefon
+          <a class="tel" href="tel:+41412285962">041 228 59 62</a>
+        <div class="gt"><a class="email" href="mailto:gumanan.thiyagalingam@lu.ch">E-Mail</a></div>
+      </div>
+      <div class="expertise-contact">
+        <h3>Fachlicher Kontakt</h3>
+        <a class="no-bullet" href="#"><em>Verkehrsverbund Luzern</em></a>
+        <br/>
+        Martina Hauri
+        <br/>
+          Telefon
+          <a class="tel" href="tel:+41412284733">041 228 47 33</a>
+          <div class="gt"><a class="email" href="mailto:Martina.Hauri@vvl.ch">E-Mail</a></div>
+      </div>
+  </div>
+</div>
+
+          </aside>
+      </div>
+      <footer class="footer">
+        <div class="footer__content">
+  <ul class="footer__content-linklist">
+    <li class="footer__content-link-item">
+      <a class="footer__content-link" href="https://rawi.lu.ch">© 2026 rawi Kanton Luzern</a>
+      <span class="line">|</span>
+    </li>
+    <li class="footer__content-link-item">
+      <a class="footer__content-link" target="_blank" href="https://rawi.lu.ch/geoinformation/Ansprechpersonen">Kontakt</a>
+      <span class="line">|</span>
+    </li>
+    <li class="footer__content-link-item">
+      <a class="footer__content-link" target="_blank" href="https://geoportal.lu.ch/geodaten/gebuehren">Gebühren</a>
+      <span class="line">|</span>
+    </li>
+    <li class="footer__content-link-item">
+      <a class="footer__content-link" target="_blank" href="https://geoportal.lu.ch/Nutzungsbedingungen">Nutzungsbedingungen</a>
+      <span class="line">|</span>
+    </li>
+    <li class="footer__content-link-item">
+      <a class="footer__content-link" target="_blank" href="https://geoportal.lu.ch/Disclaimer">Rechtliche Hinweise</a>
+    </li>
+  </ul>
+  <ul class="footer__content-social-media">
+    <li id="ctl05_liTwitter" class="footer__content-social-media-item footer__content-social-media-item--x">
+      <a title="X" class="footer__content-social-media-item-url"
+         href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdaten.geo.lu.ch%2Fprodukt%2Foevxxxxx_col_v5&amp;text=%C3%96ffentlicher%20Verkehr%3A%20Haltestellen%20und%20Liniennetze%20Bahn%2C%20Bus%20und%20Schiff%20-%20Geoportal%20Kanton%20Luzern"
+         target="_blank"><span class="sprite sprite--x">
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+	<g transform="matrix(0.85, 0, 0, 0.89, -416, -321)"><path d="M485.39,356.79l230.07,307.62L483.94,914.52h52.11l202.7-218.98l163.77,218.98h177.32 L836.82,589.6l215.5-232.81h-52.11L813.54,558.46L662.71,356.79H485.39z M562.02,395.17h81.46l359.72,480.97h-81.46L562.02,395.17 z" fill="#fff"></path></g>
+</svg>
+      </span></a>
+    </li>
+    <li id="ctl05_liFacebook" class="footer__content-social-media-item footer__content-social-media-item--facebook">
+      <a title="Facebook" class="footer__content-social-media-item-url"
+         href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdaten.geo.lu.ch%2Fprodukt%2Foevxxxxx_col_v5&amp;t=%C3%96ffentlicher%20Verkehr%3A%20Haltestellen%20und%20Liniennetze%20Bahn%2C%20Bus%20und%20Schiff%20-%20Geoportal%20Kanton%20Luzern"
+         target="_blank"><span class="sprite sprite--facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470.513 470.513">
+	<path d="M271.52 154.17v-40.541c0-6.086.28-10.8.849-14.13.567-3.335 1.857-6.615 3.859-9.853 1.999-3.236 5.236-5.47 9.706-6.708 4.476-1.24 10.424-1.858 17.85-1.858h40.539V0h-64.809c-37.5 0-64.433 8.897-80.803 26.691-16.368 17.798-24.551 44.014-24.551 78.658v48.82h-48.542v81.086h48.539v235.26h97.362v-235.26h64.805l8.566-81.086h-73.37z"></path>
+</svg>
+      </span></a>
+    </li>
+  </ul>
+</div>
+
+      </footer>
+      <div class="cookieoverlay">
+  <div id="cookieOverlay" class="cookieoverlay__content gridrow">
+    <div class="large-10 gridcolumns">
+      Diese Website verwendet ausschliesslich notwendige Cookies. Zur anonymisierten Auswertung der
+      Besuchszahlen setzen wir das datenschutzfreundliche Analysetool Matomo ein. Durch Klicken auf
+      «OK» bestätigen Sie, dass Sie diesen Hinweis zur Kenntnis genommen haben.<br />
+      <a class="cookieoverlay__content-link-item" target="_blank" id="hypCookieOverlay" href="https://geoportal.lu.ch/Disclaimer">Weitere Informationen</a>
+    </div>
+    <div class="large-2 gridcolumns">
+      <button type="button" name="btnCookieOverlay" value="OK" id="btnCookieOverlay" class="cookieoverlay__content-submit-item">OK</button>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <script>
+      var offsideMenu1 = offside('#mobileNav', {
+
+          slidingElementsSelector: '.page',
+          buttonsSelector: '.offside-button',
+          slidingSide: 'left',
+          afterOpen: function () {
+              console.log("afterOffsideOpen")
+          }
+      });
+    </script>
+  </body>
+
+</html>

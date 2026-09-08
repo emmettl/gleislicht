@@ -4,8 +4,9 @@ import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { sha256 } from './download-luzern-sources.mjs'
 import { validateZugSnapshot } from './build-zug-region.mjs'
-import { reviewedZugJoins, zugGraphs, matchZugPair, directedPatternKey, zugRouteKey } from './zug-line-geometry.mjs'
+import { reviewedZugJoins, zugGraphs, directedPatternKey, zugRouteKey } from './zug-line-geometry.mjs'
 import { gunzipSync } from 'node:zlib'
+import { loadZugBusSupplement, matchZugBusPair } from './zug-bus-supplement.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { inCanton } from './zug-timetable.mjs'
 
@@ -26,6 +27,24 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
   const collection = await json(join(sourceDirectory, 'bus.geojson'))
   const repairs = reviewedZugJoins(collection, audit.policy)
   const { graphs } = zugGraphs(collection, audit.policy)
+  const supplement = await loadZugBusSupplement(audit.policy.busSupplement)
+  assert.deepEqual(supplement.source, audit.supplementSource)
+  assert.equal(audit.sourceHashes.busSupplement, audit.policy.busSupplement.sourceSha256)
+  assert.equal(audit.supplementInventory.length, supplement.inventory.length)
+  for (const source of supplement.inventory) {
+    const entry = audit.supplementInventory.find(s => s.key === source.key); assert(entry)
+    for (const [key, value] of Object.entries(source)) assert.deepEqual(entry[key], value)
+    assert.deepEqual(entry.routeIds, audit.inventory.filter(r => r.agencyId === source.agencyId && r.mode === 'bus' && r.line === source.line).map(r => r.routeId))
+    for (const d of entry.days) {
+      const day = audit.days.find(day => day.date === d.date)
+      const pairs = day.directedStopPairs.filter(p => p.geometrySource === 'luzern' && p.sourceFeatures.includes(source.key)), matched = pairs.filter(p => p.matched)
+      assert.equal(d.attemptedPairs, pairs.length); assert.equal(d.matchedPairs, matched.length)
+      assert.equal(d.matchedOccurrences, sum(matched, 'occurrences'))
+      const keys = new Set(matched.map(p => p.key))
+      assert.equal(d.admittedTrips, sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(key => keys.has(key))), 'trips'))
+      assert.deepEqual(d.failures, pairs.filter(p => !p.matched).map(p => ({ fromId: p.fromId, toId: p.toId, reason: p.reason })))
+    }
+  }
   const rail = await loadZugRail(audit.policy.rail, audit.policy.dates)
   assert.equal(audit.sourceHashes.rail, audit.policy.rail.sourceSha256)
   assert.deepEqual(audit.railSource, rail.source)
@@ -83,6 +102,9 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
     assert.deepEqual(manifest.metadata.sourceHashes, audit.sourceHashes)
     const morning = await json(join(day.artifacts.directory, 'zug-region-morning.json'))
     assert.deepEqual(morning.trains.map(t => t.id).sort(), [...trains.values()].filter(t => t.start <= 31500 && t.end >= 24300).map(t => t.id).sort())
+    assert.equal(day.supplementalMatchedPairs, day.directedStopPairs.filter(p => p.geometrySource === 'luzern' && p.matched).length)
+    const supplementKeys = new Set(day.directedStopPairs.filter(p => p.geometrySource === 'luzern' && p.matched).map(p => p.key))
+    assert.equal(day.admittedTripsUsingSupplement, sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => supplementKeys.has(k))), 'trips'))
     const patterns = new Map(day.directedPatterns.map(p => [p.id, p])), pairs = new Map(day.directedStopPairs.map(p => [p.key, p]))
     assert.equal(day.directedStopPairs.filter(p => p.geometryRepairIds?.length).length, day.repairedDirectedPairs)
     assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometryRepairIds?.length)), 'trips'), day.admittedTripsUsingRepair)
@@ -147,9 +169,11 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
       const r = rawRoutes.get(p.routeId), a = sourceStops.get(p.fromId), b = sourceStops.get(p.toId)
       const pattern = p.contextPatternId ? patterns.get(p.contextPatternId) : undefined
       const train = pattern ? { routeId: pattern.routeId, directionId: pattern.directionId, calls: pattern.stopIds.map((id, i) => ({ id, pickupType: pattern.callRules[i][0], dropOffType: pattern.callRules[i][1] })) } : undefined
-      const result = train ? rail.matchPattern(train, sourceStops, r)[p.pairIndex] : r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugPair(graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
+      const result = train ? rail.matchPattern(train, sourceStops, r)[p.pairIndex] : r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugBusPair(graphs.get(zugRouteKey(r)), supplement.graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
       assert.equal(Boolean(result.path), p.matched)
       assert.equal(result.reason, p.reason)
+      assert.equal(result.geometrySource, p.geometrySource)
+      assert.deepEqual(result.primaryFailure, p.primaryFailure)
       assert.equal(result.path ? sha256(JSON.stringify(result.path)) : null, p.geometrySha256)
     }
     const patternTrips = new Map(), pairOccurrences = new Map(), admittedOccurrences = new Map()

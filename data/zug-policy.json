@@ -212,12 +212,12 @@
       "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
     }
   },
-  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling.",
+  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop.",
   "scopeLimits": [
     "Annual membership is complete for the pinned national timetable and official canton polygon, not proof of unrepresented real-world services.",
     "Friday/Sunday plus preceding-day carry-in do not establish seasonal, holiday or year-round coverage.",
     "No-stop through traffic is outside this passenger-service inventory.",
-    "Geometry admission uses mapped Buslinien and standard-gauge FOT infrastructure. Mountain, boat and unresolved rail/bus patterns remain in the coverage denominator.",
+    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements and standard-gauge FOT infrastructure. Mountain, boat and unresolved rail/bus patterns remain in the coverage denominator.",
     "The WFS matches the archive within 1 mm but proves no 2026 alignment validity. No realtime."
   ],
   "topologyJoins": {
@@ -434,5 +434,47 @@
       }
     ],
     "method": "Exact operating-point number, standard gauge (mm1435) only, original declared topology. Every other scheduled operating point is blocked during each pair search. Paths are inferred infrastructure corridors; track assignment and 2026 validity remain unproven."
+  },
+  "busSupplement": {
+    "sourceDirectory": "data/zug-luzern-sources",
+    "sourceSha256": "6815f8cee11d5fcf05699955fcfb130ceb6b833c5b96346b3dc20cd68e2b4cc8",
+    "method": "Preserve successful Zug pairs. A failed pair may use a complete path from the exact mapped Luzern 2026 operator/line. No midpoint source splice, graph union, gap repair, renamed line or changed tolerance.",
+    "lines": [
+      {
+        "feature": "A23",
+        "line": "23",
+        "tu": 11,
+        "agencyId": "820",
+        "operator": "Verkehrsbetriebe Luzern AG (vbl)"
+      },
+      {
+        "feature": "B073",
+        "line": "73",
+        "tu": 3,
+        "agencyId": "801",
+        "operator": "PostAuto AG (PAG)"
+      },
+      {
+        "feature": "B110",
+        "line": "110",
+        "tu": 3,
+        "agencyId": "801",
+        "operator": "PostAuto AG (PAG)"
+      },
+      {
+        "feature": "B653",
+        "line": "653",
+        "tu": 4,
+        "agencyId": "839",
+        "operator": "Zugerland Verkehrsbetriebe AG (ZVB)"
+      },
+      {
+        "feature": "B973",
+        "line": "N73",
+        "tu": 3,
+        "agencyId": "801",
+        "operator": "PostAuto AG (PAG)"
+      }
+    ]
   }
 }
