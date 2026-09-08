@@ -1,0 +1,72 @@
+{
+  "retrieved": "2026-09-08",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "sourceCacheSha256": "1b4322de71c91d0fce20e999c02ed278444f21c9d1a5f0c49f288746dedcf641",
+  "matcherSource": {
+    "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+    "swissDate": "2026-09-02",
+    "borderRetrieved": "2026-09-08",
+    "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a"
+  },
+  "stationReviewOsmBase": "2026-09-08T19:32:42Z",
+  "model": "Original pfaedle shapes retained by full stop-pattern identity; no new geometry or changed matcher tolerance. Variants may differ only within 110 m of Sins Bahnhof.",
+  "reviews": [
+    {
+      "id": "n6-sins-1ff59d6a9e4656878dda0cf3",
+      "agencyId": "839",
+      "routeId": "92-N6-A-j26-1",
+      "fromId": "ch:1:sloid:87260:0:1",
+      "toId": "ch:1:sloid:77128:0:1",
+      "patternId": "1ff59d6a9e4656878dda0cf3",
+      "geometrySha256": "56e4782d0d63ccbb9ba86606e9b0cdde0d243975b851b7cf2c46f823ab9f82a9",
+      "terminus": "ch:1:sloid:77128:0:1"
+    },
+    {
+      "id": "n6-sins-9d32c97f91ef3c4600c384ec",
+      "agencyId": "839",
+      "routeId": "92-N6-A-j26-1",
+      "fromId": "ch:1:sloid:87260:0:1",
+      "toId": "ch:1:sloid:77128:0:1",
+      "patternId": "9d32c97f91ef3c4600c384ec",
+      "geometrySha256": "7843781b741d532b229ec8d4bf5b169544a471a9358dd6f03a686359ff540f24",
+      "terminus": "ch:1:sloid:10455:0:1"
+    },
+    {
+      "id": "n6-sins-a507e30d23ea5058e1e2a075",
+      "agencyId": "839",
+      "routeId": "92-N6-A-j26-1",
+      "fromId": "ch:1:sloid:87260:0:1",
+      "toId": "ch:1:sloid:77128:0:1",
+      "patternId": "a507e30d23ea5058e1e2a075",
+      "geometrySha256": "7843781b741d532b229ec8d4bf5b169544a471a9358dd6f03a686359ff540f24",
+      "terminus": "ch:1:sloid:10455:0:1"
+    }
+  ],
+  "maximumDivergenceFromStopMetres": 110,
+  "stationWayIds": [
+    465169963,
+    784765667,
+    784765668,
+    784765670,
+    784765674,
+    784765675
+  ],
+  "files": [
+    {
+      "file": "roads.json.gz",
+      "sha256": "f3b451ef6cc4bf706d1d6211edb476781c1c26e13b917bb5087a4e7752cade93",
+      "url": "https://overpass-api.de/api/interpreter",
+      "queryFile": "roads.overpass"
+    },
+    {
+      "file": "roads.overpass",
+      "sha256": "fbe6a2b2c041e5729c949a2d9cb089318b000ac8d7ae39d5f59ac43396d12634",
+      "url": "https://overpass-api.de/api/interpreter",
+      "queryFile": "roads.overpass"
+    }
+  ]
+}

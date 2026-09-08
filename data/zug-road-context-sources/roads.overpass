@@ -1,0 +1,2 @@
+[out:json][timeout:35];
+(way[highway](47.126,8.563,47.142,8.590);way[highway](47.178,8.515,47.189,8.532);way[highway](47.184,8.393,47.192,8.401);node[highway=bus_stop](47.126,8.563,47.142,8.590);node[public_transport](47.184,8.393,47.192,8.401););out meta geom;
