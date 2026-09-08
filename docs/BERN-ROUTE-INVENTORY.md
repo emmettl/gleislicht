@@ -8,7 +8,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | --- | --- | --- | --- | --- |
 | 11 | Schweizerische Bundesbahnen SBB | 62 | 319 / 846 | 273 / 771 |
 | 32 | Lauterbrunnen-Mürren | 2 | 181 / 181 | 181 / 181 |
-| 33 | BLS AG (bls) | 53 | 994 / 1,405 | 893 / 1,255 |
+| 33 | BLS AG (bls) | 53 | 1,087 / 1,405 | 972 / 1,255 |
 | 35 | Berner Oberland-Bahnen | 2 | 130 / 130 | 144 / 144 |
 | 38 | Aare Seeland mobil (bti) | 1 | 116 / 116 | 77 / 77 |
 | 43 | Chemins de fer du Jura | 2 | 69 / 110 | 42 / 77 |
@@ -212,7 +212,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-1-E-j26-1 | 33: S1 | rail | partially-admitted | 82 / 82 | 81 / 82 | 301_S | — | incomplete-directed-pattern |
 | 91-2-A-j26-1 | 33: S2 | rail | admitted-all-dated-trips | 80 / 80 | 85 / 85 | 302_S | — | — |
 | 91-3-F-j26-1 | 33: S3 | rail | admitted-all-dated-trips | 82 / 82 | 81 / 81 | 303_S_a | — | — |
-| 91-4-C-j26-1 | 33: S4 | rail | partially-admitted | 4 / 47 | 7 / 48 | 304_S | — | incomplete-directed-pattern |
+| 91-4-C-j26-1 | 33: S4 | rail | admitted-all-dated-trips | 47 / 47 | 48 / 48 | 304_S | bern-fot-rail-20210706 | — |
 | 91-5-j26-1 | 33: S5 | rail | partially-admitted | 39 / 79 | 38 / 76 | 305_S_a | — | incomplete-directed-pattern |
 | 91-6-B-j26-1 | 33: S6 | rail | admitted-all-dated-trips | 76 / 76 | 71 / 71 | 306_S, 440_S_a, 460_S | — | — |
 | 91-6-F-j26-1 | 33: S6 | rail | admitted-all-dated-trips | 78 / 78 | 78 / 78 | 306_S, 440_S_a, 460_S | — | — |
@@ -222,7 +222,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-22-C-j26-1 | 33: S22 | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 91-31-j26-1 | 33: S31 | rail | partially-admitted | 44 / 60 | 0 / 0 | 303_S_b | — | incomplete-directed-pattern |
 | 91-35-F-j26-1 | 33: S35 | rail | admitted-all-dated-trips | 38 / 38 | 38 / 38 | 291_a | — | — |
-| 91-36-D-j26-1 | 33: S36 | rail | excluded | 0 / 50 | 0 / 38 | 291_b | — | incomplete-directed-pattern |
+| 91-36-D-j26-1 | 33: S36 | rail | admitted-all-dated-trips | 50 / 50 | 38 / 38 | 291_b | bern-fot-rail-20210706 | — |
 | 91-41-F-j26-1 | 33: S41 | rail | partially-admitted | 43 / 45 | 42 / 43 | 340_R_b | — | incomplete-directed-pattern |
 | 91-42-C-j26-1 | 33: S42 | rail | partially-admitted | 36 / 40 | 37 / 38 | 340_R_a | — | incomplete-directed-pattern |
 | 91-44-j26-1 | 33: S44 | rail | admitted-all-dated-trips | 122 / 122 | 121 / 121 | 304_SE | — | — |

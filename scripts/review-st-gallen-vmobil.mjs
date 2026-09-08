@@ -67,7 +67,7 @@ export function activeVmobilServices(raw, date) {
   return active
 }
 
-export function validateVmobilDay(review, day, limits) {
+export function validateVmobilDay(review, day, limits, anchors = []) {
   const result = review.days.find(d => d.date === day.date); assert(result)
   assert.equal(result.dayAuditSha256, sha256(JSON.stringify(day)), 'Stale Vorarlberg day binding')
   const patterns = day.directedPatterns.filter(p => p.routeId === '92-164-C-j26-1')
@@ -100,7 +100,8 @@ export function validateVmobilDay(review, day, limits) {
         assert.equal(pair.reason, reason)
       }
       assert.equal(variant.completePatternPasses, variant.pairs.every(p => p.reason === 'candidate-path'))
-      assert(!variant.completePatternPasses && !pattern.admitted, 'Retained exclusion no longer applies')
+      assert(!variant.completePatternPasses, 'Original-coordinate discrepancy no longer applies')
+      if (pattern.admitted) assert(anchors.some(a=>a.routeIds.includes(pattern.routeId)&&a.reviewedDates.includes(day.date)&&pattern.stopIds.includes(a.stopId)), 'Unreviewed admission despite source-coordinate discrepancy')
     }
   }
   assert.equal(result.externalActiveShapes, new Set(result.patterns.flatMap(p => p.variants.map(v => v.shapeId))).size)
@@ -180,7 +181,8 @@ export async function reviewStGallenVmobil() {
       const swissSchedule = swissTrips.filter(t => t.directionId === pattern.directionId).map(t => t.calls.map(c => [c.arrival, c.departure])).map(JSON.stringify).sort()
       patterns.push({ patternId: pattern.id, routeId: pattern.routeId, directionId: pattern.directionId, swissTrips: pattern.trips,
         externalTrips: matched.length, orderedStopNamesMatch: true, allCallTimesMatch: JSON.stringify(sourceSchedule) === JSON.stringify(swissSchedule), variants,
-        decision: variants.some(v => v.completePatternPasses) ? 'Candidate requires separate admission review.' : 'Retain exclusion: external shapes do not resolve Swiss endpoint coordinates.' })
+        decision: pattern.admitted ? 'Admitted on original AL_OEV geometry using the separately reviewed stop rendering anchor; this comparison retains original Swiss coordinates.'
+          : variants.some(v => v.completePatternPasses) ? 'Candidate requires separate admission review.' : 'Retain exclusion: external shapes do not resolve Swiss endpoint coordinates.' })
     }
     assert.equal(patterns.reduce((n, p) => n + p.externalTrips, 0), externalTrips.length)
     days.push({ date: day.date, dayAuditSha256: sha256(JSON.stringify(day)), swissTrips: swissTrips.length, externalTrips: externalTrips.length,
@@ -191,7 +193,7 @@ export async function reviewStGallenVmobil() {
       activeDates: days.filter(d => d.patterns.some(p => p.variants.some(v => v.shapeId === shapeId))).map(d => d.date) })),
     method: 'Calendar plus exceptions, complete ordered name/direction comparison with explicit spelling normalization, then forward shape-distance slices for every call pair. Original Swiss stop coordinates remain unchanged. Names establish a candidate correspondence, not authorization to replace a stop coordinate.',
     days, validation: { passed: true, feedChanged: false, stopCoordinatesChanged: false, externalShapesAdmitted: false, directionCertified: false } }
-  for (const day of audit.days) validateVmobilDay(report, day, audit.policy.limits)
+  for (const day of audit.days) validateVmobilDay(report, day, audit.policy.limits, audit.policy.stopAnchors)
   return report
 }
 

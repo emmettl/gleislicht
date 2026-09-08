@@ -1,0 +1,81 @@
+{
+  "sourceDirectory": "data/luzern-border-rail-sources",
+  "sourceSha256": "267b989fdd6af9f8588cf286909702c4b01927c6e0dd276db580f3ba69737495",
+  "routes": [
+    {
+      "routeId": "91-75-j26-1",
+      "agencyId": "11",
+      "line": "IR75"
+    },
+    {
+      "routeId": "91-3R-Y-j26-1",
+      "agencyId": "11",
+      "line": "EC"
+    }
+  ],
+  "limits": {
+    "stationAttachmentMetres": 100,
+    "detourRatio": 2,
+    "detourFloorMetres": 1500
+  },
+  "pairs": [
+    {
+      "routeId": "91-75-j26-1",
+      "fromId": "8014586",
+      "toId": "ch:1:sloid:6131:2:2",
+      "geometrySha256": "05fefbb22ea7b24449a99b0089d2fc313ff86e451e535d7607ff49c7a8645471",
+      "segmentsSha256": "e03a6be5bbdb3cc328d63244fa4d080b03360e7d8f725d81cd2dee0539ffef66"
+    },
+    {
+      "routeId": "91-75-j26-1",
+      "fromId": "ch:1:sloid:6131:2:2",
+      "toId": "8014586",
+      "geometrySha256": "213c06863d5f63e70ab84077447894d8fb541cefd7551957ecc1491e8f728ecd",
+      "segmentsSha256": "531d23424638f398322c3bb15531e8af3691d386106ad16fe3ec1599740c0118"
+    }
+  ],
+  "inputs": "data/luzern-border-rail-inputs.json",
+  "inputsSha256": "93940e7092caa1335493d0f8007062f86ef77700b25e0c37a701a31443abc500",
+  "timetableSha256": "a92f949c51cd0dc102074204a6988c25157caa0a5490defc53d8308dc5e53b63",
+  "corridors": [
+    {
+      "id": "kreuzlingen-konstanz",
+      "agencyId": "11",
+      "routes": [
+        {
+          "routeId": "91-75-j26-1",
+          "line": "IR75"
+        }
+      ],
+      "operatingPointIds": [
+        "8506131",
+        "8014586"
+      ],
+      "sourcePointCodes": [
+        "KR",
+        "KODB"
+      ],
+      "features": [
+        [
+          822,
+          "KR",
+          "KRGR",
+          60688.011,
+          61428.973
+        ],
+        [
+          822,
+          "KRGR",
+          "KODB",
+          61428.973,
+          61846.814
+        ]
+      ],
+      "sourcePointNames": [
+        "Kreuzlingen",
+        "Konstanz"
+      ]
+    }
+  ],
+  "scope": "Every complete IR75 and EC fixture pattern, including those already admitted; only the two reviewed terminal IR75 Kreuzlingen–Konstanz pairs may supplement failed cantonal/FOT geometry. All original calls and timestamps remain. Como schematics are retained as rejected source evidence."
+}

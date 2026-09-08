@@ -1001,8 +1001,8 @@
     "gtfsRoutes": [
       "92-164-C-j26-1"
     ],
-    "candidateRouteAdmittedTrips": 0,
-    "status": "no-admitted-fixture-pattern"
+    "candidateRouteAdmittedTrips": 84,
+    "status": "candidate-graph-for-admitted-patterns"
   },
   {
     "key": "bus:33",

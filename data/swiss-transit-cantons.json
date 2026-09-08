@@ -340,7 +340,7 @@
       "evidence": "ArcGIS Theme_mobilite layer 2 is a queryable polyline source: 128 total features. GeoJSON samples include rail and actual TPF urban buses. NUMERO_LIGNE values such as 20.002 are timetable-field identifiers, not simply display line 2. Other fields include type, enterprise and name.",
       "vintage": "Current geometry vintage not established; service response date is only an access check.",
       "reuse": "Exact matching OGD feature service permits free attributed vector use, sharing and reuse (Source: Etat de Fribourg). All 128 geometries and original attributes independently reconciled; catalogue evidence retained in data/fribourg-sources.",
-      "nextAction": "Review remaining conflicting road contexts, source vintage and physical direction; extend unsupported rail/lake/mountain coverage and seasonal dates. The full two-date bus census now has an explicitly inferred OSM fallback with original cantonal failures retained.",
+      "nextAction": "Review remaining road and rail failures, source vintage and physical direction; extend unsupported lake/mountain coverage and seasonal dates. Full bus patterns have inferred OSM fallback; 35 reviewed rail route identities now have exact-operating-point FOT inference with gauge, topology, detour and full-context guards. The Sunday S50/S51 closure is checked against dated TPF evidence.",
       "sourceIds": [
         "fr-layer",
         "fr-count",
@@ -366,12 +366,15 @@
           "2026-09-06"
         ],
         "admittedTrips": [
-          4658,
-          2908
+          5255,
+          3567
         ],
         "publicRedistributionCleared": true,
         "roadPatternsTested": 614,
-        "roadCache": "data/fribourg-road-cache.json"
+        "roadCache": "data/fribourg-road-cache.json",
+        "railPatternsTested": 412,
+        "railInputs": "data/fribourg-rail-inputs.json",
+        "worksAudit": "data/fribourg-audit/works.json"
       }
     },
     {
@@ -405,7 +408,7 @@
       "evidence": "ch.so.avt.oev GeoPackage downloaded: 3,951 MultiLineString network segments and 775 stops in EPSG:2056. Network fields only identify mode and tunnel status; there are no line/operator identifiers. Stops include DiDok. The empty linestructure helper table is not missing network coverage.",
       "vintage": "Published 17 December 2025. Metadata explicitly excludes night services.",
       "reuse": "Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.",
-      "nextAction": "Review remaining platform/foreign-rail gaps and conflicting full-pattern alignments. Exact Bern S11/S29 and SBB Däniken–Schönenwerd sources add 209 Friday / 157 Sunday movements; twelve seasonal dates audited. Physical direction and year-round coverage remain uncertified.",
+      "nextAction": "Review remaining bus and tram platform gaps, foreign rail connections and failed road-pattern consensus. Exact Bern S29 source precedence completes all 86 S29 journeys on both published dates, adding 22 Friday / 21 Sunday journeys; twelve seasonal dates audited. Physical direction and year-round coverage remain uncertified.",
       "sourceIds": [
         "so-publications",
         "so-lines",
@@ -424,8 +427,8 @@
           "2026-09-06"
         ],
         "admittedMovements": [
-          6863,
-          5467
+          6918,
+          5507
         ],
         "physicalDirectionCertified": false,
         "yearRoundCoverageEstablished": false,
@@ -433,7 +436,9 @@
         "seasonalAudit": "data/solothurn-audit/seasonal-summary.json",
         "alignmentAudit": "data/solothurn-audit/alignment-review.json",
         "appManifest": "public/data/solothurn-region-day-manifest.json",
-        "corridorAudit": "data/solothurn-audit/corridor-review.json"
+        "corridorAudit": "data/solothurn-audit/corridor-review.json",
+        "railPlatformAudit": "data/solothurn-audit/rail-platform-review.json",
+        "s29PrecedenceAudit": "data/solothurn-audit/s29-precedence-review.json"
       }
     },
     {
@@ -615,7 +620,7 @@
         "896"
       ],
       "geometryStatus": "adapter-partial-local",
-      "evidence": "Full AL_OEV archive acquired: 226 features in five layers. Complete SG polygon census inventories 343 annual GTFS route records across 38 agencies. Weekday/Sunday full-pattern admission emits 10,566 / 7,299 movement instances; 194 route records contribute and all exclusions are retained. A corroborated 7.37 m source-edge repair restores line 321; a documented 210/211 shared corridor with individually approved directed pairs restores line 210. See docs/ST-GALLEN-STUDY.md and data/st-gallen-audit/summary.json. Historical 404 probes remain preserved.",
+      "evidence": "Full AL_OEV archive acquired: 226 features in five layers. Complete SG polygon census inventories 343 annual GTFS route records across 38 agencies. Weekday/Sunday full-pattern admission emits 10,624 / 7,325 movement instances; 195 route records contribute and all exclusions are retained. A corroborated 7.37 m source-edge repair restores line 321; a documented 210/211 shared corridor with individually approved directed pairs restores line 210. See docs/ST-GALLEN-STUDY.md and data/st-gallen-audit/summary.json. Historical 404 probes remain preserved. A pinned Vorarlberg stop rendering anchor restores line 164 while retaining its original Swiss coordinate in the audit.",
       "vintage": "2026 timetable alignment; archive and supplied documentation dated 24 March 2026. No per-feature survey date. Live September documentation date is distinct from pinned geometry vintage.",
       "reuse": "Publisher-specific restricted terms. Supplied 2019 terms and current website terms retain redistribution/own-geoservice permission requirements. Raw/decoded vectors and regional payloads stay local outside public assets. Attribution, date, lack of legal effect and disclaimer documented.",
       "nextAction": "Resolve redistribution permission, remaining geometry/direction exclusions and seasonal/holiday validation. Shared-corridor and source-edge regressions preserve every previously admitted journey and matched path. No generic proximity stitching or operator-wide fallback.",
@@ -735,10 +740,10 @@
         "801"
       ],
       "geometryStatus": "cantonal-adapter-partial-admission",
-      "evidence": "Full original WFS GML preserved: 337 bus segments, 17 rail corridors, 337 bus-frequency features, 718 stops and four call-taxi areas. Canton-wide annual GTFS census: 132 routes, 15 agencies, all five districts. Added 77 complete OSM-inferred city patterns for Frauenfeld/Kreuzlingen; added 296 audited regional road patterns (292 complete) across 59 fixed route records; federal rail adds 169 unique complete patterns (476 Friday/490 Sunday journeys), including the explicit Interlaken IC81 platform-group join. Detailed SBB Konstanz border links add 61 unique full patterns (212 Friday/207 Sunday journeys). Friday/Sunday feeds now admit 4238/2643 journeys, with every prior admitted path preserved. The separately audited OSM Bregenz rail corridor adds 5 Friday/8 Sunday S7 journeys through St. Margrethen platform 3. See docs/THURGAU-STUDY.md and data/thurgau-audit.",
+      "evidence": "Full original WFS GML preserved: 337 bus segments, 17 rail corridors, 337 bus-frequency features, 718 stops and four call-taxi areas. Canton-wide annual GTFS census: 132 routes, 15 agencies, all five districts. Added 77 complete OSM-inferred city patterns for Frauenfeld/Kreuzlingen; added 296 audited regional road patterns (292 complete) across 59 fixed route records; federal rail adds 169 unique complete patterns (476 Friday/490 Sunday journeys), including the explicit Interlaken IC81 platform-group join. Detailed SBB Konstanz border links add 61 unique full patterns (212 Friday/207 Sunday journeys). Friday/Sunday feeds now admit 4243/2649 journeys, with every prior admitted path preserved. The separately audited OSM Bregenz rail corridor admits all 10 Friday/14 Sunday Bregenz S7 journeys through St. Margrethen platforms 2/3, including one exact passenger-tagged connector. All 919 Friday/895 Sunday rail journeys now have geometry. See docs/THURGAU-STUDY.md and data/thurgau-audit.",
       "vintage": "Geometry effective date remains unknown. WFS acquired 2026-09-08; cantonal catalogue modified 2026-07-31; creation 2000-01-01 is not a geometry vintage. GTFS feed 20260902; boundaries 2026-01. Federal rail source Stand 2021-07-06 and asset update 2025-01-18; reused 2026-09-08, not certified 2026 service geometry. SBB graphical-line catalogue modified 2026-07-29, data processed 2026-09-02; no individual feature survey date established. Border OSM query is pinned to 2026-09-02T00:00:00Z, acquired 2026-09-08.",
       "reuse": "Cantonal geometry: CC BY 4.0, as explicitly declared in the preserved data.tg.ch catalogue. City and regional road supplements: OpenStreetMap-derived databases under ODbL 1.0, distributed separately with attribution. GTFS and swisstopo retain separate terms. Federal rail retains FOT source attribution and opendata.swiss terms_by; proprietary catalogue label preserved. SBB Infrastructure / data.sbb.ch border curves retain terms_by attribution, with original metadata and selected responses distributed beside the feed. The separate OSM-derived Bregenz rail path database is ODbL 1.0 with OpenStreetMap attribution.",
-      "nextAction": "Resolve St. Margrethen platform-2 access for Bregenz S7 (5 Friday/6 Sunday journeys), lake/Rhine services (92/87 journeys) and four Wittenbach Zentrum bus-pattern failures (37 Friday journeys); obtain true cantonal geometry vintage and validate seasonal/holiday service and physical direction. Platform-3 Bregenz patterns use a dated OSM rail graph with a switch-turn guard. NT and type-715 RUB remain demand-responsive exclusions.",
+      "nextAction": "Resolve lake/Rhine services (92/87 journeys) and four Wittenbach Zentrum bus-pattern failures (37 Friday journeys); obtain true cantonal geometry vintage and validate seasonal/holiday service and physical direction. All dated rail patterns now have geometry. The acquired original FOEN lake feature still leaves 17 docks over 150 m from its water boundary and no complete direct-water pattern. NT and type-715 RUB remain demand-responsive exclusions.",
       "sourceIds": [
         "tg-wfs",
         "tg-count",

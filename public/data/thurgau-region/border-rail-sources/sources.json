@@ -49,7 +49,7 @@
       "retrieved": "2026-09-08"
     }
   ],
-  "model": "Shortest connected standard-gauge main/branch and explicitly main-track crossover OSM rail path between exact UIC station identities and bounded original platform projections. Original OSM node IDs define connectivity. No sidings, yards, spurs, coordinate merges or running-track certification.",
+  "model": "Shortest connected standard-gauge main/branch and explicitly main-track crossover OSM rail path between exact UIC station identities and bounded original platform projections. Original OSM node IDs define connectivity. One exact passenger-tagged siding connector is reviewed for platform 2; other sidings, yards and spurs remain excluded. No coordinate merges or running-track certification.",
   "alternatives": {
     "vogis": "136 original source records inventoried; CC BY 4.0 in dataset metadata, digitised from 2012 imagery. Known 2013 Rhine alignment change prevents treating this as verified contemporary border alignment.",
     "oebb": "GeoNetz 12-2024 catalogue states validity through 2025-12-13; no geometry admitted from that expired release."

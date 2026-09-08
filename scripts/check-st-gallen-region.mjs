@@ -7,6 +7,7 @@ import { validatedStGallenRepairs, stGallenGraphs, matchStGallenPair } from './s
 import { sha256 } from './download-luzern-sources.mjs'
 import { validateStGallenSnapshot } from './build-st-gallen-region.mjs'
 import { validateVmobilDay } from './review-st-gallen-vmobil.mjs'
+import { applyStGallenStopAnchors, loadStGallenStopAnchors } from './st-gallen-stop-anchors.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sum = (items, key) => items.reduce((n, item) => n + item[key], 0)
@@ -40,10 +41,18 @@ export async function checkStGallenRegion({ auditPath = 'data/st-gallen-audit/lo
     }
   }
   const summaries = []
+  const effective = raw ? await loadStGallenStopAnchors(raw, audit.policy, sourceDirectory, audit.sourceHashes.timetable) : undefined
+  if (effective) assert.deepEqual(audit.stopAnchors, effective.anchors)
   for (const day of audit.days) {
     const manifest = await json(join(day.artifacts.directory, 'st-gallen-region-day-manifest.json')), trains = new Map()
     assert.equal(manifest.metadata.serviceDate, day.date)
     assert.equal(manifest.tripCount, day.admittedTrips)
+    assert.deepEqual(manifest.metadata.stopAnchors, audit.stopAnchors)
+    assert.deepEqual(manifest.metadata.stopAnchorSources, (audit.policy.stopAnchors??[]).flatMap(a=>a.evidence))
+    if (effective) for (const stop of manifest.stops) {
+      const source = effective.stops.get(stop[4]); assert(source)
+      assert.deepEqual(stop.slice(0,3), [Number(source.stop_lon),Number(source.stop_lat),source.stop_name], 'Unreviewed stop-coordinate change')
+    }
     for (const chunk of manifest.chunks) {
       const bytes = await readFile(join(day.artifacts.directory, chunk.path))
       assert.equal(bytes.length, chunk.bytes, `Chunk length ${chunk.path}`)
@@ -117,7 +126,10 @@ export async function checkStGallenRegion({ auditPath = 'data/st-gallen-audit/lo
     for (const pair of pairs.values()) {
       assert.equal(pairOccurrences.get(pair.key), pair.occurrences)
       assert.equal(admittedOccurrences.get(pair.key) ?? 0, pair.admittedOccurrences)
+      assert.deepEqual(pair.stopAnchorIds??[], audit.stopAnchors.filter(a=>[pair.fromId,pair.toId].includes(a.stopId)).map(a=>a.id))
     }
+    assert.equal(day.anchoredDirectedPairs, [...pairs.values()].filter(p=>p.stopAnchorIds?.length).length)
+    assert.equal(day.admittedTripsUsingStopAnchor, sum([...patterns.values()].filter(p=>p.admitted&&p.pairKeys.some(k=>pairs.get(k).stopAnchorIds?.length)), 'trips'))
     const sourceTrains = raw ? new Map(raw.snapshots.find(d => d.date === day.date).trains.map(t => [t.id, t])) : undefined
     if (sourceTrains) {
       assert.equal(sourceTrains.size, day.trips)
@@ -147,7 +159,7 @@ export async function checkStGallenRegion({ auditPath = 'data/st-gallen-audit/lo
           assert.deepEqual(used.map(r=>r.id),pair.geometryRepairIds??[],'Incorrect repair provenance')
           if(used.length) assert.deepEqual([...new Set(used.flatMap(r=>r.sourceFeatures))],pair.repairSourceFeatures)
           const candidate = busGraphs.get(JSON.stringify([pair.agencyId,pair.mode,pair.line]))
-          if (candidate?.sharedCorridors.length) {
+          if (candidate?.sharedCorridors.length || pair.stopAnchorIds?.length) {
             // Replay the original stop precision, not rounded path endpoints.
             const from = manifest.stops[train.stops[i][0]].slice(0,2), to = manifest.stops[train.stops[i+1][0]].slice(0,2)
             const replay = matchStGallenPair(candidate,from,to,audit.policy.limits,pair)
@@ -210,6 +222,31 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
   assert.deepEqual(vmobil.validation, { passed: true, feedChanged: false, stopCoordinatesChanged: false, externalShapesAdmitted: false, directionCertified: false })
   assert.equal(vmobil.sourceEvidence.find(s => s.id === 'vmobil').sha256, 'c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed')
   assert.deepEqual(vmobil.days.map(d => d.date), summary.days.map(d => d.date))
+  assert(summary.stopAnchorReview, 'Missing stop-anchor regression')
+  assert.equal(sha256(await readFile(summary.stopAnchorReview.path)), summary.stopAnchorReview.sha256)
+  const anchorReview = await json(summary.stopAnchorReview.path)
+  assert.deepEqual(anchorReview.sourceHashes, summary.sourceHashes)
+  assert.equal(anchorReview.baselineCommit, '2e0c599')
+  assert(anchorReview.validation.allPreviouslyAdmittedCallsAndPathsUnchanged && anchorReview.validation.allPreviouslyMatchedPairsUnchanged)
+  assert.equal(summary.stopAnchors.length, summary.policy.stopAnchors.length)
+  const configs = summary.policy.stopAnchors
+  const anchorMetadata = applyStGallenStopAnchors({ dates: summary.policy.dates,
+    stops: configs.map(c=>({stop_id:c.stopId,stop_name:c.expectedName,stop_lon:c.expectedCoordinate[0],stop_lat:c.expectedCoordinate[1]})),
+    snapshots: [{trains: configs.flatMap(c=>c.routeIds.map(routeId=>({routeId,calls:[{id:c.stopId}]})))}] },
+    summary.policy, configs.flatMap(c=>c.sourceStops))
+  assert.deepEqual(summary.stopAnchors, anchorMetadata.anchors)
+  for (const config of summary.policy.stopAnchors) {
+    const anchor = summary.stopAnchors.find(a=>a.id===config.id); assert(anchor)
+    assert.equal(anchor.stopId, config.stopId); assert.equal(anchor.name, config.expectedName)
+    assert.equal(anchor.sourceStopId, config.sourceStopId); assert.equal(anchor.sourceSha256, config.sourceSha256)
+    assert.deepEqual(anchor.routeIds, config.routeIds)
+    assert.deepEqual(anchor.originalCoordinate, config.expectedCoordinate.map(Number))
+    const external = config.sourceStops.find(s=>s.stop_id===config.sourceStopId)
+    assert.deepEqual(anchor.coordinate, [Number(external.stop_lon),Number(external.stop_lat)])
+    assert.equal(config.reviewedTimetableSha256, summary.sourceHashes.timetable)
+    assert.deepEqual(config.reviewedDates, summary.policy.dates)
+    assert.equal(sha256(await readFile(config.scheduleReview.path)), config.scheduleReview.sha256)
+  }
   for (const [name, record] of Object.entries(summary.files)) assert.equal(sha256(await readFile(join(directory, name))), record.sha256, `Audit file ${name}`)
   assert.equal(sha256(await readFile('data/st-gallen-policy.json')), summary.sourceHashes.policy)
   assert.equal(sha256(await readFile('data/st-gallen-sources/sources.json')), summary.sourceHashes.catalogue)
@@ -237,7 +274,7 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
   const results = []
   for (const expected of summary.days) {
     const day = await json(join(directory, `${expected.date}.json`))
-    validateVmobilDay(vmobil, day, summary.policy.limits)
+    validateVmobilDay(vmobil, day, summary.policy.limits, summary.policy.stopAnchors)
     const reviewed = detours.days.find(d => d.date === day.date); assert(reviewed)
     assert.equal(reviewed.dayAuditSha256, sha256(JSON.stringify(day)), 'Stale detour day audit')
     assert.equal(reviewed.admittedTrips, day.admittedTrips)
@@ -300,6 +337,9 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
     assert.equal(day.scheduledSegmentOccurrences + day.representativeHeadwaySegmentOccurrences, day.segmentOccurrences)
     assert.equal(directedStopPairs.filter(p => p.matched).length, day.matchedDirectedPairs)
     const patterns = new Map(directedPatterns.map(p => [p.id,p])), pairs = new Map(directedStopPairs.map(p => [p.key,p]))
+    assert.equal(day.anchoredDirectedPairs, directedStopPairs.filter(p=>p.stopAnchorIds?.length).length)
+    assert.equal(day.admittedTripsUsingStopAnchor, sum(directedPatterns.filter(p=>p.admitted&&p.pairKeys.some(k=>pairs.get(k).stopAnchorIds?.length)), 'trips'))
+    for (const pair of directedStopPairs) assert.deepEqual(pair.stopAnchorIds??[], (summary.stopAnchors??[]).filter(a=>[pair.fromId,pair.toId].includes(a.stopId)).map(a=>a.id))
     const repairs=new Map((summary.policy.geometryRepairs?.repairs??[]).map(r=>[r.id,r]))
     const corridors=new Map((summary.policy.sharedCorridors??[]).map(c=>[c.id,c]))
     assert.equal(directedStopPairs.filter(p=>p.geometryRepairIds?.length).length,day.repairedDirectedPairs)

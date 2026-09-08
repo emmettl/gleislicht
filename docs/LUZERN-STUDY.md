@@ -1,6 +1,6 @@
 # Luzern cantonal transit source adapter and audit
 
-Built on 8 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **12'519 Friday and 10'398 Sunday journeys**, on 131 and 145 routes respectively. 164 distinct route records have an admitted pattern on at least one date.
+Built on 8 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **12'541 Friday and 10'424 Sunday journeys**, on 131 and 145 routes respectively. 164 distinct route records have an admitted pattern on at least one date.
 
 Only complete directed stop patterns with usable geometry are admitted. This is a complete **inventory of the scoped archive**, and a measured **partial regional motion feed**. It is not complete cantonal geometry, year-round validation or direction-certified street routing. The underlying official linework is undirected; the validation below establishes ordered source-call compatibility and plausible connected corridors.
 
@@ -37,10 +37,11 @@ Frequency templates are expanded on their source interval, with exact_times=0 ma
 | Luzern regional stops, 1,448 records | Metadata: 6 August 2026 | `6675b987883da42703cce8645ae2b28cc71336d1ce5dcb7a491ad934e7ca13c6` |
 | swisstopo canton polygon | Retrieved 2026-09-08T17:27:01.144Z; API response gives no source vintage | `efe44b38095a9c4b7d025199935e69bdfc027cc1baac32ee34354edfdb68a49e` |
 | Federal rail network, 3,210 nodes / 3,424 segments | Used segment Stand: 6 July 2021; asset updated 18 January 2025; catalogue checked 8 September 2026 | `2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828` |
+| SBB graphical rail, 59 returned records / 2 used | Catalogue modified 29 July 2026; data processed 2 September 2026; retrieved 8 September 2026; no individual survey date | `267b989fdd6af9f8588cf286909702c4b01927c6e0dd276db580f3ba69737495` (catalogue) |
 
 The cantonal source snapshot was acquired on 8 September 2026. Retrieval timestamps do not replace the layer dates. Line sources are EPSG:2056; the ArcGIS query transforms them to EPSG:4326. Matching uses those returned coordinates, metre-distance calculations, exact shared vertices keyed to seven decimal places, and output coordinates rounded to seven decimals. Cantonal paths are not simplified or joined by proximity. Five explicitly reviewed short gaps use exact edges copied from other lines in the same official bus source; their donor identities and coordinates are retained in the policy and feed metadata. Failed bus pairs additionally use the separately attributed OSM fallback described below. Failed rail pairs use the separately dated federal infrastructure fallback below. The boundary is the returned API polygon, with its supplied precision; an exact cadastral boundary survey is not implied.
 
-**Attribution:** Timetable: **SBB / opentransportdata.swiss**. Cantonal data: **© rawi Kanton Luzern; © Verkehrsverbund Luzern**. Canton boundary: **© swisstopo**. Federal rail and cableways: **© Federal Office of Transport (FOT)**. Processed regional feeds and this audit are by **Gleislicht**. Cantonal [product metadata](https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5) and [Open-By terms](https://geoportal.lu.ch/Nutzungsbedingungen) permit use with source attribution; the acquired pages are retained. The [national timetable terms](https://opentransportdata.swiss/en/terms-of-use/) require attribution, raw-data refresh and authorship of processed results. The [swisstopo terms](https://www.swisstopo.admin.ch/en/terms-and-conditions) govern the boundary. No blanket CC0 licence is assigned to the combined feed. Frozen fixtures are dated study artifacts, not a continuously refreshed live service.
+**Attribution:** Timetable: **SBB / opentransportdata.swiss**. Cantonal data: **© rawi Kanton Luzern; © Verkehrsverbund Luzern**. Canton boundary: **© swisstopo**. Federal rail and cableways: **© Federal Office of Transport (FOT)**. Border curves: **SBB Infrastructure / data.sbb.ch**, under the retained attribution terms. Processed regional feeds and this audit are by **Gleislicht**. Cantonal [product metadata](https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5) and [Open-By terms](https://geoportal.lu.ch/Nutzungsbedingungen) permit use with source attribution; the acquired pages are retained. The [national timetable terms](https://opentransportdata.swiss/en/terms-of-use/) require attribution, raw-data refresh and authorship of processed results. The [swisstopo terms](https://www.swisstopo.admin.ch/en/terms-and-conditions) govern the boundary. No blanket CC0 licence is assigned to the combined feed. Frozen fixtures are dated study artifacts, not a continuously refreshed live service.
 
 The large national archive remains an external input, available at the [pinned download](https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip); its hash is mandatory. Current cantonal APIs are not immutable, so reproduction should use the committed source snapshots, not a fresh download claimed to have the same bytes.
 
@@ -63,8 +64,8 @@ The source has no one-way or direction field. A successful ordered match is an *
 | Annual-census routes active in civil day | 140 | 155 |
 | Civil-day movements, all modes | 13'649 | 11'550 |
 | Representative headway movements (not scheduled) | 1'020 | 1'020 |
-| Admitted scheduled movements | 12'519 | 10'398 |
-| Excluded movements | 1'130 | 1'152 |
+| Admitted scheduled movements | 12'541 | 10'424 |
+| Excluded movements | 1'108 | 1'126 |
 | Admitted journeys using reviewed donor edges | 162 | 144 |
 | Directed pairs traversing reviewed repairs | 12 | 13 |
 | Admitted journeys using reusable OSM road pairs | 457 | 490 |
@@ -75,25 +76,27 @@ The source has no one-way or direction field. A successful ordered match is an *
 | Directed pairs using strict access-road supplement | 6 | 2 |
 | Journeys using any OSM bus source, without double counting | 460 | 490 |
 | Unique route-specific stop pairs, ignoring context | 4'919 | 5'474 |
-| Admitted journeys using inferred federal rail corridors | 244 | 227 |
+| Admitted journeys using inferred federal rail corridors | 266 | 253 |
 | Directed pairs using inferred federal rail corridors | 345 | 337 |
+| Admitted journeys using SBB Konstanz border curves (overlap with federal rail row) | 22 | 26 |
+| Directed pairs using SBB border curves | 2 | 2 |
 | Admitted movements using federal cableway axes | 3'329 | 3'389 |
 | Directed pairs using federal cableway axes | 12 | 12 |
 | Preceding-service-day carry-in / admitted | 263 / 262 | 424 / 423 |
 | Routes with at least one admitted pattern | 131 | 145 |
-| Directed stop patterns / admitted | 1'061 / 1'010 | 878 / 822 |
-| Directed stop pair/context records / matched | 4'920 / 4'824 | 5'474 / 5'355 |
-| Directed pair/context record geometry coverage | 98.05% | 97.83% |
-| Scheduled segment occurrences / matched | 139'294 / 138'900 | 105'124 / 104'635 |
-| Scheduled segment geometry coverage | 99.72% | 99.53% |
-| All segment occurrences / matched (including headways) | 140'314 / 138'900 | 106'144 / 104'635 |
-| All-movement segment geometry coverage | 98.99% | 98.58% |
+| Directed stop patterns / admitted | 1'061 / 1'026 | 878 / 831 |
+| Directed stop pair/context records / matched | 4'920 / 4'826 | 5'474 / 5'357 |
+| Directed pair/context record geometry coverage | 98.09% | 97.86% |
+| Scheduled segment occurrences / matched | 139'294 / 138'922 | 105'124 / 104'661 |
+| Scheduled segment geometry coverage | 99.73% | 99.56% |
+| All segment occurrences / matched (including headways) | 140'314 / 138'922 | 106'144 / 104'661 |
+| All-movement segment geometry coverage | 99.01% | 98.60% |
 
-All exported journeys have 100% matched segments **by the admission rule**. The unfiltered scheduled-segment coverage (99.72% / 99.53%) is the useful measure of remaining work. Unique-pair percentages are lower; frequently repeated urban trips cannot conceal missing regional or mountain patterns. The audit keeps scheduled occurrences and representative-headway occurrences separate for each pair.
+All exported journeys have 100% matched segments **by the admission rule**. The unfiltered scheduled-segment coverage (99.73% / 99.56%) is the useful measure of remaining work. Unique-pair percentages are lower; frequently repeated urban trips cannot conceal missing regional or mountain patterns. The audit keeps scheduled occurrences and representative-headway occurrences separate for each pair.
 
 | Agency:mode | Friday admitted/total trips | Friday admitted/total patterns | Friday all-segment geometry | Sunday admitted/total trips | Sunday admitted/total patterns | Sunday all-segment geometry |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 11:rail · Schweizerische Bundesbahnen SBB | 465 / 489 | 232 / 250 | 99.61% | 465 / 493 | 206 / 217 | 99.54% |
+| 11:rail · Schweizerische Bundesbahnen SBB | 487 / 489 | 248 / 250 | 99.97% | 491 / 493 | 215 / 217 | 99.97% |
 | 82:rail · Schweizerische Südostbahn (sob) | 47 / 47 | 34 / 34 | 100.00% | 46 / 46 | 24 / 24 | 100.00% |
 | 86:rail · Zentralbahn | 279 / 279 | 90 / 90 | 100.00% | 242 / 242 | 56 / 56 | 100.00% |
 | 33:rail · BLS AG (bls) | 244 / 244 | 66 / 66 | 100.00% | 219 / 219 | 40 / 40 | 100.00% |
@@ -153,11 +156,23 @@ The crosswalk lists **55 exact annual route identities** for SBB, BLS and SOB on
 
 Each search blocks every other called station, preventing an adjacent-pair route from visiting a later call out of order. All full-pattern contexts must agree on the identical path and directed source-segment sequence before a pair is reusable. The audit records 1'285 candidate rail pairs, 1'203 with compatible geometry; successful cantonal paths retain precedence. Per-journey geometrySources marks the added paths as fot-rail-inference. Every accepted pair records original officialAssessment, exact operating points, platform attachment distances, railPatternIds and directedSourceSegments. Source segment admission and rejection are separately inventoried across the entire federal snapshot.
 
-This adds **244 Friday and 227 Sunday journeys**. Rail admission is now **1,035 / 1,059 Friday** and **972 / 1,000 Sunday**. The delivered additions include full IR15, IC21, IR26/27, IR70, VAE, RE7, S77 and S44 journeys, plus compatible short workings and specials. [Regression digests](../data/luzern-rail-regression.json) anchored to b95f418 verify that all earlier cantonal/OSM paths and all 8,940 / 6,781 previously admitted journeys are unchanged. The checker independently reconstructs all paths from the retained XTF and [complete rail pattern inputs](../data/luzern-rail-inputs.json), then replays all original calls when the full timetable cache is supplied. Newly admitted IC, VAE and EXT services also retain the appropriate intercity, interregio and special-service display categories.
+Federal corridors are used by **266 Friday and 253 Sunday admitted journeys**, including journeys completed by the SBB border supplement below. Before that supplement, rail admission was **1,035 / 1,059 Friday** and **972 / 1,000 Sunday**. The delivered additions include full IR15, IC21, IR26/27, IR70, VAE, RE7, S77 and S44 journeys, plus compatible short workings and specials. [Regression digests](../data/luzern-rail-regression.json) anchored to b95f418 verify that all earlier cantonal/OSM paths and all 8,940 / 6,781 previously admitted journeys are unchanged. The checker independently reconstructs all paths from the retained XTF and [complete rail pattern inputs](../data/luzern-rail-inputs.json), then replays all original calls when the full timetable cache is supplied. Newly admitted IC, VAE and EXT services also retain the appropriate intercity, interregio and special-service display categories.
 
-The remaining rail exclusions are whole **IR75 journeys serving Konstanz (22 Friday / 26 Sunday)** and **EC journeys serving Como S. Giovanni (2 on each date)**. GTFS operating-point numbers 8014586 and 8301307 have no corresponding station nodes in the acquired federal network. They remain excluded without trimming their foreign termini. The old cantonal VAE and RE7 geometry gaps remain documented in officialAssessment where federal geometry now succeeds.
+The acquired federal network lacks exact station nodes for GTFS **8014586 (Konstanz)** and **8301307 (Como S. Giovanni)**. The SBB supplement below closes Konstanz while retaining its original federal failure. The old cantonal VAE and RE7 geometry gaps remain documented in officialAssessment where federal geometry now succeeds.
 
 Federal attribution is **© Federal Office of Transport (FOT)** with the source's [terms requiring attribution](https://opendata.swiss/terms-of-use/#terms_by). The catalogue's generic license field is retained verbatim as “proprietary”; the linked terms, source dates, checksums and authorship of this processed result remain explicit in both audit and feed. [Six rail geometry panels](luzern-rail-review.svg) show IC21, historic-route IR26, full VAE and RE7, IR15 and metre-gauge S44. The visual check covers continuity, calls and differing corridors; it does not certify individual running tracks.
+
+### SBB Konstanz border curves
+
+The [border adapter](../scripts/luzern-border-rail.mjs) independently validates the [SBB graphical line source](https://data.sbb.ch/explore/dataset/linie-mit-polygon/) retained in [this source catalogue](../data/luzern-border-rail-sources/source.json). All **59 returned records** are inventoried. Only two exact standard-gauge line-822 records are admitted: **KR → KRGR**, kilometre 60,688.011–61,428.973 (76 vertices), and **KRGR → KODB**, kilometre 61,428.973–61,846.814 (43 vertices). Their common endpoint coordinates must agree exactly. Every vertex is retained; no midpoint splicing, invented bridge or two-point schematic is used.
+
+The [policy](../data/luzern-border-rail-policy.json) explicitly binds SBB KR/KODB to GTFS **8506131 Kreuzlingen / 8014586 Konstanz**, checks both names and fixes agency **11**, route **91-75-j26-1**, line **IR75**. The full source corridor is 1,284 m including original GTFS endpoint attachments of **47.3 m at Kreuzlingen and 77.9 m at Konstanz**, below the 100 m limit. These are graphical station alignments with disclosed endpoint connectors, not certified platform tracks or signalling routes. Both directions are reconstructed independently and pinned to geometry and ordered source-feature hashes. A successful cantonal or federal path always retains precedence.
+
+All **45 complete IR75/EC fixture patterns** are retained as [offline identity inputs](../data/luzern-border-rail-inputs.json), including previously admitted journeys. The two terminal pairs occur in **8 and 12 distinct complete patterns**. Every occurrence must produce the same accepted geometry and directed source features before pair reuse; an interior Konstanz call fails the terminal review. Full weekday/Sunday replay adds **22 Friday / 26 Sunday journeys**, completing **40/40 IR75 journeys on each date**. Rail coverage is now **1,057/1,059 Friday and 998/1,000 Sunday**. [Regression digests](../data/luzern-border-rail-regression.json), anchored to **71d0ac2**, preserve every earlier matched path and all **12,519 / 10,398** earlier admitted journeys. Per-journey geometrySources labels the additions **sbb-border-rail-inference**; federal and cantonal failure evidence remains attached. [Geometry review panels](luzern-border-rail-review.svg) show the full corridor in both directions and each station connector.
+
+SBB catalogue modification is **29 July 2026**, data processing **2 September 2026**, and metadata processing/retrieval **8 September 2026**. No individual feature survey date or temporary-diversion validity is established. The retained SBB licence is **terms_by**, rights **NonCommercialAllowed-CommercialAllowed-ReferenceRequired**; attribution is **SBB Infrastructure / data.sbb.ch**, with the [publisher terms](https://data.sbb.ch/page/licence/) preserved and embedded in feed metadata. The response is reused byte-for-byte from the repository’s Zug source acquisition; Luzern has its own scope, policy, full-pattern consensus and checks.
+
+The **two EC journeys per date serving Como S. Giovanni remain excluded in full**. The retained SBB response includes only two-point schematic records incident to Como, which the adapter explicitly rejects. Boats and Hammetschwand remain excluded as described below.
 
 ### Federal cableway axes
 
@@ -181,7 +196,7 @@ A follow-up probe of the **complete swissTLM3D 2026-02 TLM_SCHIFFFAHRT class** r
 
 Hammetschwand’s vertical lift remains without admitted geometry; it is not one of the reviewed cableway installations. A vertical lift also needs an elevation-aware model, rather than a fabricated horizontal line. Rigi 82/88, Weggis–Rigi Kaltbad, Gütsch and Sonnenberg do have measured and admitted complete patterns.
 
-The VAE cantonal source is named across its full corridor but its linework is much shorter. The BLS RE7 cantonal alignment stops short of Bern: the Konolfingen–Langnau pair is about 12.8 km away at the missing endpoint. These source limitations are preserved even though compatible federal rail paths now admit the full journeys. Remaining foreign-station and bus replacement failures have their own rows and exact reasons.
+The VAE cantonal source is named across its full corridor but its linework is much shorter. The BLS RE7 cantonal alignment stops short of Bern: the Konolfingen–Langnau pair is about 12.8 km away at the missing endpoint. These source limitations are preserved even though compatible federal rail paths now admit the full journeys. The remaining Como foreign-station failures have their own rows and exact reasons; both fixture bus-replacement services now have complete geometry.
 
 Bus linework is strong but not complete. The first pass found real separated components at Inwil, Sursee, Reiden, Menziken and Küssnacht. A follow-up checks each proposed repair against exact donor edges and existing target vertices, with a 100 m maximum path length. Every donor edge must exist in the cited source feature and the target endpoints must belong to disconnected components; changed source bytes, invented chords and already-connected endpoints fail validation. The repairs remain undirected corridor inference.
 
@@ -255,7 +270,7 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `91-7-D-j26-1` | 33 · S7 | rail | 366 | 37/37 admitted | 36/36 admitted | rail:S7 | — |
 | `91-7-L-j26-1` | 33 · RE7 | rail | 997 | 73/73 admitted | 70/70 admitted | rail:RE7, FOT rail | — |
 | `91-70-A-j26-1` | 11 · IR70 | rail | 1635 | 37/37 admitted | 37/37 admitted | FOT rail | — |
-| `91-75-j26-1` | 11 · IR75 | rail | 1597 | 18/40 partially-admitted | 14/40 partially-admitted | FOT rail | missing-line |
+| `91-75-j26-1` | 11 · IR75 | rail | 1597 | 40/40 admitted | 40/40 admitted | FOT rail, SBB border rail | — |
 | `91-77-j26-1` | 33 · S77 | rail | 85 | 15/15 admitted | 0/0 inactive | rail:S77, FOT rail | — |
 | `91-9-B-j26-1` | 11 · S9 | rail | 1284 | 80/80 admitted | 77/77 admitted | rail:S9 | — |
 | `91-98-Y-j26-1` | 11 · RE | rail | 3 | 0/0 inactive | 0/0 inactive | — | — |
@@ -441,11 +456,13 @@ node scripts/check-luzern-region.mjs /private/tmp/luzern-timetable.json
 node scripts/write-luzern-audit.mjs
 node scripts/render-luzern-rail-review.mjs
 node scripts/render-luzern-cableway-review.mjs
+node scripts/render-luzern-border-rail-review.mjs
 
 # Offline source/artifact checks without the large national archive or cache.
 node scripts/check-luzern-region.mjs
 npx vitest run scripts/luzern-region.test.mjs \
   scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs \
+  scripts/luzern-border-rail.test.mjs \
   scripts/luzern-cableway-geometry.test.mjs \
   scripts/luzern-rail-geometry.test.mjs scripts/enrich-swiss-rail-geometry.test.mjs \
   scripts/basel-line-geometry.test.mjs scripts/gtfs-frequencies.test.mjs
@@ -479,4 +496,4 @@ The checker also replays the complete shipping-class census and its source-only 
 
 The checker independently verifies every stored source hash; exact ArcGIS object-ID sets; inventory totals; every chunk byte length/hash; duplicate journey consistency across chunks; morning membership; complete directed path endpoints; per-pattern, pair, route and agency totals; and admission/exclusion reconciliation. With the regenerated timetable cache it also replays **every admitted journey against all original GTFS calls, times, sequences, source-service-day identity and frequency metadata**. Unit tests cover exact donor-edge repairs and rejection of invented edges/changed snapshots/already-connected targets, truncated/duplicate pages, wrong CRS, changed operator domains/year, disconnected geometry, crossing-without-junction, reversal, loops, polygon holes, midnight carry-in, frequency semantics and rejection of malformed admitted paths.
 
-The large source-line paths make the initial compressed manifests about 1.54 / 1.65 MiB; compressed morning files are 1.71 / 1.75 MiB. The largest compressed two-hour chunks are 192.5 / 144.1 KiB. These are measured data artifacts, not a claim that existing UI payload budgets or route-direction review gates have passed.
+The large source-line paths make the initial compressed manifests about 1.55 / 1.66 MiB; compressed morning files are 1.72 / 1.76 MiB. The largest compressed two-hour chunks are 193.2 / 145.1 KiB. These are measured data artifacts, not a claim that existing UI payload budgets or route-direction review gates have passed.

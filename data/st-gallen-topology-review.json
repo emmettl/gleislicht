@@ -12,7 +12,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
+    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "repair": {
@@ -42,16 +42,40 @@
     ],
     "reason": "Two exact official BOS line-301 edges connect existing endpoints of two disconnected components in source line 321 at Balgach. Identical geometry is present in line 322 and night N31/N32. No proximity bridge or new coordinate; source-record/index references keep restricted vectors in the local cache."
   },
+  "stopAnchors": [
+    {
+      "id": "vmobil-treffpunkt-164",
+      "stopId": "ch:1:sloid:1200511",
+      "name": "Dornbirn, Treffpunkt a.d.Ach",
+      "originalCoordinate": [
+        9.72297836,
+        47.40614449
+      ],
+      "coordinate": [
+        9.72965284,
+        47.41016915
+      ],
+      "sourceStopId": "at:48:570:0:1",
+      "platformSpreadMetres": 8.901186560970062,
+      "shiftMetres": 673.4817780966682,
+      "sourceSha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+      "routeIds": [
+        "92-164-C-j26-1"
+      ],
+      "use": "Representative stop-level rendering anchor from one published platform; not a directional platform assignment. Original Swiss ID, name, calls and times preserved. Opposite source platform is within 15 m. Only reviewed line 164 and fixture dates allowed."
+    }
+  ],
   "days": [
     {
       "date": "2026-09-04",
       "beforeTrips": 10426,
-      "afterTrips": 10566,
-      "addedTrips": 140,
+      "afterTrips": 10624,
+      "addedTrips": 198,
       "unchangedExistingTrips": 10426,
-      "addedTripIdsSha256": "10d41e76bbe3938e712fa993d2f15e646b874823322e8ccd3a05fbdacfa33441",
-      "addedPatterns": 9,
+      "addedTripIdsSha256": "20703356781168ca8074d9357fe08c21b7a062d8a1c4943e47addcfde1cfe5e0",
+      "addedPatterns": 11,
       "addedTripsByRoute": {
+        "92-164-C-j26-1": 58,
         "96-250-8-j26-1": 66,
         "92-321-j26-1": 74
       },
@@ -77,17 +101,18 @@
         }
       ],
       "beforePatterns": 991,
-      "afterPatterns": 1000
+      "afterPatterns": 1002
     },
     {
       "date": "2026-09-06",
       "beforeTrips": 7197,
-      "afterTrips": 7299,
-      "addedTrips": 102,
+      "afterTrips": 7325,
+      "addedTrips": 128,
       "unchangedExistingTrips": 7197,
-      "addedTripIdsSha256": "e9bb0a13e64a6feaa1890cd1274d3dc1889c2ddeef17a93670190dc4063a1add",
-      "addedPatterns": 11,
+      "addedTripIdsSha256": "f6940cc6b4345f57acc4948c0fade8751cc83f177bcbe4390fa7b4b373105081",
+      "addedPatterns": 13,
       "addedTripsByRoute": {
+        "92-164-C-j26-1": 26,
         "96-250-8-j26-1": 35,
         "92-321-j26-1": 67
       },
@@ -113,7 +138,7 @@
         }
       ],
       "beforePatterns": 760,
-      "afterPatterns": 771
+      "afterPatterns": 773
     }
   ],
   "sharedCorridor": [

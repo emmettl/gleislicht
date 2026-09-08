@@ -56,7 +56,7 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
   assert.equal(sha(cacheBytes), summary.sourceHashes.timetableCache)
   const cache = JSON.parse(gunzipSync(cacheBytes))
   assert.deepEqual(cache.sourceHashes, { archive: summary.sourceHashes.archive, source: summary.sourceHashes.source })
-  const rail = await loadThurgauRail(cache), beforeBorder = await loadThurgauRail(cache, { border: false })
+  const rail = await loadThurgauRail(cache), beforeBorder = await loadThurgauRail(cache, { reviewedBorderWays: false })
   assert.equal(rail.border.policySha256, summary.sourceHashes.borderRailPolicy)
   assert.equal(rail.border.policy.sourceSha256, summary.sourceHashes.borderRailSource)
   assert.deepEqual(await json(join(audit, 'border-rail-source-segments.json')), rail.border.inventory)
@@ -85,6 +85,8 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
     assert.deepEqual(report.coverage, day.coverage)
     const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, rail)
     const baseline = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, beforeBorder)
+    const railRouteIds = new Set(routes.filter(r => r.mode === 'rail').map(r => r.id))
+    assert(replay.trains.filter(t => railRouteIds.has(t.routeId)).every(t => t.admission === 'admitted'), 'A dated rail journey lost full geometry')
     const replayTrains = new Map(replay.trains.map(t => [t.id, t]))
     for (const train of baseline.trains.filter(t => t.admission === 'admitted')) {
       const after = replayTrains.get(train.id)

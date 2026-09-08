@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "sourceDirectory": "data/zug-rail-sources",
+  "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "sourceMetadataSha256": "deeaa5552be1c671511cee21d9ba2787d5787d008dda4d4a36b82d4d4e64462c",
+  "node": {
+    "id": "ch14uvag00165678",
+    "number": "8519309",
+    "name": "Interlaken Ost [Gleis 5-8]"
+  },
+  "segment": {
+    "id": "ch14uvag00087489",
+    "gauge": "mm1435"
+  },
+  "routes": [
+    {
+      "routeId": "91-61-A-j26-1",
+      "agencyId": "11",
+      "line": "IC61"
+    },
+    {
+      "routeId": "91-3-Y-j26-1",
+      "agencyId": "11",
+      "line": "ICE"
+    }
+  ],
+  "stops": [
+    [
+      7.86973596,
+      46.69089863,
+      "Interlaken Ost",
+      "5",
+      "ch:1:sloid:7492:0:581416"
+    ],
+    [
+      7.86979884,
+      46.69105267,
+      "Interlaken Ost",
+      "7",
+      "ch:1:sloid:7492:0:460848"
+    ]
+  ],
+  "sourceNumber": "8507492",
+  "method": "Exact IC61/ICE route and original Interlaken Ost platform 5/7 crosswalk to the FOT node explicitly labelled tracks 5–8. Coordinates, platform labels and all original calls remain unchanged. Full-pattern standard-gauge routing and all-context consensus still apply. Only previously unmatched segments can use reviewed results; no attachment or detour limits are widened."
+}

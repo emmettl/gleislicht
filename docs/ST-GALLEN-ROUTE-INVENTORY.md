@@ -117,7 +117,7 @@ Generated from the pinned census and validated audit. See [the study](ST-GALLEN-
 | 896 | 92-155-j26-1 | bus | 155 | 260 | 57/57; admitted | 45/45; admitted | — |
 | 896 | 92-158-j26-1 | bus | 158 | 296 | 67/67; admitted | 32/32; admitted | — |
 | 896 | 92-159-j26-1 | bus | 159 | 306 | 67/67; admitted | 36/36; admitted | — |
-| 81_VVV | 92-164-C-j26-1 | bus | 164 | 71 | 0/58; excluded | 0/26; excluded | endpoint-gap |
+| 81_VVV | 92-164-C-j26-1 | bus | 164 | 71 | 58/58; admitted | 26/26; admitted | — |
 | 885 | 92-2-B-j26-1 | bus | 2 | 822 | 192/192; admitted | 148/148; admitted | — |
 | 138 | 92-2-Y-j26-1 | bus | RUB | 72 | 0/30; excluded | 0/29; excluded | missing-line |
 | 896 | 92-23-D-j26-1 | bus | 23 | 24 | 0/0; inactive-on-civil-day | 6/6; admitted | — |
@@ -387,7 +387,7 @@ Keys combine the pinned archive layer and record index; they are not guaranteed 
 | bus:29 | BOS | Tag | Nein | 403 Räfis-Burgerau - Buchs SG - Buchserberg | 92-403-D-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:30 | PAG | Tag | Nein | 439 Flumserberg, Bergheim - Flumserberg, Tannenboden (Wintersportbus) | — | no-annual-St-Gallen-calling-route |
 | bus:31 | BBO | Tag | Nein | 624 St. Gallenkappel - Rüeterswil - Walde SG | 92-624-j26-1 | candidate-graph-for-admitted-patterns |
-| bus:32 | BOS | Tag | Nein | 164 Widnau - Lustenau - Dornbirn | 92-164-C-j26-1 | no-admitted-fixture-pattern |
+| bus:32 | BOS | Tag | Nein | 164 Widnau - Lustenau - Dornbirn | 92-164-C-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:33 | LIEmobil | Tag | Nein | 11 Sargans - Trübbach/Balzers - Schaan - Bendern/Eschen - Feldkirch | 92-11-F-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:34 | PAG | Tag | Ja | 771 Dietfurt - Oberhelfenschwil - Brunnadern-Neckertal | 96-229-4-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:35 | PAG | Tag | Ja | 772 Dietfurt - Lichtensteig - Krinau | 96-229-3-j26-1 | candidate-graph-for-admitted-patterns |

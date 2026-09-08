@@ -12,6 +12,10 @@ assert(correctionRegression.passed)
 assert.equal(correctionRegression.policySha256, await hashFile('data/aargau-alignment-policy.json'))
 assert.equal(correctionRegression.candidateManifestSha256, await hashFile('fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json'))
 const addedRoadOccurrences = summary.days.reduce((n, d) => n + d.roadExtensionRegression.addedOccurrences, 0)
+const addedScopedGapOccurrences = summary.days.reduce((n, d) => n + d.gapExtensionRegression.addedOccurrences, 0)
+const scopedGapOccurrencesByKind = {}
+for (const d of summary.days) for (const [kind, n] of Object.entries(d.scopedGapOccurrences)) scopedGapOccurrencesByKind[kind] = (scopedGapOccurrencesByKind[kind] ?? 0) + n
+const seasonalGapPolicy = await readJson('data/aargau-seasonal-gap-policy.json')
 const platformPolicy = await readJson('data/aargau-platform-policy.json')
 const crosswalk = await readJson('data/aargau-line-crosswalk.json')
 const railPolicy = await readJson('data/aargau-rail-policy.json')
@@ -54,7 +58,7 @@ for (const day of alignment.days) {
   }
 }
 const pendingFlags = [...flags.values()].filter(f => f.contexts.some(c => !c.correctionId))
-const release = { schemaVersion: 1, correctionPolicySha256: await hashFile('data/aargau-alignment-policy.json'), correctionRegressionSha256: await hashFile(`${root}/alignment-correction-regression.json`),
+const release = { schemaVersion: 1, addedScopedGapOccurrences, scopedGapOccurrencesByKind, seasonalGapPolicySha256: await hashFile('data/aargau-seasonal-gap-policy.json'), correctionPolicySha256: await hashFile('data/aargau-alignment-policy.json'), correctionRegressionSha256: await hashFile(`${root}/alignment-correction-regression.json`),
   reviewCandidate: 'fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json', addedRoadOccurrences, pendingAlignmentFlags: pendingFlags.length, summarySha256: await hashFile(`${root}/summary.json`), alignmentReviewSha256: await hashFile(`${root}/alignment-review.json`),
   publicationReady: false, productionFeedsChanged: false,
   checks: { sampledSourceJourneys: true, septemberReplay: true, dateScopedExceptions: true, everySeasonalPatternHasGeometry: unresolved.length === 0,
@@ -65,8 +69,7 @@ const release = { schemaVersion: 1, correctionPolicySha256: await hashFile('data
   unresolved, alignmentFlags: [...flags.values()].sort((a, b) => b.maximumVertexSeparationMetres - a.maximumVertexSeparationMetres),
   remainingWork: [
     'Review AGIS/OSM bus disagreements against dated operator itineraries and legal direction evidence; the 30 m diagnostic alone cannot choose the correct source.',
-    'Review the remaining new rail route identities and operating-point gaps; all 16,364 missing seasonal bus-cache occurrences are now filled without replacing prior paths.',
-    'Review Brugg, Bern and Waldshut evidence separately before extending their September-only scope.',
+    'Acquire exact cross-border geometry and operating-point evidence for the two remaining Brig–Domodossola occurrences. All 16,364 seasonal bus-cache gaps and 583 scoped border/platform/new-route gaps are now filled without replacing prior paths.',
     'Find active witness dates for the 45 archived routes absent from all twelve samples; do not label them discontinued.',
     'Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.',
     'Integrate reviewed fixtures into application study selection, date loading and attribution, then run browser release checks.'
@@ -78,7 +81,7 @@ const doc = `# Aargau seasonal compatibility and release audit
 
 Checked **8 September 2026**, following the [Aargau canton inventory and source adapter](AARGAU-STUDY.md). The twelve-date sample independently verifies **${fmt(summary.days.reduce((n, d) => n + d.trips, 0))} complete journeys and ${fmt(summary.days.reduce((n, d) => n + d.sourceVerification.calls, 0))} calls** against pinned GTFS 20260902. It finds **${fmt(newPatterns.size)} directed patterns absent from the two September fixtures**, **${summary.newlyActiveRoutes.length} newly active route records**, and **${summary.stillInactiveRoutes.length} archived canton-calling routes still inactive on the sampled dates**.
 
-**Application release checks have not passed.** The additional bus cache fills **${fmt(addedRoadOccurrences)} previously unresolved seasonal occurrences**, preserving every earlier path and complete journey. The archived September feeds replay exactly. A separate [Friday review candidate](../fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json) corrects one evidenced line 136 branch error; ${pendingFlags.length} distinct bus pairs still need alignment review. No original feed, publication input hash, distance guard, platform/border date exception or application selection changed. These results measure compatibility with pinned geometry; they do not establish that an alignment applied historically or will apply on a future service date.
+**Application release checks have not passed.** The additional bus cache fills **${fmt(addedRoadOccurrences)} previously unresolved seasonal occurrences**, preserving every earlier path and complete journey. A separate finite policy fills **${fmt(addedScopedGapOccurrences)} further occurrences**, leaving only the two Brig–Domodossola legs unresolved. The archived September feeds replay exactly. A separate [Friday review candidate](../fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json) corrects one evidenced line 136 branch error; ${pendingFlags.length} distinct bus pairs still need alignment review. No original feed, publication input hash, general distance guard, September platform/border policy or application selection changed. These results measure compatibility with pinned geometry; they do not establish that an alignment applied historically or will apply on a future service date.
 
 ## Dates and complete-journey coverage
 
@@ -86,7 +89,7 @@ The sample covers winter weekdays/Sundays, Good Friday/Easter Sunday, summer wee
 
 ${table(['Date', 'Journeys', 'Compatible segments', 'All segments', 'Coverage', 'New directed patterns', 'Unresolved occurrences'], summary.days.map(d => [d.date, fmt(d.trips), fmt(d.matched), fmt(d.total), (d.coverage * 100).toFixed(3) + '%', fmt(d.newPatterns), fmt(d.missingOccurrences)]))}
 
-Counts are adjacent calls over all complete retained journeys. New-pattern counts per day can overlap; the distinct union is ${fmt(newPatterns.size)}. Compatibility uses one AGIS part/orientation per full pattern, the preserved OSM route/platform/coordinate caches plus a new twelve-date cache for missing bus patterns, and the existing FOT route/operating-point policy. Additional dates are diagnostic inputs only: the publication builder's September fixture hashes are unchanged. Brugg, Bern and Waldshut exceptions remain unavailable on other dates. A failure caused by that limited evidence is not proof that the physical line is absent.
+Counts are adjacent calls over all complete retained journeys. New-pattern counts per day can overlap; the distinct union is ${fmt(newPatterns.size)}. Compatibility uses one AGIS part/orientation per full pattern, the preserved OSM route/platform/coordinate caches plus a new twelve-date cache for missing bus patterns, the existing FOT route/operating-point policy, and 63 separately pinned seasonal gap rules. Additional dates are diagnostic inputs only: the publication builder's September fixture hashes are unchanged. The original Brugg, Bern and Waldshut exceptions retain their September-only scope. The separate seasonal policy admits only the reviewed exact date/full-coordinate patterns and preserves every previously matched path.
 
 **25 October is a wall-clock source-order test only.** The repeated local hour at the DST fallback is not disambiguated; that date is not delivered as an elapsed-time day feed. A September 2026 archive replayed on earlier dates is the publisher's archived schedule, not evidence of actual historical operation.
 
@@ -128,11 +131,25 @@ The two largest line 344 disagreements were also examined against field 50.344 (
 
 The [new source bundle](../data/aargau-seasonal-roads/source.json) contains 460 complete routing patterns across 14 agencies, with all original matcher outputs and warnings compressed for offline replay. It uses the same pinned OSM extract, pfaedle binary and configuration as the earlier cache; no threshold changes were made. The three PostAuto rejected hops and 76 cross-border matcher rejections remain null in this cache; preserved earlier caches or date-scoped evidence handle already resolved contexts. All ${fmt(addedRoadOccurrences)} newly covered occurrences were prior gaps, including all 3,801 AVA EV1 summer replacement-bus occurrences missing from the old cache. This supplies geometric compatibility, not proof of the actual 2026 replacement-bus diversion.
 
+## Scoped seasonal border, platform and rail review
+
+The [seasonal gap policy](../data/aargau-seasonal-gap-policy.json) pins **${seasonalGapPolicy.rules.length} exact date/full-pattern rules** and ${fmt(addedScopedGapOccurrences)} additional occurrences: **364 Koblenz–Waldshut, 144 Brugg service-loop, seven Bern platform 49 and 68 on four additional SBB route records**. It binds the complete platform coordinates, route/agency/direction, segment indices, path hashes, source evidence and input hashes. It runs only in this compatibility audit after all earlier sources fail. The regression replays all prior geometry before applying these rules and verifies every earlier path remains identical.
+
+The official [field 50.368](https://widgets.oev-info.ch/publikation/jahresfpl/50.368.pdf), dated **7 November 2025**, was archived and visually checked on page 1. It distinguishes the Wildischachen–Aare AG–Aquarena workings from the shorter variant. All four additional weekday coordinate chains equal the original reviewed Brugg pattern; the same ordered OSM relation and unchanged projection guards apply. This is dated itinerary evidence, not a date for the OSM geometry.
+
+All seven selected Bern arrivals have the identical Baden–Brugg–Aarau–Olten–Bern tail. Zürich departure platforms 15, 17 and 18 are separately pinned. The [SBB station description](https://www.sbb.ch/en/travel-information/stations/find-station/bern-station/bern-station-description.html) corroborates the western platform extension; the exact FOT terminal segment still supplies the short 33.9 m projection. The undated description was rechecked on 8 September and does not certify historical track use.
+
+[Thurbo's May 2026 notice](https://www.thurbo.ch/erkunden/ausblick/thurboleben/ki-baustellen/) was rechecked: the announced S36 crossing closure is **14 September–2 October**. All ten additional selected dates lie outside that interval. The entire ordered pattern must match one AGIS feature 364 part before either exact border pair is sliced. The closure interval is explicitly blocked as well as unselected dates; this is not a blanket date-range extension.
+
+The four SBB identities are **91-26-E-j26-1 (RE26 Basel–Luzern), 91-5F-Y-j26-1 (IC Olten–Lugano via Freiamt), 91-2H-Y-j26-1 (IC Zürich–Lausanne/Genève-Aéroport) and 91-AP-Y-j26-1 (EXT Mühlau–Luzern in both directions)**. Nine complete patterns pass the same exact unique operating points, ordered source topology, 350 m station attachment, 120 m topology attachment and detour guards. These paths remain infrastructure inferences; admitting an exact source route ID does not certify its running tracks.
+
+The **two remaining occurrences**, on 3 April and 1 August, are Brig platform 6 → Domodossola (I), route 91-29-Y-j26-1. The pinned FOT network has no operating point **8301003** or Domodossola node. Both complete journeys remain in the audit with their final path null. A nearby Swiss boundary point cannot stand in for the Italian destination; foreign geometry and exact identity evidence are still required.
+
 ## Sources, reproduction and release
 
-Source bytes, dates and attribution remain those in the [main source audit](AARGAU-STUDY.md): GTFS 20260902 (opentransportdata.swiss), AGIS 23 April 2026 (**Daten des Kantons Aargau**), swissBOUNDARIES3D 2026-01 (© swisstopo), OSM base/supplement extracts dated 2/8 September 2026 (© OpenStreetMap contributors, ODbL-1.0), and FOT infrastructure with catalogue date 6 July 2021 and asset update 18 January 2025. FOT current validity is unconfirmed. The Brugg and SBB Bern evidence and their exact dated scopes are preserved in the platform policy. No new source vintage is inferred from this audit's execution date.
+Source bytes, dates and attribution remain those in the [main source audit](AARGAU-STUDY.md): GTFS 20260902 (opentransportdata.swiss), AGIS 23 April 2026 (**Daten des Kantons Aargau**), swissBOUNDARIES3D 2026-01 (© swisstopo), OSM base/supplement extracts dated 2/8 September 2026 (© OpenStreetMap contributors, ODbL-1.0), and FOT infrastructure with catalogue date 6 July 2021 and asset update 18 January 2025. FOT current validity is unconfirmed. The original Brugg and SBB Bern evidence and dated scopes remain in the platform policy. The separate seasonal policy adds the archived annual line 368 timetable and the explicitly bounded review above; original AGIS, OSM and FOT vintages and attributions remain unchanged. No new source vintage is inferred from this audit's execution date.
 
-All twelve compressed extracted timetables, the complete inventory and independent verification are retained under [input](../data/aargau-seasonal/input). Each compressed pattern report contains every full ordered platform chain, source feature/orientation, segment decision and distinct directed pair. September paths are compared byte-for-byte as arrays with the committed regional manifests. Other dates never receive September-only gap or platform exceptions. Source hashes, every recomputed path decision, occurrence totals and the diagnostic comparison are checked offline.
+All twelve compressed extracted timetables, the complete inventory and independent verification are retained under [input](../data/aargau-seasonal/input). Each compressed pattern report contains every full ordered platform chain, source feature/orientation, segment decision and distinct directed pair. September paths are compared byte-for-byte as arrays with the committed regional manifests. Other dates receive only their separately reviewed seasonal rules; September-only policies remain unchanged. Source hashes, every recomputed path decision, occurrence totals and the diagnostic comparison are checked offline.
 
 \`\`\`sh
 # Recreate the input from the original pinned 232 MB archive.
@@ -155,6 +172,7 @@ node scripts/build-aargau-study.mjs --sources data/aargau-sources --inventory da
 node scripts/check-aargau-reviewed.mjs --write
 
 # Rebuild or replay the shipped audit; no network access is required.
+node scripts/prepare-aargau-seasonal-gaps.mjs --check
 node scripts/audit-aargau-seasonal.mjs
 node scripts/check-aargau-seasonal.mjs
 node scripts/aargau-seasonal-roads.mjs --check

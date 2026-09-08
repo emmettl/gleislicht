@@ -4,7 +4,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
+    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "sourceEvidence": [
@@ -124,7 +124,7 @@
   "days": [
     {
       "date": "2026-09-04",
-      "dayAuditSha256": "a1ff220a0fbe25a942d80208e3fc656c4c946e5141cf5caa4837d274624053b3",
+      "dayAuditSha256": "62caed3d7d77c2399c20cf30d75f21c698b762f12f04f5cfacbdf1b3aea3cd38",
       "swissTrips": 58,
       "externalTrips": 58,
       "externalActiveShapes": 3,
@@ -1201,7 +1201,7 @@
               "completePatternPasses": false
             }
           ],
-          "decision": "Retain exclusion: external shapes do not resolve Swiss endpoint coordinates."
+          "decision": "Admitted on original AL_OEV geometry using the separately reviewed stop rendering anchor; this comparison retains original Swiss coordinates."
         },
         {
           "patternId": "2b9266a66c55c95956fe",
@@ -1771,13 +1771,13 @@
               "completePatternPasses": false
             }
           ],
-          "decision": "Retain exclusion: external shapes do not resolve Swiss endpoint coordinates."
+          "decision": "Admitted on original AL_OEV geometry using the separately reviewed stop rendering anchor; this comparison retains original Swiss coordinates."
         }
       ]
     },
     {
       "date": "2026-09-06",
-      "dayAuditSha256": "cee7e59ad96551eb804489e31db272e43b3827c9f3fb357bafe7ec6bd782cbb4",
+      "dayAuditSha256": "34fa39b4c48b38ba3ba9f974b9157e71164516216649b5847450de8ad56649d7",
       "swissTrips": 26,
       "externalTrips": 26,
       "externalActiveShapes": 2,
@@ -2323,7 +2323,7 @@
               "completePatternPasses": false
             }
           ],
-          "decision": "Retain exclusion: external shapes do not resolve Swiss endpoint coordinates."
+          "decision": "Admitted on original AL_OEV geometry using the separately reviewed stop rendering anchor; this comparison retains original Swiss coordinates."
         },
         {
           "patternId": "2b9266a66c55c95956fe",
@@ -2893,7 +2893,7 @@
               "completePatternPasses": false
             }
           ],
-          "decision": "Retain exclusion: external shapes do not resolve Swiss endpoint coordinates."
+          "decision": "Admitted on original AL_OEV geometry using the separately reviewed stop rendering anchor; this comparison retains original Swiss coordinates."
         }
       ]
     }

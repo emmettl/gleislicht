@@ -22,7 +22,7 @@ Generated from the pinned 2026 GTFS canton census. See [study and method](THURGA
 | 65 THURBO | S1 | rail | 91-1-C-j26-1 | Arbon, Frauenfeld, Kreuzlingen | 94 / 94 | 94 / 94 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
 | 65 THURBO | S3 | rail | 91-3-X-j26-1 | Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
 | 65 THURBO | S5 | rail | 91-5-B-j26-1 | Weinfelden | 80 / 80 | 79 / 79 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
-| 65 THURBO | S7 | rail | 91-7-B-j26-1 | Arbon, Weinfelden | 77 / 82 | 76 / 82 | Some complete patterns admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 65 THURBO | S7 | rail | 91-7-B-j26-1 | Arbon, Weinfelden | 82 / 82 | 82 / 82 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
 | 65 THURBO | S10 | rail | 91-10-C-j26-1 | Arbon, Münchwilen, Weinfelden | 75 / 75 | 45 / 45 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
 | 65 THURBO | S14 | rail | 91-14-B-j26-1 | Kreuzlingen, Münchwilen, Weinfelden | 122 / 122 | 117 / 117 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
 | 65 THURBO | S24 | rail | 91-24-E-j26-1 | Frauenfeld, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |

@@ -4,21 +4,21 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 
 | Agency | Line | GTFS route ID | Mode | Districts | Source feature IDs | Friday trips; patterns | Sunday trips; patterns | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 11 | IR15 | 91-15-B-j26-1 | rail | La Glâne, La Sarine, Sense | — | 0/44; 0/25 | 0/44; 0/21 | Excluded |
-| 11 | IC1 | 91-1-D-j26-1 | rail | La Glâne, La Sarine | — | 0/37; 0/22 | 0/27; 0/18 | Excluded |
+| 11 | IR15 | 91-15-B-j26-1 | rail | La Glâne, La Sarine, Sense | — | 42/44; 23/25 | 42/44; 19/21 | Partially admitted |
+| 11 | IC1 | 91-1-D-j26-1 | rail | La Glâne, La Sarine | — | 33/37; 18/22 | 24/27; 15/18 | Partially admitted |
 | 33 | S | 91-1D-Y-j26-1 | rail | Sense | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
-| 33 | S1 | 91-1-E-j26-1 | rail | La Sarine, Sense | 12 | 0/80; 0/14 | 0/82; 0/21 | Excluded |
-| 53 | S20 | 91-20-B-j26-1 | rail | La Sarine, See | 10 | 0/43; 0/14 | 0/78; 0/14 | Excluded |
-| 53 | S21 | 91-21-A-j26-1 | rail | La Sarine, See | 10 | 0/44; 0/16 | 0/78; 0/11 | Excluded |
-| 33 | S2 | 91-2-A-j26-1 | rail | Sense | 13 | 0/77; 0/12 | 1/78; 1/20 | Partially admitted |
-| 11 | SN | 91-2B-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 0/3; 0/3 | Excluded |
-| 11 | IC | 91-2H-Y-j26-1 | rail | La Sarine | — | 0/0; 0/0 | 0/10; 0/9 | Excluded |
-| 53 | RE2 | 91-2-M-j26-1 | rail | La Glâne, La Gruyère, La Sarine, Sense | 3 | 12/40; 7/13 | 11/39; 6/10 | Partially admitted |
-| 11 | S30 | 91-30-j26-1 | rail | La Broye, La Sarine | 9 | 0/93; 0/21 | 0/82; 0/15 | Excluded |
+| 33 | S1 | 91-1-E-j26-1 | rail | La Sarine, Sense | 12 | 80/80; 14/14 | 81/82; 20/21 | Partially admitted |
+| 53 | S20 | 91-20-B-j26-1 | rail | La Sarine, See | 10 | 43/43; 14/14 | 78/78; 14/14 | All dated trips admitted |
+| 53 | S21 | 91-21-A-j26-1 | rail | La Sarine, See | 10 | 44/44; 16/16 | 78/78; 11/11 | All dated trips admitted |
+| 33 | S2 | 91-2-A-j26-1 | rail | Sense | 13 | 77/77; 12/12 | 77/78; 19/20 | Partially admitted |
+| 11 | SN | 91-2B-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 1/3; 1/3 | Partially admitted |
+| 11 | IC | 91-2H-Y-j26-1 | rail | La Sarine | — | 0/0; 0/0 | 10/10; 9/9 | All dated trips admitted |
+| 53 | RE2 | 91-2-M-j26-1 | rail | La Glâne, La Gruyère, La Sarine, Sense | 3 | 40/40; 13/13 | 39/39; 10/10 | All dated trips admitted |
+| 11 | S30 | 91-30-j26-1 | rail | La Broye, La Sarine | 9 | 93/93; 21/21 | 82/82; 15/15 | All dated trips admitted |
 | 64 | R30 | 91-30-J-j26-1 | rail | La Gruyère | — | 0/21; 0/15 | 0/21; 0/17 | Excluded |
 | 64 | 30 | 91-30-K-j26-1 | rail | La Gruyère | — | 0/21; 0/7 | 0/21; 0/5 | Excluded |
 | 64 | 34 | 91-34-A-j26-1 | rail | La Gruyère | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
-| 33 | S35 | 91-35-F-j26-1 | rail | See | — | 0/38; 0/3 | 0/38; 0/4 | Excluded |
+| 33 | S35 | 91-35-F-j26-1 | rail | See | — | 38/38; 3/3 | 38/38; 4/4 | All dated trips admitted |
 | 53 | R39 | 91-39-A-j26-1 | rail | La Gruyère | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 64 | R39 | 91-39-j26-1 | rail | La Gruyère | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 11 | EXT | 91-3A-Y-j26-1 | rail | La Glâne, La Sarine, Sense | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
@@ -29,11 +29,11 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 11 | S41 | 91-41-D-j26-1 | rail | La Glâne, La Sarine | 6 | 43/43; 12/12 | 43/43; 11/11 | All dated trips admitted |
 | 11 | IR | 91-4C-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 11 | RE | 91-4N-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
-| 11 | SN | 91-4P-Y-j26-1 | rail | La Broye, La Glâne, See | — | 0/0; 0/0 | 0/2; 0/2 | Excluded |
+| 11 | SN | 91-4P-Y-j26-1 | rail | La Broye, La Glâne, See | — | 0/0; 0/0 | 2/2; 2/2 | All dated trips admitted |
 | 53 | S50 | 91-50-j26-1 | rail | La Gruyère, La Veveyse | 11 | 4/58; 4/19 | 8/45; 6/13 | Partially admitted |
 | 53 | S51 | 91-51-A-j26-1 | rail | La Gruyère, La Veveyse | — | 0/39; 0/8 | 0/0; 0/0 | Excluded |
-| 33 | S52 | 91-52-j26-1 | rail | La Broye, See | 15 | 50/90; 14/20 | 0/40; 0/8 | Partially admitted |
-| 33 | S5 | 91-5-j26-1 | rail | See | 14 | 39/118; 5/23 | 32/108; 6/18 | Partially admitted |
+| 33 | S52 | 91-52-j26-1 | rail | La Broye, See | 15 | 90/90; 20/20 | 40/40; 8/8 | All dated trips admitted |
+| 33 | S5 | 91-5-j26-1 | rail | See | 14 | 118/118; 23/23 | 108/108; 18/18 | All dated trips admitted |
 | 33 | S | 91-5O-Y-j26-1 | rail | See | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 33 | IR66 | 91-66-A-j26-1 | rail | See | — | 0/40; 0/11 | 0/38; 0/13 | Excluded |
 | 53 | EXT | 91-7C-Y-j26-1 | rail | La Broye, La Sarine | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
@@ -47,11 +47,11 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 11 | EXT | 91-9H-Y-j26-1 | rail | La Broye, La Sarine | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 11 | R9 | 91-9-K-j26-1 | rail | La Broye, La Glâne, See | 8 | 45/45; 12/12 | 45/45; 20/20 | All dated trips admitted |
 | 11 | S | 91-AG-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
-| 11 | IC | 91-CB-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 0/1; 0/1 | Excluded |
+| 11 | IC | 91-CB-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 1/1; 1/1 | All dated trips admitted |
 | 64 | EXT | 91-EXT-C-j26-1 | rail | La Gruyère | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 64 | GPX | 91-GPX-j26-1 | rail | La Gruyère | — | 0/8; 0/3 | 0/8; 0/3 | Excluded |
 | 53 | R | 91-L-Y-j26-1 | rail | La Glâne, La Gruyère, La Sarine | — | 0/2; 0/2 | 0/0; 0/0 | Excluded |
-| 11 | N1 | 91-N1-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 0/2; 0/2 | Excluded |
+| 11 | N1 | 91-N1-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 2/2; 2/2 | All dated trips admitted |
 | 11 | RE | 91-O-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 11 | EXT | 91-T-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 53 | EXT | 91-X-Y-j26-1 | rail | La Broye | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
@@ -224,10 +224,10 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 6 | 203 | CFF / Train régional | S40/S41 Fribourg - Romont - Lausanne | 91-40-C-j26-1, 91-41-D-j26-1 | 91-40-C-j26-1, 91-41-D-j26-1 | — |
 | 7 | 205 | CFF / Train régional | R8 Allaman - Lausanne - Palézieux - Payerne | 91-8-J-j26-1 | 91-8-J-j26-1 | — |
 | 8 | 205 | CFF / Train régional | R9 Allaman - Lausanne - Palézieux - Payerne - Murten/Morat | 91-9-K-j26-1 | 91-9-K-j26-1 | — |
-| 9 | 252 | CFF / Train régional | S30 Fribourg/Freiburg - Payerne - Yverdon-les-Bains | 91-30-j26-1 | — | — |
-| 10 | 255 | TPF / Train régional | S20/S21 Fribourg/Freiburg - Morat - Ins - Neuchâtel | 91-20-B-j26-1, 91-21-A-j26-1 | — | — |
+| 9 | 252 | CFF / Train régional | S30 Fribourg/Freiburg - Payerne - Yverdon-les-Bains | 91-30-j26-1 | 91-30-j26-1 | — |
+| 10 | 255 | TPF / Train régional | S20/S21 Fribourg/Freiburg - Morat - Ins - Neuchâtel | 91-20-B-j26-1, 91-21-A-j26-1 | 91-20-B-j26-1, 91-21-A-j26-1 | — |
 | 11 | 253 | TPF / Train régional | S50 Montbovon - Bulle - Châtel-St-Denis - Palézieux | 91-50-j26-1 | 91-50-j26-1 | — |
-| 12 | 301 | BLS / Train régional | S1 Fribourg/Freiburg - Bern | 91-1-E-j26-1 | — | — |
+| 12 | 301 | BLS / Train régional | S1 Fribourg/Freiburg - Bern | 91-1-E-j26-1 | 91-1-E-j26-1 | — |
 | 13 | 301 | BLS / Train régional | S2 Bern - Flamatt - Laupen | 91-2-A-j26-1 | 91-2-A-j26-1 | — |
 | 14 | 305 | BLS / Train régional | S5 Bern - Kerzers - Avenches / Bern - Kerzers - Neuchâtel | 91-5-j26-1 | 91-5-j26-1 | — |
 | 15 | 305 | BLS / Train régional | S52 Bern - Kerzers - Payerne / Bern - Kerzers - Ins | 91-52-j26-1 | 91-52-j26-1 | — |

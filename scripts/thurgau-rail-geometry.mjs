@@ -9,7 +9,7 @@ import { loadThurgauSbbRail } from './thurgau-sbb-rail.mjs'
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 export const isThurgauRailSource = source => ['fot-rail-inference', 'fot-sbb-rail-inference', 'fot-osm-border-rail-inference'].includes(source)
-export async function loadThurgauRail(timetable, { sbb = true, border = true } = {}) {
+export async function loadThurgauRail(timetable, { sbb = true, border = true, reviewedBorderWays = true } = {}) {
   const directory = 'data/thurgau-rail-sources'
   const policyBytes = await readFile('data/thurgau-rail-policy.json'), policy = JSON.parse(policyBytes)
   const sourceBytes = await readFile(`${directory}/source.json`), source = JSON.parse(sourceBytes)
@@ -40,7 +40,7 @@ export async function loadThurgauRail(timetable, { sbb = true, border = true } =
     assert(stops.every(s => s[2] === 'Interlaken Ost' && s[3] === override.platform && luzernOperatingPoint({ stop_id: s[4] }) === override.sourceNumber))
   }
   const supplement = sbb ? await loadThurgauSbbRail(network, policy, raw, matcher) : undefined
-  const borderRail = border ? await loadThurgauBorderRail(raw) : undefined
+  const borderRail = border ? await loadThurgauBorderRail(raw, { reviewedWays: reviewedBorderWays }) : undefined
   const match = supplement?.match ?? matcher.match
   return { ...matcher, match: (...args) => borderRail ? borderRail.supplement(...args, match(...args)) : match(...args), border: borderRail, sbb: supplement, policy, policySha256: sha(policyBytes), source }
 }

@@ -1,23 +1,25 @@
 {
   "date": "2026-09-04",
   "trips": 24782,
-  "admittedTrips": 10566,
-  "excludedTrips": 14216,
+  "admittedTrips": 10624,
+  "excludedTrips": 14158,
   "carryInTrips": 221,
   "admittedCarryInTrips": 162,
   "representativeHeadwayTrips": 11417,
   "admittedHeadwayTrips": 1239,
   "patterns": 1441,
-  "admittedPatterns": 1000,
+  "admittedPatterns": 1002,
   "directedPairs": 8427,
-  "matchedDirectedPairs": 7178,
+  "matchedDirectedPairs": 7182,
   "segmentOccurrences": 202330,
-  "matchedSegmentOccurrences": 177572,
+  "matchedSegmentOccurrences": 177688,
   "scheduledSegmentOccurrences": 189688,
-  "matchedScheduledSegmentOccurrences": 175108,
+  "matchedScheduledSegmentOccurrences": 175224,
   "representativeHeadwaySegmentOccurrences": 12642,
   "repairedDirectedPairs": 2,
   "admittedTripsUsingRepair": 74,
+  "anchoredDirectedPairs": 4,
+  "admittedTripsUsingStopAnchor": 58,
   "sharedCorridorDirectedPairs": 48,
   "admittedTripsUsingSharedCorridor": 66,
   "groups": [
@@ -147,14 +149,14 @@
       "mode": "bus",
       "routes": 1,
       "trips": 58,
-      "admittedTrips": 0,
+      "admittedTrips": 58,
       "patterns": 2,
-      "admittedPatterns": 0,
+      "admittedPatterns": 2,
       "directedPairs": 39,
-      "matchedDirectedPairs": 35,
+      "matchedDirectedPairs": 39,
       "segmentOccurrences": 1131,
-      "matchedSegmentOccurrences": 1015,
-      "geometryCoverage": 0.8974358974358975
+      "matchedSegmentOccurrences": 1131,
+      "geometryCoverage": 1
     },
     {
       "id": "138:bus",
@@ -1292,9 +1294,9 @@
       "mode": "bus",
       "line": "164",
       "trips": 58,
-      "admittedTrips": 0,
+      "admittedTrips": 58,
       "segmentOccurrences": 1131,
-      "matchedSegmentOccurrences": 1015,
+      "matchedSegmentOccurrences": 1131,
       "carryInTrips": 0,
       "admittedCarryInTrips": 0
     },
@@ -3376,7 +3378,7 @@
     }
   ],
   "exclusionReasons": {
-    "endpoint-gap": 879,
+    "endpoint-gap": 821,
     "missing-line": 13169,
     "implausible-detour": 128,
     "disconnected-line": 40
@@ -85365,11 +85367,9 @@
         "[\"92-164-C-j26-1\",\"ch:1:sloid:1200650\",\"ch:1:sloid:1200368\"]"
       ],
       "trips": 29,
-      "admitted": false,
-      "reasons": [
-        "endpoint-gap"
-      ],
-      "geometryPairs": 17,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 19,
       "totalPairs": 19,
       "carryInTrips": 0,
       "representativeHeadwayTrips": 0
@@ -85536,11 +85536,9 @@
         "[\"92-164-C-j26-1\",\"ch:1:sloid:91854\",\"ch:1:sloid:11091\"]"
       ],
       "trips": 29,
-      "admitted": false,
-      "reasons": [
-        "endpoint-gap"
-      ],
-      "geometryPairs": 18,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 20,
       "totalPairs": 20,
       "carryInTrips": 0,
       "representativeHeadwayTrips": 0
@@ -244776,7 +244774,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -244798,7 +244796,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -244820,7 +244818,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -244842,7 +244840,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -244864,7 +244862,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -244886,7 +244884,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -244908,7 +244906,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -244930,7 +244928,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -244952,7 +244950,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -244974,7 +244972,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -244996,7 +244994,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245018,7 +245016,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245040,7 +245038,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245062,7 +245060,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245084,7 +245082,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245097,17 +245095,20 @@
       "toId": "ch:1:sloid:1200511",
       "from": "Dornbirn, Schoren Bahnhof/ORF",
       "to": "Dornbirn, Treffpunkt a.d.Ach",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 675.451101578808,
+      "geometrySha256": "e9c104c6d6659e24daf910282bc1de4a8178c2576f48612005626fcecec02537",
+      "maximumSnapMetres": 7.281510067444282,
+      "pathMetres": 251.0491970683905,
       "sourceFeatures": [
         "bus:32"
+      ],
+      "stopAnchorIds": [
+        "vmobil-treffpunkt-164"
       ],
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 29,
+      "matched": true
     },
     {
       "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200511\",\"ch:1:sloid:1200616\"]",
@@ -245119,17 +245120,20 @@
       "toId": "ch:1:sloid:1200616",
       "from": "Dornbirn, Treffpunkt a.d.Ach",
       "to": "Dornbirn, Steggasse",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 675.451101578808,
+      "geometrySha256": "784046479d550c45c04348a41f2f959beea2252fee3cc7e7072d502a08b2ee4e",
+      "maximumSnapMetres": 2.062225605996541,
+      "pathMetres": 416.0618713441628,
       "sourceFeatures": [
         "bus:32"
+      ],
+      "stopAnchorIds": [
+        "vmobil-treffpunkt-164"
       ],
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 29,
+      "matched": true
     },
     {
       "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200616\",\"ch:1:sloid:1200650\"]",
@@ -245150,7 +245154,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245172,7 +245176,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245194,7 +245198,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245216,7 +245220,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245229,17 +245233,20 @@
       "toId": "ch:1:sloid:1200511",
       "from": "Dornbirn, Steggasse",
       "to": "Dornbirn, Treffpunkt a.d.Ach",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 675.451101578808,
+      "geometrySha256": "f802452e57f7f2a408892932c909cd4580264bdc11fcd0ada8dfb7b119dfcd37",
+      "maximumSnapMetres": 2.062225605996541,
+      "pathMetres": 416.0618713441628,
       "sourceFeatures": [
         "bus:32"
+      ],
+      "stopAnchorIds": [
+        "vmobil-treffpunkt-164"
       ],
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 29,
+      "matched": true
     },
     {
       "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200511\",\"ch:1:sloid:1200598\"]",
@@ -245251,17 +245258,20 @@
       "toId": "ch:1:sloid:1200598",
       "from": "Dornbirn, Treffpunkt a.d.Ach",
       "to": "Dornbirn, Schoren Bahnhof/ORF",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 675.451101578808,
+      "geometrySha256": "40139b3b94dd040614dad9ea40862c2d6cb2b9d67255f4e0117e3b635a13df81",
+      "maximumSnapMetres": 7.281510067444282,
+      "pathMetres": 251.04919706839047,
       "sourceFeatures": [
         "bus:32"
+      ],
+      "stopAnchorIds": [
+        "vmobil-treffpunkt-164"
       ],
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 29,
+      "matched": true
     },
     {
       "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200598\",\"ch:1:sloid:1200552\"]",
@@ -245282,7 +245292,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245304,7 +245314,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245326,7 +245336,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245348,7 +245358,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245370,7 +245380,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245392,7 +245402,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245414,7 +245424,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245436,7 +245446,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245458,7 +245468,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245480,7 +245490,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245502,7 +245512,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245524,7 +245534,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245546,7 +245556,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245568,7 +245578,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245590,7 +245600,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -245612,7 +245622,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -374128,67 +374138,67 @@
   ],
   "artifacts": {
     "directory": "data/st-gallen-region/local/2026-09-04",
-    "manifestGzipBytes": 1981612,
-    "morningGzipBytes": 2178961,
+    "manifestGzipBytes": 1989532,
+    "morningGzipBytes": 2188996,
     "chunks": [
       {
         "id": "00-02",
-        "gzipBytes": 30302,
+        "gzipBytes": 30333,
         "trips": 176
       },
       {
         "id": "02-04",
-        "gzipBytes": 590,
+        "gzipBytes": 589,
         "trips": 1
       },
       {
         "id": "04-06",
-        "gzipBytes": 73486,
-        "trips": 473
+        "gzipBytes": 73641,
+        "trips": 474
       },
       {
         "id": "06-08",
-        "gzipBytes": 193656,
-        "trips": 1519
+        "gzipBytes": 194929,
+        "trips": 1528
       },
       {
         "id": "08-10",
-        "gzipBytes": 182535,
-        "trips": 1550
+        "gzipBytes": 183662,
+        "trips": 1560
       },
       {
         "id": "10-12",
-        "gzipBytes": 177990,
-        "trips": 1515
+        "gzipBytes": 179247,
+        "trips": 1525
       },
       {
         "id": "12-14",
-        "gzipBytes": 182658,
-        "trips": 1577
+        "gzipBytes": 183943,
+        "trips": 1587
       },
       {
         "id": "14-16",
-        "gzipBytes": 176268,
-        "trips": 1517
+        "gzipBytes": 177444,
+        "trips": 1527
       },
       {
         "id": "16-18",
-        "gzipBytes": 196735,
-        "trips": 1695
+        "gzipBytes": 197879,
+        "trips": 1705
       },
       {
         "id": "18-20",
-        "gzipBytes": 179180,
-        "trips": 1350
+        "gzipBytes": 180466,
+        "trips": 1360
       },
       {
         "id": "20-22",
-        "gzipBytes": 116473,
-        "trips": 788
+        "gzipBytes": 116994,
+        "trips": 791
       },
       {
         "id": "22-24",
-        "gzipBytes": 90348,
+        "gzipBytes": 90365,
         "trips": 601
       }
     ]

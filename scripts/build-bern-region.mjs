@@ -11,6 +11,7 @@ import { applyBernGeometry, BERN_LIMITS } from './bern-line-geometry.mjs'
 import { loadBernUrban, applyBernUrban } from './bern-urban-geometry.mjs'
 import { loadBernRegionalRoads, applyBernRegionalRoads } from './bern-regional-roads.mjs'
 import { loadBernMountains, applyBernMountains } from './bern-mountain-geometry.mjs'
+import { loadBernRail, applyBernRail } from './bern-rail-geometry.mjs'
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 async function hashFile(path) {
@@ -151,6 +152,9 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   const mountain = await loadBernMountains()
   hashes.mountainPolicy = mountain.metadata.policySha256
   provenance.mountainSupplement = mountain.metadata
+  const rail = await loadBernRail()
+  hashes.railPolicy = rail.metadata.policySha256
+  provenance.railSupplement = rail.metadata
   hashes.urbanCache = urban.metadata.cacheSha256
   hashes.urbanPolicy = urban.metadata.policySha256
   provenance.urbanSupplement = urban.metadata
@@ -160,7 +164,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   for (const raw of timetable.snapshots) {
     console.log(`Matching every directed Bern pattern for ${raw.metadata.serviceDate}…`)
     const base = applyBernUrban(raw, applyBernGeometry(raw, routes, source, crosswalk), source, urban)
-    const result = applyBernMountains(raw, applyBernRegionalRoads(raw, base, source, regionalRoads), routes, mountain)
+    const result = applyBernRail(raw, applyBernMountains(raw, applyBernRegionalRoads(raw, base, source, regionalRoads), routes, mountain), routes, rail)
     routeCrosswalk = result.routeCrosswalk
     const groups = []
     for (const key of [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort()) {
@@ -175,13 +179,14 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
     const snapshot = compactBernFeed(raw, result)
     snapshot.metadata = { ...snapshot.metadata, publisher: 'Gleislicht', timetablePublisher: 'SBB', attribution: 'opentransportdata.swiss',
       label: 'Bern canton — audited directed patterns', sourceHashes: hashes, timetable: provenance.timetable,
-      model: 'Scheduled interpolation along cantonal centrelines, audited OSM road supplements and an identified FOT cableway axis; exactTimes=0 instances are representative headway motion, not exact departures or observed vehicles.',
+      model: 'Scheduled interpolation along cantonal centrelines, audited OSM road supplements and identified FOT cableway/rail geometry; exactTimes=0 instances are representative headway motion, not exact departures or observed vehicles.',
       scope: timetable.census.boundaryRule, admission: 'Only complete directed patterns with every segment passing geometry limits and no reservation/on-demand call. Exclusions retained in the canton audit.',
-      geometry: { ...source.metadata, transformation: 'swisstopo approximate CH1903+/WGS84 formula; original LV95 vertices, no simplification, seven-decimal output coordinates',
+      geometry: { ...source.metadata, transformation: 'Cantonal geometry: swisstopo approximate CH1903+/WGS84 formula, original LV95 vertices, no simplification, seven-decimal output. Federal rail transformation is recorded separately in railSupplement.source.',
         crosswalkSupportingDocuments: crosswalk.supportingDocuments ?? [],
         urbanSupplement: urban.metadata,
         regionalRoadSupplement: regionalRoads.metadata,
         mountainSupplement: mountain.metadata,
+        railSupplement: rail.metadata,
         limits: BERN_LIMITS, direction: 'Centreline inference from ordered calls. No road one-way or rail running-track certification. Only the explicitly scoped tram 6 station approach has dated diversion evidence; no realtime verification.',
         localMetadata: '../sources.json', localTerms: ['../terms_of_use_de.pdf', '../terms_of_use_fr.pdf'] },
     }
@@ -243,7 +248,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
     scopeLimits: ['GTFS fixed-stop archive and all OEVTP line records inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.',
       'Two September civil days do not establish holiday, winter or year-round pattern coverage.',
       'Cross-boundary journeys keep all calls. Entire patterns failing any segment are excluded, including source extents shorter than their timetable journeys.',
-      'Geometry uses official-line centrelines plus identified OSM road supplements; not observed movement, legal one-way validation or running-track selection. Dated diversion evidence is limited to the reviewed tram 6 station approach.'],
+      'Geometry uses official-line centrelines plus identified OSM road and FOT rail/cableway supplements; not observed movement, legal one-way validation or running-track selection. Dated diversion evidence is limited to the reviewed tram 6 station approach.'],
   }
   await writeJson(join(auditDirectory, 'summary.json'), summary, true)
   await writeJson(join(auditDirectory, 'routes.json'), inventory, true)
@@ -255,6 +260,8 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   for (const document of urban.policy.documents) await copyFile(join(sourceDirectory, document.file), join(output, document.file))
   await mkdir(join(output, 'fot-cableways'), { recursive: true })
   for (const file of ['source.json', ...Object.keys(mountain.metadata.source.files)]) await copyFile(join(mountain.policy.sourceDirectory, file), join(output, 'fot-cableways', file))
+  await mkdir(join(output, 'fot-rail'), { recursive: true })
+  for (const file of ['source.json', ...Object.keys(rail.metadata.source.files)]) await copyFile(join(rail.policy.sourceDirectory, file), join(output, 'fot-rail', file))
   await writeJson(join(output, 'index.json'), { label: 'Bern canton regional feed', sourceHashes: hashes, dates: dates.map(date => ({ date,
     manifest: `${date}/bern-region-day-manifest.json`, morning: `${date}/bern-region-morning.json` })), admission: 'Complete geometry patterns only; see docs/BERN-STUDY.md and data/bern-audit for exclusions.' }, true)
   return summary

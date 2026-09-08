@@ -35,53 +35,55 @@
       {
         "date": "2026-09-04",
         "trips": 44,
-        "admittedTrips": 0,
+        "admittedTrips": 42,
         "scheduledTrips": 44,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 42,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 422,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 420,
         "segmentOccurrences": 422,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 420,
+        "admittedSegmentOccurrences": 408,
         "directedPairs": 63,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 61,
         "patterns": 25,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 23,
+        "admittedPatterns": 23,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 44
+          "incomplete-directed-pattern": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 408,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
         "date": "2026-09-06",
         "trips": 44,
-        "admittedTrips": 0,
+        "admittedTrips": 42,
         "scheduledTrips": 44,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 42,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 292,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 290,
         "segmentOccurrences": 292,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 290,
+        "admittedSegmentOccurrences": 282,
         "directedPairs": 43,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 41,
         "patterns": 21,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 19,
+        "admittedPatterns": 19,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 44
+          "incomplete-directed-pattern": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 282,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
-    "status": "excluded"
+    "status": "partially-admitted"
   },
   {
     "id": "91-1-D-j26-1",
@@ -111,53 +113,55 @@
       {
         "date": "2026-09-04",
         "trips": 37,
-        "admittedTrips": 0,
+        "admittedTrips": 33,
         "scheduledTrips": 37,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 33,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 471,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 467,
         "segmentOccurrences": 471,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 467,
+        "admittedSegmentOccurrences": 445,
         "directedPairs": 64,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 61,
         "patterns": 22,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 18,
+        "admittedPatterns": 18,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 37
+          "incomplete-directed-pattern": 4
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 445,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
         "date": "2026-09-06",
         "trips": 27,
-        "admittedTrips": 0,
+        "admittedTrips": 24,
         "scheduledTrips": 27,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 24,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 373,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 370,
         "segmentOccurrences": 373,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 370,
+        "admittedSegmentOccurrences": 350,
         "directedPairs": 64,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 62,
         "patterns": 18,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 15,
+        "admittedPatterns": 15,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 27
+          "incomplete-directed-pattern": 3
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 350,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
-    "status": "excluded"
+    "status": "partially-admitted"
   },
   {
     "id": "91-1D-Y-j26-1",
@@ -197,6 +201,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -219,6 +224,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -272,53 +278,53 @@
       {
         "date": "2026-09-04",
         "trips": 80,
-        "admittedTrips": 0,
+        "admittedTrips": 80,
         "scheduledTrips": 80,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 80,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1511,
-        "matchedScheduledSegmentOccurrences": 650,
+        "matchedScheduledSegmentOccurrences": 1511,
         "segmentOccurrences": 1511,
-        "matchedSegmentOccurrences": 650,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 1511,
+        "admittedSegmentOccurrences": 1511,
         "directedPairs": 63,
-        "matchedDirectedPairs": 24,
+        "matchedDirectedPairs": 63,
         "patterns": 14,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 80
-        },
+        "completePatterns": 14,
+        "admittedPatterns": 14,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedRailSegmentOccurrences": 861,
+        "admittedOfficialSegmentOccurrences": 650
       },
       {
         "date": "2026-09-06",
         "trips": 82,
-        "admittedTrips": 0,
+        "admittedTrips": 81,
         "scheduledTrips": 82,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 81,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1529,
-        "matchedScheduledSegmentOccurrences": 665,
+        "matchedScheduledSegmentOccurrences": 1528,
         "segmentOccurrences": 1529,
-        "matchedSegmentOccurrences": 665,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 1528,
+        "admittedSegmentOccurrences": 1517,
         "directedPairs": 79,
-        "matchedDirectedPairs": 29,
+        "matchedDirectedPairs": 78,
         "patterns": 21,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 20,
+        "admittedPatterns": 20,
         "excludedTrips": {
-          "incomplete-directed-pattern": 82
+          "incomplete-directed-pattern": 1
         },
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedRailSegmentOccurrences": 862,
+        "admittedOfficialSegmentOccurrences": 655
       }
     ],
-    "status": "excluded"
+    "status": "partially-admitted"
   },
   {
     "id": "91-20-B-j26-1",
@@ -360,53 +366,51 @@
       {
         "date": "2026-09-04",
         "trips": 43,
-        "admittedTrips": 0,
+        "admittedTrips": 43,
         "scheduledTrips": 43,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 43,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 484,
-        "matchedScheduledSegmentOccurrences": 365,
+        "matchedScheduledSegmentOccurrences": 484,
         "segmentOccurrences": 484,
-        "matchedSegmentOccurrences": 365,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 484,
+        "admittedSegmentOccurrences": 484,
         "directedPairs": 38,
-        "matchedDirectedPairs": 28,
+        "matchedDirectedPairs": 38,
         "patterns": 14,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 43
-        },
+        "completePatterns": 14,
+        "admittedPatterns": 14,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedRailSegmentOccurrences": 119,
+        "admittedOfficialSegmentOccurrences": 365
       },
       {
         "date": "2026-09-06",
         "trips": 78,
-        "admittedTrips": 0,
+        "admittedTrips": 78,
         "scheduledTrips": 78,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 78,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 427,
-        "matchedScheduledSegmentOccurrences": 349,
+        "matchedScheduledSegmentOccurrences": 427,
         "segmentOccurrences": 427,
-        "matchedSegmentOccurrences": 349,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 427,
+        "admittedSegmentOccurrences": 427,
         "directedPairs": 32,
-        "matchedDirectedPairs": 24,
+        "matchedDirectedPairs": 32,
         "patterns": 14,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 78
-        },
+        "completePatterns": 14,
+        "admittedPatterns": 14,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedRailSegmentOccurrences": 78,
+        "admittedOfficialSegmentOccurrences": 349
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-21-A-j26-1",
@@ -450,53 +454,51 @@
       {
         "date": "2026-09-04",
         "trips": 44,
-        "admittedTrips": 0,
+        "admittedTrips": 44,
         "scheduledTrips": 44,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 44,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 476,
-        "matchedScheduledSegmentOccurrences": 358,
+        "matchedScheduledSegmentOccurrences": 476,
         "segmentOccurrences": 476,
-        "matchedSegmentOccurrences": 358,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 476,
+        "admittedSegmentOccurrences": 476,
         "directedPairs": 37,
-        "matchedDirectedPairs": 24,
+        "matchedDirectedPairs": 37,
         "patterns": 16,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 44
-        },
+        "completePatterns": 16,
+        "admittedPatterns": 16,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedRailSegmentOccurrences": 118,
+        "admittedOfficialSegmentOccurrences": 358
       },
       {
         "date": "2026-09-06",
         "trips": 78,
-        "admittedTrips": 0,
+        "admittedTrips": 78,
         "scheduledTrips": 78,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 78,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 381,
-        "matchedScheduledSegmentOccurrences": 303,
+        "matchedScheduledSegmentOccurrences": 381,
         "segmentOccurrences": 381,
-        "matchedSegmentOccurrences": 303,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 381,
+        "admittedSegmentOccurrences": 381,
         "directedPairs": 25,
-        "matchedDirectedPairs": 16,
+        "matchedDirectedPairs": 25,
         "patterns": 11,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 78
-        },
+        "completePatterns": 11,
+        "admittedPatterns": 11,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedRailSegmentOccurrences": 78,
+        "admittedOfficialSegmentOccurrences": 303
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-2-A-j26-1",
@@ -524,50 +526,50 @@
       {
         "date": "2026-09-04",
         "trips": 77,
-        "admittedTrips": 0,
+        "admittedTrips": 77,
         "scheduledTrips": 77,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 77,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1606,
-        "matchedScheduledSegmentOccurrences": 616,
+        "matchedScheduledSegmentOccurrences": 1606,
         "segmentOccurrences": 1606,
-        "matchedSegmentOccurrences": 616,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 1606,
+        "admittedSegmentOccurrences": 1606,
         "directedPairs": 60,
-        "matchedDirectedPairs": 16,
+        "matchedDirectedPairs": 60,
         "patterns": 12,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 77
-        },
+        "completePatterns": 12,
+        "admittedPatterns": 12,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedRailSegmentOccurrences": 990,
+        "admittedOfficialSegmentOccurrences": 616
       },
       {
         "date": "2026-09-06",
         "trips": 78,
-        "admittedTrips": 1,
+        "admittedTrips": 77,
         "scheduledTrips": 78,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 1,
+        "admittedScheduledTrips": 77,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1531,
-        "matchedScheduledSegmentOccurrences": 619,
+        "matchedScheduledSegmentOccurrences": 1530,
         "segmentOccurrences": 1531,
-        "matchedSegmentOccurrences": 619,
-        "admittedSegmentOccurrences": 3,
+        "matchedSegmentOccurrences": 1530,
+        "admittedSegmentOccurrences": 1521,
         "directedPairs": 66,
-        "matchedDirectedPairs": 16,
+        "matchedDirectedPairs": 65,
         "patterns": 20,
-        "completePatterns": 1,
-        "admittedPatterns": 1,
+        "completePatterns": 19,
+        "admittedPatterns": 19,
         "excludedTrips": {
-          "incomplete-directed-pattern": 77
+          "incomplete-directed-pattern": 1
         },
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 3
+        "admittedRailSegmentOccurrences": 910,
+        "admittedOfficialSegmentOccurrences": 611
       }
     ],
     "status": "partially-admitted"
@@ -633,34 +635,36 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
         "date": "2026-09-06",
         "trips": 3,
-        "admittedTrips": 0,
+        "admittedTrips": 1,
         "scheduledTrips": 3,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 1,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 37,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 33,
         "segmentOccurrences": 37,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 33,
+        "admittedSegmentOccurrences": 3,
         "directedPairs": 21,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 19,
         "patterns": 3,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 1,
+        "admittedPatterns": 1,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 3
+          "incomplete-directed-pattern": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 3,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
-    "status": "excluded"
+    "status": "partially-admitted"
   },
   {
     "id": "91-2H-Y-j26-1",
@@ -703,34 +707,34 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
         "date": "2026-09-06",
         "trips": 10,
-        "admittedTrips": 0,
+        "admittedTrips": 10,
         "scheduledTrips": 10,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 10,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 100,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 100,
         "segmentOccurrences": 100,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 100,
+        "admittedSegmentOccurrences": 100,
         "directedPairs": 37,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 37,
         "patterns": 9,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 10
-        },
+        "completePatterns": 9,
+        "admittedPatterns": 9,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 100,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-2-M-j26-1",
@@ -789,53 +793,51 @@
       {
         "date": "2026-09-04",
         "trips": 40,
-        "admittedTrips": 12,
+        "admittedTrips": 40,
         "scheduledTrips": 40,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 12,
+        "admittedScheduledTrips": 40,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 256,
-        "matchedScheduledSegmentOccurrences": 228,
+        "matchedScheduledSegmentOccurrences": 256,
         "segmentOccurrences": 256,
-        "matchedSegmentOccurrences": 228,
-        "admittedSegmentOccurrences": 49,
+        "matchedSegmentOccurrences": 256,
+        "admittedSegmentOccurrences": 256,
         "directedPairs": 24,
-        "matchedDirectedPairs": 22,
+        "matchedDirectedPairs": 24,
         "patterns": 13,
-        "completePatterns": 7,
-        "admittedPatterns": 7,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 28
-        },
+        "completePatterns": 13,
+        "admittedPatterns": 13,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 49
+        "admittedRailSegmentOccurrences": 28,
+        "admittedOfficialSegmentOccurrences": 228
       },
       {
         "date": "2026-09-06",
         "trips": 39,
-        "admittedTrips": 11,
+        "admittedTrips": 39,
         "scheduledTrips": 39,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 11,
+        "admittedScheduledTrips": 39,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 254,
-        "matchedScheduledSegmentOccurrences": 226,
+        "matchedScheduledSegmentOccurrences": 254,
         "segmentOccurrences": 254,
-        "matchedSegmentOccurrences": 226,
-        "admittedSegmentOccurrences": 47,
+        "matchedSegmentOccurrences": 254,
+        "admittedSegmentOccurrences": 254,
         "directedPairs": 21,
-        "matchedDirectedPairs": 19,
+        "matchedDirectedPairs": 21,
         "patterns": 10,
-        "completePatterns": 6,
-        "admittedPatterns": 6,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 28
-        },
+        "completePatterns": 10,
+        "admittedPatterns": 10,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 47
+        "admittedRailSegmentOccurrences": 28,
+        "admittedOfficialSegmentOccurrences": 226
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-30-j26-1",
@@ -881,53 +883,51 @@
       {
         "date": "2026-09-04",
         "trips": 93,
-        "admittedTrips": 0,
+        "admittedTrips": 93,
         "scheduledTrips": 93,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 93,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 859,
-        "matchedScheduledSegmentOccurrences": 706,
+        "matchedScheduledSegmentOccurrences": 859,
         "segmentOccurrences": 859,
-        "matchedSegmentOccurrences": 706,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 859,
+        "admittedSegmentOccurrences": 859,
         "directedPairs": 37,
-        "matchedDirectedPairs": 24,
+        "matchedDirectedPairs": 37,
         "patterns": 21,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 93
-        },
+        "completePatterns": 21,
+        "admittedPatterns": 21,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedRailSegmentOccurrences": 153,
+        "admittedOfficialSegmentOccurrences": 706
       },
       {
         "date": "2026-09-06",
         "trips": 82,
-        "admittedTrips": 0,
+        "admittedTrips": 82,
         "scheduledTrips": 82,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 82,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 944,
-        "matchedScheduledSegmentOccurrences": 786,
+        "matchedScheduledSegmentOccurrences": 944,
         "segmentOccurrences": 944,
-        "matchedSegmentOccurrences": 786,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 944,
+        "admittedSegmentOccurrences": 944,
         "directedPairs": 36,
-        "matchedDirectedPairs": 25,
+        "matchedDirectedPairs": 36,
         "patterns": 15,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 82
-        },
+        "completePatterns": 15,
+        "admittedPatterns": 15,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedRailSegmentOccurrences": 158,
+        "admittedOfficialSegmentOccurrences": 786
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-30-J-j26-1",
@@ -974,6 +974,7 @@
           "no-verified-operator-line-crosswalk": 21
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -998,6 +999,7 @@
           "no-verified-operator-line-crosswalk": 21
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -1047,6 +1049,7 @@
           "no-verified-operator-line-crosswalk": 21
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -1071,6 +1074,7 @@
           "no-verified-operator-line-crosswalk": 21
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -1115,6 +1119,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -1137,6 +1142,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -1166,53 +1172,51 @@
       {
         "date": "2026-09-04",
         "trips": 38,
-        "admittedTrips": 0,
+        "admittedTrips": 38,
         "scheduledTrips": 38,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 38,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 266,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 266,
         "segmentOccurrences": 266,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 266,
+        "admittedSegmentOccurrences": 266,
         "directedPairs": 15,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 15,
         "patterns": 3,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 38
-        },
+        "completePatterns": 3,
+        "admittedPatterns": 3,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 266,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
         "date": "2026-09-06",
         "trips": 38,
-        "admittedTrips": 0,
+        "admittedTrips": 38,
         "scheduledTrips": 38,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 38,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 266,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 266,
         "segmentOccurrences": 266,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 266,
+        "admittedSegmentOccurrences": 266,
         "directedPairs": 16,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 16,
         "patterns": 4,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 38
-        },
+        "completePatterns": 4,
+        "admittedPatterns": 4,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 266,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-39-A-j26-1",
@@ -1264,6 +1268,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -1286,6 +1291,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -1329,6 +1335,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -1351,6 +1358,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -1402,6 +1410,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -1424,6 +1433,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -1476,6 +1486,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -1498,6 +1509,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -1579,6 +1591,7 @@
         "admittedPatterns": 16,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 240
       },
       {
@@ -1601,6 +1614,7 @@
         "admittedPatterns": 12,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 241
       }
     ],
@@ -1646,6 +1660,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -1668,6 +1683,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -1740,6 +1756,7 @@
         "admittedPatterns": 10,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 521
       },
       {
@@ -1762,6 +1779,7 @@
         "admittedPatterns": 10,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 563
       }
     ],
@@ -1834,6 +1852,7 @@
         "admittedPatterns": 12,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 635
       },
       {
@@ -1856,6 +1875,7 @@
         "admittedPatterns": 11,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 663
       }
     ],
@@ -1901,6 +1921,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -1923,6 +1944,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -1972,6 +1994,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -1994,6 +2017,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -2042,34 +2066,34 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
         "date": "2026-09-06",
         "trips": 2,
-        "admittedTrips": 0,
+        "admittedTrips": 2,
         "scheduledTrips": 2,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 2,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 42,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 42,
         "segmentOccurrences": 42,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 42,
+        "admittedSegmentOccurrences": 42,
         "directedPairs": 42,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 42,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 2
-        },
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 42,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-50-j26-1",
@@ -2147,6 +2171,7 @@
           "incomplete-directed-pattern": 54
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 28
       },
       {
@@ -2171,6 +2196,7 @@
           "incomplete-directed-pattern": 37
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 44
       }
     ],
@@ -2236,6 +2262,7 @@
           "no-verified-operator-line-crosswalk": 39
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -2258,6 +2285,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -2299,53 +2327,51 @@
       {
         "date": "2026-09-04",
         "trips": 90,
-        "admittedTrips": 50,
+        "admittedTrips": 90,
         "scheduledTrips": 90,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 50,
+        "admittedScheduledTrips": 90,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 460,
-        "matchedScheduledSegmentOccurrences": 416,
+        "matchedScheduledSegmentOccurrences": 460,
         "segmentOccurrences": 460,
-        "matchedSegmentOccurrences": 416,
-        "admittedSegmentOccurrences": 219,
+        "matchedSegmentOccurrences": 460,
+        "admittedSegmentOccurrences": 460,
         "directedPairs": 50,
-        "matchedDirectedPairs": 42,
+        "matchedDirectedPairs": 50,
         "patterns": 20,
-        "completePatterns": 14,
-        "admittedPatterns": 14,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 40
-        },
+        "completePatterns": 20,
+        "admittedPatterns": 20,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 219
+        "admittedRailSegmentOccurrences": 44,
+        "admittedOfficialSegmentOccurrences": 416
       },
       {
         "date": "2026-09-06",
         "trips": 40,
-        "admittedTrips": 0,
+        "admittedTrips": 40,
         "scheduledTrips": 40,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 40,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 241,
-        "matchedScheduledSegmentOccurrences": 197,
+        "matchedScheduledSegmentOccurrences": 241,
         "segmentOccurrences": 241,
-        "matchedSegmentOccurrences": 197,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 241,
+        "admittedSegmentOccurrences": 241,
         "directedPairs": 24,
-        "matchedDirectedPairs": 16,
+        "matchedDirectedPairs": 24,
         "patterns": 8,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 40
-        },
+        "completePatterns": 8,
+        "admittedPatterns": 8,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 0
+        "admittedRailSegmentOccurrences": 44,
+        "admittedOfficialSegmentOccurrences": 197
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-5-j26-1",
@@ -2382,53 +2408,51 @@
       {
         "date": "2026-09-04",
         "trips": 118,
-        "admittedTrips": 39,
+        "admittedTrips": 118,
         "scheduledTrips": 118,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 39,
+        "admittedScheduledTrips": 118,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 676,
-        "matchedScheduledSegmentOccurrences": 596,
+        "matchedScheduledSegmentOccurrences": 676,
         "segmentOccurrences": 676,
-        "matchedSegmentOccurrences": 596,
-        "admittedSegmentOccurrences": 192,
+        "matchedSegmentOccurrences": 676,
+        "admittedSegmentOccurrences": 676,
         "directedPairs": 56,
-        "matchedDirectedPairs": 42,
+        "matchedDirectedPairs": 56,
         "patterns": 23,
-        "completePatterns": 5,
-        "admittedPatterns": 5,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 79
-        },
+        "completePatterns": 23,
+        "admittedPatterns": 23,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 192
+        "admittedRailSegmentOccurrences": 80,
+        "admittedOfficialSegmentOccurrences": 596
       },
       {
         "date": "2026-09-06",
         "trips": 108,
-        "admittedTrips": 32,
+        "admittedTrips": 108,
         "scheduledTrips": 108,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 32,
+        "admittedScheduledTrips": 108,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 522,
-        "matchedScheduledSegmentOccurrences": 446,
+        "matchedScheduledSegmentOccurrences": 522,
         "segmentOccurrences": 522,
-        "matchedSegmentOccurrences": 446,
-        "admittedSegmentOccurrences": 64,
+        "matchedSegmentOccurrences": 522,
+        "admittedSegmentOccurrences": 522,
         "directedPairs": 44,
-        "matchedDirectedPairs": 32,
+        "matchedDirectedPairs": 44,
         "patterns": 18,
-        "completePatterns": 6,
-        "admittedPatterns": 6,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 76
-        },
+        "completePatterns": 18,
+        "admittedPatterns": 18,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 64
+        "admittedRailSegmentOccurrences": 76,
+        "admittedOfficialSegmentOccurrences": 446
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-5O-Y-j26-1",
@@ -2469,6 +2493,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -2491,6 +2516,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -2525,19 +2551,20 @@
         "admittedScheduledTrips": 0,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 311,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 217,
         "segmentOccurrences": 311,
-        "matchedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 217,
         "admittedSegmentOccurrences": 0,
         "directedPairs": 33,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 24,
         "patterns": 11,
         "completePatterns": 0,
         "admittedPatterns": 0,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 40
+          "incomplete-directed-pattern": 40
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -2549,19 +2576,20 @@
         "admittedScheduledTrips": 0,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 301,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 212,
         "segmentOccurrences": 301,
-        "matchedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 212,
         "admittedSegmentOccurrences": 0,
         "directedPairs": 30,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 21,
         "patterns": 13,
         "completePatterns": 0,
         "admittedPatterns": 0,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 38
+          "incomplete-directed-pattern": 38
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -2612,6 +2640,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -2634,6 +2663,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -2683,6 +2713,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -2705,6 +2736,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -2754,6 +2786,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -2776,6 +2809,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -2820,6 +2854,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -2842,6 +2877,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -2888,6 +2924,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 528
       },
       {
@@ -2910,6 +2947,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 516
       }
     ],
@@ -2962,6 +3000,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -2984,6 +3023,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -3031,6 +3071,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -3053,6 +3094,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -3099,6 +3141,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -3121,6 +3164,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -3173,6 +3217,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -3195,6 +3240,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -3247,6 +3293,7 @@
         "admittedPatterns": 12,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 988
       },
       {
@@ -3269,6 +3316,7 @@
         "admittedPatterns": 20,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 974
       }
     ],
@@ -3323,6 +3371,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -3345,6 +3394,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -3395,34 +3445,34 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
         "date": "2026-09-06",
         "trips": 1,
-        "admittedTrips": 0,
+        "admittedTrips": 1,
         "scheduledTrips": 1,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 1,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 9,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 9,
         "segmentOccurrences": 9,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 9,
+        "admittedSegmentOccurrences": 9,
         "directedPairs": 9,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 9,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 1
-        },
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 9,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-EXT-C-j26-1",
@@ -3463,6 +3513,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -3485,6 +3536,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -3530,6 +3582,7 @@
           "no-verified-operator-line-crosswalk": 8
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -3554,6 +3607,7 @@
           "no-verified-operator-line-crosswalk": 8
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -3613,6 +3667,7 @@
           "no-verified-operator-line-crosswalk": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -3635,6 +3690,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -3685,34 +3741,34 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
         "date": "2026-09-06",
         "trips": 2,
-        "admittedTrips": 0,
+        "admittedTrips": 2,
         "scheduledTrips": 2,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 2,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 6,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 6,
         "segmentOccurrences": 6,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 6,
+        "admittedSegmentOccurrences": 6,
         "directedPairs": 6,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 6,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 2
-        },
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 6,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-O-Y-j26-1",
@@ -3758,6 +3814,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -3780,6 +3837,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -3826,6 +3884,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -3848,6 +3907,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -3892,6 +3952,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -3914,6 +3975,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -4002,6 +4064,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 70,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 2443
       },
       {
@@ -4024,6 +4087,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 35,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1234
       }
     ],
@@ -4089,6 +4153,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 2,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 190
       },
       {
@@ -4111,6 +4176,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -4225,6 +4291,7 @@
         "admittedPatterns": 8,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 44,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1513
       },
       {
@@ -4247,6 +4314,7 @@
         "admittedPatterns": 8,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 44,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1398
       }
     ],
@@ -4326,6 +4394,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 24,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 426
       },
       {
@@ -4348,6 +4417,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 152
       }
     ],
@@ -4456,6 +4526,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 18,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 306
       },
       {
@@ -4478,6 +4549,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 24,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 360
       }
     ],
@@ -4568,6 +4640,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 44,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 858
       },
       {
@@ -4590,6 +4663,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 31,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 604
       }
     ],
@@ -4668,6 +4742,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 51,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 684
       },
       {
@@ -4690,6 +4765,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 35,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 460
       }
     ],
@@ -4752,6 +4828,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 812
       },
       {
@@ -4774,6 +4851,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 494
       }
     ],
@@ -4838,6 +4916,7 @@
         "admittedPatterns": 9,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 203
       },
       {
@@ -4860,6 +4939,7 @@
         "admittedPatterns": 1,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 21
       }
     ],
@@ -4911,6 +4991,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 96
       },
       {
@@ -4933,6 +5014,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 84
       }
     ],
@@ -5013,6 +5095,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 14,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 291
       },
       {
@@ -5035,6 +5118,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 6,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 117
       }
     ],
@@ -5130,6 +5214,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 22,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 757
       },
       {
@@ -5152,6 +5237,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 566
       }
     ],
@@ -5261,6 +5347,7 @@
         "admittedPatterns": 7,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 305,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 4791
       },
       {
@@ -5283,6 +5370,7 @@
         "admittedPatterns": 7,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 188,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 2848
       }
     ],
@@ -5365,6 +5453,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 2432
       },
       {
@@ -5387,6 +5476,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1196
       }
     ],
@@ -5473,6 +5563,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 256,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 2432
       },
       {
@@ -5495,6 +5586,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 126,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1197
       }
     ],
@@ -5557,6 +5649,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 545
       },
       {
@@ -5579,6 +5672,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -5630,6 +5724,7 @@
           "incomplete-directed-pattern": 36
         },
         "admittedRoadSegmentOccurrences": 74,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 619
       },
       {
@@ -5654,6 +5749,7 @@
           "incomplete-directed-pattern": 21
         },
         "admittedRoadSegmentOccurrences": 41,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 357
       }
     ],
@@ -5712,6 +5808,7 @@
           "incomplete-directed-pattern": 19
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 324
       },
       {
@@ -5736,6 +5833,7 @@
           "incomplete-directed-pattern": 16
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 306
       }
     ],
@@ -5797,6 +5895,7 @@
           "incomplete-directed-pattern": 19
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 380
       },
       {
@@ -5821,6 +5920,7 @@
           "incomplete-directed-pattern": 20
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 400
       }
     ],
@@ -5888,6 +5988,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 25,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 250
       },
       {
@@ -5910,6 +6011,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 10,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 100
       }
     ],
@@ -5993,6 +6095,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 44,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 681
       },
       {
@@ -6015,6 +6118,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 25,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 375
       }
     ],
@@ -6119,6 +6223,7 @@
         "admittedPatterns": 7,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 111,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1308
       },
       {
@@ -6141,6 +6246,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 82,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1066
       }
     ],
@@ -6198,6 +6304,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 57
       },
       {
@@ -6220,6 +6327,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 10,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 50
       }
     ],
@@ -6285,6 +6393,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -6307,6 +6416,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -6433,6 +6543,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 8,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 312
       },
       {
@@ -6455,6 +6566,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 12,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 468
       }
     ],
@@ -6547,6 +6659,7 @@
           "incomplete-directed-pattern": 9
         },
         "admittedRoadSegmentOccurrences": 6,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 125
       },
       {
@@ -6571,6 +6684,7 @@
           "incomplete-directed-pattern": 4
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 44
       }
     ],
@@ -6618,6 +6732,7 @@
           "incomplete-directed-pattern": 12
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -6642,6 +6757,7 @@
           "incomplete-directed-pattern": 10
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -6739,6 +6855,7 @@
           "incomplete-directed-pattern": 20
         },
         "admittedRoadSegmentOccurrences": 19,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 636
       },
       {
@@ -6763,6 +6880,7 @@
           "incomplete-directed-pattern": 16
         },
         "admittedRoadSegmentOccurrences": 16,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 541
       }
     ],
@@ -6839,6 +6957,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 31,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 330
       },
       {
@@ -6861,6 +6980,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 4,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 56
       }
     ],
@@ -6927,6 +7047,7 @@
           "incomplete-directed-pattern": 4
         },
         "admittedRoadSegmentOccurrences": 115,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -6951,6 +7072,7 @@
           "incomplete-directed-pattern": 13
         },
         "admittedRoadSegmentOccurrences": 104,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -7018,6 +7140,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 32,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 288
       },
       {
@@ -7040,6 +7163,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 16,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 144
       }
     ],
@@ -7113,6 +7237,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -7135,6 +7260,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -7184,6 +7310,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -7206,6 +7333,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 154,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -7317,6 +7445,7 @@
         "admittedPatterns": 8,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 1636,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 4138
       },
       {
@@ -7339,6 +7468,7 @@
         "admittedPatterns": 8,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 946,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 2407
       }
     ],
@@ -7474,6 +7604,7 @@
           "incomplete-directed-pattern": 4
         },
         "admittedRoadSegmentOccurrences": 193,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1751
       },
       {
@@ -7496,6 +7627,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 149,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1276
       }
     ],
@@ -7581,6 +7713,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 36,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 198
       },
       {
@@ -7603,6 +7736,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -7674,6 +7808,7 @@
         "admittedPatterns": 8,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 249
       },
       {
@@ -7696,6 +7831,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 91
       }
     ],
@@ -7777,6 +7913,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 336
       },
       {
@@ -7799,6 +7936,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 144
       }
     ],
@@ -7894,6 +8032,7 @@
           "incomplete-directed-pattern": 3
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -7918,6 +8057,7 @@
           "incomplete-directed-pattern": 3
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -7995,6 +8135,7 @@
           "incomplete-directed-pattern": 74
         },
         "admittedRoadSegmentOccurrences": 73,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 873
       },
       {
@@ -8019,6 +8160,7 @@
           "incomplete-directed-pattern": 72
         },
         "admittedRoadSegmentOccurrences": 71,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 639
       }
     ],
@@ -8102,6 +8244,7 @@
           "incomplete-directed-pattern": 17
         },
         "admittedRoadSegmentOccurrences": 2,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 283
       },
       {
@@ -8126,6 +8269,7 @@
           "incomplete-directed-pattern": 10
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 224
       }
     ],
@@ -8206,6 +8350,7 @@
         "admittedPatterns": 10,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 95,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 414
       },
       {
@@ -8228,6 +8373,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 30,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 150
       }
     ],
@@ -8369,6 +8515,7 @@
           "incomplete-directed-pattern": 2
         },
         "admittedRoadSegmentOccurrences": 96,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1111
       },
       {
@@ -8391,6 +8538,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 234
       }
     ],
@@ -8509,6 +8657,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 15,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1026
       },
       {
@@ -8531,6 +8680,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 6,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 436
       }
     ],
@@ -8600,6 +8750,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 424
       },
       {
@@ -8622,6 +8773,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 224
       }
     ],
@@ -8705,6 +8857,7 @@
           "incomplete-directed-pattern": 4
         },
         "admittedRoadSegmentOccurrences": 43,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 860
       },
       {
@@ -8727,6 +8880,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 35,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 700
       }
     ],
@@ -8809,6 +8963,7 @@
           "incomplete-directed-pattern": 6
         },
         "admittedRoadSegmentOccurrences": 27,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 427
       },
       {
@@ -8831,6 +8986,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 16,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 200
       }
     ],
@@ -8889,6 +9045,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 18,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 108
       },
       {
@@ -8911,6 +9068,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -8967,6 +9125,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 55
       },
       {
@@ -8989,6 +9148,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -9050,6 +9210,7 @@
         "admittedPatterns": 8,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 829
       },
       {
@@ -9072,6 +9233,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 410
       }
     ],
@@ -9128,6 +9290,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 53
       },
       {
@@ -9150,6 +9313,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -9213,6 +9377,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 7,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 206
       },
       {
@@ -9235,6 +9400,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -9296,6 +9462,7 @@
         "admittedPatterns": 11,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 5,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 146
       },
       {
@@ -9318,6 +9485,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -9379,6 +9547,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 250
       },
       {
@@ -9401,6 +9570,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -9475,6 +9645,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 56,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 280
       },
       {
@@ -9497,6 +9668,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 32,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 160
       }
     ],
@@ -9570,6 +9742,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 343
       },
       {
@@ -9592,6 +9765,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -9681,6 +9855,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 188,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 709
       },
       {
@@ -9703,6 +9878,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 152,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 501
       }
     ],
@@ -9765,6 +9941,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 12,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 100
       },
       {
@@ -9787,6 +9964,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -9843,6 +10021,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 186
       },
       {
@@ -9865,6 +10044,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 180
       }
     ],
@@ -9930,6 +10110,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 168
       },
       {
@@ -9952,6 +10133,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -10057,6 +10239,7 @@
           "incomplete-directed-pattern": 12
         },
         "admittedRoadSegmentOccurrences": 6,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1177
       },
       {
@@ -10079,6 +10262,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 6,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 1041
       }
     ],
@@ -10163,6 +10347,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 16,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 639
       },
       {
@@ -10185,6 +10370,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 12,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 456
       }
     ],
@@ -10241,6 +10427,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 28,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 84
       },
       {
@@ -10263,6 +10450,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -10322,6 +10510,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 33,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 139
       },
       {
@@ -10344,6 +10533,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -10404,6 +10594,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 140
       },
       {
@@ -10426,6 +10617,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -10497,6 +10689,7 @@
         "admittedPatterns": 9,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 380
       },
       {
@@ -10519,6 +10712,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 224
       }
     ],
@@ -10587,6 +10781,7 @@
         "admittedPatterns": 14,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 387
       },
       {
@@ -10609,6 +10804,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 110
       }
     ],
@@ -10666,6 +10862,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 6,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 114
       },
       {
@@ -10688,6 +10885,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 70
       }
     ],
@@ -10748,6 +10946,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 196
       },
       {
@@ -10770,6 +10969,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 126
       }
     ],
@@ -10837,6 +11037,7 @@
         "admittedPatterns": 7,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 236
       },
       {
@@ -10859,6 +11060,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 144
       }
     ],
@@ -10912,6 +11114,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 4,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 108
       },
       {
@@ -10934,6 +11137,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 78
       }
     ],
@@ -10991,6 +11195,7 @@
         "admittedPatterns": 9,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 23,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 108
       },
       {
@@ -11013,6 +11218,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -11064,6 +11270,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 102
       },
       {
@@ -11086,6 +11293,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 48
       }
     ],
@@ -11195,6 +11403,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 32,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 5397
       },
       {
@@ -11217,6 +11426,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 3177
       }
     ],
@@ -11308,6 +11518,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 12,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 3003
       },
       {
@@ -11330,6 +11541,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 12,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 3003
       }
     ],
@@ -11434,6 +11646,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 3800
       },
       {
@@ -11456,6 +11669,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 3800
       }
     ],
@@ -11579,6 +11793,7 @@
           "incomplete-directed-pattern": 4
         },
         "admittedRoadSegmentOccurrences": 4,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 4294
       },
       {
@@ -11601,6 +11816,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 3997
       }
     ],
@@ -11654,6 +11870,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -11676,6 +11893,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -11738,6 +11956,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -11760,6 +11979,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -11806,6 +12026,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -11828,6 +12049,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -11889,6 +12111,7 @@
         "admittedPatterns": 1,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 8,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -11911,6 +12134,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 16,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -11954,6 +12178,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -11976,6 +12201,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12032,6 +12258,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12054,6 +12281,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12097,6 +12325,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12121,6 +12350,7 @@
           "incomplete-directed-pattern": 5
         },
         "admittedRoadSegmentOccurrences": 49,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12167,6 +12397,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12189,6 +12420,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12248,6 +12480,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12270,6 +12503,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12322,6 +12556,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12344,6 +12579,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12387,6 +12623,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12409,6 +12646,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12455,6 +12693,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12477,6 +12716,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12526,6 +12766,7 @@
         "admittedPatterns": 1,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 5,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12548,6 +12789,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12593,6 +12835,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12615,6 +12858,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12672,6 +12916,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12694,6 +12939,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12737,6 +12983,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12759,6 +13006,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12814,6 +13062,7 @@
           "incomplete-directed-pattern": 2
         },
         "admittedRoadSegmentOccurrences": 6,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12838,6 +13087,7 @@
           "incomplete-directed-pattern": 39
         },
         "admittedRoadSegmentOccurrences": 117,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12884,6 +13134,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12906,6 +13157,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -12962,6 +13214,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -12984,6 +13237,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13034,6 +13288,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13056,6 +13311,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13112,6 +13368,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 56,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13134,6 +13391,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13177,6 +13435,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13199,6 +13458,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13276,6 +13536,7 @@
           "no-verified-operator-line-crosswalk": 3
         },
         "admittedRoadSegmentOccurrences": 70,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13301,6 +13562,7 @@
           "no-verified-operator-line-crosswalk": 33
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13348,6 +13610,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13370,6 +13633,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13414,6 +13678,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13436,6 +13701,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 5,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13490,6 +13756,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13512,6 +13779,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13558,6 +13826,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13580,6 +13849,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13626,6 +13896,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13648,6 +13919,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13691,6 +13963,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13713,6 +13986,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13773,6 +14047,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13797,6 +14072,7 @@
           "incomplete-directed-pattern": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -13896,6 +14172,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -13918,6 +14195,7 @@
         "admittedPatterns": 1,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 52
       }
     ],
@@ -14005,6 +14283,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -14027,6 +14306,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 12,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 28
       }
     ],
@@ -14118,6 +14398,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -14142,6 +14423,7 @@
           "incomplete-directed-pattern": 1
         },
         "admittedRoadSegmentOccurrences": 3,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 25
       }
     ],
@@ -14240,6 +14522,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -14262,6 +14545,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 14,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 50
       }
     ],
@@ -14356,6 +14640,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -14378,6 +14663,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 2,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 78
       }
     ],
@@ -14447,6 +14733,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -14469,6 +14756,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 2,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 39
       }
     ],
@@ -14585,6 +14873,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -14607,6 +14896,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 10,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 208
       }
     ],
@@ -14681,6 +14971,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -14705,6 +14996,7 @@
           "incomplete-directed-pattern": 2
         },
         "admittedRoadSegmentOccurrences": 6,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 26
       }
     ],
@@ -14852,6 +15144,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -14874,6 +15167,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 8,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 91
       }
     ],
@@ -14953,6 +15247,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -14977,6 +15272,7 @@
           "incomplete-directed-pattern": 1
         },
         "admittedRoadSegmentOccurrences": 3,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 14
       }
     ],
@@ -15069,6 +15365,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -15091,6 +15388,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 8,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 42
       }
     ],
@@ -15202,6 +15500,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -15224,6 +15523,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 6,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 68
       }
     ],
@@ -15347,6 +15647,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -15369,6 +15670,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 13,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 104
       }
     ],
@@ -15442,6 +15744,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -15466,6 +15769,7 @@
           "incomplete-directed-pattern": 3
         },
         "admittedRoadSegmentOccurrences": 3,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 42
       }
     ],
@@ -15555,6 +15859,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -15577,6 +15882,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 103
       }
     ],
@@ -15644,6 +15950,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -15666,6 +15973,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 1,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 20
       }
     ],
@@ -15713,6 +16021,7 @@
           "no-verified-operator-line-crosswalk": 1020
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -15737,6 +16046,7 @@
           "no-verified-operator-line-crosswalk": 1080
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -15781,6 +16091,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -15803,6 +16114,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -15849,6 +16161,7 @@
           "no-verified-operator-line-crosswalk": 1620
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -15873,6 +16186,7 @@
           "no-verified-operator-line-crosswalk": 1080
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -15919,6 +16233,7 @@
           "no-verified-operator-line-crosswalk": 53
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -15943,6 +16258,7 @@
           "no-verified-operator-line-crosswalk": 53
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -15989,6 +16305,7 @@
           "no-verified-operator-line-crosswalk": 51
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -16013,6 +16330,7 @@
           "no-verified-operator-line-crosswalk": 51
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -16058,6 +16376,7 @@
           "no-verified-operator-line-crosswalk": 4
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -16082,6 +16401,7 @@
           "no-verified-operator-line-crosswalk": 4
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -16129,6 +16449,7 @@
           "no-verified-operator-line-crosswalk": 4
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -16153,6 +16474,7 @@
           "no-verified-operator-line-crosswalk": 4
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -16200,6 +16522,7 @@
           "no-verified-operator-line-crosswalk": 4
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -16224,6 +16547,7 @@
           "no-verified-operator-line-crosswalk": 4
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -16269,6 +16593,7 @@
           "no-verified-operator-line-crosswalk": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -16293,6 +16618,7 @@
           "no-verified-operator-line-crosswalk": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -16342,6 +16668,7 @@
           "no-verified-operator-line-crosswalk": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -16366,6 +16693,7 @@
           "no-verified-operator-line-crosswalk": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -16413,6 +16741,7 @@
           "no-verified-operator-line-crosswalk": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -16437,6 +16766,7 @@
           "no-verified-operator-line-crosswalk": 2
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -16504,6 +16834,7 @@
           "incomplete-directed-pattern": 8
         },
         "admittedRoadSegmentOccurrences": 5,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 33
       },
       {
@@ -16526,6 +16857,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -16569,6 +16901,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 545,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -16591,6 +16924,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 276,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -16638,6 +16972,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 70,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 175
       },
       {
@@ -16660,6 +16995,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 48,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 108
       }
     ],
@@ -16718,6 +17054,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 1,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 663
       },
       {
@@ -16740,6 +17077,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 364
       }
     ],
@@ -16815,6 +17153,7 @@
         "admittedPatterns": 7,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 420
       },
       {
@@ -16837,6 +17176,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 216
       }
     ],
@@ -16932,6 +17272,7 @@
         "admittedPatterns": 9,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 398,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -16954,6 +17295,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 186,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -17022,6 +17364,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 195
       },
       {
@@ -17044,6 +17387,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 132
       }
     ],
@@ -17103,6 +17447,7 @@
           "incomplete-directed-pattern": 14
         },
         "admittedRoadSegmentOccurrences": 36,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 28
       },
       {
@@ -17125,6 +17470,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -17177,6 +17523,7 @@
           "incomplete-directed-pattern": 5
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 24
       },
       {
@@ -17199,6 +17546,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -17248,6 +17596,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 278
       },
       {
@@ -17270,6 +17619,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 133
       }
     ],
@@ -17313,6 +17663,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 358,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -17335,6 +17686,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -17402,6 +17754,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 584
       },
       {
@@ -17424,6 +17777,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 504
       }
     ],
@@ -17487,6 +17841,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 126
       },
       {
@@ -17509,6 +17864,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 80
       }
     ],
@@ -17554,6 +17910,7 @@
           "provisional-boundary-membership": 9
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -17576,6 +17933,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -17633,6 +17991,7 @@
         "admittedPatterns": 6,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 7,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 618
       },
       {
@@ -17655,6 +18014,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 196
       }
     ],
@@ -17709,6 +18069,7 @@
         "admittedPatterns": 2,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 8,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 140
       },
       {
@@ -17731,6 +18092,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 8,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 146
       }
     ],
@@ -17794,6 +18156,7 @@
         "admittedPatterns": 11,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 39,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 326
       },
       {
@@ -17816,6 +18179,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 14,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 98
       }
     ],
@@ -17879,6 +18243,7 @@
           "incomplete-directed-pattern": 59
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -17903,6 +18268,7 @@
           "incomplete-directed-pattern": 20
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -17998,6 +18364,7 @@
         "admittedPatterns": 4,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 927
       },
       {
@@ -18020,6 +18387,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 884
       }
     ],
@@ -18109,6 +18477,7 @@
         "admittedPatterns": 5,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 758
       },
       {
@@ -18131,6 +18500,7 @@
         "admittedPatterns": 3,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 688
       }
     ],
@@ -18186,6 +18556,7 @@
         "admittedPatterns": 8,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 242
       },
       {
@@ -18208,6 +18579,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],
@@ -18255,6 +18627,7 @@
         "admittedPatterns": 0,
         "excludedTrips": {},
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       },
       {
@@ -18279,6 +18652,7 @@
           "incomplete-directed-pattern": 8
         },
         "admittedRoadSegmentOccurrences": 0,
+        "admittedRailSegmentOccurrences": 0,
         "admittedOfficialSegmentOccurrences": 0
       }
     ],

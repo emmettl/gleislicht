@@ -9,7 +9,10 @@ const BASELINE = 'e9d207d35ba5ae502d6a78fc85730763c8d8fccd'
 const ROUTES = ['93-246-B-j26-1', '93-246-C-j26-1']
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 const old = path => execFileSync('git', ['show', `${BASELINE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
-const json = async path => JSON.parse(await readFile(path))
+// Historical Schilthorn-only release; later rail supplements have their own proof.
+const RELEASE = '326d8c3e8df5b27cbafe80aef6f7805186ff7b30'
+const released = path => execFileSync('git', ['show', `${RELEASE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
+const json = async path => JSON.parse(released(path))
 assert(process.argv[2], 'Provide the verified Bern timetable cache')
 const raw = JSON.parse(gunzipSync(await readFile(process.argv[2])))
 const sourceBytes = await readFile('data/bern-sources/decoded.json.gz'), source = JSON.parse(gunzipSync(sourceBytes))
@@ -41,7 +44,7 @@ const canonical = (t, s) => {
 }
 const dates = []
 for (const snapshot of raw.snapshots) {
-  const date = snapshot.metadata.serviceDate, before = await day(old, date), after = await day(readFile, date)
+  const date = snapshot.metadata.serviceDate, before = await day(old, date), after = await day(released, date)
   for (const [id, t] of before.trains) {
     assert(after.trains.has(id), `Lost previous journey ${id}`)
     assert.equal(canonical(t, before.manifest), canonical(after.trains.get(id), after.manifest), `Changed previous movement ${id}`)
@@ -86,7 +89,7 @@ for (const snapshot of raw.snapshots) {
 const birgEndpoints = [bindings[0].originalLv95Coordinates.at(-1), bindings[1].originalLv95Coordinates[0]]
 const seasonal = await json('data/bern-audit/seasonal-summary.json')
 const previousSeasonal = JSON.parse(old('data/bern-audit/seasonal-summary.json'))
-const seasonalPatterns = JSON.parse(gunzipSync(await readFile('data/bern-audit/seasonal-patterns.json.gz')))
+const seasonalPatterns = JSON.parse(gunzipSync(released('data/bern-audit/seasonal-patterns.json.gz')))
 const previousPatterns = JSON.parse(gunzipSync(old('data/bern-audit/seasonal-patterns.json.gz')))
 const seasonalChecks = seasonal.days.map((day, i) => {
   const previous = previousSeasonal.days[i]

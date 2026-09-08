@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "routeId": "91-29-j26-1",
+  "agencyId": "11",
+  "line": "S29",
+  "mode": "rail",
+  "sourceLine": "450_S_b",
+  "sourceSha256": "6224b50080d4d806dd9beca66904c0911a6cb4ff2218e00c94295112e7272e3e",
+  "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+  "pairs": [
+    {
+      "from": [
+        7.90794131,
+        47.35220757,
+        "Olten",
+        "8",
+        "ch:1:sloid:218:5:8"
+      ],
+      "to": [
+        8.05147413,
+        47.39117396,
+        "Aarau",
+        "3",
+        "ch:1:sloid:2113:2:3"
+      ]
+    },
+    {
+      "from": [
+        7.90794131,
+        47.35220757,
+        "Olten",
+        "8",
+        "ch:1:sloid:218:5:8"
+      ],
+      "to": [
+        8.05212091,
+        47.39150845,
+        "Aarau",
+        "1",
+        "ch:1:sloid:2113:1:1"
+      ]
+    }
+  ],
+  "method": "For these two exact previously unresolved directed S29 platform pairs only, use the official operator/line-specific Bern 450_S_b geometry in every complete seasonal context before consensus. This rejects context-dependent 45 km FOT alternatives in favour of the 13.3 km S29 line. All other sources, successful published paths, original calls, attachment limits and whole-pattern admission rules remain unchanged."
+}

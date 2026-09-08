@@ -1,0 +1,1845 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "326d8c3e8df5b27cbafe80aef6f7805186ff7b30",
+  "source": {
+    "policySha256": "04b675e0248a5ffb5ee7f4da38912b9222acad46166362120837ac839209c180",
+    "policy": {
+      "schemaVersion": 1,
+      "sourceId": "bern-fot-rail-20210706",
+      "sourceDirectory": "data/bern-sources/fot-rail",
+      "sourceMetadataSha256": "46ab3ed91471fde35bcb1b678410efe7ecab6bf1cf02027729f547545b94aaad",
+      "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "dates": [
+        "2026-09-04",
+        "2026-09-06"
+      ],
+      "limits": {
+        "stationAttachmentMetres": 120,
+        "topologyAttachmentMetres": 120,
+        "detourRatio": 4.5,
+        "detourFloorMetres": 3000,
+        "simplificationMetres": 0
+      },
+      "gauges": [
+        "mm1435"
+      ],
+      "infrastructureOperators": [
+        "SBB CFF FFS"
+      ],
+      "routes": [
+        {
+          "routeId": "91-36-D-j26-1",
+          "agencyId": "33",
+          "line": "S36",
+          "mode": "rail",
+          "operatingPointPair": [
+            "8500220",
+            "8504415"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087565"
+          ]
+        },
+        {
+          "routeId": "91-4-C-j26-1",
+          "agencyId": "33",
+          "line": "S4",
+          "mode": "rail",
+          "operatingPointPair": [
+            "8504410",
+            "8508001"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087657",
+            "ch14uvag00087656"
+          ]
+        }
+      ],
+      "admission": "Only missing cantonal directed pairs on the exact reviewed operating-point pairs and BLS route identities. All complete source-pattern contexts must yield the same valid federal path. Keep every original call and every successful cantonal path.",
+      "model": "FOT declared topology, exact operating-point IDs and standard gauge; directions inferred from GTFS calls. Original rail stop-attachment and detour limits remain unchanged. The new topology attachment guard is also 120 m; measured selected segment attachments are under 16 m. Catalogue date 2021-07-06, asset updated 2025-01-18, checksum rechecked 2026-09-08; current alignment validity and running tracks are not certified."
+    },
+    "source": {
+      "schemaVersion": 1,
+      "publisher": "Federal Office of Transport - FOT",
+      "attribution": "© Federal Office of Transport (FOT)",
+      "license": "proprietary",
+      "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+      "catalogueDate": "2021-07-06T00:00:00Z",
+      "assetUpdated": "2025-01-18T04:23:13.735821Z",
+      "catalogueCheckedOn": "2026-09-08",
+      "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+      "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "publishedChecksum": "12202895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "validOn": null,
+      "validityNote": "Catalogue dates and verified bytes do not establish September 2026 alignment validity. Inferred infrastructure paths, not certified service running tracks.",
+      "nodes": 3210,
+      "segments": 3424,
+      "transformation": "Existing XTF parser with zero-metre Douglas–Peucker tolerance; collinear vertices may be removed. Approximate LV95-to-WGS84 transformation rounded to six decimals. Bern preserves original GTFS coordinates and rounds only final attachment endpoints to seven decimals.",
+      "files": {
+        "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+        "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+        "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02",
+        "catalogue-check-20260908.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60"
+      },
+      "retainedForBernAt": "2026-09-08T19:43:28.383642+00:00",
+      "catalogueRecheckedOn": "2026-09-08",
+      "catalogueCheckUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz"
+    },
+    "sourceSegments": [
+      {
+        "id": "ch14uvag00087657",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1994-01-25",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 15.521114858447001,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087656",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1994-01-25",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 11.999450630744551,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087565",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2002-09-25",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 14.89340606927423,
+        "reason": null
+      }
+    ]
+  },
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "previousJourneysPreserved": 36356,
+      "addedScheduledJourneys": 93,
+      "totalAdmittedJourneys": 36449,
+      "routes": [
+        {
+          "routeId": "91-36-D-j26-1",
+          "line": "S36",
+          "addedScheduledJourneys": 50,
+          "totalJourneys": 50,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "patterns": 3,
+          "repairedPairs": [
+            {
+              "routeId": "91-36-D-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:220:0:1",
+              "toId": "ch:1:sloid:4415:1:1",
+              "from": "Dotzigen",
+              "to": "Busswil BE",
+              "maximumSnapMetres": 97.36192734999833,
+              "occurrences": 25,
+              "admittedOccurrences": 25,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8500220",
+              "toOperatingPoint": "8504415",
+              "stationAttachmentsMetres": [
+                97.36192734999833,
+                21.737750267395718
+              ],
+              "pathMetres": 2820.652713312392,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00089031",
+                  "to": "ch14uvag00088908"
+                }
+              ],
+              "railPatternIds": [
+                "931fd5c60a9518f10be31faf",
+                "932c5a0248989c302386b5c8"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-36-D-j26-1",
+                "agencyId": "33",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:220:0:1",
+                "toId": "ch:1:sloid:4415:1:1",
+                "from": "Dotzigen",
+                "to": "Busswil BE",
+                "reason": "disconnected-line",
+                "maximumSnapMetres": 9.387431561753218
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-36-D-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4415:1:1",
+              "toId": "ch:1:sloid:220:0:1",
+              "from": "Busswil BE",
+              "to": "Dotzigen",
+              "maximumSnapMetres": 97.36192734999833,
+              "occurrences": 25,
+              "admittedOccurrences": 25,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504415",
+              "toOperatingPoint": "8500220",
+              "stationAttachmentsMetres": [
+                21.737750267395718,
+                97.36192734999833
+              ],
+              "pathMetres": 2820.652713312393,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00088908",
+                  "to": "ch14uvag00089031"
+                }
+              ],
+              "railPatternIds": [
+                "f5edfd65b72cbfcbfb3c5214"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-36-D-j26-1",
+                "agencyId": "33",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4415:1:1",
+                "toId": "ch:1:sloid:220:0:1",
+                "from": "Busswil BE",
+                "to": "Dotzigen",
+                "reason": "disconnected-line",
+                "maximumSnapMetres": 9.387431561753218
+              },
+              "matched": true
+            }
+          ]
+        },
+        {
+          "routeId": "91-4-C-j26-1",
+          "line": "S4",
+          "addedScheduledJourneys": 43,
+          "totalJourneys": 47,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "patterns": 22,
+          "repairedPairs": [
+            {
+              "routeId": "91-4-C-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4410:1:1",
+              "toId": "ch:1:sloid:8001:1:3",
+              "from": "Zollikofen",
+              "to": "Schönbühl SBB",
+              "maximumSnapMetres": 61.431055560565845,
+              "occurrences": 22,
+              "admittedOccurrences": 22,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "railPatternIds": [
+                "088ab459cac441c01c756a2f",
+                "25391fd6767f852a5b2c1656",
+                "280ba0fb4417852f4524d8d1",
+                "29a1f15e1fd37773d6b3ff4e",
+                "67568952cd29487e77cd5066",
+                "84531f6a6694877e49ae80ab",
+                "943000315c0accc260b59d83",
+                "a64598b1654bbcf09ce5b5e0",
+                "cc8582031c76d0354b17c136",
+                "d99d1806a77a54fdfab2c858",
+                "e1673b5aec62d1f498910816",
+                "f81d6bd93a4c83948afd889d"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-4-C-j26-1",
+                "agencyId": "33",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4410:1:1",
+                "toId": "ch:1:sloid:8001:1:3",
+                "from": "Zollikofen",
+                "to": "Schönbühl SBB",
+                "reason": "disconnected-line",
+                "maximumSnapMetres": 6.67976460047477
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-4-C-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:8001:1:4",
+              "toId": "ch:1:sloid:4410:2:3",
+              "from": "Schönbühl SBB",
+              "to": "Zollikofen",
+              "maximumSnapMetres": 22.818089654793337,
+              "occurrences": 21,
+              "admittedOccurrences": 21,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "railPatternIds": [
+                "1d3c554913eac476e5d0e4a5",
+                "4258051f1c065b27b6cbae28",
+                "5e02e1491b22fd7e22a466b9",
+                "6fe57ad15bba0c2627cb10c5",
+                "93d7a61fb6c2d5c590c3eaef",
+                "f57454c547058fd888b25799"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-4-C-j26-1",
+                "agencyId": "33",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:8001:1:4",
+                "toId": "ch:1:sloid:4410:2:3",
+                "from": "Schönbühl SBB",
+                "to": "Zollikofen",
+                "reason": "disconnected-line",
+                "maximumSnapMetres": 8.012522793054663
+              },
+              "matched": true
+            }
+          ]
+        }
+      ],
+      "candidateContexts": [
+        {
+          "pair": [
+            "91-36-D-j26-1",
+            "ch:1:sloid:220:0:1",
+            "ch:1:sloid:4415:1:1"
+          ],
+          "pathSha256": "55a363f6b363958364d1ed1750585190323e602c42c18275d3c99f97686b89aa",
+          "contexts": [
+            {
+              "patternId": "931fd5c60a9518f10be31faf",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8500220",
+              "toOperatingPoint": "8504415",
+              "stationAttachmentsMetres": [
+                97.36192734999833,
+                21.737750267395718
+              ],
+              "pathMetres": 2820.652713312392,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00089031",
+                  "to": "ch14uvag00088908"
+                }
+              ],
+              "maximumSnapMetres": 97.36192734999833,
+              "pathSha256": "55a363f6b363958364d1ed1750585190323e602c42c18275d3c99f97686b89aa"
+            },
+            {
+              "patternId": "932c5a0248989c302386b5c8",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8500220",
+              "toOperatingPoint": "8504415",
+              "stationAttachmentsMetres": [
+                97.36192734999833,
+                21.737750267395718
+              ],
+              "pathMetres": 2820.652713312392,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00089031",
+                  "to": "ch14uvag00088908"
+                }
+              ],
+              "maximumSnapMetres": 97.36192734999833,
+              "pathSha256": "55a363f6b363958364d1ed1750585190323e602c42c18275d3c99f97686b89aa"
+            }
+          ]
+        },
+        {
+          "pair": [
+            "91-36-D-j26-1",
+            "ch:1:sloid:4415:1:1",
+            "ch:1:sloid:220:0:1"
+          ],
+          "pathSha256": "6a8d53316b918fdacc404f5f1eba8ec5247e05a590df44795091e5c70d6b0f79",
+          "contexts": [
+            {
+              "patternId": "f5edfd65b72cbfcbfb3c5214",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504415",
+              "toOperatingPoint": "8500220",
+              "stationAttachmentsMetres": [
+                21.737750267395718,
+                97.36192734999833
+              ],
+              "pathMetres": 2820.652713312393,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00088908",
+                  "to": "ch14uvag00089031"
+                }
+              ],
+              "maximumSnapMetres": 97.36192734999833,
+              "pathSha256": "6a8d53316b918fdacc404f5f1eba8ec5247e05a590df44795091e5c70d6b0f79"
+            }
+          ]
+        },
+        {
+          "pair": [
+            "91-4-C-j26-1",
+            "ch:1:sloid:4410:1:1",
+            "ch:1:sloid:8001:1:3"
+          ],
+          "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed",
+          "contexts": [
+            {
+              "patternId": "943000315c0accc260b59d83",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "d99d1806a77a54fdfab2c858",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "29a1f15e1fd37773d6b3ff4e",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "e1673b5aec62d1f498910816",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "088ab459cac441c01c756a2f",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "25391fd6767f852a5b2c1656",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "84531f6a6694877e49ae80ab",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "a64598b1654bbcf09ce5b5e0",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "cc8582031c76d0354b17c136",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "67568952cd29487e77cd5066",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "f81d6bd93a4c83948afd889d",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "280ba0fb4417852f4524d8d1",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            }
+          ]
+        },
+        {
+          "pair": [
+            "91-4-C-j26-1",
+            "ch:1:sloid:8001:1:4",
+            "ch:1:sloid:4410:2:3"
+          ],
+          "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03",
+          "contexts": [
+            {
+              "patternId": "93d7a61fb6c2d5c590c3eaef",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "5e02e1491b22fd7e22a466b9",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "6fe57ad15bba0c2627cb10c5",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "4258051f1c065b27b6cbae28",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "1d3c554913eac476e5d0e4a5",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "f57454c547058fd888b25799",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "allPreviousMovementsAndPathsUnchanged": true,
+        "allAddedSourceCallsAndFieldsUnchanged": true,
+        "allNewJourneysReproducedFromCantonalAndFederalSources": true,
+        "unrelatedPairDecisionsUnchanged": true,
+        "oldSourceHashesAndLimitsUnchanged": true,
+        "bothRoutesCompleteInBothDirections": true
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "previousJourneysPreserved": 31501,
+      "addedScheduledJourneys": 79,
+      "totalAdmittedJourneys": 31580,
+      "routes": [
+        {
+          "routeId": "91-36-D-j26-1",
+          "line": "S36",
+          "addedScheduledJourneys": 38,
+          "totalJourneys": 38,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "patterns": 5,
+          "repairedPairs": [
+            {
+              "routeId": "91-36-D-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:220:0:1",
+              "toId": "ch:1:sloid:4415:1:1",
+              "from": "Dotzigen",
+              "to": "Busswil BE",
+              "maximumSnapMetres": 97.36192734999833,
+              "occurrences": 19,
+              "admittedOccurrences": 19,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8500220",
+              "toOperatingPoint": "8504415",
+              "stationAttachmentsMetres": [
+                97.36192734999833,
+                21.737750267395718
+              ],
+              "pathMetres": 2820.652713312392,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00089031",
+                  "to": "ch14uvag00088908"
+                }
+              ],
+              "railPatternIds": [
+                "931fd5c60a9518f10be31faf",
+                "932c5a0248989c302386b5c8",
+                "fc722f84a8a5905e136b0975"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-36-D-j26-1",
+                "agencyId": "33",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:220:0:1",
+                "toId": "ch:1:sloid:4415:1:1",
+                "from": "Dotzigen",
+                "to": "Busswil BE",
+                "reason": "disconnected-line",
+                "maximumSnapMetres": 9.387431561753218
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-36-D-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4415:1:1",
+              "toId": "ch:1:sloid:220:0:1",
+              "from": "Busswil BE",
+              "to": "Dotzigen",
+              "maximumSnapMetres": 97.36192734999833,
+              "occurrences": 19,
+              "admittedOccurrences": 19,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504415",
+              "toOperatingPoint": "8500220",
+              "stationAttachmentsMetres": [
+                21.737750267395718,
+                97.36192734999833
+              ],
+              "pathMetres": 2820.652713312393,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00088908",
+                  "to": "ch14uvag00089031"
+                }
+              ],
+              "railPatternIds": [
+                "71598dfd4affd5485ec7519c",
+                "f5edfd65b72cbfcbfb3c5214"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-36-D-j26-1",
+                "agencyId": "33",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4415:1:1",
+                "toId": "ch:1:sloid:220:0:1",
+                "from": "Busswil BE",
+                "to": "Dotzigen",
+                "reason": "disconnected-line",
+                "maximumSnapMetres": 9.387431561753218
+              },
+              "matched": true
+            }
+          ]
+        },
+        {
+          "routeId": "91-4-C-j26-1",
+          "line": "S4",
+          "addedScheduledJourneys": 41,
+          "totalJourneys": 48,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "patterns": 23,
+          "repairedPairs": [
+            {
+              "routeId": "91-4-C-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4410:1:1",
+              "toId": "ch:1:sloid:8001:1:3",
+              "from": "Zollikofen",
+              "to": "Schönbühl SBB",
+              "maximumSnapMetres": 61.431055560565845,
+              "occurrences": 20,
+              "admittedOccurrences": 20,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "railPatternIds": [
+                "19ccf93bb5ba419397842696",
+                "29a1f15e1fd37773d6b3ff4e",
+                "3b6497b697744f587642d845",
+                "67568952cd29487e77cd5066",
+                "943000315c0accc260b59d83",
+                "cc8582031c76d0354b17c136",
+                "e1673b5aec62d1f498910816"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-4-C-j26-1",
+                "agencyId": "33",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4410:1:1",
+                "toId": "ch:1:sloid:8001:1:3",
+                "from": "Zollikofen",
+                "to": "Schönbühl SBB",
+                "reason": "disconnected-line",
+                "maximumSnapMetres": 6.67976460047477
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-4-C-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:8001:1:4",
+              "toId": "ch:1:sloid:4410:2:3",
+              "from": "Schönbühl SBB",
+              "to": "Zollikofen",
+              "maximumSnapMetres": 22.818089654793337,
+              "occurrences": 20,
+              "admittedOccurrences": 20,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "railPatternIds": [
+                "0ef8e342ed1de1054ba535b3",
+                "1d3c554913eac476e5d0e4a5",
+                "2da4dc88dc41531332e2e487",
+                "4258051f1c065b27b6cbae28",
+                "6fe57ad15bba0c2627cb10c5",
+                "718d63382a2a599033042b29",
+                "821b529d5808294b3f6de430",
+                "93d7a61fb6c2d5c590c3eaef",
+                "d08eb5c59be2d3467226fca7"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-4-C-j26-1",
+                "agencyId": "33",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:8001:1:4",
+                "toId": "ch:1:sloid:4410:2:3",
+                "from": "Schönbühl SBB",
+                "to": "Zollikofen",
+                "reason": "disconnected-line",
+                "maximumSnapMetres": 8.012522793054663
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-4-C-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:8001:1:4",
+              "toId": "ch:1:sloid:4410:2:2",
+              "from": "Schönbühl SBB",
+              "to": "Zollikofen",
+              "maximumSnapMetres": 21.058477000839602,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                21.058477000839602
+              ],
+              "pathMetres": 3972.197986170773,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "railPatternIds": [
+                "5ff7af3d75bd08461f2ce418"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-4-C-j26-1",
+                "agencyId": "33",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:8001:1:4",
+                "toId": "ch:1:sloid:4410:2:2",
+                "from": "Schönbühl SBB",
+                "to": "Zollikofen",
+                "reason": "disconnected-line",
+                "maximumSnapMetres": 2.736323034995316
+              },
+              "matched": true
+            }
+          ]
+        }
+      ],
+      "candidateContexts": [
+        {
+          "pair": [
+            "91-36-D-j26-1",
+            "ch:1:sloid:220:0:1",
+            "ch:1:sloid:4415:1:1"
+          ],
+          "pathSha256": "55a363f6b363958364d1ed1750585190323e602c42c18275d3c99f97686b89aa",
+          "contexts": [
+            {
+              "patternId": "931fd5c60a9518f10be31faf",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8500220",
+              "toOperatingPoint": "8504415",
+              "stationAttachmentsMetres": [
+                97.36192734999833,
+                21.737750267395718
+              ],
+              "pathMetres": 2820.652713312392,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00089031",
+                  "to": "ch14uvag00088908"
+                }
+              ],
+              "maximumSnapMetres": 97.36192734999833,
+              "pathSha256": "55a363f6b363958364d1ed1750585190323e602c42c18275d3c99f97686b89aa"
+            },
+            {
+              "patternId": "fc722f84a8a5905e136b0975",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8500220",
+              "toOperatingPoint": "8504415",
+              "stationAttachmentsMetres": [
+                97.36192734999833,
+                21.737750267395718
+              ],
+              "pathMetres": 2820.652713312392,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00089031",
+                  "to": "ch14uvag00088908"
+                }
+              ],
+              "maximumSnapMetres": 97.36192734999833,
+              "pathSha256": "55a363f6b363958364d1ed1750585190323e602c42c18275d3c99f97686b89aa"
+            },
+            {
+              "patternId": "932c5a0248989c302386b5c8",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8500220",
+              "toOperatingPoint": "8504415",
+              "stationAttachmentsMetres": [
+                97.36192734999833,
+                21.737750267395718
+              ],
+              "pathMetres": 2820.652713312392,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00089031",
+                  "to": "ch14uvag00088908"
+                }
+              ],
+              "maximumSnapMetres": 97.36192734999833,
+              "pathSha256": "55a363f6b363958364d1ed1750585190323e602c42c18275d3c99f97686b89aa"
+            }
+          ]
+        },
+        {
+          "pair": [
+            "91-36-D-j26-1",
+            "ch:1:sloid:4415:1:1",
+            "ch:1:sloid:220:0:1"
+          ],
+          "pathSha256": "6a8d53316b918fdacc404f5f1eba8ec5247e05a590df44795091e5c70d6b0f79",
+          "contexts": [
+            {
+              "patternId": "71598dfd4affd5485ec7519c",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504415",
+              "toOperatingPoint": "8500220",
+              "stationAttachmentsMetres": [
+                21.737750267395718,
+                97.36192734999833
+              ],
+              "pathMetres": 2820.652713312393,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00088908",
+                  "to": "ch14uvag00089031"
+                }
+              ],
+              "maximumSnapMetres": 97.36192734999833,
+              "pathSha256": "6a8d53316b918fdacc404f5f1eba8ec5247e05a590df44795091e5c70d6b0f79"
+            },
+            {
+              "patternId": "f5edfd65b72cbfcbfb3c5214",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504415",
+              "toOperatingPoint": "8500220",
+              "stationAttachmentsMetres": [
+                21.737750267395718,
+                97.36192734999833
+              ],
+              "pathMetres": 2820.652713312393,
+              "maximumTopologyAttachmentMetres": 14.89340606927423,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087565",
+                  "from": "ch14uvag00088908",
+                  "to": "ch14uvag00089031"
+                }
+              ],
+              "maximumSnapMetres": 97.36192734999833,
+              "pathSha256": "6a8d53316b918fdacc404f5f1eba8ec5247e05a590df44795091e5c70d6b0f79"
+            }
+          ]
+        },
+        {
+          "pair": [
+            "91-4-C-j26-1",
+            "ch:1:sloid:4410:1:1",
+            "ch:1:sloid:8001:1:3"
+          ],
+          "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed",
+          "contexts": [
+            {
+              "patternId": "943000315c0accc260b59d83",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "29a1f15e1fd37773d6b3ff4e",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "e1673b5aec62d1f498910816",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "19ccf93bb5ba419397842696",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "cc8582031c76d0354b17c136",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "67568952cd29487e77cd5066",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            },
+            {
+              "patternId": "3b6497b697744f587642d845",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504410",
+              "toOperatingPoint": "8508001",
+              "stationAttachmentsMetres": [
+                61.431055560565845,
+                18.151092587578322
+              ],
+              "pathMetres": 4011.2799866516357,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090208",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00089854"
+                }
+              ],
+              "maximumSnapMetres": 61.431055560565845,
+              "pathSha256": "6b8a202435a69c4fa862e873277f06cbcfb9b5eed69fd2e477e4928c59cb94ed"
+            }
+          ]
+        },
+        {
+          "pair": [
+            "91-4-C-j26-1",
+            "ch:1:sloid:8001:1:4",
+            "ch:1:sloid:4410:2:3"
+          ],
+          "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03",
+          "contexts": [
+            {
+              "patternId": "821b529d5808294b3f6de430",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "93d7a61fb6c2d5c590c3eaef",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "718d63382a2a599033042b29",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "6fe57ad15bba0c2627cb10c5",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "2da4dc88dc41531332e2e487",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "d08eb5c59be2d3467226fca7",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "4258051f1c065b27b6cbae28",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "0ef8e342ed1de1054ba535b3",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            },
+            {
+              "patternId": "1d3c554913eac476e5d0e4a5",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                22.818089654793337
+              ],
+              "pathMetres": 3973.957598824727,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 22.818089654793337,
+              "pathSha256": "ee35e51cbfe9e12291eca4ec401b5f5d288eccfb3eb6ee3f1a97d31055188c03"
+            }
+          ]
+        },
+        {
+          "pair": [
+            "91-4-C-j26-1",
+            "ch:1:sloid:8001:1:4",
+            "ch:1:sloid:4410:2:2"
+          ],
+          "pathSha256": "da260eb1abe68331a9999d743ee69f536711f1e926ef2dfb0db50861ae26444f",
+          "contexts": [
+            {
+              "patternId": "5ff7af3d75bd08461f2ce418",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8508001",
+              "toOperatingPoint": "8504410",
+              "stationAttachmentsMetres": [
+                19.441670666442576,
+                21.058477000839602
+              ],
+              "pathMetres": 3972.197986170773,
+              "maximumTopologyAttachmentMetres": 15.521114858447001,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087656",
+                  "from": "ch14uvag00089854",
+                  "to": "ch14uvag00090209"
+                },
+                {
+                  "id": "ch14uvag00087657",
+                  "from": "ch14uvag00090209",
+                  "to": "ch14uvag00090208"
+                }
+              ],
+              "maximumSnapMetres": 21.058477000839602,
+              "pathSha256": "da260eb1abe68331a9999d743ee69f536711f1e926ef2dfb0db50861ae26444f"
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "allPreviousMovementsAndPathsUnchanged": true,
+        "allAddedSourceCallsAndFieldsUnchanged": true,
+        "allNewJourneysReproducedFromCantonalAndFederalSources": true,
+        "unrelatedPairDecisionsUnchanged": true,
+        "oldSourceHashesAndLimitsUnchanged": true,
+        "bothRoutesCompleteInBothDirections": true
+      }
+    }
+  ],
+  "seasonalResultsUnchanged": true,
+  "scope": "September S36 Dotzigen–Busswil and S4 Zollikofen–Schönbühl only. Exact operating-point and source-segment identities; all complete input-pattern contexts must agree. Federal source date is not a certification of current running tracks or alignment."
+}

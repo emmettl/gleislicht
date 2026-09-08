@@ -923,5 +923,66 @@
       ],
       "reason": "Official PostAuto map corroborates the shared 210/211 corridor. Apply the exact line-211 graph only to these individually pinned line-210 endpoint-gap pairs, with original 120 m / 4.5x limits. Preserve every passing primary path. No generic operator-wide routing, Horn branch substitution, source-call changes or direction certification."
     }
+  ],
+  "stopAnchors": [
+    {
+      "id": "vmobil-treffpunkt-164",
+      "stopId": "ch:1:sloid:1200511",
+      "expectedName": "Dornbirn, Treffpunkt a.d.Ach",
+      "expectedCoordinate": [
+        "9.72297836",
+        "47.40614449"
+      ],
+      "routeIds": [
+        "92-164-C-j26-1"
+      ],
+      "reviewedDates": [
+        "2026-09-04",
+        "2026-09-06"
+      ],
+      "reviewedTimetableSha256": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+      "sourceFile": "endpoint-review/vmobil-20260703.zip",
+      "sourceSha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+      "sourceStopId": "at:48:570:0:1",
+      "sourceStops": [
+        {
+          "stop_id": "at:48:570:0:1",
+          "stop_name": "Dornbirn Treffpunkt A.d.Ach",
+          "stop_lon": "9.72965284",
+          "stop_lat": "47.41016915"
+        },
+        {
+          "stop_id": "at:48:570:0:2",
+          "stop_name": "Dornbirn Treffpunkt A.d.Ach",
+          "stop_lon": "9.72976962",
+          "stop_lat": "47.41015699"
+        }
+      ],
+      "maximumPlatformSpreadMetres": 15,
+      "maximumShiftMetres": 700,
+      "evidence": [
+        {
+          "url": "https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/contract_examples/Lizenzvereinbarung_DBP_v1.1_0.pdf",
+          "publisher": "Mobilitätsverbünde Österreich OG",
+          "sha256": "0ebe5104d6f730655394deb695065baaa17fa16c2d6bbf94373e274835c5e298",
+          "retrievedAt": "2026-09-08T19:14:09.544Z",
+          "sourceEditionDate": null,
+          "file": "endpoint-review/vmobil-license.pdf"
+        },
+        {
+          "url": "https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/sample_data/20260703-0010_gtfs_flex_vmobil_2026.zip",
+          "publisher": "Mobilitätsverbünde Österreich OG / Verkehrsverbund Vorarlberg",
+          "sha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+          "retrievedAt": "2026-09-08T19:14:12.507Z",
+          "sourceEditionDate": "2026-07-03",
+          "file": "endpoint-review/vmobil-20260703.zip"
+        }
+      ],
+      "scheduleReview": {
+        "path": "data/st-gallen-stop-anchor-evidence.json",
+        "sha256": "4a872a910ee2faa8b2ae3dab2217e9d53be917c339eadce3aa167f19ec4877d5"
+      },
+      "use": "Representative stop-level rendering anchor from one published platform; not a directional platform assignment. Original Swiss ID, name, calls and times preserved. Opposite source platform is within 15 m. Only reviewed line 164 and fixture dates allowed."
+    }
   ]
 }

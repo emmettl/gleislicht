@@ -4,6 +4,121 @@
     "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
   },
   "sources": {
+    "s29Precedence": {
+      "policy": {
+        "schemaVersion": 1,
+        "routeId": "91-29-j26-1",
+        "agencyId": "11",
+        "line": "S29",
+        "mode": "rail",
+        "sourceLine": "450_S_b",
+        "sourceSha256": "6224b50080d4d806dd9beca66904c0911a6cb4ff2218e00c94295112e7272e3e",
+        "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+        "pairs": [
+          {
+            "from": [
+              7.90794131,
+              47.35220757,
+              "Olten",
+              "8",
+              "ch:1:sloid:218:5:8"
+            ],
+            "to": [
+              8.05147413,
+              47.39117396,
+              "Aarau",
+              "3",
+              "ch:1:sloid:2113:2:3"
+            ]
+          },
+          {
+            "from": [
+              7.90794131,
+              47.35220757,
+              "Olten",
+              "8",
+              "ch:1:sloid:218:5:8"
+            ],
+            "to": [
+              8.05212091,
+              47.39150845,
+              "Aarau",
+              "1",
+              "ch:1:sloid:2113:1:1"
+            ]
+          }
+        ],
+        "method": "For these two exact previously unresolved directed S29 platform pairs only, use the official operator/line-specific Bern 450_S_b geometry in every complete seasonal context before consensus. This rejects context-dependent 45 km FOT alternatives in favour of the 13.3 km S29 line. All other sources, successful published paths, original calls, attachment limits and whole-pattern admission rules remain unchanged."
+      },
+      "policySha256": "292f91ec9935a527070cce99b3b4b0ef21f902ae95e657f5544da79a7de36468"
+    },
+    "railReview": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceDirectory": "data/zug-rail-sources",
+        "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "sourceMetadataSha256": "deeaa5552be1c671511cee21d9ba2787d5787d008dda4d4a36b82d4d4e64462c",
+        "node": {
+          "id": "ch14uvag00165678",
+          "number": "8519309",
+          "name": "Interlaken Ost [Gleis 5-8]"
+        },
+        "segment": {
+          "id": "ch14uvag00087489",
+          "gauge": "mm1435"
+        },
+        "routes": [
+          {
+            "routeId": "91-61-A-j26-1",
+            "agencyId": "11",
+            "line": "IC61"
+          },
+          {
+            "routeId": "91-3-Y-j26-1",
+            "agencyId": "11",
+            "line": "ICE"
+          }
+        ],
+        "stops": [
+          [
+            7.86973596,
+            46.69089863,
+            "Interlaken Ost",
+            "5",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          [
+            7.86979884,
+            46.69105267,
+            "Interlaken Ost",
+            "7",
+            "ch:1:sloid:7492:0:460848"
+          ]
+        ],
+        "sourceNumber": "8507492",
+        "method": "Exact IC61/ICE route and original Interlaken Ost platform 5/7 crosswalk to the FOT node explicitly labelled tracks 5–8. Coordinates, platform labels and all original calls remain unchanged. Full-pattern standard-gauge routing and all-context consensus still apply. Only previously unmatched segments can use reviewed results; no attachment or detour limits are widened."
+      },
+      "policySha256": "0c5f90e12087792d0c15040f1a98b0c0ec9070c95a78605acd8d1ca0fe274e2e",
+      "node": {
+        "id": "ch14uvag00165678",
+        "number": "8519309",
+        "name": "Interlaken Ost [Gleis 5-8]",
+        "coordinate": [
+          7.868937,
+          46.690837
+        ]
+      },
+      "segment": {
+        "id": "ch14uvag00087489",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2014-09-03",
+        "validUntil": null,
+        "infrastructureOperator": "BLS",
+        "attachmentMetres": 9.202513384655338,
+        "reason": null
+      }
+    },
     "corridors": {
       "policySha256": "1afe8daa8603bbf5965ff58758d7e8fd8af104ec453566aa5d3aa8598852f1ce",
       "asm": {
@@ -468,23 +583,23 @@
       },
       "after": {
         "trips": 7156,
-        "admittedTrips": 6863,
+        "admittedTrips": 6918,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5785,
+        "admittedScheduledTrips": 5840,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 96971,
+        "matchedScheduledSegmentOccurrences": 97026,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98049,
-        "admittedSegmentOccurrences": 90928,
+        "matchedSegmentOccurrences": 98104,
+        "admittedSegmentOccurrences": 91365,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4230,
+        "matchedDirectedPairs": 4238,
         "patterns": 921,
-        "completePatterns": 838,
-        "admittedPatterns": 838,
+        "completePatterns": 870,
+        "admittedPatterns": 870,
         "excludedTrips": {
-          "incomplete-directed-pattern": 293
+          "incomplete-directed-pattern": 238
         }
       },
       "lostAdmittedPatterns": [],
@@ -5002,6 +5117,76 @@
           ]
         },
         {
+          "id": "c7d89bb80aac4e3329b2ce01",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "859e689b3d220bd4aa454873",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:3:4"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "8bbdddd1af3550c8e67f9953",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "823ff0a32b0063349263a6c4",
           "routeId": "91-29-j26-1",
           "line": "S29",
@@ -5019,6 +5204,30 @@
             "ch:1:sloid:3503:2:2"
           ],
           "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "dc31b7d2dbbaf0b312d9d9ad",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 16,
           "geometrySources": [
             "bern-official-450_S_b",
             "fot",
@@ -5046,6 +5255,30 @@
           "admittedTrips": 1,
           "geometrySources": [
             "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "047c5a3ea0242a4f48930b67",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
             "solothurn-network"
           ]
         },
@@ -5167,6 +5400,37 @@
             "ch:1:sloid:3503:2:2"
           ],
           "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "4f1075d165db6e9b9b89db36",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 2,
           "geometrySources": [
             "bern-official-450_S_b",
             "fot",
@@ -5990,6 +6254,72 @@
           ]
         },
         {
+          "id": "f97050b05d732372418019a8",
+          "routeId": "91-3-Y-j26-1",
+          "line": "ICE",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:90"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "12404fdb65e00f01f74e27ee",
+          "routeId": "91-3-Y-j26-1",
+          "line": "ICE",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:5:10",
+            "ch:1:sloid:90"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "5e4a94b386e2cc79d4108b68",
+          "routeId": "91-3-Y-j26-1",
+          "line": "ICE",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:5:10",
+            "ch:1:sloid:90"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
           "id": "946fdbe952a5edb74e5d1fa5",
           "routeId": "91-3-Y-j26-1",
           "line": "ICE",
@@ -6029,6 +6359,75 @@
           "admittedTrips": 1,
           "geometrySources": [
             "fot"
+          ]
+        },
+        {
+          "id": "4b7a9bb81c69c016a3917fe8",
+          "routeId": "91-3-Y-j26-1",
+          "line": "ICE",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:90",
+            "ch:1:sloid:10:2:4",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "450599b869cdf5b153a56619",
+          "routeId": "91-3-Y-j26-1",
+          "line": "ICE",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:90",
+            "ch:1:sloid:10:2:4",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:7000:4:8",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "fbe8ccb5b5467c6130df8e6c",
+          "routeId": "91-3-Y-j26-1",
+          "line": "ICE",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:90",
+            "ch:1:sloid:10:3:5",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:7000:4:8",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
           ]
         },
         {
@@ -7805,6 +8204,429 @@
           "admittedTrips": 11,
           "geometrySources": [
             "fot"
+          ]
+        },
+        {
+          "id": "06719d7889f8d52d714f28be",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:0:19",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:26:1:1",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "f4bb72f0b08b2604bde9559e",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:460848",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:10:4:8"
+          ],
+          "admittedTrips": 3,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "af5f677df6e70bc53cb0eb85",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:460848",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:10:3:6"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "bc5df788fc4d0b05da66b295",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:10:4:7"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "67b18347f41a3d1a926827ec",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:10:4:8"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "2e45582fb56ecef6470d3711",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:460848",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:4:7"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "acfe98d22560f999f8891cb1",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:460848",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:4:8"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "0ccf6f973e3495da90f8dbc1",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:3:6"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "38c31436cf59b1f3492cc490",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:7:14"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "8a44de9ef0c75395bda16706",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7006:2:2",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:8:16"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "194eb9a9ea783f8d116f21b0",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:7",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "fabde9a9006db6c9494b9d72",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "ebe70df51cf04d6a2ba05c2e",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "b6223bb8e82951136c3cdd49",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:5:10",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "400ef0cf4ff247312b1bf46b",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:7",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "e799eb596aaf8554db85ff6e",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:7",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "f1672e18ea7e9fce79096e9d",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:2:3",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:7000:4:8",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "5b81a79ef725732271d6f97c",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:2:3",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "3607c46f1ab5e4dac2949c3f",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:3:6",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:7000:4:8",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:460848"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "484d76f0dba3f11d5a2738da",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:3:6",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:7000:4:8",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 3,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
           ]
         },
         {
@@ -16987,7 +17809,7 @@
         },
         "solothurn-network": {
           "directedPairs": 3004,
-          "admittedOccurrences": 76419
+          "admittedOccurrences": 76519
         },
         "bern-official-413": {
           "directedPairs": 10,
@@ -16995,11 +17817,15 @@
         },
         "fot": {
           "directedPairs": 850,
-          "admittedOccurrences": 4894
+          "admittedOccurrences": 5176
         },
         "bern-official-450_S_b": {
-          "directedPairs": 9,
-          "admittedOccurrences": 59
+          "directedPairs": 11,
+          "admittedOccurrences": 81
+        },
+        "fot-reviewed-interlaken-platforms": {
+          "directedPairs": 6,
+          "admittedOccurrences": 33
         },
         "osm-road-inference": {
           "directedPairs": 266,
@@ -17038,23 +17864,23 @@
       },
       "after": {
         "trips": 5819,
-        "admittedTrips": 5467,
+        "admittedTrips": 5507,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4359,
+        "admittedScheduledTrips": 4399,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67650,
+        "matchedScheduledSegmentOccurrences": 67690,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68758,
-        "admittedSegmentOccurrences": 62412,
+        "matchedSegmentOccurrences": 68798,
+        "admittedSegmentOccurrences": 62727,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4435,
+        "matchedDirectedPairs": 4443,
         "patterns": 777,
-        "completePatterns": 700,
-        "admittedPatterns": 700,
+        "completePatterns": 722,
+        "admittedPatterns": 722,
         "excludedTrips": {
-          "incomplete-directed-pattern": 343,
+          "incomplete-directed-pattern": 303,
           "night-network-excluded-by-source": 9
         }
       },
@@ -21712,6 +22538,76 @@
           ]
         },
         {
+          "id": "c7d89bb80aac4e3329b2ce01",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "859e689b3d220bd4aa454873",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:3:4"
+          ],
+          "admittedTrips": 10,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "8bbdddd1af3550c8e67f9953",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "823ff0a32b0063349263a6c4",
           "routeId": "91-29-j26-1",
           "line": "S29",
@@ -21729,6 +22625,30 @@
             "ch:1:sloid:3503:2:2"
           ],
           "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "dc31b7d2dbbaf0b312d9d9ad",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 6,
           "geometrySources": [
             "bern-official-450_S_b",
             "fot",
@@ -21877,6 +22797,37 @@
             "ch:1:sloid:3503:2:2"
           ],
           "admittedTrips": 5,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "4f1075d165db6e9b9b89db36",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 2,
           "geometrySources": [
             "bern-official-450_S_b",
             "fot",
@@ -22771,6 +23722,50 @@
           "geometrySources": [
             "fot",
             "solothurn-network"
+          ]
+        },
+        {
+          "id": "83b0ba8592f6c7b63a9141bd",
+          "routeId": "91-3-Y-j26-1",
+          "line": "ICE",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:90",
+            "ch:1:sloid:10:2:4",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "bb4295a6cd878c3dd13bd597",
+          "routeId": "91-3-Y-j26-1",
+          "line": "ICE",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:5:10",
+            "ch:1:sloid:90"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
           ]
         },
         {
@@ -23973,6 +24968,29 @@
           ]
         },
         {
+          "id": "fb7a2c949442ead472dcffa3",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:3:6",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:26:1:1",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "bdb7db172b1b143965e53a17",
           "routeId": "91-61-A-j26-1",
           "line": "IC61",
@@ -24023,6 +25041,230 @@
           ]
         },
         {
+          "id": "f576e93b5c4facdbd15e2d12",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:460848",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:4:7"
+          ],
+          "admittedTrips": 3,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "766d1041d05cb403657d709b",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:460848",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:4:8"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "f4b3802caf00b71634266265",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:460848",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10:3:5"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "cbdfd4899fdc916bcc4154c9",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:6",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:10_gen:ch:1:sloid:10:4:8_pf:8AB"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "9a58c940796a26561e55dba9",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:460848",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:3",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:218:4:7",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:4:7"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "0e84343f2870b6cf2db95a7e",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:7492:0:581416",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7483:0:341164",
+            "ch:1:sloid:7100:2:2",
+            "ch:1:sloid:7006:2:2",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:218:3:4",
+            "ch:1:sloid:23:2:4",
+            "ch:1:sloid:10:4:8"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "7ee1d96a5af79a4a87ea6eee",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:7",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "c68e6e3ef58b96b5faf2912c",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:460848"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "de8759923f932d1a57740b4d",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:4:8",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "5377ac8a2614f1528a2c513d",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:5:9",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:460848"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "5bf4627f89bd312645ddbfff",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:5:10",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
           "id": "e19f9d92631d75e1a9615e81",
           "routeId": "91-61-A-j26-1",
           "line": "IC61",
@@ -24054,6 +25296,47 @@
           "geometrySources": [
             "fot",
             "solothurn-network"
+          ]
+        },
+        {
+          "id": "88b35aa3ef374c114a3913a6",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:3:6",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:460848"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
+          ]
+        },
+        {
+          "id": "49c169bde403468244217b9d",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:7:14",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:7000:5:9",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms"
           ]
         },
         {
@@ -24121,6 +25404,28 @@
           "admittedTrips": 1,
           "geometrySources": [
             "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "48ce15dc535c2a507cdbed6b",
+          "routeId": "91-61-A-j26-1",
+          "line": "IC61",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:10:3:6",
+            "ch:1:sloid:23:1:1",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:7000:3:5",
+            "ch:1:sloid:7100:1:1",
+            "ch:1:sloid:7483:0:90840",
+            "ch:1:sloid:7493:0:470772",
+            "ch:1:sloid:7492:0:460848"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "fot-reviewed-interlaken-platforms",
             "solothurn-network"
           ]
         },
@@ -30834,7 +32139,7 @@
         },
         "fot": {
           "directedPairs": 887,
-          "admittedOccurrences": 4074
+          "admittedOccurrences": 4267
         },
         "sbb-rail-inference": {
           "directedPairs": 2,
@@ -30842,15 +32147,19 @@
         },
         "solothurn-network": {
           "directedPairs": 2611,
-          "admittedOccurrences": 49041
+          "admittedOccurrences": 49123
         },
         "bern-official-413": {
           "directedPairs": 10,
           "admittedOccurrences": 238
         },
         "bern-official-450_S_b": {
-          "directedPairs": 10,
-          "admittedOccurrences": 58
+          "directedPairs": 12,
+          "admittedOccurrences": 79
+        },
+        "fot-reviewed-interlaken-platforms": {
+          "directedPairs": 6,
+          "admittedOccurrences": 19
         },
         "osm-road-inference": {
           "directedPairs": 824,

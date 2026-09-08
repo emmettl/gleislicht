@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "sourceId": "bern-fot-rail-20210706",
+  "sourceDirectory": "data/bern-sources/fot-rail",
+  "sourceMetadataSha256": "46ab3ed91471fde35bcb1b678410efe7ecab6bf1cf02027729f547545b94aaad",
+  "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "limits": {
+    "stationAttachmentMetres": 120,
+    "topologyAttachmentMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 3000,
+    "simplificationMetres": 0
+  },
+  "gauges": [
+    "mm1435"
+  ],
+  "infrastructureOperators": [
+    "SBB CFF FFS"
+  ],
+  "routes": [
+    {
+      "routeId": "91-36-D-j26-1",
+      "agencyId": "33",
+      "line": "S36",
+      "mode": "rail",
+      "operatingPointPair": [
+        "8500220",
+        "8504415"
+      ],
+      "sourceSegments": [
+        "ch14uvag00087565"
+      ]
+    },
+    {
+      "routeId": "91-4-C-j26-1",
+      "agencyId": "33",
+      "line": "S4",
+      "mode": "rail",
+      "operatingPointPair": [
+        "8504410",
+        "8508001"
+      ],
+      "sourceSegments": [
+        "ch14uvag00087657",
+        "ch14uvag00087656"
+      ]
+    }
+  ],
+  "admission": "Only missing cantonal directed pairs on the exact reviewed operating-point pairs and BLS route identities. All complete source-pattern contexts must yield the same valid federal path. Keep every original call and every successful cantonal path.",
+  "model": "FOT declared topology, exact operating-point IDs and standard gauge; directions inferred from GTFS calls. Original rail stop-attachment and detour limits remain unchanged. The new topology attachment guard is also 120 m; measured selected segment attachments are under 16 m. Catalogue date 2021-07-06, asset updated 2025-01-18, checksum rechecked 2026-09-08; current alignment validity and running tracks are not certified."
+}

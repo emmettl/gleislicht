@@ -12,7 +12,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
+    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "scope": {
@@ -947,6 +947,67 @@
         ],
         "reason": "Official PostAuto map corroborates the shared 210/211 corridor. Apply the exact line-211 graph only to these individually pinned line-210 endpoint-gap pairs, with original 120 m / 4.5x limits. Preserve every passing primary path. No generic operator-wide routing, Horn branch substitution, source-call changes or direction certification."
       }
+    ],
+    "stopAnchors": [
+      {
+        "id": "vmobil-treffpunkt-164",
+        "stopId": "ch:1:sloid:1200511",
+        "expectedName": "Dornbirn, Treffpunkt a.d.Ach",
+        "expectedCoordinate": [
+          "9.72297836",
+          "47.40614449"
+        ],
+        "routeIds": [
+          "92-164-C-j26-1"
+        ],
+        "reviewedDates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "reviewedTimetableSha256": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+        "sourceFile": "endpoint-review/vmobil-20260703.zip",
+        "sourceSha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+        "sourceStopId": "at:48:570:0:1",
+        "sourceStops": [
+          {
+            "stop_id": "at:48:570:0:1",
+            "stop_name": "Dornbirn Treffpunkt A.d.Ach",
+            "stop_lon": "9.72965284",
+            "stop_lat": "47.41016915"
+          },
+          {
+            "stop_id": "at:48:570:0:2",
+            "stop_name": "Dornbirn Treffpunkt A.d.Ach",
+            "stop_lon": "9.72976962",
+            "stop_lat": "47.41015699"
+          }
+        ],
+        "maximumPlatformSpreadMetres": 15,
+        "maximumShiftMetres": 700,
+        "evidence": [
+          {
+            "url": "https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/contract_examples/Lizenzvereinbarung_DBP_v1.1_0.pdf",
+            "publisher": "Mobilitätsverbünde Österreich OG",
+            "sha256": "0ebe5104d6f730655394deb695065baaa17fa16c2d6bbf94373e274835c5e298",
+            "retrievedAt": "2026-09-08T19:14:09.544Z",
+            "sourceEditionDate": null,
+            "file": "endpoint-review/vmobil-license.pdf"
+          },
+          {
+            "url": "https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/sample_data/20260703-0010_gtfs_flex_vmobil_2026.zip",
+            "publisher": "Mobilitätsverbünde Österreich OG / Verkehrsverbund Vorarlberg",
+            "sha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+            "retrievedAt": "2026-09-08T19:14:12.507Z",
+            "sourceEditionDate": "2026-07-03",
+            "file": "endpoint-review/vmobil-20260703.zip"
+          }
+        ],
+        "scheduleReview": {
+          "path": "data/st-gallen-stop-anchor-evidence.json",
+          "sha256": "4a872a910ee2faa8b2ae3dab2217e9d53be917c339eadce3aa167f19ec4877d5"
+        },
+        "use": "Representative stop-level rendering anchor from one published platform; not a directional platform assignment. Original Swiss ID, name, calls and times preserved. Opposite source platform is within 15 m. Only reviewed line 164 and fixture dates allowed."
+      }
     ]
   },
   "annualRouteRecords": 343,
@@ -1102,6 +1163,29 @@
       "decision": "Local source-adapter evaluation and regional feed. Do not publish raw or derived vectors without resolving the publisher permission requirement (current clause 18; supplied clause 20). Attribution, vintage, no legal effect and disclaimer must accompany permitted application display."
     }
   },
+  "stopAnchors": [
+    {
+      "id": "vmobil-treffpunkt-164",
+      "stopId": "ch:1:sloid:1200511",
+      "name": "Dornbirn, Treffpunkt a.d.Ach",
+      "originalCoordinate": [
+        9.72297836,
+        47.40614449
+      ],
+      "coordinate": [
+        9.72965284,
+        47.41016915
+      ],
+      "sourceStopId": "at:48:570:0:1",
+      "platformSpreadMetres": 8.901186560970062,
+      "shiftMetres": 673.4817780966682,
+      "sourceSha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+      "routeIds": [
+        "92-164-C-j26-1"
+      ],
+      "use": "Representative stop-level rendering anchor from one published platform; not a directional platform assignment. Original Swiss ID, name, calls and times preserved. Opposite source platform is within 15 m. Only reviewed line 164 and fixture dates allowed."
+    }
+  ],
   "validation": {
     "passed": true,
     "annualPinnedTimetableInventoryComplete": true,
@@ -1121,23 +1205,25 @@
     {
       "date": "2026-09-04",
       "trips": 24782,
-      "admittedTrips": 10566,
-      "excludedTrips": 14216,
+      "admittedTrips": 10624,
+      "excludedTrips": 14158,
       "carryInTrips": 221,
       "admittedCarryInTrips": 162,
       "representativeHeadwayTrips": 11417,
       "admittedHeadwayTrips": 1239,
       "patterns": 1441,
-      "admittedPatterns": 1000,
+      "admittedPatterns": 1002,
       "directedPairs": 8427,
-      "matchedDirectedPairs": 7178,
+      "matchedDirectedPairs": 7182,
       "segmentOccurrences": 202330,
-      "matchedSegmentOccurrences": 177572,
+      "matchedSegmentOccurrences": 177688,
       "scheduledSegmentOccurrences": 189688,
-      "matchedScheduledSegmentOccurrences": 175108,
+      "matchedScheduledSegmentOccurrences": 175224,
       "representativeHeadwaySegmentOccurrences": 12642,
       "repairedDirectedPairs": 2,
       "admittedTripsUsingRepair": 74,
+      "anchoredDirectedPairs": 4,
+      "admittedTripsUsingStopAnchor": 58,
       "sharedCorridorDirectedPairs": 48,
       "admittedTripsUsingSharedCorridor": 66,
       "groups": [
@@ -1267,14 +1353,14 @@
           "mode": "bus",
           "routes": 1,
           "trips": 58,
-          "admittedTrips": 0,
+          "admittedTrips": 58,
           "patterns": 2,
-          "admittedPatterns": 0,
+          "admittedPatterns": 2,
           "directedPairs": 39,
-          "matchedDirectedPairs": 35,
+          "matchedDirectedPairs": 39,
           "segmentOccurrences": 1131,
-          "matchedSegmentOccurrences": 1015,
-          "geometryCoverage": 0.8974358974358975
+          "matchedSegmentOccurrences": 1131,
+          "geometryCoverage": 1
         },
         {
           "id": "138:bus",
@@ -1638,74 +1724,74 @@
         }
       ],
       "exclusionReasons": {
-        "endpoint-gap": 879,
+        "endpoint-gap": 821,
         "missing-line": 13169,
         "implausible-detour": 128,
         "disconnected-line": 40
       },
       "artifacts": {
         "directory": "data/st-gallen-region/local/2026-09-04",
-        "manifestGzipBytes": 1981612,
-        "morningGzipBytes": 2178961,
+        "manifestGzipBytes": 1989532,
+        "morningGzipBytes": 2188996,
         "chunks": [
           {
             "id": "00-02",
-            "gzipBytes": 30302,
+            "gzipBytes": 30333,
             "trips": 176
           },
           {
             "id": "02-04",
-            "gzipBytes": 590,
+            "gzipBytes": 589,
             "trips": 1
           },
           {
             "id": "04-06",
-            "gzipBytes": 73486,
-            "trips": 473
+            "gzipBytes": 73641,
+            "trips": 474
           },
           {
             "id": "06-08",
-            "gzipBytes": 193656,
-            "trips": 1519
+            "gzipBytes": 194929,
+            "trips": 1528
           },
           {
             "id": "08-10",
-            "gzipBytes": 182535,
-            "trips": 1550
+            "gzipBytes": 183662,
+            "trips": 1560
           },
           {
             "id": "10-12",
-            "gzipBytes": 177990,
-            "trips": 1515
+            "gzipBytes": 179247,
+            "trips": 1525
           },
           {
             "id": "12-14",
-            "gzipBytes": 182658,
-            "trips": 1577
+            "gzipBytes": 183943,
+            "trips": 1587
           },
           {
             "id": "14-16",
-            "gzipBytes": 176268,
-            "trips": 1517
+            "gzipBytes": 177444,
+            "trips": 1527
           },
           {
             "id": "16-18",
-            "gzipBytes": 196735,
-            "trips": 1695
+            "gzipBytes": 197879,
+            "trips": 1705
           },
           {
             "id": "18-20",
-            "gzipBytes": 179180,
-            "trips": 1350
+            "gzipBytes": 180466,
+            "trips": 1360
           },
           {
             "id": "20-22",
-            "gzipBytes": 116473,
-            "trips": 788
+            "gzipBytes": 116994,
+            "trips": 791
           },
           {
             "id": "22-24",
-            "gzipBytes": 90348,
+            "gzipBytes": 90365,
             "trips": 601
           }
         ]
@@ -1714,23 +1800,25 @@
     {
       "date": "2026-09-06",
       "trips": 22859,
-      "admittedTrips": 7299,
-      "excludedTrips": 15560,
+      "admittedTrips": 7325,
+      "excludedTrips": 15534,
       "carryInTrips": 663,
       "admittedCarryInTrips": 371,
       "representativeHeadwayTrips": 12973,
       "admittedHeadwayTrips": 1239,
       "patterns": 1182,
-      "admittedPatterns": 771,
+      "admittedPatterns": 773,
       "directedPairs": 8589,
-      "matchedDirectedPairs": 7172,
+      "matchedDirectedPairs": 7176,
       "segmentOccurrences": 142563,
-      "matchedSegmentOccurrences": 116381,
+      "matchedSegmentOccurrences": 116433,
       "scheduledSegmentOccurrences": 128365,
-      "matchedScheduledSegmentOccurrences": 113917,
+      "matchedScheduledSegmentOccurrences": 113969,
       "representativeHeadwaySegmentOccurrences": 14198,
       "repairedDirectedPairs": 2,
       "admittedTripsUsingRepair": 67,
+      "anchoredDirectedPairs": 4,
+      "admittedTripsUsingStopAnchor": 26,
       "sharedCorridorDirectedPairs": 64,
       "admittedTripsUsingSharedCorridor": 35,
       "groups": [
@@ -1860,14 +1948,14 @@
           "mode": "bus",
           "routes": 1,
           "trips": 26,
-          "admittedTrips": 0,
+          "admittedTrips": 26,
           "patterns": 2,
-          "admittedPatterns": 0,
+          "admittedPatterns": 2,
           "directedPairs": 39,
-          "matchedDirectedPairs": 35,
+          "matchedDirectedPairs": 39,
           "segmentOccurrences": 507,
-          "matchedSegmentOccurrences": 455,
-          "geometryCoverage": 0.8974358974358975
+          "matchedSegmentOccurrences": 507,
+          "geometryCoverage": 1
         },
         {
           "id": "138:bus",
@@ -2277,73 +2365,73 @@
       ],
       "exclusionReasons": {
         "missing-line": 14960,
-        "endpoint-gap": 538,
+        "endpoint-gap": 512,
         "implausible-detour": 59,
         "disconnected-line": 3
       },
       "artifacts": {
         "directory": "data/st-gallen-region/local/2026-09-06",
-        "manifestGzipBytes": 2071417,
-        "morningGzipBytes": 2183686,
+        "manifestGzipBytes": 2079742,
+        "morningGzipBytes": 2192943,
         "chunks": [
           {
             "id": "00-02",
-            "gzipBytes": 56312,
+            "gzipBytes": 56300,
             "trips": 324
           },
           {
             "id": "02-04",
-            "gzipBytes": 19953,
+            "gzipBytes": 19901,
             "trips": 111
           },
           {
             "id": "04-06",
-            "gzipBytes": 21430,
+            "gzipBytes": 21455,
             "trips": 126
           },
           {
             "id": "06-08",
-            "gzipBytes": 91117,
-            "trips": 657
+            "gzipBytes": 91523,
+            "trips": 658
           },
           {
             "id": "08-10",
-            "gzipBytes": 125789,
-            "trips": 1097
+            "gzipBytes": 126740,
+            "trips": 1102
           },
           {
             "id": "10-12",
-            "gzipBytes": 127408,
-            "trips": 1112
+            "gzipBytes": 128425,
+            "trips": 1117
           },
           {
             "id": "12-14",
-            "gzipBytes": 126864,
-            "trips": 1116
+            "gzipBytes": 127938,
+            "trips": 1121
           },
           {
             "id": "14-16",
-            "gzipBytes": 128528,
-            "trips": 1128
+            "gzipBytes": 129646,
+            "trips": 1133
           },
           {
             "id": "16-18",
-            "gzipBytes": 129718,
-            "trips": 1110
+            "gzipBytes": 130742,
+            "trips": 1115
           },
           {
             "id": "18-20",
-            "gzipBytes": 117467,
-            "trips": 833
+            "gzipBytes": 118406,
+            "trips": 838
           },
           {
             "id": "20-22",
-            "gzipBytes": 97819,
-            "trips": 660
+            "gzipBytes": 98414,
+            "trips": 662
           },
           {
             "id": "22-24",
-            "gzipBytes": 79107,
+            "gzipBytes": 79173,
             "trips": 525
           }
         ]
@@ -2352,36 +2440,40 @@
   ],
   "files": {
     "routes.json": {
-      "sha256": "08940836d7faf2caf4daafee5e991ad3fc1e35a292269a499a27fe4f7712a326"
+      "sha256": "12e1495b0843d8c41e1caa3f44b270318b12f6fd83e61f5741af2a6f022b4f93"
     },
     "source-lines.json": {
-      "sha256": "9b5240af91392f805d1f8e78bc51d4eaeb50e55755de0f48f1f21c0fa5dd1e3b"
+      "sha256": "c21998d19ef366a6a5694bbffd9f661cac6eaf93b19a7e32238d91dbecbda8c2"
     },
     "2026-09-04.json": {
-      "sha256": "67751103f1e4d520b45d0280f36af9dbec843a0d8dca12562c0746b18f8be466"
+      "sha256": "a8f456b499a0bb432becad715e8284d541aa827d78b9cbe6c5577a8a469fa40a"
     },
     "2026-09-06.json": {
-      "sha256": "a5438a9183837e3278eaf740f480bebe4fb3b08f181b1ec3c9464b72c76a6d2f"
+      "sha256": "dc5d77c95dcffb1271d54af5c712ddea3c1a5763d82f012a2594a48caa63dff5"
     }
   },
   "topologyReview": {
     "path": "data/st-gallen-topology-review.json",
-    "sha256": "f261fcff93185aa2441bf2d712acad865102910f45820498269e53936c2c284e"
+    "sha256": "3bae37a6c48c574a99799fe22da225834890ff19e7803f4887af2355c8fbc12f"
   },
   "detourReview": {
     "path": "data/st-gallen-detour-review.json",
-    "sha256": "689e13683f0dd70cf9c47c7632db69f570d2103accb03b0047e28fd957ddee56"
+    "sha256": "df65eb6582596aa67bbf78a93623774aff75d420b2f80cff059c3ae6326c2c69"
   },
   "endpointReview": {
     "path": "data/st-gallen-endpoint-review.json",
-    "sha256": "e4ce03cfbb7ff3c67dc2ca8ff72ab09a9059bc49add701d8431e546af76be969"
+    "sha256": "7d31ad418b2e8cc99b51795b53151444ecdef87e98bdfdf3341ec34d5e40c9e7"
   },
   "vmobilReview": {
     "path": "data/st-gallen-vmobil-review.json",
-    "sha256": "8b83290667718d732d5513ab88947c6d506e91fbf574abe96636bd781128c736"
+    "sha256": "cb58734600750045b9e251577a51875e439987a75a6e4c666eae0ce6e7a572a2"
+  },
+  "stopAnchorReview": {
+    "path": "data/st-gallen-stop-anchor-review.json",
+    "sha256": "60e88fcc1e1961141224b141df37a53b69fc2367386a4ce5bb9b2c38be114e52"
   },
   "sharedCorridorReview": {
     "path": "data/st-gallen-shared-corridor-review.json",
-    "sha256": "90786bad5a03b9e1d8af27f35c4e8b1b55ff0667ff472b60f6f457b935b67574"
+    "sha256": "33080df88717df7f87939399182025894a5c2ebcb0217d925a91b18d07eab2fc"
   }
 }

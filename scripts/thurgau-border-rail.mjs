@@ -21,11 +21,23 @@ export function thurgauBorderGraph(osm, policy) {
   }
   const ways = osm.elements.filter(e => e.type === 'way')
   assert.equal(new Set(ways.map(w => w.id)).size, ways.length)
+  const reviewed = new Map((policy.reviewedWays ?? []).map(r => [r.id, r]))
+  for (const review of reviewed.values()) {
+    const w = ways.find(w => w.id === review.id)
+    assert(w, 'Missing reviewed passenger connector')
+    assert.equal(borderSha(JSON.stringify(w)), review.sourceFeatureSha256, 'Changed reviewed passenger connector')
+    assert.deepEqual([w.nodes[0], w.nodes.at(-1)], review.endNodes)
+    assert.equal(w.tags.gauge, '1435'); assert.equal(w.tags.passenger_lines, '1'); assert.equal(w.tags.service, 'siding'); assert.equal(w.tags.operator, 'SBB')
+    for (const [i, id] of review.connectedMainWays.entries()) {
+      const main = ways.find(w => w.id === id)
+      assert(main?.nodes.includes(review.endNodes[i]) && main.tags.usage === 'main' && main.tags.gauge === '1435', 'Changed reviewed main-line connection')
+    }
+  }
   for (const w of ways) {
     assert(w.timestamp <= policy.snapshot, 'Way newer than requested snapshot')
-    const reason = w.tags.railway !== 'rail' || w.tags.gauge !== '1435' ? 'unreviewed-rail-gauge' :
+    const reason = reviewed.has(w.id) ? null : w.tags.railway !== 'rail' || w.tags.gauge !== '1435' ? 'unreviewed-rail-gauge' :
       !((['main', 'branch'].includes(w.tags.usage) && !w.tags.service) || (w.tags.service === 'crossover' && w.tags['railway:track_type'] === 'main')) ? 'non-passenger-running-line' : null
-    inventory.push({ id: w.id, version: w.version, timestamp: w.timestamp, tags: w.tags, reason })
+    inventory.push({ id: w.id, version: w.version, timestamp: w.timestamp, tags: w.tags, reason, ...(reviewed.has(w.id) ? { admissionBasis: 'exact-reviewed-passenger-connector' } : {}) })
     if (reason) continue
     assert(w.nodes.length >= 2, 'Empty rail way')
     for (let i = 1; i < w.nodes.length; i++) {
@@ -97,7 +109,7 @@ export function thurgauBorderGraph(osm, policy) {
   } }
 }
 
-export async function loadThurgauBorderRail(timetable) {
+export async function loadThurgauBorderRail(timetable, { reviewedWays = true } = {}) {
   const directory = 'data/thurgau-border-rail-sources', policyBytes = await readFile('data/thurgau-border-rail-policy.json'), policy = JSON.parse(policyBytes)
   const sourceBytes = await readFile(`${directory}/sources.json`), source = JSON.parse(sourceBytes)
   assert.equal(borderSha(sourceBytes), policy.sourceSha256)
@@ -105,14 +117,25 @@ export async function loadThurgauBorderRail(timetable) {
   for (const f of source.files) assert.equal(borderSha(await readFile(`${directory}/${f.file}`)), f.sha256)
   assert.equal(source.snapshot, policy.snapshot)
   assert((await readFile(`${directory}/query.txt`, 'utf8')).includes(`[date:"${policy.snapshot}"]`), 'Query snapshot differs from policy')
-  const osm = JSON.parse(gunzipSync(await readFile(`${directory}/osm.json.gz`))), matcher = thurgauBorderGraph(osm, policy)
+  const osm = JSON.parse(gunzipSync(await readFile(`${directory}/osm.json.gz`))), matcher = thurgauBorderGraph(osm, reviewedWays ? policy : { ...policy, reviewedWays: [] })
+  const primary = thurgauBorderGraph(osm, { ...policy, reviewedWays: [] })
+  const match = (from, to) => {
+    const original = primary.match(from, to)
+    if (original.path || !reviewedWays) return original
+    // The reviewed siding is a station-throat connection, not a general siding allowance.
+    const ids = [from.stop_id, to.stop_id].sort()
+    if (JSON.stringify(ids) !== JSON.stringify(['8102336', 'ch:1:sloid:6314:2:2'])) return original
+    const result = matcher.match(from, to)
+    if (!result.path) return result
+    return { ...result, primaryBorderFailure: original.reason, reviewedSourceWayIds: [...new Set(result.directedSourceSegments.map(s => Number(s.id.split(':')[1])).filter(id => policy.reviewedWays.some(r => r.id === id)))] }
+  }
   const ids = new Set(timetable.snapshots.flatMap(d => d.trains.filter(t => t.stops.some(([i]) => d.stops[i][4] === '8102336')).map(t => t.routeId)))
   assert.deepEqual([...ids], [policy.route.routeId])
   const keys = new Set(timetable.snapshots.flatMap(d => d.trains.filter(t => ids.has(t.routeId)).map(t => JSON.stringify(t.stops.map(([i]) => d.stops[i][4])))))
-  return { ...matcher, policy, source, policySha256: borderSha(policyBytes), supplement(train, stops, route, original) {
+  return { ...matcher, match, policy, source, policySha256: borderSha(policyBytes), supplement(train, stops, route, original) {
     if (original.every(s => s.path) || train.routeId !== policy.route.routeId) return original
     assert.equal(route.agencyId, policy.route.agencyId); assert.equal(route.line, policy.route.line)
     assert(keys.has(JSON.stringify(train.calls.map(c => c.id))), 'Unreviewed full border pattern')
-    return original.map((s, i) => s.path ? s : { ...matcher.match(stops.get(train.calls[i].id), stops.get(train.calls[i + 1].id)), primaryFailure: s.reason })
+    return original.map((s, i) => s.path ? s : { ...match(stops.get(train.calls[i].id), stops.get(train.calls[i + 1].id)), primaryFailure: s.reason })
   } }
 }

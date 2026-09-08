@@ -931,5 +931,9 @@
         "description": "Entlebuch, Bahnhof → Wolhusen, Bahnhof"
       }
     ]
+  },
+  "borderRailFallback": {
+    "policyPath": "data/luzern-border-rail-policy.json",
+    "sha256": "ada134a5e1d20c951381ee6f1e7da60b1c1f54aac22792eac3474625fd37fbe4"
   }
 }

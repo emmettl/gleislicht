@@ -4,6 +4,7 @@ const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const summary = await json('data/fribourg-audit/summary.json')
 const routes = await json('data/fribourg-audit/routes.json')
 const lines = await json('data/fribourg-audit/source-lines.json')
+const works = await json('data/fribourg-audit/works.json')
 const reports = await Promise.all(summary.days.map(d => json(`data/fribourg-audit/${d.serviceDate}.json`)))
 const n = value => value.toLocaleString('en-GB')
 const pct = (a, b) => b ? `${(a / b * 100).toFixed(1)}%` : '—'
@@ -32,7 +33,7 @@ const doc = `# Fribourg / Freiburg cantonal source study
 
 Fixture audit: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#fr).
 
-The entire canton is inventoried against the pinned annual national GTFS: **${summary.routeCount} route records, ${summary.agencyCount} agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **${n(days[0].admittedTrips)} Friday journeys and ${n(days[1].admittedTrips)} Sunday journeys** with complete directed stop patterns from cantonal lines and explicitly tagged inferred OSM road fallback. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
+The entire canton is inventoried against the pinned annual national GTFS: **${summary.routeCount} route records, ${summary.agencyCount} agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **${n(days[0].admittedTrips)} Friday journeys and ${n(days[1].admittedTrips)} Sunday journeys** with complete directed stop patterns from cantonal lines and explicitly tagged inferred OSM road and FOT rail fallback. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
 
 The [regional feed index](../data/fribourg-region/index.json) points to both civil-day manifests, twelve two-hour chunks per date, and 06:45–08:45 extracts. It uses the existing network snapshot format, **not a new GTFS ZIP**. It is saved under \`data/\` as a **local archival research artifact**. The exact matching cantonal OGD service explicitly permits attributed vector redistribution. Geometry vintage and physical direction remain unverified; this archival study is not added to public hosting or the application's study selector.
 
@@ -61,6 +62,7 @@ ${table(['Measure', 'Friday 2026-09-04', 'Sunday 2026-09-06'], [
   measure('Civil trip instances', 'trips'), measure('Scheduled instances', 'scheduledTrips'), measure('Representative headway instances', 'representativeHeadwayTrips'),
   ['Admitted instances before OSM fallback', ...reports.map(r => n(r.roadEffect.officialCoverage.admittedTrips))],
   ['Additional admitted instances from OSM fallback', ...reports.map(r => n(r.roadEffect.newlyAdmittedTrips))],
+  ['Additional admitted instances from FOT rail fallback', ...reports.map(r => n(r.railEffect.newlyAdmittedTrips))],
   measure('Admitted scheduled instances', 'admittedScheduledTrips'), measure('Admitted headway instances', 'admittedRepresentativeHeadwayTrips'),
   measure('Directed patterns tested', 'patterns'), measure('Complete/admitted directed patterns', 'admittedPatterns'),
   ['Matched unique directed route/platform pairs', ...days.map(d => `${n(d.matchedDirectedPairs)} / ${n(d.directedPairs)} (${pct(d.matchedDirectedPairs, d.directedPairs)})`)],
@@ -68,6 +70,7 @@ ${table(['Measure', 'Friday 2026-09-04', 'Sunday 2026-09-06'], [
   ['Matched occurrences including representative headways', ...days.map(d => `${n(d.matchedSegmentOccurrences)} / ${n(d.segmentOccurrences)} (${pct(d.matchedSegmentOccurrences, d.segmentOccurrences)})`)],
   measure('Segment occurrences retained in admitted complete journeys', 'admittedSegmentOccurrences'),
   ['Inferred road occurrences retained in admitted journeys', ...reports.map(r => n(r.roadEffect.admittedSegmentOccurrences))],
+  ['Inferred rail occurrences retained in admitted journeys', ...reports.map(r => n(r.railEffect.admittedSegmentOccurrences))],
   ['Official-only matched directed pairs before OSM fallback', ...reports.map(r => `${n(r.roadEffect.officialCoverage.matchedDirectedPairs)} / ${n(r.roadEffect.officialCoverage.directedPairs)}`)],
   ['Carry-in instances / admitted', ...reports.map(r => `${r.carryInTrips} / ${r.admittedCarryInTrips}`)],
   ['Night instances / admitted', ...reports.map(r => `${r.directedPatternChecks.nightRouteTrips} / ${r.directedPatternChecks.admittedNightRouteTrips}`)],
@@ -94,7 +97,7 @@ Graph vertices join at identical LV95 coordinates, with one disclosed precision 
 
 Road one-way legality, rail running-track choice, bridge/tunnel topology and temporary diversions are **not certified** by these undirected source records. Exact source topology prevents invented connections at visual crossings, but does not prove physical direction. Original repeated calls remain in each pattern. Reservation/on-demand pickup or drop-off excludes an entire journey; none is silently converted to an ordinary fixed departure.
 
-GTFS times remain unchanged. Among admitted journeys there are **${n(reports[0].timing.zeroDurationSegmentOccurrences)} Friday and ${n(reports[1].timing.zeroDurationSegmentOccurrences)} Sunday zero-duration segments**, of which ${n(reports[0].timing.zeroDurationOver100m)} / ${n(reports[1].timing.zeroDurationOver100m)} exceed 100 m of source centreline. Minute-rounded equal timestamps are not instantaneous-speed measurements; a renderer may jump at those transitions. Maximum positive-duration implied speeds are ${reports[0].timing.maximumPositiveDurationSpeedKmh.toFixed(1)} / ${reports[1].timing.maximumPositiveDurationSpeedKmh.toFixed(1)} km/h across all admitted modes. The Sunday maximum is TPF bus 544, Domdidier, gare → Avenches, Le Paon (2,668 m in a published 60 s interval); it is a source-time plausibility flag, not a validated bus speed. Geometry admission does not certify travel-time precision. No travel-time smoothing or invented call times are applied.
+GTFS times remain unchanged. Among admitted journeys there are **${n(reports[0].timing.zeroDurationSegmentOccurrences)} Friday and ${n(reports[1].timing.zeroDurationSegmentOccurrences)} Sunday zero-duration segments**, of which ${n(reports[0].timing.zeroDurationOver100m)} / ${n(reports[1].timing.zeroDurationOver100m)} exceed 100 m of source centreline. Minute-rounded equal timestamps are not instantaneous-speed measurements; a renderer may jump at those transitions. Maximum positive-duration implied speeds are ${reports[0].timing.maximumPositiveDurationSpeedKmh.toFixed(1)} / ${reports[1].timing.maximumPositiveDurationSpeedKmh.toFixed(1)} km/h across all admitted modes. These are source-time plausibility flags, not validated vehicle speeds. The rail follow-up rejects the approximately 41 km FOT alternative between Olten and Aarau; its 306.7 km/h implied maximum exposed a detour that the initial 4.5× guard would have accepted. Geometry admission does not certify travel-time precision. No travel-time smoothing or invented call times are applied.
 
 ## Admission and exclusions
 
@@ -135,6 +138,33 @@ The original cantonal failure is preserved as officialFailure and the road asses
 
 The four urban panels were rendered and visually inspected for continuity, extent and original/fallback separation; they are not independent operator evidence. Both dates and all other bus patterns are covered by the automated full-sequence and retained-output checks. Remaining larger exclusion groups include one direction of TPF 3, PostAuto 121, VMCV branches and Sunday replacement patterns; every failed pair and trip count remains in the machine audit.
 
+## Federal railway supplement and dated works review
+
+The [rail adapter](../scripts/fribourg-rail-geometry.mjs) tests **${summary.sources.rail.completePatternsTested} full directed patterns across ${summary.sources.rail.policy.routes.length} annual route identities**: SBB, BLS and explicitly reviewed TPF S20/S21/RE2/RE3. The [complete input call chains](../data/fribourg-rail-inputs.json), [pattern results](../data/fribourg-audit/rail-patterns.json) and [all ${summary.sources.rail.segments} source segment assessments](../data/fribourg-audit/rail-source-segments.json) are retained. Metre-gauge TPF and MOB, gauge-changing GPX and unreviewed TPF special services remain outside this supplement.
+
+The pinned [FOT railway network](https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf) has **${summary.sources.rail.nodes} operating-point nodes and ${summary.sources.rail.segments} infrastructure segments**. Exact operating-point identifiers attach original GTFS platforms within 350 m. No nearest-name station substitute or platform override is allowed. Infrastructure attachments must be within 120 m; source gauge must include 1435 mm and source validity fields must permit both dates. Geometry is simplified by 5 m. The Fribourg supplement rejects paths above max(3,000 m, **2.5 × direct distance**); the stricter guard rejects the implausible approximately 41 km Olten–Aarau alternative. It does not repair the missing direct graph connection.
+
+All full pattern contexts must agree on the same directed source segment chain and path. Other called operating points are blocked when routing an intervening pair, preventing out-of-order shortcuts. Every previously accepted cantonal path is retained. The original failure, directed infrastructure IDs, attachment distances, contributing pattern IDs and resulting geometry hash accompany each inferred pair. A single remaining failure excludes the complete journey. Journeys tag their inferred rail segment count, and the checker reproduces every emitted path from the pinned XTF.
+
+${table(['Measure', 'Friday', 'Sunday'], [
+  ['All rail instances', ...reports.map(r => n(r.groups.filter(g => g.id.endsWith(':rail')).reduce((v, g) => v + g.trips, 0)))],
+  ['Admitted rail instances', ...reports.map(r => n(r.groups.filter(g => g.id.endsWith(':rail')).reduce((v, g) => v + g.admittedTrips, 0)))],
+  ['Additional admitted journeys from FOT', ...reports.map(r => n(r.railEffect.newlyAdmittedTrips))],
+  ['FOT-backed directed pairs', ...reports.map(r => n(r.railEffect.matchedDirectedPairs))],
+  ['Lost previously admitted journeys', ...reports.map(r => n(r.railEffect.lostAdmittedTrips))],
+  ...[...new Set(reports.flatMap(r => r.directedPairs.map(p => p.railFallback?.reason).filter(Boolean)))].sort().map(reason => [reason + ' — remaining directed pairs', ...reports.map(r => r.directedPairs.filter(p => p.railFallback?.reason === reason).length)]),
+])}
+
+The [TPF 2026 standard-gauge network statement, version 3.5](../data/fribourg-rail-sources/tpf-network-statement-2026-vn.pdf), dated **1 January 2026**, identifies Fribourg–Morat–Anet and Broc-Chocolaterie–Romont as its normal-gauge network; section 3.5.2 specifies 1435 mm. This supports route gauge review, not a claim that old FOT alignments reflect every rebuilt section. Catalogue date **6 July 2021** and asset update **18 January 2025** remain explicit; September 2026 alignment validity is unknown. Running track, signal direction and actual train paths remain inferred.
+
+TPF's [La Verrerie–Vaulruz-Sud works notice](https://www.tpf.ch/fr/horaires-et-reseaux/perturbations-et-travaux/travaux-sur-le-troncon-ferroviaire-la-verrerie-vaulruz-sud) reports metre-gauge rebuilding during 2025–2027 and **no S50/S51 rail service between Bulle and Semsales after 21:00 on Sunday 6 September 2026**. The [reproducible works audit](../data/fribourg-audit/works.json) retains complete S50/S51 calls from both dates. It finds **${works.assessment[0].eveningCorridorSegments} corridor segment occurrences on ${works.assessment[0].eveningCorridorTrips} Friday trains, and ${works.assessment[1].eveningCorridorSegments} on Sunday**, in the same 21:00–24:00 window. The builder fails if Sunday calls contradict the notice. This is one dated consistency check, not a comprehensive diversion census; replacement bus geometry remains independently assessed by the road adapter. No new FOT paths are admitted on the altered metre-gauge corridor.
+
+Remaining rail exclusions include BLS IR66, some IC1/IR15/SN and short S1/S2 patterns, most TPF S50/S51, unlabelled TPF special journeys and all MOB/GPX journeys. The route inventory records exact dated counts rather than treating an admitted route label as proof of every branch.
+
+![Rail corridor geometry review](assets/fribourg-rail-review.svg)
+
+The S20, S21, RE2 and IC1 panels were rendered and visually inspected for continuity and source/fallback extent. They show accepted pairs even when another pair excludes the full journey; the graphic is not independent operational evidence.
+
 ## Dates, reuse and attribution
 
 ${table(['Source', 'Pinned date / vintage', 'Attribution / reuse'], [
@@ -143,6 +173,8 @@ ${table(['Source', 'Pinned date / vintage', 'Attribution / reuse'], [
   ['Embedded Esri metadata', 'Created 2022-07-14', 'Metadata creation, not geometry vintage'],
   ['OGD catalogue item', `Created ${summary.sources.reuseEvidence.catalogueCreated}; modified ${summary.sources.reuseEvidence.catalogueModified}`, 'Catalogue timestamps, not geometry vintage'],
   ['OSM road supplement', 'Swiss extract 2026-09-02; border retrieved 2026-09-08', '© OpenStreetMap contributors; ODbL 1.0; inferred geometry database'],
+  ['FOT railway network', `${summary.sources.rail.catalogueDate}; asset updated ${summary.sources.rail.assetUpdated}; 2026 alignment validity unknown`, '© Federal Office of Transport (FOT); attribution-required OGD terms'],
+  ['TPF gauge / works evidence', 'Network statement 2026 v3.5 (2026-01-01); works page retrieved September 2026', 'TPF; supporting documents, not geometry licences'],
   ['swissBOUNDARIES3D', '2026-01; original canton and seven district polygons', '© swisstopo; free geodata terms'],
   ...summary.sources.crosswalkSupportingDocuments.map(d => [d.file, `Timetable 2026; state ${d.dataUpdated}`, 'Official tp-info / oev-info timetable; identity evidence only']),
 ])}
@@ -153,7 +185,7 @@ The [dataset catalogue item](https://maps.fr.ch/portal/sharing/rest/content/item
 
 The earlier [portal terms](https://map.geo.fr.ch/help/fr/conditions_utilisation.htm) and [geoinformation ordinance](https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes) remain supporting evidence. The linked [geocat record](https://www.geocat.ch/geonetwork/srv/fre/catalog.search#/metadata/d578f90c-348f-41de-80be-4385a57605b9) did not yield XML during the follow-up (HTTP 403/500 or a login page). Neither service declares a geometry update date; the OGD catalogue's July 2026 modification timestamp must not be presented as line vintage.
 
-Timetable reuse follows the [national platform terms](https://opentransportdata.swiss/en/terms-of-use/); boundary reuse follows [swisstopo's terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices). The [OSM copyright terms](https://www.openstreetmap.org/copyright) require attribution and ODbL share-alike for derived data. The combined derived geometry database is offered under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/), with the full derived road cache retained; this does not relabel the separate timetable or boundary sources. These credits are distinct and are embedded in both manifests and the feed's source record. No live-service accuracy or real-time position claim is made.
+Timetable reuse follows the [national platform terms](https://opentransportdata.swiss/en/terms-of-use/); boundary reuse follows [swisstopo's terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices). The [OSM copyright terms](https://www.openstreetmap.org/copyright) require attribution and ODbL share-alike for derived data. The combined derived geometry database is offered under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/), with the full derived road cache retained; this does not relabel the separate timetable or boundary sources. FOT reuse follows its linked [attribution-required OGD terms](https://opendata.swiss/terms-of-use/#terms_by); the catalogue's literal proprietary licence field is preserved separately, without inventing a CC licence. These credits are distinct and are embedded in both manifests and the feed's source record. No live-service accuracy or real-time position claim is made.
 
 ## Reproduction and checks
 
@@ -167,16 +199,20 @@ python3 scripts/prepare-fribourg-sources.py --offline
 node --max-old-space-size=8192 scripts/fribourg-timetable.mjs \\
   /private/tmp/GTFS_FP2026_20260902.zip /private/tmp/fribourg-timetable.json.gz
 
-# Both civil-day feeds and complete route/pattern audit using the committed road cache.
+# Both civil-day feeds and route/pattern/works audits using committed road and rail evidence.
 node --max-old-space-size=8192 scripts/build-fribourg-region.mjs \\
   --archive /private/tmp/GTFS_FP2026_20260902.zip \\
   --timetable-cache /private/tmp/fribourg-timetable.json.gz
 node scripts/check-fribourg-region.mjs
 node scripts/audit-fribourg-topology.mjs
 node scripts/review-fribourg-roads.mjs
+node scripts/review-fribourg-rail.mjs
 node scripts/write-fribourg-audit.mjs
 python3 scripts/test_fribourg_sources.py
-npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
+
+# Optional rail-input regeneration from the complete timetable cache and retained source bytes.
+node scripts/fribourg-rail-geometry.mjs /private/tmp/fribourg-timetable.json.gz
 
 # Optional offline road rebuild: prepare all patterns, match each agency directory
 # with scripts/match-postbus-roads.mjs --no-trie/-W wrapper and the pinned extract,
@@ -199,7 +235,7 @@ python3 scripts/prepare-fribourg-sources.py --boundary \\
   /private/tmp/swissboundaries3d-2026/swissBOUNDARIES3D_1_5_LV95_LN02.gpkg
 \`\`\`
 
-The checker independently reconciles all routes, source identities, seven districts, both pattern sets and directed-pair occurrence counts. It reconstructs both full-day feeds from all 24 chunks, checks chunk hashes and trip identity, validates full original call counts, path direction, finite coordinates and ordered times, and reconciles every admitted pattern against the manifest. Focused tests cover source paging failures, coordinate-order errors, detached territory membership, bus/night/rail identity collisions, changed operator overrides, reverse/loop call chains, disconnected lines and whole-journey exclusion. Shared Bern behavior is regression-tested because Fribourg reuses its census, topology, calendar/frequency and snapshot validators.
+The checker independently reconciles all routes, source identities, seven districts, both pattern sets and directed-pair occurrence counts. It reconstructs both full-day feeds from all 24 chunks, checks chunk hashes and trip identity, validates full original call counts, path direction, finite coordinates and ordered times, and reconciles every admitted pattern against the manifest. Focused tests cover source paging failures, coordinate-order errors, detached territory membership, bus/night/rail identity collisions, changed operator overrides, reverse/loop call chains, disconnected lines, gauge and validity rejection, conflicting full rail contexts, detour and station guards, dated works violations and whole-journey exclusion. Shared Bern behavior is regression-tested because Fribourg reuses its census, topology, calendar/frequency and snapshot validators.
 `
 await writeFile('docs/FRIBOURG-STUDY.md', doc)
 

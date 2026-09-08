@@ -1,6 +1,6 @@
 # St. Gallen: restoring PostAuto line 210
 
-Line 210 now contributes **66 Friday and 35 Sunday trips**, preserving every source call and both travel directions. The regional feed admits **10,566 Friday / 7,299 Sunday movements**, across **1,000 / 771 complete directed patterns**. The annual canton inventory remains 343 route records and 38 agencies; 194 route records now contribute to at least one fixture.
+Line 210 now contributes **66 Friday and 35 Sunday trips**, preserving every source call and both travel directions. The regional feed admits **10,624 Friday / 7,325 Sunday movements**, across **1,002 / 773 complete directed patterns**. The annual canton inventory remains 343 route records and 38 agencies; 195 route records now contribute to at least one fixture.
 
 ## Evidence and scope
 
@@ -22,9 +22,9 @@ The Friday fixture uses 48 approved pairs across six newly admitted complete pat
 
 ## Regression and remaining work
 
-The [incremental regression](../data/st-gallen-shared-corridor-review.json), against commit `7926448`, verifies that all **10,500 / 7,264 previously admitted journeys** retain identical calls, timing and paths. Every previously matched pair is unchanged. Only the 66 / 35 line-210 trips are added; the earlier line-321 repair is preserved. The [cumulative regression](../data/st-gallen-topology-review.json) also compares against the original canton feed in commit `2351822`.
+The [incremental regression](../data/st-gallen-shared-corridor-review.json), against commit `7926448`, verifies that all **10,500 / 7,264 previously admitted journeys** retain identical calls, timing and paths. Every previously matched pair is unchanged. The line-210 step adds 66 / 35 trips; the refreshed cumulative comparison additionally includes 58 / 26 line-164 trips from the separately reviewed stop anchor. The earlier line-321 repair is preserved. The [cumulative regression](../data/st-gallen-topology-review.json) also compares against the original canton feed in commit `2351822`.
 
-Endpoint-gap exclusions across all modes fall from **945 to 879 Friday trips** and **573 to 538 Sunday trips**; buses account for **389 / 126** of the remaining affected trips. Other failure reasons can overlap these counts. The largest remaining bus cases include line 323 at Dornbirn Messeplatz, Vorarlberg line 164 at Treffpunkt a.d.Ach, Wil line 705 at Psychiatrie, Gossau line 150 at Sommerau and line 631 at Rüti Bandwies. These require their own source evidence. The separately reviewed 352/353, 400 and 432 detours remain excluded.
+At the line-210 step, endpoint-gap exclusions across all modes fell from **945 to 879 Friday trips** and **573 to 538 Sunday trips**; buses then accounted for **389 / 126** affected trips. Other failure reasons can overlap these counts. The largest remaining bus cases include line 323 at Dornbirn Messeplatz, Wil line 705 at Psychiatrie, Gossau line 150 at Sommerau and line 631 at Rüti Bandwies. These require their own source evidence. The separately reviewed 352/353, 400 and 432 detours remain excluded.
 
 Attribution: **PostAuto AG / OSTWIND** for the supporting map; **© Kanton St.Gallen, Amt für öffentlichen Verkehr / AREG**, with underlying **swissTNE Base / © swisstopo**, for geometry; **SBB / opentransportdata.swiss** for GTFS. The [canton study](ST-GALLEN-STUDY.md) documents reuse restrictions. This extension does not grant redistribution rights or publish the local regional feed.
 
@@ -40,3 +40,5 @@ npx vitest run scripts/st-gallen-region.test.mjs scripts/st-gallen-shared-corrid
 The evidence command reuses matching cached bytes or downloads the pinned map and verifies its hash. A changed publisher file fails validation. Add `--inspect-cache` to disable acquisition. Source acquisition for the full canton also includes this check.
 
 To regenerate regression reports, first rebuild the respective baseline feed and audit using the policy from the stated commit and the exported `buildStGallenRegion` function. Run `node scripts/check-st-gallen-topology-regression.mjs --shared BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON` for commit `7926448`; omit `--shared` for commit `2351822`. Then refresh the unchanged detour diagnostics with their cached operator evidence, regenerate the study and run the audit-only checker as documented in the canton study.
+
+The subsequent [line-164 stop anchor](ST-GALLEN-STOP-ANCHOR-REVIEW.md) adds 58 Friday / 26 Sunday trips. Current bus endpoint failures affect 331 / 100 trips. The refreshed shared-corridor regression is cumulative from commit 7926448 and now permits both the reviewed line-210 and line-164 additions; the separate anchor regression isolates the latter against commit 2e0c599.

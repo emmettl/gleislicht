@@ -8,6 +8,7 @@
     "regionalRoadCache": "ec9b92b124cf12ca52f99f30727c2ac11523f01988f6bfa7ac69c7cff4326261",
     "regionalRoadPolicy": "37a6f35b586acdcbc40cc6f9b9b58452f88779a94473efb5af421ff213e7a0a8",
     "mountainPolicy": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89",
+    "railPolicy": "04b675e0248a5ffb5ee7f4da38912b9222acad46166362120837ac839209c180",
     "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
     "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
   },
@@ -248,6 +249,123 @@
       },
       "policySha256": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89"
     },
+    "railSupplement": {
+      "policySha256": "04b675e0248a5ffb5ee7f4da38912b9222acad46166362120837ac839209c180",
+      "policy": {
+        "schemaVersion": 1,
+        "sourceId": "bern-fot-rail-20210706",
+        "sourceDirectory": "data/bern-sources/fot-rail",
+        "sourceMetadataSha256": "46ab3ed91471fde35bcb1b678410efe7ecab6bf1cf02027729f547545b94aaad",
+        "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "limits": {
+          "stationAttachmentMetres": 120,
+          "topologyAttachmentMetres": 120,
+          "detourRatio": 4.5,
+          "detourFloorMetres": 3000,
+          "simplificationMetres": 0
+        },
+        "gauges": [
+          "mm1435"
+        ],
+        "infrastructureOperators": [
+          "SBB CFF FFS"
+        ],
+        "routes": [
+          {
+            "routeId": "91-36-D-j26-1",
+            "agencyId": "33",
+            "line": "S36",
+            "mode": "rail",
+            "operatingPointPair": [
+              "8500220",
+              "8504415"
+            ],
+            "sourceSegments": [
+              "ch14uvag00087565"
+            ]
+          },
+          {
+            "routeId": "91-4-C-j26-1",
+            "agencyId": "33",
+            "line": "S4",
+            "mode": "rail",
+            "operatingPointPair": [
+              "8504410",
+              "8508001"
+            ],
+            "sourceSegments": [
+              "ch14uvag00087657",
+              "ch14uvag00087656"
+            ]
+          }
+        ],
+        "admission": "Only missing cantonal directed pairs on the exact reviewed operating-point pairs and BLS route identities. All complete source-pattern contexts must yield the same valid federal path. Keep every original call and every successful cantonal path.",
+        "model": "FOT declared topology, exact operating-point IDs and standard gauge; directions inferred from GTFS calls. Original rail stop-attachment and detour limits remain unchanged. The new topology attachment guard is also 120 m; measured selected segment attachments are under 16 m. Catalogue date 2021-07-06, asset updated 2025-01-18, checksum rechecked 2026-09-08; current alignment validity and running tracks are not certified."
+      },
+      "source": {
+        "schemaVersion": 1,
+        "publisher": "Federal Office of Transport - FOT",
+        "attribution": "© Federal Office of Transport (FOT)",
+        "license": "proprietary",
+        "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+        "catalogueDate": "2021-07-06T00:00:00Z",
+        "assetUpdated": "2025-01-18T04:23:13.735821Z",
+        "catalogueCheckedOn": "2026-09-08",
+        "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+        "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "publishedChecksum": "12202895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "validOn": null,
+        "validityNote": "Catalogue dates and verified bytes do not establish September 2026 alignment validity. Inferred infrastructure paths, not certified service running tracks.",
+        "nodes": 3210,
+        "segments": 3424,
+        "transformation": "Existing XTF parser with zero-metre Douglas–Peucker tolerance; collinear vertices may be removed. Approximate LV95-to-WGS84 transformation rounded to six decimals. Bern preserves original GTFS coordinates and rounds only final attachment endpoints to seven decimals.",
+        "files": {
+          "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+          "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+          "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02",
+          "catalogue-check-20260908.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60"
+        },
+        "retainedForBernAt": "2026-09-08T19:43:28.383642+00:00",
+        "catalogueRecheckedOn": "2026-09-08",
+        "catalogueCheckUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz"
+      },
+      "sourceSegments": [
+        {
+          "id": "ch14uvag00087657",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-01-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 15.521114858447001,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087656",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-01-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.999450630744551,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087565",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2002-09-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.89340606927423,
+          "reason": null
+        }
+      ]
+    },
     "urbanSupplement": {
       "policy": {
         "schemaVersion": 1,
@@ -408,9 +526,9 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 306,
-    "excluded": 128,
-    "partially-admitted": 88,
+    "admitted-all-dated-trips": 308,
+    "excluded": 127,
+    "partially-admitted": 87,
     "inactive-on-validation-dates": 183
   },
   "districts": [
@@ -1459,28 +1577,29 @@
         "regionalRoadCache": "ec9b92b124cf12ca52f99f30727c2ac11523f01988f6bfa7ac69c7cff4326261",
         "regionalRoadPolicy": "37a6f35b586acdcbc40cc6f9b9b58452f88779a94473efb5af421ff213e7a0a8",
         "mountainPolicy": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89",
+        "railPolicy": "04b675e0248a5ffb5ee7f4da38912b9222acad46166362120837ac839209c180",
         "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
         "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
       },
       "coverage": {
         "trips": 43653,
-        "admittedTrips": 36356,
+        "admittedTrips": 36449,
         "scheduledTrips": 28696,
         "representativeHeadwayTrips": 14957,
-        "admittedScheduledTrips": 21399,
+        "admittedScheduledTrips": 21492,
         "admittedRepresentativeHeadwayTrips": 14957,
         "scheduledSegmentOccurrences": 295359,
-        "matchedScheduledSegmentOccurrences": 274396,
+        "matchedScheduledSegmentOccurrences": 274489,
         "segmentOccurrences": 314668,
-        "matchedSegmentOccurrences": 293705,
-        "admittedSegmentOccurrences": 271807,
+        "matchedSegmentOccurrences": 293798,
+        "admittedSegmentOccurrences": 272886,
         "directedPairs": 12321,
-        "matchedDirectedPairs": 10618,
+        "matchedDirectedPairs": 10622,
         "patterns": 2582,
-        "completePatterns": 1839,
-        "admittedPatterns": 1839,
+        "completePatterns": 1860,
+        "admittedPatterns": 1860,
         "excludedTrips": {
-          "incomplete-directed-pattern": 4266,
+          "incomplete-directed-pattern": 4173,
           "no-verified-operator-line-crosswalk": 3031
         }
       },
@@ -2449,23 +2568,23 @@
           "id": "33:rail",
           "agency": "BLS AG (bls)",
           "trips": 1405,
-          "admittedTrips": 994,
+          "admittedTrips": 1087,
           "scheduledTrips": 1405,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 994,
+          "admittedScheduledTrips": 1087,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 14195,
-          "matchedScheduledSegmentOccurrences": 12983,
+          "matchedScheduledSegmentOccurrences": 13076,
           "segmentOccurrences": 14195,
-          "matchedSegmentOccurrences": 12983,
-          "admittedSegmentOccurrences": 10912,
+          "matchedSegmentOccurrences": 13076,
+          "admittedSegmentOccurrences": 11991,
           "directedPairs": 1066,
-          "matchedDirectedPairs": 875,
+          "matchedDirectedPairs": 879,
           "patterns": 328,
-          "completePatterns": 210,
-          "admittedPatterns": 210,
+          "completePatterns": 231,
+          "admittedPatterns": 231,
           "excludedTrips": {
-            "incomplete-directed-pattern": 263,
+            "incomplete-directed-pattern": 170,
             "no-verified-operator-line-crosswalk": 148
           }
         },
@@ -3407,7 +3526,7 @@
         }
       ],
       "carryInTrips": 334,
-      "admittedCarryInTrips": 237,
+      "admittedCarryInTrips": 240,
       "admittedOutsideCantonPlatforms": 697,
       "directedPatternChecks": {
         "directionIds": [
@@ -3421,12 +3540,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 7976457,
-          "gzipBytes": 1661943
+          "bytes": 8053210,
+          "gzipBytes": 1676129
         },
         "morning": {
-          "trips": 3374,
-          "gzipBytes": 1978010
+          "trips": 3390,
+          "gzipBytes": 1995324
         },
         "chunks": [
           {
@@ -3434,10 +3553,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 241,
-            "bytes": 195036,
-            "sha256": "15ae9d74bc0476afb30b26678f8a3e1b63483362eb8c1c34d6542c222804e547",
-            "gzipBytes": 33122
+            "tripCount": 244,
+            "bytes": 197447,
+            "sha256": "a0f19528a2573bed00e1b9ec47e75ec0402625910c6e3a93a28f536189a39d1e",
+            "gzipBytes": 33649
           },
           {
             "id": "02-04",
@@ -3454,100 +3573,100 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 566,
-            "bytes": 485742,
-            "sha256": "a3c7a2420916fec0453c6d229e830cc11019a8d8e8801dcf29670ef5c624e1ea",
-            "gzipBytes": 75853
+            "tripCount": 572,
+            "bytes": 491030,
+            "sha256": "7a861870dab300a3e1033002dc215389b3970fc0ef5130eff68003c0b92a3e9a",
+            "gzipBytes": 76711
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 3039,
-            "bytes": 2565216,
-            "sha256": "f1b4acbae6926fe905b877c22bd8f4376e8f620009e801317b68dc5e8f6f2b12",
-            "gzipBytes": 300363
+            "tripCount": 3055,
+            "bytes": 2577970,
+            "sha256": "68e983dc7d6be404509c765eab2173dc29cef0c04f5acdfbe5623de79d157414",
+            "gzipBytes": 302080
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 5021,
-            "bytes": 3776152,
-            "sha256": "23a44420fd0788ef115a59f6d7fab21f84ab3ef37ba9d817018b9286cc740462",
-            "gzipBytes": 337381
+            "tripCount": 5035,
+            "bytes": 3788046,
+            "sha256": "cecac3e68f0464b8a6acb81c33ddac96551672554c2c47d0986754b5997a3709",
+            "gzipBytes": 339659
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 7136,
-            "bytes": 5078584,
-            "sha256": "46600f58126c50c48db62bcc0af4c0f45d97b6039e34407644fe23e96f253778",
-            "gzipBytes": 380989
+            "tripCount": 7148,
+            "bytes": 5089633,
+            "sha256": "1b927208032c0f6aab84fd99be877f40baff6bc7e33bcf69cc3ff9eefa75b24f",
+            "gzipBytes": 382393
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 7310,
-            "bytes": 5218888,
-            "sha256": "4f16a7d5b934afec3402a7fbbdaccea20b0030c6580f462a074d1cb3493156e6",
-            "gzipBytes": 395864
+            "tripCount": 7322,
+            "bytes": 5229935,
+            "sha256": "173c998bcdceacb704c62dbf6c48dc7a363f1ed3af71b0161b556114e69a0bda",
+            "gzipBytes": 397955
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 7227,
-            "bytes": 5146036,
-            "sha256": "8ccd22f582ba3662b283360ee8e812b00381045ae75255cb32719bed52a152fe",
-            "gzipBytes": 387810
+            "tripCount": 7239,
+            "bytes": 5157072,
+            "sha256": "7f410adea3e809969bf49b0e2a8ed1701e554e791790de5ada6ae9bfa1d59e15",
+            "gzipBytes": 389704
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 5430,
-            "bytes": 4124501,
-            "sha256": "9dd107dd0c935f23dc5b58eb6cbf5723cb131b48444efb6a591392c07c306957",
-            "gzipBytes": 371028
+            "tripCount": 5446,
+            "bytes": 4137697,
+            "sha256": "f36120e42e342760affa9ae59f33feae5079e1a02e02b4ad7f111ba2174e44e8",
+            "gzipBytes": 373563
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 2937,
-            "bytes": 2463896,
-            "sha256": "9315f7488b0298e7c7d50b0b14037acbd2b2682f09e37a6df7c7bf96bdc6911d",
-            "gzipBytes": 284254
+            "tripCount": 2951,
+            "bytes": 2476015,
+            "sha256": "912e7c4495d61f21dcd0aefb1d1970be9cc815b2e06086f1c70b5678e17a75f6",
+            "gzipBytes": 286012
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 1701,
-            "bytes": 1450277,
-            "sha256": "b5911f0a7943cbadf19aea437bbe77aa1729025d760be38421b089abe76577fa",
-            "gzipBytes": 177126
+            "tripCount": 1713,
+            "bytes": 1461295,
+            "sha256": "6b1fa59dc01b74ded7c72c68c0cbfe14a754767dee79dcc602454c3fec9be479",
+            "gzipBytes": 178904
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 1045,
-            "bytes": 911196,
-            "sha256": "f05a45b088fd697a31edb75a38d446c73667c3be38f162d31b298a9dc756436f",
-            "gzipBytes": 120632
+            "tripCount": 1057,
+            "bytes": 921823,
+            "sha256": "c13568ab20cffe377351a391e2b2d5e6a116f2f610506a41d69b2c9525e5b494",
+            "gzipBytes": 122415
           }
         ]
       },
@@ -3573,28 +3692,29 @@
         "regionalRoadCache": "ec9b92b124cf12ca52f99f30727c2ac11523f01988f6bfa7ac69c7cff4326261",
         "regionalRoadPolicy": "37a6f35b586acdcbc40cc6f9b9b58452f88779a94473efb5af421ff213e7a0a8",
         "mountainPolicy": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89",
+        "railPolicy": "04b675e0248a5ffb5ee7f4da38912b9222acad46166362120837ac839209c180",
         "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
         "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
       },
       "coverage": {
         "trips": 38587,
-        "admittedTrips": 31501,
+        "admittedTrips": 31580,
         "scheduledTrips": 22462,
         "representativeHeadwayTrips": 16125,
-        "admittedScheduledTrips": 15376,
+        "admittedScheduledTrips": 15455,
         "admittedRepresentativeHeadwayTrips": 16125,
         "scheduledSegmentOccurrences": 209388,
-        "matchedScheduledSegmentOccurrences": 190258,
+        "matchedScheduledSegmentOccurrences": 190337,
         "segmentOccurrences": 229859,
-        "matchedSegmentOccurrences": 210729,
-        "admittedSegmentOccurrences": 190389,
+        "matchedSegmentOccurrences": 210808,
+        "admittedSegmentOccurrences": 191398,
         "directedPairs": 13244,
-        "matchedDirectedPairs": 11327,
+        "matchedDirectedPairs": 11332,
         "patterns": 2108,
-        "completePatterns": 1420,
-        "admittedPatterns": 1420,
+        "completePatterns": 1442,
+        "admittedPatterns": 1442,
         "excludedTrips": {
-          "incomplete-directed-pattern": 4029,
+          "incomplete-directed-pattern": 3950,
           "no-verified-operator-line-crosswalk": 3057
         }
       },
@@ -4584,23 +4704,23 @@
           "id": "33:rail",
           "agency": "BLS AG (bls)",
           "trips": 1255,
-          "admittedTrips": 893,
+          "admittedTrips": 972,
           "scheduledTrips": 1255,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 893,
+          "admittedScheduledTrips": 972,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 12673,
-          "matchedScheduledSegmentOccurrences": 11685,
+          "matchedScheduledSegmentOccurrences": 11764,
           "segmentOccurrences": 12673,
-          "matchedSegmentOccurrences": 11685,
-          "admittedSegmentOccurrences": 9803,
+          "matchedSegmentOccurrences": 11764,
+          "admittedSegmentOccurrences": 10812,
           "directedPairs": 971,
-          "matchedDirectedPairs": 789,
+          "matchedDirectedPairs": 794,
           "patterns": 300,
-          "completePatterns": 197,
-          "admittedPatterns": 197,
+          "completePatterns": 219,
+          "admittedPatterns": 219,
           "excludedTrips": {
-            "incomplete-directed-pattern": 251,
+            "incomplete-directed-pattern": 172,
             "no-verified-operator-line-crosswalk": 111
           }
         },
@@ -5587,7 +5707,7 @@
         }
       ],
       "carryInTrips": 816,
-      "admittedCarryInTrips": 535,
+      "admittedCarryInTrips": 539,
       "admittedOutsideCantonPlatforms": 703,
       "directedPatternChecks": {
         "directionIds": [
@@ -5601,12 +5721,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 8011009,
-          "gzipBytes": 1745657
+          "bytes": 8103935,
+          "gzipBytes": 1760751
         },
         "morning": {
-          "trips": 2054,
-          "gzipBytes": 1921090
+          "trips": 2066,
+          "gzipBytes": 1937962
         },
         "chunks": [
           {
@@ -5614,10 +5734,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 435,
-            "bytes": 364616,
-            "sha256": "cb37a842bc58476cb633be568b2a7147cfb743eb298aadf170a14e4de7041670",
-            "gzipBytes": 58554
+            "tripCount": 439,
+            "bytes": 368584,
+            "sha256": "6009eb8afab7c00bf3f0c0ca234855768376737e2a0d97ab8fdefec2766859a2",
+            "gzipBytes": 59300
           },
           {
             "id": "02-04",
@@ -5626,108 +5746,108 @@
             "path": "day-chunks/02-04.json",
             "tripCount": 125,
             "bytes": 121932,
-            "sha256": "560fb1eac16e3f513064bae9efb7cca4f99e428ffe2a87139ef4d824464b6bd0",
-            "gzipBytes": 20034
+            "sha256": "449d6ff3c9f9e526c0ff248ff52fc97c3b65180c8e4c99d071e6e1c4e19d2c73",
+            "gzipBytes": 20043
           },
           {
             "id": "04-06",
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 238,
-            "bytes": 204235,
-            "sha256": "90e26d5e09eb9c1492163bb7a7f403dee264228fe5e259c837e35b484737b8bb",
-            "gzipBytes": 35123
+            "tripCount": 242,
+            "bytes": 207508,
+            "sha256": "6ecbf3bd6cbd4b50305b6d4e4de914d1280b08c39c25e97ae18fdc33f902e16e",
+            "gzipBytes": 35640
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 1387,
-            "bytes": 1120664,
-            "sha256": "7e506e39c95d667a608c34a7b05e67bd54be57797d0e42577d89a6b7cd13fca8",
-            "gzipBytes": 138634
+            "tripCount": 1397,
+            "bytes": 1129208,
+            "sha256": "0e74b8a1c31d0ffd0e67a58280a5377d09148ce9c8744ae42018b827b24e8969",
+            "gzipBytes": 140035
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 4484,
-            "bytes": 3172639,
-            "sha256": "48cded12de8d200cb637fa037dc68200a3ef34d207c08d8a77db315fe517c541",
-            "gzipBytes": 251981
+            "tripCount": 4496,
+            "bytes": 3183395,
+            "sha256": "a682b5e6fdc39aed74deaa0b3bc2aba57c505dbc3a83d9edf32c5f226815f33c",
+            "gzipBytes": 253850
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 6720,
-            "bytes": 4616306,
-            "sha256": "1657fd474244d93cdbfadee251ed56b2007e5cb99b053b37bbb335bb37e01fd7",
-            "gzipBytes": 317048
+            "tripCount": 6732,
+            "bytes": 4627291,
+            "sha256": "9ccc2fd0058c2357db45c464e365aef8173bb0a6542b05fb8c831b642449e1e0",
+            "gzipBytes": 318750
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 6769,
-            "bytes": 4674482,
-            "sha256": "73d42272eed6e92e11801dc22422d4644cd38449081c79d7015c109e5d504ea3",
-            "gzipBytes": 321631
+            "tripCount": 6781,
+            "bytes": 4685460,
+            "sha256": "d35dca1f8fc9188fc6c6dfb90a032a09d15a8d91cd856f4aa1f2048f6612c6db",
+            "gzipBytes": 323898
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 6821,
-            "bytes": 4719620,
-            "sha256": "cdc0e27d39789e2b3c88cefb2d34e74234d856d198be52ea96aa251a24643983",
-            "gzipBytes": 326520
+            "tripCount": 6833,
+            "bytes": 4730609,
+            "sha256": "916d08b656802be98c5bc668344163e2af4948aeb35b01141d7688e900958d45",
+            "gzipBytes": 328742
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 4526,
-            "bytes": 3304928,
-            "sha256": "5c976628b5879474bb46e2802797cab00f28f1b52217aa0ef122b31356756be5",
-            "gzipBytes": 276474
+            "tripCount": 4538,
+            "bytes": 3315924,
+            "sha256": "2b802f1ff1e2cc0aa45ce0eb440ae1c02e2c977f8d8b893398dbb5606ab3a0ca",
+            "gzipBytes": 278508
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 1997,
-            "bytes": 1650371,
-            "sha256": "9113e6c55acb7d3cb1816c0871928686fa1de39896596adaac6fdb31f98951c7",
-            "gzipBytes": 194160
+            "tripCount": 2009,
+            "bytes": 1661343,
+            "sha256": "80eb0851e0951fd562f18d177de804f1a2506f60c8463475c8cb15016036c02e",
+            "gzipBytes": 195782
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 1380,
-            "bytes": 1167611,
-            "sha256": "56767df4a40120628a3620cdb2c8b8c2841032f89b76167782fda873ace60c17",
-            "gzipBytes": 144251
+            "tripCount": 1392,
+            "bytes": 1178578,
+            "sha256": "43659ac1cb204e3f3aef1fb19e7a317cea6d80217ff2964f646725de652895f3",
+            "gzipBytes": 145928
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 932,
-            "bytes": 806876,
-            "sha256": "36a517cc84e7d6deb08c52c8ddcc503df772560c86a8112091a306894edb8395",
-            "gzipBytes": 107612
+            "tripCount": 943,
+            "bytes": 815972,
+            "sha256": "3b0a9e5cba37e45f19cfbdee31b52d6c958aae8331282bc57a39a5fd4bec658d",
+            "gzipBytes": 109066
           }
         ]
       },
@@ -5747,6 +5867,6 @@
     "GTFS fixed-stop archive and all OEVTP line records inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.",
     "Two September civil days do not establish holiday, winter or year-round pattern coverage.",
     "Cross-boundary journeys keep all calls. Entire patterns failing any segment are excluded, including source extents shorter than their timetable journeys.",
-    "Geometry uses official-line centrelines plus identified OSM road supplements; not observed movement, legal one-way validation or running-track selection. Dated diversion evidence is limited to the reviewed tram 6 station approach."
+    "Geometry uses official-line centrelines plus identified OSM road and FOT rail/cableway supplements; not observed movement, legal one-way validation or running-track selection. Dated diversion evidence is limited to the reviewed tram 6 station approach."
   ]
 }

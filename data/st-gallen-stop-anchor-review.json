@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "2e0c599",
+  "baselineSourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "repair": {
+    "id": "balgach-321-source-gap",
+    "targetFeature": "bus:132",
+    "expectedTargetName": "321 Altstätten SG - Heerbrugg - Diepoldsau (- Hohenems)",
+    "donorFeature": "bus:10",
+    "expectedDonorName": "301 Altstätten SG - Lüchingen - Marbach SG - Rebstein - Balgach - Heerbrugg",
+    "partIndex": 3,
+    "startVertex": 394,
+    "endVertex": 396,
+    "pathMetres": 7.368011075696498,
+    "corroboratingSources": [
+      {
+        "feature": "bus:133",
+        "partIndex": 2,
+        "startVertex": 399,
+        "endVertex": 401
+      },
+      {
+        "feature": "bus:136",
+        "partIndex": 16,
+        "startVertex": 0,
+        "endVertex": 2,
+        "reverse": true
+      }
+    ],
+    "reason": "Two exact official BOS line-301 edges connect existing endpoints of two disconnected components in source line 321 at Balgach. Identical geometry is present in line 322 and night N31/N32. No proximity bridge or new coordinate; source-record/index references keep restricted vectors in the local cache."
+  },
+  "stopAnchors": [
+    {
+      "id": "vmobil-treffpunkt-164",
+      "stopId": "ch:1:sloid:1200511",
+      "name": "Dornbirn, Treffpunkt a.d.Ach",
+      "originalCoordinate": [
+        9.72297836,
+        47.40614449
+      ],
+      "coordinate": [
+        9.72965284,
+        47.41016915
+      ],
+      "sourceStopId": "at:48:570:0:1",
+      "platformSpreadMetres": 8.901186560970062,
+      "shiftMetres": 673.4817780966682,
+      "sourceSha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+      "routeIds": [
+        "92-164-C-j26-1"
+      ],
+      "use": "Representative stop-level rendering anchor from one published platform; not a directional platform assignment. Original Swiss ID, name, calls and times preserved. Opposite source platform is within 15 m. Only reviewed line 164 and fixture dates allowed."
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-09-04",
+      "beforeTrips": 10566,
+      "afterTrips": 10624,
+      "addedTrips": 58,
+      "unchangedExistingTrips": 10566,
+      "addedTripIdsSha256": "1dadb256558ad5f21b7b3ee40ef479a56396969994a9e7f491b194cdeacb17f6",
+      "addedPatterns": 2,
+      "addedTripsByRoute": {
+        "92-164-C-j26-1": 58
+      },
+      "sharedCorridorPairs": 48,
+      "recoveredPairs": [],
+      "beforePatterns": 1000,
+      "afterPatterns": 1002
+    },
+    {
+      "date": "2026-09-06",
+      "beforeTrips": 7299,
+      "afterTrips": 7325,
+      "addedTrips": 26,
+      "unchangedExistingTrips": 7299,
+      "addedTripIdsSha256": "17ef75cc0c1891f7b002351e818b7d72c8e867883582e300d9a44704389e38bd",
+      "addedPatterns": 2,
+      "addedTripsByRoute": {
+        "92-164-C-j26-1": 26
+      },
+      "sharedCorridorPairs": 64,
+      "recoveredPairs": [],
+      "beforePatterns": 771,
+      "afterPatterns": 773
+    }
+  ],
+  "sharedCorridor": [
+    {
+      "id": "postauto-210-211-common-corridor",
+      "agencyId": "801",
+      "operator": "PAG",
+      "line": "210",
+      "donorLine": "211",
+      "targetFeature": "bus:95",
+      "expectedTargetName": "210 St. Gallen - Mörschwil - Tübach - Steinach - Arbon",
+      "donorFeature": "bus:96",
+      "expectedDonorName": "211 St. Gallen - Mörschwil - Tübach - Horn - Steinach -Arbon",
+      "stopSequence": [
+        "St. Gallen, Bahnhof",
+        "St. Gallen, Marktplatz Bohl",
+        "St. Gallen, Theater",
+        "St. Gallen, Kantonsspital",
+        "St. Gallen, Grossacker",
+        "St. Gallen, Neudorf/R'str.",
+        "St. Gallen, Remishueb / Klinik",
+        "St. Gallen, Riederenholz",
+        "St. Gallen, Obere Waid",
+        "Mörschwil, Alberenberg",
+        "Mörschwil, Lantschen",
+        "Mörschwil, Bitzi",
+        "Mörschwil, Altes Gemeindehaus",
+        "Mörschwil, Kirche",
+        "Mörschwil, Fahrn",
+        "Tübach, Waldegg",
+        "Tübach, Schulstrasse"
+      ],
+      "evidence": [
+        {
+          "file": "postauto-st-gallen-ost.pdf",
+          "url": "https://www1.postauto.ch/-/media/postauto/fahrplan-und-netz/liniennetz/dokumente/ostschweiz/liniennetzplan-st-gallen-ost.pdf?vs=7",
+          "sha256": "a01d8c74f18a50543e1bfee89a28dbde5538288a2ab7bb1163bbc93a7811eb3d",
+          "bytes": 2053266,
+          "retrievedAt": "2026-09-08T18:49:30.138Z",
+          "title": "Liniennetz St. Gallen Ost",
+          "publisher": "PostAuto AG / OSTWIND",
+          "validFrom": "2025-12-14",
+          "pdfModifiedDate": "2026-01-20",
+          "review": "Visual review of page 1 confirms parallel 210/211 designations from St. Gallen through Mörschwil to Tübach Schulstrasse; north of this shared section the lines diverge. Schematic evidence of corridor identity only; AL_OEV supplies the actual geometry."
+        }
+      ],
+      "reason": "Official PostAuto map corroborates the shared 210/211 corridor. Apply the exact line-211 graph only to these individually pinned line-210 endpoint-gap pairs, with original 120 m / 4.5x limits. Preserve every passing primary path. No generic operator-wide routing, Horn branch substitution, source-call changes or direction certification.",
+      "approvedDirectedPairs": 64
+    }
+  ],
+  "retainedExclusions": [
+    {
+      "feature": "bus:4",
+      "line": "37",
+      "location": "Ruggell",
+      "nearestComponentGapMetres": 0.9452,
+      "decision": "No existing short source-edge connection. A sub-metre gap is not by itself evidence for an authorised join."
+    },
+    {
+      "feature": "bus:6",
+      "line": "190",
+      "location": "Speicher",
+      "nearestComponentGapMetres": 10.3951,
+      "decision": "No existing short source-edge connection; retain complete-pattern exclusion."
+    },
+    {
+      "feature": "bus:130",
+      "line": "741N",
+      "location": "Flawil/Niederwil",
+      "nearestComponentGapMetres": 11.1233,
+      "decision": "No existing short source-edge connection; retain complete-pattern exclusion."
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "allPreviouslyAdmittedCallsAndPathsUnchanged": true,
+    "allPreviouslyMatchedPairsUnchanged": true,
+    "onlyReviewedRoutesAdded": true,
+    "redistributionApproved": false,
+    "directionCertified": false
+  }
+}

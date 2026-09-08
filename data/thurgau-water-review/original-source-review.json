@@ -1,0 +1,1374 @@
+{
+  "sourceUrl": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.bafu.vec25-seen/124?geometryFormat=geojson&sr=4326",
+  "acquired": "2026-09-08",
+  "sha256": "36465874edfea0cb3a2168f905d8a95a14378df425bf13f36ce4954ebe2b4904",
+  "attribution": "© FOEN, swisstopo",
+  "source": "FOEN Vector25 lakes, original feature 124. Reference edition labelled 2007 by the existing source metadata; acquisition time does not establish an updated shoreline date.",
+  "sourceVertices": 8714,
+  "polygons": 2,
+  "status": "screening-only-not-admitted",
+  "method": "Use original source vertices without 60 m display simplification. Measure every called dock and check each straight projected pair against all shoreline and island intersections, with a 150 m screening offset. Candidate status is not route or dock-access verification.",
+  "nextEvidence": "Review dock-to-water access and full candidate patterns before any admission; acquire connected Untersee/Rhine water geometry for rejected calls. No straight line may replace a missing river channel.",
+  "stops": [
+    {
+      "id": "ch:1:sloid:6113",
+      "name": "Rorschach Hafen (See)",
+      "coordinate": [
+        9.49343186,
+        47.47889944
+      ],
+      "projections": [
+        {
+          "point": [
+            9.493424977141045,
+            47.478919237148425
+          ],
+          "offset": 2.263841807691987
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 39741.65128998647
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6111",
+      "name": "Horn (See)",
+      "coordinate": [
+        9.46295202,
+        47.49663698
+      ],
+      "projections": [
+        {
+          "point": [
+            9.46283,
+            47.49665
+          ],
+          "offset": 9.291055427810186
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 36750.15522217993
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6110",
+      "name": "Arbon (See)",
+      "coordinate": [
+        9.44032346,
+        47.5126454
+      ],
+      "projections": [
+        {
+          "point": [
+            9.440328642567454,
+            47.512642482897235
+          ],
+          "offset": 0.5072410156267297
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 34290.73273078215
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6165",
+      "name": "Kreuzlingen Hafen (See)",
+      "coordinate": [
+        9.18264172,
+        47.65258652
+      ],
+      "projections": [
+        {
+          "point": [
+            9.18264172,
+            47.65258652
+          ],
+          "offset": 0
+        },
+        {
+          "point": [
+            9.145017,
+            47.747929
+          ],
+          "offset": 10981.468977500583
+        }
+      ]
+    },
+    {
+      "id": "8099992",
+      "name": "Mainau (Bodensee)",
+      "coordinate": [
+        9.20071582,
+        47.70584682
+      ],
+      "projections": [
+        {
+          "point": [
+            9.200734776406117,
+            47.705947705208224
+          ],
+          "offset": 11.319964564300413
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 6257.639764564
+        }
+      ]
+    },
+    {
+      "id": "8014611",
+      "name": "Meersburg (Bodensee)",
+      "coordinate": [
+        9.27226663,
+        47.6920259
+      ],
+      "projections": [
+        {
+          "point": [
+            9.27226663,
+            47.6920259
+          ],
+          "offset": 0
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 11358.303047185487
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6112",
+      "name": "Romanshorn (See)",
+      "coordinate": [
+        9.37997463,
+        47.56556342
+      ],
+      "projections": [
+        {
+          "point": [
+            9.37997463,
+            47.56556342
+          ],
+          "offset": 0
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 26865.230689202137
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:30835",
+      "name": "Uttwil (See)",
+      "coordinate": [
+        9.34535356,
+        47.58643454
+      ],
+      "projections": [
+        {
+          "point": [
+            9.34535356,
+            47.58643454
+          ],
+          "offset": 0
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 23411.88010413003
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:30834",
+      "name": "Altnau (See)",
+      "coordinate": [
+        9.2690866,
+        47.62313274
+      ],
+      "projections": [
+        {
+          "point": [
+            9.269147618483794,
+            47.6231583330416
+          ],
+          "offset": 5.392313128306345
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 16707.02742098231
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:30720",
+      "name": "Bottighofen (See)",
+      "coordinate": [
+        9.21189985,
+        47.64473744
+      ],
+      "projections": [
+        {
+          "point": [
+            9.211958068925172,
+            47.644759774885564
+          ],
+          "offset": 5.024634645355165
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 12529.95108710522
+        }
+      ]
+    },
+    {
+      "id": "8014650",
+      "name": "Langenargen Hafen",
+      "coordinate": [
+        9.53991069,
+        47.59515262
+      ],
+      "projections": [
+        {
+          "point": [
+            9.53997042016592,
+            47.59511886670496
+          ],
+          "offset": 5.85013696587332
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 34113.95497524938
+        }
+      ]
+    },
+    {
+      "id": "8014614",
+      "name": "Immenstaad (Bodensee)",
+      "coordinate": [
+        9.36703889,
+        47.66232816
+      ],
+      "projections": [
+        {
+          "point": [
+            9.366842221144013,
+            47.66229874685991
+          ],
+          "offset": 15.104196586485191
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 19143.261982610074
+        }
+      ]
+    },
+    {
+      "id": "8014613",
+      "name": "Hagnau (Bodensee)",
+      "coordinate": [
+        9.31411914,
+        47.67351972
+      ],
+      "projections": [
+        {
+          "point": [
+            9.31411914,
+            47.67351972
+          ],
+          "offset": 0
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 15110.957046326486
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:95982",
+      "name": "Güttingen (See)",
+      "coordinate": [
+        9.29601809,
+        47.61286905
+      ],
+      "projections": [
+        {
+          "point": [
+            9.29601809,
+            47.61286905
+          ],
+          "offset": 0
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 18806.563728168305
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6346",
+      "name": "Romanshorn Autoquai",
+      "coordinate": [
+        9.38109753,
+        47.56466028
+      ],
+      "projections": [
+        {
+          "point": [
+            9.381097610353407,
+            47.5646895965761
+          ],
+          "offset": 3.263526833132259
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 26996.450580743087
+        }
+      ]
+    },
+    {
+      "id": "8011121",
+      "name": "Friedrichshafen Fähre",
+      "coordinate": [
+        9.48421514,
+        47.65101317
+      ],
+      "projections": [
+        {
+          "point": [
+            9.484295233700179,
+            47.651004396757884
+          ],
+          "offset": 6.085121259085558
+        },
+        {
+          "point": [
+            9.145504,
+            47.748044
+          ],
+          "offset": 27579.57002293253
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6150",
+      "name": "Schaffhausen (Schifflände)",
+      "coordinate": [
+        8.6410115,
+        47.69529102
+      ],
+      "projections": [
+        {
+          "point": [
+            9.149331,
+            47.747858
+          ],
+          "offset": 38514.551669052446
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 37376.13704899703
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:1101322",
+      "name": "Büsingen (Schifflände)",
+      "coordinate": [
+        8.6933204,
+        47.69543008
+      ],
+      "projections": [
+        {
+          "point": [
+            9.149331,
+            47.747858
+          ],
+          "offset": 34645.139518902426
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 33510.70011689036
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6152",
+      "name": "Diessenhofen (Schifflände)",
+      "coordinate": [
+        8.74886323,
+        47.69041746
+      ],
+      "projections": [
+        {
+          "point": [
+            9.149331,
+            47.747858
+          ],
+          "offset": 30665.987191753546
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 29542.51402319798
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6153",
+      "name": "Stein am Rhein (Schifflände)",
+      "coordinate": [
+        8.85665208,
+        47.6599141
+      ],
+      "projections": [
+        {
+          "point": [
+            9.149749,
+            47.746988
+          ],
+          "offset": 24001.632332339173
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 22975.777629084052
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:1101745",
+      "name": "Öhningen (See)",
+      "coordinate": [
+        8.89456997,
+        47.65209637
+      ],
+      "projections": [
+        {
+          "point": [
+            9.178131,
+            47.657894
+          ],
+          "offset": 21272.447230563936
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 20877.96025217287
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6155",
+      "name": "Mammern (See)",
+      "coordinate": [
+        8.91673141,
+        47.64828994
+      ],
+      "projections": [
+        {
+          "point": [
+            9.178131,
+            47.657894
+          ],
+          "offset": 19630.741421813564
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 19707.379301427445
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:1103929",
+      "name": "Wangen (Bodensee)",
+      "coordinate": [
+        8.930278,
+        47.65866165
+      ],
+      "projections": [
+        {
+          "point": [
+            9.177743,
+            47.664038
+          ],
+          "offset": 18563.40745211449
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 18220.58032095085
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:1101477",
+      "name": "Hemmenhofen (See)",
+      "coordinate": [
+        8.96894149,
+        47.67198934
+      ],
+      "projections": [
+        {
+          "point": [
+            9.177764,
+            47.664546
+          ],
+          "offset": 15676.364272618484
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 14986.974043437378
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6157",
+      "name": "Steckborn (See)",
+      "coordinate": [
+        8.98143706,
+        47.66864413
+      ],
+      "projections": [
+        {
+          "point": [
+            9.177764,
+            47.664546
+          ],
+          "offset": 14725.256339896576
+        },
+        {
+          "point": [
+            9.133941,
+            47.748142
+          ],
+          "offset": 14450.556213491831
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:1101424",
+      "name": "Gaienhofen (See)",
+      "coordinate": [
+        8.98231741,
+        47.67945935
+      ],
+      "projections": [
+        {
+          "point": [
+            9.14988,
+            47.746836
+          ],
+          "offset": 14620.96544102156
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 13690.126403158376
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6159",
+      "name": "Berlingen (See)",
+      "coordinate": [
+        9.01766611,
+        47.67534039
+      ],
+      "projections": [
+        {
+          "point": [
+            9.177764,
+            47.664546
+          ],
+          "offset": 12061.413945718801
+        },
+        {
+          "point": [
+            9.133941,
+            47.748142
+          ],
+          "offset": 11896.705498568044
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6160",
+      "name": "Mannenbach (See)",
+      "coordinate": [
+        9.04843341,
+        47.67449358
+      ],
+      "projections": [
+        {
+          "point": [
+            9.177764,
+            47.664546
+          ],
+          "offset": 9758.115537736156
+        },
+        {
+          "point": [
+            9.134281,
+            47.7479
+          ],
+          "offset": 10398.261064111786
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:1101894",
+      "name": "Reichenau (See)",
+      "coordinate": [
+        9.05422755,
+        47.6897402
+      ],
+      "projections": [
+        {
+          "point": [
+            9.179213,
+            47.706053
+          ],
+          "offset": 9538.70783702169
+        },
+        {
+          "point": [
+            9.134281,
+            47.7479
+          ],
+          "offset": 8823.958696198173
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6162",
+      "name": "Ermatingen (See)",
+      "coordinate": [
+        9.085444,
+        47.67523152
+      ],
+      "projections": [
+        {
+          "point": [
+            9.177814,
+            47.664828
+          ],
+          "offset": 7020.496961770944
+        },
+        {
+          "point": [
+            9.135822,
+            47.747139
+          ],
+          "offset": 8849.585107265435
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:6163",
+      "name": "Gottlieben (Schifflände)",
+      "coordinate": [
+        9.13468066,
+        47.66466346
+      ],
+      "projections": [
+        {
+          "point": [
+            9.177743,
+            47.664038
+          ],
+          "offset": 3229.176008584994
+        },
+        {
+          "point": [
+            9.13653,
+            47.746959
+          ],
+          "offset": 9162.18694290974
+        }
+      ]
+    },
+    {
+      "id": "8014587",
+      "name": "Konstanz Hafen",
+      "coordinate": [
+        9.17953355,
+        47.65986569
+      ],
+      "projections": [
+        {
+          "point": [
+            9.179495876435611,
+            47.65994359023842
+          ],
+          "offset": 9.120295425034199
+        },
+        {
+          "point": [
+            9.145017,
+            47.747929
+          ],
+          "offset": 10138.497368471319
+        }
+      ]
+    },
+    {
+      "id": "ch:1:sloid:1101805",
+      "name": "Radolfzell (Bodensee)",
+      "coordinate": [
+        8.96932777,
+        47.73510292
+      ],
+      "projections": [
+        {
+          "point": [
+            9.149331,
+            47.747858
+          ],
+          "offset": 13549.6664073863
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 12403.258250291621
+        }
+      ]
+    },
+    {
+      "id": "8014575",
+      "name": "Iznang (See)",
+      "coordinate": [
+        8.96160226,
+        47.71718619
+      ],
+      "projections": [
+        {
+          "point": [
+            9.149331,
+            47.747858
+          ],
+          "offset": 14464.576281341642
+        },
+        {
+          "point": [
+            9.133863,
+            47.748214
+          ],
+          "offset": 13352.12421999976
+        }
+      ]
+    }
+  ],
+  "directedPairs": [
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:6113\",\"ch:1:sloid:6111\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:6113",
+      "toId": "ch:1:sloid:6111",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:6111\",\"ch:1:sloid:6110\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:6111",
+      "toId": "ch:1:sloid:6110",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:6165\",\"8099992\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:6165",
+      "toId": "8099992",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"8099992\",\"8014611\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "8099992",
+      "toId": "8014611",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:6110\",\"ch:1:sloid:6112\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:6110",
+      "toId": "ch:1:sloid:6112",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:6112\",\"ch:1:sloid:30835\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:6112",
+      "toId": "ch:1:sloid:30835",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:30835\",\"ch:1:sloid:30834\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:30835",
+      "toId": "ch:1:sloid:30834",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:30834\",\"ch:1:sloid:30720\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:30834",
+      "toId": "ch:1:sloid:30720",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:30720\",\"ch:1:sloid:6165\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:30720",
+      "toId": "ch:1:sloid:6165",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"8014611\",\"ch:1:sloid:6165\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "8014611",
+      "toId": "ch:1:sloid:6165",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:6110\",\"8014650\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:6110",
+      "toId": "8014650",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:6112\",\"ch:1:sloid:6110\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:6112",
+      "toId": "ch:1:sloid:6110",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"8014650\",\"ch:1:sloid:6113\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "8014650",
+      "toId": "ch:1:sloid:6113",
+      "candidatePolygon": 0,
+      "status": "direct-water-candidate-not-admitted"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:6110\",\"ch:1:sloid:6111\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:6110",
+      "toId": "ch:1:sloid:6111",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:6111\",\"ch:1:sloid:6113\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:6111",
+      "toId": "ch:1:sloid:6113",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:6165\",\"ch:1:sloid:30720\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:6165",
+      "toId": "ch:1:sloid:30720",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:30720\",\"ch:1:sloid:30834\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:30720",
+      "toId": "ch:1:sloid:30834",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:30834\",\"ch:1:sloid:30835\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:30834",
+      "toId": "ch:1:sloid:30835",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"ch:1:sloid:30835\",\"ch:1:sloid:6112\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "ch:1:sloid:30835",
+      "toId": "ch:1:sloid:6112",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-0-j26-1\",\"8014650\",\"ch:1:sloid:6110\"]",
+      "routeId": "94-380-0-j26-1",
+      "fromId": "8014650",
+      "toId": "ch:1:sloid:6110",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-1-j26-1\",\"8014614\",\"8014613\"]",
+      "routeId": "94-380-1-j26-1",
+      "fromId": "8014614",
+      "toId": "8014613",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-1-j26-1\",\"8014613\",\"ch:1:sloid:30834\"]",
+      "routeId": "94-380-1-j26-1",
+      "fromId": "8014613",
+      "toId": "ch:1:sloid:30834",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-1-j26-1\",\"ch:1:sloid:30834\",\"ch:1:sloid:95982\"]",
+      "routeId": "94-380-1-j26-1",
+      "fromId": "ch:1:sloid:30834",
+      "toId": "ch:1:sloid:95982",
+      "candidatePolygon": 0,
+      "status": "direct-water-candidate-not-admitted"
+    },
+    {
+      "key": "[\"94-380-1-j26-1\",\"ch:1:sloid:95982\",\"8014614\"]",
+      "routeId": "94-380-1-j26-1",
+      "fromId": "ch:1:sloid:95982",
+      "toId": "8014614",
+      "candidatePolygon": 0,
+      "status": "direct-water-candidate-not-admitted"
+    },
+    {
+      "key": "[\"94-380-1-j26-1\",\"ch:1:sloid:95982\",\"ch:1:sloid:6112\"]",
+      "routeId": "94-380-1-j26-1",
+      "fromId": "ch:1:sloid:95982",
+      "toId": "ch:1:sloid:6112",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-380-1-j26-1\",\"ch:1:sloid:6112\",\"8014614\"]",
+      "routeId": "94-380-1-j26-1",
+      "fromId": "ch:1:sloid:6112",
+      "toId": "8014614",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-381-0-j26-1\",\"ch:1:sloid:6346\",\"8011121\"]",
+      "routeId": "94-381-0-j26-1",
+      "fromId": "ch:1:sloid:6346",
+      "toId": "8011121",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-381-0-j26-1\",\"8011121\",\"ch:1:sloid:6346\"]",
+      "routeId": "94-381-0-j26-1",
+      "fromId": "8011121",
+      "toId": "ch:1:sloid:6346",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-381-A-j26-1\",\"ch:1:sloid:6346\",\"8011121\"]",
+      "routeId": "94-381-A-j26-1",
+      "fromId": "ch:1:sloid:6346",
+      "toId": "8011121",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-381-A-j26-1\",\"8011121\",\"ch:1:sloid:6346\"]",
+      "routeId": "94-381-A-j26-1",
+      "fromId": "8011121",
+      "toId": "ch:1:sloid:6346",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6150\",\"ch:1:sloid:1101322\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6150",
+      "toId": "ch:1:sloid:1101322",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1101322\",\"ch:1:sloid:6152\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1101322",
+      "toId": "ch:1:sloid:6152",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6153\",\"ch:1:sloid:1101745\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6153",
+      "toId": "ch:1:sloid:1101745",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1101745\",\"ch:1:sloid:6155\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1101745",
+      "toId": "ch:1:sloid:6155",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6155\",\"ch:1:sloid:1103929\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6155",
+      "toId": "ch:1:sloid:1103929",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1103929\",\"ch:1:sloid:1101477\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1103929",
+      "toId": "ch:1:sloid:1101477",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1101477\",\"ch:1:sloid:6157\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1101477",
+      "toId": "ch:1:sloid:6157",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6157\",\"ch:1:sloid:1101424\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6157",
+      "toId": "ch:1:sloid:1101424",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1101424\",\"ch:1:sloid:6159\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1101424",
+      "toId": "ch:1:sloid:6159",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6159\",\"ch:1:sloid:6160\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6159",
+      "toId": "ch:1:sloid:6160",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6160\",\"ch:1:sloid:1101894\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6160",
+      "toId": "ch:1:sloid:1101894",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1101894\",\"ch:1:sloid:6162\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1101894",
+      "toId": "ch:1:sloid:6162",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6162\",\"ch:1:sloid:6163\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6162",
+      "toId": "ch:1:sloid:6163",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6163\",\"8014587\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6163",
+      "toId": "8014587",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"8014587\",\"ch:1:sloid:6165\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "8014587",
+      "toId": "ch:1:sloid:6165",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6152\",\"ch:1:sloid:1101322\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6152",
+      "toId": "ch:1:sloid:1101322",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1101322\",\"ch:1:sloid:6150\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1101322",
+      "toId": "ch:1:sloid:6150",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6165\",\"8014587\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6165",
+      "toId": "8014587",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"8014587\",\"ch:1:sloid:6163\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "8014587",
+      "toId": "ch:1:sloid:6163",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6163\",\"ch:1:sloid:6162\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6163",
+      "toId": "ch:1:sloid:6162",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6162\",\"ch:1:sloid:1101894\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6162",
+      "toId": "ch:1:sloid:1101894",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1101894\",\"ch:1:sloid:6160\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1101894",
+      "toId": "ch:1:sloid:6160",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6160\",\"ch:1:sloid:6159\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6160",
+      "toId": "ch:1:sloid:6159",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6159\",\"ch:1:sloid:1101424\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6159",
+      "toId": "ch:1:sloid:1101424",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1101424\",\"ch:1:sloid:6157\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1101424",
+      "toId": "ch:1:sloid:6157",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6157\",\"ch:1:sloid:1101477\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6157",
+      "toId": "ch:1:sloid:1101477",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1101477\",\"ch:1:sloid:1103929\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1101477",
+      "toId": "ch:1:sloid:1103929",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1103929\",\"ch:1:sloid:6155\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1103929",
+      "toId": "ch:1:sloid:6155",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:6155\",\"ch:1:sloid:1101745\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:6155",
+      "toId": "ch:1:sloid:1101745",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-0-j26-1\",\"ch:1:sloid:1101745\",\"ch:1:sloid:6153\"]",
+      "routeId": "94-382-0-j26-1",
+      "fromId": "ch:1:sloid:1101745",
+      "toId": "ch:1:sloid:6153",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-A-j26-1\",\"ch:1:sloid:1101805\",\"ch:1:sloid:6160\"]",
+      "routeId": "94-382-A-j26-1",
+      "fromId": "ch:1:sloid:1101805",
+      "toId": "ch:1:sloid:6160",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-A-j26-1\",\"ch:1:sloid:6160\",\"ch:1:sloid:1101894\"]",
+      "routeId": "94-382-A-j26-1",
+      "fromId": "ch:1:sloid:6160",
+      "toId": "ch:1:sloid:1101894",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-A-j26-1\",\"ch:1:sloid:1101805\",\"8014575\"]",
+      "routeId": "94-382-A-j26-1",
+      "fromId": "ch:1:sloid:1101805",
+      "toId": "8014575",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-382-A-j26-1\",\"8014575\",\"ch:1:sloid:6160\"]",
+      "routeId": "94-382-A-j26-1",
+      "fromId": "8014575",
+      "toId": "ch:1:sloid:6160",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-T-Y-j26-1\",\"ch:1:sloid:1101894\",\"ch:1:sloid:6160\"]",
+      "routeId": "94-T-Y-j26-1",
+      "fromId": "ch:1:sloid:1101894",
+      "toId": "ch:1:sloid:6160",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    },
+    {
+      "key": "[\"94-T-Y-j26-1\",\"ch:1:sloid:6160\",\"ch:1:sloid:1101894\"]",
+      "routeId": "94-T-Y-j26-1",
+      "fromId": "ch:1:sloid:6160",
+      "toId": "ch:1:sloid:1101894",
+      "candidatePolygon": null,
+      "status": "no-direct-water-candidate-within-150m"
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-09-04",
+      "boatJourneys": 92,
+      "completeDirectWaterCandidateJourneys": 0,
+      "candidateJourneyIds": []
+    },
+    {
+      "date": "2026-09-06",
+      "boatJourneys": 87,
+      "completeDirectWaterCandidateJourneys": 0,
+      "candidateJourneyIds": []
+    }
+  ]
+}
