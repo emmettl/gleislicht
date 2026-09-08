@@ -50,6 +50,19 @@ test('changed templates, calendars, platform chains and daily feed instances can
  for(const stops of [moved,r.stops.slice(1),[...r.stops].reverse()])expect(matcher.matchPattern(t,stops)).toBeUndefined()
 })
 
+test('measurement roundoff preserves admitted and held segments but meaningful drift fails closed',()=>{
+ const r=policy.patterns[0],t=train(r),actual=evaluate(t,r.stops)
+ const admitted=r.segments.findIndex(s=>s.disposition==='admit-clear-of-closure'),held=r.segments.findIndex(s=>s.disposition==='hold-closed-road-crossing')
+ expect(admitted).toBeGreaterThanOrEqual(0);expect(held).toBeGreaterThanOrEqual(0)
+ for(const i of [admitted,held])for(const field of ['endpointAdjustmentMetres','pathMetres']){
+  const rounded=structuredClone(actual);rounded[i][field]+=1e-12
+  const replay=oberentfeldenMatcher(policy,()=>rounded).matchPattern(t,r.stops)
+  expect(replay[admitted].path).toEqual(actual[admitted].path);expect(replay[held]).toBeUndefined()
+  const changed=structuredClone(actual);changed[i][field]+=1e-6
+  expect(()=>oberentfeldenMatcher(policy,()=>changed).matchPattern(t,r.stops)).toThrow('Changed Oberentfelden road evidence')
+ }
+})
+
 test('edited clearance decisions, paths, evidence or relaxed buffer fail closed',()=>{
  const r=policy.patterns[0],t=train(r),actual=evaluate(t,r.stops)
  const relaxed=structuredClone(policy);relaxed.clearanceMetres=0;expect(()=>oberentfeldenMatcher(relaxed,evaluate)).toThrow()
