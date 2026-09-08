@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "acquiredAt": "2026-09-08T22:33:18.402486+00:00",
+  "files": [
+    {
+      "file": "dulliken-plan.pdf",
+      "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnersatz/bep-dulliken.pdf.sbbdownload.pdf",
+      "sha256": "2e119f0f507671a6e3a9892cfcd54cc874a380dc33efbbf4a0513a00580036ec"
+    },
+    {
+      "file": "daniken-plan.pdf",
+      "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnersatz/bep-daeniken.pdf.sbbdownload.pdf",
+      "sha256": "78cc59c5caaafd80160a6bd7412c656f9ba8ed4f0cdf324567e68c91842994f1"
+    },
+    {
+      "file": "egerkingen-2026.html.gz",
+      "url": "https://www.astra.admin.ch/de/a1-luterbach-haerkingen-6-streifen-ausbau-neue-verkehrsfuehrung-in-egerkingen-bringt-entlastung",
+      "sha256": "33c9d45146765eedd6a21e4a6d5b3280e705989f5515ac842d0e292fdffe0e36"
+    }
+  ],
+  "reviews": {
+    "dulliken": {
+      "sourceDate": "2024-10",
+      "attribution": "SBB / OpenStreetMap contributors / imagico / trafimage.ch / mapset.ch",
+      "finding": "Two replacement boarding positions are labelled Richtung Olten and Richtung Däniken / Aarau. Red dotted paths connect rail platforms to bus stops on foot. No bus arrival, departure or terminal turnaround is specified.",
+      "decision": "Does not choose either retained complete-pattern bus approach. Original GTFS stop remains unchanged."
+    },
+    "daniken": {
+      "sourceDate": "2024-10",
+      "attribution": "SBB / OpenStreetMap contributors / imagico / trafimage.ch / mapset.ch",
+      "finding": "Replacement boarding is labelled Däniken, Post; Däniken, Bahnhof is a separate nearby stop. Dotted paths describe pedestrian access from the rail platforms.",
+      "decision": "Corroborates the original stop name but supplies no bus itinerary or operating direction."
+    },
+    "egerkingen": {
+      "sourceDate": "2026-05-15",
+      "attribution": "Bundesamt für Strassen ASTRA, Filiale Zofingen",
+      "finding": "Announces staged road openings from May through July 2026 and continuing works until approximately mid-2027, with possible schedule changes. Does not identify BOGG line 501 or its station approach.",
+      "decision": "Dated regional road-work context only; no inferred completion date or bus-route selection."
+    }
+  },
+  "licensing": "PDFs and notice retained as review context. No reuse licence inferred; no geometry extracted into the feed."
+}

@@ -462,7 +462,8 @@
         "seasonalPlatformAdditionalJourneys": 12,
         "seasonalCompletionAdditionalJourneys": 79,
         "allSampledRailGeometryComplete": true,
-        "residualDirectedPairs": 7
+        "residualDirectedPairs": 7,
+        "stationAccessAudit": "data/solothurn-audit/station-access-review.json"
       }
     },
     {

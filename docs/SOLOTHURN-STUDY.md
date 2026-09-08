@@ -422,6 +422,8 @@ New [residual source evidence](../data/solothurn-residual-sources/sources.json),
 
 The cantonal path in this comparison is obtained with an explicitly **diagnostic-only 1,400 m search**; it does not change the admission limits. All three paths remain excluded. The new PDFs are retained as review context; no reuse licence is inferred and no PDF geometry enters the feed. The residual audit states what additional operating or platform evidence each September case needs. Year-round coverage and current physical directions remain uncertified.
 
+A subsequent [station-access follow-up](SOLOTHURN-STATION-ACCESS.md) quantifies both full-context EV1/EV4 alternatives and checks October 2024 SBB Däniken/Dulliken boarding plans plus a May 2026 ASTRA Egerkingen road-work notice. All seven residual pairs are reconciled across twelve dates. The documents do not select bus approaches or correct tram platform E, so no additional journey is admitted.
+
 ## Sources, dates and attribution
 
 - **National timetable:** SBB / Open data platform mobility Switzerland, feed **20260902**, valid **2025-12-14–2026-12-12**. [Dataset](https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020), [pinned ZIP](https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip), [terms](https://opentransportdata.swiss/en/terms-of-use/). SHA-256: `d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e`.
@@ -476,6 +478,7 @@ npm run data:solothurn:alignments
 npm run data:solothurn:release
 node scripts/review-solothurn-residual-gaps.mjs
 node scripts/review-solothurn-residual-gaps.mjs --check
+node scripts/review-solothurn-station-access.mjs --check
 npm run data:solothurn:docs
 npx vitest run scripts/solothurn-region.test.mjs scripts/solothurn-corridor.test.mjs scripts/solothurn-rail-review.test.mjs scripts/solothurn-s29-precedence.test.mjs scripts/solothurn-bus-junction.test.mjs scripts/solothurn-access-roads.test.mjs scripts/solothurn-bern-terminal.test.mjs scripts/solothurn-s26-review.test.mjs scripts/solothurn-como-rail.test.mjs scripts/solothurn-simplon-rail.test.mjs scripts/solothurn-delle-rail.test.mjs scripts/solothurn-road-detours.test.mjs scripts/solothurn-m53-corridor.test.mjs scripts/solothurn-residual-gaps.test.mjs scripts/solothurn-seasonal-roads.test.mjs scripts/solothurn-release.test.mjs
 npx playwright test --config playwright.solothurn.config.ts
