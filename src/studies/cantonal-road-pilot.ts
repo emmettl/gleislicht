@@ -10,12 +10,11 @@ export const cantonalPilotForRoad = (road?: string, recordingId?: string) => {
 }
 export type CantonalPilotDefinition = typeof pilotCatalog[number]
 export function searchRoadsWithPilots<Road extends RoadSearchCorridor>(roads: readonly Road[], query: string): readonly Road[] {
-  const originals = new Map(roads.map(road => [road.id, road]))
   const searchable = roads.map(road => {
     const pilots = cantonalPilotsForRoad(road.id)
-    return pilots.length ? { ...road, description: `${road.description ?? ''} ${pilots.map(p => p.name).join(' ')}` } : road
+    return { ...road, original: road, description: pilots.length ? `${road.description ?? ''} ${pilots.map(p => p.name).join(' ')}` : road.description }
   })
-  return searchRoadCorridors(searchable, query).map(road => originals.get(road.id)!)
+  return searchRoadCorridors(searchable, query).map(road => road.original)
 }
 export interface CantonalPilot {
   metadata: { schemaVersion: number; recordingId: string; recordingScope: string; serviceDate: string; windowStart: number; windowEnd: number; road: string; name: string; completeMinutes: number }

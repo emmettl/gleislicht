@@ -10,7 +10,6 @@ import type { MeasuredTerrainBinding } from './studies/measured-terrain.ts'
 import type { RigiTerrainBinding } from './studies/rigi-timetable-terrain.ts'
 import { rigiOperator } from './studies/rigi.ts'
 import { isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
-import { airTrafficSummary } from './studies/air-traffic-summary.ts'
 import { createActiveTrainCounter, orderTrainSearchMatches, trainSearchResults } from './studies/network-ui-index.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
 import { TransportIcon } from './TransportIcon.tsx'
@@ -464,6 +463,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const [recordingState, setRecordingState] = useState<RecordingState>('idle')
   const soundtrackRef = useRef<GleislichtSoundtrack | null>(null)
   const recordingRef = useRef<{ stop: () => void; cancel: () => void } | null>(null)
+  const [mobileMapToolsOpen, setMobileMapToolsOpen] = useState(false)
   const mobileMapToolsRef = useRef<HTMLDetailsElement>(null)
   const searchInteractionRef = useRef(false)
   const timelineTimeRef = useRef(networkTime)
@@ -726,14 +726,14 @@ export function App({ edition, suspended = false }: AppProps) {
         : undefined,
     [networkTime, selectedAirTrack],
   )
-  const airSummary = useMemo(
+  const visibleAirTracks = useMemo(
     () =>
-      airTrafficSummary(airEnabled && activeAirSnapshot
+      airEnabled && activeAirSnapshot
         ? activeAirTracks(activeAirSnapshot, networkTime)
-        : []),
+        : [],
     [activeAirSnapshot, airEnabled, networkTime],
   )
-  const activeAircraftCount = airSummary.aircraft
+  const activeAircraftCount = visibleAirTracks.length
   const activeRoadVehicleCount = useMemo(
     () =>
       roadEnabled && nationalRoad.snapshot && nationalRoadInWindow
@@ -3152,19 +3152,7 @@ export function App({ edition, suspended = false }: AppProps) {
       ) : isNetwork && selectedStation ? (
         <Suspense fallback={null}><DetailCard kind="StationCard" selectedStation={selectedStation} serviceColors={serviceColors} onConnections={isRigi ? () => setRigiGuideActive(true) : undefined} connectionsLabel={rigiCopy.connections} fullDay={isNationalDay || isRegionalDay || isMountainStudy} frequencyNote={selectionHasHeadwayMotion ? frequencyCopy.mixed : undefined} activeTrainCount={activeTrainCount} movementsLabel={networkStudy === 'national' ? text.trainsInMotion : isJungfrau ? jungfrauCopy?.movements : text.vehiclesInMotion} callWindow={isMountainStudy ? '24h' : isNationalDay ? '3h' : '2h'} numberFormat={numberFormat} text={text} /></Suspense>
       ) : isNetwork && selectedRoad ? (
-        <section
-          className={`journey-card road-corridor-card${activePilot ? ' is-pilot' : ''}`}
-          aria-label={`${text.selectedRoadCorridor}: ${selectedRoad.label}`}
-        >
-          <div className="service-row">
-            <span className="road-card-mark" aria-hidden="true">━</span>
-            <span className="service">{selectedRoad.label}</span>
-            <span className="arrow">/</span>
-            <span>{selectedRoad.officialLabel}</span>
-          </div>
-          <p className="between">
-            {activePilot ? null : selectedRoad.description ?? text.nationalMotorway}
-          </p>
+        <Suspense fallback={null}><DetailCard kind="RoadCard" selectedRoad={selectedRoad} activePilot={activePilot} selectedRoadGeometryOnly={selectedRoadGeometryOnly} selectedRoadLength={selectedRoadLength} selectedRoadTraffic={selectedRoadTraffic} roadLoadState={roadLoadState} roadMetricFormat={roadMetricFormat} numberFormat={numberFormat} text={text}>
           {selectedPilotDefinition && <Suspense fallback={null}><CantonalPilotControls key={`${selectedPilotDefinition.id}:${sbbEnabled}:${airEnabled}:${roadEnabled}`} definition={selectedPilotDefinition} pilot={activePilot} time={networkTime} language={language}
             autoStartTime={pilotLinkPending.current && linkedPilot?.id === selectedPilotDefinition.id ? initialLink.time : undefined}
             onAutoStart={() => { pilotLinkPending.current = false }}
@@ -3200,75 +3188,11 @@ export function App({ edition, suspended = false }: AppProps) {
                 roadHistorySeekRef.current = { time, at: performance.now() }
               }} />
           </Suspense>}
-          <div className="metric-grid">
-            <div>
-              <span>{text.mappedRoadLength}</span>
-              <strong>{activePilot ? `≈${roadMetricFormat.format(activePilot.topology.sections[0].distanceKm)}` : selectedRoadLength === undefined ? '—' : `≈${roadMetricFormat.format(selectedRoadLength)}`}</strong>
-              <small>km</small>
-            </div>
-            {!selectedRoadGeometryOnly && <div>
-              <span>{text.estimatedVehicles}</span>
-              <strong>{selectedRoadTraffic ? `≈${numberFormat.format(selectedRoadTraffic.vehicles)}` : '—'}</strong>
-            </div>}
-          </div>
-          <p className="road-traffic-summary">
-            {selectedRoadGeometryOnly || activePilot
-              ? <a href="https://geolion.zh.ch/geodatensatz/3177" target="_blank" rel="noreferrer">AUTO · Kanton Zürich</a>
-              : selectedRoadTraffic
-              ? <>
-                  <span>{text.roadDensitySummary(roadMetricFormat.format(selectedRoadTraffic.density))}</span>
-                  <span>{text.roadCoverageSummary(roadMetricFormat.format(selectedRoadTraffic.carriagewayKm))}</span>
-                  <span>{selectedRoadTraffic.representative ? text.representativeRoadTraffic : text.counterRoadTraffic}</span>
-                </>
-              : roadLoadState === 'loading' ? text.loadingRoad : text.noRoadTraffic}
-          </p>
-        </section>
+        </DetailCard></Suspense>
       ) : roadOnly ? (
-        <section className="journey-card network-card road-network-card" aria-label={text.estimatedVehicles}>
-          <div className="network-count-row">
-            <strong>{roadOverview ? `≈${numberFormat.format(roadOverview.vehicles)}` : '—'}</strong>
-            <span>{text.estimatedVehicles}</span>
-          </div>
-          <p className="between">
-            {roadOverview
-              ? roadOverview.representative ? text.representativeRoadTraffic : text.counterRoadTraffic
-              : roadLoadState === 'error' ? text.roadUnavailable
-                : roadLoadState !== 'ready' ? text.loadingRoad : text.noRoadTraffic}
-          </p>
-          <div className="metric-grid">
-            <div>
-              <span>{text.roadDensity}</span>
-              <strong>{roadOverview ? `≈${roadMetricFormat.format(roadOverview.density)}` : '—'}</strong>
-              <small>{text.roadDensityUnit}</small>
-            </div>
-            <div>
-              <span>{text.roadCoveredDistance}</span>
-              <strong>{roadOverview ? roadMetricFormat.format(roadOverview.carriagewayKm) : '—'}</strong>
-              <small>km</small>
-            </div>
-          </div>
-        </section>
+        <Suspense fallback={null}><DetailCard kind="RoadOverviewCard" roadOverview={roadOverview} roadLoadState={roadLoadState} roadMetricFormat={roadMetricFormat} numberFormat={numberFormat} text={text} /></Suspense>
       ) : airOnly ? (
-        <section className="journey-card network-card air-network-card" aria-label={text.aircraftInMotion}>
-          <div className="network-count-row">
-            <strong>{activeAirLoadState === 'ready' ? numberFormat.format(activeAircraftCount) : '—'}</strong>
-            <span>{text.aircraftInMotion}</span>
-          </div>
-          <p className="between">
-            {activeAirLoadState === 'error' ? text.airUnavailable
-              : activeAirLoadState !== 'ready' ? text.loadingAir : text.airAirportSummary}
-          </p>
-          <div className="metric-grid">
-            <div>
-              <span>{text.airOrigins}</span>
-              <strong>{activeAirLoadState === 'ready' ? numberFormat.format(airSummary.origins) : '—'}</strong>
-            </div>
-            <div>
-              <span>{text.airDestinations}</span>
-              <strong>{activeAirLoadState === 'ready' ? numberFormat.format(airSummary.destinations) : '—'}</strong>
-            </div>
-          </div>
-        </section>
+        <Suspense fallback={null}><DetailCard kind="AirOverviewCard" activeAirLoadState={activeAirLoadState} tracks={visibleAirTracks} numberFormat={numberFormat} text={text} /></Suspense>
       ) : isNetwork ? (
         <section
           className="journey-card network-card"
@@ -3607,60 +3531,14 @@ export function App({ edition, suspended = false }: AppProps) {
 
       {isNetwork && (
         <div className="mobile-map-tools">
-          <details ref={mobileMapToolsRef}>
+          <details ref={mobileMapToolsRef} onToggle={event => setMobileMapToolsOpen(event.currentTarget.open)}>
             <summary aria-label={text.mapControls}>⌖</summary>
-            <div>
-              {!selectedTrain && !selectedAirTrack && (
-                <div className="mobile-zoom-row">
-                  <button
-                    type="button"
-                    aria-label={text.zoomIn}
-                    onClick={() => moveMapCamera('zoom-in')}
-                  >
-                    +
-                  </button>
-                  <button
-                    type="button"
-                    aria-label={text.zoomOut}
-                    onClick={() => moveMapCamera('zoom-out')}
-                  >
-                    −
-                  </button>
-                  <button
-                    type="button"
-                    aria-label={text.resetMap}
-                    onClick={() => moveMapCamera('reset')}
-                  >
-                    ↺
-                  </button>
-                </div>
-              )}
-              <div className="mobile-tool-field">
-                <span>{text.services}</span>
-                <MobilePicker
-                  ariaLabel={text.filterServices}
-                  value={
-                    isCogwheel ? 'cogwheel' : roadCategorySelected
-                      ? 'road'
-                      : airCategorySelected
-                        ? 'air'
-                        : (selectedCategory ?? '')
-                  }
-                  options={[
-                    { value: '', label: text.allServices },
-                    ...(isNetwork && networkStudy === 'national' ? [{ value: 'cogwheel', label: <span className="transport-option"><TransportIcon mode="cogwheel" color="#fff3a6" />{cogwheelCopy.label}</span> }] : []),
-                    ...(isNetwork && !railVisible ? [] : visibleServiceCategories).map((category) => ({
-                      value: category.id,
-                      label: <span className="transport-option"><TransportIcon mode={isMountainStudy && category.id === 'other' ? 'cogwheel' : category.id} color={serviceColors[category.id]} />{categoryLabel(category.id)}</span>,
-                    })),
-                    ...(networkStudy === 'national' && airEnabled
-                      ? [{ value: 'air', label: <span className="transport-option"><TransportIcon mode="air" color="#ff5edb" />{text.luftraum}</span> }]
-                      : []),
-                    ...(networkStudy === 'national' && roadEnabled
-                      ? [{ value: 'road', label: <span className="transport-option"><TransportIcon mode="road" color="#ffb36b" />{text.auto}</span> }]
-                      : []),
-                  ]}
-                  onChange={(category) => {
+            {mobileMapToolsOpen && <Suspense fallback={null}><DetailCard kind="map-tools" hasSelection={Boolean(selectedTrain || selectedAirTrack)} moveMapCamera={moveMapCamera}
+              isCogwheel={isCogwheel} roadCategorySelected={roadCategorySelected} airCategorySelected={airCategorySelected} selectedCategory={selectedCategory}
+              isNational={networkStudy === 'national'} railVisible={railVisible} visibleServiceCategories={visibleServiceCategories} categoryLabel={categoryLabel} serviceColors={serviceColors}
+              isMountainStudy={isMountainStudy} cogwheelLabel={cogwheelCopy.label} airEnabled={airEnabled} roadEnabled={roadEnabled} trainLabelMode={trainLabelMode}
+              selectedRoadId={selectedRoadId} roads={roadEnabled ? roadTopology?.roads : undefined} onLabelChange={setTrainLabelMode} text={text}
+                  onCategoryChange={(category) => {
                     if (category === 'cogwheel') { if (!isCogwheel) toggleCogwheel(); return }
                     setCogwheelEnabled(false)
                     setAirCategorySelected(category === 'air')
@@ -3672,49 +3550,13 @@ export function App({ edition, suspended = false }: AppProps) {
                         : undefined,
                     )
                   }}
-                />
-              </div>
-              <div className="mobile-tool-field">
-                <span>{text.labels}</span>
-                <MobilePicker
-                  ariaLabel={text.vehicleLabels}
-                  value={trainLabelMode}
-                  options={[
-                    { value: 'auto', label: text.labelModes.auto },
-                    { value: 'on', label: text.labelModes.on },
-                    { value: 'off', label: text.labelModes.off },
-                  ]}
-                  onChange={(labelMode) =>
-                    setTrainLabelMode(labelMode as TrainLabelMode)
-                  }
-                />
-              </div>
-              {roadEnabled && roadTopology && (
-                <div className="mobile-tool-field">
-                  <span>{text.roadCorridors}</span>
-                  <MobilePicker
-                    ariaLabel={text.selectRoadCorridor}
-                    value={selectedRoadId ?? ''}
-                    options={[
-                      { value: '', label: text.allMotorways },
-                      ...roadTopology.roads.map((road) => ({
-                        value: road.id,
-                        label: road.label,
-                        detail:
-                          road.description ?? text.roadSections(road.sectionCount),
-                      })),
-                    ]}
-                    onChange={(roadId) => {
-                      const road = roadTopology.roads.find(
+                    onRoadChange={(roadId) => {
+                      const road = roadTopology?.roads.find(
                         (candidate) => candidate.id === roadId,
                       )
                       if (road) selectRoad(road)
                       else releaseSelection()
-                    }}
-                  />
-                </div>
-              )}
-            </div>
+                    }} /></Suspense>}
           </details>
         </div>
       )}

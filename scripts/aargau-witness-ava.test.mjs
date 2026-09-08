@@ -47,6 +47,12 @@ test('another calendar, source trip, operator, mode, direction, stop chain or da
 test('changed admitted or held geometry, source evidence and relaxed guards fail closed',()=>{
  for(const r of [policy.patterns[0],policy.patterns.find(r=>r.period==='september')]){
   const t=train(r),result=evaluate(t,r.stops),changed=structuredClone(result)
+  for (const drift of [1e-12, 1e-6]) {
+   const rounded = structuredClone(result); rounded[0].endpointAdjustmentMetres += drift
+   const replay = () => avaMatcher(policy, () => rounded).matchPattern(t, r.stops)
+   if (drift < 1e-7) expect(replay).not.toThrow()
+   else expect(replay).toThrow('Changed AVA road evidence')
+  }
   changed[0].path[1][0]+=.00001
   expect(()=>avaMatcher(policy,()=>changed).matchPattern(t,r.stops)).toThrow('Changed AVA diagnostic path')
   const evidence=structuredClone(result);evidence[0].roadPatternId='other'
