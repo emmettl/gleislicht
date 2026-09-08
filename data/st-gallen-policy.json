@@ -362,5 +362,566 @@
         "reason": "Two exact official BOS line-301 edges connect existing endpoints of two disconnected components in source line 321 at Balgach. Identical geometry is present in line 322 and night N31/N32. No proximity bridge or new coordinate; source-record/index references keep restricted vectors in the local cache."
       }
     ]
-  }
+  },
+  "sharedCorridors": [
+    {
+      "id": "postauto-210-211-common-corridor",
+      "agencyId": "801",
+      "operator": "PAG",
+      "line": "210",
+      "donorLine": "211",
+      "targetFeature": "bus:95",
+      "expectedTargetName": "210 St. Gallen - Mörschwil - Tübach - Steinach - Arbon",
+      "donorFeature": "bus:96",
+      "expectedDonorName": "211 St. Gallen - Mörschwil - Tübach - Horn - Steinach -Arbon",
+      "stopSequence": [
+        "St. Gallen, Bahnhof",
+        "St. Gallen, Marktplatz Bohl",
+        "St. Gallen, Theater",
+        "St. Gallen, Kantonsspital",
+        "St. Gallen, Grossacker",
+        "St. Gallen, Neudorf/R'str.",
+        "St. Gallen, Remishueb / Klinik",
+        "St. Gallen, Riederenholz",
+        "St. Gallen, Obere Waid",
+        "Mörschwil, Alberenberg",
+        "Mörschwil, Lantschen",
+        "Mörschwil, Bitzi",
+        "Mörschwil, Altes Gemeindehaus",
+        "Mörschwil, Kirche",
+        "Mörschwil, Fahrn",
+        "Tübach, Waldegg",
+        "Tübach, Schulstrasse"
+      ],
+      "evidence": [
+        {
+          "file": "postauto-st-gallen-ost.pdf",
+          "url": "https://www1.postauto.ch/-/media/postauto/fahrplan-und-netz/liniennetz/dokumente/ostschweiz/liniennetzplan-st-gallen-ost.pdf?vs=7",
+          "sha256": "a01d8c74f18a50543e1bfee89a28dbde5538288a2ab7bb1163bbc93a7811eb3d",
+          "bytes": 2053266,
+          "retrievedAt": "2026-09-08T18:49:30.138Z",
+          "title": "Liniennetz St. Gallen Ost",
+          "publisher": "PostAuto AG / OSTWIND",
+          "validFrom": "2025-12-14",
+          "pdfModifiedDate": "2026-01-20",
+          "review": "Visual review of page 1 confirms parallel 210/211 designations from St. Gallen through Mörschwil to Tübach Schulstrasse; north of this shared section the lines diverge. Schematic evidence of corridor identity only; AL_OEV supplies the actual geometry."
+        }
+      ],
+      "approvedPairs": [
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74095:0:886128",
+          "toId": "ch:1:sloid:74471:0:918531",
+          "from": "St. Gallen, Bahnhof",
+          "to": "St. Gallen, Marktplatz Bohl",
+          "geometrySha256": "711b9773168047a62a4b804b034d6d36daf7679f27ebaa351292206a66aacc7f"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74095",
+          "toId": "ch:1:sloid:74471",
+          "from": "St. Gallen, Bahnhof",
+          "to": "St. Gallen, Marktplatz Bohl",
+          "geometrySha256": "1bdc22f8f4845bd998d963ae351fbd1410e1ca1f8da365fd03af5c8ba947ce52"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74465:0:140691",
+          "toId": "ch:1:sloid:80689:0:93506",
+          "from": "St. Gallen, Grossacker",
+          "to": "St. Gallen, Neudorf/R'str.",
+          "geometrySha256": "6b2ae23a7849a3229929e5f6f4e13573f838cb3819a6c8250cad6269c8023e2f"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74465:0:34422",
+          "toId": "ch:1:sloid:74467:0:948297",
+          "from": "St. Gallen, Grossacker",
+          "to": "St. Gallen, Kantonsspital",
+          "geometrySha256": "0a64e9921571f5d0984b49146ed5bdb02b9b68aa3dc47fe01950ea49bf0c859e"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74465",
+          "toId": "ch:1:sloid:74467",
+          "from": "St. Gallen, Grossacker",
+          "to": "St. Gallen, Kantonsspital",
+          "geometrySha256": "041e797b103c7cc28fb53ce45af11c9508b8081f4c613a05fb593ec1d35347e0"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74465",
+          "toId": "ch:1:sloid:80689",
+          "from": "St. Gallen, Grossacker",
+          "to": "St. Gallen, Neudorf/R'str.",
+          "geometrySha256": "1b273dc706341a3ce28632f5a5bfc6b6c935e72c1b91e809e05568d56ea9cf86"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74467:0:1304",
+          "toId": "ch:1:sloid:74465:0:140691",
+          "from": "St. Gallen, Kantonsspital",
+          "to": "St. Gallen, Grossacker",
+          "geometrySha256": "f2fa4b16e3bf45fc1a0d3ee98648bc8be8e71d8fad1169036412cb75e48ea3c7"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74467:0:948297",
+          "toId": "ch:1:sloid:74469:0:641208",
+          "from": "St. Gallen, Kantonsspital",
+          "to": "St. Gallen, Theater",
+          "geometrySha256": "af95b3aca16ba58e584210f414f8e5f26764beb03e6e8931709ba05ef343140c"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74467",
+          "toId": "ch:1:sloid:74465",
+          "from": "St. Gallen, Kantonsspital",
+          "to": "St. Gallen, Grossacker",
+          "geometrySha256": "79d0e1b92c9f7051e2228e87879979c346339ea1b71bb853ec9f3703abadea8c"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74467",
+          "toId": "ch:1:sloid:74469",
+          "from": "St. Gallen, Kantonsspital",
+          "to": "St. Gallen, Theater",
+          "geometrySha256": "3af0c033785d31b3d5726ca04c6d0b6b93b1b9767d3b438d364a2bf438c74508"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74469:0:564855",
+          "toId": "ch:1:sloid:74467:0:1304",
+          "from": "St. Gallen, Theater",
+          "to": "St. Gallen, Kantonsspital",
+          "geometrySha256": "969e3ff50937d2d4a3825717c2821464976b6f3aca799c0f67ae1f4c12f68b20"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74469:0:641208",
+          "toId": "ch:1:sloid:74471:0:562387",
+          "from": "St. Gallen, Theater",
+          "to": "St. Gallen, Marktplatz Bohl",
+          "geometrySha256": "724dec573160b2ff14abf7ee94077bcb51b04f2235393e943e9b7aebeaff737f"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74469",
+          "toId": "ch:1:sloid:74467",
+          "from": "St. Gallen, Theater",
+          "to": "St. Gallen, Kantonsspital",
+          "geometrySha256": "d7a3fc36ea9f318d157be2c8e60178a4b7a904722098530d222903585a7089f9"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74469",
+          "toId": "ch:1:sloid:74471",
+          "from": "St. Gallen, Theater",
+          "to": "St. Gallen, Marktplatz Bohl",
+          "geometrySha256": "ab3832e4a70bb8456044802f9aacf4616da9fe5fe462162cd3c0bb62ea8a2b22"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74471:0:562387",
+          "toId": "ch:1:sloid:74095:0:886128",
+          "from": "St. Gallen, Marktplatz Bohl",
+          "to": "St. Gallen, Bahnhof",
+          "geometrySha256": "603ee4142e761701230d5ef25f2996e96f3284d894a1afbadda9d70274335cfc"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74471:0:918531",
+          "toId": "ch:1:sloid:74469:0:564855",
+          "from": "St. Gallen, Marktplatz Bohl",
+          "to": "St. Gallen, Theater",
+          "geometrySha256": "478a33987808cba6af6762fb1f3ff594171efe339011f47341c041e75e3a2af1"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74471",
+          "toId": "ch:1:sloid:74095",
+          "from": "St. Gallen, Marktplatz Bohl",
+          "to": "St. Gallen, Bahnhof",
+          "geometrySha256": "364b21e34b2a8dd46ce36dc0cedd65e171322d669d607bfb827f964583cde897"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:74471",
+          "toId": "ch:1:sloid:74469",
+          "from": "St. Gallen, Marktplatz Bohl",
+          "to": "St. Gallen, Theater",
+          "geometrySha256": "fb1ac9735a2b8a83dd0f7ac2a6b0b965c30a6d5c2dd68e1258e5b36155421302"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80687:0:319532",
+          "toId": "ch:1:sloid:81398:0:450538",
+          "from": "St. Gallen, Obere Waid",
+          "to": "Mörschwil, Alberenberg",
+          "geometrySha256": "93c75c143f0cfeff88bc95d1385ca98774a82a507318950b07beb70b4398148c"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80687:0:401730",
+          "toId": "ch:1:sloid:89610:0:485641",
+          "from": "St. Gallen, Obere Waid",
+          "to": "St. Gallen, Riederenholz",
+          "geometrySha256": "7bf6aed614ee093902b6ba1e3ef5b7c030803eb966ef6df632a8fec51cf8eba8"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80687",
+          "toId": "ch:1:sloid:81398",
+          "from": "St. Gallen, Obere Waid",
+          "to": "Mörschwil, Alberenberg",
+          "geometrySha256": "b65de9bfef409a5d300ca8c3f186ca7908d1da184147c5f449bea7465ff6ac68"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80687",
+          "toId": "ch:1:sloid:89610",
+          "from": "St. Gallen, Obere Waid",
+          "to": "St. Gallen, Riederenholz",
+          "geometrySha256": "83de2daf265570e72ea9ef9fe722ee68b3e3aaf53c1f3a4bc760e5ad682144c2"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80688:0:205689",
+          "toId": "ch:1:sloid:89610:0:438575",
+          "from": "St. Gallen, Remishueb / Klinik",
+          "to": "St. Gallen, Riederenholz",
+          "geometrySha256": "aa127f79aac364675c43a957da187134d635e2474599a506bf1fcea940a81c92"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80688:0:337586",
+          "toId": "ch:1:sloid:80689:0:9905",
+          "from": "St. Gallen, Remishueb / Klinik",
+          "to": "St. Gallen, Neudorf/R'str.",
+          "geometrySha256": "703ef6a408d2e43eb4e6bc812eac914ee5cb33ef30f98c4fce1ae939f4481bae"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80688",
+          "toId": "ch:1:sloid:80689",
+          "from": "St. Gallen, Remishueb / Klinik",
+          "to": "St. Gallen, Neudorf/R'str.",
+          "geometrySha256": "225d73aa6bf285412d6e98073910a9e07b12f65f3c9224804b46d4ab111d684c"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80688",
+          "toId": "ch:1:sloid:89610",
+          "from": "St. Gallen, Remishueb / Klinik",
+          "to": "St. Gallen, Riederenholz",
+          "geometrySha256": "981f1224c78ebdac41dd2ff53512cc000e87b5a1c1ec9d5da3c64cc09c85b7b0"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80689:0:93506",
+          "toId": "ch:1:sloid:80688:0:205689",
+          "from": "St. Gallen, Neudorf/R'str.",
+          "to": "St. Gallen, Remishueb / Klinik",
+          "geometrySha256": "f2871510e178e5145b9332cffbfa758c48a26dec922fabce9af1ee359dc8cbc1"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80689:0:9905",
+          "toId": "ch:1:sloid:74465:0:34422",
+          "from": "St. Gallen, Neudorf/R'str.",
+          "to": "St. Gallen, Grossacker",
+          "geometrySha256": "99a668b456a8d43bb869c160fb9ebd5eb9de4d25c39787e1480ad2dbf03fca04"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80689",
+          "toId": "ch:1:sloid:74465",
+          "from": "St. Gallen, Neudorf/R'str.",
+          "to": "St. Gallen, Grossacker",
+          "geometrySha256": "9ab4b3c23ae9b57b9f5fa6a7e33392b7f2bda821f86a95a85db8e23a8796b6df"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80689",
+          "toId": "ch:1:sloid:80688",
+          "from": "St. Gallen, Neudorf/R'str.",
+          "to": "St. Gallen, Remishueb / Klinik",
+          "geometrySha256": "c4dad405bf899aa533c84be523cfd01e0bdae70c634215b9d9369a907787d7bd"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80865:0:614660",
+          "toId": "ch:1:sloid:81393:0:462081",
+          "from": "Tübach, Waldegg",
+          "to": "Mörschwil, Fahrn",
+          "geometrySha256": "3f90da34362253cd34e47c73613d8779db1c874497f0029c8b212909fe1a91f2"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80865:0:821594",
+          "toId": "ch:1:sloid:80866:0:908608",
+          "from": "Tübach, Waldegg",
+          "to": "Tübach, Schulstrasse",
+          "geometrySha256": "cde48aa7fe40e15e3dc811012ce0a556e163af180d70428f054a32130932bf51"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80865",
+          "toId": "ch:1:sloid:80866",
+          "from": "Tübach, Waldegg",
+          "to": "Tübach, Schulstrasse",
+          "geometrySha256": "041d32638a84751c7e5fb35921620d38d6ae5219755f4f783bf3fdb0e01678d4"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80865",
+          "toId": "ch:1:sloid:81393",
+          "from": "Tübach, Waldegg",
+          "to": "Mörschwil, Fahrn",
+          "geometrySha256": "2c058206ebd1b6a6457ee39af4977743160d9bcebe9290387df6b1d801652d8e"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80866:0:565425",
+          "toId": "ch:1:sloid:80865:0:614660",
+          "from": "Tübach, Schulstrasse",
+          "to": "Tübach, Waldegg",
+          "geometrySha256": "3de7d7c4955cd2cbfb214d0562f1b0f5d81d710d7160039e93efc6b44ea021a1"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:80866",
+          "toId": "ch:1:sloid:80865",
+          "from": "Tübach, Schulstrasse",
+          "to": "Tübach, Waldegg",
+          "geometrySha256": "6d56ce118cf5bc9ece6e1ec67a90ac5b4d671837ac396cf514278a5eb00ddb83"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81393:0:462081",
+          "toId": "ch:1:sloid:81394:0:142232",
+          "from": "Mörschwil, Fahrn",
+          "to": "Mörschwil, Kirche",
+          "geometrySha256": "93e3edbe82f290c046c14ae7bf2bbd9d5d1bcedca93c11bf0e9f19bf411d442b"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81393:0:651957",
+          "toId": "ch:1:sloid:80865:0:821594",
+          "from": "Mörschwil, Fahrn",
+          "to": "Tübach, Waldegg",
+          "geometrySha256": "bda78d155d89100941375fe57ae89194e655e8f4898113c92778c7d5cc4d8137"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81393",
+          "toId": "ch:1:sloid:80865",
+          "from": "Mörschwil, Fahrn",
+          "to": "Tübach, Waldegg",
+          "geometrySha256": "84991ff99a12bad4b29c7ffb9373928c55d972d90517c3e0a7e0b85a33443043"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81393",
+          "toId": "ch:1:sloid:81394",
+          "from": "Mörschwil, Fahrn",
+          "to": "Mörschwil, Kirche",
+          "geometrySha256": "40d95344c28e79a068988046e276a1a600b579383b303fbe5a59d01d80313846"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81394:0:142232",
+          "toId": "ch:1:sloid:81395:0:807158",
+          "from": "Mörschwil, Kirche",
+          "to": "Mörschwil, Altes Gemeindehaus",
+          "geometrySha256": "28adfaea96c32a0f9a82ada817ceb379a1d6592c6b221561b1eb126fff01c929"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81394:0:97689",
+          "toId": "ch:1:sloid:81393:0:651957",
+          "from": "Mörschwil, Kirche",
+          "to": "Mörschwil, Fahrn",
+          "geometrySha256": "f00624703495380f3ab3eede06749d4f03b15f5bf450f1f9ba3e99f62f7c0fc0"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81394",
+          "toId": "ch:1:sloid:81393",
+          "from": "Mörschwil, Kirche",
+          "to": "Mörschwil, Fahrn",
+          "geometrySha256": "73d21498fd42276103ea8ddcbbb1a1eaa46a94ee630594ba45f27e1fb05ad389"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81394",
+          "toId": "ch:1:sloid:81395",
+          "from": "Mörschwil, Kirche",
+          "to": "Mörschwil, Altes Gemeindehaus",
+          "geometrySha256": "04f30cda2edcd15d03c48531cf656fda621daf31f651d80da2b755969244aadf"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81395:0:564073",
+          "toId": "ch:1:sloid:81394:0:97689",
+          "from": "Mörschwil, Altes Gemeindehaus",
+          "to": "Mörschwil, Kirche",
+          "geometrySha256": "35a4910e4e94ce76d2a1b4fd6bb28e0b02ea696747d49f0f8967674417ce20ec"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81395:0:807158",
+          "toId": "ch:1:sloid:81396:0:412617",
+          "from": "Mörschwil, Altes Gemeindehaus",
+          "to": "Mörschwil, Bitzi",
+          "geometrySha256": "da2d5987e1b5efb315eb0e6b4553c0e6d391eac75ceb9a3605cfce828184d041"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81395",
+          "toId": "ch:1:sloid:81394",
+          "from": "Mörschwil, Altes Gemeindehaus",
+          "to": "Mörschwil, Kirche",
+          "geometrySha256": "3346f9c2dc976720eacdb1d97652c5e161928a8a98aec0d0e94232f5ef9f1f82"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81395",
+          "toId": "ch:1:sloid:81396",
+          "from": "Mörschwil, Altes Gemeindehaus",
+          "to": "Mörschwil, Bitzi",
+          "geometrySha256": "a197d8617b932977ed7b4124413a191509f5bf3d87e7e803d20d59f3378be53b"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81396:0:23392",
+          "toId": "ch:1:sloid:81395:0:564073",
+          "from": "Mörschwil, Bitzi",
+          "to": "Mörschwil, Altes Gemeindehaus",
+          "geometrySha256": "77c5e2a18cdd142ba264ab6aa0d69bc05b7c1c15e869f1f396214dfe3cbe36b1"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81396:0:412617",
+          "toId": "ch:1:sloid:81397:0:338197",
+          "from": "Mörschwil, Bitzi",
+          "to": "Mörschwil, Lantschen",
+          "geometrySha256": "070c032eaf6eec02c44484c23c34ff52b087c4be259b05e1bd319f601904db03"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81396",
+          "toId": "ch:1:sloid:81395",
+          "from": "Mörschwil, Bitzi",
+          "to": "Mörschwil, Altes Gemeindehaus",
+          "geometrySha256": "8a3272b6c8b7b03f985bb20a7322941678da54c8c6d96908fce073effa6303ff"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81396",
+          "toId": "ch:1:sloid:81397",
+          "from": "Mörschwil, Bitzi",
+          "to": "Mörschwil, Lantschen",
+          "geometrySha256": "ed0178ed33b1b47e38d6bae2fea6416da644e56fe7e5fd03a8a5dd95046c6128"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81397:0:338197",
+          "toId": "ch:1:sloid:81398:0:884634",
+          "from": "Mörschwil, Lantschen",
+          "to": "Mörschwil, Alberenberg",
+          "geometrySha256": "111e97d9a21e9f41d097a8da75da45282597601d561068bf67722e880c306e66"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81397:0:782785",
+          "toId": "ch:1:sloid:81396:0:23392",
+          "from": "Mörschwil, Lantschen",
+          "to": "Mörschwil, Bitzi",
+          "geometrySha256": "b85e5d490e882dd57b238e9dc092ce1fe3e70dc6afd4ed9cc89f03042dd2aa7e"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81397",
+          "toId": "ch:1:sloid:81396",
+          "from": "Mörschwil, Lantschen",
+          "to": "Mörschwil, Bitzi",
+          "geometrySha256": "806807edb5d98add3bba9d73f59c3e7f788f640401f607cf990426890324d0be"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81397",
+          "toId": "ch:1:sloid:81398",
+          "from": "Mörschwil, Lantschen",
+          "to": "Mörschwil, Alberenberg",
+          "geometrySha256": "7e5dee93637ae9fda7d90be7d45b6b722eb5e52e7774e092cf6a074d57147b14"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81398:0:450538",
+          "toId": "ch:1:sloid:81397:0:782785",
+          "from": "Mörschwil, Alberenberg",
+          "to": "Mörschwil, Lantschen",
+          "geometrySha256": "9441f278a923961456eca57334ce29ef98b6f00c0efae6d00438a2fdc0786b48"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81398:0:884634",
+          "toId": "ch:1:sloid:80687:0:401730",
+          "from": "Mörschwil, Alberenberg",
+          "to": "St. Gallen, Obere Waid",
+          "geometrySha256": "1906d5211afe56adc1d3e29082f6c16669a230b1fc278b2ee7e014cf40a0469d"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81398",
+          "toId": "ch:1:sloid:80687",
+          "from": "Mörschwil, Alberenberg",
+          "to": "St. Gallen, Obere Waid",
+          "geometrySha256": "71a7ee49aa13b5bc95a8def8bd53466d8cee13d8c1877a04c5b35f49408af1d8"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:81398",
+          "toId": "ch:1:sloid:81397",
+          "from": "Mörschwil, Alberenberg",
+          "to": "Mörschwil, Lantschen",
+          "geometrySha256": "8891c3ce2ec4b404fce50558328f5ed7bcedcd399052ef092b43daca6081d4b9"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:89610:0:438575",
+          "toId": "ch:1:sloid:80687:0:319532",
+          "from": "St. Gallen, Riederenholz",
+          "to": "St. Gallen, Obere Waid",
+          "geometrySha256": "d435f6b20405786e2336daf1ad56917599716dd93cf15c4508385662f21b809f"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:89610:0:485641",
+          "toId": "ch:1:sloid:80688:0:337586",
+          "from": "St. Gallen, Riederenholz",
+          "to": "St. Gallen, Remishueb / Klinik",
+          "geometrySha256": "001616d7e64c84068bcbc06c4bfc1dbaa0a95066d0049c02452447d61a9f97f4"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:89610",
+          "toId": "ch:1:sloid:80687",
+          "from": "St. Gallen, Riederenholz",
+          "to": "St. Gallen, Obere Waid",
+          "geometrySha256": "0935294d2acec4c7de9ee665a27e48b53c9294d4b0690f2efa1b6e258372970a"
+        },
+        {
+          "routeId": "96-250-8-j26-1",
+          "fromId": "ch:1:sloid:89610",
+          "toId": "ch:1:sloid:80688",
+          "from": "St. Gallen, Riederenholz",
+          "to": "St. Gallen, Remishueb / Klinik",
+          "geometrySha256": "988b8fe98feebec6bdde25d29c120e06dfa5555acad18a74a6e887972a032022"
+        }
+      ],
+      "reason": "Official PostAuto map corroborates the shared 210/211 corridor. Apply the exact line-211 graph only to these individually pinned line-210 endpoint-gap pairs, with original 120 m / 4.5x limits. Preserve every passing primary path. No generic operator-wide routing, Horn branch substitution, source-call changes or direction certification."
+    }
+  ]
 }

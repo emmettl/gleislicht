@@ -8,14 +8,15 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "1059f9f41a98aa5d734673d3a0c1586e7ffc091efd74c98cccf53c0ed7f74ea3",
+    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "attribution": [
     "© Kanton St.Gallen, Amt für öffentlichen Verkehr / AREG",
     "Underlying alignment: swissTNE Base, © swisstopo",
     "Timetable: SBB / opentransportdata.swiss",
-    "Canton boundary: © swisstopo"
+    "Canton boundary: © swisstopo",
+    "Supporting corridor map: PostAuto AG / OSTWIND"
   ],
   "timetable": {
     "version": "20260902",
@@ -29,19 +30,19 @@
       "date": "2026-09-04",
       "manifest": "local/2026-09-04/st-gallen-region-day-manifest.json",
       "morning": "local/2026-09-04/st-gallen-region-morning.json",
-      "manifestSha256": "6418590f781c320b93dd52ce39b72b360a27c37871c9716965d9dee6a9993beb",
-      "morningSha256": "7ed422df999238222201273c5a074b46ad71f575b8580def5ebaa2ebfd7f355e",
-      "trips": 10500,
-      "patterns": 994
+      "manifestSha256": "b5dedf24447e8c1de0a6eaefbaba404d990b6346e3a379ac3f85f9bf25728c54",
+      "morningSha256": "7ca6c166ffd8e3f195744df161399391e10372fb34306c62833a97701bb29486",
+      "trips": 10566,
+      "patterns": 1000
     },
     {
       "date": "2026-09-06",
       "manifest": "local/2026-09-06/st-gallen-region-day-manifest.json",
       "morning": "local/2026-09-06/st-gallen-region-morning.json",
-      "manifestSha256": "68c68a58b2097fc8963584ada0634bd155aeb09a05e5ad0c7a62394debca590f",
-      "morningSha256": "cc8eccc2b18a4a0db27e822cc0ec1e4cfe2ec2a55cf04af57f086f92369bf0b8",
-      "trips": 7264,
-      "patterns": 764
+      "manifestSha256": "75965c2bad95a0c5730f05f1104a411ef1896c5afbf4fdc576f77f34199dc307",
+      "morningSha256": "45b3d22a00cdd3ac573da706c1e620264cbac909e019aee658b45be085e70d4b",
+      "trips": 7299,
+      "patterns": 771
     }
   ],
   "note": "Feed payloads and original/decoded AL_OEV source vectors are generated locally and ignored by Git; they are excluded from public site assets. Resolve publisher permission before redistribution."

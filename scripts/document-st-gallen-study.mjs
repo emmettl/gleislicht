@@ -28,10 +28,14 @@ const detourPath='data/st-gallen-detour-review.json', detours=await read(detourP
 assert.deepEqual(detours.sourceHashes,audit.sourceHashes,'Stale detour review sources')
 for (const day of days) assert.equal(detours.days.find(d=>d.date===day.date)?.dayAuditSha256,sha256(JSON.stringify(day)),'Stale detour review day')
 summary.detourReview={path:detourPath,sha256:sha256(await readFile(detourPath))}
+const sharedPath='data/st-gallen-shared-corridor-review.json', sharedReview=await read(sharedPath)
+assert.deepEqual(sharedReview.sourceHashes,audit.sourceHashes,'Stale shared-corridor regression')
+summary.sharedCorridorReview={path:sharedPath,sha256:sha256(await readFile(sharedPath))}
 for(const name of ['routes.json','source-lines.json',...days.map(d=>d.date+'.json')]) summary.files[name]={sha256:sha256(await readFile(join('data/st-gallen-audit',name)))}
 await save('data/st-gallen-audit/summary.json',summary)
 const index={schemaVersion:1,region:'st-gallen',label:'St. Gallen canton — admitted complete stop patterns',localOnly:true,redistributionApproved:false,
-  sourceHashes:audit.sourceHashes,attribution: audit.catalogue.attribution.concat(['Timetable: SBB / opentransportdata.swiss','Canton boundary: © swisstopo']),
+  sourceHashes:audit.sourceHashes,attribution: audit.catalogue.attribution.concat(['Timetable: SBB / opentransportdata.swiss','Canton boundary: © swisstopo',
+    ...new Set((audit.policy.sharedCorridors??[]).flatMap(c=>c.evidence.map(e=>`Supporting corridor map: ${e.publisher}`)))]),
   timetable:{version:audit.feed.feed_version,start:audit.feed.feed_start_date,end:audit.feed.feed_end_date},
   sources:'../st-gallen-sources/sources.json',audit:'../st-gallen-audit/summary.json',
   days:await Promise.all(days.map(async d=>({date:d.date,manifest:`local/${d.date}/st-gallen-region-day-manifest.json`,morning:`local/${d.date}/st-gallen-region-morning.json`,
@@ -111,6 +115,8 @@ Graphs connect **only exact shared vertices** on the same reviewed operator/line
 
 Pattern identity includes route, direction_id, every ordered stop ID and pickup/drop-off rules. Every pair is evaluated in its actual direction, including loops and return paths; if any pair fails, the **entire trip pattern** is excluded. Source direction_id alone is never treated as proof of legal direction. AL_OEV expressly does not encode travel direction: successful patterns are inferred alignments, with no one-way street, lane, track, temporary-diversion or water-navigability certification. Sparse boat/cableway linework is retained at its source resolution. Every excluded route, pattern and pair keeps a specific failure reason; nothing is silently cropped to improve coverage.
 
+One [documented shared corridor](ST-GALLEN-SHARED-CORRIDOR-REVIEW.md) restores PostAuto line 210 between St. Gallen Bahnhof and Tübach Schulstrasse using the official line-211 record. PostAuto's network map, valid from 14 December 2025 and retrieved 8 September 2026, confirms the common corridor through Mörschwil. This is restricted to 64 individually reviewed directed route/platform pairs, adjacent names in the approved stop sequence, pinned output geometry hashes and the unchanged numerical limits. It applies only after a primary endpoint-gap failure; every passing primary path is preserved. The donor's Horn branch is outside the approved pairs. Source, operator, name, coordinate or path changes fail validation. No general operator-wide fallback is enabled. The [incremental regression](../data/st-gallen-shared-corridor-review.json) confirms all 10,500 Friday and 7,264 Sunday previously admitted journeys remain identical, including the line-321 repair.
+
 ## Measured results
 
 ${table(['Metric',...days.map(d=>d.date)], [
@@ -123,6 +129,8 @@ ${table(['Metric',...days.map(d=>d.date)], [
  ['Scheduled segment occurrences matched / evaluated',...days.map(d=>`${num(d.matchedScheduledSegmentOccurrences)} / ${num(d.scheduledSegmentOccurrences)} (${pct(d.matchedScheduledSegmentOccurrences,d.scheduledSegmentOccurrences)})`)],
  ['Representative headway movements admitted / evaluated',...days.map(d=>`${num(d.admittedHeadwayTrips)} / ${num(d.representativeHeadwayTrips)}`)],
  ['Admitted movements using reviewed source repair',...days.map(d=>num(d.admittedTripsUsingRepair))],
+ ['Admitted movements using reviewed shared corridor',...days.map(d=>num(d.admittedTripsUsingSharedCorridor))],
+ ['Directed pairs using reviewed shared corridor',...days.map(d=>num(d.sharedCorridorDirectedPairs))],
  ['Preceding-day carry-ins admitted / evaluated',...days.map(d=>`${num(d.admittedCarryInTrips)} / ${num(d.carryInTrips)}`)],
 ])}
 
@@ -170,14 +178,16 @@ node --max-old-space-size=8192 scripts/build-st-gallen-region.mjs
 node scripts/check-st-gallen-region.mjs
 node scripts/document-st-gallen-study.mjs
 node scripts/check-st-gallen-region.mjs --audit-only
-node --test scripts/st-gallen-region.test.mjs
+node --test scripts/st-gallen-region.test.mjs scripts/st-gallen-shared-corridors.test.mjs
 \`\`\`
 
 The saved detour review is bound to the exact source hashes and day audits. To replay its geometry diagnostics with the original cached operator pages, run \`node scripts/review-st-gallen-detours.mjs --check\`. On a fresh cache, \`node scripts/review-st-gallen-detours.mjs --fetch-evidence\` acquires the current public pages and regenerates the review; it cannot recreate historical webpage bytes. Inspect changed notices, dates and hashes before regenerating the study. These pages support stop order and operating context, not replacement route geometry.
 
-The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. The source-edge repair regression compares against the feed and policy from commit 2351822: every previously admitted movement, call and path and every previously matched pair must be unchanged, and only the reviewed line-321 patterns may be added. Run \`node scripts/check-st-gallen-topology-regression.mjs BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON\` after building both versions with the exported \`buildStGallenRegion\` function and their respective policies. The saved report records the pinned baseline and result hashes.
+The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, shared-corridor source replay and provenance, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. The geometry regression compares against the feed and policy from commit 2351822: every previously admitted movement, call and path and every previously matched pair must be unchanged, and only the reviewed line-321 and line-210 patterns may be added. Run \`node scripts/check-st-gallen-topology-regression.mjs BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON\` after building both versions with the exported \`buildStGallenRegion\` function and their respective policies. For the incremental line-210 regression, add \`--shared\` and supply the baseline from commit 7926448; only 66 Friday / 35 Sunday line-210 trips may be added. The saved reports record the pinned baselines and result hashes. The supporting map is acquired by the source-preparation command; use \`python3 scripts/prepare-st-gallen-sources.py --shared-evidence-only\` to acquire it without refreshing the original source catalogue.
 
 Regression tests cover operator isolation, misleading timetable-book numbers, prefix handling, changed overrides, polygon holes/components, preceding-day service, conditional calls, disconnected source geometry reversed artifact paths, and rejection of changed donor geometry, already-connected targets, unreviewed lengths and cross-operator repairs.
+
+Shared-corridor tests additionally reject unapproved routes, platforms, directions and stop names, changed geometry hashes, duplicate approvals and source-operator/name changes; they verify that passing primary geometry is never replaced.
 
 Pending scope is explicit: unresolved geometry exclusions; seasonal and holiday validation; road/track/boat direction and plausibility review; publication rights; future refresh/realtime/UI work. Passing numerical checks establishes the stated admitted feed, not complete or observed cantonal transport movement.
 `

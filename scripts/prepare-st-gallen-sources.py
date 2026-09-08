@@ -29,6 +29,26 @@ TERMS_URL = 'https://www.sg.ch/bauen/geoinformation/datenbezug/agb.html'
 sha = lambda b: hashlib.sha256(b).hexdigest()
 
 
+def prepare_shared_evidence(directory, inspect_cache=False):
+    """Acquire pinned supporting maps without changing the AL_OEV catalogue."""
+    out = Path(directory); out.mkdir(parents=True, exist_ok=True)
+    policy = json.loads((ROOT/'data/st-gallen-policy.json').read_text())
+    records = []
+    for corridor in policy.get('sharedCorridors', []):
+        for evidence in corridor['evidence']:
+            target = out/evidence['file']
+            if not target.exists():
+                assert not inspect_cache, 'Missing cached corridor evidence: '+evidence['file']
+                with tempfile.TemporaryDirectory() as tmp:
+                    downloaded = Path(tmp)/'evidence.pdf'
+                    subprocess.run(['curl', '-fLsS', '--max-time', '60', evidence['url'], '-o', str(downloaded)], check=True)
+                    assert sha(downloaded.read_bytes()) == evidence['sha256'], 'Publisher map changed; explicit review required'
+                    shutil.copyfile(downloaded, target)
+            assert sha(target.read_bytes()) == evidence['sha256'], 'Changed cached corridor evidence: '+evidence['file']
+            records.append(dict(file=evidence['file'], sha256=evidence['sha256'], verified=True))
+    return records
+
+
 def prepare(directory, archive=None, inspect_cache=False):
     out = Path(directory); out.mkdir(parents=True, exist_ok=True)
     sources = []
@@ -76,6 +96,7 @@ def prepare(directory, archive=None, inspect_cache=False):
     if inspect_cache:
         assert catalogue == previous, 'Decoder or source metadata changed; review before replacing snapshot'
     (out/'sources.json').write_text(json.dumps(catalogue,ensure_ascii=False,indent=2)+'\n')
+    prepare_shared_evidence(out, inspect_cache)
     return catalogue
 
 if __name__ == '__main__':
@@ -83,5 +104,7 @@ if __name__ == '__main__':
     parser.add_argument('--output',default='data/st-gallen-sources/local')
     parser.add_argument('--archive')
     parser.add_argument('--inspect-cache', action='store_true', help='Verify and re-decode saved bytes without network or changed retrieval timestamps')
+    parser.add_argument('--shared-evidence-only', action='store_true', help='Acquire/verify the pinned supporting map without refreshing the source catalogue')
     args=parser.parse_args()
-    print(json.dumps(prepare(args.output,args.archive,args.inspect_cache),ensure_ascii=False,indent=2))
+    result = prepare_shared_evidence(args.output,args.inspect_cache) if args.shared_evidence_only else prepare(args.output,args.archive,args.inspect_cache)
+    print(json.dumps(result,ensure_ascii=False,indent=2))

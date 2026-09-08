@@ -345,7 +345,7 @@ Generated from the pinned census and validated audit. See [the study](ST-GALLEN-
 | 801 | 96-249-4-j26-1 | bus | 454 | 29 | 22/22; admitted | 12/12; admitted | — |
 | 801 | 96-249-5-j26-1 | bus | 456 | 49 | 27/27; admitted | 26/26; admitted | — |
 | 801 | 96-249-6-j26-1 | bus | 457 | 30 | 0/0; inactive-on-civil-day | 0/0; inactive-on-civil-day | Inactive on both fixtures; annual service retained |
-| 801 | 96-250-8-j26-1 | bus | 210 | 155 | 0/66; excluded | 0/35; excluded | endpoint-gap |
+| 801 | 96-250-8-j26-1 | bus | 210 | 155 | 66/66; admitted | 35/35; admitted | — |
 | 801 | 96-250-A-j26-1 | bus | 201 | 89 | 72/72; admitted | 0/0; inactive-on-civil-day | — |
 | 801 | 96-254-4-j26-1 | bus | 225 | 22 | 8/8; admitted | 0/0; inactive-on-civil-day | — |
 | 801 | 96-272-5-j26-1 | bus | 22 | 155 | 62/62; admitted | 75/75; admitted | — |
@@ -450,7 +450,7 @@ Keys combine the pinned archive layer and record index; they are not guaranteed 
 | bus:92 | PAG | Tag | Ja | 201 St. Gallen - Arbon (Expressbus) | 96-250-A-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:93 | PAG | Tag | Ja | 205 Wittenbach - Lömmenschwil - Häggenschwil-Winden | 96-221-4-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:94 | PAG | Tag | Ja | 207 Arbon - Berg SG - Wittenbach | 96-220-6-j26-1 | candidate-graph-for-admitted-patterns |
-| bus:95 | PAG | Tag | Ja | 210 St. Gallen - Mörschwil - Tübach - Steinach - Arbon | 96-250-8-j26-1 | no-admitted-fixture-pattern |
+| bus:95 | PAG | Tag | Ja | 210 St. Gallen - Mörschwil - Tübach - Steinach - Arbon | 96-250-8-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:96 | PAG | Tag | Ja | 211 St. Gallen - Mörschwil - Tübach - Horn - Steinach -Arbon | 96-220-8-j26-1, 96-220-B-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:97 | PAG | Nacht | Ja | 211N St. Gallen - Horn - Arbon (Nachtangebot) | 96-220-8-j26-1, 96-220-B-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:98 | PAG | Tag | Ja | 222 Heiden - Rheineck | 96-224-3-j26-1 | candidate-graph-for-admitted-patterns |

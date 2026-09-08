@@ -612,10 +612,10 @@
         "896"
       ],
       "geometryStatus": "adapter-partial-local",
-      "evidence": "Full AL_OEV archive acquired: 226 features in five layers. Complete SG polygon census inventories 343 annual GTFS route records across 38 agencies. Weekday/Sunday full-pattern admission emits 10,500 / 7,264 movement instances; all exclusions retained. One corroborated 7.37 m source-edge repair restores line 321. See docs/ST-GALLEN-STUDY.md and data/st-gallen-audit/summary.json. Historical 404 probes remain preserved.",
+      "evidence": "Full AL_OEV archive acquired: 226 features in five layers. Complete SG polygon census inventories 343 annual GTFS route records across 38 agencies. Weekday/Sunday full-pattern admission emits 10,566 / 7,299 movement instances; 194 route records contribute and all exclusions are retained. A corroborated 7.37 m source-edge repair restores line 321; a documented 210/211 shared corridor with individually approved directed pairs restores line 210. See docs/ST-GALLEN-STUDY.md and data/st-gallen-audit/summary.json. Historical 404 probes remain preserved.",
       "vintage": "2026 timetable alignment; archive and supplied documentation dated 24 March 2026. No per-feature survey date. Live September documentation date is distinct from pinned geometry vintage.",
       "reuse": "Publisher-specific restricted terms. Supplied 2019 terms and current website terms retain redistribution/own-geoservice permission requirements. Raw/decoded vectors and regional payloads stay local outside public assets. Attribution, date, lack of legal effect and disclaimer documented.",
-      "nextAction": "Resolve redistribution permission, remaining geometry/direction exclusions and seasonal/holiday validation. Current source-edge repair preserves every previously admitted journey and matched path; no generic proximity stitching.",
+      "nextAction": "Resolve redistribution permission, remaining geometry/direction exclusions and seasonal/holiday validation. Shared-corridor and source-edge regressions preserve every previously admitted journey and matched path. No generic proximity stitching or operator-wide fallback.",
       "sourceIds": [
         "sg-source-page",
         "sg-model",

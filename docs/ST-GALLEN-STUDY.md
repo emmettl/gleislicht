@@ -21,7 +21,7 @@ The obsolete share/download endpoint was replaced by the current [public AL_OEV 
 | Source layer | Features | Mapped to annual SG routes | Candidate graph for admitted trips |
 | --- | --- | --- | --- |
 | rail | 45 | 45 | 41 |
-| bus | 145 | 143 | 133 |
+| bus | 145 | 143 | 134 |
 | city | 34 | 34 | 33 |
 | mountain | 1 | 1 | 1 |
 | boat | 1 | 1 | 1 |
@@ -48,27 +48,31 @@ Graphs connect **only exact shared vertices** on the same reviewed operator/line
 
 Pattern identity includes route, direction_id, every ordered stop ID and pickup/drop-off rules. Every pair is evaluated in its actual direction, including loops and return paths; if any pair fails, the **entire trip pattern** is excluded. Source direction_id alone is never treated as proof of legal direction. AL_OEV expressly does not encode travel direction: successful patterns are inferred alignments, with no one-way street, lane, track, temporary-diversion or water-navigability certification. Sparse boat/cableway linework is retained at its source resolution. Every excluded route, pattern and pair keeps a specific failure reason; nothing is silently cropped to improve coverage.
 
+One [documented shared corridor](ST-GALLEN-SHARED-CORRIDOR-REVIEW.md) restores PostAuto line 210 between St. Gallen Bahnhof and Tübach Schulstrasse using the official line-211 record. PostAuto's network map, valid from 14 December 2025 and retrieved 8 September 2026, confirms the common corridor through Mörschwil. This is restricted to 64 individually reviewed directed route/platform pairs, adjacent names in the approved stop sequence, pinned output geometry hashes and the unchanged numerical limits. It applies only after a primary endpoint-gap failure; every passing primary path is preserved. The donor's Horn branch is outside the approved pairs. Source, operator, name, coordinate or path changes fail validation. No general operator-wide fallback is enabled. The [incremental regression](../data/st-gallen-shared-corridor-review.json) confirms all 10,500 Friday and 7,264 Sunday previously admitted journeys remain identical, including the line-321 repair.
+
 ## Measured results
 
 | Metric | 2026-09-04 | 2026-09-06 |
 | --- | --- | --- |
 | Civil-day movement instances | 24'782 | 22'859 |
-| Admitted movement instances | 10'500 (42.4%) | 7'264 (31.8%) |
-| Excluded movement instances | 14'282 | 15'595 |
-| Complete directed patterns admitted / evaluated | 994 / 1'441 | 764 / 1'182 |
-| Directed route-stop pairs matched / evaluated | 7'130 / 8'427 (84.6%) | 7'108 / 8'589 (82.8%) |
-| All segment occurrences matched / evaluated | 176'516 / 202'330 (87.2%) | 115'821 / 142'563 (81.2%) |
-| Scheduled segment occurrences matched / evaluated | 174'052 / 189'688 (91.8%) | 113'357 / 128'365 (88.3%) |
+| Admitted movement instances | 10'566 (42.6%) | 7'299 (31.9%) |
+| Excluded movement instances | 14'216 | 15'560 |
+| Complete directed patterns admitted / evaluated | 1'000 / 1'441 | 771 / 1'182 |
+| Directed route-stop pairs matched / evaluated | 7'178 / 8'427 (85.2%) | 7'172 / 8'589 (83.5%) |
+| All segment occurrences matched / evaluated | 177'572 / 202'330 (87.8%) | 116'381 / 142'563 (81.6%) |
+| Scheduled segment occurrences matched / evaluated | 175'108 / 189'688 (92.3%) | 113'917 / 128'365 (88.7%) |
 | Representative headway movements admitted / evaluated | 1'239 / 11'417 | 1'239 / 12'973 |
 | Admitted movements using reviewed source repair | 74 | 67 |
-| Preceding-day carry-ins admitted / evaluated | 161 / 221 | 369 / 663 |
+| Admitted movements using reviewed shared corridor | 66 | 35 |
+| Directed pairs using reviewed shared corridor | 48 | 64 |
+| Preceding-day carry-ins admitted / evaluated | 162 / 221 | 371 / 663 |
 
 Pair and occurrence coverage includes matches inside excluded patterns, so it is distinct from emitted complete-trip coverage. All excluded modes remain in the denominators; frequent mountain headway instances must not be mistaken for scheduled departures.
 
 | Mode | Annual route records | 2026-09-04 admitted/all movements; pair-occurrence coverage | 2026-09-06 admitted/all movements; pair-occurrence coverage |
 | --- | --- | --- | --- |
 | boat | 5 | 22/69; 26.6% | 22/81; 24.2% |
-| bus | 222 | 8'092/9'020; 96.5% | 5'010/5'663; 94.6% |
+| bus | 222 | 8'158/9'020; 97.2% | 5'045/5'663; 95.2% |
 | mountain | 19 | 1'239/13'697; 16.5% | 1'239/15'401; 14.8% |
 | rail | 97 | 1'147/1'996; 71.5% | 993/1'714; 71.0% |
 
@@ -97,7 +101,7 @@ Pair and occurrence coverage includes matches inside excluded patterns, so it is
 | 744 | Automobildienst Appenzeller Bahnen | bus | 2 | 4 / 4 | 10 / 10 |
 | 766 | Bus und Service AG (Chur) | bus | 1 | 0 / 0 | 1 / 1 |
 | 772 | Busbetrieb Rapperswil-Eschenbach-Rüti ZH | bus | 5 | 257 / 304 | 108 / 146 |
-| 801 | PostAuto AG | bus | 78 | 2'546 / 2'732 | 1'673 / 1'797 |
+| 801 | PostAuto AG | bus | 78 | 2'612 / 2'732 | 1'708 / 1'797 |
 | 805 | Verkehrsbetrieb LIECHTENSTEINmobil | bus | 9 | 257 / 312 | 154 / 156 |
 | 810 | Busbetrieb Lichtensteig-Wattwil-Ebnat-Kappel | bus | 2 | 107 / 107 | 81 / 81 |
 | 832 | Autobetrieb Weesen-Amden | bus | 1 | 70 / 70 | 65 / 65 |
@@ -120,7 +124,7 @@ Pair and occurrence coverage includes matches inside excluded patterns, so it is
 | Failure reason | 2026-09-04 affected trips | 2026-09-06 affected trips |
 | --- | --- | --- |
 | disconnected-line | 40 | 3 |
-| endpoint-gap | 945 | 573 |
+| endpoint-gap | 879 | 538 |
 | implausible-detour | 128 | 59 |
 | missing-line | 13169 | 14960 |
 
@@ -324,6 +328,7 @@ Each value is admitted/all civil-day movement instances. Partial routes still ex
 | 801 | 96-249-3-j26-1 | 453 | 12/12 | 12/12 |
 | 801 | 96-249-4-j26-1 | 454 | 22/22 | 12/12 |
 | 801 | 96-249-5-j26-1 | 456 | 27/27 | 26/26 |
+| 801 | 96-250-8-j26-1 | 210 | 66/66 | 35/35 |
 | 801 | 96-250-A-j26-1 | 201 | 72/72 | 0/0 |
 | 801 | 96-254-4-j26-1 | 225 | 8/8 | 0/0 |
 | 801 | 96-272-5-j26-1 | 22 | 62/62 | 75/75 |
@@ -350,13 +355,15 @@ node --max-old-space-size=8192 scripts/build-st-gallen-region.mjs
 node scripts/check-st-gallen-region.mjs
 node scripts/document-st-gallen-study.mjs
 node scripts/check-st-gallen-region.mjs --audit-only
-node --test scripts/st-gallen-region.test.mjs
+node --test scripts/st-gallen-region.test.mjs scripts/st-gallen-shared-corridors.test.mjs
 ```
 
 The saved detour review is bound to the exact source hashes and day audits. To replay its geometry diagnostics with the original cached operator pages, run `node scripts/review-st-gallen-detours.mjs --check`. On a fresh cache, `node scripts/review-st-gallen-detours.mjs --fetch-evidence` acquires the current public pages and regenerates the review; it cannot recreate historical webpage bytes. Inspect changed notices, dates and hashes before regenerating the study. These pages support stop order and operating context, not replacement route geometry.
 
-The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. The source-edge repair regression compares against the feed and policy from commit 2351822: every previously admitted movement, call and path and every previously matched pair must be unchanged, and only the reviewed line-321 patterns may be added. Run `node scripts/check-st-gallen-topology-regression.mjs BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON` after building both versions with the exported `buildStGallenRegion` function and their respective policies. The saved report records the pinned baseline and result hashes.
+The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, shared-corridor source replay and provenance, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. The geometry regression compares against the feed and policy from commit 2351822: every previously admitted movement, call and path and every previously matched pair must be unchanged, and only the reviewed line-321 and line-210 patterns may be added. Run `node scripts/check-st-gallen-topology-regression.mjs BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON` after building both versions with the exported `buildStGallenRegion` function and their respective policies. For the incremental line-210 regression, add `--shared` and supply the baseline from commit 7926448; only 66 Friday / 35 Sunday line-210 trips may be added. The saved reports record the pinned baselines and result hashes. The supporting map is acquired by the source-preparation command; use `python3 scripts/prepare-st-gallen-sources.py --shared-evidence-only` to acquire it without refreshing the original source catalogue.
 
 Regression tests cover operator isolation, misleading timetable-book numbers, prefix handling, changed overrides, polygon holes/components, preceding-day service, conditional calls, disconnected source geometry reversed artifact paths, and rejection of changed donor geometry, already-connected targets, unreviewed lengths and cross-operator repairs.
+
+Shared-corridor tests additionally reject unapproved routes, platforms, directions and stop names, changed geometry hashes, duplicate approvals and source-operator/name changes; they verify that passing primary geometry is never replaced.
 
 Pending scope is explicit: unresolved geometry exclusions; seasonal and holiday validation; road/track/boat direction and plausibility review; publication rights; future refresh/realtime/UI work. Passing numerical checks establishes the stated admitted feed, not complete or observed cantonal transport movement.

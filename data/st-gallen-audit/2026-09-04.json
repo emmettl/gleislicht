@@ -1,23 +1,25 @@
 {
   "date": "2026-09-04",
   "trips": 24782,
-  "admittedTrips": 10500,
-  "excludedTrips": 14282,
+  "admittedTrips": 10566,
+  "excludedTrips": 14216,
   "carryInTrips": 221,
-  "admittedCarryInTrips": 161,
+  "admittedCarryInTrips": 162,
   "representativeHeadwayTrips": 11417,
   "admittedHeadwayTrips": 1239,
   "patterns": 1441,
-  "admittedPatterns": 994,
+  "admittedPatterns": 1000,
   "directedPairs": 8427,
-  "matchedDirectedPairs": 7130,
+  "matchedDirectedPairs": 7178,
   "segmentOccurrences": 202330,
-  "matchedSegmentOccurrences": 176516,
+  "matchedSegmentOccurrences": 177572,
   "scheduledSegmentOccurrences": 189688,
-  "matchedScheduledSegmentOccurrences": 174052,
+  "matchedScheduledSegmentOccurrences": 175108,
   "representativeHeadwaySegmentOccurrences": 12642,
   "repairedDirectedPairs": 2,
   "admittedTripsUsingRepair": 74,
+  "sharedCorridorDirectedPairs": 48,
+  "admittedTripsUsingSharedCorridor": 66,
   "groups": [
     {
       "id": "65:rail",
@@ -505,14 +507,14 @@
       "mode": "bus",
       "routes": 64,
       "trips": 2732,
-      "admittedTrips": 2546,
+      "admittedTrips": 2612,
       "patterns": 400,
-      "admittedPatterns": 363,
+      "admittedPatterns": 369,
       "directedPairs": 2994,
-      "matchedDirectedPairs": 2787,
+      "matchedDirectedPairs": 2835,
       "segmentOccurrences": 48196,
-      "matchedSegmentOccurrences": 45392,
-      "geometryCoverage": 0.941820897999834
+      "matchedSegmentOccurrences": 46448,
+      "geometryCoverage": 0.9637314299941904
     }
   ],
   "routes": [
@@ -3330,11 +3332,11 @@
       "mode": "bus",
       "line": "210",
       "trips": 66,
-      "admittedTrips": 0,
+      "admittedTrips": 66,
       "segmentOccurrences": 1570,
-      "matchedSegmentOccurrences": 514,
+      "matchedSegmentOccurrences": 1570,
       "carryInTrips": 1,
-      "admittedCarryInTrips": 0
+      "admittedCarryInTrips": 1
     },
     {
       "routeId": "96-250-A-j26-1",
@@ -3374,7 +3376,7 @@
     }
   ],
   "exclusionReasons": {
-    "endpoint-gap": 945,
+    "endpoint-gap": 879,
     "missing-line": 13169,
     "implausible-detour": 128,
     "disconnected-line": 40
@@ -187128,11 +187130,9 @@
         "[\"96-250-8-j26-1\",\"ch:1:sloid:74471:0:562387\",\"ch:1:sloid:74095:0:886128\"]"
       ],
       "trips": 30,
-      "admitted": false,
-      "reasons": [
-        "endpoint-gap"
-      ],
-      "geometryPairs": 8,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 24,
       "totalPairs": 24,
       "carryInTrips": 0,
       "representativeHeadwayTrips": 0
@@ -187327,11 +187327,9 @@
         "[\"96-250-8-j26-1\",\"ch:1:sloid:74250:0:304231\",\"ch:1:sloid:74251:0:999220\"]"
       ],
       "trips": 27,
-      "admitted": false,
-      "reasons": [
-        "endpoint-gap"
-      ],
-      "geometryPairs": 8,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 24,
       "totalPairs": 24,
       "carryInTrips": 0,
       "representativeHeadwayTrips": 0
@@ -187526,11 +187524,9 @@
         "[\"96-250-8-j26-1\",\"ch:1:sloid:74250:0:304231\",\"ch:1:sloid:74251:0:997851\"]"
       ],
       "trips": 2,
-      "admitted": false,
-      "reasons": [
-        "endpoint-gap"
-      ],
-      "geometryPairs": 8,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 24,
       "totalPairs": 24,
       "carryInTrips": 0,
       "representativeHeadwayTrips": 0
@@ -187711,11 +187707,9 @@
         "[\"96-250-8-j26-1\",\"ch:1:sloid:74471:0:562387\",\"ch:1:sloid:74095:0:886128\"]"
       ],
       "trips": 3,
-      "admitted": false,
-      "reasons": [
-        "endpoint-gap"
-      ],
-      "geometryPairs": 6,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 22,
       "totalPairs": 22,
       "carryInTrips": 0,
       "representativeHeadwayTrips": 0
@@ -187896,11 +187890,9 @@
         "[\"96-250-8-j26-1\",\"ch:1:sloid:94859\",\"ch:1:sloid:74251\"]"
       ],
       "trips": 1,
-      "admitted": false,
-      "reasons": [
-        "endpoint-gap"
-      ],
-      "geometryPairs": 6,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 22,
       "totalPairs": 22,
       "carryInTrips": 1,
       "representativeHeadwayTrips": 0
@@ -188081,11 +188073,9 @@
         "[\"96-250-8-j26-1\",\"ch:1:sloid:94859:0:553672\",\"ch:1:sloid:74251:0:997851\"]"
       ],
       "trips": 3,
-      "admitted": false,
-      "reasons": [
-        "endpoint-gap"
-      ],
-      "geometryPairs": 6,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 22,
       "totalPairs": 22,
       "carryInTrips": 0,
       "representativeHeadwayTrips": 0
@@ -369858,7 +369848,7 @@
       "occurrences": 30,
       "scheduledOccurrences": 30,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 30,
       "matched": true
     },
     {
@@ -369880,7 +369870,7 @@
       "occurrences": 30,
       "scheduledOccurrences": 30,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 30,
       "matched": true
     },
     {
@@ -369902,7 +369892,7 @@
       "occurrences": 30,
       "scheduledOccurrences": 30,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 30,
       "matched": true
     },
     {
@@ -369924,7 +369914,7 @@
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 33,
       "matched": true
     },
     {
@@ -369946,7 +369936,7 @@
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 33,
       "matched": true
     },
     {
@@ -369968,7 +369958,7 @@
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 33,
       "matched": true
     },
     {
@@ -369990,7 +369980,7 @@
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 33,
       "matched": true
     },
     {
@@ -370012,7 +370002,7 @@
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 33,
       "matched": true
     },
     {
@@ -370025,17 +370015,24 @@
       "toId": "ch:1:sloid:80865:0:614660",
       "from": "Tübach, Schulstrasse",
       "to": "Tübach, Waldegg",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 403.5396491026171,
+      "geometrySha256": "3de7d7c4955cd2cbfb214d0562f1b0f5d81d710d7160039e93efc6b44ea021a1",
+      "maximumSnapMetres": 4.160191062588479,
+      "pathMetres": 1348.6541838885682,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80865:0:614660\",\"ch:1:sloid:81393:0:462081\"]",
@@ -370047,17 +370044,24 @@
       "toId": "ch:1:sloid:81393:0:462081",
       "from": "Tübach, Waldegg",
       "to": "Mörschwil, Fahrn",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2167.2493966308034,
+      "geometrySha256": "3f90da34362253cd34e47c73613d8779db1c874497f0029c8b212909fe1a91f2",
+      "maximumSnapMetres": 4.160191062588479,
+      "pathMetres": 2003.1564833280243,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81393:0:462081\",\"ch:1:sloid:81394:0:142232\"]",
@@ -370069,17 +370073,24 @@
       "toId": "ch:1:sloid:81394:0:142232",
       "from": "Mörschwil, Fahrn",
       "to": "Mörschwil, Kirche",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2338.0279713324676,
+      "geometrySha256": "93e3edbe82f290c046c14ae7bf2bbd9d5d1bcedca93c11bf0e9f19bf411d442b",
+      "maximumSnapMetres": 3.565347589691538,
+      "pathMetres": 960.1915148912614,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81394:0:142232\",\"ch:1:sloid:81395:0:807158\"]",
@@ -370091,17 +370102,24 @@
       "toId": "ch:1:sloid:81395:0:807158",
       "from": "Mörschwil, Kirche",
       "to": "Mörschwil, Altes Gemeindehaus",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2653.8376464431003,
+      "geometrySha256": "28adfaea96c32a0f9a82ada817ceb379a1d6592c6b221561b1eb126fff01c929",
+      "maximumSnapMetres": 4.574729001163609,
+      "pathMetres": 341.3324001877044,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81395:0:807158\",\"ch:1:sloid:81396:0:412617\"]",
@@ -370113,17 +370131,24 @@
       "toId": "ch:1:sloid:81396:0:412617",
       "from": "Mörschwil, Altes Gemeindehaus",
       "to": "Mörschwil, Bitzi",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2802.2613185741916,
+      "geometrySha256": "da2d5987e1b5efb315eb0e6b4553c0e6d391eac75ceb9a3605cfce828184d041",
+      "maximumSnapMetres": 4.574729001163609,
+      "pathMetres": 218.54863659696588,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81396:0:412617\",\"ch:1:sloid:81397:0:338197\"]",
@@ -370135,17 +370160,24 @@
       "toId": "ch:1:sloid:81397:0:338197",
       "from": "Mörschwil, Bitzi",
       "to": "Mörschwil, Lantschen",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2870.409773905666,
+      "geometrySha256": "070c032eaf6eec02c44484c23c34ff52b087c4be259b05e1bd319f601904db03",
+      "maximumSnapMetres": 7.148086964571054,
+      "pathMetres": 142.87755881208648,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81397:0:338197\",\"ch:1:sloid:81398:0:884634\"]",
@@ -370157,17 +370189,24 @@
       "toId": "ch:1:sloid:81398:0:884634",
       "from": "Mörschwil, Lantschen",
       "to": "Mörschwil, Alberenberg",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3286.670317558643,
+      "geometrySha256": "111e97d9a21e9f41d097a8da75da45282597601d561068bf67722e880c306e66",
+      "maximumSnapMetres": 7.148086964571054,
+      "pathMetres": 821.101184332958,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81398:0:884634\",\"ch:1:sloid:80687:0:401730\"]",
@@ -370179,17 +370218,24 @@
       "toId": "ch:1:sloid:80687:0:401730",
       "from": "Mörschwil, Alberenberg",
       "to": "St. Gallen, Obere Waid",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3930.6456425573115,
+      "geometrySha256": "1906d5211afe56adc1d3e29082f6c16669a230b1fc278b2ee7e014cf40a0469d",
+      "maximumSnapMetres": 7.769274238699957,
+      "pathMetres": 846.7438843111279,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80687:0:401730\",\"ch:1:sloid:89610:0:485641\"]",
@@ -370201,17 +370247,24 @@
       "toId": "ch:1:sloid:89610:0:485641",
       "from": "St. Gallen, Obere Waid",
       "to": "St. Gallen, Riederenholz",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3960.2620742499216,
+      "geometrySha256": "7bf6aed614ee093902b6ba1e3ef5b7c030803eb966ef6df632a8fec51cf8eba8",
+      "maximumSnapMetres": 7.769274238699957,
+      "pathMetres": 444.87862270651175,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:89610:0:485641\",\"ch:1:sloid:80688:0:337586\"]",
@@ -370223,17 +370276,24 @@
       "toId": "ch:1:sloid:80688:0:337586",
       "from": "St. Gallen, Riederenholz",
       "to": "St. Gallen, Remishueb / Klinik",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3960.2620742499216,
+      "geometrySha256": "001616d7e64c84068bcbc06c4bfc1dbaa0a95066d0049c02452447d61a9f97f4",
+      "maximumSnapMetres": 7.194319353626443,
+      "pathMetres": 394.46071974897075,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80688:0:337586\",\"ch:1:sloid:80689:0:9905\"]",
@@ -370245,17 +370305,24 @@
       "toId": "ch:1:sloid:80689:0:9905",
       "from": "St. Gallen, Remishueb / Klinik",
       "to": "St. Gallen, Neudorf/R'str.",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3599.574636710218,
+      "geometrySha256": "703ef6a408d2e43eb4e6bc812eac914ee5cb33ef30f98c4fce1ae939f4481bae",
+      "maximumSnapMetres": 7.663459270990226,
+      "pathMetres": 934.8744466575077,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80689:0:9905\",\"ch:1:sloid:74465:0:34422\"]",
@@ -370267,17 +370334,24 @@
       "toId": "ch:1:sloid:74465:0:34422",
       "from": "St. Gallen, Neudorf/R'str.",
       "to": "St. Gallen, Grossacker",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2700.1056483957104,
+      "geometrySha256": "99a668b456a8d43bb869c160fb9ebd5eb9de4d25c39787e1480ad2dbf03fca04",
+      "maximumSnapMetres": 8.584794148385368,
+      "pathMetres": 1024.789832674027,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74465:0:34422\",\"ch:1:sloid:74467:0:948297\"]",
@@ -370289,17 +370363,24 @@
       "toId": "ch:1:sloid:74467:0:948297",
       "from": "St. Gallen, Grossacker",
       "to": "St. Gallen, Kantonsspital",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 1715.1654388741729,
+      "geometrySha256": "0a64e9921571f5d0984b49146ed5bdb02b9b68aa3dc47fe01950ea49bf0c859e",
+      "maximumSnapMetres": 8.584794148385368,
+      "pathMetres": 584.2998180731879,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74467:0:948297\",\"ch:1:sloid:74469:0:641208\"]",
@@ -370311,17 +370392,24 @@
       "toId": "ch:1:sloid:74469:0:641208",
       "from": "St. Gallen, Kantonsspital",
       "to": "St. Gallen, Theater",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 1134.3561076054061,
+      "geometrySha256": "af95b3aca16ba58e584210f414f8e5f26764beb03e6e8931709ba05ef343140c",
+      "maximumSnapMetres": 7.009356581652134,
+      "pathMetres": 719.6504139406754,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74469:0:641208\",\"ch:1:sloid:74471:0:562387\"]",
@@ -370333,17 +370421,24 @@
       "toId": "ch:1:sloid:74471:0:562387",
       "from": "St. Gallen, Theater",
       "to": "St. Gallen, Marktplatz Bohl",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 449.50483119854266,
+      "geometrySha256": "724dec573160b2ff14abf7ee94077bcb51b04f2235393e943e9b7aebeaff737f",
+      "maximumSnapMetres": 7.009356581652134,
+      "pathMetres": 281.69431841560197,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74471:0:562387\",\"ch:1:sloid:74095:0:886128\"]",
@@ -370355,17 +370450,24 @@
       "toId": "ch:1:sloid:74095:0:886128",
       "from": "St. Gallen, Marktplatz Bohl",
       "to": "St. Gallen, Bahnhof",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 193.51989386209516,
+      "geometrySha256": "603ee4142e761701230d5ef25f2996e96f3284d894a1afbadda9d70274335cfc",
+      "maximumSnapMetres": 5.031890752304558,
+      "pathMetres": 648.7861100965097,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 33,
       "scheduledOccurrences": 33,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 33,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74095:0:886128\",\"ch:1:sloid:74471:0:918531\"]",
@@ -370377,17 +370479,24 @@
       "toId": "ch:1:sloid:74471:0:918531",
       "from": "St. Gallen, Bahnhof",
       "to": "St. Gallen, Marktplatz Bohl",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 220.32576392297082,
+      "geometrySha256": "711b9773168047a62a4b804b034d6d36daf7679f27ebaa351292206a66aacc7f",
+      "maximumSnapMetres": 5.031890752304558,
+      "pathMetres": 681.9307430667596,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74471:0:918531\",\"ch:1:sloid:74469:0:564855\"]",
@@ -370399,17 +370508,24 @@
       "toId": "ch:1:sloid:74469:0:564855",
       "from": "St. Gallen, Marktplatz Bohl",
       "to": "St. Gallen, Theater",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 532.637252391259,
+      "geometrySha256": "478a33987808cba6af6762fb1f3ff594171efe339011f47341c041e75e3a2af1",
+      "maximumSnapMetres": 3.3393478228280116,
+      "pathMetres": 336.85785260088363,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74469:0:564855\",\"ch:1:sloid:74467:0:1304\"]",
@@ -370421,17 +370537,24 @@
       "toId": "ch:1:sloid:74467:0:1304",
       "from": "St. Gallen, Theater",
       "to": "St. Gallen, Kantonsspital",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 1133.4429354461552,
+      "geometrySha256": "969e3ff50937d2d4a3825717c2821464976b6f3aca799c0f67ae1f4c12f68b20",
+      "maximumSnapMetres": 8.503769392811908,
+      "pathMetres": 628.5186035298947,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74467:0:1304\",\"ch:1:sloid:74465:0:140691\"]",
@@ -370443,17 +370566,24 @@
       "toId": "ch:1:sloid:74465:0:140691",
       "from": "St. Gallen, Kantonsspital",
       "to": "St. Gallen, Grossacker",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 1746.249301798886,
+      "geometrySha256": "f2fa4b16e3bf45fc1a0d3ee98648bc8be8e71d8fad1169036412cb75e48ea3c7",
+      "maximumSnapMetres": 10.285460763826139,
+      "pathMetres": 619.0134521870011,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74465:0:140691\",\"ch:1:sloid:80689:0:93506\"]",
@@ -370465,17 +370595,24 @@
       "toId": "ch:1:sloid:80689:0:93506",
       "from": "St. Gallen, Grossacker",
       "to": "St. Gallen, Neudorf/R'str.",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2701.3248628820706,
+      "geometrySha256": "6b2ae23a7849a3229929e5f6f4e13573f838cb3819a6c8250cad6269c8023e2f",
+      "maximumSnapMetres": 10.285460763826139,
+      "pathMetres": 991.2594577486306,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80689:0:93506\",\"ch:1:sloid:80688:0:205689\"]",
@@ -370487,17 +370624,24 @@
       "toId": "ch:1:sloid:80688:0:205689",
       "from": "St. Gallen, Neudorf/R'str.",
       "to": "St. Gallen, Remishueb / Klinik",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3657.4656029914627,
+      "geometrySha256": "f2871510e178e5145b9332cffbfa758c48a26dec922fabce9af1ee359dc8cbc1",
+      "maximumSnapMetres": 5.790370771338558,
+      "pathMetres": 994.1848294173294,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80688:0:205689\",\"ch:1:sloid:89610:0:438575\"]",
@@ -370509,17 +370653,24 @@
       "toId": "ch:1:sloid:89610:0:438575",
       "from": "St. Gallen, Remishueb / Klinik",
       "to": "St. Gallen, Riederenholz",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 4091.439913060319,
+      "geometrySha256": "aa127f79aac364675c43a957da187134d635e2474599a506bf1fcea940a81c92",
+      "maximumSnapMetres": 5.916158205960955,
+      "pathMetres": 479.466772524037,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:89610:0:438575\",\"ch:1:sloid:80687:0:319532\"]",
@@ -370531,17 +370682,24 @@
       "toId": "ch:1:sloid:80687:0:319532",
       "from": "St. Gallen, Riederenholz",
       "to": "St. Gallen, Obere Waid",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 4091.439913060319,
+      "geometrySha256": "d435f6b20405786e2336daf1ad56917599716dd93cf15c4508385662f21b809f",
+      "maximumSnapMetres": 5.916158205960955,
+      "pathMetres": 417.13229738174533,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80687:0:319532\",\"ch:1:sloid:81398:0:450538\"]",
@@ -370553,17 +370711,24 @@
       "toId": "ch:1:sloid:81398:0:450538",
       "from": "St. Gallen, Obere Waid",
       "to": "Mörschwil, Alberenberg",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3816.9010081859897,
+      "geometrySha256": "93c75c143f0cfeff88bc95d1385ca98774a82a507318950b07beb70b4398148c",
+      "maximumSnapMetres": 4.670437333027976,
+      "pathMetres": 728.0244714549261,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81398:0:450538\",\"ch:1:sloid:81397:0:782785\"]",
@@ -370575,17 +370740,24 @@
       "toId": "ch:1:sloid:81397:0:782785",
       "from": "Mörschwil, Alberenberg",
       "to": "Mörschwil, Lantschen",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3287.4163767861837,
+      "geometrySha256": "9441f278a923961456eca57334ce29ef98b6f00c0efae6d00438a2fdc0786b48",
+      "maximumSnapMetres": 1.0304263497552941,
+      "pathMetres": 817.9647209725932,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81397:0:782785\",\"ch:1:sloid:81396:0:23392\"]",
@@ -370597,17 +370769,24 @@
       "toId": "ch:1:sloid:81396:0:23392",
       "from": "Mörschwil, Lantschen",
       "to": "Mörschwil, Bitzi",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2865.376021532325,
+      "geometrySha256": "b85e5d490e882dd57b238e9dc092ce1fe3e70dc6afd4ed9cc89f03042dd2aa7e",
+      "maximumSnapMetres": 1.0311172819318262,
+      "pathMetres": 160.2262818885194,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81396:0:23392\",\"ch:1:sloid:81395:0:564073\"]",
@@ -370619,17 +370798,24 @@
       "toId": "ch:1:sloid:81395:0:564073",
       "from": "Mörschwil, Bitzi",
       "to": "Mörschwil, Altes Gemeindehaus",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2793.046455492796,
+      "geometrySha256": "77c5e2a18cdd142ba264ab6aa0d69bc05b7c1c15e869f1f396214dfe3cbe36b1",
+      "maximumSnapMetres": 1.0311172819318262,
+      "pathMetres": 202.79248622107846,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81395:0:564073\",\"ch:1:sloid:81394:0:97689\"]",
@@ -370641,17 +370827,24 @@
       "toId": "ch:1:sloid:81394:0:97689",
       "from": "Mörschwil, Altes Gemeindehaus",
       "to": "Mörschwil, Kirche",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2657.252673457298,
+      "geometrySha256": "35a4910e4e94ce76d2a1b4fd6bb28e0b02ea696747d49f0f8967674417ce20ec",
+      "maximumSnapMetres": 2.6520128179447853,
+      "pathMetres": 365.77290085511515,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81394:0:97689\",\"ch:1:sloid:81393:0:651957\"]",
@@ -370663,17 +370856,24 @@
       "toId": "ch:1:sloid:81393:0:651957",
       "from": "Mörschwil, Kirche",
       "to": "Mörschwil, Fahrn",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2328.741133345419,
+      "geometrySha256": "f00624703495380f3ab3eede06749d4f03b15f5bf450f1f9ba3e99f62f7c0fc0",
+      "maximumSnapMetres": 2.6520128179447853,
+      "pathMetres": 959.3061414746164,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81393:0:651957\",\"ch:1:sloid:80865:0:821594\"]",
@@ -370685,17 +370885,24 @@
       "toId": "ch:1:sloid:80865:0:821594",
       "from": "Mörschwil, Fahrn",
       "to": "Tübach, Waldegg",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2171.144170566181,
+      "geometrySha256": "bda78d155d89100941375fe57ae89194e655e8f4898113c92778c7d5cc4d8137",
+      "maximumSnapMetres": 2.302603753729141,
+      "pathMetres": 1953.2902755993107,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80865:0:821594\",\"ch:1:sloid:80866:0:908608\"]",
@@ -370707,17 +370914,24 @@
       "toId": "ch:1:sloid:80866:0:908608",
       "from": "Tübach, Waldegg",
       "to": "Tübach, Schulstrasse",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 436.3272133570292,
+      "geometrySha256": "cde48aa7fe40e15e3dc811012ce0a556e163af180d70428f054a32130932bf51",
+      "maximumSnapMetres": 2.1833888144078197,
+      "pathMetres": 1241.9036927373002,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 32,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80866:0:908608\",\"ch:1:sloid:80867:0:735903\"]",
@@ -370738,7 +370952,7 @@
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 32,
       "matched": true
     },
     {
@@ -370760,7 +370974,7 @@
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 32,
       "matched": true
     },
     {
@@ -370782,7 +370996,7 @@
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 32,
       "matched": true
     },
     {
@@ -370804,7 +371018,7 @@
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 32,
       "matched": true
     },
     {
@@ -370826,7 +371040,7 @@
       "occurrences": 32,
       "scheduledOccurrences": 32,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 32,
       "matched": true
     },
     {
@@ -370848,7 +371062,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -370870,7 +371084,7 @@
       "occurrences": 29,
       "scheduledOccurrences": 29,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 29,
       "matched": true
     },
     {
@@ -370892,7 +371106,7 @@
       "occurrences": 27,
       "scheduledOccurrences": 27,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 27,
       "matched": true
     },
     {
@@ -370914,7 +371128,7 @@
       "occurrences": 2,
       "scheduledOccurrences": 2,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 2,
       "matched": true
     },
     {
@@ -370936,7 +371150,7 @@
       "occurrences": 3,
       "scheduledOccurrences": 3,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 3,
       "matched": true
     },
     {
@@ -370949,17 +371163,24 @@
       "toId": "ch:1:sloid:74471",
       "from": "St. Gallen, Bahnhof",
       "to": "St. Gallen, Marktplatz Bohl",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 202.46543420634634,
+      "geometrySha256": "1bdc22f8f4845bd998d963ae351fbd1410e1ca1f8da365fd03af5c8ba947ce52",
+      "maximumSnapMetres": 1.7500675249338316,
+      "pathMetres": 614.6539598726996,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74471\",\"ch:1:sloid:74469\"]",
@@ -370971,17 +371192,24 @@
       "toId": "ch:1:sloid:74469",
       "from": "St. Gallen, Marktplatz Bohl",
       "to": "St. Gallen, Theater",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 507.0437039381967,
+      "geometrySha256": "fb1ac9735a2b8a83dd0f7ac2a6b0b965c30a6d5c2dd68e1258e5b36155421302",
+      "maximumSnapMetres": 4.030690235482556,
+      "pathMetres": 330.17984080009956,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74469\",\"ch:1:sloid:74467\"]",
@@ -370993,17 +371221,24 @@
       "toId": "ch:1:sloid:74467",
       "from": "St. Gallen, Theater",
       "to": "St. Gallen, Kantonsspital",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 1129.6891138022686,
+      "geometrySha256": "d7a3fc36ea9f318d157be2c8e60178a4b7a904722098530d222903585a7089f9",
+      "maximumSnapMetres": 4.427238473379515,
+      "pathMetres": 655.3746389486586,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74467\",\"ch:1:sloid:74465\"]",
@@ -371015,17 +371250,24 @@
       "toId": "ch:1:sloid:74465",
       "from": "St. Gallen, Kantonsspital",
       "to": "St. Gallen, Grossacker",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 1741.305684978218,
+      "geometrySha256": "79d0e1b92c9f7051e2228e87879979c346339ea1b71bb853ec9f3703abadea8c",
+      "maximumSnapMetres": 4.427238473379515,
+      "pathMetres": 615.4418836360151,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:74465\",\"ch:1:sloid:80689\"]",
@@ -371037,17 +371279,24 @@
       "toId": "ch:1:sloid:80689",
       "from": "St. Gallen, Grossacker",
       "to": "St. Gallen, Neudorf/R'str.",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2710.3983921689864,
+      "geometrySha256": "1b273dc706341a3ce28632f5a5bfc6b6c935e72c1b91e809e05568d56ea9cf86",
+      "maximumSnapMetres": 8.46575622298394,
+      "pathMetres": 1004.7969602727603,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80689\",\"ch:1:sloid:80688\"]",
@@ -371059,17 +371308,24 @@
       "toId": "ch:1:sloid:80688",
       "from": "St. Gallen, Neudorf/R'str.",
       "to": "St. Gallen, Remishueb / Klinik",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3626.086763741331,
+      "geometrySha256": "c4dad405bf899aa533c84be523cfd01e0bdae70c634215b9d9369a907787d7bd",
+      "maximumSnapMetres": 8.46575622298394,
+      "pathMetres": 955.9986135925063,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80688\",\"ch:1:sloid:89610\"]",
@@ -371081,17 +371337,24 @@
       "toId": "ch:1:sloid:89610",
       "from": "St. Gallen, Remishueb / Klinik",
       "to": "St. Gallen, Riederenholz",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 4004.7627896922636,
+      "geometrySha256": "981f1224c78ebdac41dd2ff53512cc000e87b5a1c1ec9d5da3c64cc09c85b7b0",
+      "maximumSnapMetres": 5.544775916548517,
+      "pathMetres": 412.30003177871157,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:89610\",\"ch:1:sloid:80687\"]",
@@ -371103,17 +371366,24 @@
       "toId": "ch:1:sloid:80687",
       "from": "St. Gallen, Riederenholz",
       "to": "St. Gallen, Obere Waid",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 4004.7627896922636,
+      "geometrySha256": "0935294d2acec4c7de9ee665a27e48b53c9294d4b0690f2efa1b6e258372970a",
+      "maximumSnapMetres": 2.6217497228577518,
+      "pathMetres": 457.55738748312666,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80687\",\"ch:1:sloid:81398\"]",
@@ -371125,17 +371395,24 @@
       "toId": "ch:1:sloid:81398",
       "from": "St. Gallen, Obere Waid",
       "to": "Mörschwil, Alberenberg",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3873.2005501995604,
+      "geometrySha256": "b65de9bfef409a5d300ca8c3f186ca7908d1da184147c5f449bea7465ff6ac68",
+      "maximumSnapMetres": 4.6275049052583075,
+      "pathMetres": 785.4487758670884,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81398\",\"ch:1:sloid:81397\"]",
@@ -371147,17 +371424,24 @@
       "toId": "ch:1:sloid:81397",
       "from": "Mörschwil, Alberenberg",
       "to": "Mörschwil, Lantschen",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 3289.9695648780953,
+      "geometrySha256": "8891c3ce2ec4b404fce50558328f5ed7bcedcd399052ef092b43daca6081d4b9",
+      "maximumSnapMetres": 4.6275049052583075,
+      "pathMetres": 818.6559149324364,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81397\",\"ch:1:sloid:81396\"]",
@@ -371169,17 +371453,24 @@
       "toId": "ch:1:sloid:81396",
       "from": "Mörschwil, Lantschen",
       "to": "Mörschwil, Bitzi",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2869.096874982963,
+      "geometrySha256": "806807edb5d98add3bba9d73f59c3e7f788f640401f607cf990426890324d0be",
+      "maximumSnapMetres": 3.556887380123911,
+      "pathMetres": 152.27452242663915,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81396\",\"ch:1:sloid:81395\"]",
@@ -371191,17 +371482,24 @@
       "toId": "ch:1:sloid:81395",
       "from": "Mörschwil, Bitzi",
       "to": "Mörschwil, Altes Gemeindehaus",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2797.0935025513713,
+      "geometrySha256": "8a3272b6c8b7b03f985bb20a7322941678da54c8c6d96908fce073effa6303ff",
+      "maximumSnapMetres": 1.2284657906918157,
+      "pathMetres": 210.02067411634425,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81395\",\"ch:1:sloid:81394\"]",
@@ -371213,17 +371511,24 @@
       "toId": "ch:1:sloid:81394",
       "from": "Mörschwil, Altes Gemeindehaus",
       "to": "Mörschwil, Kirche",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2657.0096838667514,
+      "geometrySha256": "3346f9c2dc976720eacdb1d97652c5e161928a8a98aec0d0e94232f5ef9f1f82",
+      "maximumSnapMetres": 1.2284657906918157,
+      "pathMetres": 356.0251256296807,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81394\",\"ch:1:sloid:81393\"]",
@@ -371235,17 +371540,24 @@
       "toId": "ch:1:sloid:81393",
       "from": "Mörschwil, Kirche",
       "to": "Mörschwil, Fahrn",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2333.2040349530616,
+      "geometrySha256": "73d21498fd42276103ea8ddcbbb1a1eaa46a94ee630594ba45f27e1fb05ad389",
+      "maximumSnapMetres": 0.2470988438274607,
+      "pathMetres": 960.6412382289893,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:81393\",\"ch:1:sloid:80865\"]",
@@ -371257,17 +371569,24 @@
       "toId": "ch:1:sloid:80865",
       "from": "Mörschwil, Fahrn",
       "to": "Tübach, Waldegg",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 2168.3115032124065,
+      "geometrySha256": "84991ff99a12bad4b29c7ffb9373928c55d972d90517c3e0a7e0b85a33443043",
+      "maximumSnapMetres": 10.167329960855637,
+      "pathMetres": 1972.4813655932528,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80865\",\"ch:1:sloid:80866\"]",
@@ -371279,17 +371598,24 @@
       "toId": "ch:1:sloid:80866",
       "from": "Tübach, Waldegg",
       "to": "Tübach, Schulstrasse",
-      "geometrySha256": null,
-      "reason": "endpoint-gap",
-      "maximumSnapMetres": 423.9155784860506,
+      "geometrySha256": "041d32638a84751c7e5fb35921620d38d6ae5219755f4f783bf3fdb0e01678d4",
+      "maximumSnapMetres": 10.167329960855637,
+      "pathMetres": 1369.9879699410149,
       "sourceFeatures": [
         "bus:95"
+      ],
+      "initialReason": "endpoint-gap",
+      "sharedCorridorIds": [
+        "postauto-210-211-common-corridor"
+      ],
+      "sharedCorridorSourceFeatures": [
+        "bus:96"
       ],
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 1,
+      "matched": true
     },
     {
       "key": "[\"96-250-8-j26-1\",\"ch:1:sloid:80866\",\"ch:1:sloid:80867\"]",
@@ -371310,7 +371636,7 @@
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 1,
       "matched": true
     },
     {
@@ -371332,7 +371658,7 @@
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 1,
       "matched": true
     },
     {
@@ -371354,7 +371680,7 @@
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 1,
       "matched": true
     },
     {
@@ -371376,7 +371702,7 @@
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 1,
       "matched": true
     },
     {
@@ -371398,7 +371724,7 @@
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 1,
       "matched": true
     },
     {
@@ -371420,7 +371746,7 @@
       "occurrences": 1,
       "scheduledOccurrences": 1,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 1,
       "matched": true
     },
     {
@@ -371442,7 +371768,7 @@
       "occurrences": 3,
       "scheduledOccurrences": 3,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 3,
       "matched": true
     },
     {
@@ -373802,68 +374128,68 @@
   ],
   "artifacts": {
     "directory": "data/st-gallen-region/local/2026-09-04",
-    "manifestGzipBytes": 1971094,
-    "morningGzipBytes": 2166667,
+    "manifestGzipBytes": 1981612,
+    "morningGzipBytes": 2178961,
     "chunks": [
       {
         "id": "00-02",
-        "gzipBytes": 30036,
-        "trips": 175
+        "gzipBytes": 30302,
+        "trips": 176
       },
       {
         "id": "02-04",
-        "gzipBytes": 589,
+        "gzipBytes": 590,
         "trips": 1
       },
       {
         "id": "04-06",
-        "gzipBytes": 72951,
-        "trips": 470
+        "gzipBytes": 73486,
+        "trips": 473
       },
       {
         "id": "06-08",
-        "gzipBytes": 191909,
-        "trips": 1509
+        "gzipBytes": 193656,
+        "trips": 1519
       },
       {
         "id": "08-10",
-        "gzipBytes": 180760,
-        "trips": 1539
+        "gzipBytes": 182535,
+        "trips": 1550
       },
       {
         "id": "10-12",
-        "gzipBytes": 176270,
-        "trips": 1504
+        "gzipBytes": 177990,
+        "trips": 1515
       },
       {
         "id": "12-14",
-        "gzipBytes": 180789,
-        "trips": 1566
+        "gzipBytes": 182658,
+        "trips": 1577
       },
       {
         "id": "14-16",
-        "gzipBytes": 174349,
-        "trips": 1506
+        "gzipBytes": 176268,
+        "trips": 1517
       },
       {
         "id": "16-18",
-        "gzipBytes": 194862,
-        "trips": 1684
+        "gzipBytes": 196735,
+        "trips": 1695
       },
       {
         "id": "18-20",
-        "gzipBytes": 177533,
-        "trips": 1340
+        "gzipBytes": 179180,
+        "trips": 1350
       },
       {
         "id": "20-22",
-        "gzipBytes": 115504,
-        "trips": 782
+        "gzipBytes": 116473,
+        "trips": 788
       },
       {
         "id": "22-24",
-        "gzipBytes": 89733,
-        "trips": 597
+        "gzipBytes": 90348,
+        "trips": 601
       }
     ]
   }

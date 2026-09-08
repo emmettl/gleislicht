@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { gunzipSync } from 'node:zlib'
-import { validatedStGallenRepairs } from './st-gallen-line-geometry.mjs'
+import { validatedStGallenRepairs, stGallenGraphs, matchStGallenPair } from './st-gallen-line-geometry.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
 import { validateStGallenSnapshot } from './build-st-gallen-region.mjs'
 
@@ -20,7 +20,11 @@ export async function checkStGallenRegion({ auditPath = 'data/st-gallen-audit/lo
   assert.equal(new Set(audit.inventory.map(r => r.agencyId)).size, audit.annualAgencies)
   assert.equal(sum(audit.inventory, 'annualTripRecords'), audit.scope.annualScopedTripRecords)
   const sourceKeys = new Set(audit.sourceInventory.map(s => s.key))
-  const repairs = validatedStGallenRepairs({bus:JSON.parse(gunzipSync(await readFile(join(sourceDirectory,'bus.geojson.gz'))))},audit.policy)
+  const busCollections = {bus:JSON.parse(gunzipSync(await readFile(join(sourceDirectory,'bus.geojson.gz'))))}
+  const repairs = validatedStGallenRepairs(busCollections,audit.policy)
+  const busGraphs = stGallenGraphs(busCollections,audit.policy).graphs
+  for (const corridor of audit.policy.sharedCorridors ?? []) for (const evidence of corridor.evidence)
+    assert.equal(sha256(await readFile(join(sourceDirectory,evidence.file))),evidence.sha256,'Shared corridor evidence hash')
   const pointKey = p => p.slice(0,2).map(n=>n.toFixed(7)).join(',')
   const edgeKey = (a,b) => [pointKey(a),pointKey(b)].sort().join('|')
   const reviewedPaths = new Set()
@@ -68,6 +72,8 @@ export async function checkStGallenRegion({ auditPath = 'data/st-gallen-audit/lo
     const patterns = new Map(day.directedPatterns.map(p => [p.id, p])), pairs = new Map(day.directedStopPairs.map(p => [p.key, p]))
     assert.equal(day.directedStopPairs.filter(p => p.geometryRepairIds?.length).length, day.repairedDirectedPairs)
     assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometryRepairIds?.length)), 'trips'), day.admittedTripsUsingRepair)
+    assert.equal(day.directedStopPairs.filter(p => p.sharedCorridorIds?.length).length, day.sharedCorridorDirectedPairs)
+    assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).sharedCorridorIds?.length)), 'trips'), day.admittedTripsUsingSharedCorridor)
     assert.equal(patterns.size, day.patterns); assert.equal(pairs.size, day.directedPairs)
     assert.equal(sum(day.directedPatterns, 'trips'), day.trips)
     assert.equal(sum(day.directedPatterns.filter(p => p.admitted), 'trips'), day.admittedTrips)
@@ -139,6 +145,16 @@ export async function checkStGallenRegion({ auditPath = 'data/st-gallen-audit/lo
           const used=repairs.filter(r=>pair.sourceFeatures.includes(r.targetFeature)&&[...r.edges].some(e=>edges.has(e)))
           assert.deepEqual(used.map(r=>r.id),pair.geometryRepairIds??[],'Incorrect repair provenance')
           if(used.length) assert.deepEqual([...new Set(used.flatMap(r=>r.sourceFeatures))],pair.repairSourceFeatures)
+          const candidate = busGraphs.get(JSON.stringify([pair.agencyId,pair.mode,pair.line]))
+          if (candidate?.sharedCorridors.length) {
+            // Replay the original stop precision, not rounded path endpoints.
+            const from = manifest.stops[train.stops[i][0]].slice(0,2), to = manifest.stops[train.stops[i+1][0]].slice(0,2)
+            const replay = matchStGallenPair(candidate,from,to,audit.policy.limits,pair)
+            assert(replay.path)
+            assert.equal(sha256(JSON.stringify(replay.path)),pair.geometrySha256,'Shared-corridor source replay')
+            assert.deepEqual(replay.sharedCorridorIds??[],pair.sharedCorridorIds??[],'Incorrect shared-corridor provenance')
+            assert.deepEqual(replay.sharedCorridorSourceFeatures,pair.sharedCorridorSourceFeatures)
+          }
           reviewedPaths.add(pair.key)
         }
       }
@@ -167,6 +183,12 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
     assert.equal(sha256(await readFile(summary.topologyReview.path)),summary.topologyReview.sha256)
     assert.deepEqual((await json(summary.topologyReview.path)).sourceHashes,summary.sourceHashes)
   }
+  assert(summary.sharedCorridorReview, 'Missing shared-corridor regression')
+  assert.equal(sha256(await readFile(summary.sharedCorridorReview.path)),summary.sharedCorridorReview.sha256)
+  const sharedReview=await json(summary.sharedCorridorReview.path)
+  assert.deepEqual(sharedReview.sourceHashes,summary.sourceHashes)
+  assert.equal(sharedReview.baselineCommit,'7926448')
+  assert(sharedReview.validation.allPreviouslyAdmittedCallsAndPathsUnchanged)
   assert(summary.detourReview, 'Missing bus detour review')
   assert.equal(sha256(await readFile(summary.detourReview.path)), summary.detourReview.sha256)
   const detours = await json(summary.detourReview.path)
@@ -233,8 +255,21 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
     assert.equal(directedStopPairs.filter(p => p.matched).length, day.matchedDirectedPairs)
     const patterns = new Map(directedPatterns.map(p => [p.id,p])), pairs = new Map(directedStopPairs.map(p => [p.key,p]))
     const repairs=new Map((summary.policy.geometryRepairs?.repairs??[]).map(r=>[r.id,r]))
+    const corridors=new Map((summary.policy.sharedCorridors??[]).map(c=>[c.id,c]))
     assert.equal(directedStopPairs.filter(p=>p.geometryRepairIds?.length).length,day.repairedDirectedPairs)
     assert.equal(sum(directedPatterns.filter(p=>p.admitted&&p.pairKeys.some(k=>pairs.get(k).geometryRepairIds?.length)),'trips'),day.admittedTripsUsingRepair)
+    assert.equal(directedStopPairs.filter(p=>p.sharedCorridorIds?.length).length,day.sharedCorridorDirectedPairs)
+    assert.equal(sum(directedPatterns.filter(p=>p.admitted&&p.pairKeys.some(k=>pairs.get(k).sharedCorridorIds?.length)),'trips'),day.admittedTripsUsingSharedCorridor)
+    for (const p of pairs.values()) for (const id of p.sharedCorridorIds??[]) {
+      const corridor=corridors.get(id); assert(corridor&&p.matched)
+      assert.equal(p.agencyId,corridor.agencyId); assert.equal(p.line,corridor.line)
+      assert(p.sourceFeatures.includes(corridor.targetFeature))
+      assert.deepEqual(p.sharedCorridorSourceFeatures,[corridor.donorFeature]); assert(keys.has(corridor.donorFeature))
+      const approved=corridor.approvedPairs.find(q=>JSON.stringify([q.routeId,q.fromId,q.toId])===p.key); assert(approved)
+      assert.equal(p.geometrySha256,approved.geometrySha256)
+      assert.equal(p.from,approved.from); assert.equal(p.to,approved.to)
+      assert.equal(p.initialReason,'endpoint-gap')
+    }
     for(const p of pairs.values()) for(const id of p.geometryRepairIds??[]) {
       const repair=repairs.get(id);assert(repair&&p.matched)
       assert(p.sourceFeatures.includes(repair.targetFeature))

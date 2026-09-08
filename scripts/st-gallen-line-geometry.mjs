@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { lineGraph, directedPatternKey } from './luzern-line-geometry.mjs'
 import { distanceMetres } from './enrich-postbus-roads.mjs'
 import { matchBaselSegment } from './basel-line-geometry.mjs'
+import { validatedStGallenSharedCorridors, matchStGallenSharedCorridor } from './st-gallen-shared-corridors.mjs'
 export { directedPatternKey }
 
 // IDs refer to the pinned shapefile record number within its named layer, never
@@ -76,6 +77,7 @@ export function validatedStGallenRepairs(collections, policy) {
 export function stGallenGraphs(collections, policy) {
   const groups = new Map(), inventory = []
   const repairs = validatedStGallenRepairs(collections, policy)
+  const corridors = validatedStGallenSharedCorridors(collections, policy)
   for (const [layer, collection] of Object.entries(collections)) {
     assert.equal(collection.type, 'FeatureCollection')
     assert.equal(new Set(collection.features.map(f => f.id)).size, collection.features.length)
@@ -91,13 +93,16 @@ export function stGallenGraphs(collections, policy) {
   }
   return { inventory, graphs: new Map([...groups].map(([key, group]) => {
     const applicable = repairs.filter(r => group.sourceFeatures.includes(r.targetFeature))
-    return [key, { graph: lineGraph([...group.features, ...applicable.map(r => r.feature)]), sourceFeatures: group.sourceFeatures, repairs: applicable }]
+    return [key, { graph: lineGraph([...group.features, ...applicable.map(r => r.feature)]), sourceFeatures: group.sourceFeatures, repairs: applicable,
+      sharedCorridors: corridors.filter(c => key === JSON.stringify([c.agencyId, 'bus', c.line]) && group.sourceFeatures.includes(c.targetFeature)) }]
   })) }
 }
 
-export function matchStGallenPair(candidate, from, to, limits) {
+export function matchStGallenPair(candidate, from, to, limits, context) {
   if (!candidate) return { reason: 'missing-line' }
   const result = matchBaselSegment(candidate.graph, from, to, limits)
+  const shared = matchStGallenSharedCorridor(candidate, from, to, limits, context, result)
+  if (shared) return shared
   const edges = new Set(result.path?.slice(1).map((p, i) => edgeKey(result.path[i], p)) ?? [])
   const used = candidate.repairs?.filter(r => [...r.edges].some(e => edges.has(e))) ?? []
   return { ...result, sourceFeatures: candidate.sourceFeatures, ...(used.length ? { geometryRepairIds: used.map(r => r.id), repairSourceFeatures: [...new Set(used.flatMap(r => r.sourceFeatures))] } : {}) }

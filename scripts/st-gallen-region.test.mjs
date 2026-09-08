@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { featureIdentity, stGallenGraphs, matchStGallenPair, directedPatternKey, validatedStGallenRepairs } from './st-gallen-line-geometry.mjs'
 import { inCanton, civilInstances, stGallenMode } from './st-gallen-timetable.mjs'
 import { validateStGallenSnapshot, stGallenCategory } from './build-st-gallen-region.mjs'
-const policy = { ...JSON.parse(readFileSync(new URL('../data/st-gallen-policy.json', import.meta.url))), geometryRepairs: undefined }
+const policy = { ...JSON.parse(readFileSync(new URL('../data/st-gallen-policy.json', import.meta.url))), geometryRepairs: undefined, sharedCorridors: undefined }
 const feature = (properties = {}, coords = [[9.37,47.42],[9.38,47.42],[9.39,47.42]]) => ({type:'Feature',id:999,properties:{ANGEBOT:'Tag', BERECHTIGT:'Ja', BETREIBER:'VBSG', LINIENNR:'1', KURSBUCHNR:'80.001', LINIENNAME:'1 Winkeln - Stephanshorn', ...properties},geometry:{type:'LineString',coordinates:coords}})
 
 test('publisher line identity preserves prefixes and separates rail book numbers', () => {

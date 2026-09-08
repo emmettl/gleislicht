@@ -11334,20 +11334,16 @@
       {
         "date": "2026-09-04",
         "trips": 66,
-        "admittedTrips": 0,
-        "status": "excluded",
-        "reasons": [
-          "endpoint-gap"
-        ]
+        "admittedTrips": 66,
+        "status": "admitted",
+        "reasons": []
       },
       {
         "date": "2026-09-06",
         "trips": 35,
-        "admittedTrips": 0,
-        "status": "excluded",
-        "reasons": [
-          "endpoint-gap"
-        ]
+        "admittedTrips": 35,
+        "status": "admitted",
+        "reasons": []
       }
     ]
   },

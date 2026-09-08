@@ -53,6 +53,8 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
   assert.equal(raw.sourceHashes.archive, policy.feedSha256, 'Unreviewed timetable archive')
   assert.deepEqual(raw.dates, policy.dates)
   for (const source of catalogue.sources) assert.equal(sha256(await readFile(join(sourceDirectory, source.file))), source.sha256, `Changed source ${source.file}`)
+  for (const corridor of policy.sharedCorridors ?? []) for (const evidence of corridor.evidence)
+    assert.equal(sha256(await readFile(join(sourceDirectory, evidence.file))), evidence.sha256, 'Changed shared-corridor evidence')
   assert.equal(raw.sourceHashes.boundary, sha256(await readFile(join(sourceDirectory, 'boundary.json'))))
   const sourceHashes = { ...raw.sourceHashes, timetable: sha256(await readFile(timetablePath)), policy: sha256(await readFile(policyPath)), catalogue: sha256(await readFile(join(sourceDirectory, 'sources.json'))) }
   const collections = {}
@@ -71,7 +73,8 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
           const from = train.calls[i].id, to = call.id, key = JSON.stringify([route.routeId, from, to])
           if (!pairCache.has(key)) {
             const a = stops.get(from), b = stops.get(to)
-            const result = matchStGallenPair(candidate, [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], policy.limits)
+            const result = matchStGallenPair(candidate, [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], policy.limits,
+              { routeId: route.routeId, fromId: from, toId: to, from: a.stop_name, to: b.stop_name })
             const { path, ...assessment } = result
             let pathIndex = null
             if (path) { const signature = JSON.stringify(path); if (!pathIndices.has(signature)) { pathIndices.set(signature, paths.length); paths.push(path) } pathIndex = pathIndices.get(signature) }
@@ -104,10 +107,12 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
       windowStart: 0, windowEnd: 86400, focusTime: 27900, sourceHashes, modes: [...new Set(admitted.map(t => routes.get(t.routeId).mode))],
       label: 'St. Gallen canton — admitted complete stop patterns', model: 'scheduled interpolation along inferred official alignments',
       note: policy.admission, scope: raw.scope.description, exclusions: policy.scopeLimits,
-      attribution: ['Timetable: SBB / opentransportdata.swiss', '© Kanton St.Gallen, Amt für öffentlichen Verkehr / AREG; underlying swissTNE Base © swisstopo', 'Canton boundary: © swisstopo'],
+      attribution: ['Timetable: SBB / opentransportdata.swiss', '© Kanton St.Gallen, Amt für öffentlichen Verkehr / AREG; underlying swissTNE Base © swisstopo', 'Canton boundary: © swisstopo',
+        ...new Set((policy.sharedCorridors??[]).flatMap(c=>c.evidence.map(e=>`Supporting corridor map: ${e.publisher}`)))],
       sourceUrl: 'https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020', termsUrl: 'https://opentransportdata.swiss/en/terms-of-use/',
       reuse: catalogue.reuse,
       geometry: { license: catalogue.reuse.license, metadataUrl: 'https://www.sg.ch/bauen/geoinformation/gi/geodaten/al.html', termsUrl: catalogue.reuse.termsUrl,
+        sharedCorridors: (policy.sharedCorridors??[]).map(c=>({id:c.id,targetFeature:c.targetFeature,donorFeature:c.donorFeature,approvedDirectedPairs:c.approvedPairs.length,evidence:c.evidence})),
         archiveDate: '2026-03-24', geometryVintage: '2026 timetable; no per-feature survey date', documentationDate: '2026-03-24',
         limits: policy.limits, repairs: policy.geometryRepairs, ...catalogue.transformation,
         direction: 'Undirected source alignments; ordered GTFS calls determine travel direction. No one-way street certification.',
@@ -139,6 +144,8 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
       representativeHeadwaySegmentOccurrences: pairList.reduce((n, p) => n + p.representativeHeadwayOccurrences, 0),
       repairedDirectedPairs: pairList.filter(p => p.geometryRepairIds?.length).length,
       admittedTripsUsingRepair: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometryRepairIds?.length)).reduce((n, p) => n + p.trips, 0),
+      sharedCorridorDirectedPairs: pairList.filter(p => p.sharedCorridorIds?.length).length,
+      admittedTripsUsingSharedCorridor: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).sharedCorridorIds?.length)).reduce((n, p) => n + p.trips, 0),
       groups, routes: counts, exclusionReasons: Object.fromEntries(reasons), directedPatterns: ps, directedStopPairs: pairList.map(({ pathIndex, ...p }) => ({ ...p, matched: pathIndex !== null })),
       artifacts: { directory: destination, manifestGzipBytes: gz(manifest), morningGzipBytes: gz(morning), chunks: chunks.map(({ descriptor, payload }) => ({ id: descriptor.id, gzipBytes: gz(payload), trips: descriptor.tripCount })) } })
   }
@@ -149,6 +156,8 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
   for (const source of sourceInventory) {
     source.geometryRepairIds = policy.geometryRepairs?.repairs.filter(r => r.targetFeature === source.key).map(r => r.id) ?? []
     source.repairDonorFor = policy.geometryRepairs?.repairs.filter(r => r.donorFeature === source.key || r.corroboratingSources.some(s => s.feature === source.key)).map(r => r.id) ?? []
+    source.sharedCorridorIds = policy.sharedCorridors?.filter(c => c.targetFeature === source.key).map(c => c.id) ?? []
+    source.sharedCorridorDonorFor = policy.sharedCorridors?.filter(c => c.donorFeature === source.key).map(c => c.id) ?? []
     source.gtfsRoutes = inventory.filter(r => r.sourceFeatures.includes(source.key)).map(r => r.routeId)
     source.candidateRouteAdmittedTrips = days.reduce((n, d) => n + d.routes.filter(r => source.gtfsRoutes.includes(r.routeId)).reduce((n, r) => n + r.admittedTrips, 0), 0)
     source.status = !source.agencyIds ? 'identity-or-vintage-exclusion' : !source.gtfsRoutes.length ? 'no-annual-St-Gallen-calling-route' : source.candidateRouteAdmittedTrips ? 'candidate-graph-for-admitted-patterns' : 'no-admitted-fixture-pattern'

@@ -5,7 +5,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "1059f9f41a98aa5d734673d3a0c1586e7ffc091efd74c98cccf53c0ed7f74ea3",
+    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "operatorEvidence": [
@@ -438,16 +438,16 @@
       "reviewedPairs": 7,
       "affectedPatterns": 7,
       "affectedTrips": 128,
-      "admittedTrips": 10500,
-      "dayAuditSha256": "80bdea06079b0eba8e6500bad0fa86f5e7570aeb6e6ff2633da7269def4cac75"
+      "admittedTrips": 10566,
+      "dayAuditSha256": "a1ff220a0fbe25a942d80208e3fc656c4c946e5141cf5caa4837d274624053b3"
     },
     {
       "date": "2026-09-06",
       "reviewedPairs": 4,
       "affectedPatterns": 6,
       "affectedTrips": 59,
-      "admittedTrips": 7264,
-      "dayAuditSha256": "ca66d9a643fbe7990cc0d2d84f5092bb9881c7936a6127d739e598eb0befacd9"
+      "admittedTrips": 7299,
+      "dayAuditSha256": "cee7e59ad96551eb804489e31db272e43b3827c9f3fb357bafe7ec6bd782cbb4"
     }
   ],
   "validation": {
