@@ -87,6 +87,7 @@ jobs:
             --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
             --snapshot public/data/swiss-rail-day-manifest.json \
             --tolerance 160
+          npm run data:mountains -- --archive "$RUNNER_TEMP/swiss-gtfs.zip"
 
       - name: Validate generated artifacts and application
         run: |
@@ -102,6 +103,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -C "$BRANCH_NAME"
           git add public/data/swiss-rail-morning.json \
+            public/data/swiss-cogwheel-catalogue.json \
+            data/mountain-transport-audit.json \
             public/data/swiss-hub-day.json \
             public/data/swiss-rail-day-manifest.json \
             public/data/swiss-rail-day-chunks \

@@ -67,6 +67,8 @@ Genève uses the same national timetable baseline and the official TPG line laye
 
 ## Next expansion — 8 September 2026
 
+The first implementation increment adds a source-backed **Cogwheel** filter, operator search and a repeatable mountain-and-water source audit. See [MOUNTAIN-TRANSPORT.md](./MOUNTAIN-TRANSPORT.md) for coverage, usage and remaining phase-A work.
+
 The canonical [Gleislicht expansion roadmap](https://github.com/emmettl/motionstudies/blob/main/ROADMAP.md#8a--gleislicht-regional-depth-lakes-and-mountain-railways) continues this completed foundation through mountain-service discovery, a full-day Lake Lucerne–Rigi study, broader regional networks and deeper seasonal exploration.
 
 The preferred sequence is to reveal and classify existing mountain services, implement frequency-based service semantics where needed, build the lake-to-summit Rigi composition, then add Lausanne/Vaud or Basel/TNW following a source and geometry audit. Bern, Ticino and Graubünden remain planned regional additions; Jungfrau, Gornergrat, Pilatus, Rochers-de-Naye, Albula/Bernina and further lake networks form the Alpine and water programme.

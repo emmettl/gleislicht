@@ -71,6 +71,19 @@ export async function readPublishedNationalData(fetchData = fetch) {
     }
   }))
   if (repaired) files.set(ROOT_FILES[1], Buffer.from(JSON.stringify(day)))
+  // Optional discovery metadata follows the recovered timetable when available.
+  // Older published sets remain recoverable; the UI rejects an incompatible local catalogue.
+  const cataloguePath = 'swiss-cogwheel-catalogue.json'
+  try {
+    const catalogue = await read(cataloguePath)
+    assert(catalogue.metadata?.feedVersion === feedVersion && catalogue.metadata?.serviceDate === serviceDate, 'cogwheel catalogue mismatch')
+    assert(catalogue.routes && catalogue.trips && !Array.isArray(catalogue.routes) && !Array.isArray(catalogue.trips), 'invalid cogwheel catalogue')
+    const tripIds = new Set(day.chunks.flatMap(descriptor => JSON.parse(files.get(descriptor.path).toString('utf8')).trains.map(train => train.id)))
+    assert(Object.entries(catalogue.routes).every(([id, route]) => route?.id === id && route.routeType === 116 && typeof route.operator === 'string' && typeof route.name === 'string'), 'invalid cogwheel route')
+    assert(Object.entries(catalogue.trips).every(([id, routeId]) => tripIds.has(id) && Object.hasOwn(catalogue.routes, routeId)), 'invalid cogwheel trip')
+  } catch {
+    files.delete(cataloguePath)
+  }
   return { files, serviceDate, feedVersion, repaired }
 }
 

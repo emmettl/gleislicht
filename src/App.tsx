@@ -1,6 +1,8 @@
 import { airportBoardMovements } from '@motionstudies/core/domain/airport'
 import { AIRPORT_LABELS, AIRPORT_NOTES } from './studies/airport-copy.ts'
 import { networkWithRailVisibility } from './studies/network-layers.ts'
+import { COGWHEEL_COPY, COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
+import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
 import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
 import { CONTROL_HELP } from './control-help.ts'
@@ -329,6 +331,7 @@ export function App({ edition }: AppProps) {
   const [playbackRate, setPlaybackRate] = useState(120)
   const [directorMode, setDirectorMode] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<ServiceCategory>()
+  const [cogwheelEnabled, setCogwheelEnabled] = useState(false)
   const [trainLabelMode, setTrainLabelMode] = useState<TrainLabelMode>('auto')
   const [soundtrackState, setSoundtrackState] = useState<SoundtrackState>('off')
   const [soundtrackVolume, setSoundtrackVolume] = useState(0.56)
@@ -349,7 +352,7 @@ export function App({ edition }: AppProps) {
   const performanceSample = useLocalPerformance(performanceEnabled)
   const isPostbus = networkStudy === 'postbus'
   const isContrast = networkStudy === 'contrast'
-  const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : SERVICE_COLORS, [isPostbus, isContrast])
+  const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : cogwheelEnabled && networkStudy === 'national' && view === 'network' ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, isContrast, cogwheelEnabled, networkStudy, view])
   const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus, networkTime, editionDataUrl)
   const isNationalDay =
     networkStudy === 'national' && nationalTimeRange === 'day'
@@ -440,7 +443,14 @@ export function App({ edition }: AppProps) {
   const realtimeActive = Boolean(
     realtimeApplication?.compatible && !realtimeStale,
   )
-  const network = realtimeActive ? realtimeApplication?.network : baseNetwork
+  const unfilteredNetwork = realtimeActive ? realtimeApplication?.network : baseNetwork
+  const isCogwheel = cogwheelEnabled && networkStudy === 'national' && view === 'network'
+  const cogwheel = useCogwheelCatalogue(isCogwheel, unfilteredNetwork)
+  const cogwheelCatalogue = cogwheel?.catalogue
+  const cogwheelCopy = COGWHEEL_COPY[language]
+  const network = useMemo(() => unfilteredNetwork && isCogwheel
+    ? cogwheelNetwork(unfilteredNetwork, cogwheelCatalogue)
+    : unfilteredNetwork, [unfilteredNetwork, isCogwheel, cogwheelCatalogue])
   const quietMap = view === 'network' && networkStudy === 'national' &&
     !sbbEnabled && !airEnabled && !roadEnabled && Boolean(network) && !dataError && webglAvailable
   const activeAirSnapshot = isNationalDay ? airDay.snapshot : airSnapshot
@@ -568,9 +578,9 @@ export function App({ edition }: AppProps) {
     () =>
       network?.trains.map((train) => ({
         train,
-        text: trainSearchText(train, network),
+        text: trainSearchText(train, network) + ' ' + foldSearchText(cogwheelCatalogue?.routes[cogwheelCatalogue.trips[train.id]]?.operator ?? ''),
       })) ?? [],
-    [network],
+    [network, cogwheelCatalogue],
   )
   const selectedStation = useMemo(
     () => stationIndex.find((station) => station.name === selectedStationName),
@@ -683,7 +693,7 @@ export function App({ edition }: AppProps) {
     return routeIndex
       .filter((route) =>
         foldSearchText(
-          `${serviceCategoryLabel(language, route.category)} ${route.category.replaceAll('-', ' ')} ${route.name} ${isPostbus ? route.headsigns.join(' ') : ''}`,
+          `${serviceCategoryLabel(language, route.category)} ${route.category.replaceAll('-', ' ')} ${route.name} ${isPostbus ? route.headsigns.join(' ') : ''} ${isCogwheel ? route.trainIds.map(id => cogwheelCatalogue?.routes[cogwheelCatalogue.trips[id]]?.operator ?? '').join(' ') : ''}`,
         ).includes(query),
       )
       .sort(
@@ -694,7 +704,7 @@ export function App({ edition }: AppProps) {
           }),
       )
       .slice(0, 5)
-  }, [isPostbus, language, routeIndex, searchQuery])
+  }, [isPostbus, isCogwheel, cogwheelCatalogue, language, routeIndex, searchQuery])
   const roadSearchResults = useMemo(
     () => searchRoadCorridors(roadTopology?.roads ?? SWITZERLAND_ROADS, searchQuery),
     [roadTopology?.roads, searchQuery],
@@ -818,6 +828,15 @@ export function App({ edition }: AppProps) {
         : 'scheduled',
     )
   }, [])
+
+  const toggleCogwheel = useCallback(() => {
+    setCogwheelEnabled(current => !current)
+    setSbbEnabled(true)
+    setSelectedCategory(undefined)
+    setAirCategorySelected(false)
+    setRoadCategorySelected(false)
+    releaseSelection()
+  }, [releaseSelection])
 
   const selectStation = useCallback((station: StationIndexEntry) => {
     setSbbEnabled(true)
@@ -1045,6 +1064,7 @@ export function App({ edition }: AppProps) {
       setDirectorMode(false)
       postbusSeekRef.current = undefined
       setNetworkStudy(study)
+      if (study !== 'national') setCogwheelEnabled(false)
       setView('network')
       setSelectedCategory(undefined)
       releaseSelection()
@@ -1728,6 +1748,7 @@ export function App({ edition }: AppProps) {
   return (
     <main
       data-sbb-enabled={sbbEnabled}
+      data-cogwheel-enabled={isCogwheel}
       data-quiet-map={quietMap}
       data-quiet-playing={quietMap ? isPlaying : undefined}
       className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
@@ -1806,7 +1827,7 @@ export function App({ edition }: AppProps) {
             boundary={boundary}
             lakes={lakes}
             groundStyle={quietMap ? 'quiet' : 'grid'}
-            routeColors={isPostbus ? POSTBUS_ROUTE_COLORS : undefined}
+            routeColors={isPostbus ? POSTBUS_ROUTE_COLORS : isCogwheel ? COGWHEEL_ROUTE_COLORS : undefined}
             snapshot={sceneNetwork}
             trafficOverviewEmphasis={isPostbus ? 0.65 : undefined}
             referenceSnapshot={nationalNetwork ?? sceneNetwork}
@@ -2120,7 +2141,7 @@ export function App({ edition }: AppProps) {
                 role="combobox"
                 value={searchQuery}
                 placeholder={
-                  isContrast
+                  isCogwheel ? cogwheelCopy.placeholder : isContrast
                     ? text.contrastPlaceholder
                     : isPostbus ? text.postbusPlaceholder : airEnabled
                       ? text.airSearchPlaceholder
@@ -2443,7 +2464,7 @@ export function App({ edition }: AppProps) {
                       ━
                     </span>
                     <span className="result-service">
-                      {serviceCategoryLabel(language, route.category)} {route.name}
+                      {isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, route.category)} {route.name}
                     </span>
                     <span className="result-route">
                       {isPostbus && <>{route.headsigns.slice(0, 2).join(' / ')} · </>}
@@ -2802,7 +2823,7 @@ export function App({ edition }: AppProps) {
             <div>
               <span>{text.train}</span>
               <strong>{selectedTrain.shortName || '—'}</strong>
-              <small>{serviceCategoryLabel(language, selectedTrain.category)}</small>
+              <small>{isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, selectedTrain.category)}</small>
             </div>
             <div>
               <span>{text.arrival}</span>
@@ -2810,6 +2831,9 @@ export function App({ edition }: AppProps) {
               <small>{text.plan}</small>
             </div>
           </div>
+          {isCogwheel && cogwheelCatalogue && (
+            <p className="between">{cogwheelCatalogue.routes[cogwheelCatalogue.trips[selectedTrain.id]]?.operator}</p>
+          )}
           {corridorTrainSelected && (
             <button
               className="corridor-entry"
@@ -2824,7 +2848,7 @@ export function App({ edition }: AppProps) {
       ) : isNetwork && selectedRoute ? (
         <section
           className="journey-card route-card"
-          aria-label={`${text.selectedLine}: ${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`}
+          aria-label={`${text.selectedLine}: ${isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`}
           style={
             {
               '--service-accent': serviceColors[selectedRoute.category],
@@ -2837,7 +2861,7 @@ export function App({ edition }: AppProps) {
               style={{ backgroundColor: serviceColors[selectedRoute.category] }}
             />
             <span className="service">
-              {serviceCategoryLabel(language, selectedRoute.category)}{' '}
+              {isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, selectedRoute.category)}{' '}
               {selectedRoute.name}
             </span>
           </div>
@@ -2845,6 +2869,7 @@ export function App({ edition }: AppProps) {
             {selectedRoute.headsigns.slice(0, 2).join(' ↔ ') ||
               (isNationalDay ? text.fullDayStudy : text.morningStudy)}
           </p>
+          {isCogwheel && cogwheelCatalogue && <p className="between">{[...new Set(selectedRoute.trainIds.map(id => cogwheelCatalogue.routes[cogwheelCatalogue.trips[id]]?.operator).filter(Boolean))].join(' · ')}</p>}
           <div className="metric-grid">
             <div>
               <span>{text.trips}</span>
@@ -2958,7 +2983,7 @@ export function App({ edition }: AppProps) {
         >
           <div className="network-count-row">
             <strong>
-              {network && (!isNationalDay || nationalDayChunkReady) && (!isPostbus || postbusDay.chunkReady)
+              {network && (!isCogwheel || cogwheelCatalogue) && (!isNationalDay || nationalDayChunkReady) && (!isPostbus || postbusDay.chunkReady)
                 ? numberFormat.format(activeTrainCount)
                 : '—'}
             </strong>
@@ -3014,7 +3039,7 @@ export function App({ edition }: AppProps) {
             )}
           </div>
           <p className="between">
-              {isPostbus
+              {isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
                 ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus
                   : network?.metadata.geometry
                     ? text.postbusRoadModes.replace('{coverage}', (100 * network.metadata.geometry.matchedSegments / network.metadata.geometry.totalSegments).toFixed(1))
@@ -3053,7 +3078,7 @@ export function App({ edition }: AppProps) {
             <div>
               <span>{text.trips}</span>
               <strong>
-                {isPostbus ? postbusDay.manifest ? numberFormat.format(postbusDay.manifest.tripCount) : '—' : isNationalDay
+                {isCogwheel ? cogwheelCatalogue ? numberFormat.format(isNationalDay ? Object.keys(cogwheelCatalogue.trips).length : network?.trains.length ?? 0) : '—' : isPostbus ? postbusDay.manifest ? numberFormat.format(postbusDay.manifest.tripCount) : '—' : isNationalDay
                   ? nationalDayManifest
                     ? numberFormat.format(nationalDayManifest.tripCount)
                     : '—'
@@ -3131,9 +3156,9 @@ export function App({ edition }: AppProps) {
             </span>
             <span>
               {selectedAirTrack?.callsign ??
-                selectedTrain?.category ??
+                (selectedTrain ? isCogwheel ? cogwheelCopy.label : selectedTrain.category : undefined) ??
                 (selectedRoute
-                  ? `${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`
+                  ? `${isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`
                   : undefined) ??
                 selectedStation?.name ??
                 (selectedRoad
@@ -3144,6 +3169,7 @@ export function App({ edition }: AppProps) {
                   ? text.observedAirLayer
                   : selectedCategory
                     ? serviceCategoryLabel(language, selectedCategory)
+                    : isCogwheel ? cogwheelCopy.label
                     : roadEnabled
                       ? text.trafficReconstruction
                     : airEnabled
@@ -3290,7 +3316,7 @@ export function App({ edition }: AppProps) {
                 <MobilePicker
                   ariaLabel={text.filterServices}
                   value={
-                    roadCategorySelected
+                    isCogwheel ? 'cogwheel' : roadCategorySelected
                       ? 'road'
                       : airCategorySelected
                         ? 'air'
@@ -3298,6 +3324,7 @@ export function App({ edition }: AppProps) {
                   }
                   options={[
                     { value: '', label: text.allServices },
+                    ...(isNetwork && networkStudy === 'national' ? [{ value: 'cogwheel', label: cogwheelCopy.label }] : []),
                     ...(isNetwork && !railVisible ? [] : visibleServiceCategories).map((category) => ({
                       value: category.id,
                       label: serviceCategoryLabel(language, category.id),
@@ -3310,6 +3337,8 @@ export function App({ edition }: AppProps) {
                       : []),
                   ]}
                   onChange={(category) => {
+                    if (category === 'cogwheel') { if (!isCogwheel) toggleCogwheel(); return }
+                    setCogwheelEnabled(false)
                     setAirCategorySelected(category === 'air')
                     setRoadCategorySelected(category === 'road')
                     setSelectedRoadId(undefined)
@@ -3368,9 +3397,16 @@ export function App({ edition }: AppProps) {
 
       {isTimetable && !selectedTrain && !selectedAirTrack && !selectedRoute && (
         <div
-          className={`service-legend${selectedCategory || airCategorySelected || roadCategorySelected ? ' has-filter' : ''}`}
+          className={`service-legend${selectedCategory || isCogwheel || airCategorySelected || roadCategorySelected ? ' has-filter' : ''}`}
           aria-label={text.filterServices}
         >
+          {isNetwork && networkStudy === 'national' && railVisible && (
+            <button type="button" aria-pressed={isCogwheel} onClick={toggleCogwheel}
+              data-tooltip={cogwheelCopy.description}
+              style={{ '--service-accent': '#fff3a6' } as CSSProperties}>
+              <i style={{ backgroundColor: '#fff3a6' }} />{cogwheelCopy.label}
+            </button>
+          )}
           {(isNetwork && !railVisible ? [] : visibleServiceCategories).map((category) => (
               <button
                 key={category.id}
@@ -3383,6 +3419,7 @@ export function App({ edition }: AppProps) {
                   } as CSSProperties
                 }
                 onClick={() => {
+                  setCogwheelEnabled(false)
                   setAirCategorySelected(false)
                   setRoadCategorySelected(false)
                   setSelectedRoadId(undefined)
@@ -3402,6 +3439,7 @@ export function App({ edition }: AppProps) {
               aria-pressed={airCategorySelected}
               style={{ '--service-accent': '#ff5edb' } as CSSProperties}
               onClick={() => {
+                setCogwheelEnabled(false)
                 setSelectedCategory(undefined)
                 setRoadCategorySelected(false)
                 setSelectedRoadId(undefined)
@@ -3419,6 +3457,7 @@ export function App({ edition }: AppProps) {
               aria-pressed={roadCategorySelected}
               style={{ '--service-accent': '#ffb36b' } as CSSProperties}
               onClick={() => {
+                setCogwheelEnabled(false)
                 setSelectedCategory(undefined)
                 setAirCategorySelected(false)
                 setSelectedRoadId(undefined)

@@ -23,6 +23,14 @@ function published() {
 }
 
 describe('published national timetable recovery', () => {
+  it('recovers an optional matching cogwheel catalogue and omits a mismatched one', async () => {
+    const fixture = published()
+    const catalogue = { metadata: fixture.documents['swiss-rail-morning.json'].metadata, routes: { rigi: { id: 'rigi', name: '81', routeType: 116, operator: 'Rigi Bahnen' } }, trips: { service: 'rigi' } }
+    fixture.documents['swiss-cogwheel-catalogue.json'] = catalogue
+    expect((await readPublishedNationalData(fixture.fetchData)).files.has('swiss-cogwheel-catalogue.json')).toBe(true)
+    catalogue.metadata = { ...catalogue.metadata, serviceDate: '2000-01-01' }
+    expect((await readPublishedNationalData(fixture.fetchData)).files.has('swiss-cogwheel-catalogue.json')).toBe(false)
+  })
   it('preserves the original bytes, dates and feed while recovering the complete set', async () => {
     const fixture = published()
     const result = await readPublishedNationalData(fixture.fetchData)

@@ -127,6 +127,7 @@ jobs:
             --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
             --snapshot public/data/swiss-rail-day-manifest.json \
             --tolerance 160
+          npm run data:mountains -- --archive "$RUNNER_TEMP/swiss-gtfs.zip"
 
       - name: Retain published timetable when the source download is unavailable
         if: steps.sources.outcome == 'failure'
