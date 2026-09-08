@@ -20,7 +20,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 801 | PostAuto AG | 30 | 30 | 1394 / 1394 | 961 / 961 |
 | 840 | Busbetrieb Aarau | 3 | 3 | 388 / 388 | 300 / 300 |
 | 850 | Autobusbetrieb RBS | 5 | 5 | 205 / 205 | 141 / 141 |
-| 883 | Busbetrieb Solothurn und Umgebung | 17 | 16 | 787 / 787 | 422 / 424 |
+| 883 | Busbetrieb Solothurn und Umgebung | 17 | 17 | 787 / 787 | 424 / 424 |
 | 894 | Busbetrieb Grenchen und Umgebung | 9 | 9 | 554 / 554 | 282 / 282 |
 | 7136 | Aare Seeland mobil Ersatzverkehr | 1 | 0 | 0 / 0 | 0 / 0 |
 | 7230 | BLS Netz AG Ersatzverkehr | 1 | 0 | 0 / 0 | 0 / 0 |
@@ -183,7 +183,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 92-M30-j26-1 | 883 | M30 / bus | Lebern, Solothurn | admitted-all-dated-trips | 0 / 0 | 4 / 4 | All dated journeys pass |
 | 92-M51-j26-1 | 883 | M51 / bus | Bucheggberg, Lebern, Solothurn, Wasseramt | admitted-all-dated-trips | 0 / 0 | 2 / 2 | All dated journeys pass |
 | 92-M52-j26-1 | 883 | M52 / bus | Gäu, Solothurn, Wasseramt | admitted-all-dated-trips | 0 / 0 | 4 / 4 | All dated journeys pass |
-| 92-M53-j26-1 | 883 | M53 / bus | Solothurn, Wasseramt | excluded | 0 / 0 | 0 / 2 | night-network-excluded-by-source |
+| 92-M53-j26-1 | 883 | M53 / bus | Solothurn, Wasseramt | admitted-all-dated-trips | 0 / 0 | 2 / 2 | All dated journeys pass |
 | 92-M54-j26-1 | 883 | M54 / bus | Bucheggberg, Solothurn, Wasseramt | admitted-all-dated-trips | 0 / 0 | 1 / 1 | All dated journeys pass |
 | 92-N22-j26-1 | 840 | N22 / bus | Gösgen | admitted-all-dated-trips | 0 / 0 | 8 / 8 | All dated journeys pass |
 | 92-N23-j26-1 | 793 | N23 / bus | Olten | admitted-all-dated-trips | 0 / 0 | 4 / 4 | All dated journeys pass |

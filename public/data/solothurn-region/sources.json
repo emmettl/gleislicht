@@ -1,5 +1,837 @@
 {
   "supplements": {
+    "m53": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceDirectory": "data/solothurn-m53-sources",
+        "sourceSha256": "c5cca85acf7f01a416ca326fff6779d431fa690b4c6c775ec8184de3af703251",
+        "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+        "timetableSourceHashes": {
+          "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+          "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+        },
+        "accessCacheSha256": "407d5559788eeb751b0d97243f1ae6abbf0b7c748f3585123362288ca3614417",
+        "featureSha256": "40379cb12f98ac12b9f9dc9d1a7f16375cf7d3d08a60adff80987959e8cb53ba",
+        "sourceIdentity": {
+          "liniencode": "9353",
+          "liniennr": "M53",
+          "vkmtyp": 3,
+          "tucode": "Moonliner",
+          "tuname": "Busbetrieb Solothurn und Umgebung, 3048 Worblaufen",
+          "kubunr": "40.953"
+        },
+        "route": {
+          "id": "92-M53-j26-1",
+          "agencyId": "883",
+          "name": "M53",
+          "mode": "bus",
+          "type": 700
+        },
+        "from": [
+          7.53419724,
+          47.20801648,
+          "Solothurn, Amthausplatz",
+          "A",
+          "ch:1:sloid:494:0:1"
+        ],
+        "to": [
+          7.54115918,
+          47.2095238,
+          "Solothurn, Baseltor",
+          "",
+          "ch:1:sloid:72386"
+        ],
+        "limits": {
+          "snapMetres": 60,
+          "detourRatio": 3,
+          "detourFloorMetres": 600,
+          "alternativeSnapMetres": 5
+        },
+        "patternIds": [
+          "4c0eaee724c1196e3f8600fa",
+          "d42c16f6713e9af7b3f4e446"
+        ],
+        "roadPatternIds": [
+          "9356c386ba726e8c92201d2a",
+          "fd109fa61aeadb304d464ad4"
+        ],
+        "geometrySha256": "f9845526614f8180bce5b9e4eff60fe9ad9af78dbd322991b140c1dd039cd7b7",
+        "method": "Exact official Bern night-line 9353 / M53 / Busbetrieb Solothurn und Umgebung, scoped to one directed pair on GTFS agency 883 route 92-M53-j26-1. Both complete retained seasonal patterns checked. Unchanged original stops and 60 m snap / 3× or 600 m detour bounds. Preserve all earlier geometry. Bern linework is inferred as traversable in either direction; current access, historical alignment and diversions remain uncertified. EV4 alternatives remain excluded; the works notice is not a bus-itinerary or prohibition certificate."
+      },
+      "policySha256": "a6b03872d7680eb85dd960d87543576e1546b4842d805032433608f8c46537b7",
+      "source": {
+        "retrievedOn": "2026-09-08",
+        "bern": {
+          "schemaVersion": 1,
+          "sourceCrs": "EPSG:2056",
+          "coordinateModel": "original LV95 XY, no simplification; Z/M discarded only in derived geometry",
+          "sourceUrl": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+          "metadataUrl": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+          "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+          "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+          "termsFiles": [
+            "terms_of_use_de.pdf",
+            "terms_of_use_fr.pdf"
+          ],
+          "dataUpdated": "2026-01-01",
+          "packagePublished": "2026-07-09",
+          "acquiredAt": "2026-09-08T17:02:41.454390+00:00",
+          "archiveSha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+          "geopackageSha256": "de4c89d91f69a572dabe9fda7b14140da45fdfe016d45c6f5f900337b45b1e4d",
+          "boundary": {
+            "edition": "2026-01",
+            "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+            "snapshotSha256": "b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0",
+            "attribution": "© swisstopo",
+            "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+            "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+          }
+        },
+        "bernDecodedSha256": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
+        "files": [
+          {
+            "file": "40.953.pdf",
+            "sha256": "5d9aedc224633414f316e93eea45c9df4e981a21b78ffdb5e497137c49d87c0a",
+            "url": "https://widgets.oev-info.ch/publikation/jahresfpl/40.953.pdf"
+          },
+          {
+            "file": "bern-9353.json",
+            "sha256": "aaebd6d65fa54f8668642ed093bdfdd2b25fffe0088859f2abc4cd2c278e048b",
+            "url": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip"
+          },
+          {
+            "file": "pieterlen-parking-plan.pdf",
+            "sha256": "96e9e7e3a038c5f4000d92dfa7849de851c4dca06ce71869c16db24228224b86",
+            "url": "https://company.sbb.ch/content/dam/internet/corporate/downloads/de/bahnentwicklung/bauprojekte/deutschschweiz/region-bern/p-rail-parkplaezte.pdf.sbbdownload.pdf"
+          },
+          {
+            "file": "pieterlen-works.html.gz",
+            "sha256": "c560e6e8bd88d4b98c3d40555fbc7df8598c05e787866ac31baaf9567e8042bb",
+            "url": "https://company.sbb.ch/de/bahnentwicklung/projekte/deutschschweiz/region-bern/bahnhof-pieterlen.html"
+          },
+          {
+            "file": "road-context-review.json.gz",
+            "sha256": "453327db5261704cb2daa5e6d39108570ffedd674151e2121177bf9f6708d1eb",
+            "url": null
+          },
+          {
+            "file": "roads.json.gz",
+            "sha256": "aba610e4fe49d3ff84186b934ce9dfe4db47dc1cfdf3145cb6b0194ac699d8b7",
+            "url": "https://overpass-api.de/api/interpreter"
+          },
+          {
+            "file": "roads.overpass",
+            "sha256": "18abf87b43f2982f7cdc6f29315de2b458810681025cbcc2ac85b5330670561d",
+            "url": null
+          },
+          {
+            "file": "terms_of_use_de.pdf",
+            "sha256": "06bfc0f252662cd88b2e4b433de623fa920df5ee38d3ec1fee2f395075a226fb",
+            "url": null
+          },
+          {
+            "file": "terms_of_use_fr.pdf",
+            "sha256": "b36a39e1ee779c64ed06f723c1f65e5f8531db92a05531033172efb9c023548d",
+            "url": null
+          }
+        ],
+        "dates": {
+          "timetable": "2025-09-10",
+          "roadSnapshot": "2026-09-02T00:00:00Z",
+          "pieterlenPlanPdfCreated": "2026-06-11",
+          "pieterlenWorksPagePublished": null
+        },
+        "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern; BSU / MOONLINER / oev-info.ch timetable context; © OpenStreetMap contributors (ODbL-1.0) for road comparison; SBB for Pieterlen works context",
+        "method": "Exact official Bern night-line 9353 / M53 / Busbetrieb Solothurn und Umgebung, scoped to one directed pair on GTFS agency 883 route 92-M53-j26-1. Both complete retained seasonal patterns checked. Unchanged original stops and 60 m snap / 3× or 600 m detour bounds. Preserve all earlier geometry. Bern linework is inferred as traversable in either direction; current access, historical alignment and diversions remain uncertified. EV4 alternatives remain excluded; the works notice is not a bus-itinerary or prohibition certificate."
+      },
+      "patterns": [
+        {
+          "id": "4c0eaee724c1196e3f8600fa",
+          "directionId": "0",
+          "stops": [
+            [
+              7.52810666,
+              47.20083934,
+              "Solothurn, Kofmehl",
+              "",
+              "ch:1:sloid:89922"
+            ],
+            [
+              7.53419724,
+              47.20801648,
+              "Solothurn, Amthausplatz",
+              "A",
+              "ch:1:sloid:494:0:1"
+            ],
+            [
+              7.54115918,
+              47.2095238,
+              "Solothurn, Baseltor",
+              "",
+              "ch:1:sloid:72386"
+            ],
+            [
+              7.54392599,
+              47.20462333,
+              "Solothurn, Hauptbahnhof",
+              "A",
+              "ch:1:sloid:72373:0:1"
+            ],
+            [
+              7.55329542,
+              47.19019999,
+              "Biberist, Aesplistrasse",
+              "",
+              "ch:1:sloid:78092"
+            ],
+            [
+              7.55612511,
+              47.18761766,
+              "Biberist, Waldstrasse",
+              "",
+              "ch:1:sloid:78093"
+            ],
+            [
+              7.55752649,
+              47.18299602,
+              "Biberist, St. Urs",
+              "",
+              "ch:1:sloid:89216"
+            ],
+            [
+              7.56380571,
+              47.1818787,
+              "Biberist, Emmenbrücke",
+              "",
+              "ch:1:sloid:78087"
+            ],
+            [
+              7.56882729,
+              47.17456978,
+              "Biberist, Kaiserstrasse",
+              "",
+              "ch:1:sloid:89239"
+            ],
+            [
+              7.56874644,
+              47.17087525,
+              "Gerlafingen, Eisenhammer",
+              "",
+              "ch:1:sloid:88331"
+            ],
+            [
+              7.57318412,
+              47.1705638,
+              "Gerlafingen, Dorfzentrum",
+              "",
+              "ch:1:sloid:88131"
+            ],
+            [
+              7.57549279,
+              47.16733925,
+              "Gerlafingen, Sonnenfeld",
+              "",
+              "ch:1:sloid:88130"
+            ],
+            [
+              7.58381119,
+              47.16117665,
+              "Obergerlafingen, Dorf",
+              "",
+              "ch:1:sloid:88129"
+            ],
+            [
+              7.59405198,
+              47.16318003,
+              "Recherswil, Dorf",
+              "",
+              "ch:1:sloid:460"
+            ],
+            [
+              7.59800457,
+              47.17406905,
+              "Kriegstetten, Dorfplatz",
+              "",
+              "ch:1:sloid:459"
+            ],
+            [
+              7.59630676,
+              47.18114602,
+              "Kriegstetten, Subingenstrasse",
+              "",
+              "ch:1:sloid:78070"
+            ],
+            [
+              7.58987482,
+              47.18679349,
+              "Derendingen, Linde",
+              "",
+              "ch:1:sloid:78069"
+            ],
+            [
+              7.58656902,
+              47.19157963,
+              "Derendingen, Mühle",
+              "",
+              "ch:1:sloid:78068"
+            ],
+            [
+              7.58595816,
+              47.19481491,
+              "Derendingen, Pestalozziplatz",
+              "",
+              "ch:1:sloid:485"
+            ],
+            [
+              7.58391001,
+              47.19759221,
+              "Derendingen, Floraplatz",
+              "",
+              "ch:1:sloid:7538"
+            ],
+            [
+              7.58549104,
+              47.20055248,
+              "Derendingen, Ritterplatz",
+              "",
+              "ch:1:sloid:78112"
+            ],
+            [
+              7.59132111,
+              47.20035716,
+              "Derendingen, Löhr",
+              "",
+              "ch:1:sloid:89920"
+            ],
+            [
+              7.59573183,
+              47.19999095,
+              "Derendingen, Freiheit",
+              "",
+              "ch:1:sloid:78113"
+            ],
+            [
+              7.61335678,
+              47.19597468,
+              "Subingen, Dorf",
+              "",
+              "ch:1:sloid:78114"
+            ],
+            [
+              7.61217999,
+              47.19316677,
+              "Subingen, Bahnhof",
+              "",
+              "ch:1:sloid:78115"
+            ],
+            [
+              7.61679733,
+              47.1887837,
+              "Subingen, Schulzentrum",
+              "",
+              "ch:1:sloid:89532"
+            ],
+            [
+              7.6217201,
+              47.18249536,
+              "Horriwil, Post",
+              "",
+              "ch:1:sloid:488"
+            ],
+            [
+              7.62529539,
+              47.18098727,
+              "Horriwil, Oberdorf",
+              "",
+              "ch:1:sloid:78117"
+            ],
+            [
+              7.6382491,
+              47.18489479,
+              "Hüniken",
+              "",
+              "ch:1:sloid:478"
+            ],
+            [
+              7.6453907,
+              47.18733073,
+              "Etziken, Dorf",
+              "",
+              "ch:1:sloid:78119"
+            ],
+            [
+              7.66344684,
+              47.19387487,
+              "Bolken, Dorf",
+              "",
+              "ch:1:sloid:477"
+            ],
+            [
+              7.67253779,
+              47.19684754,
+              "Inkwil, Bahnhof",
+              "",
+              "ch:1:sloid:78122"
+            ],
+            [
+              7.67220541,
+              47.19998485,
+              "Inkwil, Dorf",
+              "",
+              "ch:1:sloid:78123"
+            ],
+            [
+              7.68369487,
+              47.20366515,
+              "Röthenbach b. H., Rest. Post",
+              "",
+              "ch:1:sloid:87367"
+            ],
+            [
+              7.68785407,
+              47.20135202,
+              "Röthenbach b. H., Chrump",
+              "",
+              "ch:1:sloid:76908"
+            ],
+            [
+              7.69436685,
+              47.19953929,
+              "Wanzwil, Post",
+              "",
+              "ch:1:sloid:76915"
+            ],
+            [
+              7.70022387,
+              47.19513232,
+              "Herzogenbuchsee, Jurablick",
+              "",
+              "ch:1:sloid:76916"
+            ],
+            [
+              7.70131981,
+              47.18844793,
+              "Herzogenbuchsee, Bahnhof",
+              "G",
+              "ch:1:sloid:76917::769170"
+            ],
+            [
+              7.69518432,
+              47.18623182,
+              "Niederönz, Schürchhaus",
+              "",
+              "ch:1:sloid:78125"
+            ],
+            [
+              7.69156411,
+              47.18442468,
+              "Niederönz, Gemeindehaus",
+              "",
+              "ch:1:sloid:479"
+            ],
+            [
+              7.68335351,
+              47.18214124,
+              "Niederönz, Eggen",
+              "",
+              "ch:1:sloid:78124"
+            ],
+            [
+              7.67318458,
+              47.18145741,
+              "Aeschi SO, Ost",
+              "",
+              "ch:1:sloid:89951"
+            ],
+            [
+              7.66438109,
+              47.18052324,
+              "Aeschi SO, Dorf",
+              "",
+              "ch:1:sloid:476"
+            ],
+            [
+              7.66029375,
+              47.18127424,
+              "Aeschi SO, Kirche",
+              "",
+              "ch:1:sloid:78121"
+            ]
+          ],
+          "reviewedPairIndex": 1
+        },
+        {
+          "id": "d42c16f6713e9af7b3f4e446",
+          "directionId": "0",
+          "stops": [
+            [
+              7.53419724,
+              47.20801648,
+              "Solothurn, Amthausplatz",
+              "A",
+              "ch:1:sloid:494:0:1"
+            ],
+            [
+              7.54115918,
+              47.2095238,
+              "Solothurn, Baseltor",
+              "",
+              "ch:1:sloid:72386"
+            ],
+            [
+              7.54392599,
+              47.20462333,
+              "Solothurn, Hauptbahnhof",
+              "A",
+              "ch:1:sloid:72373:0:1"
+            ],
+            [
+              7.55329542,
+              47.19019999,
+              "Biberist, Aesplistrasse",
+              "",
+              "ch:1:sloid:78092"
+            ],
+            [
+              7.55612511,
+              47.18761766,
+              "Biberist, Waldstrasse",
+              "",
+              "ch:1:sloid:78093"
+            ],
+            [
+              7.55752649,
+              47.18299602,
+              "Biberist, St. Urs",
+              "",
+              "ch:1:sloid:89216"
+            ],
+            [
+              7.56380571,
+              47.1818787,
+              "Biberist, Emmenbrücke",
+              "",
+              "ch:1:sloid:78087"
+            ],
+            [
+              7.56882729,
+              47.17456978,
+              "Biberist, Kaiserstrasse",
+              "",
+              "ch:1:sloid:89239"
+            ],
+            [
+              7.56874644,
+              47.17087525,
+              "Gerlafingen, Eisenhammer",
+              "",
+              "ch:1:sloid:88331"
+            ],
+            [
+              7.57318412,
+              47.1705638,
+              "Gerlafingen, Dorfzentrum",
+              "",
+              "ch:1:sloid:88131"
+            ],
+            [
+              7.57549279,
+              47.16733925,
+              "Gerlafingen, Sonnenfeld",
+              "",
+              "ch:1:sloid:88130"
+            ],
+            [
+              7.58381119,
+              47.16117665,
+              "Obergerlafingen, Dorf",
+              "",
+              "ch:1:sloid:88129"
+            ],
+            [
+              7.59405198,
+              47.16318003,
+              "Recherswil, Dorf",
+              "",
+              "ch:1:sloid:460"
+            ],
+            [
+              7.59800457,
+              47.17406905,
+              "Kriegstetten, Dorfplatz",
+              "",
+              "ch:1:sloid:459"
+            ],
+            [
+              7.59630676,
+              47.18114602,
+              "Kriegstetten, Subingenstrasse",
+              "",
+              "ch:1:sloid:78070"
+            ],
+            [
+              7.58987482,
+              47.18679349,
+              "Derendingen, Linde",
+              "",
+              "ch:1:sloid:78069"
+            ],
+            [
+              7.58656902,
+              47.19157963,
+              "Derendingen, Mühle",
+              "",
+              "ch:1:sloid:78068"
+            ],
+            [
+              7.58595816,
+              47.19481491,
+              "Derendingen, Pestalozziplatz",
+              "",
+              "ch:1:sloid:485"
+            ],
+            [
+              7.58391001,
+              47.19759221,
+              "Derendingen, Floraplatz",
+              "",
+              "ch:1:sloid:7538"
+            ],
+            [
+              7.58549104,
+              47.20055248,
+              "Derendingen, Ritterplatz",
+              "",
+              "ch:1:sloid:78112"
+            ],
+            [
+              7.59132111,
+              47.20035716,
+              "Derendingen, Löhr",
+              "",
+              "ch:1:sloid:89920"
+            ],
+            [
+              7.59573183,
+              47.19999095,
+              "Derendingen, Freiheit",
+              "",
+              "ch:1:sloid:78113"
+            ],
+            [
+              7.61335678,
+              47.19597468,
+              "Subingen, Dorf",
+              "",
+              "ch:1:sloid:78114"
+            ],
+            [
+              7.61217999,
+              47.19316677,
+              "Subingen, Bahnhof",
+              "",
+              "ch:1:sloid:78115"
+            ],
+            [
+              7.61679733,
+              47.1887837,
+              "Subingen, Schulzentrum",
+              "",
+              "ch:1:sloid:89532"
+            ],
+            [
+              7.6217201,
+              47.18249536,
+              "Horriwil, Post",
+              "",
+              "ch:1:sloid:488"
+            ],
+            [
+              7.62529539,
+              47.18098727,
+              "Horriwil, Oberdorf",
+              "",
+              "ch:1:sloid:78117"
+            ],
+            [
+              7.6382491,
+              47.18489479,
+              "Hüniken",
+              "",
+              "ch:1:sloid:478"
+            ],
+            [
+              7.6453907,
+              47.18733073,
+              "Etziken, Dorf",
+              "",
+              "ch:1:sloid:78119"
+            ],
+            [
+              7.66344684,
+              47.19387487,
+              "Bolken, Dorf",
+              "",
+              "ch:1:sloid:477"
+            ],
+            [
+              7.67253779,
+              47.19684754,
+              "Inkwil, Bahnhof",
+              "",
+              "ch:1:sloid:78122"
+            ],
+            [
+              7.67220541,
+              47.19998485,
+              "Inkwil, Dorf",
+              "",
+              "ch:1:sloid:78123"
+            ],
+            [
+              7.68369487,
+              47.20366515,
+              "Röthenbach b. H., Rest. Post",
+              "",
+              "ch:1:sloid:87367"
+            ],
+            [
+              7.68785407,
+              47.20135202,
+              "Röthenbach b. H., Chrump",
+              "",
+              "ch:1:sloid:76908"
+            ],
+            [
+              7.69436685,
+              47.19953929,
+              "Wanzwil, Post",
+              "",
+              "ch:1:sloid:76915"
+            ],
+            [
+              7.70022387,
+              47.19513232,
+              "Herzogenbuchsee, Jurablick",
+              "",
+              "ch:1:sloid:76916"
+            ],
+            [
+              7.70131981,
+              47.18844793,
+              "Herzogenbuchsee, Bahnhof",
+              "G",
+              "ch:1:sloid:76917::769170"
+            ],
+            [
+              7.69518432,
+              47.18623182,
+              "Niederönz, Schürchhaus",
+              "",
+              "ch:1:sloid:78125"
+            ],
+            [
+              7.69156411,
+              47.18442468,
+              "Niederönz, Gemeindehaus",
+              "",
+              "ch:1:sloid:479"
+            ],
+            [
+              7.68335351,
+              47.18214124,
+              "Niederönz, Eggen",
+              "",
+              "ch:1:sloid:78124"
+            ],
+            [
+              7.67318458,
+              47.18145741,
+              "Aeschi SO, Ost",
+              "",
+              "ch:1:sloid:89951"
+            ],
+            [
+              7.66438109,
+              47.18052324,
+              "Aeschi SO, Dorf",
+              "",
+              "ch:1:sloid:476"
+            ],
+            [
+              7.66029375,
+              47.18127424,
+              "Aeschi SO, Kirche",
+              "",
+              "ch:1:sloid:78121"
+            ]
+          ],
+          "reviewedPairIndex": 0
+        }
+      ],
+      "pair": {
+        "maximumSnapMetres": 29.061172500780994,
+        "pathMetres": 847.6404711685367,
+        "geometrySha256": "f9845526614f8180bce5b9e4eff60fe9ad9af78dbd322991b140c1dd039cd7b7",
+        "priorRoadAssessment": {
+          "agencyId": "all",
+          "geometrySource": "osm-road-inference",
+          "roadPatternIds": [
+            "9356c386ba726e8c92201d2a",
+            "fd109fa61aeadb304d464ad4"
+          ],
+          "roadContextOccurrences": 2,
+          "reason": "road-pattern-dependent-path",
+          "sourceFeatures": []
+        }
+      },
+      "roadContextReview": [
+        {
+          "route": "92-EV4-M-j26-1",
+          "pre": 1,
+          "suf": 56,
+          "fromId": "ch:1:sloid:87627",
+          "toId": "ch:1:sloid:10672",
+          "decision": "Excluded: forecourt variants remain inconsistent. SBB confirms replacement service and station works but does not identify which road candidate is the replacement-bus itinerary. Parking restrictions alone do not prove either bus path prohibited.",
+          "variants": [
+            {
+              "id": "2988bc4bb752bfc9e6ac0c0c",
+              "pathMetres": 10332.644785805463,
+              "geometrySha256": "1f681b12bf086528663f5a7d0aa5a26fa62456b73674b8154a4c94753a9614e0",
+              "stopCount": 5
+            },
+            {
+              "id": "4219b1523868a08499014897",
+              "pathMetres": 10240.10241594223,
+              "geometrySha256": "be797879861e39e88ff043aca357854b21281b97400b832e4c850e19a6a13dd2",
+              "stopCount": 5
+            }
+          ]
+        },
+        {
+          "route": "92-M53-j26-1",
+          "pre": 1,
+          "suf": 3,
+          "fromId": "ch:1:sloid:494:0:1",
+          "toId": "ch:1:sloid:72386",
+          "decision": "Use exact Bern M53 source for this pair after complete-context review; road alternatives retained, not chosen.",
+          "variants": [
+            {
+              "id": "9356c386ba726e8c92201d2a",
+              "pathMetres": 1040.2303198849725,
+              "geometrySha256": "2d1b529e5809601aa41c8507b5eafe7bf4c6ee963de210e88d04fd4504fff8c2",
+              "stopCount": 44
+            },
+            {
+              "id": "fd109fa61aeadb304d464ad4",
+              "pathMetres": 870.0229555758881,
+              "geometrySha256": "b3498b87b701eb10a4d7085e2b50bc75c4a43b272ee37c0844e87aa37c688bbe",
+              "stopCount": 43
+            }
+          ]
+        }
+      ]
+    },
     "roadDetour": {
       "policy": {
         "schemaVersion": 1,

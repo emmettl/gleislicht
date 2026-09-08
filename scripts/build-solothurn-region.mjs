@@ -65,6 +65,9 @@ export async function buildSolothurnRegion() {
   const roadDetourBaseline = JSON.parse(await readFile('data/solothurn-road-detour-baseline.json'))
   assert.deepEqual(roadDetourBaseline.sourceHashes, sourceHashes)
   const roadDetourReview = { baselineCommit: roadDetourBaseline.commit, sourceHashes, source: supplements.metadata.roadDetour, days: [] }
+  const m53Baseline = JSON.parse(await readFile('data/solothurn-m53-baseline.json'))
+  assert.deepEqual(m53Baseline.sourceHashes, sourceHashes)
+  const m53Review = { baselineCommit: m53Baseline.commit, sourceHashes, source: supplements.metadata.m53, days: [] }
   const provenance = { supplements: supplements.metadata, ...source.metadata, timetable: {
     publisher: 'SBB / Open data platform mobility Switzerland', attribution: 'opentransportdata.swiss',
     sha256: SO_GTFS_SHA, feed: census.feed, sourceUrl: census.sourceUrl,
@@ -133,6 +136,13 @@ export async function buildSolothurnRegion() {
     roadDetourReview.days.push({ date: raw.metadata.serviceDate, before: roadDetourBefore.coverage, after: coverage, lostAdmittedPatterns: roadDetourLost,
       newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !roadDetourPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
       sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-reviewed-road-detour').map(({ pathIndex, ...p }) => p) })
+    const m53Before = m53Baseline.days.find(d => d.date === raw.metadata.serviceDate)
+    const m53Previous = new Set(m53Before.admittedPatternIds)
+    const m53Lost = [...m53Previous].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.equal(m53Lost.length, 0, 'M53 review regressed an admitted pattern')
+    m53Review.days.push({ date: raw.metadata.serviceDate, before: m53Before.coverage, after: coverage, lostAdmittedPatterns: m53Lost,
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !m53Previous.has(p.id)).map(({ pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'bern-official-m53-corridor').map(({ pathIndex, ...p }) => p) })
     const busBefore = busBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const busPrevious = new Set(busBefore.admittedPatternIds)
     const busLost = [...busPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
@@ -294,6 +304,7 @@ export async function buildSolothurnRegion() {
   await writeJson(join(auditDir, 'simplon-review.json'), simplonReview, true)
   await writeJson(join(auditDir, 'delle-review.json'), delleReview, true)
   await writeJson(join(auditDir, 'road-detour-review.json'), roadDetourReview, true)
+  await writeJson(join(auditDir, 'm53-review.json'), m53Review, true)
   await writeJson(join(auditDir, 'summary.json'), summary, true)
   await writeJson(join(auditDir, 'routes.json'), inventory, true)
   await writeJson(join(auditDir, 'stops.json'), timetable.sourceStopInventory)

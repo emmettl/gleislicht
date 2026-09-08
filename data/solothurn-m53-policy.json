@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "sourceDirectory": "data/solothurn-m53-sources",
+  "sourceSha256": "c5cca85acf7f01a416ca326fff6779d431fa690b4c6c775ec8184de3af703251",
+  "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+  "timetableSourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "accessCacheSha256": "407d5559788eeb751b0d97243f1ae6abbf0b7c748f3585123362288ca3614417",
+  "featureSha256": "40379cb12f98ac12b9f9dc9d1a7f16375cf7d3d08a60adff80987959e8cb53ba",
+  "sourceIdentity": {
+    "liniencode": "9353",
+    "liniennr": "M53",
+    "vkmtyp": 3,
+    "tucode": "Moonliner",
+    "tuname": "Busbetrieb Solothurn und Umgebung, 3048 Worblaufen",
+    "kubunr": "40.953"
+  },
+  "route": {
+    "id": "92-M53-j26-1",
+    "agencyId": "883",
+    "name": "M53",
+    "mode": "bus",
+    "type": 700
+  },
+  "from": [
+    7.53419724,
+    47.20801648,
+    "Solothurn, Amthausplatz",
+    "A",
+    "ch:1:sloid:494:0:1"
+  ],
+  "to": [
+    7.54115918,
+    47.2095238,
+    "Solothurn, Baseltor",
+    "",
+    "ch:1:sloid:72386"
+  ],
+  "limits": {
+    "snapMetres": 60,
+    "detourRatio": 3,
+    "detourFloorMetres": 600,
+    "alternativeSnapMetres": 5
+  },
+  "patternIds": [
+    "4c0eaee724c1196e3f8600fa",
+    "d42c16f6713e9af7b3f4e446"
+  ],
+  "roadPatternIds": [
+    "9356c386ba726e8c92201d2a",
+    "fd109fa61aeadb304d464ad4"
+  ],
+  "geometrySha256": "f9845526614f8180bce5b9e4eff60fe9ad9af78dbd322991b140c1dd039cd7b7",
+  "method": "Exact official Bern night-line 9353 / M53 / Busbetrieb Solothurn und Umgebung, scoped to one directed pair on GTFS agency 883 route 92-M53-j26-1. Both complete retained seasonal patterns checked. Unchanged original stops and 60 m snap / 3× or 600 m detour bounds. Preserve all earlier geometry. Bern linework is inferred as traversable in either direction; current access, historical alignment and diversions remain uncertified. EV4 alternatives remain excluded; the works notice is not a bus-itinerary or prohibition certificate."
+}

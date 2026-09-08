@@ -415,7 +415,7 @@
       "evidence": "ch.so.avt.oev GeoPackage downloaded: 3,951 MultiLineString network segments and 775 stops in EPSG:2056. Network fields only identify mode and tunnel status; there are no line/operator identifiers. Stops include DiDok. The empty linestructure helper table is not missing network coverage.",
       "vintage": "Published 17 December 2025. Metadata explicitly excludes night services.",
       "reuse": "Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.",
-      "nextAction": "Review Arlesheim tram platform E, the conflicting Egerkingen 501 corridors, EV4 Pieterlen–Biel and M53 full-pattern road disagreements. The scoped Liesberg 118 road-detour review adds five Sunday journeys. All published-date rail geometry gaps are resolved; 123 Friday / 126 Sunday tram and bus journeys remain excluded. Twelve seasonal dates audited; physical direction and year-round coverage remain uncertified.",
+      "nextAction": "Review Arlesheim tram platform E, the conflicting Egerkingen 501 corridors and EV4 Pieterlen–Biel road alternatives. The official Bern M53 corridor adds two Sunday journeys. All published-date rail geometry gaps are resolved; 123 Friday / 124 Sunday tram and bus journeys remain excluded. Twelve seasonal dates audited; physical direction and year-round coverage remain uncertified.",
       "sourceIds": [
         "so-publications",
         "so-lines",
@@ -428,14 +428,14 @@
         "audit": "data/solothurn-audit/summary.json",
         "annualRouteRecords": 193,
         "agencyIdentities": 19,
-        "admittedRouteRecords": 150,
+        "admittedRouteRecords": 151,
         "serviceDates": [
           "2026-09-04",
           "2026-09-06"
         ],
         "admittedMovements": [
           7033,
-          5693
+          5695
         ],
         "physicalDirectionCertified": false,
         "yearRoundCoverageEstablished": false,
@@ -454,7 +454,8 @@
         "comoAudit": "data/solothurn-audit/como-review.json",
         "simplonAudit": "data/solothurn-audit/simplon-review.json",
         "delleAudit": "data/solothurn-audit/delle-review.json",
-        "roadDetourAudit": "data/solothurn-audit/road-detour-review.json"
+        "roadDetourAudit": "data/solothurn-audit/road-detour-review.json",
+        "m53Audit": "data/solothurn-audit/m53-review.json"
       }
     },
     {

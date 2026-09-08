@@ -1,0 +1,1 @@
+[out:json][timeout:90][date:"2026-09-02T00:00:00Z"];(way["highway"](47.171,7.338,47.175,7.342);way["highway"](47.207,7.531,47.212,7.541);relation["route"="bus"]["ref"="M53"](47.20,7.52,47.22,7.55););out meta;>;out meta;

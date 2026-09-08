@@ -1,0 +1,85 @@
+{
+  "retrievedOn": "2026-09-08",
+  "bern": {
+    "schemaVersion": 1,
+    "sourceCrs": "EPSG:2056",
+    "coordinateModel": "original LV95 XY, no simplification; Z/M discarded only in derived geometry",
+    "sourceUrl": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+    "metadataUrl": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+    "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+    "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+    "termsFiles": [
+      "terms_of_use_de.pdf",
+      "terms_of_use_fr.pdf"
+    ],
+    "dataUpdated": "2026-01-01",
+    "packagePublished": "2026-07-09",
+    "acquiredAt": "2026-09-08T17:02:41.454390+00:00",
+    "archiveSha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+    "geopackageSha256": "de4c89d91f69a572dabe9fda7b14140da45fdfe016d45c6f5f900337b45b1e4d",
+    "boundary": {
+      "edition": "2026-01",
+      "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+      "snapshotSha256": "b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0",
+      "attribution": "© swisstopo",
+      "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+      "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+    }
+  },
+  "bernDecodedSha256": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
+  "files": [
+    {
+      "file": "40.953.pdf",
+      "sha256": "5d9aedc224633414f316e93eea45c9df4e981a21b78ffdb5e497137c49d87c0a",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/40.953.pdf"
+    },
+    {
+      "file": "bern-9353.json",
+      "sha256": "aaebd6d65fa54f8668642ed093bdfdd2b25fffe0088859f2abc4cd2c278e048b",
+      "url": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip"
+    },
+    {
+      "file": "pieterlen-parking-plan.pdf",
+      "sha256": "96e9e7e3a038c5f4000d92dfa7849de851c4dca06ce71869c16db24228224b86",
+      "url": "https://company.sbb.ch/content/dam/internet/corporate/downloads/de/bahnentwicklung/bauprojekte/deutschschweiz/region-bern/p-rail-parkplaezte.pdf.sbbdownload.pdf"
+    },
+    {
+      "file": "pieterlen-works.html.gz",
+      "sha256": "c560e6e8bd88d4b98c3d40555fbc7df8598c05e787866ac31baaf9567e8042bb",
+      "url": "https://company.sbb.ch/de/bahnentwicklung/projekte/deutschschweiz/region-bern/bahnhof-pieterlen.html"
+    },
+    {
+      "file": "road-context-review.json.gz",
+      "sha256": "453327db5261704cb2daa5e6d39108570ffedd674151e2121177bf9f6708d1eb",
+      "url": null
+    },
+    {
+      "file": "roads.json.gz",
+      "sha256": "aba610e4fe49d3ff84186b934ce9dfe4db47dc1cfdf3145cb6b0194ac699d8b7",
+      "url": "https://overpass-api.de/api/interpreter"
+    },
+    {
+      "file": "roads.overpass",
+      "sha256": "18abf87b43f2982f7cdc6f29315de2b458810681025cbcc2ac85b5330670561d",
+      "url": null
+    },
+    {
+      "file": "terms_of_use_de.pdf",
+      "sha256": "06bfc0f252662cd88b2e4b433de623fa920df5ee38d3ec1fee2f395075a226fb",
+      "url": null
+    },
+    {
+      "file": "terms_of_use_fr.pdf",
+      "sha256": "b36a39e1ee779c64ed06f723c1f65e5f8531db92a05531033172efb9c023548d",
+      "url": null
+    }
+  ],
+  "dates": {
+    "timetable": "2025-09-10",
+    "roadSnapshot": "2026-09-02T00:00:00Z",
+    "pieterlenPlanPdfCreated": "2026-06-11",
+    "pieterlenWorksPagePublished": null
+  },
+  "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern; BSU / MOONLINER / oev-info.ch timetable context; © OpenStreetMap contributors (ODbL-1.0) for road comparison; SBB for Pieterlen works context",
+  "method": "Exact official Bern night-line 9353 / M53 / Busbetrieb Solothurn und Umgebung, scoped to one directed pair on GTFS agency 883 route 92-M53-j26-1. Both complete retained seasonal patterns checked. Unchanged original stops and 60 m snap / 3× or 600 m detour bounds. Preserve all earlier geometry. Bern linework is inferred as traversable in either direction; current access, historical alignment and diversions remain uncertified. EV4 alternatives remain excluded; the works notice is not a bus-itinerary or prohibition certificate."
+}
