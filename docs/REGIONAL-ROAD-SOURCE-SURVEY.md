@@ -4,6 +4,8 @@ Checked **8 September 2026**. This is a targeted follow-up to [AUTO](AUTO.md) an
 
 **Recommended next sources: Basel-Stadt, Thurgau and Zürich city.** Their accessible historical count series could add urban and regional daily traffic patterns. Winterthur is another concrete candidate. Aargau, Luzern and Genève provide useful measurement or planning data, with more work needed to establish suitable time-series access.
 
+**Geneva/Luzern/Aargau follow-up:** the [expanded source audit](REGIONAL-ROAD-EXPANSION.md) now pins actual counter layers, the Aargau CSV export, municipal annual-history metadata and sample reports. It supersedes the preliminary acquisition/terms unknowns below for these products. They provide statistical summaries and typical profiles; no dated hourly feed was verified.
+
 **Implementation started:** the [regional hourly-count import](REGIONAL-ROAD-IMPORT.md) now pins Friday/Sunday slices for all three recommended sources, normalizes 23,832 rows, and reports measurement quality, missing hours, station scope and possible existing-counter overlaps. That report supersedes the acquisition unknowns below for these specific snapshots; road geometry and public playback remain unadmitted.
 
 ## Existing baseline and what would be new

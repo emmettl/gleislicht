@@ -1,0 +1,121 @@
+{
+  "checkedDate": "2026-09-08",
+  "verifiedResponseBodies": 23,
+  "datedHourlyFeedVerified": false,
+  "playbackEligible": false,
+  "geneva": {
+    "semantics": "Counter inventory, annual daily means and peak-hour summaries",
+    "points": 694,
+    "availability": {
+      "1 fois tous les 5 ans": 30,
+      "3 semaines/an": 80,
+      "365 jrs/an": 176,
+      "Suspendu": 27,
+      "non": 372,
+      "sur demande": 9
+    },
+    "dailyMeanReferenceYears": {
+      "2014": 1,
+      "2015": 3,
+      "2017": 53,
+      "2019": 112,
+      "2021": 2,
+      "2022": 3,
+      "2023": 6,
+      "2024": 42,
+      "2025": 302,
+      "None": 170
+    }
+  },
+  "luzern": {
+    "semantics": "Counter inventory and separately dated statistical reports",
+    "mivPoints": 149,
+    "owners": {
+      "Gemeinde Horw": 2,
+      "Kanton Aargau": 16,
+      "Kanton Bern": 1,
+      "Kanton Luzern": 64,
+      "Kanton Nidwalden": 1,
+      "Kanton Schwyz": 1,
+      "Kanton Zug": 1,
+      "Stadt Luzern": 63
+    },
+    "signalPoints": 70,
+    "cityAnnualHistoryCount": 951,
+    "cityAnnualHistorySampleRows": 5,
+    "cityAnnualHistorySampleIsComplete": false
+  },
+  "aargau": {
+    "semantics": "Survey-period and annualized statistics; report profiles are averages",
+    "csvMember": "AGIS.avk_vkzsmeas/avk_vkzsmeas_20260803.csv",
+    "rows": 10222,
+    "distinctStationIds": 935,
+    "mivRows": 10093,
+    "mivStationIds": 911,
+    "latestPlausibleMivStationIds": 887,
+    "surveyTypes": {
+      "MIV": 10093,
+      "Velo": 129
+    },
+    "ownerRows": {
+      "AG": 9126,
+      "BL": 22,
+      "BW": 73,
+      "CH": 712,
+      "LU": 44,
+      "SO": 4,
+      "ZH": 241
+    },
+    "directionRows": {
+      "Richtung 1": 1817,
+      "Richtung 2": 1815,
+      "beide Richtungen": 6590
+    },
+    "referenceYearRows": {
+      "1983": 128,
+      "1984": 101,
+      "1985": 72,
+      "1986": 75,
+      "1987": 115,
+      "1988": 142,
+      "1989": 111,
+      "1990": 120,
+      "1991": 96,
+      "1992": 148,
+      "1993": 165,
+      "1994": 160,
+      "1995": 178,
+      "1996": 133,
+      "1997": 193,
+      "1998": 158,
+      "1999": 183,
+      "2000": 179,
+      "2001": 123,
+      "2002": 138,
+      "2003": 161,
+      "2004": 153,
+      "2005": 273,
+      "2006": 273,
+      "2007": 250,
+      "2008": 267,
+      "2009": 154,
+      "2010": 223,
+      "2011": 283,
+      "2012": 162,
+      "2013": 228,
+      "2014": 169,
+      "2015": 330,
+      "2016": 307,
+      "2017": 194,
+      "2018": 381,
+      "2019": 431,
+      "2020": 165,
+      "2021": 177,
+      "2022": 519,
+      "2023": 741,
+      "2024": 733,
+      "2025": 774,
+      "2026": 156
+    }
+  }
+}

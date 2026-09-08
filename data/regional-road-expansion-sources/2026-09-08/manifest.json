@@ -1,0 +1,260 @@
+{
+  "checkedDate": "2026-09-08",
+  "scope": "Public road-count source survey; no dated hourly feed or playback admitted.",
+  "hashScope": "SHA-256 and bytes refer to the original HTTP response body after decompressing stored gzip files.",
+  "sources": [
+    {
+      "path": "aargau-details.html",
+      "url": "https://www.ag.ch/de/themen/staat-politik/daten-und-zahlen/geoportal/geodaten/geodatenliste?rewriteRemoteUrl=/details/AGIS.avk_vkzsmeas?searchcontext%3Dverkehrs-+und+veloz%C3%A4hlungen",
+      "checkedAt": "2026-09-08T18:58:28.555168+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 42425,
+      "sha256": "27a7b97204789dad7e81ee778de2346a6c274c5e5693c5d7912beb11c5dfd990",
+      "storedPath": "aargau-details.html.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "aargau-documentation.pdf",
+      "url": "https://www.ag.ch/geoportal/geodatenshop/Datendokumentation.aspx?Datensatzelement=6895",
+      "checkedAt": "2026-09-08T18:59:41.058259+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 313235,
+      "sha256": "fef28069c24b0895dc3b65587bec1544a3f46be7f085e276af08a9a79fa1b440",
+      "storedPath": "aargau-documentation.pdf",
+      "encoding": "identity"
+    },
+    {
+      "path": "aargau-export.zip",
+      "url": "https://api.geo.ag.ch/v1/data/downloads/AGIS.avk_vkzsmeas/download/CSV/kanton_aargau",
+      "checkedAt": "2026-09-08T18:59:34.978855+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 1295140,
+      "sha256": "b23af52c18bc3b294c086dcb8abbebfe89ad64f1d7226ab0ec7b2b7365ceaac5",
+      "storedPath": "aargau-export.zip",
+      "encoding": "identity"
+    },
+    {
+      "path": "aargau-fislisbach-2026.pdf",
+      "url": "https://www.ag.ch/geoportal/agisviewer/zusatzdokumente/avk/vkz/dokus/20260430_I_1000.pdf",
+      "checkedAt": "2026-09-08T19:00:41.971369+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 454591,
+      "sha256": "b16e8c627135bfd8e10ae64b627dd932b9702ad9fbedc3c61b5784fc1bb1512d",
+      "storedPath": "aargau-fislisbach-2026.pdf",
+      "encoding": "identity"
+    },
+    {
+      "path": "aargau-terms.pdf",
+      "url": "https://www.ag.ch/geoportal/geodatenshop/Nutzungsbedingungen.aspx?Typ=NutzungsbedingungenAGIS1",
+      "checkedAt": "2026-09-08T18:59:38.846537+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 256264,
+      "sha256": "2f803f28cf112bf40f2e0e774b485343c6df2f6c5eda21098ebb225e771c37cb",
+      "storedPath": "aargau-terms.pdf",
+      "encoding": "identity"
+    },
+    {
+      "path": "geneva-catalogue.html",
+      "url": "https://sitg.ge.ch/donnees/otc-comptage-trafic",
+      "checkedAt": "2026-09-08T19:00:43.443547+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 380361,
+      "sha256": "4552ce2fbf05351a01c28420f72e1989c29743cef8714981fe4a08b20fd8e271",
+      "storedPath": "geneva-catalogue.html.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "geneva-count.json",
+      "url": "https://vector.sitg.ge.ch/arcgis/rest/services/OTC_COMPTAGE_TRAFIC/FeatureServer/0/query?where=1%3D1&returnCountOnly=true&f=json",
+      "checkedAt": "2026-09-08T18:58:28.552141+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 13,
+      "sha256": "baa0ec05a0109ba52d307f942c7cbeaf09c02627b521c1c7e99e1c3afa3c1ca7",
+      "storedPath": "geneva-count.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "geneva-layer.json",
+      "url": "https://vector.sitg.ge.ch/arcgis/rest/services/OTC_COMPTAGE_TRAFIC/FeatureServer/0?f=pjson",
+      "checkedAt": "2026-09-08T18:57:42.097495+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 30946,
+      "sha256": "6de63852cce720cc8dacef0dde8802287593bbda1a233b7cce967b59acf4d4a9",
+      "storedPath": "geneva-layer.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "geneva-points.json",
+      "url": "https://vector.sitg.ge.ch/arcgis/rest/services/OTC_COMPTAGE_TRAFIC/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=2056&returnGeometry=true&f=json",
+      "checkedAt": "2026-09-08T18:57:43.086068+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 313461,
+      "sha256": "51e06e036750800a82b793e02826c209f51c6f37f16c4344acfac14c58918df6",
+      "storedPath": "geneva-points.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "geneva-terms.html",
+      "url": "https://sitg.ge.ch/ressources/conditions-utilisation-donnees",
+      "checkedAt": "2026-09-08T19:00:42.769226+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 170471,
+      "sha256": "bd6d4c48d24e6daaceea88597b908d36109dc7cef743719b033e6dbd3ceeeb2b",
+      "storedPath": "geneva-terms.html.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-city-history-count.json",
+      "url": "https://poi.stadtluzern.ch/server/rest/services/TBA/DTV_HISTORY/FeatureServer/2/query?where=1%3D1&returnCountOnly=true&f=json",
+      "checkedAt": "2026-09-08T19:05:04.967047+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 13,
+      "sha256": "bd76d65c0c67c4b68ee3851e0fd893dd6a9e371dbd67c30e921973f142b6b23f",
+      "storedPath": "luzern-city-history-count.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-city-history-sample.json",
+      "url": "https://poi.stadtluzern.ch/server/rest/services/TBA/DTV_HISTORY/FeatureServer/2/query?where=1%3D1&outFields=FEATURELINK%2CDTV_JAHR%2CDTV_ANZAHL&orderByFields=DTV_JAHR%20DESC&resultRecordCount=5&returnGeometry=false&f=json",
+      "checkedAt": "2026-09-08T19:05:05.069843+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 872,
+      "sha256": "36c52b6f8b1d396a2b0d9c3c86e0e45e1b2f1173d8492615ec69b52e3d3ad56f",
+      "storedPath": "luzern-city-history-sample.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-city-map.json",
+      "url": "https://poi.stadtluzern.ch/portal/sharing/rest/content/items/6fb1495781fc4a6baa8b0af08d9faf8e/data?f=json",
+      "checkedAt": "2026-09-08T19:00:41.892250+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 12383,
+      "sha256": "ece5e2ca466f4dd0bd9ccc41e6ba9fd269a16085499993a8c71d9f0a1bfce9bd",
+      "storedPath": "luzern-city-map.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-city-table-0.json",
+      "url": "https://poi.stadtluzern.ch/server/rest/services/TBA/DTV_HISTORY/FeatureServer/2?f=pjson",
+      "checkedAt": "2026-09-08T19:01:23.324100+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 6156,
+      "sha256": "0089376d2855a39cde64b89194e4c2105ecf9928eb603ac270ee4556df5163b6",
+      "storedPath": "luzern-city-table-0.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-download.html",
+      "url": "https://daten.geo.lu.ch/download/verkzlng_col_v2",
+      "checkedAt": "2026-09-08T18:57:42.608132+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 45954,
+      "sha256": "18c9d5cad23107ba87401d9584ae16af726cfd04023f6eb269393efc50475d2d",
+      "storedPath": "luzern-download.html.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-lsa-count.json",
+      "url": "https://public.geo.lu.ch/ogd/rest/services/managed/VERKZLNG_COL_V2_MP/MapServer/5/query?where=1%3D1&returnCountOnly=true&f=json",
+      "checkedAt": "2026-09-08T19:05:05.073986+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 12,
+      "sha256": "76cebbb8f2bba9a9d0235e5ddffde239668d876c5be0c74a8bca3c22860fcd9d",
+      "storedPath": "luzern-lsa-count.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-lsa-layer.json",
+      "url": "https://public.geo.lu.ch/ogd/rest/services/managed/VERKZLNG_COL_V2_MP/MapServer/5?f=pjson",
+      "checkedAt": "2026-09-08T18:58:28.256865+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 7800,
+      "sha256": "a6eff88b787d5bf7db27d3e1477ae0f391d098f5433032cfe6dd93de51729049",
+      "storedPath": "luzern-lsa-layer.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-lsa-points.json",
+      "url": "https://public.geo.lu.ch/ogd/rest/services/managed/VERKZLNG_COL_V2_MP/MapServer/5/query?where=1%3D1&outFields=*&outSR=2056&f=json",
+      "checkedAt": "2026-09-08T19:00:41.943421+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 36460,
+      "sha256": "b6f62416c58d56169452cc3ce7fa2cfc256235d27881bb7fc6e3d0d39d774db9",
+      "storedPath": "luzern-lsa-points.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-miv-count.json",
+      "url": "https://public.geo.lu.ch/ogd/rest/services/managed/VERKZLNG_COL_V2_MP/MapServer/3/query?where=1%3D1&returnCountOnly=true&f=json",
+      "checkedAt": "2026-09-08T18:59:35.478055+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 13,
+      "sha256": "830c91c799f380c53dc42a7acb44105fd5e53ccaf5688df480393ce4ed7c75da",
+      "storedPath": "luzern-miv-count.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-miv-layer.json",
+      "url": "https://public.geo.lu.ch/ogd/rest/services/managed/VERKZLNG_COL_V2_MP/MapServer/3?f=pjson",
+      "checkedAt": "2026-09-08T18:58:28.256663+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 8785,
+      "sha256": "89d2a0e4096dc8b2405177adeaad96b09d77bdc1110feb866a12ea189b10586f",
+      "storedPath": "luzern-miv-layer.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-miv-points.json",
+      "url": "https://public.geo.lu.ch/ogd/rest/services/managed/VERKZLNG_COL_V2_MP/MapServer/3/query?where=1%3D1&outFields=*&outSR=2056&f=json",
+      "checkedAt": "2026-09-08T18:58:28.481067+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 71575,
+      "sha256": "ea0e72a3381945517e8781cf96220f31ed0b87cff081fee11dbaf879a0c949b9",
+      "storedPath": "luzern-miv-points.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-service.json",
+      "url": "https://public.geo.lu.ch/ogd/rest/services/managed/VERKZLNG_COL_V2_MP/MapServer?f=pjson",
+      "checkedAt": "2026-09-08T18:57:41.913417+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 3947,
+      "sha256": "1cdd6f5cc3c9e5cad9f15272b7c2f1125366e930e81706e7890f3e47f43782af",
+      "storedPath": "luzern-service.json.gz",
+      "encoding": "gzip"
+    },
+    {
+      "path": "luzern-wolhusen-2025.pdf",
+      "url": "https://www.geo.lu.ch/doc/verkehrszaehler/MIV_266_Wolhusen_Bahnhof_2025.pdf",
+      "checkedAt": "2026-09-08T18:59:35.179890+00:00",
+      "httpStatus": "200",
+      "curlExit": 0,
+      "bytes": 301999,
+      "sha256": "422bf102366159dbf19fb4bce356f887514f5c62b25d78dbd341eb735d8917c6",
+      "storedPath": "luzern-wolhusen-2025.pdf",
+      "encoding": "identity"
+    }
+  ]
+}
