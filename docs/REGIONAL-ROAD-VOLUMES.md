@@ -1,6 +1,6 @@
 # Regional hourly volume files and first junction finding
 
-Implemented **8 September 2026** after the [local direction review](REGIONAL-ROAD-DIRECTIONS.md). This increment adds a checked intervening-roundabout finding and a browser-readable hourly data contract for all **620 imported series**. It does not enable vehicle animation or add a new AUTO interface yet.
+Implemented **8 September 2026** after the [local direction review](REGIONAL-ROAD-DIRECTIONS.md). The first increment adds a checked intervening-roundabout finding and a browser-readable hourly data contract for all **620 imported series**. The subsequent interface exposes these counts under **AUTO → Road recordings → Hourly road counts**, without vehicle animation.
 
 ## Thurgau: the strongest same-basis pair crosses a roundabout
 
@@ -50,4 +50,20 @@ The volume policy pins the five inputs before any public files are written. The 
 
 Validation includes **34 Python cases** for ingestion, geometry and hourly volumes, plus **15 JavaScript cases** for direction and junction review. The new cases cover closed-loop connectivity, a detached named branch, a loop outside the counter interval, output reproduction, measured zero versus absence, edited/imputed/flagged readings, incomplete day totals, duplicate hours, invalid intervals/counts, DST days and the preserved municipal/Thurgau gaps.
 
-The next product step is a counter volume view consuming this contract: select a region, date and counter; show hourly bars and source quality; show a local arrow only for reviewed orientations. Corridor motion requires separate evidence and is not a prerequisite for that volume view.
+## Counter volume interface
+
+The existing road-recordings window now opens a dedicated hourly-count view. Select Basel-Stadt, Thurgau or Zürich city, one of the two dates and an individual counter/direction series. Region and counter choices remain separate from reconstructed road pilots. The view preserves the application's English, German, French and Italian language selection.
+
+Hourly bars are selectable by pointer or keyboard (left/right arrows, Home and End). A measured zero appears as a baseline mark, while missing and absent hours show a gap. The selected hour explains its quality; an expandable table provides every hourly value and quality state. Complete daily totals and incomplete measured subtotals have different labels. Class sums remain identified as sums of published classes, and excluded or unresolved road locations retain visible review notes.
+
+A north-referenced compass is shown only for the 31 reviewed local directions. Other counters state that their travel direction is unreviewed. The interface does not infer directions from the source's place labels or introduce motion, speeds or corridor totals.
+
+The index loads when the hourly view opens; only the selected region/day file then loads. Counter changes within that file reuse the loaded data. Region/date changes and closing the view cancel pending requests, with request guards preventing stale results from replacing the current selection. Failed HTTP requests, invalid data and checksum mismatches expose a retry action. The loader checks the file's SHA-256 and size, series identities, interval continuity, hourly quality, coverage and totals before rendering.
+
+The interface and existing road-pilot tests run with:
+
+```sh
+npx vitest run scripts/regional-road-volumes-ui.test.tsx src/studies/cantonal-road-pilot.test.ts
+```
+
+Eight interface checks cover all six public files, default reviewed counters, duplicate/mismatched records, hidden gaps, invalid daily totals, unsupported arrows, foreign file paths, byte-integrity failures, request/cancellation failures, zero versus missing presentation, and all four languages. These are data and server-rendering tests; no interactive browser QA is claimed. The production build and initial-transfer budget also pass in an isolated checkout containing this interface increment.

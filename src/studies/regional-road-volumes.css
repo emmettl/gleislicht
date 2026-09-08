@@ -1,0 +1,49 @@
+.cantonal-recording-picker.has-volumes { width: min(880px, calc(100vw - 32px)); }
+.cantonal-recording-picker.has-volumes header h2 { min-width: 0; overflow-wrap: anywhere; }
+.cantonal-recording-picker.has-volumes header button { flex-shrink: 0; }
+.regional-volume-entry { display: flex; flex-direction: column; gap: 8px; width: 100%; text-align: left; padding: 16px; margin-top: 20px; border: 1px solid #8dfaff55; border-radius: 12px; background: #102332; }
+.regional-volume-entry span { font-size: 14px; color: #c9d2dd; }
+.regional-volume-action { padding: 8px 12px; border: 1px solid #8dfaff66; background: #102332; border-radius: 8px; }
+.regional-road-volumes { font-size: 16px; line-height: 1.5; }
+.regional-road-volumes > p { color: #c9d2dd; }
+.regional-volume-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.regional-volume-controls label { display: flex; flex-direction: column; gap: 6px; min-width: 0; font-size: 14px; color: #c9d2dd; }
+.regional-volume-controls select { width: 100%; min-width: 0; font: inherit; font-size: 16px; color: #f8f7ff; background: #080b17; padding: 10px; border: 1px solid #8dfaff55; border-radius: 8px; }
+.regional-volume-counter-select { grid-column: 1 / -1; }
+.regional-volume-counter { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.regional-volume-counter h3 { margin: 0; font-size: 20px; overflow-wrap: anywhere; }
+.regional-volume-counter p { margin: 4px 0; color: #c9d2dd; font-size: 14px; }
+.regional-volume-direction { display: flex; align-items: center; gap: 10px; flex: 0 0 220px; color: #8dfaff; font-size: 14px; }
+.regional-volume-direction svg { flex: 0 0 65px; height: 76px; }
+.regional-volume-direction circle { fill: none; stroke: #8dfaff44; }
+.regional-volume-direction path { fill: none; stroke: #8dfaff; stroke-width: 3; }
+.regional-volume-direction text { fill: #c9d2dd; font-size: 13px; }
+.regional-volume-caution { color: #ffda89; font-size: 14px; }
+.regional-volume-stats { display: flex; gap: 28px; flex-wrap: wrap; margin: 24px 0; }
+.regional-volume-stats dt { color: #c9d2dd; font-size: 14px; }
+.regional-volume-stats dd { margin: 4px 0 0; font-size: 26px; font-variant-numeric: tabular-nums; }
+.regional-volume-detail h4 { margin: 0 0 12px; font-size: 16px; }
+.regional-volume-chart-scroll, .regional-volume-table-scroll { overflow-x: auto; }
+.regional-volume-chart { display: flex; min-width: 640px; gap: 2px; padding: 4px 3px; }
+.regional-volume-hour { flex: 1 1 0; min-width: 24px; padding: 0 2px; border: 0; background: transparent; border-radius: 3px; }
+.regional-volume-bar-space { display: flex; align-items: flex-end; justify-content: center; height: 150px; border-bottom: 1px solid #64748b; position: relative; }
+.regional-volume-bar { display: block; width: 100%; background: #66bfc7; border-radius: 3px 3px 0 0; }
+.regional-volume-hour[aria-pressed=true] .regional-volume-bar { background: #b2fbff; }
+.regional-volume-hour.is-zero .regional-volume-bar { border-top: 2px solid #8dfaff; border-radius: 0; }
+.regional-volume-gap { color: #ffda89; position: absolute; bottom: 0; font-size: 14px; }
+.regional-volume-tick { display: block; padding-top: 8px; color: #c9d2dd; font-size: 12px; }
+.regional-volume-reading { display: flex; flex-direction: column; min-height: 72px; gap: 4px; padding: 16px 0; font-size: 14px; }
+.regional-volume-reading span { color: #c9d2dd; }
+.regional-road-volumes details { border-top: 1px solid #8dfaff33; padding: 14px 0; }
+.regional-road-volumes summary { cursor: pointer; }
+.regional-road-volumes table { width: 100%; margin-top: 14px; border-collapse: collapse; font-size: 14px; }
+.regional-road-volumes th, .regional-road-volumes td { text-align: left; padding: 8px; border-bottom: 1px solid #8dfaff22; font-weight: normal; }
+.regional-road-volumes th { color: #c9d2dd; }
+.regional-volume-source { font-size: 14px; }
+.regional-volume-source a { color: #8dfaff; }
+.regional-road-volumes :focus-visible, .regional-volume-entry:focus-visible, .regional-volume-action:focus-visible { outline: 2px solid #8dfaff; outline-offset: 3px; }
+@media (max-width: 600px) {
+  .regional-volume-controls { grid-template-columns: 1fr; }
+  .regional-volume-counter { align-items: flex-start; flex-direction: column; }
+  .regional-volume-direction { flex-basis: auto; max-width: 100%; }
+}
