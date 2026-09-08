@@ -53,6 +53,7 @@ export async function loadGraubuendenCableways(policy, raw) {
   for (const r of funicularEvidence.responses) assert.equal(sha256(await readFile(`data/graubuenden-cableway-sources/${r.file}`)), r.sha256)
   assert.equal(sha256(await readFile('data/graubuenden-cableway-sources/six-route-policy.json')), review.sixRoutePolicySha256, 'Changed six-route baseline')
   assert.equal(sha256(await readFile('data/graubuenden-cableway-sources/nine-route-paths.json')), review.nineRoutePathsSha256, 'Changed nine-route baseline')
+  assert.equal(sha256(await readFile('data/graubuenden-cableway-sources/ten-route-paths.json')), review.tenRoutePathsSha256, 'Changed ten-route baseline')
   const { source, network } = await loadLuzernCableways(review, raw)
   const stops = new Map(raw.stops.map(s => [s.stop_id, s]))
   return { source: { ...source, supportingEvidence: evidence, expansionEvidence, funicularEvidence }, network, review, match: (train, route) => graubuendenCablewayPattern(network, review, train, route, stops) }

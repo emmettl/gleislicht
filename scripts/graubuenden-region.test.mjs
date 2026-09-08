@@ -51,6 +51,6 @@ describe('Graubünden initial scope', () => {
     const s = JSON.parse(readFileSync('data/graubuenden-audit/summary.json'))
     expect(s.annualRouteRecords).toBe(380); expect(s.annualAgencies).toBe(67)
     expect(s.days.map(d => d.trips)).toEqual([39402, 38425])
-    expect(s.days.map(d => d.admittedTrips)).toEqual([9049, 7826])
+    expect(s.days.map(d => d.admittedTrips)).toEqual([10011, 8848])
   })
 })

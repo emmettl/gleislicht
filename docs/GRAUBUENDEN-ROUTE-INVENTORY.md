@@ -164,7 +164,7 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 93-284-8-j26-1 | 3140 / Aelplibahn Malans Genossenschaft | mountain / 2848 | 2 | 0/72 | 0/72 | excluded; cableway-unreviewed-route | Malans (Älplibahn Talstation); Älpli |
 | 93-285-2-j26-1 | 3142 / Gemeinde Grüsch | mountain / 2852 | 8 | 0/1140 | 0/1140 | excluded; cableway-unreviewed-route | Fanas (Luftseilbahn); Eggli (Fanas) (Luftseilbahn) |
 | 93-287-0-j26-1 | 224 / Sportbahnen Pischa | mountain / 2870 | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Dörfji; Pischa |
-| 93-288-0-j26-1 | 236 / Chur-Dreibündenstein | mountain / 2880 | 2404 | 0/962 | 0/1022 | excluded; cableway-unreviewed-route | Känzeli (Chur); Brambrüesch |
+| 93-288-0-j26-1 | 236 / Chur-Dreibündenstein | mountain / 2880 | 2404 | 962/962 | 1022/1022 | admitted-all-dated-trips; — | Känzeli (Chur); Brambrüesch |
 | 93-288-A-j26-1 | 236 / Chur-Dreibündenstein | mountain / 2880 | 87 | 52/52 | 54/54 | admitted-all-dated-trips; — | Chur (Brambrüeschbahn); Känzeli (Chur) |
 | 93-288-D-j26-1 | 3201 / Cassons AG | mountain / 2885 | 26722 | 0/13659 | 0/13659 | excluded; cableway-unreviewed-route | Segnes; Nagens Sura; Foppa; Startgels; Flims Dorf (Talstation Foppa) |
 | 93-289-2-j26-1 | 275 / Weisse Arena Bergbahnen AG | mountain / 2892 | 4 | 0/31 | 0/31 | excluded; cableway-unreviewed-route | Crap Sogn Gion; Laax Murschetg (Talstation) |

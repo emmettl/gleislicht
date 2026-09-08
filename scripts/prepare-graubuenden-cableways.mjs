@@ -19,6 +19,7 @@ const routes = [
   ['93-6L-Y-j26-1', '133', 'FUN', '1029', '61.031', ['8509275', '8509276'], 1400],
   ['93-6W-Y-j26-1', '109', 'FUN', '1024', '61.011', ['8509083', '8509084'], 1400],
   ['93-71-Y-j26-1', '109', 'FUN', '1024', '61.012', ['8509084', '8509085'], 1400],
+  ['93-288-0-j26-1', '236', '2880', '1035', '72.006', ['8530546', '8509099']],
 ].map(([routeId, agencyId, line, sourceOperator, installation, stopNumbers, routeType = 1300]) => {
   assert(raw.inventory.some(r => r.routeId === routeId && r.agencyId === agencyId && r.line === line && r.routeType === routeType))
   return { routeId, agencyId, line, sourceOperator, ...(routeType === 1400 ? { routeType } : {}), segments: [{ installation, stopNumbers, sourceStationNumbers: stopNumbers }] }
@@ -27,11 +28,16 @@ const upperParsenn = routes.find(r => r.routeId === '93-71-Y-j26-1')
 upperParsenn.segments[0].sourceStationNumbers = ['8530888', '8509085']
 upperParsenn.segments[0].aliasReason = 'The timetable uses the shared Höhenweg interchange 8509084. FOT separates the first-section summit (8509084, 61.011) from Höhenweg (2. Sekt. Talst.) (8530888, 61.012), under the same operator 1024. The upper complete axis terminates at exact Weissfluhjoch 8509085. Operator summer evidence explicitly covers section 2 on both fixtures.'
 upperParsenn.stationAttachmentReview = { installation: '61.012', timetable: '8509084', source: '8530888', maximumMetres: 20, reason: 'Reviewed 15.017 m attachment between the original shared timetable interchange and the separate upper-section FOT station; only this named endpoint receives a 20 m bound. This is an inferred station connector, not surveyed running track or a through journey.' }
+const upperChur = routes.find(r => r.routeId === '93-288-0-j26-1')
+upperChur.segments[0].sourceStationNumbers = ['8531215', '8509099']
+upperChur.segments[0].aliasReason = 'GTFS uses shared Känzeli (Chur) 8530546. FOT separates that first-section summit (71.013) from Känzeli (Talst. 2. Sekt.) 8531215 on 72.006 under the same infrastructure operator 1035. Brambrüesch 8509099 is exact. The preserved Chur summer operator page identifies the Känzeli–Brambrüesch gondola and operation spanning both fixtures.'
+upperChur.stationAttachmentReview = { installation: '72.006', timetable: '8530546', source: '8531215', maximumMetres: 20, reason: 'Reviewed 16.135 m connector from the original shared Känzeli stop to its separate second-section FOT station. Only this endpoint receives a 20 m bound. The connector is inferred; it is not surveyed access geometry or an invented through journey.' }
 const selected = new Set(routes.map(r => r.routeId))
 const review = { schemaVersion: 1, supportingEvidenceSha256: sha256(await readFile('data/graubuenden-cableway-sources/evidence.json')), sourceDirectory: 'data/luzern-cableway-sources', sourceMetadataSha256: sha256(await readFile('data/luzern-cableway-sources/source.json')),
   funicularEvidenceSha256: sha256(await readFile('data/graubuenden-cableway-sources/funicular-evidence.json')),
   sixRoutePathsSha256: sha256(await readFile('data/graubuenden-cableway-sources/six-route-paths.json')),
   nineRoutePathsSha256: sha256(await readFile('data/graubuenden-cableway-sources/nine-route-paths.json')),
+  tenRoutePathsSha256: sha256(await readFile('data/graubuenden-cableway-sources/ten-route-paths.json')),
   sixRoutePolicySha256: sha256(await readFile('data/graubuenden-cableway-sources/six-route-policy.json')),
   initialPolicySha256: sha256(await readFile('data/graubuenden-cableway-sources/initial-policy.json')),
   expansionEvidenceSha256: sha256(await readFile('data/graubuenden-cableway-sources/expansion-evidence.json')),
@@ -39,7 +45,7 @@ const review = { schemaVersion: 1, supportingEvidenceSha256: sha256(await readFi
   inputs, inputsSha256: sha256(await readFile(inputs)), dates: raw.dates, routes,
   patternIds: [...new Set(raw.snapshots.flatMap(d => d.trains.filter(t => selected.has(t.routeId)).map(t => sha256(directedPatternKey(t)).slice(0, 20))))].sort(),
   limits: { stationAttachmentMetres: 10, topologyAttachmentMetres: 1, detourRatio: 4.5, detourFloorMetres: 1200 },
-  interpretation: 'Ten reviewed operator crosswalks on complete federal 2D axes. Nine routes use exact station numbers; upper Parsenn uses one explicit shared-interchange alias with an endpoint-specific 20 m bound. No section splicing, cable sag, altitude, observed cabins or current operating guarantee. Timetable agency IDs and infrastructure operator numbers are separate namespaces.',
+  interpretation: 'Eleven reviewed operator crosswalks on complete federal 2D axes. Nine routes use exact station numbers; upper Parsenn and upper Chur each use one explicit shared-interchange alias with an endpoint-specific 20 m bound. No section splicing, cable sag, altitude, observed cabins or current operating guarantee. Timetable agency IDs and infrastructure operator numbers are separate namespaces. The upper Chur minute-grid records retain their original individual-trip encoding, without asserting distinct cabin counts.',
   sourceReuse: 'The Luzern directory holds the complete national federal archive, not a regional extract. Verify its catalogue checksum, ZIP member and all file hashes before use.' }
 await saveJson('data/graubuenden-cableway-policy.json', review)
 const policy = await readJson('data/graubuenden-policy.json')

@@ -1,18 +1,19 @@
 # Graubünden: federal cableway review and complete mountain inventory
 
-The existing September study now includes six aerial cableways and four funiculars: Rhäzüns–Feldis, Sils–Furtschellas, Bernina–Diavolezza, Chur–Känzeli, Churwalden–Heidbüel, Celerina–Marguns, Davos–Schatzalp, Punt Muragl–Muottas Muragl, Davos Dorf–Höhenweg and Höhenweg–Weissfluhjoch. Twenty complete directed patterns retain every source vertex. Nine routes use exact timetable/FOT station-number crosswalks; upper Parsenn uses one explicitly reviewed Höhenweg interchange alias. No sections are spliced. The initial selection is deliberately small; every annual mountain route remains in the audit.
+The existing September study now includes seven aerial cableways and four funiculars: Rhäzüns–Feldis, Sils–Furtschellas, Bernina–Diavolezza, Chur–Känzeli, Churwalden–Heidbüel, Celerina–Marguns, Davos–Schatzalp, Punt Muragl–Muottas Muragl, Davos Dorf–Höhenweg, Höhenweg–Weissfluhjoch and Känzeli–Brambrüesch. Twenty-two complete directed patterns retain every source vertex. Nine routes use exact timetable/FOT station-number crosswalks; upper Parsenn and upper Chur each use an explicitly reviewed interchange alias. No sections are spliced. The initial selection is deliberately small; every annual mountain route remains in the audit.
 
 ## Validated scope
 
 | Date | All candidates | Rail/bus baseline | All admitted mountain instances | Of which representative headways | Scheduled mountain instances | Total admitted |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026-09-04 | 39'402 | 6'545 | 2504 | 2443 | 61 | 9'049 |
-| 2026-09-06 | 38'425 | 5'324 | 2502 | 2443 | 59 | 7'826 |
+| 2026-09-04 | 39'402 | 6'545 | 3466 | 2443 | 1023 | 10'011 |
+| 2026-09-06 | 38'425 | 5'324 | 3524 | 2443 | 1081 | 8'848 |
 
 All original calls, call rules, source trip IDs, service dates, intervals and times are retained. The before/after audit checks every non-mountain pattern byte-for-byte, and all previously admitted journeys remain admitted. The cumulative table compares with the rail/bus-only scope. The subsequent expansion from the original three cableways is independently checked below, preserving those earlier six directed axes byte-for-byte. Headway instances (`exact_times=0`) are representative movement on the original interval grid, not exact departures or observed cabin counts. No additional service dates are released.
 
 | Route / agency | Installation / infrastructure operator | Original station numbers | Friday / Sunday instances | Maximum station attachment |
 | --- | --- | --- | ---: | ---: |
+| 93-288-0-j26-1 / 236 | 72.006 Känzeli - Brambrüesch / 1035 | 8531215 ↔ 8509099 | 962 / 1022 | 16.14 m |
 | 93-288-A-j26-1 / 236 | 71.013 Chur - Känzeli / 1035 | 8530545 ↔ 8530546 | 52 / 54 | 8.57 m |
 | 93-292-2-j26-1 / 252 | 72.155 Churwalden - Heidbüel / 1176 | 8530582 ↔ 8530583 | 960 / 960 | 9.71 m |
 | 93-294-0-j26-1 / 232 | 71.044 Rhäzüns - Feldis / 585 | 8509679 ↔ 8509680 | 66 / 62 | 6.55 m |
@@ -24,16 +25,16 @@ All original calls, call rules, source trip IDs, service dates, intervals and ti
 | 93-6W-Y-j26-1 / 109 | 61.011 Davos Dorf - Höhenweg / 1024 | 8509084 ↔ 8509083 | 49 / 49 | 1.49 m |
 | 93-71-Y-j26-1 / 109 | 61.012 Parsennbahn Höhenweg - Weissfluhjoch / 1024 | 8509085 ↔ 8530888 | 48 / 48 | 15.02 m |
 
-Timetable agency IDs and FOT infrastructure operator numbers are different namespaces. Each mapping is explicit in [policy](../data/graubuenden-cableway-policy.json); equal names alone do not admit a route. The general station attachment limit remains 10 m. Only the upper Parsenn Höhenweg alias has a named 20 m bound for its measured 15.017 m connector; the opposite endpoint retains 10 m. All other admitted attachments remain under 10 m; source station-to-axis gaps are zero under a 1 m topology limit. The complete source axes are retained, oriented to the calls and joined by small, disclosed endpoint attachments. The model is two-dimensional: no cable sag, elevation profile, vehicle tracking, lane assignment or live operational certification.
+Timetable agency IDs and FOT infrastructure operator numbers are different namespaces. Each mapping is explicit in [policy](../data/graubuenden-cableway-policy.json); equal names alone do not admit a route. The general station attachment limit remains 10 m. The upper Parsenn Höhenweg alias and upper Chur Känzeli alias each have a named 20 m bound for their measured 15.017 m and 16.135 m connectors; both opposite endpoints retain 10 m. All other admitted attachments remain under 10 m; source station-to-axis gaps are zero under a 1 m topology limit. The complete source axes are retained, oriented to the calls and joined by small, disclosed endpoint attachments. The model is two-dimensional: no cable sag, elevation profile, vehicle tracking, lane assignment or live operational certification.
 
-![Ten complete federal axes and original timetable endpoints](assets/graubuenden-cableways.svg)
+![Eleven complete federal axes and original timetable endpoints](assets/graubuenden-cableways.svg)
 
 ## Expansion review
 
 | Date | Previous three-cableway scope | Added complete instances | Of which headways | Total admitted |
 | --- | ---: | ---: | ---: | ---: |
-| 2026-09-04 | 6'696 | 2'353 | 2'299 | 9'049 |
-| 2026-09-06 | 5'471 | 2'355 | 2'299 | 7'826 |
+| 2026-09-04 | 6'696 | 3'315 | 2'299 | 10'011 |
+| 2026-09-06 | 5'471 | 3'377 | 2'299 | 8'848 |
 
 The aerial-cabin expansion screened all 54 then-remaining annual mountain records: 17 are inactive on both fixtures; 23 needed vehicle, section or station-identity work at that stage (including four funiculars subsequently resolved below); 14 have one exact two-station cabin installation to test. Of those 14, three are admitted, ten fail the unchanged 10 m station attachment limit, and Samnaun passes numerically but is withheld following the summer operator review. Every trial, including rejected paths and their original feature evidence, is in the machine-readable audit. That cabin review admitted six aerial routes. The subsequent funicular review below adds four separately typed routes.
 
@@ -54,7 +55,7 @@ The aerial-cabin expansion screened all 54 then-remaining annual mountain record
 | 93-7F-Y-j26-1 | 71.016 Corviglia - Piz Nair | 15.63 m | no | rejected-unchanged-geometry-limits |
 | 93-7J-Y-j26-1 | 71.098 Ravaisch - Alptrider Sattel II | 6.01 m | yes | cableway-summer-installation-conflict |
 
-Chur admission covers the complete source journey Chur–Känzeli only. The separate Känzeli–Brambrüesch route remains excluded pending its distinct station-identity review; no through journey is cropped or invented. The [Chur summer 2026 page](https://www.churbergbahnen.ch/en/cableway/opening-hours-and-rates) supports seasonal corridor context. The [Heidbüel operator page](https://arosalenzerheide.swiss/en/Lenzerheide/Summer/Resort-Lifts/Operating-hours-summer) lists its summer service and 08:30–16:30 hours, while the [Engadin summer works notice](https://www.mountains.ch/de/anlagen/grossrevision-sommer-2026/) explicitly identifies Celerina–Marguns as an available alternative during the St. Moritz funicular overhaul. These pages support installation/service context; the pinned GTFS still supplies all times.
+The initial Chur admission covered Chur–Känzeli. The subsequent section review below adds the separate complete Känzeli–Brambrüesch journey; no through journey is cropped or invented. The [Chur summer 2026 page](https://www.churbergbahnen.ch/en/cableway/opening-hours-and-rates) supports seasonal corridor context. The [Heidbüel operator page](https://arosalenzerheide.swiss/en/Lenzerheide/Summer/Resort-Lifts/Operating-hours-summer) lists its summer service and 08:30–16:30 hours, while the [Engadin summer works notice](https://www.mountains.ch/de/anlagen/grossrevision-sommer-2026/) explicitly identifies Celerina–Marguns as an available alternative during the St. Moritz funicular overhaul. These pages support installation/service context; the pinned GTFS still supplies all times.
 
 Heidbüel and Marguns each use a 60-second representative GTFS frequency grid: the 2,040 added daily headway instances are illustrative service availability, not a census of distinct cabins. Exact exclusive interval endpoints remain unchanged. Chur adds 52 Friday and 54 Sunday scheduled source instances. No new observation precision or operator timetable completeness is asserted.
 
@@ -68,10 +69,10 @@ The five supporting pages, effective URLs, status codes, retrieval timestamps an
 
 Four explicitly typed GTFS 1400 / FOT Standseilbahn routes add 261 complete instances per date, including 259 representative headways and the two scheduled 23:00 Muottas Muragl instances. The first Parsenn section is a complete timetable journey; the separate upper section is not joined or cropped to make a through service. The existing aerial matcher remains restricted to GTFS 1300 / FOT Luftseilbahn. Both preserve every source vertex; the upper Parsenn alias has the single endpoint exception documented below. Funicular output is explicitly labelled fot-funicular-inference.
 
-| Date | Six-route baseline | Funicular additions | Of which headways | Total admitted |
-| --- | ---: | ---: | ---: | ---: |
-| 2026-09-04 | 8'788 | 261 | 259 | 9'049 |
-| 2026-09-06 | 7'565 | 261 | 259 | 7'826 |
+| Date | Six-route baseline | Funicular additions | Of which headways | Later upper Chur additions | Total admitted |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 2026-09-04 | 8'788 | 261 | 259 | 962 | 10'011 |
+| 2026-09-06 | 7'565 | 261 | 259 | 1022 | 8'848 |
 
 | Annual funicular route | Agency | Friday admitted / candidates | Sunday admitted / candidates | Disposition |
 | --- | --- | ---: | ---: | --- |
@@ -89,6 +90,21 @@ The [Schatzalp operator page](https://www.schatzalp.ch/funicular/) publishes a s
 Operator departures at interval boundaries are not automatically added: Schatzalp publishes 18:45 and midnight, while the archive uses exclusive 18:45 and 24:00 interval endpoints; Muottas Muragl publishes a half-hourly service through 22:45, while the archive ends that interval exclusively at 22:45 and separately records 23:00. The study preserves the GTFS grid and full civil-day semantics. Such discrepancies remain source limitations, not invented timetable precision.
 
 The [nine-route directed paths](../data/graubuenden-cableway-sources/nine-route-paths.json) additionally freeze all eighteen earlier geometry/provenance objects before the upper Parsenn addition. Every object remains identical. The [six-route policy](../data/graubuenden-cableway-sources/six-route-policy.json) and [twelve original directed paths](../data/graubuenden-cableway-sources/six-route-paths.json) are preserved and hash-checked. Their entire geometry/provenance objects are compared with the new output, guarding against a shared-matcher change that could affect both sides of a recomputed comparison. Rail and bus geometry is also unchanged. No track branch, passing-loop side, cable profile or altitude is inferred from the 2D axes.
+
+## Upper Chur section and dense timetable encoding
+
+The separately reviewed route 93-288-0-j26-1 (agency 236, line 2880) uses the entire FOT Känzeli–Brambrüesch axis 72.006, infrastructure operator 1035. The original shared GTFS stop Känzeli 8530546 is the first-section summit identity in FOT; the upper section has its own station Känzeli (Talst. 2. Sekt.) 8531215. Brambrüesch 8509099 is an exact identity. The explicit Känzeli alias attaches over 16.135 m under a 20 m limit only at that endpoint. Brambrüesch attaches over 1.054 m under the unchanged 10 m limit. Source station-to-axis gaps are zero, and all twelve source vertices survive in both directions. This inferred station connector is not surveyed pedestrian access or a claim about cabin approach tracks.
+
+| Date | Previous ten-route scope | Added upper Chur records | Total admitted |
+| --- | ---: | ---: | ---: |
+| 2026-09-04 | 9'049 | 962 | 10'011 |
+| 2026-09-06 | 7'826 | 1022 | 8'848 |
+
+The pinned archive encodes this gondola as individual source trips every minute, with no GTFS frequency marker: 481 records per direction on Friday and 511 on Sunday. Every journey lasts eight minutes. Both directions run on the source grid from 08:30 through 16:30 Friday and through 17:00 Sunday, including those last departures and their 16:38/17:08 arrivals. All source trip IDs, calls and times remain intact. These contribute 962/1,022 source-coded scheduled instances, not representative frequency instances. A dense source grid does not establish that many distinct physical cabins or observed exact departures, and the study does not invent frequency metadata to relabel it.
+
+The preserved [Chur summer operator page](https://www.churbergbahnen.ch/en/cableway/opening-hours-and-rates) identifies the Känzeli–Brambrüesch gondola and summer service spanning both fixtures. Its 08:30–16:30 weekday and 08:30–17:00 weekend hours agree with the source departure envelope. This supports the corridor and service context, not independent one-minute departure precision. The page is already hash-pinned in the expansion evidence; no schematic operator geometry is traced.
+
+The [twenty paths of the prior ten-route scope](../data/graubuenden-cableway-sources/ten-route-paths.json) are frozen and hash-checked. Their complete geometry/provenance objects remain identical, including the upper Parsenn endpoint exception. The full-candidate replay also preserves every earlier rail and bus journey. Both Chur sections remain separate complete timetable journeys; no transfer connection or continuous through trip is fabricated. Source identity, per-direction counts, interval sets, boundary calls and rejection context are reproduced in the [machine-readable review](../data/graubuenden-audit/cableways.json).
 
 ## Source, vintage and reuse
 
@@ -119,7 +135,7 @@ All **57** mountain route records are listed below, including **17** inactive on
 | 93-284-8-j26-1 | 3140 Aelplibahn Malans Genossenschaft / 2848 | 2 | 0 / 72 | 0 / 72 | none; local investigation needed | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-285-2-j26-1 | 3142 Gemeinde Grüsch / 2852 | 8 | 0 / 1'140 | 0 / 1'140 | none; local investigation needed | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-287-0-j26-1 | 224 Sportbahnen Pischa / 2870 | 2 | 0 / 0 | 0 / 0 | 71.096 | inactive-on-both-September-fixtures |
-| 93-288-0-j26-1 | 236 Chur-Dreibündenstein / 2880 | 2404 | 0 / 962 | 0 / 1'022 | 72.006, 71.013 | not-admitted-needs-installation-and-complete-pattern-review |
+| 93-288-0-j26-1 | 236 Chur-Dreibündenstein / 2880 | 2404 | 962 / 962 | 1022 / 1'022 | 72.006, 71.013 | reviewed-exact-full-patterns |
 | 93-288-A-j26-1 | 236 Chur-Dreibündenstein / 2880 | 87 | 52 / 52 | 54 / 54 | 71.013 | reviewed-exact-full-patterns |
 | 93-288-D-j26-1 | 3201 Cassons AG / 2885 | 26722 | 0 / 13'659 | 0 / 13'659 | 72.188, 72.189, 72.190 | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-289-2-j26-1 | 275 Weisse Arena Bergbahnen AG / 2892 | 4 | 0 / 31 | 0 / 31 | 71.109 | not-admitted-needs-installation-and-complete-pattern-review |
@@ -180,8 +196,8 @@ python3 scripts/prepare-graubuenden-cableway-context.py
 python3 scripts/prepare-graubuenden-funicular-context.py
 # Offline reproduction begins here with the preserved source files.
 node scripts/prepare-graubuenden-cableways.mjs
-node scripts/review-graubuenden-cableways.mjs
 node scripts/build-graubuenden-region.mjs
+node scripts/review-graubuenden-cableways.mjs
 node scripts/check-graubuenden-region.mjs
 node scripts/graubuenden-seasonal.mjs
 node scripts/check-graubuenden-seasonal.mjs
