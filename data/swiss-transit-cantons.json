@@ -786,14 +786,21 @@
         "3955"
       ],
       "geometryStatus": "not-found",
-      "evidence": "Cantonal services page and WFS capabilities checked. No current local bus-line export established. The TI-11 public transport network catalogue entry is a discovery lead, not evidence that vectors were downloaded. The WFS access constraints refer to a formal request.",
+      "evidence": "WFS (314 feature types), WMS, download catalogue, legal catalogue and reuse terms checked 2026-09-08. Public transport is TI-12, not TI-11 (road axes). No TI-12 line vector distribution acquired. All 209 Ticino-calling national GTFS routes inventoried; initial full-journey rail/OSM bus scope integrated.",
       "vintage": "No acquired bus-line dataset vintage established.",
-      "reuse": "Access and dataset reuse conditions unresolved; a service-level no-fee statement does not override its request constraint.",
-      "nextAction": "Obtain the TI-11 distribution details and review TPL, FART, ARL, AMSA and valley buses; check TILO and Italian termini by actual route membership.",
+      "reuse": "Official access-A cantonal data permit modification, redistribution and commercial use with Fonte: Amministrazione cantonale - Canton Ticino. WFS requests formal contact; TI-12 distribution and vintage remain unresolved. Initial bus paths attributed under ODbL; FOT and national timetable terms retained separately.",
+      "nextAction": "Obtain TI-12 distribution and dated cross-border line identifiers; resolve excluded rail endpoints, bus timing/geometry outliers, mountain and lake geometry; validate additional seasonal dates.",
       "sourceIds": [
         "ti-services",
         "ti-wfs"
-      ]
+      ],
+      "implementation": {
+        "study": "docs/TICINO-STUDY.md",
+        "inventory": "docs/TICINO-ROUTE-INVENTORY.md",
+        "audit": "data/ticino-audit/summary.json",
+        "feed": "public/data/ticino-region/index.json",
+        "localGeometryInvestigation": "data/ticino-sources/local-geometry-review.json"
+      }
     },
     {
       "code": "VD",

@@ -18,6 +18,7 @@ export const STUDY_SOURCES = [
   ['gornergrat', 'gornergrat-day.json'],
   ['solothurn-region', 'solothurn-region-day-manifest.json'],
   ['nyon-region', 'nyon-region-day-manifest.json'],
+  ['ticino-region', 'ticino-region/2026-09-04/ticino-region-day-manifest.json'],
   ['valais-region', 'valais-region-day-manifest.json'],
   ['graubuenden-region', 'graubuenden-region/2026-09-04/graubuenden-region-day-manifest.json'],
   ['pilatus', 'pilatus-day.json'],

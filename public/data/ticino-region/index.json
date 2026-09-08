@@ -1,0 +1,15 @@
+{
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "manifest": "2026-09-04/ticino-region-day-manifest.json",
+      "morning": "2026-09-04/ticino-region-morning.json"
+    },
+    {
+      "date": "2026-09-06",
+      "manifest": "2026-09-06/ticino-region-day-manifest.json",
+      "morning": "2026-09-06/ticino-region-morning.json"
+    }
+  ],
+  "scope": "Initial rail and bus scope; complete source journeys with accepted geometry only."
+}

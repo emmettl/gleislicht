@@ -1,0 +1,1971 @@
+{
+  "schemaVersion": 1,
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "inventory": "5a0e4a18bf182aea08842d6c7f00b6338ab78edc3ca1c36406e024366d15ddc6",
+    "roads": "2666c65fe60b6b1fc58ac9bdb32c25540e4e23965a26de95c4145e2ff13fd3a6",
+    "railPolicy": "a179c6ed4e8791f79505b0e5c05c5820604f08a56503cc0391a7791b95c9552e",
+    "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+    "boundary": "69eead5dfc87f5230c67b19062c7a41f1623097ca784c10bde8f805567050916",
+    "localReview": "f4f99b13f566564f22d735e3b29845faab552721dc9aad3039eae42ab591e73b"
+  },
+  "scope": "All national GTFS route records. Canton membership requires at least one scheduled call inside the complete Ticino polygon on any archived trip, independent of operator or selected dates. Each daily feed retains only trips that themselves call in Ticino, with their entire stop chain. Non-stopping through traffic and services absent from this GTFS are outside the timetable denominator.",
+  "nationalRows": {
+    "routes": 5142,
+    "trips": 2143227,
+    "stopTimes": 34499152,
+    "tripsWithStopTimes": 2143227
+  },
+  "cantonRoutes": 209,
+  "cantonAgencies": 32,
+  "archivedInactiveRoutes": 28,
+  "days": [
+    {
+      "schemaVersion": 1,
+      "date": "2026-09-04",
+      "sourceHashes": {
+        "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+        "inventory": "5a0e4a18bf182aea08842d6c7f00b6338ab78edc3ca1c36406e024366d15ddc6",
+        "roads": "2666c65fe60b6b1fc58ac9bdb32c25540e4e23965a26de95c4145e2ff13fd3a6",
+        "railPolicy": "a179c6ed4e8791f79505b0e5c05c5820604f08a56503cc0391a7791b95c9552e",
+        "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "boundary": "69eead5dfc87f5230c67b19062c7a41f1623097ca784c10bde8f805567050916",
+        "localReview": "f4f99b13f566564f22d735e3b29845faab552721dc9aad3039eae42ab591e73b",
+        "timetable": "20a1a67cb7a1a3e28b4d61845cdfac41d23dc5aac684c93648879c0b842398c0"
+      },
+      "checks": {
+        "completeSourceStopChains": true,
+        "exactPathEndpoints": true,
+        "chunkHashesAndReconstruction": true,
+        "independentSourceArchiveVerification": true,
+        "admittedGeometryCoverage": 1
+      },
+      "coverage": {
+        "candidateJourneys": 9287,
+        "admittedJourneys": 6660,
+        "excludedJourneys": 2627,
+        "candidateOccurrences": 136211,
+        "matchedCandidateOccurrences": 131821,
+        "admittedOccurrences": 124983,
+        "matchedCantonAdjacentOccurrences": 128655,
+        "admittedCantonAdjacentOccurrences": 122703,
+        "candidateCantonAdjacentOccurrences": 132133,
+        "excludedByReason": {
+          "excluded-incomplete-geometry": 571,
+          "excluded-road-timing-review": 32,
+          "excluded-mode-without-reviewed-geometry": 2024
+        }
+      },
+      "definitions": {
+        "candidate": "Every eligible complete journey that calls in the full Ticino polygon. Both current and preceding service calendars included.",
+        "occurrence": "Every adjacent pair in the entire source journey, including out-of-canton calls and times outside the civil day.",
+        "pattern": "Exact route_id, direction_id and full ordered platform chain, including repeats.",
+        "admission": "Complete rail/bus journeys only: all segments accepted, no reservation/coordination calls, and no positive-duration bus segment implying over 110 km/h. This speed is a conservative review gate, not certification of actual travel speed. No geographical or temporal clipping.",
+        "district": "Actual polygon membership of source calls; journey totals overlap across districts."
+      },
+      "controls": [
+        {
+          "name": "Lugano",
+          "candidateJourneys": 2636,
+          "admittedJourneys": 2495,
+          "excludedJourneys": 141,
+          "candidateOccurrences": 45009,
+          "matchedCandidateOccurrences": 44581,
+          "admittedOccurrences": 43389,
+          "matchedCantonAdjacentOccurrences": 44268,
+          "admittedCantonAdjacentOccurrences": 43138,
+          "candidateCantonAdjacentOccurrences": 44521,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 141
+          }
+        },
+        {
+          "name": "Bellinzona",
+          "candidateJourneys": 1022,
+          "admittedJourneys": 846,
+          "excludedJourneys": 176,
+          "candidateOccurrences": 22165,
+          "matchedCandidateOccurrences": 21827,
+          "admittedOccurrences": 19617,
+          "matchedCantonAdjacentOccurrences": 20633,
+          "admittedCantonAdjacentOccurrences": 18691,
+          "candidateCantonAdjacentOccurrences": 20909,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 168,
+            "excluded-road-timing-review": 8
+          }
+        },
+        {
+          "name": "Locarno",
+          "candidateJourneys": 978,
+          "admittedJourneys": 809,
+          "excludedJourneys": 169,
+          "candidateOccurrences": 23186,
+          "matchedCandidateOccurrences": 22682,
+          "admittedOccurrences": 20790,
+          "matchedCantonAdjacentOccurrences": 22457,
+          "admittedCantonAdjacentOccurrences": 20565,
+          "candidateCantonAdjacentOccurrences": 22829,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 169
+          }
+        },
+        {
+          "name": "Mendrisio",
+          "candidateJourneys": 855,
+          "admittedJourneys": 613,
+          "excludedJourneys": 242,
+          "candidateOccurrences": 15133,
+          "matchedCandidateOccurrences": 14134,
+          "admittedOccurrences": 12923,
+          "matchedCantonAdjacentOccurrences": 14115,
+          "admittedCantonAdjacentOccurrences": 12904,
+          "candidateCantonAdjacentOccurrences": 14462,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 242
+          }
+        },
+        {
+          "name": "Chiasso",
+          "candidateJourneys": 644,
+          "admittedJourneys": 402,
+          "excludedJourneys": 242,
+          "candidateOccurrences": 11199,
+          "matchedCandidateOccurrences": 10622,
+          "admittedOccurrences": 8737,
+          "matchedCantonAdjacentOccurrences": 10537,
+          "admittedCantonAdjacentOccurrences": 8714,
+          "candidateCantonAdjacentOccurrences": 10882,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 242
+          }
+        },
+        {
+          "name": "Airolo",
+          "candidateJourneys": 149,
+          "admittedJourneys": 148,
+          "excludedJourneys": 1,
+          "candidateOccurrences": 3507,
+          "matchedCandidateOccurrences": 3505,
+          "admittedOccurrences": 3488,
+          "matchedCantonAdjacentOccurrences": 3185,
+          "admittedCantonAdjacentOccurrences": 3168,
+          "candidateCantonAdjacentOccurrences": 3186,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 1
+          }
+        },
+        {
+          "name": "Biasca",
+          "candidateJourneys": 414,
+          "admittedJourneys": 380,
+          "excludedJourneys": 34,
+          "candidateOccurrences": 10436,
+          "matchedCandidateOccurrences": 10368,
+          "admittedOccurrences": 9955,
+          "matchedCantonAdjacentOccurrences": 9998,
+          "admittedCantonAdjacentOccurrences": 9585,
+          "candidateCantonAdjacentOccurrences": 10032,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 34
+          }
+        },
+        {
+          "name": "Acquarossa",
+          "candidateJourneys": 82,
+          "admittedJourneys": 75,
+          "excludedJourneys": 7,
+          "candidateOccurrences": 2177,
+          "matchedCandidateOccurrences": 2163,
+          "admittedOccurrences": 2098,
+          "matchedCantonAdjacentOccurrences": 2067,
+          "admittedCantonAdjacentOccurrences": 2002,
+          "candidateCantonAdjacentOccurrences": 2081,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 7
+          }
+        },
+        {
+          "name": "Cevio",
+          "candidateJourneys": 90,
+          "admittedJourneys": 88,
+          "excludedJourneys": 2,
+          "candidateOccurrences": 2225,
+          "matchedCandidateOccurrences": 2225,
+          "admittedOccurrences": 2191,
+          "matchedCantonAdjacentOccurrences": 2225,
+          "admittedCantonAdjacentOccurrences": 2191,
+          "candidateCantonAdjacentOccurrences": 2225,
+          "excludedByReason": {
+            "excluded-road-timing-review": 2
+          }
+        },
+        {
+          "name": "Intragna",
+          "candidateJourneys": 87,
+          "admittedJourneys": 67,
+          "excludedJourneys": 20,
+          "candidateOccurrences": 1522,
+          "matchedCandidateOccurrences": 1340,
+          "admittedOccurrences": 1277,
+          "matchedCantonAdjacentOccurrences": 1340,
+          "admittedCantonAdjacentOccurrences": 1277,
+          "candidateCantonAdjacentOccurrences": 1360,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 20
+          }
+        }
+      ],
+      "timing": {
+        "zeroDurationOccurrences": 14194,
+        "zeroDurationJourneys": 4782,
+        "maximumPositiveDurationSegmentByMode": [
+          {
+            "tripId": "2026-09-04:.ojp-91-2-G.1.TA.587.j26",
+            "routeId": "91-2-G-j26-1",
+            "line": "IC2",
+            "from": "Bellinzona",
+            "to": "Altdorf UR",
+            "seconds": 1980,
+            "pathMetres": 84926.15576303544,
+            "kilometresPerHour": 154.41119229642806
+          },
+          {
+            "tripId": "2026-09-04:.ojp-96-291-B.1.TA.4.j26",
+            "routeId": "96-291-B-j26-1",
+            "line": "631",
+            "from": "Bondo, Strada Cantonale",
+            "to": "Stampa, Villaggio",
+            "seconds": 120,
+            "pathMetres": 3516.3567764542563,
+            "kilometresPerHour": 105.49070329362769
+          }
+        ],
+        "policy": "Original minute-resolution GTFS times retained; no artificial travel seconds. Coincident timed calls have no finite implied speed."
+      },
+      "groups": [
+        {
+          "id": "11:rail",
+          "operator": "Schweizerische Bundesbahnen SBB",
+          "agencyId": "11",
+          "mode": "rail",
+          "archivedRoutes": 31,
+          "candidateJourneys": 558,
+          "admittedJourneys": 187,
+          "excludedJourneys": 371,
+          "candidateOccurrences": 4759,
+          "matchedCandidateOccurrences": 3436,
+          "admittedOccurrences": 1450,
+          "matchedCantonAdjacentOccurrences": 3246,
+          "admittedCantonAdjacentOccurrences": 1322,
+          "candidateCantonAdjacentOccurrences": 3819,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 371
+          }
+        },
+        {
+          "id": "82:rail",
+          "operator": "Schweizerische Südostbahn (sob)",
+          "agencyId": "82",
+          "mode": "rail",
+          "archivedRoutes": 4,
+          "candidateJourneys": 34,
+          "admittedJourneys": 34,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 637,
+          "matchedCandidateOccurrences": 637,
+          "admittedOccurrences": 637,
+          "matchedCantonAdjacentOccurrences": 371,
+          "admittedCantonAdjacentOccurrences": 371,
+          "candidateCantonAdjacentOccurrences": 371,
+          "excludedByReason": {}
+        },
+        {
+          "id": "47:rail",
+          "operator": "Lugano-Ponte Tresa",
+          "agencyId": "47",
+          "mode": "rail",
+          "archivedRoutes": 1,
+          "candidateJourneys": 134,
+          "admittedJourneys": 134,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 1474,
+          "matchedCandidateOccurrences": 1474,
+          "admittedOccurrences": 1474,
+          "matchedCantonAdjacentOccurrences": 1474,
+          "admittedCantonAdjacentOccurrences": 1474,
+          "candidateCantonAdjacentOccurrences": 1474,
+          "excludedByReason": {}
+        },
+        {
+          "id": "49:rail",
+          "operator": "Ferrovie Autolinee Regionali Ticinesi",
+          "agencyId": "49",
+          "mode": "rail",
+          "archivedRoutes": 3,
+          "candidateJourneys": 53,
+          "admittedJourneys": 33,
+          "excludedJourneys": 20,
+          "candidateOccurrences": 562,
+          "matchedCandidateOccurrences": 380,
+          "admittedOccurrences": 317,
+          "matchedCantonAdjacentOccurrences": 380,
+          "admittedCantonAdjacentOccurrences": 317,
+          "candidateCantonAdjacentOccurrences": 400,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 20
+          }
+        },
+        {
+          "id": "955:bus",
+          "operator": "Trasporti Pubblici Luganesi SA",
+          "agencyId": "955",
+          "mode": "bus",
+          "archivedRoutes": 15,
+          "candidateJourneys": 1619,
+          "admittedJourneys": 1596,
+          "excludedJourneys": 23,
+          "candidateOccurrences": 27608,
+          "matchedCandidateOccurrences": 27585,
+          "admittedOccurrences": 27237,
+          "matchedCantonAdjacentOccurrences": 27585,
+          "admittedCantonAdjacentOccurrences": 27237,
+          "candidateCantonAdjacentOccurrences": 27608,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 23
+          }
+        },
+        {
+          "id": "609:bus",
+          "operator": "Comune di Personico",
+          "agencyId": "609",
+          "mode": "bus",
+          "archivedRoutes": 1,
+          "candidateJourneys": 22,
+          "admittedJourneys": 22,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 66,
+          "matchedCandidateOccurrences": 66,
+          "admittedOccurrences": 66,
+          "matchedCantonAdjacentOccurrences": 66,
+          "admittedCantonAdjacentOccurrences": 66,
+          "candidateCantonAdjacentOccurrences": 66,
+          "excludedByReason": {}
+        },
+        {
+          "id": "862:bus",
+          "operator": "Autolinee Bleniesi",
+          "agencyId": "862",
+          "mode": "bus",
+          "archivedRoutes": 7,
+          "candidateJourneys": 175,
+          "admittedJourneys": 168,
+          "excludedJourneys": 7,
+          "candidateOccurrences": 2595,
+          "matchedCandidateOccurrences": 2581,
+          "admittedOccurrences": 2516,
+          "matchedCantonAdjacentOccurrences": 2533,
+          "admittedCantonAdjacentOccurrences": 2468,
+          "candidateCantonAdjacentOccurrences": 2547,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 7
+          }
+        },
+        {
+          "id": "858:bus",
+          "operator": "Autolinee Regionali Luganesi",
+          "agencyId": "858",
+          "mode": "bus",
+          "archivedRoutes": 4,
+          "candidateJourneys": 230,
+          "admittedJourneys": 230,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 4954,
+          "matchedCandidateOccurrences": 4954,
+          "admittedOccurrences": 4954,
+          "matchedCantonAdjacentOccurrences": 4954,
+          "admittedCantonAdjacentOccurrences": 4954,
+          "candidateCantonAdjacentOccurrences": 4954,
+          "excludedByReason": {}
+        },
+        {
+          "id": "817:bus",
+          "operator": "Autolinee FART",
+          "agencyId": "817",
+          "mode": "bus",
+          "archivedRoutes": 11,
+          "candidateJourneys": 791,
+          "admittedJourneys": 789,
+          "excludedJourneys": 2,
+          "candidateOccurrences": 18535,
+          "matchedCandidateOccurrences": 18535,
+          "admittedOccurrences": 18501,
+          "matchedCantonAdjacentOccurrences": 18535,
+          "admittedCantonAdjacentOccurrences": 18501,
+          "candidateCantonAdjacentOccurrences": 18535,
+          "excludedByReason": {
+            "excluded-road-timing-review": 2
+          }
+        },
+        {
+          "id": "736:bus",
+          "operator": "Autolinea Mendrisiense SA",
+          "agencyId": "736",
+          "mode": "bus",
+          "archivedRoutes": 7,
+          "candidateJourneys": 381,
+          "admittedJourneys": 338,
+          "excludedJourneys": 43,
+          "candidateOccurrences": 8096,
+          "matchedCandidateOccurrences": 8053,
+          "admittedOccurrences": 7450,
+          "matchedCantonAdjacentOccurrences": 8053,
+          "admittedCantonAdjacentOccurrences": 7450,
+          "candidateCantonAdjacentOccurrences": 8096,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 43
+          }
+        },
+        {
+          "id": "737:bus",
+          "operator": "Servizio d'automobili",
+          "agencyId": "737",
+          "mode": "bus",
+          "archivedRoutes": 2,
+          "candidateJourneys": 67,
+          "admittedJourneys": 67,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 703,
+          "matchedCandidateOccurrences": 703,
+          "admittedOccurrences": 703,
+          "matchedCantonAdjacentOccurrences": 603,
+          "admittedCantonAdjacentOccurrences": 603,
+          "candidateCantonAdjacentOccurrences": 603,
+          "excludedByReason": {}
+        },
+        {
+          "id": "7231:bus",
+          "operator": "SBB Infrastruktur AG Bahnersatz",
+          "agencyId": "7231",
+          "mode": "bus",
+          "archivedRoutes": 8,
+          "candidateJourneys": 22,
+          "admittedJourneys": 22,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 134,
+          "matchedCandidateOccurrences": 134,
+          "admittedOccurrences": 134,
+          "matchedCantonAdjacentOccurrences": 104,
+          "admittedCantonAdjacentOccurrences": 104,
+          "candidateCantonAdjacentOccurrences": 104,
+          "excludedByReason": {}
+        },
+        {
+          "id": "7274:bus",
+          "operator": "Lugano-Ponte Tresa Ersatzverkehr",
+          "agencyId": "7274",
+          "mode": "bus",
+          "archivedRoutes": 1,
+          "candidateJourneys": 0,
+          "admittedJourneys": 0,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 0,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 0,
+          "excludedByReason": {}
+        },
+        {
+          "id": "865:bus",
+          "operator": "Autoverkehr RhB",
+          "agencyId": "865",
+          "mode": "bus",
+          "archivedRoutes": 1,
+          "candidateJourneys": 2,
+          "admittedJourneys": 2,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 2,
+          "matchedCandidateOccurrences": 2,
+          "admittedOccurrences": 2,
+          "matchedCantonAdjacentOccurrences": 2,
+          "admittedCantonAdjacentOccurrences": 2,
+          "candidateCantonAdjacentOccurrences": 2,
+          "excludedByReason": {}
+        },
+        {
+          "id": "7240:bus",
+          "operator": "Ferrovie Autolinee Regionali Ticinesi Ersatzverkehr",
+          "agencyId": "7240",
+          "mode": "bus",
+          "archivedRoutes": 1,
+          "candidateJourneys": 0,
+          "admittedJourneys": 0,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 0,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 0,
+          "excludedByReason": {}
+        },
+        {
+          "id": "7000:bus",
+          "operator": "Interimsfahrplan / Horaire interimaire / Orario ad interim",
+          "agencyId": "7000",
+          "mode": "bus",
+          "archivedRoutes": 2,
+          "candidateJourneys": 0,
+          "admittedJourneys": 0,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 0,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 0,
+          "excludedByReason": {}
+        },
+        {
+          "id": "316:cableway",
+          "operator": "Valbianca SA Airolo",
+          "agencyId": "316",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 65,
+          "admittedJourneys": 0,
+          "excludedJourneys": 65,
+          "candidateOccurrences": 65,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 65,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 65
+          }
+        },
+        {
+          "id": "117:funicular",
+          "operator": "Funicolare Ritom SA",
+          "agencyId": "117",
+          "mode": "funicular",
+          "archivedRoutes": 1,
+          "candidateJourneys": 26,
+          "admittedJourneys": 0,
+          "excludedJourneys": 26,
+          "candidateOccurrences": 52,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 52,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 26
+          }
+        },
+        {
+          "id": "163:funicular",
+          "operator": "Società della Funicolare Locarno-Madonna del Sasso SA",
+          "agencyId": "163",
+          "mode": "funicular",
+          "archivedRoutes": 1,
+          "candidateJourneys": 102,
+          "admittedJourneys": 0,
+          "excludedJourneys": 102,
+          "candidateOccurrences": 306,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 306,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 102
+          }
+        },
+        {
+          "id": "286:cableway",
+          "operator": "Cardada Impianti Turistici",
+          "agencyId": "286",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 40,
+          "admittedJourneys": 0,
+          "excludedJourneys": 40,
+          "candidateOccurrences": 40,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 40,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 40
+          }
+        },
+        {
+          "id": "279:cableway",
+          "operator": "Verdasio-Rasa",
+          "agencyId": "279",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 0,
+          "admittedJourneys": 0,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 0,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 0,
+          "excludedByReason": {}
+        },
+        {
+          "id": "3123:cableway",
+          "operator": "Funiva San Carlo-Robiei",
+          "agencyId": "3123",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 17,
+          "admittedJourneys": 0,
+          "excludedJourneys": 17,
+          "candidateOccurrences": 17,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 17,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 17
+          }
+        },
+        {
+          "id": "348:cableway",
+          "operator": "Impianti turistici Rivera-Monte Tamaro",
+          "agencyId": "348",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 990,
+          "admittedJourneys": 0,
+          "excludedJourneys": 990,
+          "candidateOccurrences": 990,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 990,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 990
+          }
+        },
+        {
+          "id": "3955:funicular",
+          "operator": "Trasporti Pubblici Luganesi SA",
+          "agencyId": "3955",
+          "mode": "funicular",
+          "archivedRoutes": 1,
+          "candidateJourneys": 462,
+          "admittedJourneys": 0,
+          "excludedJourneys": 462,
+          "candidateOccurrences": 462,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 462,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 462
+          }
+        },
+        {
+          "id": "134:funicular",
+          "operator": "Lugano-Monte San Salvatore",
+          "agencyId": "134",
+          "mode": "funicular",
+          "archivedRoutes": 1,
+          "candidateJourneys": 48,
+          "admittedJourneys": 0,
+          "excludedJourneys": 48,
+          "candidateOccurrences": 96,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 96,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 48
+          }
+        },
+        {
+          "id": "116:funicular",
+          "operator": "Società Funicolare Cassarate-Monte Brè",
+          "agencyId": "116",
+          "mode": "funicular",
+          "archivedRoutes": 1,
+          "candidateJourneys": 152,
+          "admittedJourneys": 0,
+          "excludedJourneys": 152,
+          "candidateOccurrences": 312,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 312,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 152
+          }
+        },
+        {
+          "id": "210:cableway",
+          "operator": "Funivia Monte Lema SA",
+          "agencyId": "210",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 34,
+          "admittedJourneys": 0,
+          "excludedJourneys": 34,
+          "candidateOccurrences": 34,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 34,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 34
+          }
+        },
+        {
+          "id": "296:cableway",
+          "operator": "Brusino-Arsizio-Serpiano",
+          "agencyId": "296",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 24,
+          "admittedJourneys": 0,
+          "excludedJourneys": 24,
+          "candidateOccurrences": 24,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 24,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 24
+          }
+        },
+        {
+          "id": "129:rail",
+          "operator": "Ferrovia Monte Generoso",
+          "agencyId": "129",
+          "mode": "rail",
+          "archivedRoutes": 1,
+          "candidateJourneys": 14,
+          "admittedJourneys": 0,
+          "excludedJourneys": 14,
+          "candidateOccurrences": 42,
+          "matchedCandidateOccurrences": 28,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 28,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 42,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 14
+          }
+        },
+        {
+          "id": "190:ferry",
+          "operator": "Società Navigazione del Lago di Lugano SA",
+          "agencyId": "190",
+          "mode": "ferry",
+          "archivedRoutes": 2,
+          "candidateJourneys": 40,
+          "admittedJourneys": 0,
+          "excludedJourneys": 40,
+          "candidateOccurrences": 93,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 93,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 40
+          }
+        },
+        {
+          "id": "188:ferry",
+          "operator": "Lago di Lugano",
+          "agencyId": "188",
+          "mode": "ferry",
+          "archivedRoutes": 4,
+          "candidateJourneys": 24,
+          "admittedJourneys": 0,
+          "excludedJourneys": 24,
+          "candidateOccurrences": 132,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 132,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 24
+          }
+        },
+        {
+          "id": "801:bus",
+          "operator": "PostAuto AG",
+          "agencyId": "801",
+          "mode": "bus",
+          "archivedRoutes": 91,
+          "candidateJourneys": 3161,
+          "admittedJourneys": 3038,
+          "excludedJourneys": 123,
+          "candidateOccurrences": 63421,
+          "matchedCandidateOccurrences": 63253,
+          "admittedOccurrences": 59542,
+          "matchedCantonAdjacentOccurrences": 60721,
+          "admittedCantonAdjacentOccurrences": 57834,
+          "candidateCantonAdjacentOccurrences": 60889,
+          "excludedByReason": {
+            "excluded-road-timing-review": 30,
+            "excluded-incomplete-geometry": 93
+          }
+        }
+      ],
+      "districts": [
+        {
+          "name": "Blenio",
+          "number": 2102,
+          "platforms": 142,
+          "candidateJourneys": 161,
+          "admittedJourneys": 154,
+          "excludedJourneys": 7,
+          "candidateOccurrences": 2738,
+          "matchedCandidateOccurrences": 2724,
+          "admittedOccurrences": 2659,
+          "matchedCantonAdjacentOccurrences": 2628,
+          "admittedCantonAdjacentOccurrences": 2563,
+          "candidateCantonAdjacentOccurrences": 2642,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 7
+          }
+        },
+        {
+          "name": "Riviera",
+          "number": 2107,
+          "platforms": 104,
+          "candidateJourneys": 415,
+          "admittedJourneys": 381,
+          "excludedJourneys": 34,
+          "candidateOccurrences": 10447,
+          "matchedCandidateOccurrences": 10379,
+          "admittedOccurrences": 9966,
+          "matchedCantonAdjacentOccurrences": 10009,
+          "admittedCantonAdjacentOccurrences": 9596,
+          "candidateCantonAdjacentOccurrences": 10043,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 34
+          }
+        },
+        {
+          "name": "Mendrisio",
+          "number": 2106,
+          "platforms": 533,
+          "candidateJourneys": 1302,
+          "admittedJourneys": 958,
+          "excludedJourneys": 344,
+          "candidateOccurrences": 21712,
+          "matchedCandidateOccurrences": 20595,
+          "admittedOccurrences": 18214,
+          "matchedCantonAdjacentOccurrences": 20440,
+          "admittedCantonAdjacentOccurrences": 18121,
+          "candidateCantonAdjacentOccurrences": 20889,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 344
+          }
+        },
+        {
+          "name": "Lugano",
+          "number": 2105,
+          "platforms": 1396,
+          "candidateJourneys": 5384,
+          "admittedJourneys": 3447,
+          "excludedJourneys": 1937,
+          "candidateOccurrences": 62320,
+          "matchedCandidateOccurrences": 59741,
+          "admittedOccurrences": 56977,
+          "matchedCantonAdjacentOccurrences": 59258,
+          "admittedCantonAdjacentOccurrences": 56556,
+          "candidateCantonAdjacentOccurrences": 61662,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 203,
+            "excluded-mode-without-reviewed-geometry": 1734
+          }
+        },
+        {
+          "name": "Locarno",
+          "number": 2104,
+          "platforms": 762,
+          "candidateJourneys": 1555,
+          "admittedJourneys": 1176,
+          "excludedJourneys": 379,
+          "candidateOccurrences": 29882,
+          "matchedCandidateOccurrences": 28661,
+          "admittedOccurrences": 26665,
+          "matchedCantonAdjacentOccurrences": 28406,
+          "admittedCantonAdjacentOccurrences": 26410,
+          "candidateCantonAdjacentOccurrences": 29251,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 197,
+            "excluded-mode-without-reviewed-geometry": 182
+          }
+        },
+        {
+          "name": "Vallemaggia",
+          "number": 2108,
+          "platforms": 153,
+          "candidateJourneys": 143,
+          "admittedJourneys": 124,
+          "excludedJourneys": 19,
+          "candidateOccurrences": 2674,
+          "matchedCandidateOccurrences": 2657,
+          "admittedOccurrences": 2623,
+          "matchedCantonAdjacentOccurrences": 2657,
+          "admittedCantonAdjacentOccurrences": 2623,
+          "candidateCantonAdjacentOccurrences": 2674,
+          "excludedByReason": {
+            "excluded-road-timing-review": 2,
+            "excluded-mode-without-reviewed-geometry": 17
+          }
+        },
+        {
+          "name": "Leventina",
+          "number": 2103,
+          "platforms": 283,
+          "candidateJourneys": 379,
+          "admittedJourneys": 270,
+          "excludedJourneys": 109,
+          "candidateOccurrences": 4986,
+          "matchedCandidateOccurrences": 4836,
+          "admittedOccurrences": 4553,
+          "matchedCantonAdjacentOccurrences": 4516,
+          "admittedCantonAdjacentOccurrences": 4233,
+          "candidateCantonAdjacentOccurrences": 4665,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 18,
+            "excluded-mode-without-reviewed-geometry": 91
+          }
+        },
+        {
+          "name": "Bellinzona",
+          "number": 2101,
+          "platforms": 472,
+          "candidateJourneys": 1453,
+          "admittedJourneys": 1171,
+          "excludedJourneys": 282,
+          "candidateOccurrences": 29359,
+          "matchedCandidateOccurrences": 28632,
+          "admittedOccurrences": 25026,
+          "matchedCantonAdjacentOccurrences": 25921,
+          "admittedCantonAdjacentOccurrences": 23201,
+          "candidateCantonAdjacentOccurrences": 26395,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 252,
+            "excluded-road-timing-review": 30
+          }
+        }
+      ],
+      "border": {
+        "candidateOutsideCantonPlatforms": 315,
+        "admittedOutsideCantonPlatforms": 230,
+        "admittedJourneysLeavingCanton": 312
+      },
+      "civilDay": {
+        "candidateCarryIn": 149,
+        "admittedCarryIn": 128,
+        "candidateHeadway": 1905,
+        "admittedHeadway": 0
+      },
+      "payload": {
+        "manifestGzipBytes": 419219,
+        "morningGzipBytes": 568804,
+        "maximumChunkGzipBytes": 151114
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "date": "2026-09-06",
+      "sourceHashes": {
+        "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+        "inventory": "5a0e4a18bf182aea08842d6c7f00b6338ab78edc3ca1c36406e024366d15ddc6",
+        "roads": "2666c65fe60b6b1fc58ac9bdb32c25540e4e23965a26de95c4145e2ff13fd3a6",
+        "railPolicy": "a179c6ed4e8791f79505b0e5c05c5820604f08a56503cc0391a7791b95c9552e",
+        "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "boundary": "69eead5dfc87f5230c67b19062c7a41f1623097ca784c10bde8f805567050916",
+        "localReview": "f4f99b13f566564f22d735e3b29845faab552721dc9aad3039eae42ab591e73b",
+        "timetable": "336e6acae279a264744711353cd63d128b2b209bdd9d7a789c4254d3c55989e1"
+      },
+      "checks": {
+        "completeSourceStopChains": true,
+        "exactPathEndpoints": true,
+        "chunkHashesAndReconstruction": true,
+        "independentSourceArchiveVerification": true,
+        "admittedGeometryCoverage": 1
+      },
+      "coverage": {
+        "candidateJourneys": 7166,
+        "admittedJourneys": 4669,
+        "excludedJourneys": 2497,
+        "candidateOccurrences": 103163,
+        "matchedCandidateOccurrences": 98982,
+        "admittedOccurrences": 93599,
+        "matchedCantonAdjacentOccurrences": 96076,
+        "admittedCantonAdjacentOccurrences": 91521,
+        "candidateCantonAdjacentOccurrences": 99395,
+        "excludedByReason": {
+          "excluded-incomplete-geometry": 448,
+          "excluded-mode-without-reviewed-geometry": 2021,
+          "excluded-road-timing-review": 28
+        }
+      },
+      "definitions": {
+        "candidate": "Every eligible complete journey that calls in the full Ticino polygon. Both current and preceding service calendars included.",
+        "occurrence": "Every adjacent pair in the entire source journey, including out-of-canton calls and times outside the civil day.",
+        "pattern": "Exact route_id, direction_id and full ordered platform chain, including repeats.",
+        "admission": "Complete rail/bus journeys only: all segments accepted, no reservation/coordination calls, and no positive-duration bus segment implying over 110 km/h. This speed is a conservative review gate, not certification of actual travel speed. No geographical or temporal clipping.",
+        "district": "Actual polygon membership of source calls; journey totals overlap across districts."
+      },
+      "controls": [
+        {
+          "name": "Lugano",
+          "candidateJourneys": 1969,
+          "admittedJourneys": 1826,
+          "excludedJourneys": 143,
+          "candidateOccurrences": 34583,
+          "matchedCandidateOccurrences": 34152,
+          "admittedOccurrences": 32943,
+          "matchedCantonAdjacentOccurrences": 33829,
+          "admittedCantonAdjacentOccurrences": 32682,
+          "candidateCantonAdjacentOccurrences": 34085,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 143
+          }
+        },
+        {
+          "name": "Bellinzona",
+          "candidateJourneys": 800,
+          "admittedJourneys": 630,
+          "excludedJourneys": 170,
+          "candidateOccurrences": 16652,
+          "matchedCandidateOccurrences": 16330,
+          "admittedOccurrences": 14362,
+          "matchedCantonAdjacentOccurrences": 15567,
+          "admittedCantonAdjacentOccurrences": 13699,
+          "candidateCantonAdjacentOccurrences": 15841,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 168,
+            "excluded-road-timing-review": 2
+          }
+        },
+        {
+          "name": "Locarno",
+          "candidateJourneys": 922,
+          "admittedJourneys": 749,
+          "excludedJourneys": 173,
+          "candidateOccurrences": 21740,
+          "matchedCandidateOccurrences": 21234,
+          "admittedOccurrences": 19314,
+          "matchedCantonAdjacentOccurrences": 21006,
+          "admittedCantonAdjacentOccurrences": 19086,
+          "candidateCantonAdjacentOccurrences": 21384,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 173
+          }
+        },
+        {
+          "name": "Mendrisio",
+          "candidateJourneys": 598,
+          "admittedJourneys": 417,
+          "excludedJourneys": 181,
+          "candidateOccurrences": 11176,
+          "matchedCandidateOccurrences": 10334,
+          "admittedOccurrences": 9217,
+          "matchedCantonAdjacentOccurrences": 10323,
+          "admittedCantonAdjacentOccurrences": 9206,
+          "candidateCantonAdjacentOccurrences": 10606,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 181
+          }
+        },
+        {
+          "name": "Chiasso",
+          "candidateJourneys": 484,
+          "admittedJourneys": 294,
+          "excludedJourneys": 190,
+          "candidateOccurrences": 8724,
+          "matchedCandidateOccurrences": 8202,
+          "admittedOccurrences": 6732,
+          "matchedCantonAdjacentOccurrences": 8125,
+          "admittedCantonAdjacentOccurrences": 6717,
+          "candidateCantonAdjacentOccurrences": 8417,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 190
+          }
+        },
+        {
+          "name": "Airolo",
+          "candidateJourneys": 126,
+          "admittedJourneys": 125,
+          "excludedJourneys": 1,
+          "candidateOccurrences": 2904,
+          "matchedCandidateOccurrences": 2902,
+          "admittedOccurrences": 2885,
+          "matchedCantonAdjacentOccurrences": 2585,
+          "admittedCantonAdjacentOccurrences": 2568,
+          "candidateCantonAdjacentOccurrences": 2586,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 1
+          }
+        },
+        {
+          "name": "Biasca",
+          "candidateJourneys": 295,
+          "admittedJourneys": 261,
+          "excludedJourneys": 34,
+          "candidateOccurrences": 7290,
+          "matchedCandidateOccurrences": 7222,
+          "admittedOccurrences": 6813,
+          "matchedCantonAdjacentOccurrences": 6860,
+          "admittedCantonAdjacentOccurrences": 6451,
+          "candidateCantonAdjacentOccurrences": 6895,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 34
+          }
+        },
+        {
+          "name": "Acquarossa",
+          "candidateJourneys": 51,
+          "admittedJourneys": 51,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 1491,
+          "matchedCandidateOccurrences": 1491,
+          "admittedOccurrences": 1491,
+          "matchedCantonAdjacentOccurrences": 1395,
+          "admittedCantonAdjacentOccurrences": 1395,
+          "candidateCantonAdjacentOccurrences": 1395,
+          "excludedByReason": {}
+        },
+        {
+          "name": "Cevio",
+          "candidateJourneys": 81,
+          "admittedJourneys": 81,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 2117,
+          "matchedCandidateOccurrences": 2117,
+          "admittedOccurrences": 2117,
+          "matchedCantonAdjacentOccurrences": 2117,
+          "admittedCantonAdjacentOccurrences": 2117,
+          "candidateCantonAdjacentOccurrences": 2117,
+          "excludedByReason": {}
+        },
+        {
+          "name": "Intragna",
+          "candidateJourneys": 81,
+          "admittedJourneys": 61,
+          "excludedJourneys": 20,
+          "candidateOccurrences": 1432,
+          "matchedCandidateOccurrences": 1250,
+          "admittedOccurrences": 1187,
+          "matchedCantonAdjacentOccurrences": 1250,
+          "admittedCantonAdjacentOccurrences": 1187,
+          "candidateCantonAdjacentOccurrences": 1270,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 20
+          }
+        }
+      ],
+      "timing": {
+        "zeroDurationOccurrences": 11908,
+        "zeroDurationJourneys": 3623,
+        "maximumPositiveDurationSegmentByMode": [
+          {
+            "tripId": "2026-09-06:.ojp-91-2-G.1.TA.368.j26",
+            "routeId": "91-2-G-j26-1",
+            "line": "IC2",
+            "from": "Bellinzona",
+            "to": "Altdorf UR",
+            "seconds": 1980,
+            "pathMetres": 84926.15576303544,
+            "kilometresPerHour": 154.41119229642806
+          },
+          {
+            "tripId": "2026-09-06:.ojp-96-291-B.1.TA.4.j26",
+            "routeId": "96-291-B-j26-1",
+            "line": "631",
+            "from": "Bondo, Strada Cantonale",
+            "to": "Stampa, Villaggio",
+            "seconds": 120,
+            "pathMetres": 3516.3567764542563,
+            "kilometresPerHour": 105.49070329362769
+          }
+        ],
+        "policy": "Original minute-resolution GTFS times retained; no artificial travel seconds. Coincident timed calls have no finite implied speed."
+      },
+      "groups": [
+        {
+          "id": "11:rail",
+          "operator": "Schweizerische Bundesbahnen SBB",
+          "agencyId": "11",
+          "mode": "rail",
+          "archivedRoutes": 31,
+          "candidateJourneys": 497,
+          "admittedJourneys": 181,
+          "excludedJourneys": 316,
+          "candidateOccurrences": 4556,
+          "matchedCandidateOccurrences": 3348,
+          "admittedOccurrences": 1419,
+          "matchedCantonAdjacentOccurrences": 3152,
+          "admittedCantonAdjacentOccurrences": 1285,
+          "candidateCantonAdjacentOccurrences": 3668,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 316
+          }
+        },
+        {
+          "id": "82:rail",
+          "operator": "Schweizerische Südostbahn (sob)",
+          "agencyId": "82",
+          "mode": "rail",
+          "archivedRoutes": 4,
+          "candidateJourneys": 33,
+          "admittedJourneys": 33,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 633,
+          "matchedCandidateOccurrences": 633,
+          "admittedOccurrences": 633,
+          "matchedCantonAdjacentOccurrences": 370,
+          "admittedCantonAdjacentOccurrences": 370,
+          "candidateCantonAdjacentOccurrences": 370,
+          "excludedByReason": {}
+        },
+        {
+          "id": "47:rail",
+          "operator": "Lugano-Ponte Tresa",
+          "agencyId": "47",
+          "mode": "rail",
+          "archivedRoutes": 1,
+          "candidateJourneys": 80,
+          "admittedJourneys": 80,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 880,
+          "matchedCandidateOccurrences": 880,
+          "admittedOccurrences": 880,
+          "matchedCantonAdjacentOccurrences": 880,
+          "admittedCantonAdjacentOccurrences": 880,
+          "candidateCantonAdjacentOccurrences": 880,
+          "excludedByReason": {}
+        },
+        {
+          "id": "49:rail",
+          "operator": "Ferrovie Autolinee Regionali Ticinesi",
+          "agencyId": "49",
+          "mode": "rail",
+          "archivedRoutes": 3,
+          "candidateJourneys": 51,
+          "admittedJourneys": 31,
+          "excludedJourneys": 20,
+          "candidateOccurrences": 548,
+          "matchedCandidateOccurrences": 366,
+          "admittedOccurrences": 303,
+          "matchedCantonAdjacentOccurrences": 366,
+          "admittedCantonAdjacentOccurrences": 303,
+          "candidateCantonAdjacentOccurrences": 386,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 20
+          }
+        },
+        {
+          "id": "955:bus",
+          "operator": "Trasporti Pubblici Luganesi SA",
+          "agencyId": "955",
+          "mode": "bus",
+          "archivedRoutes": 15,
+          "candidateJourneys": 1207,
+          "admittedJourneys": 1190,
+          "excludedJourneys": 17,
+          "candidateOccurrences": 22238,
+          "matchedCandidateOccurrences": 22221,
+          "admittedOccurrences": 21960,
+          "matchedCantonAdjacentOccurrences": 22221,
+          "admittedCantonAdjacentOccurrences": 21960,
+          "candidateCantonAdjacentOccurrences": 22238,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 17
+          }
+        },
+        {
+          "id": "609:bus",
+          "operator": "Comune di Personico",
+          "agencyId": "609",
+          "mode": "bus",
+          "archivedRoutes": 1,
+          "candidateJourneys": 0,
+          "admittedJourneys": 0,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 0,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 0,
+          "excludedByReason": {}
+        },
+        {
+          "id": "862:bus",
+          "operator": "Autolinee Bleniesi",
+          "agencyId": "862",
+          "mode": "bus",
+          "archivedRoutes": 7,
+          "candidateJourneys": 109,
+          "admittedJourneys": 105,
+          "excludedJourneys": 4,
+          "candidateOccurrences": 1686,
+          "matchedCandidateOccurrences": 1682,
+          "admittedOccurrences": 1678,
+          "matchedCantonAdjacentOccurrences": 1634,
+          "admittedCantonAdjacentOccurrences": 1630,
+          "candidateCantonAdjacentOccurrences": 1638,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 4
+          }
+        },
+        {
+          "id": "858:bus",
+          "operator": "Autolinee Regionali Luganesi",
+          "agencyId": "858",
+          "mode": "bus",
+          "archivedRoutes": 4,
+          "candidateJourneys": 140,
+          "admittedJourneys": 140,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 2713,
+          "matchedCandidateOccurrences": 2713,
+          "admittedOccurrences": 2713,
+          "matchedCantonAdjacentOccurrences": 2713,
+          "admittedCantonAdjacentOccurrences": 2713,
+          "candidateCantonAdjacentOccurrences": 2713,
+          "excludedByReason": {}
+        },
+        {
+          "id": "817:bus",
+          "operator": "Autolinee FART",
+          "agencyId": "817",
+          "mode": "bus",
+          "archivedRoutes": 11,
+          "candidateJourneys": 727,
+          "admittedJourneys": 727,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 17104,
+          "matchedCandidateOccurrences": 17104,
+          "admittedOccurrences": 17104,
+          "matchedCantonAdjacentOccurrences": 17104,
+          "admittedCantonAdjacentOccurrences": 17104,
+          "candidateCantonAdjacentOccurrences": 17104,
+          "excludedByReason": {}
+        },
+        {
+          "id": "736:bus",
+          "operator": "Autolinea Mendrisiense SA",
+          "agencyId": "736",
+          "mode": "bus",
+          "archivedRoutes": 7,
+          "candidateJourneys": 221,
+          "admittedJourneys": 201,
+          "excludedJourneys": 20,
+          "candidateOccurrences": 5074,
+          "matchedCandidateOccurrences": 5054,
+          "admittedOccurrences": 4806,
+          "matchedCantonAdjacentOccurrences": 5054,
+          "admittedCantonAdjacentOccurrences": 4806,
+          "candidateCantonAdjacentOccurrences": 5074,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 20
+          }
+        },
+        {
+          "id": "737:bus",
+          "operator": "Servizio d'automobili",
+          "agencyId": "737",
+          "mode": "bus",
+          "archivedRoutes": 2,
+          "candidateJourneys": 65,
+          "admittedJourneys": 65,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 685,
+          "matchedCandidateOccurrences": 685,
+          "admittedOccurrences": 685,
+          "matchedCantonAdjacentOccurrences": 585,
+          "admittedCantonAdjacentOccurrences": 585,
+          "candidateCantonAdjacentOccurrences": 585,
+          "excludedByReason": {}
+        },
+        {
+          "id": "7231:bus",
+          "operator": "SBB Infrastruktur AG Bahnersatz",
+          "agencyId": "7231",
+          "mode": "bus",
+          "archivedRoutes": 8,
+          "candidateJourneys": 13,
+          "admittedJourneys": 13,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 90,
+          "matchedCandidateOccurrences": 90,
+          "admittedOccurrences": 90,
+          "matchedCantonAdjacentOccurrences": 69,
+          "admittedCantonAdjacentOccurrences": 69,
+          "candidateCantonAdjacentOccurrences": 69,
+          "excludedByReason": {}
+        },
+        {
+          "id": "7274:bus",
+          "operator": "Lugano-Ponte Tresa Ersatzverkehr",
+          "agencyId": "7274",
+          "mode": "bus",
+          "archivedRoutes": 1,
+          "candidateJourneys": 0,
+          "admittedJourneys": 0,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 0,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 0,
+          "excludedByReason": {}
+        },
+        {
+          "id": "865:bus",
+          "operator": "Autoverkehr RhB",
+          "agencyId": "865",
+          "mode": "bus",
+          "archivedRoutes": 1,
+          "candidateJourneys": 2,
+          "admittedJourneys": 2,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 2,
+          "matchedCandidateOccurrences": 2,
+          "admittedOccurrences": 2,
+          "matchedCantonAdjacentOccurrences": 2,
+          "admittedCantonAdjacentOccurrences": 2,
+          "candidateCantonAdjacentOccurrences": 2,
+          "excludedByReason": {}
+        },
+        {
+          "id": "7240:bus",
+          "operator": "Ferrovie Autolinee Regionali Ticinesi Ersatzverkehr",
+          "agencyId": "7240",
+          "mode": "bus",
+          "archivedRoutes": 1,
+          "candidateJourneys": 0,
+          "admittedJourneys": 0,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 0,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 0,
+          "excludedByReason": {}
+        },
+        {
+          "id": "7000:bus",
+          "operator": "Interimsfahrplan / Horaire interimaire / Orario ad interim",
+          "agencyId": "7000",
+          "mode": "bus",
+          "archivedRoutes": 2,
+          "candidateJourneys": 0,
+          "admittedJourneys": 0,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 0,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 0,
+          "excludedByReason": {}
+        },
+        {
+          "id": "316:cableway",
+          "operator": "Valbianca SA Airolo",
+          "agencyId": "316",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 65,
+          "admittedJourneys": 0,
+          "excludedJourneys": 65,
+          "candidateOccurrences": 65,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 65,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 65
+          }
+        },
+        {
+          "id": "117:funicular",
+          "operator": "Funicolare Ritom SA",
+          "agencyId": "117",
+          "mode": "funicular",
+          "archivedRoutes": 1,
+          "candidateJourneys": 26,
+          "admittedJourneys": 0,
+          "excludedJourneys": 26,
+          "candidateOccurrences": 52,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 52,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 26
+          }
+        },
+        {
+          "id": "163:funicular",
+          "operator": "Società della Funicolare Locarno-Madonna del Sasso SA",
+          "agencyId": "163",
+          "mode": "funicular",
+          "archivedRoutes": 1,
+          "candidateJourneys": 102,
+          "admittedJourneys": 0,
+          "excludedJourneys": 102,
+          "candidateOccurrences": 306,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 306,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 102
+          }
+        },
+        {
+          "id": "286:cableway",
+          "operator": "Cardada Impianti Turistici",
+          "agencyId": "286",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 44,
+          "admittedJourneys": 0,
+          "excludedJourneys": 44,
+          "candidateOccurrences": 44,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 44,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 44
+          }
+        },
+        {
+          "id": "279:cableway",
+          "operator": "Verdasio-Rasa",
+          "agencyId": "279",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 0,
+          "admittedJourneys": 0,
+          "excludedJourneys": 0,
+          "candidateOccurrences": 0,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 0,
+          "excludedByReason": {}
+        },
+        {
+          "id": "3123:cableway",
+          "operator": "Funiva San Carlo-Robiei",
+          "agencyId": "3123",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 18,
+          "admittedJourneys": 0,
+          "excludedJourneys": 18,
+          "candidateOccurrences": 18,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 18,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 18
+          }
+        },
+        {
+          "id": "348:cableway",
+          "operator": "Impianti turistici Rivera-Monte Tamaro",
+          "agencyId": "348",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 990,
+          "admittedJourneys": 0,
+          "excludedJourneys": 990,
+          "candidateOccurrences": 990,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 990,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 990
+          }
+        },
+        {
+          "id": "3955:funicular",
+          "operator": "Trasporti Pubblici Luganesi SA",
+          "agencyId": "3955",
+          "mode": "funicular",
+          "archivedRoutes": 1,
+          "candidateJourneys": 462,
+          "admittedJourneys": 0,
+          "excludedJourneys": 462,
+          "candidateOccurrences": 462,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 462,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 462
+          }
+        },
+        {
+          "id": "134:funicular",
+          "operator": "Lugano-Monte San Salvatore",
+          "agencyId": "134",
+          "mode": "funicular",
+          "archivedRoutes": 1,
+          "candidateJourneys": 36,
+          "admittedJourneys": 0,
+          "excludedJourneys": 36,
+          "candidateOccurrences": 72,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 72,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 36
+          }
+        },
+        {
+          "id": "116:funicular",
+          "operator": "Società Funicolare Cassarate-Monte Brè",
+          "agencyId": "116",
+          "mode": "funicular",
+          "archivedRoutes": 1,
+          "candidateJourneys": 152,
+          "admittedJourneys": 0,
+          "excludedJourneys": 152,
+          "candidateOccurrences": 312,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 312,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 152
+          }
+        },
+        {
+          "id": "210:cableway",
+          "operator": "Funivia Monte Lema SA",
+          "agencyId": "210",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 34,
+          "admittedJourneys": 0,
+          "excludedJourneys": 34,
+          "candidateOccurrences": 34,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 34,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 34
+          }
+        },
+        {
+          "id": "296:cableway",
+          "operator": "Brusino-Arsizio-Serpiano",
+          "agencyId": "296",
+          "mode": "cableway",
+          "archivedRoutes": 1,
+          "candidateJourneys": 24,
+          "admittedJourneys": 0,
+          "excludedJourneys": 24,
+          "candidateOccurrences": 24,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 24,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 24
+          }
+        },
+        {
+          "id": "129:rail",
+          "operator": "Ferrovia Monte Generoso",
+          "agencyId": "129",
+          "mode": "rail",
+          "archivedRoutes": 1,
+          "candidateJourneys": 14,
+          "admittedJourneys": 0,
+          "excludedJourneys": 14,
+          "candidateOccurrences": 42,
+          "matchedCandidateOccurrences": 28,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 28,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 42,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 14
+          }
+        },
+        {
+          "id": "190:ferry",
+          "operator": "Società Navigazione del Lago di Lugano SA",
+          "agencyId": "190",
+          "mode": "ferry",
+          "archivedRoutes": 2,
+          "candidateJourneys": 42,
+          "admittedJourneys": 0,
+          "excludedJourneys": 42,
+          "candidateOccurrences": 102,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 102,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 42
+          }
+        },
+        {
+          "id": "188:ferry",
+          "operator": "Lago di Lugano",
+          "agencyId": "188",
+          "mode": "ferry",
+          "archivedRoutes": 4,
+          "candidateJourneys": 26,
+          "admittedJourneys": 0,
+          "excludedJourneys": 26,
+          "candidateOccurrences": 148,
+          "matchedCandidateOccurrences": 0,
+          "admittedOccurrences": 0,
+          "matchedCantonAdjacentOccurrences": 0,
+          "admittedCantonAdjacentOccurrences": 0,
+          "candidateCantonAdjacentOccurrences": 140,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 26
+          }
+        },
+        {
+          "id": "801:bus",
+          "operator": "PostAuto AG",
+          "agencyId": "801",
+          "mode": "bus",
+          "archivedRoutes": 91,
+          "candidateJourneys": 1986,
+          "admittedJourneys": 1901,
+          "excludedJourneys": 85,
+          "candidateOccurrences": 44283,
+          "matchedCandidateOccurrences": 44176,
+          "admittedOccurrences": 41326,
+          "matchedCantonAdjacentOccurrences": 41898,
+          "admittedCantonAdjacentOccurrences": 39814,
+          "candidateCantonAdjacentOccurrences": 42005,
+          "excludedByReason": {
+            "excluded-road-timing-review": 28,
+            "excluded-incomplete-geometry": 57
+          }
+        }
+      ],
+      "districts": [
+        {
+          "name": "Blenio",
+          "number": 2102,
+          "platforms": 134,
+          "candidateJourneys": 113,
+          "admittedJourneys": 109,
+          "excludedJourneys": 4,
+          "candidateOccurrences": 1910,
+          "matchedCandidateOccurrences": 1906,
+          "admittedOccurrences": 1902,
+          "matchedCantonAdjacentOccurrences": 1810,
+          "admittedCantonAdjacentOccurrences": 1806,
+          "candidateCantonAdjacentOccurrences": 1814,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 4
+          }
+        },
+        {
+          "name": "Riviera",
+          "number": 2107,
+          "platforms": 99,
+          "candidateJourneys": 295,
+          "admittedJourneys": 261,
+          "excludedJourneys": 34,
+          "candidateOccurrences": 7290,
+          "matchedCandidateOccurrences": 7222,
+          "admittedOccurrences": 6813,
+          "matchedCantonAdjacentOccurrences": 6860,
+          "admittedCantonAdjacentOccurrences": 6451,
+          "candidateCantonAdjacentOccurrences": 6895,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 34
+          }
+        },
+        {
+          "name": "Mendrisio",
+          "number": 2106,
+          "platforms": 549,
+          "candidateJourneys": 826,
+          "admittedJourneys": 574,
+          "excludedJourneys": 252,
+          "candidateOccurrences": 14225,
+          "matchedCandidateOccurrences": 13296,
+          "admittedOccurrences": 11582,
+          "matchedCantonAdjacentOccurrences": 13183,
+          "admittedCantonAdjacentOccurrences": 11531,
+          "candidateCantonAdjacentOccurrences": 13537,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 252
+          }
+        },
+        {
+          "name": "Lugano",
+          "number": 2105,
+          "platforms": 1456,
+          "candidateJourneys": 4237,
+          "admittedJourneys": 2327,
+          "excludedJourneys": 1910,
+          "candidateOccurrences": 46250,
+          "matchedCandidateOccurrences": 43708,
+          "admittedOccurrences": 41389,
+          "matchedCantonAdjacentOccurrences": 43275,
+          "admittedCantonAdjacentOccurrences": 41018,
+          "candidateCantonAdjacentOccurrences": 45634,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 186,
+            "excluded-mode-without-reviewed-geometry": 1724
+          }
+        },
+        {
+          "name": "Locarno",
+          "number": 2104,
+          "platforms": 800,
+          "candidateJourneys": 1465,
+          "admittedJourneys": 1075,
+          "excludedJourneys": 390,
+          "candidateOccurrences": 27868,
+          "matchedCandidateOccurrences": 26600,
+          "admittedOccurrences": 24571,
+          "matchedCantonAdjacentOccurrences": 26351,
+          "admittedCantonAdjacentOccurrences": 24322,
+          "candidateCantonAdjacentOccurrences": 27212,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 202,
+            "excluded-mode-without-reviewed-geometry": 188
+          }
+        },
+        {
+          "name": "Vallemaggia",
+          "number": 2108,
+          "platforms": 150,
+          "candidateJourneys": 126,
+          "admittedJourneys": 108,
+          "excludedJourneys": 18,
+          "candidateOccurrences": 2473,
+          "matchedCandidateOccurrences": 2455,
+          "admittedOccurrences": 2455,
+          "matchedCantonAdjacentOccurrences": 2455,
+          "admittedCantonAdjacentOccurrences": 2455,
+          "candidateCantonAdjacentOccurrences": 2473,
+          "excludedByReason": {
+            "excluded-mode-without-reviewed-geometry": 18
+          }
+        },
+        {
+          "name": "Leventina",
+          "number": 2103,
+          "platforms": 274,
+          "candidateJourneys": 281,
+          "admittedJourneys": 184,
+          "excludedJourneys": 97,
+          "candidateOccurrences": 3766,
+          "matchedCandidateOccurrences": 3637,
+          "admittedOccurrences": 3507,
+          "matchedCantonAdjacentOccurrences": 3320,
+          "admittedCantonAdjacentOccurrences": 3190,
+          "candidateCantonAdjacentOccurrences": 3448,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 6,
+            "excluded-mode-without-reviewed-geometry": 91
+          }
+        },
+        {
+          "name": "Bellinzona",
+          "number": 2101,
+          "platforms": 491,
+          "candidateJourneys": 1173,
+          "admittedJourneys": 891,
+          "excludedJourneys": 282,
+          "candidateOccurrences": 23260,
+          "matchedCandidateOccurrences": 22500,
+          "admittedOccurrences": 18993,
+          "matchedCantonAdjacentOccurrences": 19988,
+          "admittedCantonAdjacentOccurrences": 17309,
+          "candidateCantonAdjacentOccurrences": 20460,
+          "excludedByReason": {
+            "excluded-incomplete-geometry": 254,
+            "excluded-road-timing-review": 28
+          }
+        }
+      ],
+      "border": {
+        "candidateOutsideCantonPlatforms": 327,
+        "admittedOutsideCantonPlatforms": 237,
+        "admittedJourneysLeavingCanton": 275
+      },
+      "civilDay": {
+        "candidateCarryIn": 196,
+        "admittedCarryIn": 170,
+        "candidateHeadway": 1893,
+        "admittedHeadway": 0
+      },
+      "payload": {
+        "manifestGzipBytes": 413792,
+        "morningGzipBytes": 510003,
+        "maximumChunkGzipBytes": 103939
+      }
+    }
+  ],
+  "initialScopeValidated": true,
+  "completeCantonGeometry": false,
+  "yearRoundValidated": false,
+  "scopeLimits": [
+    "Only this national GTFS archive is a complete census denominator; services absent from it are not counted.",
+    "No non-stopping through services or timetable outside the selected days in the app.",
+    "No ferry, cableway or funicular geometry admitted in this initial scope.",
+    "Some foreign rail termini and disconnected infrastructure remain outside complete-journey admission.",
+    "Road lane legality, specific running tracks, diversions and 2026 infrastructure currency are not certified."
+  ]
+}
