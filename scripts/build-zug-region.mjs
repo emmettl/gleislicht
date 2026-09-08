@@ -13,6 +13,7 @@ import { loadZugBoats } from './zug-boat-geometry.mjs'
 import { loadZugOsmBoats } from './zug-osm-boats.mjs'
 import { reviewZugBoats } from './review-zug-boats.mjs'
 import { reviewZugGrienbach } from './review-zug-grienbach.mjs'
+import { reviewZugGrienbachAtlas } from './review-zug-grienbach-atlas.mjs'
 import { loadZugRoadContexts, matchZugRoadContext } from './zug-road-contexts.mjs'
 import { loadZugServiceRoads, matchZugServiceRoadPair } from './zug-service-road-geometry.mjs'
 import { loadZugComoRail, matchZugRailWithComo } from './zug-como-rail.mjs'
@@ -80,6 +81,8 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
   sourceHashes.roadContexts = policy.roadContexts.sourceSha256
   const grienbachReview = await reviewZugGrienbach(policy.grienbachReview, policy.roadExpansion, raw, sourceHashes.timetable)
   sourceHashes.grienbachReview = policy.grienbachReview.sourceSha256
+  const grienbachAtlasReview = await reviewZugGrienbachAtlas(policy.grienbachAtlasReview, policy.grienbachReview, raw, sourceHashes.timetable)
+  sourceHashes.grienbachAtlasReview = policy.grienbachAtlasReview.sourceSha256
   const expansionRoutes = new Set(policy.roadExpansion.routes.map(r => r.routeId))
   const days = []
   for (const day of raw.snapshots) {
@@ -220,7 +223,7 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
     }) }
   })
   const report = { schemaVersion: 1, feed: raw.feed, sourceHashes, scope: raw.scope, policy, annualRouteRecords: inventory.length, annualAgencies: new Set(inventory.map(r => r.agencyId)).size,
-    catalogue, sourceInventory, osmBoatSource: osmBoats.source, osmBoatInventory: osmBoats.inventory, osmBoatRelations: osmBoats.relations, osmBoatPatterns: osmBoats.patterns, osmBoatPairs: osmBoats.pairs, shippingTopography: osmBoats.topography, comoRailSource: comoRail.source, comoRailInventory: comoRail.inventory, comoRailPairs: comoRail.pairs, comoRailTiming: comoRail.timing, comoComparisonInventory: comoRail.comparisonInventory, boatReview, grienbachReview, roadContextSource: roadContexts.source, roadContextInventory: roadContexts.inventory, roadContextStationWays: roadContexts.stationWays, serviceRoadSource: serviceRoads.source, serviceRoadInventory: serviceRoads.inventory, serviceRoadReview: serviceRoads.review, boatSource: boats.source, boatInventory: boats.inventory, railSupplementSource: railSupplement.source, railSupplementInventory: railSupplement.inventory, roadSource: roads.source, roadInventory: roads.inventory, roadExpansionSource: roadExpansion.source, roadExpansionInventory: roadExpansion.inventory, mountainSource: mountain.source, mountainInventory: mountain.inventory, supplementSource: supplement.source, supplementInventory, railSource: rail.source, railSourceInventory: rail.sourceInventory, municipalityReview, inventory, days,
+    catalogue, sourceInventory, osmBoatSource: osmBoats.source, osmBoatInventory: osmBoats.inventory, osmBoatRelations: osmBoats.relations, osmBoatPatterns: osmBoats.patterns, osmBoatPairs: osmBoats.pairs, shippingTopography: osmBoats.topography, comoRailSource: comoRail.source, comoRailInventory: comoRail.inventory, comoRailPairs: comoRail.pairs, comoRailTiming: comoRail.timing, comoComparisonInventory: comoRail.comparisonInventory, boatReview, grienbachReview, grienbachAtlasReview, roadContextSource: roadContexts.source, roadContextInventory: roadContexts.inventory, roadContextStationWays: roadContexts.stationWays, serviceRoadSource: serviceRoads.source, serviceRoadInventory: serviceRoads.inventory, serviceRoadReview: serviceRoads.review, boatSource: boats.source, boatInventory: boats.inventory, railSupplementSource: railSupplement.source, railSupplementInventory: railSupplement.inventory, roadSource: roads.source, roadInventory: roads.inventory, roadExpansionSource: roadExpansion.source, roadExpansionInventory: roadExpansion.inventory, mountainSource: mountain.source, mountainInventory: mountain.inventory, supplementSource: supplement.source, supplementInventory, railSource: rail.source, railSourceInventory: rail.sourceInventory, municipalityReview, inventory, days,
     validation: { passed: true, annualPinnedTimetableInventoryComplete: true, admittedGeometryComplete: true, cantonMotionCoverageComplete: false, publicationReady: false,
       meaning: 'All admitted complete directed patterns pass numerical and artifact checks. Coverage denominators include excluded modes/patterns. This does not certify road direction or establish year-round geometry coverage.',
       pending: ['Resolve every excluded route/pattern before claiming complete cantonal motion coverage', 'Review street directions, loops, rail branches and temporary diversions before presenting paths as direction-certified', 'Validate seasonal and holiday dates', 'Integrate UI selection and refresh separately if requested'] } }

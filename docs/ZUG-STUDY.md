@@ -299,6 +299,26 @@ The city notice distinguishes inbound traffic on Grienbachstrasse from outbound 
 
 This supports a **suspected coordinate/direction inconsistency**, not an authoritative corrected platform mapping. Neither station-level OSM identity nor the public construction map provides the missing exact replacement SLOID coordinate. An unrelated Breitenbach popup in that map is explicitly recorded and ignored. The checker replays the distance matrix, full source-call contexts, operator stop order and dated evidence. **Zero coordinates are corrected and zero trips are admitted by this review.** The frozen raw source, all prior admitted paths and the 105 inbound exclusions remain unchanged.
 
+
+### Atlas validity history confirms the original coordinates
+
+The [atlas source catalogue](../data/zug-grienbach-atlas-sources/sources.json) pins the complete **full-world-traffic-point.csv** export published **8 September 2026 at 01:21:18.691017** (catalogue timestamp as supplied), retrieved **8 September 2026**. All **155,869 records** are retained losslessly in compressed form and reparsed during validation. Exact station numbers **8587279, 8587280 and 8593448** select all **12 validity records** for the six reviewed platforms; the [extracted records](../data/zug-grienbach-atlas-sources/platform-rows.json) must reproduce exactly. The national export hash is **984398f75b9b339ad3a353cdffab3c45b46e11afc1f3f9cd5d3593217e8b4a2c**.
+
+Each original SLOID has exactly one **VALIDATED BOARDING_PLATFORM** record valid on each fixture, assigned to **ZVB / organisation 839 / ch:1:sboid:100638**. The preceding versions end **26 March 2026**; the applicable versions start **27 March 2026** and end **9999-12-31**, as literally supplied. The coordinates are identical across both versions. The operational designations change from 1/2 to 01/02; this supplies no evidence of a physical relocation. Every applicable record was created and edited on **27 March 2026**, before both fixtures.
+
+| Exact SLOID | Atlas longitude / latitude | GTFS difference | Applicable travel bearing |
+| --- | --- | --- | --- |
+| ch:1:sloid:87279:0:1 | 8.52104700619, 47.18080204959 | 0.348 m | not supplied |
+| ch:1:sloid:87279:0:2 | 8.52139262491, 47.181581415 | 0.218 m | not supplied |
+| ch:1:sloid:87280:0:1 | 8.52620932085, 47.18227363848 | 0.286 m | not supplied |
+| ch:1:sloid:87280:0:2 | 8.52811781494, 47.18437400474 | 0.274 m | not supplied |
+| ch:1:sloid:93448:0:1 | 8.5227014412, 47.18489028397 | 0.231 m | not supplied |
+| ch:1:sloid:93448:0:2 | 8.52341773186, 47.18319954306 | 0.397 m | not supplied |
+
+The maximum difference is **0.397 m**. Inbound Grienbach agrees within **0.231 m**, so the discrepancy with OSM is not explained by an incorrect GTFS coordinate conversion in this adapter. Atlas and GTFS are related parts of the timetable/master-data system; their agreement is not an independent survey of physical stop placement. All six travel-bearing fields are blank and remain **unknown**. The later full-history export describes declared validity periods; it is not a preserved snapshot of what atlas published on September 4 or 6.
+
+Credit: **atlas (SKI Business Platform) / opentransportdata.swiss**; platform data owner: **Zugerland Verkehrsbetriebe (ZVB)**. The [official field definitions](https://opentransportdata.swiss/en/cookbook/masterdata-cookbook/servicepoints/) and [attribution terms](https://opentransportdata.swiss/en/terms-of-use/) are preserved alongside the export. No generic Creative Commons licence is inferred. This review supplies no authoritative alternative coordinate or directed approach. **Zero coordinates and admissions change**; all **67 Friday / 38 Sunday** inbound exclusions remain, as do the original calls and every previously admitted geometry.
+
 ## N6: preserve the complete Sins Bahnhof approach contexts
 
 The retained road evidence contains three full N6 patterns with **Hünenberg Dorf → Sins Bahnhof**: one terminates at Sins and two continue to Mühlau through different later stop sequences. All three original matcher occurrences pass individually, but the route/stop-pair consensus rejects their two different shapes. This is a scope-of-reuse conflict, not a failed matcher hop. The new review admits **three additional Sunday trips**, completing **all six Sunday N6 trips**; Friday has no N6 source trips.
@@ -544,7 +564,7 @@ npm run data:zug:report
 python3 -m unittest discover -s scripts -p test_prepare_zug_sources.py
 node scripts/render-zug-como-review.mjs
 node scripts/render-zug-osm-boat-review.mjs
-npx vitest run scripts/zug-osm-boats.test.mjs scripts/zug-como-rail.test.mjs scripts/thurgau-border-rail.test.mjs scripts/review-zug-boats.test.mjs scripts/review-zug-grienbach.test.mjs scripts/zug-road-contexts.test.mjs scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \
+npx vitest run scripts/review-zug-grienbach-atlas.test.mjs scripts/zug-osm-boats.test.mjs scripts/zug-como-rail.test.mjs scripts/thurgau-border-rail.test.mjs scripts/review-zug-boats.test.mjs scripts/review-zug-grienbach.test.mjs scripts/zug-road-contexts.test.mjs scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
 ```
 

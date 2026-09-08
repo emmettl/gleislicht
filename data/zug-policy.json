@@ -959,5 +959,9 @@
   "boatOsm": {
     "sourceDirectory": "data/zug-osm-boat-sources",
     "sourceSha256": "77548a7ad82b8aa40772ac7b830f63ee10e3bd41b368c7a73c6887d9f89a7d21"
+  },
+  "grienbachAtlasReview": {
+    "sourceDirectory": "data/zug-grienbach-atlas-sources",
+    "sourceSha256": "a5a84aa6b324881e2681bc089c9182498e2f67553ba185ce0e12c6e709fa0c82"
   }
 }

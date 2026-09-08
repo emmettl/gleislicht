@@ -1,0 +1,87 @@
+{
+  "retrieved": "2026-09-08",
+  "catalogueUrl": "https://data.opentransportdata.swiss/en/dataset/traffic-point-v2",
+  "resourceId": "bd563a55-c42d-42d3-b246-255fb8429805",
+  "downloadUrl": "https://data.opentransportdata.swiss/dataset/b06d90be-91c6-440e-ab97-09f579d2fad0/resource/bd563a55-c42d-42d3-b246-255fb8429805/download/full-world-traffic-point.csv",
+  "resourceModified": "2026-09-08T01:21:18.691017",
+  "cookbookUrl": "https://opentransportdata.swiss/en/cookbook/masterdata-cookbook/servicepoints/",
+  "attribution": "atlas (SKI Business Platform) / opentransportdata.swiss; platform data owner: Zugerland Verkehrsbetriebe (ZVB), organisation 839",
+  "termsUrl": "https://opentransportdata.swiss/en/terms-of-use/",
+  "license": "Source attribution under opentransportdata.swiss terms; no generic Creative Commons licence inferred",
+  "fullExportSha256": "984398f75b9b339ad3a353cdffab3c45b46e11afc1f3f9cd5d3593217e8b4a2c",
+  "fullExportBytes": 56423963,
+  "rowCount": 155869,
+  "fields": [
+    "sloid",
+    "numberShort",
+    "uicCountryCode",
+    "number",
+    "checkDigit",
+    "validFrom",
+    "validTo",
+    "designation",
+    "designationOperational",
+    "length",
+    "boardingAreaHeight",
+    "compassDirection",
+    "parentSloid",
+    "trafficPointElementType",
+    "lv95East",
+    "lv95North",
+    "wgs84East",
+    "wgs84North",
+    "height",
+    "creationDate",
+    "editionDate",
+    "parentSloidServicePoint",
+    "designationOfficial",
+    "servicePointBusinessOrganisation",
+    "servicePointBusinessOrganisationNumber",
+    "servicePointBusinessOrganisationAbbreviationDe",
+    "servicePointBusinessOrganisationAbbreviationFr",
+    "servicePointBusinessOrganisationAbbreviationIt",
+    "servicePointBusinessOrganisationAbbreviationEn",
+    "servicePointBusinessOrganisationDescriptionDe",
+    "servicePointBusinessOrganisationDescriptionFr",
+    "servicePointBusinessOrganisationDescriptionIt",
+    "servicePointBusinessOrganisationDescriptionEn",
+    "status"
+  ],
+  "stationNumbers": [
+    "8587279",
+    "8587280",
+    "8593448"
+  ],
+  "selectedRows": 12,
+  "timetableSha256": "4e06a722d5403334a733d79f3332d204fbeeb0d05ede5c0344dbe7c16c05398d",
+  "platformReviewSourceSha256": "4dae47d6db07eb41d418842c0866c6ced8174099ad7d7830516a6d07a4ab48e2",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "maximumGtfsGapMetres": 0.5,
+  "method": "Reparse the complete full-validity-history export and select every record for the three exact station numbers. For each original GTFS SLOID and each fixture date require exactly one VALIDATED BOARDING_PLATFORM record belonging to organisation 839. Retain all fields and validity intervals. Compare coordinates without replacing any GTFS call or geometry; blank bearings remain unknown. This is a later export of declared validity records, not an as-published historical snapshot or an independent survey of physical stop locations.",
+  "decision": "No coordinate correction or admission. Atlas agrees with all six GTFS coordinates within 0.5 m, including inbound Grienbach. The two versions per platform have identical coordinates and no compass direction. Current master data therefore do not provide an authoritative alternative to resolve the mapped-platform/direction discrepancy. Existing 67 Friday and 38 Sunday inbound exclusions remain.",
+  "files": [
+    {
+      "file": "full-world-traffic-point.csv.gz",
+      "sha256": "a6c57513b5d984d5ffdd5f9c3e9e31643b93b6a034a033d153d61ecebd54053a"
+    },
+    {
+      "file": "catalogue.html.gz",
+      "sha256": "55a398e31dcc61bc87819140e3eb17ba40719d10b819a8b4ba6dc71540b8baca"
+    },
+    {
+      "file": "cookbook.html.gz",
+      "sha256": "c202292f1ffe6de1b8231ad7f253c05897ff7220f47229bc9b0ef18ffa17bd5b"
+    },
+    {
+      "file": "terms.html.gz",
+      "sha256": "366515f605bf6c58be0a4bce398b8b167a68f40ecfabbd9bab7d2bf4cf3ed824"
+    },
+    {
+      "file": "platform-rows.json",
+      "sha256": "3039362a02c82ca46b59dab1df13988a47f80f26bcd953aa45cb5145f6330a24"
+    }
+  ]
+}
