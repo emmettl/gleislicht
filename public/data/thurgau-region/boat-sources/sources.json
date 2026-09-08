@@ -1,0 +1,226 @@
+{
+  "acquired": "2026-09-08",
+  "publisher": "swisstopo; FOEN",
+  "attribution": "Shipping geometry: © swisstopo; shoreline validation: © FOEN, swisstopo",
+  "productUrl": "https://www.swisstopo.admin.ch/en/landscape-model-swisstlmregio",
+  "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+  "license": "proprietary",
+  "collectionUpdated": "2026-06-25T20:00:03.726130Z",
+  "collectionTemporalExtent": [
+    [
+      "2020-01-01T00:00:00Z",
+      "2025-12-02T00:00:00Z"
+    ]
+  ],
+  "shorelineDataStatus": "2007-01-01",
+  "featureVintage": "Shipping API supplies no individual feature survey date. Collection and acquisition dates do not establish a 2026 alignment.",
+  "acquisition": "Thirty adjacent 0.1° × 0.11° envelopes cover 8.6–9.6° E / 47.45–47.78° N, including every dated boat dock. Every response is below the 200 feature cap; duplicate shipping records agree exactly. A broad paginated mixed-transport query omitted shipping features present in the small queries and is not used as a completeness claim.",
+  "model": "Gleislicht shortest-path cartographic inference on generalized official shipping linework. Exact source-vertex connectivity, bounded original-dock connectors and full shoreline-intersection audit. No navigational, shipping-lane, diversion or physical-direction certification.",
+  "files": [
+    {
+      "file": "tile-0-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.6%2C47.45%2C8.7%2C47.56&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.6%2C47.45%2C8.7%2C47.56&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "cc5e086eee4d442d0013089c33d3c7cf0630aa5e2c65f0254bb65287ff5c7437"
+    },
+    {
+      "file": "tile-0-1.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.6%2C47.56%2C8.7%2C47.67&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.6%2C47.56%2C8.7%2C47.67&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "5310b2c81c308dd8d7a48e5fed934661de04a7821da5cea4c88d57fcf1d025b2"
+    },
+    {
+      "file": "tile-0-2.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.6%2C47.67%2C8.7%2C47.78&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.6%2C47.67%2C8.7%2C47.78&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "9b4fa35fa6828d26a1bb7c545958cb4ecf299edba96c3633820bded2610b2049"
+    },
+    {
+      "file": "tile-1-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.7%2C47.45%2C8.8%2C47.56&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.7%2C47.45%2C8.8%2C47.56&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "b563eff2e31c1037b93c1e4359cca38c056b61cfec5bc7d1e1ce8a95b3d369dd"
+    },
+    {
+      "file": "tile-1-1.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.7%2C47.56%2C8.8%2C47.67&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.7%2C47.56%2C8.8%2C47.67&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "7a9b32c0d123ceaccd991d11d07fa6e796da91e57b4b6695390f4e5699980cd5"
+    },
+    {
+      "file": "tile-1-2.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.7%2C47.67%2C8.8%2C47.78&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.7%2C47.67%2C8.8%2C47.78&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "a011029a30028a9e14c7368bbb5051ede814588c517ce3cc1adf3ae0e0784ab2"
+    },
+    {
+      "file": "tile-2-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.8%2C47.45%2C8.9%2C47.56&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.8%2C47.45%2C8.9%2C47.56&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "6056b743cdb004d32e031319d340447fe02cb82c71b43ef77c8c3a669c07244a"
+    },
+    {
+      "file": "tile-2-1.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.8%2C47.56%2C8.9%2C47.67&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.8%2C47.56%2C8.9%2C47.67&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "adc09287d5d9ebf0a7f31e629f7b288d4c09cc471eafb4ba110adfcf74114f19"
+    },
+    {
+      "file": "tile-2-2.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.8%2C47.67%2C8.9%2C47.78&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.8%2C47.67%2C8.9%2C47.78&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "697c7e8e74f14c459af65c45f961ed0074b22fc43a3a4d322626178ab9ccbfac"
+    },
+    {
+      "file": "tile-3-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.9%2C47.45%2C9.0%2C47.56&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.9%2C47.45%2C9.0%2C47.56&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "1062c3be92ea9bbfc55985147a693ed8a168b7787f9d1f71bfcfb949dc357e47"
+    },
+    {
+      "file": "tile-3-1.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.9%2C47.56%2C9.0%2C47.67&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.9%2C47.56%2C9.0%2C47.67&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "b008ea8f919b47196adf31c2f36115d6966051c0a6b400b71971fdfb3cc84558"
+    },
+    {
+      "file": "tile-3-2.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.9%2C47.67%2C9.0%2C47.78&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=8.9%2C47.67%2C9.0%2C47.78&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "8a88389f9563001f59db0345b436a20086dbdbccbb33359576b7c8b319eebb1b"
+    },
+    {
+      "file": "tile-4-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.0%2C47.45%2C9.1%2C47.56&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.0%2C47.45%2C9.1%2C47.56&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "4e3a6a5d0cb84cc86134a24849dfcbdd1a810e3eaf0a0de9161fef7d5231dd05"
+    },
+    {
+      "file": "tile-4-1.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.0%2C47.56%2C9.1%2C47.67&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.0%2C47.56%2C9.1%2C47.67&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "9b3f03424803fb63dd86afebbba9765214af72a8f31d4a46873c1904900d758e"
+    },
+    {
+      "file": "tile-4-2.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.0%2C47.67%2C9.1%2C47.78&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.0%2C47.67%2C9.1%2C47.78&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "d1db71e72ac7cde0522cb5c8cdd87cda84ae148b286d5382c27a103585b173d3"
+    },
+    {
+      "file": "tile-5-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.1%2C47.45%2C9.2%2C47.56&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.1%2C47.45%2C9.2%2C47.56&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "1f3d5de7e4d9dc854fec87fbd1ec61821570c4a4e2d7f7c224b89ae4b2b7acfd"
+    },
+    {
+      "file": "tile-5-1.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.1%2C47.56%2C9.2%2C47.67&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.1%2C47.56%2C9.2%2C47.67&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "92dbda32837dea85c49a099320889374ecc3a38ba401990680c145218a377b0d"
+    },
+    {
+      "file": "tile-5-2.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.1%2C47.67%2C9.2%2C47.78&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.1%2C47.67%2C9.2%2C47.78&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "b5cc6a57d30ab9d89ddb9f49117aa4044b5e06896bb5d6fe499e25025171abdc"
+    },
+    {
+      "file": "tile-6-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.2%2C47.45%2C9.3%2C47.56&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.2%2C47.45%2C9.3%2C47.56&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "a248e518bef6062d2869121c251c8b75ae79338b0a00b758a3f29755fe326818"
+    },
+    {
+      "file": "tile-6-1.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.2%2C47.56%2C9.3%2C47.67&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.2%2C47.56%2C9.3%2C47.67&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "9f2df4ee84aae38bfe8919bf83bebdb38a0c3914c2f2119b259bc06d7fb7094d"
+    },
+    {
+      "file": "tile-6-2.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.2%2C47.67%2C9.3%2C47.78&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.2%2C47.67%2C9.3%2C47.78&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "e74e7f4003c120e73e1f96c3d79cffd1576b877ff86e1c9e30d7b95b7cd5eb7a"
+    },
+    {
+      "file": "tile-7-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.3%2C47.45%2C9.4%2C47.56&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.3%2C47.45%2C9.4%2C47.56&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "3a7beba75404b9faf58bbecbac4b586ed69b8106b74b20ae07cd30213e5101c5"
+    },
+    {
+      "file": "tile-7-1.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.3%2C47.56%2C9.4%2C47.67&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.3%2C47.56%2C9.4%2C47.67&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "a915b1392a6c58d4ebade56d0da1e98b09aebc7a095adbd363b3b4e2f84bb19f"
+    },
+    {
+      "file": "tile-7-2.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.3%2C47.67%2C9.4%2C47.78&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.3%2C47.67%2C9.4%2C47.78&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "f52604238e7d2bbecceda63dfcc9c7ce3d96c45a76c98a5caa484cc865779950"
+    },
+    {
+      "file": "tile-8-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.4%2C47.45%2C9.5%2C47.56&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.4%2C47.45%2C9.5%2C47.56&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "eb0d5acbcc42e2bc2bd8ad3ea9dba2a7a1cc01fdc230a6a339b159acaa45ea7e"
+    },
+    {
+      "file": "tile-8-1.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.4%2C47.56%2C9.5%2C47.67&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.4%2C47.56%2C9.5%2C47.67&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "a94aa2d66d6f10a623671d2b5de21de64ba413992496c12f00932850c67961e4"
+    },
+    {
+      "file": "tile-8-2.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.4%2C47.67%2C9.5%2C47.78&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.4%2C47.67%2C9.5%2C47.78&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "c61ff060c11a0e7b3a1a040571986d43ba65a437e02eebdf840d49dc1e686623"
+    },
+    {
+      "file": "tile-9-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.5%2C47.45%2C9.6%2C47.56&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.5%2C47.45%2C9.6%2C47.56&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "f31a6ab94589befde8c14fa89ffa6d14bf757db38be66818b648bd84007a3a90"
+    },
+    {
+      "file": "tile-9-1.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.5%2C47.56%2C9.6%2C47.67&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.5%2C47.56%2C9.6%2C47.67&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "ceeed0ef35c1aa0a39be9436ab8e73c5ce43a13e1b8c5e44a8771783ac36a01d"
+    },
+    {
+      "file": "tile-9-2.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=9.5%2C47.67%2C9.6%2C47.78&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=9.5%2C47.67%2C9.6%2C47.78&tolerance=0&layers=all%3Ach.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "f0b91f87de9903c879a1a879b34d02adb92a18f6b2243160911f880221027947"
+    },
+    {
+      "file": "requests.json",
+      "url": "Gleislicht acquisition receipts for the 30 listed official API requests",
+      "sha256": "76366d37502c8c0a1ac21d2c5bfa8f9707182f9a9f69433b10fd8ba8da5ccaee"
+    },
+    {
+      "file": "lakes.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.6,47.45,9.6,47.76&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.6,47.45,9.6,47.76&tolerance=0&layers=all:ch.bafu.vec25-seen&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "769f79af5e0e7d7fde518c9d4d37eb0975b111c2ff674d6eefd7cb186684462f"
+    },
+    {
+      "file": "layer.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.swisstopo.vec200-transportation-oeffentliche-verkehr?lang=en",
+      "sha256": "e70779270bcbf38135ecbaf39a29176a9ba65aa80f5150529f2ff29ccbc63947"
+    },
+    {
+      "file": "collection.json.gz",
+      "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo.swisstlmregio",
+      "sha256": "156c3d6e9b5235fe3173deb7501f3b5941e1196119f415e7faff5f7e5dbc28e8"
+    },
+    {
+      "file": "lake-layer.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.bafu.vec25-seen?lang=en",
+      "sha256": "0ddf8916d5a8152d8e76fcf5fe7a9fface7393831a3bb230865dc800c86f4fef"
+    },
+    {
+      "file": "shoreline-legend.html.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.bafu.vec25-seen/legend?lang=en",
+      "sha256": "9b0df40d17f6a72d0eadf9ae84f33b96387b47ff202630685da83481000b9e7f"
+    },
+    {
+      "file": "terms.html.gz",
+      "url": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+      "sha256": "cc5a522bf57c02341123520198e1eae85a15a1159c9d75522f3f85249c4a0ff7"
+    },
+    {
+      "file": "broad-0.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.6,47.45,9.6,47.76&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.6,47.45,9.6,47.76&tolerance=0&layers=all:ch.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326&offset=0",
+      "sha256": "c0a0f23d4a4777cfacc6b4786aa1efef2ef07c58d1a2cd05e0dd52d074e47bf5"
+    },
+    {
+      "file": "broad-200.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.6,47.45,9.6,47.76&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.6,47.45,9.6,47.76&tolerance=0&layers=all:ch.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326&offset=200",
+      "sha256": "7c64459e6884478695c748e81174bb2b56ec8693af3093abba02eaeb419032d5"
+    },
+    {
+      "file": "broad-400.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.6,47.45,9.6,47.76&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.6,47.45,9.6,47.76&tolerance=0&layers=all:ch.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326&offset=400",
+      "sha256": "34428bc921ac16a3f0bae8e16565c7d13d20090c7f4eead7102bb92924700e42"
+    },
+    {
+      "file": "broad-600.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.6,47.45,9.6,47.76&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.6,47.45,9.6,47.76&tolerance=0&layers=all:ch.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326&offset=600",
+      "sha256": "1e27067c2a7bc5af80afc5900235719bfad15bcfd1d4c3ad15a2c176fc8fa391"
+    }
+  ]
+}

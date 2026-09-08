@@ -1,0 +1,136 @@
+{
+  "sourceSha256": "85ac4ddb721a12452b562fa91bb875fe60d48f0eeded4a7355a43418dcd8ac1a",
+  "timetableSha256": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "routes": [
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "type": 1000
+    },
+    {
+      "routeId": "94-380-1-j26-1",
+      "agencyId": "195",
+      "line": "3801",
+      "type": 1000
+    },
+    {
+      "routeId": "94-381-0-j26-1",
+      "agencyId": "195",
+      "line": "3810",
+      "type": 1000
+    },
+    {
+      "routeId": "94-381-A-j26-1",
+      "agencyId": "360",
+      "line": "3810",
+      "type": 1000
+    },
+    {
+      "routeId": "94-382-0-j26-1",
+      "agencyId": "193",
+      "line": "3820",
+      "type": 1000
+    },
+    {
+      "routeId": "94-382-A-j26-1",
+      "agencyId": "360",
+      "line": "3820",
+      "type": 1000
+    },
+    {
+      "routeId": "94-T-Y-j26-1",
+      "agencyId": "3182",
+      "line": "BAT",
+      "type": 1000
+    }
+  ],
+  "sourceFeatureIds": [
+    "{0274FA52-9842-4522-9923-7F237E5A0330}  ",
+    "{04616798-14A8-4DFB-8F14-337820CD55B5}  ",
+    "{049D7695-2BA5-4C91-9BFE-CA918EC8ACE9}  ",
+    "{04FD73F1-2E0F-4866-97CD-68F3CA2FAEA5}  ",
+    "{08CDC3F3-2487-40CF-A180-AB41A69EC748}  ",
+    "{0B0CEB60-541F-4C15-A4F8-FA27352A81F6}  ",
+    "{0F9CBB7F-983F-4821-ABD0-E210E16FE4F9}  ",
+    "{111FB034-C513-4F54-A0C8-00BC0B7DC4D9}  ",
+    "{215DCCBC-4F18-4A87-B40C-75717D0F8C7C}  ",
+    "{22B2C55C-647E-4624-9F9C-EADEA2B973D9}  ",
+    "{2A793377-A340-40F1-93BA-0DEC00E9C9D6}  ",
+    "{2AA37783-E9FD-40BE-8B5C-6A5F03212145}  ",
+    "{2D45CCA4-4ACD-461D-ADDB-116457B7159A}  ",
+    "{2EA9582E-B358-487B-A068-CDC0E44C6C84}  ",
+    "{2FC9ED15-2948-4CD1-BD8D-BABA0F82C4E0}  ",
+    "{3224D72F-C1AE-4BC5-A2E2-5D51FD33A27D}  ",
+    "{36B6095B-DABE-41F6-A9EA-F6718A3E9D4F}  ",
+    "{370DAD63-A13E-42BB-9435-00C6036B6D2F}  ",
+    "{38451DA3-1A9C-4B26-88C2-64EE18A5B3B6}  ",
+    "{38EB9E15-692A-4C9C-9D79-5BC400388443}  ",
+    "{39BE7546-518C-4D0E-88AC-6BA4509E1953}  ",
+    "{3AF35225-0639-42E1-B88F-4C671CD75106}  ",
+    "{3E7ADF0C-16C2-47FD-B252-EA44B7F5A369}  ",
+    "{3F87A891-8AD3-4CC4-BCAF-B74E40485EAF}  ",
+    "{4EC5756A-2C44-4403-9EF5-AF36D5947522}  ",
+    "{567C98E7-85A5-464D-85B2-1BE0EFC39460}  ",
+    "{59C12406-5E14-4CA8-91D0-0A84CF2C6C45}  ",
+    "{5B03EA83-8FC1-4132-9791-B55899C91877}  ",
+    "{5EF9FD98-DAC9-48BA-BC92-110A547A06C7}  ",
+    "{634D3A32-8767-4D37-96BF-D6F1D0ED89D4}  ",
+    "{75D4DD9F-0C7F-4609-803A-35616E3D1933}  ",
+    "{7C1B8545-0ACF-4D4E-A8E8-FD49D9260288}  ",
+    "{806EB87B-78EA-4EE1-8D30-D60368184C5A}  ",
+    "{880ED333-2790-4EC3-8BFD-6F81859F5D76}  ",
+    "{88FB49F5-8387-4DEF-9700-72859CFBC77E}  ",
+    "{8C41DD26-0878-4A3D-8996-2CB96E0FC432}  ",
+    "{8CC9E914-ECF6-4396-B117-1C41B1630A1A}  ",
+    "{954B6F71-34B8-4326-BF22-518D2DB8B648}  ",
+    "{966F1276-D3B0-4C0F-8893-E54B2BEDE3B4}  ",
+    "{97DF5631-7B30-4672-9D53-B9C63224BE64}  ",
+    "{982A1670-A2F8-4106-9C2A-6FE75F4230E1}  ",
+    "{A5A105B0-5F4B-4B5B-B9B7-B7864C374DA2}  ",
+    "{A8250AB8-DE31-4CA6-A511-19FBCD7DE6B4}  ",
+    "{AA8751C5-9A9B-4BCC-9F83-F43667DA670E}  ",
+    "{AD787C1E-75D9-435B-B6FF-0382DAD3CD1C}  ",
+    "{AF3C49C8-FC00-412C-8D76-250841D38D0D}  ",
+    "{B1A9E77D-6D81-4CD7-94CC-B1191D77FEAE}  ",
+    "{B653E49E-BC1F-4E5A-8782-442F5DFEB6D7}  ",
+    "{B7816199-7DF4-43DB-BAA4-D74253A0CACC}  ",
+    "{B8C87842-638D-418D-9C2E-4A6FC59D528A}  ",
+    "{BE0AE501-9503-491C-9D72-AB2224AC04C0}  ",
+    "{BF904BD4-1152-4D91-9655-A7B24553681E}  ",
+    "{C5F77B25-3FF6-477A-803D-F3CA9DE6ED7B}  ",
+    "{C81B630B-4177-40E9-B48F-587E1ED9E4F8}  ",
+    "{CB5DEC14-CE65-4E28-B210-AE0E7B52093B}  ",
+    "{CEF42FE3-C478-451F-8056-C9F46BCAF8D8}  ",
+    "{D93C377D-B77C-4D51-98FA-54575E9D2167}  ",
+    "{DA227C17-19D4-4A3F-9102-0BE309A687E6}  ",
+    "{E066A4C3-AE13-4D34-8E64-F253295A41C4}  ",
+    "{E11E3D04-F281-4D06-86D1-8AF7BC4BF0C2}  ",
+    "{E17CBD87-5DFE-4C0B-A4FE-01F3C486CE65}  ",
+    "{E1FA12F1-6DB4-4099-AE20-F55A72A04628}  ",
+    "{EDCD6556-F349-4F84-8ED3-028D28728008}  ",
+    "{F0BC7669-14D7-46AF-BB9C-17495B0C9CC6}  ",
+    "{F52F3A03-AB86-47E4-A560-8005EA0FC25F}  ",
+    "{F8E8E02F-5341-4BFB-9675-1FED09539EF3}  ",
+    "{FD8539E0-1F38-418E-93E5-0370A13426A7}  ",
+    "{FD8DC30B-2BD9-40C2-95EB-2FBE1F54D5AD}  ",
+    "{FD91C064-C628-4D7A-8E77-937CC3289B42}  "
+  ],
+  "shorelineFeatureIds": [
+    124,
+    171
+  ],
+  "limits": {
+    "snapMetres": 150,
+    "detourRatio": 3,
+    "detourFloorMetres": 1200,
+    "alternativeSnapMetres": 5
+  },
+  "dockZoneMetres": 150,
+  "scope": "Only the seven exact dated GTFS boat route/agency/type identities and their full original dock/coordinate chains. Every segment must pass; never shorten a rejected trip. Other successful modes remain unchanged. No topology bridges or new water paths are drawn.",
+  "shorelineRule": "Split every path edge at every original shoreline/island intersection. Outside-water intervals are allowed only wholly within 150 m of one actual endpoint dock, and are recorded as source discrepancies. Any other interval rejects the entire pattern. Untersee polygon is acquired; missing Rhine water is not replaced by a straight path."
+}

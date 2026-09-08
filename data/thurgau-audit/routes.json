@@ -66,6 +66,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-10-C-j26-1",
@@ -175,6 +176,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-12-j26-1",
@@ -308,6 +310,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-14-B-j26-1",
@@ -449,6 +452,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-14-I-j26-1",
@@ -551,6 +555,7 @@
       "bahnlinie_takt.6"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "91-15-I-j26-1",
@@ -689,6 +694,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-1-C-j26-1",
@@ -799,6 +805,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-1-P-j26-1",
@@ -903,6 +910,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-1S-Y-j26-1",
@@ -1012,6 +1020,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-21-F-j26-1",
@@ -1124,6 +1133,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-23-B-j26-1",
@@ -1232,6 +1242,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-24-E-j26-1",
@@ -1350,6 +1361,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-24-j26-1",
@@ -1453,6 +1465,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-29-A-j26-1",
@@ -1573,6 +1586,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-30-A-j26-1",
@@ -1678,6 +1692,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-30-C-j26-1",
@@ -1810,6 +1825,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-30-L-j26-1",
@@ -1919,6 +1935,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-35-j26-1",
@@ -2025,6 +2042,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-3-I-j26-1",
@@ -2138,6 +2156,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-3-X-j26-1",
@@ -2245,6 +2264,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-44-C-j26-1",
@@ -2363,6 +2383,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-5-B-j26-1",
@@ -2486,6 +2507,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-71-B-j26-1",
@@ -2596,6 +2618,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-72-B-j26-1",
@@ -2700,6 +2723,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-75-A-j26-1",
@@ -2817,6 +2841,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-75-B-j26-1",
@@ -2930,6 +2955,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-75-j26-1",
@@ -3051,6 +3077,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-7-B-j26-1",
@@ -3161,6 +3188,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-81-A-j26-1",
@@ -3266,6 +3294,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-82-j26-1",
@@ -3380,6 +3409,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-8-E-j26-1",
@@ -3497,6 +3527,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-8-N-j26-1",
@@ -3604,6 +3635,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-9-P-j26-1",
@@ -3727,6 +3759,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-CH-Y-j26-1",
@@ -3820,6 +3853,7 @@
       "buslinie.2200"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-702-D-j26-1",
@@ -3917,6 +3951,7 @@
       "buslinie.2201"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-706-C-j26-1",
@@ -4042,6 +4077,7 @@
       "buslinie.1893"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-722-A-j26-1",
@@ -4140,6 +4176,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-731-j26-1",
@@ -4225,6 +4262,7 @@
       "buslinie.1864"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-732-M-j26-1",
@@ -4320,6 +4358,7 @@
       "buslinie.1864"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-732-N-j26-1",
@@ -4418,6 +4457,7 @@
       "buslinie.1984"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-733-I-j26-1",
@@ -4534,6 +4574,7 @@
       "buslinie.2227"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-734-K-j26-1",
@@ -4682,6 +4723,7 @@
       "buslinie.2030"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-735-C-j26-1",
@@ -4844,6 +4886,7 @@
       "buslinie.2059"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-736-A-j26-1",
@@ -4987,6 +5030,7 @@
       "buslinie.2058"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-739-B-j26-1",
@@ -5129,6 +5173,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-801-A-j26-1",
@@ -5237,6 +5282,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-802-A-j26-1",
@@ -5338,6 +5384,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-803-A-j26-1",
@@ -5431,6 +5478,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-804-A-j26-1",
@@ -5532,6 +5580,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-805-C-j26-1",
@@ -5614,6 +5663,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-811-B-j26-1",
@@ -5707,6 +5757,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-812-A-j26-1",
@@ -5796,6 +5847,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-813-B-j26-1",
@@ -5887,6 +5939,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-814-B-j26-1",
@@ -5981,6 +6034,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-815-B-j26-1",
@@ -6058,6 +6112,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-820-A-j26-1",
@@ -6139,6 +6194,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-841-j26-1",
@@ -6214,6 +6270,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-8-Y-j26-1",
@@ -6311,6 +6368,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-901-j26-1",
@@ -6406,6 +6464,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-902-j26-1",
@@ -6494,6 +6553,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-903-j26-1",
@@ -6593,6 +6653,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-905-j26-1",
@@ -6683,6 +6744,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-906-j26-1",
@@ -6785,6 +6847,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-907-j26-1",
@@ -6945,6 +7008,7 @@
       "buslinie.2270"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-940-B-j26-1",
@@ -7153,6 +7217,7 @@
       "buslinie.2220"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-941-A-j26-1",
@@ -7306,6 +7371,7 @@
       "buslinie.1888"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-942-A-j26-1",
@@ -7444,6 +7510,7 @@
       "buslinie.1737"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-943-A-j26-1",
@@ -7581,6 +7648,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A01-O-j26-1",
@@ -7660,6 +7728,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A01-T-j26-1",
@@ -7738,6 +7807,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A02-Q-j26-1",
@@ -7831,6 +7901,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A02-R-j26-1",
@@ -7993,6 +8064,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A04-5-j26-1",
@@ -8074,6 +8146,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A04-7-j26-1",
@@ -8147,6 +8220,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A05-6-j26-1",
@@ -8218,6 +8292,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A05-Z-j26-1",
@@ -8289,6 +8364,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A07-8-j26-1",
@@ -8380,6 +8456,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-A0A-6-j26-1",
@@ -8455,6 +8532,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-EV3-C-j26-1",
@@ -8527,6 +8605,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-EV3-E-j26-1",
@@ -8616,6 +8695,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-EV3-W-j26-1",
@@ -8687,6 +8767,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-EV4-I-j26-1",
@@ -8767,6 +8848,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-EV4-L-j26-1",
@@ -8854,6 +8936,7 @@
       "buslinie.2142"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-N50-A-j26-1",
@@ -8948,6 +9031,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-N90-B-j26-1",
@@ -9092,6 +9176,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "92-NT-A-j26-1",
@@ -9174,6 +9259,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
       "routeId": "94-380-0-j26-1",
@@ -9187,49 +9273,49 @@
       {
         "date": "2026-09-04",
         "trips": 16,
-        "admittedTrips": 0,
+        "admittedTrips": 1,
         "scheduledTrips": 16,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 1,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 42,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 2,
         "segmentOccurrences": 42,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 2,
+        "admittedSegmentOccurrences": 2,
         "directedPairs": 20,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 2,
         "patterns": 10,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 1,
+        "admittedPatterns": 1,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 16
+          "incomplete-boat-pattern": 15
         }
       },
       {
         "date": "2026-09-06",
         "trips": 15,
-        "admittedTrips": 0,
+        "admittedTrips": 1,
         "scheduledTrips": 15,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 1,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 41,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 2,
         "segmentOccurrences": 41,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 2,
+        "admittedSegmentOccurrences": 2,
         "directedPairs": 20,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 2,
         "patterns": 9,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 1,
+        "admittedPatterns": 1,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 15
+          "incomplete-boat-pattern": 14
         }
       }
     ],
-    "status": "excluded"
+    "status": "partially-admitted"
   },
   {
     "id": "94-380-1-j26-1",
@@ -9252,6 +9338,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
       "routeId": "94-380-1-j26-1",
@@ -9265,49 +9352,49 @@
       {
         "date": "2026-09-04",
         "trips": 5,
-        "admittedTrips": 0,
+        "admittedTrips": 3,
         "scheduledTrips": 5,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 3,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 21,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 12,
         "segmentOccurrences": 21,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 12,
+        "admittedSegmentOccurrences": 12,
         "directedPairs": 6,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 4,
         "patterns": 3,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 1,
+        "admittedPatterns": 1,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 5
+          "incomplete-boat-pattern": 2
         }
       },
       {
         "date": "2026-09-06",
         "trips": 5,
-        "admittedTrips": 0,
+        "admittedTrips": 3,
         "scheduledTrips": 5,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 3,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 21,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 12,
         "segmentOccurrences": 21,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 12,
+        "admittedSegmentOccurrences": 12,
         "directedPairs": 6,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 4,
         "patterns": 3,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
+        "completePatterns": 1,
+        "admittedPatterns": 1,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 5
+          "incomplete-boat-pattern": 2
         }
       }
     ],
-    "status": "excluded"
+    "status": "partially-admitted"
   },
   {
     "id": "94-381-0-j26-1",
@@ -9326,6 +9413,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
       "routeId": "94-381-0-j26-1",
@@ -9355,7 +9443,7 @@
         "completePatterns": 0,
         "admittedPatterns": 0,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 16
+          "incomplete-boat-pattern": 16
         }
       },
       {
@@ -9377,7 +9465,7 @@
         "completePatterns": 0,
         "admittedPatterns": 0,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 14
+          "incomplete-boat-pattern": 14
         }
       }
     ],
@@ -9400,6 +9488,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
       "routeId": "94-381-A-j26-1",
@@ -9429,7 +9518,7 @@
         "completePatterns": 0,
         "admittedPatterns": 0,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 16
+          "incomplete-boat-pattern": 16
         }
       },
       {
@@ -9451,7 +9540,7 @@
         "completePatterns": 0,
         "admittedPatterns": 0,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 14
+          "incomplete-boat-pattern": 14
         }
       }
     ],
@@ -9483,6 +9572,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
       "routeId": "94-382-0-j26-1",
@@ -9512,7 +9602,7 @@
         "completePatterns": 0,
         "admittedPatterns": 0,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 17
+          "incomplete-boat-pattern": 17
         }
       },
       {
@@ -9534,7 +9624,7 @@
         "completePatterns": 0,
         "admittedPatterns": 0,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 17
+          "incomplete-boat-pattern": 17
         }
       }
     ],
@@ -9557,6 +9647,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
       "routeId": "94-382-A-j26-1",
@@ -9570,49 +9661,45 @@
       {
         "date": "2026-09-04",
         "trips": 4,
-        "admittedTrips": 0,
+        "admittedTrips": 4,
         "scheduledTrips": 4,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 4,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 11,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 11,
         "segmentOccurrences": 11,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 11,
+        "admittedSegmentOccurrences": 11,
         "directedPairs": 4,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 4,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 4
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 4,
-        "admittedTrips": 0,
+        "admittedTrips": 4,
         "scheduledTrips": 4,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 4,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 11,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 11,
         "segmentOccurrences": 11,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 11,
+        "admittedSegmentOccurrences": 11,
         "directedPairs": 4,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 4,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 4
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "94-T-Y-j26-1",
@@ -9631,6 +9718,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
       "routeId": "94-T-Y-j26-1",
@@ -9644,49 +9732,45 @@
       {
         "date": "2026-09-04",
         "trips": 18,
-        "admittedTrips": 0,
+        "admittedTrips": 18,
         "scheduledTrips": 18,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 18,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 18,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 18,
         "segmentOccurrences": 18,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 18,
+        "admittedSegmentOccurrences": 18,
         "directedPairs": 2,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 2,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 18
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 18,
-        "admittedTrips": 0,
+        "admittedTrips": 18,
         "scheduledTrips": 18,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 18,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 18,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 18,
         "segmentOccurrences": 18,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 18,
+        "admittedSegmentOccurrences": 18,
         "directedPairs": 2,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 2,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 18
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "96-184-9-j26-1",
@@ -9718,6 +9802,7 @@
       "buslinie.2189"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-184-9-j26-1",
@@ -9806,6 +9891,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-185-1-j26-1",
@@ -9881,6 +9967,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-185-9-j26-1",
@@ -9967,6 +10054,7 @@
       "buslinie.2236"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-189-4-j26-1",
@@ -10113,6 +10201,7 @@
       "buslinie.2108"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-2-j26-1",
@@ -10302,6 +10391,7 @@
       "buslinie.2236"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-3-j26-1",
@@ -10514,6 +10604,7 @@
       "buslinie.2223"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-4-j26-1",
@@ -10743,6 +10834,7 @@
       "buslinie.2231"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-6-j26-1",
@@ -10934,6 +11026,7 @@
       "buslinie.1964"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-7-j26-1",
@@ -11133,6 +11226,7 @@
       "buslinie.2126"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-8-j26-1",
@@ -11310,6 +11404,7 @@
       "buslinie.2209"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-200-9-j26-1",
@@ -11500,6 +11595,7 @@
       "buslinie.2109"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-201-0-j26-1",
@@ -11665,6 +11761,7 @@
       "buslinie.2210"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-201-2-j26-1",
@@ -11809,6 +11906,7 @@
       "buslinie.2125"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-201-3-j26-1",
@@ -11969,6 +12067,7 @@
       "buslinie.2125"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-201-4-j26-1",
@@ -12159,6 +12258,7 @@
       "buslinie.1893"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-202-0-j26-1",
@@ -12344,6 +12444,7 @@
       "buslinie.1853"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-202-1-j26-1",
@@ -12544,6 +12645,7 @@
       "buslinie.2248"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-202-5-j26-1",
@@ -12677,6 +12779,7 @@
       "buslinie.2099"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-202-7-j26-1",
@@ -12805,6 +12908,7 @@
       "buslinie.1960"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-0-j26-1",
@@ -13006,6 +13110,7 @@
       "buslinie.2217"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-1-j26-1",
@@ -13224,6 +13329,7 @@
       "buslinie.2016"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-2-j26-1",
@@ -13424,6 +13530,7 @@
       "buslinie.2249"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-3-j26-1",
@@ -13649,6 +13756,7 @@
       "buslinie.2257"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-5-j26-1",
@@ -13875,6 +13983,7 @@
       "buslinie.2219"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-6-j26-1",
@@ -14027,6 +14136,7 @@
       "buslinie.2039"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-7-j26-1",
@@ -14176,6 +14286,7 @@
       "buslinie.2263"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-8-j26-1",
@@ -14310,6 +14421,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-203-9-j26-1",
@@ -14405,6 +14517,7 @@
       "buslinie.2111"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-204-0-j26-1",
@@ -14550,6 +14663,7 @@
       "buslinie.2220"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-220-5-j26-1",
@@ -14689,6 +14803,7 @@
       "buslinie.2115"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-220-6-j26-1",
@@ -14823,6 +14938,7 @@
       "buslinie.2266"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-220-8-j26-1",
@@ -14941,6 +15057,7 @@
       "buslinie.2220"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-220-A-j26-1",
@@ -15066,6 +15183,7 @@
       "buslinie.2266"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-220-B-j26-1",
@@ -15162,6 +15280,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-221-4-j26-1",
@@ -15247,6 +15366,7 @@
       "buslinie.2141"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-228-3-j26-1",
@@ -15356,6 +15476,7 @@
       "buslinie.1849"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-228-7-j26-1",
@@ -15466,6 +15587,7 @@
       "buslinie.2141"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-228-B-j26-1",
@@ -15563,6 +15685,7 @@
       "buslinie.2266"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-250-8-j26-1",
@@ -15675,6 +15798,7 @@
       "buslinie.2114"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
       "routeId": "96-250-A-j26-1",

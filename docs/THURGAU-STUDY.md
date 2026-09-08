@@ -2,7 +2,7 @@
 
 Audit date: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#tg).
 
-The complete canton-scoped GTFS inventory contains **132 route records across 15 agency identities**, with calls in all **five districts**. The regional feed admits **4243 Friday journeys and 2649 Sunday journeys**, each retaining every original call and a validated path for every directed segment. **This is partial geometry coverage, not a complete canton service feed.** 100 route records have all dated journeys admitted, 2 have partial admission, 9 are excluded, and 21 are inactive on both validation dates.
+The complete canton-scoped GTFS inventory contains **132 route records across 15 agency identities**, with calls in all **five districts**. The regional feed admits **4269 Friday journeys and 2675 Sunday journeys**, each retaining every original call and a validated path for every directed segment. **This is partial geometry coverage, not a complete canton service feed.** 102 route records have all dated journeys admitted, 4 have partial admission, 5 are excluded, and 21 are inactive on both validation dates.
 
 ## Deliverables
 
@@ -12,6 +12,7 @@ The complete canton-scoped GTFS inventory contains **132 route records across 15
 - [All source line records](../data/thurgau-audit/source-lines.json), [all 718 source stops](../data/thurgau-audit/source-stops.json), [canton GTFS stop inventory](../data/thurgau-audit/stops.json), [reviewed route crosswalk](../data/thurgau-line-crosswalk.json).
 - [Source metadata and request hashes](../data/thurgau-sources/sources.json), [raw request receipts](../data/thurgau-sources/requests.json). Original responses, boundary rows and the selected timetable fixture are preserved as gzip files in the repository.
 - [SBB border source](../data/thurgau-sbb-rail-sources/sources.json), [explicit Konstanz joins](../data/thurgau-sbb-rail-policy.json), [all SBB candidate records and exclusions](../data/thurgau-audit/sbb-rail-source-segments.json), and [lake-source screening](../data/thurgau-water-review/review.json).
+- [Shipping source and attribution](../data/thurgau-boat-sources/sources.json), [exact boat policy](../data/thurgau-boat-policy.json), [all 69 shipping features](../data/thurgau-audit/boat-source-segments.json), and [full-pattern/dock review](../data/thurgau-boat-sources/path-review.json).
 - [Federal rail source](../data/thurgau-rail-sources/source.json), [exact rail policy](../data/thurgau-rail-policy.json) and [all federal source segments](../data/thurgau-audit/rail-source-segments.json).
 - [Regional bus road evidence](../data/thurgau-regional-roads/sources.json), [review notes](../data/thurgau-regional-roads/review-sources.json), and [OSM-derived regional path database](../public/data/thurgau-region/regional-road-paths.json).
 - [City road source evidence](../data/thurgau-city-roads/sources.json), [OSM-derived city path database](../public/data/thurgau-region/city-road-paths.json), and [16-line geometry review](assets/thurgau-city-road-review.png).
@@ -37,14 +38,14 @@ District route counts overlap. Journeys retain **every call outside Thurgau**, i
 | 65 | THURBO | 23 | 677 / 677 | 707 / 707 |
 | 138 | Bus Ostschweiz | 18 | 916 / 946 | 492 / 521 |
 | 193 | Schweiz. Schifffahrtsgesellschaft Untersee und Rhein AG | 1 | 0 / 17 | 0 / 17 |
-| 195 | Schweizerische Bodensee-Schifffahrt AG | 3 | 0 / 37 | 0 / 34 |
-| 360 | Bodensee-Schiffsbetriebe GmbH | 2 | 0 / 20 | 0 / 18 |
+| 195 | Schweizerische Bodensee-Schifffahrt AG | 3 | 4 / 37 | 4 / 34 |
+| 360 | Bodensee-Schiffsbetriebe GmbH | 2 | 4 / 20 | 4 / 18 |
 | 727 | Verkehrsbetriebe Kreuzlingen | 6 | 487 / 487 | 200 / 200 |
 | 744 | Automobildienst Appenzeller Bahnen | 2 | 1 / 1 | 0 / 0 |
 | 797 | Stadtbus Frauenfeld | 11 | 574 / 589 | 194 / 224 |
 | 801 | PostAuto AG | 40 | 1288 / 1325 | 868 / 868 |
 | 896 | Regiobus Gossau SG | 1 | 58 / 58 | 0 / 0 |
-| 3182 | Solarfährbetrieb Thomas Geiger Reichenau | 1 | 0 / 18 | 0 / 18 |
+| 3182 | Solarfährbetrieb Thomas Geiger Reichenau | 1 | 18 / 18 | 18 / 18 |
 | 7231 | SBB Infrastruktur AG Bahnersatz | 13 | 0 / 0 | 0 / 0 |
 | 7252 | Appenzeller Bahnen Ersatzverkehr | 1 | 0 / 0 | 0 / 0 |
 
@@ -61,6 +62,7 @@ Four official call-taxi polygons are separately recorded in the audit: Bischofsz
 | swissBOUNDARIES3D | 2026-01; all original canton and district geometry rows retained | © swisstopo; free-geodata terms |
 | Federal rail network | Checksum-verified FOT XTF; catalogue 2021-07-06, asset updated 2025-01-18, reused 2026-09-08; used segment Stand dates 2021-07-06 | © Federal Office of Transport (FOT); opendata.swiss terms_by, source attribution required; retain proprietary catalogue label without relabelling it CC |
 | SBB graphical lines | Pinned selected responses reused 2026-09-08; catalogue modified 2026-07-29T06:16:28+00:00, data processed 2026-09-02T03:01:34+00:00; no feature survey date supplied | SBB Infrastructure / data.sbb.ch; terms_by, commercial and non-commercial use with attribution |
+| Official shipping and lake shorelines | swissTLMRegio source acquired 2026-09-08; collection updated 2026-06-25 with temporal extent through 2025-12-02; individual shipping-feature vintage unknown. Original FOEN Bodensee and Untersee features retain 2007 shoreline reference. | © swisstopo; shoreline © FOEN, swisstopo; swisstopo free-geodata terms. Literal proprietary STAC label preserved, not relabelled CC. |
 | Bregenz OSM rail corridor | Historical Overpass query 2026-09-02T00:00:00Z; acquired 2026-09-08; 521 ways individually inventoried | © OpenStreetMap contributors; separate border path database under ODbL 1.0 |
 | City and regional road supplements | Geofabrik Switzerland 2026-09-02 plus OSM border extract 2026-09-08; pinned PBF SHA d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b | © OpenStreetMap contributors; derived path database under ODbL 1.0 |
 
@@ -87,7 +89,7 @@ Bus joins require an exact prefixed line number, a reviewed operator label, and 
 
 Comma-separated source numbers are parsed independently. Parenthetical **nur zeitweise**, **Abendkurs** and **Kantibus** tokens are excluded from that route's graph because no operating-time rule is supplied; an unqualified token for another line on the same feature can still be used. **BN820** is not assumed to mean the GTFS line 820. Day and night labels are respected. The official line source lacks Frauenfeld and Kreuzlingen city routes; the separate OSM supplement below covers their fixed-route patterns. Replacement route records remain inventoried; the dated fixed service of operator 744 receives an independently identified GTFS/OSM pattern in the regional supplement.
 
-For rail, SBB/THURBO use the 15 unlabelled regional corridor features as a routing graph; these are not preassigned GTFS line shapes. AB **S15** uses only its two explicitly labelled Frauenfeld–Wängi–Wil features, separately from the other rail graph. Full stop-chain geometry tests determine admission. Incomplete SBB/THURBO patterns can use the separately audited federal rail supplement below; complete cantonal paths remain unchanged. Lake services have no acquired water-compatible geometry and receive no road or rail substitute.
+For rail, SBB/THURBO use the 15 unlabelled regional corridor features as a routing graph; these are not preassigned GTFS line shapes. AB **S15** uses only its two explicitly labelled Frauenfeld–Wängi–Wil features, separately from the other rail graph. Full stop-chain geometry tests determine admission. Incomplete SBB/THURBO patterns can use the separately audited federal rail supplement below; complete cantonal paths remain unchanged. The separate official shipping supplement below admits only complete boat patterns that also pass shoreline validation; boats receive no road or rail substitute.
 
 Original **EPSG:2056 east/north** vertices form the graph. The parser asserts CRS, axis ranges, unique IDs and full WFS returned/matched counts. Exact source vertices define connectivity; no gap is bridged and no near-coincident tracks are merged. The established swisstopo approximate LV95/WGS84 conversion has metre-level precision. Output coordinates round to seven decimals.
 
@@ -180,11 +182,37 @@ The **Vorarlberg WFS** was fully acquired with **136 rail records**, count check
 
 The admitted OSM-derived border database is distributed separately under **ODbL 1.0**, credited **© OpenStreetMap contributors**, with the [OSM copyright and licence page](https://www.openstreetmap.org/copyright). Patterns using it are labelled **fot-osm-border-rail-inference**. FOT geometry retains its own attribution and terms. This is an inferred archival rail path, not a certified train trajectory.
 
-## Lake and Rhine source screening
+## Lake and Rhine shipping supplement
 
-All **92 Friday / 87 Sunday boat journeys** remain excluded, retaining their complete dock chains. The [reproducible screening](../data/thurgau-water-review/review.json) preserves the existing local FOEN/swisstopo lake display artifact and its hash. Its metadata labels the reference edition **2007** and shoreline simplification **60 m**. Among the **34** called dock IDs, **24** lie outside the display lake polygon and **17** are more than 150 m from it. These measurements describe the display polygon, not verified dock access.
+The [official shipping adapter](../scripts/thurgau-boat-geometry.mjs) adds **26 complete Friday / 26 complete Sunday boat journeys**. Six of the 27 unique dated boat patterns pass, with all original dock calls, direction IDs, timestamps and permissions retained. **66 Friday / 61 Sunday boat journeys remain excluded as whole patterns**, including the Romanshorn–Friedrichshafen ferry and all URh Rhine journeys. Their segment-specific failures remain in each day's audit and the [full pattern review](../data/thurgau-boat-sources/path-review.json).
 
-The [original FOEN feature review](../data/thurgau-water-review/original-source-review.json) now preserves the unsimplified Lake Constance response: **8,714 vertices**, acquired **8 September 2026**, credited **© FOEN, swisstopo**. It tests every original dock and all **66 directed boat pairs** against shoreline and island intersections. **17 docks** still lie more than 150 m from this lake feature. Straight projected paths yield only **three candidate pairs and zero complete journeys**; these are screening candidates, not admitted paths. Acquisition does not establish a newer shoreline vintage. Constrained harbour routing and connected Untersee/Rhine geometry remain necessary. Reproduce with `node scripts/review-thurgau-water-source.mjs`. No water geometry is enabled in the feed. A lake polygon alone does not establish shipping routes; the water router cannot supply missing river channels or justify discarding distant calls.
+| Agency / line | GTFS route ID | Friday admitted / total | Sunday admitted / total |
+| --- | --- | --- | --- |
+| 195 / 3800 | 94-380-0-j26-1 | 1 / 16 | 1 / 15 |
+| 195 / 3801 | 94-380-1-j26-1 | 3 / 5 | 3 / 5 |
+| 195 / 3810 | 94-381-0-j26-1 | 0 / 16 | 0 / 14 |
+| 360 / 3810 | 94-381-A-j26-1 | 0 / 16 | 0 / 14 |
+| 193 / 3820 | 94-382-0-j26-1 | 0 / 17 | 0 / 17 |
+| 360 / 3820 | 94-382-A-j26-1 | 4 / 4 | 4 / 4 |
+| 3182 / BAT | 94-T-Y-j26-1 | 18 / 18 | 18 / 18 |
+
+All 18 Reichenau solar-ferry journeys and all four Radolfzell journeys pass on each date. The other additions are one Rorschach–Horn–Arbon journey and three Immenstaad–Hagnau–Altnau–Güttingen–Immenstaad loops per date. Opposite directions are evaluated independently; only the solar-ferry pattern is admitted in both direction IDs on these fixtures. No successful pair supplies admission to a longer incomplete dock chain.
+
+**Source acquisition:** 30 adjacent, uncapped official API envelopes cover every dated dock and the lake/Rhine corridor. They yield **69 distinct swissTLMRegio passenger-shipping line features**; all duplicates agree exactly. All original mixed-transport responses, request URLs, counts and hashes are preserved. Only features explicitly labelled **Kursschiff_Linie** enter the boat graph. A broad mixed-layer request with pagination omitted shipping records found in smaller requests, so it is not used as completeness evidence. These are generalized cartographic lines, not operator route shapes or navigational lanes. The [swisstopo product](https://www.swisstopo.admin.ch/en/landscape-model-swisstlmregio) describes 20–60 m generalisation accuracy. The collection was updated **25 June 2026**, with temporal extent through **2 December 2025**; neither establishes an individual feature survey date.
+
+**Directed matching:** exact route, agency, route type, direction and full original dock/coordinate chains are required. Source vertices alone establish graph connectivity. Original dock projections are bounded by **150 m**, alternatives by **5 m** from the nearest, and detours by max(**3 × direct distance**, **1,200 m**). The largest admitted dock projection is **142.33 m**. Source lines are not simplified or extended with topology bridges. Successful bus and rail paths remain unchanged.
+
+**Shoreline validation:** the original FOEN **Bodensee feature 124** (8,714 vertices) and **Untersee feature 171** (3,834 vertices) are acquired with all rings and islands. Their reference date remains **2007**. Every inferred path edge is split at every shoreline intersection; fixed-distance sampling cannot skip an island. An outside-water interval is allowed only when both endpoints lie within **150 m of the same actual endpoint dock**. Every such discrepancy is disclosed in the audit: **24 intervals across the six unique admitted patterns**, including repeated approaches. Intervals elsewhere reject the entire journey. This bounds disagreement between generalized shipping lines and the old dock/shoreline representation; it does not certify dock access. The longer dock-area discrepancies at Immenstaad and Radolfzell are visible in the detailed review. Missing Rhine water, distant Schaffhausen attachment and other harbour/shoreline failures remain unresolved; no threshold was raised to admit them.
+
+![All admitted shipping patterns](assets/thurgau-boat-review.png)
+
+![Every admitted dock and its 150 m discrepancy zone](assets/thurgau-boat-dock-review.png)
+
+Both plots were inspected, covering all four admitted route identities, six complete patterns and eleven distinct docks. They compare source curves, original GTFS coordinates and shoreline constraints; they do not independently certify operator routing, seasonal validity or navigational safety. The feed labels these paths **swisstopo-boat-inference** and distributes the source responses, policy, attribution and terms alongside the dated manifests.
+
+The earlier [display-polygon screening](../data/thurgau-water-review/review.json) remains reproducible: **34** docks, **24** outside its 60 m simplified polygon, and **17** farther than 150 m away. The [original Bodensee-only screening](../data/thurgau-water-review/original-source-review.json) also remains preserved: 17 docks beyond that single lake feature and zero complete direct-water journeys. Those earlier failures are not the shipping source used here. Acquiring Untersee and the official shipping curves supplies distinct evidence; a lake polygon alone does not establish a route.
+
+Reproduce offline with `node scripts/prepare-thurgau-boats.mjs`, `node scripts/review-thurgau-boats.mjs` and `scripts/review-thurgau-boats.py`, then rebuild and run the regional checker. A new acquisition or changed dock chain requires new policy hashes and a full review.
 
 ## Weekday and Sunday directed validation
 
@@ -197,20 +225,20 @@ Pattern identity is GTFS **route ID + direction_id + full ordered original platf
 | Measure | Friday 4 September | Sunday 6 September |
 | --- | --- | --- |
 | Dated journeys | 4417 | 2795 |
-| Admitted journeys | 4243 (96.1%) | 2649 (94.8%) |
-| Complete admitted patterns / all patterns | 527 / 563 | 411 / 442 |
-| Matched directed pairs / all directed pairs | 3365 / 3529 (95.4%) | 3272 / 3425 (95.5%) |
-| Matched scheduled segments / all occurrences | 63689 / 64684 (98.5%) | 40081 / 41271 (97.1%) |
-| Segments in admitted journeys | 63207 | 40081 |
+| Admitted journeys | 4269 (96.6%) | 2675 (95.7%) |
+| Complete admitted patterns / all patterns | 533 / 563 | 417 / 442 |
+| Matched directed pairs / all directed pairs | 3377 / 3529 (95.7%) | 3284 / 3425 (95.9%) |
+| Matched scheduled segments / all occurrences | 63732 / 64684 (98.5%) | 40124 / 41271 (97.2%) |
+| Segments in admitted journeys | 63250 | 40124 |
 | Carry-in journeys: admitted / total | 55 / 58 | 129 / 167 |
 | Night-labelled journeys: admitted / total | 0 / 15 | 75 / 105 |
-| Patterns revisiting platforms: admitted / total | 19 / 21 | 11 / 13 |
+| Patterns revisiting platforms: admitted / total | 20 / 21 | 12 / 13 |
 
 **305 patterns are shared**, **258 occur only on Friday**, and **137 occur only on Sunday**. Both direction IDs 0 and 1 are evaluated. All exported journeys have geometry for 100% of their segments; this does not turn canton-wide coverage into 100%.
 
 | Unmatched directed-pair reason | Friday | Sunday |
 | --- | --- | --- |
-| missing-line | 153 | 153 |
+| missing-line | 141 | 141 |
 | endpoint-gap | 6 | 0 |
 | disconnected-line | 4 | 0 |
 | collapsed-path | 1 | 0 |
@@ -268,6 +296,9 @@ Counts below refer only to the two validated civil dates. Multiple records can s
 | 138 | 943 | 92-943-A-j26-1 | 99 / 99 | 42 / 42 |
 | 138 | N50 | 92-N50-A-j26-1 | 0 / 0 | 6 / 6 |
 | 138 | N90 | 92-N90-B-j26-1 | 0 / 0 | 6 / 6 |
+| 195 | 3800 | 94-380-0-j26-1 | 1 / 16 | 1 / 15 |
+| 195 | 3801 | 94-380-1-j26-1 | 3 / 5 | 3 / 5 |
+| 360 | 3820 | 94-382-A-j26-1 | 4 / 4 | 4 / 4 |
 | 727 | 901 | 92-901-j26-1 | 162 / 162 | 72 / 72 |
 | 727 | 902 | 92-902-j26-1 | 162 / 162 | 71 / 71 |
 | 727 | 903 | 92-903-j26-1 | 78 / 78 | 0 / 0 |
@@ -326,6 +357,7 @@ Counts below refer only to the two validated civil dates. Multiple records can s
 | 801 | 950 | 96-228-7-j26-1 | 25 / 25 | 12 / 12 |
 | 801 | N65 | 96-185-9-j26-1 | 0 / 0 | 2 / 2 |
 | 896 | 731 | 92-731-j26-1 | 58 / 58 | 0 / 0 |
+| 3182 | BAT | 94-T-Y-j26-1 | 18 / 18 | 18 / 18 |
 
 ## Reproduction and checks
 
@@ -349,7 +381,7 @@ node scripts/build-thurgau-region.mjs \
 # stop, path, edge and journey; reconcile routes, groups, patterns and chunks.
 node scripts/check-thurgau-region.mjs
 node scripts/document-thurgau-study.mjs
-npx vitest run scripts/thurgau-border-rail.test.mjs scripts/thurgau-sbb-rail.test.mjs scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/thurgau-boat-geometry.test.mjs scripts/water-paths.test.mjs scripts/zug-boat-geometry.test.mjs scripts/thurgau-border-rail.test.mjs scripts/thurgau-sbb-rail.test.mjs scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
 python3 scripts/test_thurgau_sources.py
 ```
 
@@ -359,6 +391,6 @@ To rebuild the city supplement, run `node scripts/prepare-thurgau-city-roads.mjs
 
 To rebuild the regional supplement, run `node scripts/prepare-thurgau-regional-roads.mjs`, then the same matcher separately for agency directories 138, 744, 801 and 896, using input `/private/tmp/thurgau-regional-road-feeds/AGENCY` and output `/private/tmp/thurgau-regional-road-matched/AGENCY`. Run `node scripts/import-thurgau-regional-roads.mjs`, `node scripts/check-thurgau-regional-roads.mjs` and `scripts/review-thurgau-regional-roads.py` with a Pillow-enabled Python, inspect every panel and rejection, then rebuild and check the regional feed. Pinned review notes distinguish source dates and admission decisions.
 
-To reproduce federal rail preparation from the existing pinned national snapshot, run `node scripts/prepare-thurgau-rail.mjs data/aargau-rail-sources`, then rebuild and run the Thurgau checker. The committed `data/thurgau-rail-sources` files already support an entirely offline feed build; the Aargau directory is only the default acquisition-reuse input. Generate the supplemental review with `scripts/review-thurgau-rail.py` using a Pillow-enabled Python. Reproduce SBB preparation with `node scripts/prepare-thurgau-sbb-rail.mjs`, using the already preserved Bregenz query; plot with `scripts/review-thurgau-rail.py --sbb`. Reproduce border source preparation offline with `node scripts/prepare-thurgau-border-rail.mjs`, generate path diagnostics with `node scripts/review-thurgau-border-rail.mjs` and its plot with `scripts/review-thurgau-border-rail.py`. Reproduce the water screening offline with `node scripts/review-thurgau-water.mjs`. The checker replays all rail paths and additionally proves every previously admitted cantonal/city/regional-road and federal-only path unchanged.
+To reproduce federal rail preparation from the existing pinned national snapshot, run `node scripts/prepare-thurgau-rail.mjs data/aargau-rail-sources`, then rebuild and run the Thurgau checker. The committed `data/thurgau-rail-sources` files already support an entirely offline feed build; the Aargau directory is only the default acquisition-reuse input. Generate the supplemental review with `scripts/review-thurgau-rail.py` using a Pillow-enabled Python. Reproduce SBB preparation with `node scripts/prepare-thurgau-sbb-rail.mjs`, using the already preserved Bregenz query; plot with `scripts/review-thurgau-rail.py --sbb`. Reproduce border source preparation offline with `node scripts/prepare-thurgau-border-rail.mjs`, generate path diagnostics with `node scripts/review-thurgau-border-rail.mjs` and its plot with `scripts/review-thurgau-border-rail.py`. Reproduce the water screening offline with `node scripts/review-thurgau-water.mjs`. The checker replays all rail and boat paths and additionally proves every previously admitted bus and rail path unchanged by the boat supplement.
 
 Validation covers source hashes, GML counts/axes/IDs, full canton/district membership, operator/line identity, direction and loop preservation, midnight spillover, whole-pattern rejection, repeated geometry replay, exact exported paths, complete calls, finite ordered times, all 24 chunk hashes and trip identities. **Two September days do not establish public-holiday, winter, summer-only or year-round completeness.** Temporary diversions and physical one-way/track legality remain unverified.

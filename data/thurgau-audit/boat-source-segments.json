@@ -1,0 +1,899 @@
+[
+  {
+    "id": "{982A1670-A2F8-4106-9C2A-6FE75F4230E1}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 90,
+    "featureSha256": "f7ff79d2a50d3d1770d0593b5003b9e5f6f3aa40cd245c1217b821ff22e3dc39",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{FD8DC30B-2BD9-40C2-95EB-2FBE1F54D5AD}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 42,
+    "featureSha256": "f9b1746a4f462c35545895950debe93e5f6382c9238304dc5005b29f1df494d5",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{5B03EA83-8FC1-4132-9791-B55899C91877}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 42,
+    "featureSha256": "d9125ebbfeef0b4f033dd5becd6f0654ab4bc9f27b4fdc5685f0652138cc092c",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{FD91C064-C628-4D7A-8E77-937CC3289B42}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 86,
+    "featureSha256": "b05b19fa8c5ef768806962d5628737c9cca1fee80da430093099e63a62815e41",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{806EB87B-78EA-4EE1-8D30-D60368184C5A}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "683a220434040b5015370ecb3dec5f949d02b7c64319eea461f790eb142eecf4",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{AD787C1E-75D9-435B-B6FF-0382DAD3CD1C}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 11,
+    "featureSha256": "7cc96fbd27f446e5aa3240dad57fd31fd4fe5001d4ff49b6a4ecc8c8a0c68dd5",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{111FB034-C513-4F54-A0C8-00BC0B7DC4D9}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "2b7b5a5bd6b6145ab43bfa04546e25cf83c6b6097ecf84f9d9ccacb3dbc15d47",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{E11E3D04-F281-4D06-86D1-8AF7BC4BF0C2}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "434f8f32cbd33cadf214595088b9659a97c00b91ee81e1bcfe2cf6f58dea4c14",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{22B2C55C-647E-4624-9F9C-EADEA2B973D9}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 22,
+    "featureSha256": "691e547a4e7a110cc75ddcdc048ec19566b8afa13ad35fed9093a6ed653befc4",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{0F9CBB7F-983F-4821-ABD0-E210E16FE4F9}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "509279e890b0c3768ed97fabd772f1ba8db74d66c771c2db3abf9ebb9041d307",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{049D7695-2BA5-4C91-9BFE-CA918EC8ACE9}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 31,
+    "featureSha256": "8c058d08694cd3791a9b59d35558efbb0c0322a55ed5f1f892f5ec076a5002e9",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{C5F77B25-3FF6-477A-803D-F3CA9DE6ED7B}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "82ebcf288777bd070fc31cefd27f8a29f60f293f4d5700c430f9e1e655b481e2",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{BF904BD4-1152-4D91-9655-A7B24553681E}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "73aa5f62aec4550e5a8fbdfabc37777b6dd698af912b11357370f59a87d12447",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{39BE7546-518C-4D0E-88AC-6BA4509E1953}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 22,
+    "featureSha256": "b8950231872e5eabd476fa5e5f43be5248a64685c96ab8ec2a10346e3377d290",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{04FD73F1-2E0F-4866-97CD-68F3CA2FAEA5}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 48,
+    "featureSha256": "88df22bd1f948185c7e6b01b89b70f94e3a4f6b69adea079243a6260b97b4722",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{2D45CCA4-4ACD-461D-ADDB-116457B7159A}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 19,
+    "featureSha256": "d2e7a60714134f12baf28302cade2b3b3bc99e9b13ebeeee079b92872760894a",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{38EB9E15-692A-4C9C-9D79-5BC400388443}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 9,
+    "featureSha256": "d3cf66ef7ef11f1682a4c9ba4ea52fd03640e88925836fccad820c01315d858f",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{08CDC3F3-2487-40CF-A180-AB41A69EC748}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 17,
+    "featureSha256": "0983b27f30d5c2b0a3bfcf71ad4752c6181ab39c78f174b1a14dcf02cd44e0eb",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{F8E8E02F-5341-4BFB-9675-1FED09539EF3}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 22,
+    "featureSha256": "2a55af008283e2463b390dd419016e875bb814b28485e75d9985def79cb2f8b0",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{2A793377-A340-40F1-93BA-0DEC00E9C9D6}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "9bcbe25e71abce56bd5ed93f2e74a790385d1d83c6e29d6ee3a2f4b4dda355f3",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{370DAD63-A13E-42BB-9435-00C6036B6D2F}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "2baecc1429bb6ec99bec53f1b96ca37675817bae5259af3669c38c0e060e6be4",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{59C12406-5E14-4CA8-91D0-0A84CF2C6C45}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 33,
+    "featureSha256": "55b171484209269783de6beb4380b5e0e1d75dbd2a7ae67c21fe38a287cf5104",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{966F1276-D3B0-4C0F-8893-E54B2BEDE3B4}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 33,
+    "featureSha256": "6125a4669de2a2903b4a5cb5998b2fc5f11815724824fac2c9a4ae53bd573552",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{2AA37783-E9FD-40BE-8B5C-6A5F03212145}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 60,
+    "featureSha256": "1e14c401bea63086425b4a720e22f6030079e5a297d2210dbe3b585fe441c191",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{CB5DEC14-CE65-4E28-B210-AE0E7B52093B}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 16,
+    "featureSha256": "a0b8912efa1890bac06d34ff1f776901c09c9ee4f2f43e774f68d16466f67882",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{B7816199-7DF4-43DB-BAA4-D74253A0CACC}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 21,
+    "featureSha256": "6134119c7c88219da8ddcbd608baefbe2ad0ed68e761c8de14062e631d30cc07",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{97DF5631-7B30-4672-9D53-B9C63224BE64}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 18,
+    "featureSha256": "ffd88196f27fabd5edbdafa0c28237fa82a878163d0f546b54448b2fc7002957",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{880ED333-2790-4EC3-8BFD-6F81859F5D76}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "All year",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 37,
+    "featureSha256": "b40cf0a725f94d7185e171d33fc8ec4ec79ec17726f48c6af3502248fbe6332d",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{88FB49F5-8387-4DEF-9700-72859CFBC77E}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 52,
+    "featureSha256": "58a43bc2a89b9fee8d6eecc2dc9f616b7ce92d93ffe277b34337150287f65e6c",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{04616798-14A8-4DFB-8F14-337820CD55B5}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 13,
+    "featureSha256": "7fc50eba3051e38399d2746e8442afab95310d45b967e95dc85d6c126dd7c616",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{215DCCBC-4F18-4A87-B40C-75717D0F8C7C}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 17,
+    "featureSha256": "39935b79757bdccec2264260fa465c665fb9719d1b1dbd3fa391430799b16dff",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{B8C87842-638D-418D-9C2E-4A6FC59D528A}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 33,
+    "featureSha256": "deb7773aef4c9b2105465d6c61d624a8396b4e6a023074ab7552346951566e75",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{3F87A891-8AD3-4CC4-BCAF-B74E40485EAF}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 33,
+    "featureSha256": "9974fa9023ed08c210c8c8a3283728eac684789b1c9b804033bf063a2947831a",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{E17CBD87-5DFE-4C0B-A4FE-01F3C486CE65}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 30,
+    "featureSha256": "a2b1bdbd5d23c1c11183d2fb2386ff0a5e1038e8e8d8fbf493c2218840f5da58",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{C81B630B-4177-40E9-B48F-587E1ED9E4F8}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "06d65d22d3cd8d40927f756a2377d5c0ef4e30bbc3438e2b9c4291c474d47498",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{7C1B8545-0ACF-4D4E-A8E8-FD49D9260288}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 18,
+    "featureSha256": "de1c66533e1fd3d8dcf9a4d49ac0270f8d86647d58fa16fc48b89b1df73696c3",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{2FC9ED15-2948-4CD1-BD8D-BABA0F82C4E0}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "Wallhausen-Überlingen",
+      "rsu": "All year",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "5278540b2fbd6ec59e422e6071cf4b2f14af1389995ce800b14d2f786162d7cb",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{DA227C17-19D4-4A3F-9102-0BE309A687E6}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 39,
+    "featureSha256": "6c1368b314f7411ea9c5d2dd329f582c00321fc886a477e6969b3f81a428753f",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{E066A4C3-AE13-4D34-8E64-F253295A41C4}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 39,
+    "featureSha256": "07b8fd1a8b05d46b252e975f9df83a1799851ee2e2cc057419ee62c58c2ac12f",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{AF3C49C8-FC00-412C-8D76-250841D38D0D}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 33,
+    "featureSha256": "b87c8451f1aabfad0569413a86d8c1c21de389fff299511d32ec7bb069d93147",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{36B6095B-DABE-41F6-A9EA-F6718A3E9D4F}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 48,
+    "featureSha256": "74ab1d98beed7634c15757df21b8f3c07bf1058d3b060f23c28113e746676a8b",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{3224D72F-C1AE-4BC5-A2E2-5D51FD33A27D}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 17,
+    "featureSha256": "cec729f06ac4b5f5541685a497bc9d37eebf95d8bd919ba82576c814de3c718a",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{FD8539E0-1F38-418E-93E5-0370A13426A7}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "55c1ef47a9329ee9cb3d0d2f7dab14f1a4a78212734d573b470fb495d0de9650",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{5EF9FD98-DAC9-48BA-BC92-110A547A06C7}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 33,
+    "featureSha256": "f8d0d7dbd967c7d6a327de73209ea0644dc84303406cc5867d142993459176fc",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{AA8751C5-9A9B-4BCC-9F83-F43667DA670E}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 55,
+    "featureSha256": "e7917696de62cebb099b0b0855c8d40eee9802074a9b10754cdd155e49981bd3",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{0B0CEB60-541F-4C15-A4F8-FA27352A81F6}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 26,
+    "featureSha256": "f8d9c9a5c0d25419ef8917fd28b3d1281f2f24967eea3b666c4bad6fdd12f08a",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{3AF35225-0639-42E1-B88F-4C671CD75106}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "78f149bef5badc0278716aaf848554803b0a26b884e00095c85272cd1a5f61a2",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{3E7ADF0C-16C2-47FD-B252-EA44B7F5A369}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 17,
+    "featureSha256": "07bb60668e7376fa8685b69dbd442fada976ae0cc0cf8d5cd6d0fd6c8d1561d6",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{2EA9582E-B358-487B-A068-CDC0E44C6C84}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 17,
+    "featureSha256": "6b69b9139da053d311a75c2b0dc572cab4510dd54923a9c29949df07bdcdb821",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{D93C377D-B77C-4D51-98FA-54575E9D2167}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 25,
+    "featureSha256": "c094eb1a4a1d6da04cd96fd9837eb1c858176538a4a3a2bd9472390ed28cc575",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{CEF42FE3-C478-451F-8056-C9F46BCAF8D8}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 28,
+    "featureSha256": "b65ae6bccbb4b1e8e25926aaee56ca7ddb6ad3ce1dbf8d4d35a87de692aac82d",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{F52F3A03-AB86-47E4-A560-8005EA0FC25F}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 61,
+    "featureSha256": "18352d7e2c1aab742ab3230b5cb78f7c6d5a456f92d10e87650598bf5793873d",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{954B6F71-34B8-4326-BF22-518D2DB8B648}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 30,
+    "featureSha256": "ba119122e61774b0f99bd344211b894a06761232ab7c1a2d5bf47ef256da5e0e",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{B1A9E77D-6D81-4CD7-94CC-B1191D77FEAE}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 37,
+    "featureSha256": "ca8db75a7d8221132d6964d91e408003618348854ed0b77cb5d37327b188d69d",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{634D3A32-8767-4D37-96BF-D6F1D0ED89D4}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 40,
+    "featureSha256": "8d0c13768e38f4d860e7c82c98fd4893617d227b60bb1934165dedd97cfba6f5",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{4EC5756A-2C44-4403-9EF5-AF36D5947522}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 40,
+    "featureSha256": "6c4e4ec53f329bcdd035cf74365d0e936e316acc820aa47e9e15a8debca71012",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{8C41DD26-0878-4A3D-8996-2CB96E0FC432}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 14,
+    "featureSha256": "9e8f91bdb9d23c146d8ef9b52c0de8499da76826371a7fd65f114ebd59e3bda4",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{A5A105B0-5F4B-4B5B-B9B7-B7864C374DA2}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 32,
+    "featureSha256": "72f75cbfab0a8820cb12af7e173f08f7a27818c1ebba47c72cbc8ec5041316eb",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{567C98E7-85A5-464D-85B2-1BE0EFC39460}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 4,
+    "featureSha256": "cf899c16cf79f501519c25e0ee2049b1aec3b49cb3540231542d1ab81a7041f4",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{B653E49E-BC1F-4E5A-8782-442F5DFEB6D7}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 2,
+    "featureSha256": "ee070fb052a2ff63cca0bac83e34cfec5b7d162b58f2604d38e0f6cebdfb3695",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{F0BC7669-14D7-46AF-BB9C-17495B0C9CC6}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 26,
+    "featureSha256": "a1fe1d49b00a2d65803c820fd33bfae1c28e2ef7f501fb1067f906f872d48ea8",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{0274FA52-9842-4522-9923-7F237E5A0330}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 57,
+    "featureSha256": "9f612f56fd5cf9f270f404a5ecb0a8120116297371319085d01e2be1665c8814",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{EDCD6556-F349-4F84-8ED3-028D28728008}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 17,
+    "featureSha256": "7a1fc010a3c910e2816ea46729d91e3f9dc5f9fa5db3edc3a010336b80693ec5",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{E1FA12F1-6DB4-4099-AE20-F55A72A04628}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "International",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 63,
+    "featureSha256": "bd952dc3cdd14545b07b93c66c90db1fa4cc03a5726ee190e0e934dae282d947",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{BE0AE501-9503-491C-9D72-AB2224AC04C0}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 46,
+    "featureSha256": "3e4f11c6e2fec299818249c5a1cc66207d25c45ef2cacc3c74df8fe771539a8b",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{38451DA3-1A9C-4B26-88C2-64EE18A5B3B6}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 29,
+    "featureSha256": "b25388ddd263dfb39914e7fbe6355e1fcebe7eb5b6a6fa09729c709c9543ea34",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{A8250AB8-DE31-4CA6-A511-19FBCD7DE6B4}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 17,
+    "featureSha256": "77d62d388b9853538fe5a9a8daad7a891ba7be31ea311a4000225fc295c54948",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{8CC9E914-ECF6-4396-B117-1C41B1630A1A}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 33,
+    "featureSha256": "55ce66202336967572a21d859bb7d0b9c8d2e5a5ed499f931ad651999d4e8fd1",
+    "status": "candidate-cartographic-shipping-line"
+  },
+  {
+    "id": "{75D4DD9F-0C7F-4609-803A-35616E3D1933}  ",
+    "properties": {
+      "objval": "Kursschiff_Linie    ",
+      "detn": "N_A",
+      "rsu": "Seasonal",
+      "use": "National",
+      "label": "Kursschiff_Linie    "
+    },
+    "vertices": 16,
+    "featureSha256": "6bd31f7c8576d54a3212925b470f0594b21e36d6de1769e4793f555bb11d64b3",
+    "status": "candidate-cartographic-shipping-line"
+  }
+]

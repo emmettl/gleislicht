@@ -10,6 +10,7 @@ import { thurgauTimingDiagnostics } from './build-thurgau-region.mjs'
 import { checkThurgauRegionalRoads } from './check-thurgau-regional-roads.mjs'
 import { loadThurgauRail, isThurgauRailSource } from './thurgau-rail-geometry.mjs'
 import { checkThurgauCityRoads } from './check-thurgau-city-roads.mjs'
+import { loadThurgauBoats } from './thurgau-boat-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -56,7 +57,11 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
   assert.equal(sha(cacheBytes), summary.sourceHashes.timetableCache)
   const cache = JSON.parse(gunzipSync(cacheBytes))
   assert.deepEqual(cache.sourceHashes, { archive: summary.sourceHashes.archive, source: summary.sourceHashes.source })
-  const rail = await loadThurgauRail(cache), beforeBorder = await loadThurgauRail(cache, { reviewedBorderWays: false })
+  const rail = await loadThurgauRail(cache), boats = await loadThurgauBoats(cache)
+  assert.equal(boats.policySha256, summary.sourceHashes.boatPolicy); assert.equal(boats.policy.sourceSha256, summary.sourceHashes.boatSource)
+  assert.deepEqual(await json(join(audit, 'boat-source-segments.json')), boats.inventory)
+  assert.deepEqual(await json(join(output, 'boat-sources/policy.json')), boats.policy)
+  for (const file of ['sources.json', ...boats.source.files.map(f => f.file)]) assert.deepEqual(await readFile(join(output, 'boat-sources', file)), await readFile(join('data/thurgau-boat-sources', file)))
   assert.equal(rail.border.policySha256, summary.sourceHashes.borderRailPolicy)
   assert.equal(rail.border.policy.sourceSha256, summary.sourceHashes.borderRailSource)
   assert.deepEqual(await json(join(audit, 'border-rail-source-segments.json')), rail.border.inventory)
@@ -83,16 +88,19 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
     const report = await json(join(audit, `${day.serviceDate}.json`))
     assert.deepEqual(report.sourceHashes, summary.sourceHashes)
     assert.deepEqual(report.coverage, day.coverage)
-    const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, rail)
-    const baseline = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, beforeBorder)
+    const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, rail, boats)
+    const baseline = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, rail)
     const railRouteIds = new Set(routes.filter(r => r.mode === 'rail').map(r => r.id))
     assert(replay.trains.filter(t => railRouteIds.has(t.routeId)).every(t => t.admission === 'admitted'), 'A dated rail journey lost full geometry')
     const replayTrains = new Map(replay.trains.map(t => [t.id, t]))
     for (const train of baseline.trains.filter(t => t.admission === 'admitted')) {
       const after = replayTrains.get(train.id)
-      assert.equal(after.admission, 'admitted', 'Rail supplement removed a previously admitted journey')
-      assert.deepEqual(after.pathSegments.map(i => replay.paths[i]), train.pathSegments.map(i => baseline.paths[i]), 'Rail supplement changed complete existing paths')
+      assert.equal(after.admission, 'admitted', 'Boat supplement removed a previously admitted journey')
+      assert.deepEqual(after.pathSegments.map(i => replay.paths[i]), train.pathSegments.map(i => baseline.paths[i]), 'Boat supplement changed complete existing paths')
     }
+    assert.equal(report.boatCoverage.trips, replay.trains.filter(t => t.geometrySource === 'swisstopo-boat-inference' && t.admission === 'admitted').length)
+    assert.equal(report.boatCoverage.patterns, replay.patterns.filter(p => p.geometrySource === 'swisstopo-boat-inference').length)
+    assert.equal(report.boatCoverage.rejectedPatterns, replay.patterns.filter(p => p.boatSupplement?.status === 'rejected-incomplete-pattern').length)
     assert.equal(report.borderRailCoverage.trips, replay.trains.filter(t => t.geometrySource === 'fot-osm-border-rail-inference' && t.admission === 'admitted').length)
     assert.equal(report.borderRailCoverage.patterns, replay.patterns.filter(p => p.geometrySource === 'fot-osm-border-rail-inference').length)
     for (const p of replay.patterns.filter(p => p.geometrySource === 'fot-osm-border-rail-inference')) p.railSupplement.segments.forEach((s, i) => {
