@@ -112,7 +112,11 @@
     "data:valais:census": "node --max-old-space-size=8192 scripts/valais-timetable.mjs",
     "data:valais": "node --max-old-space-size=8192 scripts/build-valais-region.mjs",
     "data:valais:check": "node --max-old-space-size=8192 scripts/check-valais-region.mjs",
-    "data:valais:docs": "node scripts/document-valais-study.mjs"
+    "data:valais:docs": "node scripts/document-valais-study.mjs",
+    "data:ticino:census": "node --max-old-space-size=8192 scripts/inventory-ticino.mjs",
+    "data:ticino": "node --max-old-space-size=8192 scripts/build-ticino-region.mjs",
+    "data:ticino:check": "node scripts/check-ticino-region.mjs",
+    "data:ticino:docs": "node scripts/document-ticino-study.mjs"
   },
   "engines": {
     "node": ">=24.0.0"

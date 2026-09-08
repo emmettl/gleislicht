@@ -446,17 +446,17 @@ The entire pinned national GTFS census finds **380 routes across 67 agency ident
 
 ### TI — Ticino
 
-**Authority/publisher:** Sezione della mobilità / Ufficio dei trasporti pubblici; Centro di competenza geoinformazione. **Review areas:** Luganese; Bellinzonese; Locarnese; Mendrisiotto; Leventina/Blenio; Vallemaggia; Centovalli.
+**Authority/publisher:** Sezione della mobilità / Ufficio dei trasporti pubblici; Centro di competenza geoinformazione. **Review areas:** all eight districts, with explicit Luganese, Bellinzonese, Locarnese, Mendrisiotto, Leventina/Blenio, Vallemaggia and Centovalli controls.
 
-**Evidence:** Cantonal services page and WFS capabilities checked. No current local bus-line export established. The TI-11 public transport network catalogue entry is a discovery lead, not evidence that vectors were downloaded. The WFS access constraints refer to a formal request.
+**Implemented:** [Initial regional study](TICINO-STUDY.md), [complete route inventory](TICINO-ROUTE-INVENTORY.md) and [coverage audit](../data/ticino-audit/summary.json). All national routes and stop times scanned; 209 canton route candidates across 32 agency identities. Pinned national timetable, reviewed FOT rail topology and attributed OSM bus inference. Whole admitted journeys are available in the application on 4 and 6 September 2026; all exclusions remain audited.
 
-**Vintage:** No acquired bus-line dataset vintage established.
+**Official local evidence:** WFS (314 feature types), WMS and download catalogue acquired. No TI-12 bus-line vectors found. The legal catalogue identifies **TI-12** as the public transport network; **TI-11** is cantonal road axes, correcting the earlier survey. Related accessibility, topographic infrastructure and cable installation layers are not a dated bus-line export.
 
-**Reuse:** Access and dataset reuse conditions unresolved; a service-level no-fee statement does not override its request constraint.
+**Vintage/reuse:** No acquired TI-12 line vintage established. Official access-A data permit use, modification, redistribution and commercial use with “Fonte: Amministrazione cantonale - Canton Ticino”. WFS capabilities still request formal contact. The initial study separately preserves timetable, FOT, swisstopo and ODbL terms.
 
-**Next action:** Obtain the TI-11 distribution details and review TPL, FART, ARL, AMSA and valley buses; check TILO and Italian termini by actual route membership. Representative GTFS agencies: `11`, `47`, `49`, `736`, `801`, `817`, `858`, `862`, `955`, `3955`.
+**Next action:** Obtain TI-12 distribution and dated cross-border identities; resolve rail, bus, mountain and lake exclusions and additional seasons. [Investigation and hashed source evidence](../data/ticino-sources/local-geometry-review.json).
 
-**Checked references:** [ti-services](https://www4.ti.ch/dt/sg/sai/ugeo/temi/geoportale-ticino/geoportale/geoservizi), [ti-wfs](https://wfs.geo.ti.ch/service?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities).
+**Checked references:** [services](https://www4.ti.ch/dt/sg/sai/ugeo/temi/geoportale-ticino/geoportale/geoservizi), [WFS](https://wfs.geo.ti.ch/service?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities), [download catalogue](https://data.geo.ti.ch/), [legal catalogue](https://www3.ti.ch/CAN/RLeggi/public/index.php/raccolta-leggi/legge/num/565), [reuse terms](https://www4.ti.ch/dt/sg/sai/ugeo/temi/geoportale-ticino/geoportale/condizioni-utilizzo).
 
 <a id="vd"></a>
 

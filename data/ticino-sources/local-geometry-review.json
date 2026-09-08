@@ -1,0 +1,145 @@
+{
+  "checkedOn": "2026-09-08",
+  "publisher": "Amministrazione cantonale - Canton Ticino",
+  "catalogueCorrection": "Rete dei trasporti pubblici is TI-12, access A with download indicated; TI-11 denotes cantonal road axes. Corrects earlier national inventory.",
+  "status": "No TI-12 transport-line layer advertised in the acquired WFS, WMS or download catalogue; no local line geometry imported.",
+  "evidence": [
+    {
+      "file": "wfs-capabilities.xml",
+      "sha256": "c1a11eaf5a2476f5780c2ee2740a8a69d04f90f1cc9edc97f5375e54e5781b9f"
+    },
+    {
+      "file": "wms-capabilities.xml",
+      "sha256": "63b1a8eab6c7109ebc8d45deb95a192a90f0e5c8289a81e02f6f7d12c106476c"
+    },
+    {
+      "file": "download-catalogue.html",
+      "sha256": "1729ed83c56dd9c8599fb841203823e79608e0a42923d8c7102309e26abe4d07"
+    },
+    {
+      "file": "terms.html",
+      "sha256": "71922ae0c3fe2c70accd4166576a472d9722643ce862afbd39666e0630ed3dbc"
+    },
+    {
+      "file": "legal-catalogue.html",
+      "sha256": "46cd0d3b4711e52783884efac721c27a3d6aa7ca028fcd8ea5eaebc41276b72c"
+    }
+  ],
+  "urls": {
+    "wfs": "https://wfs.geo.ti.ch/service?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities",
+    "wms": "https://wms.geo.ti.ch/service?SERVICE=WMS&REQUEST=GetCapabilities",
+    "downloads": "https://data.geo.ti.ch/",
+    "terms": "https://www4.ti.ch/dt/sg/sai/ugeo/temi/geoportale-ticino/geoportale/condizioni-utilizzo",
+    "legalCatalogue": "https://www3.ti.ch/CAN/RLeggi/public/index.php/raccolta-leggi/legge/num/565"
+  },
+  "wfsFeatureTypes": 314,
+  "wfsAccessConstraint": "Richiesta formale a ccgeo@ti.ch",
+  "wfsFees": "no conditions apply",
+  "relatedLayers": [
+    {
+      "Name": "ac_010_1_v1_0_qualita_trasporti_pubblici_fermate",
+      "Title": "[AC-010.1] Qualità dei trasporti pubblici - Fermate",
+      "Abstract": "Fermate"
+    },
+    {
+      "Name": "ac_010_1_v1_0_qualita_trasporti_pubblici_qualita",
+      "Title": "[AC-010.1] Qualità dei trasporti pubblici - Qualità",
+      "Abstract": "Qualità"
+    },
+    {
+      "Name": "ac_051_1_v1_0_piani_mobilita_scolastica",
+      "Title": "[AC-051.1] Piani di mobilità scolastica",
+      "Abstract": "Piani di mobilità scolastica"
+    },
+    {
+      "Name": "ch_038_1_v2_1_swisstlm3d_rete_trasporti_pubblici_fermate",
+      "Title": "[CH-038.1] SwissTLM3D - Rete trasporti pubblici - Fermate",
+      "Abstract": "Rete trasporti pubblici - Fermate"
+    },
+    {
+      "Name": "ch_038_1_v2_1_swisstlm3d_rete_trasporti_pubblici_ferrovie",
+      "Title": "[CH-038.1] SwissTLM3D - Rete trasporti pubblici - Ferrovie",
+      "Abstract": "Rete trasporti pubblici - Ferrovie"
+    },
+    {
+      "Name": "ch_038_1_v2_1_swisstlm3d_rete_trasporti_pubblici_trasporti_fune",
+      "Title": "[CH-038.1] SwissTLM3D - Rete trasporti pubblici - Trasporti a fune",
+      "Abstract": "Rete trasporti pubblici - Trasporti a fune"
+    },
+    {
+      "Name": "ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_trasporti_pubblici_fermate",
+      "Title": "[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete trasporti pubblici - Fermate",
+      "Abstract": "Rete trasporti pubblici - Fermate"
+    },
+    {
+      "Name": "ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_trasporti_pubblici_ferrovie",
+      "Title": "[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete trasporti pubblici - Ferrovie",
+      "Abstract": "Rete trasporti pubblici - Ferrovie"
+    },
+    {
+      "Name": "ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_trasporti_pubblici_trasporti_fune",
+      "Title": "[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete trasporti pubblici - Trasporti a fune",
+      "Abstract": "Rete trasporti pubblici - Trasporti a fune"
+    },
+    {
+      "Name": "ti_005_1_v1_0_impianti_fune_metallica_linee",
+      "Title": "[TI-005.1] Impianti a fune metallica - Linee",
+      "Abstract": "Linee"
+    },
+    {
+      "Name": "ti_005_1_v1_0_impianti_fune_metallica_stazioni",
+      "Title": "[TI-005.1] Impianti a fune metallica - Stazioni",
+      "Abstract": "Stazioni"
+    },
+    {
+      "Name": "ti_011_1_v1_1_assi_strade_cantonali_assi_stradali",
+      "Title": "[TI-011.1] Assi delle strade cantonali - Assi stradali",
+      "Abstract": "Assi stradali"
+    },
+    {
+      "Name": "ti_011_1_v1_1_assi_strade_cantonali_punti_ettometrici",
+      "Title": "[TI-011.1] Assi delle strade cantonali - Punti ettometrici",
+      "Abstract": "Punti ettometrici"
+    },
+    {
+      "Name": "ti_011_1_v1_1_assi_strade_cantonali_punti_riferimento",
+      "Title": "[TI-011.1] Assi delle strade cantonali - Punti di riferimento",
+      "Abstract": "Punti di riferimento"
+    },
+    {
+      "Name": "ti_011_1_v1_1_assi_strade_cantonali_segmenti",
+      "Title": "[TI-011.1] Assi delle strade cantonali - Segmenti",
+      "Abstract": "Segmenti"
+    },
+    {
+      "Name": "ti_011_2_v2_1_assi_strade_cantonali_rete_oate_nodi",
+      "Title": "[TI-011.2] Assi delle strade cantonali - Rete OATE - Nodi di rete",
+      "Abstract": "Nodi di rete"
+    }
+  ],
+  "reuse": "Official terms permit use, modification, redistribution and commercial use of access-A cantonal geodata with source attribution. B/C layers have specific restrictions. WFS service access statement requests formal contact. Availability and a dataset-specific export are unresolved; this is not a claim that all cantonal data lack reuse rights.",
+  "requiredAttribution": "Fonte: Amministrazione cantonale - Canton Ticino",
+  "excludedSources": [
+    {
+      "id": "TI-12",
+      "reason": "Legal catalogue discovery record; distribution and vintage unestablished."
+    },
+    {
+      "id": "TI-11",
+      "reason": "Cantonal road axes, not public-transport line paths."
+    },
+    {
+      "id": "AC-010.1",
+      "reason": "Public transport stop/accessibility layers, not route geometry."
+    },
+    {
+      "id": "CH-038.1",
+      "reason": "SwissTLM topographic rail/cable infrastructure, not dated bus lines; existing hash-verified FOT used for rail."
+    },
+    {
+      "id": "TI-005.1",
+      "reason": "Cable installations inventory includes infrastructure beyond scheduled passenger services; no timetable identity crosswalk reviewed."
+    }
+  ],
+  "nextAction": "Request TI-12 distribution URL, current vintage, full cross-border extent and identifiers from CCgeo/UTP; compare TPL, FART, ARL, AMSA and valley operators with all 209 archived route candidates. No message sent."
+}
