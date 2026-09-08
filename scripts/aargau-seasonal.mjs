@@ -10,6 +10,7 @@ import { aargauRoadMatcher } from './aargau-road-geometry.mjs'
 import { loadAargauRail } from './aargau-rail-geometry.mjs'
 import { aargauGapMatcher } from './aargau-gap-geometry.mjs'
 import { loadAargauPlatforms } from './aargau-platform-geometry.mjs'
+import { loadSeasonalRoadBundle } from './aargau-seasonal-roads.mjs'
 
 export const AARGAU_SEASONAL_DATES = ['2026-01-16', '2026-01-18', '2026-04-03', '2026-04-05', '2026-07-17', '2026-07-19', '2026-08-01', '2026-09-04', '2026-09-06', '2026-10-23', '2026-10-25', '2026-12-11']
 export const AARGAU_BASELINE_DATES = ['2026-09-04', '2026-09-06']
@@ -37,6 +38,9 @@ export async function loadSeasonalContext(directory) {
   const collection = await readGzipJson('data/aargau-sources/lines.json.gz')
   const bundle = await readJson('data/aargau-road-cache.json')
   bundle.supplement = await readJson('data/aargau-rheinfelden-road-cache.json')
+  const previousRoads = aargauRoadMatcher(bundle)
+  const seasonal = await loadSeasonalRoadBundle()
+  bundle.supplement.supplement = seasonal.bundle
   const rails = await loadAargauRail('data/aargau-rail-sources', 'data/aargau-rail-policy.json')
   for (const date of AARGAU_BASELINE_DATES) {
     const hash = await hashFile(`data/aargau/${date}-timetable.json.gz`)
@@ -45,12 +49,33 @@ export async function loadSeasonalContext(directory) {
   }
   const baselinePatterns = new Set()
   for (const date of AARGAU_BASELINE_DATES) for (const p of (await readJson(`fixtures/aargau/${date}/audit.json`)).patterns) baselinePatterns.add(p.id)
-  const files = ['data/aargau/inventory.json', 'data/aargau-sources/sources.json', 'data/aargau-line-crosswalk.json', 'data/aargau-road-cache.json', 'data/aargau-rheinfelden-road-cache.json', 'data/aargau-rail-policy.json', 'data/aargau-rail-sources/source.json', 'data/aargau-platform-policy.json']
+  const files = ['data/aargau/inventory.json', 'data/aargau-sources/sources.json', 'data/aargau-line-crosswalk.json', 'data/aargau-road-cache.json', 'data/aargau-rheinfelden-road-cache.json', 'data/aargau-rail-policy.json', 'data/aargau-rail-sources/source.json', 'data/aargau-platform-policy.json', 'data/aargau-seasonal-roads/source.json']
   const sourceHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, await hashFile(file)])))
   for (const date of AARGAU_BASELINE_DATES) for (const name of ['audit.json', 'aargau-region-day-manifest.json']) {
     const file = `fixtures/aargau/${date}/${name}`; sourceHashes[file] = await hashFile(file)
   }
-  return { inventory, verification, baseline, baselinePatterns, catalogue, collection, crosswalk, index: lineIndex(collection, crosswalk.mappings), roads: aargauRoadMatcher(bundle), rails, sourceHashes }
+  return { inventory, verification, baseline, baselinePatterns, catalogue, collection, crosswalk, index: lineIndex(collection, crosswalk.mappings), roads: aargauRoadMatcher(bundle), previousRoads, rails, sourceHashes }
+}
+
+export function assertPriorGeometryPreserved(before, after) {
+  assert.equal(before.patterns.length, after.patterns.length)
+  const old = new Map(before.patterns.map(p => [p.id, p]))
+  let preserved = 0, added = 0
+  for (const p of after.patterns) {
+    const prior = old.get(p.id); assert(prior)
+    assert.deepEqual(p.stopIds, prior.stopIds)
+    assert.equal(p.occurrences, prior.occurrences)
+    for (const [i, s] of p.segments.entries()) {
+      const previous = prior.segments[i]
+      if (previous.pathIndex !== null) {
+        assert.notEqual(s.pathIndex, null)
+        assert.deepEqual(after.snapshot.paths[s.pathIndex], before.snapshot.paths[previous.pathIndex], 'Seasonal fallback replaced a prior path')
+        assert.equal(s.geometrySource, previous.geometrySource)
+        preserved += p.occurrences
+      } else if (s.pathIndex !== null) added += p.occurrences
+    }
+  }
+  return { allPriorPathsPreserved: true, preservedOccurrences: preserved, addedOccurrences: added }
 }
 
 export function summarizeSeasonalGeometry(result, date, baselinePatterns) {
@@ -88,7 +113,9 @@ export async function auditSeasonalDate(context, directory, date) {
   }
   const platforms = baselineDate ? await loadAargauPlatforms(date) : undefined
   const gaps = aargauGapMatcher(context.collection, context.crosswalk.gapMappings, date)
+  const before = applyAargauGeometry(raw, context.index, context.inventory.cantonStopIds, context.previousRoads, context.rails, gaps, platforms)
   const result = applyAargauGeometry(raw, context.index, context.inventory.cantonStopIds, context.roads, context.rails, gaps, platforms)
+  const roadExtensionRegression = assertPriorGeometryPreserved(before, result)
   const { manifest, chunks } = chunkNetworkSnapshot(result.snapshot, 7200, 'audit-only')
   const checks = validateAargauFeed(result.snapshot, raw, manifest, chunks)
   if (baselineDate) {
@@ -99,7 +126,7 @@ export async function auditSeasonalDate(context, directory, date) {
     for (const p of result.patterns) for (const s of p.segments) assert(!s.platformFixId && !s.gapMappingId, 'Date-scoped exception leaked into another season')
   }
   const day = summarizeSeasonalGeometry(result, date, context.baselinePatterns)
-  return { ...day, timetableFixtureSha256: await hashFile(rawFile), sourceVerification: verified,
+  return { ...day, timetableFixtureSha256: await hashFile(rawFile), sourceVerification: verified, roadExtensionRegression,
     validation: { ...checks, independentArchiveVerification: true, dateScopedExceptionsPreserved: true, septemberGeometryUnchanged: baselineDate,
       elapsedCivilTimeValidated: date === '2026-10-25' ? false : null },
     scope: baselineDate ? 'Exact replay of reviewed September fixture.' : 'Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.',

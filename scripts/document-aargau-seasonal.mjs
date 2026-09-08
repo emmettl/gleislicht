@@ -6,6 +6,12 @@ import { readJson, readGzipJson } from './aargau-seasonal.mjs'
 const root = 'data/aargau-seasonal'
 const summary = await readJson(`${root}/summary.json`)
 const alignment = await readJson(`${root}/alignment-review.json`)
+const correctionPolicy = await readJson('data/aargau-alignment-policy.json')
+const correctionRegression = await readJson(`${root}/alignment-correction-regression.json`)
+assert(correctionRegression.passed)
+assert.equal(correctionRegression.policySha256, await hashFile('data/aargau-alignment-policy.json'))
+assert.equal(correctionRegression.candidateManifestSha256, await hashFile('fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json'))
+const addedRoadOccurrences = summary.days.reduce((n, d) => n + d.roadExtensionRegression.addedOccurrences, 0)
 const platformPolicy = await readJson('data/aargau-platform-policy.json')
 const crosswalk = await readJson('data/aargau-line-crosswalk.json')
 const railPolicy = await readJson('data/aargau-rail-policy.json')
@@ -42,21 +48,24 @@ for (const day of alignment.days) {
       maximumVertexSeparationMetres: 0, occurrencesAcrossTwoFixtures: 0, contexts: [] }
     prior.maximumVertexSeparationMetres = Math.max(prior.maximumVertexSeparationMetres, c.maximumVertexSeparationMetres)
     prior.occurrencesAcrossTwoFixtures += c.occurrences
-    prior.contexts.push({ date: day.date, patternId: c.patternId, occurrences: c.occurrences })
+    const correction = correctionPolicy.rules.find(r => r.date === day.date && r.patternId === c.patternId && r.stops[r.segmentIndex][4] === c.fromId && r.stops[r.segmentIndex + 1][4] === c.toId)
+    prior.contexts.push({ date: day.date, patternId: c.patternId, occurrences: c.occurrences, correctionId: correction?.id ?? null })
     flags.set(key, prior)
   }
 }
-const release = { schemaVersion: 1, summarySha256: await hashFile(`${root}/summary.json`), alignmentReviewSha256: await hashFile(`${root}/alignment-review.json`),
+const pendingFlags = [...flags.values()].filter(f => f.contexts.some(c => !c.correctionId))
+const release = { schemaVersion: 1, correctionPolicySha256: await hashFile('data/aargau-alignment-policy.json'), correctionRegressionSha256: await hashFile(`${root}/alignment-correction-regression.json`),
+  reviewCandidate: 'fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json', addedRoadOccurrences, pendingAlignmentFlags: pendingFlags.length, summarySha256: await hashFile(`${root}/summary.json`), alignmentReviewSha256: await hashFile(`${root}/alignment-review.json`),
   publicationReady: false, productionFeedsChanged: false,
   checks: { sampledSourceJourneys: true, septemberReplay: true, dateScopedExceptions: true, everySeasonalPatternHasGeometry: unresolved.length === 0,
-    busAlignmentDisagreementsResolved: flags.size === 0, physicalRunningDirectionsCertified: false, dstRepeatedHourDisambiguated: false },
+    busAlignmentDisagreementsResolved: pendingFlags.length === 0, physicalRunningDirectionsCertified: false, dstRepeatedHourDisambiguated: false },
   uniqueNewDirectedPatterns: newPatterns.size,
   missingOccurrenceCategories: Object.fromEntries([...categories].sort((a, b) => b[1] - a[1])),
   gapRoutes: [...gapRoutes.values()].map(r => ({ ...r, dates: [...r.dates], categories: [...r.categories] })).sort((a, b) => b.missingOccurrences - a.missingOccurrences || a.routeId.localeCompare(b.routeId)),
   unresolved, alignmentFlags: [...flags.values()].sort((a, b) => b.maximumVertexSeparationMetres - a.maximumVertexSeparationMetres),
   remainingWork: [
     'Review AGIS/OSM bus disagreements against dated operator itineraries and legal direction evidence; the 30 m diagnostic alone cannot choose the correct source.',
-    'Prepare and review exact missing seasonal bus patterns and rail route identities; retain all source calls and existing distance limits.',
+    'Review the remaining new rail route identities and operating-point gaps; all 16,364 missing seasonal bus-cache occurrences are now filled without replacing prior paths.',
     'Review Brugg, Bern and Waldshut evidence separately before extending their September-only scope.',
     'Find active witness dates for the 45 archived routes absent from all twelve samples; do not label them discontinued.',
     'Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.',
@@ -69,7 +78,7 @@ const doc = `# Aargau seasonal compatibility and release audit
 
 Checked **8 September 2026**, following the [Aargau canton inventory and source adapter](AARGAU-STUDY.md). The twelve-date sample independently verifies **${fmt(summary.days.reduce((n, d) => n + d.trips, 0))} complete journeys and ${fmt(summary.days.reduce((n, d) => n + d.sourceVerification.calls, 0))} calls** against pinned GTFS 20260902. It finds **${fmt(newPatterns.size)} directed patterns absent from the two September fixtures**, **${summary.newlyActiveRoutes.length} newly active route records**, and **${summary.stillInactiveRoutes.length} archived canton-calling routes still inactive on the sampled dates**.
 
-**Application release checks have not passed.** September geometry and journeys replay exactly, but other sampled dates contain unresolved geometry and the bus comparison exposes source disagreements requiring itinerary review. No production feed, input hash, distance guard, date-scoped exception or application selection changed. These results measure compatibility with pinned geometry; they do not establish that an alignment applied historically or will apply on a future service date.
+**Application release checks have not passed.** The additional bus cache fills **${fmt(addedRoadOccurrences)} previously unresolved seasonal occurrences**, preserving every earlier path and complete journey. The archived September feeds replay exactly. A separate [Friday review candidate](../fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json) corrects one evidenced line 136 branch error; ${pendingFlags.length} distinct bus pairs still need alignment review. No original feed, publication input hash, distance guard, platform/border date exception or application selection changed. These results measure compatibility with pinned geometry; they do not establish that an alignment applied historically or will apply on a future service date.
 
 ## Dates and complete-journey coverage
 
@@ -77,7 +86,7 @@ The sample covers winter weekdays/Sundays, Good Friday/Easter Sunday, summer wee
 
 ${table(['Date', 'Journeys', 'Compatible segments', 'All segments', 'Coverage', 'New directed patterns', 'Unresolved occurrences'], summary.days.map(d => [d.date, fmt(d.trips), fmt(d.matched), fmt(d.total), (d.coverage * 100).toFixed(3) + '%', fmt(d.newPatterns), fmt(d.missingOccurrences)]))}
 
-Counts are adjacent calls over all complete retained journeys. New-pattern counts per day can overlap; the distinct union is ${fmt(newPatterns.size)}. Compatibility uses one AGIS part/orientation per full pattern, the exact existing OSM route/platform/coordinate cache, and the existing FOT route/operating-point policy. Additional dates are diagnostic inputs only: the publication builder's September fixture hashes are unchanged. Brugg, Bern and Waldshut exceptions remain unavailable on other dates. A failure caused by that limited evidence is not proof that the physical line is absent.
+Counts are adjacent calls over all complete retained journeys. New-pattern counts per day can overlap; the distinct union is ${fmt(newPatterns.size)}. Compatibility uses one AGIS part/orientation per full pattern, the preserved OSM route/platform/coordinate caches plus a new twelve-date cache for missing bus patterns, and the existing FOT route/operating-point policy. Additional dates are diagnostic inputs only: the publication builder's September fixture hashes are unchanged. Brugg, Bern and Waldshut exceptions remain unavailable on other dates. A failure caused by that limited evidence is not proof that the physical line is absent.
 
 **25 October is a wall-clock source-order test only.** The repeated local hour at the DST fallback is not disambiguated; that date is not delivered as an elapsed-time day feed. A September 2026 archive replayed on earlier dates is the publisher's archived schedule, not evidence of actual historical operation.
 
@@ -101,11 +110,23 @@ Every AGIS bus segment in the September audit was checked for an accepted compar
 
 ${table(['Date', 'Within 30 m: contexts / occurrences', 'Over 30 m: contexts / occurrences', 'No comparator: contexts / occurrences'], alignment.days.map(d => [d.date, ...['within-30m-vertex-distance', 'alignment-disagreement-over-30m', 'no-accepted-full-pattern-comparator'].map(k => fmt(d.counters[k].contexts) + ' / ' + fmt(d.counters[k].occurrences))]))}
 
-There are **${release.alignmentFlags.length} distinct directed route/platform pairs** flagged across both dates; individual patterns and dates remain separate in the detailed reports. The largest separations are:
+There were **${release.alignmentFlags.length} distinct directed route/platform pairs** flagged across both archived dates; a reviewed correction is available for one and **${pendingFlags.length} remain pending**; individual patterns and dates remain separate in the detailed reports. The largest separations are:
 
-${table(['Agency / line', 'Directed stops', 'Maximum separation'], release.alignmentFlags.slice(0, 10).map(r => [r.agencyId + ' / ' + r.line, r.from + ' → ' + r.to, fmt(Math.round(r.maximumVertexSeparationMetres)) + ' m']))}
+${table(['Agency / line', 'Directed stops', 'Maximum separation'], pendingFlags.sort((a, b) => b.maximumVertexSeparationMetres - a.maximumVertexSeparationMetres).slice(0, 10).map(r => [r.agencyId + ' / ' + r.line, r.from + ' → ' + r.to, fmt(Math.round(r.maximumVertexSeparationMetres)) + ' m']))}
 
 The [comparison summary](../data/aargau-seasonal/alignment-review.json) binds both compressed per-context files to SHA-256 hashes. The ranked release review links each flag to its date and full directed pattern ID, so branch/short-working differences can be examined without replacing accepted geometry.
+
+## Reviewed line 136 correction
+
+The [correction policy](../data/aargau-alignment-policy.json) selects one exact Friday full pattern and its Gipf-Oberfrick, Rösslibrücke → Wölflinswil, Unterdorf segment. AGIS feature 43 follows the unserved Wittnau branch for **6,926.9 m**; pinned GTFS allows three minutes, implying **138.5 km/h**. The official timetable field 50.136 (3 December 2025, page 2, course 36051) and operator network map show the separate direct working. The timetable PDF is an earlier version: it has 11:48–11:51 where September GTFS has 11:50–11:53. Both allocate three minutes; no GTFS call time is changed.
+
+The replacement uses the already accepted full-pattern OSM bypass, **3,586.8 m** and an implied **71.7 km/h**. It remains an infrastructure inference. The policy pins exact agency, route, direction, full platform IDs/coordinates, date, segment index and both old/new path hashes. It cannot apply to another date or a changed source path. The [candidate regression](../data/aargau-seasonal/alignment-correction-regression.json) verifies all 11,193 original journeys, 173,105 unchanged segment occurrences and exactly one corrected occurrence. The archived Friday fixture and seasonal September replay are preserved; the corrected candidate is separate pending the remaining release reviews.
+
+The two largest line 344 disagreements were also examined against field 50.344 (7 November 2025, page 1) and the Freiamt map. Those sources distinguish early direct, Benzenschwil spur and school workings, but do not by themselves settle the exact road used on every sparse-stop variant. They are retained as unresolved leads, not automatically replaced.
+
+## Seasonal road-cache evidence
+
+The [new source bundle](../data/aargau-seasonal-roads/source.json) contains 460 complete routing patterns across 14 agencies, with all original matcher outputs and warnings compressed for offline replay. It uses the same pinned OSM extract, pfaedle binary and configuration as the earlier cache; no threshold changes were made. The three PostAuto rejected hops and 76 cross-border matcher rejections remain null in this cache; preserved earlier caches or date-scoped evidence handle already resolved contexts. All ${fmt(addedRoadOccurrences)} newly covered occurrences were prior gaps, including all 3,801 AVA EV1 summer replacement-bus occurrences missing from the old cache. This supplies geometric compatibility, not proof of the actual 2026 replacement-bus diversion.
 
 ## Sources, reproduction and release
 
@@ -121,13 +142,27 @@ node --max-old-space-size=8192 scripts/inventory-aargau.mjs \\
   --output /tmp/aargau-seasonal-input
 python3 scripts/verify-aargau-source.py /path/GTFS_FP2026_20260902.zip /tmp/aargau-seasonal-input
 
+# Prepare the twelve-date bus union and run the pinned matcher for each agency.
+node scripts/prepare-aargau-roads.mjs --input data/aargau-seasonal/input --sources data/aargau-sources --crosswalk data/aargau-line-crosswalk.json --output /tmp/aargau-seasonal-road-feeds
+for agency in 723 7231 7244 793 801 811 812 839 840 849 873 886 899 sbg034; do
+  node scripts/match-postbus-roads.mjs --pfaedle /path/pfaedle --config /path/pfaedle.cfg --osm /path/pinned-postbus-roads.osm.pbf --feed /tmp/aargau-seasonal-road-feeds/$agency --output /tmp/aargau-seasonal-road-matched/$agency
+done
+node scripts/aargau-seasonal-roads.mjs /tmp/aargau-seasonal-road-feeds /tmp/aargau-seasonal-road-matched
+
+# Rebuild the correction policy from the archived evidence and the review candidate.
+node scripts/prepare-aargau-alignment-policy.mjs
+node scripts/build-aargau-study.mjs --sources data/aargau-sources --inventory data/aargau --crosswalk data/aargau-line-crosswalk.json --road-cache data/aargau-road-cache.json --road-supplement data/aargau-rheinfelden-road-cache.json --rail-sources data/aargau-rail-sources --rail-policy data/aargau-rail-policy.json --platform-fixes --alignment-policy data/aargau-alignment-policy.json --date 2026-09-04 --output fixtures/aargau-reviewed/2026-09-04
+node scripts/check-aargau-reviewed.mjs --write
+
 # Rebuild or replay the shipped audit; no network access is required.
 node scripts/audit-aargau-seasonal.mjs
 node scripts/check-aargau-seasonal.mjs
+node scripts/aargau-seasonal-roads.mjs --check
+node scripts/check-aargau-reviewed.mjs
 node scripts/review-aargau-alignments.mjs --check
 node scripts/document-aargau-seasonal.mjs --check
 node scripts/check-aargau-study.mjs
-npx vitest run scripts/aargau-seasonal.test.mjs scripts/aargau-platform-geometry.test.mjs
+npx vitest run scripts/aargau-seasonal.test.mjs scripts/aargau-platform-geometry.test.mjs scripts/aargau-alignment-corrections.test.mjs
 \`\`\`
 
 Next work, recorded in the release review:

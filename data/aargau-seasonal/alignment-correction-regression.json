@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-04",
+  "originalManifestSha256": "54f90c5ba7a1a0b6e7df150e2e5f7ea286928ce629d9cdf88aa43e252001b26d",
+  "candidateManifestSha256": "2f2c826413589b1789fa04747c5db8315993bb40720b4642121dc10fe5e30529",
+  "policySha256": "1e1a9a24056c45b6592eccd256bbfba0c60e37a18f8eacdd77f35450525e089b",
+  "originalAuditSha256": "daa9d08e47da73400166ff9159d3fced8edf13998956ea9682ed39ac2cfa7727",
+  "candidateAuditSha256": "a4cd49ab05aed3f9b3e4fa64749b6f9ad905ea9c6e5c6ac32605b2a7d317d9f6",
+  "journeys": 11193,
+  "preservedOccurrences": 173105,
+  "correctedOccurrences": 1,
+  "corrections": [
+    {
+      "id": "136-wittnau-bypass",
+      "trainId": "2026-09-04:.ojp-96-156-1.1.TA.11.j26",
+      "patternId": "1aa7430503a1ed2ceeb6",
+      "segmentIndex": 4,
+      "fromId": "ch:1:sloid:72411:0:633035",
+      "toId": "ch:1:sloid:72407:0:820731",
+      "originalPathSha256": "0267f2b2461b37bd3b2d3473693f6e94afded09864c8791700b12f570c913c9d",
+      "replacementPathSha256": "41ef022e7cd62c982957b6be812a25d2bdcd2a7b0e014e3a71a1dd7f09c8c5f7",
+      "originalMetres": 6926.856640615816,
+      "replacementMetres": 3586.7530339639006
+    }
+  ],
+  "completeSourceJourneysPreserved": true,
+  "allOtherGeometryPreserved": true,
+  "passed": true,
+  "publicationReady": false
+}

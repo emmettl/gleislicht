@@ -11,12 +11,13 @@ import { loadAargauPlatforms } from './aargau-platform-geometry.mjs'
 import { aargauGapMatcher } from './aargau-gap-geometry.mjs'
 import { loadAargauRail } from './aargau-rail-geometry.mjs'
 import { aargauRoadMatcher } from './aargau-road-geometry.mjs'
+import { loadAargauAlignmentCorrections } from './aargau-alignment-corrections.mjs'
 
 const digest = value => createHash('sha256').update(value).digest('hex')
 const gzipBytes = value => gzipSync(JSON.stringify(value)).length
 const category = (name, mode) => mode !== 'rail' ? mode : /^(EC|ICE|TGV|RJ|NJ|EN)/.test(name) ? 'international' : /^IC/.test(name) ? 'intercity' : /^IR/.test(name) ? 'interregio' : /^RE/.test(name) ? 'regional-express' : /^S[N]?\d/.test(name) ? 's-bahn' : 'regional'
 
-export function applyAargauGeometry(raw, index, cantonStopIds, roads, rails, gaps, platforms) {
+export function applyAargauGeometry(raw, index, cantonStopIds, roads, rails, gaps, platforms, alignments) {
   const inside = new Set(cantonStopIds), stops = raw.stops, stopIndices = new Map(stops.map((s, i) => [s[4], i]))
   const patterns = new Map(), paths = [], pathIds = new Map(), pairs = new Map(), groups = new Map(), routeStats = new Map(), edges = new Map()
   const trains = raw.trains.map(train => {
@@ -35,6 +36,7 @@ export function applyAargauGeometry(raw, index, cantonStopIds, roads, rails, gap
         else if (!segment.path && railSegments?.[i]) segment = { ...segment, ...railSegments[i] }
         if (!segment.path && gapSegments?.[i]?.path) segment = { ...gapSegments[i], agisRejection: segment.reason, ...(segment.railFailure ? { railRejection: segment.railFailure } : {}) }
         if (!segment.path && platformSegments?.[i]?.path) segment = { ...platformSegments[i], agisRejection: segment.reason, priorPlatformRejection: segment.roadFailure ?? segment.railFailure }
+        if (alignments) segment = alignments.overrideSegment(train, train.calls.map(c => stops[stopIndices.get(c[0])]), i, segment)
         const { path, ...assessment } = segment
         let pathIndex = null
         if (path) {
@@ -127,7 +129,7 @@ export function validateAargauFeed(snapshot, raw, manifest, chunks) {
   return { completeSourceStopChains: true, exactPathEndpoints: true, chunkHashesAndReconstruction: true }
 }
 
-export async function buildAargauStudy({ sources, inventoryDirectory, date, output, stem = 'aargau-region', crosswalkPath, roadCachePath, railSources, railPolicyPath, roadSupplementPath, platformFixes = false }) {
+export async function buildAargauStudy({ sources, inventoryDirectory, date, output, stem = 'aargau-region', crosswalkPath, roadCachePath, railSources, railPolicyPath, roadSupplementPath, platformFixes = false, alignmentPolicyPath }) {
   const catalogue = JSON.parse(await readFile(join(sources, 'sources.json'), 'utf8'))
   for (const [name, record] of Object.entries(catalogue.files)) assert.equal(await hashFile(join(sources, name)), record.sha256)
   const inventory = JSON.parse(await readFile(join(inventoryDirectory, 'inventory.json'), 'utf8'))
@@ -154,7 +156,13 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
   const platforms = platformFixes ? await loadAargauPlatforms(date) : undefined
   if(platforms)assert(roads && rails, 'Platform fixes require the preserved road and rail fallback sources')
   if(platforms)assert.equal(platforms.policy.inputTimetableHashes[date],await hashFile(join(inventoryDirectory,`${date}-timetable.json.gz`)))
-  const geometry = applyAargauGeometry(raw, index, inventory.cantonStopIds, roads, rails, gaps, platforms)
+  const alignments = alignmentPolicyPath ? await loadAargauAlignmentCorrections(alignmentPolicyPath, date) : undefined
+  if (alignments) {
+    assert(roads, 'Alignment corrections require road provenance and attribution')
+    assert.equal(await hashFile(roadCachePath), alignments.policy.files['data/aargau-road-cache.json'], 'Alignment correction road cache differs from its evidence')
+    assert.equal(alignments.policy.inputTimetableHashes[date], await hashFile(join(inventoryDirectory, `${date}-timetable.json.gz`)), 'Unreviewed alignment-correction timetable')
+  }
+  const geometry = applyAargauGeometry(raw, index, inventory.cantonStopIds, roads, rails, gaps, platforms, alignments)
   geometry.snapshot.metadata.geometry = { dataDate: catalogue.lines.dataDate, retrievedAt: catalogue.lines.retrievedAt, sourceUrl: catalogue.lines.url, attribution: catalogue.lines.attribution, limits: AARGAU_LIMITS, sourceCatalogueSha256: inventory.metadata.sourceCatalogueSha256, ...(crosswalkPath ? { crosswalkSha256: await hashFile(crosswalkPath) } : {}) }
   if (roads) {
     geometry.snapshot.metadata.model = 'scheduled interpolation on AGIS normal lines and explicitly inferred OSM bus fallback'
@@ -171,6 +179,10 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
   if(platforms) {
     geometry.snapshot.metadata.geometry.platformFixes = { policySha256: await hashFile('data/aargau-platform-policy.json'), files: platforms.policy.files, evidence: platforms.policy.evidence, relation: platforms.relationEvidence, method: platforms.policy.method }
     geometry.snapshot.metadata.note += ' Exact reviewed platform patterns may use the complete outbound OSM 368 relation or a 120 m projection onto the FOT western Bern station segment. Audit platformFixId identifies each admission.'
+  }
+  if (alignments) {
+    geometry.snapshot.metadata.geometry.alignmentCorrections = { policySha256: await hashFile(alignmentPolicyPath), ...alignments.policy }
+    geometry.snapshot.metadata.note += ' Exact reviewed pattern/segment corrections may replace an AGIS branch traversal with a pinned OSM inference; the audit records the superseded geometry and dated evidence.'
   }
   const { manifest, chunks } = chunkNetworkSnapshot(geometry.snapshot, 7200, `${stem}-day-chunks`)
   const morning = extractNetworkWindow(geometry.snapshot, 24300, 31500, 27900)
@@ -213,6 +225,7 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
   if (roads) report.coverageDefinitions.direction += ' This describes AGIS portions. OSM fallback uses agency-scoped complete ordered route/platform/coordinate patterns and monotone matched GTFS shape distances. A fully matched pattern can combine AGIS and OSM portions; segment geometrySource distinguishes them.'
   if (rails) report.coverageDefinitions.direction += ' FOT portions use exact operating-point numbers and directed source topology. Searches cannot traverse another known scheduled operating point before its call; attachments and detours are capped. Segment evidence retains ordered source node/edge identities. This does not identify the actual running track or resolve infrastructure alternatives between calls.'
   if(platforms)report.coverageDefinitions.direction += ' Brugg platform fixes require a fully matched ordered OSM relation with exact node connectivity and tagged one-way checks; Bern platform 49 extends the exact station approach along one reviewed FOT segment, with a 120 m projection limit. Earlier successful paths and source calls are preserved.'
+  if (alignments) report.metadata.alignmentCorrections = geometry.snapshot.metadata.geometry.alignmentCorrections
   await mkdir(output, { recursive: true })
   for (const { descriptor, payload } of chunks) { await mkdir(dirname(join(output, descriptor.path)), { recursive: true }); await writeFile(join(output, descriptor.path), JSON.stringify(payload)) }
   await writeFile(join(output, `${stem}-day-manifest.json`), JSON.stringify(manifest))
@@ -224,5 +237,5 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const arg = name => process.argv[process.argv.indexOf(`--${name}`) + 1]
   for (const name of ['sources', 'inventory', 'date', 'output']) assert(process.argv.includes(`--${name}`), `Missing --${name}`)
-  await buildAargauStudy({ sources: arg('sources'), inventoryDirectory: arg('inventory'), date: arg('date'), output: arg('output'), crosswalkPath: process.argv.includes('--crosswalk') ? arg('crosswalk') : undefined, roadCachePath: process.argv.includes('--road-cache') ? arg('road-cache') : undefined, railSources: process.argv.includes('--rail-sources') ? arg('rail-sources') : undefined, railPolicyPath: process.argv.includes('--rail-policy') ? arg('rail-policy') : undefined, roadSupplementPath: process.argv.includes('--road-supplement') ? arg('road-supplement') : undefined, platformFixes: process.argv.includes('--platform-fixes') })
+  await buildAargauStudy({ sources: arg('sources'), inventoryDirectory: arg('inventory'), date: arg('date'), output: arg('output'), crosswalkPath: process.argv.includes('--crosswalk') ? arg('crosswalk') : undefined, roadCachePath: process.argv.includes('--road-cache') ? arg('road-cache') : undefined, railSources: process.argv.includes('--rail-sources') ? arg('rail-sources') : undefined, railPolicyPath: process.argv.includes('--rail-policy') ? arg('rail-policy') : undefined, roadSupplementPath: process.argv.includes('--road-supplement') ? arg('road-supplement') : undefined, platformFixes: process.argv.includes('--platform-fixes'), alignmentPolicyPath: process.argv.includes('--alignment-policy') ? arg('alignment-policy') : undefined })
 }

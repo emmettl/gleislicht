@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "scope": "Additional exact complete bus patterns for the twelve-date compatibility audit only. Fill prior gaps after the preserved AGIS, base road, Rheinfelden road and rail decisions. Existing September publication hashes and date-scoped exceptions are unchanged.",
+  "attribution": "© OpenStreetMap contributors; ODbL-1.0",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
+  "sourceDates": {
+    "switzerland": "2026-09-02",
+    "borderRetrieved": "2026-09-08"
+  },
+  "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+  "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+  "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+  "inputInventorySha256": "0abc19535b2935917269cba1f83d1be536d0422aaf89bf2cbff87761d1cc122b",
+  "files": {
+    "cache.json.gz": "079bf37164e1bf88698a9946f9e8bd9de4982a565fe6ad1168dfaef3c2b49ebb",
+    "matcher-evidence.json.gz": "3ebde2b9f9a20cc67efb1dfc14177bf18e4efc1ca29cad61cd8e08c92be32997"
+  },
+  "agencies": [
+    {
+      "agencyId": "723",
+      "patterns": 25,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 83.94398579441294
+    },
+    {
+      "agencyId": "793",
+      "patterns": 12,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 54.77233712383727
+    },
+    {
+      "agencyId": "801",
+      "patterns": 245,
+      "rejectedPatternSegments": 3,
+      "maximumSnapMetres": 119.58448372531691
+    },
+    {
+      "agencyId": "811",
+      "patterns": 8,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 49.87626916533506
+    },
+    {
+      "agencyId": "812",
+      "patterns": 2,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 34.91313647351871
+    },
+    {
+      "agencyId": "839",
+      "patterns": 11,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 94.7061170042678
+    },
+    {
+      "agencyId": "840",
+      "patterns": 42,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 105.51705573187797
+    },
+    {
+      "agencyId": "849",
+      "patterns": 2,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 16.445648295289587
+    },
+    {
+      "agencyId": "873",
+      "patterns": 30,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 113.7790674135009
+    },
+    {
+      "agencyId": "886",
+      "patterns": 25,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 88.40635942460968
+    },
+    {
+      "agencyId": "899",
+      "patterns": 5,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 93.12770364055372
+    },
+    {
+      "agencyId": "7231",
+      "patterns": 34,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 98.16766655122798
+    },
+    {
+      "agencyId": "7244",
+      "patterns": 13,
+      "rejectedPatternSegments": 0,
+      "maximumSnapMetres": 91.95893346058415
+    },
+    {
+      "agencyId": "sbg034",
+      "patterns": 6,
+      "rejectedPatternSegments": 76,
+      "maximumSnapMetres": 99.62048276652268
+    }
+  ]
+}

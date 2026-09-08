@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 import { applyAargauGeometry } from './build-aargau-study.mjs'
-import { summarizeSeasonalGeometry, seasonalRouteInventory } from './aargau-seasonal.mjs'
+import { summarizeSeasonalGeometry, seasonalRouteInventory, assertPriorGeometryPreserved } from './aargau-seasonal.mjs'
 import { symmetricVertexSeparation } from './review-aargau-alignments.mjs'
 
 test('seasonal coverage retains repeated loop occurrences and incomplete journeys', () => {
@@ -36,4 +36,15 @@ test('alignment separation finds route deviations but cannot prove direction', (
   const straight = [[0, 0], [100, 0]]
   expect(symmetricVertexSeparation(straight, [...straight].reverse())).toBe(0)
   expect(symmetricVertexSeparation(straight, [[0, 0], [50, 80], [100, 0]])).toBe(80)
+})
+
+test('seasonal road extensions may fill a gap but cannot replace a prior path', () => {
+  const before = { snapshot: { paths: [[[8, 47], [8.01, 47]]] }, patterns: [{ id: 'p', stopIds: ['a', 'b', 'c'], occurrences: 3,
+    segments: [{ pathIndex: 0, geometrySource: 'agis' }, { pathIndex: null }] }] }
+  const after = structuredClone(before)
+  after.snapshot.paths.push([[8.01, 47], [8.02, 47]])
+  after.patterns[0].segments[1] = { pathIndex: 1, geometrySource: 'osm' }
+  expect(assertPriorGeometryPreserved(before, after)).toEqual({ allPriorPathsPreserved: true, preservedOccurrences: 3, addedOccurrences: 3 })
+  after.snapshot.paths[0][1][0] += .001
+  expect(() => assertPriorGeometryPreserved(before, after)).toThrow('Seasonal fallback replaced a prior path')
 })
