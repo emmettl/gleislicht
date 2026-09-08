@@ -6,3 +6,8 @@ data/fribourg-sources/*.html -text -whitespace
 data/fribourg-sources/*.xml -text -whitespace
 data/fribourg-region/*.html -text -whitespace
 data/fribourg-region/*.xml -text -whitespace
+
+# Valais research receipts hash exact downloaded bytes.
+data/valais-sources/research/*.pdf binary
+data/valais-sources/research/*.html -text -whitespace
+data/valais-sources/research/*.json -text -whitespace

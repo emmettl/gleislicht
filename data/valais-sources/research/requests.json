@@ -1,0 +1,122 @@
+[
+  {
+    "file": "geoservices.html",
+    "url": "https://geo.vs.ch/geoservices",
+    "retrievedAt": "2026-09-08T18:42:21.454639+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "473715d36ccf203ea66731c2168e09c3c882be17d038c782e165a7a07a5d9101",
+    "bytes": 88963,
+    "error": null
+  },
+  {
+    "file": "inventory.pdf",
+    "url": "https://www.vs.ch/documents/17311/17591/Inventaire%2Bdes%2Bg%C3%A9odonn%C3%A9es%2B-%2BInventar%2Bder%2BGeodaten/2fd849d0-ab9f-4bfc-965a-3920ebd18a08",
+    "retrievedAt": "2026-09-08T18:42:22.225609+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "cdcf1c38a58bed08d4cd778af6ee06fcc7741034b8379e4e4902da5386e3c862",
+    "bytes": 1819286,
+    "error": null
+  },
+  {
+    "file": "internet-geodata.pdf",
+    "url": "https://geo.vs.ch/documents/17311/40640865/Listing_Geodata_Internet.pdf/207b4e10-6b0b-7643-d820-28e1690d8e89?t=1778672921609&v=2.0",
+    "retrievedAt": "2026-09-08T18:42:22.491819+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "2521476ab936c8190da72a965522ef0530a71f1d02cceb5a6579a60f1514e035",
+    "bytes": 195675,
+    "error": null
+  },
+  {
+    "file": "route-service.json",
+    "url": "https://sit.vs.ch/arcgis/rest/services/Route/MapServer?f=pjson",
+    "retrievedAt": "2026-09-08T18:42:22.697236+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "88db231d7a5dad5ee115c9fcd805eccd9d81a5170b247765a135693cca484675",
+    "bytes": 10144,
+    "error": null
+  },
+  {
+    "file": "planning-mobility.json",
+    "url": "https://services1.arcgis.com/rMlsWo8szOzlrpCq/arcgis/rest/services/PDc_mobilite/FeatureServer?f=pjson",
+    "retrievedAt": "2026-09-08T18:42:23.343299+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "9aabad406de84484e9d7aeb16ae802c24fdf80a3881aaa7b3914d490f1f9834e",
+    "bytes": 12446,
+    "error": null
+  },
+  {
+    "file": "service-areas.json",
+    "url": "https://services1.arcgis.com/rMlsWo8szOzlrpCq/arcgis/rest/services/zones_dessertes/FeatureServer?f=pjson",
+    "retrievedAt": "2026-09-08T18:42:24.739286+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "5284d4c3819d5438ca4d55ce1f271192c349f019d3a44035ac2fa66b97026f0f",
+    "bytes": 5544,
+    "error": null
+  },
+  {
+    "file": "rail-catalogue.json",
+    "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz",
+    "retrievedAt": "2026-09-08T18:42:24.892754+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+    "bytes": 2466,
+    "error": null
+  },
+  {
+    "file": "timetable-terms.html",
+    "url": "https://opentransportdata.swiss/en/terms-of-use/",
+    "retrievedAt": "2026-09-08T18:42:25.340840+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "e9da8c52590cf09a779ee2dc76f590702e4fd897729542018bb7f46df8d872a5",
+    "bytes": 119214,
+    "error": null
+  },
+  {
+    "file": "osm-terms.html",
+    "url": "https://www.openstreetmap.org/copyright",
+    "retrievedAt": "2026-09-08T18:42:25.626134+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "f5f3927d907bef715d1590a4ee4a377c55a224a1de52b66169ff696bb9fe252e",
+    "bytes": 21344,
+    "error": null
+  },
+  {
+    "file": "arcgis-page-1.json",
+    "url": "https://www.arcgis.com/sharing/rest/search?f=json&q=owner%3ACC_GEO_Publisher&num=100&start=1",
+    "retrievedAt": "2026-09-08T18:42:26.341139+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "110d601941f8619353b422088fe80031413373d794b577acd275e372c749a762",
+    "bytes": 317697,
+    "error": null
+  },
+  {
+    "file": "arcgis-page-2.json",
+    "url": "https://www.arcgis.com/sharing/rest/search?f=json&q=owner%3ACC_GEO_Publisher&num=100&start=101",
+    "retrievedAt": "2026-09-08T18:42:26.806649+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "30f55e753b5d28a978d9f5e78ccaa21453ed8b4c9651547663eb3ed46856534d",
+    "bytes": 212079,
+    "error": null
+  },
+  {
+    "file": "arcgis-page-3.json",
+    "url": "https://www.arcgis.com/sharing/rest/search?f=json&q=owner%3ACC_GEO_Publisher&num=100&start=201",
+    "retrievedAt": "2026-09-08T18:42:27.194159+00:00",
+    "httpStatus": "200",
+    "exitCode": 0,
+    "sha256": "d18bc5591cdec2344fdff794d22eafd3f69062cbac4471fa85c6c73dbf7f6806",
+    "bytes": 65098,
+    "error": null
+  }
+]

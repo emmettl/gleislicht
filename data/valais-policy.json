@@ -1,0 +1,542 @@
+{
+  "schemaVersion": 1,
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "feedSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "timetableSha256": "6399dfa5d8d8a00d8284956d6028a04dca3e56e1beab9933463d6ce94198cb7b",
+  "boundarySha256": "06de19d8bf1c6c64d4c1735630beec80ccfe559fccd072df7e077f3367e99909",
+  "road": {
+    "cache": "data/valais-road-cache.json",
+    "sha256": "6e3386832211b5dbf5dbffcebcf16a274a5233df9d5df2818e5935659617ceca",
+    "limits": {
+      "snapMetres": 120,
+      "detourRatio": 6,
+      "detourFloorMetres": 1500,
+      "simplifyMetres": 5
+    },
+    "model": "Every dated bus pattern; exact route, ordered platform IDs and coordinates. No pair or reverse cache borrowing. OSM inference with pfaedle bus access and direction rules; not operator-certified."
+  },
+  "rail": {
+    "sourceDirectory": "data/luzern-rail-sources",
+    "sourceMetadataSha256": "48c4701a87ead6e0bfe1682298ec1cb39f5048352eb073d578a9647e76007279",
+    "limits": {
+      "simplificationMetres": 5,
+      "stationAttachmentMetres": 350,
+      "topologyAttachmentMetres": 120,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 1200
+    },
+    "groups": [
+      {
+        "id": "standard",
+        "agencyIds": [
+          "11",
+          "33",
+          "74"
+        ],
+        "gauge": "mm1435",
+        "operators": [
+          "SBB CFF FFS",
+          "BLS",
+          "BLSN",
+          "TMR",
+          "SNCF",
+          "DB",
+          "DBZ",
+          "\u00d6BB-I",
+          "SOB",
+          "THURBO"
+        ],
+        "review": "SBB/BLS national connections and RegionAlps Rh\u00f4ne/Entremont routes; standard-gauge FOT infrastructure, exact operating-point IDs."
+      },
+      {
+        "id": "mgb",
+        "agencyIds": [
+          "48",
+          "93"
+        ],
+        "gauge": "mm1000",
+        "operators": [
+          "MGB",
+          "MGI",
+          "RhB FR VR"
+        ],
+        "review": "MGB FO and BVZ identities kept separate; RhB permits complete Glacier Express calls. DFB heritage route excluded from regular MGB graph."
+      },
+      {
+        "id": "tmr-mc",
+        "agencyIds": [
+          "61",
+          "87_LEX"
+        ],
+        "gauge": "mm1000",
+        "operators": [
+          "TMR",
+          "SNCF"
+        ],
+        "review": "Mont Blanc Express and SNCF P152; metre gauge, foreign ends fail if absent from acquired infrastructure."
+      },
+      {
+        "id": "tpc",
+        "agencyIds": [
+          "23"
+        ],
+        "gauge": "mm1000",
+        "operators": [
+          "TPC"
+        ],
+        "review": "R72 Aigle\u2013Ollon\u2013Monthey\u2013Champ\u00e9ry; operator infrastructure network and exact called nodes."
+      },
+      {
+        "id": "gornergrat",
+        "agencyIds": [
+          "121"
+        ],
+        "gauge": "mm1000",
+        "operators": [
+          "GGB"
+        ],
+        "review": "Separate rack railway; no MGB infrastructure borrowing."
+      },
+      {
+        "id": "jungfrau",
+        "agencyIds": [
+          "124"
+        ],
+        "gauge": "mm1000",
+        "operators": [
+          "JB"
+        ],
+        "review": "Jungfraujoch Valais boundary membership retained; JB-only rack infrastructure."
+      }
+    ],
+    "routes": [
+      {
+        "routeId": "91-11-O-j26-1",
+        "agencyId": "33",
+        "line": "RE11",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-1-M-j26-1",
+        "agencyId": "11",
+        "line": "R1",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-1-N-j26-1",
+        "agencyId": "33",
+        "line": "RE1",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-20-Y-j26-1",
+        "agencyId": "33",
+        "line": "EXT",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-23-Y-j26-1",
+        "agencyId": "33",
+        "line": "RE",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-29-Y-j26-1",
+        "agencyId": "11",
+        "line": "IC",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-2J-Y-j26-1",
+        "agencyId": "11",
+        "line": "IC",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-2O-Y-j26-1",
+        "agencyId": "11",
+        "line": "EC",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-2Q-Y-j26-1",
+        "agencyId": "11",
+        "line": "IR",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-2-R-j26-1",
+        "agencyId": "11",
+        "line": "R2",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-2-U-j26-1",
+        "agencyId": "33",
+        "line": "RE2",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-2W-Y-j26-1",
+        "agencyId": "11",
+        "line": "EC",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-30-Y-j26-1",
+        "agencyId": "11",
+        "line": "IR",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-33-C-j26-1",
+        "agencyId": "11",
+        "line": "RE33",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-3G-Y-j26-1",
+        "agencyId": "74",
+        "line": "R",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-3W-Y-j26-1",
+        "agencyId": "11",
+        "line": "IC",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-3-Y-j26-1",
+        "agencyId": "11",
+        "line": "ICE",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-40-B-j26-1",
+        "agencyId": "93",
+        "line": "R40",
+        "gauge": "mm1000",
+        "group": "mgb"
+      },
+      {
+        "routeId": "91-41-G-j26-1",
+        "agencyId": "93",
+        "line": "R41",
+        "gauge": "mm1000",
+        "group": "mgb"
+      },
+      {
+        "routeId": "91-41-Y-j26-1",
+        "agencyId": "11",
+        "line": "SN",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-42-D-j26-1",
+        "agencyId": "93",
+        "line": "R42",
+        "gauge": "mm1000",
+        "group": "mgb"
+      },
+      {
+        "routeId": "91-43-j26-1",
+        "agencyId": "48",
+        "line": "R43",
+        "gauge": "mm1000",
+        "group": "mgb"
+      },
+      {
+        "routeId": "91-4N-Y-j26-1",
+        "agencyId": "11",
+        "line": "RE",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-4R-Y-j26-1",
+        "agencyId": "11",
+        "line": "IC",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-4T-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-4-Y-j26-1",
+        "agencyId": "74",
+        "line": "R",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-6D-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-6-H-j26-1",
+        "agencyId": "11",
+        "line": "IC6",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-71-Y-j26-1",
+        "agencyId": "11",
+        "line": "RE",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-72-j26-1",
+        "agencyId": "23",
+        "line": "R72",
+        "gauge": "mm1000",
+        "group": "tpc"
+      },
+      {
+        "routeId": "91-7-Y-j26-1",
+        "agencyId": "11",
+        "line": "EC",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-81-B-j26-1",
+        "agencyId": "74",
+        "line": "R81",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-81-D-j26-1",
+        "agencyId": "74",
+        "line": "R81",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-82-A-j26-1",
+        "agencyId": "74",
+        "line": "R82",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-85-j26-1",
+        "agencyId": "61",
+        "line": "R85",
+        "gauge": "mm1000",
+        "group": "tmr-mc"
+      },
+      {
+        "routeId": "91-8B-Y-j26-1",
+        "agencyId": "33",
+        "line": "RE",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-8D-Y-j26-1",
+        "agencyId": "33",
+        "line": "EXT",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-8-E-j26-1",
+        "agencyId": "11",
+        "line": "IC8",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-8Q-Y-j26-1",
+        "agencyId": "74",
+        "line": "R",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-90-B-j26-1",
+        "agencyId": "74",
+        "line": "R90",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-90-j26-1",
+        "agencyId": "11",
+        "line": "IR90",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-91-A-j26-1",
+        "agencyId": "11",
+        "line": "R91",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-91-j26-1",
+        "agencyId": "74",
+        "line": "R91",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-95-j26-1",
+        "agencyId": "11",
+        "line": "IR95",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-99-Y-j26-1",
+        "agencyId": "74",
+        "line": "R",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-9O-Y-j26-1",
+        "agencyId": "33",
+        "line": "EXT",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-9-P-j26-1",
+        "agencyId": "11",
+        "line": "IC9",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-9P-Y-j26-1",
+        "agencyId": "74",
+        "line": "EXT",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-9Q-Y-j26-1",
+        "agencyId": "74",
+        "line": "EXT",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-9R-Y-j26-1",
+        "agencyId": "74",
+        "line": "EXT",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-B-Y-j26-1",
+        "agencyId": "11",
+        "line": "IR",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-C-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-EXT-j26-1",
+        "agencyId": "48",
+        "line": "EXT",
+        "gauge": "mm1000",
+        "group": "mgb"
+      },
+      {
+        "routeId": "91-GEX-A-j26-1",
+        "agencyId": "48",
+        "line": "GEX",
+        "gauge": "mm1000",
+        "group": "mgb"
+      },
+      {
+        "routeId": "91-N9-j26-1",
+        "agencyId": "11",
+        "line": "N9",
+        "gauge": "mm1435",
+        "group": "standard"
+      },
+      {
+        "routeId": "91-P15-2-j26-1",
+        "agencyId": "87_LEX",
+        "line": "P152",
+        "gauge": "mm1000",
+        "group": "tmr-mc"
+      },
+      {
+        "routeId": "93-48-j26-1",
+        "agencyId": "121",
+        "line": "48",
+        "gauge": "mm1000",
+        "group": "gornergrat"
+      },
+      {
+        "routeId": "93-65-j26-1",
+        "agencyId": "124",
+        "line": "65",
+        "gauge": "mm1000",
+        "group": "jungfrau"
+      }
+    ],
+    "rejectedSegments": [
+      {
+        "patternId": "02183867bcd3644e1108470e",
+        "segmentIndex": 5,
+        "geometrySha256": "41d8441a8b321165199e31b6118bcb82c45b0d40decba796ad80dd251f4b5c5d",
+        "pathMetres": 40947.257240140265,
+        "reason": "unverified-olten-aarau-detour",
+        "review": "Source graph chooses 40.947 km via Aarburg\u2013Zofingen Nord\u2013Suhr\u2013Lenzburg West\u2013Rupperswil for an 11-minute Olten\u2013Aarau call interval. This passes the broad 4.5x bound but lacks credible IC alignment or diversion evidence. Reject this entire full journey; no border clipping or infrastructure bridging. Candidate source segment chain retained in the pattern audit."
+      }
+    ]
+  },
+  "admission": "Whole journeys only: every original call and permission retained. Any missing segment or prior-arrangement call excludes the entire journey.",
+  "scopeLimits": [
+    "Initial Friday/Sunday September study; no year-round geometry claim.",
+    "All modes and annual routes remain in the census. Cableways, funiculars, water, tram, DFB and VerticAlp tourist rail require separate reviewed geometry.",
+    "Infrastructure shortest paths and OSM road inference are not observed vehicles, running-track selection, operator direction certification or temporary diversion confirmation.",
+    "Full cross-border calls retained; no clipping to canton or geometry extent.",
+    "Fixed-stop GTFS census does not establish completeness of services absent from the archive or GTFS-Flex areas."
+  ]
+}

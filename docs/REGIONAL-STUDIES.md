@@ -78,3 +78,7 @@ The canonical [Gleislicht expansion roadmap](https://github.com/emmettl/motionst
 The preferred sequence is to reveal and classify existing mountain services, implement frequency-based service semantics where needed, build the lake-to-summit Rigi composition, then add Lausanne/Vaud or Basel/TNW following a source and geometry audit. Bern, Ticino and Graubünden remain planned regional additions; Jungfrau, Gornergrat, Pilatus, Rochers-de-Naye, Albula/Bernina and further lake networks form the Alpine and water programme.
 
 ZVV, Genève and Zürich city now have separate full-day multimodal artifacts with matched rail geometry, progressively loaded in two-hour chunks. Their direct selectors retain the light morning views; the study browser selects the full day. See [EXPLORATION.md](EXPLORATION.md). A visual study browser and links preserving the study, available date, time and supported selection are implemented. Reproducible weekday/weekend and seasonal choices remain later work; the browser currently identifies each available fixture date.
+
+## Valais / Wallis initial study
+
+[Whole-canton census and source/geometry audit](VALAIS-STUDY.md): 385 route records, 78 agency identities, all 13 districts. The application’s VS selection offers 4 and 6 September 2026, admitting 5,102 / 3,445 complete rail and bus journeys. The [full inventory](VALAIS-ROUTE-INVENTORY.md) retains all excluded/inactive candidates; this is partial geometry coverage. `npm run data:valais:check` reproduces candidate admission and validates both dates offline.

@@ -1,0 +1,391 @@
+{
+  "schemaVersion": 1,
+  "timetable": {
+    "publisher": "SBB / Open data platform mobility Switzerland",
+    "attribution": "opentransportdata.swiss",
+    "feedVersion": "20260902",
+    "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "sourceUrl": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+    "termsUrl": "https://opentransportdata.swiss/en/terms-of-use/",
+    "archivalStudy": true
+  },
+  "boundary": {
+    "publisher": "swisstopo",
+    "attribution": "© swisstopo",
+    "edition": "2026-01",
+    "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+    "snapshotSha256": "9b60bddf762141641f9fc28b3f3cfd362473dd6e1c9265a84360f78f143480ae",
+    "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+    "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+    "transformation": "Original LV95 polygon vertices and holes; no simplification. GTFS membership uses approximate swisstopo WGS84 to LV95 conversion with 10 m boundary sensitivity audit."
+  },
+  "rail": {
+    "schemaVersion": 1,
+    "publisher": "Federal Office of Transport - FOT",
+    "attribution": "© Federal Office of Transport (FOT)",
+    "catalogueLicense": "proprietary",
+    "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+    "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+    "catalogueDate": "2021-07-06T00:00:00Z",
+    "assetUpdated": "2025-01-18T04:23:13.735821Z",
+    "checkedOn": "2026-09-08T18:25:47.784Z",
+    "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+    "nodes": 3210,
+    "segments": 3424,
+    "files": {
+      "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+      "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+      "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02"
+    },
+    "interpretation": "Undirected infrastructure corridors; source Stand/validity dates retained per segment. Catalogue dates do not establish 2026 service routing or running-track validity.",
+    "transformation": "Existing national XTF parser, 5 m LV95 simplification and approximate swisstopo LV95-to-WGS84 transformation; source coordinates rounded to six decimals.",
+    "localSourceDirectory": "data/luzern-rail-sources",
+    "limits": {
+      "simplificationMetres": 5,
+      "stationAttachmentMetres": 350,
+      "topologyAttachmentMetres": 120,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 1200
+    },
+    "review": [
+      {
+        "id": "standard",
+        "agencyIds": [
+          "11",
+          "33",
+          "74"
+        ],
+        "gauge": "mm1435",
+        "operators": [
+          "SBB CFF FFS",
+          "BLS",
+          "BLSN",
+          "TMR",
+          "SNCF",
+          "DB",
+          "DBZ",
+          "ÖBB-I",
+          "SOB",
+          "THURBO"
+        ],
+        "review": "SBB/BLS national connections and RegionAlps Rhône/Entremont routes; standard-gauge FOT infrastructure, exact operating-point IDs."
+      },
+      {
+        "id": "mgb",
+        "agencyIds": [
+          "48",
+          "93"
+        ],
+        "gauge": "mm1000",
+        "operators": [
+          "MGB",
+          "MGI",
+          "RhB FR VR"
+        ],
+        "review": "MGB FO and BVZ identities kept separate; RhB permits complete Glacier Express calls. DFB heritage route excluded from regular MGB graph."
+      },
+      {
+        "id": "tmr-mc",
+        "agencyIds": [
+          "61",
+          "87_LEX"
+        ],
+        "gauge": "mm1000",
+        "operators": [
+          "TMR",
+          "SNCF"
+        ],
+        "review": "Mont Blanc Express and SNCF P152; metre gauge, foreign ends fail if absent from acquired infrastructure."
+      },
+      {
+        "id": "tpc",
+        "agencyIds": [
+          "23"
+        ],
+        "gauge": "mm1000",
+        "operators": [
+          "TPC"
+        ],
+        "review": "R72 Aigle–Ollon–Monthey–Champéry; operator infrastructure network and exact called nodes."
+      },
+      {
+        "id": "gornergrat",
+        "agencyIds": [
+          "121"
+        ],
+        "gauge": "mm1000",
+        "operators": [
+          "GGB"
+        ],
+        "review": "Separate rack railway; no MGB infrastructure borrowing."
+      },
+      {
+        "id": "jungfrau",
+        "agencyIds": [
+          "124"
+        ],
+        "gauge": "mm1000",
+        "operators": [
+          "JB"
+        ],
+        "review": "Jungfraujoch Valais boundary membership retained; JB-only rack infrastructure."
+      }
+    ]
+  },
+  "road": {
+    "dates": [
+      "2026-09-04",
+      "2026-09-06"
+    ],
+    "serviceDate": "2026-09-04",
+    "feedVersion": "20260902",
+    "sourceUrl": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+    "timetableSha256": "6399dfa5d8d8a00d8284956d6028a04dca3e56e1beab9933463d6ce94198cb7b",
+    "sourceHashes": {
+      "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+      "source": "06de19d8bf1c6c64d4c1735630beec80ccfe559fccd072df7e077f3367e99909"
+    },
+    "routeAgencies": {
+      "92-102-B-j26-1": "818",
+      "92-104-A-j26-1": "818",
+      "92-105-D-j26-1": "818",
+      "92-107-F-j26-1": "818",
+      "92-108-C-j26-1": "818",
+      "92-109-E-j26-1": "818",
+      "92-110-B-j26-1": "818",
+      "92-114-j26-1": "818",
+      "92-11-K-j26-1": "765",
+      "92-12-I-j26-1": "765",
+      "92-13-E-j26-1": "765",
+      "92-142-A-j26-1": "851",
+      "92-14-C-j26-1": "765",
+      "92-15-D-j26-1": "765",
+      "92-1-P-j26-1": "714",
+      "92-201-B-j26-1": "713",
+      "92-203-B-j26-1": "713",
+      "92-210-A-j26-1": "835",
+      "92-211-A-j26-1": "835",
+      "92-224-6-j26-1": "7067",
+      "92-241-A-j26-1": "835",
+      "92-242-j26-1": "835",
+      "92-243-j26-1": "835",
+      "92-251-A-j26-1": "835",
+      "92-252-A-j26-1": "835",
+      "92-253-A-j26-1": "835",
+      "92-261-j26-1": "835",
+      "92-262-A-j26-1": "835",
+      "92-264-B-j26-1": "835",
+      "92-271-B-j26-1": "835",
+      "92-272-A-j26-1": "835",
+      "92-273-j26-1": "835",
+      "92-2-M-j26-1": "714",
+      "92-371-j26-1": "853",
+      "92-372-j26-1": "853",
+      "92-3-L-j26-1": "714",
+      "92-421-A-j26-1": "142",
+      "92-422-A-j26-1": "142",
+      "92-431-j26-1": "142",
+      "92-432-A-j26-1": "142",
+      "92-433-A-j26-1": "142",
+      "92-435-j26-1": "142",
+      "92-436-j26-1": "142",
+      "92-461-B-j26-1": "855",
+      "92-471-j26-1": "855",
+      "92-472-A-j26-1": "855",
+      "92-473-A-j26-1": "855",
+      "92-474-A-j26-1": "855",
+      "92-475-j26-1": "855",
+      "92-476-j26-1": "855",
+      "92-481-j26-1": "855",
+      "92-483-C-j26-1": "814",
+      "92-491-A-j26-1": "814",
+      "92-492-A-j26-1": "814",
+      "92-493-B-j26-1": "814",
+      "92-494-j26-1": "814",
+      "92-4-K-j26-1": "714",
+      "92-517-A-j26-1": "280",
+      "92-571-j26-1": "708",
+      "92-572-j26-1": "708",
+      "92-61-E-j26-1": "818",
+      "92-63-C-j26-1": "818",
+      "92-641-j26-1": "3002",
+      "92-81-A-j26-1": "818",
+      "92-A09-S-j26-1": "7249",
+      "92-A0C-1-j26-1": "212",
+      "96-352-j26-1": "801",
+      "96-353-j26-1": "801",
+      "96-354-j26-1": "801",
+      "96-356-j26-1": "801",
+      "96-364-j26-1": "801",
+      "96-365-j26-1": "801",
+      "96-366-j26-1": "801",
+      "96-367-j26-1": "801",
+      "96-368-j26-1": "801",
+      "96-369-j26-1": "801",
+      "96-370-A-j26-1": "801",
+      "96-371-A-j26-1": "801",
+      "96-373-A-j26-1": "801",
+      "96-374-j26-1": "801",
+      "96-375-j26-1": "801",
+      "96-376-j26-1": "801",
+      "96-377-j26-1": "801",
+      "96-378-j26-1": "801",
+      "96-379-j26-1": "801",
+      "96-382-j26-1": "801",
+      "96-384-j26-1": "801",
+      "96-386-j26-1": "801",
+      "96-387-j26-1": "801",
+      "96-389-j26-1": "801",
+      "96-390-j26-1": "801",
+      "96-391-j26-1": "801",
+      "96-392-j26-1": "801",
+      "96-394-j26-1": "801",
+      "96-395-j26-1": "801",
+      "96-396-j26-1": "801",
+      "96-399-j26-1": "801",
+      "96-400-j26-1": "801",
+      "96-401-j26-1": "801",
+      "96-404-j26-1": "801",
+      "96-405-j26-1": "801",
+      "96-406-j26-1": "801",
+      "96-407-j26-1": "801",
+      "96-408-j26-1": "801",
+      "96-410-j26-1": "801",
+      "96-411-j26-1": "801",
+      "96-412-j26-1": "801",
+      "96-413-j26-1": "801",
+      "96-424-j26-1": "801",
+      "96-601-j26-1": "801",
+      "96-602-j26-1": "801",
+      "96-611-j26-1": "801",
+      "96-620-j26-1": "801",
+      "96-622-j26-1": "801",
+      "96-623-j26-1": "801",
+      "96-624-j26-1": "801",
+      "96-625-j26-1": "801",
+      "96-627-j26-1": "801",
+      "96-641-j26-1": "801",
+      "96-642-j26-1": "801",
+      "96-643-j26-1": "801",
+      "96-650-j26-1": "801",
+      "96-651-j26-1": "801",
+      "96-653-j26-1": "801",
+      "96-654-j26-1": "801",
+      "96-655-j26-1": "801",
+      "96-656-j26-1": "801",
+      "96-659-j26-1": "801",
+      "96-660-j26-1": "801",
+      "96-661-j26-1": "801",
+      "96-662-j26-1": "801",
+      "96-663-j26-1": "801",
+      "96-666-j26-1": "801",
+      "96-667-j26-1": "801",
+      "96-668-j26-1": "801",
+      "96-672-j26-1": "801",
+      "96-678-j26-1": "801",
+      "96-679-j26-1": "801",
+      "96-680-j26-1": "801",
+      "96-681-j26-1": "801",
+      "96-682-j26-1": "801",
+      "96-684-j26-1": "801",
+      "96-930-j26-1": "801",
+      "96-933-j26-1": "801",
+      "96-934-j26-1": "801",
+      "92-225-j26-1": "835",
+      "92-230-A-j26-1": "835",
+      "92-A00-C-j26-1": "7249",
+      "92-A07-5-j26-1": "7231",
+      "92-A09-G-j26-1": "7231",
+      "92-A0B-F-j26-1": "7231",
+      "92-A0B-H-j26-1": "7231",
+      "92-EV2-M-j26-1": "7231",
+      "92-EV6-U-j26-1": "7231",
+      "92-P-Y-j26-1": "818",
+      "96-372-A-j26-1": "801",
+      "96-385-j26-1": "801",
+      "96-388-j26-1": "801",
+      "96-403-j26-1": "801",
+      "96-422-A-j26-1": "801",
+      "96-603-j26-1": "801"
+    },
+    "scope": "All full Valais bus patterns on both civil dates, including night and replacement services; exact route, agency, stop IDs and coordinates retained. Routing-only nonnegative times.",
+    "source": {
+      "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+      "swissDate": "2026-09-02",
+      "borderRetrieved": "2026-09-08",
+      "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+      "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+      "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a"
+    },
+    "attribution": "© OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "licenseUrl": "https://www.openstreetmap.org/copyright",
+    "model": "Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified",
+    "localPathDatabase": "road-paths.json"
+  },
+  "localSourceInvestigation": {
+    "checkedOn": "2026-09-08",
+    "requestReceipts": "data/valais-sources/research/requests.json",
+    "catalogueItems": 247,
+    "findings": [
+      {
+        "source": "Official geodata inventory, row 376",
+        "file": "inventory.pdf",
+        "date": "2018-07-05",
+        "inventoryGenerated": "2026-08-26",
+        "decision": "Transport en commun / Öffentlicher Verkehr, owner SDM; distribution columns blank in downloaded PDF. Metadata lead only, no line vectors acquired."
+      },
+      {
+        "source": "Official internet geodata access list",
+        "file": "internet-geodata.pdf",
+        "date": "2026-05-13",
+        "decision": "Lists ArcGIS Online and Route MapServer; current document replaces older WMS list."
+      },
+      {
+        "source": "CC_GEO_Publisher ArcGIS catalogue",
+        "files": [
+          "arcgis-page-1.json",
+          "arcgis-page-2.json",
+          "arcgis-page-3.json"
+        ],
+        "decision": "All 247 public items paged and unique IDs checked; no attributed operational public-transport line export identified. Catalogue absence is not proof no dataset exists."
+      },
+      {
+        "source": "Route MapServer",
+        "file": "route-service.json",
+        "layers": 12,
+        "decision": "Road axes, road classification, tonnage, traffic sections, projects, cycle routes, districts and locality names. Not passenger-line geometry."
+      },
+      {
+        "source": "PDc_mobilite",
+        "file": "planning-mobility.json",
+        "decision": "Nine planning layers including existing/planned cable infrastructure and planned rail. Strategic planning features are not validated 2026 vehicle paths; excluded."
+      },
+      {
+        "source": "zones_dessertes",
+        "file": "service-areas.json",
+        "decision": "Electricity network service areas (levels 5 and 7), not demand-responsive transport; excluded."
+      },
+      {
+        "source": "FOT current STAC item",
+        "file": "rail-catalogue.json",
+        "decision": "Current asset checksum agrees with retained rail source; 2021 catalogue vintage and 2025 asset update do not prove 2026 alignment validity."
+      }
+    ],
+    "reuse": {
+      "localVectors": "No operational Valais vectors acquired or reused. No dataset-specific operational line licence established; metadata accessibility does not grant vector reuse.",
+      "timetable": "SBB / opentransportdata.swiss terms with attribution; no blanket CC claim.",
+      "rail": "FOT terms_by attribution as linked by retained STAC collection; proprietary catalogue label is preserved.",
+      "roads": "© OpenStreetMap contributors; ODbL 1.0. Separate complete derived road database distributed with the study.",
+      "boundary": "© swisstopo; free-geodata terms."
+    },
+    "nextSteps": [
+      "Ask SDM/SGI for current dataset 376 vector export, line/operator IDs, geometry vintage, direction semantics and explicit reuse terms. No message or order submitted.",
+      "Review local operator schematic network maps as identity evidence, not coordinate geometry; seek TPC/TMR/RegionAlps/MGB and municipal bus alignments.",
+      "Validate winter, holiday and summer patterns plus cableways/funiculars/water separately before enlarging the initial scope."
+    ]
+  },
+  "processedBy": "Gleislicht",
+  "modifications": "Full-canton trip selection, full-pattern road matching, gauge/operator-restricted rail graph routing, bounded endpoint connectors, source geometry simplification, WGS84 conversion, time interpolation and two-hour chunking.",
+  "refreshPolicy": "Pinned September 2026 archival study. A new timetable, boundary, geometry or routing policy requires a full rebuild and coverage audit."
+}

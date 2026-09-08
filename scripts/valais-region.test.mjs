@@ -1,0 +1,15 @@
+import { describe, it, expect } from 'vitest'
+import { applyValaisGeometry, patternKey } from './valais-geometry.mjs'
+import { compactBernFeed, validateBernSnapshot } from './build-bern-region.mjs'
+import { readStudyLink, STUDY_IDS } from '../src/studies/explore.ts'
+import { EXPLORE_COPY } from '../src/studies/explore-copy.ts'
+const stops=[[7,46,'A','','A'],[7.01,46,'B','','B'],[7.02,46,'Outside','','C']]
+const trip=(id,indices,extra={})=>({id,routeId:'r',agencyId:'a',route:'1',directionId:'0',stops:indices.map((s,i)=>[s,i*60,i*60]),sourceCallCount:indices.length,callPermissions:indices.map(()=>[0,0]),reservationRequired:false,...extra})
+const matcher={match:(t,day)=>t.stops.slice(1).map(([b],i)=>({path:[day.stops[t.stops[i][0]].slice(0,2),day.stops[b].slice(0,2)],geometrySource:'test'}))}
+describe('Valais complete-pattern admission',()=>{
+ it('rejects a whole cross-boundary journey when only its final pair fails',()=>{const day={stops,trains:[trip('x',[0,1,2])]},r=applyValaisGeometry(day,{match:()=>[{path:[[7,46],[7.01,46]]},{reason:'missing-foreign-geometry'}]});expect(r.trains[0].admission).toBe('missing-foreign-geometry');expect(r.trains[0].stops).toEqual(day.trains[0].stops);expect(r.patterns[0].admittedTrips).toBe(0);expect(r.pairs.reduce((n,p)=>n+p.occurrences,0)).toBe(2)})
+ it('keeps repeated calls and distinct directions and permissions',()=>{const a=trip('loop',[0,1,0,2]),b=trip('reverse',[2,0,1,0],{directionId:'1'}),c=trip('reservation',[0,1,0,2],{reservationRequired:true,callPermissions:[[2,0],[0,0],[0,0],[0,0]]});const r=applyValaisGeometry({stops,trains:[a,b,c]},matcher);expect(new Set([a,b,c].map(t=>patternKey(t,stops))).size).toBe(3);expect(r.patterns).toHaveLength(3);expect(r.trains.map(t=>t.admission)).toEqual(['admitted','admitted','prior-arrangement-call']);expect(r.trains[0].pathSegments).toHaveLength(3)})
+ it('preserves pattern-dependent paths instead of borrowing a successful pair',()=>{const a=trip('a',[0,1]),b=trip('b',[0,1,2]),r=applyValaisGeometry({stops,trains:[a,b]}, {match:t=>t.id==='a'?[{path:[[7,46],[7.01,46]]}]:[{reason:'context-rejected'},{path:[[7.01,46],[7.02,46]]}]});expect(r.trains.map(t=>t.admission)).toEqual(['admitted','context-rejected']);expect(r.pairs[0]).toMatchObject({occurrences:2,matchedOccurrences:1,allContextsMatched:false})})
+ it('preserves complete calls and geometry through export',()=>{const raw={metadata:{},stops,trains:[trip('x',[0,1,0,2])]},r=applyValaisGeometry(raw,matcher),feed=compactBernFeed(raw,r);expect(()=>validateBernSnapshot(feed)).not.toThrow();expect(feed.trains[0].stops.map(([i])=>feed.stops[i][4])).toEqual(['A','B','A','C'])})
+})
+it('Valais deep links select a full civil day and translations stay aligned',()=>{expect(readStudyLink('?study=valais-region&date=2026-09-06&time=27900')).toMatchObject({study:'valais-region',range:'day',date:'2026-09-06',time:27900});expect(readStudyLink('?study=valais-region&range=morning').range).toBe('morning');const i=STUDY_IDS.indexOf('valais-region');for(const copy of Object.values(EXPLORE_COPY)){expect(copy.names[i]).toMatch(/Valais|Wallis|Vallese/);expect(copy.descriptions[i]).toBeTruthy()}})

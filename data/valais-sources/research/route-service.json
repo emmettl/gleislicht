@@ -1,0 +1,260 @@
+{
+ "currentVersion": 11.5,
+ "cimVersion": "3.5.0",
+ "serviceDescription": "<div style='text-align:Left;'><div><div style='font-size:12pt;'><div><span style='font-weight:bold;'>SRB_VS Début - Fin / VS Intermédiaire / <span>Point KM (10m)<\/span><\/span> ( <a href='https://www.geocat.ch/geonetwork/srv/api/records/a23a80e1-92cb-44be-bea2-8d4198267739/formatters/vs_full_fr?language=fre' target='_blank'>Métadonnées<\/a> )<\/div><div>Points de repères sur les routes cantonales.<br /><\/div><div><br /><\/div><div><span style='font-weight:bold;'>Routes cantonales (axes)<\/span> ( <a href='https://www.geocat.ch/geonetwork/srv/api/records/d0875570-46ec-41ac-9113-ca176699e260/formatters/vs_full_fr?language=fre' target='_blank'>Métadonnées<\/a> )<\/div><div>Axes des routes cantonales.<\/div><div><br /><\/div><div><div><span style='font-weight:bold;'>Classement cantonal<\/span> ( <a href='https://www.geocat.ch/geonetwork/srv/api/records/6a955809-71a2-40b2-8b0e-b5ad824fe75e/formatters/vs_full_fr?language=fre' target='_blank'>Métadonnées<\/a> )<\/div><div>Découpage des axes des routes cantonales selon la loi sur les routes.<\/div><div><span style='font-weight:bold;'><br /><\/span><\/div><div><span style='font-weight:bold;'>Tonnages<\/span> ( <a href='https://www.geocat.ch/geonetwork/srv/api/records/56d991af-8dff-4a4e-973a-54b62cbfd21b/formatters/vs_full_fr?language=fre' target='_blank'>Métadonnées<\/a> )<\/div><\/div><div><div>Découpage des axes des routes cantonales selon les restrictions de tonnage.<\/div><div><br /><\/div><\/div><div><span style='font-weight:bold;'>Tronçon de trafic (TJM)<\/span> ( <a href='https://www.geocat.ch/geonetwork/srv/api/records/1192c508-4797-4f1b-a79a-10458a4980e5/formatters/vs_full_fr?language=fre' target='_blank'>Métadonnées<\/a> )<\/div><div><div>Découpage des axes des routes cantonales selon le trafic routier issu des comptages de trafic.<\/div><div><br /><\/div><\/div><div><span style='font-weight:bold;'>Projet<\/span> ( <a href='https://www.geocat.ch/geonetwork/srv/api/records/82dab3a3-b926-4026-ab4b-69453faea857/formatters/vs_full_fr?language=fre' target='_blank'>Métadonnées<\/a> )<\/div><div><div>Axes des routes cantonales en projet.<\/div><div><div><br /><\/div><div><div><span style='font-weight:bold;'>Voies cyclables principales<\/span> ( <a href='https://www.geocat.ch/geonetwork/srv/api/records/07ec9295-fe88-4f3b-bdcc-1adc6583a99b/formatters/vs_full_fr?language=fre' target='_blank'>Métadonnées<\/a> )<\/div><div><div>Voies cyclables principales de responsabilité cantonale dont l'itinéraire cycliste nationale entre Gletsch et le Bouveret<br /><br /><\/div><\/div><\/div><\/div><\/div><div><span style='font-weight:bold;'>Arrondissements<\/span> ( <a href='https://www.geocat.ch/geonetwork/srv/api/records/0c139184-2fa5-46cf-9ccd-99a3e5360fdc/formatters/vs_full_fr?language=fre' target='_blank'>Métadonnées<\/a> )<\/div><div><div>Arrondissements de construction et d'entretien routier.<\/div><div><br /><\/div><\/div><div><span style='font-weight:bold;'>Nom des localités<\/span> ( <a href='https://www.geocat.ch/geonetwork/srv/api/records/b062818f-3cf0-4f34-a320-c70fcbdc4eea/formatters/vs_full_fr?language=fre' target='_blank'>Métadonnées<\/a> )<\/div><div><div>Nom des localités, cols et n° sorties d'autoroutes.<\/div><\/div><\/div><\/div><\/div>",
+ "mapName": "Route",
+ "description": "SRB_VS Début - Fin / VS Intermédiaire / Point KM (10m) ( Métadonnées )Points de repères sur les routes cantonales.Routes cantonales (axes) ( Métadonnées )Axes des routes cantonales.Classement cantonal ( Métadonnées )Découpage des axes des routes cantonales selon la loi sur les routes.Tonnages ( Métadonnées )Découpage des axes des routes cantonales selon les restrictions de tonnage.Tronçon de trafic (TJM) ( Métadonnées )Découpage des axes des routes cantonales selon le trafic routier issu des comptages de trafic.Projet ( Métadonnées )Axes des routes cantonales en projet.Voies cyclables principales ( Métadonnées )Voies cyclables principales de responsabilité cantonale dont l'itinéraire cycliste nationale entre Gletsch et le BouveretArrondissements ( Métadonnées )Arrondissements de construction et d'entretien routier.Nom des localités ( Métadonnées )Nom des localités, cols et n° sorties d'autoroutes.",
+ "copyrightText": "Etat du Valais / Staat Wallis",
+ "supportsDynamicLayers": true,
+ "layers": [
+  {
+   "id": 1101,
+   "name": "SRB_VS Début - Fin",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPoint",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 1102,
+   "name": "SRB_VS Intermédiaire",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPoint",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 1103,
+   "name": "SRB_Point KM (10m)",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPoint",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 1201,
+   "name": "Routes cantonales (axes)",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPolyline",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 1202,
+   "name": "Classement cantonal",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPolyline",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 1203,
+   "name": "Tonnages",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPolyline",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 1204,
+   "name": "Tronçon de trafic (TJM)",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPolyline",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 1205,
+   "name": "Projet",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPolyline",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 1206,
+   "name": "Voies cyclables principales",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPolyline",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 1001,
+   "name": "Arrondissements",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPolygon",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 2001,
+   "name": "Nom des localités",
+   "parentLayerId": -1,
+   "defaultVisibility": false,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPoint",
+   "supportsDynamicLegends": true
+  }
+ ],
+ "tables": [],
+ "spatialReference": {
+  "wkid": 2056,
+  "latestWkid": 2056,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -27386400,
+  "falseY": -32067900,
+  "xyUnits": 10000,
+  "falseZ": -100000,
+  "zUnits": 10000,
+  "falseM": -100000,
+  "mUnits": 10000
+ },
+ "singleFusedMapCache": false,
+ "initialExtent": {
+  "xmin": 2551246.242388647,
+  "ymin": 1138298.03793935,
+  "xmax": 2551306.907935786,
+  "ymax": 1138350.3538197859,
+  "spatialReference": {
+   "wkid": 2056,
+   "latestWkid": 2056,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -27386400,
+   "falseY": -32067900,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "fullExtent": {
+  "xmin": 2548579.4101,
+  "ymin": 1078560.231,
+  "xmax": 2679786.8149,
+  "ymax": 1167428.3637,
+  "zmin": 0,
+  "zmax": 2428.5787,
+  "spatialReference": {
+   "wkid": 2056,
+   "latestWkid": 2056,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -27386400,
+   "falseY": -32067900,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "datesInUnknownTimezone": false,
+ "minScale": 0,
+ "maxScale": 0,
+ "units": "esriMeters",
+ "supportedImageFormatTypes": "PNG32,PNG24,PNG,JPG,DIB,TIFF,EMF,PS,PDF,GIF,SVG,SVGZ,BMP",
+ "documentInfo": {
+  "Title": "Route",
+  "Author": "",
+  "Comments": "Route",
+  "Subject": "Route",
+  "Category": "",
+  "Version": "3.4.0",
+  "AntialiasingMode": "Fast",
+  "TextAntialiasingMode": "Force",
+  "Keywords": "CCGEO_VS,route,strasse"
+ },
+ "supportsQueryDomains": true,
+ "capabilities": "Query,Map,Data",
+ "supportedQueryFormats": "JSON, geoJSON, PBF",
+ "exportTilesAllowed": false,
+ "referenceScale": 0.0,
+ "datumTransformations": [
+  {
+   "geoTransforms": [
+    {
+     "wkid": 1676,
+     "latestWkid": 1676,
+     "transformForward": false,
+     "name": "CH1903+_To_WGS_1984_1"
+    }
+   ]
+  },
+  {
+   "geoTransforms": [
+    {
+     "wkid": 1676,
+     "latestWkid": 1676,
+     "transformForward": true,
+     "name": "CH1903+_To_WGS_1984_1"
+    }
+   ]
+  }
+ ],
+ "supportsDatumTransformation": true,
+ "floorAwareMapProperties": {
+  "defaultFloorFilterSettings": {"isEnabled": false}
+ },
+ "archivingInfo": {"supportsHistoricMoment": false},
+ "supportsClipping": true,
+ "supportsSpatialFilter": true,
+ "supportsTimeRelation": true,
+ "supportsQueryDataElements": true,
+ "mapUnits": {"uwkid": 9001},
+ "maxSelectionCount": 2000,
+ "maxRecordCount": 2000,
+ "maxImageHeight": 4096,
+ "maxImageWidth": 4096,
+ "supportedExtensions": "WMSServer",
+ "serviceItemId": "705631f7dc6f453ca3260e4e4acb2c19"
+}

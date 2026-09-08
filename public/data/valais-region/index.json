@@ -1,0 +1,31 @@
+{
+  "label": "Valais / Wallis initial regional study",
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "manifest": "2026-09-04/valais-region-day-manifest.json",
+      "morning": "2026-09-04/valais-region-morning.json"
+    },
+    {
+      "date": "2026-09-06",
+      "manifest": "2026-09-06/valais-region-day-manifest.json",
+      "morning": "2026-09-06/valais-region-morning.json"
+    }
+  ],
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "06de19d8bf1c6c64d4c1735630beec80ccfe559fccd072df7e077f3367e99909",
+    "timetable": "6399dfa5d8d8a00d8284956d6028a04dca3e56e1beab9933463d6ce94198cb7b",
+    "policy": "f96d855ab60bda44fb58b57ed5ac3f43d25075f8c4bf227484af6a4d9e5c294c",
+    "road": "6e3386832211b5dbf5dbffcebcf16a274a5233df9d5df2818e5935659617ceca",
+    "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828"
+  },
+  "admission": "Whole journeys only: every original call and permission retained. Any missing segment or prior-arrangement call excludes the entire journey.",
+  "scopeLimits": [
+    "Initial Friday/Sunday September study; no year-round geometry claim.",
+    "All modes and annual routes remain in the census. Cableways, funiculars, water, tram, DFB and VerticAlp tourist rail require separate reviewed geometry.",
+    "Infrastructure shortest paths and OSM road inference are not observed vehicles, running-track selection, operator direction certification or temporary diversion confirmation.",
+    "Full cross-border calls retained; no clipping to canton or geometry extent.",
+    "Fixed-stop GTFS census does not establish completeness of services absent from the archive or GTFS-Flex areas."
+  ]
+}

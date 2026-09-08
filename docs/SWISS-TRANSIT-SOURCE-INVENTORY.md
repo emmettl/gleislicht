@@ -109,7 +109,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 | [TG — Thurgau](#tg) | Cantonal adapter; partial service admission | OSTWIND, Bodensee Ticket |
 | [TI — Ticino](#ti) | No line export verified | Arcobaleno |
 | [VD — Vaud](#vd) | Metadata / export unresolved | Mobilis, LémanPass (border travel) |
-| [VS — Valais / Wallis](#vs) | Metadata / export unresolved | Regional/cross-border tickets (no single canton-wide tariff union in SBB list) |
+| [VS — Valais / Wallis](#vs) | Full canton census; initial rail/OSM bus study | Regional/cross-border tickets (no single canton-wide tariff union in SBB list) |
 | [NE — Neuchâtel](#ne) | No line export verified | OndeVerte |
 | [JU — Jura](#ju) | Map layer only | Vagabond |
 | [GE — Genève](#ge) | Existing integration in part | Unireso, LémanPass |
@@ -477,6 +477,8 @@ The entire pinned national GTFS census finds **380 routes across 67 agency ident
 <a id="vs"></a>
 
 ### VS — Valais / Wallis
+
+**Implemented:** The [Valais initial study](VALAIS-STUDY.md) inventories 385 annual route records across 78 agencies and all 13 districts. Complete Friday/Sunday feeds admit 5,102 / 3,445 journeys using reviewed gauge/operator-scoped FOT rail and attributed full-pattern OSM buses. Every candidate, inactive route, geometry exclusion and reuse term is audited. The renewed local investigation retains all 247 public catalogue items and current service metadata; no operational cantonal line export or dataset-specific vector licence was established.
 
 **Authority/publisher:** Service de la mobilité; Centre de compétence géomatique. **Review areas:** Monthey/Chablais; Martigny; Sion; Sierre; Leuk/Visp/Brig; Goms; Side valleys.
 

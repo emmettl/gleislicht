@@ -1,0 +1,62 @@
+{
+  "checkedOn": "2026-09-08",
+  "requestReceipts": "data/valais-sources/research/requests.json",
+  "catalogueItems": 247,
+  "findings": [
+    {
+      "source": "Official geodata inventory, row 376",
+      "file": "inventory.pdf",
+      "date": "2018-07-05",
+      "inventoryGenerated": "2026-08-26",
+      "decision": "Transport en commun / Öffentlicher Verkehr, owner SDM; distribution columns blank in downloaded PDF. Metadata lead only, no line vectors acquired."
+    },
+    {
+      "source": "Official internet geodata access list",
+      "file": "internet-geodata.pdf",
+      "date": "2026-05-13",
+      "decision": "Lists ArcGIS Online and Route MapServer; current document replaces older WMS list."
+    },
+    {
+      "source": "CC_GEO_Publisher ArcGIS catalogue",
+      "files": [
+        "arcgis-page-1.json",
+        "arcgis-page-2.json",
+        "arcgis-page-3.json"
+      ],
+      "decision": "All 247 public items paged and unique IDs checked; no attributed operational public-transport line export identified. Catalogue absence is not proof no dataset exists."
+    },
+    {
+      "source": "Route MapServer",
+      "file": "route-service.json",
+      "layers": 12,
+      "decision": "Road axes, road classification, tonnage, traffic sections, projects, cycle routes, districts and locality names. Not passenger-line geometry."
+    },
+    {
+      "source": "PDc_mobilite",
+      "file": "planning-mobility.json",
+      "decision": "Nine planning layers including existing/planned cable infrastructure and planned rail. Strategic planning features are not validated 2026 vehicle paths; excluded."
+    },
+    {
+      "source": "zones_dessertes",
+      "file": "service-areas.json",
+      "decision": "Electricity network service areas (levels 5 and 7), not demand-responsive transport; excluded."
+    },
+    {
+      "source": "FOT current STAC item",
+      "file": "rail-catalogue.json",
+      "decision": "Current asset checksum agrees with retained rail source; 2021 catalogue vintage and 2025 asset update do not prove 2026 alignment validity."
+    }
+  ],
+  "reuse": {
+    "localVectors": "No operational Valais vectors acquired or reused. No dataset-specific operational line licence established; metadata accessibility does not grant vector reuse.",
+    "timetable": "SBB / opentransportdata.swiss terms with attribution; no blanket CC claim.",
+    "rail": "FOT terms_by attribution as linked by retained STAC collection; proprietary catalogue label is preserved.",
+    "roads": "© OpenStreetMap contributors; ODbL 1.0. Separate complete derived road database distributed with the study.",
+    "boundary": "© swisstopo; free-geodata terms."
+  },
+  "nextSteps": [
+    "Ask SDM/SGI for current dataset 376 vector export, line/operator IDs, geometry vintage, direction semantics and explicit reuse terms. No message or order submitted.",
+    "Review local operator schematic network maps as identity evidence, not coordinate geometry; seek TPC/TMR/RegionAlps/MGB and municipal bus alignments.",
+    "Validate winter, holiday and summer patterns plus cableways/funiculars/water separately before enlarging the initial scope."
+  ]
+}

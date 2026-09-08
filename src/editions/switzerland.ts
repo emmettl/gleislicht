@@ -68,6 +68,7 @@ export const SWITZERLAND_MAP_FRAMINGS = {
     minimumDistanceScale: 0.012,
     localDetailHierarchy: true,
   },
+  valais: { homeDistanceScale: 0.46, minimumDistanceScale: 0.008, portraitMinimumDistanceScale: 0.006, localDetailHierarchy: true },
   graubuenden: { homeDistanceScale: 0.45, minimumDistanceScale: 0.008, portraitMinimumDistanceScale: 0.006, localDetailHierarchy: true },
   solothurn: {
     homeDistanceScale: 0.28,
@@ -116,6 +117,7 @@ export type SwitzerlandRegionalStudyId =
   | 'rigi-lake'
   | 'zvv-region'
   | 'lausanne-region'
+  | 'valais-region'
   | 'graubuenden-region'
   | 'solothurn-region'
   | 'bern-region'
@@ -178,6 +180,7 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
       'rigi-lake': 'rigi-day.json',
       'zurich-city': 'zurich-city-morning.json',
       'zvv-region': 'zvv-region-morning.json',
+      'valais-region': 'valais-region-morning.json',
       'graubuenden-region': 'graubuenden-region/2026-09-04/graubuenden-region-morning.json',
       'solothurn-region': 'solothurn-region-morning.json',
       'bern-region': 'bern-region-morning.json',
