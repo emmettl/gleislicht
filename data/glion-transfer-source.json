@@ -1,0 +1,154 @@
+{
+  "archiveSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "feedVersion": "20260902",
+  "serviceDate": "2026-09-04",
+  "files": {
+    "stops.txt": {
+      "sha256": "c560f7385bac72e25cdc2e41b41e8366747d4bd3daa9f3183b47f8c10ef21b78",
+      "totalRows": 104322,
+      "rows": [
+        {
+          "stop_id": "ch:1:sloid:1370",
+          "stop_name": "Glion",
+          "stop_lat": "46.43180276",
+          "stop_lon": "6.92418726",
+          "location_type": "",
+          "parent_station": "Parentch:1:sloid:1370",
+          "platform_code": "",
+          "original_stop_id": "ch:1:sloid:1370",
+          "didok": "8501370"
+        },
+        {
+          "stop_id": "ch:1:sloid:30031",
+          "stop_name": "Glion (funi)",
+          "stop_lat": "46.43187086",
+          "stop_lon": "6.92376505",
+          "location_type": "",
+          "parent_station": "Parentch:1:sloid:30031",
+          "platform_code": "",
+          "original_stop_id": "ch:1:sloid:30031",
+          "didok": "8530031"
+        },
+        {
+          "stop_id": "Parentch:1:sloid:1370",
+          "stop_name": "Glion",
+          "stop_lat": "46.43180276",
+          "stop_lon": "6.92418726",
+          "location_type": "1",
+          "parent_station": "",
+          "platform_code": "",
+          "original_stop_id": "ch:1:sloid:1370",
+          "didok": "8501370"
+        },
+        {
+          "stop_id": "Parentch:1:sloid:30031",
+          "stop_name": "Glion (funi)",
+          "stop_lat": "46.43187086",
+          "stop_lon": "6.92376505",
+          "location_type": "1",
+          "parent_station": "",
+          "platform_code": "",
+          "original_stop_id": "ch:1:sloid:30031",
+          "didok": "8530031"
+        }
+      ]
+    },
+    "transfers.txt": {
+      "sha256": "450109bcf4f034462b945fda70f641bad8e7558ed78d5e3eaaecb07af26412d8",
+      "totalRows": 903512,
+      "rows": [
+        {
+          "from_stop_id": "ch:1:sloid:10437",
+          "to_stop_id": "ch:1:sloid:1370",
+          "from_route_id": "",
+          "to_route_id": "",
+          "from_trip_id": "",
+          "to_trip_id": "",
+          "transfer_type": "2",
+          "min_transfer_time": "60",
+          "service_id": ""
+        },
+        {
+          "from_stop_id": "ch:1:sloid:10437",
+          "to_stop_id": "ch:1:sloid:30031",
+          "from_route_id": "",
+          "to_route_id": "",
+          "from_trip_id": "",
+          "to_trip_id": "",
+          "transfer_type": "2",
+          "min_transfer_time": "120",
+          "service_id": ""
+        },
+        {
+          "from_stop_id": "ch:1:sloid:11803",
+          "to_stop_id": "ch:1:sloid:1370",
+          "from_route_id": "",
+          "to_route_id": "",
+          "from_trip_id": "",
+          "to_trip_id": "",
+          "transfer_type": "2",
+          "min_transfer_time": "180",
+          "service_id": ""
+        },
+        {
+          "from_stop_id": "ch:1:sloid:1370",
+          "to_stop_id": "ch:1:sloid:10437",
+          "from_route_id": "",
+          "to_route_id": "",
+          "from_trip_id": "",
+          "to_trip_id": "",
+          "transfer_type": "2",
+          "min_transfer_time": "60",
+          "service_id": ""
+        },
+        {
+          "from_stop_id": "ch:1:sloid:1370",
+          "to_stop_id": "ch:1:sloid:11803",
+          "from_route_id": "",
+          "to_route_id": "",
+          "from_trip_id": "",
+          "to_trip_id": "",
+          "transfer_type": "2",
+          "min_transfer_time": "180",
+          "service_id": ""
+        },
+        {
+          "from_stop_id": "ch:1:sloid:1370",
+          "to_stop_id": "ch:1:sloid:30031",
+          "from_route_id": "",
+          "to_route_id": "",
+          "from_trip_id": "",
+          "to_trip_id": "",
+          "transfer_type": "2",
+          "min_transfer_time": "60",
+          "service_id": ""
+        },
+        {
+          "from_stop_id": "ch:1:sloid:30031",
+          "to_stop_id": "ch:1:sloid:10437",
+          "from_route_id": "",
+          "to_route_id": "",
+          "from_trip_id": "",
+          "to_trip_id": "",
+          "transfer_type": "2",
+          "min_transfer_time": "120",
+          "service_id": ""
+        },
+        {
+          "from_stop_id": "ch:1:sloid:30031",
+          "to_stop_id": "ch:1:sloid:1370",
+          "from_route_id": "",
+          "to_route_id": "",
+          "from_trip_id": "",
+          "to_trip_id": "",
+          "transfer_type": "2",
+          "min_transfer_time": "60",
+          "service_id": ""
+        }
+      ]
+    }
+  },
+  "pathwaysPresent": false,
+  "territetSourceSha256": "f265cc8abe3202afd9e6948d528f17a996effa433bb5a4185bbb43712d307e50",
+  "rochersSourceSha256": "061480f1100bedbc73a15ce4eee36b0f9735633a772b6f52b0cbac1ed84a69a6"
+}

@@ -1,0 +1,3013 @@
+{
+  "serviceDate": "2026-09-04",
+  "feedVersion": "20260902",
+  "archiveSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "policy": "Latest qualifying funicular arrival per summit ascent; earliest qualifying funicular departure per summit descent. Ordinary public boarding/alighting only. No arbitrary maximum wait.",
+  "summary": {
+    "ascents": 10,
+    "descents": 10
+  },
+  "walkingGeometryEstablished": false,
+  "connections": [
+    {
+      "direction": "ascent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.40.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.31.j26",
+      "start": 29940,
+      "end": 33240,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:30031",
+        "toStopId": "ch:1:sloid:1370",
+        "arrival": 30300,
+        "departure": 31080,
+        "minimumSeconds": 60,
+        "intervalSeconds": 780,
+        "spareSeconds": 720,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-93-TG.1.TA.31.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 29940,
+              "departure": 29940,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 30000,
+              "departure": 30000,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 30300,
+              "departure": 30300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-91-37-F.1.TA.40.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 31080,
+              "departure": 31080,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 31200,
+              "departure": 31200,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 31260,
+              "departure": 31260,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 31320,
+              "departure": 31320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 31740,
+              "departure": 31740,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 31860,
+              "departure": 31860,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 31980,
+              "departure": 32040,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 32160,
+              "departure": 32160,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 32280,
+              "departure": 32280,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 13
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 32700,
+              "departure": 32700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 14
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 32820,
+              "departure": 32820,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 15
+            },
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 33240,
+              "departure": 33240,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "descent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.94.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.106.j26",
+      "start": 34020,
+      "end": 37500,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:1370",
+        "toStopId": "ch:1:sloid:30031",
+        "arrival": 36600,
+        "departure": 37140,
+        "minimumSeconds": 60,
+        "intervalSeconds": 540,
+        "spareSeconds": 480,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-91-37-F.1.TA.94.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 34020,
+              "departure": 34020,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 34320,
+              "departure": 34320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 34500,
+              "departure": 34500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 34920,
+              "departure": 34920,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 4
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 35100,
+              "departure": 35100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 35340,
+              "departure": 35340,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 35400,
+              "departure": 35400,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 35700,
+              "departure": 35820,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 36180,
+              "departure": 36180,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 36300,
+              "departure": 36300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 36360,
+              "departure": 36360,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 36600,
+              "departure": 36660,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-93-TG.1.TA.106.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 37140,
+              "departure": 37140,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 37320,
+              "departure": 37320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 37500,
+              "departure": 37500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "ascent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.48.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.33.j26",
+      "start": 34440,
+      "end": 37320,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:30031",
+        "toStopId": "ch:1:sloid:1370",
+        "arrival": 34800,
+        "departure": 35040,
+        "minimumSeconds": 60,
+        "intervalSeconds": 240,
+        "spareSeconds": 180,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-93-TG.1.TA.33.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 34440,
+              "departure": 34440,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 34500,
+              "departure": 34500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 34800,
+              "departure": 34800,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-91-37-F.1.TA.48.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 35040,
+              "departure": 35040,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 35160,
+              "departure": 35160,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 35220,
+              "departure": 35220,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 35280,
+              "departure": 35280,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 35760,
+              "departure": 35880,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 36000,
+              "departure": 36000,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 36120,
+              "departure": 36120,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 36240,
+              "departure": 36240,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 36360,
+              "departure": 36360,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 13
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 36780,
+              "departure": 36780,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 14
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 36900,
+              "departure": 36900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 15
+            },
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 37320,
+              "departure": 37320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "descent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.98.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.98.j26",
+      "start": 37620,
+      "end": 41100,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:1370",
+        "toStopId": "ch:1:sloid:30031",
+        "arrival": 40200,
+        "departure": 40740,
+        "minimumSeconds": 60,
+        "intervalSeconds": 540,
+        "spareSeconds": 480,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-91-37-F.1.TA.98.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 37620,
+              "departure": 37620,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 37920,
+              "departure": 37920,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 38100,
+              "departure": 38100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 38520,
+              "departure": 38520,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 4
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 38700,
+              "departure": 38700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 38940,
+              "departure": 38940,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 39000,
+              "departure": 39000,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 39300,
+              "departure": 39420,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 39780,
+              "departure": 39780,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 39900,
+              "departure": 39900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 39960,
+              "departure": 39960,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 40200,
+              "departure": 40260,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-93-TG.1.TA.98.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 40740,
+              "departure": 40740,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 40920,
+              "departure": 40920,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 41100,
+              "departure": 41100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "ascent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.43.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.52.j26",
+      "start": 38040,
+      "end": 40920,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:30031",
+        "toStopId": "ch:1:sloid:1370",
+        "arrival": 38400,
+        "departure": 38640,
+        "minimumSeconds": 60,
+        "intervalSeconds": 240,
+        "spareSeconds": 180,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-93-TG.1.TA.52.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 38040,
+              "departure": 38040,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 38100,
+              "departure": 38100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 38400,
+              "departure": 38400,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-91-37-F.1.TA.43.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 38640,
+              "departure": 38640,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 38760,
+              "departure": 38760,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 38820,
+              "departure": 38820,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 38880,
+              "departure": 38880,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 39360,
+              "departure": 39480,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 39600,
+              "departure": 39600,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 39720,
+              "departure": 39720,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 39840,
+              "departure": 39840,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 39960,
+              "departure": 39960,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 13
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 40380,
+              "departure": 40380,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 14
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 40500,
+              "departure": 40500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 15
+            },
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 40920,
+              "departure": 40920,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "descent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.90.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.107.j26",
+      "start": 41220,
+      "end": 44700,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:1370",
+        "toStopId": "ch:1:sloid:30031",
+        "arrival": 43800,
+        "departure": 44340,
+        "minimumSeconds": 60,
+        "intervalSeconds": 540,
+        "spareSeconds": 480,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-91-37-F.1.TA.90.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 41220,
+              "departure": 41220,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 41520,
+              "departure": 41520,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 41700,
+              "departure": 41700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 42120,
+              "departure": 42120,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 4
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 42300,
+              "departure": 42300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 42540,
+              "departure": 42540,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 42600,
+              "departure": 42600,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 42900,
+              "departure": 43020,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 43380,
+              "departure": 43380,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 43500,
+              "departure": 43500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 43560,
+              "departure": 43560,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 43800,
+              "departure": 43860,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-93-TG.1.TA.107.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 44340,
+              "departure": 44340,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 44520,
+              "departure": 44520,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 44700,
+              "departure": 44700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "ascent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.45.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.46.j26",
+      "start": 41640,
+      "end": 44520,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:30031",
+        "toStopId": "ch:1:sloid:1370",
+        "arrival": 42000,
+        "departure": 42240,
+        "minimumSeconds": 60,
+        "intervalSeconds": 240,
+        "spareSeconds": 180,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-93-TG.1.TA.46.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 41640,
+              "departure": 41640,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 41700,
+              "departure": 41700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 42000,
+              "departure": 42000,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-91-37-F.1.TA.45.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 42240,
+              "departure": 42240,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 42360,
+              "departure": 42360,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 42420,
+              "departure": 42420,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 42480,
+              "departure": 42480,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 42960,
+              "departure": 43080,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 43200,
+              "departure": 43200,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 43320,
+              "departure": 43320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 43440,
+              "departure": 43440,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 43560,
+              "departure": 43560,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 13
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 43980,
+              "departure": 43980,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 14
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 44100,
+              "departure": 44100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 15
+            },
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 44520,
+              "departure": 44520,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "descent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.89.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.129.j26",
+      "start": 44820,
+      "end": 48300,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:1370",
+        "toStopId": "ch:1:sloid:30031",
+        "arrival": 47400,
+        "departure": 47940,
+        "minimumSeconds": 60,
+        "intervalSeconds": 540,
+        "spareSeconds": 480,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-91-37-F.1.TA.89.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 44820,
+              "departure": 44820,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 45120,
+              "departure": 45120,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 45300,
+              "departure": 45300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 45720,
+              "departure": 45720,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 4
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 45900,
+              "departure": 45900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 46140,
+              "departure": 46140,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 46200,
+              "departure": 46200,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 46500,
+              "departure": 46620,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 46980,
+              "departure": 46980,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 47100,
+              "departure": 47100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 47160,
+              "departure": 47160,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 47400,
+              "departure": 47460,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-93-TG.1.TA.129.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 47940,
+              "departure": 47940,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 48120,
+              "departure": 48120,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 48300,
+              "departure": 48300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "ascent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.49.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.66.j26",
+      "start": 45240,
+      "end": 48120,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:30031",
+        "toStopId": "ch:1:sloid:1370",
+        "arrival": 45600,
+        "departure": 45840,
+        "minimumSeconds": 60,
+        "intervalSeconds": 240,
+        "spareSeconds": 180,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-93-TG.1.TA.66.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 45240,
+              "departure": 45240,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 45300,
+              "departure": 45300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 45600,
+              "departure": 45600,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-91-37-F.1.TA.49.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 45840,
+              "departure": 45840,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 45960,
+              "departure": 45960,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 46020,
+              "departure": 46020,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 46080,
+              "departure": 46080,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 46560,
+              "departure": 46680,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 46800,
+              "departure": 46800,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 46920,
+              "departure": 46920,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 47040,
+              "departure": 47040,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 47160,
+              "departure": 47160,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 13
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 47580,
+              "departure": 47580,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 14
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 47700,
+              "departure": 47700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 15
+            },
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 48120,
+              "departure": 48120,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "descent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.92.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.141.j26",
+      "start": 48420,
+      "end": 51900,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:1370",
+        "toStopId": "ch:1:sloid:30031",
+        "arrival": 51000,
+        "departure": 51540,
+        "minimumSeconds": 60,
+        "intervalSeconds": 540,
+        "spareSeconds": 480,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-91-37-F.1.TA.92.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 48420,
+              "departure": 48420,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 48720,
+              "departure": 48720,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 48900,
+              "departure": 48900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 49320,
+              "departure": 49320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 4
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 49500,
+              "departure": 49500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 49740,
+              "departure": 49740,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 49800,
+              "departure": 49800,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 50100,
+              "departure": 50220,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 50580,
+              "departure": 50580,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 50700,
+              "departure": 50700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 50760,
+              "departure": 50760,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 51000,
+              "departure": 51060,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-93-TG.1.TA.141.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 51540,
+              "departure": 51540,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 51720,
+              "departure": 51720,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 51900,
+              "departure": 51900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "ascent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.41.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.41.j26",
+      "start": 48840,
+      "end": 51720,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:30031",
+        "toStopId": "ch:1:sloid:1370",
+        "arrival": 49200,
+        "departure": 49440,
+        "minimumSeconds": 60,
+        "intervalSeconds": 240,
+        "spareSeconds": 180,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-93-TG.1.TA.41.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 48840,
+              "departure": 48840,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 48900,
+              "departure": 48900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 49200,
+              "departure": 49200,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-91-37-F.1.TA.41.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 49440,
+              "departure": 49440,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 49560,
+              "departure": 49560,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 49620,
+              "departure": 49620,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 49680,
+              "departure": 49680,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 50160,
+              "departure": 50280,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 50400,
+              "departure": 50400,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 50520,
+              "departure": 50520,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 50640,
+              "departure": 50640,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 50760,
+              "departure": 50760,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 13
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 51180,
+              "departure": 51180,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 14
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 51300,
+              "departure": 51300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 15
+            },
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 51720,
+              "departure": 51720,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "descent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.91.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.90.j26",
+      "start": 52020,
+      "end": 55500,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:1370",
+        "toStopId": "ch:1:sloid:30031",
+        "arrival": 54600,
+        "departure": 55140,
+        "minimumSeconds": 60,
+        "intervalSeconds": 540,
+        "spareSeconds": 480,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-91-37-F.1.TA.91.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 52020,
+              "departure": 52020,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 52320,
+              "departure": 52320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 52500,
+              "departure": 52500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 52920,
+              "departure": 52920,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 4
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 53100,
+              "departure": 53100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 53340,
+              "departure": 53340,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 53400,
+              "departure": 53400,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 53700,
+              "departure": 53820,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 54180,
+              "departure": 54180,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 54300,
+              "departure": 54300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 54360,
+              "departure": 54360,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 54600,
+              "departure": 54660,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-93-TG.1.TA.90.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 55140,
+              "departure": 55140,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 55320,
+              "departure": 55320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 55500,
+              "departure": 55500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "ascent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.47.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.3.j26",
+      "start": 52440,
+      "end": 55320,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:30031",
+        "toStopId": "ch:1:sloid:1370",
+        "arrival": 52800,
+        "departure": 53040,
+        "minimumSeconds": 60,
+        "intervalSeconds": 240,
+        "spareSeconds": 180,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-93-TG.1.TA.3.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 52440,
+              "departure": 52440,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 52500,
+              "departure": 52500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 52800,
+              "departure": 52800,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-91-37-F.1.TA.47.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 53040,
+              "departure": 53040,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 53160,
+              "departure": 53160,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 53220,
+              "departure": 53220,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 53280,
+              "departure": 53280,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 53760,
+              "departure": 53880,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 54000,
+              "departure": 54000,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 54120,
+              "departure": 54120,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 54240,
+              "departure": 54240,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 54360,
+              "departure": 54360,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 13
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 54780,
+              "departure": 54780,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 14
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 54900,
+              "departure": 54900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 15
+            },
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 55320,
+              "departure": 55320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "descent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.93.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.87.j26",
+      "start": 55620,
+      "end": 59100,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:1370",
+        "toStopId": "ch:1:sloid:30031",
+        "arrival": 58200,
+        "departure": 58740,
+        "minimumSeconds": 60,
+        "intervalSeconds": 540,
+        "spareSeconds": 480,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-91-37-F.1.TA.93.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 55620,
+              "departure": 55620,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 55920,
+              "departure": 55920,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 56100,
+              "departure": 56100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 56520,
+              "departure": 56520,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 4
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 56700,
+              "departure": 56700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 56940,
+              "departure": 56940,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 57000,
+              "departure": 57000,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 57300,
+              "departure": 57420,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 57780,
+              "departure": 57780,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 57900,
+              "departure": 57900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 57960,
+              "departure": 57960,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 58200,
+              "departure": 58260,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-93-TG.1.TA.87.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 58740,
+              "departure": 58740,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 58920,
+              "departure": 58920,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 59100,
+              "departure": 59100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "ascent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.42.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.23.j26",
+      "start": 56040,
+      "end": 58920,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:30031",
+        "toStopId": "ch:1:sloid:1370",
+        "arrival": 56400,
+        "departure": 56640,
+        "minimumSeconds": 60,
+        "intervalSeconds": 240,
+        "spareSeconds": 180,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-93-TG.1.TA.23.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 56040,
+              "departure": 56040,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 56100,
+              "departure": 56100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 56400,
+              "departure": 56400,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-91-37-F.1.TA.42.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 56640,
+              "departure": 56640,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 56760,
+              "departure": 56760,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 56820,
+              "departure": 56820,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 56880,
+              "departure": 56880,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 57360,
+              "departure": 57480,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 57600,
+              "departure": 57600,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 57720,
+              "departure": 57720,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 57840,
+              "departure": 57840,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 57960,
+              "departure": 57960,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 13
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 58380,
+              "departure": 58380,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 14
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 58500,
+              "departure": 58500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 15
+            },
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 58920,
+              "departure": 58920,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "descent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.95.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.123.j26",
+      "start": 59220,
+      "end": 62700,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:1370",
+        "toStopId": "ch:1:sloid:30031",
+        "arrival": 61800,
+        "departure": 62340,
+        "minimumSeconds": 60,
+        "intervalSeconds": 540,
+        "spareSeconds": 480,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-91-37-F.1.TA.95.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 59220,
+              "departure": 59220,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 59520,
+              "departure": 59520,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 59700,
+              "departure": 59700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 60120,
+              "departure": 60120,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 4
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 60300,
+              "departure": 60300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 60540,
+              "departure": 60540,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 60600,
+              "departure": 60600,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 60900,
+              "departure": 61020,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 61380,
+              "departure": 61380,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 61500,
+              "departure": 61500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 61560,
+              "departure": 61560,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 61800,
+              "departure": 61860,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-93-TG.1.TA.123.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 62340,
+              "departure": 62340,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 62520,
+              "departure": 62520,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 62700,
+              "departure": 62700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "ascent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.44.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.57.j26",
+      "start": 59640,
+      "end": 62520,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:30031",
+        "toStopId": "ch:1:sloid:1370",
+        "arrival": 60000,
+        "departure": 60240,
+        "minimumSeconds": 60,
+        "intervalSeconds": 240,
+        "spareSeconds": 180,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-93-TG.1.TA.57.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 59640,
+              "departure": 59640,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 59700,
+              "departure": 59700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 60000,
+              "departure": 60000,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-91-37-F.1.TA.44.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 60240,
+              "departure": 60240,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 60360,
+              "departure": 60360,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 60420,
+              "departure": 60420,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 60480,
+              "departure": 60480,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 60960,
+              "departure": 61080,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 61200,
+              "departure": 61200,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 61320,
+              "departure": 61320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 61440,
+              "departure": 61440,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 61560,
+              "departure": 61560,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 13
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 61980,
+              "departure": 61980,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 14
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 62100,
+              "departure": 62100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 15
+            },
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 62520,
+              "departure": 62520,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "descent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.97.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.105.j26",
+      "start": 62820,
+      "end": 66300,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:1370",
+        "toStopId": "ch:1:sloid:30031",
+        "arrival": 65400,
+        "departure": 65940,
+        "minimumSeconds": 60,
+        "intervalSeconds": 540,
+        "spareSeconds": 480,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-91-37-F.1.TA.97.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 62820,
+              "departure": 62820,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 63120,
+              "departure": 63120,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 63300,
+              "departure": 63300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 63720,
+              "departure": 63720,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 4
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 63900,
+              "departure": 63900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 64140,
+              "departure": 64140,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 64200,
+              "departure": 64200,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 64500,
+              "departure": 64620,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 64980,
+              "departure": 64980,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 65100,
+              "departure": 65100,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 65160,
+              "departure": 65160,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 65400,
+              "departure": 65460,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-93-TG.1.TA.105.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 65940,
+              "departure": 65940,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 66120,
+              "departure": 66120,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 66300,
+              "departure": 66300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "ascent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.46.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.64.j26",
+      "start": 63240,
+      "end": 66120,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:30031",
+        "toStopId": "ch:1:sloid:1370",
+        "arrival": 63600,
+        "departure": 63840,
+        "minimumSeconds": 60,
+        "intervalSeconds": 240,
+        "spareSeconds": 180,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-93-TG.1.TA.64.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 63240,
+              "departure": 63240,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 63300,
+              "departure": 63300,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 63600,
+              "departure": 63600,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-91-37-F.1.TA.46.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 63840,
+              "departure": 63840,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 63960,
+              "departure": 63960,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 64020,
+              "departure": 64020,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 64080,
+              "departure": 64080,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 64560,
+              "departure": 64680,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 64800,
+              "departure": 64800,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 64920,
+              "departure": 64920,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 65040,
+              "departure": 65040,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 65160,
+              "departure": 65160,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 13
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 65580,
+              "departure": 65580,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 14
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 65700,
+              "departure": 65700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 15
+            },
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 66120,
+              "departure": 66120,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "descent",
+      "railwayTripId": ".ojp-91-37-F.1.TA.96.j26",
+      "funicularTripId": ".ojp-93-TG.1.TA.127.j26",
+      "start": 66420,
+      "end": 69900,
+      "transfer": {
+        "fromStopId": "ch:1:sloid:1370",
+        "toStopId": "ch:1:sloid:30031",
+        "arrival": 69000,
+        "departure": 69540,
+        "minimumSeconds": 60,
+        "intervalSeconds": 540,
+        "spareSeconds": 480,
+        "guaranteed": false,
+        "path": null
+      },
+      "legs": [
+        {
+          "tripId": ".ojp-91-37-F.1.TA.96.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:1369",
+              "arrival": 66420,
+              "departure": 66420,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:1368",
+              "arrival": 66720,
+              "departure": 66720,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:1367",
+              "arrival": 66900,
+              "departure": 66900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            },
+            {
+              "stopId": "ch:1:sloid:1366",
+              "arrival": 67320,
+              "departure": 67320,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 4
+            },
+            {
+              "stopId": "ch:1:sloid:1365",
+              "arrival": 67500,
+              "departure": 67500,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 5
+            },
+            {
+              "stopId": "ch:1:sloid:1357",
+              "arrival": 67740,
+              "departure": 67740,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 6
+            },
+            {
+              "stopId": "ch:1:sloid:1364",
+              "arrival": 67800,
+              "departure": 67800,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 7
+            },
+            {
+              "stopId": "ch:1:sloid:1371",
+              "arrival": 68100,
+              "departure": 68220,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 8
+            },
+            {
+              "stopId": "ch:1:sloid:1363",
+              "arrival": 68580,
+              "departure": 68580,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 9
+            },
+            {
+              "stopId": "ch:1:sloid:1308",
+              "arrival": 68700,
+              "departure": 68700,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 10
+            },
+            {
+              "stopId": "ch:1:sloid:1230",
+              "arrival": 68760,
+              "departure": 68760,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 11
+            },
+            {
+              "stopId": "ch:1:sloid:1370",
+              "arrival": 69000,
+              "departure": 69060,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 12
+            }
+          ]
+        },
+        {
+          "tripId": ".ojp-93-TG.1.TA.127.j26",
+          "calls": [
+            {
+              "stopId": "ch:1:sloid:30031",
+              "arrival": 69540,
+              "departure": 69540,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 1
+            },
+            {
+              "stopId": "ch:1:sloid:92618",
+              "arrival": 69720,
+              "departure": 69720,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 2
+            },
+            {
+              "stopId": "ch:1:sloid:30673",
+              "arrival": 69900,
+              "departure": 69900,
+              "pickup": "0",
+              "dropOff": "0",
+              "sequence": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
