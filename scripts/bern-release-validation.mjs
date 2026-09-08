@@ -24,6 +24,7 @@ export function validateBernRelease(day, morning, trains) {
     ['tpfTerminal', 'bern-tpf-fribourg-reviewed-fot-rail-20210706', 1],
     ['morges', 'bern-morges-reviewed-fot-rail-20210706', 3],
     ['interlaken', 'bern-interlaken-reviewed-fot-rail-20210706', 0],
+    ['ic61', 'bern-ic61-reviewed-fot-rail-20210706', 1],
   ]) {
     if (!m.sourceHashes[`${name}Policy`]) continue
     const r = m.geometry[`${name}Supplement`]
@@ -39,6 +40,15 @@ export function validateBernRelease(day, morning, trains) {
       assert.equal(r.sbbPlatformDataset?.dataProcessed, '2026-09-01T22:03:57+00:00')
       assert.equal(r.sbbPlatformDataset?.termsUrl, 'https://data.sbb.ch/page/licence')
     }
+  }
+  for (const [name, hash, credit] of [['urban', 'urbanPolicy', 'OpenStreetMap'], ['regionalRoad', 'regionalRoadPolicy', 'OpenStreetMap'], ['mountain', 'mountainPolicy', 'Federal Office of Transport']]) {
+    const r = m.geometry[`${name}Supplement`]
+    const source = r?.source ?? r?.policy?.roadSource
+    assert.equal(r?.policySha256, m.sourceHashes[hash], `Bern: missing ${name} policy hash`)
+    assert(source.attribution.includes(credit), `Bern: missing ${name} credit`)
+    assert(source.termsUrl || source.licenseUrl, `Bern: missing ${name} terms`)
+    // Previously published full-policy metadata remains readable, with credit checked too.
+    if (!r.policy) assert.deepEqual(r.fullEvidence, { path: 'bern-region/sources.json', field: `${name}Supplement` })
   }
   const headway = trains.filter(t => t.frequency?.exactTimes === 0).length
   assert.deepEqual(release.movements, { total: trains.length, scheduled: trains.length - headway, representativeHeadway: headway })

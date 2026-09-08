@@ -43,9 +43,15 @@ export function bernFeatureMatch(route, feature, crosswalk) {
   const p = feature.properties, override = crosswalk.featureOverrides?.[p.liniencode]
   if (!modes[p.vkmtyp]?.includes(route.mode)) return false
   if (sectionFor(route, override)) return true
+  const identity = override?.routeIdentities?.find(r => r.routeId === route.id && r.agencyId === route.agencyId && r.line === route.name && r.mode === route.mode)
+  if (identity) {
+    assert.equal(identity.sourceLine, p.liniencode, 'Changed explicit route source line')
+    assert(crosswalk.supportingDocuments.some(d => d.file === identity.supportingDocument), 'Missing route identity evidence')
+    return true
+  }
   const agencyIds = override?.agencyIds ?? (p.tucode === 'Moonliner' ? crosswalk.nightOperators[p.tuname] : crosswalk.operators[p.tucode]) ?? []
   if (!agencyIds.includes(route.agencyId)) return false
-  if (override) return override.allLines || override.lines.includes(route.name)
+  if (override && !override.routeIdentities) return override.allLines || override.lines.includes(route.name)
   if ([5, 6].includes(p.vkmtyp)) return p.kubunr === route.name
   const numbers = bernLineNumbers(p.liniennr)
   if (numbers.includes(route.name)) return true

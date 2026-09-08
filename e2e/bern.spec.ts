@@ -59,6 +59,12 @@ test('Bern loads on selection, searches rail and out-of-canton stops, seeks and 
   // Shared links restore the controls before the lazy scene and camera settle.
   await page.waitForTimeout(1500)
   await page.screenshot({ path: testInfo.outputPath('bern-selection.png') })
+  // The single admitted Friday IC61 starts at 21:58; search follows loaded chunks.
+  await page.locator('.scrubber input').fill('80000')
+  await expect.poll(() => requests.some(url => url.includes('bern-region-day-chunks/22-24'))).toBe(true)
+  await search.fill('IC61')
+  await page.locator('.search-results .route-result').first().click()
+  await expect(page.locator('.route-card')).toContainText('IC61')
 })
 
 test('Bern retries a midnight chunk and includes preceding service-day movements', async ({ page }, testInfo) => {

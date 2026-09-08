@@ -44,13 +44,22 @@ export async function buildBernDay({ date = '2026-09-04', sourceDirectory = 'pub
     localMetadata: 'bern-region/sources.json', localTerms: ['bern-region/terms_of_use_de.pdf', 'bern-region/terms_of_use_fr.pdf'] }
   // Full reviewed topology and projection evidence stays in the archive and
   // sources.json; the display payload carries its hash, dates and attribution.
-  for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement', 'interlakenSupplement']) {
+  for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement', 'interlakenSupplement', 'ic61Supplement']) {
     const r = geometry[field]
     if (!r) continue
-    geometry[field] = { policySha256: r.policySha256, source: r.source, sourceId: r.policy.sourceId,
-      model: r.policy.model, limits: r.policy.limits, documents: r.policy.documents ?? [],
+    const { files: _files, ...source } = r.source
+    geometry[field] = { policySha256: r.policySha256, source, sourceId: r.policy.sourceId,
+      limits: r.policy.limits, documents: r.policy.documents ?? [],
       ...(r.policy.sbbPlatformDataset ? { sbbPlatformDataset: r.policy.sbbPlatformDataset } : {}),
       fullEvidence: { path: 'bern-region/sources.json', field } }
+  }
+  // The full road/cableway policies and source-file inventories remain in the
+  // hashed archive and sources.json. Display metadata keeps dates, credit and terms.
+  for (const field of ['urbanSupplement', 'regionalRoadSupplement', 'mountainSupplement']) {
+    const r = geometry[field], { files: _files, ...source } = r.source ?? r.policy.roadSource
+    geometry[field] = { policySha256: r.policySha256, ...(r.cacheSha256 ? { cacheSha256: r.cacheSha256 } : {}), source,
+      model: r.model ?? 'Inferred FOT cableway axes; original station/topology limits and exclusions retained in full evidence.',
+      documents: r.policy.documents ?? [], fullEvidence: { path: 'bern-region/sources.json', field } }
   }
   for (const snapshot of [day, morning]) { snapshot.paths = paths; Object.assign(snapshot.metadata, { bernRelease, geometry }) }
   files.set('bern-region-day-manifest.json', Buffer.from(JSON.stringify(day)))

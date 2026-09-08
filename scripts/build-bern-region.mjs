@@ -19,6 +19,7 @@ import { loadBernIr16, applyBernIr16 } from './bern-ir16-geometry.mjs'
 import { loadBernTpfTerminal, applyBernTpfTerminal } from './bern-tpf-terminal.mjs'
 import { loadBernMorges, applyBernMorges } from './bern-morges-geometry.mjs'
 import { loadBernInterlaken, applyBernInterlaken } from './bern-interlaken-geometry.mjs'
+import { loadBernIc61, applyBernIc61, bernIc61Crosswalk } from './bern-ic61-geometry.mjs'
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 async function hashFile(path) {
@@ -183,6 +184,10 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   const interlaken = await loadBernInterlaken()
   hashes.interlakenPolicy = interlaken.metadata.policySha256
   provenance.interlakenSupplement = interlaken.metadata
+  const ic61 = await loadBernIc61()
+  hashes.ic61Policy = ic61.metadata.policySha256
+  provenance.ic61Supplement = ic61.metadata
+  const reviewedCrosswalk = bernIc61Crosswalk(crosswalk, ic61.policy, dates)
   hashes.urbanCache = urban.metadata.cacheSha256
   hashes.urbanPolicy = urban.metadata.policySha256
   provenance.urbanSupplement = urban.metadata
@@ -191,10 +196,10 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   let routeCrosswalk
   for (const raw of timetable.snapshots) {
     console.log(`Matching every directed Bern pattern for ${raw.metadata.serviceDate}…`)
-    const base = applyBernUrban(raw, applyBernGeometry(raw, routes, source, crosswalk), source, urban)
+    const base = applyBernUrban(raw, applyBernGeometry(raw, routes, source, reviewedCrosswalk), source, urban)
     const regionalResult = applyBernRegionalRail(raw, applyBernRail(raw, applyBernMountains(raw, applyBernRegionalRoads(raw, base, source, regionalRoads), routes, mountain), routes, rail), routes, regionalRail)
     const ir16Result = applyBernIr16(raw, applyBernIr66(raw, applyBernCrosscantonRail(raw, regionalResult, routes, crosscantonRail), routes, ir66), routes, ir16)
-    const result = applyBernInterlaken(raw, applyBernMorges(raw, applyBernTpfTerminal(raw, ir16Result, routes, tpfTerminal), routes, morges), routes, interlaken)
+    const result = applyBernIc61(raw, applyBernInterlaken(raw, applyBernMorges(raw, applyBernTpfTerminal(raw, ir16Result, routes, tpfTerminal), routes, morges), routes, interlaken), routes, ic61)
     routeCrosswalk = result.routeCrosswalk
     const groups = []
     for (const key of [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort()) {
@@ -224,6 +229,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
         tpfTerminalSupplement: tpfTerminal.metadata,
         morgesSupplement: morges.metadata,
         interlakenSupplement: interlaken.metadata,
+        ic61Supplement: ic61.metadata,
         limits: BERN_LIMITS, direction: 'Centreline inference from ordered calls. No road one-way or rail running-track certification. Only the explicitly scoped tram 6 station approach has dated diversion evidence; no realtime verification.',
         localMetadata: '../sources.json', localTerms: ['../terms_of_use_de.pdf', '../terms_of_use_fr.pdf'] },
     }
@@ -307,6 +313,8 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   for (const doc of tpfTerminal.policy.documents) await copyFile(join(tpfTerminal.policy.documentsDirectory, doc.file), join(output, 'tpf-platforms', doc.file))
   await mkdir(join(output, 'morges'), { recursive: true })
   for (const doc of morges.policy.documents) await copyFile(join(morges.policy.documentsDirectory, doc.file), join(output, 'morges', doc.file))
+  await mkdir(join(output, 'ic61'), { recursive: true })
+  for (const doc of ic61.policy.documents) await copyFile(join(ic61.policy.documentsDirectory, doc.file), join(output, doc.file))
   await writeJson(join(output, 'index.json'), { label: 'Bern canton regional feed', sourceHashes: hashes, dates: dates.map(date => ({ date,
     manifest: `${date}/bern-region-day-manifest.json`, morning: `${date}/bern-region-morning.json` })), admission: 'Complete geometry patterns only; see docs/BERN-STUDY.md and data/bern-audit for exclusions.' }, true)
   return summary

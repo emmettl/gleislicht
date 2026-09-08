@@ -2,7 +2,7 @@
 
 Study by **Gleislicht**, using the pinned national timetable and the canton’s OEVTP source. Validation dates: **Friday 4 September and Sunday 6 September 2026**, each a Europe/Zurich civil day including the preceding service day’s after-midnight journeys. This is a reproducible historical regional feed, not a live service or a claim of year-round completeness.
 
-The full-source census identifies **705 GTFS route records from 101 agency identities**, covering **all ten districts** of Bern. All **518 OEVTP line records and 5,321 OEVTP stop records** are retained in the source snapshot. The regional feed admits complete directed stop patterns only: **36,803 Friday and 32,004 Sunday journey instances**. Failed patterns remain in the audit; no unsourced straight-line segments are emitted as admitted journeys.
+The full-source census identifies **705 GTFS route records from 101 agency identities**, covering **all ten districts** of Bern. All **518 OEVTP line records and 5,321 OEVTP stop records** are retained in the source snapshot. The regional feed admits complete directed stop patterns only: **36,804 Friday and 32,012 Sunday journey instances**. Failed patterns remain in the audit; no unsourced straight-line segments are emitted as admitted journeys.
 
 ## Deliverables
 
@@ -33,7 +33,7 @@ For each selected dated journey, **every original call is retained**, including 
 
 District route counts overlap. They cover Bern-Mittelland; Biel/Seeland; Oberaargau; Emmental; Thun; all three Oberland districts; and **Jura bernois**, which a Bern-city or Libero-only scope would miss. The 2026 polygon excludes **Moutier**; a regression test fixes that boundary behaviour. Three source stop records within ten metres of the border, including two records for Brienzer Rothorn cable station on the outside, are listed in the audit’s `census.nearBoundary`. Approximate coordinate transformation uncertainty is not resolved by silently enlarging the polygon.
 
-Admitted journeys retain 801 Friday and 796 Sunday out-of-canton stop records. Full cross-canton journeys fail admission if the official source does not cover their complete chain. Rail and bus replacement services remain separate GTFS identities.
+Admitted journeys retain 803 Friday and 801 Sunday out-of-canton stop records. Full cross-canton journeys fail admission if the official source does not cover their complete chain. Rail and bus replacement services remain separate GTFS identities.
 
 ## Directed-pattern and geometry results
 
@@ -42,15 +42,15 @@ Admitted journeys retain 801 Friday and 796 Sunday out-of-canton stop records. F
 | Candidate journey instances | 43,653 | 38,587 |
 | Scheduled journey instances | 28,696 | 22,462 |
 | Representative headway instances (exact_times=0) | 14,957 | 16,125 |
-| Admitted scheduled instances | 21,846 | 15,879 |
+| Admitted scheduled instances | 21,847 | 15,887 |
 | Admitted representative headway instances | 14,957 | 16,125 |
-| Admitted total instances | 36,803 | 32,004 |
-| Directed stop patterns: complete / candidate | 1,988 / 2,582 | 1,551 / 2,108 |
-| Route-specific directed stop pairs: matched / candidate | 10,805 / 12,321 | 11,462 / 13,244 |
-| All modeled segment occurrences: matched / candidate | 295,252 / 314,668 | 211,921 / 229,859 |
-| All modeled segment occurrence coverage | 93.83% | 92.20% |
-| Scheduled-only segment occurrence coverage | 93.43% | 91.43% |
-| Carry-in journeys: admitted / candidate | 253 / 334 | 557 / 816 |
+| Admitted total instances | 36,804 | 32,012 |
+| Directed stop patterns: complete / candidate | 1,989 / 2,582 | 1,559 / 2,108 |
+| Route-specific directed stop pairs: matched / candidate | 10,834 / 12,321 | 11,500 / 13,244 |
+| All modeled segment occurrences: matched / candidate | 295,390 / 314,668 | 212,146 / 229,859 |
+| All modeled segment occurrence coverage | 93.87% | 92.29% |
+| Scheduled-only segment occurrence coverage | 93.47% | 91.54% |
+| Carry-in journeys: admitted / candidate | 253 / 334 | 559 / 816 |
 | Night-route journeys: admitted / candidate | 0 / 14 | 158 / 307 |
 | Patterns revisiting a platform: admitted / candidate | 46 / 65 | 41 / 59 |
 
@@ -62,7 +62,7 @@ There are **1,317 shared**, **1,265 Friday-only** and **791 Sunday-only** patter
 | --- | --- | --- |
 | bus | 13,570 / 15,623; 95.28% | 8,458 / 10,453; 93.47% |
 | tram | 1,550 / 1,588; 99.30% | 1,220 / 1,252; 99.20% |
-| rail | 3,426 / 4,150; 88.23% | 3,057 / 3,698; 87.80% |
+| rail | 3,427 / 4,150; 88.60% | 3,065 / 3,698; 88.53% |
 | ferry | 36 / 40; 93.63% | 34 / 38; 93.55% |
 | funicular | 2,753 / 2,753; 100.00% | 2,605 / 2,605; 100.00% |
 | cableway | 15,468 / 19,499; 83.81% | 16,630 / 20,541; 84.91% |
@@ -87,15 +87,15 @@ Within cantonal graphs, alternative source-part projections may be at most 5 m f
 
 ## Exclusions and review evidence
 
-Across both dates: **324 routes admit all dated journeys**, **78 admit some**, **120 admit none**, and **183 are inactive on both dates**. The complete route appendix distinguishes these states; inactive annual records are not silently erased or described as failed geometry.
+Across both dates: **324 routes admit all dated journeys**, **79 admit some**, **119 admit none**, and **183 are inactive on both dates**. The complete route appendix distinguishes these states; inactive annual records are not silently erased or described as failed geometry.
 
 | Unmatched geometry reason | Friday directed pairs / occurrences | Sunday directed pairs / occurrences |
 | --- | --- | --- |
 | collapsed-path | 2 / 15 | 0 / 0 |
 | disconnected-line | 53 / 643 | 67 / 367 |
-| endpoint-gap | 499 / 5,164 | 538 / 5,282 |
+| endpoint-gap | 519 / 5,225 | 556 / 5,349 |
 | implausible-detour | 12 / 109 | 12 / 72 |
-| missing-line | 950 / 13,485 | 1,165 / 12,217 |
+| missing-line | 901 / 13,286 | 1,109 / 11,925 |
 
 Concrete cases preserved for follow-up:
 
@@ -128,9 +128,9 @@ The [display-release audit](../data/bern-audit/display-release.json) records bot
 
 | Payload (gzip bytes) | Friday | Sunday | Budget |
 | --- | ---: | ---: | ---: |
-| Manifest | 652,207 | 662,660 | 665,600 |
-| Morning | 977,828 | 845,011 | 1,638,400 |
-| Largest two-hour chunk | 404,189 | 334,193 | 460,800 |
+| Manifest | 653,740 | 665,132 | 665,600 |
+| Morning | 980,179 | 848,248 | 1,638,400 |
+| Largest two-hour chunk | 404,109 | 334,631 | 460,800 |
 
 The delivered [application manifest](../public/data/bern-region-day-manifest.json) and [morning snapshot](../public/data/bern-region-morning.json) use the shared regional loading and integrity checks. A refresh only builds explicitly reviewed dates. Other requested dates, failed builds or acquisition failures retain a verified published study; a missing first-deployment manifest may use the complete checked-in release. Missing chunks never trigger a mixture of published and local files. Cantonal geometry remains the primary source; explicitly scoped FOT rail/cableway and OSM road supplements carry separate source identities, dates, attribution and admission evidence.
 
@@ -375,6 +375,31 @@ The existing pinned federal acquisition is reused: **© Federal Office of Transp
 
 The rebuilt regional feed contains **36,803 Friday / 32,004 Sunday movements**, including unchanged representative headway motion. Both display dates pass the existing payload budgets and **5 m** display simplification bound. Full platform/topology evidence remains in the regional archive, source file and audit; compact display metadata retains its hash, dates, attribution and evidence reference. Remaining work includes IC5 through Zürich HB and the separately inventoried rail, bus and mountain failures.
 
+
+## IC61 corridor identity and remaining Interlaken routes
+
+The [IC61 follow-up audit](../data/bern-audit/ic61-followup.json), compared with release **8394320**, adds **one Friday / eight Sunday scheduled journeys**. All **36,803 Friday / 32,004 Sunday prior movements** retain every original source field, call/time and full-detail path. The feed now contains **36,804 / 32,012 movements**; headway instances are unchanged. The study still inventories every one of the 705 annual route records.
+
+The canton labels source **310_IC** generically as **IC**, with SBB as operator and the Basel–Bern–Thun–Interlaken corridor. Exact SBB **91-61-A-j26-1**, agency **11**, passenger line **IC61**, previously had no accepted operator/line association. The source feature links to official [timetable sheet 310](../data/bern-sources/ic61/timetable-310-2026.pdf). Its **2026 edition, dated 16 March 2026**, shows the numbered IC61 service and SBB operator in both directions on the corridor, including Basel and the original Bern/Thun/Spiez/Interlaken station order (pages **2 and 8** visually checked). The retained source is credited to **öv-info.ch / SBB**, acquired **8 September 2026 at 22:12:21 UTC**; exact URL, bytes and SHA-256 are pinned. The timetable supports identity only: its schedules and footnotes do not replace the pinned September GTFS calls, times or permissions.
+
+The [separate IC61 policy](../data/bern-ic61-policy.json) adds an exact route/agency/line/mode association with **310_IC** only within the two reviewed September fixtures. Generic IC matching is preserved, while other numbered IC, ICE and GPX records cannot inherit this association. The original crosswalk file and all seven seasonal results remain unchanged; the new dated association is covered by the IC61 policy hash. Full federal review pins **59 dated patterns** (**25 Friday / 34 Sunday**), **37 original stop records**, **71 directed bindings**, and **56 original standard-gauge source curves**. Every original full stop sequence and coordinate is checked; successful cantonal paths retain precedence. Interlaken platforms **5** and **7** bind to explicitly named FOT operating point **8519309**, tracks **5–8**. The depot continuation and metre-gauge groups remain excluded.
+
+IC61 admits **1 / 32 Friday** journeys and **8 / 65 Sunday** journeys. Both input direction IDs are tested on both dates; the admitted Friday journey is direction **0**, while Sunday admissions include **0 and 1**. Friday has **20** and Sunday **18** remaining unmatched directed pairs, with the federal review retaining Bern/Basel station-attachment failures under the unchanged **120 m** bound. The geometry review adds **16 Friday / 20 Sunday federal pair paths**, alongside newly associated successful cantonal pairs. No incomplete journey is admitted and no reverse Friday service is invented. All other route decisions and previously matched pair assessments remain unchanged.
+
+The wider Interlaken identity inventory is retained in the same audit. Counts below cover each entire route record on each date; the final column counts journeys actually calling Interlaken Ost. These records require their own reviewed associations and complete geometry; a compatible platform group alone is insufficient.
+
+| Route / line | Friday admitted / candidate | Sunday admitted / candidate | Friday / Sunday Ost calls |
+| --- | --- | --- | --- |
+| 91-3-Y-j26-1 / ICE | 0 / 12 | 0 / 12 | 6 / 2 |
+| 91-6-H-j26-1 / IC6 | 0 / 31 | 0 / 24 | 0 / 1 |
+| 91-61-A-j26-1 / IC61 | 1 / 32 | 8 / 65 | 32 / 52 |
+| 91-81-A-j26-1 / IC81 | 0 / 16 | 0 / 1 | 16 / 1 |
+| 91-GPX-A-j26-1 / GPX | 0 / 8 | 0 / 8 | 8 / 8 |
+
+Federal provenance remains **© Federal Office of Transport (FOT)**: catalogue **6 July 2021**, asset update **18 January 2025**, retained checksum recheck **8 September 2026**. The original acquisition, source-file inventory, transformation and attributed reuse terms remain in [sources.json](../public/data/bern-region/sources.json). Current alignment and individual running tracks remain unconfirmed. Original GTFS dates and source hashes are unchanged.
+
+Both display dates pass the existing budgets and **5 m** simplification bound. To accommodate the added geometry, display metadata now keeps source dates, credits, terms, hashes, documents and full-evidence references while the full road/cableway policies, rail model descriptions and source-file inventories stay in the archive and source file. This changes no coordinates, call endpoints, paths or journey fields. The Sunday manifest has **468 bytes** of remaining gzip budget; further expansion will need another measured payload review. Remaining priorities are Bern/Basel station attachments on IC61, through-station IC5 geometry at Zürich, and the separately inventoried route associations and bus/mountain failures.
+
 ## Winter and holiday fixtures
 
 The [seasonal audit](../data/bern-audit/seasonal-summary.json) and [ordered-pattern evidence](../data/bern-audit/seasonal-patterns.json.gz) cover seven extra civil days. Every admitted pattern passes complete original call, permission, timing and directed-path checks. September road contexts and construction geometry are disabled for these dates; Wiriehorn’s dated federal installation remains independently checked. The reviewed Schilthorn sections also pass the seven extra fixtures, adding 72 scheduled journeys per fixture except 1 August, which adds 78; these remain audit-only seasonal results.
@@ -447,14 +472,15 @@ node scripts/check-bern-ir66.mjs data/bern-audit/timetable-cache.json.gz # histo
 node scripts/check-bern-ir16.mjs data/bern-audit/timetable-cache.json.gz # historical IR16 batch
 node scripts/check-bern-tpf-terminal.mjs data/bern-audit/timetable-cache.json.gz # historical TPF terminal batch
 node scripts/check-bern-morges.mjs data/bern-audit/timetable-cache.json.gz # historical Morges batch
-node scripts/check-bern-interlaken.mjs data/bern-audit/timetable-cache.json.gz
+node scripts/check-bern-interlaken.mjs data/bern-audit/timetable-cache.json.gz # historical RE8 batch
+node scripts/check-bern-ic61.mjs data/bern-audit/timetable-cache.json.gz
 node scripts/audit-bern-seasonal.mjs --archive /private/tmp/GTFS_FP2026_20260902.zip
 node scripts/check-bern-seasonal.mjs
 # Publish the reviewed Friday display, or build the Sunday release separately.
 npm run data:bern:release
 npm run data:bern:docs
 npm run data:bern:release -- --date 2026-09-06 --output /private/tmp/bern-sunday-display
-npx vitest run scripts/bern-interlaken-geometry.test.mjs scripts/bern-morges-geometry.test.mjs scripts/bern-tpf-terminal.test.mjs scripts/bern-ir16-geometry.test.mjs scripts/bern-ir66-geometry.test.mjs scripts/bern-crosscanton-rail.test.mjs scripts/bern-regional-rail.test.mjs scripts/bern-rail-geometry.test.mjs scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/bern-regional-roads.test.mjs scripts/regional-refresh.test.mjs
+npx vitest run scripts/bern-ic61-geometry.test.mjs scripts/bern-interlaken-geometry.test.mjs scripts/bern-morges-geometry.test.mjs scripts/bern-tpf-terminal.test.mjs scripts/bern-ir16-geometry.test.mjs scripts/bern-ir66-geometry.test.mjs scripts/bern-crosscanton-rail.test.mjs scripts/bern-regional-rail.test.mjs scripts/bern-rail-geometry.test.mjs scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/bern-regional-roads.test.mjs scripts/regional-refresh.test.mjs
 npx playwright test e2e/bern.spec.ts
 npx vitest run scripts/bern-region.test.mjs scripts/basel-line-geometry.test.mjs \
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
