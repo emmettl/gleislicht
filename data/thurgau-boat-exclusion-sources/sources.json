@@ -1,0 +1,77 @@
+{
+  "reviewed": "2026-09-08",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "publisher": "OpenStreetMap contributors",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "termsUrl": "https://www.openstreetmap.org/copyright",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "scope": "Diagnostic source review only. Ferry terminals, public-transport objects and piers in three dock envelopes, with recursive members. This does not change stop coordinates, geometry admission or service modes.",
+  "bounds": [
+    [
+      9.196,
+      47.704,
+      9.204,
+      47.709
+    ],
+    [
+      9.362,
+      47.658,
+      9.372,
+      47.665
+    ],
+    [
+      8.964,
+      47.668,
+      8.973,
+      47.675
+    ]
+  ],
+  "files": [
+    {
+      "file": "osm.json.gz",
+      "sha256": "e2e9a2921d939043304f5206dfd3d6f748a73f9ab22c12c97635bbfd27a6f60f"
+    },
+    {
+      "file": "query.txt",
+      "sha256": "b077face720821121bf3c30e80068bf3ae93a694082b40a62fcff73581dc23ec"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "data/thurgau-audit/timetable-cache.json.gz",
+      "sha256": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5"
+    },
+    {
+      "file": "data/thurgau-shipping-policy.json",
+      "sha256": "d00d56210deda53588372cff6a33350c6139a002bb2c187af229423f61a93b3e"
+    },
+    {
+      "file": "data/thurgau-shipping-sources/osm.json.gz",
+      "sha256": "f5632dbc18c704b29a9b082f14924eb2afd0746d7b6b96f1c0a828fe821e0187"
+    },
+    {
+      "file": "data/thurgau-shipping-sources/path-review.json",
+      "sha256": "35004551837bae8242f49c0bd703f5015179b4b94ac651bb884b7035dded70a5"
+    },
+    {
+      "file": "data/thurgau-boat-sources/lakes.json.gz",
+      "sha256": "769f79af5e0e7d7fde518c9d4d37eb0975b111c2ff674d6eefd7cb186684462f"
+    }
+  ],
+  "operatorContext": [
+    {
+      "url": "https://www.mainau.de/de/anfahrt",
+      "checked": "2026-09-08",
+      "finding": "Mainau confirms regional ship access, including Konstanz and Meersburg; it does not supply a coordinate correction for GTFS stop 8099992."
+    },
+    {
+      "url": "https://www.urh.ch/fahrplan_sommer_nw",
+      "checked": "2026-09-08",
+      "validity": "Lake timetable 15 August–13 September 2026; both validation dates fall within this interval.",
+      "quotation": "Nahtloser Ersatzverkehr zwischen Stein a.Rh. und Öhningen in beiden Richtungen.",
+      "finding": "The published timetable includes replacement transport between Stein am Rhein and Öhningen. Its text does not establish vehicle mode or replacement geometry. The original GTFS boat chain is retained as source evidence; a continuous ship path for that section must not be assumed."
+    }
+  ],
+  "vintage": "Historical state requested 2 September 2026, acquired 8 September 2026. Element edit dates and original tags are retained; edit dates are not survey dates. Lake shorelines remain FOEN/swisstopo 2007 geometry; existing Rhine water comes from the pinned shipping supplement."
+}

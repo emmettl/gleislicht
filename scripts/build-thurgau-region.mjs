@@ -14,6 +14,7 @@ import { THURGAU_REGIONAL_BUS_AGENCIES } from './thurgau-regional-roads.mjs'
 import { loadThurgauRail, isThurgauRailSource } from './thurgau-rail-geometry.mjs'
 import { distanceMetres } from './enrich-postbus-roads.mjs'
 import { loadThurgauShipping, THURGAU_SHIPPING_SOURCE } from './thurgau-shipping.mjs'
+import { loadThurgauBoatExclusions } from './thurgau-boat-exclusions.mjs'
 import { loadThurgauFerry, THURGAU_FERRY_SOURCE } from './thurgau-ferry.mjs'
 import { loadThurgauBoats } from './thurgau-boat-geometry.mjs'
 import { loadThurgauWittenbach } from './thurgau-wittenbach.mjs'
@@ -85,6 +86,9 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   }
   const rail = await loadThurgauRail(timetable), boats = await loadThurgauBoats(timetable)
   const shipping = await loadThurgauShipping(timetable)
+  const boatExclusions = await loadThurgauBoatExclusions(timetable, shipping, boats)
+  hashes.boatExclusionSource = boatExclusions.sourceSha256
+  await writeJson(join(auditDirectory, 'boat-exclusions.json'), boatExclusions, true)
   hashes.shippingPolicy = shipping.policySha256; hashes.shippingSource = shipping.policy.sourceSha256
   provenance.shipping = { ...shipping.source, scope: shipping.policy.scope, shorelineRule: shipping.policy.shorelineRule }
   await writeJson(join(auditDirectory, 'shipping-source-elements.json'), shipping.inventory, true)
@@ -273,6 +277,9 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   await writeJson(join(auditDirectory, 'stops.json'), timetable.sourceStopInventory, false)
   await writeJson(join(output, 'sources.json'), provenance, true)
   await writeJson(join(output, 'shipping-paths.json'), { metadata: provenance.shipping, policy: shipping.policy, patterns: shipping.patterns, riverPolygon: shipping.riverPolygon }, true)
+  await writeJson(join(output, 'boat-exclusions.json'), boatExclusions, true)
+  await mkdir(join(output, 'boat-exclusion-sources'), { recursive: true })
+  for (const file of ['sources.json', ...boatExclusions.source.files.map(f => f.file)]) await writeFile(join(output, 'boat-exclusion-sources', file), await readFile(join('data/thurgau-boat-exclusion-sources', file)))
   await mkdir(join(output, 'shipping-sources'), { recursive: true })
   for (const file of ['sources.json', ...shipping.source.files.map(f => f.file)]) await writeFile(join(output, 'shipping-sources', file), await readFile(join('data/thurgau-shipping-sources', file)))
   await writeJson(join(output, 'ferry-paths.json'), { metadata: provenance.ferry, policy: ferry.policy, paths: ferry.paths }, true)

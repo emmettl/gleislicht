@@ -11,6 +11,7 @@ import { checkThurgauRegionalRoads } from './check-thurgau-regional-roads.mjs'
 import { loadThurgauRail, isThurgauRailSource } from './thurgau-rail-geometry.mjs'
 import { checkThurgauCityRoads } from './check-thurgau-city-roads.mjs'
 import { loadThurgauShipping, THURGAU_SHIPPING_SOURCE } from './thurgau-shipping.mjs'
+import { loadThurgauBoatExclusions } from './thurgau-boat-exclusions.mjs'
 import { loadThurgauFerry, THURGAU_FERRY_SOURCE } from './thurgau-ferry.mjs'
 import { loadThurgauBoats } from './thurgau-boat-geometry.mjs'
 import { loadThurgauWittenbach } from './thurgau-wittenbach.mjs'
@@ -62,6 +63,11 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
   assert.deepEqual(cache.sourceHashes, { archive: summary.sourceHashes.archive, source: summary.sourceHashes.source })
   const rail = await loadThurgauRail(cache), boats = await loadThurgauBoats(cache), wittenbach = await loadThurgauWittenbach(cache, regionalRoads)
   const shipping = await loadThurgauShipping(cache)
+  const boatExclusions = await loadThurgauBoatExclusions(cache, shipping, boats)
+  assert.equal(boatExclusions.sourceSha256, summary.sourceHashes.boatExclusionSource)
+  assert.deepEqual(await json(join(audit, 'boat-exclusions.json')), boatExclusions)
+  assert.deepEqual(await json(join(output, 'boat-exclusions.json')), boatExclusions)
+  for (const file of ['sources.json', ...boatExclusions.source.files.map(f => f.file)]) assert.deepEqual(await readFile(join(output, 'boat-exclusion-sources', file)), await readFile(join('data/thurgau-boat-exclusion-sources', file)))
   assert.equal(shipping.policySha256, summary.sourceHashes.shippingPolicy); assert.equal(shipping.policy.sourceSha256, summary.sourceHashes.shippingSource)
   assert.deepEqual(await json(join(output, 'shipping-paths.json')), { metadata: summary.sources.shipping, policy: shipping.policy, patterns: shipping.patterns, riverPolygon: shipping.riverPolygon })
   assert.deepEqual(await json(join(audit, 'shipping-source-elements.json')), shipping.inventory)
@@ -110,6 +116,9 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
     const railRouteIds = new Set(routes.filter(r => r.mode === 'rail').map(r => r.id))
     assert(replay.trains.filter(t => railRouteIds.has(t.routeId)).every(t => t.admission === 'admitted'), 'A dated rail journey lost full geometry')
     const replayTrains = new Map(replay.trains.map(t => [t.id, t]))
+    const excludedDay = boatExclusions.days.find(d => d.date === day.serviceDate)
+    assert.equal(excludedDay.excludedJourneys, 12)
+    for (const t of excludedDay.journeys) assert.equal(replayTrains.get(t.id)?.admission, 'incomplete-boat-pattern', 'A diagnostic candidate entered the feed')
     for (const train of baseline.trains.filter(t => t.admission === 'admitted')) {
       const after = replayTrains.get(train.id)
       assert.deepEqual(after.stops, train.stops); assert.deepEqual(after.callPermissions, train.callPermissions)

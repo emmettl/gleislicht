@@ -12,6 +12,7 @@ const boatReview = await json('data/thurgau-boat-sources/path-review.json')
 const ferryReview = await json('data/thurgau-ferry-sources/path-review.json')
 const shippingReview = await json('data/thurgau-shipping-sources/path-review.json')
 const shippingPolicy = await json('data/thurgau-shipping-policy.json')
+const boatExclusions = await json('data/thurgau-audit/boat-exclusions.json')
 const railPolicy = await json('data/thurgau-rail-policy.json')
 const routes = await json('data/thurgau-audit/routes.json')
 const sourceLines = await json('data/thurgau-audit/source-lines.json')
@@ -47,6 +48,7 @@ The complete canton-scoped GTFS inventory contains **${summary.routeCount} route
 - [Source metadata and request hashes](../data/thurgau-sources/sources.json), [raw request receipts](../data/thurgau-sources/requests.json). Original responses, boundary rows and the selected timetable fixture are preserved as gzip files in the repository.
 - [SBB border source](../data/thurgau-sbb-rail-sources/sources.json), [explicit Konstanz joins](../data/thurgau-sbb-rail-policy.json), [all SBB candidate records and exclusions](../data/thurgau-audit/sbb-rail-source-segments.json), and [lake-source screening](../data/thurgau-water-review/review.json).
 - [Lake/Rhine source responses](../data/thurgau-shipping-sources/sources.json), [eight exact dock-pair ways and policy](../data/thurgau-shipping-policy.json), [complete source-element inventory](../data/thurgau-audit/shipping-source-elements.json), [full-pattern review](../data/thurgau-shipping-sources/path-review.json), and [separate derived path database](../public/data/thurgau-region/shipping-paths.json).
+- [Remaining boat exclusion audit](../data/thurgau-audit/boat-exclusions.json): all six full patterns, all 24 dated excluded journeys, twelve directed candidate assessments, three dock-coordinate conflicts, and [pinned dock evidence](../data/thurgau-boat-exclusion-sources/sources.json). Also shipped with the [regional feed](../public/data/thurgau-region/boat-exclusions.json).
 - [Scoped Romanshorn ferry source](../data/thurgau-ferry-sources/sources.json), [policy](../data/thurgau-ferry-policy.json), [source inventory](../data/thurgau-audit/ferry-source-elements.json), [directed path review](../data/thurgau-ferry-sources/path-review.json), and [separate ODbL path database](../public/data/thurgau-region/ferry-paths.json).
 - [Shipping source and attribution](../data/thurgau-boat-sources/sources.json), [exact boat policy](../data/thurgau-boat-policy.json), [all 69 shipping features](../data/thurgau-audit/boat-source-segments.json), and [full-pattern/dock review](../data/thurgau-boat-sources/path-review.json).
 - [Federal rail source](../data/thurgau-rail-sources/source.json), [exact rail policy](../data/thurgau-rail-policy.json) and [all federal source segments](../data/thurgau-audit/rail-source-segments.json).
@@ -276,6 +278,26 @@ The feed labels these journeys **official-osm-shipping-inference**, with per-seg
 
 **Remaining boat exclusions: 12 Friday / 12 Sunday journeys**, in six full patterns: two Kreuzlingen–Mainau–Meersburg journeys, one Romanshorn–Immenstaad loop, and nine longer URh lake/Seerhein journeys. Their original failures and unavailable reviewed replacements remain in the [pattern audit](../data/thurgau-shipping-sources/path-review.json). These are not shortened to their matching portions. Demand-responsive services remain excluded. Reproduce offline with \`node scripts/prepare-thurgau-shipping.mjs\`, \`node scripts/review-thurgau-shipping.mjs\` and \`scripts/review-thurgau-shipping.py\` (Pillow), followed by the regional rebuild and checker.
 
+### Final boat exclusion review
+
+The [reproducible exclusion review](../scripts/thurgau-boat-exclusions.mjs) tests exact named ferry ways for **all twelve unresolved directed pairs** across those six patterns. It uses the original **150 m** official-boat screening limits, both original lake polygons and the existing reviewed Rhine polygon. This is a diagnostic comparison, not a new admission policy. The stricter scoped shipping policies and every admitted journey remain unchanged.
+
+${table(['Directed pair', 'Candidate OSM ways', 'Maximum projection gap', 'Diagnostic result'], boatExclusions.pairs.map(p => [clean(p.from[2]) + ' → ' + clean(p.to[2]), p.candidateWays.map(w => w.id).join(', '), p.maximumSnapMetres.toFixed(2) + ' m', p.diagnosticResult]))}
+
+**Dock identity does not resolve coordinate disagreement.** A separate historical Overpass request acquired **${boatExclusions.dockResponseElements} response elements / ${boatExclusions.dockUniqueElements} unique elements** around Mainau, Immenstaad and Hemmenhofen. Original terminals, piers, public-transport records and their members are preserved with hashes, tags, versions and edit dates. Unrelated bus platforms and piers remain context only; they never enter a boat routing graph.
+
+${table(['GTFS dock', 'Mapped terminal', 'Coordinate separation', 'Identity evidence'], boatExclusions.dockIdentities.map(d => [clean(d.stop[2]), d.node.id + ' v' + d.node.version + ' / ' + d.node.timestamp.slice(0, 10), d.distanceMetres.toFixed(2) + ' m', d.identityEvidence]))}
+
+The exact Mainau UIC match supports terminal identity but supplies no authority to move the original GTFS call or enlarge its connector. Immenstaad and Hemmenhofen also exceed the original limit. The [Mainau access page](https://www.mainau.de/de/anfahrt), checked 8 September 2026, confirms ship connections but does not provide a coordinate correction. The three dock panels below show source ferry curves, mapped terminals and piers against original GTFS calls and the 2007 shoreline. These are coordinate conflicts, not proof that a landing is inaccessible.
+
+![Three unresolved boat dock coordinate conflicts](assets/thurgau-boat-exclusion-docks.png)
+
+**Konstanz:** the exact shared-node way chains avoid the detour produced by a broad ferry graph, but Gottlieben–Konstanz and Konstanz–Kreuzlingen still fail the existing shoreline screen in both directions. Ermatingen–Gottlieben also fails. Outside-water intervals and their coordinates remain in the audit; missing Seerhein coverage and harbour/source disagreement require further water-boundary review.
+
+**Stein am Rhein–Öhningen:** adding the already-reviewed Rhine water to the diagnostic lake screen makes the exact OSM way pass that geometry screen in both directions. It still supplies no admission: the [URh low-water timetable](https://www.urh.ch/fahrplan_sommer_nw), checked 8 September, publishes replacement transport for this section in both directions. Its lake timetable is dated **15 August–13 September 2026**, covering both fixtures. The retrieved text does not establish replacement vehicle mode or geometry. Seven excluded journeys per date include this section; two shorter excluded URh journeys do not. A continuous ship movement must not be inferred from that footnote or from geometry alone. All nine URh journeys also retain unresolved dock/shoreline failures elsewhere.
+
+The final diagnostic audit preserves the full original calls, permissions and timings of every excluded journey. No partial boat, substitute bus or relocated stop is emitted. Reproduce with \`node scripts/review-thurgau-boat-exclusions.mjs\` and \`scripts/review-thurgau-boat-exclusions.py\` (Pillow); the regional builder and checker independently regenerate and verify the JSON audit. Source state is **2 September 2026**, acquired **8 September**; edit timestamps do not establish survey dates. Dock and candidate geometry retain **© OpenStreetMap contributors / ODbL 1.0**; lake shorelines retain **© FOEN / swisstopo** and their original terms.
+
 
 
 ## Weekday and Sunday directed validation
@@ -332,7 +354,7 @@ node scripts/build-thurgau-region.mjs \\
 # stop, path, edge and journey; reconcile routes, groups, patterns and chunks.
 node scripts/check-thurgau-region.mjs
 node scripts/document-thurgau-study.mjs
-npx vitest run scripts/thurgau-shipping.test.mjs scripts/thurgau-ferry.test.mjs scripts/thurgau-wittenbach.test.mjs scripts/thurgau-boat-geometry.test.mjs scripts/water-paths.test.mjs scripts/zug-boat-geometry.test.mjs scripts/thurgau-border-rail.test.mjs scripts/thurgau-sbb-rail.test.mjs scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/thurgau-boat-exclusions.test.mjs scripts/thurgau-shipping.test.mjs scripts/thurgau-ferry.test.mjs scripts/thurgau-wittenbach.test.mjs scripts/thurgau-boat-geometry.test.mjs scripts/water-paths.test.mjs scripts/zug-boat-geometry.test.mjs scripts/thurgau-border-rail.test.mjs scripts/thurgau-sbb-rail.test.mjs scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
 python3 scripts/test_thurgau_sources.py
 \`\`\`
 
