@@ -5,7 +5,7 @@
     {
       "date": "2026-09-04",
       "version": 1,
-      "archiveManifestSha256": "14739d3b4e71f9fb0c2d8961af4ae870a28853edac28f59df0d086841e24f468",
+      "archiveManifestSha256": "f80ed60918e1dc255334f3f461fba8520c77e421c6247f342340127efb884868",
       "auditSha256": "b5677ac30f42cb803a9afc1f5bb574b38fa545ab1dbfcb93b94de475803c815a",
       "movements": {
         "total": 7033,
@@ -71,19 +71,19 @@
           "gzipBytes": 63813
         },
         "solothurn-region-day-manifest.json": {
-          "bytes": 2075668,
-          "gzipBytes": 407389
+          "bytes": 2088994,
+          "gzipBytes": 412229
         },
         "solothurn-region-morning.json": {
-          "bytes": 2986938,
-          "gzipBytes": 524988
+          "bytes": 3000264,
+          "gzipBytes": 530534
         }
       }
     },
     {
       "date": "2026-09-06",
       "version": 1,
-      "archiveManifestSha256": "1e1d79cfd60f5cdde6e45b1c2d0ac2cce265e40b5d47148c3bf1219ddc8ae0d6",
+      "archiveManifestSha256": "b0a8aece6e2cec18055630b1598c01a927305c1318f819d93b8484990e8f2b9c",
       "auditSha256": "88c8ce9b817b7394d36580f52028ee90b319980f42231e90ad16fcdd04200931",
       "movements": {
         "total": 5695,
@@ -149,12 +149,12 @@
           "gzipBytes": 61670
         },
         "solothurn-region-day-manifest.json": {
-          "bytes": 2275766,
-          "gzipBytes": 445613
+          "bytes": 2289092,
+          "gzipBytes": 451027
         },
         "solothurn-region-morning.json": {
-          "bytes": 2787901,
-          "gzipBytes": 515925
+          "bytes": 2801227,
+          "gzipBytes": 520740
         }
       }
     }

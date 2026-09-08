@@ -87,9 +87,107 @@
         "detourFloorMetres": 3000,
         "simplificationMetres": 5
       },
-      "method": "Only the exact SBB S26 Aarau platform 5 → Olten platform 9 pair may use a pattern-local standard-gauge FOT graph with the independently sourced, original 44-vertex SBB DK–DKO curve. Keep the metre-gauge FOT record unchanged and excluded. Match the entire ordered stop chain with all intermediate calls blocked against revisiting and require all twelve-date contexts to agree. Preserve prior successful geometry, original calls and all attachment/detour limits; no running-track or effective alignment certification."
+      "method": "Only the exact SBB S26 Aarau platform 5 → Olten platform 9 pair and four reviewed seasonal S23/S26 pairs may use the pattern-local standard-gauge FOT graph with the independently sourced, original 44-vertex SBB DK–DKO curve. Keep the metre-gauge FOT record unchanged and excluded. Match the entire ordered stop chain with all intermediate calls blocked against revisiting and require all twelve-date contexts to agree. Preserve prior successful geometry, original calls and all attachment/detour limits; no running-track or effective alignment certification.",
+      "additionalPairs": [
+        {
+          "route": {
+            "routeId": "91-23-j26-1",
+            "agencyId": "11",
+            "line": "S23"
+          },
+          "from": [
+            7.97828838,
+            47.35631546,
+            "Däniken SO",
+            "2",
+            "ch:1:sloid:2111:2:2"
+          ],
+          "to": [
+            8.05147413,
+            47.39117396,
+            "Aarau",
+            "3",
+            "ch:1:sloid:2113:2:3"
+          ],
+          "patternIds": [
+            "59e46f4c6f0b24bd6ce5464a"
+          ]
+        },
+        {
+          "route": {
+            "routeId": "91-23-j26-1",
+            "agencyId": "11",
+            "line": "S23"
+          },
+          "from": [
+            7.97828838,
+            47.35631546,
+            "Däniken SO",
+            "2",
+            "ch:1:sloid:2111:2:2"
+          ],
+          "to": [
+            8.05143819,
+            47.39124694,
+            "Aarau",
+            "2",
+            "ch:1:sloid:2113:2:2"
+          ],
+          "patternIds": [
+            "a5f12163a6c4025555865649"
+          ]
+        },
+        {
+          "route": {
+            "routeId": "91-26-j26-1",
+            "agencyId": "11",
+            "line": "S26"
+          },
+          "from": [
+            7.97828838,
+            47.35631546,
+            "Däniken SO",
+            "2",
+            "ch:1:sloid:2111:2:2"
+          ],
+          "to": [
+            8.05143819,
+            47.39124694,
+            "Aarau",
+            "2",
+            "ch:1:sloid:2113:2:2"
+          ],
+          "patternIds": [
+            "9d6831e42d6f6f0c37b9eb08"
+          ]
+        },
+        {
+          "route": {
+            "routeId": "91-26-j26-1",
+            "agencyId": "11",
+            "line": "S26"
+          },
+          "from": [
+            8.05159989,
+            47.39104625,
+            "Aarau",
+            "5",
+            "ch:1:sloid:2113:3:5"
+          ],
+          "to": [
+            7.94605683,
+            47.35402116,
+            "Dulliken",
+            "4",
+            "ch:1:sloid:2110:3:4"
+          ],
+          "patternIds": [
+            "91850c7d602026cdda3db9e4"
+          ]
+        }
+      ]
     },
-    "policySha256": "d310829f63e627e79cf9cb5553d7e51506f401a8356df182765f9b5369d3232f",
+    "policySha256": "15bc1b6e6e0aa4c7164378adbd417706de5b8b90f940fa3c00c84a9bf568164c",
     "source": {
       "publisher": "SBB Infrastructure",
       "attribution": "SBB Infrastructure / data.sbb.ch",

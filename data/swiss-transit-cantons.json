@@ -417,7 +417,7 @@
       "evidence": "ch.so.avt.oev GeoPackage downloaded: 3,951 MultiLineString network segments and 775 stops in EPSG:2056. Network fields only identify mode and tunnel status; there are no line/operator identifiers. Stops include DiDok. The empty linestructure helper table is not missing network coverage.",
       "vintage": "Published 17 December 2025. Metadata explicitly excludes night services.",
       "reuse": "Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.",
-      "nextAction": "Use the residual-gap audit to review Arlesheim tram platform E, conflicting Egerkingen 501 approaches and Pieterlen EV4 departure alternatives. It also inventories winter BOGG 507/N51 and summer S23/S26/A01 gaps. The IC81 Interlaken and IR17 Bern platform reviews add 12 seasonal journeys with prior geometry preserved. September exclusions remain 123 Friday / 124 Sunday; physical direction and year-round coverage remain uncertified.",
+      "nextAction": "Review the seven remaining directed bus/tram pairs: Arlesheim tram platform E, conflicting Egerkingen 501 approaches on winter and later stop identities, Pieterlen EV4 departures, and two summer EV1 alternatives. The IC81/IR17 platform review adds 12 seasonal journeys; the S23/S26 and winter BOGG 507/N51 follow-up adds 79 more, preserving all earlier geometry. All rail journeys across twelve sampled dates have complete geometry. September exclusions remain 123 Friday / 124 Sunday; physical direction and year-round coverage remain uncertified.",
       "sourceIds": [
         "so-publications",
         "so-lines",
@@ -459,7 +459,10 @@
         "roadDetourAudit": "data/solothurn-audit/road-detour-review.json",
         "m53Audit": "data/solothurn-audit/m53-review.json",
         "residualGapAudit": "data/solothurn-audit/residual-gap-review.json",
-        "seasonalPlatformAdditionalJourneys": 12
+        "seasonalPlatformAdditionalJourneys": 12,
+        "seasonalCompletionAdditionalJourneys": 79,
+        "allSampledRailGeometryComplete": true,
+        "residualDirectedPairs": 7
       }
     },
     {

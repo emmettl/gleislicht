@@ -1,0 +1,42 @@
+{
+  "serviceDate": "2026-01-16",
+  "dates": [
+    "2026-01-16",
+    "2026-01-18",
+    "2026-04-03",
+    "2026-04-05",
+    "2026-07-17",
+    "2026-07-19",
+    "2026-08-01",
+    "2026-09-04",
+    "2026-09-06",
+    "2026-10-23",
+    "2026-10-25",
+    "2026-12-11"
+  ],
+  "feedVersion": "20260902",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+  "sourceUrl": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+  "routes": [
+    {
+      "routeId": "92-507-j26-1",
+      "agencyId": "793",
+      "line": "507"
+    },
+    {
+      "routeId": "92-A01-T-j26-1",
+      "agencyId": "7231",
+      "line": "EV1"
+    },
+    {
+      "routeId": "92-N51-j26-1",
+      "agencyId": "793",
+      "line": "N51"
+    }
+  ],
+  "scope": "Every complete retained twelve-date pattern on three routes with unresolved winter or summer bus pairs. Original calls and coordinates retained; routing-only nonnegative times. Geometry experiment, not automatic admission."
+}

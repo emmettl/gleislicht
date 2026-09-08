@@ -6,6 +6,7 @@ import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { matchBaselSegment } from './basel-line-geometry.mjs'
 import { bernPatternId } from './bern-line-geometry.mjs'
+import { loadSolothurnAccessRoads } from './solothurn-access-roads.mjs'
 import { loadSolothurnSupplements } from './solothurn-supplement-geometry.mjs'
 import { applySolothurnGeometry, solothurnGraphs, SO_LIMITS } from './solothurn-network-geometry.mjs'
 import { reviewedRoadCorridor } from './solothurn-road-detours.mjs'
@@ -17,14 +18,14 @@ const hash = x => createHash('sha256').update(JSON.stringify(x)).digest('hex')
 const length = path => path.slice(1).reduce((n, p, i) => n + distanceMetres(path[i], p), 0)
 const addedRoutes = ['91-17-B-j26-1', '91-81-A-j26-1']
 
-export function assertPreservedPattern(before, after, paths) {
+export function assertPreservedPattern(before, after, paths, allowedRoutes = addedRoutes) {
   for (const key of ['id', 'routeId', 'agencyId', 'line', 'directionId']) assert.equal(after[key], before[key])
   assert.deepEqual(after.stopIds, before.stopIds, 'Changed original complete stop chain')
   assert.equal(after.pathSegments.length, before.pathSegments.length)
   for (const [i, previous] of before.pathSegments.entries()) {
     const current = after.pathSegments[i] === null ? null : hash(paths[after.pathSegments[i]])
     if (previous !== null) assert.equal(current, previous, 'Changed previously selected geometry')
-    else if (current !== null) assert(addedRoutes.includes(after.routeId), 'Unreviewed route gained geometry')
+    else if (current !== null) assert(allowedRoutes.includes(after.routeId), 'Unreviewed route gained geometry')
   }
   if (before.admittedTrips) assert(after.admittedTrips, 'Lost previously admitted full pattern')
 }
@@ -33,6 +34,13 @@ export async function reviewSolothurnResidualGaps() {
   const contextPath = 'data/solothurn-pattern-contexts.json.gz', baselinePath = 'data/solothurn-seasonal-platform-baseline.json.gz'
   const context = await zipped(contextPath), baseline = await zipped(baselinePath)
   assert.deepEqual(baseline.sourceHashes, context.sourceHashes)
+  const completionPath = 'data/solothurn-seasonal-completion-baseline.json.gz', completion = await zipped(completionPath)
+  assert.deepEqual(completion.sourceHashes, context.sourceHashes)
+  const completionPrevious = new Map(completion.patterns.map(p => [p.id, p]))
+  const railPairs = (await json('data/solothurn-s26-policy.json')).additionalPairs
+  const roadPairs = (await json('data/solothurn-seasonal-road-policy.json')).pairs
+  const completionPairs = [...railPairs.map(p => [p.route.routeId, p.from[4], p.to[4]]), ...roadPairs.map(p => [p.routeId, p.fromId, p.toId])]
+  const completionRoutes = [...new Set(completionPairs.map(p => p[0]))], allowedRoutes = [...addedRoutes, ...completionRoutes], completionPatterns = []
   const source = await zipped('data/solothurn-sources/decoded.json.gz'), supplements = await loadSolothurnSupplements(context, { verifyEvidence: true })
   const graph = solothurnGraphs(source.lines), routes = new Map(context.routes.map(r => [r.id, r])), cache = new Map()
   const previous = new Map(baseline.patterns.map(p => [p.id, p])), verified = new Map(), reviewed = []
@@ -41,7 +49,13 @@ export async function reviewSolothurnResidualGaps() {
     const trains = new Map(raw.trains.map(t => [bernPatternId(t, raw.stops), t]))
     for (const p of result.patterns) {
       const before = previous.get(p.id); assert(before, 'New context requires baseline review')
-      assertPreservedPattern(before, p, result.paths); assert(!verified.has(p.id)); verified.set(p.id, p)
+      assertPreservedPattern(before, p, result.paths, allowedRoutes); assert(!verified.has(p.id)); verified.set(p.id, p)
+      const completionBefore = completionPrevious.get(p.id); assert(completionBefore)
+      assertPreservedPattern(completionBefore, p, result.paths, completionRoutes)
+      const addedSegments = p.pathSegments.flatMap((index, i) => completionBefore.pathSegments[i] !== null || index === null ? [] : [{ fromId: p.stopIds[i], toId: p.stopIds[i + 1], path: result.paths[index], geometrySha256: hash(result.paths[index]) }])
+      for (const segment of addedSegments) assert(completionPairs.some(([r, a, b]) => r === p.routeId && a === segment.fromId && b === segment.toId), 'Unreviewed completion pair')
+      if (addedSegments.length) completionPatterns.push({ id: p.id, routeId: p.routeId, agencyId: p.agencyId, line: p.line, directionId: p.directionId,
+        stops: trains.get(p.id).stops.map(([i]) => raw.stops[i]), beforeAdmitted: Boolean(completionBefore.admittedTrips), afterAdmitted: Boolean(p.admittedTrips), addedSegments })
       if (addedRoutes.includes(p.routeId)) reviewed.push({ id: p.id, routeId: p.routeId, agencyId: p.agencyId, line: p.line, directionId: p.directionId,
         stops: trains.get(p.id).stops.map(([i]) => raw.stops[i]), beforeAdmitted: Boolean(before.admittedTrips), afterAdmitted: Boolean(p.admittedTrips),
         addedSegments: p.pathSegments.flatMap((index, i) => before.pathSegments[i] !== null || index === null ? [] : [{ fromId: p.stopIds[i], toId: p.stopIds[i + 1], path: result.paths[index], geometrySha256: hash(result.paths[index]) }]) })
@@ -59,12 +73,28 @@ export async function reviewSolothurnResidualGaps() {
   assert.equal(reviewed.filter(p => !p.beforeAdmitted && p.afterAdmitted).length, 7)
   const seasonal = await zipped('data/solothurn-audit/seasonal-patterns.json.gz'), summary = await json('data/solothurn-audit/seasonal-summary.json')
   const stops = new Map(context.snapshots.flatMap(d => d.stops.map(s => [s[4], s])))
+  const seasonalRoads = await loadSolothurnAccessRoads(context, { verifyEvidence: true, policyPath: 'data/solothurn-seasonal-road-policy.json' })
+  const assessedRoadKeys = new Set()
+  for (const p of completion.patterns.filter(p => ['92-507-j26-1', '92-N51-j26-1', '92-A01-T-j26-1'].includes(p.routeId)))
+    p.pathSegments.forEach((v, i) => { if (v === null) assessedRoadKeys.add(JSON.stringify([p.routeId, p.stopIds[i], p.stopIds[i + 1]])) })
+  const seasonalRoadAssessments = [...assessedRoadKeys].sort().map(key => {
+    const [routeId, fromId, toId] = JSON.parse(key), { path, ...assessment } = seasonalRoads.all.get(key)
+    const variants = assessment.roadPatternIds.map(id => {
+      const identity = seasonalRoads.cache.agencies.all.identities[id], stops = identity.stops
+      const index = stops.findIndex((s, i) => s[4] === fromId && stops[i + 1]?.[4] === toId); assert(index >= 0)
+      const path = seasonalRoads.cache.agencies.all.cache.paths[seasonalRoads.cache.agencies.all.cache.patterns[id][index]]
+      return { id, stops, path, pathMetres: length(path), geometrySha256: hash(path) }
+    })
+    return { routeId, from: stops.get(fromId), to: stops.get(toId), selected: seasonalRoads.pairs.has(key), assessment, variants }
+  })
+  assert.equal(seasonalRoadAssessments.length, 7)
+  assert.equal(seasonalRoadAssessments.filter(p => p.selected).length, 5)
   const residualPairs = new Map(), days = []
   for (const day of seasonal) {
     const before = baseline.days.find(d => d.date === day.date), after = summary.days.find(d => d.date === day.date)
     const admitted = day.patterns.reduce((n, p) => n + p.admittedTrips, 0); assert.equal(admitted, after.admittedTrips)
     const additions = day.patterns.filter(p => p.admittedTrips && !previous.get(p.id).admittedTrips)
-    assert(additions.every(p => addedRoutes.includes(p.routeId)))
+    assert(additions.every(p => allowedRoutes.includes(p.routeId)))
     assert.equal(admitted - before.admittedTrips, additions.reduce((n, p) => n + p.admittedTrips, 0))
     const excludedByRoute = {}
     for (const p of day.patterns) {
@@ -83,10 +113,16 @@ export async function reviewSolothurnResidualGaps() {
       }
     }
     assert.equal(Object.values(excludedByRoute).reduce((n, v) => n + v, 0), after.trips - admitted)
-    days.push({ date: day.date, beforeAdmitted: before.admittedTrips, admitted, addedJourneys: admitted - before.admittedTrips,
+    const platformAddedJourneys = additions.filter(p => addedRoutes.includes(p.routeId)).reduce((n, p) => n + p.admittedTrips, 0)
+    const completionBeforeAdmitted = completion.days.find(d => d.date === day.date).admittedTrips
+    const completionAddedJourneys = admitted - completionBeforeAdmitted
+    assert.equal(completionAddedJourneys, additions.filter(p => completionRoutes.includes(p.routeId)).reduce((n, p) => n + p.admittedTrips, 0))
+    days.push({ date: day.date, platformAddedJourneys, completionBeforeAdmitted, completionAddedJourneys, beforeAdmitted: before.admittedTrips, admitted, addedJourneys: admitted - before.admittedTrips,
       addedPatterns: additions.map(p => ({ id: p.id, routeId: p.routeId, journeys: p.admittedTrips })), excludedJourneys: after.trips - admitted, excludedByRoute })
   }
-  assert.equal(days.reduce((n, d) => n + d.addedJourneys, 0), 12)
+  assert.equal(days.reduce((n, d) => n + d.platformAddedJourneys, 0), 12)
+  assert.equal(days.reduce((n, d) => n + d.completionAddedJourneys, 0), 79)
+  assert([...residualPairs.values()].every(p => p.mode !== 'rail'), 'Seasonal rail gap remains')
   for (const date of ['2026-09-04', '2026-09-06']) assert.equal(days.find(d => d.date === date).addedJourneys, 0)
   const dir = 'data/solothurn-residual-sources', evidence = await json(`${dir}/sources.json`)
   for (const f of evidence.files) assert.equal(await hashFile(`${dir}/${f.file}`), f.sha256, 'Changed residual source evidence')
@@ -103,9 +139,10 @@ export async function reviewSolothurnResidualGaps() {
   })
   return { schemaVersion: 1, baselineCommit: baseline.commit, baselineSha256: await hashFile(baselinePath), contextSha256: await hashFile(contextPath),
     sourceHashes: context.sourceHashes, sourceEvidenceSha256: await hashFile(`${dir}/sources.json`), evidence,
-    method: 'Revalidate all 2,824 complete original contexts and preserve every prior non-null segment geometry hash. Add only reviewed BLS IR17 Bern terminal and SBB IC81 Interlaken platform associations, with existing full-pattern consensus and unchanged limits. Count excluded journeys once per route; failed-pair occurrences may overlap.',
+    method: 'Revalidate all 2,824 complete original contexts and preserve every prior non-null segment geometry hash. The initial platform stage adds BLS IR17 Bern terminal and SBB IC81 Interlaken associations. The subsequent completion stage separately pins its baseline and checks only the four S23/S26 pairs and reviewed seasonal service-road pairs, with existing full-pattern consensus and unchanged limits. Count excluded journeys once per route; failed-pair occurrences may overlap.',
     stationSources: { interlaken: supplements.metadata.railReview, bern: supplements.metadata.bernTerminal },
     verifiedCompleteContexts: verified.size, reviewed, days,
+    completion: { seasonalRoadAssessments, baselineCommit: completion.commit, baselineSha256: await hashFile(completionPath), patterns: completionPatterns, railSource: supplements.metadata.s26, roadSource: supplements.metadata.seasonalRoads },
     residualPairs: [...residualPairs.values()],
     egerkingenAlternatives: { from: egerkingen.from, to: egerkingen.to, relationId: egerkingen.relationId, relationPath: corridor.path,
       relationPathMetres: length(corridor.path), fromStopGapMetres: distanceMetres(egerkingen.from, corridor.path[0]), toStopGapMetres: distanceMetres(egerkingen.to, corridor.path.at(-1)),
@@ -114,7 +151,7 @@ export async function reviewSolothurnResidualGaps() {
     remainingEvidenceNeeded: { arlesheim: 'Dated operator/platform evidence resolving the original tram platform E coordinate without inventing track geometry.',
       egerkingen: 'A dated operating itinerary and station boarding position to resolve the three conflicting approaches.',
       pieterlen: 'Direction-specific replacement-bus departure/turning evidence; the boarding/walking plan alone does not select either full-context alternative.',
-      seasonal: 'Further original-platform and full-pattern reviews for the retained winter and summer residual pairs. No year-round certification.' } }
+      seasonal: 'Every remaining winter/summer pair is listed with original identities and per-date counts. No year-round certification.' } }
 }
 export function egerkingenComparisonSvg(a) {
   const rows = [{ label: `OSM bus relation: ${a.relationPathMetres.toFixed(1)} m`, path: a.relationPath, color: '#9333ea' },

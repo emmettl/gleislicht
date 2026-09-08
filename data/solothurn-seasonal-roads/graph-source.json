@@ -1,0 +1,24 @@
+{
+  "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+  "sourceDate": "2026-09-02",
+  "parentPbfSha256": "39257b1c92a45da38ca94ddb745bdcf53551d0e66b02d89f3de3e7c064c3a29f",
+  "osmSha256": "f79b1e759871f88b8fa4248d528af124daa61182c755f06ccc3e4aaf9f38a511",
+  "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+  "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+  "args": [
+    "-x",
+    "/private/tmp/gleislicht-switzerland-260902.osm.pbf",
+    "-c",
+    "data/solothurn-seasonal-roads/filter.cfg",
+    "-i",
+    "/private/tmp/solothurn-seasonal-road-feed",
+    "-m",
+    "bus",
+    "-X",
+    "/private/tmp/solothurn-seasonal-road-network.osm"
+  ],
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "method": "Input-dependent pfaedle extraction from the pinned Swiss PBF, adding service roads with original access/direction/turn rules. Routing profile tightens stop candidates to 20 m. No current operator itinerary or physical access certification."
+}

@@ -1,5 +1,147 @@
 {
   "supplements": {
+    "seasonalRoads": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceDirectory": "data/solothurn-seasonal-roads",
+        "sourceSha256": "6affb56e1d93d58703ab145bab127b997304681e3668ab1a19f285d667ad3551",
+        "cacheSha256": "fbc751147e7e4683a36c194967a413b54aea3053a5ace1d482c60e05806dfdc6",
+        "geometrySource": "osm-solothurn-seasonal-road-inference",
+        "limits": {
+          "detourRatio": 3,
+          "detourFloorMetres": 600
+        },
+        "pairs": [
+          {
+            "routeId": "92-507-j26-1",
+            "agencyId": "793",
+            "line": "507",
+            "fromId": "ch:1:sloid:87634",
+            "toId": "ch:1:sloid:87635",
+            "geometrySha256": "ab07da2b3bebd3933a5e95bb827e0334f59655cd0d15a391f96ae13826f54d84",
+            "roadPatternIds": [
+              "4b137aebd27062041370645a",
+              "adfe1f68d29838d66cc7ce8b",
+              "cb9ef7ace497b9da82f914ec",
+              "eb8b6d3ac6507a8473bfeb40"
+            ]
+          },
+          {
+            "routeId": "92-507-j26-1",
+            "agencyId": "793",
+            "line": "507",
+            "fromId": "ch:1:sloid:87635",
+            "toId": "ch:1:sloid:87634",
+            "geometrySha256": "38ea9a09895a8a5b931005522145e534f3775e72ce6109cc397fa65e1b345aa4",
+            "roadPatternIds": [
+              "2ea1c6c96541ff5a6bdd9e98",
+              "4852b3fda02e809c64805c1b",
+              "63258419f8feeacb6939e588",
+              "9955b32753b37fda4219c35c",
+              "c79a0b343b5219ce0528fbeb"
+            ]
+          },
+          {
+            "routeId": "92-507-j26-1",
+            "agencyId": "793",
+            "line": "507",
+            "fromId": "ch:1:sloid:87634",
+            "toId": "ch:1:sloid:78025",
+            "geometrySha256": "293ee33364d37735361ddf385b0e6f160070b17b28ddcf69e34dd7527e5f70eb",
+            "roadPatternIds": [
+              "4852b3fda02e809c64805c1b",
+              "63258419f8feeacb6939e588",
+              "9955b32753b37fda4219c35c"
+            ]
+          },
+          {
+            "routeId": "92-N51-j26-1",
+            "agencyId": "793",
+            "line": "N51",
+            "fromId": "ch:1:sloid:78027",
+            "toId": "ch:1:sloid:78026",
+            "geometrySha256": "02928323c74319bfcd5784f6a795f384eb0f96932a1b01964cab8136f9d0fd5f",
+            "roadPatternIds": [
+              "0d4b98a32f10560eaf71ab03",
+              "46991272990b3eaa760ea940",
+              "a16ed70eee3336347cf4b622"
+            ]
+          },
+          {
+            "routeId": "92-A01-T-j26-1",
+            "agencyId": "7231",
+            "line": "EV1",
+            "fromId": "ch:1:sloid:82651",
+            "toId": "ch:1:sloid:88650",
+            "geometrySha256": "4b65b518972ed9cf24a26916301981c768261c0f9d82ed97c871d479de65e89d",
+            "roadPatternIds": [
+              "44e5a775ad74312cb64f20c5",
+              "5eaa465158750e191d06159c"
+            ]
+          }
+        ],
+        "method": "Only five explicitly reviewed winter/summer directed pairs on BOGG 507/N51 and SBB EV1 may use unanimous complete-pattern results from the retained service-road profile with 20 m stop candidates. All 50 complete patterns on all three routes retained; no fallback, import issue, failed consensus or detour override admitted. Preserve earlier successful geometry. Partial EV1 improvement is audited but never emits an incomplete journey."
+      },
+      "policySha256": "d1067182f053ab151b3bf1fa70e342815c9d643974ea06263c01917a4cf898e8",
+      "source": {
+        "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+        "sourceDate": "2026-09-02",
+        "parentPbfSha256": "39257b1c92a45da38ca94ddb745bdcf53551d0e66b02d89f3de3e7c064c3a29f",
+        "osmSha256": "f79b1e759871f88b8fa4248d528af124daa61182c755f06ccc3e4aaf9f38a511",
+        "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+        "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+        "args": [
+          "-x",
+          "/private/tmp/gleislicht-switzerland-260902.osm.pbf",
+          "-c",
+          "data/solothurn-seasonal-roads/filter.cfg",
+          "-i",
+          "/private/tmp/solothurn-seasonal-road-feed",
+          "-m",
+          "bus",
+          "-X",
+          "/private/tmp/solothurn-seasonal-road-network.osm"
+        ],
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "licenseUrl": "https://www.openstreetmap.org/copyright",
+        "method": "Input-dependent pfaedle extraction from the pinned Swiss PBF, adding service roads with original access/direction/turn rules. Routing profile tightens stop candidates to 20 m. No current operator itinerary or physical access certification.",
+        "description": "Geofabrik Switzerland 2026-09-02; Solothurn three-route seasonal service-road review with 20 m stop candidates",
+        "matcher": {
+          "schemaVersion": 1,
+          "completed": true,
+          "noTrie": true,
+          "warnings": true,
+          "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+          "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+          "configSha256": "b83f29bb3f3435cdd138a7aaf0609eac69877c67ce2776243f8372979e49b2de",
+          "osmSha256": "f79b1e759871f88b8fa4248d528af124daa61182c755f06ccc3e4aaf9f38a511",
+          "patternsSha256": "8d26e1c6cafba9d24f9328c1e6245056ed6da2dc347237d9f711017ec2f9cf64",
+          "logSha256": "84fc3607e79ed8e1aa6da6a95ffbb5b200f23cc7a33d6d3e51e3950b2ccaa7e8",
+          "shapesSha256": "21fad811a74fec5895bdb8df3b89c8d89b288e0b7de1b663d6bed6cbec865faf",
+          "tripsSha256": "d8209ff5f5e8a5e08fda4b286b9201399777e0c094ab8c136b150385e90ae41b",
+          "stopTimesSha256": "4b67090b5217b7f8876c7ea1b3ab8c9942beeb7c8ad295ce51c4c774e37c521f",
+          "elapsedSeconds": 5
+        },
+        "files": {
+          "parent-source.json": "4d47d6dbfa4844545d7030b0de512df36da4b95f224b222a8bff19b0e4aa1509",
+          "graph-source.json": "97eb6e3deff3b8596a6daeb6ff776778bc28eb1835036496b5ceffbad810570f",
+          "selection.json": "96596841f08ea59481f183b7bb478ca44225cd503bc2f3042d05cc3573242585",
+          "filter.cfg": "2f768e1f73689795430ae71365cbb11dc5ae798a8c5004bb13b56fd42b51ca38",
+          "routing.cfg": "b83f29bb3f3435cdd138a7aaf0609eac69877c67ce2776243f8372979e49b2de",
+          "pfaedle-LICENSE": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "network.osm.gz": "1516f9d048530f732ff9424789c4a8d0a34ecaa2d010bbcf190e1b4f1fbed6d1",
+          "filtering.log.gz": "8654a10f6ab364400cca8a520588d29fbd2a7c30e800b73353f33569c17d2e05",
+          "filter-patterns.json.gz": "bb99b0521e8cb6a0d909c55ecb80223a105a8c22f2a2b80d0904afb979f3e986",
+          "routing-input.json.gz": "d6616b2aab82592b5f03d0245345dc65f909d8991c67a55119190220eaf1f0c7",
+          "evidence.json.gz": "941b0fe306929117528fa70e38e4f5d19f5d6c5eebe5dcfc926cb6865e21e08b"
+        },
+        "configurationAttribution": "pfaedle configuration, University of Freiburg / Patrick Brosi et al., GPL v3; service-road and strict-candidate profile retained from the Luzern study. No access/direction/turn rules removed."
+      },
+      "patterns": 50,
+      "matcherIssues": [],
+      "maximumImportedSnapMetres": 19.9576945492116
+    },
     "m53": {
       "policy": {
         "schemaVersion": 1,
@@ -7395,9 +7537,107 @@
           "detourFloorMetres": 3000,
           "simplificationMetres": 5
         },
-        "method": "Only the exact SBB S26 Aarau platform 5 → Olten platform 9 pair may use a pattern-local standard-gauge FOT graph with the independently sourced, original 44-vertex SBB DK–DKO curve. Keep the metre-gauge FOT record unchanged and excluded. Match the entire ordered stop chain with all intermediate calls blocked against revisiting and require all twelve-date contexts to agree. Preserve prior successful geometry, original calls and all attachment/detour limits; no running-track or effective alignment certification."
+        "method": "Only the exact SBB S26 Aarau platform 5 → Olten platform 9 pair and four reviewed seasonal S23/S26 pairs may use the pattern-local standard-gauge FOT graph with the independently sourced, original 44-vertex SBB DK–DKO curve. Keep the metre-gauge FOT record unchanged and excluded. Match the entire ordered stop chain with all intermediate calls blocked against revisiting and require all twelve-date contexts to agree. Preserve prior successful geometry, original calls and all attachment/detour limits; no running-track or effective alignment certification.",
+        "additionalPairs": [
+          {
+            "route": {
+              "routeId": "91-23-j26-1",
+              "agencyId": "11",
+              "line": "S23"
+            },
+            "from": [
+              7.97828838,
+              47.35631546,
+              "Däniken SO",
+              "2",
+              "ch:1:sloid:2111:2:2"
+            ],
+            "to": [
+              8.05147413,
+              47.39117396,
+              "Aarau",
+              "3",
+              "ch:1:sloid:2113:2:3"
+            ],
+            "patternIds": [
+              "59e46f4c6f0b24bd6ce5464a"
+            ]
+          },
+          {
+            "route": {
+              "routeId": "91-23-j26-1",
+              "agencyId": "11",
+              "line": "S23"
+            },
+            "from": [
+              7.97828838,
+              47.35631546,
+              "Däniken SO",
+              "2",
+              "ch:1:sloid:2111:2:2"
+            ],
+            "to": [
+              8.05143819,
+              47.39124694,
+              "Aarau",
+              "2",
+              "ch:1:sloid:2113:2:2"
+            ],
+            "patternIds": [
+              "a5f12163a6c4025555865649"
+            ]
+          },
+          {
+            "route": {
+              "routeId": "91-26-j26-1",
+              "agencyId": "11",
+              "line": "S26"
+            },
+            "from": [
+              7.97828838,
+              47.35631546,
+              "Däniken SO",
+              "2",
+              "ch:1:sloid:2111:2:2"
+            ],
+            "to": [
+              8.05143819,
+              47.39124694,
+              "Aarau",
+              "2",
+              "ch:1:sloid:2113:2:2"
+            ],
+            "patternIds": [
+              "9d6831e42d6f6f0c37b9eb08"
+            ]
+          },
+          {
+            "route": {
+              "routeId": "91-26-j26-1",
+              "agencyId": "11",
+              "line": "S26"
+            },
+            "from": [
+              8.05159989,
+              47.39104625,
+              "Aarau",
+              "5",
+              "ch:1:sloid:2113:3:5"
+            ],
+            "to": [
+              7.94605683,
+              47.35402116,
+              "Dulliken",
+              "4",
+              "ch:1:sloid:2110:3:4"
+            ],
+            "patternIds": [
+              "91850c7d602026cdda3db9e4"
+            ]
+          }
+        ]
       },
-      "policySha256": "d310829f63e627e79cf9cb5553d7e51506f401a8356df182765f9b5369d3232f",
+      "policySha256": "15bc1b6e6e0aa4c7164378adbd417706de5b8b90f940fa3c00c84a9bf568164c",
       "source": {
         "publisher": "SBB Infrastructure",
         "attribution": "SBB Infrastructure / data.sbb.ch",

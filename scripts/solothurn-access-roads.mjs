@@ -7,8 +7,8 @@ import { roadPatternId } from './prepare-postbus-road-feed.mjs'
 import { hashFile } from './solothurn-timetable.mjs'
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 
-export async function loadSolothurnAccessRoads(context, { verifyEvidence = false } = {}) {
-  const policyPath = 'data/solothurn-access-policy.json', policy = JSON.parse(await readFile(policyPath)), dir = policy.sourceDirectory
+export async function loadSolothurnAccessRoads(context, { verifyEvidence = false, policyPath = 'data/solothurn-access-policy.json' } = {}) {
+  const policy = JSON.parse(await readFile(policyPath)), dir = policy.sourceDirectory
   assert.equal(await hashFile(`${dir}/source.json`), policy.sourceSha256)
   assert.equal(await hashFile(`${dir}/cache.json.gz`), policy.cacheSha256)
   const source = JSON.parse(await readFile(`${dir}/source.json`)), cache = JSON.parse(gunzipSync(await readFile(`${dir}/cache.json.gz`)))
@@ -36,8 +36,9 @@ export async function loadSolothurnAccessRoads(context, { verifyEvidence = false
     const key = JSON.stringify([review.routeId, review.fromId, review.toId]), candidate = all.get(key)
     assert(candidate?.path, 'Reviewed access-road pair no longer has full-context consensus')
     assert.equal(hash(JSON.stringify(candidate.path)), review.geometrySha256)
+    if (review.roadPatternIds) assert.deepEqual(candidate.roadPatternIds, review.roadPatternIds, 'Changed reviewed complete road contexts')
     assert(!pairs.has(key), 'Duplicate access-road pair')
-    pairs.set(key, { ...candidate, agencyId: identity.agencyId, geometrySource: 'osm-solothurn-access-road-inference' })
+    pairs.set(key, { ...candidate, agencyId: identity.agencyId, geometrySource: policy.geometrySource ?? 'osm-solothurn-access-road-inference' })
   }
   return { pairs, all, policy, cache, metadata: { policy, policySha256: await hashFile(policyPath), source,
     patterns: expected.size, matcherIssues: cache.agencies.all.cache.report.issues, maximumImportedSnapMetres: cache.agencies.all.cache.report.maxSnapMetres },

@@ -93,6 +93,7 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
   }
   const pairs = supplementConsensus(candidates)
   const accessRoads = roads ? await loadSolothurnAccessRoads(context, { verifyEvidence }) : undefined
+  const seasonalRoads = roads ? await loadSolothurnAccessRoads(context, { verifyEvidence, policyPath: 'data/solothurn-seasonal-road-policy.json' }) : undefined
   const roadDetour = accessRoads ? await loadSolothurnRoadDetours(accessRoads) : undefined
   const m53 = accessRoads ? await loadSolothurnM53(context, accessRoads) : undefined
   let road
@@ -100,13 +101,14 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
     road = await loadSolothurnRoads(context, { verifyEvidence })
     for (const [key, value] of road.pairs) pairs.set(key, value)
   }
-  return { pairs, policy, s29PrecedenceReview: [...s29Precedence.review.values()], accessRoadReview: accessRoads ? [...accessRoads.all].map(([key, { path, ...assessment }]) => ({ key, ...assessment, pathSha256: path ? sha(path) : null, selected: accessRoads.pairs.has(key) })) : [], metadata: { ...(m53 ? { m53: m53.metadata } : {}), ...(roadDetour ? { roadDetour: roadDetour.metadata } : {}), delle: delle.metadata, simplon: simplon.metadata, como: como.metadata, s26: s26.metadata, bernTerminal: bernTerminal.metadata, ...(accessRoads ? { accessRoads: accessRoads.metadata } : {}), busJunction: busJunction.metadata, s29Precedence: s29Precedence.metadata, railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
+  return { pairs, policy, s29PrecedenceReview: [...s29Precedence.review.values()], accessRoadReview: accessRoads ? [...accessRoads.all].map(([key, { path, ...assessment }]) => ({ key, ...assessment, pathSha256: path ? sha(path) : null, selected: accessRoads.pairs.has(key) })) : [], metadata: { ...(seasonalRoads ? { seasonalRoads: seasonalRoads.metadata } : {}), ...(m53 ? { m53: m53.metadata } : {}), ...(roadDetour ? { roadDetour: roadDetour.metadata } : {}), delle: delle.metadata, simplon: simplon.metadata, como: como.metadata, s26: s26.metadata, bernTerminal: bernTerminal.metadata, ...(accessRoads ? { accessRoads: accessRoads.metadata } : {}), busJunction: busJunction.metadata, s29Precedence: s29Precedence.metadata, railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
     ...(road ? { road: road.metadata, roadCacheSha256: road.sha256 } : {}) },
     match(route, from, to) {
       const previous = busJunction.match(route, from, to, pairs.get(keyOf(route, from, to)))
       const access = accessRoads ? accessRoads.match(route, from, to, previous) : previous
       const detour = roadDetour ? roadDetour.match(route, from, to, access) : access
-      const value = m53 ? m53.match(route, from, to, detour) : detour
+      const night = m53 ? m53.match(route, from, to, detour) : detour
+      const value = seasonalRoads ? seasonalRoads.match(route, from, to, night) : night
       if (value?.path) assert.equal(value.agencyId, route.agencyId, 'Supplement changed operator identity')
       return value
     } }

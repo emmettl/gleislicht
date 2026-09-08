@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "sourceDirectory": "data/solothurn-seasonal-roads",
+  "sourceSha256": "6affb56e1d93d58703ab145bab127b997304681e3668ab1a19f285d667ad3551",
+  "cacheSha256": "fbc751147e7e4683a36c194967a413b54aea3053a5ace1d482c60e05806dfdc6",
+  "geometrySource": "osm-solothurn-seasonal-road-inference",
+  "limits": {
+    "detourRatio": 3,
+    "detourFloorMetres": 600
+  },
+  "pairs": [
+    {
+      "routeId": "92-507-j26-1",
+      "agencyId": "793",
+      "line": "507",
+      "fromId": "ch:1:sloid:87634",
+      "toId": "ch:1:sloid:87635",
+      "geometrySha256": "ab07da2b3bebd3933a5e95bb827e0334f59655cd0d15a391f96ae13826f54d84",
+      "roadPatternIds": [
+        "4b137aebd27062041370645a",
+        "adfe1f68d29838d66cc7ce8b",
+        "cb9ef7ace497b9da82f914ec",
+        "eb8b6d3ac6507a8473bfeb40"
+      ]
+    },
+    {
+      "routeId": "92-507-j26-1",
+      "agencyId": "793",
+      "line": "507",
+      "fromId": "ch:1:sloid:87635",
+      "toId": "ch:1:sloid:87634",
+      "geometrySha256": "38ea9a09895a8a5b931005522145e534f3775e72ce6109cc397fa65e1b345aa4",
+      "roadPatternIds": [
+        "2ea1c6c96541ff5a6bdd9e98",
+        "4852b3fda02e809c64805c1b",
+        "63258419f8feeacb6939e588",
+        "9955b32753b37fda4219c35c",
+        "c79a0b343b5219ce0528fbeb"
+      ]
+    },
+    {
+      "routeId": "92-507-j26-1",
+      "agencyId": "793",
+      "line": "507",
+      "fromId": "ch:1:sloid:87634",
+      "toId": "ch:1:sloid:78025",
+      "geometrySha256": "293ee33364d37735361ddf385b0e6f160070b17b28ddcf69e34dd7527e5f70eb",
+      "roadPatternIds": [
+        "4852b3fda02e809c64805c1b",
+        "63258419f8feeacb6939e588",
+        "9955b32753b37fda4219c35c"
+      ]
+    },
+    {
+      "routeId": "92-N51-j26-1",
+      "agencyId": "793",
+      "line": "N51",
+      "fromId": "ch:1:sloid:78027",
+      "toId": "ch:1:sloid:78026",
+      "geometrySha256": "02928323c74319bfcd5784f6a795f384eb0f96932a1b01964cab8136f9d0fd5f",
+      "roadPatternIds": [
+        "0d4b98a32f10560eaf71ab03",
+        "46991272990b3eaa760ea940",
+        "a16ed70eee3336347cf4b622"
+      ]
+    },
+    {
+      "routeId": "92-A01-T-j26-1",
+      "agencyId": "7231",
+      "line": "EV1",
+      "fromId": "ch:1:sloid:82651",
+      "toId": "ch:1:sloid:88650",
+      "geometrySha256": "4b65b518972ed9cf24a26916301981c768261c0f9d82ed97c871d479de65e89d",
+      "roadPatternIds": [
+        "44e5a775ad74312cb64f20c5",
+        "5eaa465158750e191d06159c"
+      ]
+    }
+  ],
+  "method": "Only five explicitly reviewed winter/summer directed pairs on BOGG 507/N51 and SBB EV1 may use unanimous complete-pattern results from the retained service-road profile with 20 m stop candidates. All 50 complete patterns on all three routes retained; no fallback, import issue, failed consensus or detour override admitted. Preserve earlier successful geometry. Partial EV1 improvement is audited but never emits an incomplete journey."
+}

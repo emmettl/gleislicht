@@ -22,6 +22,31 @@ describe('S26 Däniken source review', () => {
     expect(()=>solothurnS26Network(network,changed,policy)).toThrow('Changed SBB source curve')
     expect(()=>solothurnS26Network(network,{...page,total_count:99},policy)).toThrow('Incomplete SBB')
   })
+  it('resolves each exact summer S23/S26 pair in its complete original context with unchanged earlier paths', async () => {
+    const matcher = await loadSolothurnS26Review(config, context.snapshots.map(d => d.metadata.serviceDate))
+    expect(policy.additionalPairs).toHaveLength(4)
+    for (const pair of policy.additionalPairs) {
+      const route = context.routes.find(r => r.id === pair.route.routeId)
+      let checked = 0
+      for (const day of context.snapshots) for (const train of day.trains.filter(t => t.routeId === route.id)) {
+        const calls = train.stops.map(([i]) => day.stops[i]), index = calls.findIndex((s, i) => s[4] === pair.from[4] && calls[i + 1]?.[4] === pair.to[4])
+        if (index < 0) continue
+        checked++
+        const original = calls.slice(1).map(() => ({ path: [[1, 2], [3, 4]] })); original[index] = { reason: 'original-failure' }
+        const result = matcher.matchPattern(train, day.stops, route, original), candidate = result[index]
+        expect(candidate.pathMetres).toBeGreaterThan(7000); expect(candidate.pathMetres).toBeLessThan(10100)
+        expect(Math.max(...candidate.stationAttachmentsMetres)).toBeLessThan(45)
+        expect(candidate.path[0]).toEqual(pair.from.slice(0, 2)); expect(candidate.path.at(-1)).toEqual(pair.to.slice(0, 2))
+        expect(candidate.directedSourceSegments.some(s => s.id === policy.id)).toBe(true)
+        expect(candidate.directedSourceSegments.some(s => s.id === policy.originalSegment.id)).toBe(false)
+        result.forEach((v, i) => { if (i !== index) expect(v).toBe(original[i]) })
+        expect(matcher.matchPattern(train, day.stops, { ...route, agencyId: '33' }, original)).toBe(original)
+        const changed = structuredClone(day.stops); changed[train.stops[index][0]][0] += .001
+        expect(() => matcher.matchPattern(train, changed, route, original)).toThrow()
+      }
+      expect(checked).toBe(1)
+    }
+  })
   it('resolves both full seasonal contexts identically and keeps original identities, paths and stop-order restrictions', async () => {
     const matcher=await loadSolothurnS26Review(config,context.snapshots.map(d=>d.metadata.serviceDate)), paths=new Set()
     expect(affected.map(({day})=>day.metadata.serviceDate)).toEqual(['2026-01-16','2026-09-04'])
