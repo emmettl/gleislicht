@@ -20,7 +20,7 @@ The source response was retrieved on 8 September 2026. It provides no individual
 
 Original GTFS calls are projected onto this centreline, producing two reusable paths. Source stop coordinates and IDs remain unchanged. Attachment offsets are **2.09 m at Territet**, **3.43 m at Collonge** and **0.25 m at Glion**, each below the **15 m** gate. No station connector is invented. Changed route identities, stops, call order, collapsed paths and excessive attachments reject the build. All 280 scheduled occurrences pass the independent endpoint audit.
 
-The published installation height difference and inclined length do not supply a railway XYZ profile. Measured terrain, passing-loop geometry and physical cable motion remain separate work.
+The published installation height difference and inclined length do not supply a railway XYZ profile. The separate [measured funicular geometry audit](TERRITET-TERRAIN.md) now retains two complete swissTLM3D XYZ alternatives, including both passing-loop branches, and checks all three station attachments. Terrain playback and physical cable motion remain separate work.
 
 ## Operator context and connections
 
