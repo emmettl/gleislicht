@@ -219,7 +219,7 @@
       "reason": "SBB night service: source Luzern–Zürich NEX, GTFS N7. Fixture complete ordered calls Zürich HB–Baar–Zug–Cham–Rotkreuz–Gisikon-Root–Ebikon–Luzern verify the corridor; every pair still tested."
     }
   },
-  "admission": "Complete directed stop patterns only, with every segment passing identity, projection, connectivity and detour checks. Retain every original source call. Official geometry takes precedence; failed bus pairs may use pinned OSM road inference only when every complete pattern context agrees. Geometry is inferred, not certified street direction, track assignment or observed vehicle movement.",
+  "admission": "Complete directed stop patterns only; retain every original source call. Cantonal geometry takes precedence. Missing geometry may use full-pattern OSM bus or federal rail consensus, or explicitly bound federal cableway installations and stations. Every source, identity, connectivity and distance check must pass. Paths are inferred, not observed vehicles or certified running tracks.",
   "boatExclusion": "The only cantonal boat line is dated 2015 and has no 2026 route identity; no current water route geometry validated.",
   "scopeLimits": [
     "Annual GTFS membership is a census of the pinned archive, not proof that all real-world or demand-responsive services are represented.",
@@ -705,5 +705,127 @@
     "admission": "Fill only failed official rail pairs using exact operating-point numbers and reviewed route/gauge identities. Every complete pattern blocks other calls out of order; all contexts must agree. Retain full cross-canton journeys and prior official paths.",
     "inputs": "data/luzern-rail-inputs.json",
     "inputsSha256": "927e5e20243f93b59af414f7c684f7f4d2f34423ae6d74e439a5b647509ba609"
+  },
+  "cablewayFallback": {
+    "sourceDirectory": "data/luzern-cableway-sources",
+    "sourceMetadataSha256": "a793343407166dc4097c449451fa1fa96cb7b8cecf7b38591256265996d66549",
+    "routes": [
+      {
+        "routeId": "93-250-0-j26-1",
+        "agencyId": "273",
+        "line": "2500",
+        "sourceOperator": "1103",
+        "segments": [
+          {
+            "installation": "72.062",
+            "stopNumbers": [
+              "8530351",
+              "8530352"
+            ],
+            "sourceStationNumbers": [
+              "8530351",
+              "8530352"
+            ]
+          }
+        ]
+      },
+      {
+        "routeId": "93-250-5-j26-1",
+        "agencyId": "283",
+        "line": "2505",
+        "sourceOperator": "1234",
+        "segments": [
+          {
+            "installation": "71.114",
+            "stopNumbers": [
+              "8508354",
+              "8508355"
+            ],
+            "sourceStationNumbers": [
+              "8508354",
+              "8508355"
+            ]
+          }
+        ]
+      },
+      {
+        "routeId": "93-250-A-j26-1",
+        "agencyId": "283",
+        "line": "2503",
+        "sourceOperator": "1234",
+        "segments": [
+          {
+            "installation": "72.078",
+            "stopNumbers": [
+              "8530353",
+              "8530354"
+            ],
+            "sourceStationNumbers": [
+              "8530353",
+              "8530354"
+            ]
+          }
+        ]
+      },
+      {
+        "routeId": "93-251-6-j26-1",
+        "agencyId": "13600",
+        "line": "2516",
+        "sourceOperator": "213",
+        "segments": [
+          {
+            "installation": "72.016",
+            "stopNumbers": [
+              "8508453",
+              "8508454"
+            ],
+            "sourceStationNumbers": [
+              "8508453",
+              "8508454"
+            ]
+          },
+          {
+            "installation": "72.017",
+            "stopNumbers": [
+              "8508454",
+              "8508455"
+            ],
+            "sourceStationNumbers": [
+              "8530893",
+              "8508455"
+            ],
+            "aliasReason": "GTFS uses the shared interchange identity; the federal source distinguishes cableway section stations. Exact reviewed station-number crosswalk, still subject to the 120 m station limit."
+          }
+        ]
+      },
+      {
+        "routeId": "93-251-7-j26-1",
+        "agencyId": "13600",
+        "line": "2517",
+        "sourceOperator": "213",
+        "segments": [
+          {
+            "installation": "71.141",
+            "stopNumbers": [
+              "8508455",
+              "8508456"
+            ],
+            "sourceStationNumbers": [
+              "8530938",
+              "8530939"
+            ],
+            "aliasReason": "GTFS uses the shared interchange identity; the federal source distinguishes cableway section stations. Exact reviewed station-number crosswalk, still subject to the 120 m station limit."
+          }
+        ]
+      }
+    ],
+    "limits": {
+      "stationAttachmentMetres": 120,
+      "topologyAttachmentMetres": 5,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 1200
+    },
+    "inputs": "data/luzern-cableway-inputs.json",
+    "inputsSha256": "4d0a61c4c67fd23284f212a9de6945cfaa2e9a2a3b2702a973ff99fc6df2a26a"
   }
 }

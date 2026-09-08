@@ -10,6 +10,7 @@ import { luzernMode, inCanton } from './luzern-timetable.mjs'
 import { sha256, LUZERN_METADATA, LUZERN_TERMS } from './download-luzern-sources.mjs'
 import { roadConsensus, validateLuzernRoadScope } from './luzern-road-geometry.mjs'
 import { loadLuzernRail } from './luzern-rail-geometry.mjs'
+import { loadLuzernCableways, matchLuzernCableway } from './luzern-cableway-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const save = async (path, value, pretty = false) => { await mkdir(dirname(path), { recursive: true }); await writeFile(path, JSON.stringify(value, null, pretty ? 2 : undefined) + (pretty ? '\n' : '')) }
@@ -67,6 +68,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
   }
   const rail = policy.railFallback ? await loadLuzernRail(policy.railFallback, raw) : undefined
   if (rail) { sourceHashes.rail = rail.source.sha256; sourceHashes.railInputs = policy.railFallback.inputsSha256 }
+  const cableways = policy.cablewayFallback ? await loadLuzernCableways(policy.cablewayFallback, raw) : undefined
+  if (cableways) sourceHashes.cableways = cableways.source.sha256
   const collections = {}, layers = {}
   for (const layer of ['bus', 'rail', 'boat']) { collections[layer] = await json(join(sourceDirectory, `${layer}.geojson`)); layers[layer] = await json(join(sourceDirectory, `${layer}-layer.json`)) }
   const { graphs, inventory: sourceInventory } = luzernGraphs(collections, layers, policy)
@@ -97,6 +100,10 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
             else if (route.mode === 'rail' && rail?.pairs.has(key)) {
               const fallback = rail.pairs.get(key)
               result = fallback.path ? { ...fallback, officialAssessment: result } : { ...result, railAssessment: fallback }
+            }
+            else if (route.mode === 'mountain' && cableways) {
+              const fallback = matchLuzernCableway(cableways.network, policy.cablewayFallback, route, a, b, raw.dates)
+              result = fallback.path ? { ...fallback, officialAssessment: result } : { ...result, cablewayAssessment: fallback }
             }
             const { path, ...assessment } = result
             let pathIndex = null
@@ -152,6 +159,12 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
         matching: 'Exact operating-point IDs, reviewed route/gauge identities and full-pattern stop-order constraints; consensus across every context',
         pathAttribution: 'geometrySources = fot-rail-inference; no individual running-track or diversion certification' }
     }
+    if (cableways) {
+      metadata.model = 'scheduled interpolation along cantonal, federal rail/cableway and inferred OSM bus geometry'
+      metadata.geometry.federalCableways = { ...cableways.source, limits: policy.cablewayFallback.limits,
+        crosswalk: policy.cablewayFallback.routes, pathAttribution: 'geometrySources = fot-cableway-inference; 2D axes only, no cable sag or observed cabins' }
+      if (!metadata.attribution.includes(cableways.source.attribution)) metadata.attribution.push(cableways.source.attribution)
+    }
     const snapshot = compactLuzern(admitted, stops, paths, metadata)
     validateLuzernSnapshot(snapshot)
     const { manifest, chunks } = chunkNetworkSnapshot(snapshot, 7200, 'luzern-region-day-chunks')
@@ -181,6 +194,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       admittedTripsUsingRoads: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')).reduce((n, p) => n + p.trips, 0),
       federalRailDirectedPairs: pairList.filter(p => p.geometrySource === 'fot-rail-inference').length,
       admittedTripsUsingFederalRail: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'fot-rail-inference')).reduce((n, p) => n + p.trips, 0),
+      federalCablewayDirectedPairs: pairList.filter(p => p.geometrySource === 'fot-cableway-inference').length,
+      admittedTripsUsingFederalCableways: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'fot-cableway-inference')).reduce((n, p) => n + p.trips, 0),
       groups, routes: counts, exclusionReasons: Object.fromEntries(reasons), directedPatterns: ps, directedStopPairs: pairList.map(({ pathIndex, ...p }) => ({ ...p, matched: pathIndex !== null })),
       artifacts: { directory: destination, manifestGzipBytes: gz(manifest), morningGzipBytes: gz(morning), chunks: chunks.map(({ descriptor, payload }) => ({ id: descriptor.id, gzipBytes: gz(payload), trips: descriptor.tripCount })) } })
   }
@@ -206,6 +221,11 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
     ...(rail ? { federalRail: { source: rail.source, sourceInventory: rail.sourceInventory, directedPatterns: rail.patterns,
       consensusPairs: rail.pairs.size, matchedConsensusPairs: [...rail.pairs.values()].filter(r => r.path).length,
       rejectedConsensusPairs: [...rail.pairs].filter(([, r]) => !r.path).map(([key, r]) => ({ key, ...r })) } } : {}),
+    ...(cableways ? { federalCableways: { source: cableways.source, sourceInventory: cableways.network.installations.map(i => ({ ...i,
+      stations: cableways.network.stations.filter(s => s.installation === i.id),
+      sourceSegmentIds: cableways.network.segments.filter(s => s.installation === i.id).map(s => s.id),
+      inCanton: cableways.network.stations.some(s => s.installation === i.id && inCanton(s.coordinate, boundary)),
+      reviewedRouteIds: policy.cablewayFallback.routes.filter(r => r.segments.some(s => s.installation === i.number)).map(r => r.routeId) })) } } : {}),
     validation: { passed: true, annualPinnedTimetableInventoryComplete: true, admittedGeometryComplete: true, cantonMotionCoverageComplete: false, publicationReady: false,
       meaning: 'All admitted complete directed patterns pass numerical and artifact checks. Coverage denominators include excluded modes/patterns. This does not certify road direction or establish year-round geometry coverage.',
       pending: ['Resolve every excluded route/pattern before claiming complete cantonal motion coverage', 'Review street directions, loops, rail branches and temporary diversions before presenting paths as direction-certified', 'Validate seasonal and holiday dates', 'Integrate UI selection and refresh separately if requested'] } }

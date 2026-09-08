@@ -1,0 +1,17 @@
+{
+  "baselineCommit": "b815755",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "admittedTrips": 9184,
+      "matchedPairDigest": "0ef6ad1970d6f72aa4a6699d664f271d37f6f46cac1910a82d614c7e4111a127",
+      "admittedPatternDigest": "3256dac2d9d425bf833bc4100253ddb7dc1748c342ea58cd27cbf0e63a828153"
+    },
+    {
+      "date": "2026-09-06",
+      "admittedTrips": 7008,
+      "matchedPairDigest": "323fd2ae07e8f38d14f842b9f0f8f4b0df34d2b18e35a9a29e48d55e0ea71cb7",
+      "admittedPatternDigest": "66f3df8352b9c959e25a7156e88728a2593c8fd15250f2a3cfab41dc1fb36869"
+    }
+  ]
+}

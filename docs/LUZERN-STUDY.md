@@ -1,6 +1,6 @@
 # Luzern cantonal transit source adapter and audit
 
-Built on 8 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **9'184 Friday and 7'008 Sunday journeys**, on 126 and 139 routes respectively. 158 distinct route records have an admitted pattern on at least one date.
+Built on 8 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **12'513 Friday and 10'397 Sunday journeys**, on 131 and 144 routes respectively. 163 distinct route records have an admitted pattern on at least one date.
 
 Only complete directed stop patterns with usable geometry are admitted. This is a complete **inventory of the scoped archive**, and a measured **partial regional motion feed**. It is not complete cantonal geometry, year-round validation or direction-certified street routing. The underlying official linework is undirected; the validation below establishes ordered source-call compatibility and plausible connected corridors.
 
@@ -40,7 +40,7 @@ Frequency templates are expanded on their source interval, with exact_times=0 ma
 
 The cantonal source snapshot was acquired on 8 September 2026. Retrieval timestamps do not replace the layer dates. Line sources are EPSG:2056; the ArcGIS query transforms them to EPSG:4326. Matching uses those returned coordinates, metre-distance calculations, exact shared vertices keyed to seven decimal places, and output coordinates rounded to seven decimals. Cantonal paths are not simplified or joined by proximity. Five explicitly reviewed short gaps use exact edges copied from other lines in the same official bus source; their donor identities and coordinates are retained in the policy and feed metadata. Failed bus pairs additionally use the separately attributed OSM fallback described below. Failed rail pairs use the separately dated federal infrastructure fallback below. The boundary is the returned API polygon, with its supplied precision; an exact cadastral boundary survey is not implied.
 
-**Attribution:** Timetable: **SBB / opentransportdata.swiss**. Cantonal data: **© rawi Kanton Luzern; © Verkehrsverbund Luzern**. Canton boundary: **© swisstopo**. Federal rail: **© Federal Office of Transport (FOT)**. Processed regional feeds and this audit are by **Gleislicht**. Cantonal [product metadata](https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5) and [Open-By terms](https://geoportal.lu.ch/Nutzungsbedingungen) permit use with source attribution; the acquired pages are retained. The [national timetable terms](https://opentransportdata.swiss/en/terms-of-use/) require attribution, raw-data refresh and authorship of processed results. The [swisstopo terms](https://www.swisstopo.admin.ch/en/terms-and-conditions) govern the boundary. No blanket CC0 licence is assigned to the combined feed. Frozen fixtures are dated study artifacts, not a continuously refreshed live service.
+**Attribution:** Timetable: **SBB / opentransportdata.swiss**. Cantonal data: **© rawi Kanton Luzern; © Verkehrsverbund Luzern**. Canton boundary: **© swisstopo**. Federal rail and cableways: **© Federal Office of Transport (FOT)**. Processed regional feeds and this audit are by **Gleislicht**. Cantonal [product metadata](https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5) and [Open-By terms](https://geoportal.lu.ch/Nutzungsbedingungen) permit use with source attribution; the acquired pages are retained. The [national timetable terms](https://opentransportdata.swiss/en/terms-of-use/) require attribution, raw-data refresh and authorship of processed results. The [swisstopo terms](https://www.swisstopo.admin.ch/en/terms-and-conditions) govern the boundary. No blanket CC0 licence is assigned to the combined feed. Frozen fixtures are dated study artifacts, not a continuously refreshed live service.
 
 The large national archive remains an external input, available at the [pinned download](https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip); its hash is mandatory. Current cantonal APIs are not immutable, so reproduction should use the committed source snapshots, not a fresh download claimed to have the same bytes.
 
@@ -63,25 +63,27 @@ The source has no one-way or direction field. A successful ordered match is an *
 | Annual-census routes active in civil day | 140 | 155 |
 | Civil-day movements, all modes | 13'649 | 11'550 |
 | Representative headway movements (not scheduled) | 1'020 | 1'020 |
-| Admitted scheduled movements | 9'184 | 7'008 |
-| Excluded movements | 4'465 | 4'542 |
+| Admitted scheduled movements | 12'513 | 10'397 |
+| Excluded movements | 1'136 | 1'153 |
 | Admitted journeys using reviewed donor edges | 162 | 144 |
 | Directed pairs traversing reviewed repairs | 12 | 13 |
 | Admitted journeys using inferred OSM road fallback | 454 | 489 |
 | Directed pairs using inferred OSM road fallback | 201 | 268 |
 | Admitted journeys using inferred federal rail corridors | 244 | 227 |
 | Directed pairs using inferred federal rail corridors | 345 | 337 |
+| Admitted movements using federal cableway axes | 3'329 | 3'389 |
+| Directed pairs using federal cableway axes | 12 | 12 |
 | Preceding-service-day carry-in / admitted | 263 / 262 | 424 / 423 |
-| Routes with at least one admitted pattern | 126 | 139 |
-| Directed stop patterns / admitted | 1'061 / 994 | 878 / 810 |
-| Route-specific directed stop pairs / matched | 4'919 / 4'804 | 5'474 / 5'341 |
-| Unique directed-pair geometry coverage | 97.66% | 97.57% |
-| Scheduled segment occurrences / matched | 139'294 / 134'525 | 105'124 / 100'207 |
-| Scheduled segment geometry coverage | 96.58% | 95.32% |
-| All segment occurrences / matched (including headways) | 140'314 / 134'525 | 106'144 / 100'207 |
-| All-movement segment geometry coverage | 95.87% | 94.41% |
+| Routes with at least one admitted pattern | 131 | 144 |
+| Directed stop patterns / admitted | 1'061 / 1'005 | 878 / 821 |
+| Route-specific directed stop pairs / matched | 4'919 / 4'816 | 5'474 / 5'353 |
+| Unique directed-pair geometry coverage | 97.91% | 97.79% |
+| Scheduled segment occurrences / matched | 139'294 / 138'891 | 105'124 / 104'633 |
+| Scheduled segment geometry coverage | 99.71% | 99.53% |
+| All segment occurrences / matched (including headways) | 140'314 / 138'891 | 106'144 / 104'633 |
+| All-movement segment geometry coverage | 98.99% | 98.58% |
 
-All exported journeys have 100% matched segments **by the admission rule**. The unfiltered scheduled-segment coverage (96.58% / 95.32%) is the useful measure of remaining work. Unique-pair percentages are lower; frequently repeated urban trips cannot conceal missing regional or mountain patterns. The audit keeps scheduled occurrences and representative-headway occurrences separate for each pair.
+All exported journeys have 100% matched segments **by the admission rule**. The unfiltered scheduled-segment coverage (99.71% / 99.53%) is the useful measure of remaining work. Unique-pair percentages are lower; frequently repeated urban trips cannot conceal missing regional or mountain patterns. The audit keeps scheduled occurrences and representative-headway occurrences separate for each pair.
 
 | Agency:mode | Friday admitted/total trips | Friday admitted/total patterns | Friday all-segment geometry | Sunday admitted/total trips | Sunday admitted/total patterns | Sunday all-segment geometry |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -97,11 +99,11 @@ All exported journeys have 100% matched segments **by the admission rule**. The 
 | 841:bus · Auto AG Schwyz | 168 / 168 | 23 / 23 | 100.00% | 160 / 160 | 24 / 24 | 100.00% |
 | 723:bus · Aargau Verkehr AG | 161 / 161 | 22 / 22 | 100.00% | 97 / 97 | 17 / 17 | 100.00% |
 | 7230:bus · BLS Netz AG Ersatzverkehr | 2 / 2 | 2 / 2 | 100.00% | 74 / 74 | 4 / 4 | 100.00% |
-| 273:mountain · Marbach-Marbachegg | 0 / 1'082 | 0 / 2 | 0.00% | 0 / 1'142 | 0 / 2 | 0.00% |
-| 283:mountain · Bergbahnen Sörenberg AG | 0 / 1'140 | 0 / 4 | 0.00% | 0 / 1'140 | 0 / 4 | 0.00% |
+| 273:mountain · Marbach-Marbachegg | 1'082 / 1'082 | 2 / 2 | 100.00% | 1'142 / 1'142 | 2 / 2 | 100.00% |
+| 283:mountain · Bergbahnen Sörenberg AG | 1'140 / 1'140 | 4 / 4 | 100.00% | 1'140 / 1'140 | 4 / 4 | 100.00% |
 | 820:mountain · Verkehrsbetriebe Luzern AG | 626 / 626 | 2 / 2 | 100.00% | 626 / 626 | 2 / 2 | 100.00% |
 | 3090:mountain · Kriens-Sonnenberg-Bahn | 76 / 76 | 2 / 2 | 100.00% | 82 / 82 | 2 / 2 | 100.00% |
-| 13600:mountain · Kriens-Fräkmüntegg | 0 / 1'107 | 0 / 5 | 0.00% | 0 / 1'107 | 0 / 5 | 0.00% |
+| 13600:mountain · Kriens-Fräkmüntegg | 1'107 / 1'107 | 5 / 5 | 100.00% | 1'107 / 1'107 | 5 / 5 | 100.00% |
 | 13700:mountain · Weggis-Rigi Kaltbad | 51 / 51 | 2 / 2 | 100.00% | 47 / 47 | 2 / 2 | 100.00% |
 | 107:mountain · Bürgenstock Bahn AG | 0 / 1'020 | 0 / 2 | 0.00% | 0 / 1'020 | 0 / 2 | 0.00% |
 | 137:mountain · Rigi Bahnen AG | 28 / 28 | 7 / 7 | 100.00% | 32 / 32 | 8 / 8 | 100.00% |
@@ -143,9 +145,23 @@ The remaining rail exclusions are whole **IR75 journeys serving Konstanz (22 Fri
 
 Federal attribution is **© Federal Office of Transport (FOT)** with the source's [terms requiring attribution](https://opendata.swiss/terms-of-use/#terms_by). The catalogue's generic license field is retained verbatim as “proprietary”; the linked terms, source dates, checksums and authorship of this processed result remain explicit in both audit and feed. [Six rail geometry panels](luzern-rail-review.svg) show IC21, historic-route IR26, full VAE and RE7, IR15 and metre-gauge S44. The visual check covers continuity, calls and differing corridors; it does not certify individual running tracks.
 
+### Federal cableway axes
+
+The [cableway adapter](../scripts/luzern-cableway-geometry.mjs) uses the [FOT cableway dataset](https://www.bav.admin.ch/de/seilbahnen-mit-bundeskonzession-id-99). The [complete retained download](../data/luzern-cableway-sources/source.json) contains **653 installations, 1,349 stations and 653 alignment records**. The ZIP matches the federal catalogue checksum, and the checker independently extracts the XML from that ZIP before re-parsing it. The source model is Seilbahnen_V2_0. **Catalogue date: 7 November 2025; asset update: 29 January 2026; archive member: Seilbahnen_20260105.xtf; used installation Stand: 1 January 2025; retrieved and checked: 8 September 2026.** These dates describe separate source facts.
+
+Five exact GTFS route/operator identities bind to six installations: **2500 → 72.062** (Marbach–Marbachegg), **2503 → 72.078** (Sörenberg–Rossweid), **2505 → 71.114** (Sörenberg–Brienzer Rothorn), **2516 → 72.016 and 72.017** (Kriens–Krienseregg–Fräkmüntegg), and **2517 → 71.141** (Fräkmüntegg–Pilatus Kulm). Federal operator numbers 1103, 1234 and 213 are checked independently from GTFS agencies 273, 283 and 13600. Only the reviewed cabin cableways qualify; chair lifts are not silently admitted by proximity or operator name.
+
+Every pair requires two explicit station numbers on the same installation, one continuous source alignment, source validity across both fixture dates, source-endpoint attachment within **5 m**, timetable-station attachment within **120 m**, and the existing detour ceiling. Ordered source calls orient the path independently in both directions. The shared GTFS Krienseregg, Fräkmüntegg and Pilatus Kulm identities have explicit section-station aliases in policy; each keeps the same station distance gate and records its explanation. The largest measured station attachment is **49.1 m**. Krienseregg remains an intermediate call, including the distinct pickup/drop-off patterns.
+
+The addition admits **3329 Friday and 3389 Sunday timetable movement records**, covering 11 complete directed patterns and 12 route-specific directed pairs on each date. These are explicit scheduled records in the source GTFS, including its dense minute-by-minute cableway service representation, not observed cabins or an estimate of how many cabins are physically operating. Their original trip IDs, times, sequence and call rules survive unchanged. They are distinct from Hammetschwand’s 1,020 representative headway movements per date, which remain excluded. Per-pair evidence includes installation and segment IDs, ordered source station numbers, aliases and measured attachments; per-journey geometrySources identifies fot-cableway-inference. The axes are **2D**: cable sag, elevation profiles and individual cabins are not supplied.
+
+The JSON audit additionally inventories every federal installation, its stations, source segments and reviewed route matches. Nine installations have a source station inside the canton polygon. This source-coordinate flag is separate from GTFS passenger-call membership, especially at canton boundaries: the reviewed Fräkmüntegg–Pilatus section remains included even though both of its federal station coordinates fall outside that polygon. The in-canton source-only chair installations **73.236** and **73.201** have no reviewed fixture route binding. Weggis–Rigi Kaltbad and Kriens–Sonnenberg retain their previously admitted cantonal paths. [Regression digests](../data/luzern-cableway-regression.json), anchored to b815755, verify every earlier path and complete admitted pattern is unchanged.
+
+[Six cableway geometry panels](luzern-cableway-review.svg) show the full axes and original calls; the last panel compares the independently matched reverse direction. Source attribution is **© Federal Office of Transport (FOT)** under the [linked attribution terms](https://opendata.swiss/terms-of-use/#terms_by), with the catalogue license field retained verbatim. The source date, identity crosswalk and limits are embedded in feed metadata.
+
 ### Other modes and unresolved source geometry
 
-All eight lake route records (SGV and Hallwilersee) remain in the annual inventory. The cantonal boat layer is a single 2015 settlement-service line; it has no complete 2026 route crosswalk. No water geometry is admitted. The mountain services at Pilatus/Kriens-Fräkmüntegg, Sörenberg, Marbachegg and Hammetschwand lack admitted source geometry. Rigi 82/88, Weggis–Rigi Kaltbad, Gütsch and Sonnenberg do have measured and admitted complete patterns.
+All eight lake route records (SGV and Hallwilersee) remain in the annual inventory. The cantonal boat layer is a single 2015 settlement-service line; it has no complete 2026 route crosswalk. No water geometry is admitted. The existing repository lake router uses FOEN Vector25 shoreline polygons, edition 2007, to infer paths inside water; this is a cartographic alternative, not evidence of current SGV or Hallwilersee service alignments. It is therefore not substituted for the missing route geometry in this feed. Hammetschwand’s vertical lift remains without admitted geometry; it is not one of the reviewed cableway installations. A vertical lift also needs an elevation-aware model, rather than a fabricated horizontal line. Rigi 82/88, Weggis–Rigi Kaltbad, Gütsch and Sonnenberg do have measured and admitted complete patterns.
 
 The VAE cantonal source is named across its full corridor but its linework is much shorter. The BLS RE7 cantonal alignment stops short of Bern: the Konolfingen–Langnau pair is about 12.8 km away at the missing endpoint. These source limitations are preserved even though compatible federal rail paths now admit the full journeys. Remaining foreign-station and bus replacement failures have their own rows and exact reasons.
 
@@ -331,13 +347,13 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `92-N60-C-j26-1` | 819 · N60 | bus | 6 | 0/0 inactive | 6/6 admitted | bus:B960 | — |
 | `92-N63-B-j26-1` | 819 · N63 | bus | 5 | 0/0 inactive | 5/5 admitted | bus:B963, OSM fallback | — |
 | `92-N9-j26-1` | 839 · N9 | bus | 8 | 0/0 inactive | 7/7 admitted | bus:B909 | — |
-| `93-250-0-j26-1` | 273 · 2500 | mountain | 2164 | 0/1082 excluded | 0/1142 excluded | — | missing-line |
-| `93-250-5-j26-1` | 283 · 2505 | mountain | 106 | 0/58 excluded | 0/58 excluded | — | missing-line |
-| `93-250-A-j26-1` | 283 · 2503 | mountain | 2044 | 0/1082 excluded | 0/1082 excluded | — | missing-line |
+| `93-250-0-j26-1` | 273 · 2500 | mountain | 2164 | 1082/1082 admitted | 1142/1142 admitted | FOT cableway | — |
+| `93-250-5-j26-1` | 283 · 2505 | mountain | 106 | 58/58 admitted | 58/58 admitted | FOT cableway | — |
+| `93-250-A-j26-1` | 283 · 2503 | mountain | 2044 | 1082/1082 admitted | 1082/1082 admitted | FOT cableway | — |
 | `93-251-0-j26-1` | 820 · 2510 | mountain | 624 | 626/626 admitted | 626/626 admitted | rail:Gütschlift | — |
 | `93-251-5-j26-1` | 3090 · 2515 | mountain | 208 | 76/76 admitted | 82/82 admitted | rail:KSB | — |
-| `93-251-6-j26-1` | 13600 · 2516 | mountain | 1954 | 0/1037 excluded | 0/1037 excluded | — | missing-line |
-| `93-251-7-j26-1` | 13600 · 2517 | mountain | 132 | 0/70 excluded | 0/70 excluded | — | missing-line |
+| `93-251-6-j26-1` | 13600 · 2516 | mountain | 1954 | 1037/1037 admitted | 1037/1037 admitted | FOT cableway | — |
+| `93-251-7-j26-1` | 13600 · 2517 | mountain | 132 | 70/70 admitted | 70/70 admitted | FOT cableway | — |
 | `93-256-2-j26-1` | 13700 · 2562 | mountain | 59 | 51/51 admitted | 47/47 admitted | rail:LWRK | — |
 | `93-4V-Y-j26-1` | 107 · ASC | mountain | 2 | 0/1020 excluded | 0/1020 excluded | — | missing-line |
 | `93-82-j26-1` | 137 · 82 | mountain | 75 | 26/26 admitted | 29/29 admitted | rail:VRG | — |
@@ -406,11 +422,13 @@ node scripts/build-luzern-region.mjs /private/tmp/luzern-timetable.json
 node scripts/check-luzern-region.mjs /private/tmp/luzern-timetable.json
 node scripts/write-luzern-audit.mjs
 node scripts/render-luzern-rail-review.mjs
+node scripts/render-luzern-cableway-review.mjs
 
 # Offline source/artifact checks without the large national archive or cache.
 node scripts/check-luzern-region.mjs
 npx vitest run scripts/luzern-region.test.mjs \
   scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs \
+  scripts/luzern-cableway-geometry.test.mjs \
   scripts/luzern-rail-geometry.test.mjs scripts/enrich-swiss-rail-geometry.test.mjs \
   scripts/basel-line-geometry.test.mjs scripts/gtfs-frequencies.test.mjs
 
@@ -418,7 +436,7 @@ npx vitest run scripts/luzern-region.test.mjs \
 node scripts/download-luzern-sources.mjs /private/tmp/luzern-new-sources
 ```
 
-The committed road cache, federal XTF and full rail-pattern inputs are required by the pinned policy, so ordinary reproduction needs no matcher or network access. To regenerate the cache, use the same PBF and pinned matcher inputs from the offline pipeline above:
+The committed road cache, federal rail/cableway archives and retained timetable identity inputs are required by the pinned policy, so ordinary reproduction needs no matcher or network access. To regenerate the cache, use the same PBF and pinned matcher inputs from the offline pipeline above:
 
 ```sh
 node scripts/luzern-road-geometry.mjs prepare \
@@ -435,8 +453,8 @@ node scripts/luzern-road-geometry.mjs import \
   /private/tmp/luzern-road-cache.json /private/tmp/luzern-road-evidence
 ```
 
-Review regenerated cache/evidence hashes before updating policy. Matcher elapsed times and warning-log timings can change between runs; the committed evidence preserves the measured run. No changed cache can silently replace the pinned input. All **60 scoped unit tests pass**, including consensus failure/conflict isolation, repeated-pair loops, reversed directions, changed identities, corrupt indices/endpoints, source hashes, detour/collapse limits and routing-only carry-in normalization. Rail tests additionally cover exact/ambiguous operating-point identities, reversed source geometry, called-station order, conflicting complete patterns, gauge/validity exclusion, station/topology attachment limits and detour rejection.
+Review regenerated cache/evidence hashes before updating policy. Matcher elapsed times and warning-log timings can change between runs; the committed evidence preserves the measured run. No changed cache can silently replace the pinned input. All **67 scoped unit tests pass**, including consensus failure/conflict isolation, repeated-pair loops, reversed directions, changed identities, corrupt indices/endpoints, source hashes, detour/collapse limits and routing-only carry-in normalization. Rail tests additionally cover exact/ambiguous operating-point identities, reversed source geometry, called-station order, conflicting complete patterns, gauge/validity exclusion, station/topology attachment limits and detour rejection. Cableway tests cover source vertices, reversal, exact station/installation/operator identity, explicit aliases, station limits, source validity, disconnected geometry and malformed coordinates.
 
 The checker independently verifies every stored source hash; exact ArcGIS object-ID sets; inventory totals; every chunk byte length/hash; duplicate journey consistency across chunks; morning membership; complete directed path endpoints; per-pattern, pair, route and agency totals; and admission/exclusion reconciliation. With the regenerated timetable cache it also replays **every admitted journey against all original GTFS calls, times, sequences, source-service-day identity and frequency metadata**. Unit tests cover exact donor-edge repairs and rejection of invented edges/changed snapshots/already-connected targets, truncated/duplicate pages, wrong CRS, changed operator domains/year, disconnected geometry, crossing-without-junction, reversal, loops, polygon holes, midnight carry-in, frequency semantics and rejection of malformed admitted paths.
 
-The large source-line paths make the initial compressed manifests about 1.53 / 1.64 MiB; compressed morning files are 1.70 / 1.74 MiB. The largest compressed two-hour chunks are 173.3 / 118.6 KiB. These are measured data artifacts, not a claim that existing UI payload budgets or route-direction review gates have passed.
+The large source-line paths make the initial compressed manifests about 1.53 / 1.64 MiB; compressed morning files are 1.70 / 1.74 MiB. The largest compressed two-hour chunks are 192.5 / 144.0 KiB. These are measured data artifacts, not a claim that existing UI payload budgets or route-direction review gates have passed.

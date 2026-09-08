@@ -8,6 +8,8 @@ import { validatedLuzernRepairs } from './luzern-line-geometry.mjs'
 import { roadConsensus, validateLuzernRoadScope, verifyLuzernRoadEvidence } from './luzern-road-geometry.mjs'
 import { roadPatternId } from './prepare-postbus-road-feed.mjs'
 import { loadLuzernRail } from './luzern-rail-geometry.mjs'
+import { loadLuzernCableways, matchLuzernCableway } from './luzern-cableway-geometry.mjs'
+import { inCanton } from './luzern-timetable.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sum = (items, key) => items.reduce((n, item) => n + item[key], 0)
@@ -74,6 +76,19 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
     assert.deepEqual(rail.patterns.map(p => p.id).sort(), expected, 'Federal rail must cover every fixture pattern context')
   }
   const summaries = []
+  const cableways = audit.policy.cablewayFallback ? await loadLuzernCableways(audit.policy.cablewayFallback, raw) : undefined
+  if (cableways) {
+    assert.equal(audit.sourceHashes.cableways, cableways.source.sha256)
+    assert.deepEqual(audit.federalCableways.source, cableways.source)
+    assert.deepEqual(cableways.inputs.dates, audit.policy.dates)
+    const boundary = (await json(join(sourceDirectory, 'boundary.json'))).feature.geometry
+    assert.deepEqual(audit.federalCableways.sourceInventory, cableways.network.installations.map(i => ({ ...i,
+      stations: cableways.network.stations.filter(s => s.installation === i.id),
+      sourceSegmentIds: cableways.network.segments.filter(s => s.installation === i.id).map(s => s.id),
+      inCanton: cableways.network.stations.some(s => s.installation === i.id && inCanton(s.coordinate, boundary)),
+      reviewedRouteIds: audit.policy.cablewayFallback.routes.filter(r => r.segments.some(s => s.installation === i.number)).map(r => r.routeId) })))
+    if (raw) for (const stop of cableways.inputs.stops) assert.deepEqual(stop, raw.stops.find(s => s.stop_id === stop.stop_id))
+  }
   for (const day of audit.days) {
     const manifest = await json(join(day.artifacts.directory, 'luzern-region-day-manifest.json')), trains = new Map()
     assert.equal(manifest.metadata.serviceDate, day.date)
@@ -104,6 +119,9 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
     assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')), 'trips'), day.admittedTripsUsingRoads)
     assert.equal(day.directedStopPairs.filter(p => p.geometrySource === 'fot-rail-inference').length, day.federalRailDirectedPairs)
     assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'fot-rail-inference')), 'trips'), day.admittedTripsUsingFederalRail)
+    assert.equal(day.directedStopPairs.filter(p => p.geometrySource === 'fot-cableway-inference').length, day.federalCablewayDirectedPairs)
+    assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'fot-cableway-inference')), 'trips'), day.admittedTripsUsingFederalCableways)
+    if (cableways) assert.equal(manifest.metadata.geometry.federalCableways.sha256, cableways.source.sha256)
     if (rail) {
       assert.equal(manifest.metadata.geometry.federalRail.sha256, audit.sourceHashes.rail)
       assert(manifest.metadata.attribution.includes(rail.source.attribution))
@@ -127,6 +145,17 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
         assert.equal(pair.geometrySha256, sha256(JSON.stringify(result.path)))
         for (const key of ['railPatternIds', 'directedSourceSegments', 'stationAttachmentsMetres', 'fromOperatingPoint', 'toOperatingPoint', 'gauge', 'maximumTopologyAttachmentMetres']) assert.deepEqual(pair[key], result[key])
       } else if (pair.railAssessment) assert.deepEqual(pair.railAssessment, rail?.pairs.get(pair.key))
+      if (pair.geometrySource === 'fot-cableway-inference' || pair.cablewayAssessment) {
+        assert(cableways); assert.equal(pair.mode, 'mountain')
+        const route = cableways.inputs.inventory.find(r => r.routeId === pair.routeId), from = cableways.inputs.stops.find(s => s.stop_id === pair.fromId), to = cableways.inputs.stops.find(s => s.stop_id === pair.toId)
+        const result = matchLuzernCableway(cableways.network, audit.policy.cablewayFallback, route, from, to, cableways.inputs.dates)
+        if (result.path) {
+          assert(pair.matched && pair.officialAssessment.reason)
+          const { path, ...evidence } = result
+          assert.equal(pair.geometrySha256, sha256(JSON.stringify(path)))
+          for (const [key, value] of Object.entries(evidence)) assert.deepEqual(pair[key], value)
+        } else assert.deepEqual(pair.cablewayAssessment, result)
+      }
     }
     for (const p of pairs.values()) for (const id of p.geometryRepairIds ?? []) assert(repairIds.has(id), 'Unknown geometry repair')
     assert.equal(patterns.size, day.patterns); assert.equal(pairs.size, day.directedPairs)
@@ -202,19 +231,28 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
       const officialPatterns = day.directedPatterns.filter(p => p.admitted && p.pairKeys.every(k => pairs.get(k).geometrySource === 'official-line')).map(p => [p.id, p.trips]).sort()
       assert.equal(sha256(JSON.stringify(officialPairs)), baseline.matchedPairDigest, 'Previously accepted official paths changed')
       assert.equal(sha256(JSON.stringify(officialPatterns)), baseline.admittedPatternDigest, 'Previously admitted patterns changed')
-      assert.equal(day.admittedTrips - day.admittedTripsUsingRoads - day.admittedTripsUsingFederalRail, baseline.admittedTrips)
+      assert.equal(day.admittedTrips - day.admittedTripsUsingRoads - day.admittedTripsUsingFederalRail - day.admittedTripsUsingFederalCableways, baseline.admittedTrips)
     }
   }
   if (rail) {
     const regression = await json('data/luzern-rail-regression.json')
     for (const baseline of regression.days) {
       const day = audit.days.find(d => d.date === baseline.date), pairs = new Map(day.directedStopPairs.map(p => [p.key, p]))
-      const previousPairs = day.directedStopPairs.filter(p => p.matched && p.geometrySource !== 'fot-rail-inference').map(p => [p.key, p.geometrySha256]).sort()
-      const previousPatterns = day.directedPatterns.filter(p => p.admitted && p.pairKeys.every(k => pairs.get(k).geometrySource !== 'fot-rail-inference')).map(p => [p.id, p.trips]).sort()
+      const previousSources = new Set(['official-line', 'osm-road-inference'])
+      const previousPairs = day.directedStopPairs.filter(p => p.matched && previousSources.has(p.geometrySource)).map(p => [p.key, p.geometrySha256]).sort()
+      const previousPatterns = day.directedPatterns.filter(p => p.admitted && p.pairKeys.every(k => previousSources.has(pairs.get(k).geometrySource))).map(p => [p.id, p.trips]).sort()
       assert.equal(sha256(JSON.stringify(previousPairs)), baseline.matchedPairDigest, 'Previously accepted cantonal/road paths changed')
       assert.equal(sha256(JSON.stringify(previousPatterns)), baseline.admittedPatternDigest, 'Previously admitted cantonal/road patterns changed')
-      assert.equal(day.admittedTrips - day.admittedTripsUsingFederalRail, baseline.admittedTrips)
+      assert.equal(day.admittedTrips - day.admittedTripsUsingFederalRail - day.admittedTripsUsingFederalCableways, baseline.admittedTrips)
     }
+  }
+  if (cableways) for (const baseline of (await json('data/luzern-cableway-regression.json')).days) {
+    const day = audit.days.find(d => d.date === baseline.date), pairs = new Map(day.directedStopPairs.map(p => [p.key, p]))
+    const oldPairs = day.directedStopPairs.filter(p => p.matched && p.geometrySource !== 'fot-cableway-inference').map(p => [p.key, p.geometrySha256]).sort()
+    const oldPatterns = day.directedPatterns.filter(p => p.admitted && p.pairKeys.every(k => pairs.get(k).geometrySource !== 'fot-cableway-inference')).map(p => [p.id, p.trips]).sort()
+    assert.equal(sha256(JSON.stringify(oldPairs)), baseline.matchedPairDigest)
+    assert.equal(sha256(JSON.stringify(oldPatterns)), baseline.admittedPatternDigest)
+    assert.equal(day.admittedTrips - day.admittedTripsUsingFederalCableways, baseline.admittedTrips)
   }
   return { passed: true, annualRoutes: audit.annualRouteRecords, agencies: audit.annualAgencies, days: summaries }
 }
