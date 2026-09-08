@@ -24,7 +24,7 @@ There are **227 complete minutes** across the archive and a longest complete run
 
 Obtain the 3091 station plan, or another independently verified directional reference tied to this station and ZH 337. Review its date and station identity, geographic orientation, direction arrows and mapping between sensor/channel labels and feed detector **ZH.CH:3091.02**. Then complete the explicit Pfäffikon homonym review at both endpoints, a pinned direction review, and the section/junction audit before compiling playback.
 
-Until that evidence is obtained, the next independent investigation in the queue is **Seegräben 2988's road binding**. Its 97.14 m nearest-axis distance remains unresolved; it must not be snapped onto that axis simply to enable the Uster–Seegräben recording.
+The subsequent [Seegräben geometry review](SEEGRAEBEN-ROAD-REVIEW.md) resolves 2988 and 0392 as municipal-branch counters and rejects their ZH 340 associations. The next independent geometry investigation is Wetzikon 2788; Hittnau still awaits its station-specific direction evidence.
 
 ## Reproduce
 

@@ -21,7 +21,7 @@ Even under that assumption, every pair has a further blocker. The audit also che
 | Counter pair | Approx. length | Longest complete run | Remaining evidence required |
 | --- | ---: | ---: | --- |
 | Uster 2188–0188 | 0.876 km | 245 min | Independent direction reference at 2188; its Uster destination is only 1,138 m away. 0188 also needs explicit destination/extent review. |
-| Uster–Seegräben 0188–2988 | 2.304 km | 245 min | Verified road binding at 2988, whose nearest candidate axis is 97.14 m away; this is not permission to snap it onto that axis. 0188 needs review. |
+| Uster–Seegräben 0188–2988 | 2.304 km | 245 min | **Rejected by the [Seegräben follow-up](SEEGRAEBEN-ROAD-REVIEW.md):** 2988 measures a municipal branch, not ZH 340. |
 | Uster–Pfäffikon 0205–4586 | 2.658 km | 229 min | 0205 has short-distance and bearing failures. Both 4586 directions have extent conflicts, leaving no validated anchor. |
 | Pfäffikon 4586–0295 | 1.542 km | 192 min | Independent direction evidence at both counters. 0295's Pfäffikon destination is only 647.49 m away; 4586 lacks a validated anchor. |
 | Fehraltorf–Pfäffikon 2291–5086 | 3.571 km | 148 min | Winterthur is off-axis at 2291; Pfäffikon is too close at 5086. |
@@ -41,7 +41,7 @@ The short-destination status can mean either less than **1,500 m** direct distan
 
 The [Hittnau source follow-up](HITTNAU-ROAD-REVIEW.md) confirms 3091's public collector labels and precise station point, but obtains no station-specific direction plan. The canton handbook identifies the needed plan contents; its example belongs to another station. Hittnau remains excluded pending that independent directional reference, followed by the homonym review and section/junction audit. Do not infer 3091's direction from complete observations or from 2992 alone.
 
-A separate geometry investigation can establish which road counter 2988 actually measures before considering the 245-minute Uster–Seegräben section. The present unmatched status and 97.14 m nearest-axis distance are evidence of a missing binding, not evidence that the counter should be moved or that the candidate axis is correct.
+The [Seegräben geometry investigation](SEEGRAEBEN-ROAD-REVIEW.md) establishes that 2988 and nearby 0392 lie on municipality-owned branch axes. Their ZH 340 candidate associations are rejected in the follow-up review. The original 14-pair audit remains the pinned historical diagnostic; 0188–2988 is now retired from that queue. The next apparent pair, 0188–2788, still needs a verified road binding at 2788 and must not be admitted by skipping the municipal counters alone.
 
 ## Reproduce
 
