@@ -7,6 +7,7 @@ import { gunzipSync } from 'node:zlib'
 import { bernPatternId } from './bern-line-geometry.mjs'
 import { fribourgFeatureMatch, FRIBOURG_LIMITS } from './fribourg-line-geometry.mjs'
 import { validateBernSnapshot, validateBernChunks } from './build-bern-region.mjs'
+import { loadFribourgRoads } from './fribourg-road-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -17,6 +18,9 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
   const sourceLines = await json(join(audit, 'source-lines.json'))
   const decodedBytes = await readFile(join(sources, 'decoded.json.gz')), decoded = JSON.parse(gunzipSync(decodedBytes))
   const crosswalk = await json('data/fribourg-policy.json')
+  const roads = await loadFribourgRoads(undefined, crosswalk.roads, { verifyEvidence: true })
+  const checkedRoadPatterns = new Set()
+  assert.equal(summary.sourceHashes.roads, crosswalk.roads.cacheSha256)
   assert.equal(summary.routeCount, 207)
   assert.equal(summary.agencyCount, 17)
   assert.equal(summary.sources.publicRedistributionCleared, true)
@@ -71,6 +75,11 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
     patternSets.push(new Set(report.patterns.map(p => p.id)))
     const pairCounts = new Map(), byPattern = new Map(report.patterns.map(p => [p.id, p]))
     for (const p of report.patterns) {
+      if (p.mode === 'bus') {
+        const candidates = roads.inventory.filter(r => r.routeId === p.routeId && r.agencyId === p.agencyId && JSON.stringify(r.stops.map(s => s[4])) === JSON.stringify(p.stopIds))
+        assert.equal(candidates.length, 1, 'Missing or ambiguous full bus pattern evidence')
+        checkedRoadPatterns.add(candidates[0].id)
+      }
       assert.equal(p.segmentCount, p.stopIds.length - 1)
       assert.equal(p.matchedMask.length, p.segmentCount)
       assert.equal(p.matchedSegments, p.matchedMask.filter(Boolean).length)
@@ -89,7 +98,14 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
       assert.deepEqual(pairCounts.get(JSON.stringify([p.routeId, p.fromId, p.toId])), { occurrences: p.occurrences, admitted: p.admittedOccurrences, matched: p.matched })
       if (!p.matched) assert(['missing-line', 'endpoint-gap', 'disconnected-line', 'implausible-detour', 'collapsed-path'].includes(p.reason))
       else {
-        assert(p.maximumSnapMetres <= FRIBOURG_LIMITS[p.mode].snapMetres)
+        if (p.geometrySource === 'osm-road-inference') {
+          const road = roads.candidates.get(JSON.stringify([p.routeId, p.fromId, p.toId]))
+          assert(road?.path && p.officialFailure?.reason)
+          assert.equal(p.maximumSnapMetres, null)
+          assert.equal(p.roadSnapLimitMetres, 120)
+          assert.equal(p.pathMetres, road.lengthMetres)
+          assert.deepEqual(p.roadFallback.roadPatternIds, road.roadPatternIds)
+        } else assert(p.maximumSnapMetres <= FRIBOURG_LIMITS[p.mode].snapMetres)
         assert(p.pathMetres >= 1 && Number.isFinite(p.pathMetres))
         if (p.projectionChoice) assert(p.projectionChoice.maximumAdditionalSnapMetres <= FRIBOURG_LIMITS[p.mode].alternativeSnapMetres)
       }
@@ -104,6 +120,10 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
     assert.equal(c.matchedSegmentOccurrences, sum(report.patterns, p => p.trips * p.matchedSegments))
     assert.equal(c.scheduledSegmentOccurrences, sum(report.patterns, p => (p.trips - p.representativeHeadwayTrips) * p.segmentCount))
     assert.equal(c.matchedScheduledSegmentOccurrences, sum(report.patterns, p => (p.trips - p.representativeHeadwayTrips) * p.matchedSegments))
+    assert.equal(report.roadEffect.lostAdmittedTrips, 0)
+    assert.equal(c.admittedTrips, report.roadEffect.officialCoverage.admittedTrips + report.roadEffect.newlyAdmittedTrips)
+    assert.equal(report.roadEffect.matchedDirectedPairs, report.directedPairs.filter(p => p.geometrySource === 'osm-road-inference').length)
+    assert.equal(report.roadEffect.admittedSegmentOccurrences, sum(report.directedPairs.filter(p => p.geometrySource === 'osm-road-inference'), p => p.admittedOccurrences))
     for (const field of ['trips', 'admittedTrips', 'segmentOccurrences', 'matchedSegmentOccurrences', 'directedPairs', 'patterns']) {
       assert.equal(c[field], sum(report.groups, g => g[field]), `Group mismatch ${field}`)
       assert.equal(c[field], sum(routes, r => r.days.find(d => d.date === day.serviceDate)[field]), `Route mismatch ${field}`)
@@ -114,6 +134,7 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
     assert.equal(manifest.metadata.geometry.attribution, 'Source: Etat de Fribourg')
     assert.equal(manifest.metadata.geometry.dataUpdated, null)
     assert.equal(manifest.metadata.publisher, 'Gleislicht')
+    assert.equal(manifest.metadata.derivedGeometryDatabaseLicense.name, 'ODbL-1.0')
     const chunks = await Promise.all(manifest.chunks.map(async descriptor => ({ descriptor, payload: await json(join(directory, descriptor.path)) })))
     const trains = [...new Map(chunks.flatMap(c => c.payload.trains).map(t => [t.id, t])).values()]
     const snapshot = { ...manifest, trains }
@@ -127,6 +148,13 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
       const pattern = byPattern.get(train.patternId)
       assert(pattern?.admittedTrips && pattern.matchedMask.every(Boolean))
       assert.deepEqual(train.stops.map(([i]) => snapshot.stops[i][4]), pattern.stopIds)
+      assert.equal(train.roadSegmentCount ?? 0, pattern.roadSegments)
+      for (let i = 1; i < train.stops.length; i++) {
+        const pair = report.directedPairs.find(p => p.routeId === train.routeId && p.fromId === pattern.stopIds[i - 1] && p.toId === pattern.stopIds[i])
+        if (pair.geometrySource !== 'osm-road-inference') continue
+        const road = roads.candidates.get(JSON.stringify([pair.routeId, pair.fromId, pair.toId]))
+        assert.deepEqual(snapshot.paths[train.pathSegments[i - 1]], road.path, 'Emitted road path differs from retained matcher evidence')
+      }
       admittedPatternTrips.set(train.patternId, (admittedPatternTrips.get(train.patternId) ?? 0) + 1)
     }
     for (const p of report.patterns) assert.equal(admittedPatternTrips.get(p.id) ?? 0, p.admittedTrips)
@@ -135,6 +163,7 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
     assert(morning.trains.every(t => trains.some(source => source.id === t.id)))
     console.log(`${day.serviceDate}: ${trains.length} journeys, ${report.patterns.length} directed patterns, 12 verified chunks`)
   }
+  assert.deepEqual([...checkedRoadPatterns].sort(), roads.inventory.map(p => p.id).sort(), 'Road evidence scope differs from both audited bus pattern sets')
   assert.equal(summary.weekdaySundayPatterns.shared, [...patternSets[0]].filter(id => patternSets[1].has(id)).length)
   assert.equal(summary.weekdaySundayPatterns.weekdayOnly, [...patternSets[0]].filter(id => !patternSets[1].has(id)).length)
   assert.equal(summary.weekdaySundayPatterns.sundayOnly, [...patternSets[1]].filter(id => !patternSets[0].has(id)).length)

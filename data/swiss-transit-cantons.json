@@ -340,7 +340,7 @@
       "evidence": "ArcGIS Theme_mobilite layer 2 is a queryable polyline source: 128 total features. GeoJSON samples include rail and actual TPF urban buses. NUMERO_LIGNE values such as 20.002 are timetable-field identifiers, not simply display line 2. Other fields include type, enterprise and name.",
       "vintage": "Current geometry vintage not established; service response date is only an access check.",
       "reuse": "Exact matching OGD feature service permits free attributed vector use, sharing and reuse (Source: Etat de Fribourg). All 128 geometries and original attributes independently reconciled; catalogue evidence retained in data/fribourg-sources.",
-      "nextAction": "Resolve actual geometry vintage, review remaining failed directed patterns and physical direction, and add seasonal dates. One explicitly inferred 11.22 mm line 9 endpoint repair is audited.",
+      "nextAction": "Review remaining conflicting road contexts, source vintage and physical direction; extend unsupported rail/lake/mountain coverage and seasonal dates. The full two-date bus census now has an explicitly inferred OSM fallback with original cantonal failures retained.",
       "sourceIds": [
         "fr-layer",
         "fr-count",
@@ -366,10 +366,12 @@
           "2026-09-06"
         ],
         "admittedTrips": [
-          2595,
-          1692
+          4658,
+          2908
         ],
-        "publicRedistributionCleared": true
+        "publicRedistributionCleared": true,
+        "roadPatternsTested": 614,
+        "roadCache": "data/fribourg-road-cache.json"
       }
     },
     {

@@ -1,11 +1,15 @@
 {
   "label": "Fribourg canton local archival regional feed",
   "publicRedistributionCleared": true,
+  "derivedGeometryDatabaseLicense": "ODbL-1.0",
+  "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "attribution": "opentransportdata.swiss; Source: Etat de Fribourg; © OpenStreetMap contributors; © swisstopo",
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "5cab135daffaa81424aef503c6afa5e70b38f3919a04998b569a3da02b1ff1a9",
-    "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086"
+    "crosswalk": "63941020aeaf7484aad464076798fd8d847cd9a2a63dec2c68d4a8a1e6aa22fd",
+    "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
+    "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e"
   },
   "dates": [
     {

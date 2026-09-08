@@ -32,14 +32,14 @@ const doc = `# Fribourg / Freiburg cantonal source study
 
 Fixture audit: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#fr).
 
-The entire canton is inventoried against the pinned annual national GTFS: **${summary.routeCount} route records, ${summary.agencyCount} agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **${n(days[0].admittedTrips)} Friday journeys and ${n(days[1].admittedTrips)} Sunday journeys** with complete source-backed directed stop patterns. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
+The entire canton is inventoried against the pinned annual national GTFS: **${summary.routeCount} route records, ${summary.agencyCount} agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **${n(days[0].admittedTrips)} Friday journeys and ${n(days[1].admittedTrips)} Sunday journeys** with complete directed stop patterns from cantonal lines and explicitly tagged inferred OSM road fallback. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
 
 The [regional feed index](../data/fribourg-region/index.json) points to both civil-day manifests, twelve two-hour chunks per date, and 06:45–08:45 extracts. It uses the existing network snapshot format, **not a new GTFS ZIP**. It is saved under \`data/\` as a **local archival research artifact**. The exact matching cantonal OGD service explicitly permits attributed vector redistribution. Geometry vintage and physical direction remain unverified; this archival study is not added to public hosting or the application's study selector.
 
 ## Deliverables and scope
 
 - [Every admitted, partly admitted, excluded and inactive route](FRIBOURG-ROUTE-INVENTORY.md); [machine-readable routes](../data/fribourg-audit/routes.json).
-- [Source feature inventory](../data/fribourg-audit/source-lines.json): all 128 records, raw timetable fields, operator/line interpretation, source geometry size, candidate routes and admitted routes.
+- [Source feature inventory](../data/fribourg-audit/source-lines.json): all 128 records, raw timetable fields, operator/line interpretation, source geometry size, candidate routes and routes retaining at least one admitted official segment.
 - [Friday directed-pattern and pair audit](../data/fribourg-audit/2026-09-04.json), [Sunday audit](../data/fribourg-audit/2026-09-06.json), [summary](../data/fribourg-audit/summary.json), [in-canton stop records](../data/fribourg-audit/stops.json).
 - [Acquisition evidence](../data/fribourg-sources/acquisition.json), [source dates/credits/terms](../data/fribourg-sources/sources.json), [reviewed mapping policy](../data/fribourg-policy.json).
 
@@ -51,7 +51,7 @@ The source is the national fixed-stop timetable, not a verified census of every 
 
 ### Boundary sensitivity
 
-The canton and district polygons retain all rings and disconnected components. Source geometry is original LV95 XY; GTFS WGS84 points are classified using the repository's metre-level swisstopo approximation. Nine stop records within ten metres of the boundary are retained in the summary, on both sides, including parent records. **PostAuto 661 (\`96-247-j26-1\`) has only Sassel, Chapalettaz platform \`ch:1:sloid:70404:0:710788\` inside, at approximately 0.17 m from the polygon edge.** Its geographic membership is provisional pending a higher-accuracy coordinate/boundary review. The other 206 route memberships have at least one platform beyond that uncertainty band. Route 661 is excluded from the geometry feed. The polygon is not buffered to hide this ambiguity.
+The canton and district polygons retain all rings and disconnected components. Source geometry is original LV95 XY; GTFS WGS84 points are classified using the repository's metre-level swisstopo approximation. Nine stop records within ten metres of the boundary are retained in the summary, on both sides, including parent records. **PostAuto 661 (\`96-247-j26-1\`) has only Sassel, Chapalettaz platform \`ch:1:sloid:70404:0:710788\` inside, at approximately 0.17 m from the polygon edge.** Its geographic membership remains excluded from feed admission even if road geometry is available, pending a higher-accuracy coordinate/boundary review. The other 206 route memberships have at least one platform beyond that uncertainty band. Route 661 is excluded from the geometry feed. The polygon is not buffered to hide this ambiguity.
 
 ## Friday and Sunday validation
 
@@ -59,12 +59,16 @@ Civil days are **Friday 4 September and Sunday 6 September 2026**, with calendar
 
 ${table(['Measure', 'Friday 2026-09-04', 'Sunday 2026-09-06'], [
   measure('Civil trip instances', 'trips'), measure('Scheduled instances', 'scheduledTrips'), measure('Representative headway instances', 'representativeHeadwayTrips'),
+  ['Admitted instances before OSM fallback', ...reports.map(r => n(r.roadEffect.officialCoverage.admittedTrips))],
+  ['Additional admitted instances from OSM fallback', ...reports.map(r => n(r.roadEffect.newlyAdmittedTrips))],
   measure('Admitted scheduled instances', 'admittedScheduledTrips'), measure('Admitted headway instances', 'admittedRepresentativeHeadwayTrips'),
   measure('Directed patterns tested', 'patterns'), measure('Complete/admitted directed patterns', 'admittedPatterns'),
   ['Matched unique directed route/platform pairs', ...days.map(d => `${n(d.matchedDirectedPairs)} / ${n(d.directedPairs)} (${pct(d.matchedDirectedPairs, d.directedPairs)})`)],
   ['Matched scheduled segment occurrences (before whole-pattern exclusion)', ...days.map(d => `${n(d.matchedScheduledSegmentOccurrences)} / ${n(d.scheduledSegmentOccurrences)} (${pct(d.matchedScheduledSegmentOccurrences, d.scheduledSegmentOccurrences)})`)],
   ['Matched occurrences including representative headways', ...days.map(d => `${n(d.matchedSegmentOccurrences)} / ${n(d.segmentOccurrences)} (${pct(d.matchedSegmentOccurrences, d.segmentOccurrences)})`)],
   measure('Segment occurrences retained in admitted complete journeys', 'admittedSegmentOccurrences'),
+  ['Inferred road occurrences retained in admitted journeys', ...reports.map(r => n(r.roadEffect.admittedSegmentOccurrences))],
+  ['Official-only matched directed pairs before OSM fallback', ...reports.map(r => `${n(r.roadEffect.officialCoverage.matchedDirectedPairs)} / ${n(r.roadEffect.officialCoverage.directedPairs)}`)],
   ['Carry-in instances / admitted', ...reports.map(r => `${r.carryInTrips} / ${r.admittedCarryInTrips}`)],
   ['Night instances / admitted', ...reports.map(r => `${r.directedPatternChecks.nightRouteTrips} / ${r.directedPatternChecks.admittedNightRouteTrips}`)],
   ['Patterns revisiting platforms / admitted', ...reports.map(r => `${r.directedPatternChecks.patternsRevisitingPlatforms} / ${r.directedPatternChecks.admittedPatternsRevisitingPlatforms}`)],
@@ -84,7 +88,7 @@ ${sourceStatus}
 - TPF rail uses agency **53**, buses **834**; \`Post Auto\` and \`Car Postal\` map to **801**. SBB, BLS and MOB remain separate identities. Replacement agencies never inherit their parent brand's paths.
 - Named night labels in \`NOM_LIGNE\` take priority: field 20.143 maps to **N1**, and the source's regionally typed field 20.463 maps to **N24**. Anonymous Noctambus records remain unresolved. Source field 20.922 links to PDF 30.922; the raw mismatch is retained, while its explicit **M22** label controls the candidate match.
 - Features 43–45 say \`Autre\`. The preserved official 2026 timetable PDFs identify **VMCV 213, 216, 217 (agency 876)**. Feature 3's field 254 PDF identifies **TPF RE2/RE3**. Exceptions require the exact source number, name, enterprise and mode. PDF identity evidence does not extend the source geometry to missing termini such as Broc-Chocolaterie.
-- Explicit rail labels such as S20/S21 and R8 are matched exactly. Generic IC/IR, RE or Regio fields and unlabelled MOB services do not become universal rail graphs. No global nearest-line match or cross-operator geometry borrowing is used.
+- Explicit rail labels such as S20/S21 and R8 are matched exactly. Generic IC/IR, RE or Regio fields and unlabelled MOB services do not become universal rail graphs. No global nearest-line match or cross-operator cantonal geometry borrowing is used. The road fallback below is separately attributed and binds to the original agency and complete route/platform patterns.
 
 Graph vertices join at identical LV95 coordinates, with one disclosed precision repair: source feature 22 (TPF line 9) has two components ending **11.22 mm apart** near Charmettes. The adapter moves only the pinned first vertex of part 0 onto the original last vertex of part 2. The original geometry hash, both coordinates and vertex indices are asserted before applying it; original source bytes remain unchanged. This is **inferred topology**, not a surveyed connection. Every affected route journey carries a geometryInference marker. No general nearest-endpoint bridge or crossing-node inference is added. Ordered calls orient each inferred path along the undirected source centreline. Bus projection limit: **80 m**; rail: **120 m**. Paths exceeding the greater of **4.5× straight-line distance** or **1,200 m bus / 3,000 m rail** are rejected. An alternative source-part projection is considered only within **5 m** of the nearest gap after a topology/detour failure. Collapsed paths are rejected. Endpoint connectors are bounded projections, not observed vehicle tracks. Output uses the shared approximate LV95/WGS84 transform and seven-decimal coordinates without line simplification.
 
@@ -104,9 +108,32 @@ Failures remain route-scoped and directed. The machine audit names both original
 
 ### Geometry follow-up
 
-The line 9 precision repair is evaluated against an unmodified-source baseline on each date. It adds **${reports[0].topologyRepairEffect.newlyAdmittedTrips} Friday / ${reports[1].topologyRepairEffect.newlyAdmittedTrips} Sunday complete journeys**, losing none. Source feature 22's affected route graphs admit ${reports[0].topologyRepairEffect.repairedAdmittedTrips} / ${reports[1].topologyRepairEffect.repairedAdmittedTrips} journeys after the repair; remaining extensions still fail the normal projection limits. The daily audit preserves baseline failed pairs and before/after counts.
+Before the OSM supplement, the line 9 precision repair is evaluated against an unmodified-source baseline on each date. It adds **${reports[0].topologyRepairEffect.newlyAdmittedTrips} Friday / ${reports[1].topologyRepairEffect.newlyAdmittedTrips} Sunday complete journeys**, losing none. Source feature 22's affected route graphs admit ${reports[0].topologyRepairEffect.repairedAdmittedTrips} / ${reports[1].topologyRepairEffect.repairedAdmittedTrips} journeys after the repair; remaining extensions still fail the normal projection limits. The daily audit preserves baseline failed pairs and before/after counts.
 
-The [reproducible topology diagnostic](../data/fribourg-audit/topology-followup.json) found a **9.024 m** break in line 1 (feature 128), a **561.161 m** component separation in line 2 (feature 16), and three components in S20/S21 (feature 10), with nearest separations of 0.026 m and 0.040 m. These remain unchanged: the bus breaks exceed the precision-repair limit, and the rail junction needs a separate topology review. Rail station/terminal projection failures also remain. This follow-up does not fill larger gaps with straight segments or expand source extents.
+The [reproducible topology diagnostic](../data/fribourg-audit/topology-followup.json) found a **9.024 m** break in line 1 (feature 128), a **561.161 m** component separation in line 2 (feature 16), and three components in S20/S21 (feature 10), with nearest separations of 0.026 m and 0.040 m. These remain unchanged: the bus breaks exceed the precision-repair limit, and the rail junction needs a separate topology review. Rail station/terminal projection failures also remain. The later road supplement can cover bus source gaps using actual inferred road paths; it does not alter these original source geometries.
+
+### Complete bus-pattern road supplement
+
+The [road adapter](../scripts/fribourg-road-geometry.mjs) prepares all **${summary.sources.roads.completePatternsTested} distinct full bus patterns** across both civil days and six active bus agency identities: TPF, PostAuto, VMCV and the three active replacement operators. Inactive annual agencies remain in the canton census. All source calls, out-of-canton termini, repeated platforms, short branches and night patterns are retained. Routing-only carry-in timestamps are shifted by whole days to satisfy GTFS input constraints; delivered timestamps are unchanged.
+
+The matcher uses the pinned Geofabrik Switzerland **2 September 2026** road extract plus the **8 September 2026** border extract, SHA-256 **${summary.sources.roads.source.osmSha256}**, and pfaedle commit **${summary.sources.roads.source.matcherCommit}**. The copied configuration, binary hash, routing inputs, shapes, trips, stop times, complete warning logs and run hashes are retained in [road evidence](../data/fribourg-road-evidence). The checker reimports those outputs and verifies every emitted inferred segment against them.
+
+A failed cantonal pair receives a road path only when **every complete pattern context containing the same agency/route/directed-platform pair has a valid, identical path**. A successful context cannot hide a failed context. Differing branch paths remain rejected; no context exception is added. Source-matched pairs retain their original paths. Explicit pfaedle fallback hops are rejected even if the matcher writes a straight segment. Monotone shape-distance slicing preserves direction and loops. Road projection is limited to 120 m; simplification is 5 m, followed by the stricter final detour guard of max(600 m, 3 × direct distance). These tolerances apply to inferred roads, separately from the cantonal 80 m bus projection guard.
+
+${table(['Measure', 'Friday', 'Sunday'], [
+  ['All bus instances', ...reports.map(r => n(r.groups.filter(g => g.id.endsWith(':bus')).reduce((v, g) => v + g.trips, 0)))],
+  ['Admitted bus instances', ...reports.map(r => n(r.groups.filter(g => g.id.endsWith(':bus')).reduce((v, g) => v + g.admittedTrips, 0)))],
+  ['Additional admitted journeys', ...reports.map(r => n(r.roadEffect.newlyAdmittedTrips))],
+  ['Road-backed directed pairs', ...reports.map(r => n(r.roadEffect.matchedDirectedPairs))],
+  ['Lost previously admitted journeys', ...reports.map(r => n(r.roadEffect.lostAdmittedTrips))],
+  ...[...new Set(reports.flatMap(r => r.directedPairs.map(p => p.roadFallback?.reason).filter(Boolean)))].sort().map(reason => [reason + ' — remaining directed pairs', ...reports.map(r => r.directedPairs.filter(p => p.roadFallback?.reason === reason).length)]),
+])}
+
+The original cantonal failure is preserved as officialFailure and the road assessment records all contributing full pattern IDs. Journeys record their inferred segment count and geometry source. Reservation/on-demand calls, GTFS demand-responsive type 715 and provisional boundary route 661 remain excluded. The OSM profile uses bus/PSV access and direction tags with penalties; **it does not enforce an absolute one-way prohibition**. Physical legality, temporary restrictions and actual operator routing remain unverified. Complete directed stop matching is not a claim of certified road direction.
+
+![Urban corridor geometry review](assets/fribourg-road-review.svg)
+
+The four urban panels were rendered and visually inspected for continuity, extent and original/fallback separation; they are not independent operator evidence. Both dates and all other bus patterns are covered by the automated full-sequence and retained-output checks. Remaining larger exclusion groups include one direction of TPF 3, PostAuto 121, VMCV branches and Sunday replacement patterns; every failed pair and trip count remains in the machine audit.
 
 ## Dates, reuse and attribution
 
@@ -115,6 +142,7 @@ ${table(['Source', 'Pinned date / vintage', 'Attribution / reuse'], [
   ['Fribourg line layer', `${summary.sources.acquiredAt}; actual geometry vintage unknown`, 'Source: Etat de Fribourg; free use, sharing and reuse under dataset OGD terms'],
   ['Embedded Esri metadata', 'Created 2022-07-14', 'Metadata creation, not geometry vintage'],
   ['OGD catalogue item', `Created ${summary.sources.reuseEvidence.catalogueCreated}; modified ${summary.sources.reuseEvidence.catalogueModified}`, 'Catalogue timestamps, not geometry vintage'],
+  ['OSM road supplement', 'Swiss extract 2026-09-02; border retrieved 2026-09-08', '© OpenStreetMap contributors; ODbL 1.0; inferred geometry database'],
   ['swissBOUNDARIES3D', '2026-01; original canton and seven district polygons', '© swisstopo; free geodata terms'],
   ...summary.sources.crosswalkSupportingDocuments.map(d => [d.file, `Timetable 2026; state ${d.dataUpdated}`, 'Official tp-info / oev-info timetable; identity evidence only']),
 ])}
@@ -125,7 +153,7 @@ The [dataset catalogue item](https://maps.fr.ch/portal/sharing/rest/content/item
 
 The earlier [portal terms](https://map.geo.fr.ch/help/fr/conditions_utilisation.htm) and [geoinformation ordinance](https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes) remain supporting evidence. The linked [geocat record](https://www.geocat.ch/geonetwork/srv/fre/catalog.search#/metadata/d578f90c-348f-41de-80be-4385a57605b9) did not yield XML during the follow-up (HTTP 403/500 or a login page). Neither service declares a geometry update date; the OGD catalogue's July 2026 modification timestamp must not be presented as line vintage.
 
-Timetable reuse follows the [national platform terms](https://opentransportdata.swiss/en/terms-of-use/); boundary reuse follows [swisstopo's terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices). These credits are distinct and are embedded in both manifests and the feed's source record. No live-service accuracy or real-time position claim is made.
+Timetable reuse follows the [national platform terms](https://opentransportdata.swiss/en/terms-of-use/); boundary reuse follows [swisstopo's terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices). The [OSM copyright terms](https://www.openstreetmap.org/copyright) require attribution and ODbL share-alike for derived data. The combined derived geometry database is offered under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/), with the full derived road cache retained; this does not relabel the separate timetable or boundary sources. These credits are distinct and are embedded in both manifests and the feed's source record. No live-service accuracy or real-time position claim is made.
 
 ## Reproduction and checks
 
@@ -139,15 +167,32 @@ python3 scripts/prepare-fribourg-sources.py --offline
 node --max-old-space-size=8192 scripts/fribourg-timetable.mjs \\
   /private/tmp/GTFS_FP2026_20260902.zip /private/tmp/fribourg-timetable.json.gz
 
-# Both civil-day feeds and complete route/pattern audit.
+# Both civil-day feeds and complete route/pattern audit using the committed road cache.
 node --max-old-space-size=8192 scripts/build-fribourg-region.mjs \\
   --archive /private/tmp/GTFS_FP2026_20260902.zip \\
   --timetable-cache /private/tmp/fribourg-timetable.json.gz
 node scripts/check-fribourg-region.mjs
 node scripts/audit-fribourg-topology.mjs
+node scripts/review-fribourg-roads.mjs
 node scripts/write-fribourg-audit.mjs
 python3 scripts/test_fribourg_sources.py
-npx vitest run scripts/fribourg-region.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/bern-region.test.mjs
+
+# Optional offline road rebuild: prepare all patterns, match each agency directory
+# with scripts/match-postbus-roads.mjs --no-trie/-W wrapper and the pinned extract,
+# then import all six outputs. Renew policy hashes after review.
+node scripts/fribourg-road-geometry.mjs prepare \\
+  /private/tmp/fribourg-timetable.json.gz /private/tmp/fribourg-road-feed
+for agency in 834 876 7223 7231 801 7040; do
+  node scripts/match-postbus-roads.mjs \\
+    --pfaedle /private/tmp/gleislicht-pfaedle/build/pfaedle \\
+    --config data/fribourg-road-evidence/pfaedle.cfg \\
+    --osm /private/tmp/gleislicht-postbus-roads.osm.pbf \\
+    --feed /private/tmp/fribourg-road-feed/$agency \\
+    --output /private/tmp/fribourg-road-matched/$agency
+done
+node scripts/fribourg-road-geometry.mjs import \\
+  /private/tmp/fribourg-road-feed /private/tmp/fribourg-road-matched
 
 # Fresh acquisition changes hashes and requires renewed source review.
 python3 scripts/prepare-fribourg-sources.py --boundary \\

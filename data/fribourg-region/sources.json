@@ -254,5 +254,68 @@
     "processedBy": "Gleislicht",
     "archivalStudy": true,
     "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
+  },
+  "roads": {
+    "publisher": "SBB",
+    "feedVersion": "20260902",
+    "serviceDate": "2026-09-04",
+    "sourceUrl": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+    "dayModel": "civil day with preceding service-day spillover",
+    "sourceServiceDates": [
+      "2026-09-03",
+      "2026-09-04"
+    ],
+    "windowStart": 0,
+    "windowEnd": 86400,
+    "focusTime": 27900,
+    "modes": [
+      "rail",
+      "bus",
+      "cableway",
+      "funicular",
+      "ferry"
+    ],
+    "dates": [
+      "2026-09-04",
+      "2026-09-06"
+    ],
+    "timetableSha256": "ff0f7007658e6386474a79a4d5c3239b6402e95f18cbcac3fab0002514fd8f74",
+    "sourceHashes": {
+      "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+      "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47"
+    },
+    "scope": "Every full Fribourg-calling bus pattern on both civil dates, including night and replacement buses; exact agency, route, platform IDs and coordinates retained.",
+    "source": {
+      "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+      "swissDate": "2026-09-02",
+      "borderRetrieved": "2026-09-08",
+      "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+      "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+      "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a"
+    },
+    "attribution": "© OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "licenseUrl": "https://www.openstreetmap.org/copyright",
+    "model": "Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified",
+    "policy": {
+      "cacheFile": "data/fribourg-road-cache.json",
+      "cacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+      "configFile": "data/fribourg-road-evidence/pfaedle.cfg",
+      "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+      "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+      "limits": {
+        "detourRatio": 3,
+        "detourFloorMetres": 600
+      },
+      "excludedRouteIds": [
+        "96-247-j26-1"
+      ],
+      "admission": "Fill failed official pairs only when every full bus pattern containing that route-specific directed platform pair has a valid identical road path. Explicit matcher failures and conflicting pattern contexts remain excluded. Provisional geographic membership and demand-responsive services remain excluded.",
+      "attribution": "© OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "directionNote": "Inferred paths using bus/PSV access and direction tags. The pinned pfaedle profile uses penalties, not an absolute one-way prohibition; legal direction and temporary restrictions are not certified."
+    },
+    "completePatternsTested": 614
   }
 }

@@ -3,8 +3,9 @@
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "5cab135daffaa81424aef503c6afa5e70b38f3919a04998b569a3da02b1ff1a9",
-    "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086"
+    "crosswalk": "63941020aeaf7484aad464076798fd8d847cd9a2a63dec2c68d4a8a1e6aa22fd",
+    "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
+    "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e"
   },
   "sources": {
     "schemaVersion": 1,
@@ -262,6 +263,69 @@
       "processedBy": "Gleislicht",
       "archivalStudy": true,
       "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
+    },
+    "roads": {
+      "publisher": "SBB",
+      "feedVersion": "20260902",
+      "serviceDate": "2026-09-04",
+      "sourceUrl": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+      "dayModel": "civil day with preceding service-day spillover",
+      "sourceServiceDates": [
+        "2026-09-03",
+        "2026-09-04"
+      ],
+      "windowStart": 0,
+      "windowEnd": 86400,
+      "focusTime": 27900,
+      "modes": [
+        "rail",
+        "bus",
+        "cableway",
+        "funicular",
+        "ferry"
+      ],
+      "dates": [
+        "2026-09-04",
+        "2026-09-06"
+      ],
+      "timetableSha256": "ff0f7007658e6386474a79a4d5c3239b6402e95f18cbcac3fab0002514fd8f74",
+      "sourceHashes": {
+        "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+        "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47"
+      },
+      "scope": "Every full Fribourg-calling bus pattern on both civil dates, including night and replacement buses; exact agency, route, platform IDs and coordinates retained.",
+      "source": {
+        "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+        "swissDate": "2026-09-02",
+        "borderRetrieved": "2026-09-08",
+        "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+        "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+        "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a"
+      },
+      "attribution": "© OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "licenseUrl": "https://www.openstreetmap.org/copyright",
+      "model": "Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified",
+      "policy": {
+        "cacheFile": "data/fribourg-road-cache.json",
+        "cacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+        "configFile": "data/fribourg-road-evidence/pfaedle.cfg",
+        "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+        "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+        "limits": {
+          "detourRatio": 3,
+          "detourFloorMetres": 600
+        },
+        "excludedRouteIds": [
+          "96-247-j26-1"
+        ],
+        "admission": "Fill failed official pairs only when every full bus pattern containing that route-specific directed platform pair has a valid identical road path. Explicit matcher failures and conflicting pattern contexts remain excluded. Provisional geographic membership and demand-responsive services remain excluded.",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "directionNote": "Inferred paths using bus/PSV access and direction tags. The pinned pfaedle profile uses penalties, not an absolute one-way prohibition; legal direction and temporary restrictions are not certified."
+      },
+      "completePatternsTested": 614
     }
   },
   "census": {
@@ -380,10 +444,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "excluded": 81,
+    "excluded": 34,
     "inactive-on-validation-dates": 48,
-    "partially-admitted": 41,
-    "admitted-all-dated-trips": 37
+    "partially-admitted": 29,
+    "admitted-all-dated-trips": 96
   },
   "districts": [
     {
@@ -746,29 +810,31 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "5cab135daffaa81424aef503c6afa5e70b38f3919a04998b569a3da02b1ff1a9",
-        "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086"
+        "crosswalk": "63941020aeaf7484aad464076798fd8d847cd9a2a63dec2c68d4a8a1e6aa22fd",
+        "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
+        "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e"
       },
       "coverage": {
         "trips": 8556,
-        "admittedTrips": 2595,
+        "admittedTrips": 4658,
         "scheduledTrips": 5812,
         "representativeHeadwayTrips": 2744,
-        "admittedScheduledTrips": 2595,
+        "admittedScheduledTrips": 4658,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 89328,
-        "matchedScheduledSegmentOccurrences": 77103,
+        "matchedScheduledSegmentOccurrences": 83392,
         "segmentOccurrences": 92072,
-        "matchedSegmentOccurrences": 77103,
-        "admittedSegmentOccurrences": 38769,
+        "matchedSegmentOccurrences": 83392,
+        "admittedSegmentOccurrences": 74446,
         "directedPairs": 4509,
-        "matchedDirectedPairs": 3350,
+        "matchedDirectedPairs": 3883,
         "patterns": 849,
-        "completePatterns": 346,
-        "admittedPatterns": 346,
+        "completePatterns": 545,
+        "admittedPatterns": 545,
         "excludedTrips": {
-          "incomplete-directed-pattern": 2743,
-          "no-verified-operator-line-crosswalk": 3218
+          "incomplete-directed-pattern": 874,
+          "no-verified-operator-line-crosswalk": 3015,
+          "provisional-boundary-membership": 9
         }
       },
       "groups": [
@@ -1009,123 +1075,121 @@
           "id": "7223:bus",
           "agency": "Transports publics fribourgeois Ersatzverkehr",
           "trips": 2,
-          "admittedTrips": 0,
+          "admittedTrips": 2,
           "scheduledTrips": 2,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 2,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 8,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 8,
           "segmentOccurrences": 8,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 8,
+          "admittedSegmentOccurrences": 8,
           "directedPairs": 4,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 4,
           "patterns": 1,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "no-verified-operator-line-crosswalk": 2
-          }
+          "completePatterns": 1,
+          "admittedPatterns": 1,
+          "excludedTrips": {}
         },
         {
           "id": "7231:bus",
           "agency": "SBB Infrastruktur AG Bahnersatz",
           "trips": 32,
-          "admittedTrips": 0,
+          "admittedTrips": 24,
           "scheduledTrips": 32,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 24,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 153,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 139,
           "segmentOccurrences": 153,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 139,
+          "admittedSegmentOccurrences": 132,
           "directedPairs": 38,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 33,
           "patterns": 11,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
+          "completePatterns": 6,
+          "admittedPatterns": 6,
           "excludedTrips": {
-            "no-verified-operator-line-crosswalk": 32
+            "incomplete-directed-pattern": 5,
+            "no-verified-operator-line-crosswalk": 3
           }
         },
         {
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 602,
-          "admittedTrips": 311,
+          "admittedTrips": 507,
           "scheduledTrips": 602,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 311,
+          "admittedScheduledTrips": 507,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 7865,
-          "matchedScheduledSegmentOccurrences": 6049,
+          "matchedScheduledSegmentOccurrences": 7770,
           "segmentOccurrences": 7865,
-          "matchedSegmentOccurrences": 6049,
-          "admittedSegmentOccurrences": 4695,
+          "matchedSegmentOccurrences": 7770,
+          "admittedSegmentOccurrences": 7004,
           "directedPairs": 721,
-          "matchedDirectedPairs": 535,
+          "matchedDirectedPairs": 712,
           "patterns": 110,
-          "completePatterns": 56,
-          "admittedPatterns": 56,
+          "completePatterns": 90,
+          "admittedPatterns": 90,
           "excludedTrips": {
-            "incomplete-directed-pattern": 178,
-            "no-verified-operator-line-crosswalk": 113
+            "incomplete-directed-pattern": 86,
+            "provisional-boundary-membership": 9
           }
         },
         {
           "id": "834:bus",
           "agency": "Service d'automobiles TPF",
           "trips": 3918,
-          "admittedTrips": 1943,
+          "admittedTrips": 3747,
           "scheduledTrips": 3918,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1943,
+          "admittedScheduledTrips": 3747,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 65387,
-          "matchedScheduledSegmentOccurrences": 60941,
+          "matchedScheduledSegmentOccurrences": 65213,
           "segmentOccurrences": 65387,
-          "matchedSegmentOccurrences": 60941,
-          "admittedSegmentOccurrences": 29970,
+          "matchedSegmentOccurrences": 65213,
+          "admittedSegmentOccurrences": 62505,
           "directedPairs": 2555,
-          "matchedDirectedPairs": 2225,
+          "matchedDirectedPairs": 2539,
           "patterns": 396,
-          "completePatterns": 203,
-          "admittedPatterns": 203,
+          "completePatterns": 359,
+          "admittedPatterns": 359,
           "excludedTrips": {
-            "incomplete-directed-pattern": 1916,
-            "no-verified-operator-line-crosswalk": 59
+            "incomplete-directed-pattern": 171
           }
         },
         {
           "id": "876:bus",
           "agency": "Transports publics Vevey-Montreux-Chillon-Villeneuve",
           "trips": 148,
-          "admittedTrips": 37,
+          "admittedTrips": 74,
           "scheduledTrips": 148,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 37,
+          "admittedScheduledTrips": 74,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 2803,
-          "matchedScheduledSegmentOccurrences": 2580,
+          "matchedScheduledSegmentOccurrences": 2729,
           "segmentOccurrences": 2803,
-          "matchedSegmentOccurrences": 2580,
-          "admittedSegmentOccurrences": 704,
+          "matchedSegmentOccurrences": 2729,
+          "admittedSegmentOccurrences": 1397,
           "directedPairs": 117,
-          "matchedDirectedPairs": 109,
+          "matchedDirectedPairs": 114,
           "patterns": 10,
-          "completePatterns": 2,
-          "admittedPatterns": 2,
+          "completePatterns": 4,
+          "admittedPatterns": 4,
           "excludedTrips": {
-            "incomplete-directed-pattern": 111
+            "incomplete-directed-pattern": 74
           }
         }
       ],
       "timing": {
-        "zeroDurationSegmentOccurrences": 2793,
-        "zeroDurationOver100m": 2793,
+        "zeroDurationSegmentOccurrences": 5699,
+        "zeroDurationOver100m": 5695,
         "maximumPositiveDurationSpeedKmh": 132.4075795155743,
         "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
       },
@@ -1218,49 +1282,79 @@
         ],
         "lostAdmittedTrips": 0
       },
+      "roadEffect": {
+        "officialCoverage": {
+          "trips": 8556,
+          "admittedTrips": 2595,
+          "scheduledTrips": 5812,
+          "representativeHeadwayTrips": 2744,
+          "admittedScheduledTrips": 2595,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 89328,
+          "matchedScheduledSegmentOccurrences": 77103,
+          "segmentOccurrences": 92072,
+          "matchedSegmentOccurrences": 77103,
+          "admittedSegmentOccurrences": 38769,
+          "directedPairs": 4509,
+          "matchedDirectedPairs": 3350,
+          "patterns": 849,
+          "completePatterns": 346,
+          "admittedPatterns": 346,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 2743,
+            "no-verified-operator-line-crosswalk": 3218
+          }
+        },
+        "patternsTestedAcrossBothDates": 614,
+        "newlyAdmittedTrips": 2063,
+        "lostAdmittedTrips": 0,
+        "matchedDirectedPairs": 533,
+        "matchedSegmentOccurrences": 6289,
+        "admittedSegmentOccurrences": 5593
+      },
       "pairFailures": {
         "collapsed-path": {
-          "directedPairs": 9,
-          "segmentOccurrences": 66
+          "directedPairs": 3,
+          "segmentOccurrences": 32
         },
         "disconnected-line": {
-          "directedPairs": 40,
-          "segmentOccurrences": 904
+          "directedPairs": 5,
+          "segmentOccurrences": 76
         },
         "endpoint-gap": {
-          "directedPairs": 378,
-          "segmentOccurrences": 5955
+          "directedPairs": 164,
+          "segmentOccurrences": 2583
         },
         "implausible-detour": {
-          "directedPairs": 6,
-          "segmentOccurrences": 90
+          "directedPairs": 3,
+          "segmentOccurrences": 74
         },
         "missing-line": {
-          "directedPairs": 726,
-          "segmentOccurrences": 7954
+          "directedPairs": 451,
+          "segmentOccurrences": 5915
         }
       },
       "carryInTrips": 97,
-      "admittedCarryInTrips": 32,
-      "admittedOutsideCantonPlatforms": 227,
+      "admittedCarryInTrips": 63,
+      "admittedOutsideCantonPlatforms": 391,
       "directedPatternChecks": {
         "directionIds": [
           "0",
           "1"
         ],
         "patternsRevisitingPlatforms": 9,
-        "admittedPatternsRevisitingPlatforms": 2,
+        "admittedPatternsRevisitingPlatforms": 6,
         "nightRouteTrips": 0,
         "admittedNightRouteTrips": 0
       },
       "payload": {
         "manifest": {
-          "bytes": 3961044,
-          "gzipBytes": 994831
+          "bytes": 5492552,
+          "gzipBytes": 1364773
         },
         "morning": {
-          "trips": 435,
-          "gzipBytes": 1045361
+          "trips": 787,
+          "gzipBytes": 1460315
         },
         "chunks": [
           {
@@ -1268,10 +1362,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 32,
-            "bytes": 27402,
-            "sha256": "52c6eb0674044cfd3a54c9a482e4da336a0155b48531c4a2fe74fc8cfe90883f",
-            "gzipBytes": 5727
+            "tripCount": 63,
+            "bytes": 56697,
+            "sha256": "90dbb573d3e82630486453769922ade5cfa820199b4172ae4f812b3ea2855b0c",
+            "gzipBytes": 10555
           },
           {
             "id": "02-04",
@@ -1288,100 +1382,100 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 108,
-            "bytes": 99124,
-            "sha256": "b5d7b4283bb166821f8607c1d116e3d0bcb0460e8db3cd8767c7b4c98599e3ef",
-            "gzipBytes": 16875
+            "tripCount": 191,
+            "bytes": 188322,
+            "sha256": "5ff678f0966ba5e5aeacb3c8213378fd84aca400b08ded05b8b8d3e4663deb27",
+            "gzipBytes": 29772
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 444,
-            "bytes": 386872,
-            "sha256": "372dc605332febbb9c41f5349f7477a134e7ed3396e35bece8c25afdb3c00c9a",
-            "gzipBytes": 51803
+            "tripCount": 797,
+            "bytes": 754276,
+            "sha256": "ecdd52f93b53c5ef7fd52eb04e67fd7bb41afb73208cb3336d5c99991f43682c",
+            "gzipBytes": 96277
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 331,
-            "bytes": 310365,
-            "sha256": "63e76e0908857a982b684807bc830eb2b9d2c2eb64e8e98e85373f25ff2e21ea",
-            "gzipBytes": 42880
+            "tripCount": 603,
+            "bytes": 602423,
+            "sha256": "66f27e42f5c8562514640e1c83f470715625cf0b6beac4c221968b4710b8f2df",
+            "gzipBytes": 79409
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 313,
-            "bytes": 294711,
-            "sha256": "f70cef7542fe94c127ac8348944281af18b54b3a7dca5765f1e25d541f99d4ef",
-            "gzipBytes": 40694
+            "tripCount": 571,
+            "bytes": 574271,
+            "sha256": "6345eca1b4122b1fdea52fc6ba8386dbaa1f90b3007d698df4cbc8ff8cab9214",
+            "gzipBytes": 76250
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 397,
-            "bytes": 352561,
-            "sha256": "bca3ed40154b2597097aa12b1c84d75cb60685f6a445fe142fd4c2118a48e482",
-            "gzipBytes": 48164
+            "tripCount": 702,
+            "bytes": 676089,
+            "sha256": "93943112c5b10acb705c95e269e4c73e0a69e489170e261710cfe7df5328ce73",
+            "gzipBytes": 89397
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 329,
-            "bytes": 305341,
-            "sha256": "69249cc598dccca1156ee3a67bc4802232dbbce3c2a517b2cd3af782a5b7a570",
-            "gzipBytes": 41986
+            "tripCount": 589,
+            "bytes": 586326,
+            "sha256": "f9c81ab98cbf1f8568f0658cad995944f97c73b543d505c224f2410fcc0bbbca",
+            "gzipBytes": 77794
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 439,
-            "bytes": 392537,
-            "sha256": "8f067ae91637452053a6df4f51626165ae5e1ae99be0bf234a7fceaad345580d",
-            "gzipBytes": 52326
+            "tripCount": 789,
+            "bytes": 763643,
+            "sha256": "335e86017046a5ffbbbd6de0132dffcf3096d8aea842a7fd4e6497b7db663c2f",
+            "gzipBytes": 97649
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 391,
-            "bytes": 356061,
-            "sha256": "b3c0d6cf81061e0730111d5a5831c06433ab2ad02c0d82d2ba64930b7864330f",
-            "gzipBytes": 47773
+            "tripCount": 712,
+            "bytes": 695617,
+            "sha256": "4936e716436833ac4cccfabe90ec2b45df08c48fbe9c187a313320bf69facc3c",
+            "gzipBytes": 89063
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 219,
-            "bytes": 215498,
-            "sha256": "2700781e1994b2c669a99fb47b9a60d0ba4bcffbd54555613371de3b26ae064a",
-            "gzipBytes": 30387
+            "tripCount": 385,
+            "bytes": 393196,
+            "sha256": "9d7c70ca55a7b2c40b7db98fb4af3dbf81cb4dad319566ec2c04346983f11bf0",
+            "gzipBytes": 53356
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 156,
-            "bytes": 155102,
-            "sha256": "c3d9a9cf96aad626f2e7510d5a3280d44301cdaf1c53fe202ea1a26b596c9836",
-            "gzipBytes": 22405
+            "tripCount": 275,
+            "bytes": 279182,
+            "sha256": "83ab3fadb8713576c077005dfb8b3f9f1aed711a0c69841ebd4fa930cfd7b1c3",
+            "gzipBytes": 38489
           }
         ]
       },
@@ -1403,29 +1497,30 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "5cab135daffaa81424aef503c6afa5e70b38f3919a04998b569a3da02b1ff1a9",
-        "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086"
+        "crosswalk": "63941020aeaf7484aad464076798fd8d847cd9a2a63dec2c68d4a8a1e6aa22fd",
+        "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
+        "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e"
       },
       "coverage": {
         "trips": 6326,
-        "admittedTrips": 1692,
+        "admittedTrips": 2908,
         "scheduledTrips": 4062,
         "representativeHeadwayTrips": 2264,
-        "admittedScheduledTrips": 1692,
+        "admittedScheduledTrips": 2908,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 62231,
-        "matchedScheduledSegmentOccurrences": 52891,
+        "matchedScheduledSegmentOccurrences": 56909,
         "segmentOccurrences": 64495,
-        "matchedSegmentOccurrences": 52891,
-        "admittedSegmentOccurrences": 28544,
+        "matchedSegmentOccurrences": 56909,
+        "admittedSegmentOccurrences": 49782,
         "directedPairs": 4607,
-        "matchedDirectedPairs": 3424,
+        "matchedDirectedPairs": 3933,
         "patterns": 588,
-        "completePatterns": 200,
-        "admittedPatterns": 200,
+        "completePatterns": 318,
+        "admittedPatterns": 318,
         "excludedTrips": {
-          "incomplete-directed-pattern": 1847,
-          "no-verified-operator-line-crosswalk": 2787
+          "incomplete-directed-pattern": 888,
+          "no-verified-operator-line-crosswalk": 2530
         }
       },
       "groups": [
@@ -1665,146 +1760,143 @@
           "id": "7040:bus",
           "agency": "Montreux-Oberland Bernois Ersatzverkehr",
           "trips": 9,
-          "admittedTrips": 0,
+          "admittedTrips": 4,
           "scheduledTrips": 9,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 4,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 120,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 115,
           "segmentOccurrences": 120,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 115,
+          "admittedSegmentOccurrences": 49,
           "directedPairs": 30,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 29,
           "patterns": 4,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
+          "completePatterns": 2,
+          "admittedPatterns": 2,
           "excludedTrips": {
-            "no-verified-operator-line-crosswalk": 9
+            "incomplete-directed-pattern": 5
           }
         },
         {
           "id": "7223:bus",
           "agency": "Transports publics fribourgeois Ersatzverkehr",
           "trips": 10,
-          "admittedTrips": 0,
+          "admittedTrips": 10,
           "scheduledTrips": 10,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 10,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 21,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 21,
           "segmentOccurrences": 21,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 21,
+          "admittedSegmentOccurrences": 21,
           "directedPairs": 10,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 10,
           "patterns": 5,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "no-verified-operator-line-crosswalk": 10
-          }
+          "completePatterns": 5,
+          "admittedPatterns": 5,
+          "excludedTrips": {}
         },
         {
           "id": "7231:bus",
           "agency": "SBB Infrastruktur AG Bahnersatz",
           "trips": 155,
-          "admittedTrips": 0,
+          "admittedTrips": 39,
           "scheduledTrips": 155,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 39,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 485,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 273,
           "segmentOccurrences": 485,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 273,
+          "admittedSegmentOccurrences": 117,
           "directedPairs": 27,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 21,
           "patterns": 13,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
+          "completePatterns": 1,
+          "admittedPatterns": 1,
           "excludedTrips": {
-            "no-verified-operator-line-crosswalk": 155
+            "incomplete-directed-pattern": 83,
+            "no-verified-operator-line-crosswalk": 33
           }
         },
         {
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 272,
-          "admittedTrips": 189,
+          "admittedTrips": 244,
           "scheduledTrips": 272,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 189,
+          "admittedScheduledTrips": 244,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 4343,
-          "matchedScheduledSegmentOccurrences": 3672,
+          "matchedScheduledSegmentOccurrences": 4315,
           "segmentOccurrences": 4343,
-          "matchedSegmentOccurrences": 3672,
-          "admittedSegmentOccurrences": 3197,
+          "matchedSegmentOccurrences": 4315,
+          "admittedSegmentOccurrences": 4081,
           "directedPairs": 547,
-          "matchedDirectedPairs": 421,
+          "matchedDirectedPairs": 543,
           "patterns": 45,
-          "completePatterns": 24,
-          "admittedPatterns": 24,
+          "completePatterns": 39,
+          "admittedPatterns": 39,
           "excludedTrips": {
-            "incomplete-directed-pattern": 50,
-            "no-verified-operator-line-crosswalk": 33
+            "incomplete-directed-pattern": 28
           }
         },
         {
           "id": "834:bus",
           "agency": "Service d'automobiles TPF",
           "trips": 2435,
-          "admittedTrips": 1211,
+          "admittedTrips": 2298,
           "scheduledTrips": 2435,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1211,
+          "admittedScheduledTrips": 2298,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 43081,
-          "matchedScheduledSegmentOccurrences": 40058,
+          "matchedScheduledSegmentOccurrences": 42940,
           "segmentOccurrences": 43081,
-          "matchedSegmentOccurrences": 40058,
-          "admittedSegmentOccurrences": 21526,
+          "matchedSegmentOccurrences": 42940,
+          "admittedSegmentOccurrences": 41295,
           "directedPairs": 2797,
-          "matchedDirectedPairs": 2461,
+          "matchedDirectedPairs": 2783,
           "patterns": 205,
-          "completePatterns": 96,
-          "admittedPatterns": 96,
+          "completePatterns": 189,
+          "admittedPatterns": 189,
           "excludedTrips": {
-            "incomplete-directed-pattern": 1141,
-            "no-verified-operator-line-crosswalk": 83
+            "incomplete-directed-pattern": 137
           }
         },
         {
           "id": "876:bus",
           "agency": "Transports publics Vevey-Montreux-Chillon-Villeneuve",
           "trips": 115,
-          "admittedTrips": 37,
+          "admittedTrips": 58,
           "scheduledTrips": 115,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 37,
+          "admittedScheduledTrips": 58,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 2190,
-          "matchedScheduledSegmentOccurrences": 2049,
+          "matchedScheduledSegmentOccurrences": 2133,
           "segmentOccurrences": 2190,
-          "matchedSegmentOccurrences": 2049,
-          "admittedSegmentOccurrences": 706,
+          "matchedSegmentOccurrences": 2133,
+          "admittedSegmentOccurrences": 1104,
           "directedPairs": 117,
-          "matchedDirectedPairs": 109,
+          "matchedDirectedPairs": 114,
           "patterns": 11,
-          "completePatterns": 2,
-          "admittedPatterns": 2,
+          "completePatterns": 4,
+          "admittedPatterns": 4,
           "excludedTrips": {
-            "incomplete-directed-pattern": 78
+            "incomplete-directed-pattern": 57
           }
         }
       ],
       "timing": {
-        "zeroDurationSegmentOccurrences": 2189,
-        "zeroDurationOver100m": 2189,
+        "zeroDurationSegmentOccurrences": 4367,
+        "zeroDurationOver100m": 4367,
         "maximumPositiveDurationSpeedKmh": 160.05716324720422,
         "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
       },
@@ -1869,49 +1961,75 @@
         ],
         "lostAdmittedTrips": 0
       },
+      "roadEffect": {
+        "officialCoverage": {
+          "trips": 6326,
+          "admittedTrips": 1692,
+          "scheduledTrips": 4062,
+          "representativeHeadwayTrips": 2264,
+          "admittedScheduledTrips": 1692,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 62231,
+          "matchedScheduledSegmentOccurrences": 52891,
+          "segmentOccurrences": 64495,
+          "matchedSegmentOccurrences": 52891,
+          "admittedSegmentOccurrences": 28544,
+          "directedPairs": 4607,
+          "matchedDirectedPairs": 3424,
+          "patterns": 588,
+          "completePatterns": 200,
+          "admittedPatterns": 200,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 1847,
+            "no-verified-operator-line-crosswalk": 2787
+          }
+        },
+        "patternsTestedAcrossBothDates": 614,
+        "newlyAdmittedTrips": 1216,
+        "lostAdmittedTrips": 0,
+        "matchedDirectedPairs": 509,
+        "matchedSegmentOccurrences": 4018,
+        "admittedSegmentOccurrences": 3240
+      },
       "pairFailures": {
         "collapsed-path": {
-          "directedPairs": 6,
-          "segmentOccurrences": 38
-        },
-        "disconnected-line": {
-          "directedPairs": 27,
-          "segmentOccurrences": 494
+          "directedPairs": 1,
+          "segmentOccurrences": 16
         },
         "endpoint-gap": {
-          "directedPairs": 380,
-          "segmentOccurrences": 4346
+          "directedPairs": 162,
+          "segmentOccurrences": 2391
         },
         "implausible-detour": {
           "directedPairs": 3,
           "segmentOccurrences": 57
         },
         "missing-line": {
-          "directedPairs": 767,
-          "segmentOccurrences": 6669
+          "directedPairs": 508,
+          "segmentOccurrences": 5122
         }
       },
       "carryInTrips": 179,
-      "admittedCarryInTrips": 52,
-      "admittedOutsideCantonPlatforms": 182,
+      "admittedCarryInTrips": 121,
+      "admittedOutsideCantonPlatforms": 337,
       "directedPatternChecks": {
         "directionIds": [
           "0",
           "1"
         ],
         "patternsRevisitingPlatforms": 6,
-        "admittedPatternsRevisitingPlatforms": 0,
+        "admittedPatternsRevisitingPlatforms": 2,
         "nightRouteTrips": 53,
-        "admittedNightRouteTrips": 10
+        "admittedNightRouteTrips": 42
       },
       "payload": {
         "manifest": {
-          "bytes": 3303719,
-          "gzipBytes": 858651
+          "bytes": 5173224,
+          "gzipBytes": 1331000
         },
         "morning": {
-          "trips": 228,
-          "gzipBytes": 888420
+          "trips": 362,
+          "gzipBytes": 1381245
         },
         "chunks": [
           {
@@ -1919,120 +2037,120 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 47,
-            "bytes": 40481,
-            "sha256": "d14429addbe7fb550657f9cb42ccd728bfddaecf9647c91369dc8d6ce9d1848b",
-            "gzipBytes": 8487
+            "tripCount": 96,
+            "bytes": 93989,
+            "sha256": "5f165b47f4961ff4f5b09f3cd8972e727158dd8dfa1ae59d5b5b5c181e1d7e1c",
+            "gzipBytes": 17593
           },
           {
             "id": "02-04",
             "windowStart": 7200,
             "windowEnd": 14400,
             "path": "day-chunks/02-04.json",
-            "tripCount": 6,
-            "bytes": 7379,
-            "sha256": "d019851b63d3675c28c4efd4e9a7c9fad72b8bf0e2a3540df03f4c3f02726d49",
-            "gzipBytes": 2013
+            "tripCount": 35,
+            "bytes": 47118,
+            "sha256": "3b7689baa195dae5708eee3446c9daa030c1dc24f7c95c6572b2b1e35e6a57f5",
+            "gzipBytes": 9567
           },
           {
             "id": "04-06",
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 53,
-            "bytes": 53611,
-            "sha256": "553c42fc8a63d8b8cdee908c1c642e93295f448438736e27746de11890731c92",
-            "gzipBytes": 9119
+            "tripCount": 80,
+            "bytes": 85367,
+            "sha256": "faae2b2a4e0aa754a9818d1e3354b114cc540223371cfe8f83a3fb1080e37450",
+            "gzipBytes": 14265
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 192,
-            "bytes": 185302,
-            "sha256": "022c723debfccb58fadc92022f093e14cbf238972b4a3df1bb4fae4f365472c7",
-            "gzipBytes": 27217
+            "tripCount": 293,
+            "bytes": 294594,
+            "sha256": "841004a09163f563ff2bfc8fd04dd730ede00bed8b9d283101b7f2cfce7f9b72",
+            "gzipBytes": 42172
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 243,
-            "bytes": 232774,
-            "sha256": "cdc7aaba89a5447b6b7cf1222a479df9db19b9dd104145dff9c151be6c6e383d",
-            "gzipBytes": 33489
+            "tripCount": 398,
+            "bytes": 404559,
+            "sha256": "35fd556d208f0c40a48d0e3f8370f3d0fc59d15349a9daeeea9de15be1b09cd7",
+            "gzipBytes": 55968
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 242,
-            "bytes": 233396,
-            "sha256": "129392092fdd3e16e23ac4709b2045841d722c9e21d0a652e557638e2ed8a720",
-            "gzipBytes": 33646
+            "tripCount": 411,
+            "bytes": 413752,
+            "sha256": "dac55fdefb2000b87c33bef9408cbed4b54d6156399981cfac9c978ca7b5f9f6",
+            "gzipBytes": 56951
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 246,
-            "bytes": 234705,
-            "sha256": "a40efde836fb2df6425be754300048fe336fb1c1a8656609f427637e2ef024ad",
-            "gzipBytes": 33655
+            "tripCount": 412,
+            "bytes": 413288,
+            "sha256": "db55c1faf9d5eeea444c92249910f14e1f7d074f3e369c34a6c969a37e2b68f7",
+            "gzipBytes": 57217
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 238,
-            "bytes": 230015,
-            "sha256": "f11cd64465ce3bf63ea86a6398da4bd39c90185cd1395df07c10f5625f82ddb4",
-            "gzipBytes": 32962
+            "tripCount": 402,
+            "bytes": 405715,
+            "sha256": "b228e2e5a278e11994f007e908ad600d6e38d5c98d783be061a3f1f6e5de8e20",
+            "gzipBytes": 55783
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 258,
-            "bytes": 244456,
-            "sha256": "c77604aafc01a2bdfe4882b4bff738a3ee44696d2e398ae3a01075ae28d45322",
-            "gzipBytes": 35098
+            "tripCount": 437,
+            "bytes": 435598,
+            "sha256": "c92c9e5687eff2cd6ff5655e94d467b6f4066b648beb3fa333e82d52891dd6ee",
+            "gzipBytes": 59670
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 237,
-            "bytes": 227805,
-            "sha256": "a99141b4abe76fe307e00160f187a8e285ccdfa832d7139c2015e00a3958828e",
-            "gzipBytes": 32756
+            "tripCount": 394,
+            "bytes": 397859,
+            "sha256": "a4ff8f7213854545126ac10fa64a8c381546f4d63f833c20a35446e9dfb176f8",
+            "gzipBytes": 54713
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 187,
-            "bytes": 189175,
-            "sha256": "bc2adea2d715856ceaf4220eb7eb6bebbf07410d783120e60662cd58cbc9c14e",
-            "gzipBytes": 27115
+            "tripCount": 319,
+            "bytes": 332033,
+            "sha256": "01d5ff3b6328f51e5b2d0e91462bc53239952ff889e953307d83b4724208b392",
+            "gzipBytes": 45624
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 146,
-            "bytes": 147445,
-            "sha256": "35764a71406f589c81ac77eb74e3cf881c34c5051a17c438af45395a09c33dd6",
-            "gzipBytes": 21447
+            "tripCount": 262,
+            "bytes": 269109,
+            "sha256": "40cbc8606f004e77c99baa9db3990cb864234734aa19c6135f02eb2b11ee20f0",
+            "gzipBytes": 36990
           }
         ]
       },
@@ -2052,7 +2170,7 @@
   "scopeLimits": [
     "GTFS fixed-stop archive and all cantonal line records inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.",
     "Two September civil days do not establish holiday, winter or year-round pattern coverage.",
-    "Cross-boundary journeys keep all calls. Entire patterns failing any segment are excluded, including source extents shorter than their timetable journeys.",
+    "Cross-boundary journeys keep all calls. Entire patterns still failing any segment after the audited road fallback are excluded; a source extent alone never truncates a trip.",
     "Geometry is official-line centreline inference, not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation."
   ]
 }

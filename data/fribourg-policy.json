@@ -40,15 +40,29 @@
     }
   },
   "expectedAgencyNames": {
-    "834": "Service d'automobiles TPF",
-    "53": "Transports publics fribourgeois",
-    "801": "PostAuto AG",
     "11": "Schweizerische Bundesbahnen SBB",
     "33": "BLS AG (bls)",
+    "53": "Transports publics fribourgeois",
     "64": "Montreux-Oberland Bernois",
+    "801": "PostAuto AG",
+    "834": "Service d'automobiles TPF",
     "876": "Transports publics Vevey-Montreux-Chillon-Villeneuve"
   },
   "featureOverrides": {
+    "3": {
+      "expectedNumber": "254",
+      "expectedName": "RE Bulle - Romont - Fribourg/Freiburg - Bern",
+      "agencyIds": [
+        "53"
+      ],
+      "lines": [
+        "RE2",
+        "RE3"
+      ],
+      "evidence": "Official 2026 timetable field 254: passenger line and transport enterprise; see timetable-254.pdf. Candidate identity only: full journey geometry must still pass.",
+      "expectedEnterprise": "TPF",
+      "expectedType": "RE"
+    },
     "43": {
       "expectedNumber": "10.213",
       "expectedName": "Vevey-Châtel-St-Denis",
@@ -87,20 +101,6 @@
       "evidence": "Official 2026 timetable field 10.217: passenger line and transport enterprise; see timetable-10.217.pdf. Candidate identity only: full journey geometry must still pass.",
       "expectedEnterprise": "Autre",
       "expectedType": "Bus régional"
-    },
-    "3": {
-      "expectedNumber": "254",
-      "expectedName": "RE Bulle - Romont - Fribourg/Freiburg - Bern",
-      "agencyIds": [
-        "53"
-      ],
-      "lines": [
-        "RE2",
-        "RE3"
-      ],
-      "evidence": "Official 2026 timetable field 254: passenger line and transport enterprise; see timetable-254.pdf. Candidate identity only: full journey geometry must still pass.",
-      "expectedEnterprise": "TPF",
-      "expectedType": "RE"
     }
   },
   "identityPolicy": "Exact source enterprise, transport mode and reviewed display-label interpretation. Autre is not an operator. Generic IC/IR/RE/Regio labels are not automatically matched to every railway service. Source OBJECTID is only an identity within the hashed snapshot.",
@@ -165,5 +165,24 @@
       "classification": "inferred-source-endpoint-adjustment",
       "evidence": "The two disconnected components of the same official TPF line 9 feature end 11.22 mm apart near Charmettes. Collapse only this pinned endpoint onto the other original endpoint; keep both source snapshots unchanged. This is an inferred precision repair, not surveyed topology or road-direction evidence."
     }
-  ]
+  ],
+  "roads": {
+    "cacheFile": "data/fribourg-road-cache.json",
+    "cacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+    "configFile": "data/fribourg-road-evidence/pfaedle.cfg",
+    "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+    "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+    "limits": {
+      "detourRatio": 3,
+      "detourFloorMetres": 600
+    },
+    "excludedRouteIds": [
+      "96-247-j26-1"
+    ],
+    "admission": "Fill failed official pairs only when every full bus pattern containing that route-specific directed platform pair has a valid identical road path. Explicit matcher failures and conflicting pattern contexts remain excluded. Provisional geographic membership and demand-responsive services remain excluded.",
+    "attribution": "© OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "directionNote": "Inferred paths using bus/PSV access and direction tags. The pinned pfaedle profile uses penalties, not an absolute one-way prohibition; legal direction and temporary restrictions are not certified."
+  }
 }

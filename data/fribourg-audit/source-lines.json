@@ -498,7 +498,9 @@
     "routeIds": [
       "92-3-A-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-3-A-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -955,7 +957,9 @@
     "routeIds": [
       "92-125-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-125-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -984,7 +988,9 @@
     "routeIds": [
       "92-127-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-127-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1013,7 +1019,9 @@
     "routeIds": [
       "92-129-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-129-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1104,7 +1112,9 @@
     "routeIds": [
       "92-N1-M-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N1-M-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1226,7 +1236,9 @@
     "routeIds": [
       "92-202-A-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-202-A-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1286,7 +1298,9 @@
     "routeIds": [
       "92-213-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-213-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1377,7 +1391,9 @@
     "routeIds": [
       "92-231-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-231-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1437,7 +1453,9 @@
     "routeIds": [
       "92-234-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-234-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1497,7 +1515,9 @@
     "routeIds": [
       "92-245-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-245-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1619,7 +1639,9 @@
     "routeIds": [
       "92-264-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-264-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1673,7 +1695,9 @@
     "routeIds": [
       "92-N2-L-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N2-L-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1733,7 +1757,9 @@
     "routeIds": [
       "96-752-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "96-752-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1762,7 +1788,9 @@
     "routeIds": [
       "96-220-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "96-220-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1822,7 +1850,9 @@
     "routeIds": [
       "92-336-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-336-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1851,7 +1881,9 @@
     "routeIds": [
       "92-337-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-337-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -1998,7 +2030,9 @@
     "routeIds": [
       "96-213-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "96-213-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -2240,7 +2274,9 @@
     "routeIds": [
       "92-473-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-473-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -2269,7 +2305,9 @@
     "routeIds": [
       "92-474-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-474-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -2298,7 +2336,9 @@
     "routeIds": [
       "92-476-A-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-476-A-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -2513,7 +2553,9 @@
     "routeIds": [
       "92-492-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-492-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -2604,7 +2646,9 @@
     "routeIds": [
       "92-520-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-520-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -2927,7 +2971,9 @@
     "routeIds": [
       "92-546-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-546-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -2987,7 +3033,9 @@
     "routeIds": [
       "92-548-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-548-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3419,7 +3467,9 @@
     "routeIds": [
       "96-180-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "96-180-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3448,7 +3498,9 @@
     "routeIds": [
       "92-N17-B-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N17-B-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3537,7 +3589,9 @@
     "routeIds": [
       "92-N12-D-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N12-D-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3566,7 +3620,9 @@
     "routeIds": [
       "92-N13-D-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N13-D-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3595,7 +3651,9 @@
     "routeIds": [
       "92-N14-D-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N14-D-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3655,7 +3713,9 @@
     "routeIds": [
       "92-N16-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N16-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3684,7 +3744,9 @@
     "routeIds": [
       "92-N21-D-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N21-D-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3713,7 +3775,9 @@
     "routeIds": [
       "92-N22-A-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N22-A-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3742,7 +3806,9 @@
     "routeIds": [
       "92-N23-F-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N23-F-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3771,7 +3837,9 @@
     "routeIds": [
       "92-N24-C-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N24-C-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -3800,7 +3868,9 @@
     "routeIds": [
       "92-N25-D-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-N25-D-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
