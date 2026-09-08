@@ -1,0 +1,895 @@
+{
+  "schemaVersion": 1,
+  "scope": "Reviewed finite selection of prior unresolved seasonal contexts. No September or closure dates. Geometry compatibility only. Exact full source coordinates and output path hashes are materialized in the policy.",
+  "rules": [
+    {
+      "date": "2026-01-16",
+      "patternId": "84e544802669e8ef7b08",
+      "kind": "bern-platform-49",
+      "pairs": [
+        [
+          "ch:1:sloid:218:5:8",
+          "ch:1:sloid:7000:55:49"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-16",
+      "patternId": "fd7c4bb37b0c6e1375f9",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-16",
+      "patternId": "ecca9381cf2aa533eabf",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-16",
+      "patternId": "cdef72d175e13fccc4e7",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-16",
+      "patternId": "81fc84e3c0fdce506238",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-16",
+      "patternId": "2b7f3d6c1b86dc49b2a8",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-16",
+      "patternId": "7f0fb5df050ad6f6fb03",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-16",
+      "patternId": "43c4958aa240bd4758a3",
+      "kind": "brugg-service-loop",
+      "pairs": [
+        [
+          "ch:1:sloid:72525:0:606384",
+          "ch:1:sloid:575:0:978919"
+        ],
+        [
+          "ch:1:sloid:575:0:978919",
+          "ch:1:sloid:72526:0:128401"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-18",
+      "patternId": "57512f867f457bd73eb3",
+      "kind": "bern-platform-49",
+      "pairs": [
+        [
+          "ch:1:sloid:218:5:8",
+          "ch:1:sloid:7000:55:49"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-18",
+      "patternId": "fd7c4bb37b0c6e1375f9",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-18",
+      "patternId": "ecca9381cf2aa533eabf",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-18",
+      "patternId": "81fc84e3c0fdce506238",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-18",
+      "patternId": "7f0fb5df050ad6f6fb03",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-03",
+      "patternId": "57512f867f457bd73eb3",
+      "kind": "bern-platform-49",
+      "pairs": [
+        [
+          "ch:1:sloid:218:5:8",
+          "ch:1:sloid:7000:55:49"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-03",
+      "patternId": "fd7c4bb37b0c6e1375f9",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-03",
+      "patternId": "81fc84e3c0fdce506238",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-03",
+      "patternId": "7f0fb5df050ad6f6fb03",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-03",
+      "patternId": "652c330358402b8ed73b",
+      "kind": "seasonal-rail",
+      "pairs": [
+        [
+          "ch:1:sloid:218:2:2",
+          "ch:1:sloid:2110:1:1"
+        ],
+        [
+          "ch:1:sloid:2110:1:1",
+          "ch:1:sloid:2111:3:4"
+        ],
+        [
+          "ch:1:sloid:2111:3:4",
+          "ch:1:sloid:2112:2:2"
+        ],
+        [
+          "ch:1:sloid:2112:2:2",
+          "ch:1:sloid:2113:1:1"
+        ],
+        [
+          "ch:1:sloid:2113:1:1",
+          "ch:1:sloid:2119:4:1"
+        ],
+        [
+          "ch:1:sloid:2119:4:1",
+          "ch:1:sloid:2213:2:2"
+        ],
+        [
+          "ch:1:sloid:2213:2:2",
+          "ch:1:sloid:2215:2:3"
+        ],
+        [
+          "ch:1:sloid:2215:2:3",
+          "ch:1:sloid:2202:3:6"
+        ],
+        [
+          "ch:1:sloid:2202:3:6",
+          "ch:1:sloid:5004:4:6"
+        ],
+        [
+          "ch:1:sloid:5004:4:6",
+          "ch:1:sloid:5213:2:3"
+        ],
+        [
+          "ch:1:sloid:5213:2:3",
+          "ch:1:sloid:5300:2:2"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-03",
+      "patternId": "2d77f241a2aa1ca3e06b",
+      "kind": "seasonal-rail",
+      "pairs": [
+        [
+          "ch:1:sloid:218:2:2",
+          "ch:1:sloid:2110:1:1"
+        ],
+        [
+          "ch:1:sloid:2110:1:1",
+          "ch:1:sloid:2111:3:4"
+        ],
+        [
+          "ch:1:sloid:2111:3:4",
+          "ch:1:sloid:2112:2:2"
+        ],
+        [
+          "ch:1:sloid:2112:2:2",
+          "ch:1:sloid:2113:2:2"
+        ],
+        [
+          "ch:1:sloid:2113:2:2",
+          "ch:1:sloid:2119:4:1"
+        ],
+        [
+          "ch:1:sloid:2119:4:1",
+          "ch:1:sloid:2213:2:2"
+        ],
+        [
+          "ch:1:sloid:2213:2:2",
+          "ch:1:sloid:2215:2:3"
+        ],
+        [
+          "ch:1:sloid:2215:2:3",
+          "ch:1:sloid:2202:3:6"
+        ],
+        [
+          "ch:1:sloid:2202:3:6",
+          "ch:1:sloid:5004:4:8"
+        ],
+        [
+          "ch:1:sloid:5004:4:8",
+          "ch:1:sloid:5213:2:3"
+        ],
+        [
+          "ch:1:sloid:5213:2:3",
+          "ch:1:sloid:5300:1:1"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-05",
+      "patternId": "0669bcdf772300e8d524",
+      "kind": "bern-platform-49",
+      "pairs": [
+        [
+          "ch:1:sloid:218:5:8",
+          "ch:1:sloid:7000:55:49"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-05",
+      "patternId": "fd7c4bb37b0c6e1375f9",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-05",
+      "patternId": "81fc84e3c0fdce506238",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-05",
+      "patternId": "7f0fb5df050ad6f6fb03",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "patternId": "0669bcdf772300e8d524",
+      "kind": "bern-platform-49",
+      "pairs": [
+        [
+          "ch:1:sloid:218:5:8",
+          "ch:1:sloid:7000:55:49"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "patternId": "6ce0765ef55fe7594c32",
+      "kind": "seasonal-rail",
+      "pairs": [
+        [
+          "ch:1:sloid:10:2:3",
+          "ch:1:sloid:23:2:3"
+        ],
+        [
+          "ch:1:sloid:23:2:3",
+          "ch:1:sloid:218:7:12"
+        ],
+        [
+          "ch:1:sloid:218:7:12",
+          "ch:1:sloid:2001:2:2"
+        ],
+        [
+          "ch:1:sloid:2001:2:2",
+          "ch:1:sloid:2007:1:1"
+        ],
+        [
+          "ch:1:sloid:2007:1:1",
+          "ch:1:sloid:5000:1:2"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "patternId": "fd7c4bb37b0c6e1375f9",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "patternId": "3ded01cb07e3e6e0840b",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "patternId": "d265c31ab9510492c555",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "patternId": "cdef72d175e13fccc4e7",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "patternId": "81fc84e3c0fdce506238",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "patternId": "7f0fb5df050ad6f6fb03",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "patternId": "43c4958aa240bd4758a3",
+      "kind": "brugg-service-loop",
+      "pairs": [
+        [
+          "ch:1:sloid:72525:0:606384",
+          "ch:1:sloid:575:0:978919"
+        ],
+        [
+          "ch:1:sloid:575:0:978919",
+          "ch:1:sloid:72526:0:128401"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-19",
+      "patternId": "57512f867f457bd73eb3",
+      "kind": "bern-platform-49",
+      "pairs": [
+        [
+          "ch:1:sloid:218:5:8",
+          "ch:1:sloid:7000:55:49"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-19",
+      "patternId": "3545ea8bdf1f172043d4",
+      "kind": "seasonal-rail",
+      "pairs": [
+        [
+          "ch:1:sloid:10:3:6",
+          "ch:1:sloid:23:2:3"
+        ],
+        [
+          "ch:1:sloid:23:2:3",
+          "ch:1:sloid:218:7:12"
+        ],
+        [
+          "ch:1:sloid:218:7:12",
+          "ch:1:sloid:2001:2:2"
+        ],
+        [
+          "ch:1:sloid:2001:2:2",
+          "ch:1:sloid:2007:1:1"
+        ],
+        [
+          "ch:1:sloid:2007:1:1",
+          "ch:1:sloid:5000:1:2"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-19",
+      "patternId": "fd7c4bb37b0c6e1375f9",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-19",
+      "patternId": "81fc84e3c0fdce506238",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-19",
+      "patternId": "7f0fb5df050ad6f6fb03",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-19",
+      "patternId": "6b5f7f824242285d5396",
+      "kind": "seasonal-rail",
+      "pairs": [
+        [
+          "ch:1:sloid:2217:1:1",
+          "ch:1:sloid:2202:3:5"
+        ],
+        [
+          "ch:1:sloid:2202:3:5",
+          "ch:1:sloid:5000:5:11"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-19",
+      "patternId": "9b53223334ec98eeb706",
+      "kind": "seasonal-rail",
+      "pairs": [
+        [
+          "ch:1:sloid:5000:5:10",
+          "ch:1:sloid:2202:3:5"
+        ],
+        [
+          "ch:1:sloid:2202:3:5",
+          "ch:1:sloid:2217:2:2"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-01",
+      "patternId": "fd7c4bb37b0c6e1375f9",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-01",
+      "patternId": "81fc84e3c0fdce506238",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-01",
+      "patternId": "7f0fb5df050ad6f6fb03",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "patternId": "7f0fb5df050ad6f6fb03",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "patternId": "fd7c4bb37b0c6e1375f9",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "patternId": "3ded01cb07e3e6e0840b",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "patternId": "ecca9381cf2aa533eabf",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "patternId": "cdef72d175e13fccc4e7",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "patternId": "81fc84e3c0fdce506238",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "patternId": "43c4958aa240bd4758a3",
+      "kind": "brugg-service-loop",
+      "pairs": [
+        [
+          "ch:1:sloid:72525:0:606384",
+          "ch:1:sloid:575:0:978919"
+        ],
+        [
+          "ch:1:sloid:575:0:978919",
+          "ch:1:sloid:72526:0:128401"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "patternId": "dd89e49c4102aa37ce35",
+      "kind": "seasonal-rail",
+      "pairs": [
+        [
+          "ch:1:sloid:3000:8:14",
+          "ch:1:sloid:2113:3:4"
+        ],
+        [
+          "ch:1:sloid:2113:3:4",
+          "ch:1:sloid:7000:3:6"
+        ],
+        [
+          "ch:1:sloid:7000:3:6",
+          "ch:1:sloid:4100:2:2"
+        ],
+        [
+          "ch:1:sloid:4100:2:2",
+          "ch:1:sloid:1120:0:860143"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "patternId": "b2f4278db930ff216fe1",
+      "kind": "seasonal-rail",
+      "pairs": [
+        [
+          "ch:1:sloid:3000:8:14",
+          "ch:1:sloid:2113:3:4"
+        ],
+        [
+          "ch:1:sloid:2113:3:4",
+          "ch:1:sloid:7000:3:6"
+        ],
+        [
+          "ch:1:sloid:7000:3:6",
+          "ch:1:sloid:4100:2:2"
+        ],
+        [
+          "ch:1:sloid:4100:2:2",
+          "ch:1:sloid:1120:0:860143"
+        ],
+        [
+          "ch:1:sloid:1120:0:860143",
+          "ch:1:sloid:1118:3:5"
+        ],
+        [
+          "ch:1:sloid:1118:3:5",
+          "ch:1:sloid:1008:2:3"
+        ],
+        [
+          "ch:1:sloid:1008:2:3",
+          "ch:1:sloid:1026:2:4"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "patternId": "f4d3b420c40863e69702",
+      "kind": "seasonal-rail",
+      "pairs": [
+        [
+          "ch:1:sloid:3000:8:14",
+          "ch:1:sloid:2113:3:4"
+        ],
+        [
+          "ch:1:sloid:2113:3:4",
+          "ch:1:sloid:7000:3:5"
+        ],
+        [
+          "ch:1:sloid:7000:3:5",
+          "ch:1:sloid:4100:2:2"
+        ],
+        [
+          "ch:1:sloid:4100:2:2",
+          "ch:1:sloid:1120:0:860143"
+        ],
+        [
+          "ch:1:sloid:1120:0:860143",
+          "ch:1:sloid:1118:3:5"
+        ],
+        [
+          "ch:1:sloid:1118:3:5",
+          "ch:1:sloid:1008:2:3"
+        ],
+        [
+          "ch:1:sloid:1008:2:3",
+          "ch:1:sloid:1026:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "patternId": "7f0fb5df050ad6f6fb03",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "patternId": "fd7c4bb37b0c6e1375f9",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "patternId": "81fc84e3c0fdce506238",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-12-11",
+      "patternId": "84e544802669e8ef7b08",
+      "kind": "bern-platform-49",
+      "pairs": [
+        [
+          "ch:1:sloid:218:5:8",
+          "ch:1:sloid:7000:55:49"
+        ]
+      ]
+    },
+    {
+      "date": "2026-12-11",
+      "patternId": "fd7c4bb37b0c6e1375f9",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-12-11",
+      "patternId": "3ded01cb07e3e6e0840b",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-12-11",
+      "patternId": "d265c31ab9510492c555",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-12-11",
+      "patternId": "cdef72d175e13fccc4e7",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-12-11",
+      "patternId": "81fc84e3c0fdce506238",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ]
+    },
+    {
+      "date": "2026-12-11",
+      "patternId": "7f0fb5df050ad6f6fb03",
+      "kind": "waldshut",
+      "pairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ]
+    },
+    {
+      "date": "2026-12-11",
+      "patternId": "43c4958aa240bd4758a3",
+      "kind": "brugg-service-loop",
+      "pairs": [
+        [
+          "ch:1:sloid:72525:0:606384",
+          "ch:1:sloid:575:0:978919"
+        ],
+        [
+          "ch:1:sloid:575:0:978919",
+          "ch:1:sloid:72526:0:128401"
+        ]
+      ]
+    }
+  ]
+}

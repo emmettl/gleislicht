@@ -35,7 +35,7 @@ export function applyAargauGeometry(raw, index, cantonStopIds, roads, rails, gap
         if (!segment.path && railSegments?.[i]?.path) segment = { ...railSegments[i], agisRejection: segment.reason }
         else if (!segment.path && railSegments?.[i]) segment = { ...segment, ...railSegments[i] }
         if (!segment.path && gapSegments?.[i]?.path) segment = { ...gapSegments[i], agisRejection: segment.reason, ...(segment.railFailure ? { railRejection: segment.railFailure } : {}) }
-        if (!segment.path && platformSegments?.[i]?.path) segment = { ...platformSegments[i], agisRejection: segment.reason, priorPlatformRejection: segment.roadFailure ?? segment.railFailure }
+        if (!segment.path && platformSegments?.[i]?.path) segment = { ...platformSegments[i], agisRejection: segment.reason, ...((segment.roadFailure ?? segment.railFailure) ? { priorPlatformRejection: segment.roadFailure ?? segment.railFailure } : {}) }
         if (alignments) segment = alignments.overrideSegment(train, train.calls.map(c => stops[stopIndices.get(c[0])]), i, segment)
         const { path, ...assessment } = segment
         let pathIndex = null

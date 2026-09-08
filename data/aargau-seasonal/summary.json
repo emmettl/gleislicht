@@ -11,6 +11,7 @@
     "data/aargau-rail-sources/source.json": "deeaa5552be1c671511cee21d9ba2787d5787d008dda4d4a36b82d4d4e64462c",
     "data/aargau-platform-policy.json": "25b2bf41419ee205b02e2813fcff1271c9513f94605600f4faa7c0fc280cc54e",
     "data/aargau-seasonal-roads/source.json": "3ba82647b5bd620c94f082708d05204fee4a5f1e9ec540987267a596f4978e05",
+    "data/aargau-seasonal-gap-policy.json": "e138ec216c2c4119941c675ed92660842df52a35b8bb9ab6f5d0db33581b9539",
     "fixtures/aargau/2026-09-04/audit.json": "daa9d08e47da73400166ff9159d3fced8edf13998956ea9682ed39ac2cfa7727",
     "fixtures/aargau/2026-09-04/aargau-region-day-manifest.json": "54f90c5ba7a1a0b6e7df150e2e5f7ea286928ce629d9cdf88aa43e252001b26d",
     "fixtures/aargau/2026-09-06/audit.json": "19fdf2b592460e2894a3dcff13200a8f6e030b39905132fc1e2d500f1f36ab0e",
@@ -110,20 +111,20 @@
       "date": "2026-01-16",
       "trips": 11131,
       "total": 173467,
-      "matched": 173393,
-      "officialMatched": 161422,
-      "roadMatched": 8116,
-      "railMatched": 3855,
+      "matched": 173467,
+      "officialMatched": 161459,
+      "roadMatched": 8152,
+      "railMatched": 3856,
       "cantonAdjacentTotal": 146023,
-      "cantonAdjacentMatched": 145950,
-      "coverage": 0.9995734058927634,
+      "cantonAdjacentMatched": 146023,
+      "coverage": 1,
       "directedPatterns": 1448,
-      "fullyMatchedPatterns": 1440,
+      "fullyMatchedPatterns": 1448,
       "newPatterns": 150,
       "directedPairs": 6818,
-      "fullyMatchedPairs": 6813,
-      "unresolvedPatterns": 8,
-      "missingOccurrences": 74,
+      "fullyMatchedPairs": 6818,
+      "unresolvedPatterns": 0,
+      "missingOccurrences": 0,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -239,16 +240,16 @@
           "line": "IR16",
           "mode": "rail",
           "trips": 38,
-          "matched": 179,
+          "matched": 180,
           "officialMatched": 179,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 1,
           "total": 180,
           "cantonAdjacentMatched": 148,
           "cantonAdjacentTotal": 148,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9944444444444445,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -545,17 +546,17 @@
           "line": "S36",
           "mode": "rail",
           "trips": 37,
-          "matched": 364,
-          "officialMatched": 0,
+          "matched": 401,
+          "officialMatched": 37,
           "roadMatched": 0,
           "railMatched": 364,
           "total": 401,
-          "cantonAdjacentMatched": 292,
+          "cantonAdjacentMatched": 329,
           "cantonAdjacentTotal": 329,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9077306733167082,
-          "cantonAdjacentCoverage": 0.8875379939209727
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-36-A-j26-1",
@@ -2147,17 +2148,17 @@
           "line": "368",
           "mode": "bus",
           "trips": 69,
-          "matched": 477,
+          "matched": 513,
           "officialMatched": 449,
-          "roadMatched": 28,
+          "roadMatched": 64,
           "railMatched": 0,
           "total": 513,
-          "cantonAdjacentMatched": 477,
+          "cantonAdjacentMatched": 513,
           "cantonAdjacentTotal": 513,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9298245614035088,
-          "cantonAdjacentCoverage": 0.9298245614035088
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "96-160-5-j26-1",
@@ -3209,16 +3210,16 @@
           "agencyId": "11",
           "mode": "rail",
           "trips": 1290,
-          "matched": 14925,
+          "matched": 14926,
           "officialMatched": 11460,
           "roadMatched": 0,
-          "railMatched": 3465,
+          "railMatched": 3466,
           "total": 14926,
           "cantonAdjacentMatched": 7893,
           "cantonAdjacentTotal": 7893,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9999330028138819,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -3289,17 +3290,17 @@
           "agencyId": "65",
           "mode": "rail",
           "trips": 37,
-          "matched": 364,
-          "officialMatched": 0,
+          "matched": 401,
+          "officialMatched": 37,
           "roadMatched": 0,
           "railMatched": 364,
           "total": 401,
-          "cantonAdjacentMatched": 292,
+          "cantonAdjacentMatched": 329,
           "cantonAdjacentTotal": 329,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9077306733167082,
-          "cantonAdjacentCoverage": 0.8875379939209727
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "886",
@@ -3465,17 +3466,17 @@
           "agencyId": "801",
           "mode": "bus",
           "trips": 4792,
-          "matched": 70773,
+          "matched": 70809,
           "officialMatched": 66094,
-          "roadMatched": 4679,
+          "roadMatched": 4715,
           "railMatched": 0,
           "total": 70809,
-          "cantonAdjacentMatched": 62314,
+          "cantonAdjacentMatched": 62350,
           "cantonAdjacentTotal": 62350,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.999491590052112,
-          "cantonAdjacentCoverage": 0.9994226142742583
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         }
       ],
       "timetableFixtureSha256": "ec4e8ae4724a1fd7dc852c45082758f89a8f89a74b269e82e2f12c18c7d86d75",
@@ -3491,6 +3492,16 @@
         "preservedOccurrences": 171220,
         "addedOccurrences": 2173
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 173393,
+        "addedOccurrences": 74
+      },
+      "scopedGapOccurrences": {
+        "bern-platform-49": 1,
+        "waldshut": 37,
+        "brugg-service-loop": 36
+      },
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -3500,29 +3511,29 @@
         "septemberGeometryUnchanged": false,
         "elapsedCivilTimeValidated": null
       },
-      "scope": "Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.",
+      "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-01-16-patterns.json.gz",
-      "patternsSha256": "66357c6881cf0ac99400eca59dfa3a103aca1ea6aeedf4bc4e53934120295b9d"
+      "patternsSha256": "fda0a38c837582192f3434cb3b33cbb1add80cbc227bbd3f92b4c5493063d6a3"
     },
     {
       "date": "2026-01-18",
       "trips": 7634,
       "total": 120454,
-      "matched": 120417,
-      "officialMatched": 108064,
+      "matched": 120454,
+      "officialMatched": 108100,
       "roadMatched": 9322,
-      "railMatched": 3031,
+      "railMatched": 3032,
       "cantonAdjacentTotal": 98196,
-      "cantonAdjacentMatched": 98160,
-      "coverage": 0.9996928287977153,
+      "cantonAdjacentMatched": 98196,
+      "coverage": 1,
       "directedPatterns": 1025,
-      "fullyMatchedPatterns": 1020,
+      "fullyMatchedPatterns": 1025,
       "newPatterns": 196,
       "directedPairs": 7364,
-      "fullyMatchedPairs": 7361,
-      "unresolvedPatterns": 5,
-      "missingOccurrences": 37,
+      "fullyMatchedPairs": 7364,
+      "unresolvedPatterns": 0,
+      "missingOccurrences": 0,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -3638,16 +3649,16 @@
           "line": "IR16",
           "mode": "rail",
           "trips": 38,
-          "matched": 178,
+          "matched": 179,
           "officialMatched": 178,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 1,
           "total": 179,
           "cantonAdjacentMatched": 148,
           "cantonAdjacentTotal": 148,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.994413407821229,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -3962,17 +3973,17 @@
           "line": "S36",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-36-A-j26-1",
@@ -6824,16 +6835,16 @@
           "agencyId": "11",
           "mode": "rail",
           "trips": 1272,
-          "matched": 13265,
+          "matched": 13266,
           "officialMatched": 10599,
           "roadMatched": 0,
-          "railMatched": 2666,
+          "railMatched": 2667,
           "total": 13266,
           "cantonAdjacentMatched": 7674,
           "cantonAdjacentTotal": 7674,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9999246193276043,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -6904,17 +6915,17 @@
           "agencyId": "65",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "886",
@@ -7122,6 +7133,15 @@
         "preservedOccurrences": 117954,
         "addedOccurrences": 2463
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 120417,
+        "addedOccurrences": 37
+      },
+      "scopedGapOccurrences": {
+        "bern-platform-49": 1,
+        "waldshut": 36
+      },
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -7131,29 +7151,29 @@
         "septemberGeometryUnchanged": false,
         "elapsedCivilTimeValidated": null
       },
-      "scope": "Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.",
+      "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-01-18-patterns.json.gz",
-      "patternsSha256": "3afe12e5a46541dc2ee2cc2f72cc916bf652ee83450fc77a6d6e6fdf97b1014f"
+      "patternsSha256": "a19a822cae12a534b059ab58167cc475ff38e52afe03184bb6b80e76331e0a31"
     },
     {
       "date": "2026-04-03",
       "trips": 7615,
       "total": 121249,
-      "matched": 121189,
-      "officialMatched": 108396,
+      "matched": 121248,
+      "officialMatched": 108432,
       "roadMatched": 9140,
-      "railMatched": 3653,
+      "railMatched": 3676,
       "cantonAdjacentTotal": 98143,
-      "cantonAdjacentMatched": 98097,
-      "coverage": 0.9995051505579428,
+      "cantonAdjacentMatched": 98143,
+      "coverage": 0.9999917525092991,
       "directedPatterns": 1029,
-      "fullyMatchedPatterns": 1022,
+      "fullyMatchedPatterns": 1028,
       "newPatterns": 211,
       "directedPairs": 7052,
-      "fullyMatchedPairs": 7032,
-      "unresolvedPatterns": 7,
-      "missingOccurrences": 60,
+      "fullyMatchedPairs": 7051,
+      "unresolvedPatterns": 1,
+      "missingOccurrences": 1,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -7269,16 +7289,16 @@
           "line": "IR16",
           "mode": "rail",
           "trips": 38,
-          "matched": 179,
+          "matched": 180,
           "officialMatched": 179,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 1,
           "total": 180,
           "cantonAdjacentMatched": 148,
           "cantonAdjacentTotal": 148,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9944444444444445,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -7575,17 +7595,17 @@
           "line": "S36",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-36-A-j26-1",
@@ -7719,17 +7739,17 @@
           "line": "IC",
           "mode": "rail",
           "trips": 2,
-          "matched": 0,
+          "matched": 22,
           "officialMatched": 0,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 22,
           "total": 22,
-          "cantonAdjacentMatched": 0,
+          "cantonAdjacentMatched": 10,
           "cantonAdjacentTotal": 10,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0,
-          "cantonAdjacentCoverage": 0
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-6-D-j26-1",
@@ -10401,17 +10421,17 @@
           "agencyId": "11",
           "mode": "rail",
           "trips": 1262,
-          "matched": 14349,
+          "matched": 14372,
           "officialMatched": 11054,
           "roadMatched": 0,
-          "railMatched": 3295,
+          "railMatched": 3318,
           "total": 14373,
-          "cantonAdjacentMatched": 7693,
+          "cantonAdjacentMatched": 7703,
           "cantonAdjacentTotal": 7703,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9983302024629513,
-          "cantonAdjacentCoverage": 0.9987018044917565
+          "coverage": 0.999930425102623,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "96",
@@ -10481,17 +10501,17 @@
           "agencyId": "65",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "886",
@@ -10699,6 +10719,16 @@
         "preservedOccurrences": 119645,
         "addedOccurrences": 1544
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 121189,
+        "addedOccurrences": 59
+      },
+      "scopedGapOccurrences": {
+        "bern-platform-49": 1,
+        "waldshut": 36,
+        "seasonal-rail": 22
+      },
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -10708,29 +10738,29 @@
         "septemberGeometryUnchanged": false,
         "elapsedCivilTimeValidated": null
       },
-      "scope": "Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.",
+      "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-04-03-patterns.json.gz",
-      "patternsSha256": "4b441146b797d13d44df167fe2145f12f1d825167243aa6e92290d1548cafb19"
+      "patternsSha256": "8cf81039d6cc10f2da9a0092d07104a9ea337bb9e4f2342cc90bc2806b9c3a0e"
     },
     {
       "date": "2026-04-05",
       "trips": 7631,
       "total": 121416,
-      "matched": 121379,
-      "officialMatched": 108486,
+      "matched": 121416,
+      "officialMatched": 108522,
       "roadMatched": 9350,
-      "railMatched": 3543,
+      "railMatched": 3544,
       "cantonAdjacentTotal": 98285,
-      "cantonAdjacentMatched": 98249,
-      "coverage": 0.99969526256836,
+      "cantonAdjacentMatched": 98285,
+      "coverage": 1,
       "directedPatterns": 1003,
-      "fullyMatchedPatterns": 999,
+      "fullyMatchedPatterns": 1003,
       "newPatterns": 166,
       "directedPairs": 7323,
-      "fullyMatchedPairs": 7320,
-      "unresolvedPatterns": 4,
-      "missingOccurrences": 37,
+      "fullyMatchedPairs": 7323,
+      "unresolvedPatterns": 0,
+      "missingOccurrences": 0,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -10846,16 +10876,16 @@
           "line": "IR16",
           "mode": "rail",
           "trips": 38,
-          "matched": 179,
+          "matched": 180,
           "officialMatched": 179,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 1,
           "total": 180,
           "cantonAdjacentMatched": 148,
           "cantonAdjacentTotal": 148,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9944444444444445,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -11152,17 +11182,17 @@
           "line": "S36",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-36-A-j26-1",
@@ -14014,16 +14044,16 @@
           "agencyId": "11",
           "mode": "rail",
           "trips": 1258,
-          "matched": 14168,
+          "matched": 14169,
           "officialMatched": 10983,
           "roadMatched": 0,
-          "railMatched": 3185,
+          "railMatched": 3186,
           "total": 14169,
           "cantonAdjacentMatched": 7699,
           "cantonAdjacentTotal": 7699,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9999294233890889,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -14094,17 +14124,17 @@
           "agencyId": "65",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "886",
@@ -14312,6 +14342,15 @@
         "preservedOccurrences": 119996,
         "addedOccurrences": 1383
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 121379,
+        "addedOccurrences": 37
+      },
+      "scopedGapOccurrences": {
+        "bern-platform-49": 1,
+        "waldshut": 36
+      },
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -14321,29 +14360,29 @@
         "septemberGeometryUnchanged": false,
         "elapsedCivilTimeValidated": null
       },
-      "scope": "Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.",
+      "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-04-05-patterns.json.gz",
-      "patternsSha256": "444de20078467b4ea66071860f5934a23a27f468971d7f5c5c70c2bcc496d536"
+      "patternsSha256": "6404f887519991302921d5ab778e6090208a96d5a94b6e25ca9d85e34248fcef"
     },
     {
       "date": "2026-07-17",
       "trips": 11393,
       "total": 171645,
-      "matched": 171566,
-      "officialMatched": 156054,
-      "roadMatched": 11739,
-      "railMatched": 3773,
+      "matched": 171645,
+      "officialMatched": 156091,
+      "roadMatched": 11775,
+      "railMatched": 3779,
       "cantonAdjacentTotal": 144141,
-      "cantonAdjacentMatched": 144066,
-      "coverage": 0.9995397477351511,
+      "cantonAdjacentMatched": 144141,
+      "coverage": 1,
       "directedPatterns": 1405,
-      "fullyMatchedPatterns": 1396,
+      "fullyMatchedPatterns": 1405,
       "newPatterns": 228,
       "directedPairs": 6725,
-      "fullyMatchedPairs": 6715,
-      "unresolvedPatterns": 9,
-      "missingOccurrences": 79,
+      "fullyMatchedPairs": 6725,
+      "unresolvedPatterns": 0,
+      "missingOccurrences": 0,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -14459,16 +14498,16 @@
           "line": "IR16",
           "mode": "rail",
           "trips": 38,
-          "matched": 179,
+          "matched": 180,
           "officialMatched": 179,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 1,
           "total": 180,
           "cantonAdjacentMatched": 148,
           "cantonAdjacentTotal": 148,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9944444444444445,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -14657,17 +14696,17 @@
           "line": "RE26",
           "mode": "rail",
           "trips": 1,
-          "matched": 0,
+          "matched": 5,
           "officialMatched": 0,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 5,
           "total": 5,
-          "cantonAdjacentMatched": 0,
+          "cantonAdjacentMatched": 2,
           "cantonAdjacentTotal": 2,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0,
-          "cantonAdjacentCoverage": 0
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-27-j26-1",
@@ -14765,17 +14804,17 @@
           "line": "S36",
           "mode": "rail",
           "trips": 37,
-          "matched": 364,
-          "officialMatched": 0,
+          "matched": 401,
+          "officialMatched": 37,
           "roadMatched": 0,
           "railMatched": 364,
           "total": 401,
-          "cantonAdjacentMatched": 292,
+          "cantonAdjacentMatched": 329,
           "cantonAdjacentTotal": 329,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9077306733167082,
-          "cantonAdjacentCoverage": 0.8875379939209727
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-36-A-j26-1",
@@ -16457,17 +16496,17 @@
           "line": "368",
           "mode": "bus",
           "trips": 67,
-          "matched": 475,
+          "matched": 511,
           "officialMatched": 447,
-          "roadMatched": 28,
+          "roadMatched": 64,
           "railMatched": 0,
           "total": 511,
-          "cantonAdjacentMatched": 475,
+          "cantonAdjacentMatched": 511,
           "cantonAdjacentTotal": 511,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9295499021526419,
-          "cantonAdjacentCoverage": 0.9295499021526419
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "96-160-5-j26-1",
@@ -17519,17 +17558,17 @@
           "agencyId": "11",
           "mode": "rail",
           "trips": 1294,
-          "matched": 14430,
+          "matched": 14436,
           "officialMatched": 11042,
           "roadMatched": 0,
-          "railMatched": 3388,
+          "railMatched": 3394,
           "total": 14436,
-          "cantonAdjacentMatched": 7551,
+          "cantonAdjacentMatched": 7553,
           "cantonAdjacentTotal": 7553,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9995843724023276,
-          "cantonAdjacentCoverage": 0.9997352045544816
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "96",
@@ -17599,17 +17638,17 @@
           "agencyId": "65",
           "mode": "rail",
           "trips": 37,
-          "matched": 364,
-          "officialMatched": 0,
+          "matched": 401,
+          "officialMatched": 37,
           "roadMatched": 0,
           "railMatched": 364,
           "total": 401,
-          "cantonAdjacentMatched": 292,
+          "cantonAdjacentMatched": 329,
           "cantonAdjacentTotal": 329,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9077306733167082,
-          "cantonAdjacentCoverage": 0.8875379939209727
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "886",
@@ -17823,17 +17862,17 @@
           "agencyId": "801",
           "mode": "bus",
           "trips": 4774,
-          "matched": 70507,
+          "matched": 70543,
           "officialMatched": 64898,
-          "roadMatched": 5609,
+          "roadMatched": 5645,
           "railMatched": 0,
           "total": 70543,
-          "cantonAdjacentMatched": 61832,
+          "cantonAdjacentMatched": 61868,
           "cantonAdjacentTotal": 61868,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9994896729654253,
-          "cantonAdjacentCoverage": 0.9994181159888795
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         }
       ],
       "timetableFixtureSha256": "3169c1bd55f94fb101107725caf3ffd5bebd198fde289816a5df7c6fb091b228",
@@ -17849,6 +17888,17 @@
         "preservedOccurrences": 167497,
         "addedOccurrences": 4069
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 171566,
+        "addedOccurrences": 79
+      },
+      "scopedGapOccurrences": {
+        "bern-platform-49": 1,
+        "seasonal-rail": 5,
+        "waldshut": 37,
+        "brugg-service-loop": 36
+      },
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -17858,29 +17908,29 @@
         "septemberGeometryUnchanged": false,
         "elapsedCivilTimeValidated": null
       },
-      "scope": "Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.",
+      "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-07-17-patterns.json.gz",
-      "patternsSha256": "37a7ef6eaff942120110651836a2286f2697c334202bf686b12712e4555ec88e"
+      "patternsSha256": "459f2535cb0f23807d3f5facfd2386373d083d889753bad52f28b2f5c5a4b4a2"
     },
     {
       "date": "2026-07-19",
       "trips": 7847,
       "total": 119376,
-      "matched": 119330,
-      "officialMatched": 105129,
+      "matched": 119376,
+      "officialMatched": 105165,
       "roadMatched": 11379,
-      "railMatched": 2822,
+      "railMatched": 2832,
       "cantonAdjacentTotal": 97491,
-      "cantonAdjacentMatched": 97451,
-      "coverage": 0.9996146629138185,
+      "cantonAdjacentMatched": 97491,
+      "coverage": 1,
       "directedPatterns": 1060,
-      "fullyMatchedPatterns": 1053,
+      "fullyMatchedPatterns": 1060,
       "newPatterns": 247,
       "directedPairs": 7377,
-      "fullyMatchedPairs": 7365,
-      "unresolvedPatterns": 7,
-      "missingOccurrences": 46,
+      "fullyMatchedPairs": 7377,
+      "unresolvedPatterns": 0,
+      "missingOccurrences": 0,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -17996,16 +18046,16 @@
           "line": "IR16",
           "mode": "rail",
           "trips": 38,
-          "matched": 178,
+          "matched": 179,
           "officialMatched": 178,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 1,
           "total": 179,
           "cantonAdjacentMatched": 148,
           "cantonAdjacentTotal": 148,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.994413407821229,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -18194,17 +18244,17 @@
           "line": "RE26",
           "mode": "rail",
           "trips": 1,
-          "matched": 0,
+          "matched": 5,
           "officialMatched": 0,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 5,
           "total": 5,
-          "cantonAdjacentMatched": 0,
+          "cantonAdjacentMatched": 2,
           "cantonAdjacentTotal": 2,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0,
-          "cantonAdjacentCoverage": 0
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-27-j26-1",
@@ -18338,17 +18388,17 @@
           "line": "S36",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-36-A-j26-1",
@@ -18554,17 +18604,17 @@
           "line": "EXT",
           "mode": "rail",
           "trips": 2,
-          "matched": 0,
+          "matched": 4,
           "officialMatched": 0,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 4,
           "total": 4,
-          "cantonAdjacentMatched": 0,
+          "cantonAdjacentMatched": 2,
           "cantonAdjacentTotal": 2,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0,
-          "cantonAdjacentCoverage": 0
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-CB-Y-j26-1",
@@ -21362,17 +21412,17 @@
           "agencyId": "11",
           "mode": "rail",
           "trips": 1263,
-          "matched": 13037,
+          "matched": 13047,
           "officialMatched": 10569,
           "roadMatched": 0,
-          "railMatched": 2468,
+          "railMatched": 2478,
           "total": 13047,
-          "cantonAdjacentMatched": 7661,
+          "cantonAdjacentMatched": 7665,
           "cantonAdjacentTotal": 7665,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9992335402774584,
-          "cantonAdjacentCoverage": 0.999478147423353
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "96",
@@ -21426,17 +21476,17 @@
           "agencyId": "65",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "886",
@@ -21676,6 +21726,16 @@
         "preservedOccurrences": 116745,
         "addedOccurrences": 2585
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 119330,
+        "addedOccurrences": 46
+      },
+      "scopedGapOccurrences": {
+        "bern-platform-49": 1,
+        "seasonal-rail": 9,
+        "waldshut": 36
+      },
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -21685,29 +21745,29 @@
         "septemberGeometryUnchanged": false,
         "elapsedCivilTimeValidated": null
       },
-      "scope": "Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.",
+      "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-07-19-patterns.json.gz",
-      "patternsSha256": "38ccebe562315db705f09405a5925ca1b55a6510bd87c57f454b1d137ba801ee"
+      "patternsSha256": "35e160c28819975245f31aee581a10fa2c4bdbc96a84f01bf2c90a5f5f89e2ed"
     },
     {
       "date": "2026-08-01",
       "trips": 7764,
       "total": 121267,
-      "matched": 121230,
-      "officialMatched": 107010,
+      "matched": 121266,
+      "officialMatched": 107046,
       "roadMatched": 10470,
       "railMatched": 3750,
       "cantonAdjacentTotal": 97724,
-      "cantonAdjacentMatched": 97688,
-      "coverage": 0.9996948881393949,
+      "cantonAdjacentMatched": 97724,
+      "coverage": 0.9999917537334971,
       "directedPatterns": 1059,
-      "fullyMatchedPatterns": 1055,
+      "fullyMatchedPatterns": 1058,
       "newPatterns": 296,
       "directedPairs": 7323,
-      "fullyMatchedPairs": 7320,
-      "unresolvedPatterns": 4,
-      "missingOccurrences": 37,
+      "fullyMatchedPairs": 7322,
+      "unresolvedPatterns": 1,
+      "missingOccurrences": 1,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -22147,17 +22207,17 @@
           "line": "S36",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-36-A-j26-1",
@@ -25161,17 +25221,17 @@
           "agencyId": "65",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "886",
@@ -25411,6 +25471,14 @@
         "preservedOccurrences": 119335,
         "addedOccurrences": 1895
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 121230,
+        "addedOccurrences": 36
+      },
+      "scopedGapOccurrences": {
+        "waldshut": 36
+      },
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -25420,10 +25488,10 @@
         "septemberGeometryUnchanged": false,
         "elapsedCivilTimeValidated": null
       },
-      "scope": "Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.",
+      "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-08-01-patterns.json.gz",
-      "patternsSha256": "eb0dc5208d2fd79a7cd50c1338bbfdd3907264eb5ecd04242592e500579e0733"
+      "patternsSha256": "25695e5c1bbb239f1007b49764fcde9df7f0feab2b523f066d8cfb80a7635b52"
     },
     {
       "date": "2026-09-04",
@@ -29000,6 +29068,12 @@
         "preservedOccurrences": 173106,
         "addedOccurrences": 0
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 173106,
+        "addedOccurrences": 0
+      },
+      "scopedGapOccurrences": {},
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -32807,6 +32881,12 @@
         "preservedOccurrences": 121473,
         "addedOccurrences": 0
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 121473,
+        "addedOccurrences": 0
+      },
+      "scopedGapOccurrences": {},
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -32825,20 +32905,20 @@
       "date": "2026-10-23",
       "trips": 11193,
       "total": 173323,
-      "matched": 173250,
-      "officialMatched": 160770,
-      "roadMatched": 8755,
+      "matched": 173323,
+      "officialMatched": 160807,
+      "roadMatched": 8791,
       "railMatched": 3725,
       "cantonAdjacentTotal": 145419,
-      "cantonAdjacentMatched": 145346,
-      "coverage": 0.9995788210451008,
+      "cantonAdjacentMatched": 145419,
+      "coverage": 1,
       "directedPatterns": 1475,
-      "fullyMatchedPatterns": 1468,
+      "fullyMatchedPatterns": 1475,
       "newPatterns": 123,
       "directedPairs": 6907,
-      "fullyMatchedPairs": 6903,
-      "unresolvedPatterns": 7,
-      "missingOccurrences": 73,
+      "fullyMatchedPairs": 6907,
+      "unresolvedPatterns": 0,
+      "missingOccurrences": 0,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -33260,17 +33340,17 @@
           "line": "S36",
           "mode": "rail",
           "trips": 37,
-          "matched": 364,
-          "officialMatched": 0,
+          "matched": 401,
+          "officialMatched": 37,
           "roadMatched": 0,
           "railMatched": 364,
           "total": 401,
-          "cantonAdjacentMatched": 292,
+          "cantonAdjacentMatched": 329,
           "cantonAdjacentTotal": 329,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9077306733167082,
-          "cantonAdjacentCoverage": 0.8875379939209727
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-36-A-j26-1",
@@ -34952,17 +35032,17 @@
           "line": "368",
           "mode": "bus",
           "trips": 69,
-          "matched": 477,
+          "matched": 513,
           "officialMatched": 449,
-          "roadMatched": 28,
+          "roadMatched": 64,
           "railMatched": 0,
           "total": 513,
-          "cantonAdjacentMatched": 477,
+          "cantonAdjacentMatched": 513,
           "cantonAdjacentTotal": 513,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9298245614035088,
-          "cantonAdjacentCoverage": 0.9298245614035088
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "96-160-5-j26-1",
@@ -36094,17 +36174,17 @@
           "agencyId": "65",
           "mode": "rail",
           "trips": 37,
-          "matched": 364,
-          "officialMatched": 0,
+          "matched": 401,
+          "officialMatched": 37,
           "roadMatched": 0,
           "railMatched": 364,
           "total": 401,
-          "cantonAdjacentMatched": 292,
+          "cantonAdjacentMatched": 329,
           "cantonAdjacentTotal": 329,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9077306733167082,
-          "cantonAdjacentCoverage": 0.8875379939209727
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "886",
@@ -36302,17 +36382,17 @@
           "agencyId": "801",
           "mode": "bus",
           "trips": 4793,
-          "matched": 70836,
+          "matched": 70872,
           "officialMatched": 66077,
-          "roadMatched": 4759,
+          "roadMatched": 4795,
           "railMatched": 0,
           "total": 70872,
-          "cantonAdjacentMatched": 62377,
+          "cantonAdjacentMatched": 62413,
           "cantonAdjacentTotal": 62413,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9994920419911953,
-          "cantonAdjacentCoverage": 0.9994231970903498
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         }
       ],
       "timetableFixtureSha256": "859d0069bc08a0f3fd052b86d548fddb1c78e5c79fd0da38132b43c3ae14c1f7",
@@ -36328,6 +36408,15 @@
         "preservedOccurrences": 173185,
         "addedOccurrences": 65
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 173250,
+        "addedOccurrences": 73
+      },
+      "scopedGapOccurrences": {
+        "waldshut": 37,
+        "brugg-service-loop": 36
+      },
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -36337,29 +36426,29 @@
         "septemberGeometryUnchanged": false,
         "elapsedCivilTimeValidated": null
       },
-      "scope": "Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.",
+      "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-10-23-patterns.json.gz",
-      "patternsSha256": "5ea1abc1bd613b4321773ab35120e4c0188998972c22fe35e44afc21fa64a49b"
+      "patternsSha256": "1d5126d2f304cff3d865ae527ca4fb6dfe61aaf9610565ee30b4263c2a0e9478"
     },
     {
       "date": "2026-10-25",
       "trips": 7662,
       "total": 120593,
-      "matched": 120525,
-      "officialMatched": 108028,
+      "matched": 120593,
+      "officialMatched": 108064,
       "roadMatched": 9462,
-      "railMatched": 3035,
+      "railMatched": 3067,
       "cantonAdjacentTotal": 97786,
-      "cantonAdjacentMatched": 97740,
-      "coverage": 0.9994361198411185,
+      "cantonAdjacentMatched": 97786,
+      "coverage": 1,
       "directedPatterns": 1031,
-      "fullyMatchedPatterns": 1025,
+      "fullyMatchedPatterns": 1031,
       "newPatterns": 166,
       "directedPairs": 7414,
-      "fullyMatchedPairs": 7402,
-      "unresolvedPatterns": 6,
-      "missingOccurrences": 68,
+      "fullyMatchedPairs": 7414,
+      "unresolvedPatterns": 0,
+      "missingOccurrences": 0,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -36763,17 +36852,17 @@
           "line": "IC",
           "mode": "rail",
           "trips": 5,
-          "matched": 0,
+          "matched": 32,
           "officialMatched": 0,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 32,
           "total": 32,
-          "cantonAdjacentMatched": 0,
+          "cantonAdjacentMatched": 10,
           "cantonAdjacentTotal": 10,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0,
-          "cantonAdjacentCoverage": 0
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-2Z-Y-j26-1",
@@ -36817,17 +36906,17 @@
           "line": "S36",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-36-A-j26-1",
@@ -39733,17 +39822,17 @@
           "agencyId": "11",
           "mode": "rail",
           "trips": 1252,
-          "matched": 13592,
+          "matched": 13624,
           "officialMatched": 10916,
           "roadMatched": 0,
-          "railMatched": 2676,
+          "railMatched": 2708,
           "total": 13624,
-          "cantonAdjacentMatched": 7698,
+          "cantonAdjacentMatched": 7708,
           "cantonAdjacentTotal": 7708,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.997651203758074,
-          "cantonAdjacentCoverage": 0.9987026466009341
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "96",
@@ -39813,17 +39902,17 @@
           "agencyId": "65",
           "mode": "rail",
           "trips": 36,
-          "matched": 354,
-          "officialMatched": 0,
+          "matched": 390,
+          "officialMatched": 36,
           "roadMatched": 0,
           "railMatched": 354,
           "total": 390,
-          "cantonAdjacentMatched": 284,
+          "cantonAdjacentMatched": 320,
           "cantonAdjacentTotal": 320,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9076923076923077,
-          "cantonAdjacentCoverage": 0.8875
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "886",
@@ -40063,6 +40152,15 @@
         "preservedOccurrences": 120426,
         "addedOccurrences": 99
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 120525,
+        "addedOccurrences": 68
+      },
+      "scopedGapOccurrences": {
+        "seasonal-rail": 32,
+        "waldshut": 36
+      },
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -40072,29 +40170,29 @@
         "septemberGeometryUnchanged": false,
         "elapsedCivilTimeValidated": false
       },
-      "scope": "Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.",
+      "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": "DST fallback: source wall-clock call ordering is checked; the repeated local hour is not disambiguated. Not an elapsed-time day feed.",
       "patternsFile": "2026-10-25-patterns.json.gz",
-      "patternsSha256": "b223b2febbf3e19ff08cb2013fc4a172e53691a5e25ddc7436bbb6ae216c4f99"
+      "patternsSha256": "eb01a91ec603a1571ae9ae0dab0c967a9147b2273ec89d9083d39ef9eb4ca12b"
     },
     {
       "date": "2026-12-11",
       "trips": 11220,
       "total": 174427,
-      "matched": 174353,
-      "officialMatched": 161805,
-      "roadMatched": 8718,
-      "railMatched": 3830,
+      "matched": 174427,
+      "officialMatched": 161842,
+      "roadMatched": 8754,
+      "railMatched": 3831,
       "cantonAdjacentTotal": 146440,
-      "cantonAdjacentMatched": 146367,
-      "coverage": 0.9995757537537193,
+      "cantonAdjacentMatched": 146440,
+      "coverage": 1,
       "directedPatterns": 1462,
-      "fullyMatchedPatterns": 1454,
+      "fullyMatchedPatterns": 1462,
       "newPatterns": 121,
       "directedPairs": 6884,
-      "fullyMatchedPairs": 6879,
-      "unresolvedPatterns": 8,
-      "missingOccurrences": 74,
+      "fullyMatchedPairs": 6884,
+      "unresolvedPatterns": 0,
+      "missingOccurrences": 0,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -40210,16 +40308,16 @@
           "line": "IR16",
           "mode": "rail",
           "trips": 38,
-          "matched": 179,
+          "matched": 180,
           "officialMatched": 179,
           "roadMatched": 0,
-          "railMatched": 0,
+          "railMatched": 1,
           "total": 180,
           "cantonAdjacentMatched": 148,
           "cantonAdjacentTotal": 148,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9944444444444445,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -40516,17 +40614,17 @@
           "line": "S36",
           "mode": "rail",
           "trips": 37,
-          "matched": 364,
-          "officialMatched": 0,
+          "matched": 401,
+          "officialMatched": 37,
           "roadMatched": 0,
           "railMatched": 364,
           "total": 401,
-          "cantonAdjacentMatched": 292,
+          "cantonAdjacentMatched": 329,
           "cantonAdjacentTotal": 329,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9077306733167082,
-          "cantonAdjacentCoverage": 0.8875379939209727
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "91-36-A-j26-1",
@@ -42190,17 +42288,17 @@
           "line": "368",
           "mode": "bus",
           "trips": 69,
-          "matched": 477,
+          "matched": 513,
           "officialMatched": 449,
-          "roadMatched": 28,
+          "roadMatched": 64,
           "railMatched": 0,
           "total": 513,
-          "cantonAdjacentMatched": 477,
+          "cantonAdjacentMatched": 513,
           "cantonAdjacentTotal": 513,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9298245614035088,
-          "cantonAdjacentCoverage": 0.9298245614035088
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "routeId": "96-160-5-j26-1",
@@ -43252,16 +43350,16 @@
           "agencyId": "11",
           "mode": "rail",
           "trips": 1290,
-          "matched": 14876,
+          "matched": 14877,
           "officialMatched": 11436,
           "roadMatched": 0,
-          "railMatched": 3440,
+          "railMatched": 3441,
           "total": 14877,
           "cantonAdjacentMatched": 7864,
           "cantonAdjacentTotal": 7864,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9999327821469383,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -43332,17 +43430,17 @@
           "agencyId": "65",
           "mode": "rail",
           "trips": 37,
-          "matched": 364,
-          "officialMatched": 0,
+          "matched": 401,
+          "officialMatched": 37,
           "roadMatched": 0,
           "railMatched": 364,
           "total": 401,
-          "cantonAdjacentMatched": 292,
+          "cantonAdjacentMatched": 329,
           "cantonAdjacentTotal": 329,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9077306733167082,
-          "cantonAdjacentCoverage": 0.8875379939209727
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         },
         {
           "agencyId": "886",
@@ -43540,17 +43638,17 @@
           "agencyId": "801",
           "mode": "bus",
           "trips": 4793,
-          "matched": 70854,
+          "matched": 70890,
           "officialMatched": 66109,
-          "roadMatched": 4745,
+          "roadMatched": 4781,
           "railMatched": 0,
           "total": 70890,
-          "cantonAdjacentMatched": 62395,
+          "cantonAdjacentMatched": 62431,
           "cantonAdjacentTotal": 62431,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.999492170969107,
-          "cantonAdjacentCoverage": 0.999423363393186
+          "coverage": 1,
+          "cantonAdjacentCoverage": 1
         }
       ],
       "timetableFixtureSha256": "86208dd8ecb458e7eb894da5614e9a2da66cef7588fc000d04842ddbce3f6397",
@@ -43566,6 +43664,16 @@
         "preservedOccurrences": 174265,
         "addedOccurrences": 88
       },
+      "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 174353,
+        "addedOccurrences": 74
+      },
+      "scopedGapOccurrences": {
+        "bern-platform-49": 1,
+        "waldshut": 37,
+        "brugg-service-loop": 36
+      },
       "validation": {
         "completeSourceStopChains": true,
         "exactPathEndpoints": true,
@@ -43575,10 +43683,10 @@
         "septemberGeometryUnchanged": false,
         "elapsedCivilTimeValidated": null
       },
-      "scope": "Geometry compatibility against pinned sources; road patterns and rail route policy are reused for diagnosis only. Temporal alignment validity and release admission are not established.",
+      "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-12-11-patterns.json.gz",
-      "patternsSha256": "6b513f38e3f80b9795dbc0e71c9a8509f6f2451fb239495b5716150ae807b9d8"
+      "patternsSha256": "150f423f2d858b129ae1f0448530c0df78796c9b0c88254bdd030be0851f1e9a"
     }
   ],
   "routes": [
@@ -44174,37 +44282,37 @@
         {
           "date": "2026-01-16",
           "trips": 38,
-          "matched": 179,
+          "matched": 180,
           "total": 180
         },
         {
           "date": "2026-01-18",
           "trips": 38,
-          "matched": 178,
+          "matched": 179,
           "total": 179
         },
         {
           "date": "2026-04-03",
           "trips": 38,
-          "matched": 179,
+          "matched": 180,
           "total": 180
         },
         {
           "date": "2026-04-05",
           "trips": 38,
-          "matched": 179,
+          "matched": 180,
           "total": 180
         },
         {
           "date": "2026-07-17",
           "trips": 38,
-          "matched": 179,
+          "matched": 180,
           "total": 180
         },
         {
           "date": "2026-07-19",
           "trips": 38,
-          "matched": 178,
+          "matched": 179,
           "total": 179
         },
         {
@@ -44240,11 +44348,11 @@
         {
           "date": "2026-12-11",
           "trips": 38,
-          "matched": 179,
+          "matched": 180,
           "total": 180
         }
       ],
-      "status": "active-with-geometry-gaps"
+      "status": "compatible-on-active-sampled-dates"
     },
     {
       "routeId": "91-17-A-j26-1",
@@ -45609,13 +45717,13 @@
         {
           "date": "2026-07-17",
           "trips": 1,
-          "matched": 0,
+          "matched": 5,
           "total": 5
         },
         {
           "date": "2026-07-19",
           "trips": 1,
-          "matched": 0,
+          "matched": 5,
           "total": 5
         },
         {
@@ -45655,7 +45763,7 @@
           "total": 0
         }
       ],
-      "status": "active-with-geometry-gaps"
+      "status": "compatible-on-active-sampled-dates"
     },
     {
       "routeId": "91-26-j26-1",
@@ -46309,7 +46417,7 @@
         {
           "date": "2026-10-25",
           "trips": 5,
-          "matched": 0,
+          "matched": 32,
           "total": 32
         },
         {
@@ -46319,7 +46427,7 @@
           "total": 0
         }
       ],
-      "status": "active-with-geometry-gaps"
+      "status": "compatible-on-active-sampled-dates"
     },
     {
       "routeId": "91-2Z-Y-j26-1",
@@ -46830,43 +46938,43 @@
         {
           "date": "2026-01-16",
           "trips": 37,
-          "matched": 364,
+          "matched": 401,
           "total": 401
         },
         {
           "date": "2026-01-18",
           "trips": 36,
-          "matched": 354,
+          "matched": 390,
           "total": 390
         },
         {
           "date": "2026-04-03",
           "trips": 36,
-          "matched": 354,
+          "matched": 390,
           "total": 390
         },
         {
           "date": "2026-04-05",
           "trips": 36,
-          "matched": 354,
+          "matched": 390,
           "total": 390
         },
         {
           "date": "2026-07-17",
           "trips": 37,
-          "matched": 364,
+          "matched": 401,
           "total": 401
         },
         {
           "date": "2026-07-19",
           "trips": 36,
-          "matched": 354,
+          "matched": 390,
           "total": 390
         },
         {
           "date": "2026-08-01",
           "trips": 36,
-          "matched": 354,
+          "matched": 390,
           "total": 390
         },
         {
@@ -46884,23 +46992,23 @@
         {
           "date": "2026-10-23",
           "trips": 37,
-          "matched": 364,
+          "matched": 401,
           "total": 401
         },
         {
           "date": "2026-10-25",
           "trips": 36,
-          "matched": 354,
+          "matched": 390,
           "total": 390
         },
         {
           "date": "2026-12-11",
           "trips": 37,
-          "matched": 364,
+          "matched": 401,
           "total": 401
         }
       ],
-      "status": "active-with-geometry-gaps"
+      "status": "compatible-on-active-sampled-dates"
     },
     {
       "routeId": "91-37-E-j26-1",
@@ -48253,7 +48361,7 @@
         {
           "date": "2026-04-03",
           "trips": 2,
-          "matched": 0,
+          "matched": 22,
           "total": 22
         },
         {
@@ -48311,7 +48419,7 @@
           "total": 0
         }
       ],
-      "status": "active-with-geometry-gaps"
+      "status": "compatible-on-active-sampled-dates"
     },
     {
       "routeId": "91-5R-Y-j26-1",
@@ -49765,7 +49873,7 @@
         {
           "date": "2026-07-19",
           "trips": 2,
-          "matched": 0,
+          "matched": 4,
           "total": 4
         },
         {
@@ -49805,7 +49913,7 @@
           "total": 0
         }
       ],
-      "status": "active-with-geometry-gaps"
+      "status": "compatible-on-active-sampled-dates"
     },
     {
       "routeId": "91-BM-Y-j26-1",
@@ -61687,7 +61795,7 @@
         {
           "date": "2026-01-16",
           "trips": 69,
-          "matched": 477,
+          "matched": 513,
           "total": 513
         },
         {
@@ -61711,7 +61819,7 @@
         {
           "date": "2026-07-17",
           "trips": 67,
-          "matched": 475,
+          "matched": 511,
           "total": 511
         },
         {
@@ -61741,7 +61849,7 @@
         {
           "date": "2026-10-23",
           "trips": 69,
-          "matched": 477,
+          "matched": 513,
           "total": 513
         },
         {
@@ -61753,11 +61861,11 @@
         {
           "date": "2026-12-11",
           "trips": 69,
-          "matched": 477,
+          "matched": 513,
           "total": 513
         }
       ],
-      "status": "active-with-geometry-gaps"
+      "status": "compatible-on-active-sampled-dates"
     },
     {
       "routeId": "96-160-5-j26-1",
