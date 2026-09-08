@@ -35,6 +35,16 @@ export function gleislichtPerformanceRenderer(): Plugin {
           '        return batchHubLines(lines.map(entry => entry.line)).map((line, index) => ({ key: `batch:${index}`, line }));\n    }, [calls, selectedCategory]);')
         code = 'import { batchHubLines } from "/src/studies/batch-hub-lines.ts";\n' + code
       } else if (moduleId.endsWith('/NationalNetworkScene.js')) {
+        // Overview clock reports reconcile both the app and the R3F tree. Under
+        // load, report at 5 Hz instead of 10 Hz; markers still advance each frame.
+        // Focused markers consume the React clock, so preserve their cadence.
+        replace('const lastReport = useRef(0);', 'const lastReport = useRef(0);\n    const uiFrameBudget = useMemo(() => new TrailFrameBudget(), []);')
+        replace('state.clock.elapsedTime - lastReport.current > 0.1',
+          'state.clock.elapsedTime - lastReport.current > (selectedTrain || comparisonTrains?.length ? 0.1 : uiFrameBudget.interval(delta) * 3)')
+        replace('const lastUpdate = useRef(-1);', 'const lastUpdate = useRef(-1);\n    const trailFrameBudget = useMemo(() => new TrailFrameBudget(), []);')
+        replace('if (clock.elapsedTime - lastUpdate.current < 1 / 30)',
+          'if (clock.elapsedTime - lastUpdate.current < trailFrameBudget.interval(delta))')
+        code = 'import { TrailFrameBudget } from "/src/studies/trail-frame-budget.ts";\n' + code
         replace("import { positionForTrain, } from '@motionstudies/core/domain/network';",
           'import { positionForTrain } from "/src/studies/train-position.ts";')
         // Buffers have capacity for the whole timetable, not just active trips.

@@ -1,9 +1,10 @@
 import { chromium } from '@playwright/test'
 import { writeFile } from 'node:fs/promises'
 
-// Profile the user's LUFT + Auto combination against a local dev/preview server.
+// Profile LUFT + Auto, or Auto alone with --road-only, against dev/preview.
 // --metal uses this Mac's GPU; default headless rendering may use software.
 const url = process.argv.find(value => /^https?:\/\//.test(value)) ?? 'http://127.0.0.1:4192/'
+const roadOnly = process.argv.includes('--road-only')
 const browser = await chromium.launch({ args: process.argv.includes('--metal') ? ['--use-angle=metal', '--enable-gpu'] : [] })
 try {
   const page = await browser.newPage({ viewport: { width: 1280, height: 720 } })
@@ -12,10 +13,12 @@ try {
   await page.goto(url)
   await page.waitForSelector('.scene canvas')
   await page.locator('.network-study-picker .sbb-toggle').click()
-  await page.locator('.network-study-picker .air-toggle').click()
+  if (!roadOnly) await page.locator('.network-study-picker .air-toggle').click()
   await page.locator('.network-study-picker .road-toggle').click()
-  await page.waitForFunction(() => /[1-9]/.test(document.querySelector('.air-count')?.textContent ?? ''))
-  await page.waitForFunction(() => /[1-9]/.test(document.querySelector('.road-count')?.textContent ?? ''))
+  if (!roadOnly) await page.waitForFunction(() => /[1-9]/.test(document.querySelector('.air-count')?.textContent ?? ''))
+  await page.waitForFunction(selector => /[1-9]/.test(document.querySelector(selector)?.textContent ?? ''),
+    roadOnly ? '.road-network-card .network-count-row strong' : '.road-count')
+  await page.waitForLoadState('networkidle')
   await page.waitForTimeout(2000)
   const client = await page.context().newCDPSession(page)
   const cpuRate = Number(process.env.CPU_RATE ?? 1)
@@ -54,7 +57,7 @@ try {
     const name = `${frame.functionName || '(anonymous)'} ${frame.url.split('/').at(-1)?.split('?')[0]}:${frame.lineNumber + 1}`
     totals.set(name, (totals.get(name) ?? 0) + (node.hitCount ?? 0))
   }
-  console.log(JSON.stringify({ url, cpuRate, ...timing,
+  console.log(JSON.stringify({ url, layers: roadOnly ? ['Auto'] : ['LUFT', 'Auto'], cpuRate, ...timing,
     scriptMsPerFrame: 1000 * (metric(after, 'ScriptDuration') - metric(before, 'ScriptDuration')) / 300,
     errors, topSamples: [...totals].sort((a, b) => b[1] - a[1]).slice(0, 25) }, null, 2))
 } finally {
