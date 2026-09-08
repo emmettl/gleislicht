@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "id": "boltigen-corroborated-hairpins",
+  "sourceDirectory": "data/fribourg-boltigen-sources",
+  "sources": [
+    {
+      "file": "map.osm.gz",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=7.343,46.590,7.356,46.598",
+      "attribution": "© OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "role": "Complete retained raw bbox response, deterministic gzip. Detailed road 584938515 supplies both directed hairpin paths. Platform nodes are context, not exact original-platform equivalence. Object edits predate fixtures; survey dates unknown.",
+      "sha256": "1af632f1c4fad5aec4147ef4079ce64ddafa1fa252c252fe45e6684f241a78d4",
+      "retrievedAt": "2026-09-08T21:53:55.781Z"
+    },
+    {
+      "file": "tpf-259-2026.pdf",
+      "url": "https://www.tpf.ch/Portals/0/Images/Fichiers/Horaires%20et%20plans/Horaires/Bus%20r%C3%A9gionaux/2026/259%20Jaun%20-%20Boltigen.pdf",
+      "attribution": "TPF TRAFIC",
+      "validFrom": "2025-12-14",
+      "validUntil": "2026-12-12",
+      "role": "Official timetable supports original directed Schüpfboden / Schüpfen call order and one/two-minute intervals; no geometry extracted.",
+      "sha256": "36569e88bedc3273c5302e4910455fe31b234c581e8b4ef56f421e04346e7291",
+      "retrievedAt": "2026-09-08T21:53:56.451Z"
+    },
+    {
+      "repositoryFile": "data/bern-sources/oevtp.gpkg.zip",
+      "url": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+      "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+      "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+      "retrievedAt": "2026-09-08T17:02:41.454390+00:00",
+      "dataUpdated": "2026-01-01",
+      "packagePublished": "2026-07-09",
+      "role": "Independently decode exact TPF line 20_259, objectid 300, from retained original 518-line GeoPackage. Diagnostic corroboration under unchanged Bern bus limits; emitted geometry comes from OSM. Geometry survey date unknown.",
+      "sha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19"
+    },
+    {
+      "file": "terms_of_use_de.pdf",
+      "url": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+      "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+      "retrievedAt": "2026-09-08T17:02:41.454390+00:00",
+      "role": "Original document from retained Bern package: reuse terms or line metadata.",
+      "sha256": "06bfc0f252662cd88b2e4b433de623fa920df5ee38d3ec1fee2f395075a226fb"
+    },
+    {
+      "file": "metadata_oevtp_linie_de.pdf",
+      "url": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+      "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+      "retrievedAt": "2026-09-08T17:02:41.454390+00:00",
+      "role": "Original document from retained Bern package: reuse terms or line metadata.",
+      "sha256": "620da09921a8884f6b5452ce0916a0821d919fab21f94ce7e2c76dc2e90c4d25"
+    },
+    {
+      "file": "bern-metadata.json",
+      "url": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+      "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+      "retrievedAt": "2026-09-08T17:02:41.454390+00:00",
+      "role": "Retained Bern source metadata, dates, hashes and attribution.",
+      "sha256": "b12ce90483a828aaee8a1e49a4d702ff72a6ebc0eb544f573786d05be367aace"
+    }
+  ],
+  "agencyId": "834",
+  "routeId": "92-259-j26-1",
+  "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "patterns": [
+    {
+      "id": "4e0ab1f62b6345474c619406",
+      "routeId": "92-259-j26-1",
+      "stops": [
+        [
+          7.38985594,
+          46.62736961,
+          "Boltigen, Bahnhof",
+          "",
+          "ch:1:sloid:77764:0:15864"
+        ],
+        [
+          7.37629138,
+          46.622212,
+          "Boltigen, Reidenbach",
+          "",
+          "ch:1:sloid:4732:0:16046"
+        ],
+        [
+          7.37314727,
+          46.61398719,
+          "Boltigen, Eschi Abzw.",
+          "",
+          "ch:1:sloid:4729:0:15941"
+        ],
+        [
+          7.36500854,
+          46.60649554,
+          "Boltigen, Eschiegg",
+          "",
+          "ch:1:sloid:4730:0:15943"
+        ],
+        [
+          7.35925034,
+          46.60374917,
+          "Boltigen, Eschihalten",
+          "",
+          "ch:1:sloid:4731:0:15945"
+        ],
+        [
+          7.35448028,
+          46.59731161,
+          "Boltigen, Sommerau",
+          "",
+          "ch:1:sloid:77763:0:16069"
+        ],
+        [
+          7.35202788,
+          46.5923672,
+          "Boltigen, Schüpfboden",
+          "",
+          "ch:1:sloid:88866:0:16061"
+        ],
+        [
+          7.34748241,
+          46.59240424,
+          "Boltigen, Schüpfen",
+          "",
+          "ch:1:sloid:77762:0:16063"
+        ],
+        [
+          7.33730449,
+          46.5914721,
+          "Jaunpass, Restaurant",
+          "",
+          "ch:1:sloid:4861:0:15986"
+        ],
+        [
+          7.31907768,
+          46.59508946,
+          "Boltigen, Rohrmoos",
+          "",
+          "ch:1:sloid:77761:0:16054"
+        ],
+        [
+          7.30453395,
+          46.60932817,
+          "Jaun, Weidli",
+          "",
+          "ch:1:sloid:77760:0:16103"
+        ],
+        [
+          7.28748393,
+          46.61021681,
+          "Jaun, Bergbahnen",
+          "",
+          "ch:1:sloid:4938:0:15987"
+        ]
+      ]
+    },
+    {
+      "id": "963a4928de523cf623a63ca4",
+      "routeId": "92-259-j26-1",
+      "stops": [
+        [
+          7.28748393,
+          46.61021681,
+          "Jaun, Bergbahnen",
+          "",
+          "ch:1:sloid:4938:0:15987"
+        ],
+        [
+          7.30432734,
+          46.60921092,
+          "Jaun, Weidli",
+          "",
+          "ch:1:sloid:77760:0:16102"
+        ],
+        [
+          7.31941904,
+          46.59514502,
+          "Boltigen, Rohrmoos",
+          "",
+          "ch:1:sloid:77761:0:16055"
+        ],
+        [
+          7.33776263,
+          46.59142888,
+          "Jaunpass, Restaurant",
+          "",
+          "ch:1:sloid:4861:0:15985"
+        ],
+        [
+          7.34814716,
+          46.59213262,
+          "Boltigen, Schüpfen",
+          "",
+          "ch:1:sloid:77762:0:16062"
+        ],
+        [
+          7.35165059,
+          46.59215114,
+          "Boltigen, Schüpfboden",
+          "",
+          "ch:1:sloid:88866:0:16060"
+        ],
+        [
+          7.35451621,
+          46.59741655,
+          "Boltigen, Sommerau",
+          "",
+          "ch:1:sloid:77763:0:16068"
+        ],
+        [
+          7.35928627,
+          46.60358253,
+          "Boltigen, Eschihalten",
+          "",
+          "ch:1:sloid:4731:0:15944"
+        ],
+        [
+          7.36511633,
+          46.60655726,
+          "Boltigen, Eschiegg",
+          "",
+          "ch:1:sloid:4730:0:15942"
+        ],
+        [
+          7.37332694,
+          46.6141538,
+          "Boltigen, Eschi Abzw.",
+          "",
+          "ch:1:sloid:4729:0:15940"
+        ],
+        [
+          7.37695613,
+          46.62236624,
+          "Boltigen, Reidenbach",
+          "",
+          "ch:1:sloid:4732:0:16045"
+        ],
+        [
+          7.38985594,
+          46.62736961,
+          "Boltigen, Bahnhof",
+          "",
+          "ch:1:sloid:77764:0:15864"
+        ]
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "stops": [
+        [
+          7.35202788,
+          46.5923672,
+          "Boltigen, Schüpfboden",
+          "",
+          "ch:1:sloid:88866:0:16061"
+        ],
+        [
+          7.34748241,
+          46.59240424,
+          "Boltigen, Schüpfen",
+          "",
+          "ch:1:sloid:77762:0:16063"
+        ]
+      ]
+    },
+    {
+      "stops": [
+        [
+          7.34814716,
+          46.59213262,
+          "Boltigen, Schüpfen",
+          "",
+          "ch:1:sloid:77762:0:16062"
+        ],
+        [
+          7.35165059,
+          46.59215114,
+          "Boltigen, Schüpfboden",
+          "",
+          "ch:1:sloid:88866:0:16060"
+        ]
+      ]
+    }
+  ],
+  "maximumAttachmentMetres": 20,
+  "maximumLengthMetres": 1200,
+  "maximumComparisonMetres": 20,
+  "admission": "Only the two original directed Schüpfboden / Schüpfen platform pairs in both complete TPF 259 patterns. Project unchanged original calls onto complete bidirectional secondary road 584938515, ref 219, and preserve every intervening source vertex. Original-call attachments at most 20 m; path 900–1200 m. Independently match Bern objectid 300 under unchanged 80 m / 4.5× / 1200 m bus limits; maximum vertex-to-other-polyline gap at most 20 m in both directions. Preserve primary road-excessive-detour failures. This is inferred OSM road geometry, not surveyed bus lanes.",
+  "exclusions": [
+    "Other routes, changed full contexts or validation dates",
+    "Generic detour-limit relaxation or straightening hairpins",
+    "Exact GTFS-to-OSM platform equivalence or source height claims",
+    "Using Bern geometry as emitted OSM geometry",
+    "Certifying absence of restrictions outside the retained response"
+  ]
+}

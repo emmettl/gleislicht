@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "sourceCrs": "EPSG:2056",
+  "coordinateModel": "original LV95 XY, no simplification; Z/M discarded only in derived geometry",
+  "sourceUrl": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+  "metadataUrl": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+  "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+  "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+  "termsFiles": [
+    "terms_of_use_de.pdf",
+    "terms_of_use_fr.pdf"
+  ],
+  "dataUpdated": "2026-01-01",
+  "packagePublished": "2026-07-09",
+  "acquiredAt": "2026-09-08T17:02:41.454390+00:00",
+  "archiveSha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+  "geopackageSha256": "de4c89d91f69a572dabe9fda7b14140da45fdfe016d45c6f5f900337b45b1e4d",
+  "boundary": {
+    "edition": "2026-01",
+    "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+    "snapshotSha256": "b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0",
+    "attribution": "© swisstopo",
+    "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+    "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+  }
+}

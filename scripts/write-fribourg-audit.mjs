@@ -6,6 +6,8 @@ const routes = await json('data/fribourg-audit/routes.json')
 const lines = await json('data/fribourg-audit/source-lines.json')
 const works = await json('data/fribourg-audit/works.json')
 const railReview = await json('data/fribourg-audit/rail-review.json')
+const boltigen = await json('data/fribourg-audit/boltigen.json')
+const boltigenRegression = await json('data/fribourg-audit/boltigen-regression.json')
 const broc = await json('data/fribourg-audit/broc.json')
 const brocRegression = await json('data/fribourg-audit/broc-regression.json')
 const laupen = await json('data/fribourg-audit/laupen.json')
@@ -43,7 +45,7 @@ const failureRows = failureReasons.map(reason => [reason, ...reports.map(r => {
 })])
 const doc = `# Fribourg / Freiburg cantonal source study
 
-Fixture audit: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#fr).
+Fixture audit updated: **9 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#fr).
 
 The entire canton is inventoried against the pinned annual national GTFS: **${summary.routeCount} route records, ${summary.agencyCount} agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **${n(days[0].admittedTrips)} Friday journeys and ${n(days[1].admittedTrips)} Sunday journeys** with complete directed stop patterns from cantonal lines and explicitly tagged inferred OSM road and FOT/SBB rail fallback. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
 
@@ -208,9 +210,26 @@ The [review policy](../data/fribourg-broc-policy.json) retains all **ten full ro
 
 The [source and pattern audit](../data/fribourg-audit/broc.json) retains the complete raw OSM response, two adjacent roads as context, source fractions, object versions/dates, hashes and attribution. The selected road was edited on **10 April 2026**; all selected context-road/node edits predate the fixtures, without establishing survey vintage. Changed direction, access restrictions, barriers, a touching returned turn restriction or a changed full pattern fails review. The bbox returns no turn restrictions; this is bounded evidence, not a certification of physical access.
 
-Every added journey retains the **480-second interval** between the two calls. This short source-backed connection is a geometric inference between timetable coordinates, **not evidence that the bus moves during its eight-minute wait**, nor a surveyed arrival position. Reverse calls and platform C remain unchanged. Route 260 now admits **85/85 Friday and 69/69 Sunday** journeys. The [current regression checkpoint](../data/fribourg-audit/broc-regression.json), against **4da95ce**, preserves all **${n(brocRegression.days.reduce((n, d) => n + d.previousJourneys, 0))} previously admitted journeys and ${n(brocRegression.days.reduce((n, d) => n + d.unchangedOriginalSegmentOccurrences, 0))} segment occurrences** with identical original calls, times, permissions, directions and geometry. Every addition carries a \`broc-station-calls\` marker.
+Every added journey retains the **480-second interval** between the two calls. This short source-backed connection is a geometric inference between timetable coordinates, **not evidence that the bus moves during its eight-minute wait**, nor a surveyed arrival position. Reverse calls and platform C remain unchanged. Route 260 now admits **85/85 Friday and 69/69 Sunday** journeys. At commit 0f197fb, the [Broc regression checkpoint](../data/fribourg-audit/broc-regression.json), against **4da95ce**, preserves all **${n(brocRegression.days.reduce((n, d) => n + d.previousJourneys, 0))} previously admitted journeys and ${n(brocRegression.days.reduce((n, d) => n + d.unchangedOriginalSegmentOccurrences, 0))} segment occurrences** with identical original calls, times, permissions, directions and geometry. Every addition carries a \`broc-station-calls\` marker.
 
 ![Broc arrival-to-platform-B source review](assets/fribourg-broc.svg)
+
+### Boltigen: independently corroborated TPF 259 hairpins
+
+The two full TPF 259 patterns originally failed the directed **Schüpfboden → Schüpfen** and **Schüpfen → Schüpfboden** pairs under the unchanged general road detour guard. The [official TPF timetable](../data/fribourg-boltigen-sources/tpf-259-2026.pdf), valid **14 December 2025–12 December 2026**, confirms both call orders and their respective **one-minute / two-minute intervals**. Both pages were rendered and visually inspected. The retained original platform coordinates differ by direction; the adapter does not reverse one path or merge platforms.
+
+The [hashed review policy](../data/fribourg-boltigen-policy.json) clips the detailed, bidirectional OSM secondary road **584938515**, ref **219**, preserving every intervening source vertex and adding only bounded connectors to the original calls. The complete raw bbox response and selected road/node versions are retained. The road was edited **30 December 2025**; all selected object edits predate both fixtures, without establishing survey vintage. Three OSM platform records provide context only: their identities and heights are not substituted for original GTFS platform records.
+
+An independent decoder extracts exactly **one of 518 line records** from the retained original [Bern OEVTP GeoPackage archive](../data/bern-sources/oevtp.gpkg.zip): **objectid 300, line 20_259, operator TPF, bus type 2**. It matches both original platform pairs under the existing **80 m / 4.5× / 1,200 m** Bern bus guards. Its matched paths corroborate the OSM hairpins by maximum vertex-to-other-polyline distance in both directions. Bern geometry is diagnostic only; the emitted paths retain their **OSM road inference** classification. The other 517 Bern records are excluded from this scoped review.
+
+${table(['Original directed platform pair', 'Emitted OSM path / vertices', 'Original-call attachments', 'Bern→OSM / OSM→Bern maximum vertex gap'], boltigen.assessments.map((a, i) => [boltigen.policy.pairs[i].stops.map(s => s[4].split(':').at(-1)).join(' → '), a.lengthMetres.toFixed(1) + ' m / ' + a.path.length, a.attachments.map(p => p.gapMetres.toFixed(1) + ' m').join(' / '), [a.comparison.bernToOsmMetres, a.comparison.osmToBernMetres].map(m => m.toFixed(1) + ' m').join(' / ')]))}
+
+The scoped limits require **20 m maximum original-call attachment**, **900–1,200 m path length**, and **20 m maximum compared vertex gap in each direction**. Changed route, dates, full contexts, direction, access, missing nodes, post-fixture object edits or independent corridor disagreement fail review. An out-of-order called stop within 50 m of the inferred path also fails. Touching returned turn restrictions are rejected; the bbox returns none, which does not establish their real-world absence. The [complete audit](../data/fribourg-audit/boltigen.json) retains the original rejected road assessments, independent Bern paths, source fractions, source-node order, hashes and attribution. No generic matcher limit changes or lane-accuracy claim is made.
+
+This admits **12/12 Friday and 10/10 Sunday** route-259 journeys, bringing the regional feed to **${n(days[0].admittedTrips)} / ${n(days[1].admittedTrips)}**. The [current regression checkpoint](../data/fribourg-audit/boltigen-regression.json), against **0f197fb**, preserves all **${n(boltigenRegression.days.reduce((n, d) => n + d.previousJourneys, 0))} previously admitted journeys and ${n(boltigenRegression.days.reduce((n, d) => n + d.unchangedOriginalSegmentOccurrences, 0))} segment occurrences**, including original calls, times, permissions, directions and geometry. Every addition carries a \`boltigen-corroborated-hairpins\` marker and retains the original direction-specific timetable interval. The geometry diagram was rendered and visually inspected.
+
+![Boltigen directed hairpins and independent Bern comparison](assets/fribourg-boltigen.svg)
+
 
 
 
@@ -289,6 +308,9 @@ ${table(['Source', 'Pinned date / vintage', 'Attribution / reuse'], [
   ['Mont-Carmel road topology', 'OSM API acquired 2026-09-08; three ways edited 2026-01-28; survey vintage unknown', '© OpenStreetMap contributors; ODbL 1.0'],
   ['Mont-Carmel operator / works evidence', 'TPF timetable from 2025-12-14; municipal notice 2026-05-26', 'TPF / Commune de Givisiez; supporting identity and works evidence'],
   ['Jongny road / route relations', 'OSM API acquired 2026-09-08; individual way edits 2021–2026; survey vintage unknown', '© OpenStreetMap contributors; ODbL 1.0'],
+  ['Boltigen OSM hairpin road', 'Way 584938515 edited 2025-12-30; acquired September 2026; survey vintage unknown', '© OpenStreetMap contributors; ODbL 1.0'],
+  ['Boltigen independent Bern line', 'Data updated 2026-01-01; package published 2026-07-09; acquired 2026-09-08; survey vintage unknown', boltigen.policy.sources[2].attribution + '; Bern terms 2026-01-20, free use with attribution'],
+  ['Boltigen TPF timetable', 'Valid 2025-12-14–2026-12-12', 'TPF TRAFIC; call-order and timing evidence only'],
   ['Broc station OSM road', 'Way 1395561049 v2 edited 2026-04-10; acquired September 2026; survey vintage unknown', '© OpenStreetMap contributors; ODbL 1.0'],
   ['Broc TPF platform / timetable evidence', 'Platform plan undated; timetable valid 2026-08-27–2026-12-12', 'TPF; supporting identity and call-order evidence'],
   ['Laupen OSM roads and object histories', 'Acquired September 2026; pre-fixture versions restored for two ways and four nodes edited 7 September; survey vintage unknown', '© OpenStreetMap contributors; ODbL 1.0'],
@@ -330,7 +352,7 @@ node --max-old-space-size=8192 scripts/build-fribourg-region.mjs \\
   --archive /private/tmp/GTFS_FP2026_20260902.zip \\
   --timetable-cache /private/tmp/fribourg-timetable.json.gz
 node scripts/check-fribourg-region.mjs
-node scripts/check-fribourg-broc-regression.mjs
+node scripts/check-fribourg-boltigen-regression.mjs
 node scripts/audit-fribourg-topology.mjs
 node scripts/review-fribourg-roads.mjs
 node scripts/review-fribourg-rail.mjs
@@ -340,10 +362,11 @@ node scripts/review-fribourg-mont-carmel.mjs
 node scripts/review-fribourg-jongny.mjs
 node scripts/review-fribourg-laupen.mjs
 node scripts/review-fribourg-broc.mjs
+node scripts/review-fribourg-boltigen.mjs
 node scripts/write-fribourg-audit.mjs
 python3 scripts/test_fribourg_sources.py
 python3 scripts/test_fribourg_laupen.py
-npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/fribourg-avry.test.mjs scripts/fribourg-mont-carmel.test.mjs scripts/fribourg-jongny.test.mjs scripts/fribourg-laupen.test.mjs scripts/fribourg-broc.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/fribourg-avry.test.mjs scripts/fribourg-mont-carmel.test.mjs scripts/fribourg-jongny.test.mjs scripts/fribourg-laupen.test.mjs scripts/fribourg-broc.test.mjs scripts/fribourg-boltigen.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
 
 # Optional rail-input regeneration from the complete timetable cache and retained source bytes.
 node scripts/fribourg-rail-geometry.mjs /private/tmp/fribourg-timetable.json.gz
@@ -354,6 +377,7 @@ node scripts/prepare-fribourg-mont-carmel.mjs
 node scripts/prepare-fribourg-jongny.mjs
 node scripts/prepare-fribourg-laupen.mjs
 node scripts/prepare-fribourg-broc.mjs
+node scripts/prepare-fribourg-boltigen.mjs
 
 # Optional offline road rebuild: prepare all patterns, match each agency directory
 # with scripts/match-postbus-roads.mjs --no-trie/-W wrapper and the pinned extract,

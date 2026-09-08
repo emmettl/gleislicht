@@ -199,6 +199,10 @@
     "broc": {
       "file": "data/fribourg-broc-policy.json",
       "sha256": "a707ab9a3464d448a427c7cf80ce554e3d9644ae40006043488a20117dad7a0f"
+    },
+    "boltigen": {
+      "file": "data/fribourg-boltigen-policy.json",
+      "sha256": "f4faa42d9ed6bb44f74600ea6334fb3189b1b91f8b918da667779c5b99a0f01f"
     }
   },
   "rail": {
