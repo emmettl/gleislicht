@@ -290,8 +290,6 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 **Checked references:** [so-publications](https://data.geo.so.ch/themepublications?query=ch.so.avt.oev), [so-lines](https://files.geo.so.ch/ch.so.avt.oev/aktuell/ch.so.avt.oev.gpkg.zip), [so-metadata](https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html), [so-terms](https://files.geo.so.ch/nutzungsbedingungen.html).
 
-ungsbedingungen.html).
-
 <a id="bs"></a>
 
 ### BS — Basel-Stadt
