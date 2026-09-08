@@ -963,5 +963,9 @@
   "grienbachAtlasReview": {
     "sourceDirectory": "data/zug-grienbach-atlas-sources",
     "sourceSha256": "a5a84aa6b324881e2681bc089c9182498e2f67553ba185ce0e12c6e709fa0c82"
+  },
+  "grienbachDirectionReview": {
+    "sourceDirectory": "data/zug-grienbach-direction-sources",
+    "sourceSha256": "5f630906e7286b0faca48931a315c1644dab6b806bc0a8cdeb5eef4a7a35d07f"
   }
 }

@@ -1,0 +1,79 @@
+{
+  "retrieved": "2026-09-08",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "osmUrl": "https://overpass-api.de/api/interpreter",
+  "osmAttribution": "© OpenStreetMap contributors",
+  "osmLicense": "ODbL-1.0",
+  "osmTermsUrl": "https://www.openstreetmap.org/copyright",
+  "elementCount": 4374,
+  "relationIds": [
+    2098892,
+    6260163,
+    12044343,
+    12044344
+  ],
+  "routeId": "92-604-B-j26-1",
+  "agencyId": "839",
+  "line": "604",
+  "operator": "ZVB",
+  "localWayIds": [
+    29430324,
+    29972645,
+    958437599,
+    958437598,
+    1256790961
+  ],
+  "inboundStopNodes": [
+    324649887,
+    13426824598,
+    324650153
+  ],
+  "outboundStopNodes": [
+    325934570,
+    325956809,
+    324649710
+  ],
+  "stopNumbers": [
+    "8587280",
+    "8593448",
+    "8587279"
+  ],
+  "poster": {
+    "url": "https://www.zvb.ch/fileadmin/Files/Fahrplan/ZVB/2026/afp_GRIE01__604.pdf",
+    "attribution": "Zugerland Verkehrsbetriebe AG",
+    "creationDate": "2025-09-01T15:40:04+02:00",
+    "validFrom": "2025-12-14",
+    "validTo": "2026-12-12",
+    "pages": 1,
+    "extraction": "pdftotext -layout; full single page rendered and visually reviewed, including holiday footnotes and one-minute downstream offset",
+    "specialDeparture": "Sunday 05:44 runs only on 04 June and 08 December; neither fixture is a holiday listed on the poster",
+    "use": "Official stop order and departure-time corroboration only; no replacement coordinate or geometry licence inferred"
+  },
+  "timetableSha256": "4e06a722d5403334a733d79f3332d204fbeeb0d05ede5c0344dbe7c16c05398d",
+  "priorReviewSha256": "4dae47d6db07eb41d418842c0866c6ced8174099ad7d7830516a6d07a4ab48e2",
+  "atlasReviewSha256": "a5a84aa6b324881e2681bc089c9182498e2f67553ba185ce0e12c6e709fa0c82",
+  "method": "Reconcile every complete 604 pattern with ordered same-UIC OSM relation stops. Inspect the exact local inbound source-way chain without replacing the original SLOID coordinates. Inventory every returned road/restriction. Independently replay operator poster departures by source service day and retain civil-window carry-in/tail trips. No geometry or admission API.",
+  "decision": "Retain 67 Friday and 38 Sunday inbound exclusions. Ordered OSM relations identify the inbound Grienbach node but provide no authoritative replacement SLOID mapping; its gap remains about 189 m. The local relation chain also exceeds the original 120 m projection limit. OSM outbound relations still traverse Grienbachstrasse despite the dated outbound diversion. The operator poster corroborates all source-day departure times and the one-minute Grienbach–V-Zug interval; calendar/window boundaries account for the apparent count discrepancy.",
+  "files": [
+    {
+      "file": "poster-info.txt",
+      "sha256": "7463e6f2fc08e4f0fc1b9e75b3d3a3f095ae3e9e0aff2bdeaf104f735dfe6440"
+    },
+    {
+      "file": "poster.pdf",
+      "sha256": "daf7384a86d5f529bd82004b53095d14875b9d100ea32be800e2b1d5b410b1bc"
+    },
+    {
+      "file": "poster.txt",
+      "sha256": "59c53188af300a22a494c793c0d5dc4d9d210878d1afd7780ac0d5a8224f8f5a"
+    },
+    {
+      "file": "routes.json.gz",
+      "sha256": "d146c79ec99c6ba08f0af666867ad9358486859a2047d8cd4627996a2595a39e"
+    },
+    {
+      "file": "routes.overpass",
+      "sha256": "c913fae83d49c90ea3252eaaf95cb0101420caf8449047bd77dcfb27096e1d94"
+    }
+  ]
+}
