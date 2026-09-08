@@ -11,6 +11,7 @@ import { sha256, LUZERN_METADATA, LUZERN_TERMS } from './download-luzern-sources
 import { roadConsensus, validateLuzernRoadScope, reviewedRoadContexts, luzernRoadPatternId, roadContextKey } from './luzern-road-geometry.mjs'
 import { loadLuzernRail } from './luzern-rail-geometry.mjs'
 import { loadLuzernCableways, matchLuzernCableway } from './luzern-cableway-geometry.mjs'
+import { loadLuzernAccessRoads } from './luzern-access-roads.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const save = async (path, value, pretty = false) => { await mkdir(dirname(path), { recursive: true }); await writeFile(path, JSON.stringify(value, null, pretty ? 2 : undefined) + (pretty ? '\n' : '')) }
@@ -68,6 +69,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
     sourceHashes.roads = sha256(bytes)
   }
   const rail = policy.railFallback ? await loadLuzernRail(policy.railFallback, raw) : undefined
+  const accessRoads = policy.accessRoadFallback ? await loadLuzernAccessRoads(policy.accessRoadFallback, raw) : undefined
+  if (accessRoads) sourceHashes.accessRoads = policy.accessRoadFallback.sha256
   if (rail) { sourceHashes.rail = rail.source.sha256; sourceHashes.railInputs = policy.railFallback.inputsSha256 }
   const cableways = policy.cablewayFallback ? await loadLuzernCableways(policy.cablewayFallback, raw) : undefined
   if (cableways) sourceHashes.cableways = cableways.source.sha256
@@ -99,7 +102,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
             if (result.path) result.geometrySource = 'official-line'
             else if (route.mode === 'bus' && roads.has(baseKey)) {
               const road = context ?? roads.get(baseKey)
-              result = road.path ? { ...road, officialAssessment: result } : { ...result, roadAssessment: road }
+              const access = !road.path && accessRoads?.pairs.get(baseKey)
+              result = road.path ? { ...road, officialAssessment: result } : access ? { ...access, officialAssessment: result, roadAssessment: road } : { ...result, roadAssessment: road }
             }
             else if (route.mode === 'rail' && rail?.pairs.has(key)) {
               const fallback = rail.pairs.get(key)
@@ -170,6 +174,9 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
         crosswalk: policy.cablewayFallback.routes, pathAttribution: 'geometrySources = fot-cableway-inference; 2D axes only, no cable sag or observed cabins' }
       if (!metadata.attribution.includes(cableways.source.attribution)) metadata.attribution.push(cableways.source.attribution)
     }
+    if (accessRoads) metadata.geometry.accessRoadFallback = { ...accessRoads.source, cacheSha256: sourceHashes.accessRoads,
+      reviewedPairs: policy.accessRoadFallback.pairs, limits: policy.accessRoadFallback.limits,
+      pathAttribution: 'geometrySources = osm-access-road-inference; exact reviewed pairs only, after cantonal and original OSM matching fail' }
     const snapshot = compactLuzern(admitted, stops, paths, metadata)
     validateLuzernSnapshot(snapshot)
     const { manifest, chunks } = chunkNetworkSnapshot(snapshot, 7200, 'luzern-region-day-chunks')
@@ -199,6 +206,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       admittedTripsUsingRoads: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')).reduce((n, p) => n + p.trips, 0),
       roadContextDirectedPairs: pairList.filter(p => p.geometrySource === 'osm-road-pattern-inference').length,
       admittedTripsUsingRoadContexts: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-pattern-inference')).reduce((n, p) => n + p.trips, 0),
+      accessRoadDirectedPairs: pairList.filter(p => p.geometrySource === 'osm-access-road-inference').length,
+      admittedTripsUsingAccessRoads: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-access-road-inference')).reduce((n, p) => n + p.trips, 0),
       uniqueRouteStopPairs: new Set(pairList.map(p => p.basePairKey ?? p.key)).size,
       federalRailDirectedPairs: pairList.filter(p => p.geometrySource === 'fot-rail-inference').length,
       admittedTripsUsingFederalRail: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'fot-rail-inference')).reduce((n, p) => n + p.trips, 0),
@@ -226,6 +235,10 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
     sourceProbes: [{ file: shippingProbeFile, sha256: sha256(shippingProbe), sourceOnlyExclusions: JSON.parse(shippingProbe).sourceOnlyExclusions }],
     feed: raw.feed, sourceHashes, scope: raw.scope, policy, annualRouteRecords: inventory.length, annualAgencies: new Set(inventory.map(r => r.agencyId)).size,
     catalogue, sourceInventory, sourceStopReview, inventory, days,
+    ...(accessRoads ? { accessRoads: { source: accessRoads.source,
+      agencies: Object.entries(accessRoads.cache.agencies).map(([agencyId, a]) => ({ agencyId, patterns: Object.keys(a.identities).length, report: a.cache.report, matcher: a.cache.metadata.matcher })),
+      consensusPairs: accessRoads.all.size, acceptedConsensusPairs: [...accessRoads.all.values()].filter(p => p.path).length, reviewedPairs: [...accessRoads.pairs.keys()],
+      rejectedConsensusPairs: [...accessRoads.all].filter(([, p]) => !p.path).map(([key, p]) => ({ key, ...p })) } } : {}),
     ...(roadCache ? { roads: { metadata: roadCache.metadata, agencies: Object.entries(roadCache.agencies).map(([agencyId, a]) => ({ agencyId, patterns: Object.keys(a.identities).length, matcher: a.cache.metadata.matcher, report: a.cache.report })),
       consensusPairs: roads.size, acceptedConsensusPairs: [...roads.values()].filter(r => r.path).length,
       rejectedConsensusPairs: [...roads].filter(([, r]) => !r.path).map(([key, r]) => ({ key, ...r })) } } : {}),

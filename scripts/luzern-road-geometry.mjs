@@ -55,11 +55,11 @@ export async function prepareLuzernRoads(timetablePath, output) {
 // A route-specific pair is reusable only when ALL complete input patterns
 // containing it have a valid, byte-identical road path. Never select a successful
 // branch while hiding another branch's failed or differently routed occurrence.
-export function roadConsensus(cache, limits) {
+export function roadConsensus(cache, limits, sourceSha256 = LUZERN_ROAD_SOURCE.osmSha256) {
   assert.equal(cache.schemaVersion, 1)
   const candidates = new Map()
   for (const [agencyId, agency] of Object.entries(cache.agencies)) {
-    assert.equal(agency.cache.metadata.sourceSha256, LUZERN_ROAD_SOURCE.osmSha256)
+    assert.equal(agency.cache.metadata.sourceSha256, sourceSha256)
     assert.equal(agency.cache.metadata.matcher.patternsSha256, agency.patternsSha256)
     assert.deepEqual(Object.keys(agency.identities).sort(), Object.keys(agency.cache.patterns).sort())
     for (const [patternId, identity] of Object.entries(agency.identities)) {
@@ -145,12 +145,12 @@ export function validateLuzernRoadScope(raw, cache) {
   }
 }
 
-export async function importLuzernRoads(prepared, matched, output, evidenceDirectory = 'data/luzern-road-evidence') {
+export async function importLuzernRoads(prepared, matched, output, evidenceDirectory = 'data/luzern-road-evidence', source = LUZERN_ROAD_SOURCE) {
   const input = await json(join(prepared, 'index.json')), agencies = {}
   await mkdir(evidenceDirectory, { recursive: true })
   for (const { agencyId } of input.agencies) {
     const bytes = await readFile(join(prepared, agencyId, 'patterns.json')), patterns = JSON.parse(bytes)
-    const cache = await importRoadShapes(join(matched, agencyId), LUZERN_ROAD_SOURCE.description)
+    const cache = await importRoadShapes(join(matched, agencyId), source.description)
     assert.equal(cache.metadata.matcher.patternsSha256, sha256(bytes), 'Matcher did not use prepared feed')
     assert.deepEqual(patterns.metadata, input.metadata)
     const evidence = {}
@@ -161,14 +161,14 @@ export async function importLuzernRoads(prepared, matched, output, evidenceDirec
       routeId: p.routeId, stops: p.stops.map(([i]) => patterns.stops[i]),
     }])), cache }
   }
-  const result = { schemaVersion: 1, metadata: { ...input.metadata, source: LUZERN_ROAD_SOURCE,
+  const result = { schemaVersion: 1, metadata: { ...input.metadata, source,
     attribution: '© OpenStreetMap contributors', license: 'ODbL-1.0', licenseUrl: 'https://www.openstreetmap.org/copyright',
     model: 'Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified' }, agencies }
   await save(output, result)
   return { agencies: Object.keys(agencies).length, patterns: Object.values(agencies).reduce((n, a) => n + Object.keys(a.identities).length, 0) }
 }
 
-export async function verifyLuzernRoadEvidence(cache) {
+export async function verifyLuzernRoadEvidence(cache, description = LUZERN_ROAD_SOURCE.description) {
   const temporary = await mkdtemp(join(tmpdir(), 'luzern-road-check-'))
   try {
     for (const [agencyId, agency] of Object.entries(cache.agencies)) {
@@ -178,7 +178,7 @@ export async function verifyLuzernRoadEvidence(cache) {
       await mkdir(directory)
       assert.deepEqual(Object.keys(evidence).sort(), ['patterns.json', 'matching.log', 'shapes.txt', 'trips.txt', 'stop_times.txt', 'routing-run.json'].sort())
       for (const [name, contents] of Object.entries(evidence)) await writeFile(join(directory, name), contents)
-      assert.deepEqual(await importRoadShapes(directory, LUZERN_ROAD_SOURCE.description), agency.cache, 'Road cache does not reproduce from retained matcher output')
+      assert.deepEqual(await importRoadShapes(directory, description), agency.cache, 'Road cache does not reproduce from retained matcher output')
       const input = JSON.parse(evidence['patterns.json'])
       assert.deepEqual(agency.identities, Object.fromEntries(input.patterns.map(p => [p.id, { routeId: p.routeId, stops: p.stops.map(([i]) => input.stops[i]) }])))
     }

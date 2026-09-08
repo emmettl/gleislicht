@@ -853,5 +853,83 @@
       "description": "Complete Beromünster–Bahnhof–Oberstufenzentrum–Bankstrasse–Bahnhof pattern, with retained northern loop.",
       "qualification": "OSM full-pattern inference; not operator-confirmed street or diversion certification"
     }
-  ]
+  ],
+  "accessRoadFallback": {
+    "sourceDirectory": "data/luzern-access-road-sources",
+    "sourceSha256": "4d47d6dbfa4844545d7030b0de512df36da4b95f224b222a8bff19b0e4aa1509",
+    "cache": "data/luzern-access-road-cache.json",
+    "sha256": "b24913c53119df30b59cda30aec9488b659aa56a9cbbb178d7135fb2cff3dd0b",
+    "limits": {
+      "snapMetres": 120,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 1200,
+      "alternativeSnapMetres": 5
+    },
+    "pairs": [
+      {
+        "id": "access-stop-1",
+        "routeId": "92-101-A-j26-1",
+        "fromId": "ch:1:sloid:87100:0:2",
+        "toId": "ch:1:sloid:88979:0:2",
+        "geometrySha256": "166db4efd653331ace553fba3c7c8319967e6951afeb8dfffb0f9aaf2a5bf99d",
+        "description": "Baldegg, Bahnhof → Baldegg, Kantonsschule"
+      },
+      {
+        "id": "access-stop-2",
+        "routeId": "92-101-A-j26-1",
+        "fromId": "ch:1:sloid:88979:0:2",
+        "toId": "ch:1:sloid:89232:0:2",
+        "geometrySha256": "d1321a58d77c568ce01d1992c02537b8f4f899abbde7658db463762ee193e597",
+        "description": "Baldegg, Kantonsschule → Hochdorf, Sempachstrasse"
+      },
+      {
+        "id": "access-stop-3",
+        "routeId": "96-354-4-j26-1",
+        "fromId": "ch:1:sloid:10605:0:952604",
+        "toId": "ch:1:sloid:10222:0:511994",
+        "geometrySha256": "e98ccbfe5199919e61d449ed7199140ba9c75ec4f09b628f08f79ec56580d4c6",
+        "description": "Hasle LU, Schwesterehüsli → Hasle LU, Heiligkreuz Witebach"
+      },
+      {
+        "id": "access-stop-4",
+        "routeId": "96-354-4-j26-1",
+        "fromId": "ch:1:sloid:10222:0:511994",
+        "toId": "ch:1:sloid:87025:0:754519",
+        "geometrySha256": "e4ed2e92c8c32b4553b13a914a84faf6ff412c947dc92b32278d94ba01349543",
+        "description": "Hasle LU, Heiligkreuz Witebach → Hasle LU, Heiligkreuz Kirche"
+      },
+      {
+        "id": "access-stop-5",
+        "routeId": "96-354-4-j26-1",
+        "fromId": "ch:1:sloid:87025:0:834448",
+        "toId": "ch:1:sloid:10222:0:511994",
+        "geometrySha256": "9cd0ee0f4bd9fc1160cb10108d9c99be3d7b6864404b014bcd1621ad2ffc89e3",
+        "description": "Hasle LU, Heiligkreuz Kirche → Hasle LU, Heiligkreuz Witebach"
+      },
+      {
+        "id": "access-stop-6",
+        "routeId": "96-354-4-j26-1",
+        "fromId": "ch:1:sloid:10222:0:511994",
+        "toId": "ch:1:sloid:10605:0:952604",
+        "geometrySha256": "882a441342011f5648c5b98819f6e471885d09f1b1befac20fede260566e77f5",
+        "description": "Hasle LU, Heiligkreuz Witebach → Hasle LU, Schwesterehüsli"
+      },
+      {
+        "id": "access-stop-7",
+        "routeId": "92-A05-X-j26-1",
+        "fromId": "ch:1:sloid:2745",
+        "toId": "ch:1:sloid:77051",
+        "geometrySha256": "fa05c79981eee29f31a63980192b6bebc31d7a0685e0813bccd130dd8075af3e",
+        "description": "Hasle LU, Dorf → Entlebuch, Bahnhof"
+      },
+      {
+        "id": "access-stop-8",
+        "routeId": "92-A05-X-j26-1",
+        "fromId": "ch:1:sloid:77051",
+        "toId": "ch:1:sloid:72840:0:187753",
+        "geometrySha256": "b2ded2a0e228554fef2ad1bb52da988fe1f18a41d58b0af04f5d12ea1a60905a",
+        "description": "Entlebuch, Bahnhof → Wolhusen, Bahnhof"
+      }
+    ]
+  }
 }

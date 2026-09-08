@@ -1,6 +1,6 @@
 # Luzern cantonal transit source adapter and audit
 
-Built on 8 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **12'516 Friday and 10'397 Sunday journeys**, on 131 and 144 routes respectively. 163 distinct route records have an admitted pattern on at least one date.
+Built on 8 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **12'519 Friday and 10'398 Sunday journeys**, on 131 and 145 routes respectively. 164 distinct route records have an admitted pattern on at least one date.
 
 Only complete directed stop patterns with usable geometry are admitted. This is a complete **inventory of the scoped archive**, and a measured **partial regional motion feed**. It is not complete cantonal geometry, year-round validation or direction-certified street routing. The underlying official linework is undirected; the validation below establishes ordered source-call compatibility and plausible connected corridors.
 
@@ -63,30 +63,33 @@ The source has no one-way or direction field. A successful ordered match is an *
 | Annual-census routes active in civil day | 140 | 155 |
 | Civil-day movements, all modes | 13'649 | 11'550 |
 | Representative headway movements (not scheduled) | 1'020 | 1'020 |
-| Admitted scheduled movements | 12'516 | 10'397 |
-| Excluded movements | 1'133 | 1'153 |
+| Admitted scheduled movements | 12'519 | 10'398 |
+| Excluded movements | 1'130 | 1'152 |
 | Admitted journeys using reviewed donor edges | 162 | 144 |
 | Directed pairs traversing reviewed repairs | 12 | 13 |
-| Admitted journeys using inferred OSM road fallback | 457 | 489 |
+| Admitted journeys using reusable OSM road pairs | 457 | 490 |
 | Directed pairs using inferred OSM road fallback | 201 | 268 |
 | Journeys using reviewed road pattern exceptions (overlap with road row) | 3 | 0 |
 | Reviewed road pair/context records | 2 | 0 |
+| Journeys using strict access-road supplement (may overlap other road rows) | 3 | 1 |
+| Directed pairs using strict access-road supplement | 6 | 2 |
+| Journeys using any OSM bus source, without double counting | 460 | 490 |
 | Unique route-specific stop pairs, ignoring context | 4'919 | 5'474 |
 | Admitted journeys using inferred federal rail corridors | 244 | 227 |
 | Directed pairs using inferred federal rail corridors | 345 | 337 |
 | Admitted movements using federal cableway axes | 3'329 | 3'389 |
 | Directed pairs using federal cableway axes | 12 | 12 |
 | Preceding-service-day carry-in / admitted | 263 / 262 | 424 / 423 |
-| Routes with at least one admitted pattern | 131 | 144 |
-| Directed stop patterns / admitted | 1'061 / 1'007 | 878 / 821 |
-| Directed stop pair/context records / matched | 4'920 / 4'818 | 5'474 / 5'353 |
-| Directed pair/context record geometry coverage | 97.93% | 97.79% |
-| Scheduled segment occurrences / matched | 139'294 / 138'894 | 105'124 / 104'633 |
-| Scheduled segment geometry coverage | 99.71% | 99.53% |
-| All segment occurrences / matched (including headways) | 140'314 / 138'894 | 106'144 / 104'633 |
+| Routes with at least one admitted pattern | 131 | 145 |
+| Directed stop patterns / admitted | 1'061 / 1'010 | 878 / 822 |
+| Directed stop pair/context records / matched | 4'920 / 4'824 | 5'474 / 5'355 |
+| Directed pair/context record geometry coverage | 98.05% | 97.83% |
+| Scheduled segment occurrences / matched | 139'294 / 138'900 | 105'124 / 104'635 |
+| Scheduled segment geometry coverage | 99.72% | 99.53% |
+| All segment occurrences / matched (including headways) | 140'314 / 138'900 | 106'144 / 104'635 |
 | All-movement segment geometry coverage | 98.99% | 98.58% |
 
-All exported journeys have 100% matched segments **by the admission rule**. The unfiltered scheduled-segment coverage (99.71% / 99.53%) is the useful measure of remaining work. Unique-pair percentages are lower; frequently repeated urban trips cannot conceal missing regional or mountain patterns. The audit keeps scheduled occurrences and representative-headway occurrences separate for each pair.
+All exported journeys have 100% matched segments **by the admission rule**. The unfiltered scheduled-segment coverage (99.72% / 99.53%) is the useful measure of remaining work. Unique-pair percentages are lower; frequently repeated urban trips cannot conceal missing regional or mountain patterns. The audit keeps scheduled occurrences and representative-headway occurrences separate for each pair.
 
 | Agency:mode | Friday admitted/total trips | Friday admitted/total patterns | Friday all-segment geometry | Sunday admitted/total trips | Sunday admitted/total patterns | Sunday all-segment geometry |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -94,7 +97,7 @@ All exported journeys have 100% matched segments **by the admission rule**. The 
 | 82:rail · Schweizerische Südostbahn (sob) | 47 / 47 | 34 / 34 | 100.00% | 46 / 46 | 24 / 24 | 100.00% |
 | 86:rail · Zentralbahn | 279 / 279 | 90 / 90 | 100.00% | 242 / 242 | 56 / 56 | 100.00% |
 | 33:rail · BLS AG (bls) | 244 / 244 | 66 / 66 | 100.00% | 219 / 219 | 40 / 40 | 100.00% |
-| 839:bus · Zugerland Verkehrsbetriebe | 320 / 321 | 38 / 39 | 99.95% | 198 / 198 | 28 / 28 | 100.00% |
+| 839:bus · Zugerland Verkehrsbetriebe | 321 / 321 | 39 / 39 | 100.00% | 198 / 198 | 28 / 28 | 100.00% |
 | 820:bus · Verkehrsbetriebe Luzern AG | 3'960 / 3'960 | 144 / 144 | 100.00% | 2'822 / 2'822 | 156 / 156 | 100.00% |
 | 819:bus · Automobil Rottal AG | 475 / 475 | 53 / 53 | 100.00% | 308 / 308 | 29 / 29 | 100.00% |
 | 812:bus · Auto AG Rothenburg | 778 / 778 | 44 / 44 | 100.00% | 486 / 486 | 24 / 24 | 100.00% |
@@ -112,9 +115,9 @@ All exported journeys have 100% matched segments **by the admission rule**. The 
 | 137:mountain · Rigi Bahnen AG | 28 / 28 | 7 / 7 | 100.00% | 32 / 32 | 8 / 8 | 100.00% |
 | 185:boat · Vierwaldstättersee | 0 / 83 | 0 / 30 | 0.00% | 0 / 95 | 0 / 41 | 0.00% |
 | 181:boat · Hallwilersee | 0 / 3 | 0 / 1 | 0.00% | 0 / 9 | 0 / 2 | 0.00% |
-| 801:bus · PostAuto AG | 1'479 / 1'481 | 233 / 235 | 99.98% | 1'095 / 1'095 | 184 / 184 | 100.00% |
+| 801:bus · PostAuto AG | 1'481 / 1'481 | 235 / 235 | 100.00% | 1'095 / 1'095 | 184 / 184 | 100.00% |
 | 7079:bus · PRO REGIO HUTTWIL Verkehrsverein | 0 / 0 | 0 / 0 | — | 4 / 4 | 2 / 2 | 100.00% |
-| 7231:bus · SBB Infrastruktur AG Bahnersatz | 0 / 0 | 0 / 0 | — | 0 / 1 | 0 / 1 | 81.82% |
+| 7231:bus · SBB Infrastruktur AG Bahnersatz | 0 / 0 | 0 / 0 | — | 1 / 1 | 1 / 1 | 100.00% |
 
 ## Exclusions and source limitations
 
@@ -126,13 +129,17 @@ Input roads are the **Geofabrik Swiss extract dated 2 September 2026 plus the bo
 
 Road inference is consulted **only after official bus geometry fails**. A reusable route-specific directed pair is accepted only when every occurrence in every complete input pattern yields an accepted, byte-identical road path. A failed context or a different branch blocks the pair; no successful representative hides another pattern's failure. Of 4'948 bus pairs, 4'897 pass this road consensus and 51 do not. These are fallback-candidate counts, not new delivered paths: successful official geometry always takes precedence. Final road paths retain the existing 120 m snapping and max(1,200 m, 4.5 × direct distance) detour limits, reject collapsed paths, and connect to the exact source platforms. Road interiors use the shared importer's 5 m simplification / six-decimal precision; final platform endpoints use seven decimals. Repeated calls are never removed.
 
-The fallback adds **457 Friday and 489 Sunday complete journeys**, bringing bus admission to **7,371 / 7,374 Friday** and **5,249 / 5,250 Sunday**. Gains include Sörenberg–Glaubenbielen line 241, Tellbus 493, Rotkreuz 73, Küssnacht 502/508/622, vbl branches, EV1 replacement buses and night routes. Every delivered journey has a per-segment geometrySources array; every road pair records its full roadPatternIds and the original officialAssessment. [Regression digests](../data/luzern-road-regression.json), anchored to commit 76bdc64, prove that all earlier matched official paths and all 8,486 / 6,292 earlier admitted journeys remain unchanged.
+The fallback adds **460 Friday and 490 Sunday complete journeys**, bringing bus admission to **7,374 / 7,374 Friday** and **5,250 / 5,250 Sunday**. Gains include Sörenberg–Glaubenbielen line 241, Tellbus 493, Rotkreuz 73, Küssnacht 502/508/622, vbl branches, EV1 replacement buses and night routes. Every delivered journey has a per-segment geometrySources array; every road pair records its full roadPatternIds and the original officialAssessment. [Regression digests](../data/luzern-road-regression.json), anchored to commit 76bdc64, prove that all earlier matched official paths and all 8,486 / 6,292 earlier admitted journeys remain unchanged.
 
 Two explicitly reviewed road-pattern exceptions now admit the three Friday **105** journeys. The outbound 23-call pattern uses the 369.7 m Oberstufenzentrum–Bankstrasse path; the inbound 24-call pattern uses the 678.6 m northern loop, preserving both Bahnhof visits. [Review panels](luzern-road-context-review.svg) show the distinct paths. Each policy entry pins the agency, route, full ordered routing-pattern hash (including coordinates and platform identities), stop pair and geometry hash. A new pattern, reversed direction, different route, changed geometry, failed matcher occurrence or conflicting repeated pair cannot inherit either exception. The shared pair remains rejected for general reuse. No snap or detour limit was increased.
 
 These two records have geometrySources = **osm-road-pattern-inference**. Audit schema version 2 declares the pair-key model. These keys include the complete routing-pattern ID, and basePairKey preserves the underlying route/from/to identity. The audit distinguishes **4919 unique Friday stop pairs** from **4920 pair/context records**: one shared pair has two separate geometry contexts. Segment occurrence denominators and every source call remain unchanged. The three added journeys also use ordinary OSM segments, so the two road journey rows overlap and must not be summed. [Context regression digests](../data/luzern-road-context-regression.json), anchored to d1ab9f2, preserve all previously admitted paths and all 12,513 / 10,397 earlier journeys.
 
-The remaining bus exclusions are **one Friday 101 journey through Baldegg Kantonsschule**, **two Friday 233 journeys through Heiligkreuz Witebach**, and **one Sunday EV3 journey through Entlebuch Bahnhof**. The detailed failed segments and reasons remain in the machine audit. Other modes still have the exclusions below; near-complete bus fixtures do not mean complete cantonal transport coverage.
+The final four bus exclusions are now resolved by a separately retained **strict access-road supplement**: one Friday 101 journey via Baldegg Kantonsschule, two Friday 233 journeys via Heiligkreuz Witebach, and one Sunday EV3 journey via Entlebuch Bahnhof. The [adapter](../scripts/luzern-access-roads.mjs) prepares all **19 complete fixture patterns** on those three exact route/operator identities. Its reviewed configuration adds service roads to the OSM keep list and reduces both station-candidate and edge-snap search distances to **20 m**. The original candidate locations were 142–194 m from the GTFS stops. The new run has **zero rejected segments**, with a measured maximum platform attachment of **15.1 m** across all 19 patterns. No exported 120 m attachment or detour threshold was relaxed.
+
+The supplemental matcher’s **93** reusable pair candidates include **92** consensus successes and one context-dependent rejection. Only **eight explicitly reviewed directed pairs** are used, each pinned to its geometry hash and consulted after both cantonal geometry and the original OSM fallback fail. These pairs cover the four previously excluded journeys; all other existing paths retain precedence. Per-journey geometrySources identifies **osm-access-road-inference**, and every affected pair retains the original official and road rejection evidence. [Regression digests](../data/luzern-access-road-regression.json), anchored to 16bd042, prove that every earlier matched path and all 12,516 / 10,397 earlier admitted journeys remain intact. [Local review panels](luzern-access-road-review.svg) show the school approach, Witebach’s two directions and the Entlebuch station loop.
+
+The [retained source](../data/luzern-access-road-sources/source.json) is **Geofabrik Switzerland 2026-09-02**, retrieved 8 September 2026. The national OSM graph filtered by type/tag is retained as compressed XML, along with both matcher configurations and the exact filtering GTFS input; it is not claimed to be a spatial crop. Source PBF, filtered graph, configurations, full-pattern inputs and matcher outputs have separate SHA-256 evidence. Matching uses pfaedle commit **99f2cd466696ecc6bdb73b2b3bb9008557fcb84a**; the upstream configuration license and attribution are retained. The inferred paths do not certify bus access permissions, one-way street compliance or temporary diversions. Complete bus fixture coverage does not establish complete cantonal transport or year-round coverage.
 
 The road cache and OSM-derived path database are supplied under **[ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/)** with **[© OpenStreetMap contributors](https://www.openstreetmap.org/copyright)** attribution. Official source paths retain Open-By attribution. Feed metadata identifies both licenses and the complete public manifest exposes all delivered paths, distinguished by the journey geometrySources references. A future map UI must display the source attribution. No source is presented as endorsing the inferred routing.
 
@@ -273,7 +280,7 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `91-VAE-j26-1` | 82 · VAE | rail | 828 | 26/26 admitted | 26/26 admitted | rail:VAE, FOT rail | — |
 | `92-1-B-j26-1` | 820 · 1 | bus | 4692 | 334/334 admitted | 274/274 admitted | bus:A01, OSM fallback | — |
 | `92-10-B-j26-1` | 820 · 10 | bus | 992 | 161/161 admitted | 133/133 admitted | bus:A10, OSM fallback | — |
-| `92-101-A-j26-1` | 839 · 101 | bus | 67 | 33/34 partially-admitted | 14/14 admitted | bus:B101, OSM fallback | endpoint-gap |
+| `92-101-A-j26-1` | 839 · 101 | bus | 67 | 34/34 admitted | 14/14 admitted | bus:B101, OSM fallback | — |
 | `92-105-j26-1` | 839 · 105 | bus | 115 | 50/50 admitted | 26/26 admitted | bus:B105, OSM fallback | — |
 | `92-106-A-j26-1` | 839 · 106 | bus | 93 | 45/45 admitted | 24/24 admitted | bus:B106 | — |
 | `92-107-B-j26-1` | 839 · 107 | bus | 107 | 43/43 admitted | 32/32 admitted | bus:B107 | — |
@@ -338,7 +345,7 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `92-A04-U-j26-1` | 7231 · EV2 | bus | 4 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-A05-D-j26-1` | 7231 · EV2 | bus | 132 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-A05-I-j26-1` | 7230 · EV1 | bus | 122 | 2/2 admitted | 74/74 admitted | OSM fallback | — |
-| `92-A05-X-j26-1` | 7231 · EV3 | bus | 245 | 0/0 inactive | 0/1 excluded | — | missing-line |
+| `92-A05-X-j26-1` | 7231 · EV3 | bus | 245 | 0/0 inactive | 1/1 admitted | OSM fallback | — |
 | `92-A0C-8-j26-1` | 7230 · EV3 | bus | 76 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-E-H-j26-1` | 841 · E | bus | 1 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-EV-F-j26-1` | 185 · EV | bus | 34 | 0/0 inactive | 0/0 inactive | — | — |
@@ -395,7 +402,7 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `96-354-1-j26-1` | 801 · 241 | bus | 182 | 51/51 admitted | 50/50 admitted | OSM fallback | — |
 | `96-354-2-j26-1` | 801 · 234 | bus | 8 | 0/0 inactive | 8/8 admitted | bus:B234 | — |
 | `96-354-3-j26-1` | 801 · 221 | bus | 76 | 32/32 admitted | 24/24 admitted | bus:B221 | — |
-| `96-354-4-j26-1` | 801 · 233 | bus | 72 | 20/22 partially-admitted | 14/14 admitted | bus:B233 | endpoint-gap |
+| `96-354-4-j26-1` | 801 · 233 | bus | 72 | 22/22 admitted | 14/14 admitted | bus:B233, OSM fallback | — |
 | `96-354-5-j26-1` | 801 · 231 | bus | 18 | 18/18 admitted | 0/0 inactive | bus:B231 | — |
 | `96-354-6-j26-1` | 801 · 232 | bus | 55 | 20/20 admitted | 22/22 admitted | bus:B232 | — |
 | `96-356-8-j26-1` | 801 · 86 | bus | 190 | 78/78 admitted | 32/32 admitted | bus:B086 | — |
@@ -464,10 +471,12 @@ node scripts/luzern-road-geometry.mjs import \
   /private/tmp/luzern-road-cache.json /private/tmp/luzern-road-evidence
 ```
 
-Review regenerated cache/evidence hashes before updating policy. Matcher elapsed times and warning-log timings can change between runs; the committed evidence preserves the measured run. No changed cache can silently replace the pinned input. All **71 scoped unit tests pass**, including consensus failure/conflict isolation, explicit full-pattern exception isolation and pinned geometry, repeated-pair loops, reversed directions, changed identities, corrupt indices/endpoints, source hashes, detour/collapse limits and routing-only carry-in normalization. Rail tests additionally cover exact/ambiguous operating-point identities, reversed source geometry, called-station order, conflicting complete patterns, gauge/validity exclusion, station/topology attachment limits and detour rejection. Cableway tests cover source vertices, reversal, exact station/installation/operator identity, explicit aliases, station limits, source validity, disconnected geometry and malformed coordinates.
+Review regenerated cache/evidence hashes before updating policy. Matcher elapsed times and warning-log timings can change between runs; the committed evidence preserves the measured run. No changed cache can silently replace the pinned input. All **75 scoped unit tests pass**, including strict access-road pair selection, failed-context rejection and changed-source/identity isolation, consensus failure/conflict isolation, explicit full-pattern exception isolation and pinned geometry, repeated-pair loops, reversed directions, changed identities, corrupt indices/endpoints, source hashes, detour/collapse limits and routing-only carry-in normalization. Rail tests additionally cover exact/ambiguous operating-point identities, reversed source geometry, called-station order, conflicting complete patterns, gauge/validity exclusion, station/topology attachment limits and detour rejection. Cableway tests cover source vertices, reversal, exact station/installation/operator identity, explicit aliases, station limits, source validity, disconnected geometry and malformed coordinates.
+
+To reproduce the strict access-road run, decompress data/luzern-access-road-sources/network.osm.gz to a temporary .osm file; prepare all three route feeds with scripts/luzern-access-roads.mjs using the pinned timetable; run scripts/match-postbus-roads.mjs separately for agencies 801, 839 and 7231 using the retained routing.cfg and matcher binary. Import with importLuzernRoads from scripts/luzern-road-geometry.mjs, passing the retained source.json as its fifth argument. The normal regional checker independently rebuilds the cache from all retained matcher output, validates the complete 19-pattern scope on both dates, rechecks the eight review hashes and compares every delivered path. Regenerating an input does not authorize replacing its pinned hash.
 
 The checker also replays the complete shipping-class census and its source-only suspension exclusion. Regenerate it with `node scripts/audit-luzern-shipping.mjs`, or verify the committed result with `node scripts/audit-luzern-shipping.mjs --check`.
 
 The checker independently verifies every stored source hash; exact ArcGIS object-ID sets; inventory totals; every chunk byte length/hash; duplicate journey consistency across chunks; morning membership; complete directed path endpoints; per-pattern, pair, route and agency totals; and admission/exclusion reconciliation. With the regenerated timetable cache it also replays **every admitted journey against all original GTFS calls, times, sequences, source-service-day identity and frequency metadata**. Unit tests cover exact donor-edge repairs and rejection of invented edges/changed snapshots/already-connected targets, truncated/duplicate pages, wrong CRS, changed operator domains/year, disconnected geometry, crossing-without-junction, reversal, loops, polygon holes, midnight carry-in, frequency semantics and rejection of malformed admitted paths.
 
-The large source-line paths make the initial compressed manifests about 1.53 / 1.64 MiB; compressed morning files are 1.70 / 1.74 MiB. The largest compressed two-hour chunks are 192.5 / 144.0 KiB. These are measured data artifacts, not a claim that existing UI payload budgets or route-direction review gates have passed.
+The large source-line paths make the initial compressed manifests about 1.54 / 1.65 MiB; compressed morning files are 1.71 / 1.75 MiB. The largest compressed two-hour chunks are 192.5 / 144.1 KiB. These are measured data artifacts, not a claim that existing UI payload budgets or route-direction review gates have passed.
