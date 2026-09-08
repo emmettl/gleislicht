@@ -1,0 +1,50 @@
+{
+  "purpose": "Official operator context; no timetable substitution or geometry tracing. Samnaun L1 refurbishment/L2 summer operation blocks the exact-number candidate despite its small endpoint gaps.",
+  "responses": [
+    {
+      "url": "https://bergbahnen-samnaun.ch/neuheiten-skiarena/",
+      "effectiveUrl": "https://bergbahnen-samnaun.ch/neuheiten-skiarena/",
+      "status": 200,
+      "checkedAt": "2026-09-08T21:46:33.095569+00:00",
+      "file": "samnaun-modernisation.html.gz",
+      "sha256": "01f3d71141efcf1ede72804d7fa05a2373e3e601f4458372243068421e803bde",
+      "bodySha256": "9454d2ab35d68b2c50db7de78fe53c37f127ced9e0f625419455a0271e8dfa92"
+    },
+    {
+      "url": "https://bergbahnen-samnaun.ch/sommer/betriebszeiten-sommer/",
+      "effectiveUrl": "https://bergbahnen-samnaun.ch/sommer/betriebszeiten-sommer/",
+      "status": 200,
+      "checkedAt": "2026-09-08T21:46:33.965526+00:00",
+      "file": "samnaun-summer.html.gz",
+      "sha256": "f541412899eeb2a01038349017196b1a871be3d4a84c26242ada4ca04cb23190",
+      "bodySha256": "239bf1510cd6d8655d9e9e4e7f963181078ba52b56f11b4be8c69c9b75942fef"
+    },
+    {
+      "url": "https://www.churbergbahnen.ch/en/cableway/opening-hours-and-rates",
+      "effectiveUrl": "https://www.churbergbahnen.ch/en/cableway/opening-hours-and-rates",
+      "status": 200,
+      "checkedAt": "2026-09-08T21:46:35.413044+00:00",
+      "file": "chur-summer.html.gz",
+      "sha256": "b79f3f1ba6a8cb942dbba3ce1fe1a53a213f0c287a609ea6fd3484fcec85d9a0",
+      "bodySha256": "f7f11c46f1a9b31603f9aa9f5e6e99faf54748efddf89923632fe0a4331a5af4"
+    },
+    {
+      "url": "https://arosalenzerheide.swiss/en/Lenzerheide/Summer/Resort-Lifts/Operating-hours-summer",
+      "effectiveUrl": "https://arosalenzerheide.swiss/en/Lenzerheide/Summer/Resort-Lifts/Operating-hours-summer",
+      "status": 200,
+      "checkedAt": "2026-09-08T21:46:41.550813+00:00",
+      "file": "heidbuel-summer.html.gz",
+      "sha256": "487b025829b66bcb4866238bfb9f3208ee33589cb2219ea16bbec628ca63ef2a",
+      "bodySha256": "51ab2383fe3e6f882df279cd136c866d5a33a36267bf732ccef2eaa38b59f2bb"
+    },
+    {
+      "url": "https://www.mountains.ch/de/anlagen/grossrevision-sommer-2026/",
+      "effectiveUrl": "https://www.mountains.ch/de/anlagen/grossrevision-sommer-2026/",
+      "status": 200,
+      "checkedAt": "2026-09-08T21:46:42.012239+00:00",
+      "file": "marguns-summer.html.gz",
+      "sha256": "8a40954c5c59d9083ae0a0a485f0ed776d2b3533a4242a9435e7de226eef12c0",
+      "bodySha256": "fdddd37ae74523b18958c9f99e827433fd03e571dbdf9a5ca188af48acf3252c"
+    }
+  ]
+}

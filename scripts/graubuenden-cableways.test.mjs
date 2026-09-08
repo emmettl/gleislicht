@@ -23,6 +23,16 @@ describe('Graubünden cableway admission boundaries', () => {
     const t = structuredClone(train); t.calls[0].pickupType = '2'
     expect(match(network, review, t)[0].reason).toBe('cableway-unreviewed-complete-pattern')
   })
+  it('withholds the Samnaun summer service despite an exact-number geometric pass', () => {
+    const rr = raw.inventory.find(r => r.routeId === '93-7J-Y-j26-1'), tt = raw.snapshots[0].trains.find(t => t.routeId === rr.routeId)
+    expect(match(network, review, tt, rr)[0].reason).toBe('cableway-summer-installation-conflict')
+    const a = read('data/graubuenden-audit/cableways.json'), trial = a.expansion.trials.find(r => r.routeId === rr.routeId)
+    expect(trial.geometricPass).toBe(true); expect(trial.maximumStationAttachmentMetres).toBeLessThan(7)
+    expect(trial.disposition).toBe('cableway-summer-installation-conflict')
+    expect(a.expansion.trials).toHaveLength(54)
+    expect(a.expansion.trials.filter(r => r.disposition === 'rejected-unchanged-geometry-limits')).toHaveLength(10)
+    expect(a.expansion.trials.filter(r => r.disposition === 'admitted-complete-patterns')).toHaveLength(3)
+  })
   it('rejects expired infrastructure and station drift rather than widening attachments', () => {
     const n = structuredClone(network); n.installations.find(i => i.number === '71.044').validUntil = '2026-09-03'
     expect(match(n)[0].reason).toBe('cableway-source-validity')
@@ -37,7 +47,8 @@ describe('Graubünden cableway admission boundaries', () => {
   it('accounts for every annual mountain route and preserves all existing admitted journeys', () => {
     const a = read('data/graubuenden-audit/cableways.json')
     expect(a.inventory.map(r => r.routeId)).toEqual(raw.inventory.filter(r => r.mode === 'mountain').map(r => r.routeId))
-    expect(a.days.map(d => [d.candidates, d.added, d.addedHeadwayInstances, d.addedScheduledInstances, d.preservedJourneys])).toEqual([[39402,151,144,7,6545],[38425,147,144,3,5324]])
-    expect(a.patterns).toHaveLength(6)
+    expect(a.days.map(d => [d.candidates, d.added, d.addedHeadwayInstances, d.addedScheduledInstances, d.preservedJourneys])).toEqual([[39402,2243,2184,59,6545],[38425,2241,2184,57,5324]])
+    expect(a.patterns).toHaveLength(12)
+    expect(a.days.map(d => [d.priorCablewayScopeAdmitted, d.expansionAdded, d.expansionHeadways])).toEqual([[6696,2092,2040],[5471,2094,2040]])
   })
 })

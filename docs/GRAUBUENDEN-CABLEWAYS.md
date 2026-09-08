@@ -1,25 +1,62 @@
 # Graubünden: federal cableway review and complete mountain inventory
 
-The existing September study now includes three cableways: Rhäzüns–Feldis, Sils–Furtschellas and Bernina–Diavolezza. All six complete directed patterns use exact timetable/FOT station-number crosswalks, with no station aliases or section splicing. The initial selection is deliberately small; every annual mountain route remains in the audit.
+The existing September study now includes six cableways: Rhäzüns–Feldis, Sils–Furtschellas, Bernina–Diavolezza, Chur–Känzeli, Churwalden–Heidbüel and Celerina–Marguns. All twelve complete directed patterns use exact timetable/FOT station-number crosswalks, with no station aliases or section splicing. The initial selection is deliberately small; every annual mountain route remains in the audit.
 
 ## Validated scope
 
-| Date | All candidates | Previous admitted | New cableway instances | Of which representative headways | Scheduled additions | Total admitted |
+| Date | All candidates | Rail/bus baseline | All admitted cableway instances | Of which representative headways | Scheduled cableway instances | Total admitted |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026-09-04 | 39'402 | 6'545 | 151 | 144 | 7 | 6'696 |
-| 2026-09-06 | 38'425 | 5'324 | 147 | 144 | 3 | 5'471 |
+| 2026-09-04 | 39'402 | 6'545 | 2243 | 2184 | 59 | 8'788 |
+| 2026-09-06 | 38'425 | 5'324 | 2241 | 2184 | 57 | 7'565 |
 
-All original calls, call rules, source trip IDs, service dates, intervals and times are retained. The before/after audit checks every non-mountain pattern byte-for-byte, and all previously admitted journeys remain admitted. Headway instances (`exact_times=0`) are representative movement on the original interval grid, not exact departures or observed cabin counts. No additional service dates are released.
+All original calls, call rules, source trip IDs, service dates, intervals and times are retained. The before/after audit checks every non-mountain pattern byte-for-byte, and all previously admitted journeys remain admitted. The cumulative table compares with the rail/bus-only scope. The subsequent expansion from the original three cableways is independently checked below, preserving those earlier six directed axes byte-for-byte. Headway instances (`exact_times=0`) are representative movement on the original interval grid, not exact departures or observed cabin counts. No additional service dates are released.
 
 | Route / agency | Installation / infrastructure operator | Original station numbers | Friday / Sunday instances | Maximum station attachment |
 | --- | --- | --- | ---: | ---: |
+| 93-288-A-j26-1 / 236 | 71.013 Chur - Känzeli / 1035 | 8530545 ↔ 8530546 | 52 / 54 | 8.57 m |
+| 93-292-2-j26-1 / 252 | 72.155 Churwalden - Heidbüel / 1176 | 8530582 ↔ 8530583 | 960 / 960 | 9.71 m |
 | 93-294-0-j26-1 / 232 | 71.044 Rhäzüns - Feldis / 585 | 8509679 ↔ 8509680 | 66 / 62 | 6.55 m |
 | 93-296-0-j26-1 / 249 | 71.118 Sils Maria - Prasüra / 1099 | 8530599 ↔ 8530598 | 33 / 33 | 5.33 m |
+| 93-30-Y-j26-1 / 238 | 72.004 Celerina - Marguns (Val Saluver) / 1029 | 8530604 ↔ 8509277 | 1080 / 1080 | 7.75 m |
 | 93-62-Y-j26-1 / 218 | 71.006 Bernina - Diavolezza / 1029 | 8509371 ↔ 8509372 | 52 / 52 | 6.80 m |
 
 Timetable agency IDs and FOT infrastructure operator numbers are different namespaces. Each mapping is explicit in [policy](../data/graubuenden-cableway-policy.json); equal names alone do not admit a route. All stations lie under the reviewed 10 m attachment limit; source station-to-axis gaps are zero under a 1 m topology limit. The complete source axes are retained, oriented to the calls and joined by small, disclosed endpoint attachments. The model is two-dimensional: no cable sag, elevation profile, vehicle tracking, lane assignment or live operational certification.
 
-![Three complete federal axes and original timetable endpoints](assets/graubuenden-cableways.svg)
+![Six complete federal axes and original timetable endpoints](assets/graubuenden-cableways.svg)
+
+## Expansion review
+
+| Date | Previous three-cableway scope | Added complete instances | Of which headways | Total admitted |
+| --- | ---: | ---: | ---: | ---: |
+| 2026-09-04 | 6'696 | 2'092 | 2'040 | 8'788 |
+| 2026-09-06 | 5'471 | 2'094 | 2'040 | 7'565 |
+
+The expansion screens all 54 remaining annual mountain records: 17 are inactive on both fixtures; 23 need vehicle, section or station-identity work; 14 have one exact two-station cabin installation to test. Of those 14, three are admitted, ten fail the unchanged 10 m station attachment limit, and Samnaun passes numerically but is withheld following the summer operator review. Every trial, including rejected paths and their original feature evidence, is in the machine-readable audit. The runtime allowlist contains only the six admitted routes.
+
+| Exact-number trial | Installation | Maximum station gap | Numeric pass | Decision |
+| --- | --- | ---: | --- | --- |
+| 93-23-Y-j26-1 | 72.027 Scuol - Motta Naluns | 17.77 m | no | rejected-unchanged-geometry-limits |
+| 93-288-A-j26-1 | 71.013 Chur - Känzeli | 8.57 m | yes | admitted-complete-patterns |
+| 93-289-2-j26-1 | 71.109 Mulania - Crap Sogn Gion | 23.43 m | no | rejected-unchanged-geometry-limits |
+| 93-290-0-j26-1 | 72.019 Vals - Gadenstatt | 11.50 m | no | rejected-unchanged-geometry-limits |
+| 93-291-2-j26-1 | 72.051 Arosa - Hörnli | 22.96 m | no | rejected-unchanged-geometry-limits |
+| 93-292-2-j26-1 | 72.155 Churwalden - Heidbüel | 9.71 m | yes | admitted-complete-patterns |
+| 93-293-0-j26-1 | 72.088 Canols - Scharmoin | 21.67 m | no | rejected-unchanged-geometry-limits |
+| 93-30-Y-j26-1 | 72.004 Celerina - Marguns (Val Saluver) | 7.75 m | yes | admitted-complete-patterns |
+| 93-38-Y-j26-1 | 72.105 Glaris - Jatzmeder | 12.24 m | no | rejected-unchanged-geometry-limits |
+| 93-3K-Y-j26-1 | 72.058 Klosters - Madrisa | 15.39 m | no | rejected-unchanged-geometry-limits |
+| 93-6S-Y-j26-1 | 71.121 St. Moritz Bad - Signal | 10.49 m | no | rejected-unchanged-geometry-limits |
+| 93-7-Y-j26-1 | 71.032 Klosters - Gotschnaboden | 13.64 m | no | rejected-unchanged-geometry-limits |
+| 93-7F-Y-j26-1 | 71.016 Corviglia - Piz Nair | 15.63 m | no | rejected-unchanged-geometry-limits |
+| 93-7J-Y-j26-1 | 71.098 Ravaisch - Alptrider Sattel II | 6.01 m | yes | cableway-summer-installation-conflict |
+
+Chur admission covers the complete source journey Chur–Känzeli only. The separate Känzeli–Brambrüesch route remains excluded pending its distinct station-identity review; no through journey is cropped or invented. The [Chur summer 2026 page](https://www.churbergbahnen.ch/en/cableway/opening-hours-and-rates) supports seasonal corridor context. The [Heidbüel operator page](https://arosalenzerheide.swiss/en/Lenzerheide/Summer/Resort-Lifts/Operating-hours-summer) lists its summer service and 08:30–16:30 hours, while the [Engadin summer works notice](https://www.mountains.ch/de/anlagen/grossrevision-sommer-2026/) explicitly identifies Celerina–Marguns as an available alternative during the St. Moritz funicular overhaul. These pages support installation/service context; the pinned GTFS still supplies all times.
+
+Heidbüel and Marguns each use a 60-second representative GTFS frequency grid: the 2,040 added daily headway instances are illustrative service availability, not a census of distinct cabins. Exact exclusive interval endpoints remain unchanged. Chur adds 52 Friday and 54 Sunday scheduled source instances. No new observation precision or operator timetable completeness is asserted.
+
+**Samnaun exclusion:** the federal exact-number candidate 71.098 is named Ravaisch–Alptrider Sattel II and has a 1995 valid-from date. This is consistent with the 1995 Twinliner L1 described in the [operator’s refurbishment notice](https://bergbahnen-samnaun.ch/neuheiten-skiarena/); that notice states L1 is modernised during summer 2026 and L2 carries the summer service, with L1 returning for winter 2026/27. The [summer operating page](https://bergbahnen-samnaun.ch/sommer/betriebszeiten-sommer/) explicitly names L2. This is an inferred installation conflict supported by operator evidence, not a definitive L2 geometry crosswalk. Its approximately 6 m station gaps cannot override that conflict. All 34 source instances per date remain excluded with cableway-summer-installation-conflict until the operating L2 axis is identified and reviewed. The catalogue valid-until field is empty; that does not prove summer operation.
+
+The five supporting pages, effective URLs, status codes, retrieval timestamps and content hashes are preserved in [expansion evidence](../data/graubuenden-cableway-sources/expansion-evidence.json). Their content is contextual evidence, not a licence to trace a replacement axis or override the timetable. The [original three-route policy](../data/graubuenden-cableway-sources/initial-policy.json) is retained and hash-checked for before/after reconstruction.
 
 ## Source, vintage and reuse
 
@@ -51,7 +88,7 @@ All **57** mountain route records are listed below, including **17** inactive on
 | 93-285-2-j26-1 | 3142 Gemeinde Grüsch / 2852 | 8 | 0 / 1'140 | 0 / 1'140 | none; local investigation needed | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-287-0-j26-1 | 224 Sportbahnen Pischa / 2870 | 2 | 0 / 0 | 0 / 0 | 71.096 | inactive-on-both-September-fixtures |
 | 93-288-0-j26-1 | 236 Chur-Dreibündenstein / 2880 | 2404 | 0 / 962 | 0 / 1'022 | 72.006, 71.013 | not-admitted-needs-installation-and-complete-pattern-review |
-| 93-288-A-j26-1 | 236 Chur-Dreibündenstein / 2880 | 87 | 0 / 52 | 0 / 54 | 71.013 | not-admitted-needs-installation-and-complete-pattern-review |
+| 93-288-A-j26-1 | 236 Chur-Dreibündenstein / 2880 | 87 | 52 / 52 | 54 / 54 | 71.013 | reviewed-exact-full-patterns |
 | 93-288-D-j26-1 | 3201 Cassons AG / 2885 | 26722 | 0 / 13'659 | 0 / 13'659 | 72.188, 72.189, 72.190 | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-289-2-j26-1 | 275 Weisse Arena Bergbahnen AG / 2892 | 4 | 0 / 31 | 0 / 31 | 71.109 | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-289-3-j26-1 | 275 Weisse Arena Bergbahnen AG / 2893 | 4 | 0 / 930 | 0 / 930 | 73.078 | not-admitted-needs-installation-and-complete-pattern-review |
@@ -59,7 +96,7 @@ All **57** mountain route records are listed below, including **17** inactive on
 | 93-290-8-j26-1 | 251 Andermatt-Sedrun Sport AG / 2908 | 2 | 0 / 0 | 0 / 0 | 73.008 | inactive-on-both-September-fixtures |
 | 93-291-0-j26-1 | 219 Arosa Bergbahnen / 2910 | 8 | 0 / 99 | 0 / 99 | 71.004, 71.003 | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-291-2-j26-1 | 219 Arosa Bergbahnen / 2912 | 4 | 0 / 915 | 0 / 915 | 72.051 | not-admitted-needs-installation-and-complete-pattern-review |
-| 93-292-2-j26-1 | 252 Lenzerheide Bergbahnen / 2922 | 4 | 0 / 960 | 0 / 960 | 72.155 | not-admitted-needs-installation-and-complete-pattern-review |
+| 93-292-2-j26-1 | 252 Lenzerheide Bergbahnen / 2922 | 4 | 960 / 960 | 960 / 960 | 72.155 | reviewed-exact-full-patterns |
 | 93-293-0-j26-1 | 252 Lenzerheide Bergbahnen / 2930 | 10 | 0 / 1'020 | 0 / 1'020 | 72.088 | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-293-2-j26-1 | 3026 Val Sporz-Piz Scalottas / 2932 | 8 | 0 / 1'980 | 0 / 1'980 | 73.033, 73.038 | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-293-A-j26-1 | 252 Lenzerheide Bergbahnen / 2930 | 8 | 0 / 48 | 0 / 48 | 72.088, 71.074 | not-admitted-needs-installation-and-complete-pattern-review |
@@ -69,7 +106,7 @@ All **57** mountain route records are listed below, including **17** inactive on
 | 93-296-0-j26-1 | 249 Surlej-Silvaplana-Corvatsch / 2960 | 9 | 33 / 33 | 33 / 33 | 71.118 | reviewed-exact-full-patterns |
 | 93-296-5-j26-1 | 249 Surlej-Silvaplana-Corvatsch / 2965 | 20 | 0 / 100 | 0 / 100 | 71.060, 71.061 | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-298-2-j26-1 | 267 Pontresina-Alp Languard / 2982 | 2 | 0 / 1'050 | 0 / 1'050 | 74.043 | not-admitted-needs-installation-and-complete-pattern-review |
-| 93-30-Y-j26-1 | 238 Engadin St. Moritz Mountains AG / GB | 6 | 0 / 1'080 | 0 / 1'080 | 72.004 | not-admitted-needs-installation-and-complete-pattern-review |
+| 93-30-Y-j26-1 | 238 Engadin St. Moritz Mountains AG / GB | 6 | 1080 / 1'080 | 1080 / 1'080 | 72.004 | reviewed-exact-full-patterns |
 | 93-31-Y-j26-1 | 3051 Sesselbahn St. Moritz Suvretta-Randolins / SL | 6 | 0 / 1'020 | 0 / 1'020 | 73.080 | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-38-Y-j26-1 | 293 Glaris-Rinerhorn / GB | 4 | 0 / 1'005 | 0 / 1'005 | 72.105 | not-admitted-needs-installation-and-complete-pattern-review |
 | 93-3K-Y-j26-1 | 309 Klosters-Madrisa Bergbahn / GB | 4 | 0 / 1'035 | 0 / 1'035 | 72.058 | not-admitted-needs-installation-and-complete-pattern-review |
@@ -106,6 +143,9 @@ All unreviewed active mountain journeys remain excluded in full. The other 323 a
 ## Reproduction
 
 ```sh
+# Optional fresh acquisition; review changed receipts before repinning.
+python3 scripts/prepare-graubuenden-cableway-context.py
+# Offline reproduction begins here with the preserved source files.
 node scripts/prepare-graubuenden-cableways.mjs
 node scripts/review-graubuenden-cableways.mjs
 node scripts/build-graubuenden-region.mjs
