@@ -11,6 +11,7 @@ import { loadBernRegionalRoads } from './bern-regional-roads.mjs'
 import { loadBernMountains } from './bern-mountain-geometry.mjs'
 import { loadBernRail, bernRailCandidates } from './bern-rail-geometry.mjs'
 import { loadBernRegionalRail } from './bern-regional-rail.mjs'
+import { loadBernCrosscantonRail } from './bern-crosscanton-rail.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -29,6 +30,10 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
   const mountain = await loadBernMountains()
   const rail = await loadBernRail()
   const regionalRail = await loadBernRegionalRail()
+  const crosscantonRail = await loadBernCrosscantonRail()
+  const railSuppliers = [rail, regionalRail, crosscantonRail]
+  assert.equal(summary.sourceHashes.crosscantonRailPolicy, crosscantonRail.metadata.policySha256)
+  assert.deepEqual(summary.sources.crosscantonRailSupplement, crosscantonRail.metadata)
   assert.equal(summary.sourceHashes.regionalRailPolicy, regionalRail.metadata.policySha256)
   assert.deepEqual(summary.sources.regionalRailSupplement, regionalRail.metadata)
   assert.equal(summary.sourceHashes.railPolicy, rail.metadata.policySha256)
@@ -103,7 +108,8 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
         assert(mountain.policy.admittedRouteIds.includes(p.routeId) && p.matched && p.maximumSnapMetres <= 80)
         assert(mountain.policy.bindings.some(b => b.routeId === p.routeId && b.installation === p.sourceId))
       } else if (p.sourceKind === 'fot-rail-topology') {
-        const supplier = p.sourceId === regionalRail.policy.sourceId ? regionalRail : rail
+        const supplier = railSuppliers.find(r => r.policy.sourceId === p.sourceId)
+        assert(supplier, 'Unreviewed federal supplier')
         assert(supplier.policy.routes.some(r => r.routeId === p.routeId) && p.matched && p.maximumSnapMetres <= 120)
         assert.equal(p.sourceId, supplier.policy.sourceId)
         assert(p.maximumTopologyAttachmentMetres <= supplier.policy.limits.topologyAttachmentMetres)
@@ -133,7 +139,7 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
     const trains = [...new Map(chunks.flatMap(c => c.payload.trains).map(t => [t.id, t])).values()]
     const snapshot = { ...manifest, trains }
     const routeMap = new Map(routes.map(r => [r.id, r]))
-    const railCandidates = new Map([...bernRailCandidates(snapshot, routeMap, rail), ...bernRailCandidates(snapshot, routeMap, regionalRail)])
+    const railCandidates = new Map(railSuppliers.flatMap(supplier => [...bernRailCandidates(snapshot, routeMap, supplier)]))
     const railPairs = new Map(report.directedPairs.filter(p => p.sourceKind === 'fot-rail-topology').map(p => [JSON.stringify([p.routeId, p.fromId, p.toId]), p]))
     for (const t of trains) for (let i = 1; i < t.stops.length; i++) {
       const key = JSON.stringify([t.routeId, snapshot.stops[t.stops[i - 1][0]][4], snapshot.stops[t.stops[i][0]][4]])

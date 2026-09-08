@@ -10,6 +10,7 @@ const regionalRoads = await json('data/bern-audit/regional-road-followup.json')
 const schilthorn = await json('data/bern-audit/schilthorn-followup.json')
 const rail = await json('data/bern-audit/rail-followup.json')
 const regionalRail = await json('data/bern-audit/regional-rail-followup.json')
+const crosscantonRail = await json('data/bern-audit/crosscanton-rail-followup.json')
 const days = await Promise.all(summary.days.map(d => json(`data/bern-audit/${d.serviceDate}.json`)))
 const n = value => value.toLocaleString('en-GB')
 const pct = (a, b) => `${(100 * a / b).toFixed(2)}%`
@@ -219,6 +220,23 @@ The [separate policy](../data/bern-regional-rail-policy.json) retains **131 exac
 Remaining Friday intercity exclusions are **15 IR15 journeys** involving Morges platform 1 and **41 IC5 journeys** involving Zürich HB platform variants. Morges requires a **134.03 m** attachment; the rejected Zürich HB variants require **263.63–295.91 m**. They exceed the unchanged **120 m** rail station guard. The audit retains all thirteen directed failures, original stop IDs, source operating-point identities and full-pattern evidence. No stop is relocated or dropped to make an intercity journey pass.
 
 The same pinned **6 July 2021** federal source is used, with **18 January 2025** asset update and **8 September 2026** checksum recheck; no new raw geometry release is claimed. Selected federal topology attachments are below **51 m**, within the separately stated 120 m topology guard. Stop attachment, detour and output precision policies remain unchanged. **© Federal Office of Transport (FOT)** attribution and the retained original XTF, catalogue, terms link and transformation details accompany the feed. Current alignment and running-track validity remain unconfirmed. September-only bindings do not alter the seven seasonal audit files or admit seasonal application feeds.
+
+## Further cross-canton rail review
+
+The [cross-canton rail audit](../data/bern-audit/crosscanton-rail-followup.json) compares against release 7f719f6. **All ${n(crosscantonRail.dates[0].previousJourneysPreserved)} Friday / ${n(crosscantonRail.dates[1].previousJourneysPreserved)} Sunday prior journeys preserve every source call, time and full-detail path.** It adds **6 Friday / 81 Sunday scheduled journeys**, with all previously matched pair assessments and all earlier source hashes and limits unchanged.
+
+${table(['GTFS route / line', 'Friday added', 'Sunday added', 'Friday admitted / candidate', 'Sunday admitted / candidate'], crosscantonRail.dates[0].routes.map((r, i) => {
+  const sunday = crosscantonRail.dates[1].routes[i]
+  return [r.routeId + ' / ' + r.line, r.addedScheduledJourneys, sunday.addedScheduledJourneys, r.admittedJourneys + ' / ' + r.totalJourneys, sunday.admittedJourneys + ' / ' + sunday.totalJourneys]
+}))}
+
+TPF S20/S21 use their existing OEVTP 255_a/255_b crosswalks; the occasional SBB RE uses 240_RE, the two occasional IC records retain their existing IC source associations, and BLS RE8 retains 320_RE. Passenger labels alone do not authorize federal geometry. The [separate policy](../data/bern-crosscanton-rail-policy.json) pins **45 exact directed platform-pair bindings**, including **12 rejected bindings**, and **81 standard-gauge federal segments** on declared SBB/BLS infrastructure. It tests **36 Friday / 34 Sunday full patterns** on these six identities, including contexts from excluded journeys. Both source directions are tested wherever present; the single Friday RE and single Sunday IC record each have only direction 0 in the fixture, and no reverse service is invented.
+
+Three occasional route records now pass every dated journey. **TPF S20/S21 remain partial**: the original Fribourg/Freiburg platform 4/5 coordinates (including the published 4A–D variant) require **270.82–274.08 m** attachments to the generic federal operating point, exceeding the unchanged **120 m** limit. Their nine rejected directed bindings remain visible. **RE8 remains partial**, with two excluded journeys on each date: its three distinct Interlaken Ost/West platform-pair bindings cannot form an eligible federal path under exact operating-point identity, standard gauge, detour and stop-order rules. A nearby alternative operating point is not substituted. The earlier Friday Morges and Zürich HB failures remain unchanged.
+
+Accepted federal pairs attach original stops within **102.09 m**, and selected source topology attachments are below **51 m**. Full raw-pattern contexts must agree on the same directed source-segment sequence. All original GTFS coordinates, calls, times and permissions remain intact, including out-of-canton endpoints. Complete geometry is required before a whole journey enters the feed.
+
+This review reuses the retained federal XTF with catalogue date **6 July 2021**, asset update **18 January 2025**, and checksum recheck **8 September 2026**. It introduces no newer geometry or broader validity claim. **© Federal Office of Transport (FOT)**, source dates, original bytes, transformation details and terms link remain in the regional feed's combined provenance. The same **4.5× / 3,000 m** detour rule, 120 m topology guard and output precision apply. Current alignment/running tracks remain unconfirmed, and the seven seasonal audits are unchanged.
 
 ## Winter and holiday fixtures
 
