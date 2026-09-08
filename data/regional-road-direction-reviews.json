@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-09-08",
+  "scope": "Local detector orientation only; no observed speeds, turn splits or historical configuration guarantee.",
+  "pins": {
+    "data/regional-road-geometry-audit.json": "8ff562f94eab297cdac19e8c4b2197b47893fde6ecedac64d644e3bec034b2f6",
+    "data/regional-road-geometry.json.gz": "553cebad734e85cddfbc817abd64294f4a36eb72e55343aeb504be4849445efb",
+    "data/regional-road-count-audit.json": "f15723263ec2fe6d2b3ae337aa39d8532bab9f99173d49c0164323f77ccbc4e9",
+    "data/regional-road-direction-sources/2026-09-08/manifest.json": "2dcfdffbfb4bff9c2f72628f3f02a768cb86fa4dacd89304cdc6e183e2e29a10",
+    "data/regional-road-geometry-sources/2026-09-08/basel-roads.json.gz": "c7e683bfdde38aa5216fce0f682523b89975d1a391a090353a2e606c5faa4982"
+  },
+  "entries": [
+    {
+      "detectorId": "zurich-city:Z001M001",
+      "pathId": "zurich-city:1832_195:0",
+      "directionLabel": "auswärts",
+      "method": "reviewed-detector-plan",
+      "sourceFile": "ZS001-K789-Detektorplan.pdf",
+      "sourceSha256": "7d9ff1a2c44cd5afa8fcf61d5d5f2aa1970c81dcba34b01087eae452c4194018",
+      "page": 1,
+      "signalId": "789",
+      "detectorCount": "1",
+      "sourceDetectorIds": [
+        "2",
+        "Unbekannt",
+        "Unbekannt",
+        "Unbekannt"
+      ],
+      "bearingDegrees": 160,
+      "maximumBearingDifferenceDegrees": 20,
+      "expectedDirection": "positive",
+      "note": "Outward lane on the west side, loop 2. Orientation inferred from plan north arrow, lane placement and source auswärts label; no motor-vehicle arrow at the loop."
+    },
+    {
+      "detectorId": "zurich-city:Z001M002",
+      "pathId": "zurich-city:1832_195:0",
+      "directionLabel": "einwärts",
+      "method": "reviewed-detector-plan",
+      "sourceFile": "ZS001-K789-Detektorplan.pdf",
+      "sourceSha256": "7d9ff1a2c44cd5afa8fcf61d5d5f2aa1970c81dcba34b01087eae452c4194018",
+      "page": 1,
+      "signalId": "789",
+      "detectorCount": "1",
+      "sourceDetectorIds": [
+        "1",
+        "Unbekannt",
+        "Unbekannt",
+        "Unbekannt"
+      ],
+      "bearingDegrees": 340,
+      "maximumBearingDifferenceDegrees": 20,
+      "expectedDirection": "negative",
+      "note": "Inward lane on the east side, loop 1. Orientation inferred from plan north arrow, lane placement and source einwärts label; no motor-vehicle arrow at the loop."
+    },
+    {
+      "detectorId": "zurich-city:Z040M001",
+      "pathId": "zurich-city:1823_70:0",
+      "directionLabel": "Hohlstrasse",
+      "method": "reviewed-detector-plan",
+      "sourceFile": "ZS040-K003-Detektorplan.pdf",
+      "sourceSha256": "378b208f718862276bfa9f07fedb4b738ab8b725b03617ba2d0fa6950f3e8979",
+      "page": 1,
+      "signalId": "3",
+      "detectorCount": "2",
+      "sourceDetectorIds": [
+        "11",
+        "12",
+        "Unbekannt",
+        "Unbekannt"
+      ],
+      "bearingDegrees": 140,
+      "maximumBearingDifferenceDegrees": 20,
+      "expectedDirection": "negative",
+      "note": "Northwest approach, loops 11 and 12; lane arrows run southeast toward the junction. Hohlstrasse identifies the approach, not the travel destination. Includes turning traffic."
+    },
+    {
+      "detectorId": "zurich-city:Z040M002",
+      "pathId": "zurich-city:1823_60:0",
+      "directionLabel": "Birmensdorferstrasse",
+      "method": "reviewed-detector-plan",
+      "sourceFile": "ZS040-K003-Detektorplan.pdf",
+      "sourceSha256": "378b208f718862276bfa9f07fedb4b738ab8b725b03617ba2d0fa6950f3e8979",
+      "page": 1,
+      "signalId": "3",
+      "detectorCount": "1",
+      "sourceDetectorIds": [
+        "20",
+        "Unbekannt",
+        "Unbekannt",
+        "Unbekannt"
+      ],
+      "bearingDegrees": 320,
+      "maximumBearingDifferenceDegrees": 20,
+      "expectedDirection": "positive",
+      "note": "Southeast approach, loop 20; lane arrows run northwest toward the junction. Birmensdorferstrasse identifies the approach. Includes turning traffic."
+    },
+    {
+      "detectorId": "zurich-city:Z069M001",
+      "pathId": "zurich-city:1823_120:0",
+      "directionLabel": "Hohlstrasse",
+      "method": "reviewed-detector-plan",
+      "sourceFile": "ZS069-K035-Detektorplan.pdf",
+      "sourceSha256": "fcd57a4b4b0e55b8567b6ac9bd12996253315b0744a037b9bb8a9ea17d9d4e56",
+      "page": 1,
+      "signalId": "35",
+      "detectorCount": "1",
+      "sourceDetectorIds": [
+        "19",
+        "Unbekannt",
+        "Unbekannt",
+        "Unbekannt"
+      ],
+      "bearingDegrees": 210,
+      "maximumBearingDifferenceDegrees": 20,
+      "expectedDirection": "negative",
+      "note": "Northeast approach, loop 19; lane arrows run southwest toward the junction. Hohlstrasse identifies the approach. Includes turning traffic."
+    },
+    {
+      "detectorId": "zurich-city:Z069M002",
+      "pathId": "zurich-city:1823_110:0",
+      "directionLabel": "Badenerstrasse",
+      "method": "reviewed-detector-plan",
+      "sourceFile": "ZS069-K035-Detektorplan.pdf",
+      "sourceSha256": "fcd57a4b4b0e55b8567b6ac9bd12996253315b0744a037b9bb8a9ea17d9d4e56",
+      "page": 1,
+      "signalId": "35",
+      "detectorCount": "1",
+      "sourceDetectorIds": [
+        "20",
+        "Unbekannt",
+        "Unbekannt",
+        "Unbekannt"
+      ],
+      "bearingDegrees": 30,
+      "maximumBearingDifferenceDegrees": 20,
+      "expectedDirection": "positive",
+      "note": "Southwest approach, loop 20; lane arrows run northeast toward the junction. Badenerstrasse identifies the approach. Includes turning traffic."
+    },
+    {
+      "detectorId": "basel:00000419:1%20von%20Feldbergstrasse%20%281%20FS%20bei%20Tramhaltestelle%29:code%3A1",
+      "pathId": "basel:5093:0",
+      "directionLabel": "1 von Feldbergstrasse (1 FS bei Tramhaltestelle)",
+      "method": "reviewed-named-junction",
+      "roadName": "Riehenring",
+      "namedRoad": "Feldbergstrasse",
+      "roadChain": [
+        5093,
+        5094
+      ],
+      "junctionRoadIds": [
+        3936,
+        3937
+      ],
+      "junctionWgs84": [
+        7.597576,
+        47.567422
+      ],
+      "relation": "from",
+      "expectedDirection": "negative",
+      "note": "Named Feldbergstrasse junction is north of counter 419; the connected Riehenring chain follows positive vertex order to the junction. Source explicitly says von/nach. This is a local source-geometry inference."
+    },
+    {
+      "detectorId": "basel:00000419:2%20nach%20Feldbergstrasse%20%281%20FS%20bei%20Tramhaltestelle%29:code%3A2",
+      "pathId": "basel:5093:0",
+      "directionLabel": "2 nach Feldbergstrasse (1 FS bei Tramhaltestelle)",
+      "method": "reviewed-named-junction",
+      "roadName": "Riehenring",
+      "namedRoad": "Feldbergstrasse",
+      "roadChain": [
+        5093,
+        5094
+      ],
+      "junctionRoadIds": [
+        3936,
+        3937
+      ],
+      "junctionWgs84": [
+        7.597576,
+        47.567422
+      ],
+      "relation": "toward",
+      "expectedDirection": "positive",
+      "note": "Named Feldbergstrasse junction is north of counter 419; the connected Riehenring chain follows positive vertex order to the junction. Source explicitly says von/nach. This is a local source-geometry inference."
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "purpose": "regional-road-direction-evidence",
+  "complete": true,
+  "files": [
+    {
+      "id": "ZS001-K789-Detektorplan.pdf",
+      "path": "ZS001-K789-Detektorplan.pdf",
+      "kind": "detector-plan",
+      "sourceMember": "ZS001-K789-Detektorplan.pdf",
+      "sha256": "7d9ff1a2c44cd5afa8fcf61d5d5f2aa1970c81dcba34b01087eae452c4194018",
+      "bytes": 1006710,
+      "acquiredAt": "2026-09-08T18:17:56.494707+00:00",
+      "license": "CC0 (parent municipal count catalogue)"
+    },
+    {
+      "id": "ZS040-K003-Detektorplan.pdf",
+      "path": "ZS040-K003-Detektorplan.pdf",
+      "kind": "detector-plan",
+      "sourceMember": "ZS040-K003-Detektorplan.pdf",
+      "sha256": "378b208f718862276bfa9f07fedb4b738ab8b725b03617ba2d0fa6950f3e8979",
+      "bytes": 1158431,
+      "acquiredAt": "2026-09-08T18:17:56.497909+00:00",
+      "license": "CC0 (parent municipal count catalogue)"
+    },
+    {
+      "id": "ZS069-K035-Detektorplan.pdf",
+      "path": "ZS069-K035-Detektorplan.pdf",
+      "kind": "detector-plan",
+      "sourceMember": "ZS069-K035-Detektorplan.pdf",
+      "sha256": "fcd57a4b4b0e55b8567b6ac9bd12996253315b0744a037b9bb8a9ea17d9d4e56",
+      "bytes": 1734617,
+      "acquiredAt": "2026-09-08T18:17:56.502148+00:00",
+      "license": "CC0 (parent municipal count catalogue)"
+    },
+    {
+      "id": "Arbon",
+      "path": "settlement-00.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Arbon&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "e6deaa052cfd4ecdc4685c17f66d606076da3cc6ee97755f1e60b596b9cb6681",
+      "bytes": 135003,
+      "acquiredAt": "2026-09-08T18:17:57.093153+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Roggwil",
+      "path": "settlement-01.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Roggwil&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "46030b41610e3ee73458a680a863ee722767e601e2f8e77e37af9e3269ac9749",
+      "bytes": 5354,
+      "acquiredAt": "2026-09-08T18:18:01.511677+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Kreuzlingen",
+      "path": "settlement-02.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Kreuzlingen&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "40d25edd82d13ded1e2de32138862af0bce8908f8315804a1f42c7e43acf4b65",
+      "bytes": 184731,
+      "acquiredAt": "2026-09-08T18:18:01.540926+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Romanshorn",
+      "path": "settlement-03.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Romanshorn&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "8c4eb9d4112e1f3b837a28fd9f3b75d2658084d8db7371cb88aeb22aa12061ec",
+      "bytes": 279213,
+      "acquiredAt": "2026-09-08T18:17:57.791424+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Schaffhausen",
+      "path": "settlement-04.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Schaffhausen&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "deac3bc9d998bd633807ba5b1da7238f8c75d3974cece5106dbe29eeee7991cd",
+      "bytes": 362478,
+      "acquiredAt": "2026-09-08T18:17:58.670423+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Frauenfeld",
+      "path": "settlement-05.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Frauenfeld&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "d8eccf19bab57d955e28dbc6c3320fbcfec6e557ff9107b50165503fce89cd35",
+      "bytes": 279562,
+      "acquiredAt": "2026-09-08T18:17:59.378857+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Weinfelden",
+      "path": "settlement-06.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Weinfelden&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "337ee3a12f7d7546a39bbd52753de805b1e786c16850e1484ddb5708813b5bc3",
+      "bytes": 227923,
+      "acquiredAt": "2026-09-08T18:17:59.944746+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Matzingen",
+      "path": "settlement-07.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Matzingen&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "92e431eb5bf7a93348eab4600f8ff010e5dddfd5c9a798e6283c65a1e6364496",
+      "bytes": 144169,
+      "acquiredAt": "2026-09-08T18:18:01.539384+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Bischofszell",
+      "path": "settlement-08.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Bischofszell&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "a89213077fe95d067fe5df0cefe5966e0067f18cec30ed4e4f4a45ad7eb06b85",
+      "bytes": 101923,
+      "acquiredAt": "2026-09-08T18:18:02.003602+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Sulgen",
+      "path": "settlement-09.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Sulgen&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "38d97ae719af1a986b7c269e01cb8eaf79f9b8eb801fb67468fc9b348938fba1",
+      "bytes": 115837,
+      "acquiredAt": "2026-09-08T18:18:07.033150+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Amriswil",
+      "path": "settlement-10.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Amriswil&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "ad0560d3677904dce1888f41fad2baf52755408c53c8daa7b86a54b7c56c958f",
+      "bytes": 195387,
+      "acquiredAt": "2026-09-08T18:18:02.503460+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Eschlikon",
+      "path": "settlement-11.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Eschlikon&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "6cecb20c79fa62eb775e45270a3cb9f2ca33c6a540c960ca88bb7a1d3700dcb5",
+      "bytes": 15,
+      "acquiredAt": "2026-09-08T18:18:06.989788+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Basadingen",
+      "path": "settlement-12.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Basadingen&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "a8a08658c126df41e17d929a6149342c38c6c1f7b13a1adad7eba53d5a491b47",
+      "bytes": 86403,
+      "acquiredAt": "2026-09-08T18:18:07.028931+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Diessenhofen",
+      "path": "settlement-13.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Diessenhofen&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "6189b71681d27f75cc422c3ffbd1e9db1c71c8a8c8b96d9941d3c18ee2a91538",
+      "bytes": 123079,
+      "acquiredAt": "2026-09-08T18:18:07.526682+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Märstetten",
+      "path": "settlement-14.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=M%C3%A4rstetten&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "6da1343edf990c5c77eb60f0a8f562d894a7a359b2158ccc0a74cfa82546b997",
+      "bytes": 56455,
+      "acquiredAt": "2026-09-08T18:18:07.574094+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    },
+    {
+      "id": "Bottighofen",
+      "path": "settlement-15.json.gz",
+      "kind": "settlement",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.swisstopo.swissnames3d&searchText=Bottighofen&searchField=name&contains=false&sr=2056&geometryFormat=geojson",
+      "sha256": "7f175535054fc2d3e41b3605426534f6320353e27bf72a13e6b62a232ca7e336",
+      "bytes": 78891,
+      "acquiredAt": "2026-09-08T18:18:07.704368+00:00",
+      "publisher": "swisstopo / swissNAMES3D"
+    }
+  ],
+  "archive": {
+    "url": "https://data.stadt-zuerich.ch/dataset/sid_dav_verkehrszaehlung_miv_od2031/download/Zaehlstellen_Detail.zip",
+    "sha256": "ebf6827cc034e4004563be2e28d874bd56572929b694a1a26d1235467746c5b6",
+    "bytes": 169431406
+  }
+}
