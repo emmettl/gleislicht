@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-09-09",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "timetableSha256": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+  "source": {
+    "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+    "swissDate": "2026-09-02",
+    "borderRetrieved": "2026-09-08",
+    "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a"
+  },
+  "config": {
+    "file": "data/st-gallen-road-pilot/pfaedle.cfg",
+    "sha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4"
+  },
+  "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+  "routes": [
+    {
+      "routeId": "92-150-A-j26-1",
+      "agencyId": "896",
+      "agency": "Regiobus Gossau SG",
+      "line": "150",
+      "routeType": 700,
+      "mode": "bus"
+    },
+    {
+      "routeId": "92-631-j26-1",
+      "agencyId": "772",
+      "agency": "Busbetrieb Rapperswil-Eschenbach-Rüti ZH",
+      "line": "631",
+      "routeType": 700,
+      "mode": "bus"
+    }
+  ],
+  "limits": {
+    "snapMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 1200,
+    "alternativeSnapMetres": 5
+  },
+  "cache": {
+    "file": "data/st-gallen-sources/local/road-pilot/cache.json",
+    "sha256": "115994c1fb9dc1a75de798663c703a77c7fdd1a308fa72ac217541eb808c3a2c"
+  },
+  "pairs": [
+    {
+      "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:90327\",\"ch:1:sloid:12618\"]",
+      "geometrySha256": "6b4a9936928ccf5a67b5949e6fe7c869421b03f8050f0b5c4d12d8b2cec57625",
+      "decision": "Retain exclusion. Inbound Sommerau uses a 92.42 m connector unsupported by mapped road edges; outbound alone cannot validate the extension.",
+      "evidenceId": "sommerau-extension",
+      "connectorEvidenceSha256": "c72747d83a7d0b478d23be978695e9fd9d54249482a9d16a596f4917e4080855"
+    },
+    {
+      "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:12618\",\"ch:1:sloid:90327\"]",
+      "geometrySha256": "1d2ce80bf1ddcf502395b55484e1879fe2fcd6075a1ddb69c4ed49ce5f9047c3",
+      "decision": "Retain exclusion. Inbound Sommerau uses a 92.42 m connector unsupported by mapped road edges; outbound alone cannot validate the extension.",
+      "evidenceId": "sommerau-extension",
+      "connectorEvidenceSha256": "80b0eeb4b8ec1fb6ec6e8081ba94d14bf95da4f5424576d63ead5f6ab11eb069"
+    },
+    {
+      "key": "[\"92-631-j26-1\",\"ch:1:sloid:76103::52\",\"ch:1:sloid:88036::50\"]",
+      "geometrySha256": "2a363435c4d893e8f6447f4eb3dd352e949c0768459d9d16d2e251c21f24e691",
+      "decision": "Retain exclusion pending dated diversion alignment review. Both Rüti paths pass numerical full-pattern consensus, but the construction notice does not prove every inferred road or turn.",
+      "evidenceId": "rueti-may",
+      "connectorEvidenceSha256": "3a29c2e7b05e49efc2d57a0f030c49f59cbfeb7a8d012315d5499b658a069893"
+    },
+    {
+      "key": "[\"92-631-j26-1\",\"ch:1:sloid:88036::50\",\"ch:1:sloid:78564:0:404557\"]",
+      "geometrySha256": "2135c699b1cbf7af5c84f094f71be434f346d326e2efa3d39bc251672e3f8784",
+      "decision": "Retain exclusion pending dated diversion alignment review. Both Rüti paths pass numerical full-pattern consensus, but the construction notice does not prove every inferred road or turn.",
+      "evidenceId": "rueti-may",
+      "connectorEvidenceSha256": "4b4997bd164326735fd763025b53ced0b409dc62abd533c0c05efa88d4a0e0bc"
+    }
+  ],
+  "admissionEnabled": false,
+  "expectedRouteCoverage": [
+    {
+      "identity": {
+        "routeId": "92-150-A-j26-1",
+        "agencyId": "896",
+        "agency": "Regiobus Gossau SG",
+        "line": "150",
+        "routeType": 700,
+        "mode": "bus"
+      },
+      "days": [
+        {
+          "date": "2026-09-04",
+          "trips": 58,
+          "fullRoadPatterns": 4
+        },
+        {
+          "date": "2026-09-06",
+          "trips": 0,
+          "fullRoadPatterns": 0
+        }
+      ],
+      "fullRoadPatterns": 4
+    },
+    {
+      "identity": {
+        "routeId": "92-631-j26-1",
+        "agencyId": "772",
+        "agency": "Busbetrieb Rapperswil-Eschenbach-Rüti ZH",
+        "line": "631",
+        "routeType": 700,
+        "mode": "bus"
+      },
+      "days": [
+        {
+          "date": "2026-09-04",
+          "trips": 95,
+          "fullRoadPatterns": 9
+        },
+        {
+          "date": "2026-09-06",
+          "trips": 69,
+          "fullRoadPatterns": 8
+        }
+      ],
+      "fullRoadPatterns": 10
+    }
+  ]
+}

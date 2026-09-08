@@ -36,6 +36,12 @@ const followupPath='data/st-gallen-endpoint-followup.json', followup=await read(
 assert.deepEqual(followup.sourceHashes,audit.sourceHashes,'Stale endpoint follow-up sources')
 assert.equal(followup.endpointReviewSha256,sha256(await readFile(endpointPath)),'Stale endpoint follow-up inventory')
 summary.endpointFollowupReview={path:followupPath,sha256:sha256(await readFile(followupPath))}
+const roadPilotPath='data/st-gallen-road-pilot-review.json', roadPilot=await read(roadPilotPath)
+assert.deepEqual(roadPilot.sourceHashes,audit.sourceHashes,'Stale road pilot sources')
+assert.equal(roadPilot.endpointReviewSha256,sha256(await readFile(endpointPath)),'Stale road pilot endpoint inventory')
+assert.equal(roadPilot.followupReviewSha256,sha256(await readFile(followupPath)),'Stale road pilot service-change evidence')
+assert.equal(roadPilot.policySha256,sha256(await readFile('data/st-gallen-road-pilot-policy.json')),'Stale road pilot policy')
+summary.roadPilotReview={path:roadPilotPath,sha256:sha256(await readFile(roadPilotPath))}
 const vmobilPath='data/st-gallen-vmobil-review.json', vmobil=await read(vmobilPath)
 assert.deepEqual(vmobil.sourceHashes,audit.sourceHashes,'Stale Vorarlberg review sources')
 for (const day of days) assert.equal(vmobil.days.find(d=>d.date===day.date)?.dayAuditSha256,sha256(JSON.stringify(day)),'Stale Vorarlberg review day')
@@ -180,6 +186,8 @@ The [bus detour review](ST-GALLEN-DETOUR-REVIEW.md) replays all seven remaining 
 The [bus endpoint review](ST-GALLEN-ENDPOINT-REVIEW.md) replays every remaining bus endpoint-gap pair and checks other individual regional/city records mapped to the same agency. It covers ${endpoints.pairs.length} distinct directed pairs, affecting ${endpoints.days.map(d=>d.affectedTrips).join(' Friday / ')} Sunday complete trips. Operator evidence for lines 323 and 705 does not establish an admissible replacement alignment. The official Vorarlberg July sample contains line-164 shapes but no line 323; those external shapes are inventoried only. Candidate paths do not authorize a route fallback. All reviewed endpoint failures remain excluded with the unchanged 120 m limit. The [machine-readable review](../data/st-gallen-endpoint-review.json) pins every pair, candidate hash, evidence date and affected-pattern total.
 
 The [endpoint follow-up](ST-GALLEN-ENDPOINT-FOLLOWUP.md) examines ${followup.cases.reduce((n,c)=>n+c.pairs.length,0)} failed pairs on lines 451, 420, 729, 150 and 631, affecting ${days.map(d=>followup.cases.reduce((n,c)=>n+c.route.days.find(x=>x.date===d.date).affectedTrips,0)).join(" Friday / ")} Sunday trips. The Bad Ragaz and Buchs/Sargans maps do not corroborate the missing branches. Uzwil's map identifies a direct line-729 branch, while the numerically passing N72 candidate loops via Gemeindehaus, Coop and Sonnmatt. The [service-change review](ST-GALLEN-SERVICE-CHANGE-REVIEW.md) identifies the June Sommerau extension and the June–October Rüti diversion; no complete replacement path exists in the 179 individual AL_OEV bus/city records scanned across operators. All reviewed pairs remain excluded. The pinned evidence and candidate/checkpoint replay are recorded in [the follow-up audit](../data/st-gallen-endpoint-followup.json); run \`node scripts/review-st-gallen-endpoint-followup.mjs --check\` to verify it, or add \`--fetch-evidence\` to acquire missing pinned evidence. Every local feed artifact remains unchanged.
+
+The [OSM road pilot](ST-GALLEN-ROAD-PILOT.md) independently routes all 14 complete geometry patterns on lines 150 and 631, covering 153 Friday and 69 Sunday source trips, including already admitted controls. All four missing pairs pass numerical full-pattern consensus. Raw shape-distance replay exposes a 92.42 m unsupported inbound Sommerau connector; the outbound path alone cannot validate the extension. The Rüti candidates have at most 5.56 m endpoint connectors and remain pending a dated diversion-alignment review. The pilot admits no geometry and leaves the feed unchanged. Its [audit](../data/st-gallen-road-pilot-review.json) separately records OSM source dates, ODbL attribution, every matcher warning, exact full-pattern identities and connector measurements. Run \`node scripts/review-st-gallen-roads.mjs --check\` to replay the retained local evidence.
 
 ### Admitted route records
 
