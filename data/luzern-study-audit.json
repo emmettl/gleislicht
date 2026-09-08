@@ -12,7 +12,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "efe44b38095a9c4b7d025199935e69bdfc027cc1baac32ee34354edfdb68a49e",
     "timetable": "a92f949c51cd0dc102074204a6988c25157caa0a5490defc53d8308dc5e53b63",
-    "policy": "e693a52c384a717908291b046ccc914f9d358a5d4e1c746c662e28b1b47bdcf8",
+    "policy": "dfbffa13c0bc5ab0ac6e6719360e05bfef06b0051b6237cfca9b01084dae0f0e",
     "catalogue": "65e404e8972c7a9b14c0aa87179ed093acf87367a96428bca398bc516c3d1304"
   },
   "scope": {
@@ -250,7 +250,135 @@
       "Fixture validation covers Friday and Sunday plus preceding-day carry-in, not all annual seasonal, holiday or diversion patterns.",
       "Services crossing the canton without a stop are outside the passenger-service scope.",
       "No realtime data, one-way street certification or individual running-track validation."
-    ]
+    ],
+    "geometryRepairs": {
+      "sourceBusSha256": "49a88e0544b8ea9067a930fc5b112c14672bcf68ad3bd99bd51c0c4243478e6f",
+      "maximumLengthMetres": 100,
+      "repairs": [
+        {
+          "id": "b111-gap-1",
+          "targetFeature": "bus:B111",
+          "sourceFeatures": [
+            "bus:B110"
+          ],
+          "coordinates": [
+            [
+              8.3504933,
+              47.1220292
+            ],
+            [
+              8.3505377,
+              47.1220521
+            ],
+            [
+              8.3505771,
+              47.122079
+            ],
+            [
+              8.3506107,
+              47.1221093
+            ],
+            [
+              8.3506808,
+              47.1222007
+            ]
+          ],
+          "gapMetres": 23.789897767143664,
+          "pathMetres": 24.145444191354432,
+          "reason": "Short missing piece between disconnected target-line components. Every edge is present verbatim in the cited official bus source feature; endpoints are existing target vertices. Corridor inference only; source is undirected."
+        },
+        {
+          "id": "b081-gap-1",
+          "targetFeature": "bus:B081",
+          "sourceFeatures": [
+            "bus:B086"
+          ],
+          "coordinates": [
+            [
+              8.1145221,
+              47.1696586
+            ],
+            [
+              8.1147684,
+              47.1696579
+            ]
+          ],
+          "gapMetres": 18.64303002799222,
+          "pathMetres": 18.64303002799222,
+          "reason": "Short missing piece between disconnected target-line components. Every edge is present verbatim in the cited official bus source feature; endpoints are existing target vertices. Corridor inference only; source is undirected."
+        },
+        {
+          "id": "b609-gap-1",
+          "targetFeature": "bus:B609",
+          "sourceFeatures": [
+            "bus:B608"
+          ],
+          "coordinates": [
+            [
+              7.9689014,
+              47.2549762
+            ],
+            [
+              7.9689624,
+              47.2548241
+            ]
+          ],
+          "gapMetres": 17.551413651044527,
+          "pathMetres": 17.551413651044527,
+          "reason": "Short missing piece between disconnected target-line components. Every edge is present verbatim in the cited official bus source feature; endpoints are existing target vertices. Corridor inference only; source is undirected."
+        },
+        {
+          "id": "b399-gap-1",
+          "targetFeature": "bus:B399",
+          "sourceFeatures": [
+            "bus:B086"
+          ],
+          "coordinates": [
+            [
+              8.1145221,
+              47.1696586
+            ],
+            [
+              8.1147684,
+              47.1696579
+            ]
+          ],
+          "gapMetres": 18.64303002799222,
+          "pathMetres": 18.64303002799222,
+          "reason": "Short missing piece between disconnected target-line components. Every edge is present verbatim in the cited official bus source feature; endpoints are existing target vertices. Corridor inference only; source is undirected."
+        },
+        {
+          "id": "b399-gap-2",
+          "targetFeature": "bus:B399",
+          "sourceFeatures": [
+            "bus:B398"
+          ],
+          "coordinates": [
+            [
+              8.187471,
+              47.2403329
+            ],
+            [
+              8.1875194,
+              47.2404021
+            ]
+          ],
+          "gapMetres": 8.53000048729206,
+          "pathMetres": 8.53000048729206,
+          "reason": "Short missing piece between disconnected target-line components. Every edge is present verbatim in the cited official bus source feature; endpoints are existing target vertices. Corridor inference only; source is undirected."
+        }
+      ],
+      "rejected": [
+        {
+          "targetFeatures": [
+            "bus:B622",
+            "bus:B653"
+          ],
+          "gapMetres": 9.812311813582587,
+          "reason": "No short connecting path in the official bus line network; the nearest connected route detours about 3.775 km. No bridge inserted."
+        }
+      ]
+    }
   },
   "annualRouteRecords": 203,
   "annualAgencies": 24,
@@ -499,6 +627,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 14441.954576438191
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-350-0-j26-1"
       ],
@@ -530,6 +660,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 29280.82076749627
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N4-A-j26-1"
       ],
@@ -561,6 +693,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 13466.656812485147
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-101-A-j26-1"
       ],
@@ -592,10 +726,14 @@
         "TP_URL": 1,
         "SHAPE_Length": 14692.700497031276
       },
+      "geometryRepairIds": [
+        "b081-gap-1"
+      ],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-357-2-j26-1"
       ],
-      "admittedTrips": 9,
+      "admittedTrips": 87,
       "status": "used-for-admitted-patterns"
     },
     {
@@ -623,6 +761,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 9687.480464533619
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-212-A-j26-1"
       ],
@@ -654,6 +794,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 5710.941010427333
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-44-A-j26-1"
       ],
@@ -685,6 +827,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 43819.98128151736
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N9-j26-1"
       ],
@@ -716,6 +860,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 3092.642676971575
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-11-D-j26-1"
       ],
@@ -747,6 +893,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 19147.070179726346
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-653-j26-1"
       ],
@@ -778,6 +926,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 8297.344387608664
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-46-A-j26-1"
       ],
@@ -809,6 +959,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 20905.621501184993
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-354-0-j26-1"
       ],
@@ -840,6 +992,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 12651.364488409905
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-359-E-j26-1"
       ],
@@ -871,6 +1025,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 7920.981759584552
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-6-D-j26-1"
       ],
@@ -902,6 +1058,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 10410.147721255815
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-64-A-j26-1"
       ],
@@ -933,6 +1091,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 18966.334489997556
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-352-3-j26-1"
       ],
@@ -964,6 +1124,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 11053.063691645448
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-40-A-j26-1"
       ],
@@ -995,6 +1157,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 9981.829149466725
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-348-j26-1"
       ],
@@ -1026,6 +1190,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 8850.367078696216
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-22-j26-1"
       ],
@@ -1057,6 +1223,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 5106.263060255117
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-12-A-j26-1"
       ],
@@ -1088,6 +1256,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 34256.36545548636
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-50-B-j26-1"
       ],
@@ -1119,11 +1289,16 @@
         "TP_URL": 1,
         "SHAPE_Length": 20770.037920395684
       },
+      "geometryRepairIds": [
+        "b399-gap-1",
+        "b399-gap-2"
+      ],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-357-8-j26-1"
       ],
-      "admittedTrips": 0,
-      "status": "no-admitted-fixture-pattern"
+      "admittedTrips": 65,
+      "status": "used-for-admitted-patterns"
     },
     {
       "key": "bus:B980",
@@ -1150,6 +1325,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 16105.398188516907
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-359-H-j26-1"
       ],
@@ -1181,6 +1358,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 18091.96549087463
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N21-j26-1"
       ],
@@ -1212,6 +1391,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 16993.1222364656
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-359-D-j26-1"
       ],
@@ -1243,6 +1424,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 21391.814125666002
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-357-3-j26-1"
       ],
@@ -1274,6 +1457,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 16068.411291277142
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N63-B-j26-1"
       ],
@@ -1305,6 +1490,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 37249.88113895981
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-52-j26-1"
       ],
@@ -1336,6 +1523,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 10853.963525060522
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-357-6-j26-1"
       ],
@@ -1367,6 +1556,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 9567.567757655452
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-354-5-j26-1"
       ],
@@ -1398,6 +1589,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 19364.684580290046
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N33-A-j26-1"
       ],
@@ -1429,6 +1622,11 @@
         "TP_URL": 1,
         "SHAPE_Length": 7938.162468629527
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [
+        "b081-gap-1",
+        "b399-gap-1"
+      ],
       "gtfsRoutes": [
         "96-356-8-j26-1"
       ],
@@ -1460,6 +1658,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 10427.887359400635
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-14-j26-1"
       ],
@@ -1491,6 +1691,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 5034.850894738495
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N12-j26-1"
       ],
@@ -1522,6 +1724,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 10867.570774526288
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-357-9-j26-1"
       ],
@@ -1553,6 +1757,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 25069.368680706182
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N1-j26-1"
       ],
@@ -1584,6 +1790,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 9831.09781865221
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-15-j26-1"
       ],
@@ -1615,6 +1823,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 4812.01730555773
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-18-j26-1"
       ],
@@ -1646,6 +1856,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 7086.359822605189
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-509-A-j26-1"
       ],
@@ -1677,6 +1889,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 12858.09578691078
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-357-0-j26-1"
       ],
@@ -1708,6 +1922,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 37280.47100852807
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N6-j26-1"
       ],
@@ -1739,6 +1955,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 13886.418764229868
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-354-3-j26-1"
       ],
@@ -1770,6 +1988,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 14930.874454763516
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-63-A-j26-1"
       ],
@@ -1801,6 +2021,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 16255.842868395537
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-358-0-j26-1"
       ],
@@ -1833,10 +2055,14 @@
         "TP_URL": 1,
         "SHAPE_Length": 11315.165013897362
       },
+      "geometryRepairIds": [
+        "b609-gap-1"
+      ],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-609-A-j26-1"
       ],
-      "admittedTrips": 33,
+      "admittedTrips": 100,
       "status": "used-for-admitted-patterns"
     },
     {
@@ -1864,6 +2090,8 @@
         "TP_URL": 2,
         "SHAPE_Length": 78988.97040198756
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-493-A-j26-1"
       ],
@@ -1895,6 +2123,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 14947.784689802691
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-357-4-j26-1"
       ],
@@ -1926,6 +2156,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 4198.603651968166
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-19-A-j26-1"
       ],
@@ -1957,6 +2189,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 12225.489148653181
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-41-A-j26-1"
       ],
@@ -1988,6 +2222,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 16196.21588611328
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-66-A-j26-1"
       ],
@@ -2019,6 +2255,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 14353.422671290295
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-352-1-j26-1"
       ],
@@ -2050,6 +2288,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 13042.384565577911
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-350-6-j26-1"
       ],
@@ -2081,6 +2321,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 7150.987235952884
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-8-A-j26-1"
       ],
@@ -2112,6 +2354,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 18681.41077591937
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-354-6-j26-1"
       ],
@@ -2143,6 +2387,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 16801.116196590174
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-51-C-j26-1"
       ],
@@ -2174,6 +2420,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 46530.591680028025
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-502-A-j26-1"
       ],
@@ -2205,6 +2453,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 13005.932227223835
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-354-4-j26-1"
       ],
@@ -2237,6 +2487,10 @@
         "TP_URL": 1,
         "SHAPE_Length": 31911.328907568746
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [
+        "b609-gap-1"
+      ],
       "gtfsRoutes": [
         "92-608-A-j26-1"
       ],
@@ -2268,6 +2522,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 11061.758047865458
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-350-2-j26-1"
       ],
@@ -2299,6 +2555,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 8157.910500022417
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-42-A-j26-1"
       ],
@@ -2330,6 +2588,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 3114.8035540682044
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-510-j26-1"
       ],
@@ -2361,6 +2621,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 16874.22790782033
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-60-A-j26-1"
       ],
@@ -2392,6 +2654,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 20495.261920278746
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-352-2-j26-1"
       ],
@@ -2423,6 +2687,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 34058.93198837784
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-508-A-j26-1"
       ],
@@ -2454,6 +2720,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 15644.442981889839
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N2-A-j26-1"
       ],
@@ -2485,6 +2753,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 31075.217376599943
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N52-j26-1"
       ],
@@ -2516,6 +2786,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 18421.278386238508
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-359-A-j26-1"
       ],
@@ -2547,6 +2819,10 @@
         "TP_URL": 1,
         "SHAPE_Length": 10890.922432652338
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [
+        "b399-gap-2"
+      ],
       "gtfsRoutes": [
         "96-357-5-j26-1"
       ],
@@ -2578,6 +2854,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 13554.139549294778
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-1-B-j26-1"
       ],
@@ -2609,6 +2887,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 13751.117633725404
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-359-C-j26-1"
       ],
@@ -2640,6 +2920,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 15912.64290721739
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-350-3-j26-1"
       ],
@@ -2671,6 +2953,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 7430.067515251549
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N20-A-j26-1"
       ],
@@ -2702,6 +2986,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 17396.64569093731
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-350-1-j26-1"
       ],
@@ -2733,6 +3019,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 9143.42489322415
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-30-A-j26-1"
       ],
@@ -2764,6 +3052,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 6747.064695870359
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-2-C-j26-1"
       ],
@@ -2795,6 +3085,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 3061.1059717635653
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-4-D-j26-1"
       ],
@@ -2826,6 +3118,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 13110.538503964981
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-352-0-j26-1"
       ],
@@ -2857,6 +3151,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 11705.621885844754
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-529-j26-1"
       ],
@@ -2888,6 +3184,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 36647.42647082995
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-359-G-j26-1"
       ],
@@ -2919,6 +3217,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 6791.258719346145
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-7-A-j26-1"
       ],
@@ -2950,6 +3250,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 22648.765598454986
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N60-C-j26-1"
       ],
@@ -2981,6 +3283,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 9458.37371422425
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-350-5-j26-1"
       ],
@@ -3012,6 +3316,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 5540.90095909652
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-25-A-j26-1"
       ],
@@ -3043,6 +3349,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 13591.164614547668
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-354-2-j26-1"
       ],
@@ -3074,6 +3382,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 8186.995280600583
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-109-B-j26-1"
       ],
@@ -3105,6 +3415,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 18157.494937511357
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-357-1-j26-1"
       ],
@@ -3136,6 +3448,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 8786.339966215282
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-352-4-j26-1"
       ],
@@ -3167,6 +3481,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 28871.62937272334
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-356-9-j26-1"
       ],
@@ -3198,6 +3514,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 11017.321897277783
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-351-9-j26-1"
       ],
@@ -3229,6 +3547,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 38336.379324877584
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-61-A-j26-1"
       ],
@@ -3260,6 +3580,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 8956.941229805825
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N14-j26-1"
       ],
@@ -3291,6 +3613,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 10656.671061884395
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-107-B-j26-1"
       ],
@@ -3322,6 +3646,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 9940.540478932442
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-24-j26-1"
       ],
@@ -3354,6 +3680,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 4564.821961529528
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [],
       "admittedTrips": 0,
       "status": "no-annual-Luzern-calling-route"
@@ -3384,6 +3712,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 7225.263486433954
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-604-C-j26-1"
       ],
@@ -3415,6 +3745,10 @@
         "TP_URL": 1,
         "SHAPE_Length": 15759.370940265517
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [
+        "b111-gap-1"
+      ],
       "gtfsRoutes": [
         "96-357-7-j26-1"
       ],
@@ -3446,6 +3780,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 7333.832413559627
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-43-A-j26-1"
       ],
@@ -3477,6 +3813,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 16129.09965702058
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-21-C-j26-1"
       ],
@@ -3508,6 +3846,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 7508.254449590183
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-5-F-j26-1"
       ],
@@ -3539,6 +3879,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 36349.92735066521
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-359-F-j26-1"
       ],
@@ -3570,6 +3912,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 11825.990805662232
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-350-4-j26-1"
       ],
@@ -3601,6 +3945,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 27732.282482445768
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-N3-B-j26-1"
       ],
@@ -3632,6 +3978,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 14225.133581971706
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-105-j26-1"
       ],
@@ -3663,11 +4011,15 @@
         "TP_URL": 1,
         "SHAPE_Length": 9443.471822581863
       },
+      "geometryRepairIds": [
+        "b111-gap-1"
+      ],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-111-j26-1"
       ],
-      "admittedTrips": 0,
-      "status": "no-admitted-fixture-pattern"
+      "admittedTrips": 96,
+      "status": "used-for-admitted-patterns"
     },
     {
       "key": "bus:B622",
@@ -3694,6 +4046,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 10475.209755276224
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-622-A-j26-1"
       ],
@@ -3725,6 +4079,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 6557.727775451917
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-20-A-j26-1"
       ],
@@ -3756,6 +4112,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 21348.2648615649
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "96-359-B-j26-1"
       ],
@@ -3787,6 +4145,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 6271.8826243971625
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-16-j26-1"
       ],
@@ -3818,6 +4178,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 2793.7384378953516
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-45-A-j26-1"
       ],
@@ -3849,6 +4211,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 14321.722678256834
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-23-j26-1"
       ],
@@ -3880,6 +4244,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 8867.983244199295
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-65-A-j26-1"
       ],
@@ -3911,6 +4277,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 3729.8805536399022
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-10-B-j26-1"
       ],
@@ -3942,6 +4310,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 10615.814910906303
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-26-j26-1"
       ],
@@ -3973,6 +4343,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 5924.355267098623
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-106-A-j26-1"
       ],
@@ -4004,6 +4376,8 @@
         "TP_URL": 1,
         "SHAPE_Length": 15580.593222653986
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "92-62-A-j26-1"
       ],
@@ -4035,6 +4409,8 @@
         "TU_URL": 5,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [],
       "admittedTrips": 0,
       "status": "no-annual-Luzern-calling-route"
@@ -4064,6 +4440,8 @@
         "TU_URL": 12,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-5-D-j26-1"
       ],
@@ -4095,6 +4473,8 @@
         "TU_URL": 9,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [],
       "admittedTrips": 0,
       "status": "no-annual-Luzern-calling-route"
@@ -4124,6 +4504,8 @@
         "TU_URL": 12,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-55-j26-1"
       ],
@@ -4155,6 +4537,8 @@
         "TU_URL": 15,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "93-256-2-j26-1"
       ],
@@ -4186,6 +4570,8 @@
         "TU_URL": 6,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-1-A-j26-1"
       ],
@@ -4217,6 +4603,8 @@
         "TU_URL": 10,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-77-j26-1"
       ],
@@ -4248,6 +4636,8 @@
         "TU_URL": 10,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-6-B-j26-1"
       ],
@@ -4279,6 +4669,8 @@
         "TU_URL": 6,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-29-j26-1"
       ],
@@ -4310,6 +4702,8 @@
         "TU_URL": 12,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-4-D-j26-1"
       ],
@@ -4341,6 +4735,8 @@
         "TU_URL": 6,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-1-I-j26-1"
       ],
@@ -4372,6 +4768,8 @@
         "TU_URL": 0,
         "TP_URL": 0
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "93-251-5-j26-1"
       ],
@@ -4403,6 +4801,8 @@
         "TU_URL": 12,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-LEX-j26-1"
       ],
@@ -4434,6 +4834,8 @@
         "TU_URL": 6,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-N7-j26-1"
       ],
@@ -4465,6 +4867,8 @@
         "TU_URL": 13,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-VAE-j26-1"
       ],
@@ -4496,6 +4900,8 @@
         "TU_URL": 6,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-99-j26-1"
       ],
@@ -4527,6 +4933,8 @@
         "TU_URL": 12,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-41-A-j26-1"
       ],
@@ -4558,6 +4966,8 @@
         "TU_URL": 6,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-9-B-j26-1"
       ],
@@ -4589,6 +4999,8 @@
         "TU_URL": 10,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-7-L-j26-1"
       ],
@@ -4620,6 +5032,8 @@
         "TU_URL": 15,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [],
       "admittedTrips": 0,
       "status": "no-annual-Luzern-calling-route"
@@ -4650,6 +5064,8 @@
         "TU_URL": 15,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "93-82-j26-1",
         "93-88-j26-1"
@@ -4682,6 +5098,8 @@
         "TU_URL": 10,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-6-B-j26-1"
       ],
@@ -4713,6 +5131,8 @@
         "TU_URL": 16,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "93-251-0-j26-1"
       ],
@@ -4745,6 +5165,8 @@
         "TU_URL": 12,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-LIX-A-j26-1",
         "91-LIX-j26-1"
@@ -4777,6 +5199,8 @@
         "TU_URL": 6,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-3-H-j26-1"
       ],
@@ -4808,6 +5232,8 @@
         "TU_URL": 12,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-44-A-j26-1"
       ],
@@ -4832,6 +5258,8 @@
         "TU_URL": 0,
         "TP_URL": 0
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [],
       "admittedTrips": 0,
       "status": "identity-or-vintage-exclusion"
@@ -4861,6 +5289,8 @@
         "TU_URL": 6,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-24-F-j26-1"
       ],
@@ -4892,6 +5322,8 @@
         "TU_URL": 10,
         "TP_URL": 1
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [
         "91-7-D-j26-1"
       ],
@@ -4912,6 +5344,8 @@
         "TP_URL": "http://www.lakelucerne.ch/fahrplan-preise/preise-tickets/",
         "SHAPE_Length": 17821.779052485697
       },
+      "geometryRepairIds": [],
+      "repairDonorFor": [],
       "gtfsRoutes": [],
       "admittedTrips": 0,
       "status": "identity-or-vintage-exclusion"
@@ -14692,20 +15126,16 @@
         {
           "date": "2026-09-04",
           "trips": 56,
-          "admittedTrips": 0,
-          "status": "excluded",
-          "reasons": [
-            "disconnected-line"
-          ]
+          "admittedTrips": 56,
+          "status": "admitted",
+          "reasons": []
         },
         {
           "date": "2026-09-06",
           "trips": 40,
-          "admittedTrips": 0,
-          "status": "excluded",
-          "reasons": [
-            "disconnected-line"
-          ]
+          "admittedTrips": 40,
+          "status": "admitted",
+          "reasons": []
         }
       ]
     },
@@ -16130,20 +16560,16 @@
         {
           "date": "2026-09-04",
           "trips": 65,
-          "admittedTrips": 33,
-          "status": "partially-admitted",
-          "reasons": [
-            "disconnected-line"
-          ]
+          "admittedTrips": 65,
+          "status": "admitted",
+          "reasons": []
         },
         {
           "date": "2026-09-06",
           "trips": 35,
-          "admittedTrips": 0,
-          "status": "excluded",
-          "reasons": [
-            "disconnected-line"
-          ]
+          "admittedTrips": 35,
+          "status": "admitted",
+          "reasons": []
         }
       ]
     },
@@ -18851,20 +19277,16 @@
         {
           "date": "2026-09-04",
           "trips": 44,
-          "admittedTrips": 5,
-          "status": "partially-admitted",
-          "reasons": [
-            "disconnected-line"
-          ]
+          "admittedTrips": 44,
+          "status": "admitted",
+          "reasons": []
         },
         {
           "date": "2026-09-06",
           "trips": 43,
-          "admittedTrips": 4,
-          "status": "partially-admitted",
-          "reasons": [
-            "disconnected-line"
-          ]
+          "admittedTrips": 43,
+          "status": "admitted",
+          "reasons": []
         }
       ]
     },
@@ -19053,20 +19475,16 @@
         {
           "date": "2026-09-04",
           "trips": 35,
-          "admittedTrips": 0,
-          "status": "excluded",
-          "reasons": [
-            "disconnected-line"
-          ]
+          "admittedTrips": 35,
+          "status": "admitted",
+          "reasons": []
         },
         {
           "date": "2026-09-06",
           "trips": 30,
-          "admittedTrips": 0,
-          "status": "excluded",
-          "reasons": [
-            "disconnected-line"
-          ]
+          "admittedTrips": 30,
+          "status": "admitted",
+          "reasons": []
         }
       ]
     },
@@ -19409,21 +19827,23 @@
     {
       "date": "2026-09-04",
       "trips": 13649,
-      "admittedTrips": 8324,
-      "excludedTrips": 5325,
+      "admittedTrips": 8486,
+      "excludedTrips": 5163,
       "carryInTrips": 263,
-      "admittedCarryInTrips": 220,
+      "admittedCarryInTrips": 226,
       "representativeHeadwayTrips": 1020,
       "admittedHeadwayTrips": 0,
       "patterns": 1061,
-      "admittedPatterns": 758,
+      "admittedPatterns": 774,
       "directedPairs": 4919,
-      "matchedDirectedPairs": 4246,
+      "matchedDirectedPairs": 4258,
       "segmentOccurrences": 140314,
-      "matchedSegmentOccurrences": 130744,
+      "matchedSegmentOccurrences": 130993,
       "scheduledSegmentOccurrences": 139294,
-      "matchedScheduledSegmentOccurrences": 130744,
+      "matchedScheduledSegmentOccurrences": 130993,
       "representativeHeadwaySegmentOccurrences": 1020,
+      "repairedDirectedPairs": 12,
+      "admittedTripsUsingRepair": 162,
       "groups": [
         {
           "id": "11:rail",
@@ -19521,14 +19941,14 @@
           "mode": "bus",
           "routes": 9,
           "trips": 475,
-          "admittedTrips": 416,
+          "admittedTrips": 472,
           "patterns": 53,
-          "admittedPatterns": 47,
+          "admittedPatterns": 51,
           "directedPairs": 289,
-          "matchedDirectedPairs": 272,
+          "matchedDirectedPairs": 274,
           "segmentOccurrences": 7520,
-          "matchedSegmentOccurrences": 7388,
-          "geometryCoverage": 0.9824468085106383
+          "matchedSegmentOccurrences": 7498,
+          "geometryCoverage": 0.9970744680851064
         },
         {
           "id": "812:bus",
@@ -19581,14 +20001,14 @@
           "mode": "bus",
           "routes": 3,
           "trips": 161,
-          "admittedTrips": 129,
+          "admittedTrips": 161,
           "patterns": 22,
-          "admittedPatterns": 20,
+          "admittedPatterns": 22,
           "directedPairs": 141,
-          "matchedDirectedPairs": 139,
+          "matchedDirectedPairs": 141,
           "segmentOccurrences": 2286,
-          "matchedSegmentOccurrences": 2254,
-          "geometryCoverage": 0.9860017497812773
+          "matchedSegmentOccurrences": 2286,
+          "geometryCoverage": 1
         },
         {
           "id": "7230:bus",
@@ -19761,14 +20181,14 @@
           "mode": "bus",
           "routes": 32,
           "trips": 1481,
-          "admittedTrips": 1267,
+          "admittedTrips": 1341,
           "patterns": 235,
-          "admittedPatterns": 193,
+          "admittedPatterns": 203,
           "directedPairs": 1324,
-          "matchedDirectedPairs": 1230,
+          "matchedDirectedPairs": 1238,
           "segmentOccurrences": 20847,
-          "matchedSegmentOccurrences": 19573,
-          "geometryCoverage": 0.9388880894133449
+          "matchedSegmentOccurrences": 19680,
+          "geometryCoverage": 0.9440207224061016
         }
       ],
       "routes": [
@@ -20210,11 +20630,11 @@
           "mode": "bus",
           "line": "111",
           "trips": 56,
-          "admittedTrips": 0,
+          "admittedTrips": 56,
           "segmentOccurrences": 550,
-          "matchedSegmentOccurrences": 440,
+          "matchedSegmentOccurrences": 550,
           "carryInTrips": 3,
-          "admittedCarryInTrips": 0
+          "admittedCarryInTrips": 3
         },
         {
           "routeId": "92-11-D-j26-1",
@@ -20690,11 +21110,11 @@
           "mode": "bus",
           "line": "609",
           "trips": 65,
-          "admittedTrips": 33,
+          "admittedTrips": 65,
           "segmentOccurrences": 583,
-          "matchedSegmentOccurrences": 551,
+          "matchedSegmentOccurrences": 583,
           "carryInTrips": 1,
-          "admittedCarryInTrips": 0
+          "admittedCarryInTrips": 1
         },
         {
           "routeId": "92-60-A-j26-1",
@@ -21350,11 +21770,11 @@
           "mode": "bus",
           "line": "81",
           "trips": 44,
-          "admittedTrips": 5,
+          "admittedTrips": 44,
           "segmentOccurrences": 761,
-          "matchedSegmentOccurrences": 722,
+          "matchedSegmentOccurrences": 761,
           "carryInTrips": 4,
-          "admittedCarryInTrips": 2
+          "admittedCarryInTrips": 4
         },
         {
           "routeId": "96-357-3-j26-1",
@@ -21422,9 +21842,9 @@
           "mode": "bus",
           "line": "399",
           "trips": 35,
-          "admittedTrips": 0,
+          "admittedTrips": 35,
           "segmentOccurrences": 844,
-          "matchedSegmentOccurrences": 776,
+          "matchedSegmentOccurrences": 844,
           "carryInTrips": 0,
           "admittedCarryInTrips": 0
         },
@@ -21456,8 +21876,8 @@
       "exclusionReasons": {
         "missing-line": 4602,
         "endpoint-gap": 355,
-        "disconnected-line": 260,
         "collapsed-path": 28,
+        "disconnected-line": 98,
         "stale-or-missing-boat-source": 86
       },
       "directedPatterns": [
@@ -69405,11 +69825,9 @@
             "[\"92-111-j26-1\",\"ch:1:sloid:89225::2\",\"ch:1:sloid:89224:0:01\"]"
           ],
           "trips": 1,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 2,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 3,
           "totalPairs": 3,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -69506,11 +69924,9 @@
             "[\"92-111-j26-1\",\"ch:1:sloid:89225::2\",\"ch:1:sloid:89224:0:01\"]"
           ],
           "trips": 27,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 8,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 10,
           "totalPairs": 10,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -69586,11 +70002,9 @@
             "[\"92-111-j26-1\",\"ch:1:sloid:77168::1\",\"ch:1:sloid:77169::1\"]"
           ],
           "trips": 1,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 6,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 7,
           "totalPairs": 7,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -69687,11 +70101,9 @@
             "[\"92-111-j26-1\",\"ch:1:sloid:89665::4\",\"ch:1:sloid:77161::8\"]"
           ],
           "trips": 27,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 8,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 10,
           "totalPairs": 10,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -100376,11 +100788,9 @@
             "[\"92-609-A-j26-1\",\"ch:1:sloid:72728\",\"ch:1:sloid:72745::6\"]"
           ],
           "trips": 16,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 10,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 11,
           "totalPairs": 11,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -100484,11 +100894,9 @@
             "[\"92-609-A-j26-1\",\"ch:1:sloid:89208\",\"ch:1:sloid:2898\"]"
           ],
           "trips": 16,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 10,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 11,
           "totalPairs": 11,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -138502,11 +138910,9 @@
             "[\"96-357-2-j26-1\",\"ch:1:sloid:72976:0:957266\",\"ch:1:sloid:2038:0:539119\"]"
           ],
           "trips": 14,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 18,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -138666,11 +139072,9 @@
             "[\"96-357-2-j26-1\",\"ch:1:sloid:72976:0:957266\",\"ch:1:sloid:2038:0:333623\"]"
           ],
           "trips": 4,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 18,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -138944,11 +139348,9 @@
             "[\"96-357-2-j26-1\",\"ch:1:sloid:72961\",\"ch:1:sloid:2998\"]"
           ],
           "trips": 2,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 18,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -139108,11 +139510,9 @@
             "[\"96-357-2-j26-1\",\"ch:1:sloid:72961:0:886556\",\"ch:1:sloid:2998:0:178\"]"
           ],
           "trips": 18,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 18,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -139329,11 +139729,9 @@
             "[\"96-357-2-j26-1\",\"ch:1:sloid:72976\",\"ch:1:sloid:2038\"]"
           ],
           "trips": 1,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 18,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -142222,11 +142620,9 @@
             "[\"96-357-8-j26-1\",\"ch:1:sloid:72961:0:886556\",\"ch:1:sloid:2998:0:178\"]"
           ],
           "trips": 1,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 17,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -142428,11 +142824,9 @@
             "[\"96-357-8-j26-1\",\"ch:1:sloid:72961:0:886556\",\"ch:1:sloid:2998:0:178\"]"
           ],
           "trips": 16,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 23,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 25,
           "totalPairs": 25,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -142529,11 +142923,9 @@
             "[\"96-357-8-j26-1\",\"ch:1:sloid:82549:0:141226\",\"ch:1:sloid:80822:0:136053\"]"
           ],
           "trips": 1,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 9,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 10,
           "totalPairs": 10,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -142665,11 +143057,9 @@
             "[\"96-357-8-j26-1\",\"ch:1:sloid:72971:0:367536\",\"ch:1:sloid:79848:0:161095\"]"
           ],
           "trips": 1,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 14,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 15,
           "totalPairs": 15,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -142871,11 +143261,9 @@
             "[\"96-357-8-j26-1\",\"ch:1:sloid:82549:0:141226\",\"ch:1:sloid:80822:0:136053\"]"
           ],
           "trips": 16,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 23,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 25,
           "totalPairs": 25,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -169943,17 +170331,23 @@
           "toId": "ch:1:sloid:77168::2",
           "from": "Inwil, Dorf",
           "to": "Inwil, Pannerhof",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "da2179d89c06e2d270a2df18952c4e6fec5d57fc8451c6edcf6baad0ca2d7396",
           "maximumSnapMetres": 4.026162399518872,
+          "pathMetres": 368.2674076227621,
           "sourceFeatures": [
             "bus:B111"
+          ],
+          "geometryRepairIds": [
+            "b111-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B110"
           ],
           "occurrences": 55,
           "scheduledOccurrences": 55,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 55,
+          "matched": true
         },
         {
           "key": "[\"92-111-j26-1\",\"ch:1:sloid:77168::2\",\"ch:1:sloid:89225::2\"]",
@@ -169974,7 +170368,7 @@
           "occurrences": 55,
           "scheduledOccurrences": 55,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 55,
           "matched": true
         },
         {
@@ -169996,7 +170390,7 @@
           "occurrences": 28,
           "scheduledOccurrences": 28,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 28,
           "matched": true
         },
         {
@@ -170018,7 +170412,7 @@
           "occurrences": 28,
           "scheduledOccurrences": 28,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 28,
           "matched": true
         },
         {
@@ -170040,7 +170434,7 @@
           "occurrences": 28,
           "scheduledOccurrences": 28,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 28,
           "matched": true
         },
         {
@@ -170062,7 +170456,7 @@
           "occurrences": 28,
           "scheduledOccurrences": 28,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 28,
           "matched": true
         },
         {
@@ -170084,7 +170478,7 @@
           "occurrences": 28,
           "scheduledOccurrences": 28,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 28,
           "matched": true
         },
         {
@@ -170106,7 +170500,7 @@
           "occurrences": 28,
           "scheduledOccurrences": 28,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 28,
           "matched": true
         },
         {
@@ -170128,7 +170522,7 @@
           "occurrences": 55,
           "scheduledOccurrences": 55,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 55,
           "matched": true
         },
         {
@@ -170141,17 +170535,23 @@
           "toId": "ch:1:sloid:77169::1",
           "from": "Inwil, Pannerhof",
           "to": "Inwil, Dorf",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "7d630fbaf5e1ccc367c165d1183ac159b4dc567ee43f6ba7b3cbed7866a22aca",
           "maximumSnapMetres": 4.026162399518872,
+          "pathMetres": 377.5260035348426,
           "sourceFeatures": [
             "bus:B111"
+          ],
+          "geometryRepairIds": [
+            "b111-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B110"
           ],
           "occurrences": 55,
           "scheduledOccurrences": 55,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 55,
+          "matched": true
         },
         {
           "key": "[\"92-111-j26-1\",\"ch:1:sloid:89224:0:02\",\"ch:1:sloid:89225::1\"]",
@@ -170172,7 +170572,7 @@
           "occurrences": 27,
           "scheduledOccurrences": 27,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 27,
           "matched": true
         },
         {
@@ -170194,7 +170594,7 @@
           "occurrences": 27,
           "scheduledOccurrences": 27,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 27,
           "matched": true
         },
         {
@@ -170216,7 +170616,7 @@
           "occurrences": 27,
           "scheduledOccurrences": 27,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 27,
           "matched": true
         },
         {
@@ -170238,7 +170638,7 @@
           "occurrences": 27,
           "scheduledOccurrences": 27,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 27,
           "matched": true
         },
         {
@@ -170260,7 +170660,7 @@
           "occurrences": 27,
           "scheduledOccurrences": 27,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 27,
           "matched": true
         },
         {
@@ -170282,7 +170682,7 @@
           "occurrences": 27,
           "scheduledOccurrences": 27,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 27,
           "matched": true
         },
         {
@@ -206760,7 +207160,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -206782,7 +207182,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -206804,7 +207204,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -206817,17 +207217,23 @@
           "toId": "ch:1:sloid:95883",
           "from": "Reiden, Unterdorf",
           "to": "Reiden, Industrie Weiher",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "a14b12395c7573c7495788a98e335db271ef031a697d3eb226c29a8c3944f11c",
           "maximumSnapMetres": 2.2611955871691816,
+          "pathMetres": 316.09898158415916,
           "sourceFeatures": [
             "bus:B609"
+          ],
+          "geometryRepairIds": [
+            "b609-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B608"
           ],
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 16,
+          "matched": true
         },
         {
           "key": "[\"92-609-A-j26-1\",\"ch:1:sloid:95883\",\"ch:1:sloid:2380\"]",
@@ -206848,7 +207254,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -206870,7 +207276,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -206892,7 +207298,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -206914,7 +207320,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -206936,7 +207342,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -206958,7 +207364,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -206980,7 +207386,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -207002,7 +207408,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -207024,7 +207430,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -207046,7 +207452,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -207068,7 +207474,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -207090,7 +207496,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -207112,7 +207518,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -207134,7 +207540,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -207147,17 +207553,23 @@
           "toId": "ch:1:sloid:2352",
           "from": "Reiden, Industrie Weiher",
           "to": "Reiden, Unterdorf",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "14b2460abe2de7c0dc4713b44f628d9c67a0f87454f304875ed64d790c9ad454",
           "maximumSnapMetres": 2.2611955871691816,
+          "pathMetres": 316.09898158415916,
           "sourceFeatures": [
             "bus:B609"
+          ],
+          "geometryRepairIds": [
+            "b609-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B608"
           ],
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 16,
+          "matched": true
         },
         {
           "key": "[\"92-609-A-j26-1\",\"ch:1:sloid:2352\",\"ch:1:sloid:72729\"]",
@@ -207178,7 +207590,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -207200,7 +207612,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -207222,7 +207634,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -242006,7 +242418,7 @@
           "occurrences": 20,
           "scheduledOccurrences": 20,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 2,
+          "admittedOccurrences": 20,
           "matched": true
         },
         {
@@ -242028,7 +242440,7 @@
           "occurrences": 20,
           "scheduledOccurrences": 20,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 2,
+          "admittedOccurrences": 20,
           "matched": true
         },
         {
@@ -242050,7 +242462,7 @@
           "occurrences": 20,
           "scheduledOccurrences": 20,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 2,
+          "admittedOccurrences": 20,
           "matched": true
         },
         {
@@ -242072,7 +242484,7 @@
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 15,
           "matched": true
         },
         {
@@ -242094,7 +242506,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242116,7 +242528,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242138,7 +242550,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242151,17 +242563,23 @@
           "toId": "ch:1:sloid:2550:0:659550",
           "from": "Sursee, Frieslirain",
           "to": "Sursee, Spital",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "cafd39668fbfbf3ec6f429abb0cfb010d0d5888c9312295f711e20eca51b888f",
           "maximumSnapMetres": 4.106949301176243,
+          "pathMetres": 410.6635434447467,
           "sourceFeatures": [
             "bus:B081"
+          ],
+          "geometryRepairIds": [
+            "b081-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 18,
+          "matched": true
         },
         {
           "key": "[\"96-357-2-j26-1\",\"ch:1:sloid:2550:0:659550\",\"ch:1:sloid:2994:0:587817\"]",
@@ -242182,7 +242600,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242204,7 +242622,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242226,7 +242644,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242248,7 +242666,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242270,7 +242688,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242292,7 +242710,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242314,7 +242732,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242336,7 +242754,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242358,7 +242776,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242380,7 +242798,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242402,7 +242820,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242424,7 +242842,7 @@
           "occurrences": 5,
           "scheduledOccurrences": 5,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 5,
           "matched": true
         },
         {
@@ -242490,7 +242908,7 @@
           "occurrences": 4,
           "scheduledOccurrences": 4,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 2,
+          "admittedOccurrences": 4,
           "matched": true
         },
         {
@@ -242512,7 +242930,7 @@
           "occurrences": 4,
           "scheduledOccurrences": 4,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 2,
+          "admittedOccurrences": 4,
           "matched": true
         },
         {
@@ -242534,7 +242952,7 @@
           "occurrences": 21,
           "scheduledOccurrences": 21,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 21,
           "matched": true
         },
         {
@@ -242556,7 +242974,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -242578,7 +242996,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -242600,7 +243018,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -242622,7 +243040,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242644,7 +243062,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242666,7 +243084,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242688,7 +243106,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242710,7 +243128,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242732,7 +243150,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242754,7 +243172,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242776,7 +243194,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242798,7 +243216,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242820,7 +243238,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242842,7 +243260,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242864,7 +243282,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242877,17 +243295,23 @@
           "toId": "ch:1:sloid:81469",
           "from": "Sursee, Spital",
           "to": "Sursee, Frieslirain",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "46839386ddf3e1c6bfb4f80fb669a36605a9f24a17b75699bcc331812c747b03",
           "maximumSnapMetres": 0.6150224138187621,
+          "pathMetres": 388.9825582736703,
           "sourceFeatures": [
             "bus:B081"
+          ],
+          "geometryRepairIds": [
+            "b081-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 2,
+          "matched": true
         },
         {
           "key": "[\"96-357-2-j26-1\",\"ch:1:sloid:81469\",\"ch:1:sloid:81323\"]",
@@ -242908,7 +243332,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242930,7 +243354,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242952,7 +243376,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -242974,7 +243398,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -242996,7 +243420,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243018,7 +243442,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243040,7 +243464,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243062,7 +243486,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243084,7 +243508,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243106,7 +243530,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243128,7 +243552,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243150,7 +243574,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243172,7 +243596,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243194,7 +243618,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243207,17 +243631,23 @@
           "toId": "ch:1:sloid:81469:0:577954",
           "from": "Sursee, Spital",
           "to": "Sursee, Frieslirain",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "31edf8c7bff480c3c37ab0bfad2fd7e62a82f5e68fb8410635b261c21d6f31b0",
           "maximumSnapMetres": 4.097889541570342,
+          "pathMetres": 364.90261548650284,
           "sourceFeatures": [
             "bus:B081"
+          ],
+          "geometryRepairIds": [
+            "b081-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 18,
+          "matched": true
         },
         {
           "key": "[\"96-357-2-j26-1\",\"ch:1:sloid:81469:0:577954\",\"ch:1:sloid:81323:0:303097\"]",
@@ -243238,7 +243668,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243260,7 +243690,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243282,7 +243712,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -243304,7 +243734,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243326,7 +243756,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243348,7 +243778,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243361,17 +243791,23 @@
           "toId": "ch:1:sloid:2550",
           "from": "Sursee, Frieslirain",
           "to": "Sursee, Spital",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "a6004f35ffca92b79e8a531a60979746c6ea9cfc04b1488bb15df852b05c7966",
           "maximumSnapMetres": 0.6150224138187621,
+          "pathMetres": 388.9825582736703,
           "sourceFeatures": [
             "bus:B081"
+          ],
+          "geometryRepairIds": [
+            "b081-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 1,
+          "matched": true
         },
         {
           "key": "[\"96-357-2-j26-1\",\"ch:1:sloid:2550\",\"ch:1:sloid:2994\"]",
@@ -243392,7 +243828,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243414,7 +243850,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243436,7 +243872,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243458,7 +243894,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243480,7 +243916,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243502,7 +243938,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243524,7 +243960,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243546,7 +243982,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243568,7 +244004,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243590,7 +244026,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243612,7 +244048,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243634,7 +244070,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243656,7 +244092,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243678,7 +244114,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -243700,7 +244136,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -247805,17 +248241,23 @@
           "toId": "ch:1:sloid:82548:0:232844",
           "from": "Menziken, Bahnhof",
           "to": "Burg AG, Hinterdorf",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "39a3ad363f47e50c156cec140ff04afb03d69aa0d79ee0d935813dcd47745229",
           "maximumSnapMetres": 4.8214704194795,
+          "pathMetres": 578.1985824364468,
           "sourceFeatures": [
             "bus:B399"
+          ],
+          "geometryRepairIds": [
+            "b399-gap-2"
+          ],
+          "repairSourceFeatures": [
+            "bus:B398"
           ],
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 17,
+          "matched": true
         },
         {
           "key": "[\"96-357-8-j26-1\",\"ch:1:sloid:82548:0:232844\",\"ch:1:sloid:82550:0:599759\"]",
@@ -247836,7 +248278,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -247858,7 +248300,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -247880,7 +248322,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -247902,7 +248344,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -247924,7 +248366,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -247946,7 +248388,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -247968,7 +248410,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -247990,7 +248432,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248012,7 +248454,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248034,7 +248476,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248056,7 +248498,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248078,7 +248520,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248100,7 +248542,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248122,7 +248564,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248135,17 +248577,23 @@
           "toId": "ch:1:sloid:81469:0:577954",
           "from": "Sursee, Spital",
           "to": "Sursee, Frieslirain",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "31edf8c7bff480c3c37ab0bfad2fd7e62a82f5e68fb8410635b261c21d6f31b0",
           "maximumSnapMetres": 4.097889541570342,
+          "pathMetres": 364.90261548650284,
           "sourceFeatures": [
             "bus:B399"
+          ],
+          "geometryRepairIds": [
+            "b399-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 17,
+          "matched": true
         },
         {
           "key": "[\"96-357-8-j26-1\",\"ch:1:sloid:81469:0:577954\",\"ch:1:sloid:81323:0:303097\"]",
@@ -248166,7 +248614,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248188,7 +248636,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248210,7 +248658,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248232,7 +248680,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -248254,7 +248702,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -248276,7 +248724,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -248298,7 +248746,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -248320,7 +248768,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -248342,7 +248790,7 @@
           "occurrences": 16,
           "scheduledOccurrences": 16,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 16,
           "matched": true
         },
         {
@@ -248364,7 +248812,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248386,7 +248834,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248408,7 +248856,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248421,17 +248869,23 @@
           "toId": "ch:1:sloid:80824:0:197445",
           "from": "Burg AG, Hinterdorf",
           "to": "Menziken, Bahnhof",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "244f610078b7f67ba1e9c39dc4bab08cb61d2842a37536ba37104dae67d81506",
           "maximumSnapMetres": 48.395787082168255,
+          "pathMetres": 696.6433172044892,
           "sourceFeatures": [
             "bus:B399"
+          ],
+          "geometryRepairIds": [
+            "b399-gap-2"
+          ],
+          "repairSourceFeatures": [
+            "bus:B398"
           ],
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 17,
+          "matched": true
         },
         {
           "key": "[\"96-357-8-j26-1\",\"ch:1:sloid:80824:0:197445\",\"ch:1:sloid:81079:0:199698\"]",
@@ -248452,7 +248906,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248474,7 +248928,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248496,7 +248950,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248518,7 +248972,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248540,7 +248994,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248562,7 +249016,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248584,7 +249038,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248606,7 +249060,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248628,7 +249082,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248641,17 +249095,23 @@
           "toId": "ch:1:sloid:2550:0:659550",
           "from": "Sursee, Frieslirain",
           "to": "Sursee, Spital",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "cafd39668fbfbf3ec6f429abb0cfb010d0d5888c9312295f711e20eca51b888f",
           "maximumSnapMetres": 4.106949301176243,
+          "pathMetres": 410.6635434447467,
           "sourceFeatures": [
             "bus:B399"
+          ],
+          "geometryRepairIds": [
+            "b399-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 17,
+          "matched": true
         },
         {
           "key": "[\"96-357-8-j26-1\",\"ch:1:sloid:2550:0:659550\",\"ch:1:sloid:2994:0:587817\"]",
@@ -248672,7 +249132,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248694,7 +249154,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248716,7 +249176,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248738,7 +249198,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248760,7 +249220,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248782,7 +249242,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248804,7 +249264,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248826,7 +249286,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248848,7 +249308,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248870,7 +249330,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -248892,7 +249352,7 @@
           "occurrences": 17,
           "scheduledOccurrences": 17,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 17,
           "matched": true
         },
         {
@@ -249778,13 +250238,13 @@
       ],
       "artifacts": {
         "directory": "public/data/luzern-region/2026-09-04",
-        "manifestGzipBytes": 1402266,
-        "morningGzipBytes": 1545315,
+        "manifestGzipBytes": 1420775,
+        "morningGzipBytes": 1567424,
         "chunks": [
           {
             "id": "00-02",
-            "gzipBytes": 26239,
-            "trips": 220
+            "gzipBytes": 27124,
+            "trips": 226
           },
           {
             "id": "02-04",
@@ -249793,53 +250253,53 @@
           },
           {
             "id": "04-06",
-            "gzipBytes": 47567,
-            "trips": 387
+            "gzipBytes": 48243,
+            "trips": 392
           },
           {
             "id": "06-08",
-            "gzipBytes": 142046,
-            "trips": 1264
+            "gzipBytes": 145009,
+            "trips": 1287
           },
           {
             "id": "08-10",
-            "gzipBytes": 125241,
-            "trips": 1077
+            "gzipBytes": 127895,
+            "trips": 1097
           },
           {
             "id": "10-12",
-            "gzipBytes": 115812,
-            "trips": 1008
+            "gzipBytes": 118662,
+            "trips": 1028
           },
           {
             "id": "12-14",
-            "gzipBytes": 117419,
-            "trips": 1025
+            "gzipBytes": 120300,
+            "trips": 1048
           },
           {
             "id": "14-16",
-            "gzipBytes": 121488,
-            "trips": 1066
+            "gzipBytes": 124312,
+            "trips": 1086
           },
           {
             "id": "16-18",
-            "gzipBytes": 145762,
-            "trips": 1310
+            "gzipBytes": 148678,
+            "trips": 1333
           },
           {
             "id": "18-20",
-            "gzipBytes": 136139,
-            "trips": 1185
+            "gzipBytes": 139197,
+            "trips": 1209
           },
           {
             "id": "20-22",
-            "gzipBytes": 82002,
-            "trips": 690
+            "gzipBytes": 84563,
+            "trips": 708
           },
           {
             "id": "22-24",
-            "gzipBytes": 65152,
-            "trips": 554
+            "gzipBytes": 66614,
+            "trips": 565
           }
         ]
       }
@@ -249847,21 +250307,23 @@
     {
       "date": "2026-09-06",
       "trips": 11550,
-      "admittedTrips": 6148,
-      "excludedTrips": 5402,
+      "admittedTrips": 6292,
+      "excludedTrips": 5258,
       "carryInTrips": 424,
-      "admittedCarryInTrips": 335,
+      "admittedCarryInTrips": 341,
       "representativeHeadwayTrips": 1020,
       "admittedHeadwayTrips": 0,
       "patterns": 878,
-      "admittedPatterns": 584,
+      "admittedPatterns": 600,
       "directedPairs": 5474,
-      "matchedDirectedPairs": 4723,
+      "matchedDirectedPairs": 4736,
       "segmentOccurrences": 106144,
-      "matchedSegmentOccurrences": 96215,
+      "matchedSegmentOccurrences": 96424,
       "scheduledSegmentOccurrences": 105124,
-      "matchedScheduledSegmentOccurrences": 96215,
+      "matchedScheduledSegmentOccurrences": 96424,
       "representativeHeadwaySegmentOccurrences": 1020,
+      "repairedDirectedPairs": 13,
+      "admittedTripsUsingRepair": 144,
       "groups": [
         {
           "id": "11:rail",
@@ -249959,14 +250421,14 @@
           "mode": "bus",
           "routes": 9,
           "trips": 308,
-          "admittedTrips": 262,
+          "admittedTrips": 302,
           "patterns": 29,
-          "admittedPatterns": 22,
+          "admittedPatterns": 26,
           "directedPairs": 331,
-          "matchedDirectedPairs": 316,
+          "matchedDirectedPairs": 318,
           "segmentOccurrences": 5475,
-          "matchedSegmentOccurrences": 5373,
-          "geometryCoverage": 0.9813698630136987
+          "matchedSegmentOccurrences": 5451,
+          "geometryCoverage": 0.9956164383561644
         },
         {
           "id": "812:bus",
@@ -250034,14 +250496,14 @@
           "mode": "bus",
           "routes": 2,
           "trips": 97,
-          "admittedTrips": 62,
+          "admittedTrips": 97,
           "patterns": 17,
-          "admittedPatterns": 14,
+          "admittedPatterns": 17,
           "directedPairs": 95,
-          "matchedDirectedPairs": 92,
+          "matchedDirectedPairs": 95,
           "segmentOccurrences": 1361,
-          "matchedSegmentOccurrences": 1326,
-          "geometryCoverage": 0.9742836149889786
+          "matchedSegmentOccurrences": 1361,
+          "geometryCoverage": 1
         },
         {
           "id": "7230:bus",
@@ -250229,14 +250691,14 @@
           "mode": "bus",
           "routes": 36,
           "trips": 1095,
-          "admittedTrips": 894,
+          "admittedTrips": 963,
           "patterns": 184,
-          "admittedPatterns": 143,
+          "admittedPatterns": 152,
           "directedPairs": 1629,
-          "matchedDirectedPairs": 1506,
+          "matchedDirectedPairs": 1514,
           "segmentOccurrences": 16457,
-          "matchedSegmentOccurrences": 15179,
-          "geometryCoverage": 0.9223430758947561
+          "matchedSegmentOccurrences": 15275,
+          "geometryCoverage": 0.928176459865103
         }
       ],
       "routes": [
@@ -250690,11 +251152,11 @@
           "mode": "bus",
           "line": "111",
           "trips": 40,
-          "admittedTrips": 0,
+          "admittedTrips": 40,
           "segmentOccurrences": 390,
-          "matchedSegmentOccurrences": 312,
+          "matchedSegmentOccurrences": 390,
           "carryInTrips": 3,
-          "admittedCarryInTrips": 0
+          "admittedCarryInTrips": 3
         },
         {
           "routeId": "92-11-D-j26-1",
@@ -251122,11 +251584,11 @@
           "mode": "bus",
           "line": "609",
           "trips": 35,
-          "admittedTrips": 0,
+          "admittedTrips": 35,
           "segmentOccurrences": 329,
-          "matchedSegmentOccurrences": 294,
+          "matchedSegmentOccurrences": 329,
           "carryInTrips": 1,
-          "admittedCarryInTrips": 0
+          "admittedCarryInTrips": 1
         },
         {
           "routeId": "92-60-A-j26-1",
@@ -251914,11 +252376,11 @@
           "mode": "bus",
           "line": "81",
           "trips": 43,
-          "admittedTrips": 4,
+          "admittedTrips": 43,
           "segmentOccurrences": 757,
-          "matchedSegmentOccurrences": 718,
+          "matchedSegmentOccurrences": 757,
           "carryInTrips": 4,
-          "admittedCarryInTrips": 2
+          "admittedCarryInTrips": 4
         },
         {
           "routeId": "96-357-3-j26-1",
@@ -251986,9 +252448,9 @@
           "mode": "bus",
           "line": "399",
           "trips": 30,
-          "admittedTrips": 0,
+          "admittedTrips": 30,
           "segmentOccurrences": 710,
-          "matchedSegmentOccurrences": 653,
+          "matchedSegmentOccurrences": 710,
           "carryInTrips": 0,
           "admittedCarryInTrips": 0
         },
@@ -252104,8 +252566,8 @@
       "exclusionReasons": {
         "missing-line": 4776,
         "endpoint-gap": 274,
-        "disconnected-line": 235,
         "collapsed-path": 10,
+        "disconnected-line": 91,
         "implausible-detour": 6,
         "stale-or-missing-boat-source": 104
       },
@@ -286996,11 +287458,9 @@
             "[\"92-111-j26-1\",\"ch:1:sloid:89225::2\",\"ch:1:sloid:89224:0:01\"]"
           ],
           "trips": 1,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 2,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 3,
           "totalPairs": 3,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -287097,11 +287557,9 @@
             "[\"92-111-j26-1\",\"ch:1:sloid:89225::2\",\"ch:1:sloid:89224:0:01\"]"
           ],
           "trips": 19,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 8,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 10,
           "totalPairs": 10,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -287177,11 +287635,9 @@
             "[\"92-111-j26-1\",\"ch:1:sloid:77168::1\",\"ch:1:sloid:77169::1\"]"
           ],
           "trips": 1,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 6,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 7,
           "totalPairs": 7,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -287278,11 +287734,9 @@
             "[\"92-111-j26-1\",\"ch:1:sloid:89665::4\",\"ch:1:sloid:77161::8\"]"
           ],
           "trips": 19,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 8,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 10,
           "totalPairs": 10,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -312158,11 +312612,9 @@
             "[\"92-609-A-j26-1\",\"ch:1:sloid:72728\",\"ch:1:sloid:72745::6\"]"
           ],
           "trips": 13,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 10,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 11,
           "totalPairs": 11,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -312266,11 +312718,9 @@
             "[\"92-609-A-j26-1\",\"ch:1:sloid:89208\",\"ch:1:sloid:2898\"]"
           ],
           "trips": 14,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 10,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 11,
           "totalPairs": 11,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -312325,11 +312775,9 @@
             "[\"92-609-A-j26-1\",\"ch:1:sloid:72728\",\"ch:1:sloid:72745::6\"]"
           ],
           "trips": 8,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 3,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 4,
           "totalPairs": 4,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -348694,11 +349142,9 @@
             "[\"96-357-2-j26-1\",\"ch:1:sloid:72976:0:957266\",\"ch:1:sloid:2038:0:539119\"]"
           ],
           "trips": 14,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 18,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -348858,11 +349304,9 @@
             "[\"96-357-2-j26-1\",\"ch:1:sloid:72976:0:957266\",\"ch:1:sloid:2038:0:333623\"]"
           ],
           "trips": 4,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 18,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -349193,11 +349637,9 @@
             "[\"96-357-2-j26-1\",\"ch:1:sloid:72961\",\"ch:1:sloid:2998\"]"
           ],
           "trips": 2,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 18,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -349357,11 +349799,9 @@
             "[\"96-357-2-j26-1\",\"ch:1:sloid:72961:0:886556\",\"ch:1:sloid:2998:0:178\"]"
           ],
           "trips": 18,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 18,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -349521,11 +349961,9 @@
             "[\"96-357-2-j26-1\",\"ch:1:sloid:72976\",\"ch:1:sloid:2038\"]"
           ],
           "trips": 1,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 18,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 19,
           "totalPairs": 19,
           "carryInTrips": 1,
           "representativeHeadwayTrips": 0
@@ -352801,11 +353239,9 @@
             "[\"96-357-8-j26-1\",\"ch:1:sloid:72961:0:886556\",\"ch:1:sloid:2998:0:178\"]"
           ],
           "trips": 14,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 23,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 25,
           "totalPairs": 25,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -352902,11 +353338,9 @@
             "[\"96-357-8-j26-1\",\"ch:1:sloid:82549:0:141226\",\"ch:1:sloid:80822:0:136053\"]"
           ],
           "trips": 2,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 9,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 10,
           "totalPairs": 10,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -353038,11 +353472,9 @@
             "[\"96-357-8-j26-1\",\"ch:1:sloid:72971:0:367536\",\"ch:1:sloid:79848:0:161095\"]"
           ],
           "trips": 1,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 14,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 15,
           "totalPairs": 15,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -353244,11 +353676,9 @@
             "[\"96-357-8-j26-1\",\"ch:1:sloid:82549:0:141226\",\"ch:1:sloid:80822:0:136053\"]"
           ],
           "trips": 13,
-          "admitted": false,
-          "reasons": [
-            "disconnected-line"
-          ],
-          "geometryPairs": 23,
+          "admitted": true,
+          "reasons": [],
+          "geometryPairs": 25,
           "totalPairs": 25,
           "carryInTrips": 0,
           "representativeHeadwayTrips": 0
@@ -381392,17 +381822,23 @@
           "toId": "ch:1:sloid:77168::2",
           "from": "Inwil, Dorf",
           "to": "Inwil, Pannerhof",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "da2179d89c06e2d270a2df18952c4e6fec5d57fc8451c6edcf6baad0ca2d7396",
           "maximumSnapMetres": 4.026162399518872,
+          "pathMetres": 368.2674076227621,
           "sourceFeatures": [
             "bus:B111"
+          ],
+          "geometryRepairIds": [
+            "b111-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B110"
           ],
           "occurrences": 39,
           "scheduledOccurrences": 39,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 39,
+          "matched": true
         },
         {
           "key": "[\"92-111-j26-1\",\"ch:1:sloid:77168::2\",\"ch:1:sloid:89225::2\"]",
@@ -381423,7 +381859,7 @@
           "occurrences": 39,
           "scheduledOccurrences": 39,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 39,
           "matched": true
         },
         {
@@ -381445,7 +381881,7 @@
           "occurrences": 20,
           "scheduledOccurrences": 20,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 20,
           "matched": true
         },
         {
@@ -381467,7 +381903,7 @@
           "occurrences": 20,
           "scheduledOccurrences": 20,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 20,
           "matched": true
         },
         {
@@ -381489,7 +381925,7 @@
           "occurrences": 20,
           "scheduledOccurrences": 20,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 20,
           "matched": true
         },
         {
@@ -381511,7 +381947,7 @@
           "occurrences": 20,
           "scheduledOccurrences": 20,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 20,
           "matched": true
         },
         {
@@ -381533,7 +381969,7 @@
           "occurrences": 20,
           "scheduledOccurrences": 20,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 20,
           "matched": true
         },
         {
@@ -381555,7 +381991,7 @@
           "occurrences": 20,
           "scheduledOccurrences": 20,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 20,
           "matched": true
         },
         {
@@ -381577,7 +382013,7 @@
           "occurrences": 39,
           "scheduledOccurrences": 39,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 39,
           "matched": true
         },
         {
@@ -381590,17 +382026,23 @@
           "toId": "ch:1:sloid:77169::1",
           "from": "Inwil, Pannerhof",
           "to": "Inwil, Dorf",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "7d630fbaf5e1ccc367c165d1183ac159b4dc567ee43f6ba7b3cbed7866a22aca",
           "maximumSnapMetres": 4.026162399518872,
+          "pathMetres": 377.5260035348426,
           "sourceFeatures": [
             "bus:B111"
+          ],
+          "geometryRepairIds": [
+            "b111-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B110"
           ],
           "occurrences": 39,
           "scheduledOccurrences": 39,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 39,
+          "matched": true
         },
         {
           "key": "[\"92-111-j26-1\",\"ch:1:sloid:89224:0:02\",\"ch:1:sloid:89225::1\"]",
@@ -381621,7 +382063,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -381643,7 +382085,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -381665,7 +382107,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -381687,7 +382129,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -381709,7 +382151,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -381731,7 +382173,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -412667,7 +413109,7 @@
           "occurrences": 13,
           "scheduledOccurrences": 13,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 13,
           "matched": true
         },
         {
@@ -412689,7 +413131,7 @@
           "occurrences": 13,
           "scheduledOccurrences": 13,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 13,
           "matched": true
         },
         {
@@ -412711,7 +413153,7 @@
           "occurrences": 13,
           "scheduledOccurrences": 13,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 13,
           "matched": true
         },
         {
@@ -412724,17 +413166,23 @@
           "toId": "ch:1:sloid:95883",
           "from": "Reiden, Unterdorf",
           "to": "Reiden, Industrie Weiher",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "a14b12395c7573c7495788a98e335db271ef031a697d3eb226c29a8c3944f11c",
           "maximumSnapMetres": 2.2611955871691816,
+          "pathMetres": 316.09898158415916,
           "sourceFeatures": [
             "bus:B609"
+          ],
+          "geometryRepairIds": [
+            "b609-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B608"
           ],
           "occurrences": 13,
           "scheduledOccurrences": 13,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 13,
+          "matched": true
         },
         {
           "key": "[\"92-609-A-j26-1\",\"ch:1:sloid:95883\",\"ch:1:sloid:2380\"]",
@@ -412755,7 +413203,7 @@
           "occurrences": 13,
           "scheduledOccurrences": 13,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 13,
           "matched": true
         },
         {
@@ -412777,7 +413225,7 @@
           "occurrences": 13,
           "scheduledOccurrences": 13,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 13,
           "matched": true
         },
         {
@@ -412799,7 +413247,7 @@
           "occurrences": 13,
           "scheduledOccurrences": 13,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 13,
           "matched": true
         },
         {
@@ -412821,7 +413269,7 @@
           "occurrences": 13,
           "scheduledOccurrences": 13,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 13,
           "matched": true
         },
         {
@@ -412843,7 +413291,7 @@
           "occurrences": 21,
           "scheduledOccurrences": 21,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 21,
           "matched": true
         },
         {
@@ -412865,7 +413313,7 @@
           "occurrences": 21,
           "scheduledOccurrences": 21,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 21,
           "matched": true
         },
         {
@@ -412887,7 +413335,7 @@
           "occurrences": 21,
           "scheduledOccurrences": 21,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 21,
           "matched": true
         },
         {
@@ -412909,7 +413357,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -412931,7 +413379,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -412953,7 +413401,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -412975,7 +413423,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -412997,7 +413445,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -413019,7 +413467,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -413041,7 +413489,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -413054,17 +413502,23 @@
           "toId": "ch:1:sloid:2352",
           "from": "Reiden, Industrie Weiher",
           "to": "Reiden, Unterdorf",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "14b2460abe2de7c0dc4713b44f628d9c67a0f87454f304875ed64d790c9ad454",
           "maximumSnapMetres": 2.2611955871691816,
+          "pathMetres": 316.09898158415916,
           "sourceFeatures": [
             "bus:B609"
+          ],
+          "geometryRepairIds": [
+            "b609-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B608"
           ],
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 14,
+          "matched": true
         },
         {
           "key": "[\"92-609-A-j26-1\",\"ch:1:sloid:2352\",\"ch:1:sloid:72729\"]",
@@ -413085,7 +413539,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -413107,7 +413561,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -413129,7 +413583,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -413142,17 +413596,23 @@
           "toId": "ch:1:sloid:2384",
           "from": "Reiden, Bahnhof",
           "to": "Zofingen, Riedtalstrasse",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "22deb81553b1dd67b82686b004d114ab081e082dbdcb026d57064fb71ed73a24",
           "maximumSnapMetres": 16.64827464158362,
+          "pathMetres": 4959.200577840027,
           "sourceFeatures": [
             "bus:B609"
+          ],
+          "geometryRepairIds": [
+            "b609-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B608"
           ],
           "occurrences": 8,
           "scheduledOccurrences": 8,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 8,
+          "matched": true
         },
         {
           "key": "[\"92-60-A-j26-1\",\"ch:1:sloid:82118:0:738178\",\"ch:1:sloid:73034:0:1327\"]",
@@ -460513,7 +460973,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460535,7 +460995,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460557,7 +461017,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460570,17 +461030,23 @@
           "toId": "ch:1:sloid:2550:0:659550",
           "from": "Sursee, Frieslirain",
           "to": "Sursee, Spital",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "cafd39668fbfbf3ec6f429abb0cfb010d0d5888c9312295f711e20eca51b888f",
           "maximumSnapMetres": 4.106949301176243,
+          "pathMetres": 410.6635434447467,
           "sourceFeatures": [
             "bus:B081"
+          ],
+          "geometryRepairIds": [
+            "b081-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 18,
+          "matched": true
         },
         {
           "key": "[\"96-357-2-j26-1\",\"ch:1:sloid:2550:0:659550\",\"ch:1:sloid:2994:0:587817\"]",
@@ -460601,7 +461067,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460623,7 +461089,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460645,7 +461111,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460667,7 +461133,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460689,7 +461155,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460711,7 +461177,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460733,7 +461199,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460755,7 +461221,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460777,7 +461243,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460799,7 +461265,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460821,7 +461287,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -460843,7 +461309,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -460865,7 +461331,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -460887,7 +461353,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -460909,7 +461375,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -460931,7 +461397,7 @@
           "occurrences": 5,
           "scheduledOccurrences": 5,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 5,
           "matched": true
         },
         {
@@ -460997,7 +461463,7 @@
           "occurrences": 4,
           "scheduledOccurrences": 4,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 2,
+          "admittedOccurrences": 4,
           "matched": true
         },
         {
@@ -461019,7 +461485,7 @@
           "occurrences": 4,
           "scheduledOccurrences": 4,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 2,
+          "admittedOccurrences": 4,
           "matched": true
         },
         {
@@ -461041,7 +461507,7 @@
           "occurrences": 21,
           "scheduledOccurrences": 21,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 21,
           "matched": true
         },
         {
@@ -461063,7 +461529,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -461085,7 +461551,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -461107,7 +461573,7 @@
           "occurrences": 19,
           "scheduledOccurrences": 19,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 1,
+          "admittedOccurrences": 19,
           "matched": true
         },
         {
@@ -461129,7 +461595,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461151,7 +461617,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461173,7 +461639,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461195,7 +461661,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461217,7 +461683,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461239,7 +461705,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461261,7 +461727,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461283,7 +461749,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461305,7 +461771,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461327,7 +461793,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461349,7 +461815,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461371,7 +461837,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461384,17 +461850,23 @@
           "toId": "ch:1:sloid:81469",
           "from": "Sursee, Spital",
           "to": "Sursee, Frieslirain",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "46839386ddf3e1c6bfb4f80fb669a36605a9f24a17b75699bcc331812c747b03",
           "maximumSnapMetres": 0.6150224138187621,
+          "pathMetres": 388.9825582736703,
           "sourceFeatures": [
             "bus:B081"
+          ],
+          "geometryRepairIds": [
+            "b081-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 2,
+          "matched": true
         },
         {
           "key": "[\"96-357-2-j26-1\",\"ch:1:sloid:81469\",\"ch:1:sloid:81323\"]",
@@ -461415,7 +461887,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461437,7 +461909,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461459,7 +461931,7 @@
           "occurrences": 2,
           "scheduledOccurrences": 2,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 2,
           "matched": true
         },
         {
@@ -461481,7 +461953,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461503,7 +461975,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461525,7 +461997,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461547,7 +462019,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461569,7 +462041,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461591,7 +462063,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461613,7 +462085,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461635,7 +462107,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461657,7 +462129,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461679,7 +462151,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461701,7 +462173,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461714,17 +462186,23 @@
           "toId": "ch:1:sloid:81469:0:577954",
           "from": "Sursee, Spital",
           "to": "Sursee, Frieslirain",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "31edf8c7bff480c3c37ab0bfad2fd7e62a82f5e68fb8410635b261c21d6f31b0",
           "maximumSnapMetres": 4.097889541570342,
+          "pathMetres": 364.90261548650284,
           "sourceFeatures": [
             "bus:B081"
+          ],
+          "geometryRepairIds": [
+            "b081-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 18,
+          "matched": true
         },
         {
           "key": "[\"96-357-2-j26-1\",\"ch:1:sloid:81469:0:577954\",\"ch:1:sloid:81323:0:303097\"]",
@@ -461745,7 +462223,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461767,7 +462245,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461789,7 +462267,7 @@
           "occurrences": 18,
           "scheduledOccurrences": 18,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 18,
           "matched": true
         },
         {
@@ -461811,7 +462289,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -461833,7 +462311,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -461855,7 +462333,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -461868,17 +462346,23 @@
           "toId": "ch:1:sloid:2550",
           "from": "Sursee, Frieslirain",
           "to": "Sursee, Spital",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "a6004f35ffca92b79e8a531a60979746c6ea9cfc04b1488bb15df852b05c7966",
           "maximumSnapMetres": 0.6150224138187621,
+          "pathMetres": 388.9825582736703,
           "sourceFeatures": [
             "bus:B081"
+          ],
+          "geometryRepairIds": [
+            "b081-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 1,
+          "matched": true
         },
         {
           "key": "[\"96-357-2-j26-1\",\"ch:1:sloid:2550\",\"ch:1:sloid:2994\"]",
@@ -461899,7 +462383,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -461921,7 +462405,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -461943,7 +462427,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -461965,7 +462449,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -461987,7 +462471,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -462009,7 +462493,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -462031,7 +462515,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -462053,7 +462537,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -462075,7 +462559,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -462097,7 +462581,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -462119,7 +462603,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -462141,7 +462625,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -462163,7 +462647,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -462185,7 +462669,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -462207,7 +462691,7 @@
           "occurrences": 1,
           "scheduledOccurrences": 1,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 1,
           "matched": true
         },
         {
@@ -467003,7 +467487,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467025,7 +467509,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467047,7 +467531,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467069,7 +467553,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467091,7 +467575,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467113,7 +467597,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467126,17 +467610,23 @@
           "toId": "ch:1:sloid:82548:0:232844",
           "from": "Menziken, Bahnhof",
           "to": "Burg AG, Hinterdorf",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "39a3ad363f47e50c156cec140ff04afb03d69aa0d79ee0d935813dcd47745229",
           "maximumSnapMetres": 4.8214704194795,
+          "pathMetres": 578.1985824364468,
           "sourceFeatures": [
             "bus:B399"
+          ],
+          "geometryRepairIds": [
+            "b399-gap-2"
+          ],
+          "repairSourceFeatures": [
+            "bus:B398"
           ],
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 14,
+          "matched": true
         },
         {
           "key": "[\"96-357-8-j26-1\",\"ch:1:sloid:82548:0:232844\",\"ch:1:sloid:82550:0:599759\"]",
@@ -467157,7 +467647,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467179,7 +467669,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467201,7 +467691,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467223,7 +467713,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467245,7 +467735,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467267,7 +467757,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467289,7 +467779,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467311,7 +467801,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467333,7 +467823,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467355,7 +467845,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467377,7 +467867,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467399,7 +467889,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467421,7 +467911,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467443,7 +467933,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467456,17 +467946,23 @@
           "toId": "ch:1:sloid:81469:0:577954",
           "from": "Sursee, Spital",
           "to": "Sursee, Frieslirain",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "31edf8c7bff480c3c37ab0bfad2fd7e62a82f5e68fb8410635b261c21d6f31b0",
           "maximumSnapMetres": 4.097889541570342,
+          "pathMetres": 364.90261548650284,
           "sourceFeatures": [
             "bus:B399"
+          ],
+          "geometryRepairIds": [
+            "b399-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 14,
+          "matched": true
         },
         {
           "key": "[\"96-357-8-j26-1\",\"ch:1:sloid:81469:0:577954\",\"ch:1:sloid:81323:0:303097\"]",
@@ -467487,7 +467983,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467509,7 +468005,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467531,7 +468027,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467553,7 +468049,7 @@
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 15,
           "matched": true
         },
         {
@@ -467575,7 +468071,7 @@
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 15,
           "matched": true
         },
         {
@@ -467597,7 +468093,7 @@
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 15,
           "matched": true
         },
         {
@@ -467610,17 +468106,23 @@
           "toId": "ch:1:sloid:80824:0:197445",
           "from": "Burg AG, Hinterdorf",
           "to": "Menziken, Bahnhof",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "244f610078b7f67ba1e9c39dc4bab08cb61d2842a37536ba37104dae67d81506",
           "maximumSnapMetres": 48.395787082168255,
+          "pathMetres": 696.6433172044892,
           "sourceFeatures": [
             "bus:B399"
+          ],
+          "geometryRepairIds": [
+            "b399-gap-2"
+          ],
+          "repairSourceFeatures": [
+            "bus:B398"
           ],
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 15,
+          "matched": true
         },
         {
           "key": "[\"96-357-8-j26-1\",\"ch:1:sloid:80824:0:197445\",\"ch:1:sloid:81079:0:199698\"]",
@@ -467641,7 +468143,7 @@
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 15,
           "matched": true
         },
         {
@@ -467663,7 +468165,7 @@
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 15,
           "matched": true
         },
         {
@@ -467685,7 +468187,7 @@
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 15,
           "matched": true
         },
         {
@@ -467707,7 +468209,7 @@
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 15,
           "matched": true
         },
         {
@@ -467729,7 +468231,7 @@
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 15,
           "matched": true
         },
         {
@@ -467751,7 +468253,7 @@
           "occurrences": 15,
           "scheduledOccurrences": 15,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 15,
           "matched": true
         },
         {
@@ -467773,7 +468275,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467795,7 +468297,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467817,7 +468319,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467830,17 +468332,23 @@
           "toId": "ch:1:sloid:2550:0:659550",
           "from": "Sursee, Frieslirain",
           "to": "Sursee, Spital",
-          "geometrySha256": null,
-          "reason": "disconnected-line",
+          "geometrySha256": "cafd39668fbfbf3ec6f429abb0cfb010d0d5888c9312295f711e20eca51b888f",
           "maximumSnapMetres": 4.106949301176243,
+          "pathMetres": 410.6635434447467,
           "sourceFeatures": [
             "bus:B399"
+          ],
+          "geometryRepairIds": [
+            "b399-gap-1"
+          ],
+          "repairSourceFeatures": [
+            "bus:B086"
           ],
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
-          "matched": false
+          "admittedOccurrences": 14,
+          "matched": true
         },
         {
           "key": "[\"96-357-8-j26-1\",\"ch:1:sloid:2550:0:659550\",\"ch:1:sloid:2994:0:587817\"]",
@@ -467861,7 +468369,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467883,7 +468391,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467905,7 +468413,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467927,7 +468435,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467949,7 +468457,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467971,7 +468479,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -467993,7 +468501,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -468015,7 +468523,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -468037,7 +468545,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -468059,7 +468567,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -468081,7 +468589,7 @@
           "occurrences": 14,
           "scheduledOccurrences": 14,
           "representativeHeadwayOccurrences": 0,
-          "admittedOccurrences": 0,
+          "admittedOccurrences": 14,
           "matched": true
         },
         {
@@ -475479,68 +475987,68 @@
       ],
       "artifacts": {
         "directory": "public/data/luzern-region/2026-09-06",
-        "manifestGzipBytes": 1509503,
-        "morningGzipBytes": 1588483,
+        "manifestGzipBytes": 1524401,
+        "morningGzipBytes": 1605585,
         "chunks": [
           {
             "id": "00-02",
-            "gzipBytes": 36372,
-            "trips": 273
+            "gzipBytes": 37133,
+            "trips": 279
           },
           {
             "id": "02-04",
-            "gzipBytes": 14400,
+            "gzipBytes": 14432,
             "trips": 88
           },
           {
             "id": "04-06",
-            "gzipBytes": 24674,
-            "trips": 186
+            "gzipBytes": 25016,
+            "trips": 188
           },
           {
             "id": "06-08",
-            "gzipBytes": 68877,
-            "trips": 589
+            "gzipBytes": 70697,
+            "trips": 604
           },
           {
             "id": "08-10",
-            "gzipBytes": 87252,
-            "trips": 755
+            "gzipBytes": 89885,
+            "trips": 776
           },
           {
             "id": "10-12",
-            "gzipBytes": 94028,
-            "trips": 826
+            "gzipBytes": 96880,
+            "trips": 848
           },
           {
             "id": "12-14",
-            "gzipBytes": 94664,
-            "trips": 828
-          },
-          {
-            "id": "14-16",
-            "gzipBytes": 96867,
-            "trips": 857
-          },
-          {
-            "id": "16-18",
-            "gzipBytes": 97031,
+            "gzipBytes": 97287,
             "trips": 849
           },
           {
+            "id": "14-16",
+            "gzipBytes": 99490,
+            "trips": 878
+          },
+          {
+            "id": "16-18",
+            "gzipBytes": 99572,
+            "trips": 868
+          },
+          {
             "id": "18-20",
-            "gzipBytes": 89653,
-            "trips": 764
+            "gzipBytes": 91990,
+            "trips": 781
           },
           {
             "id": "20-22",
-            "gzipBytes": 68222,
-            "trips": 578
+            "gzipBytes": 70258,
+            "trips": 593
           },
           {
             "id": "22-24",
-            "gzipBytes": 59904,
-            "trips": 519
+            "gzipBytes": 61319,
+            "trips": 529
           }
         ]
       }

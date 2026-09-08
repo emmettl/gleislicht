@@ -109,7 +109,7 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       note: policy.admission, scope: raw.scope.description, exclusions: policy.scopeLimits,
       attribution: ['Timetable: SBB / opentransportdata.swiss', '© rawi Kanton Luzern; © Verkehrsverbund Luzern', 'Canton boundary: © swisstopo'],
       sourceUrl: 'https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020', termsUrl: 'https://opentransportdata.swiss/en/terms-of-use/',
-      geometry: { license: 'Open-By', metadataUrl: LUZERN_METADATA, termsUrl: LUZERN_TERMS, busVintage: '2026-05-26', railVintage: '2026-05-08', limits: policy.limits, sourceCrs: 'EPSG:2056', outputCrs: 'EPSG:4326', direction: 'Undirected source alignments; ordered GTFS calls determine travel direction. No one-way street certification.' },
+      geometry: { license: 'Open-By', metadataUrl: LUZERN_METADATA, termsUrl: LUZERN_TERMS, busVintage: '2026-05-26', railVintage: '2026-05-08', limits: policy.limits, sourceCrs: 'EPSG:2056', outputCrs: 'EPSG:4326', repairs: policy.geometryRepairs, direction: 'Undirected source alignments; ordered GTFS calls determine travel direction. No one-way street certification.' },
       frequency: { headwayTrips: admitted.filter(t => t.frequency?.exactTimes === 0).length, exactFrequencyTrips: admitted.filter(t => t.frequency?.exactTimes === 1).length, model: 'Source-interval-anchored representative grid when exact_times=0; not scheduled departures.' } }
     if (metadata.frequency.headwayTrips) metadata.model = 'scheduled and representative headway interpolation along inferred official alignments'
     const snapshot = compactLuzern(admitted, stops, paths, metadata)
@@ -135,6 +135,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       segmentOccurrences: counts.reduce((n, c) => n + c.segmentOccurrences, 0), matchedSegmentOccurrences: counts.reduce((n, c) => n + c.matchedSegmentOccurrences, 0),
       scheduledSegmentOccurrences: pairList.reduce((n, p) => n + p.scheduledOccurrences, 0), matchedScheduledSegmentOccurrences: pairList.filter(p => p.pathIndex !== null).reduce((n, p) => n + p.scheduledOccurrences, 0),
       representativeHeadwaySegmentOccurrences: pairList.reduce((n, p) => n + p.representativeHeadwayOccurrences, 0),
+      repairedDirectedPairs: pairList.filter(p => p.geometryRepairIds?.length).length,
+      admittedTripsUsingRepair: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometryRepairIds?.length)).reduce((n, p) => n + p.trips, 0),
       groups, routes: counts, exclusionReasons: Object.fromEntries(reasons), directedPatterns: ps, directedStopPairs: pairList.map(({ pathIndex, ...p }) => ({ ...p, matched: pathIndex !== null })),
       artifacts: { directory: destination, manifestGzipBytes: gz(manifest), morningGzipBytes: gz(morning), chunks: chunks.map(({ descriptor, payload }) => ({ id: descriptor.id, gzipBytes: gz(payload), trips: descriptor.tripCount })) } })
   }
@@ -143,6 +145,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
     return { date: day.date, trips: c?.trips ?? 0, admittedTrips: c?.admittedTrips ?? 0, status: !c ? 'inactive-on-civil-day' : c.admittedTrips === c.trips ? 'admitted' : c.admittedTrips ? 'partially-admitted' : 'excluded', reasons: [...new Set(patterns.flatMap(p => p.reasons))] }
   }) }))
   for (const source of sourceInventory) {
+    source.geometryRepairIds = policy.geometryRepairs?.repairs.filter(r => r.targetFeature === source.key).map(r => r.id) ?? []
+    source.repairDonorFor = policy.geometryRepairs?.repairs.filter(r => r.sourceFeatures.includes(source.key)).map(r => r.id) ?? []
     source.gtfsRoutes = inventory.filter(r => r.sourceFeatures.includes(source.key)).map(r => r.routeId)
     source.admittedTrips = days.reduce((n, d) => n + d.routes.filter(r => source.gtfsRoutes.includes(r.routeId)).reduce((n, r) => n + r.admittedTrips, 0), 0)
     source.status = !source.agencyIds ? 'identity-or-vintage-exclusion' : !source.gtfsRoutes.length ? 'no-annual-Luzern-calling-route' : source.admittedTrips ? 'used-for-admitted-patterns' : 'no-admitted-fixture-pattern'

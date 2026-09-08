@@ -4,6 +4,7 @@ import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { sha256, validateLuzernDownload } from './download-luzern-sources.mjs'
 import { validateLuzernSnapshot } from './build-luzern-region.mjs'
+import { validatedLuzernRepairs } from './luzern-line-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sum = (items, key) => items.reduce((n, item) => n + item[key], 0)
@@ -19,6 +20,8 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
   assert.equal(new Set(audit.inventory.map(r => r.agencyId)).size, audit.annualAgencies)
   assert.equal(sum(audit.inventory, 'annualTripRecords'), audit.scope.annualScopedTripRecords)
   const sourceKeys = new Set(audit.sourceInventory.map(s => s.key))
+  const repairs = validatedLuzernRepairs({ bus: await json(join(sourceDirectory, 'bus.geojson')) }, audit.policy)
+  const repairIds = new Set(repairs.map(r => r.id))
   for (const route of audit.inventory) for (const key of route.sourceFeatures) assert(sourceKeys.has(key))
   let raw
   if (timetablePath) {
@@ -54,6 +57,9 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
     const morning = await json(join(day.artifacts.directory, 'luzern-region-morning.json'))
     assert.deepEqual(morning.trains.map(t => t.id).sort(), [...trains.values()].filter(t => t.start <= 31500 && t.end >= 24300).map(t => t.id).sort())
     const patterns = new Map(day.directedPatterns.map(p => [p.id, p])), pairs = new Map(day.directedStopPairs.map(p => [p.key, p]))
+    assert.equal(day.directedStopPairs.filter(p => p.geometryRepairIds?.length).length, day.repairedDirectedPairs)
+    assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometryRepairIds?.length)), 'trips'), day.admittedTripsUsingRepair)
+    for (const p of pairs.values()) for (const id of p.geometryRepairIds ?? []) assert(repairIds.has(id), 'Unknown geometry repair')
     assert.equal(patterns.size, day.patterns); assert.equal(pairs.size, day.directedPairs)
     assert.equal(sum(day.directedPatterns, 'trips'), day.trips)
     assert.equal(sum(day.directedPatterns.filter(p => p.admitted), 'trips'), day.admittedTrips)

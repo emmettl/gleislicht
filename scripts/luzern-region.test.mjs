@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
-import { validateLuzernDownload } from './download-luzern-sources.mjs'
-import { featureIdentity, lineGraph, matchLuzernPair, directedPatternKey } from './luzern-line-geometry.mjs'
+import { validateLuzernDownload, sha256 } from './download-luzern-sources.mjs'
+import { featureIdentity, lineGraph, matchLuzernPair, directedPatternKey, validatedLuzernRepairs } from './luzern-line-geometry.mjs'
+import { distanceMetres } from './enrich-postbus-roads.mjs'
 import { inCanton, civilInstances, luzernMode } from './luzern-timetable.mjs'
 import { compactLuzern, validateLuzernSnapshot } from './build-luzern-region.mjs'
 
@@ -12,6 +13,27 @@ const limits = policy.limits
 const call = (id, arrival, sequence) => ({ id, arrival, departure: arrival, sequence, pickupType: '0', dropOffType: '0' })
 
 describe('Luzern official adapter', () => {
+  it('repairs only exact cited donor edges between disconnected existing vertices', () => {
+    const X=[8.304,47.05], Y=[8.3042,47.05], P=[8.3041,47.05001]
+    const target={...feature(),properties:{BUL_ROUTE:'T'},geometry:{type:'MultiLineString',coordinates:[[A,X],[Y,B]]}}
+    const donor=feature([X,P,Y],{BUL_ROUTE:'D'})
+    const bus={type:'FeatureCollection',features:[target,donor]}
+    const repair={id:'reviewed',targetFeature:'bus:T',sourceFeatures:['bus:D'],coordinates:[X,P,Y],pathMetres:distanceMetres(X,P)+distanceMetres(P,Y)}
+    const policy={geometryRepairs:{sourceBusSha256:sha256(JSON.stringify(bus)),maximumLengthMetres:100,repairs:[repair]}}
+    const validated=validatedLuzernRepairs({bus},policy)
+    const candidate={graph:lineGraph([target,validated[0].feature]),sourceFeatures:['bus:T'],repairs:validated}
+    const forward=matchLuzernPair(candidate,A,B,limits),reverse=matchLuzernPair(candidate,B,A,limits)
+    expect(forward.geometryRepairIds).toEqual(['reviewed'])
+    expect(forward.repairSourceFeatures).toEqual(['bus:D'])
+    expect(reverse.path).toEqual([...forward.path].reverse())
+    expect(reverse.geometryRepairIds).toEqual(['reviewed'])
+    const altered=structuredClone(policy);altered.geometryRepairs.repairs[0].coordinates=[X,Y]
+    expect(()=>validatedLuzernRepairs({bus},altered)).toThrow('Repair edge absent')
+    const changed=structuredClone(bus);changed.features[1].geometry.coordinates[1][1]+=0.0001
+    expect(()=>validatedLuzernRepairs({bus:changed},policy)).toThrow('Changed repair source')
+    const connected=structuredClone(bus);connected.features[0].geometry={type:'LineString',coordinates:[A,X,Y,B]}
+    expect(()=>validatedLuzernRepairs({bus:connected},{geometryRepairs:{...policy.geometryRepairs,sourceBusSha256:sha256(JSON.stringify(connected))}})).toThrow('disconnected target')
+  })
   it('rejects truncated and repeated ArcGIS pages, invalid coordinates and changed enums/year', () => {
     const collection = { type: 'FeatureCollection', features: [feature()] }
     expect(() => validateLuzernDownload(collection, [1, 2])).toThrow()
