@@ -2537,6 +2537,10 @@
     "path": "data/st-gallen-endpoint-followup.json",
     "sha256": "be0e8422e2f575aec61720dddc3a645b401964d5fc35b098b48d89ce1d4b9df8"
   },
+  "roadPilotReview": {
+    "path": "data/st-gallen-road-pilot-review.json",
+    "sha256": "359344c4f1ed99a02891c63a9d017e5c79826ff81e87818a6d4c0a0bf36eaf82"
+  },
   "vmobilReview": {
     "path": "data/st-gallen-vmobil-review.json",
     "sha256": "585a6220fbe6d20bb814409191ad2d3a723f131c320aa38ef28c8783b28dbe37"

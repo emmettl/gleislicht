@@ -171,7 +171,7 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 93-289-3-j26-1 | 275 / Weisse Arena Bergbahnen AG | mountain / 2893 | 4 | 0/930 | 0/930 | excluded; cableway-unreviewed-route | Falera (Talstation Curnius); Curnius |
 | 93-290-0-j26-1 | 3151 / Sesselbahn Vals-Gadenstatt | mountain / 2900 | 6 | 0/720 | 0/720 | excluded; cableway-unreviewed-route | Vals (Talstation); Gadastatt |
 | 93-290-8-j26-1 | 251 / Andermatt-Sedrun Sport AG | mountain / 2908 | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Dieni (pendicularas); Milez |
-| 93-291-0-j26-1 | 219 / Arosa Bergbahnen | mountain / 2910 | 8 | 0/99 | 0/99 | excluded; cableway-unreviewed-route | Arosa (Talstation) Weisshorn; Weisshorn; Arosa (Mittelstation)Weisshorn |
+| 93-291-0-j26-1 | 219 / Arosa Bergbahnen | mountain / 2910 | 8 | 99/99 | 99/99 | admitted-all-dated-trips; — | Arosa (Talstation) Weisshorn; Weisshorn; Arosa (Mittelstation)Weisshorn |
 | 93-291-2-j26-1 | 219 / Arosa Bergbahnen | mountain / 2912 | 4 | 0/915 | 0/915 | excluded; cableway-unreviewed-route | Arosa (Talstation) Hörnli; Hörnligrat |
 | 93-292-2-j26-1 | 252 / Lenzerheide Bergbahnen | mountain / 2922 | 4 | 960/960 | 960/960 | admitted-all-dated-trips; — | Churwalden (Talstation); Heidbüel |
 | 93-293-0-j26-1 | 252 / Lenzerheide Bergbahnen | mountain / 2930 | 10 | 0/1020 | 0/1020 | excluded; cableway-unreviewed-route | Lenzerheide/Lai Canols; Scharmoin |

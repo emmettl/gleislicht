@@ -1,0 +1,656 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-09-09",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "1c8edc606dda82f2dd4e7507511ba73805b850839141edb2a9dd6f81ff728565",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "policySha256": "3a41ee7a60e77af2122f591edfb74d298daef440657da35c7ace3e25621f98e6",
+  "endpointReviewSha256": "68e40d63f9ea3aa87a44bb16421046df34f24d72c4b599ce428c1c7815c13d90",
+  "followupReviewSha256": "be0e8422e2f575aec61720dddc3a645b401964d5fc35b098b48d89ce1d4b9df8",
+  "source": {
+    "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+    "swissDate": "2026-09-02",
+    "borderRetrieved": "2026-09-08",
+    "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a"
+  },
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "cache": {
+    "file": "data/st-gallen-sources/local/road-pilot/cache.json",
+    "sha256": "115994c1fb9dc1a75de798663c703a77c7fdd1a308fa72ac217541eb808c3a2c"
+  },
+  "config": {
+    "file": "data/st-gallen-road-pilot/pfaedle.cfg",
+    "sha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4"
+  },
+  "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+  "limits": {
+    "snapMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 1200,
+    "alternativeSnapMetres": 5
+  },
+  "routes": [
+    {
+      "identity": {
+        "routeId": "92-150-A-j26-1",
+        "agencyId": "896",
+        "agency": "Regiobus Gossau SG",
+        "line": "150",
+        "routeType": 700,
+        "mode": "bus"
+      },
+      "days": [
+        {
+          "date": "2026-09-04",
+          "trips": 58,
+          "fullRoadPatterns": 4
+        },
+        {
+          "date": "2026-09-06",
+          "trips": 0,
+          "fullRoadPatterns": 0
+        }
+      ],
+      "fullRoadPatterns": 4
+    },
+    {
+      "identity": {
+        "routeId": "92-631-j26-1",
+        "agencyId": "772",
+        "agency": "Busbetrieb Rapperswil-Eschenbach-Rüti ZH",
+        "line": "631",
+        "routeType": 700,
+        "mode": "bus"
+      },
+      "days": [
+        {
+          "date": "2026-09-04",
+          "trips": 95,
+          "fullRoadPatterns": 9
+        },
+        {
+          "date": "2026-09-06",
+          "trips": 69,
+          "fullRoadPatterns": 8
+        }
+      ],
+      "fullRoadPatterns": 10
+    }
+  ],
+  "matcherEvidence": [
+    {
+      "agencyId": "772",
+      "evidence": {
+        "file": "data/st-gallen-sources/local/road-pilot/evidence/772.json.gz",
+        "sha256": "3b77372c7433344fea1e6499d1e7b4e0a0fbad14b877a162363d2e8b56c445ae"
+      },
+      "patternsSha256": "29448eb02d9c5d5b43dc004fd092de4a5e1dce72af56db097f462902bcea42b3",
+      "run": {
+        "schemaVersion": 1,
+        "completed": true,
+        "noTrie": true,
+        "warnings": true,
+        "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+        "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+        "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+        "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+        "patternsSha256": "29448eb02d9c5d5b43dc004fd092de4a5e1dce72af56db097f462902bcea42b3",
+        "logSha256": "b6e088284dc0ae92ebb1a62c783647b1a9855861b8ec60a75aa4efd059a51980",
+        "shapesSha256": "e1763c27e1c58f0e270d54662e53910600de96bc75ef8d8c67be1c4879991e87",
+        "tripsSha256": "dc2a7f37121a4169be2f2b65edee558f6f9d8d59b4c473909cc5a2f5f4124f08",
+        "stopTimesSha256": "79086acbdc316f6535361713e57222dad77cbe5ce183ed3d266eed493a4eee0c",
+        "elapsedSeconds": 4
+      },
+      "report": {
+        "matchedSegments": 2741,
+        "totalSegments": 2741,
+        "coverage": 1,
+        "routes": [
+          {
+            "routeId": "92-631-j26-1",
+            "route": "631",
+            "matched": 2741,
+            "total": 2741,
+            "patterns": 10
+          }
+        ],
+        "maxSnapMetres": 33.063804880809755,
+        "rejectedPatternSegments": 0,
+        "issues": []
+      }
+    },
+    {
+      "agencyId": "896",
+      "evidence": {
+        "file": "data/st-gallen-sources/local/road-pilot/evidence/896.json.gz",
+        "sha256": "d73d8c83dc6b3b37648c6f38393abbb5757550a074c518e82ae8f248cdfa9f41"
+      },
+      "patternsSha256": "8267a1172d681c2cf291f6689c2e70f5cfc4c3fc3556e30276cba23f64d4a70f",
+      "run": {
+        "schemaVersion": 1,
+        "completed": true,
+        "noTrie": true,
+        "warnings": true,
+        "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+        "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+        "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+        "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+        "patternsSha256": "8267a1172d681c2cf291f6689c2e70f5cfc4c3fc3556e30276cba23f64d4a70f",
+        "logSha256": "1e8abab17c416f267097ad12a9df0e030dc1869eff6f9e2d2f6f88861558b264",
+        "shapesSha256": "c5f1bf18ec569532e4c67e8e985c01e0c8b10555d1758e7e6febcc1ab540e03c",
+        "tripsSha256": "5ab1d651b17d1dbe655637873cbbbffb3f8b1a6025584f88c93f122a5121cb46",
+        "stopTimesSha256": "888f36b05dbf238de5c8553c0bfb93a937ce624bc0b33d11281872250e9c1502",
+        "elapsedSeconds": 4
+      },
+      "report": {
+        "matchedSegments": 288,
+        "totalSegments": 288,
+        "coverage": 1,
+        "routes": [
+          {
+            "routeId": "92-150-A-j26-1",
+            "route": "150",
+            "matched": 288,
+            "total": 288,
+            "patterns": 4
+          }
+        ],
+        "maxSnapMetres": 92.42109050843347,
+        "rejectedPatternSegments": 0,
+        "issues": []
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:90327\",\"ch:1:sloid:12618\"]",
+      "geometrySha256": "6b4a9936928ccf5a67b5949e6fe7c869421b03f8050f0b5c4d12d8b2cec57625",
+      "decision": "Retain exclusion. Inbound Sommerau uses a 92.42 m connector unsupported by mapped road edges; outbound alone cannot validate the extension.",
+      "evidenceId": "sommerau-extension",
+      "connectorEvidenceSha256": "c72747d83a7d0b478d23be978695e9fd9d54249482a9d16a596f4917e4080855",
+      "endpoint": {
+        "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:90327\",\"ch:1:sloid:12618\"]",
+        "routeId": "92-150-A-j26-1",
+        "agencyId": "896",
+        "line": "150",
+        "fromId": "ch:1:sloid:90327",
+        "toId": "ch:1:sloid:12618",
+        "from": "Gossau SG, Eichen",
+        "to": "Gossau SG, Sommerau",
+        "sourceFeatures": [
+          "bus:19"
+        ],
+        "production": {
+          "reason": "endpoint-gap",
+          "maximumSnapMetres": 512.6844649085323,
+          "pathMetres": null
+        },
+        "sameAgencyCandidates": [],
+        "days": [
+          {
+            "date": "2026-09-04",
+            "occurrences": 28,
+            "affectedPatterns": 1,
+            "affectedTrips": 28,
+            "patternIdsSha256": "e315d153105ae605cdfc76ba16bfba32916fd9131d6b1584a4f6fb65a0a662e3"
+          },
+          {
+            "date": "2026-09-06",
+            "occurrences": 0,
+            "affectedPatterns": 0,
+            "affectedTrips": 0,
+            "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "decision": "Retain complete-pattern exclusion."
+      },
+      "numericalConsensus": true,
+      "geometrySource": "osm-road-inference",
+      "lengthMetres": 719.4801889675967,
+      "directMetres": 517.5074695686261,
+      "roadPatternIds": [
+        "ec77a205534a277cef4f04ab"
+      ],
+      "roadContextOccurrences": 1,
+      "contexts": [
+        {
+          "patternId": "ec77a205534a277cef4f04ab",
+          "segment": 4,
+          "rawShapeSha256": "1c1aa07ad73a534c694c19f67eac53a534e68c0aa07d234ff29e6338d28b0ce7",
+          "fromCoordinate": [
+            9.23555249,
+            47.41804126
+          ],
+          "toCoordinate": [
+            9.2375737,
+            47.42248438
+          ],
+          "roadFrom": [
+            9.235601,
+            47.418015
+          ],
+          "roadTo": [
+            9.23635,
+            47.422546
+          ],
+          "fromSnapMetres": 4.679418837252582,
+          "toSnapMetres": 92.42109050843347
+        }
+      ],
+      "supportingEvents": [
+        {
+          "evidenceId": "sommerau-extension",
+          "from": "2026-06-01",
+          "through": null,
+          "fixtureDates": [
+            "2026-09-04",
+            "2026-09-06"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:12618\",\"ch:1:sloid:90327\"]",
+      "geometrySha256": "1d2ce80bf1ddcf502395b55484e1879fe2fcd6075a1ddb69c4ed49ce5f9047c3",
+      "decision": "Retain exclusion. Inbound Sommerau uses a 92.42 m connector unsupported by mapped road edges; outbound alone cannot validate the extension.",
+      "evidenceId": "sommerau-extension",
+      "connectorEvidenceSha256": "80b0eeb4b8ec1fb6ec6e8081ba94d14bf95da4f5424576d63ead5f6ab11eb069",
+      "endpoint": {
+        "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:12618\",\"ch:1:sloid:90327\"]",
+        "routeId": "92-150-A-j26-1",
+        "agencyId": "896",
+        "line": "150",
+        "fromId": "ch:1:sloid:12618",
+        "toId": "ch:1:sloid:90327",
+        "from": "Gossau SG, Sommerau",
+        "to": "Gossau SG, Eichen",
+        "sourceFeatures": [
+          "bus:19"
+        ],
+        "production": {
+          "reason": "endpoint-gap",
+          "maximumSnapMetres": 512.6844649085323,
+          "pathMetres": null
+        },
+        "sameAgencyCandidates": [],
+        "days": [
+          {
+            "date": "2026-09-04",
+            "occurrences": 28,
+            "affectedPatterns": 1,
+            "affectedTrips": 28,
+            "patternIdsSha256": "31db82c335133b798b90702a9a8bddea689bd4a3d5430f0159e09ed03e2edc16"
+          },
+          {
+            "date": "2026-09-06",
+            "occurrences": 0,
+            "affectedPatterns": 0,
+            "affectedTrips": 0,
+            "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "decision": "Retain complete-pattern exclusion."
+      },
+      "numericalConsensus": true,
+      "geometrySource": "osm-road-inference",
+      "lengthMetres": 1001.1842239942554,
+      "directMetres": 517.5074695686261,
+      "roadPatternIds": [
+        "d319ffe4c38ef6eaf58b357a"
+      ],
+      "roadContextOccurrences": 1,
+      "contexts": [
+        {
+          "patternId": "d319ffe4c38ef6eaf58b357a",
+          "segment": 0,
+          "rawShapeSha256": "4e26f296e3bad5c2b488453347fb2351762f9a8b3db3835a03ca7c69248df789",
+          "fromCoordinate": [
+            9.2375737,
+            47.42248438
+          ],
+          "toCoordinate": [
+            9.23555249,
+            47.41804126
+          ],
+          "roadFrom": [
+            9.237658,
+            47.422482
+          ],
+          "roadTo": [
+            9.235601,
+            47.418015
+          ],
+          "fromSnapMetres": 6.354805105898484,
+          "toSnapMetres": 4.679418837252582
+        }
+      ],
+      "supportingEvents": [
+        {
+          "evidenceId": "sommerau-extension",
+          "from": "2026-06-01",
+          "through": null,
+          "fixtureDates": [
+            "2026-09-04",
+            "2026-09-06"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "[\"92-631-j26-1\",\"ch:1:sloid:76103::52\",\"ch:1:sloid:88036::50\"]",
+      "geometrySha256": "2a363435c4d893e8f6447f4eb3dd352e949c0768459d9d16d2e251c21f24e691",
+      "decision": "Retain exclusion pending dated diversion alignment review. Both Rüti paths pass numerical full-pattern consensus, but the construction notice does not prove every inferred road or turn.",
+      "evidenceId": "rueti-may",
+      "connectorEvidenceSha256": "3a29c2e7b05e49efc2d57a0f030c49f59cbfeb7a8d012315d5499b658a069893",
+      "endpoint": {
+        "key": "[\"92-631-j26-1\",\"ch:1:sloid:76103::52\",\"ch:1:sloid:88036::50\"]",
+        "routeId": "92-631-j26-1",
+        "agencyId": "772",
+        "line": "631",
+        "fromId": "ch:1:sloid:76103::52",
+        "toId": "ch:1:sloid:88036::50",
+        "from": "Rüti ZH, Bahnhof",
+        "to": "Rüti ZH, Bandwies",
+        "sourceFeatures": [
+          "bus:105"
+        ],
+        "production": {
+          "reason": "endpoint-gap",
+          "maximumSnapMetres": 182.64503802200468,
+          "pathMetres": null
+        },
+        "sameAgencyCandidates": [],
+        "days": [
+          {
+            "date": "2026-09-04",
+            "occurrences": 46,
+            "affectedPatterns": 2,
+            "affectedTrips": 46,
+            "patternIdsSha256": "318b6dd854ec50139fa43f28dc832c219d6f09142e07541a27fcf56c56bca216"
+          },
+          {
+            "date": "2026-09-06",
+            "occurrences": 33,
+            "affectedPatterns": 3,
+            "affectedTrips": 33,
+            "patternIdsSha256": "f7d87951af37e2b238406341fae74de346b7f278f9008d8e453904667bc065f6"
+          }
+        ],
+        "decision": "Retain complete-pattern exclusion."
+      },
+      "numericalConsensus": true,
+      "geometrySource": "osm-road-inference",
+      "lengthMetres": 605.5215494925424,
+      "directMetres": 459.2703684096026,
+      "roadPatternIds": [
+        "0bb15c7da5246f9cbb5c8e39",
+        "5c0292bb135dd7f1d324e51a",
+        "8d411c3a885923ab3865682e"
+      ],
+      "roadContextOccurrences": 3,
+      "contexts": [
+        {
+          "patternId": "0bb15c7da5246f9cbb5c8e39",
+          "segment": 0,
+          "rawShapeSha256": "5f407d7981e490ecc2df5e29069e5da43f441b8bfe25f725d3e7858d46ffb42d",
+          "fromCoordinate": [
+            8.85457697,
+            47.26018027
+          ],
+          "toCoordinate": [
+            8.84942963,
+            47.25798545
+          ],
+          "roadFrom": [
+            8.854626,
+            47.260143
+          ],
+          "roadTo": [
+            8.849469,
+            47.258003
+          ],
+          "fromSnapMetres": 5.561871621833,
+          "toSnapMetres": 3.558724166318482
+        },
+        {
+          "patternId": "5c0292bb135dd7f1d324e51a",
+          "segment": 0,
+          "rawShapeSha256": "5f407d7981e490ecc2df5e29069e5da43f441b8bfe25f725d3e7858d46ffb42d",
+          "fromCoordinate": [
+            8.85457697,
+            47.26018027
+          ],
+          "toCoordinate": [
+            8.84942963,
+            47.25798545
+          ],
+          "roadFrom": [
+            8.854626,
+            47.260143
+          ],
+          "roadTo": [
+            8.849469,
+            47.258003
+          ],
+          "fromSnapMetres": 5.561871621833,
+          "toSnapMetres": 3.558724166318482
+        },
+        {
+          "patternId": "8d411c3a885923ab3865682e",
+          "segment": 0,
+          "rawShapeSha256": "5f407d7981e490ecc2df5e29069e5da43f441b8bfe25f725d3e7858d46ffb42d",
+          "fromCoordinate": [
+            8.85457697,
+            47.26018027
+          ],
+          "toCoordinate": [
+            8.84942963,
+            47.25798545
+          ],
+          "roadFrom": [
+            8.854626,
+            47.260143
+          ],
+          "roadTo": [
+            8.849469,
+            47.258003
+          ],
+          "fromSnapMetres": 5.561871621833,
+          "toSnapMetres": 3.558724166318482
+        }
+      ],
+      "supportingEvents": [
+        {
+          "evidenceId": "rueti-may",
+          "from": "2026-06-01",
+          "through": "2026-10-31",
+          "fixtureDates": [
+            "2026-09-04",
+            "2026-09-06"
+          ]
+        },
+        {
+          "evidenceId": "rueti-august",
+          "from": "2026-08-24",
+          "through": "2026-08-28",
+          "fixtureDates": []
+        }
+      ]
+    },
+    {
+      "key": "[\"92-631-j26-1\",\"ch:1:sloid:88036::50\",\"ch:1:sloid:78564:0:404557\"]",
+      "geometrySha256": "2135c699b1cbf7af5c84f094f71be434f346d326e2efa3d39bc251672e3f8784",
+      "decision": "Retain exclusion pending dated diversion alignment review. Both Rüti paths pass numerical full-pattern consensus, but the construction notice does not prove every inferred road or turn.",
+      "evidenceId": "rueti-may",
+      "connectorEvidenceSha256": "4b4997bd164326735fd763025b53ced0b409dc62abd533c0c05efa88d4a0e0bc",
+      "endpoint": {
+        "key": "[\"92-631-j26-1\",\"ch:1:sloid:88036::50\",\"ch:1:sloid:78564:0:404557\"]",
+        "routeId": "92-631-j26-1",
+        "agencyId": "772",
+        "line": "631",
+        "fromId": "ch:1:sloid:88036::50",
+        "toId": "ch:1:sloid:78564:0:404557",
+        "from": "Rüti ZH, Bandwies",
+        "to": "Rüti ZH, Ferrach",
+        "sourceFeatures": [
+          "bus:105"
+        ],
+        "production": {
+          "reason": "endpoint-gap",
+          "maximumSnapMetres": 182.64503802200468,
+          "pathMetres": null
+        },
+        "sameAgencyCandidates": [],
+        "days": [
+          {
+            "date": "2026-09-04",
+            "occurrences": 46,
+            "affectedPatterns": 2,
+            "affectedTrips": 46,
+            "patternIdsSha256": "318b6dd854ec50139fa43f28dc832c219d6f09142e07541a27fcf56c56bca216"
+          },
+          {
+            "date": "2026-09-06",
+            "occurrences": 33,
+            "affectedPatterns": 3,
+            "affectedTrips": 33,
+            "patternIdsSha256": "f7d87951af37e2b238406341fae74de346b7f278f9008d8e453904667bc065f6"
+          }
+        ],
+        "decision": "Retain complete-pattern exclusion."
+      },
+      "numericalConsensus": true,
+      "geometrySource": "osm-road-inference",
+      "lengthMetres": 799.5184913937287,
+      "directMetres": 697.4652305331324,
+      "roadPatternIds": [
+        "0bb15c7da5246f9cbb5c8e39",
+        "5c0292bb135dd7f1d324e51a",
+        "8d411c3a885923ab3865682e"
+      ],
+      "roadContextOccurrences": 3,
+      "contexts": [
+        {
+          "patternId": "0bb15c7da5246f9cbb5c8e39",
+          "segment": 1,
+          "rawShapeSha256": "d68b10d3c4b6a0947c1b4cc0fb897b84a2c84ba296df2fe156bd7b87485fa608",
+          "fromCoordinate": [
+            8.84942963,
+            47.25798545
+          ],
+          "toCoordinate": [
+            8.85793667,
+            47.25555275
+          ],
+          "roadFrom": [
+            8.849469,
+            47.258003
+          ],
+          "roadTo": [
+            8.857933,
+            47.255596
+          ],
+          "fromSnapMetres": 3.558724166318482,
+          "toSnapMetres": 4.822568526642819
+        },
+        {
+          "patternId": "5c0292bb135dd7f1d324e51a",
+          "segment": 1,
+          "rawShapeSha256": "d68b10d3c4b6a0947c1b4cc0fb897b84a2c84ba296df2fe156bd7b87485fa608",
+          "fromCoordinate": [
+            8.84942963,
+            47.25798545
+          ],
+          "toCoordinate": [
+            8.85793667,
+            47.25555275
+          ],
+          "roadFrom": [
+            8.849469,
+            47.258003
+          ],
+          "roadTo": [
+            8.857933,
+            47.255596
+          ],
+          "fromSnapMetres": 3.558724166318482,
+          "toSnapMetres": 4.822568526642819
+        },
+        {
+          "patternId": "8d411c3a885923ab3865682e",
+          "segment": 1,
+          "rawShapeSha256": "d68b10d3c4b6a0947c1b4cc0fb897b84a2c84ba296df2fe156bd7b87485fa608",
+          "fromCoordinate": [
+            8.84942963,
+            47.25798545
+          ],
+          "toCoordinate": [
+            8.85793667,
+            47.25555275
+          ],
+          "roadFrom": [
+            8.849469,
+            47.258003
+          ],
+          "roadTo": [
+            8.857933,
+            47.255596
+          ],
+          "fromSnapMetres": 3.558724166318482,
+          "toSnapMetres": 4.822568526642819
+        }
+      ],
+      "supportingEvents": [
+        {
+          "evidenceId": "rueti-may",
+          "from": "2026-06-01",
+          "through": "2026-10-31",
+          "fixtureDates": [
+            "2026-09-04",
+            "2026-09-06"
+          ]
+        },
+        {
+          "evidenceId": "rueti-august",
+          "from": "2026-08-24",
+          "through": "2026-08-28",
+          "fixtureDates": []
+        }
+      ]
+    }
+  ],
+  "feedDays": [
+    {
+      "date": "2026-09-04",
+      "trips": 10652,
+      "patterns": 1004,
+      "manifestSha256": "739a50667a93e7a46e944b50293e06f7a57f22fd50f22f540bb50a6897cff515",
+      "morningSha256": "2afb094b8de55e75198bbe7d4651e4c3e12f9e25099f97c2d3d805fcfe63e6b6"
+    },
+    {
+      "date": "2026-09-06",
+      "trips": 7325,
+      "patterns": 773,
+      "manifestSha256": "be19a05d5f703bc1601afd5661e169010eb07307e9a2a4c719035f35d63afd61",
+      "morningSha256": "03c5a9bdd3735bceb117509da3af6f86f9dca0aaae6a7c1605e21ac3e4455fac"
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "fullPatternInputs": true,
+    "matcherWarningsReplayed": true,
+    "originalStopCoordinates": true,
+    "feedChanged": false,
+    "admissionPolicyChanged": false,
+    "roadGeometryAdmitted": false,
+    "directionCertified": false
+  }
+}

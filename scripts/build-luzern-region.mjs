@@ -190,11 +190,12 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
         pathAttribution: 'geometrySources = sbb-border-rail-inference; reviewed terminal pairs only, preserving successful cantonal and federal paths' }
     }
     if (boats) {
-      metadata.model = 'scheduled interpolation along official rail, cableway and cartographic shipping alignments, with inferred OSM bus roads'
+      metadata.model = 'scheduled interpolation along official rail, cableway and cartographic shipping alignments, with inferred OSM bus roads and one reviewed ferry segment'
       metadata.attribution.push(boats.source.attribution)
-      metadata.geometry.license = 'Attribution terms (cantonal, FOT, SBB, swisstopo and FOEN sources); ODbL-1.0 (OSM-derived bus segments)'
+      if (boats.osm && !metadata.attribution.includes(boats.osm.policy.attribution)) metadata.attribution.push(boats.osm.policy.attribution)
+      metadata.geometry.license = 'Attribution terms (cantonal, FOT, SBB, swisstopo and FOEN sources); ODbL-1.0 (OSM-derived bus and ferry segments)'
       metadata.geometry.shipping = { ...boats.source, policySha256: sourceHashes.boats, limits: boats.policy.limits, dockZoneMetres: boats.policy.dockZoneMetres,
-        shorelineRule: boats.policy.shorelineRule, pathAttribution: 'geometrySources = swisstopo-boat-inference; full source curves with bounded original-dock attachments and disclosed shoreline discrepancies' }
+        ...(boats.osm ? { osmSupplement: boats.osm.policy } : {}), shorelineRule: boats.policy.shorelineRule, pathAttribution: 'geometrySources = swisstopo-boat-inference or osm-boat-pattern-inference; full source curves with bounded original-dock attachments and disclosed shoreline discrepancies' }
     }
     if (accessRoads) metadata.geometry.accessRoadFallback = { ...accessRoads.source, cacheSha256: sourceHashes.accessRoads,
       reviewedPairs: policy.accessRoadFallback.pairs, limits: policy.accessRoadFallback.limits,
@@ -228,7 +229,7 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       admittedTripsUsingRoads: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')).reduce((n, p) => n + p.trips, 0),
       roadContextDirectedPairs: pairList.filter(p => p.geometrySource === 'osm-road-pattern-inference').length,
       admittedTripsUsingRoadContexts: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-pattern-inference')).reduce((n, p) => n + p.trips, 0),
-      boatDirectedPairs: pairList.filter(p => p.geometrySource === 'swisstopo-boat-inference' && p.pathIndex !== null).length,
+      boatDirectedPairs: pairList.filter(p => ['swisstopo-boat-inference', 'osm-boat-pattern-inference'].includes(p.geometrySource) && p.pathIndex !== null).length,
       admittedBoatTrips: ps.filter(p => p.admitted && p.mode === 'boat').reduce((n, p) => n + p.trips, 0),
       borderRailDirectedPairs: pairList.filter(p => p.geometrySource === 'sbb-border-rail-inference').length,
       admittedTripsUsingBorderRail: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'sbb-border-rail-inference')).reduce((n, p) => n + p.trips, 0),
@@ -261,7 +262,7 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
     sourceProbes: [{ file: shippingProbeFile, sha256: sha256(shippingProbe), sourceOnlyExclusions: JSON.parse(shippingProbe).sourceOnlyExclusions }],
     feed: raw.feed, sourceHashes, scope: raw.scope, policy, annualRouteRecords: inventory.length, annualAgencies: new Set(inventory.map(r => r.agencyId)).size,
     catalogue, sourceInventory, sourceStopReview, inventory, days,
-    ...(boats ? { boats: { source: boats.source, policy: boats.policy, sourceInventory: boats.inventory, directedPatterns: boats.patterns, consensusPairs: boats.pairs.size, matchedConsensusPairs: [...boats.pairs.values()].filter(p => p.path).length } } : {}),
+    ...(boats ? { boats: { ...(boats.osm ? { osm: boats.osm } : {}), source: boats.source, policy: boats.policy, sourceInventory: boats.inventory, directedPatterns: boats.patterns, consensusPairs: boats.pairs.size, matchedConsensusPairs: [...boats.pairs.values()].filter(p => p.path).length } } : {}),
     ...(borderRail ? { borderRail: { policy: borderRail.policy, source: borderRail.source, sourceInventory: borderRail.inventory, directedPatterns: borderRail.patterns, reviewedPairs: [...borderRail.pairs.keys()] } } : {}),
     ...(accessRoads ? { accessRoads: { source: accessRoads.source,
       agencies: Object.entries(accessRoads.cache.agencies).map(([agencyId, a]) => ({ agencyId, patterns: Object.keys(a.identities).length, report: a.cache.report, matcher: a.cache.metadata.matcher })),

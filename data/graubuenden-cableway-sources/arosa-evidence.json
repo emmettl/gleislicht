@@ -1,0 +1,23 @@
+{
+  "purpose": "Official seasonal and section context only. Preserve source timetable times and FOT geometry; no live-service or exact-departure certification.",
+  "responses": [
+    {
+      "url": "https://arosalenzerheide.swiss/en/Arosa/Summer/Mountain-railways/Operating-hours-summer",
+      "effectiveUrl": "https://arosalenzerheide.swiss/en/Arosa/Summer/Mountain-railways/Operating-hours-summer",
+      "status": 200,
+      "checkedAt": "2026-09-08T22:39:33.507692+00:00",
+      "file": "arosa-hours.html.gz",
+      "sha256": "e07fc9157b09b116d8471464c3aac3d7db2f4d92cb95f8116804f6ebd58c33f8",
+      "bodySha256": "a73fb9eed9049f102200d92875d0d7307bc2dc6ccde08be3c952768b26ea8fe6"
+    },
+    {
+      "url": "https://arosalenzerheide.swiss/de/Skigebiet/Bergbahnen/Betriebszeiten",
+      "effectiveUrl": "https://arosalenzerheide.swiss/de/Skigebiet/Bergbahnen/Betriebszeiten",
+      "status": 200,
+      "checkedAt": "2026-09-08T22:39:34.808882+00:00",
+      "file": "arosa-lifts.html.gz",
+      "sha256": "0e41cb7a1939166bbeeb73e0eb4c6204e9870913b2e37328eeb37e9eac940c7e",
+      "bodySha256": "e1e1f560152c3e524aaecf8041e74d927cbd04b55d79547dbfee230faf2fa630"
+    }
+  ]
+}

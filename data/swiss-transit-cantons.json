@@ -366,8 +366,8 @@
           "2026-09-06"
         ],
         "admittedTrips": [
-          5552,
-          3789
+          5578,
+          3803
         ],
         "publicRedistributionCleared": true,
         "roadPatternsTested": 614,
@@ -383,7 +383,8 @@
         "laupenReview": "data/fribourg-laupen-policy.json",
         "brocReview": "data/fribourg-broc-policy.json",
         "boltigenReview": "data/fribourg-boltigen-policy.json",
-        "portalbanReview": "data/fribourg-portalban-policy.json"
+        "portalbanReview": "data/fribourg-portalban-policy.json",
+        "bulleReview": "data/fribourg-bulle-policy.json"
       }
     },
     {

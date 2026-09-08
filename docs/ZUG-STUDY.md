@@ -12,6 +12,7 @@ The polygon contains **945 GTFS stop records**, of which **620** have annual cal
 
 - [Machine audit](../data/zug-study-audit.json): every route, source feature/line membership, municipality, directed pattern, pair, exclusion, geometry hash, operator/mode denominator and daily occurrence count.
 - [Pinned extracted timetable](../data/zug-timetable.json.gz): complete calls and times for both civil days, annual route membership and source hashes.
+- [Annual directed-pattern and calendar audit](ZUG-ANNUAL-PATTERNS.md): complete annual calls, exact platform variants, parent-station comparisons and proposed additional service dates, with a separate offline checker. This inventory adds no geometry admissions or emitted dates.
 - [Source catalogue](../data/zug-sources/sources.json), [preserved acquisition records](../data/zug-sources/acquisition.json), [policy and identity crosswalk](../data/zug-policy.json).
 - [Friday feed](../public/data/zug-region/2026-09-04/zug-region-day-manifest.json), [Sunday feed](../public/data/zug-region/2026-09-06/zug-region-day-manifest.json). Each has twelve two-hour chunks and a 06:45–08:45 morning snapshot. The existing compact network schema is used. UI selection, scheduled refresh and deployment are not part of these artifacts.
 

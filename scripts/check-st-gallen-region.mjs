@@ -9,6 +9,7 @@ import { validateStGallenSnapshot } from './build-st-gallen-region.mjs'
 import { validateVmobilDay } from './review-st-gallen-vmobil.mjs'
 import { applyStGallenStopAnchors, loadStGallenStopAnchors } from './st-gallen-stop-anchors.mjs'
 import { validateStGallenEndpointFollowup } from './review-st-gallen-endpoint-followup.mjs'
+import { validateStGallenRoadReview } from './review-st-gallen-roads.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sum = (items, key) => items.reduce((n, item) => n + item[key], 0)
@@ -237,6 +238,15 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
   assert.equal(followup.policySha256,sha256(await readFile(followupPolicyPath)))
   assert.equal(followup.endpointReviewSha256,summary.endpointReview.sha256)
   validateStGallenEndpointFollowup(followup,endpoints,await json('data/st-gallen-region/index.json'),await json(followupPolicyPath))
+  assert(summary.roadPilotReview, 'Missing road geometry pilot review')
+  assert.equal(sha256(await readFile(summary.roadPilotReview.path)), summary.roadPilotReview.sha256)
+  const roadPilot = await json(summary.roadPilotReview.path), roadPolicyPath = 'data/st-gallen-road-pilot-policy.json'
+  const roadPolicy = await json(roadPolicyPath)
+  assert.equal(roadPilot.policySha256, sha256(await readFile(roadPolicyPath)))
+  assert.equal(roadPilot.endpointReviewSha256, summary.endpointReview.sha256)
+  assert.equal(roadPilot.followupReviewSha256, summary.endpointFollowupReview.sha256)
+  assert.equal(roadPilot.config.sha256, sha256(await readFile(roadPilot.config.file)))
+  validateStGallenRoadReview(roadPilot, endpoints, await json('data/st-gallen-region/index.json'), roadPolicy, followup)
   assert(summary.vmobilReview, 'Missing Vorarlberg shape review')
   assert.equal(sha256(await readFile(summary.vmobilReview.path)), summary.vmobilReview.sha256)
   const vmobil = await json(summary.vmobilReview.path)

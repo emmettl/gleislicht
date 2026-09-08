@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "sourceDirectory": "data/luzern-osm-boat-sources",
+  "files": [
+    {
+      "file": "query.txt",
+      "sha256": "9b1c6fe9ef0e4705e784d4286439ae5d613cf756b75fb790e408848b6ad8314f",
+      "rawSha256": "9b1c6fe9ef0e4705e784d4286439ae5d613cf756b75fb790e408848b6ad8314f"
+    },
+    {
+      "file": "ferries.json.gz",
+      "sha256": "7db8d869ff8696f3c9b7ce1a86b951dbe18223b1c6ec1ccc41ae8c7fafc0648a",
+      "rawSha256": "4c104a971ea3c60252f4d6f4862f1c1d47a8ce270045a7013825f785df8d6480"
+    },
+    {
+      "file": "scope.json.gz",
+      "sha256": "4d1c69aac2adb8ee8ab2fa0ba0d1ac9baf9865703b070c92af6601be3ddf8aec",
+      "rawSha256": "5e8864916e450175d1c71cdb1fb0bdb691c7d8e4de12ca6b19d20971459e7ae0"
+    }
+  ],
+  "snapshot": "2026-09-02T00:00:00Z",
+  "retrieved": "2026-09-09",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "attribution": "© OpenStreetMap contributors (ODbL-1.0)",
+  "license": "ODbL-1.0",
+  "terms": "https://www.openstreetmap.org/copyright",
+  "maximumDockMetres": 30,
+  "maximumMeanKmh": 25,
+  "binding": {
+    "routeId": "94-360-3-j26-1",
+    "agencyId": "185",
+    "line": "3603",
+    "operator": "SGV",
+    "relationId": 18628404,
+    "wayId": 1355336513,
+    "patternId": "a54c8947555d19d0ae31",
+    "fromId": "ch:1:sloid:8487",
+    "toId": "ch:1:sloid:8484",
+    "docks": [
+      {
+        "stopId": "ch:1:sloid:8488",
+        "nodeId": 984738514,
+        "uic": "8508488",
+        "maximumIdentityMetres": 30
+      },
+      {
+        "stopId": "ch:1:sloid:8487",
+        "nodeId": 2393265378,
+        "uic": "8508487",
+        "maximumIdentityMetres": 30
+      },
+      {
+        "stopId": "ch:1:sloid:8484",
+        "nodeId": 478073148,
+        "uic": "8508484",
+        "maximumIdentityMetres": 30
+      },
+      {
+        "stopId": "ch:1:sloid:8459",
+        "nodeId": 670299349,
+        "uic": "8508459",
+        "maximumIdentityMetres": 100
+      },
+      {
+        "stopId": "ch:1:sloid:8492:0:929446",
+        "nodeId": 6686811677,
+        "uic": "8508492",
+        "maximumIdentityMetres": 30,
+        "platform": "3",
+        "osmName": "Luzern Bahnhofquai 3"
+      }
+    ],
+    "geometrySha256": "84f0d6b768e4ba3f29301c44993bc0842c1a28c651630a126ce039e1bfb0cdfb"
+  },
+  "exclusions": [
+    {
+      "route": "3600",
+      "reason": "Source relations use Bahnhofquai dock 4; no reviewed dock-1 binding. Relation 18623434 names the operator Verkehrshaus, and 18615633 lacks an operator."
+    },
+    {
+      "route": "3601",
+      "reason": "Retained for further review; no whole-pattern geometry admission. Relation 18629129 lacks an operator. Hergiswil and Alpnachstad still exceed official geometry endpoint limits."
+    },
+    {
+      "route": "3605",
+      "reason": "Relation 18624219 names Saphir but has ref 3604 and calls Schweizerhofquai, not the distinct GTFS Bahnhofquai dock. No alias or route substitution."
+    },
+    {
+      "route": "all other relations/ways",
+      "reason": "Retained source census only, including unrelated Zug, Ägeri and Beckenried–Gersau records; no general permission to reuse their paths."
+    }
+  ],
+  "shorelineSourceSha256": "439d53f90b9ad1b9d37a83d70cac0f8f7a06c2eeae22a7da293913f3088c2019"
+}

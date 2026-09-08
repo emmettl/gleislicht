@@ -3,7 +3,7 @@
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "01c9c1e429e565517c554b8fb1a86e53814625daa3072dcc878f5078d8ec993f",
+    "crosswalk": "b0a8b63685474e917452291ce9dff2d7feb9891143b081b68f3ef29e4bed3287",
     "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
     "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
     "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
@@ -12,6 +12,7 @@
     "broc": "a707ab9a3464d448a427c7cf80ce554e3d9644ae40006043488a20117dad7a0f",
     "boltigen": "f4faa42d9ed6bb44f74600ea6334fb3189b1b91f8b918da667779c5b99a0f01f",
     "portalban": "40c1ed42c0a592931eebbce280b9b32b14b45afa110896b9bddafdb3f714d786",
+    "bulle": "65ef8dbf77f9449e6c0d94efb50235b5bed43f9f089ff48a80b9ad1da4087403",
     "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
     "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
     "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -317,6 +318,2228 @@
       "license": "ODbL-1.0",
       "licenseUrl": "https://www.openstreetmap.org/copyright",
       "model": "Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified",
+      "bulle": {
+        "schemaVersion": 1,
+        "id": "bulle-directed-platform-exit",
+        "sourceDirectory": "data/fribourg-bulle-sources",
+        "sources": [
+          {
+            "file": "map.osm.gz",
+            "url": "https://www.openstreetmap.org/api/0.6/map?bbox=7.049,46.618,7.054,46.622",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Complete raw bbox response, deterministic gzip. Eight station-exit ways, three context ways, exact L/M stop-position identities and seven no-U-turn relations retained. Selected edits predate fixtures; survey vintage unknown.",
+            "sha256": "974259b3c51afacd2140eafbfb2a541833d4f73dfc6f64e5c81724339848ce90",
+            "retrievedAt": "2026-09-08T22:33:31.400Z"
+          },
+          {
+            "file": "tpf-platforms-2026.pdf",
+            "url": "https://www.tpf.ch/Portals/0/Images/Fichiers/Horaires%20et%20plans/Interruptions/Plan%20des%20bus%20de%20remplacement/FER%202026/Bulle.pdf",
+            "attribution": "TPF",
+            "created": "2026-02-09",
+            "role": "Official 2026 station plan identifies 258 at L and 454 at M. Supports original platform labels and locality; no map geometry extracted or physical exit certified.",
+            "sha256": "517a8780b33538df2cc61a3f5392d910399978b057d970d5b4c6ea191a055922",
+            "retrievedAt": "2026-09-08T22:30:37.084Z"
+          },
+          {
+            "file": "tpf-platforms-legacy.pdf",
+            "url": "https://www.tpf.ch/Portals/0/Images/Fichiers/Horaires%20et%20plans/Interruptions/Plan%20des%20bus%20de%20remplacement/Bulle.pdf",
+            "attribution": "TPF",
+            "role": "Older numbered-platform plan retained as excluded acquisition evidence; not used for current L/M identity.",
+            "sha256": "d8c42f78392703910326fa038322384a1058097575ea713808882d7d19f9f99c",
+            "retrievedAt": "2026-09-08T22:30:17.155Z"
+          }
+        ],
+        "agencyId": "834",
+        "routeIds": [
+          "92-258-j26-1",
+          "92-454-j26-1"
+        ],
+        "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "patterns": [
+          {
+            "id": "1a3cce2cb2816b7624c6727f",
+            "routeId": "92-454-j26-1",
+            "stops": [
+              [
+                6.91195221,
+                46.69319695,
+                "Romont FR, gare",
+                "A",
+                "ch:1:sloid:70465:0:16322"
+              ],
+              [
+                6.9155814,
+                46.68864334,
+                "Romont FR, CO de la Glâne",
+                "",
+                "ch:1:sloid:4935:0:16329"
+              ],
+              [
+                6.92018976,
+                46.68842151,
+                "Mézières FR, Parqueterie",
+                "",
+                "ch:1:sloid:77669:0:16285"
+              ],
+              [
+                6.92604677,
+                46.67621294,
+                "Mézières FR, village",
+                "",
+                "ch:1:sloid:77670:0:16249"
+              ],
+              [
+                6.94072524,
+                46.66458112,
+                "Villariaz, village",
+                "",
+                "ch:1:sloid:4851:0:16387"
+              ],
+              [
+                6.9348323,
+                46.65707181,
+                "Vuisternens-dt-Romont, foyer",
+                "",
+                "ch:1:sloid:96065:0:17826"
+              ],
+              [
+                6.93054733,
+                46.65303312,
+                "Vuisternens-dt-Romont, village",
+                "",
+                "ch:1:sloid:94248:0:17022"
+              ],
+              [
+                6.93412263,
+                46.64832813,
+                "Vuisternens-dt-Romont, Lanciau",
+                "",
+                "ch:1:sloid:87307:0:16243"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.9628238,
+                46.62266856,
+                "Sâles, Joretta",
+                "",
+                "ch:1:sloid:94992:0:17203"
+              ],
+              [
+                6.97459173,
+                46.63509893,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17130"
+              ],
+              [
+                6.98637763,
+                46.62793716,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17207"
+              ],
+              [
+                6.99026733,
+                46.62385928,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17129"
+              ],
+              [
+                6.98900969,
+                46.62076828,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17024"
+              ],
+              [
+                6.98225436,
+                46.61896048,
+                "Vaulruz, Champ-Paccot",
+                "",
+                "ch:1:sloid:12133:0:1"
+              ],
+              [
+                6.98898274,
+                46.62031788,
+                "Vaulruz, village",
+                "",
+                "ch:1:sloid:5233:0:18235"
+              ],
+              [
+                7.01389302,
+                46.61871368,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19419"
+              ],
+              [
+                7.02039683,
+                46.6176339,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17410"
+              ],
+              [
+                7.05286194,
+                46.62000938,
+                "Bulle, gare routière",
+                "M",
+                "ch:1:sloid:77725:0:15898"
+              ],
+              [
+                7.0650431,
+                46.64454781,
+                "Riaz, CO",
+                "",
+                "ch:1:sloid:3435:0:19523"
+              ]
+            ]
+          },
+          {
+            "id": "3788e8c9dbdc9f9b2eae32fd",
+            "routeId": "92-258-j26-1",
+            "stops": [
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.95857477,
+                46.64873513,
+                "Rueyres-Treyfayes, chapelle",
+                "",
+                "ch:1:sloid:94243:0:17132"
+              ],
+              [
+                6.96945337,
+                46.65103525,
+                "Romanens, laiterie",
+                "",
+                "ch:1:sloid:94242:0:17131"
+              ],
+              [
+                6.97567869,
+                46.64630541,
+                "Romanens, Grotte",
+                "",
+                "ch:1:sloid:5297:0:18240"
+              ],
+              [
+                6.97459173,
+                46.63509893,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17130"
+              ],
+              [
+                6.99096802,
+                46.63856536,
+                "Maules, village",
+                "",
+                "ch:1:sloid:94388:0:17128"
+              ],
+              [
+                6.98637763,
+                46.62793716,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17207"
+              ],
+              [
+                6.99026733,
+                46.62385928,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17129"
+              ],
+              [
+                6.98900969,
+                46.62076828,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17024"
+              ],
+              [
+                7.01389302,
+                46.61871368,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19419"
+              ],
+              [
+                7.02039683,
+                46.6176339,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17410"
+              ],
+              [
+                7.05280804,
+                46.61993534,
+                "Bulle, gare routière",
+                "L",
+                "ch:1:sloid:77725:0:15884"
+              ],
+              [
+                7.0650431,
+                46.64454781,
+                "Riaz, CO",
+                "",
+                "ch:1:sloid:3435:0:19523"
+              ]
+            ]
+          },
+          {
+            "id": "438c857f15b1e6cee2cb1224",
+            "routeId": "92-454-j26-1",
+            "stops": [
+              [
+                6.91195221,
+                46.69319695,
+                "Romont FR, gare",
+                "A",
+                "ch:1:sloid:70465:0:16322"
+              ],
+              [
+                6.9155814,
+                46.68864334,
+                "Romont FR, CO de la Glâne",
+                "",
+                "ch:1:sloid:4935:0:16329"
+              ],
+              [
+                6.92018976,
+                46.68842151,
+                "Mézières FR, Parqueterie",
+                "",
+                "ch:1:sloid:77669:0:16285"
+              ],
+              [
+                6.92604677,
+                46.67621294,
+                "Mézières FR, village",
+                "",
+                "ch:1:sloid:77670:0:16249"
+              ],
+              [
+                6.94072524,
+                46.66458112,
+                "Villariaz, village",
+                "",
+                "ch:1:sloid:4851:0:16387"
+              ],
+              [
+                6.9348323,
+                46.65707181,
+                "Vuisternens-dt-Romont, foyer",
+                "",
+                "ch:1:sloid:96065:0:17826"
+              ],
+              [
+                6.93054733,
+                46.65303312,
+                "Vuisternens-dt-Romont, village",
+                "",
+                "ch:1:sloid:94248:0:17022"
+              ],
+              [
+                6.93412263,
+                46.64832813,
+                "Vuisternens-dt-Romont, Lanciau",
+                "",
+                "ch:1:sloid:87307:0:16243"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.9628238,
+                46.62266856,
+                "Sâles, Joretta",
+                "",
+                "ch:1:sloid:94992:0:17203"
+              ],
+              [
+                6.97459173,
+                46.63509893,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17130"
+              ],
+              [
+                6.98637763,
+                46.62793716,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17207"
+              ],
+              [
+                6.99026733,
+                46.62385928,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17129"
+              ],
+              [
+                6.98900969,
+                46.62076828,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17024"
+              ],
+              [
+                7.01389302,
+                46.61871368,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19419"
+              ],
+              [
+                7.02039683,
+                46.6176339,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17410"
+              ],
+              [
+                7.05402077,
+                46.61778199,
+                "Bulle, gare routière",
+                "",
+                "ch:1:sloid:77725:0:15886"
+              ]
+            ]
+          },
+          {
+            "id": "589ebce9f913ebec49dcb1b4",
+            "routeId": "92-454-j26-1",
+            "stops": [
+              [
+                6.91195221,
+                46.69319695,
+                "Romont FR, gare",
+                "A",
+                "ch:1:sloid:70465:0:16322"
+              ],
+              [
+                6.9155814,
+                46.68864334,
+                "Romont FR, CO de la Glâne",
+                "",
+                "ch:1:sloid:4935:0:16329"
+              ],
+              [
+                6.92018976,
+                46.68842151,
+                "Mézières FR, Parqueterie",
+                "",
+                "ch:1:sloid:77669:0:16285"
+              ],
+              [
+                6.92604677,
+                46.67621294,
+                "Mézières FR, village",
+                "",
+                "ch:1:sloid:77670:0:16249"
+              ],
+              [
+                6.94072524,
+                46.66458112,
+                "Villariaz, village",
+                "",
+                "ch:1:sloid:4851:0:16387"
+              ],
+              [
+                6.9348323,
+                46.65707181,
+                "Vuisternens-dt-Romont, foyer",
+                "",
+                "ch:1:sloid:96065:0:17826"
+              ],
+              [
+                6.93054733,
+                46.65303312,
+                "Vuisternens-dt-Romont, village",
+                "",
+                "ch:1:sloid:94248:0:17022"
+              ],
+              [
+                6.93412263,
+                46.64832813,
+                "Vuisternens-dt-Romont, Lanciau",
+                "",
+                "ch:1:sloid:87307:0:16243"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ]
+            ]
+          },
+          {
+            "id": "6d86886b7caa24eb47d60b00",
+            "routeId": "92-258-j26-1",
+            "stops": [
+              [
+                7.05280804,
+                46.61993534,
+                "Bulle, gare routière",
+                "L",
+                "ch:1:sloid:77725:0:15884"
+              ],
+              [
+                7.01990275,
+                46.61756603,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17067"
+              ],
+              [
+                7.01360556,
+                46.61876304,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19418"
+              ],
+              [
+                6.98905461,
+                46.62083615,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17025"
+              ],
+              [
+                6.99050988,
+                46.62392098,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17028"
+              ],
+              [
+                6.98648543,
+                46.62792483,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17206"
+              ],
+              [
+                6.99104887,
+                46.63852218,
+                "Maules, village",
+                "",
+                "ch:1:sloid:94388:0:17127"
+              ],
+              [
+                6.97459173,
+                46.63509893,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17130"
+              ],
+              [
+                6.97574157,
+                46.6460834,
+                "Romanens, Grotte",
+                "",
+                "ch:1:sloid:5297:0:18239"
+              ],
+              [
+                6.96909404,
+                46.65104141,
+                "Romanens, laiterie",
+                "",
+                "ch:1:sloid:94242:0:17031"
+              ],
+              [
+                6.9585029,
+                46.64875363,
+                "Rueyres-Treyfayes, chapelle",
+                "",
+                "ch:1:sloid:94243:0:17032"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.94139,
+                46.63964471,
+                "Vuisternens-dt-Romont, Poyet",
+                "",
+                "ch:1:sloid:4883:0:16301"
+              ],
+              [
+                6.93793148,
+                46.62793716,
+                "La Joux FR, village",
+                "",
+                "ch:1:sloid:4882:0:16238"
+              ],
+              [
+                6.92910105,
+                46.62475385,
+                "La Joux FR, Scierie",
+                "",
+                "ch:1:sloid:4934:0:16240"
+              ],
+              [
+                6.91037117,
+                46.62071275,
+                "Les Ecasseys",
+                "",
+                "ch:1:sloid:4971:0:16195"
+              ],
+              [
+                6.89924105,
+                46.61659113,
+                "Bouloz, En Praz Vert",
+                "",
+                "ch:1:sloid:77674:0:16308"
+              ],
+              [
+                6.88278391,
+                46.61156826,
+                "Bouloz, école",
+                "",
+                "ch:1:sloid:4893:0:17919"
+              ],
+              [
+                6.87106988,
+                46.60261972,
+                "Porsel, Les Bois",
+                "",
+                "ch:1:sloid:77676:0:16134"
+              ],
+              [
+                6.86693763,
+                46.60066936,
+                "Porsel, village",
+                "",
+                "ch:1:sloid:4891:0:16299"
+              ],
+              [
+                6.85727176,
+                46.59341044,
+                "Pont (Veveyse), Perey-Martin",
+                "",
+                "ch:1:sloid:77677:0:16287"
+              ],
+              [
+                6.85379527,
+                46.58929909,
+                "Pont (Veveyse), village",
+                "",
+                "ch:1:sloid:77678:0:16296"
+              ],
+              [
+                6.84197345,
+                46.57581464,
+                "Oron-le-Châtel, La Chavanne",
+                "",
+                "ch:1:sloid:77679:0:828788"
+              ],
+              [
+                6.83898206,
+                46.57507982,
+                "Oron-le-Châtel, Château",
+                "",
+                "ch:1:sloid:70449:0:237280"
+              ],
+              [
+                6.83664644,
+                46.57252329,
+                "Oron-le-Châtel, gare",
+                "",
+                "ch:1:sloid:77681:0:101342"
+              ],
+              [
+                6.82700751,
+                46.57080034,
+                "Oron-la-Ville, centre",
+                "A",
+                "ch:1:sloid:4775:0:844531"
+              ],
+              [
+                6.82151881,
+                46.57130673,
+                "Oron-la-Ville, gare routière",
+                "",
+                "ch:1:sloid:79800:0:911800"
+              ]
+            ]
+          },
+          {
+            "id": "7d5552f8e2c7ed3692723451",
+            "routeId": "92-258-j26-1",
+            "stops": [
+              [
+                6.82151881,
+                46.57130673,
+                "Oron-la-Ville, gare routière",
+                "",
+                "ch:1:sloid:79800:0:911800"
+              ],
+              [
+                6.82725904,
+                46.57109676,
+                "Oron-la-Ville, centre",
+                "",
+                "ch:1:sloid:4775:0:195693"
+              ],
+              [
+                6.83664644,
+                46.57250476,
+                "Oron-le-Châtel, gare",
+                "",
+                "ch:1:sloid:77681:0:452189"
+              ],
+              [
+                6.83969172,
+                46.57528977,
+                "Oron-le-Châtel, Château",
+                "",
+                "ch:1:sloid:70449:0:3365"
+              ],
+              [
+                6.84200938,
+                46.57574672,
+                "Oron-le-Châtel, La Chavanne",
+                "",
+                "ch:1:sloid:77679:0:965642"
+              ],
+              [
+                6.85416358,
+                46.58960159,
+                "Pont (Veveyse), village",
+                "",
+                "ch:1:sloid:77678:0:16297"
+              ],
+              [
+                6.85746938,
+                46.59352773,
+                "Pont (Veveyse), Perey-Martin",
+                "",
+                "ch:1:sloid:77677:0:16288"
+              ],
+              [
+                6.86682085,
+                46.60042865,
+                "Porsel, village",
+                "",
+                "ch:1:sloid:4891:0:16300"
+              ],
+              [
+                6.87159988,
+                46.60273699,
+                "Porsel, Les Bois",
+                "",
+                "ch:1:sloid:77676:0:16135"
+              ],
+              [
+                6.88339476,
+                46.6115806,
+                "Bouloz, école",
+                "",
+                "ch:1:sloid:4893:0:17920"
+              ],
+              [
+                6.89916918,
+                46.61651709,
+                "Bouloz, En Praz Vert",
+                "",
+                "ch:1:sloid:77674:0:16309"
+              ],
+              [
+                6.91037117,
+                46.62071275,
+                "Les Ecasseys",
+                "",
+                "ch:1:sloid:4971:0:16195"
+              ],
+              [
+                6.92857104,
+                46.62440836,
+                "La Joux FR, Scierie",
+                "",
+                "ch:1:sloid:4934:0:16241"
+              ],
+              [
+                6.93845251,
+                46.62852939,
+                "La Joux FR, village",
+                "",
+                "ch:1:sloid:4882:0:16239"
+              ],
+              [
+                6.94147085,
+                46.6397434,
+                "Vuisternens-dt-Romont, Poyet",
+                "",
+                "ch:1:sloid:4883:0:16302"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.95857477,
+                46.64873513,
+                "Rueyres-Treyfayes, chapelle",
+                "",
+                "ch:1:sloid:94243:0:17132"
+              ],
+              [
+                6.96945337,
+                46.65103525,
+                "Romanens, laiterie",
+                "",
+                "ch:1:sloid:94242:0:17131"
+              ],
+              [
+                6.97567869,
+                46.64630541,
+                "Romanens, Grotte",
+                "",
+                "ch:1:sloid:5297:0:18240"
+              ],
+              [
+                6.97459173,
+                46.63509893,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17130"
+              ],
+              [
+                6.99096802,
+                46.63856536,
+                "Maules, village",
+                "",
+                "ch:1:sloid:94388:0:17128"
+              ],
+              [
+                6.98637763,
+                46.62793716,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17207"
+              ],
+              [
+                6.99026733,
+                46.62385928,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17129"
+              ],
+              [
+                6.98900969,
+                46.62076828,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17024"
+              ],
+              [
+                7.01389302,
+                46.61871368,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19419"
+              ],
+              [
+                7.02039683,
+                46.6176339,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17410"
+              ],
+              [
+                7.05280804,
+                46.61993534,
+                "Bulle, gare routière",
+                "L",
+                "ch:1:sloid:77725:0:15884"
+              ],
+              [
+                7.0650431,
+                46.64454781,
+                "Riaz, CO",
+                "",
+                "ch:1:sloid:3435:0:19523"
+              ]
+            ]
+          },
+          {
+            "id": "861bb2c337402d540453d92a",
+            "routeId": "92-454-j26-1",
+            "stops": [
+              [
+                7.05286194,
+                46.62000938,
+                "Bulle, gare routière",
+                "M",
+                "ch:1:sloid:77725:0:15898"
+              ],
+              [
+                7.01990275,
+                46.61756603,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17067"
+              ],
+              [
+                7.01360556,
+                46.61876304,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19418"
+              ],
+              [
+                6.98864138,
+                46.62026235,
+                "Vaulruz, village",
+                "",
+                "ch:1:sloid:5233:0:18234"
+              ],
+              [
+                6.98225436,
+                46.61896048,
+                "Vaulruz, Champ-Paccot",
+                "",
+                "ch:1:sloid:12133:0:1"
+              ],
+              [
+                6.98905461,
+                46.62083615,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17025"
+              ],
+              [
+                6.99050988,
+                46.62392098,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17028"
+              ],
+              [
+                6.98648543,
+                46.62792483,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17206"
+              ],
+              [
+                6.97440308,
+                46.63482136,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17030"
+              ],
+              [
+                6.96256329,
+                46.62254516,
+                "Sâles, Joretta",
+                "",
+                "ch:1:sloid:94992:0:17202"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.93420348,
+                46.64847613,
+                "Vuisternens-dt-Romont, Lanciau",
+                "",
+                "ch:1:sloid:87307:0:16244"
+              ],
+              [
+                6.93048445,
+                46.65319961,
+                "Vuisternens-dt-Romont, village",
+                "",
+                "ch:1:sloid:94248:0:17023"
+              ],
+              [
+                6.93529942,
+                46.65722595,
+                "Vuisternens-dt-Romont, foyer",
+                "",
+                "ch:1:sloid:96065:0:17825"
+              ],
+              [
+                6.94020422,
+                46.66492635,
+                "Villariaz, village",
+                "",
+                "ch:1:sloid:4851:0:16388"
+              ],
+              [
+                6.92620847,
+                46.67679848,
+                "Mézières FR, village",
+                "",
+                "ch:1:sloid:77670:0:16250"
+              ],
+              [
+                6.92001908,
+                46.68884053,
+                "Mézières FR, Parqueterie",
+                "",
+                "ch:1:sloid:77669:0:16286"
+              ],
+              [
+                6.91538377,
+                46.68961079,
+                "Romont FR, CO de la Glâne",
+                "",
+                "ch:1:sloid:4935:0:16330"
+              ],
+              [
+                6.91195221,
+                46.69319695,
+                "Romont FR, gare",
+                "A",
+                "ch:1:sloid:70465:0:16322"
+              ]
+            ]
+          },
+          {
+            "id": "90be1406d9c9b8d50be65a00",
+            "routeId": "92-454-j26-1",
+            "stops": [
+              [
+                7.05286194,
+                46.62000938,
+                "Bulle, gare routière",
+                "M",
+                "ch:1:sloid:77725:0:15898"
+              ],
+              [
+                7.01990275,
+                46.61756603,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17067"
+              ],
+              [
+                7.01360556,
+                46.61876304,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19418"
+              ],
+              [
+                6.98905461,
+                46.62083615,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17025"
+              ],
+              [
+                6.99050988,
+                46.62392098,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17028"
+              ],
+              [
+                6.98648543,
+                46.62792483,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17206"
+              ],
+              [
+                6.97440308,
+                46.63482136,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17030"
+              ],
+              [
+                6.96256329,
+                46.62254516,
+                "Sâles, Joretta",
+                "",
+                "ch:1:sloid:94992:0:17202"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.93420348,
+                46.64847613,
+                "Vuisternens-dt-Romont, Lanciau",
+                "",
+                "ch:1:sloid:87307:0:16244"
+              ],
+              [
+                6.93048445,
+                46.65319961,
+                "Vuisternens-dt-Romont, village",
+                "",
+                "ch:1:sloid:94248:0:17023"
+              ],
+              [
+                6.93529942,
+                46.65722595,
+                "Vuisternens-dt-Romont, foyer",
+                "",
+                "ch:1:sloid:96065:0:17825"
+              ],
+              [
+                6.94020422,
+                46.66492635,
+                "Villariaz, village",
+                "",
+                "ch:1:sloid:4851:0:16388"
+              ],
+              [
+                6.92620847,
+                46.67679848,
+                "Mézières FR, village",
+                "",
+                "ch:1:sloid:77670:0:16250"
+              ],
+              [
+                6.92001908,
+                46.68884053,
+                "Mézières FR, Parqueterie",
+                "",
+                "ch:1:sloid:77669:0:16286"
+              ],
+              [
+                6.91538377,
+                46.68961079,
+                "Romont FR, CO de la Glâne",
+                "",
+                "ch:1:sloid:4935:0:16330"
+              ],
+              [
+                6.91195221,
+                46.69319695,
+                "Romont FR, gare",
+                "A",
+                "ch:1:sloid:70465:0:16322"
+              ]
+            ]
+          },
+          {
+            "id": "98c917b565df89d9dc4df46a",
+            "routeId": "92-454-j26-1",
+            "stops": [
+              [
+                6.91195221,
+                46.69319695,
+                "Romont FR, gare",
+                "A",
+                "ch:1:sloid:70465:0:16322"
+              ],
+              [
+                6.9155814,
+                46.68864334,
+                "Romont FR, CO de la Glâne",
+                "",
+                "ch:1:sloid:4935:0:16329"
+              ],
+              [
+                6.92018976,
+                46.68842151,
+                "Mézières FR, Parqueterie",
+                "",
+                "ch:1:sloid:77669:0:16285"
+              ],
+              [
+                6.92604677,
+                46.67621294,
+                "Mézières FR, village",
+                "",
+                "ch:1:sloid:77670:0:16249"
+              ],
+              [
+                6.94072524,
+                46.66458112,
+                "Villariaz, village",
+                "",
+                "ch:1:sloid:4851:0:16387"
+              ],
+              [
+                6.9348323,
+                46.65707181,
+                "Vuisternens-dt-Romont, foyer",
+                "",
+                "ch:1:sloid:96065:0:17826"
+              ],
+              [
+                6.93054733,
+                46.65303312,
+                "Vuisternens-dt-Romont, village",
+                "",
+                "ch:1:sloid:94248:0:17022"
+              ],
+              [
+                6.93412263,
+                46.64832813,
+                "Vuisternens-dt-Romont, Lanciau",
+                "",
+                "ch:1:sloid:87307:0:16243"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.9628238,
+                46.62266856,
+                "Sâles, Joretta",
+                "",
+                "ch:1:sloid:94992:0:17203"
+              ],
+              [
+                6.97459173,
+                46.63509893,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17130"
+              ],
+              [
+                6.98637763,
+                46.62793716,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17207"
+              ],
+              [
+                6.99026733,
+                46.62385928,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17129"
+              ],
+              [
+                6.98900969,
+                46.62076828,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17024"
+              ],
+              [
+                6.98225436,
+                46.61896048,
+                "Vaulruz, Champ-Paccot",
+                "",
+                "ch:1:sloid:12133:0:1"
+              ],
+              [
+                6.98898274,
+                46.62031788,
+                "Vaulruz, village",
+                "",
+                "ch:1:sloid:5233:0:18235"
+              ],
+              [
+                7.01389302,
+                46.61871368,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19419"
+              ],
+              [
+                7.02039683,
+                46.6176339,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17410"
+              ],
+              [
+                7.05402077,
+                46.61778199,
+                "Bulle, gare routière",
+                "",
+                "ch:1:sloid:77725:0:15886"
+              ]
+            ]
+          },
+          {
+            "id": "a9d24fbbcb93efc43757a610",
+            "routeId": "92-454-j26-1",
+            "stops": [
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.93420348,
+                46.64847613,
+                "Vuisternens-dt-Romont, Lanciau",
+                "",
+                "ch:1:sloid:87307:0:16244"
+              ],
+              [
+                6.93048445,
+                46.65319961,
+                "Vuisternens-dt-Romont, village",
+                "",
+                "ch:1:sloid:94248:0:17023"
+              ],
+              [
+                6.93529942,
+                46.65722595,
+                "Vuisternens-dt-Romont, foyer",
+                "",
+                "ch:1:sloid:96065:0:17825"
+              ],
+              [
+                6.94020422,
+                46.66492635,
+                "Villariaz, village",
+                "",
+                "ch:1:sloid:4851:0:16388"
+              ],
+              [
+                6.92620847,
+                46.67679848,
+                "Mézières FR, village",
+                "",
+                "ch:1:sloid:77670:0:16250"
+              ],
+              [
+                6.92001908,
+                46.68884053,
+                "Mézières FR, Parqueterie",
+                "",
+                "ch:1:sloid:77669:0:16286"
+              ],
+              [
+                6.91538377,
+                46.68961079,
+                "Romont FR, CO de la Glâne",
+                "",
+                "ch:1:sloid:4935:0:16330"
+              ],
+              [
+                6.91195221,
+                46.69319695,
+                "Romont FR, gare",
+                "A",
+                "ch:1:sloid:70465:0:16322"
+              ]
+            ]
+          },
+          {
+            "id": "ae3416edecf6d6e11a0b46a8",
+            "routeId": "92-258-j26-1",
+            "stops": [
+              [
+                7.05280804,
+                46.61993534,
+                "Bulle, gare routière",
+                "L",
+                "ch:1:sloid:77725:0:15884"
+              ],
+              [
+                7.01990275,
+                46.61756603,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17067"
+              ],
+              [
+                7.01360556,
+                46.61876304,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19418"
+              ],
+              [
+                6.98905461,
+                46.62083615,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17025"
+              ],
+              [
+                6.99050988,
+                46.62392098,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17028"
+              ],
+              [
+                6.98648543,
+                46.62792483,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17206"
+              ],
+              [
+                6.99104887,
+                46.63852218,
+                "Maules, village",
+                "",
+                "ch:1:sloid:94388:0:17127"
+              ],
+              [
+                6.97459173,
+                46.63509893,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17130"
+              ],
+              [
+                6.97574157,
+                46.6460834,
+                "Romanens, Grotte",
+                "",
+                "ch:1:sloid:5297:0:18239"
+              ],
+              [
+                6.96909404,
+                46.65104141,
+                "Romanens, laiterie",
+                "",
+                "ch:1:sloid:94242:0:17031"
+              ],
+              [
+                6.9585029,
+                46.64875363,
+                "Rueyres-Treyfayes, chapelle",
+                "",
+                "ch:1:sloid:94243:0:17032"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ]
+            ]
+          },
+          {
+            "id": "d8820be39b04fb0abac18e08",
+            "routeId": "92-258-j26-1",
+            "stops": [
+              [
+                6.82151881,
+                46.57130673,
+                "Oron-la-Ville, gare routière",
+                "",
+                "ch:1:sloid:79800:0:911800"
+              ],
+              [
+                6.82725904,
+                46.57109676,
+                "Oron-la-Ville, centre",
+                "",
+                "ch:1:sloid:4775:0:195693"
+              ],
+              [
+                6.83664644,
+                46.57250476,
+                "Oron-le-Châtel, gare",
+                "",
+                "ch:1:sloid:77681:0:452189"
+              ],
+              [
+                6.83969172,
+                46.57528977,
+                "Oron-le-Châtel, Château",
+                "",
+                "ch:1:sloid:70449:0:3365"
+              ],
+              [
+                6.84200938,
+                46.57574672,
+                "Oron-le-Châtel, La Chavanne",
+                "",
+                "ch:1:sloid:77679:0:965642"
+              ],
+              [
+                6.85416358,
+                46.58960159,
+                "Pont (Veveyse), village",
+                "",
+                "ch:1:sloid:77678:0:16297"
+              ],
+              [
+                6.85746938,
+                46.59352773,
+                "Pont (Veveyse), Perey-Martin",
+                "",
+                "ch:1:sloid:77677:0:16288"
+              ],
+              [
+                6.86682085,
+                46.60042865,
+                "Porsel, village",
+                "",
+                "ch:1:sloid:4891:0:16300"
+              ],
+              [
+                6.87159988,
+                46.60273699,
+                "Porsel, Les Bois",
+                "",
+                "ch:1:sloid:77676:0:16135"
+              ],
+              [
+                6.88339476,
+                46.6115806,
+                "Bouloz, école",
+                "",
+                "ch:1:sloid:4893:0:17920"
+              ],
+              [
+                6.89916918,
+                46.61651709,
+                "Bouloz, En Praz Vert",
+                "",
+                "ch:1:sloid:77674:0:16309"
+              ],
+              [
+                6.91037117,
+                46.62071275,
+                "Les Ecasseys",
+                "",
+                "ch:1:sloid:4971:0:16195"
+              ],
+              [
+                6.92857104,
+                46.62440836,
+                "La Joux FR, Scierie",
+                "",
+                "ch:1:sloid:4934:0:16241"
+              ],
+              [
+                6.93845251,
+                46.62852939,
+                "La Joux FR, village",
+                "",
+                "ch:1:sloid:4882:0:16239"
+              ],
+              [
+                6.94147085,
+                46.6397434,
+                "Vuisternens-dt-Romont, Poyet",
+                "",
+                "ch:1:sloid:4883:0:16302"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ]
+            ]
+          },
+          {
+            "id": "e918a8205cb7a9f0c1079039",
+            "routeId": "92-258-j26-1",
+            "stops": [
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.95857477,
+                46.64873513,
+                "Rueyres-Treyfayes, chapelle",
+                "",
+                "ch:1:sloid:94243:0:17132"
+              ],
+              [
+                6.96945337,
+                46.65103525,
+                "Romanens, laiterie",
+                "",
+                "ch:1:sloid:94242:0:17131"
+              ],
+              [
+                6.97567869,
+                46.64630541,
+                "Romanens, Grotte",
+                "",
+                "ch:1:sloid:5297:0:18240"
+              ],
+              [
+                6.97459173,
+                46.63509893,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17130"
+              ],
+              [
+                6.99096802,
+                46.63856536,
+                "Maules, village",
+                "",
+                "ch:1:sloid:94388:0:17128"
+              ],
+              [
+                6.98637763,
+                46.62793716,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17207"
+              ],
+              [
+                6.99026733,
+                46.62385928,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17129"
+              ],
+              [
+                6.98900969,
+                46.62076828,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17024"
+              ],
+              [
+                7.01389302,
+                46.61871368,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19419"
+              ],
+              [
+                7.02039683,
+                46.6176339,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17410"
+              ],
+              [
+                7.05402077,
+                46.61778199,
+                "Bulle, gare routière",
+                "",
+                "ch:1:sloid:77725:0:15886"
+              ]
+            ]
+          },
+          {
+            "id": "ed2fdee8b26c2037a16895d5",
+            "routeId": "92-454-j26-1",
+            "stops": [
+              [
+                7.0650431,
+                46.64454781,
+                "Riaz, CO",
+                "",
+                "ch:1:sloid:3435:0:19523"
+              ],
+              [
+                7.05286194,
+                46.62000938,
+                "Bulle, gare routière",
+                "M",
+                "ch:1:sloid:77725:0:15898"
+              ],
+              [
+                7.01990275,
+                46.61756603,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17067"
+              ],
+              [
+                7.01360556,
+                46.61876304,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19418"
+              ],
+              [
+                6.98864138,
+                46.62026235,
+                "Vaulruz, village",
+                "",
+                "ch:1:sloid:5233:0:18234"
+              ],
+              [
+                6.98225436,
+                46.61896048,
+                "Vaulruz, Champ-Paccot",
+                "",
+                "ch:1:sloid:12133:0:1"
+              ],
+              [
+                6.98905461,
+                46.62083615,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17025"
+              ],
+              [
+                6.99050988,
+                46.62392098,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17028"
+              ],
+              [
+                6.98648543,
+                46.62792483,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17206"
+              ],
+              [
+                6.97440308,
+                46.63482136,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17030"
+              ],
+              [
+                6.96256329,
+                46.62254516,
+                "Sâles, Joretta",
+                "",
+                "ch:1:sloid:94992:0:17202"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ],
+              [
+                6.93420348,
+                46.64847613,
+                "Vuisternens-dt-Romont, Lanciau",
+                "",
+                "ch:1:sloid:87307:0:16244"
+              ],
+              [
+                6.93048445,
+                46.65319961,
+                "Vuisternens-dt-Romont, village",
+                "",
+                "ch:1:sloid:94248:0:17023"
+              ],
+              [
+                6.93529942,
+                46.65722595,
+                "Vuisternens-dt-Romont, foyer",
+                "",
+                "ch:1:sloid:96065:0:17825"
+              ],
+              [
+                6.94020422,
+                46.66492635,
+                "Villariaz, village",
+                "",
+                "ch:1:sloid:4851:0:16388"
+              ],
+              [
+                6.92620847,
+                46.67679848,
+                "Mézières FR, village",
+                "",
+                "ch:1:sloid:77670:0:16250"
+              ],
+              [
+                6.92001908,
+                46.68884053,
+                "Mézières FR, Parqueterie",
+                "",
+                "ch:1:sloid:77669:0:16286"
+              ],
+              [
+                6.91538377,
+                46.68961079,
+                "Romont FR, CO de la Glâne",
+                "",
+                "ch:1:sloid:4935:0:16330"
+              ],
+              [
+                6.91195221,
+                46.69319695,
+                "Romont FR, gare",
+                "A",
+                "ch:1:sloid:70465:0:16322"
+              ]
+            ]
+          },
+          {
+            "id": "f40b040e1f69aed13f0a667d",
+            "routeId": "92-258-j26-1",
+            "stops": [
+              [
+                7.0650431,
+                46.64454781,
+                "Riaz, CO",
+                "",
+                "ch:1:sloid:3435:0:19523"
+              ],
+              [
+                7.05280804,
+                46.61993534,
+                "Bulle, gare routière",
+                "L",
+                "ch:1:sloid:77725:0:15884"
+              ],
+              [
+                7.01990275,
+                46.61756603,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17067"
+              ],
+              [
+                7.01360556,
+                46.61876304,
+                "Vuadens, Les Kâ",
+                "",
+                "ch:1:sloid:7596:0:19418"
+              ],
+              [
+                6.98905461,
+                46.62083615,
+                "Vaulruz, Croix-Verte",
+                "",
+                "ch:1:sloid:94246:0:17025"
+              ],
+              [
+                6.99050988,
+                46.62392098,
+                "Vaulruz-Nord, gare",
+                "",
+                "ch:1:sloid:94247:0:17028"
+              ],
+              [
+                6.98648543,
+                46.62792483,
+                "Maules, bif",
+                "",
+                "ch:1:sloid:94991:0:17206"
+              ],
+              [
+                6.99104887,
+                46.63852218,
+                "Maules, village",
+                "",
+                "ch:1:sloid:94388:0:17127"
+              ],
+              [
+                6.97459173,
+                46.63509893,
+                "Sâles, laiterie",
+                "",
+                "ch:1:sloid:94993:0:17130"
+              ],
+              [
+                6.97574157,
+                46.6460834,
+                "Romanens, Grotte",
+                "",
+                "ch:1:sloid:5297:0:18239"
+              ],
+              [
+                6.96909404,
+                46.65104141,
+                "Romanens, laiterie",
+                "",
+                "ch:1:sloid:94242:0:17031"
+              ],
+              [
+                6.9585029,
+                46.64875363,
+                "Rueyres-Treyfayes, chapelle",
+                "",
+                "ch:1:sloid:94243:0:17032"
+              ],
+              [
+                6.93969218,
+                46.64345621,
+                "Vuisternens-dt-Romont, forge",
+                "",
+                "ch:1:sloid:77673:0:16303"
+              ]
+            ]
+          }
+        ],
+        "cases": [
+          {
+            "stops": [
+              [
+                7.05280804,
+                46.61993534,
+                "Bulle, gare routière",
+                "L",
+                "ch:1:sloid:77725:0:15884"
+              ],
+              [
+                7.01990275,
+                46.61756603,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17067"
+              ]
+            ],
+            "chain": [
+              [
+                "1446630640",
+                "13273200096",
+                "13273200080"
+              ],
+              [
+                "1446630636",
+                "13273200080",
+                "13273200042"
+              ],
+              [
+                "1446630633",
+                "13273200042",
+                "13273200040"
+              ],
+              [
+                "129100337",
+                "13273200040",
+                "4459904043"
+              ],
+              [
+                "449022778",
+                "4459904043",
+                "4459904050"
+              ],
+              [
+                "128507000",
+                "4459904050",
+                "1420043598"
+              ],
+              [
+                "449022786",
+                "1420043598",
+                "4459904042"
+              ]
+            ],
+            "commonTail": [
+              [
+                7.051726,
+                46.620289
+              ],
+              [
+                7.05024,
+                46.619289
+              ],
+              [
+                7.049678,
+                46.619095
+              ],
+              [
+                7.049329,
+                46.618843
+              ],
+              [
+                7.048851,
+                46.618671
+              ],
+              [
+                7.043645,
+                46.617592
+              ],
+              [
+                7.043328,
+                46.617455
+              ],
+              [
+                7.042943,
+                46.617455
+              ],
+              [
+                7.039431,
+                46.616745
+              ],
+              [
+                7.038307,
+                46.616608
+              ],
+              [
+                7.03828,
+                46.616192
+              ],
+              [
+                7.03753,
+                46.613628
+              ],
+              [
+                7.034206,
+                46.61409
+              ],
+              [
+                7.033182,
+                46.614365
+              ],
+              [
+                7.0309,
+                46.615593
+              ],
+              [
+                7.028385,
+                46.616638
+              ],
+              [
+                7.027808,
+                46.61702
+              ],
+              [
+                7.027009,
+                46.617924
+              ],
+              [
+                7.026765,
+                46.61805
+              ],
+              [
+                7.024951,
+                46.618027
+              ],
+              [
+                7.023742,
+                46.617725
+              ],
+              [
+                7.022331,
+                46.617607
+              ],
+              [
+                7.020638,
+                46.617699
+              ],
+              [
+                7.019477,
+                46.617359
+              ],
+              [
+                7.019903,
+                46.617566
+              ]
+            ]
+          },
+          {
+            "stops": [
+              [
+                7.05286194,
+                46.62000938,
+                "Bulle, gare routière",
+                "M",
+                "ch:1:sloid:77725:0:15898"
+              ],
+              [
+                7.01990275,
+                46.61756603,
+                "Vuadens, gare",
+                "",
+                "ch:1:sloid:93291:0:17067"
+              ]
+            ],
+            "chain": [
+              [
+                "1446630641",
+                "13273200097",
+                "13273200084"
+              ],
+              [
+                "1446630636",
+                "13273200084",
+                "13273200042"
+              ],
+              [
+                "1446630633",
+                "13273200042",
+                "13273200040"
+              ],
+              [
+                "129100337",
+                "13273200040",
+                "4459904043"
+              ],
+              [
+                "449022778",
+                "4459904043",
+                "4459904050"
+              ],
+              [
+                "128507000",
+                "4459904050",
+                "1420043598"
+              ],
+              [
+                "449022786",
+                "1420043598",
+                "4459904042"
+              ]
+            ],
+            "commonTail": [
+              [
+                7.051726,
+                46.620289
+              ],
+              [
+                7.05024,
+                46.619289
+              ],
+              [
+                7.049678,
+                46.619095
+              ],
+              [
+                7.049329,
+                46.618843
+              ],
+              [
+                7.048851,
+                46.618671
+              ],
+              [
+                7.043645,
+                46.617592
+              ],
+              [
+                7.043328,
+                46.617455
+              ],
+              [
+                7.042943,
+                46.617455
+              ],
+              [
+                7.039431,
+                46.616745
+              ],
+              [
+                7.038307,
+                46.616608
+              ],
+              [
+                7.03828,
+                46.616192
+              ],
+              [
+                7.03753,
+                46.613628
+              ],
+              [
+                7.034206,
+                46.61409
+              ],
+              [
+                7.033182,
+                46.614365
+              ],
+              [
+                7.0309,
+                46.615593
+              ],
+              [
+                7.028385,
+                46.616638
+              ],
+              [
+                7.027808,
+                46.61702
+              ],
+              [
+                7.027009,
+                46.617924
+              ],
+              [
+                7.026765,
+                46.61805
+              ],
+              [
+                7.024951,
+                46.618027
+              ],
+              [
+                7.023742,
+                46.617725
+              ],
+              [
+                7.022331,
+                46.617607
+              ],
+              [
+                7.020638,
+                46.617699
+              ],
+              [
+                7.019477,
+                46.617359
+              ],
+              [
+                7.019903,
+                46.617566
+              ]
+            ]
+          }
+        ],
+        "commonTailSha256": "f57787188d2af7151c07871e34d0ea65dedaf47299bdc6101804edef8cfb5160",
+        "maximumAttachmentMetres": 6,
+        "maximumPrefixMetres": 220,
+        "maximumJoinMetres": 0.1,
+        "maximumDestinationMetres": 0.1,
+        "admission": "Only original L/M departures on routes 258/454 to Vuadens. Follow each exact matching OSM stop-position forward through TPF bus-designated station roads, Chemin des Crêts and the directed roundabout exit to Route de la Pâla. Preserve every intervening source node. Original call attachment at most 6 m, local prefix 180–220 m, source join at most 0.1 m. All three full contexts per route must have the identical 25-vertex suffix beyond the fixed join; preserve that suffix byte-for-byte and append an at-most-0.1 m connector to the original seven-decimal Vuadens coordinate. Check seven retained no-U-turn relations against traversed transitions, including the onward southwest exit. General detour limits unchanged.",
+        "exclusions": [
+          "Other routes, platforms, directions, full contexts or fixture dates",
+          "Differing paths beyond the fixed local review boundary",
+          "General tolerance for differing matcher outputs",
+          "Opposed one-way movement or prohibited source turns",
+          "Treating access=no as public access: selected TPF roads require explicit bus=designated",
+          "Using the older numbered-platform plan or claiming an operator-verified running lane"
+        ]
+      },
       "portalban": {
         "schemaVersion": 1,
         "id": "portalban-school-streets",
@@ -9237,6 +11460,10 @@
         "portalban": {
           "file": "data/fribourg-portalban-policy.json",
           "sha256": "40c1ed42c0a592931eebbce280b9b32b14b45afa110896b9bddafdb3f714d786"
+        },
+        "bulle": {
+          "file": "data/fribourg-bulle-policy.json",
+          "sha256": "65ef8dbf77f9449e6c0d94efb50235b5bed43f9f089ff48a80b9ad1da4087403"
         }
       },
       "completePatternsTested": 614
@@ -10279,10 +12506,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 121,
+    "admitted-all-dated-trips": 123,
     "inactive-on-validation-dates": 48,
     "excluded": 19,
-    "partially-admitted": 19
+    "partially-admitted": 17
   },
   "districts": [
     {
@@ -10645,7 +12872,7 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "01c9c1e429e565517c554b8fb1a86e53814625daa3072dcc878f5078d8ec993f",
+        "crosswalk": "b0a8b63685474e917452291ce9dff2d7feb9891143b081b68f3ef29e4bed3287",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
         "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
@@ -10654,6 +12881,7 @@
         "broc": "a707ab9a3464d448a427c7cf80ce554e3d9644ae40006043488a20117dad7a0f",
         "boltigen": "f4faa42d9ed6bb44f74600ea6334fb3189b1b91f8b918da667779c5b99a0f01f",
         "portalban": "40c1ed42c0a592931eebbce280b9b32b14b45afa110896b9bddafdb3f714d786",
+        "bulle": "65ef8dbf77f9449e6c0d94efb50235b5bed43f9f089ff48a80b9ad1da4087403",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
         "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -10662,23 +12890,23 @@
       },
       "coverage": {
         "trips": 8556,
-        "admittedTrips": 5552,
+        "admittedTrips": 5578,
         "scheduledTrips": 5812,
         "representativeHeadwayTrips": 2744,
-        "admittedScheduledTrips": 5552,
+        "admittedScheduledTrips": 5578,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 89328,
-        "matchedScheduledSegmentOccurrences": 87506,
+        "matchedScheduledSegmentOccurrences": 87532,
         "segmentOccurrences": 92072,
-        "matchedSegmentOccurrences": 87506,
-        "admittedSegmentOccurrences": 85451,
+        "matchedSegmentOccurrences": 87532,
+        "admittedSegmentOccurrences": 85885,
         "directedPairs": 4509,
-        "matchedDirectedPairs": 4213,
+        "matchedDirectedPairs": 4215,
         "patterns": 849,
-        "completePatterns": 740,
-        "admittedPatterns": 740,
+        "completePatterns": 746,
+        "admittedPatterns": 746,
         "excludedTrips": {
-          "incomplete-directed-pattern": 139,
+          "incomplete-directed-pattern": 113,
           "no-verified-operator-line-crosswalk": 2856,
           "provisional-boundary-membership": 9
         }
@@ -10984,23 +13212,23 @@
           "id": "834:bus",
           "agency": "Service d'automobiles TPF",
           "trips": 3918,
-          "admittedTrips": 3865,
+          "admittedTrips": 3891,
           "scheduledTrips": 3918,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 3865,
+          "admittedScheduledTrips": 3891,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 65387,
-          "matchedScheduledSegmentOccurrences": 65331,
+          "matchedScheduledSegmentOccurrences": 65357,
           "segmentOccurrences": 65387,
-          "matchedSegmentOccurrences": 65331,
-          "admittedSegmentOccurrences": 64325,
+          "matchedSegmentOccurrences": 65357,
+          "admittedSegmentOccurrences": 64759,
           "directedPairs": 2555,
-          "matchedDirectedPairs": 2545,
+          "matchedDirectedPairs": 2547,
           "patterns": 396,
-          "completePatterns": 374,
-          "admittedPatterns": 374,
+          "completePatterns": 380,
+          "admittedPatterns": 380,
           "excludedTrips": {
-            "incomplete-directed-pattern": 53
+            "incomplete-directed-pattern": 27
           }
         },
         {
@@ -11026,8 +13254,8 @@
         }
       ],
       "timing": {
-        "zeroDurationSegmentOccurrences": 6016,
-        "zeroDurationOver100m": 6012,
+        "zeroDurationSegmentOccurrences": 6018,
+        "zeroDurationOver100m": 6014,
         "maximumPositiveDurationSpeedKmh": 144.56527036688541,
         "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
       },
@@ -11144,11 +13372,11 @@
           }
         },
         "patternsTestedAcrossBothDates": 614,
-        "newlyAdmittedTrips": 2314,
+        "newlyAdmittedTrips": 2340,
         "lostAdmittedTrips": 0,
-        "matchedDirectedPairs": 545,
-        "matchedSegmentOccurrences": 6540,
-        "admittedSegmentOccurrences": 6136
+        "matchedDirectedPairs": 547,
+        "matchedSegmentOccurrences": 6566,
+        "admittedSegmentOccurrences": 6167
       },
       "railEffect": {
         "patternsTestedAcrossBothDates": 412,
@@ -11162,8 +13390,8 @@
       },
       "pairFailures": {
         "endpoint-gap": {
-          "directedPairs": 22,
-          "segmentOccurrences": 133
+          "directedPairs": 20,
+          "segmentOccurrences": 107
         },
         "missing-line": {
           "directedPairs": 274,
@@ -11185,12 +13413,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 6398763,
-          "gzipBytes": 1523560
+          "bytes": 6500815,
+          "gzipBytes": 1542114
         },
         "morning": {
-          "trips": 929,
-          "gzipBytes": 1635250
+          "trips": 932,
+          "gzipBytes": 1655528
         },
         "chunks": [
           {
@@ -11200,7 +13428,7 @@
             "path": "day-chunks/00-02.json",
             "tripCount": 97,
             "bytes": 84457,
-            "sha256": "4f3e64573782f7b8b2e9cbe2bc22f887d8f5e3206de5a4c115733052a579a692",
+            "sha256": "5c0639ba964c9f789e1812074ec64458a296093c1830f0a63bf1c35b35a1350f",
             "gzipBytes": 14994
           },
           {
@@ -11218,100 +13446,100 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 235,
-            "bytes": 227331,
-            "sha256": "054146eea30a69a6f9861e4bc23a3eaba039ab27e9bcf5f608b3f0952fd21939",
-            "gzipBytes": 36099
+            "tripCount": 237,
+            "bytes": 229371,
+            "sha256": "baedfb2678ec92da82d95c27f0589546f2320bdda15e10eebd6455940ed50127",
+            "gzipBytes": 36515
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 928,
-            "bytes": 877781,
-            "sha256": "f4a7f2d9e32037ecc6eb4d96e76b64fab4acbaaed9238ca30a44a5aed4c15bf3",
-            "gzipBytes": 112501
+            "tripCount": 933,
+            "bytes": 883017,
+            "sha256": "52c414c14890dad5034477d4ccb4d6e2a5f9b047f8f8cfb424c84cb4351b13c3",
+            "gzipBytes": 113040
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 734,
-            "bytes": 725762,
-            "sha256": "2030bf474fdb4eec9c4f619961f950659c121fb83f760015d9bc2f0d4a5d6b4a",
-            "gzipBytes": 95331
+            "tripCount": 736,
+            "bytes": 728033,
+            "sha256": "acfeba416184c9cfe6e05b18fe01f62a16be56f686aed654bbb1b4c35075cc69",
+            "gzipBytes": 95567
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 707,
-            "bytes": 703578,
-            "sha256": "0ea7d28a7c77e6e764c0afc2c2b329a58893a3c2ef47da4646706ccc3dc78cd6",
-            "gzipBytes": 92492
+            "tripCount": 710,
+            "bytes": 706792,
+            "sha256": "36fe581129cd3ee731602cdf8a566ecaf223065a24312bac89082476bbffb39b",
+            "gzipBytes": 93104
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 837,
-            "bytes": 802743,
-            "sha256": "357c8841093abca76acdfb2df6c45787c38e3a388baed774b15425d163a28813",
-            "gzipBytes": 105018
+            "tripCount": 841,
+            "bytes": 807078,
+            "sha256": "bee45e7e1282f0d7811016118269d5e1049b5aee9db8daf46e5f71801291dad4",
+            "gzipBytes": 105555
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 724,
-            "bytes": 712275,
-            "sha256": "337d00482b201fa3552c34ec44e4373c8a78afc921aaf8fd158046b021990e57",
-            "gzipBytes": 93690
+            "tripCount": 726,
+            "bytes": 714542,
+            "sha256": "67156d41790a9cdea9cde27355431683757555cea863543a4c635a7e32dfb26b",
+            "gzipBytes": 93910
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 932,
-            "bytes": 897491,
-            "sha256": "a3fd66650e4e1dae9f51036f5b234309ca8bb77da91ca68d4cc7c3e137b8c82f",
-            "gzipBytes": 114179
+            "tripCount": 939,
+            "bytes": 905688,
+            "sha256": "53e364b286a964aa872fb3e569bcfbd79f0f597cfe038ee8cca3295e6b7e79a2",
+            "gzipBytes": 115291
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 848,
-            "bytes": 821885,
-            "sha256": "031c60ac692850027fc135228f773b51cd6cfbc4586d9136f3c54d9f41561850",
-            "gzipBytes": 105112
+            "tripCount": 854,
+            "bytes": 828470,
+            "sha256": "35fdf9611d7978b097cad2811436659e2b0715997cbd8f19ef6f05011c12cc02",
+            "gzipBytes": 106005
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 509,
-            "bytes": 505107,
-            "sha256": "23972a3cb533bd63a99273b623bec3ac5cce0c980f69582eee21740f1661d50b",
-            "gzipBytes": 67765
+            "tripCount": 511,
+            "bytes": 507301,
+            "sha256": "7453622b31fdd4c2b20f2d68f11ec64d2ce2f0169ec7163f6fd8ea1fe452c2b0",
+            "gzipBytes": 68156
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 389,
-            "bytes": 377491,
-            "sha256": "26175c56b22b1acee8d352265bd1d25ebd5e28c15137c2f88aca12f2077b37a4",
-            "gzipBytes": 51595
+            "tripCount": 390,
+            "bytes": 378557,
+            "sha256": "6ef1babd8a3fc0dacfd000ff4ba3c3630ab47ec8b0833c8514ad421673c55a49",
+            "gzipBytes": 51796
           }
         ]
       },
@@ -11333,7 +13561,7 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "01c9c1e429e565517c554b8fb1a86e53814625daa3072dcc878f5078d8ec993f",
+        "crosswalk": "b0a8b63685474e917452291ce9dff2d7feb9891143b081b68f3ef29e4bed3287",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
         "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
@@ -11342,6 +13570,7 @@
         "broc": "a707ab9a3464d448a427c7cf80ce554e3d9644ae40006043488a20117dad7a0f",
         "boltigen": "f4faa42d9ed6bb44f74600ea6334fb3189b1b91f8b918da667779c5b99a0f01f",
         "portalban": "40c1ed42c0a592931eebbce280b9b32b14b45afa110896b9bddafdb3f714d786",
+        "bulle": "65ef8dbf77f9449e6c0d94efb50235b5bed43f9f089ff48a80b9ad1da4087403",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
         "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -11350,23 +13579,23 @@
       },
       "coverage": {
         "trips": 6326,
-        "admittedTrips": 3789,
+        "admittedTrips": 3803,
         "scheduledTrips": 4062,
         "representativeHeadwayTrips": 2264,
-        "admittedScheduledTrips": 3789,
+        "admittedScheduledTrips": 3803,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 62231,
-        "matchedScheduledSegmentOccurrences": 60748,
+        "matchedScheduledSegmentOccurrences": 60762,
         "segmentOccurrences": 64495,
-        "matchedSegmentOccurrences": 60748,
-        "admittedSegmentOccurrences": 59370,
+        "matchedSegmentOccurrences": 60762,
+        "admittedSegmentOccurrences": 59574,
         "directedPairs": 4607,
-        "matchedDirectedPairs": 4360,
+        "matchedDirectedPairs": 4362,
         "patterns": 588,
-        "completePatterns": 511,
-        "admittedPatterns": 511,
+        "completePatterns": 513,
+        "admittedPatterns": 513,
         "excludedTrips": {
-          "incomplete-directed-pattern": 172,
+          "incomplete-directed-pattern": 158,
           "no-verified-operator-line-crosswalk": 2365
         }
       },
@@ -11692,23 +13921,23 @@
           "id": "834:bus",
           "agency": "Service d'automobiles TPF",
           "trips": 2435,
-          "admittedTrips": 2396,
+          "admittedTrips": 2410,
           "scheduledTrips": 2435,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 2396,
+          "admittedScheduledTrips": 2410,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 43081,
-          "matchedScheduledSegmentOccurrences": 43038,
+          "matchedScheduledSegmentOccurrences": 43052,
           "segmentOccurrences": 43081,
-          "matchedSegmentOccurrences": 43038,
-          "admittedSegmentOccurrences": 42506,
+          "matchedSegmentOccurrences": 43052,
+          "admittedSegmentOccurrences": 42710,
           "directedPairs": 2797,
-          "matchedDirectedPairs": 2787,
+          "matchedDirectedPairs": 2789,
           "patterns": 205,
-          "completePatterns": 194,
-          "admittedPatterns": 194,
+          "completePatterns": 196,
+          "admittedPatterns": 196,
           "excludedTrips": {
-            "incomplete-directed-pattern": 39
+            "incomplete-directed-pattern": 25
           }
         },
         {
@@ -11824,11 +14053,11 @@
           }
         },
         "patternsTestedAcrossBothDates": 614,
-        "newlyAdmittedTrips": 1391,
+        "newlyAdmittedTrips": 1405,
         "lostAdmittedTrips": 0,
-        "matchedDirectedPairs": 518,
-        "matchedSegmentOccurrences": 4193,
-        "admittedSegmentOccurrences": 3637
+        "matchedDirectedPairs": 520,
+        "matchedSegmentOccurrences": 4207,
+        "admittedSegmentOccurrences": 3651
       },
       "railEffect": {
         "patternsTestedAcrossBothDates": 412,
@@ -11842,8 +14071,8 @@
       },
       "pairFailures": {
         "endpoint-gap": {
-          "directedPairs": 9,
-          "segmentOccurrences": 61
+          "directedPairs": 7,
+          "segmentOccurrences": 47
         },
         "missing-line": {
           "directedPairs": 238,
@@ -11851,7 +14080,7 @@
         }
       },
       "carryInTrips": 179,
-      "admittedCarryInTrips": 159,
+      "admittedCarryInTrips": 160,
       "admittedOutsideCantonPlatforms": 547,
       "directedPatternChecks": {
         "directionIds": [
@@ -11865,12 +14094,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 6186220,
-          "gzipBytes": 1514291
+          "bytes": 6244921,
+          "gzipBytes": 1523005
         },
         "morning": {
-          "trips": 489,
-          "gzipBytes": 1578980
+          "trips": 490,
+          "gzipBytes": 1587668
         },
         "chunks": [
           {
@@ -11878,10 +14107,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 139,
-            "bytes": 130654,
-            "sha256": "d4ef93e66b61862034a3a6c91d2a454384cae51289e241bf3fad3c7188a0d3a7",
-            "gzipBytes": 23580
+            "tripCount": 140,
+            "bytes": 131684,
+            "sha256": "838e23b2268b21fbdbd1a9a483527eae96d853e2767ec7d7af0699db0406d352",
+            "gzipBytes": 23805
           },
           {
             "id": "02-04",
@@ -11889,9 +14118,9 @@
             "windowEnd": 14400,
             "path": "day-chunks/02-04.json",
             "tripCount": 45,
-            "bytes": 56367,
-            "sha256": "7c82adfaebdb40fd6adf89d05901a5a03acad0e4b8eb3bf3826ca1d5c0248c6d",
-            "gzipBytes": 11289
+            "bytes": 56370,
+            "sha256": "7669eef835d9b84b5110eb7ef02aa3a4a1404b7684fed94a580766aa389b085f",
+            "gzipBytes": 11315
           },
           {
             "id": "04-06",
@@ -11900,98 +14129,98 @@
             "path": "day-chunks/04-06.json",
             "tripCount": 115,
             "bytes": 114295,
-            "sha256": "beae425ec5ad3aa757aef14857506f702507923ad9c9622e263e36125e980593",
-            "gzipBytes": 18957
+            "sha256": "59abb907e934e6bc95b9901676fef459cb46c5ac58a8e1a114667befa7aebd26",
+            "gzipBytes": 18977
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 405,
-            "bytes": 390542,
-            "sha256": "a8fdcbad64e57090c47cce58c2f7bf6718743a7671f4bd9c0777372ca8ef6008",
-            "gzipBytes": 55161
+            "tripCount": 406,
+            "bytes": 391613,
+            "sha256": "dcdd2d27cc70cf21bf20a517283db191d0e8dafd9ac5e999ebec57e3d32c0673",
+            "gzipBytes": 55422
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 526,
-            "bytes": 516848,
-            "sha256": "2dc97006d7e53a2e68c20d86c78fad37d8cdea43b3df6375bc9988084e0959d7",
-            "gzipBytes": 70242
+            "tripCount": 528,
+            "bytes": 518828,
+            "sha256": "5db15f9e81a67e75573b80656f21e6c0c4603390beac7ca16659ec4e8cbcbe4b",
+            "gzipBytes": 70708
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 541,
-            "bytes": 528116,
-            "sha256": "cb13434e3b887e8312af18d335130aaf0e1aa0bdab96cecf68551edd2259703d",
-            "gzipBytes": 71301
+            "tripCount": 543,
+            "bytes": 530096,
+            "sha256": "52fd4cb8d9413036086e67de4593c1522f7b5effec76807027186d3882e5700f",
+            "gzipBytes": 71790
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 543,
-            "bytes": 528180,
-            "sha256": "3b1c046f4645fc5d5902a4c1917ede521bfaab7c0bf91bbb9d711cf144875b0a",
-            "gzipBytes": 71588
+            "tripCount": 545,
+            "bytes": 530162,
+            "sha256": "50290b63ce23a467347296b1ae775f40bbdb7d3ed16046b5f258e36cb3036394",
+            "gzipBytes": 72085
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 529,
-            "bytes": 517021,
-            "sha256": "d7be2a105067bac4371ed4f0b271bc3ab85fb9af5637addfcb843a45fc938122",
-            "gzipBytes": 69860
+            "tripCount": 532,
+            "bytes": 519910,
+            "sha256": "99ce63b147fd9f519271569df26b11d9e4886877081e35bac477a8d43f48be94",
+            "gzipBytes": 70423
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 568,
-            "bytes": 550565,
-            "sha256": "3e61cbf7f6fe818504dac4b8b1eaf30d52207c6c71dd7af557622079e2ba5293",
-            "gzipBytes": 74288
+            "tripCount": 570,
+            "bytes": 552547,
+            "sha256": "ed1c7dc9cf536ce3e413e9e3d3419b5eeccd98d4234378b1b14905524ccf671a",
+            "gzipBytes": 74723
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 524,
-            "bytes": 511736,
-            "sha256": "3611ef034d3a089442b410005a55713d90571c2cf2698ce3fcf5735d8d1f470e",
-            "gzipBytes": 69352
+            "tripCount": 526,
+            "bytes": 513718,
+            "sha256": "61344687fa69e37eb86aaf9fac23d33c67bcf3510215d2b8cc675cc546600dc3",
+            "gzipBytes": 69791
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 441,
-            "bytes": 437929,
-            "sha256": "a935d7981521c58cc7a019ca5b8bde22fa986bec47621751fb5bc04e703f5fb7",
-            "gzipBytes": 59412
+            "tripCount": 443,
+            "bytes": 439913,
+            "sha256": "191494b5e773174bf0e37278f2347f3aaed163fd2d0e7eb4a2a6d28802116cb2",
+            "gzipBytes": 59777
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 369,
-            "bytes": 359315,
-            "sha256": "84ab135f0f86987056914fff2a7a4e921478885aa0491dccd8e7d570e7f762de",
-            "gzipBytes": 49051
+            "tripCount": 370,
+            "bytes": 360392,
+            "sha256": "65f1c988cb46a763ce9029bedb8f40142a59d0f16187e8c1ed65fa4ab12be282",
+            "gzipBytes": 49279
           }
         ]
       },

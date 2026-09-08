@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "scope": "All eight full May Lenzburg witness patterns tested; numerical road compatibility alone does not authorize replacement-bus admission without timetable and source-time review.",
+  "attribution": "© OpenStreetMap contributors; ODbL-1.0",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
+  "sourceDates": {
+    "switzerland": "2026-09-02",
+    "borderRetrieved": "2026-09-08"
+  },
+  "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+  "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+  "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+  "sourceTimetableSha256": "824d629c8dded53dc086de9ee6477810613e6c3c90a17fe1d1b7891cb3c4defc",
+  "files": {
+    "cache.json.gz": "09deb0e74a001082a74cc820a517e5c765b641017121d164c2caa42133e6a323",
+    "matcher-evidence.json.gz": "6eb2f135c9accb99776fa6d08166c759da48b06314f5f15c1a173ab49e82ffe4",
+    "pfaedle.cfg": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4"
+  },
+  "report": {
+    "matchedSegments": 582,
+    "totalSegments": 659,
+    "coverage": 0.8831562974203339,
+    "routes": [
+      {
+        "routeId": "92-EV5-V-j26-1",
+        "route": "EV5",
+        "matched": 391,
+        "total": 391,
+        "patterns": 2
+      },
+      {
+        "routeId": "92-EV7-R-j26-1",
+        "route": "EV7",
+        "matched": 74,
+        "total": 74,
+        "patterns": 2
+      },
+      {
+        "routeId": "92-A01-N-j26-1",
+        "route": "EV4",
+        "matched": 58,
+        "total": 116,
+        "patterns": 2
+      },
+      {
+        "routeId": "92-EV9-I-j26-1",
+        "route": "EV9",
+        "matched": 59,
+        "total": 78,
+        "patterns": 2
+      }
+    ],
+    "maxSnapMetres": 57.2379459765548,
+    "rejectedPatternSegments": 2,
+    "issues": [
+      {
+        "pattern": "3e03d9e4f47b32773e04db83",
+        "routeId": "92-A01-N-j26-1",
+        "route": "EV4",
+        "segment": 0,
+        "from": "Lenzburg, Bahnhof",
+        "to": "Othmarsingen, Bahnhof",
+        "fromId": "ch:1:sloid:78736:0:06",
+        "toId": "ch:1:sloid:87101",
+        "trips": 58,
+        "reason": "stop-too-far",
+        "snap": 132.2367587402675
+      },
+      {
+        "pattern": "d67cce48473afd6fb2e7e80d",
+        "routeId": "92-EV9-I-j26-1",
+        "route": "EV9",
+        "segment": 1,
+        "from": "Lenzburg, Bahnhof",
+        "to": "Othmarsingen, Bahnhof",
+        "fromId": "ch:1:sloid:78736:0:06",
+        "toId": "ch:1:sloid:87101",
+        "trips": 19,
+        "reason": "stop-too-far",
+        "snap": 132.2367587402675
+      }
+    ]
+  }
+}

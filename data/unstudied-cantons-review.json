@@ -1,0 +1,2481 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-09",
+  "scope": "Opportunity review of eleven cantons; no new canton-stop census, geometry adapter or application study.",
+  "document": "../docs/UNSTUDIED-CANTONS.md",
+  "method": "Selected complete agency records and existing route-audit rows copied from the hashed local inputs. Web findings are research observations, not retained raw responses or reproducible HTTP probes. Recommendations are editorial judgements.",
+  "limits": [
+    "Seed agencies are not complete canton membership. Agency counts cover the entire agency footprint, have no geography and count frequency templates once.",
+    "Existing route rows describe complete civil-day journeys in the source study; they are not canton totals.",
+    "PriorGeometryStatus and priorEvidence are inherited from the 2026-09-08 source survey and were not re-probed here.",
+    "No external raw vector exports were acquired. Metadata visibility does not establish redistribution permission.",
+    "Working-tree inputs may evolve; the copied evidence and hashes identify the inputs used by this review."
+  ],
+  "localInputs": {
+    "data/swiss-transit-cantons.json": {
+      "sha256": "009b81a07f01e53ea0a4e060c8181fae38a653d60e4b67cbaf11bf42a1c03761"
+    },
+    "data/swiss-transit-agencies.json": {
+      "sha256": "4486b5a6b9595aff5073bde35e2bcf230168c6056b3d1f4fa6dc06184e3b05fa"
+    },
+    "data/luzern-study-audit.json": {
+      "sha256": "a55ff50d3fad0f5312d72be26fbed2deb66f7d235e4c8a081715963a3a6b2404"
+    },
+    "data/st-gallen-audit/routes.json": {
+      "sha256": "ea422569b2d9a84930b0fcaa89de18d03bf8a1f607feacc5c9589ec9bff80bac"
+    },
+    "data/basel-core-audit.json": {
+      "sha256": "ca9c513dcb1a99af9d929894de8fdd18c023bb65e1942baec2a3068c6f15ffd4"
+    },
+    "data/basel-core-policy.json": {
+      "sha256": "b1c420dce9612e929db14b571a914e2c3a260df757fbb6bbf4f29c5c80cb1b72"
+    }
+  },
+  "nationalCensus": {
+    "feed": {
+      "feed_publisher_name": "SBB",
+      "feed_publisher_url": "https://sbb.ch",
+      "feed_lang": "DE",
+      "feed_start_date": "20251214",
+      "feed_end_date": "20261212",
+      "feed_version": "20260902"
+    },
+    "sourceSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "method": "Every agency and route in the archive; calendar plus exceptions on each date. Includes foreign and publication-only records. No stop_times, civil-day clipping, geography, geometry join or headway expansion.",
+    "limits": "Agency IDs are feed identities, not a verified list of legal operators or regional membership. URLs and names are preserved verbatim and may be generic or unexpected. Zero active trips means inactive on these dates, not absent year-round."
+  },
+  "cantons": [
+    {
+      "code": "UR",
+      "name": "Uri",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Altdorf–Flüelen–Erstfeld valley and interchange pilot",
+      "relationship": "Extend Luzern Tellbus and national rail/PostBus methods",
+      "nextEvidence": "AAGU bus paths; tunnel geometry; separate seasonal Andermatt/pass scope",
+      "priorGeometryStatus": "not-found",
+      "priorSourceIds": [
+        "ur-portal",
+        "ur-wfs"
+      ],
+      "priorEvidence": "WFS capabilities expose a bus-stop inventory and cableway/ski-lift axes and stations. No bus-route vector layer was verified in the advertised service. Cableway axes need passenger/ski/freight filtering.",
+      "seedAgencyIds": [
+        "816",
+        "851",
+        "7095"
+      ]
+    },
+    {
+      "code": "SZ",
+      "name": "Schwyz",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Arth-Goldau–Schwyz–Brunnen and Muotatal feeders",
+      "relationship": "Extend Rigi/Luzern with a separate eastern-canton inventory",
+      "nextEvidence": "Complete AAGS patterns and Einsiedeln/March/Höfe membership",
+      "priorGeometryStatus": "not-found",
+      "priorSourceIds": [
+        "sz-catalogue"
+      ],
+      "priorEvidence": "Published WMS catalogue checked. National rail/topographic and other transport-adjacent layers are present; no current bus-line vector export was established. Existing Rigi coverage does not establish cantonal bus coverage.",
+      "seedAgencyIds": [
+        "841",
+        "755",
+        "112",
+        "137",
+        "319",
+        "3102"
+      ]
+    },
+    {
+      "code": "OW",
+      "name": "Obwalden",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Sarnen/Brünig and Engelberg in a joint OW/NW study",
+      "relationship": "Reuse exact Luzern Zentralbahn patterns; retain Pilatus as its own composition",
+      "nextEvidence": "Engelberg exclave, local buses and dated replacement services",
+      "priorGeometryStatus": "not-found",
+      "priorSourceIds": [
+        "ow-wms"
+      ],
+      "priorEvidence": "Official OW WMS capabilities checked; no public transport line layer identified. Regional Luzern sources may contain through-lines but are not canton-complete evidence. Engelberg must be reviewed as an OW exclave.",
+      "seedAgencyIds": [
+        "86",
+        "136",
+        "7058",
+        "114",
+        "203",
+        "3092"
+      ]
+    },
+    {
+      "code": "NW",
+      "name": "Nidwalden",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Stans rail pulse and lake/valley bus feeders in a joint OW/NW study",
+      "relationship": "Reuse exact Luzern Zentralbahn patterns",
+      "nextEvidence": "NW075 vectors or OSM bus matching; separate boats and cableways",
+      "priorGeometryStatus": "map-only",
+      "priorSourceIds": [
+        "nw-wms"
+      ],
+      "priorEvidence": "WMS advertises ch.nw.oeffentlicher-verkehr (NW075), a combined public transport map, and NW076 cableways. Rendering capability confirms a map exists; no reusable vector line download was acquired.",
+      "seedAgencyIds": [
+        "86",
+        "107",
+        "145",
+        "185",
+        "3190"
+      ]
+    },
+    {
+      "code": "GL",
+      "name": "Glarus",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Schwanden interchange and Sernftal rural pilot",
+      "relationship": "National rail/PostBus methods; no new geometry validation in this review",
+      "nextEvidence": "Sernftal bus geometry and Braunwald frequency semantics",
+      "priorGeometryStatus": "not-found",
+      "priorSourceIds": [
+        "gl-wfs"
+      ],
+      "priorEvidence": "Public WFS capabilities checked; no public transport route layer identified among the advertised layers. Roads and other line themes must not be mistaken for service paths.",
+      "seedAgencyIds": [
+        "856",
+        "105",
+        "197"
+      ]
+    },
+    {
+      "code": "SH",
+      "name": "Schaffhausen",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Schaffhausen/Neuhausen and regional bus spokes",
+      "relationship": "Separate regional study with exact-pattern checks for TG/ZVV donors",
+      "nextEvidence": "Both vbsh identities, separate canton pieces and German road extent",
+      "priorGeometryStatus": "not-found",
+      "priorSourceIds": [
+        "sh-catalogue"
+      ],
+      "priorEvidence": "Public OGD directory checked. Traffic-load data are available but are not transit service geometry. A portal journey planner using search.ch/OSM is not evidence of a reusable official line export. vbsh has multiple feed identities.",
+      "seedAgencyIds": [
+        "836",
+        "846",
+        "193"
+      ]
+    },
+    {
+      "code": "AR",
+      "name": "Appenzell Ausserrhoden",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Appenzeller rail branches and Herisau buses, jointly with AI",
+      "relationship": "SG route evidence, subject to source-specific redistribution constraints",
+      "nextEvidence": "Independent canton census, Herisau geometry and eastern branches",
+      "priorGeometryStatus": "not-found",
+      "priorSourceIds": [
+        "ar-wms"
+      ],
+      "priorEvidence": "KTAR WMS capabilities checked; no actual public transport line network identified. The regional geodata shop advertises GeoPackage acquisition with registration, but that does not establish a bus dataset. SG subsidised-line coverage cannot be extended to all AR by assumption.",
+      "seedAgencyIds": [
+        "22",
+        "744",
+        "799",
+        "65",
+        "82"
+      ]
+    },
+    {
+      "code": "AI",
+      "name": "Appenzell Innerrhoden",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Appenzell–Wasserauen and fixed feeders, jointly with AR",
+      "relationship": "AB route evidence; separate explanatory treatment of flexible service",
+      "nextEvidence": "Oberegg and mountain scope; no invented PubliCar departures",
+      "priorGeometryStatus": "not-found",
+      "priorSourceIds": [
+        "ai-portal",
+        "ai-wms"
+      ],
+      "priorEvidence": "KTAI WMS and official portal checked. Transport-related matches are rail-noise or contaminated-site layers, not passenger service paths. No bus-line export verified. Flexible PubliCar service areas cannot be rendered as fixed scheduled routes.",
+      "seedAgencyIds": [
+        "22",
+        "801",
+        "215",
+        "253"
+      ]
+    },
+    {
+      "code": "NE",
+      "name": "Neuchâtel",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Littoral–mountains contrast and Neuchâtel funicular connections",
+      "relationship": "New regional composition using national timetable and rail methods",
+      "nextEvidence": "SITN line distribution or OSM matching; all transN identities and replacements",
+      "priorGeometryStatus": "not-found",
+      "priorSourceIds": [
+        "ne-services",
+        "ne-wms"
+      ],
+      "priorEvidence": "Public SITN WMS capabilities and services documentation checked. No transport line export verified in that service. Published stop metadata and transport digitisation documentation are leads, not an acquired bus graph. transN spans multiple rail, bus and funicular identities.",
+      "seedAgencyIds": [
+        "44",
+        "73",
+        "153",
+        "156",
+        "166",
+        "792",
+        "796",
+        "15300",
+        "7255",
+        "189"
+      ]
+    },
+    {
+      "code": "JU",
+      "name": "Jura",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Delémont pulse, Ajoie and Franches-Montagnes",
+      "relationship": "National rail/PostBus methods, with BE/SO donor candidates only",
+      "nextEvidence": "Moutier in 2026 boundary, raw line export and night-service witnesses",
+      "priorGeometryStatus": "map-only",
+      "priorSourceIds": [
+        "ju-wms",
+        "ju-wfs",
+        "ju-bus-wms-metadata",
+        "ju-bus-metadata",
+        "ju-inventory"
+      ],
+      "priorEvidence": "WMS advertises ju.sdt_09_07_lignes_de_bus, night-bus and railway layers. WFS does not advertise those transport layers. Bus-layer XML metadata returned, but its distribution links are rendered images; the PDF and geodata-inventory endpoints returned 500.",
+      "seedAgencyIds": [
+        "43",
+        "833",
+        "801",
+        "11"
+      ]
+    },
+    {
+      "code": "BL",
+      "name": "Basel-Landschaft",
+      "status": "explored-not-implemented-by-this-review",
+      "proposal": "Regional buses around Liestal/Sissach/Laufental",
+      "relationship": "Extend existing Basel core with a distinct BL coverage report",
+      "nextEvidence": "Acquire 41-BL and compare its 2024 geometry against 2026 service",
+      "priorGeometryStatus": "metadata-only",
+      "priorSourceIds": [
+        "bl-metadata"
+      ],
+      "priorEvidence": "TNW/transport Shapefile is advertised in prior official metadata research, but this pass did not acquire the export. Direct metadata request returned 403. The existing Basel audit has stronger evidence for individual BVB/BLT paths, not the whole canton.",
+      "seedAgencyIds": [
+        "37",
+        "811",
+        "801",
+        "11"
+      ]
+    }
+  ],
+  "seedAgencies": [
+    {
+      "id": "105",
+      "name": "Braunwald-Standseilbahn",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1400
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 18,
+          "activeNonFrequencyTripRecords": 4,
+          "activeFrequencyTemplates": 14,
+          "activeFrequencyIntervals": 14
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 16,
+          "activeNonFrequencyTripRecords": 4,
+          "activeFrequencyTemplates": 12,
+          "activeFrequencyIntervals": 12
+        }
+      ]
+    },
+    {
+      "id": "107",
+      "name": "Bürgenstock Bahn AG",
+      "sourceUrl": "https://burgenstockresort.com",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 2,
+      "routeTypes": [
+        1303,
+        1400
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 70,
+          "activeNonFrequencyTripRecords": 68,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 76,
+          "activeNonFrequencyTripRecords": 74,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "name": "Schweizerische Bundesbahnen SBB",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 311,
+      "routeTypes": [
+        101,
+        102,
+        103,
+        105,
+        106,
+        107,
+        109,
+        117
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 159,
+          "activeTripRecords": 5855,
+          "activeNonFrequencyTripRecords": 5855,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 162,
+          "activeTripRecords": 5447,
+          "activeNonFrequencyTripRecords": 5447,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "112",
+      "name": "Standseilbahn Schwyz-Stoos AG",
+      "sourceUrl": "https://stoos.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1400
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 14,
+          "activeNonFrequencyTripRecords": 12,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 8,
+          "activeNonFrequencyTripRecords": 6,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        }
+      ]
+    },
+    {
+      "id": "114",
+      "name": "Engelberg-Trübsee-Titlis",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 5,
+      "routeTypes": [
+        1300,
+        1400
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 5,
+          "activeTripRecords": 10,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 10,
+          "activeFrequencyIntervals": 10
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 5,
+          "activeTripRecords": 10,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 10,
+          "activeFrequencyIntervals": 10
+        }
+      ]
+    },
+    {
+      "id": "136",
+      "name": "Pilatusbahnen",
+      "sourceUrl": "https://pilatus.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        116
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 34,
+          "activeNonFrequencyTripRecords": 34,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 34,
+          "activeNonFrequencyTripRecords": 34,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "137",
+      "name": "Rigi Bahnen AG",
+      "sourceUrl": "https://rigi.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 3,
+      "routeTypes": [
+        116
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 3,
+          "activeTripRecords": 50,
+          "activeNonFrequencyTripRecords": 50,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 3,
+          "activeTripRecords": 53,
+          "activeNonFrequencyTripRecords": 53,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "145",
+      "name": "Stanserhornbahn",
+      "sourceUrl": "https://cabrio.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 2,
+      "routeTypes": [
+        1300,
+        1400
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 114,
+          "activeNonFrequencyTripRecords": 112,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 70,
+          "activeNonFrequencyTripRecords": 70,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "153",
+      "name": "Transports Publics Neuchâtelois SA (tn)",
+      "sourceUrl": "https://transn.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 25,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 12,
+          "activeTripRecords": 1408,
+          "activeNonFrequencyTripRecords": 1408,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 7,
+          "activeTripRecords": 574,
+          "activeNonFrequencyTripRecords": 574,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "15300",
+      "name": "Transports Publics Neuchâtelois SA",
+      "sourceUrl": "https://transn.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 2,
+      "routeTypes": [
+        1400
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 336,
+          "activeNonFrequencyTripRecords": 336,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 242,
+          "activeNonFrequencyTripRecords": 242,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "156",
+      "name": "Service d'automobiles TRN (vr)",
+      "sourceUrl": "https://transn.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 5,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 3,
+          "activeTripRecords": 167,
+          "activeNonFrequencyTripRecords": 167,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 113,
+          "activeNonFrequencyTripRecords": 113,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "166",
+      "name": "Funiculaire Neuchâtel-Université - Neuchâtel-Gare",
+      "sourceUrl": "https://transn.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1400
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 454,
+          "activeNonFrequencyTripRecords": 454,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 436,
+          "activeNonFrequencyTripRecords": 436,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "185",
+      "name": "Vierwaldstättersee",
+      "sourceUrl": "https://lakelucerne.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 7,
+      "routeTypes": [
+        700,
+        1000
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 6,
+          "activeTripRecords": 89,
+          "activeNonFrequencyTripRecords": 89,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 6,
+          "activeTripRecords": 99,
+          "activeNonFrequencyTripRecords": 99,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "189",
+      "name": "Lacs de Neuchâtel et Morat",
+      "sourceUrl": "https://lnm.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 5,
+      "routeTypes": [
+        1000
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 5,
+          "activeTripRecords": 18,
+          "activeNonFrequencyTripRecords": 18,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 5,
+          "activeTripRecords": 18,
+          "activeNonFrequencyTripRecords": 18,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "193",
+      "name": "Schweiz. Schifffahrtsgesellschaft Untersee und Rhein AG",
+      "sourceUrl": "https://urh.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1000
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 17,
+          "activeNonFrequencyTripRecords": 17,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 17,
+          "activeNonFrequencyTripRecords": 17,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "197",
+      "name": "Schiffsbetrieb Walensee",
+      "sourceUrl": "https://walenseeschiff.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1000
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 32,
+          "activeNonFrequencyTripRecords": 32,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 34,
+          "activeNonFrequencyTripRecords": 34,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "203",
+      "name": "Brunni-Bahnen Engelberg AG",
+      "sourceUrl": "https://brunni.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1300
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 56,
+          "activeNonFrequencyTripRecords": 56,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 56,
+          "activeNonFrequencyTripRecords": 56,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "215",
+      "name": "Wasserauen-Ebenalp",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1300
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 2,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 2,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "name": "Appenzeller Bahnen (ab)",
+      "sourceUrl": "https://appenzellerbahnen.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 9,
+      "routeTypes": [
+        102,
+        109
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 8,
+          "activeTripRecords": 398,
+          "activeNonFrequencyTripRecords": 398,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 6,
+          "activeTripRecords": 310,
+          "activeNonFrequencyTripRecords": 310,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "253",
+      "name": "Hoher Kasten Drehrestaurant und Seilbahn AG",
+      "sourceUrl": "https://hoherkasten.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1300
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 2,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 2,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        }
+      ]
+    },
+    {
+      "id": "3092",
+      "name": "Luftseilbahn Engelberg-Fürenalp",
+      "sourceUrl": "https://fuerenalp.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1300
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 2,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 2,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        }
+      ]
+    },
+    {
+      "id": "3102",
+      "name": "Stoosbahnen AG",
+      "sourceUrl": "https://stoos.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 2,
+      "routeTypes": [
+        1300
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 4,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 4,
+          "activeFrequencyIntervals": 4
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 4,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 4,
+          "activeFrequencyIntervals": 4
+        }
+      ]
+    },
+    {
+      "id": "319",
+      "name": "Stoosbahnen AG",
+      "sourceUrl": "https://stoos.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1300
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 10,
+          "activeNonFrequencyTripRecords": 8,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 8,
+          "activeNonFrequencyTripRecords": 6,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2
+        }
+      ]
+    },
+    {
+      "id": "3190",
+      "name": "Fähre Beckenried-Gersau",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 1,
+      "routeTypes": [
+        1000
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 22,
+          "activeNonFrequencyTripRecords": 22,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 22,
+          "activeNonFrequencyTripRecords": 22,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "name": "Baselland Transport",
+      "sourceUrl": "https://blt.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 30,
+      "routeTypes": [
+        700,
+        900
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 26,
+          "activeTripRecords": 3395,
+          "activeNonFrequencyTripRecords": 3395,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 22,
+          "activeTripRecords": 2178,
+          "activeNonFrequencyTripRecords": 2178,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "name": "Chemins de fer du Jura",
+      "sourceUrl": "https://les-cj.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 2,
+      "routeTypes": [
+        106
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 139,
+          "activeNonFrequencyTripRecords": 139,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 78,
+          "activeNonFrequencyTripRecords": 78,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "name": "Transports Publics Neuchâtelois SA (cmn)",
+      "sourceUrl": "https://transn.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 3,
+      "routeTypes": [
+        106
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 168,
+          "activeNonFrequencyTripRecords": 168,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 3,
+          "activeTripRecords": 158,
+          "activeNonFrequencyTripRecords": 158,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "65",
+      "name": "THURBO",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 41,
+      "routeTypes": [
+        103,
+        106,
+        109
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 22,
+          "activeTripRecords": 1101,
+          "activeNonFrequencyTripRecords": 1101,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 29,
+          "activeTripRecords": 1063,
+          "activeNonFrequencyTripRecords": 1063,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "7058",
+      "name": "Engelberger Auto-Betriebe",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 8,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 86,
+          "activeNonFrequencyTripRecords": 86,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 82,
+          "activeNonFrequencyTripRecords": 82,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "7095",
+      "name": "Ortsbus Andermatt",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 3,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 0,
+          "activeTripRecords": 0,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 0,
+          "activeTripRecords": 0,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "7255",
+      "name": "Transport Publics Neuchâtelois SA Ersatzverkehr",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 4,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 37,
+          "activeNonFrequencyTripRecords": 37,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 0,
+          "activeTripRecords": 0,
+          "activeNonFrequencyTripRecords": 0,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "73",
+      "name": "Transports Publics Neuchâtelois SA (rvt)",
+      "sourceUrl": "https://transn.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 2,
+      "routeTypes": [
+        106
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 68,
+          "activeNonFrequencyTripRecords": 68,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 54,
+          "activeNonFrequencyTripRecords": 54,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "744",
+      "name": "Automobildienst Appenzeller Bahnen",
+      "sourceUrl": "https://appenzellerbahnen.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 5,
+      "routeTypes": [
+        700,
+        705
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 4,
+          "activeTripRecords": 18,
+          "activeNonFrequencyTripRecords": 18,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 10,
+          "activeNonFrequencyTripRecords": 10,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "755",
+      "name": "Autobusbetrieb Freienbach",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 2,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 162,
+          "activeNonFrequencyTripRecords": 162,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 92,
+          "activeNonFrequencyTripRecords": 92,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "792",
+      "name": "Transports Publics Neuchâtelois SA (tc)",
+      "sourceUrl": "https://transn.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 16,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 14,
+          "activeTripRecords": 1404,
+          "activeNonFrequencyTripRecords": 1404,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 5,
+          "activeTripRecords": 288,
+          "activeNonFrequencyTripRecords": 288,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "796",
+      "name": "Service d'automobiles TRN (rvt Auto)",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 7,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 7,
+          "activeTripRecords": 53,
+          "activeNonFrequencyTripRecords": 53,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 1,
+          "activeTripRecords": 28,
+          "activeNonFrequencyTripRecords": 28,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "799",
+      "name": "Verkehrsbetriebe Herisau",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 5,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 5,
+          "activeTripRecords": 372,
+          "activeNonFrequencyTripRecords": 372,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 5,
+          "activeTripRecords": 146,
+          "activeNonFrequencyTripRecords": 146,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "801",
+      "name": "PostAuto AG",
+      "sourceUrl": "https://carpostal.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 995,
+      "routeTypes": [
+        700,
+        702,
+        705,
+        710,
+        715
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 926,
+          "activeTripRecords": 33603,
+          "activeNonFrequencyTripRecords": 33603,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 685,
+          "activeTripRecords": 19867,
+          "activeNonFrequencyTripRecords": 19867,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "811",
+      "name": "Autobus AG Liestal",
+      "sourceUrl": "https://autobus.ag",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 9,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 9,
+          "activeTripRecords": 929,
+          "activeNonFrequencyTripRecords": 929,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 9,
+          "activeTripRecords": 658,
+          "activeNonFrequencyTripRecords": 658,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "816",
+      "name": "Auto AG Uri",
+      "sourceUrl": "https://aagu.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 10,
+      "routeTypes": [
+        202,
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 9,
+          "activeTripRecords": 397,
+          "activeNonFrequencyTripRecords": 397,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 9,
+          "activeTripRecords": 302,
+          "activeNonFrequencyTripRecords": 302,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "82",
+      "name": "Schweizerische Südostbahn (sob)",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 30,
+      "routeTypes": [
+        103,
+        106,
+        109,
+        117
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 13,
+          "activeTripRecords": 501,
+          "activeNonFrequencyTripRecords": 501,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 13,
+          "activeTripRecords": 484,
+          "activeNonFrequencyTripRecords": 484,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "833",
+      "name": "Automobiles CJ",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 3,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 64,
+          "activeNonFrequencyTripRecords": 64,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 3,
+          "activeTripRecords": 20,
+          "activeNonFrequencyTripRecords": 20,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "836",
+      "name": "Verkehrsbetriebe Schaffhausen",
+      "sourceUrl": "https://vbsh.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 13,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 13,
+          "activeTripRecords": 1451,
+          "activeNonFrequencyTripRecords": 1451,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 8,
+          "activeTripRecords": 740,
+          "activeNonFrequencyTripRecords": 740,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "841",
+      "name": "Auto AG Schwyz",
+      "sourceUrl": "https://aags.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 23,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 20,
+          "activeTripRecords": 792,
+          "activeNonFrequencyTripRecords": 792,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 15,
+          "activeTripRecords": 617,
+          "activeNonFrequencyTripRecords": 617,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "846",
+      "name": "Verkehrsbetriebe Schaffhausen",
+      "sourceUrl": "https://vbsh.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 12,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 12,
+          "activeTripRecords": 624,
+          "activeNonFrequencyTripRecords": 624,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 9,
+          "activeTripRecords": 338,
+          "activeNonFrequencyTripRecords": 338,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "851",
+      "name": "Automobildienst Matterhorn Gotthard Bahn (fo auto)",
+      "sourceUrl": "https://sbb.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 3,
+      "routeTypes": [
+        700
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 34,
+          "activeNonFrequencyTripRecords": 34,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 2,
+          "activeTripRecords": 30,
+          "activeNonFrequencyTripRecords": 30,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "856",
+      "name": "Autobetrieb Sernftal",
+      "sourceUrl": "https://sernftalbus.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 7,
+      "routeTypes": [
+        700,
+        715
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 6,
+          "activeTripRecords": 160,
+          "activeNonFrequencyTripRecords": 160,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 5,
+          "activeTripRecords": 117,
+          "activeNonFrequencyTripRecords": 117,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    },
+    {
+      "id": "86",
+      "name": "Zentralbahn",
+      "sourceUrl": "https://zentralbahn.ch",
+      "sourceTimezone": "Europe/Berlin",
+      "routeRecords": 17,
+      "routeTypes": [
+        103,
+        106,
+        107,
+        109,
+        117
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "activeRouteRecords": 10,
+          "activeTripRecords": 372,
+          "activeNonFrequencyTripRecords": 372,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        },
+        {
+          "date": "2026-09-06",
+          "activeRouteRecords": 8,
+          "activeTripRecords": 323,
+          "activeNonFrequencyTripRecords": 323,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0
+        }
+      ]
+    }
+  ],
+  "existingRouteEvidence": [
+    {
+      "source": "data/luzern-study-audit.json",
+      "scope": "LU-calling trips, complete external calls retained; 2026-09-04/06",
+      "routes": [
+        {
+          "routeId": "91-4-D-j26-1",
+          "agencyId": "86",
+          "agency": "Zentralbahn",
+          "line": "S4",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 436,
+          "activeSourceTripRecords": {
+            "2026-09-04": 80,
+            "2026-09-06": 80
+          },
+          "sourceFeatures": [
+            "rail:S4"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 82,
+              "admittedTrips": 82,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 82,
+              "admittedTrips": 82,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-44-A-j26-1",
+          "agencyId": "86",
+          "agency": "Zentralbahn",
+          "line": "S44",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 71,
+          "activeSourceTripRecords": {
+            "2026-09-04": 14,
+            "2026-09-06": 2
+          },
+          "sourceFeatures": [
+            "rail:S44"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 14,
+              "admittedTrips": 14,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 2,
+              "admittedTrips": 2,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-5-D-j26-1",
+          "agencyId": "86",
+          "agency": "Zentralbahn",
+          "line": "S5",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 546,
+          "activeSourceTripRecords": {
+            "2026-09-04": 78,
+            "2026-09-06": 78
+          },
+          "sourceFeatures": [
+            "rail:S5"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 80,
+              "admittedTrips": 80,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 80,
+              "admittedTrips": 80,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-55-j26-1",
+          "agencyId": "86",
+          "agency": "Zentralbahn",
+          "line": "S55",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 29,
+          "activeSourceTripRecords": {
+            "2026-09-04": 8,
+            "2026-09-06": 0
+          },
+          "sourceFeatures": [
+            "rail:S55"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 8,
+              "admittedTrips": 8,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 0,
+              "admittedTrips": 0,
+              "status": "inactive-on-civil-day",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-LEX-j26-1",
+          "agencyId": "86",
+          "agency": "Zentralbahn",
+          "line": "IRLEX",
+          "longName": "",
+          "routeType": 103,
+          "mode": "rail",
+          "annualTripRecords": 287,
+          "activeSourceTripRecords": {
+            "2026-09-04": 37,
+            "2026-09-06": 40
+          },
+          "sourceFeatures": [
+            "rail:LEX"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 37,
+              "admittedTrips": 37,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 40,
+              "admittedTrips": 40,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-LIX-A-j26-1",
+          "agencyId": "86",
+          "agency": "Zentralbahn",
+          "line": "IRLIX",
+          "longName": "",
+          "routeType": 103,
+          "mode": "rail",
+          "annualTripRecords": 22,
+          "activeSourceTripRecords": {
+            "2026-09-04": 4,
+            "2026-09-06": 4
+          },
+          "sourceFeatures": [
+            "rail:LIX"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 4,
+              "admittedTrips": 4,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 4,
+              "admittedTrips": 4,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-LIX-j26-1",
+          "agencyId": "86",
+          "agency": "Zentralbahn",
+          "line": "LIX",
+          "longName": "",
+          "routeType": 107,
+          "mode": "rail",
+          "annualTripRecords": 252,
+          "activeSourceTripRecords": {
+            "2026-09-04": 34,
+            "2026-09-06": 34
+          },
+          "sourceFeatures": [
+            "rail:LIX"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 34,
+              "admittedTrips": 34,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 34,
+              "admittedTrips": 34,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "92-493-A-j26-1",
+          "agencyId": "816",
+          "agency": "Auto AG Uri",
+          "line": "493",
+          "longName": "",
+          "routeType": 202,
+          "mode": "bus",
+          "annualTripRecords": 93,
+          "activeSourceTripRecords": {
+            "2026-09-04": 29,
+            "2026-09-06": 4
+          },
+          "sourceFeatures": [
+            "bus:TB"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 28,
+              "admittedTrips": 28,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 5,
+              "admittedTrips": 5,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "92-502-A-j26-1",
+          "agencyId": "841",
+          "agency": "Auto AG Schwyz",
+          "line": "502",
+          "longName": "",
+          "routeType": 700,
+          "mode": "bus",
+          "annualTripRecords": 4519,
+          "activeSourceTripRecords": {
+            "2026-09-04": 25,
+            "2026-09-06": 23
+          },
+          "sourceFeatures": [
+            "bus:B502"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 28,
+              "admittedTrips": 28,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 29,
+              "admittedTrips": 29,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "data/st-gallen-audit/routes.json",
+      "scope": "SG-calling trips, complete external calls retained; 2026-09-04/06; SG vector redistribution remains unresolved",
+      "routes": [
+        {
+          "routeId": "91-15-I-j26-1",
+          "agencyId": "22",
+          "agency": "Appenzeller Bahnen (ab)",
+          "line": "S15",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 109,
+          "activeSourceTripRecords": {
+            "2026-09-04": 96,
+            "2026-09-06": 80
+          },
+          "sourceFeatures": [
+            "rail:1",
+            "rail:4"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 98,
+              "admittedTrips": 98,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 82,
+              "admittedTrips": 82,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-20-E-j26-1",
+          "agencyId": "22",
+          "agency": "Appenzeller Bahnen (ab)",
+          "line": "S20",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 16,
+          "activeSourceTripRecords": {
+            "2026-09-04": 4,
+            "2026-09-06": 0
+          },
+          "sourceFeatures": [],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 4,
+              "admittedTrips": 0,
+              "status": "excluded",
+              "reasons": [
+                "missing-line"
+              ]
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 0,
+              "admittedTrips": 0,
+              "status": "inactive-on-civil-day",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-21-j26-1",
+          "agencyId": "22",
+          "agency": "Appenzeller Bahnen (ab)",
+          "line": "S21",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 594,
+          "activeSourceTripRecords": {
+            "2026-09-04": 76,
+            "2026-09-06": 70
+          },
+          "sourceFeatures": [
+            "rail:9",
+            "rail:29"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 78,
+              "admittedTrips": 78,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 74,
+              "admittedTrips": 74,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-22-A-j26-1",
+          "agencyId": "22",
+          "agency": "Appenzeller Bahnen (ab)",
+          "line": "S22",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 132,
+          "activeSourceTripRecords": {
+            "2026-09-04": 36,
+            "2026-09-06": 0
+          },
+          "sourceFeatures": [
+            "rail:9",
+            "rail:29"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 36,
+              "admittedTrips": 36,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 0,
+              "admittedTrips": 0,
+              "status": "inactive-on-civil-day",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-23-A-j26-1",
+          "agencyId": "22",
+          "agency": "Appenzeller Bahnen (ab)",
+          "line": "S23",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 238,
+          "activeSourceTripRecords": {
+            "2026-09-04": 60,
+            "2026-09-06": 58
+          },
+          "sourceFeatures": [
+            "rail:15"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 60,
+              "admittedTrips": 60,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 59,
+              "admittedTrips": 59,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-24-A-j26-1",
+          "agencyId": "22",
+          "agency": "Appenzeller Bahnen (ab)",
+          "line": "S24",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 56,
+          "activeSourceTripRecords": {
+            "2026-09-04": 26,
+            "2026-09-06": 24
+          },
+          "sourceFeatures": [
+            "rail:16"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 26,
+              "admittedTrips": 26,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 24,
+              "admittedTrips": 24,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-24-K-j26-1",
+          "agencyId": "22",
+          "agency": "Appenzeller Bahnen (ab)",
+          "line": "IC24",
+          "longName": "",
+          "routeType": 102,
+          "mode": "rail",
+          "annualTripRecords": 1,
+          "activeSourceTripRecords": {
+            "2026-09-04": 0,
+            "2026-09-06": 0
+          },
+          "sourceFeatures": [],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 0,
+              "admittedTrips": 0,
+              "status": "inactive-on-civil-day",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 0,
+              "admittedTrips": 0,
+              "status": "inactive-on-civil-day",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-25-A-j26-1",
+          "agencyId": "22",
+          "agency": "Appenzeller Bahnen (ab)",
+          "line": "S25",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 90,
+          "activeSourceTripRecords": {
+            "2026-09-04": 32,
+            "2026-09-06": 30
+          },
+          "sourceFeatures": [
+            "rail:28"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 32,
+              "admittedTrips": 32,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 30,
+              "admittedTrips": 30,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "91-26-B-j26-1",
+          "agencyId": "22",
+          "agency": "Appenzeller Bahnen (ab)",
+          "line": "S26",
+          "longName": "",
+          "routeType": 109,
+          "mode": "rail",
+          "annualTripRecords": 50,
+          "activeSourceTripRecords": {
+            "2026-09-04": 50,
+            "2026-09-06": 42
+          },
+          "sourceFeatures": [
+            "rail:17"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 50,
+              "admittedTrips": 50,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 42,
+              "admittedTrips": 42,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "92-B21-A-j26-1",
+          "agencyId": "744",
+          "agency": "Automobildienst Appenzeller Bahnen",
+          "line": "B21",
+          "longName": "",
+          "routeType": 705,
+          "mode": "bus",
+          "annualTripRecords": 20,
+          "activeSourceTripRecords": {
+            "2026-09-04": 6,
+            "2026-09-06": 0
+          },
+          "sourceFeatures": [
+            "bus:123",
+            "bus:124"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 0,
+              "admittedTrips": 0,
+              "status": "inactive-on-civil-day",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 6,
+              "admittedTrips": 6,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        },
+        {
+          "routeId": "92-B24-j26-1",
+          "agencyId": "744",
+          "agency": "Automobildienst Appenzeller Bahnen",
+          "line": "B24",
+          "longName": "",
+          "routeType": 700,
+          "mode": "bus",
+          "annualTripRecords": 4,
+          "activeSourceTripRecords": {
+            "2026-09-04": 4,
+            "2026-09-06": 4
+          },
+          "sourceFeatures": [
+            "bus:125"
+          ],
+          "days": [
+            {
+              "date": "2026-09-04",
+              "trips": 4,
+              "admittedTrips": 4,
+              "status": "admitted",
+              "reasons": []
+            },
+            {
+              "date": "2026-09-06",
+              "trips": 4,
+              "admittedTrips": 4,
+              "status": "admitted",
+              "reasons": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "webFindings": [
+    {
+      "canton": "UR",
+      "url": "https://www.ur.ch/mmdirektionen/131678?_display-mode=a11y",
+      "checkedOn": "2026-09-09",
+      "access": "readable",
+      "finding": "2026 service notice identifies SOB/AAGU/PostAuto and seasonal-pass scope."
+    },
+    {
+      "canton": "UR",
+      "url": "https://www.aagu.ch/fahrplan",
+      "checkedOn": "2026-09-09",
+      "access": "readable",
+      "finding": "Tellbus Altdorf–Luzern via A2/Seelisberg tunnel; timetable/network links."
+    },
+    {
+      "canton": "SZ",
+      "url": "https://www.aags.ch/fahrplan",
+      "checkedOn": "2026-09-09",
+      "access": "readable",
+      "finding": "2025/26 line/stop lists, including 501/502 and 526 lead; construction caveat."
+    },
+    {
+      "canton": "SZ",
+      "url": "https://data.sz.ch/explore/dataset/haltestellen-des-offentlichen-verkehrs/",
+      "checkedOn": "2026-09-09",
+      "access": "search-result",
+      "finding": "Official stop inventory, not validated route geometry."
+    },
+    {
+      "canton": "OW",
+      "url": "https://www.zentralbahn.ch/de/kennenlernen/die-zentralbahn/zahlen-und-fakten",
+      "checkedOn": "2026-09-09",
+      "access": "search-result",
+      "finding": "Operator describes Luzern–Engelberg and Luzern–Interlaken network."
+    },
+    {
+      "canton": "OW",
+      "url": "https://www.zentralbahn.ch/",
+      "checkedOn": "2026-09-09",
+      "access": "search-result",
+      "finding": "Bodenkurve Engelberg works advertised for 2 August–5 September 2026; exact fixture impact not acquired."
+    },
+    {
+      "canton": "NW",
+      "url": "https://www.nw.ch/_docn/380626/03_Bericht_Rahmenkredit_oeV_202526.pdf",
+      "checkedOn": "2026-09-09",
+      "access": "search-result",
+      "finding": "Funding report enumerates rail/bus/night/cableway offers; no vectors acquired."
+    },
+    {
+      "canton": "GL",
+      "url": "https://sernftalbus.ch/de/fahrplan.html",
+      "checkedOn": "2026-09-09",
+      "access": "search-result-then-direct-403",
+      "finding": "Indexed timetable/network leads only; direct retrieval did not supply a timetable."
+    },
+    {
+      "canton": "SH",
+      "url": "https://www.vbsh.ch/fahrplan/liniennetz",
+      "checkedOn": "2026-09-09",
+      "access": "readable",
+      "finding": "Operator explicitly excludes Stein am Rhein, Buchberg and Rüdlingen from coverage claim."
+    },
+    {
+      "canton": "SH",
+      "url": "https://api.vbsh.ch/fileadmin/data/assets/pdf/dateien-2026/netzplan-region-schaffhausen-2026.pdf",
+      "checkedOn": "2026-09-09",
+      "access": "readable-pdf-text",
+      "finding": "2026 regional schematic, not a vector line export; no visual geometry certification."
+    },
+    {
+      "canton": "AR",
+      "url": "https://ar.ch/verwaltung/departement-bau-und-volkswirtschaft/departementssekretariat/fachstelle-oeffentlicher-verkehr/fahrplan-und-bestellverfahren/",
+      "checkedOn": "2026-09-09",
+      "access": "readable",
+      "finding": "Commissioned operators include AB, SOB, Thurbo, PostAuto and Regiobus/Herisau."
+    },
+    {
+      "canton": "AI",
+      "url": "https://www.postauto.ch/de/fahrplan-und-netz/publicar/appenzell",
+      "checkedOn": "2026-09-09",
+      "access": "readable",
+      "finding": "Reservation-based door-to-door service, with selected AR extensions; not fixed trips."
+    },
+    {
+      "canton": "NE",
+      "url": "https://www.transn.ch/plans/",
+      "checkedOn": "2026-09-09",
+      "access": "readable",
+      "finding": "Network/sector/night/interchange plans valid from 14 December 2025."
+    },
+    {
+      "canton": "NE",
+      "url": "https://www.transn.ch/fileadmin/transn/pdf/Plans/plan_reseau_2026_transN.pdf",
+      "checkedOn": "2026-09-09",
+      "access": "search-result",
+      "finding": "2026 schematic distinguishes several transport modes and seasonal service; not route vectors."
+    },
+    {
+      "canton": "NE",
+      "url": "https://sitn.ne.ch/geoshop2_api/metadata/tp02_arrets_tp/html/",
+      "checkedOn": "2026-09-09",
+      "access": "readable",
+      "finding": "TP02 describes official stops and names publisher contacts; not a line graph."
+    },
+    {
+      "canton": "NE",
+      "url": "https://sitn.ne.ch/web/metadonnees/GuideSaisieTransportsPublics.pdf",
+      "checkedOn": "2026-09-09",
+      "access": "search-result",
+      "finding": "Documentation of transport database/digitisation; no current line distribution established."
+    },
+    {
+      "canton": "JU",
+      "url": "https://www.jura.ch/fr/Autorites/Administration/CHA/SIC/Centre-medias/Communiques-2025/Le-RER-Jura-est-lance.html",
+      "checkedOn": "2026-09-09",
+      "access": "search-result",
+      "finding": "2026 RER branch structure and late return context."
+    },
+    {
+      "canton": "JU",
+      "url": "https://www.mobiju.ch/A-propos-de-Mobiju-bus-jura",
+      "checkedOn": "2026-09-09",
+      "access": "search-result",
+      "finding": "MOBIJU bus operation attributed to PostAuto."
+    },
+    {
+      "canton": "JU",
+      "url": "https://www.jura.ch/fr/Autorites/Moutier/Communiques-de-presse/Moutier-dans-le-Jura-Communiques-de-presse.html",
+      "checkedOn": "2026-09-09",
+      "access": "search-result",
+      "finding": "Transfer date of Moutier: 1 January 2026."
+    },
+    {
+      "canton": "BL",
+      "url": "https://www.baselland.ch/politik-und-behorden/direktionen/volkswirtschafts-und-gesundheitsdirektion/amt-fur-geoinformation/geoportal/geodaten/verkehr",
+      "checkedOn": "2026-09-09",
+      "access": "readable",
+      "finding": "Advertised public/free Shapefile acquisition; no export downloaded."
+    },
+    {
+      "canton": "BL",
+      "url": "https://www.geocat.ch/geonetwork/srv/api/records/add1f3ed-0310-40ce-9d78-ffd1163b54c9/formatters/bl_datadoku_html?language=ger",
+      "checkedOn": "2026-09-09",
+      "access": "readable",
+      "finding": "41-BL, EPSG:2056, update state 2024-08-08; TNW description vs BL perimeter."
+    }
+  ],
+  "unresolvedAcquisition": [
+    {
+      "canton": "BL",
+      "source": "GeoShop link from 41-BL metadata",
+      "result": "web retrieval failed; no Shapefile acquired; no claim that host credentials are invalid"
+    }
+  ]
+}

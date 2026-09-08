@@ -81,8 +81,8 @@ describe('Graubünden cableway admission boundaries', () => {
   it('accounts for every annual mountain route and preserves all existing admitted journeys', () => {
     const a = read('data/graubuenden-audit/cableways.json')
     expect(a.inventory.map(r => r.routeId)).toEqual(raw.inventory.filter(r => r.mode === 'mountain').map(r => r.routeId))
-    expect(a.days.map(d => [d.candidates, d.added, d.addedHeadwayInstances, d.addedScheduledInstances, d.preservedJourneys])).toEqual([[39402,3466,2443,1023,6545],[38425,3524,2443,1081,5324]])
-    expect(a.patterns).toHaveLength(22)
-    expect(a.days.map(d => [d.priorCablewayScopeAdmitted, d.expansionAdded, d.expansionHeadways])).toEqual([[6696,3315,2299],[5471,3377,2299]])
+    expect(a.days.map(d => [d.candidates, d.added, d.addedHeadwayInstances, d.addedScheduledInstances, d.preservedJourneys])).toEqual([[39402,3565,2542,1023,6545],[38425,3623,2542,1081,5324]])
+    expect(a.patterns).toHaveLength(26)
+    expect(a.days.map(d => [d.priorCablewayScopeAdmitted, d.expansionAdded, d.expansionHeadways])).toEqual([[6696,3414,2398],[5471,3476,2398]])
   })
 })

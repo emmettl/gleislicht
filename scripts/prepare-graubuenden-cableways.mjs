@@ -33,11 +33,22 @@ upperChur.segments[0].sourceStationNumbers = ['8531215', '8509099']
 upperChur.segments[0].aliasReason = 'GTFS uses shared Känzeli (Chur) 8530546. FOT separates that first-section summit (71.013) from Känzeli (Talst. 2. Sekt.) 8531215 on 72.006 under the same infrastructure operator 1035. Brambrüesch 8509099 is exact. The preserved Chur summer operator page identifies the Känzeli–Brambrüesch gondola and operation spanning both fixtures.'
 upperChur.stationAttachmentReview = { installation: '72.006', timetable: '8530546', source: '8531215', maximumMetres: 20, reason: 'Reviewed 16.135 m connector from the original shared Känzeli stop to its separate second-section FOT station. Only this endpoint receives a 20 m bound. The connector is inferred; it is not surveyed access geometry or an invented through journey.' }
 const selected = new Set(routes.map(r => r.routeId))
+const arosa = { routeId: '93-291-0-j26-1', agencyId: '219', line: '2910', sourceOperator: '1009', segments: [
+  { installation: '71.003', stopNumbers: ['8509160', '8509282'], sourceStationNumbers: ['8509160', '8509282'] },
+  { installation: '71.004', stopNumbers: ['8509282', '8509162'], sourceStationNumbers: ['8530998', '8509162'], aliasReason: 'The shared GTFS middle station 8509282 identifies the first-section summit. FOT gives the second-section valley station number 8530998 at exactly the same source coordinate, under operator 1009. Both source installations name the successive Weisshorn sections.' },
+] }
+for (const [i, s] of arosa.segments.entries()) s.stationAttachmentReview = { installation: s.installation, timetable: '8509282', source: i ? '8530998' : '8509282', maximumMetres: 20,
+  ...(i ? {} : { exactStationReason: 'The first-section exact-number station and the second-section aliased station occupy the identical FOT coordinate. The same 13.060 m original-stop connector is explicitly reviewed for both complete section journeys.' }),
+  reason: 'Only the Arosa Weisshorn shared middle station receives a 20 m bound for its 13.060 m attachment. Both FOT section stations share the identical coordinate. Valley and summit retain 10 m limits. This is inferred station attachment, not surveyed access or a through journey.' }
+assert(raw.inventory.some(r => r.routeId === arosa.routeId && r.agencyId === arosa.agencyId && r.line === arosa.line && r.routeType === 1300))
+routes.push(arosa); selected.add(arosa.routeId)
 const review = { schemaVersion: 1, supportingEvidenceSha256: sha256(await readFile('data/graubuenden-cableway-sources/evidence.json')), sourceDirectory: 'data/luzern-cableway-sources', sourceMetadataSha256: sha256(await readFile('data/luzern-cableway-sources/source.json')),
   funicularEvidenceSha256: sha256(await readFile('data/graubuenden-cableway-sources/funicular-evidence.json')),
   sixRoutePathsSha256: sha256(await readFile('data/graubuenden-cableway-sources/six-route-paths.json')),
   nineRoutePathsSha256: sha256(await readFile('data/graubuenden-cableway-sources/nine-route-paths.json')),
   tenRoutePathsSha256: sha256(await readFile('data/graubuenden-cableway-sources/ten-route-paths.json')),
+  elevenRoutePathsSha256: sha256(await readFile('data/graubuenden-cableway-sources/eleven-route-paths.json')),
+  arosaEvidenceSha256: sha256(await readFile('data/graubuenden-cableway-sources/arosa-evidence.json')),
   sixRoutePolicySha256: sha256(await readFile('data/graubuenden-cableway-sources/six-route-policy.json')),
   initialPolicySha256: sha256(await readFile('data/graubuenden-cableway-sources/initial-policy.json')),
   expansionEvidenceSha256: sha256(await readFile('data/graubuenden-cableway-sources/expansion-evidence.json')),
@@ -45,7 +56,7 @@ const review = { schemaVersion: 1, supportingEvidenceSha256: sha256(await readFi
   inputs, inputsSha256: sha256(await readFile(inputs)), dates: raw.dates, routes,
   patternIds: [...new Set(raw.snapshots.flatMap(d => d.trains.filter(t => selected.has(t.routeId)).map(t => sha256(directedPatternKey(t)).slice(0, 20))))].sort(),
   limits: { stationAttachmentMetres: 10, topologyAttachmentMetres: 1, detourRatio: 4.5, detourFloorMetres: 1200 },
-  interpretation: 'Eleven reviewed operator crosswalks on complete federal 2D axes. Nine routes use exact station numbers; upper Parsenn and upper Chur each use one explicit shared-interchange alias with an endpoint-specific 20 m bound. No section splicing, cable sag, altitude, observed cabins or current operating guarantee. Timetable agency IDs and infrastructure operator numbers are separate namespaces. The upper Chur minute-grid records retain their original individual-trip encoding, without asserting distinct cabin counts.',
+  interpretation: 'Twelve reviewed route/operator crosswalks on thirteen complete federal 2D axes. Explicit station aliases cover upper Parsenn, upper Chur and Arosa Weisshorn section 2. Endpoint-specific 20 m bounds apply only at Höhenweg, Känzeli and the co-located Arosa middle-section stations; all other endpoints retain 10 m. No section splicing, cable sag, altitude, observed cabins or current operating guarantee. Timetable agency IDs and infrastructure operator numbers are separate namespaces. The upper Chur minute-grid records retain their original individual-trip encoding, without asserting distinct cabin counts.',
   sourceReuse: 'The Luzern directory holds the complete national federal archive, not a regional extract. Verify its catalogue checksum, ZIP member and all file hashes before use.' }
 await saveJson('data/graubuenden-cableway-policy.json', review)
 const policy = await readJson('data/graubuenden-policy.json')

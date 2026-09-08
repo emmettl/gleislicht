@@ -21,7 +21,20 @@ export function simplifyBernPath(path, toleranceMetres) {
     }
     if (farthest !== undefined) { keep.add(farthest); stack.push([a, farthest], [farthest, b]) }
   }
-  return [...keep].sort((a, b) => a - b).map(i => path[i])
+  const retained = [...keep].sort((a, b) => a - b)
+  // A DP split can become redundant after its children have been simplified.
+  // Remove it only when every original vertex in the merged span still meets
+  // the same bound. Revisit the preceding chord after each removal.
+  for (let j = 1; j < retained.length - 1;) {
+    const a = retained[j - 1], b = retained[j + 1]
+    let safe = true
+    for (let i = a + 1; i < b; i++) {
+      if (distanceToSegment(metric[i], metric[a], metric[b]) > toleranceMetres) { safe = false; break }
+    }
+    if (safe) { retained.splice(j, 1); j = Math.max(1, j - 1) }
+    else j++
+  }
+  return retained.map(i => path[i])
 }
 
 // Independently verify each original subchain against its retained chord.

@@ -7937,45 +7937,45 @@
       {
         "date": "2026-09-04",
         "trips": 32,
-        "admittedTrips": 1,
+        "admittedTrips": 28,
         "scheduledTrips": 32,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 1,
+        "admittedScheduledTrips": 28,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 199,
-        "matchedScheduledSegmentOccurrences": 138,
+        "matchedScheduledSegmentOccurrences": 195,
         "segmentOccurrences": 199,
-        "matchedSegmentOccurrences": 138,
-        "admittedSegmentOccurrences": 7,
+        "matchedSegmentOccurrences": 195,
+        "admittedSegmentOccurrences": 171,
         "directedPairs": 49,
-        "matchedDirectedPairs": 29,
+        "matchedDirectedPairs": 45,
         "patterns": 25,
-        "completePatterns": 1,
-        "admittedPatterns": 1,
+        "completePatterns": 21,
+        "admittedPatterns": 21,
         "excludedTrips": {
-          "incomplete-directed-pattern": 31
+          "incomplete-directed-pattern": 4
         }
       },
       {
         "date": "2026-09-06",
         "trips": 65,
-        "admittedTrips": 8,
+        "admittedTrips": 63,
         "scheduledTrips": 65,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 8,
+        "admittedScheduledTrips": 63,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 292,
-        "matchedScheduledSegmentOccurrences": 225,
+        "matchedScheduledSegmentOccurrences": 290,
         "segmentOccurrences": 292,
-        "matchedSegmentOccurrences": 225,
-        "admittedSegmentOccurrences": 46,
+        "matchedSegmentOccurrences": 290,
+        "admittedSegmentOccurrences": 280,
         "directedPairs": 56,
-        "matchedDirectedPairs": 38,
+        "matchedDirectedPairs": 54,
         "patterns": 34,
-        "completePatterns": 8,
-        "admittedPatterns": 8,
+        "completePatterns": 32,
+        "admittedPatterns": 32,
         "excludedTrips": {
-          "incomplete-directed-pattern": 57
+          "incomplete-directed-pattern": 2
         }
       }
     ],

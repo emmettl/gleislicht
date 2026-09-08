@@ -7,10 +7,12 @@ import { bernRailCandidates, applyBernRail } from './bern-rail-geometry.mjs'
 import { loadBernIc61, bernIc61Crosswalk, BERN_IC61_ROUTES as BERN_RAIL_ROUTES } from './bern-ic61-geometry.mjs'
 import { applyBernGeometry } from './bern-line-geometry.mjs'
 
+const RELEASE = '68b9ad13aa3d7f67763702139d3577193e00fc7b'
 const BASELINE = '8394320199c958d560072b18afb1b7b3737aa2c9'
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 const old = path => execFileSync('git', ['show', `${BASELINE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
-const json = async path => JSON.parse(await readFile(path))
+const released = path => execFileSync('git', ['show', `${RELEASE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
+const json = async path => JSON.parse(released(path))
 assert(process.argv[2], 'Provide the verified Bern timetable cache')
 const raw = JSON.parse(gunzipSync(await readFile(process.argv[2])))
 const source = JSON.parse(gunzipSync(await readFile('data/bern-sources/decoded.json.gz')))
@@ -33,7 +35,7 @@ const canonical = (t, s) => {
 const reviewedCrosswalk = bernIc61Crosswalk(crosswalk, rail.policy, raw.snapshots.map(s => s.metadata.serviceDate))
 const dates = []
 for (const snapshot of raw.snapshots) {
-  const date = snapshot.metadata.serviceDate, before = await day(old, date), after = await day(readFile, date)
+  const date = snapshot.metadata.serviceDate, before = await day(old, date), after = await day(released, date)
   for (const [id, t] of before.trains) {
     assert(after.trains.has(id), `Lost previous journey ${id}`)
     assert.equal(canonical(t, before.manifest), canonical(after.trains.get(id), after.manifest), `Changed previous movement ${id}`)

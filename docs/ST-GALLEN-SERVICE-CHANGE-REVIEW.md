@@ -2,6 +2,8 @@
 
 The line-150 Sommerau extension and line-631 Rüti diversion explain four remaining endpoint failures, affecting **102 Friday / 33 Sunday trips**. Both need additional geometry; no new trips are admitted. The regional feed remains **10,652 Friday / 7,325 Sunday movements** with **1,004 / 773 complete directed patterns**.
 
+The subsequent [OSM road pilot](ST-GALLEN-ROAD-PILOT.md) supplies numerical candidates for all four pairs, using every complete weekday/Sunday pattern on both routes. It identifies a 92.42 m unsupported inbound Sommerau connector and short, consistent Rüti candidates pending dated road/turn review. The exclusions remain in place; the new audit distinguishes candidate geometry from approved feed geometry.
+
 ## Gossau line 150: extension after the geometry export
 
 Stadt Gossau's announcement, published via gossau24.ch on **27 April 2026**, states that service was extended from Eichen to Sommerau on **1 June 2026**. This is later than the pinned **24 March 2026 AL_OEV export**. The original Swiss timetable includes those new calls; changing Sommerau's coordinate or clipping the trips at Eichen would discard the documented extension.
