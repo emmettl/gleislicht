@@ -1,37 +1,15 @@
 {
   "schemaVersion": 1,
-  "scope": "NStCM rail plus TPN and Nyon-Prangins buses in the existing Vaud audit. Rectangular comparison, not an application release. Complete source chains and artifacts are checked separately by build-nyon-study.mjs; see data/nyon-region/audit.json.",
-  "railSourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
-  "railAnchor": "8501060",
-  "railSegmentIds": [
-    "ch14uvag00068416",
-    "ch14uvag00068433",
-    "ch14uvag00068507",
-    "ch14uvag00068395",
-    "ch14uvag00068460",
-    "ch14uvag00068324",
-    "ch14uvag00068117",
-    "ch14uvag00068503",
-    "ch14uvag00067862",
-    "ch14uvag00068317",
-    "ch14uvag00165832",
-    "ch14uvag00068414",
-    "ch14uvag00068133",
-    "ch14uvag00165833",
-    "ch14uvag00068405",
-    "ch14uvag00067840",
-    "ch14uvag00068007"
+  "agencies": [
+    "66",
+    "738",
+    "741"
   ],
-  "cacheHashes": {
-    "data/vaud-nyon-738-weekday-road-cache.json": "e0acca351c6f429274ad13cc6f66a68dfb2bc9769689e98f00e9c74f4d52461c",
-    "data/vaud-nyon-738-sunday-road-cache.json": "dd6e6b00557499e1f133943561f16e929ccd6c52e0fe1169e548b57d8bbd1aac",
-    "data/vaud-nyon-741-weekday-road-cache.json": "d1a9d4ed201094c55ec3d15e58a17da64d0dc39676b63bbadda6419685bd3afe",
-    "data/vaud-nyon-741-sunday-road-cache.json": "f219081667c85fdfd38428e8cc9afc13cf8d7280e4fb2fa3cb52550eca3e8db4"
-  },
   "days": [
     {
       "date": "2026-09-08",
       "trips": 955,
+      "completeSourceJourneysChecked": 955,
       "groups": [
         {
           "id": "66:rail",
@@ -95,6 +73,11 @@
           "issues": []
         }
       ],
+      "payload": {
+        "manifest": 21044,
+        "morning": 32350,
+        "largestChunk": 12541
+      },
       "railProjection": {
         "limits": {
           "snapMetres": 120,
@@ -216,24 +199,10 @@
           },
           {
             "group": "rail",
-            "stopId": "ch:1:sloid:1060:0:1",
-            "stop": "La Cure",
-            "segmentId": "ch14uvag00068414",
-            "snapMetres": 2.65
-          },
-          {
-            "group": "rail",
-            "stopId": "ch:1:sloid:1061:0:1",
-            "stop": "La Givrine",
-            "segmentId": "ch14uvag00068507",
-            "snapMetres": 2.85
-          },
-          {
-            "group": "rail",
-            "stopId": "ch:1:sloid:1055:0:1",
-            "stop": "Les Pralies",
-            "segmentId": "ch14uvag00165833",
-            "snapMetres": 4.16
+            "stopId": "ch:1:sloid:1030:0:782696",
+            "stop": "Nyon",
+            "segmentId": "ch14uvag00068007",
+            "snapMetres": 5.91
           },
           {
             "group": "rail",
@@ -244,23 +213,48 @@
           },
           {
             "group": "rail",
-            "stopId": "ch:1:sloid:1030:0:782696",
-            "stop": "Nyon",
-            "segmentId": "ch14uvag00068007",
-            "snapMetres": 5.91
+            "stopId": "ch:1:sloid:1055:0:1",
+            "stop": "Les Pralies",
+            "segmentId": "ch14uvag00165833",
+            "snapMetres": 4.16
+          },
+          {
+            "group": "rail",
+            "stopId": "ch:1:sloid:1061:0:1",
+            "stop": "La Givrine",
+            "segmentId": "ch14uvag00068507",
+            "snapMetres": 2.85
+          },
+          {
+            "group": "rail",
+            "stopId": "ch:1:sloid:1060:0:1",
+            "stop": "La Cure",
+            "segmentId": "ch14uvag00068414",
+            "snapMetres": 2.65
           }
         ],
         "issues": []
       },
-      "manifestSha256": "c69885e177fd53fe0a41ee88caa81044bdcbd5499d44c35e153d40355f78109d",
-      "gate": {
-        "passed": true,
-        "minimumPerGroup": 0.95
-      }
+      "sourceHashes": {
+        "archive": "4fa074044fc3a1ceae3c91597b72cf42b9bbce0477b9d43b7b4f658e3e9acfa5",
+        "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "snapshot": "156ba212dc8a81f39a93dd0a0b6658dc0041107bb4ab9921c53fbaf2e172227a",
+        "busCache0": "e0acca351c6f429274ad13cc6f66a68dfb2bc9769689e98f00e9c74f4d52461c",
+        "busCache1": "dd6e6b00557499e1f133943561f16e929ccd6c52e0fe1169e548b57d8bbd1aac",
+        "busCache2": "d1a9d4ed201094c55ec3d15e58a17da64d0dc39676b63bbadda6419685bd3afe",
+        "busCache3": "f219081667c85fdfd38428e8cc9afc13cf8d7280e4fb2fa3cb52550eca3e8db4"
+      },
+      "feedVersion": "20260905",
+      "sourceServiceDates": [
+        "2026-09-07",
+        "2026-09-08"
+      ],
+      "scope": "Complete NStCM, TPN and Bus Nyon-Prangins journeys, including cross-border services. Not all transport in the Nyon district; excludes mainline SBB, PostAuto and lake services."
     },
     {
       "date": "2026-09-13",
       "trips": 421,
+      "completeSourceJourneysChecked": 421,
       "groups": [
         {
           "id": "66:rail",
@@ -323,6 +317,11 @@
           "issues": []
         }
       ],
+      "payload": {
+        "manifest": 19025,
+        "morning": 23122,
+        "largestChunk": 6010
+      },
       "railProjection": {
         "limits": {
           "snapMetres": 120,
@@ -437,13 +436,6 @@
           },
           {
             "group": "rail",
-            "stopId": "ch:1:sloid:1066:0:1",
-            "stop": "Genolier",
-            "segmentId": "ch14uvag00068324",
-            "snapMetres": 9.55
-          },
-          {
-            "group": "rail",
             "stopId": "ch:1:sloid:19077:0:1",
             "stop": "St-Cergue Les Cheseaux",
             "segmentId": "ch14uvag00165832",
@@ -469,15 +461,32 @@
             "stop": "La Cure",
             "segmentId": "ch14uvag00068414",
             "snapMetres": 2.65
+          },
+          {
+            "group": "rail",
+            "stopId": "ch:1:sloid:1066:0:1",
+            "stop": "Genolier",
+            "segmentId": "ch14uvag00068324",
+            "snapMetres": 9.55
           }
         ],
         "issues": []
       },
-      "manifestSha256": "57f3e6b42bea3c3622072981c8be1ad4c2caa0ab5464ae29bda4c6c79c9c9a5d",
-      "gate": {
-        "passed": true,
-        "minimumPerGroup": 0.95
-      }
+      "sourceHashes": {
+        "archive": "4fa074044fc3a1ceae3c91597b72cf42b9bbce0477b9d43b7b4f658e3e9acfa5",
+        "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "snapshot": "5de66823b9f26baac9d6ce94c7a8e9043e29cff286a9be3d9ac69f51b4faeb20",
+        "busCache0": "e0acca351c6f429274ad13cc6f66a68dfb2bc9769689e98f00e9c74f4d52461c",
+        "busCache1": "dd6e6b00557499e1f133943561f16e929ccd6c52e0fe1169e548b57d8bbd1aac",
+        "busCache2": "d1a9d4ed201094c55ec3d15e58a17da64d0dc39676b63bbadda6419685bd3afe",
+        "busCache3": "f219081667c85fdfd38428e8cc9afc13cf8d7280e4fb2fa3cb52550eca3e8db4"
+      },
+      "feedVersion": "20260905",
+      "sourceServiceDates": [
+        "2026-09-12",
+        "2026-09-13"
+      ],
+      "scope": "Complete NStCM, TPN and Bus Nyon-Prangins journeys, including cross-border services. Not all transport in the Nyon district; excludes mainline SBB, PostAuto and lake services."
     }
   ]
 }

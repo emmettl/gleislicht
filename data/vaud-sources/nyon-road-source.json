@@ -1,0 +1,24 @@
+{
+  "publisher": "OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "query": "[out:xml][timeout:90];(way[highway](46.29255,6.04442,46.43509,6.28781);node[public_transport](46.29255,6.04442,46.43509,6.28781);node[highway=bus_stop](46.29255,6.04442,46.43509,6.28781);rel[route=bus](46.29255,6.04442,46.43509,6.28781););(._;>;);out body;\n",
+  "osmBaseTimestamp": "2026-09-08T18:20:10Z",
+  "retrieved": "2026-09-08",
+  "path": "data/vaud-sources/nyon-roads-20260908.osm.gz",
+  "sha256": "f4ba07772afe002c1c318e775b3828d2f7646e6b652e2350f3475ccc83187a46",
+  "compressedSha256": "8775585e25448d547582213b1b9fa4a8737d31694a48cae77cf03b28c3d3a443",
+  "config": "data/vaud-sources/nyon-pfaedle.cfg",
+  "configChanges": {
+    "bus.osm_max_station_cand_distance": {
+      "originalMetres": 200,
+      "metres": 50
+    },
+    "bus.osm_max_snap_distance": {
+      "originalMetres": 100,
+      "metres": 60
+    }
+  },
+  "reason": "Avoid selecting a distant similarly named Terre-Bonne stop; all importer acceptance limits unchanged."
+}

@@ -268,22 +268,63 @@ Nyon/NStCM, the Riviera, and North Vaud, using the per-operator reports to resol
 geometry before exposing each area. Broader TPC/MOB/TPF corridors and lake
 services need their own boundary and geometry decisions.
 
-## Nyon/NStCM follow-on geometry audit
+## Nyon/NStCM: geometry and complete operator data ready
 
-The next-area [audit](../data/vaud-nyon-geometry-audit.json) now covers NStCM (66),
-TPN (738) and Bus Nyon-Prangins (741) on the same weekday and Sunday samples.
-NStCM is isolated by the FOT La Cure anchor, verified to reach underground Nyon
-while excluding the adjacent mainline station. Platform projection gives 100%
-geometry on its 117 weekday / 57 Sunday trips.
+The [complete-journey audit](../data/nyon-region/audit.json) now covers all active
+NStCM (66), TPN (738) and Bus Nyon-Prangins (741) journeys on both dates. Every
+ordered source platform and arrival/departure time is checked against GTFS,
+including preceding-day spillover. The full operator extracts contain the same
+955 weekday / 421 Sunday journeys as the original rectangle; no cropping is
+used for these new artifacts.
 
-Four dated operator-specific road caches have been retained. The urban agency
-741 reaches 100% on 391 weekday / 109 Sunday trips. TPN agency 738 reaches 87.25%
-weekday / 94.08% Sunday on 447 / 255 trips. Explicit matcher fallbacks around
-Divonne and school-service patterns remain rejected. **Nyon is not released in
-the application:** TPN must pass 95%, and complete source chains, boundaries and
-visual review still need closure. No threshold was lowered.
+| Operator | Weekday trips | Sunday trips | Geometry, both days |
+| --- | ---: | ---: | ---: |
+| NStCM rail | 117 | 57 | 100% |
+| TPN regional buses | 447 | 255 | 100% |
+| Nyon-Prangins urban buses | 391 | 109 | 100% |
 
-`prepare-nyon-road-feeds.mjs ARCHIVE VAUD_MANIFEST OUTPUT` creates matching feeds;
-use the standard pinned matcher and `importRoadShapes` to regenerate the caches.
-`audit-nyon-geometry.mjs ARCHIVE RAIL WEEKDAY_MANIFEST SUNDAY_MANIFEST REPORT`
-replays source-specific rail projection and exact road-pattern application.
+The incomplete Swiss/border road extract caused the former Divonne/Gex matcher
+fallbacks. A retained Overpass road extract closes those gaps. The remaining
+Terre-Bonne issue selected a similarly named station 160.9 m away. Tightening
+bus station candidates from 200 m to 50 m and snap search from 100 m to 60 m
+resolves it. The importer still uses its original 120 m endpoint and detour
+limits. Maximum regional-bus snap is now 43.76 m; the unchanged urban cache has
+77.49 m maximum snap. No rejected segment was silently converted to a line.
+
+The [source record](../data/vaud-sources/nyon-road-source.json) retains the query,
+OSM base timestamp, compressed and original hashes, and exact matcher config.
+The [weekday review](assets/nyon-geometry-review.svg) and
+[Sunday review](assets/nyon-sunday-geometry-review.svg) were rendered and inspected
+at Divonne, the border, Gex school services, Terre-Bonne, route du Stand, Nyon
+station and the complete NStCM corridor. It compares against retained OSM/FOT
+sources; it is not independent operator confirmation.
+
+The focused Nyon/MBC/road test run passed 20 tests. Both dated fourteen-file
+sets passed independent read-back checks.
+
+NStCM is isolated by the FOT La Cure anchor and verified to reach underground
+Nyon while excluding the adjacent SBB mainline. The two dated candidate sets
+include twelve two-hour chunks, a manifest and a morning snapshot. Artifact
+checks cover content hashes, exact byte lengths, valid stop/path references,
+consistent duplicated journeys between chunks and complete directed geometry.
+
+**Application integration remains next:** these are audited operator datasets,
+not a released Nyon study. They exclude SBB mainline, PostAuto and lake services;
+they do not claim all transport in the Nyon district. Add discovery, framing,
+four-language copy, dated refresh/recovery and browser verification before release.
+
+Reproduce with Node 24:
+
+```sh
+# Extract each date with ingest-gtfs.mjs --civil-day --modes rail,bus
+# --agencies 66,738,741 --bounds -180,-90,180,90 and a full 00:00–24:00 window.
+node scripts/build-nyon-study.mjs ARCHIVE RAIL COMPLETE_WEEKDAY COMPLETE_SUNDAY data/nyon-region
+node scripts/check-nyon-study.mjs data/nyon-region
+```
+
+`prepare-nyon-road-feeds.mjs ARCHIVE VAUD_MANIFEST OUTPUT` produces matcher feeds.
+For agency 738, decompress the retained Nyon OSM extract and use
+`data/vaud-sources/nyon-pfaedle.cfg` with the pinned matcher. Reimport both dates
+with `importRoadShapes`; original output hashes and warnings remain in each cache.
+`audit-nyon-geometry.mjs` remains the rectangular replay for comparison; the
+complete source-chain and artifact checks are in the new builder and checker.
