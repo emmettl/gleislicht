@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 1,
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "feedSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "timetableYear": 2026,
+  "limits": {
+    "snapMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 1200,
+    "alternativeSnapMetres": 5
+  },
+  "admission": "Admit an entire civil-day trip only when every ordered stop pair matches its reviewed operator/line graph and no source call requires prior arrangement. Preserve every source call and external endpoint. All paths are inferred on undirected official alignments with bounded stop connectors, not direction-certified road routes or observed positions.",
+  "scopeLimits": [
+    "Complete annual pinned GTFS census of trips with at least one source stop in the full SG polygon; not all six OSTWIND cantons.",
+    "Nonstopping through traffic, services absent from national GTFS and unscheduled/flexible products are outside the measured census.",
+    "Weekday and Sunday September fixtures include preceding-service-day spillover; winter, holidays and other seasonal dates remain unvalidated.",
+    "No geometry substitution from other lines; no invented road, water or mountain connectors.",
+    "Regional feed and source vectors remain local pending resolution of publisher redistribution terms."
+  ],
+  "operatorCrosswalk": {
+    "AB": {
+      "rail": [
+        "22"
+      ],
+      "bus": [
+        "744"
+      ]
+    },
+    "SBB": {
+      "rail": [
+        "11"
+      ]
+    },
+    "SOB": {
+      "rail": [
+        "82"
+      ]
+    },
+    "Thurbo": {
+      "rail": [
+        "65"
+      ]
+    },
+    "PAG": {
+      "bus": [
+        "801"
+      ]
+    },
+    "BOS": {
+      "bus": [
+        "138"
+      ]
+    },
+    "REGO": {
+      "bus": [
+        "896"
+      ]
+    },
+    "VBSG": {
+      "bus": [
+        "885"
+      ]
+    },
+    "VZO": {
+      "bus": [
+        "838"
+      ]
+    },
+    "BRER": {
+      "bus": [
+        "772"
+      ]
+    },
+    "BLWE": {
+      "bus": [
+        "810"
+      ]
+    },
+    "AWA": {
+      "bus": [
+        "832"
+      ]
+    },
+    "BuS": {
+      "bus": [
+        "766"
+      ]
+    },
+    "LIEmobil": {
+      "bus": [
+        "805"
+      ]
+    },
+    "BBO": {
+      "bus": [
+        "7017"
+      ]
+    },
+    "ZVV": {
+      "bus": [
+        "838"
+      ]
+    },
+    "LUFAG": {
+      "mountain": [
+        "214"
+      ]
+    },
+    "SW": {
+      "boat": [
+        "197"
+      ]
+    }
+  },
+  "operatorEvidence": {
+    "BBO": "Source line 624 names St. Gallenkappel–Rüeterswil–Walde; pinned GTFS route 92-624-j26-1 published by Gemeinde St. Gallenkappel (7017). No other BBO lines mapped.",
+    "ZVV": "Tariff label, not an operator. The sole source feature is 885 Rapperswil–Atzmännig; matching pinned route 92-885-j26-1 belongs to VZO 838.",
+    "BRER": "Source metadata expands BRER as Schneider Linienbus AG; feed 772 uses Busbetrieb Rapperswil-Eschenbach-Rüti ZH. Exact lines 622,623,631,995 and full endpoint checks constrain this bridge."
+  },
+  "featureOverrides": {
+    "bus:1": {
+      "expectedName": "12 Gams - Buchs (-Schaan)",
+      "mode": "bus",
+      "agencyIds": [
+        "805"
+      ],
+      "lines": [
+        "12"
+      ],
+      "reason": "BOS source names the Swiss section of LIEmobil line 12. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments."
+    },
+    "bus:3": {
+      "expectedName": "24 Buchs SG - Sevelen (-Vaduz)",
+      "mode": "bus",
+      "agencyIds": [
+        "805"
+      ],
+      "lines": [
+        "24"
+      ],
+      "reason": "BOS source names the Swiss section of LIEmobil line 24. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments."
+    },
+    "bus:5": {
+      "expectedName": "12 Sargans - Trübbach/Balzers - Vaduz - Eilkurs",
+      "mode": "bus",
+      "agencyIds": [
+        "805"
+      ],
+      "lines": [
+        "12E"
+      ],
+      "reason": "Source calls this line 12 Eilkurs; pinned feed designates Sargans–Vaduz express as 12E. Full chain still required."
+    },
+    "bus:85": {
+      "expectedName": "12 Gams - Buchs (-Schaan)",
+      "mode": "bus",
+      "agencyIds": [
+        "805"
+      ],
+      "lines": [
+        "12"
+      ],
+      "reason": "BOS source names the Swiss section of LIEmobil line 12. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments."
+    },
+    "bus:137": {
+      "expectedName": "24 Buchs SG - Sevelen (-Vaduz)",
+      "mode": "bus",
+      "agencyIds": [
+        "805"
+      ],
+      "lines": [
+        "24"
+      ],
+      "reason": "BOS source names the Swiss section of LIEmobil line 24. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments."
+    },
+    "boat:1": {
+      "expectedName": "Unterterzen - Quinten - Murg",
+      "mode": "boat",
+      "agencyIds": [
+        "197"
+      ],
+      "lines": [
+        "BAT"
+      ],
+      "reason": "Only Walensee feed route 94-R-Y-j26-1; source table 3901 names Unterterzen–Quinten–Murg. Full boat stop chains required; partial source coverage remains excluded."
+    },
+    "bus:123": {
+      "expectedName": "N21 Appenzell - Gais - St. Gallen (Nachtangebot Bus)",
+      "mode": "bus",
+      "agencyIds": [
+        "744"
+      ],
+      "lines": [
+        "B21"
+      ],
+      "reason": "Source labels this night bus N21; pinned Automobildienst AB route 92-B21-A-j26-1 uses B21 for the same St. Gallen–Appenzell/Trogen service. Preserve night status and validate full source stop chain."
+    },
+    "bus:124": {
+      "expectedName": "N21 St. Gallen - Speicher - Trogen (Nachtangebot Bus)",
+      "mode": "bus",
+      "agencyIds": [
+        "744"
+      ],
+      "lines": [
+        "B21"
+      ],
+      "reason": "Source labels this night bus N21; pinned Automobildienst AB route 92-B21-A-j26-1 uses B21 for the same St. Gallen–Appenzell/Trogen service. Preserve night status and validate full source stop chain."
+    },
+    "bus:7": {
+      "expectedName": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+      "mode": "bus",
+      "agencyIds": [
+        "896"
+      ],
+      "lines": [
+        "72"
+      ],
+      "reason": "Reviewed against pinned GTFS 92-72-E-j26-1, agency 896, line 72, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+      "reviewedRouteId": "92-72-E-j26-1"
+    },
+    "bus:29": {
+      "expectedName": "403 Räfis-Burgerau - Buchs SG - Buchserberg",
+      "mode": "bus",
+      "agencyIds": [
+        "697"
+      ],
+      "lines": [
+        "403"
+      ],
+      "reason": "Reviewed against pinned GTFS 92-403-D-j26-1, agency 697, line 403, retaining complete source endpoints and ordered calls. Source names the contracted Swiss operator BOS; GTFS publishes this corridor under Bus Buchserberg / Verkehrsverbund Vorarlberg respectively. Do not generalise the bridge to other BOS routes.",
+      "reviewedRouteId": "92-403-D-j26-1"
+    },
+    "bus:32": {
+      "expectedName": "164 Widnau - Lustenau - Dornbirn",
+      "mode": "bus",
+      "agencyIds": [
+        "81_VVV"
+      ],
+      "lines": [
+        "164"
+      ],
+      "reason": "Reviewed against pinned GTFS 92-164-C-j26-1, agency 81_VVV, line 164, retaining complete source endpoints and ordered calls. Source names the contracted Swiss operator BOS; GTFS publishes this corridor under Bus Buchserberg / Verkehrsverbund Vorarlberg respectively. Do not generalise the bridge to other BOS routes.",
+      "reviewedRouteId": "92-164-C-j26-1"
+    },
+    "bus:43": {
+      "expectedName": "200N St. Gallen - Wittenbach - Arbon (Nachtangebot)",
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "200"
+      ],
+      "reason": "Reviewed against pinned GTFS 96-220-A-j26-1, agency 801, line 200, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+      "reviewedRouteId": "96-220-A-j26-1"
+    },
+    "bus:71": {
+      "expectedName": "N725 Wil SG - Zuzwil - Niederhelfenschwil (Nachtangebot)",
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "725"
+      ],
+      "reason": "Reviewed against pinned GTFS 96-228-A-j26-1, agency 801, line 725, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+      "reviewedRouteId": "96-228-A-j26-1"
+    },
+    "bus:84": {
+      "expectedName": "N302 Heerbrugg - Berneck - Au SG (Nachtangebot)",
+      "mode": "bus",
+      "agencyIds": [
+        "138"
+      ],
+      "lines": [
+        "302"
+      ],
+      "reason": "Reviewed against pinned GTFS 92-302-A-j26-1, agency 138, line 302, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+      "reviewedRouteId": "92-302-A-j26-1"
+    },
+    "bus:97": {
+      "expectedName": "211N St. Gallen - Horn - Arbon (Nachtangebot)",
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "211"
+      ],
+      "reason": "Reviewed against pinned GTFS 96-220-B-j26-1, agency 801, line 211, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+      "reviewedRouteId": "96-220-B-j26-1"
+    },
+    "bus:120": {
+      "expectedName": "N770 Lichtensteig - Wattwil - Ebnat-Kappel - Nesslau (Nachtangebot)",
+      "mode": "bus",
+      "agencyIds": [
+        "810"
+      ],
+      "lines": [
+        "770"
+      ],
+      "reason": "Reviewed against pinned GTFS 92-770-A-j26-1, agency 810, line 770, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+      "reviewedRouteId": "92-770-A-j26-1"
+    },
+    "bus:130": {
+      "expectedName": "741N Uzwil - Oberuzwil - Bichwil - Flawil - Niederwil (Nachangebot)",
+      "mode": "bus",
+      "agencyIds": [
+        "801"
+      ],
+      "lines": [
+        "741"
+      ],
+      "reason": "Reviewed against pinned GTFS 96-228-C-j26-1, agency 801, line 741, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+      "reviewedRouteId": "96-228-C-j26-1"
+    },
+    "bus:141": {
+      "expectedName": "N23 Gossau - Herisau - Urnäsch",
+      "mode": "bus",
+      "agencyIds": [
+        "896"
+      ],
+      "lines": [
+        "23"
+      ],
+      "reason": "Reviewed against pinned GTFS 92-23-D-j26-1, agency 896, line 23, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+      "reviewedRouteId": "92-23-D-j26-1"
+    }
+  },
+  "sourceArchiveSha256": "fa6ad762d43c7792bf664f12fbf33b7e27f9fdbb826cdd75a9d0561b888e3260"
+}

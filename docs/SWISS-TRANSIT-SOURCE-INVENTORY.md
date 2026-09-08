@@ -103,7 +103,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 | [SH — Schaffhausen](#sh) | No line export verified | OSTWIND, Z-Pass, Bodensee Ticket |
 | [AR — Appenzell Ausserrhoden](#ar) | No line export verified | OSTWIND |
 | [AI — Appenzell Innerrhoden](#ai) | No line export verified | OSTWIND |
-| [SG — St.Gallen](#sg) | Metadata / export unresolved | OSTWIND, Z-Pass, Bodensee Ticket |
+| [SG — St.Gallen](#sg) | Cantonal adapter; local feed with partial admission | OSTWIND, Z-Pass, Bodensee Ticket |
 | [GR — Graubünden / Grigioni / Grischun](#gr) | Catalogue access error | BÜGA, Transreno, Engadin mobil, Verkehrsbetriebe Davos |
 | [AG — Aargau](#ag) | Download inspected | A-Welle, TNW, Z-Pass |
 | [TG — Thurgau](#tg) | Vector sample verified | OSTWIND, Bodensee Ticket |
@@ -378,15 +378,17 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 ### SG — St.Gallen
 
-**Authority/publisher:** Amt für öffentlichen Verkehr; AREG / Geoportal St.Gallen. **Review areas:** St.Gallen; Fürstenland/Wil; Toggenburg; Rheintal; Sarganserland; Werdenberg; See-Gaster.
+**Authority/publisher:** Amt für öffentlichen Verkehr; AREG / Geoportal St.Gallen. **Review areas:** St.Gallen/Rorschach; Fürstenland/Wil; Toggenburg; Rheintal; Sarganserland; Werdenberg; See-Gaster.
 
-**Evidence:** AL_OEV subsidised-line model documented: annually maintained LV95 geometry, operator/line fields and explicitly no travel direction. Official download share opens, but the attempted archive endpoint returned 404. City schematic diagrams are not street geometry.
+**Implementation:** [Full St. Gallen audit](ST-GALLEN-STUDY.md) and [regional feed index](../data/st-gallen-region/index.json). The complete annual pinned-GTFS polygon census covers **343 route records and 38 agency identities**. Every admitted and excluded weekday/Sunday directed stop pattern is audited; geometrical admission is partial and the generated feed is local pending redistribution permission.
 
-**Vintage:** Introduced with December 2025 timetable; actual downloaded geometry vintage unverified.
+**Evidence:** Acquired all **226 AL_OEV features**: 45 rail, 145 regional bus, 34 city/municipal bus, one cableway and one Walensee feature. The working download is the public share's current DAV file URL, recorded in [the source catalogue](../data/st-gallen-sources/sources.json). The old archive endpoint's 404 remains historical probe evidence. LV95 geometry has operator/line fields and explicitly no travel direction. The adapter uses reviewed feed identity mappings, full ordered stop chains and bounded projections; it does not certify one-way roads or silently bridge gaps.
 
-**Reuse:** General SG terms distinguish data acquisition from service embedding and restrict some redistribution. Establish which dataset terms govern AL_OEV before bundling derived vectors; do not label all SG geodata unrestricted.
+**Vintage:** Pinned archive and supplied description **24 March 2026**, representing the 2026 timetable alignment; per-feature survey dates are absent. The live description's 3 September 2026 date is not a new archive geometry vintage. Source retrieval times and exact hashes are preserved separately.
 
-**Next action:** Resolve actual archive acquisition and terms, then audit full operator/line coverage and directed patterns. SG does not stand in for all six OSTWIND cantons. Representative GTFS agencies: `22`, `65`, `82`, `138`, `744`, `805`, `810`, `832`, `885`, `896`.
+**Reuse:** The supplied 1 June 2019 terms and current SG website terms retain an express-permission requirement for redistribution/own geoservices. No dataset-specific open licence was supplied. Source vectors and the generated feed stay in ignored local directories outside public assets; the tracked adapter, index and admission/exclusion audit are reviewable. Required attribution, source dates, lack of legal effect and publisher disclaimer are recorded.
+
+**Next action:** Resolve publication permission, geometry exclusions and road/track/water direction review; validate seasonal and holiday dates before claiming complete annual cantonal motion coverage. SG does not stand in for all six OSTWIND cantons. Representative GTFS agencies: `22`, `65`, `82`, `138`, `744`, `805`, `810`, `832`, `885`, `896`.
 
 **Checked references:** [sg-source-page](https://www.sg.ch/bauen/geoinformation/aktuelles.html), [sg-model](https://services.geo.sg.ch/wss/service/metadaten/guest/datenbeschreibung/AOEV_AL_OEV_Datenbeschreibung.pdf), [sg-download-page](https://data.geo.sg.ch/s/RMgBWPofwkaCawf?dir=/Geodaten/3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft/P%20-%20Verkehr/AbgeltungsberechtigteLinien), [sg-archive](https://data.geo.sg.ch/s/RMgBWPofwkaCawf/download?path=%2FGeodaten%2F3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft%2FP%20-%20Verkehr%2FAbgeltungsberechtigteLinien), [sg-share-path](https://data.geo.sg.ch/s/RMgBWPofwkaCawf?path=%2FGeodaten%2F3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft%2FP%20-%20Verkehr%2FAbgeltungsberechtigteLinien), [sg-terms](https://www.sg.ch/bauen/geoinformation/datenbezug/agb.html).
 
@@ -544,7 +546,7 @@ This ordering is engineering judgement based on the evidence above, not a measur
 2. **Implement reusable official-line adapters for Bern and Aargau; extend to Luzern.** Bern has line/operator attributes and documented reuse, Aargau adds direction and GO codes, and Luzern has explicit 2026 line identifiers. Do not assume their code systems are interchangeable. These are the most useful next full joins.
 3. **Continue Zug coverage; evaluate Fribourg and Thurgau.** Zug's archive/WFS reconciliation and full-canton timetable inventory now support a partial regional bus feed; the [detailed audit](ZUG-STUDY.md) records remaining branches, modes and vintage limits. Fribourg needs full retrieval, licensing and timetable-field mapping; Thurgau needs a full GML export, current vintage and reuse confirmation.
 4. **Treat Solothurn as a network-routing adapter.** Its many segments do not imply thousands of route shapes. Establish connectivity and mode filtering, then measure stop-chain routing and the explicitly excluded night network.
-5. **Resolve distribution for SG, BL, VD, JU and NW.** SG has a documented data model and unresolved download/terms; BL advertises an export; VD has a priced order workflow; JU/NW expose transport maps. The canton entries record the precise next action without pretending acquisition succeeded.
+5. **Resolve SG redistribution and distribution for BL, VD, JU and NW.** SG now has an acquired source adapter and audited local feed, with publication permission unresolved; BL advertises an export; VD has a priced order workflow; JU/NW expose transport maps. The canton entries record the precise next action without pretending acquisition succeeded.
 6. **Continue source discovery or measured road matching for UR, SZ, OW, GL, SH, AR, AI, TI, GR, VS and NE.** Prioritise a regional route inventory first so that an official source, operator contribution or inferred path can be judged against an explicit denominator.
 
 Before calling a region complete, produce an admission/exclusion inventory for all selected routes and operators, with unambiguous border scope. Evaluate normal weekday, Sunday/holiday, night and seasonally distinct service dates; add winter mountain and summer pass/boat cases as appropriate. Two September service dates do not establish year-round completeness. Include demand-responsive services as such, rather than inventing fixed movements from their service areas.

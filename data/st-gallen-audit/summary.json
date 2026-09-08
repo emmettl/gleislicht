@@ -1,0 +1,1770 @@
+{
+  "schemaVersion": 1,
+  "feed": {
+    "feed_publisher_name": "SBB",
+    "feed_publisher_url": "https://sbb.ch",
+    "feed_lang": "DE",
+    "feed_start_date": "20251214",
+    "feed_end_date": "20261212",
+    "feed_version": "20260902"
+  },
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "4b05773d1b0845b58954d712bc207c1d59de332fdba6ee8a6976a66af7fa4e23",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "scope": {
+    "description": "Every annual GTFS trip with at least one source stop inside the complete official StGallen polygon, across every agency and mode. Fixture trips retain every source call, including cross-canton termini. No straight-line crossing test for nonstopping through traffic.",
+    "annualStopTimeRows": 34499152,
+    "annualScopedTripRecords": 89396,
+    "cantonStopRecords": 4551,
+    "calledCantonStopRecords": 3038
+  },
+  "policy": {
+    "schemaVersion": 1,
+    "dates": [
+      "2026-09-04",
+      "2026-09-06"
+    ],
+    "feedSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "timetableYear": 2026,
+    "limits": {
+      "snapMetres": 120,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 1200,
+      "alternativeSnapMetres": 5
+    },
+    "admission": "Admit an entire civil-day trip only when every ordered stop pair matches its reviewed operator/line graph and no source call requires prior arrangement. Preserve every source call and external endpoint. All paths are inferred on undirected official alignments with bounded stop connectors, not direction-certified road routes or observed positions.",
+    "scopeLimits": [
+      "Complete annual pinned GTFS census of trips with at least one source stop in the full SG polygon; not all six OSTWIND cantons.",
+      "Nonstopping through traffic, services absent from national GTFS and unscheduled/flexible products are outside the measured census.",
+      "Weekday and Sunday September fixtures include preceding-service-day spillover; winter, holidays and other seasonal dates remain unvalidated.",
+      "No geometry substitution from other lines; no invented road, water or mountain connectors.",
+      "Regional feed and source vectors remain local pending resolution of publisher redistribution terms."
+    ],
+    "operatorCrosswalk": {
+      "AB": {
+        "rail": [
+          "22"
+        ],
+        "bus": [
+          "744"
+        ]
+      },
+      "SBB": {
+        "rail": [
+          "11"
+        ]
+      },
+      "SOB": {
+        "rail": [
+          "82"
+        ]
+      },
+      "Thurbo": {
+        "rail": [
+          "65"
+        ]
+      },
+      "PAG": {
+        "bus": [
+          "801"
+        ]
+      },
+      "BOS": {
+        "bus": [
+          "138"
+        ]
+      },
+      "REGO": {
+        "bus": [
+          "896"
+        ]
+      },
+      "VBSG": {
+        "bus": [
+          "885"
+        ]
+      },
+      "VZO": {
+        "bus": [
+          "838"
+        ]
+      },
+      "BRER": {
+        "bus": [
+          "772"
+        ]
+      },
+      "BLWE": {
+        "bus": [
+          "810"
+        ]
+      },
+      "AWA": {
+        "bus": [
+          "832"
+        ]
+      },
+      "BuS": {
+        "bus": [
+          "766"
+        ]
+      },
+      "LIEmobil": {
+        "bus": [
+          "805"
+        ]
+      },
+      "BBO": {
+        "bus": [
+          "7017"
+        ]
+      },
+      "ZVV": {
+        "bus": [
+          "838"
+        ]
+      },
+      "LUFAG": {
+        "mountain": [
+          "214"
+        ]
+      },
+      "SW": {
+        "boat": [
+          "197"
+        ]
+      }
+    },
+    "operatorEvidence": {
+      "BBO": "Source line 624 names St. Gallenkappel–Rüeterswil–Walde; pinned GTFS route 92-624-j26-1 published by Gemeinde St. Gallenkappel (7017). No other BBO lines mapped.",
+      "ZVV": "Tariff label, not an operator. The sole source feature is 885 Rapperswil–Atzmännig; matching pinned route 92-885-j26-1 belongs to VZO 838.",
+      "BRER": "Source metadata expands BRER as Schneider Linienbus AG; feed 772 uses Busbetrieb Rapperswil-Eschenbach-Rüti ZH. Exact lines 622,623,631,995 and full endpoint checks constrain this bridge."
+    },
+    "featureOverrides": {
+      "bus:1": {
+        "expectedName": "12 Gams - Buchs (-Schaan)",
+        "mode": "bus",
+        "agencyIds": [
+          "805"
+        ],
+        "lines": [
+          "12"
+        ],
+        "reason": "BOS source names the Swiss section of LIEmobil line 12. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments."
+      },
+      "bus:3": {
+        "expectedName": "24 Buchs SG - Sevelen (-Vaduz)",
+        "mode": "bus",
+        "agencyIds": [
+          "805"
+        ],
+        "lines": [
+          "24"
+        ],
+        "reason": "BOS source names the Swiss section of LIEmobil line 24. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments."
+      },
+      "bus:5": {
+        "expectedName": "12 Sargans - Trübbach/Balzers - Vaduz - Eilkurs",
+        "mode": "bus",
+        "agencyIds": [
+          "805"
+        ],
+        "lines": [
+          "12E"
+        ],
+        "reason": "Source calls this line 12 Eilkurs; pinned feed designates Sargans–Vaduz express as 12E. Full chain still required."
+      },
+      "bus:85": {
+        "expectedName": "12 Gams - Buchs (-Schaan)",
+        "mode": "bus",
+        "agencyIds": [
+          "805"
+        ],
+        "lines": [
+          "12"
+        ],
+        "reason": "BOS source names the Swiss section of LIEmobil line 12. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments."
+      },
+      "bus:137": {
+        "expectedName": "24 Buchs SG - Sevelen (-Vaduz)",
+        "mode": "bus",
+        "agencyIds": [
+          "805"
+        ],
+        "lines": [
+          "24"
+        ],
+        "reason": "BOS source names the Swiss section of LIEmobil line 24. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments."
+      },
+      "boat:1": {
+        "expectedName": "Unterterzen - Quinten - Murg",
+        "mode": "boat",
+        "agencyIds": [
+          "197"
+        ],
+        "lines": [
+          "BAT"
+        ],
+        "reason": "Only Walensee feed route 94-R-Y-j26-1; source table 3901 names Unterterzen–Quinten–Murg. Full boat stop chains required; partial source coverage remains excluded."
+      },
+      "bus:123": {
+        "expectedName": "N21 Appenzell - Gais - St. Gallen (Nachtangebot Bus)",
+        "mode": "bus",
+        "agencyIds": [
+          "744"
+        ],
+        "lines": [
+          "B21"
+        ],
+        "reason": "Source labels this night bus N21; pinned Automobildienst AB route 92-B21-A-j26-1 uses B21 for the same St. Gallen–Appenzell/Trogen service. Preserve night status and validate full source stop chain."
+      },
+      "bus:124": {
+        "expectedName": "N21 St. Gallen - Speicher - Trogen (Nachtangebot Bus)",
+        "mode": "bus",
+        "agencyIds": [
+          "744"
+        ],
+        "lines": [
+          "B21"
+        ],
+        "reason": "Source labels this night bus N21; pinned Automobildienst AB route 92-B21-A-j26-1 uses B21 for the same St. Gallen–Appenzell/Trogen service. Preserve night status and validate full source stop chain."
+      },
+      "bus:7": {
+        "expectedName": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+        "mode": "bus",
+        "agencyIds": [
+          "896"
+        ],
+        "lines": [
+          "72"
+        ],
+        "reason": "Reviewed against pinned GTFS 92-72-E-j26-1, agency 896, line 72, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+        "reviewedRouteId": "92-72-E-j26-1"
+      },
+      "bus:29": {
+        "expectedName": "403 Räfis-Burgerau - Buchs SG - Buchserberg",
+        "mode": "bus",
+        "agencyIds": [
+          "697"
+        ],
+        "lines": [
+          "403"
+        ],
+        "reason": "Reviewed against pinned GTFS 92-403-D-j26-1, agency 697, line 403, retaining complete source endpoints and ordered calls. Source names the contracted Swiss operator BOS; GTFS publishes this corridor under Bus Buchserberg / Verkehrsverbund Vorarlberg respectively. Do not generalise the bridge to other BOS routes.",
+        "reviewedRouteId": "92-403-D-j26-1"
+      },
+      "bus:32": {
+        "expectedName": "164 Widnau - Lustenau - Dornbirn",
+        "mode": "bus",
+        "agencyIds": [
+          "81_VVV"
+        ],
+        "lines": [
+          "164"
+        ],
+        "reason": "Reviewed against pinned GTFS 92-164-C-j26-1, agency 81_VVV, line 164, retaining complete source endpoints and ordered calls. Source names the contracted Swiss operator BOS; GTFS publishes this corridor under Bus Buchserberg / Verkehrsverbund Vorarlberg respectively. Do not generalise the bridge to other BOS routes.",
+        "reviewedRouteId": "92-164-C-j26-1"
+      },
+      "bus:43": {
+        "expectedName": "200N St. Gallen - Wittenbach - Arbon (Nachtangebot)",
+        "mode": "bus",
+        "agencyIds": [
+          "801"
+        ],
+        "lines": [
+          "200"
+        ],
+        "reason": "Reviewed against pinned GTFS 96-220-A-j26-1, agency 801, line 200, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+        "reviewedRouteId": "96-220-A-j26-1"
+      },
+      "bus:71": {
+        "expectedName": "N725 Wil SG - Zuzwil - Niederhelfenschwil (Nachtangebot)",
+        "mode": "bus",
+        "agencyIds": [
+          "801"
+        ],
+        "lines": [
+          "725"
+        ],
+        "reason": "Reviewed against pinned GTFS 96-228-A-j26-1, agency 801, line 725, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+        "reviewedRouteId": "96-228-A-j26-1"
+      },
+      "bus:84": {
+        "expectedName": "N302 Heerbrugg - Berneck - Au SG (Nachtangebot)",
+        "mode": "bus",
+        "agencyIds": [
+          "138"
+        ],
+        "lines": [
+          "302"
+        ],
+        "reason": "Reviewed against pinned GTFS 92-302-A-j26-1, agency 138, line 302, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+        "reviewedRouteId": "92-302-A-j26-1"
+      },
+      "bus:97": {
+        "expectedName": "211N St. Gallen - Horn - Arbon (Nachtangebot)",
+        "mode": "bus",
+        "agencyIds": [
+          "801"
+        ],
+        "lines": [
+          "211"
+        ],
+        "reason": "Reviewed against pinned GTFS 96-220-B-j26-1, agency 801, line 211, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+        "reviewedRouteId": "96-220-B-j26-1"
+      },
+      "bus:120": {
+        "expectedName": "N770 Lichtensteig - Wattwil - Ebnat-Kappel - Nesslau (Nachtangebot)",
+        "mode": "bus",
+        "agencyIds": [
+          "810"
+        ],
+        "lines": [
+          "770"
+        ],
+        "reason": "Reviewed against pinned GTFS 92-770-A-j26-1, agency 810, line 770, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+        "reviewedRouteId": "92-770-A-j26-1"
+      },
+      "bus:130": {
+        "expectedName": "741N Uzwil - Oberuzwil - Bichwil - Flawil - Niederwil (Nachangebot)",
+        "mode": "bus",
+        "agencyIds": [
+          "801"
+        ],
+        "lines": [
+          "741"
+        ],
+        "reason": "Reviewed against pinned GTFS 96-228-C-j26-1, agency 801, line 741, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+        "reviewedRouteId": "96-228-C-j26-1"
+      },
+      "bus:141": {
+        "expectedName": "N23 Gossau - Herisau - Urnäsch",
+        "mode": "bus",
+        "agencyIds": [
+          "896"
+        ],
+        "lines": [
+          "23"
+        ],
+        "reason": "Reviewed against pinned GTFS 92-23-D-j26-1, agency 896, line 23, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+        "reviewedRouteId": "92-23-D-j26-1"
+      }
+    },
+    "sourceArchiveSha256": "fa6ad762d43c7792bf664f12fbf33b7e27f9fdbb826cdd75a9d0561b888e3260"
+  },
+  "annualRouteRecords": 343,
+  "annualAgencies": 38,
+  "catalogue": {
+    "schemaVersion": 1,
+    "sources": [
+      {
+        "file": "al-oev-20260324.zip",
+        "url": "https://data.geo.sg.ch/public.php/dav/files/RMgBWPofwkaCawf/Geodaten/3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft/P%20-%20Verkehr/AbgeltungsberechtigteLinien/AbgeltungsberechtigteLinien_AL_OEV_shp.zip",
+        "retrievedAt": "2026-09-08T18:02:45.978971+00:00",
+        "sha256": "fa6ad762d43c7792bf664f12fbf33b7e27f9fdbb826cdd75a9d0561b888e3260",
+        "bytes": 2655826,
+        "archiveDate": "2026-03-24",
+        "geometryVintage": "2026 timetable; export 2026-03-24; no per-feature survey timestamp"
+      },
+      {
+        "file": "boundary.json",
+        "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.swisstopo.swissboundaries3d-kanton-flaeche.fill/17?sr=4326&geometryFormat=geojson",
+        "retrievedAt": "2026-09-08T18:02:46.522626+00:00",
+        "sha256": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+        "bytes": 320695,
+        "attribution": "© swisstopo",
+        "vintage": null
+      },
+      {
+        "file": "metadata.html",
+        "url": "https://www.sg.ch/bauen/geoinformation/gi/geodaten/al.html",
+        "retrievedAt": "2026-09-08T18:02:47.031618+00:00",
+        "sha256": "387f8c2cf7a0a94c9ff100b931ce78f9a8adeb9cadedf24eeb294b0bc6a10314",
+        "bytes": 98216
+      },
+      {
+        "file": "terms.html",
+        "url": "https://www.sg.ch/bauen/geoinformation/datenbezug/agb.html",
+        "retrievedAt": "2026-09-08T18:02:47.503834+00:00",
+        "sha256": "161a299d8e569ced095f2d21574014402b623557e0f3f33ce43b5199cdf3ea89",
+        "bytes": 102359,
+        "websiteModified": "2022-01-12"
+      },
+      {
+        "file": "Datennutzungsbestimmungen.pdf",
+        "derivedFrom": [
+          "al-oev-20260324.zip"
+        ],
+        "sha256": "15c34bd867369e5585baa1a617d3f2a0ecb87f8c738ff6f53ea19beca09adb3c",
+        "bytes": 136254
+      },
+      {
+        "file": "AOEV_AL_OEV_Datenbeschreibung.pdf",
+        "derivedFrom": [
+          "al-oev-20260324.zip"
+        ],
+        "sha256": "2ba800f9bb3d07ba3cee745747b4ba6aff3974482c54f214b08d8e0302e63ba6",
+        "bytes": 662723
+      },
+      {
+        "file": "rail.geojson.gz",
+        "derivedFrom": [
+          "al-oev-20260324.zip"
+        ],
+        "archiveMembers": [
+          "2026-03-24/AL_OEV_BAHNLINIEN_L.cpg",
+          "2026-03-24/AL_OEV_BAHNLINIEN_L.dbf",
+          "2026-03-24/AL_OEV_BAHNLINIEN_L.prj",
+          "2026-03-24/AL_OEV_BAHNLINIEN_L.shp",
+          "2026-03-24/AL_OEV_BAHNLINIEN_L.shx"
+        ],
+        "features": 45,
+        "sha256": "2a1ab7a98f6b2010eb13e033b20c202f8bda707ca8febd7577a82f84344dbdf3",
+        "bytes": 331941
+      },
+      {
+        "file": "bus.geojson.gz",
+        "derivedFrom": [
+          "al-oev-20260324.zip"
+        ],
+        "archiveMembers": [
+          "2026-03-24/AL_OEV_BUSLINIEN_L.cpg",
+          "2026-03-24/AL_OEV_BUSLINIEN_L.dbf",
+          "2026-03-24/AL_OEV_BUSLINIEN_L.prj",
+          "2026-03-24/AL_OEV_BUSLINIEN_L.shp",
+          "2026-03-24/AL_OEV_BUSLINIEN_L.shx"
+        ],
+        "features": 145,
+        "sha256": "faa498b9187cbea10c9c944fb87c90736640ee986b6497b37a578a48a3e6bc6f",
+        "bytes": 1177947
+      },
+      {
+        "file": "city.geojson.gz",
+        "derivedFrom": [
+          "al-oev-20260324.zip"
+        ],
+        "archiveMembers": [
+          "2026-03-24/AL_OEV_GESAMTSYSTEME_STADT_ORTSBUS_L.cpg",
+          "2026-03-24/AL_OEV_GESAMTSYSTEME_STADT_ORTSBUS_L.dbf",
+          "2026-03-24/AL_OEV_GESAMTSYSTEME_STADT_ORTSBUS_L.prj",
+          "2026-03-24/AL_OEV_GESAMTSYSTEME_STADT_ORTSBUS_L.shp",
+          "2026-03-24/AL_OEV_GESAMTSYSTEME_STADT_ORTSBUS_L.shx"
+        ],
+        "features": 34,
+        "sha256": "d707f1e8270266123335259bbc20db116463ffd38cf65af86d498ba28a20e354",
+        "bytes": 139863
+      },
+      {
+        "file": "mountain.geojson.gz",
+        "derivedFrom": [
+          "al-oev-20260324.zip"
+        ],
+        "archiveMembers": [
+          "2026-03-24/AL_OEV_LUFTSEILBAHNEN_L.cpg",
+          "2026-03-24/AL_OEV_LUFTSEILBAHNEN_L.dbf",
+          "2026-03-24/AL_OEV_LUFTSEILBAHNEN_L.prj",
+          "2026-03-24/AL_OEV_LUFTSEILBAHNEN_L.shp",
+          "2026-03-24/AL_OEV_LUFTSEILBAHNEN_L.shx"
+        ],
+        "features": 1,
+        "sha256": "76d69444b049bded128c7403e35e1a1db9f60cd1ae91c5f8ad1ed788cf0488ef",
+        "bytes": 294
+      },
+      {
+        "file": "boat.geojson.gz",
+        "derivedFrom": [
+          "al-oev-20260324.zip"
+        ],
+        "archiveMembers": [
+          "2026-03-24/AL_OEV_SCHIFFSVERKEHR_L.cpg",
+          "2026-03-24/AL_OEV_SCHIFFSVERKEHR_L.dbf",
+          "2026-03-24/AL_OEV_SCHIFFSVERKEHR_L.prj",
+          "2026-03-24/AL_OEV_SCHIFFSVERKEHR_L.shp",
+          "2026-03-24/AL_OEV_SCHIFFSVERKEHR_L.shx"
+        ],
+        "features": 1,
+        "sha256": "2a7eab979cd37f9aad94a07fed4c90cb49529d09279f2dd5d27d2234dfaef77d",
+        "bytes": 422
+      }
+    ],
+    "transformation": {
+      "sourceCrs": "EPSG:2056",
+      "outputCrs": "EPSG:4326",
+      "method": "swisstopo approximate polynomial, metre-level accuracy, seven decimal places, no simplification; exact shared vertices only"
+    },
+    "attribution": [
+      "© Kanton St.Gallen, Amt für öffentlichen Verkehr / AREG",
+      "Underlying alignment: swissTNE Base, © swisstopo"
+    ],
+    "reuse": {
+      "license": "publisher-specific restricted terms; not an open-data licence",
+      "termsUrl": "https://www.sg.ch/bauen/geoinformation/datenbezug/agb.html",
+      "suppliedTermsVersion": "2019-06-01",
+      "currentWebsiteModified": "2022-01-12",
+      "redistributionApproved": false,
+      "decision": "Local source-adapter evaluation and regional feed. Do not publish raw or derived vectors without resolving the publisher permission requirement (current clause 18; supplied clause 20). Attribution, vintage, no legal effect and disclaimer must accompany permitted application display."
+    }
+  },
+  "validation": {
+    "passed": true,
+    "annualPinnedTimetableInventoryComplete": true,
+    "admittedGeometryComplete": true,
+    "cantonMotionCoverageComplete": false,
+    "publicationReady": false,
+    "meaning": "All admitted complete directed patterns pass numerical and artifact checks. Coverage denominators include excluded modes/patterns. This does not certify road direction or establish year-round geometry coverage.",
+    "pending": [
+      "Resolve St. Gallen raw/derived-vector redistribution permission before publication",
+      "Resolve every excluded route/pattern before claiming complete cantonal motion coverage",
+      "Review street directions, loops, rail branches and temporary diversions before presenting paths as direction-certified",
+      "Validate seasonal and holiday dates",
+      "Integrate UI selection and refresh separately if requested"
+    ]
+  },
+  "days": [
+    {
+      "date": "2026-09-04",
+      "trips": 24782,
+      "admittedTrips": 10426,
+      "excludedTrips": 14356,
+      "carryInTrips": 221,
+      "admittedCarryInTrips": 159,
+      "representativeHeadwayTrips": 11417,
+      "admittedHeadwayTrips": 1239,
+      "patterns": 1441,
+      "admittedPatterns": 991,
+      "directedPairs": 8427,
+      "matchedDirectedPairs": 7128,
+      "segmentOccurrences": 202330,
+      "matchedSegmentOccurrences": 176442,
+      "scheduledSegmentOccurrences": 189688,
+      "matchedScheduledSegmentOccurrences": 173978,
+      "representativeHeadwaySegmentOccurrences": 12642,
+      "repairedDirectedPairs": 0,
+      "admittedTripsUsingRepair": 0,
+      "groups": [
+        {
+          "id": "65:rail",
+          "agency": "THURBO",
+          "mode": "rail",
+          "routes": 12,
+          "trips": 638,
+          "admittedTrips": 475,
+          "patterns": 163,
+          "admittedPatterns": 110,
+          "directedPairs": 462,
+          "matchedDirectedPairs": 407,
+          "segmentOccurrences": 8779,
+          "matchedSegmentOccurrences": 7336,
+          "geometryCoverage": 0.8356304818316437
+        },
+        {
+          "id": "11:rail",
+          "agency": "Schweizerische Bundesbahnen SBB",
+          "mode": "rail",
+          "routes": 21,
+          "trips": 559,
+          "admittedTrips": 39,
+          "patterns": 212,
+          "admittedPatterns": 26,
+          "directedPairs": 794,
+          "matchedDirectedPairs": 251,
+          "segmentOccurrences": 8386,
+          "matchedSegmentOccurrences": 3237,
+          "geometryCoverage": 0.3860004769854519
+        },
+        {
+          "id": "82:rail",
+          "agency": "Schweizerische Südostbahn (sob)",
+          "mode": "rail",
+          "routes": 8,
+          "trips": 338,
+          "admittedTrips": 253,
+          "patterns": 122,
+          "admittedPatterns": 80,
+          "directedPairs": 406,
+          "matchedDirectedPairs": 291,
+          "segmentOccurrences": 4303,
+          "matchedSegmentOccurrences": 3430,
+          "geometryCoverage": 0.7971182895654195
+        },
+        {
+          "id": "22:rail",
+          "agency": "Appenzeller Bahnen (ab)",
+          "mode": "rail",
+          "routes": 8,
+          "trips": 384,
+          "admittedTrips": 380,
+          "patterns": 47,
+          "admittedPatterns": 45,
+          "directedPairs": 251,
+          "matchedDirectedPairs": 237,
+          "segmentOccurrences": 5039,
+          "matchedSegmentOccurrences": 5011,
+          "geometryCoverage": 0.9944433419329232
+        },
+        {
+          "id": "817000:rail",
+          "agency": "NeTS Planung ÖBB",
+          "mode": "rail",
+          "routes": 2,
+          "trips": 77,
+          "admittedTrips": 0,
+          "patterns": 8,
+          "admittedPatterns": 0,
+          "directedPairs": 8,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 77,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "885:bus",
+          "agency": "Verkehrsbetriebe der Stadt St.Gallen",
+          "mode": "bus",
+          "routes": 12,
+          "trips": 1734,
+          "admittedTrips": 1734,
+          "patterns": 73,
+          "admittedPatterns": 73,
+          "directedPairs": 586,
+          "matchedDirectedPairs": 586,
+          "segmentOccurrences": 39875,
+          "matchedSegmentOccurrences": 39875,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "805:bus",
+          "agency": "Verkehrsbetrieb LIECHTENSTEINmobil",
+          "mode": "bus",
+          "routes": 7,
+          "trips": 312,
+          "admittedTrips": 257,
+          "patterns": 27,
+          "admittedPatterns": 20,
+          "directedPairs": 379,
+          "matchedDirectedPairs": 368,
+          "segmentOccurrences": 7658,
+          "matchedSegmentOccurrences": 7597,
+          "geometryCoverage": 0.9920344737529381
+        },
+        {
+          "id": "896:bus",
+          "agency": "Regiobus Gossau SG",
+          "mode": "bus",
+          "routes": 8,
+          "trips": 618,
+          "admittedTrips": 557,
+          "patterns": 44,
+          "admittedPatterns": 40,
+          "directedPairs": 279,
+          "matchedDirectedPairs": 257,
+          "segmentOccurrences": 9470,
+          "matchedSegmentOccurrences": 9382,
+          "geometryCoverage": 0.9907074973600845
+        },
+        {
+          "id": "81_VVV:bus",
+          "agency": "Verkehrsverbund Vorarlberg",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 58,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 39,
+          "matchedDirectedPairs": 35,
+          "segmentOccurrences": 1131,
+          "matchedSegmentOccurrences": 1015,
+          "geometryCoverage": 0.8974358974358975
+        },
+        {
+          "id": "138:bus",
+          "agency": "Bus Ostschweiz",
+          "mode": "bus",
+          "routes": 54,
+          "trips": 2619,
+          "admittedTrips": 2050,
+          "patterns": 181,
+          "admittedPatterns": 144,
+          "directedPairs": 1593,
+          "matchedDirectedPairs": 1408,
+          "segmentOccurrences": 38755,
+          "matchedSegmentOccurrences": 36328,
+          "geometryCoverage": 0.9373758224745194
+        },
+        {
+          "id": "772:bus",
+          "agency": "Busbetrieb Rapperswil-Eschenbach-Rüti ZH",
+          "mode": "bus",
+          "routes": 4,
+          "trips": 304,
+          "admittedTrips": 257,
+          "patterns": 30,
+          "admittedPatterns": 27,
+          "directedPairs": 169,
+          "matchedDirectedPairs": 166,
+          "segmentOccurrences": 5773,
+          "matchedSegmentOccurrences": 5680,
+          "geometryCoverage": 0.9838905248570934
+        },
+        {
+          "id": "7017:bus",
+          "agency": "Gemeinde St. Gallenkappel",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 20,
+          "admittedTrips": 20,
+          "patterns": 5,
+          "admittedPatterns": 5,
+          "directedPairs": 16,
+          "matchedDirectedPairs": 16,
+          "segmentOccurrences": 155,
+          "matchedSegmentOccurrences": 155,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "832:bus",
+          "agency": "Autobetrieb Weesen-Amden",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 70,
+          "admittedTrips": 70,
+          "patterns": 7,
+          "admittedPatterns": 7,
+          "directedPairs": 40,
+          "matchedDirectedPairs": 40,
+          "segmentOccurrences": 1077,
+          "matchedSegmentOccurrences": 1077,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "810:bus",
+          "agency": "Busbetrieb Lichtensteig-Wattwil-Ebnat-Kappel",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 107,
+          "admittedTrips": 107,
+          "patterns": 10,
+          "admittedPatterns": 10,
+          "directedPairs": 47,
+          "matchedDirectedPairs": 47,
+          "segmentOccurrences": 1791,
+          "matchedSegmentOccurrences": 1791,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "838:bus",
+          "agency": "Verkehrsbetriebe Zürichsee und Oberland",
+          "mode": "bus",
+          "routes": 7,
+          "trips": 418,
+          "admittedTrips": 416,
+          "patterns": 30,
+          "admittedPatterns": 29,
+          "directedPairs": 216,
+          "matchedDirectedPairs": 206,
+          "segmentOccurrences": 6592,
+          "matchedSegmentOccurrences": 6572,
+          "geometryCoverage": 0.9969660194174758
+        },
+        {
+          "id": "7231:bus",
+          "agency": "SBB Infrastruktur AG Bahnersatz",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 1,
+          "admittedTrips": 0,
+          "patterns": 1,
+          "admittedPatterns": 0,
+          "directedPairs": 3,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 3,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "7252:bus",
+          "agency": "Appenzeller Bahnen Ersatzverkehr",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 8,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 8,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "744:bus",
+          "agency": "Automobildienst Appenzeller Bahnen",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 4,
+          "admittedTrips": 4,
+          "patterns": 2,
+          "admittedPatterns": 2,
+          "directedPairs": 12,
+          "matchedDirectedPairs": 12,
+          "segmentOccurrences": 24,
+          "matchedSegmentOccurrences": 24,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "3000:bus",
+          "agency": "Publikation nur Kursbuch/Plakat",
+          "mode": "bus",
+          "routes": 2,
+          "trips": 15,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 4,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 30,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "301:mountain",
+          "agency": "Schutt Atzmännig",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 780,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 780,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "287:mountain",
+          "agency": "Pizolbahnen AG",
+          "mode": "mountain",
+          "routes": 5,
+          "trips": 3690,
+          "admittedTrips": 0,
+          "patterns": 9,
+          "admittedPatterns": 0,
+          "directedPairs": 9,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 3690,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "709:mountain",
+          "agency": "Mühleggbahn AG",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 384,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 384,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "113:mountain",
+          "agency": "Toggenburg Bergbahnen Unterwasser",
+          "mode": "mountain",
+          "routes": 3,
+          "trips": 1088,
+          "admittedTrips": 0,
+          "patterns": 6,
+          "admittedPatterns": 0,
+          "directedPairs": 6,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 1088,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "257:mountain",
+          "agency": "Bergbahnen Wildhaus AG",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 1896,
+          "admittedTrips": 0,
+          "patterns": 4,
+          "admittedPatterns": 0,
+          "directedPairs": 4,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 1896,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "214:mountain",
+          "agency": "Luftseilbahn Unterterzen-Flumserberg AG",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 1239,
+          "admittedTrips": 1239,
+          "patterns": 3,
+          "admittedPatterns": 3,
+          "directedPairs": 5,
+          "matchedDirectedPairs": 5,
+          "segmentOccurrences": 2464,
+          "matchedSegmentOccurrences": 2464,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "265:mountain",
+          "agency": "Bergbahnen Flumserberg AG",
+          "mode": "mountain",
+          "routes": 2,
+          "trips": 1830,
+          "admittedTrips": 0,
+          "patterns": 4,
+          "admittedPatterns": 0,
+          "directedPairs": 4,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 1830,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "288:mountain",
+          "agency": "Bergbahnen Flumserberg AG",
+          "mode": "mountain",
+          "routes": 2,
+          "trips": 1860,
+          "admittedTrips": 0,
+          "patterns": 4,
+          "admittedPatterns": 0,
+          "directedPairs": 4,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 1860,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "3130:mountain",
+          "agency": "Sportbahnen Amden",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 840,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 840,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "3131:mountain",
+          "agency": "Berggasthaus Staubern AG",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 90,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 90,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "194:boat",
+          "agency": "Zürichsee-Schifffahrtsgesellschaft AG (ZSG)",
+          "mode": "boat",
+          "routes": 2,
+          "trips": 21,
+          "admittedTrips": 0,
+          "patterns": 10,
+          "admittedPatterns": 0,
+          "directedPairs": 49,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 146,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "195:boat",
+          "agency": "Schweizerische Bodensee-Schifffahrt AG",
+          "mode": "boat",
+          "routes": 1,
+          "trips": 16,
+          "admittedTrips": 0,
+          "patterns": 9,
+          "admittedPatterns": 0,
+          "directedPairs": 16,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 33,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "197:boat",
+          "agency": "Schiffsbetrieb Walensee",
+          "mode": "boat",
+          "routes": 1,
+          "trips": 32,
+          "admittedTrips": 22,
+          "patterns": 16,
+          "admittedPatterns": 7,
+          "directedPairs": 22,
+          "matchedDirectedPairs": 9,
+          "segmentOccurrences": 107,
+          "matchedSegmentOccurrences": 76,
+          "geometryCoverage": 0.7102803738317757
+        },
+        {
+          "id": "801:bus",
+          "agency": "PostAuto AG",
+          "mode": "bus",
+          "routes": 64,
+          "trips": 2732,
+          "admittedTrips": 2546,
+          "patterns": 400,
+          "admittedPatterns": 363,
+          "directedPairs": 2994,
+          "matchedDirectedPairs": 2787,
+          "segmentOccurrences": 48196,
+          "matchedSegmentOccurrences": 45392,
+          "geometryCoverage": 0.941820897999834
+        }
+      ],
+      "exclusionReasons": {
+        "endpoint-gap": 945,
+        "missing-line": 13169,
+        "disconnected-line": 114,
+        "implausible-detour": 128
+      },
+      "artifacts": {
+        "directory": "data/st-gallen-region/local/2026-09-04",
+        "manifestGzipBytes": 1958709,
+        "morningGzipBytes": 2152046,
+        "chunks": [
+          {
+            "id": "00-02",
+            "gzipBytes": 29299,
+            "trips": 173
+          },
+          {
+            "id": "02-04",
+            "gzipBytes": 588,
+            "trips": 1
+          },
+          {
+            "id": "04-06",
+            "gzipBytes": 71363,
+            "trips": 464
+          },
+          {
+            "id": "06-08",
+            "gzipBytes": 189124,
+            "trips": 1498
+          },
+          {
+            "id": "08-10",
+            "gzipBytes": 177926,
+            "trips": 1528
+          },
+          {
+            "id": "10-12",
+            "gzipBytes": 173450,
+            "trips": 1493
+          },
+          {
+            "id": "12-14",
+            "gzipBytes": 177929,
+            "trips": 1555
+          },
+          {
+            "id": "14-16",
+            "gzipBytes": 171757,
+            "trips": 1495
+          },
+          {
+            "id": "16-18",
+            "gzipBytes": 192108,
+            "trips": 1673
+          },
+          {
+            "id": "18-20",
+            "gzipBytes": 174820,
+            "trips": 1329
+          },
+          {
+            "id": "20-22",
+            "gzipBytes": 113192,
+            "trips": 773
+          },
+          {
+            "id": "22-24",
+            "gzipBytes": 87945,
+            "trips": 591
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "trips": 22859,
+      "admittedTrips": 7197,
+      "excludedTrips": 15662,
+      "carryInTrips": 663,
+      "admittedCarryInTrips": 366,
+      "representativeHeadwayTrips": 12973,
+      "admittedHeadwayTrips": 1239,
+      "patterns": 1182,
+      "admittedPatterns": 760,
+      "directedPairs": 8589,
+      "matchedDirectedPairs": 7106,
+      "segmentOccurrences": 142563,
+      "matchedSegmentOccurrences": 115754,
+      "scheduledSegmentOccurrences": 128365,
+      "matchedScheduledSegmentOccurrences": 113290,
+      "representativeHeadwaySegmentOccurrences": 14198,
+      "repairedDirectedPairs": 0,
+      "admittedTripsUsingRepair": 0,
+      "groups": [
+        {
+          "id": "65:rail",
+          "agency": "THURBO",
+          "mode": "rail",
+          "routes": 12,
+          "trips": 516,
+          "admittedTrips": 394,
+          "patterns": 141,
+          "admittedPatterns": 99,
+          "directedPairs": 495,
+          "matchedDirectedPairs": 453,
+          "segmentOccurrences": 7867,
+          "matchedSegmentOccurrences": 6473,
+          "geometryCoverage": 0.8228041184695564
+        },
+        {
+          "id": "82:rail",
+          "agency": "Schweizerische Südostbahn (sob)",
+          "mode": "rail",
+          "routes": 8,
+          "trips": 334,
+          "admittedTrips": 249,
+          "patterns": 105,
+          "admittedPatterns": 72,
+          "directedPairs": 382,
+          "matchedDirectedPairs": 272,
+          "segmentOccurrences": 4313,
+          "matchedSegmentOccurrences": 3435,
+          "geometryCoverage": 0.7964293994899142
+        },
+        {
+          "id": "11:rail",
+          "agency": "Schweizerische Bundesbahnen SBB",
+          "mode": "rail",
+          "routes": 25,
+          "trips": 515,
+          "admittedTrips": 39,
+          "patterns": 208,
+          "admittedPatterns": 22,
+          "directedPairs": 825,
+          "matchedDirectedPairs": 246,
+          "segmentOccurrences": 7342,
+          "matchedSegmentOccurrences": 2803,
+          "geometryCoverage": 0.3817760828112231
+        },
+        {
+          "id": "22:rail",
+          "agency": "Appenzeller Bahnen (ab)",
+          "mode": "rail",
+          "routes": 6,
+          "trips": 311,
+          "admittedTrips": 311,
+          "patterns": 30,
+          "admittedPatterns": 30,
+          "directedPairs": 175,
+          "matchedDirectedPairs": 175,
+          "segmentOccurrences": 4095,
+          "matchedSegmentOccurrences": 4095,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "817000:rail",
+          "agency": "NeTS Planung ÖBB",
+          "mode": "rail",
+          "routes": 1,
+          "trips": 38,
+          "admittedTrips": 0,
+          "patterns": 5,
+          "admittedPatterns": 0,
+          "directedPairs": 5,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 38,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "885:bus",
+          "agency": "Verkehrsbetriebe der Stadt St.Gallen",
+          "mode": "bus",
+          "routes": 11,
+          "trips": 1154,
+          "admittedTrips": 1154,
+          "patterns": 65,
+          "admittedPatterns": 65,
+          "directedPairs": 517,
+          "matchedDirectedPairs": 517,
+          "segmentOccurrences": 25711,
+          "matchedSegmentOccurrences": 25711,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "805:bus",
+          "agency": "Verkehrsbetrieb LIECHTENSTEINmobil",
+          "mode": "bus",
+          "routes": 4,
+          "trips": 156,
+          "admittedTrips": 154,
+          "patterns": 9,
+          "admittedPatterns": 7,
+          "directedPairs": 236,
+          "matchedDirectedPairs": 143,
+          "segmentOccurrences": 5576,
+          "matchedSegmentOccurrences": 5483,
+          "geometryCoverage": 0.9833213773314203
+        },
+        {
+          "id": "896:bus",
+          "agency": "Regiobus Gossau SG",
+          "mode": "bus",
+          "routes": 8,
+          "trips": 264,
+          "admittedTrips": 259,
+          "patterns": 34,
+          "admittedPatterns": 33,
+          "directedPairs": 263,
+          "matchedDirectedPairs": 259,
+          "segmentOccurrences": 3458,
+          "matchedSegmentOccurrences": 3438,
+          "geometryCoverage": 0.9942163100057837
+        },
+        {
+          "id": "81_VVV:bus",
+          "agency": "Verkehrsverbund Vorarlberg",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 26,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 39,
+          "matchedDirectedPairs": 35,
+          "segmentOccurrences": 507,
+          "matchedSegmentOccurrences": 455,
+          "geometryCoverage": 0.8974358974358975
+        },
+        {
+          "id": "138:bus",
+          "agency": "Bus Ostschweiz",
+          "mode": "bus",
+          "routes": 54,
+          "trips": 1522,
+          "admittedTrips": 1159,
+          "patterns": 120,
+          "admittedPatterns": 92,
+          "directedPairs": 1553,
+          "matchedDirectedPairs": 1383,
+          "segmentOccurrences": 22256,
+          "matchedSegmentOccurrences": 20143,
+          "geometryCoverage": 0.9050593098490295
+        },
+        {
+          "id": "697:bus",
+          "agency": "Bus Buchserberg",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 12,
+          "admittedTrips": 12,
+          "patterns": 2,
+          "admittedPatterns": 2,
+          "directedPairs": 31,
+          "matchedDirectedPairs": 31,
+          "segmentOccurrences": 186,
+          "matchedSegmentOccurrences": 186,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "772:bus",
+          "agency": "Busbetrieb Rapperswil-Eschenbach-Rüti ZH",
+          "mode": "bus",
+          "routes": 4,
+          "trips": 146,
+          "admittedTrips": 108,
+          "patterns": 22,
+          "admittedPatterns": 14,
+          "directedPairs": 234,
+          "matchedDirectedPairs": 228,
+          "segmentOccurrences": 3070,
+          "matchedSegmentOccurrences": 2997,
+          "geometryCoverage": 0.9762214983713355
+        },
+        {
+          "id": "832:bus",
+          "agency": "Autobetrieb Weesen-Amden",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 65,
+          "admittedTrips": 65,
+          "patterns": 5,
+          "admittedPatterns": 5,
+          "directedPairs": 40,
+          "matchedDirectedPairs": 40,
+          "segmentOccurrences": 1000,
+          "matchedSegmentOccurrences": 1000,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "810:bus",
+          "agency": "Busbetrieb Lichtensteig-Wattwil-Ebnat-Kappel",
+          "mode": "bus",
+          "routes": 2,
+          "trips": 81,
+          "admittedTrips": 81,
+          "patterns": 12,
+          "admittedPatterns": 12,
+          "directedPairs": 90,
+          "matchedDirectedPairs": 90,
+          "segmentOccurrences": 1526,
+          "matchedSegmentOccurrences": 1526,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "838:bus",
+          "agency": "Verkehrsbetriebe Zürichsee und Oberland",
+          "mode": "bus",
+          "routes": 5,
+          "trips": 270,
+          "admittedTrips": 267,
+          "patterns": 22,
+          "admittedPatterns": 21,
+          "directedPairs": 186,
+          "matchedDirectedPairs": 176,
+          "segmentOccurrences": 4754,
+          "matchedSegmentOccurrences": 4724,
+          "geometryCoverage": 0.993689524610854
+        },
+        {
+          "id": "908:bus",
+          "agency": "Dampfbahn-Verein Zürcher Oberland",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 12,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 8,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 48,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "7231:bus",
+          "agency": "SBB Infrastruktur AG Bahnersatz",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 135,
+          "admittedTrips": 0,
+          "patterns": 5,
+          "admittedPatterns": 0,
+          "directedPairs": 20,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 786,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "7252:bus",
+          "agency": "Appenzeller Bahnen Ersatzverkehr",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 8,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 18,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 72,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "744:bus",
+          "agency": "Automobildienst Appenzeller Bahnen",
+          "mode": "bus",
+          "routes": 2,
+          "trips": 10,
+          "admittedTrips": 10,
+          "patterns": 5,
+          "admittedPatterns": 5,
+          "directedPairs": 79,
+          "matchedDirectedPairs": 79,
+          "segmentOccurrences": 222,
+          "matchedSegmentOccurrences": 222,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "766:bus",
+          "agency": "Bus und Service AG (Chur)",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 1,
+          "admittedTrips": 1,
+          "patterns": 1,
+          "admittedPatterns": 1,
+          "directedPairs": 31,
+          "matchedDirectedPairs": 31,
+          "segmentOccurrences": 31,
+          "matchedSegmentOccurrences": 31,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "3000:bus",
+          "agency": "Publikation nur Kursbuch/Plakat",
+          "mode": "bus",
+          "routes": 1,
+          "trips": 4,
+          "admittedTrips": 0,
+          "patterns": 1,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 8,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "301:mountain",
+          "agency": "Schutt Atzmännig",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 1020,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 1020,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "287:mountain",
+          "agency": "Pizolbahnen AG",
+          "mode": "mountain",
+          "routes": 5,
+          "trips": 3690,
+          "admittedTrips": 0,
+          "patterns": 9,
+          "admittedPatterns": 0,
+          "directedPairs": 9,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 3690,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "709:mountain",
+          "agency": "Mühleggbahn AG",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 384,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 384,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "3128:mountain",
+          "agency": "Sesselbahn Krümmenschwil-Rietbach",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 1020,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 1020,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "113:mountain",
+          "agency": "Toggenburg Bergbahnen Unterwasser",
+          "mode": "mountain",
+          "routes": 3,
+          "trips": 1088,
+          "admittedTrips": 0,
+          "patterns": 6,
+          "admittedPatterns": 0,
+          "directedPairs": 6,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 1088,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "257:mountain",
+          "agency": "Bergbahnen Wildhaus AG",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 2044,
+          "admittedTrips": 0,
+          "patterns": 4,
+          "admittedPatterns": 0,
+          "directedPairs": 4,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 2044,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "214:mountain",
+          "agency": "Luftseilbahn Unterterzen-Flumserberg AG",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 1239,
+          "admittedTrips": 1239,
+          "patterns": 3,
+          "admittedPatterns": 3,
+          "directedPairs": 5,
+          "matchedDirectedPairs": 5,
+          "segmentOccurrences": 2464,
+          "matchedSegmentOccurrences": 2464,
+          "geometryCoverage": 1
+        },
+        {
+          "id": "265:mountain",
+          "agency": "Bergbahnen Flumserberg AG",
+          "mode": "mountain",
+          "routes": 2,
+          "trips": 1830,
+          "admittedTrips": 0,
+          "patterns": 4,
+          "admittedPatterns": 0,
+          "directedPairs": 4,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 1830,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "288:mountain",
+          "agency": "Bergbahnen Flumserberg AG",
+          "mode": "mountain",
+          "routes": 2,
+          "trips": 2006,
+          "admittedTrips": 0,
+          "patterns": 4,
+          "admittedPatterns": 0,
+          "directedPairs": 4,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 2006,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "3130:mountain",
+          "agency": "Sportbahnen Amden",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 990,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 990,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "3131:mountain",
+          "agency": "Berggasthaus Staubern AG",
+          "mode": "mountain",
+          "routes": 1,
+          "trips": 90,
+          "admittedTrips": 0,
+          "patterns": 2,
+          "admittedPatterns": 0,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 90,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "194:boat",
+          "agency": "Zürichsee-Schifffahrtsgesellschaft AG (ZSG)",
+          "mode": "boat",
+          "routes": 3,
+          "trips": 31,
+          "admittedTrips": 0,
+          "patterns": 15,
+          "admittedPatterns": 0,
+          "directedPairs": 62,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 177,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "195:boat",
+          "agency": "Schweizerische Bodensee-Schifffahrt AG",
+          "mode": "boat",
+          "routes": 1,
+          "trips": 16,
+          "admittedTrips": 0,
+          "patterns": 9,
+          "admittedPatterns": 0,
+          "directedPairs": 16,
+          "matchedDirectedPairs": 0,
+          "segmentOccurrences": 33,
+          "matchedSegmentOccurrences": 0,
+          "geometryCoverage": 0
+        },
+        {
+          "id": "197:boat",
+          "agency": "Schiffsbetrieb Walensee",
+          "mode": "boat",
+          "routes": 1,
+          "trips": 34,
+          "admittedTrips": 22,
+          "patterns": 14,
+          "admittedPatterns": 6,
+          "directedPairs": 22,
+          "matchedDirectedPairs": 8,
+          "segmentOccurrences": 133,
+          "matchedSegmentOccurrences": 83,
+          "geometryCoverage": 0.6240601503759399
+        },
+        {
+          "id": "801:bus",
+          "agency": "PostAuto AG",
+          "mode": "bus",
+          "routes": 60,
+          "trips": 1797,
+          "admittedTrips": 1673,
+          "patterns": 306,
+          "admittedPatterns": 271,
+          "directedPairs": 3218,
+          "matchedDirectedPairs": 2935,
+          "segmentOccurrences": 32728,
+          "matchedSegmentOccurrences": 30485,
+          "geometryCoverage": 0.931465411879736
+        }
+      ],
+      "exclusionReasons": {
+        "missing-line": 14960,
+        "endpoint-gap": 573,
+        "disconnected-line": 70,
+        "implausible-detour": 59
+      },
+      "artifacts": {
+        "directory": "data/st-gallen-region/local/2026-09-06",
+        "manifestGzipBytes": 2049182,
+        "morningGzipBytes": 2158426,
+        "chunks": [
+          {
+            "id": "00-02",
+            "gzipBytes": 54996,
+            "trips": 319
+          },
+          {
+            "id": "02-04",
+            "gzipBytes": 19917,
+            "trips": 111
+          },
+          {
+            "id": "04-06",
+            "gzipBytes": 21405,
+            "trips": 126
+          },
+          {
+            "id": "06-08",
+            "gzipBytes": 88868,
+            "trips": 647
+          },
+          {
+            "id": "08-10",
+            "gzipBytes": 122657,
+            "trips": 1082
+          },
+          {
+            "id": "10-12",
+            "gzipBytes": 124303,
+            "trips": 1097
+          },
+          {
+            "id": "12-14",
+            "gzipBytes": 123791,
+            "trips": 1101
+          },
+          {
+            "id": "14-16",
+            "gzipBytes": 125579,
+            "trips": 1113
+          },
+          {
+            "id": "16-18",
+            "gzipBytes": 126536,
+            "trips": 1095
+          },
+          {
+            "id": "18-20",
+            "gzipBytes": 114483,
+            "trips": 818
+          },
+          {
+            "id": "20-22",
+            "gzipBytes": 94958,
+            "trips": 647
+          },
+          {
+            "id": "22-24",
+            "gzipBytes": 77072,
+            "trips": 517
+          }
+        ]
+      }
+    }
+  ],
+  "files": {
+    "routes.json": {
+      "sha256": "125fd6b472a43351717f97eaa62af8e222f32a4fa297b9a959ea10419c166ee1"
+    },
+    "source-lines.json": {
+      "sha256": "2296ee0b82105d9b17ec7281674a09d8ed138227fa9630169f19b4f6b51d4c0b"
+    },
+    "2026-09-04.json": {
+      "sha256": "c13cffc6d601d6f09c28faed24d8b8c4631705eeec38d1d60486bd6d2cabd3e0"
+    },
+    "2026-09-06.json": {
+      "sha256": "6c11d4585c4b0096fb0bc404edc2da667ebb399e90249dcd0b881bad97826ee3"
+    }
+  }
+}

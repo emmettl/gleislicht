@@ -83,7 +83,13 @@
     "data:solothurn:census": "node --max-old-space-size=8192 scripts/solothurn-timetable.mjs",
     "data:solothurn": "node scripts/build-solothurn-region.mjs",
     "data:solothurn:check": "node scripts/check-solothurn-region.mjs",
-    "data:solothurn:docs": "node scripts/document-solothurn-study.mjs"
+    "data:solothurn:docs": "node scripts/document-solothurn-study.mjs",
+    "data:st-gallen:sources": "python3 scripts/prepare-st-gallen-sources.py",
+    "data:st-gallen:census": "node --max-old-space-size=8192 scripts/st-gallen-timetable.mjs",
+    "data:st-gallen": "node --max-old-space-size=8192 scripts/build-st-gallen-region.mjs",
+    "data:st-gallen:check": "node scripts/check-st-gallen-region.mjs",
+    "data:st-gallen:report": "node scripts/document-st-gallen-study.mjs",
+    "data:st-gallen:audit": "node scripts/check-st-gallen-region.mjs --audit-only"
   },
   "engines": {
     "node": ">=24.0.0"

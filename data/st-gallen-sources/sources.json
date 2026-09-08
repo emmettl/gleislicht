@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "file": "al-oev-20260324.zip",
+      "url": "https://data.geo.sg.ch/public.php/dav/files/RMgBWPofwkaCawf/Geodaten/3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft/P%20-%20Verkehr/AbgeltungsberechtigteLinien/AbgeltungsberechtigteLinien_AL_OEV_shp.zip",
+      "retrievedAt": "2026-09-08T18:02:45.978971+00:00",
+      "sha256": "fa6ad762d43c7792bf664f12fbf33b7e27f9fdbb826cdd75a9d0561b888e3260",
+      "bytes": 2655826,
+      "archiveDate": "2026-03-24",
+      "geometryVintage": "2026 timetable; export 2026-03-24; no per-feature survey timestamp"
+    },
+    {
+      "file": "boundary.json",
+      "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.swisstopo.swissboundaries3d-kanton-flaeche.fill/17?sr=4326&geometryFormat=geojson",
+      "retrievedAt": "2026-09-08T18:02:46.522626+00:00",
+      "sha256": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+      "bytes": 320695,
+      "attribution": "© swisstopo",
+      "vintage": null
+    },
+    {
+      "file": "metadata.html",
+      "url": "https://www.sg.ch/bauen/geoinformation/gi/geodaten/al.html",
+      "retrievedAt": "2026-09-08T18:02:47.031618+00:00",
+      "sha256": "387f8c2cf7a0a94c9ff100b931ce78f9a8adeb9cadedf24eeb294b0bc6a10314",
+      "bytes": 98216
+    },
+    {
+      "file": "terms.html",
+      "url": "https://www.sg.ch/bauen/geoinformation/datenbezug/agb.html",
+      "retrievedAt": "2026-09-08T18:02:47.503834+00:00",
+      "sha256": "161a299d8e569ced095f2d21574014402b623557e0f3f33ce43b5199cdf3ea89",
+      "bytes": 102359,
+      "websiteModified": "2022-01-12"
+    },
+    {
+      "file": "Datennutzungsbestimmungen.pdf",
+      "derivedFrom": [
+        "al-oev-20260324.zip"
+      ],
+      "sha256": "15c34bd867369e5585baa1a617d3f2a0ecb87f8c738ff6f53ea19beca09adb3c",
+      "bytes": 136254
+    },
+    {
+      "file": "AOEV_AL_OEV_Datenbeschreibung.pdf",
+      "derivedFrom": [
+        "al-oev-20260324.zip"
+      ],
+      "sha256": "2ba800f9bb3d07ba3cee745747b4ba6aff3974482c54f214b08d8e0302e63ba6",
+      "bytes": 662723
+    },
+    {
+      "file": "rail.geojson.gz",
+      "derivedFrom": [
+        "al-oev-20260324.zip"
+      ],
+      "archiveMembers": [
+        "2026-03-24/AL_OEV_BAHNLINIEN_L.cpg",
+        "2026-03-24/AL_OEV_BAHNLINIEN_L.dbf",
+        "2026-03-24/AL_OEV_BAHNLINIEN_L.prj",
+        "2026-03-24/AL_OEV_BAHNLINIEN_L.shp",
+        "2026-03-24/AL_OEV_BAHNLINIEN_L.shx"
+      ],
+      "features": 45,
+      "sha256": "2a1ab7a98f6b2010eb13e033b20c202f8bda707ca8febd7577a82f84344dbdf3",
+      "bytes": 331941
+    },
+    {
+      "file": "bus.geojson.gz",
+      "derivedFrom": [
+        "al-oev-20260324.zip"
+      ],
+      "archiveMembers": [
+        "2026-03-24/AL_OEV_BUSLINIEN_L.cpg",
+        "2026-03-24/AL_OEV_BUSLINIEN_L.dbf",
+        "2026-03-24/AL_OEV_BUSLINIEN_L.prj",
+        "2026-03-24/AL_OEV_BUSLINIEN_L.shp",
+        "2026-03-24/AL_OEV_BUSLINIEN_L.shx"
+      ],
+      "features": 145,
+      "sha256": "faa498b9187cbea10c9c944fb87c90736640ee986b6497b37a578a48a3e6bc6f",
+      "bytes": 1177947
+    },
+    {
+      "file": "city.geojson.gz",
+      "derivedFrom": [
+        "al-oev-20260324.zip"
+      ],
+      "archiveMembers": [
+        "2026-03-24/AL_OEV_GESAMTSYSTEME_STADT_ORTSBUS_L.cpg",
+        "2026-03-24/AL_OEV_GESAMTSYSTEME_STADT_ORTSBUS_L.dbf",
+        "2026-03-24/AL_OEV_GESAMTSYSTEME_STADT_ORTSBUS_L.prj",
+        "2026-03-24/AL_OEV_GESAMTSYSTEME_STADT_ORTSBUS_L.shp",
+        "2026-03-24/AL_OEV_GESAMTSYSTEME_STADT_ORTSBUS_L.shx"
+      ],
+      "features": 34,
+      "sha256": "d707f1e8270266123335259bbc20db116463ffd38cf65af86d498ba28a20e354",
+      "bytes": 139863
+    },
+    {
+      "file": "mountain.geojson.gz",
+      "derivedFrom": [
+        "al-oev-20260324.zip"
+      ],
+      "archiveMembers": [
+        "2026-03-24/AL_OEV_LUFTSEILBAHNEN_L.cpg",
+        "2026-03-24/AL_OEV_LUFTSEILBAHNEN_L.dbf",
+        "2026-03-24/AL_OEV_LUFTSEILBAHNEN_L.prj",
+        "2026-03-24/AL_OEV_LUFTSEILBAHNEN_L.shp",
+        "2026-03-24/AL_OEV_LUFTSEILBAHNEN_L.shx"
+      ],
+      "features": 1,
+      "sha256": "76d69444b049bded128c7403e35e1a1db9f60cd1ae91c5f8ad1ed788cf0488ef",
+      "bytes": 294
+    },
+    {
+      "file": "boat.geojson.gz",
+      "derivedFrom": [
+        "al-oev-20260324.zip"
+      ],
+      "archiveMembers": [
+        "2026-03-24/AL_OEV_SCHIFFSVERKEHR_L.cpg",
+        "2026-03-24/AL_OEV_SCHIFFSVERKEHR_L.dbf",
+        "2026-03-24/AL_OEV_SCHIFFSVERKEHR_L.prj",
+        "2026-03-24/AL_OEV_SCHIFFSVERKEHR_L.shp",
+        "2026-03-24/AL_OEV_SCHIFFSVERKEHR_L.shx"
+      ],
+      "features": 1,
+      "sha256": "2a7eab979cd37f9aad94a07fed4c90cb49529d09279f2dd5d27d2234dfaef77d",
+      "bytes": 422
+    }
+  ],
+  "transformation": {
+    "sourceCrs": "EPSG:2056",
+    "outputCrs": "EPSG:4326",
+    "method": "swisstopo approximate polynomial, metre-level accuracy, seven decimal places, no simplification; exact shared vertices only"
+  },
+  "attribution": [
+    "© Kanton St.Gallen, Amt für öffentlichen Verkehr / AREG",
+    "Underlying alignment: swissTNE Base, © swisstopo"
+  ],
+  "reuse": {
+    "license": "publisher-specific restricted terms; not an open-data licence",
+    "termsUrl": "https://www.sg.ch/bauen/geoinformation/datenbezug/agb.html",
+    "suppliedTermsVersion": "2019-06-01",
+    "currentWebsiteModified": "2022-01-12",
+    "redistributionApproved": false,
+    "decision": "Local source-adapter evaluation and regional feed. Do not publish raw or derived vectors without resolving the publisher permission requirement (current clause 18; supplied clause 20). Attribution, vintage, no legal effect and disclaimer must accompany permitted application display."
+  }
+}

@@ -1,0 +1,6196 @@
+[
+  {
+    "key": "bus:1",
+    "expectedName": "12 Gams - Buchs (-Schaan)",
+    "mode": "bus",
+    "agencyIds": [
+      "805"
+    ],
+    "lines": [
+      "12"
+    ],
+    "reason": "BOS source names the Swiss section of LIEmobil line 12. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments.",
+    "layer": "bus",
+    "objectId": 1,
+    "properties": {
+      "LINIENNR": "12",
+      "KURSBUCHNR": "88.012 CH",
+      "LINIENNAME": "12 Gams - Buchs (-Schaan)",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-12-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 207,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:2",
+    "mode": "bus",
+    "agencyIds": [
+      "805"
+    ],
+    "lines": [
+      "13"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 2,
+    "properties": {
+      "LINIENNR": "13",
+      "KURSBUCHNR": "88.013",
+      "LINIENNAME": "13 Schaan - Nendeln - Eschen Trübbach - Vaduz - Nendeln/Eschen - Schaanwald - Feldkirch",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "LIEmobil"
+    },
+    "gtfsRoutes": [
+      "92-13-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 8,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:3",
+    "expectedName": "24 Buchs SG - Sevelen (-Vaduz)",
+    "mode": "bus",
+    "agencyIds": [
+      "805"
+    ],
+    "lines": [
+      "24"
+    ],
+    "reason": "BOS source names the Swiss section of LIEmobil line 24. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments.",
+    "layer": "bus",
+    "objectId": 3,
+    "properties": {
+      "LINIENNR": "24",
+      "KURSBUCHNR": "88.024 CH",
+      "LINIENNAME": "24 Buchs SG - Sevelen (-Vaduz)",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-24-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "bus:4",
+    "mode": "bus",
+    "agencyIds": [
+      "805"
+    ],
+    "lines": [
+      "37"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 4,
+    "properties": {
+      "LINIENNR": "37",
+      "KURSBUCHNR": "88.037",
+      "LINIENNAME": "37 Sennwald - Bendern - Nendeln",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "LIEmobil"
+    },
+    "gtfsRoutes": [
+      "92-37-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "bus:5",
+    "expectedName": "12 Sargans - Trübbach/Balzers - Vaduz - Eilkurs",
+    "mode": "bus",
+    "agencyIds": [
+      "805"
+    ],
+    "lines": [
+      "12E"
+    ],
+    "reason": "Source calls this line 12 Eilkurs; pinned feed designates Sargans–Vaduz express as 12E. Full chain still required.",
+    "layer": "bus",
+    "objectId": 5,
+    "properties": {
+      "LINIENNR": "12",
+      "KURSBUCHNR": "88.120",
+      "LINIENNAME": "12 Sargans - Trübbach/Balzers - Vaduz - Eilkurs",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "LIEmobil"
+    },
+    "gtfsRoutes": [
+      "92-12E-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 39,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:6",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "190"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 6,
+    "properties": {
+      "LINIENNR": "190",
+      "KURSBUCHNR": "80.190",
+      "LINIENNAME": "190 Teufen - Speicher - Speicherschwendi - St. Gallen",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-221-7-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "bus:7",
+    "expectedName": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+    "mode": "bus",
+    "agencyIds": [
+      "896"
+    ],
+    "lines": [
+      "72"
+    ],
+    "reason": "Reviewed against pinned GTFS 92-72-E-j26-1, agency 896, line 72, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+    "reviewedRouteId": "92-72-E-j26-1",
+    "layer": "bus",
+    "objectId": 7,
+    "properties": {
+      "LINIENNR": "72",
+      "KURSBUCHNR": "80.072",
+      "LINIENNAME": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "REGO"
+    },
+    "gtfsRoutes": [
+      "92-72-E-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 5,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:8",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "132"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 8,
+    "properties": {
+      "LINIENNR": "132",
+      "KURSBUCHNR": "80.132",
+      "LINIENNAME": "132 Engelburg - Hohfirst - Waldkirch",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-221-2-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 21,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:9",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "300"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 9,
+    "properties": {
+      "LINIENNR": "300",
+      "KURSBUCHNR": "80.300",
+      "LINIENNAME": "300 Altstätten SG - Buchs SG",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-300-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 133,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:10",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "301"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 10,
+    "properties": {
+      "LINIENNR": "301",
+      "KURSBUCHNR": "80.301",
+      "LINIENNAME": "301 Altstätten SG - Lüchingen - Marbach SG - Rebstein - Balgach - Heerbrugg",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-301-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 151,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:11",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "302"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 11,
+    "properties": {
+      "LINIENNR": "302",
+      "KURSBUCHNR": "80.302",
+      "LINIENNAME": "302 Heerbrugg - Berneck",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-302-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 133,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:12",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "304"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 12,
+    "properties": {
+      "LINIENNR": "304",
+      "KURSBUCHNR": "80.304",
+      "LINIENNAME": "304 St. Margrethen SG - Au SG - Heerbrugg - Altstätten SG",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-304-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 108,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:13",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "305"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 13,
+    "properties": {
+      "LINIENNR": "305",
+      "KURSBUCHNR": "80.305",
+      "LINIENNAME": "305 St. Margrethen SG - Rheineck - Altenrhein",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-305-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 63,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:14",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "331"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 14,
+    "properties": {
+      "LINIENNR": "331",
+      "KURSBUCHNR": "80.331",
+      "LINIENNAME": "331 Altstätten SG - Eichberg",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-331-B-j26-1",
+      "92-331-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 63,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:15",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "332"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 15,
+    "properties": {
+      "LINIENNR": "332",
+      "KURSBUCHNR": "80.332",
+      "LINIENNAME": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-332-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 77,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:16",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "335"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 16,
+    "properties": {
+      "LINIENNR": "335",
+      "KURSBUCHNR": "80.335",
+      "LINIENNAME": "335 Altstätten SG Stadt - Bahnhof -  Oberriet SG - Rüthi SG",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-335-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 92,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:17",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "352",
+      "353"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 17,
+    "properties": {
+      "LINIENNR": "352",
+      "KURSBUCHNR": "80.352/353",
+      "LINIENNAME": "352/353 Heerbrugg - Widnau - Heerbrugg",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-352-A-j26-1",
+      "92-353-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "bus:18",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "400"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 18,
+    "properties": {
+      "LINIENNR": "400",
+      "KURSBUCHNR": "80.400",
+      "LINIENNAME": "400 Buchs SG - Sargans - Mels",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-400-A-j26-1",
+      "92-400-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 92,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:19",
+    "mode": "bus",
+    "agencyIds": [
+      "896"
+    ],
+    "lines": [
+      "150"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 19,
+    "properties": {
+      "LINIENNR": "150",
+      "KURSBUCHNR": "80.150",
+      "LINIENNAME": "150 Gossau SG - Eichen",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "REGO"
+    },
+    "gtfsRoutes": [
+      "92-150-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 2,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:20",
+    "mode": "bus",
+    "agencyIds": [
+      "896"
+    ],
+    "lines": [
+      "151"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 20,
+    "properties": {
+      "LINIENNR": "151",
+      "KURSBUCHNR": "80.151",
+      "LINIENNAME": "151 Gossau SG - Mettendorf -  Arena - St. Gallen Bahnhof - Spisertor",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "REGO"
+    },
+    "gtfsRoutes": [
+      "92-151-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 270,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:21",
+    "mode": "bus",
+    "agencyIds": [
+      "896"
+    ],
+    "lines": [
+      "155"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 21,
+    "properties": {
+      "LINIENNR": "155",
+      "KURSBUCHNR": "80.155",
+      "LINIENNAME": "155 Gossau SG Bahnhof - Walter Zoo",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "REGO"
+    },
+    "gtfsRoutes": [
+      "92-155-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 102,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:22",
+    "mode": "bus",
+    "agencyIds": [
+      "896"
+    ],
+    "lines": [
+      "159"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 22,
+    "properties": {
+      "LINIENNR": "159",
+      "KURSBUCHNR": "80.159",
+      "LINIENNAME": "159 Gossau SG - Arnegg - Andwil SG -  Gossau SG Mettendorf",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "REGO"
+    },
+    "gtfsRoutes": [
+      "92-159-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 103,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:23",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "184"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 23,
+    "properties": {
+      "LINIENNR": "184",
+      "KURSBUCHNR": "80.184",
+      "LINIENNAME": "184 Degersheim - Dicken - St. Peterzell",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-229-6-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 29,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:24",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "185"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 24,
+    "properties": {
+      "LINIENNR": "185",
+      "KURSBUCHNR": "80.185",
+      "LINIENNAME": "185 St. Peterzell - Hemberg",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 22,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:25",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "186"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 25,
+    "properties": {
+      "LINIENNR": "186",
+      "KURSBUCHNR": "80.186",
+      "LINIENNAME": "186 Wattwil - Hemberg - St. Peterzell - Brunnandern-Neckertal (Abendbus)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-222-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 6,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:26",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "242"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 26,
+    "properties": {
+      "LINIENNR": "242",
+      "KURSBUCHNR": "80.242",
+      "LINIENNAME": "242 Rheineck - RorschachThal - Rorschach - Untereggen - St. Gallen",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-221-0-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 119,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:27",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "N24"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 27,
+    "properties": {
+      "LINIENNR": "24",
+      "KURSBUCHNR": "80.24N",
+      "LINIENNAME": "N24 St. Gallen - Untereggen - Rorschach - Thal - Rheineck (Nachtangebot)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 5,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:28",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "254"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 28,
+    "properties": {
+      "LINIENNR": "254",
+      "KURSBUCHNR": "80.254 RPV",
+      "LINIENNAME": "254 St. Gallen Kantonsschule - Goldach (-Rorschach Stadt - Rorschacherberg - Rorschach)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-7-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 110,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:29",
+    "expectedName": "403 Räfis-Burgerau - Buchs SG - Buchserberg",
+    "mode": "bus",
+    "agencyIds": [
+      "697"
+    ],
+    "lines": [
+      "403"
+    ],
+    "reason": "Reviewed against pinned GTFS 92-403-D-j26-1, agency 697, line 403, retaining complete source endpoints and ordered calls. Source names the contracted Swiss operator BOS; GTFS publishes this corridor under Bus Buchserberg / Verkehrsverbund Vorarlberg respectively. Do not generalise the bridge to other BOS routes.",
+    "reviewedRouteId": "92-403-D-j26-1",
+    "layer": "bus",
+    "objectId": 29,
+    "properties": {
+      "LINIENNR": "403",
+      "KURSBUCHNR": "80.403",
+      "LINIENNAME": "403 Räfis-Burgerau - Buchs SG - Buchserberg",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-403-D-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 12,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:30",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "439"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 30,
+    "properties": {
+      "LINIENNR": "439",
+      "KURSBUCHNR": "80.439",
+      "LINIENNAME": "439 Flumserberg, Bergheim - Flumserberg, Tannenboden (Wintersportbus)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-annual-St-Gallen-calling-route"
+  },
+  {
+    "key": "bus:31",
+    "mode": "bus",
+    "agencyIds": [
+      "7017"
+    ],
+    "lines": [
+      "624"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 31,
+    "properties": {
+      "LINIENNR": "624",
+      "KURSBUCHNR": "80.624",
+      "LINIENNAME": "624 St. Gallenkappel - Rüeterswil - Walde SG",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "BBO"
+    },
+    "gtfsRoutes": [
+      "92-624-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 20,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:32",
+    "expectedName": "164 Widnau - Lustenau - Dornbirn",
+    "mode": "bus",
+    "agencyIds": [
+      "81_VVV"
+    ],
+    "lines": [
+      "164"
+    ],
+    "reason": "Reviewed against pinned GTFS 92-164-C-j26-1, agency 81_VVV, line 164, retaining complete source endpoints and ordered calls. Source names the contracted Swiss operator BOS; GTFS publishes this corridor under Bus Buchserberg / Verkehrsverbund Vorarlberg respectively. Do not generalise the bridge to other BOS routes.",
+    "reviewedRouteId": "92-164-C-j26-1",
+    "layer": "bus",
+    "objectId": 32,
+    "properties": {
+      "LINIENNR": "164",
+      "KURSBUCHNR": "80.164",
+      "LINIENNAME": "164 Widnau - Lustenau - Dornbirn",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-164-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "bus:33",
+    "mode": "bus",
+    "agencyIds": [
+      "805"
+    ],
+    "lines": [
+      "11"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 33,
+    "properties": {
+      "LINIENNR": "11",
+      "KURSBUCHNR": "88.011",
+      "LINIENNAME": "11 Sargans - Trübbach/Balzers - Schaan - Bendern/Eschen - Feldkirch",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Nein",
+      "BETREIBER": "LIEmobil"
+    },
+    "gtfsRoutes": [
+      "92-11-F-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 157,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:34",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "771"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 34,
+    "properties": {
+      "LINIENNR": "771",
+      "KURSBUCHNR": "80.771",
+      "LINIENNAME": "771 Dietfurt - Oberhelfenschwil - Brunnadern-Neckertal",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-229-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 51,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:35",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "772"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 35,
+    "properties": {
+      "LINIENNR": "772",
+      "KURSBUCHNR": "80.772",
+      "LINIENNAME": "772 Dietfurt - Lichtensteig - Krinau",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-229-3-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 40,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:36",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "780"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 36,
+    "properties": {
+      "LINIENNR": "780",
+      "KURSBUCHNR": "80.780",
+      "LINIENNAME": "780 Hemberg - Wattwil Bahnhof - Klinik",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-232-1-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 50,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:37",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "790"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 37,
+    "properties": {
+      "LINIENNR": "790",
+      "KURSBUCHNR": "80.790",
+      "LINIENNAME": "790 Wattwil - Nesslau - Wildhaus",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-233-0-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 136,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:38",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "797"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 38,
+    "properties": {
+      "LINIENNR": "797",
+      "KURSBUCHNR": "80.797",
+      "LINIENNAME": "797 Wildhaus - Buchs SG",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-233-1-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 148,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:39",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "445"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 39,
+    "properties": {
+      "LINIENNR": "445",
+      "KURSBUCHNR": "80.445",
+      "LINIENNAME": "445 Unterterzen - Quarten - Oberterzen",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-445-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 72,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:40",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "182"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 40,
+    "properties": {
+      "LINIENNR": "182",
+      "KURSBUCHNR": "80.182",
+      "LINIENNAME": "182 Brunnadern-Neckertal - Schönengrund - Waldstatt - Herisau",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-3-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 79,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:41",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "183"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 41,
+    "properties": {
+      "LINIENNR": "183",
+      "KURSBUCHNR": "80.183",
+      "LINIENNAME": "183 Herisau - Schwellbrunn - Schönengrund (Abendangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-222-3-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 18,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:42",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "200"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 42,
+    "properties": {
+      "LINIENNR": "200",
+      "KURSBUCHNR": "80.200",
+      "LINIENNAME": "200 St. Gallen - Wittenbach - Arbon",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-5-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 161,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:43",
+    "expectedName": "200N St. Gallen - Wittenbach - Arbon (Nachtangebot)",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "200"
+    ],
+    "reason": "Reviewed against pinned GTFS 96-220-A-j26-1, agency 801, line 200, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+    "reviewedRouteId": "96-220-A-j26-1",
+    "layer": "bus",
+    "objectId": 43,
+    "properties": {
+      "LINIENNR": "200",
+      "KURSBUCHNR": "80.200N",
+      "LINIENNAME": "200N St. Gallen - Wittenbach - Arbon (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-5-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 161,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:44",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "454"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 44,
+    "properties": {
+      "LINIENNR": "454",
+      "KURSBUCHNR": "80.454",
+      "LINIENNAME": "454 Pfäfers - Vadura - St. Margrethenberg",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-249-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 34,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:45",
+    "mode": "bus",
+    "agencyIds": [
+      "772"
+    ],
+    "lines": [
+      "622"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 45,
+    "properties": {
+      "LINIENNR": "622",
+      "KURSBUCHNR": "80.622",
+      "LINIENNAME": "622 Rapperswil SG - Jona - Wagen - Eschenbach SG - Neuhaus SG - St. Gallenkappel - Ricken SG - Wattwil",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BRER"
+    },
+    "gtfsRoutes": [
+      "92-622-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 218,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:46",
+    "mode": "bus",
+    "agencyIds": [
+      "772"
+    ],
+    "lines": [
+      "623"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 46,
+    "properties": {
+      "LINIENNR": "623",
+      "KURSBUCHNR": "80.623",
+      "LINIENNAME": "623 Rapperswil SG - Uznach - Ricken SG - Rapperswil SG (Nachtangebot)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BRER"
+    },
+    "gtfsRoutes": [
+      "92-623-A-j26-1",
+      "92-623-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "bus:47",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "628"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 47,
+    "properties": {
+      "LINIENNR": "628",
+      "KURSBUCHNR": "80.628",
+      "LINIENNAME": "628 Gommiswald - Gebertingen - Ricken SG",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-240-8-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "bus:48",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "630"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 48,
+    "properties": {
+      "LINIENNR": "630",
+      "KURSBUCHNR": "80.630",
+      "LINIENNAME": "630 Uznach - Schmerikon - Eschenbach - Goldingen - Atzmännig",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-240-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 132,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:49",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "635"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 49,
+    "properties": {
+      "LINIENNR": "635",
+      "KURSBUCHNR": "80.635",
+      "LINIENNAME": "635 Ziegelbrücke - Schänis - Kaltbrunn - Benken SG",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-240-5-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 86,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:50",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "401"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 50,
+    "properties": {
+      "LINIENNR": "401",
+      "KURSBUCHNR": "80.401",
+      "LINIENNAME": "401 Räfis-Burgerau - Buchs SG - Grabs",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-401-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 56,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:51",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "412"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 51,
+    "properties": {
+      "LINIENNR": "412",
+      "KURSBUCHNR": "80.412",
+      "LINIENNAME": "412 Grabs - Grabserberg - Voralp",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-412-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 33,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:52",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "415"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 52,
+    "properties": {
+      "LINIENNR": "415",
+      "KURSBUCHNR": "80.415",
+      "LINIENNAME": "415 Buchs SG - Haag (Rheintal)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-415-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 24,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:53",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "420"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 53,
+    "properties": {
+      "LINIENNR": "420",
+      "KURSBUCHNR": "80.420",
+      "LINIENNAME": "420 Trübbach - Oberschan - Gonzen Palfris - Oberschan - Gretschins - Weite",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-420-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 32,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:54",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "431"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 54,
+    "properties": {
+      "LINIENNR": "431",
+      "KURSBUCHNR": "80.431",
+      "LINIENNAME": "431 Sargans - Oberheiligkreuz - Mels",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-431-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 29,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:55",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "432"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 55,
+    "properties": {
+      "LINIENNR": "432",
+      "KURSBUCHNR": "80.432",
+      "LINIENNAME": "432 Sargans - Mels - Weisstannen - Vorsiez",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-432-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 14,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:56",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "433"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 56,
+    "properties": {
+      "LINIENNR": "433",
+      "KURSBUCHNR": "80.433",
+      "LINIENNAME": "433 Sargans - Mels - Plons - Ragnatsch",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-433-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 95,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:57",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "440"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 57,
+    "properties": {
+      "LINIENNR": "440",
+      "KURSBUCHNR": "80.440",
+      "LINIENNAME": "440 Flums - Flumserberg Portels - Flums",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-248-3-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 6,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:58",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "441"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 58,
+    "properties": {
+      "LINIENNR": "441",
+      "KURSBUCHNR": "80.441",
+      "LINIENNAME": "441 Sargans - Flums - Flumserberg Tannenbodenalp",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-248-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 78,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:59",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "442"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 59,
+    "properties": {
+      "LINIENNR": "442",
+      "KURSBUCHNR": "80.442",
+      "LINIENNAME": "442 Walenstadt - Flums",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-442-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 41,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:60",
+    "mode": "bus",
+    "agencyIds": [
+      "896"
+    ],
+    "lines": [
+      "152"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 60,
+    "properties": {
+      "LINIENNR": "152",
+      "KURSBUCHNR": "80.152",
+      "LINIENNAME": "152 Gossau SG (- Herisau)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "REGO"
+    },
+    "gtfsRoutes": [
+      "92-152-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 106,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:61",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "154"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 61,
+    "properties": {
+      "LINIENNR": "154",
+      "KURSBUCHNR": "80.154",
+      "LINIENNAME": "154 Wittenbach - Waldkirch - Arnegg",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-221-1-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 92,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:62",
+    "mode": "bus",
+    "agencyIds": [
+      "896"
+    ],
+    "lines": [
+      "158"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 62,
+    "properties": {
+      "LINIENNR": "158",
+      "KURSBUCHNR": "80.158",
+      "LINIENNAME": "158 Herisau - St. Gallen Arena - Abtwil SG - Engelburg",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "REGO"
+    },
+    "gtfsRoutes": [
+      "92-158-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 99,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:63",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "180"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 63,
+    "properties": {
+      "LINIENNR": "180",
+      "KURSBUCHNR": "80.180",
+      "LINIENNAME": "180 Herisau - Hundwil - Stein AR - St. Gallen",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-1-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 80,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:64",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "180"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 64,
+    "properties": {
+      "LINIENNR": "180",
+      "KURSBUCHNR": "80.180",
+      "LINIENNAME": "180 Herisau - Hundwil - Stein AR - St. Gallen (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-1-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 80,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:65",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "443"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 65,
+    "properties": {
+      "LINIENNR": "443",
+      "KURSBUCHNR": "80.443",
+      "LINIENNAME": "443 Walenstadt - Walenstadtberg",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-443-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 42,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:66",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "444"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 66,
+    "properties": {
+      "LINIENNR": "444",
+      "KURSBUCHNR": "80.444",
+      "LINIENNAME": "444 Walenstadt - Unterterzen - Murg",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-444-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 91,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:67",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "636"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 67,
+    "properties": {
+      "LINIENNR": "636",
+      "KURSBUCHNR": "80.636",
+      "LINIENNAME": "636 Uznach - Kaltbrunn",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-241-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 134,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:68",
+    "mode": "bus",
+    "agencyIds": [
+      "832"
+    ],
+    "lines": [
+      "650"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 68,
+    "properties": {
+      "LINIENNR": "650",
+      "KURSBUCHNR": "80.650",
+      "LINIENNAME": "650 Ziegelbrücke - Weesen - Amden - Arvenbüel",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AWA"
+    },
+    "gtfsRoutes": [
+      "92-650-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 135,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:69",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "724"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 69,
+    "properties": {
+      "LINIENNR": "724",
+      "KURSBUCHNR": "80.724",
+      "LINIENNAME": "724 Wil SG - Zuckenriet - Niederbüren",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-227-8-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 38,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:70",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "725"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 70,
+    "properties": {
+      "LINIENNR": "725",
+      "KURSBUCHNR": "80.725",
+      "LINIENNAME": "725 Wil SG - Zuzwil SG - Niederhelfenschwil",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-228-1-j26-1",
+      "96-228-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 108,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:71",
+    "expectedName": "N725 Wil SG - Zuzwil - Niederhelfenschwil (Nachtangebot)",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "725"
+    ],
+    "reason": "Reviewed against pinned GTFS 96-228-A-j26-1, agency 801, line 725, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+    "reviewedRouteId": "96-228-A-j26-1",
+    "layer": "bus",
+    "objectId": 71,
+    "properties": {
+      "LINIENNR": "725",
+      "KURSBUCHNR": "80.725N",
+      "LINIENNAME": "N725 Wil SG - Zuzwil - Niederhelfenschwil (Nachtangebot)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-228-1-j26-1",
+      "96-228-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 108,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:72",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "726"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 72,
+    "properties": {
+      "LINIENNR": "726",
+      "KURSBUCHNR": "80.726",
+      "LINIENNAME": "726 Wil SG - Henau - Uzwil Bahnhof - Waldhof",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-228-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 142,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:73",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "727"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 73,
+    "properties": {
+      "LINIENNR": "727",
+      "KURSBUCHNR": "80.727",
+      "LINIENNAME": "727 Zuzwil - Oberbüren - Gossau SG",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-228-8-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 114,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:74",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "728"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 74,
+    "properties": {
+      "LINIENNR": "728",
+      "KURSBUCHNR": "80.728",
+      "LINIENNAME": "728 Uzwil - Oberbüren - Zuckenriet",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-227-9-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 83,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:75",
+    "mode": "bus",
+    "agencyIds": [
+      "896"
+    ],
+    "lines": [
+      "729"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 75,
+    "properties": {
+      "LINIENNR": "729",
+      "KURSBUCHNR": "80.729",
+      "LINIENNAME": "729 Wil SG - Schwarzenbach - Henau - Niederuzwil - Uzwil",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "REGO"
+    },
+    "gtfsRoutes": [
+      "92-729-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 65,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:76",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "730"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 76,
+    "properties": {
+      "LINIENNR": "730",
+      "KURSBUCHNR": "80.730",
+      "LINIENNAME": "730 Wil SG - Jonschwil - Uzwil",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-228-2-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 110,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:77",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "751"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 77,
+    "properties": {
+      "LINIENNR": "751",
+      "KURSBUCHNR": "80.751",
+      "LINIENNAME": "751 Degersheim - Flawil Bahnhof - Burgau",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-229-5-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 85,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:78",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "761"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 78,
+    "properties": {
+      "LINIENNR": "761",
+      "KURSBUCHNR": "80.761",
+      "LINIENNAME": "761 Bazenheid - Kirchberg SG - Dietschwil b. Kirchberg SG",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-761-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 32,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:79",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "765"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 79,
+    "properties": {
+      "LINIENNR": "765",
+      "KURSBUCHNR": "80.765",
+      "LINIENNAME": "765 Bütschwil - Mosnang - Libingen",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-229-0-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 46,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:80",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "767"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 80,
+    "properties": {
+      "LINIENNR": "767",
+      "KURSBUCHNR": "80.767",
+      "LINIENNAME": "767 Ganterschwil - Lütisburg - Rindal - Flawil",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-228-9-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 12,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:81",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "768"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 81,
+    "properties": {
+      "LINIENNR": "768",
+      "KURSBUCHNR": "80.768",
+      "LINIENNAME": "768 Bütschwil - Ganterschwil - Lütisburg",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-229-2-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 134,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:82",
+    "mode": "bus",
+    "agencyIds": [
+      "810"
+    ],
+    "lines": [
+      "770"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 82,
+    "properties": {
+      "LINIENNR": "770",
+      "KURSBUCHNR": "80.770",
+      "LINIENNAME": "770 Lichtensteig - Wattwil - Ebnat-Kappel",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BLWE"
+    },
+    "gtfsRoutes": [
+      "92-770-A-j26-1",
+      "92-770-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 188,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:83",
+    "mode": "bus",
+    "agencyIds": [
+      "810"
+    ],
+    "lines": [
+      "770"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 83,
+    "properties": {
+      "LINIENNR": "770",
+      "KURSBUCHNR": "80.770 B",
+      "LINIENNAME": "770 Wattwil - Nesslau-Neu St. Johann (Bahnersatz)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BLWE"
+    },
+    "gtfsRoutes": [
+      "92-770-A-j26-1",
+      "92-770-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 188,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:84",
+    "expectedName": "N302 Heerbrugg - Berneck - Au SG (Nachtangebot)",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "302"
+    ],
+    "reason": "Reviewed against pinned GTFS 92-302-A-j26-1, agency 138, line 302, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+    "reviewedRouteId": "92-302-A-j26-1",
+    "layer": "bus",
+    "objectId": 84,
+    "properties": {
+      "LINIENNR": "302",
+      "KURSBUCHNR": "80.N302",
+      "LINIENNAME": "N302 Heerbrugg - Berneck - Au SG (Nachtangebot)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-302-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 133,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:85",
+    "expectedName": "12 Gams - Buchs (-Schaan)",
+    "mode": "bus",
+    "agencyIds": [
+      "805"
+    ],
+    "lines": [
+      "12"
+    ],
+    "reason": "BOS source names the Swiss section of LIEmobil line 12. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments.",
+    "layer": "bus",
+    "objectId": 85,
+    "properties": {
+      "LINIENNR": "12",
+      "KURSBUCHNR": "88.012 CH",
+      "LINIENNAME": "12 Gams - Buchs (-Schaan)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-12-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 207,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:86",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "429",
+      "430"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 86,
+    "properties": {
+      "LINIENNR": "430",
+      "KURSBUCHNR": "80.429/430",
+      "LINIENNAME": "429/430 Sargans - Vilters - Wangs - Sargans",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-429-j26-1",
+      "92-430-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 99,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:87",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "451"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 87,
+    "properties": {
+      "LINIENNR": "451",
+      "KURSBUCHNR": "80.451",
+      "LINIENNAME": "451 Bad Ragaz - Pfäfers - Valens - Vättis - Gigerwald",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-249-1-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 68,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:88",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "453"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 88,
+    "properties": {
+      "LINIENNR": "453",
+      "KURSBUCHNR": "80.453",
+      "LINIENNAME": "453 Bad Ragaz - Altes Bad Pfäfers",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-249-3-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 24,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:89",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "456"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 89,
+    "properties": {
+      "LINIENNR": "456",
+      "KURSBUCHNR": "80.456",
+      "LINIENNAME": "456 Bidems - Bad Ragaz Bahnhof - Pizolbahn",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-249-5-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 53,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:90",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "457"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 90,
+    "properties": {
+      "LINIENNR": "457",
+      "KURSBUCHNR": "80.457",
+      "LINIENNAME": "457 Bad Ragaz Bahnhof - Pizolbahn (Schnellkurse)",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-249-6-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "bus:91",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "632"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 91,
+    "properties": {
+      "LINIENNR": "632",
+      "KURSBUCHNR": "80.632",
+      "LINIENNAME": "632 Uznach - Gommiswald - Ricken SG",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-240-6-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 84,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:92",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "201"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 92,
+    "properties": {
+      "LINIENNR": "201",
+      "KURSBUCHNR": "80.201",
+      "LINIENNAME": "201 St. Gallen - Arbon (Expressbus)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-250-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 72,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:93",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "205"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 93,
+    "properties": {
+      "LINIENNR": "205",
+      "KURSBUCHNR": "80.205",
+      "LINIENNAME": "205 Wittenbach - Lömmenschwil - Häggenschwil-Winden",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-221-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 20,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:94",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "207"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 94,
+    "properties": {
+      "LINIENNR": "207",
+      "KURSBUCHNR": "80.207",
+      "LINIENNAME": "207 Arbon - Berg SG - Wittenbach",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-6-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 12,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:95",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "210"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 95,
+    "properties": {
+      "LINIENNR": "210",
+      "KURSBUCHNR": "80.210",
+      "LINIENNAME": "210 St. Gallen - Mörschwil - Tübach - Steinach - Arbon",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-250-8-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "bus:96",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "211"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 96,
+    "properties": {
+      "LINIENNR": "211",
+      "KURSBUCHNR": "80.211",
+      "LINIENNAME": "211 St. Gallen - Mörschwil - Tübach - Horn - Steinach -Arbon",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-8-j26-1",
+      "96-220-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 110,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:97",
+    "expectedName": "211N St. Gallen - Horn - Arbon (Nachtangebot)",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "211"
+    ],
+    "reason": "Reviewed against pinned GTFS 96-220-B-j26-1, agency 801, line 211, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+    "reviewedRouteId": "96-220-B-j26-1",
+    "layer": "bus",
+    "objectId": 97,
+    "properties": {
+      "LINIENNR": "211",
+      "KURSBUCHNR": "80.211N",
+      "LINIENNAME": "211N St. Gallen - Horn - Arbon (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-8-j26-1",
+      "96-220-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 110,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:98",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "222"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 98,
+    "properties": {
+      "LINIENNR": "222",
+      "KURSBUCHNR": "80.222",
+      "LINIENNAME": "222 Heiden - Rheineck",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-224-3-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 48,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:99",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "223"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 99,
+    "properties": {
+      "LINIENNR": "223",
+      "KURSBUCHNR": "80.223",
+      "LINIENNAME": "223 Heiden - Walzenhausen - Rheineck (Abendangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-224-5-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 15,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:100",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "224"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 100,
+    "properties": {
+      "LINIENNR": "224",
+      "KURSBUCHNR": "80.224",
+      "LINIENNAME": "224 Heiden - Zelg - Walzenhausen - St. Margrethen SG",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-224-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 10,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:101",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "225"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 101,
+    "properties": {
+      "LINIENNR": "225",
+      "KURSBUCHNR": "80.224",
+      "LINIENNAME": "225 Heiden - Lachen - Walzenhausen - St. Margrethen SG",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-254-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 8,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:102",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "226"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 102,
+    "properties": {
+      "LINIENNR": "226",
+      "KURSBUCHNR": "80.226",
+      "LINIENNAME": "226 Heiden - Heerbrugg",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-224-6-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 58,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:103",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "227"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 103,
+    "properties": {
+      "LINIENNR": "227",
+      "KURSBUCHNR": "80.226",
+      "LINIENNAME": "227 Heiden - Altstätten SG",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-224-7-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 20,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:104",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "333"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 104,
+    "properties": {
+      "LINIENNR": "333",
+      "KURSBUCHNR": "80.333",
+      "LINIENNAME": "333 Altstätten SG - Landmark - St. Anton",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-333-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 11,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:105",
+    "mode": "bus",
+    "agencyIds": [
+      "772"
+    ],
+    "lines": [
+      "631"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 105,
+    "properties": {
+      "LINIENNR": "631",
+      "KURSBUCHNR": "80.631",
+      "LINIENNAME": "631 Uznach - Neuhaus SG - Eschenbach SG - Rüti ZH",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BRER"
+    },
+    "gtfsRoutes": [
+      "92-631-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 85,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:106",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "722"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 106,
+    "properties": {
+      "LINIENNR": "722",
+      "KURSBUCHNR": "80.722 BOS",
+      "LINIENNAME": "722 Wil SG - Hosenruck - Weinfelden (BOS)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-722-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 51,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:107",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "722"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 107,
+    "properties": {
+      "LINIENNR": "722",
+      "KURSBUCHNR": "80.722 PAG",
+      "LINIENNAME": "722 Wil SG - Hosenruck - Weinfelden (PAG)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-202-0-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 14,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:108",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "732"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 108,
+    "properties": {
+      "LINIENNR": "732",
+      "KURSBUCHNR": "80.732",
+      "LINIENNAME": "732 Wil SG - Kirchberg SG - Gähwil",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-732-M-j26-1",
+      "92-732-N-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 164,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:109",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "732"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 109,
+    "properties": {
+      "LINIENNR": "732",
+      "KURSBUCHNR": "80.732",
+      "LINIENNAME": "732 Wil SG - Kirchberg SG - Gähwil",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-732-M-j26-1",
+      "92-732-N-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 164,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:110",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "733"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 110,
+    "properties": {
+      "LINIENNR": "733",
+      "KURSBUCHNR": "80.733",
+      "LINIENNAME": "733 Wil SG - Littenheid",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-733-I-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 109,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:111",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "733",
+      "734"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 111,
+    "properties": {
+      "LINIENNR": "734",
+      "KURSBUCHNR": "80.734",
+      "LINIENNAME": "733/734 Wil SG - Littenheid - Dussnang - Fischingen (Abendangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-733-I-j26-1",
+      "92-734-K-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 181,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:112",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "734"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 112,
+    "properties": {
+      "LINIENNR": "734",
+      "KURSBUCHNR": "80.734",
+      "LINIENNAME": "734 Wil SG - Sirnach - Dussnang - Fischingen",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-734-K-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 72,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:113",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "735"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 113,
+    "properties": {
+      "LINIENNR": "735",
+      "KURSBUCHNR": "80.735",
+      "LINIENNAME": "735 Wil SG - Sirnach - Eschlikon TG - Bichelsee",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-735-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 92,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:114",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "740"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 114,
+    "properties": {
+      "LINIENNR": "740",
+      "KURSBUCHNR": "80.740",
+      "LINIENNAME": "740 Uzwil - Oberbüren - Niederbüren - Bischofszell",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-228-3-j26-1",
+      "96-228-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 82,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:115",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "740"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 115,
+    "properties": {
+      "LINIENNR": "740",
+      "KURSBUCHNR": "80.740",
+      "LINIENNAME": "740 Uzwil - Oberbüren - Niederbüren - Bischofszell (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-228-3-j26-1",
+      "96-228-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 82,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:116",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "766"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 116,
+    "properties": {
+      "LINIENNR": "766",
+      "KURSBUCHNR": "80.765",
+      "LINIENNAME": "766 Bütschwil - Mosnang - Mühlrüti - Hulftegg - Steg",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-229-1-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 82,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:117",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "792"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 117,
+    "properties": {
+      "LINIENNR": "792",
+      "KURSBUCHNR": "80.792",
+      "LINIENNAME": "792 Nesslau - Ennetbühl - Schwägalp",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-234-0-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 41,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:118",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "942"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 118,
+    "properties": {
+      "LINIENNR": "942",
+      "KURSBUCHNR": "80.942 RPV",
+      "LINIENNAME": "942 Muolen - Amriswil Bahnhof (- Strassenverkehrsamt)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-942-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 58,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:119",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "N50"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 119,
+    "properties": {
+      "LINIENNR": "50",
+      "KURSBUCHNR": "80.N50",
+      "LINIENNAME": "N50 Gossau SG - Andwil - Arnegg - Waldkirch - Bischofszell - Zihlschlacht - Sulgen (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-N50-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 5,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:120",
+    "expectedName": "N770 Lichtensteig - Wattwil - Ebnat-Kappel - Nesslau (Nachtangebot)",
+    "mode": "bus",
+    "agencyIds": [
+      "810"
+    ],
+    "lines": [
+      "770"
+    ],
+    "reason": "Reviewed against pinned GTFS 92-770-A-j26-1, agency 810, line 770, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+    "reviewedRouteId": "92-770-A-j26-1",
+    "layer": "bus",
+    "objectId": 120,
+    "properties": {
+      "LINIENNR": "770",
+      "KURSBUCHNR": "80.N770",
+      "LINIENNAME": "N770 Lichtensteig - Wattwil - Ebnat-Kappel - Nesslau (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BLWE"
+    },
+    "gtfsRoutes": [
+      "92-770-A-j26-1",
+      "92-770-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 188,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:121",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "N90"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 121,
+    "properties": {
+      "LINIENNR": "90",
+      "KURSBUCHNR": "80.N90",
+      "LINIENNAME": "N90 Wil SG - Rickenbach - Bazenheid - Lütisburg - Ganterschwil - Bütschwil - Lichtensteig (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-N90-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 6,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:122",
+    "mode": "bus",
+    "agencyIds": [
+      "744"
+    ],
+    "lines": [
+      "B23"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 122,
+    "properties": {
+      "LINIENNR": "854",
+      "KURSBUCHNR": "854",
+      "LINIENNAME": "B23 Appenzell - Wasserauen (Randstunden Bus)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-annual-St-Gallen-calling-route"
+  },
+  {
+    "key": "bus:123",
+    "expectedName": "N21 Appenzell - Gais - St. Gallen (Nachtangebot Bus)",
+    "mode": "bus",
+    "agencyIds": [
+      "744"
+    ],
+    "lines": [
+      "B21"
+    ],
+    "reason": "Source labels this night bus N21; pinned Automobildienst AB route 92-B21-A-j26-1 uses B21 for the same St. Gallen–Appenzell/Trogen service. Preserve night status and validate full source stop chain.",
+    "layer": "bus",
+    "objectId": 123,
+    "properties": {
+      "LINIENNR": "855",
+      "KURSBUCHNR": "855",
+      "LINIENNAME": "N21 Appenzell - Gais - St. Gallen (Nachtangebot Bus)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "92-B21-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 6,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:124",
+    "expectedName": "N21 St. Gallen - Speicher - Trogen (Nachtangebot Bus)",
+    "mode": "bus",
+    "agencyIds": [
+      "744"
+    ],
+    "lines": [
+      "B21"
+    ],
+    "reason": "Source labels this night bus N21; pinned Automobildienst AB route 92-B21-A-j26-1 uses B21 for the same St. Gallen–Appenzell/Trogen service. Preserve night status and validate full source stop chain.",
+    "layer": "bus",
+    "objectId": 124,
+    "properties": {
+      "LINIENNR": "855",
+      "KURSBUCHNR": "855",
+      "LINIENNAME": "N21 St. Gallen - Speicher - Trogen (Nachtangebot Bus)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "92-B21-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 6,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:125",
+    "mode": "bus",
+    "agencyIds": [
+      "744"
+    ],
+    "lines": [
+      "B24"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 125,
+    "properties": {
+      "LINIENNR": "856",
+      "KURSBUCHNR": "856",
+      "LINIENNAME": "B24 Gais - Altstätten Stadt (Randstunden Bus)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "92-B24-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 8,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:126",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "22"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 126,
+    "properties": {
+      "LINIENNR": "22",
+      "KURSBUCHNR": "90.022",
+      "LINIENNAME": "22 Bad Ragaz - Fläsch - Maienfeld - Jenins - Landquart",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-272-5-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 137,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:127",
+    "mode": "bus",
+    "agencyIds": [
+      "766"
+    ],
+    "lines": [
+      "N30"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 127,
+    "properties": {
+      "LINIENNR": "30",
+      "KURSBUCHNR": "90.030",
+      "LINIENNAME": "N30 Chur - Bad Ragaz - Sargans - Buchs - Gams (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BuS"
+    },
+    "gtfsRoutes": [
+      "92-N30-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 1,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:128",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "633"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 128,
+    "properties": {
+      "LINIENNR": "633",
+      "KURSBUCHNR": "80.633",
+      "LINIENNAME": "633 Uznach - Ernetschwil - Gommiswald - Rieden SG",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-240-7-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 75,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:129",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "741"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 129,
+    "properties": {
+      "LINIENNR": "741",
+      "KURSBUCHNR": "80.741",
+      "LINIENNAME": "741 Flawil - Uzwil Bahnhof - Niederuzwil",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-228-5-j26-1",
+      "96-228-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 109,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:130",
+    "expectedName": "741N Uzwil - Oberuzwil - Bichwil - Flawil - Niederwil (Nachangebot)",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "741"
+    ],
+    "reason": "Reviewed against pinned GTFS 96-228-C-j26-1, agency 801, line 741, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+    "reviewedRouteId": "96-228-C-j26-1",
+    "layer": "bus",
+    "objectId": 130,
+    "properties": {
+      "LINIENNR": "741",
+      "KURSBUCHNR": "80.741N",
+      "LINIENNAME": "741N Uzwil - Oberuzwil - Bichwil - Flawil - Niederwil (Nachangebot)",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-228-5-j26-1",
+      "96-228-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 109,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:131",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "750"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 131,
+    "properties": {
+      "LINIENNR": "750",
+      "KURSBUCHNR": "80.750",
+      "LINIENNAME": "750 Flawil Bahnhof - Isnyplatz",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-229-8-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 58,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:132",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "321"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 132,
+    "properties": {
+      "LINIENNR": "321",
+      "KURSBUCHNR": "80.321 CH",
+      "LINIENNAME": "321 Altstätten SG - Heerbrugg - Diepoldsau (- Hohenems)",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-321-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 1,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:133",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "322"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 133,
+    "properties": {
+      "LINIENNR": "322",
+      "KURSBUCHNR": "80.322",
+      "LINIENNAME": "322 Altstätten SG - Balgach - Widnau - Diepoldsau - Hohenems",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-322-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 24,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:134",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "323"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 134,
+    "properties": {
+      "LINIENNR": "323",
+      "KURSBUCHNR": "80.323",
+      "LINIENNAME": "323 Au SG - Heerbrugg - Diepoldsau - Dornbirn",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-323-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 80,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:135",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "411"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 135,
+    "properties": {
+      "LINIENNR": "411",
+      "KURSBUCHNR": "80.411",
+      "LINIENNAME": "411 Sennwald - Gams - Haag - Bendern",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-411-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 73,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:136",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "N31",
+      "N32"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 136,
+    "properties": {
+      "LINIENNR": "31",
+      "KURSBUCHNR": "80.N31/N32",
+      "LINIENNAME": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-N31-A-j26-1",
+      "92-N32-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 10,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:137",
+    "expectedName": "24 Buchs SG - Sevelen (-Vaduz)",
+    "mode": "bus",
+    "agencyIds": [
+      "805"
+    ],
+    "lines": [
+      "24"
+    ],
+    "reason": "BOS source names the Swiss section of LIEmobil line 24. Pinned agency 805 publishes the matching line. Retain full international calls; do not admit clipped Swiss fragments.",
+    "layer": "bus",
+    "objectId": 137,
+    "properties": {
+      "LINIENNR": "24",
+      "KURSBUCHNR": "88.024 CH",
+      "LINIENNAME": "24 Buchs SG - Sevelen (-Vaduz)",
+      "BEMERKUNG": "grenzüberschreitend",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-24-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "bus:138",
+    "mode": "bus",
+    "agencyIds": [
+      "838"
+    ],
+    "lines": [
+      "885"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 138,
+    "properties": {
+      "LINIENNR": "885",
+      "KURSBUCHNR": "70.885",
+      "LINIENNAME": "885 Rapperswil SG - Rüti ZH - Wald ZH - Goldingen - Atzmännig",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "ZVV"
+    },
+    "gtfsRoutes": [
+      "92-885-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 140,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:139",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "513"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 139,
+    "properties": {
+      "LINIENNR": "513",
+      "KURSBUCHNR": "72.513",
+      "LINIENNAME": "513 Ziegelbrücke - Bilten - Reichenburg",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-245-5-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 130,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:140",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "521"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 140,
+    "properties": {
+      "LINIENNR": "521",
+      "KURSBUCHNR": "72.521",
+      "LINIENNAME": "521 Pfäffikon SZ - Siebnen-Wangen - Uznach",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-240-3-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 110,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:141",
+    "expectedName": "N23 Gossau - Herisau - Urnäsch",
+    "mode": "bus",
+    "agencyIds": [
+      "896"
+    ],
+    "lines": [
+      "23"
+    ],
+    "reason": "Reviewed against pinned GTFS 92-23-D-j26-1, agency 896, line 23, retaining complete source endpoints and ordered calls. Source has a night designation; GTFS retains the numeric line. Prefix removal is this explicit feature override only, never a general rule.",
+    "reviewedRouteId": "92-23-D-j26-1",
+    "layer": "bus",
+    "objectId": 141,
+    "properties": {
+      "LINIENNR": "23",
+      "KURSBUCHNR": "80.023",
+      "LINIENNAME": "N23 Gossau - Herisau - Urnäsch",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "REGO"
+    },
+    "gtfsRoutes": [
+      "92-23-D-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 6,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:142",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "120"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 142,
+    "properties": {
+      "LINIENNR": "120",
+      "KURSBUCHNR": "80.120",
+      "LINIENNAME": "120 Heiden - Eggersriet - St. Gallen - Engelburg",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-224-1-j26-1",
+      "96-224-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 153,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:143",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "120"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 143,
+    "properties": {
+      "LINIENNR": "120",
+      "KURSBUCHNR": "80.120",
+      "LINIENNAME": "120 Heiden - Eggersriet - St. Gallen - Engelburg (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-224-1-j26-1",
+      "96-224-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 153,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:144",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "121"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 144,
+    "properties": {
+      "LINIENNR": "121",
+      "KURSBUCHNR": "80.121",
+      "LINIENNAME": "121 Heiden - Rehetobel - St.Gallen - Engelburg",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-224-2-j26-1",
+      "96-224-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 112,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "bus:145",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "121"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "bus",
+    "objectId": 145,
+    "properties": {
+      "LINIENNR": "121",
+      "KURSBUCHNR": "80.121",
+      "LINIENNAME": "121 Wald AR - Rehetobel - St.Gallen - Engelburg (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-224-2-j26-1",
+      "96-224-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 112,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:1",
+    "mode": "bus",
+    "agencyIds": [
+      "838"
+    ],
+    "lines": [
+      "993"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 1,
+    "properties": {
+      "LINIENNR": "993",
+      "KURSBUCHNR": "70.993",
+      "LINIENNAME": "993 Rapperswil SG Bahnhof - Hanfländer - Jona Vogelau/Bahnhof - Tägernau",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Rapperswil-Jona",
+      "BETREIBER": "VZO"
+    },
+    "gtfsRoutes": [
+      "92-993-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 140,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:2",
+    "mode": "bus",
+    "agencyIds": [
+      "838"
+    ],
+    "lines": [
+      "994"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 2,
+    "properties": {
+      "LINIENNR": "994",
+      "KURSBUCHNR": "70.994",
+      "LINIENNAME": "994 Rapperswil SG Bahnhof - Kempraten Bahnhof - Wohnheim Balm - Jona Bahnhof",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Rapperswil-Jona",
+      "BETREIBER": "VZO"
+    },
+    "gtfsRoutes": [
+      "92-994-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 167,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:3",
+    "mode": "bus",
+    "agencyIds": [
+      "772"
+    ],
+    "lines": [
+      "995"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 3,
+    "properties": {
+      "LINIENNR": "995",
+      "KURSBUCHNR": "70.995",
+      "LINIENNAME": "995 Jona Bahnhof - Hummelberg - Buechstrasse Ost",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Rapperswil-Jona",
+      "BETREIBER": "BRER"
+    },
+    "gtfsRoutes": [
+      "92-995-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 62,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:4",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "N6"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 4,
+    "properties": {
+      "LINIENNR": "6",
+      "KURSBUCHNR": "80.006N",
+      "LINIENNAME": "N6 St. Gallen Bahnhof - Bach St. Georgen (Nachtangebot)",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-222-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 5,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:5",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "7"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 5,
+    "properties": {
+      "LINIENNR": "7",
+      "KURSBUCHNR": "80.007",
+      "LINIENNAME": "7 Neudorf - St. Gallen Bahnhof - Hinterberg",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-7-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 204,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:6",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "8"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 6,
+    "properties": {
+      "LINIENNR": "8",
+      "KURSBUCHNR": "80.008",
+      "LINIENNAME": "8 Wendeplatz Stocken - St. Gallen Bahnhof - Neudorf",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-8-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 200,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:7",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "9"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 7,
+    "properties": {
+      "LINIENNR": "9",
+      "KURSBUCHNR": "80.009",
+      "LINIENNAME": "9 Hölzli - St. Gallen Bahnhof - Rotmonten - Schuppis Nord",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-9-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 282,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:8",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "10"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 8,
+    "properties": {
+      "LINIENNR": "10",
+      "KURSBUCHNR": "80.010",
+      "LINIENNAME": "10 Oberhofstetten - St. Gallen Bahnhof - Röteli",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-10-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 204,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:9",
+    "mode": "bus",
+    "agencyIds": [
+      "838"
+    ],
+    "lines": [
+      "996"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 9,
+    "properties": {
+      "LINIENNR": "996",
+      "KURSBUCHNR": "70.996",
+      "LINIENNAME": "996 Rapperswil SG Bahnhof Süd - Oberseeplatz - Jona Geberit - Feldlistrasse - Bahnhof",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Rapperswil-Jona",
+      "BETREIBER": "VZO"
+    },
+    "gtfsRoutes": [
+      "92-996-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 22,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:10",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "1"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 10,
+    "properties": {
+      "LINIENNR": "1",
+      "KURSBUCHNR": "80.001",
+      "LINIENNAME": "1 Winkeln - St. Gallen Bahnhof - Stephanshorn",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-1-D-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 334,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:11",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "2"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 11,
+    "properties": {
+      "LINIENNR": "2",
+      "KURSBUCHNR": "80.002",
+      "LINIENNAME": "2 Wolfganghof - St. Gallen Bahnhof - Guggeien",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-2-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 340,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:12",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "2"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 12,
+    "properties": {
+      "LINIENNR": "2",
+      "KURSBUCHNR": "80.002",
+      "LINIENNAME": "2 Wolfganghof - St. Gallen Bahnhof - Guggeien (Nachtangebot)",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-2-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 340,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:13",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "3"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 13,
+    "properties": {
+      "LINIENNR": "3",
+      "KURSBUCHNR": "80.003",
+      "LINIENNAME": "3 Abtwil St. Josefen - Säntispark - St. Gallen Bahnhof",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-3-G-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 233,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:14",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "3"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 14,
+    "properties": {
+      "LINIENNR": "3",
+      "KURSBUCHNR": "80.003",
+      "LINIENNAME": "3 Abtwil St. Josefen - Säntispark - St. Gallen Bahnhof - Heiligkreuz - Wittenbach",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-3-G-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 233,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:15",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "4"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 15,
+    "properties": {
+      "LINIENNR": "4",
+      "KURSBUCHNR": "80.004",
+      "LINIENNAME": "4 Abtwil - Säntispark - St. Gallen Bahnhof - Heiligkreuz - Wittenbach",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-4-E-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 236,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:16",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "4"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 16,
+    "properties": {
+      "LINIENNR": "4",
+      "KURSBUCHNR": "80.004",
+      "LINIENNAME": "4 St. Gallen Bahnhof - Heiligkreuz - Wittenbach",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-4-E-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 236,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:17",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "5"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 17,
+    "properties": {
+      "LINIENNR": "5",
+      "KURSBUCHNR": "80.005",
+      "LINIENNAME": "5 Riethüsli - St. Gallen Bahnhof - Universität - Rotmonten",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-5-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 335,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:18",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "5"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 18,
+    "properties": {
+      "LINIENNR": "5",
+      "KURSBUCHNR": "80.005",
+      "LINIENNAME": "5 St. Gallen Bahnhof - Universität - Rotmonten",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-5-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 335,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:19",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "6"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 19,
+    "properties": {
+      "LINIENNR": "6",
+      "KURSBUCHNR": "80.006",
+      "LINIENNAME": "6 Bach St. Georgen - St. Gallen Bahnhof - Heiligkreuz",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-6-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 330,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:20",
+    "mode": "bus",
+    "agencyIds": [
+      "838"
+    ],
+    "lines": [
+      "991"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 20,
+    "properties": {
+      "LINIENNR": "991",
+      "KURSBUCHNR": "70.991",
+      "LINIENNAME": "991 Rapperswil SG Bahnhof Süd - Schachenstrasse - Jona Bahnhof",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Rapperswil-Jona",
+      "BETREIBER": "VZO"
+    },
+    "gtfsRoutes": [
+      "92-991-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 148,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:21",
+    "mode": "bus",
+    "agencyIds": [
+      "838"
+    ],
+    "lines": [
+      "992"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 21,
+    "properties": {
+      "LINIENNR": "992",
+      "KURSBUCHNR": "70.992",
+      "LINIENNAME": "992 Rapperswil SG Glärnischstrasse - Jona Bahnhof",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Rapperswil-Jona",
+      "BETREIBER": "VZO"
+    },
+    "gtfsRoutes": [
+      "92-992-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 66,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:22",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "701"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 22,
+    "properties": {
+      "LINIENNR": "701",
+      "KURSBUCHNR": "80.701",
+      "LINIENNAME": "701 Wil SG Bahnhof - Neulanden - Spital",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Wil",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-701-E-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 140,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:23",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "702"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 23,
+    "properties": {
+      "LINIENNR": "702",
+      "KURSBUCHNR": "80.702",
+      "LINIENNAME": "702 Wilen bei Wil - Wil SG Bahnhof - Rossrüti",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Wil",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-702-D-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 142,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:24",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "703"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 24,
+    "properties": {
+      "LINIENNR": "703",
+      "KURSBUCHNR": "80.703",
+      "LINIENNAME": "703 Reuttistrasse - Wil SG Bahnhof - Neugruben",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Wil",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-703-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 142,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:25",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "704"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 25,
+    "properties": {
+      "LINIENNR": "704",
+      "KURSBUCHNR": "80.704",
+      "LINIENNAME": "704 Wil SG Bahnhof - Wilerwald",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Wil",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-704-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 114,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:26",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "705"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 26,
+    "properties": {
+      "LINIENNR": "705",
+      "KURSBUCHNR": "80.705",
+      "LINIENNAME": "705 Wil SG Bahnhof - Bildfeld - Bronschofen Gemeindehaus - Himmelrich",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Wil",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-705-D-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "city:27",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "706"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 27,
+    "properties": {
+      "LINIENNR": "706",
+      "KURSBUCHNR": "80.706",
+      "LINIENNAME": "706 Wil SG - Bronschhofen - Braunau",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Wil",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-706-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 101,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:28",
+    "mode": "bus",
+    "agencyIds": [
+      "896"
+    ],
+    "lines": [
+      "731"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 28,
+    "properties": {
+      "LINIENNR": "731",
+      "KURSBUCHNR": "80.731",
+      "LINIENNAME": "731 Wil SG Bahnhof - Rickenbach bei Wil - Kirchberg SG Fetzhof",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Wil",
+      "BETREIBER": "REGO"
+    },
+    "gtfsRoutes": [
+      "92-731-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 58,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:29",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "11"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 29,
+    "properties": {
+      "LINIENNR": "11",
+      "KURSBUCHNR": "80.011",
+      "LINIENNAME": "11 St.Gallen Bahnhof - Karlstor - Abacus-Platz",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-11-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 138,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:30",
+    "mode": "bus",
+    "agencyIds": [
+      "885"
+    ],
+    "lines": [
+      "12"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 30,
+    "properties": {
+      "LINIENNR": "12",
+      "KURSBUCHNR": "80.012",
+      "LINIENNAME": "12 Abtwil - Spisegg - St. Gallen Bahnhof",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "St.Gallen",
+      "BETREIBER": "VBSG"
+    },
+    "gtfsRoutes": [
+      "92-12-F-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 52,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:31",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "251"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 31,
+    "properties": {
+      "LINIENNR": "251",
+      "KURSBUCHNR": "80.251",
+      "LINIENNAME": "251 Goldach - Rorschach - Rorschacherberg - Altenrhein",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Rorschach - Goldach - Rorschacherberg",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-251-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 100,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:32",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "252"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 32,
+    "properties": {
+      "LINIENNR": "252",
+      "KURSBUCHNR": "80.252",
+      "LINIENNAME": "252 Goldach - Rorschacherberg - Rorschach - Tübach",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Rorschach - Goldach - Rorschacherberg",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-252-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 81,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:33",
+    "mode": "bus",
+    "agencyIds": [
+      "138"
+    ],
+    "lines": [
+      "253"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 33,
+    "properties": {
+      "LINIENNR": "253",
+      "KURSBUCHNR": "80.253",
+      "LINIENNAME": "253 Goldach Bahnhof - Goldach Rietli",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Rorschach - Goldach - Rorschacherberg",
+      "BETREIBER": "BOS"
+    },
+    "gtfsRoutes": [
+      "92-253-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 61,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "city:34",
+    "mode": "bus",
+    "agencyIds": [
+      "801"
+    ],
+    "lines": [
+      "254"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "city",
+    "objectId": 34,
+    "properties": {
+      "LINIENNR": "254",
+      "KURSBUCHNR": "80.254 OV",
+      "LINIENNAME": "254 Rorschach - Rorschacherberg - Rorschach Stadt - Goldach (- St.Gallen Kantonsschule)",
+      "BEMERKUNG": "Ortsverkehr",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "SYSTEM": "Rorschach - Goldach - Rorschacherberg",
+      "BETREIBER": "PAG"
+    },
+    "gtfsRoutes": [
+      "96-220-7-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 110,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:1",
+    "mode": "rail",
+    "agencyIds": [
+      "22"
+    ],
+    "lines": [
+      "S15"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 1,
+    "properties": {
+      "LINIENNR": "841",
+      "KURSBUCHNR": "841",
+      "LINIENNAME": "S15 Frauenfeld - Wil SG",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "91-15-I-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 180,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:2",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S7"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 2,
+    "properties": {
+      "LINIENNR": "840",
+      "KURSBUCHNR": "840/845",
+      "LINIENNAME": "S7 Weinfelden - Romanshorn - Rorschach (- St. Margrethen - Lindau)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-7-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 164,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:3",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S5"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 3,
+    "properties": {
+      "LINIENNR": "852",
+      "KURSBUCHNR": "852",
+      "LINIENNAME": "S5 Weinfelden - St. Gallen (- St. Margrethen)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-5-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 1,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:4",
+    "mode": "rail",
+    "agencyIds": [
+      "22"
+    ],
+    "lines": [
+      "S15"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 4,
+    "properties": {
+      "LINIENNR": "841",
+      "KURSBUCHNR": "841",
+      "LINIENNAME": "S15 Frauenfeld - Wil SG (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "91-15-I-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 180,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:5",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S35"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 5,
+    "properties": {
+      "LINIENNR": "850",
+      "KURSBUCHNR": "850",
+      "LINIENNAME": "S35 Winterthur - Wil SG",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-35-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 128,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:6",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "SN21"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 6,
+    "properties": {
+      "LINIENNR": "850",
+      "KURSBUCHNR": "850",
+      "LINIENNAME": "SN21 Winterthur - St. Gallen (Nachtangebot, ex SN10)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-21-F-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 8,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:7",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "RE13"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 7,
+    "properties": {
+      "LINIENNR": "850",
+      "KURSBUCHNR": "750/850",
+      "LINIENNAME": "RE13 St. Gallen - Winterthur - Zürich HB (Abendangebot, ex SN10)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-13-F-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 18,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:8",
+    "mode": "rail",
+    "agencyIds": [
+      "11"
+    ],
+    "lines": [
+      "S12"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 8,
+    "properties": {
+      "LINIENNR": "850",
+      "KURSBUCHNR": "850",
+      "LINIENNAME": "S12 (Brugg AG - Zürich HB - Stadelhofen -) Winterthur - Wil",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SBB"
+    },
+    "gtfsRoutes": [
+      "91-12-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 1,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:9",
+    "mode": "rail",
+    "agencyIds": [
+      "22"
+    ],
+    "lines": [
+      "S21",
+      "S22"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 9,
+    "properties": {
+      "LINIENNR": "855",
+      "KURSBUCHNR": "855",
+      "LINIENNAME": "S21/S22 (Appenzell - Gais -) St. Gallen - Speicher - Trogen",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "91-21-j26-1",
+      "91-22-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 188,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:10",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S2"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 10,
+    "properties": {
+      "LINIENNR": "880",
+      "KURSBUCHNR": "880",
+      "LINIENNAME": "S2 Altstätten SG - St. Gallen (- Wattwil - Nesslau-Neu St.Johann)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-2-E-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 84,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:11",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S5"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 11,
+    "properties": {
+      "LINIENNR": "880",
+      "KURSBUCHNR": "880",
+      "LINIENNAME": "S5 (Weinfelden -) St. Gallen -St. Margrethen (ex S3)",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-5-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 1,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:12",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "SN22"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 12,
+    "properties": {
+      "LINIENNR": "880",
+      "KURSBUCHNR": "880",
+      "LINIENNAME": "SN22 St. Gallen - Heerbrugg (Nachtangebot)",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-22-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 6,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:13",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "RE13"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 13,
+    "properties": {
+      "LINIENNR": "880",
+      "KURSBUCHNR": "880",
+      "LINIENNAME": "RE13 St. Gallen - Rorschach - St. Margrethen - Heerbrugg - Altstätten SG - Buchs SG - Sargans (Abendangebot)",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-13-F-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 18,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:14",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S9"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 14,
+    "properties": {
+      "LINIENNR": "853",
+      "KURSBUCHNR": "853",
+      "LINIENNAME": "S9 Wil SG - Wattwil",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-9-E-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 79,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:15",
+    "mode": "rail",
+    "agencyIds": [
+      "22"
+    ],
+    "lines": [
+      "S23"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 15,
+    "properties": {
+      "LINIENNR": "854",
+      "KURSBUCHNR": "854",
+      "LINIENNAME": "S23 Gossau SG - Herisau - Appenzell - Wasserauen",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "91-23-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 119,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:16",
+    "mode": "rail",
+    "agencyIds": [
+      "22"
+    ],
+    "lines": [
+      "S24"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 16,
+    "properties": {
+      "LINIENNR": "856",
+      "KURSBUCHNR": "856",
+      "LINIENNAME": "S24 Gais - Altstätten Stadt",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "91-24-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 50,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:17",
+    "mode": "rail",
+    "agencyIds": [
+      "22"
+    ],
+    "lines": [
+      "S26"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 17,
+    "properties": {
+      "LINIENNR": "858",
+      "KURSBUCHNR": "858",
+      "LINIENNAME": "S26 Rheineck - Walzenhausen",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "91-26-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 92,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:18",
+    "mode": "rail",
+    "agencyIds": [
+      "82"
+    ],
+    "lines": [
+      "VAE"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 18,
+    "properties": {
+      "LINIENNR": "870",
+      "KURSBUCHNR": "870/670/600",
+      "LINIENNAME": "VAE St. Gallen - Rapperswil SG - Luzern",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SOB"
+    },
+    "gtfsRoutes": [
+      "91-VAE-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 30,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:19",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S12"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 19,
+    "properties": {
+      "LINIENNR": "905",
+      "KURSBUCHNR": "905",
+      "LINIENNAME": "S12 Sargans- Chur",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-12-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 148,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:20",
+    "mode": "rail",
+    "agencyIds": [
+      "11"
+    ],
+    "lines": [
+      "S8"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 20,
+    "properties": {
+      "LINIENNR": "720",
+      "KURSBUCHNR": "720",
+      "LINIENNAME": "S8 (Winterthur - Wallisellen -) Zürich HB - Pfäffikon SZ (- Rapperswil)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SBB"
+    },
+    "gtfsRoutes": [
+      "91-8-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 1,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:21",
+    "mode": "rail",
+    "agencyIds": [
+      "11"
+    ],
+    "lines": [
+      "S2"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 21,
+    "properties": {
+      "LINIENNR": "720",
+      "KURSBUCHNR": "720",
+      "LINIENNAME": "S2 (Zürich Flughafen -) Zürich HB - Pfäffikon SZ - Ziegelbrücke (- Unterterzen)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SBB"
+    },
+    "gtfsRoutes": [
+      "91-2-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "rail:22",
+    "mode": "rail",
+    "agencyIds": [
+      "82"
+    ],
+    "lines": [
+      "S27"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 22,
+    "properties": {
+      "LINIENNR": "720",
+      "KURSBUCHNR": "720",
+      "LINIENNAME": "S27 Ziegelbrücke - Siebnen-Wangen",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SOB"
+    },
+    "gtfsRoutes": [
+      "91-27-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "rail:23",
+    "mode": "rail",
+    "agencyIds": [
+      "11"
+    ],
+    "lines": [
+      "S25"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 23,
+    "properties": {
+      "LINIENNR": "720",
+      "KURSBUCHNR": "720",
+      "LINIENNAME": "S25 Zürich HB - Ziegelbrücke - Linthal",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SBB"
+    },
+    "gtfsRoutes": [
+      "91-25-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 68,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:24",
+    "mode": "rail",
+    "agencyIds": [
+      "11"
+    ],
+    "lines": [
+      "S7"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 24,
+    "properties": {
+      "LINIENNR": "730",
+      "KURSBUCHNR": "730",
+      "LINIENNAME": "S7 (Winterthur - Kloten -) Zürich HB -Meilen - Rapperswil",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SBB"
+    },
+    "gtfsRoutes": [
+      "91-7-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "rail:25",
+    "mode": "rail",
+    "agencyIds": [
+      "11"
+    ],
+    "lines": [
+      "S15"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 25,
+    "properties": {
+      "LINIENNR": "740",
+      "KURSBUCHNR": "740",
+      "LINIENNAME": "S15 Rapperswil - Uster - Zürich HB (- Oberglatt - Niederweningen)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SBB"
+    },
+    "gtfsRoutes": [
+      "91-15-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 0,
+    "status": "no-admitted-fixture-pattern"
+  },
+  {
+    "key": "rail:26",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S1"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 26,
+    "properties": {
+      "LINIENNR": "820",
+      "KURSBUCHNR": "820/870",
+      "LINIENNAME": "S1 (Wil SG - ) St. Gallen -  Romanshorn - Kreuzlingen (- Schaffhausen)  (ex S8)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-1-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 15,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:27",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "RE1"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 27,
+    "properties": {
+      "LINIENNR": "820",
+      "KURSBUCHNR": "820/870",
+      "LINIENNAME": "RE1 Konstanz - Romanshorn - St. Gallen - Herisau (ex RE8)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-1-P-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 76,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:28",
+    "mode": "rail",
+    "agencyIds": [
+      "22"
+    ],
+    "lines": [
+      "S25"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 28,
+    "properties": {
+      "LINIENNR": "857",
+      "KURSBUCHNR": "857",
+      "LINIENNAME": "S25 Rorschach Hafen - Rorschach - Heiden",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "91-25-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 62,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:29",
+    "mode": "rail",
+    "agencyIds": [
+      "22"
+    ],
+    "lines": [
+      "S21",
+      "S22"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 29,
+    "properties": {
+      "LINIENNR": "855",
+      "KURSBUCHNR": "855",
+      "LINIENNAME": "S21/S22 Appenzell - Gais - St. Gallen (- Speicher - Trogen)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "AB"
+    },
+    "gtfsRoutes": [
+      "91-21-j26-1",
+      "91-22-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 188,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:30",
+    "mode": "rail",
+    "agencyIds": [
+      "82"
+    ],
+    "lines": [
+      "S17"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 30,
+    "properties": {
+      "LINIENNR": "900",
+      "KURSBUCHNR": "900/735",
+      "LINIENNAME": "S17 Sargans - Ziegelbrücke - Rapperswil SG",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SOB"
+    },
+    "gtfsRoutes": [
+      "91-17-M-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 78,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:31",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S1"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 31,
+    "properties": {
+      "LINIENNR": "850",
+      "KURSBUCHNR": "850",
+      "LINIENNAME": "S1 Wil SG - St. Gallen (- Romanshorn - Schaffhausen)",
+      "BEMERKUNG": "<Null>",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-1-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 15,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:32",
+    "mode": "rail",
+    "agencyIds": [
+      "82"
+    ],
+    "lines": [
+      "S40"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 32,
+    "properties": {
+      "LINIENNR": "670",
+      "KURSBUCHNR": "670",
+      "LINIENNAME": "S40 Rapperswil SG - Einsiedeln",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SOB"
+    },
+    "gtfsRoutes": [
+      "91-40-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 147,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:33",
+    "mode": "rail",
+    "agencyIds": [
+      "11"
+    ],
+    "lines": [
+      "S16"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 33,
+    "properties": {
+      "LINIENNR": "730",
+      "KURSBUCHNR": "730",
+      "LINIENNAME": "S16 (Zürich Flughafen -) Zürich HB - Herrliberg-Feldmeilen (- Rapperswil)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SBB"
+    },
+    "gtfsRoutes": [
+      "91-16-A-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 4,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:34",
+    "mode": "rail",
+    "agencyIds": [
+      "82"
+    ],
+    "lines": [
+      "S6"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 34,
+    "properties": {
+      "LINIENNR": "735",
+      "KURSBUCHNR": "735/736",
+      "LINIENNAME": "S6 Rapperswil SG - Ziegelbrücke - Schwanden - Linthal",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SOB"
+    },
+    "gtfsRoutes": [
+      "91-6-G-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 83,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:35",
+    "mode": "rail",
+    "agencyIds": [
+      "11"
+    ],
+    "lines": [
+      "S5"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 35,
+    "properties": {
+      "LINIENNR": "740",
+      "KURSBUCHNR": "740",
+      "LINIENNAME": "S5 (Zug - Affoltern am Albis -) Zürich HB - Uster - Pfäffikon SZ",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SBB"
+    },
+    "gtfsRoutes": [
+      "91-5-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 1,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:36",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S10"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 36,
+    "properties": {
+      "LINIENNR": "835",
+      "KURSBUCHNR": "835/840",
+      "LINIENNAME": "S10 Wil SG - Weinfelden - Romanshorn",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-10-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 115,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:37",
+    "mode": "rail",
+    "agencyIds": [
+      "82"
+    ],
+    "lines": [
+      "S81"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 37,
+    "properties": {
+      "LINIENNR": "870",
+      "KURSBUCHNR": "870",
+      "LINIENNAME": "S81 St.Gallen - Herisau SOB",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SOB"
+    },
+    "gtfsRoutes": [
+      "91-81-C-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 65,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:38",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S82"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 38,
+    "properties": {
+      "LINIENNR": "870",
+      "KURSBUCHNR": "870",
+      "LINIENNAME": "S82 St. Gallen - St. Gallen St. Fiden - Wittenbach",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-82-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 20,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:39",
+    "mode": "rail",
+    "agencyIds": [
+      "11"
+    ],
+    "lines": [
+      "SN5"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 39,
+    "properties": {
+      "LINIENNR": "740",
+      "KURSBUCHNR": "740",
+      "LINIENNAME": "SN5 (Knonau - Affoltern am Albis -) Zürich HB - Uster - Pfäffikon SZ",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SBB"
+    },
+    "gtfsRoutes": [
+      "91-5-G-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 3,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:40",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "SN22"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 40,
+    "properties": {
+      "LINIENNR": "850",
+      "KURSBUCHNR": "850",
+      "LINIENNAME": "SN22 Winterthur - St. Gallen (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-22-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 6,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:41",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "SN72"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 41,
+    "properties": {
+      "LINIENNR": "870",
+      "KURSBUCHNR": "870",
+      "LINIENNAME": "SN72 St. Gallen - Lichtensteig (Nachtangebot)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-72-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 7,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:42",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S7"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 42,
+    "properties": {
+      "LINIENNR": "880",
+      "KURSBUCHNR": "880/401",
+      "LINIENNAME": "S7 (Weinfelden - Romanshorn -) Rorschach - St. Margrethen (- Lindau)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-7-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 164,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:43",
+    "mode": "rail",
+    "agencyIds": [
+      "82"
+    ],
+    "lines": [
+      "S4"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 43,
+    "properties": {
+      "LINIENNR": "880",
+      "KURSBUCHNR": "880/870/735",
+      "LINIENNAME": "S4 Sargans - St. Gallen - Rapperswil SG",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SOB"
+    },
+    "gtfsRoutes": [
+      "91-4-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 99,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:44",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "SN72"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 44,
+    "properties": {
+      "LINIENNR": "870",
+      "KURSBUCHNR": "870",
+      "LINIENNAME": "SN72 St Gallen - Wittenbach - Romanshorn (Nachtangebot, ex SN81)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Nacht",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-72-B-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 7,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "rail:45",
+    "mode": "rail",
+    "agencyIds": [
+      "65"
+    ],
+    "lines": [
+      "S2"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "rail",
+    "objectId": 45,
+    "properties": {
+      "LINIENNR": "870",
+      "KURSBUCHNR": "870/853",
+      "LINIENNAME": "S2 (Altstätten SG -) St. Gallen - Wattwil - Nesslau-Neu St.Johann (ex S8)",
+      "BEMERKUNG": "teilweise ausserkantonal",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "Thurbo"
+    },
+    "gtfsRoutes": [
+      "91-2-E-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 84,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "boat:1",
+    "expectedName": "Unterterzen - Quinten - Murg",
+    "mode": "boat",
+    "agencyIds": [
+      "197"
+    ],
+    "lines": [
+      "BAT"
+    ],
+    "reason": "Only Walensee feed route 94-R-Y-j26-1; source table 3901 names Unterterzen–Quinten–Murg. Full boat stop chains required; partial source coverage remains excluded.",
+    "layer": "boat",
+    "objectId": 1,
+    "properties": {
+      "LINIENNR": "3901",
+      "KURSBUCHNR": "3901",
+      "LINIENNAME": "Unterterzen - Quinten - Murg",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "SW"
+    },
+    "gtfsRoutes": [
+      "94-R-Y-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 44,
+    "status": "candidate-graph-for-admitted-patterns"
+  },
+  {
+    "key": "mountain:1",
+    "mode": "mountain",
+    "agencyIds": [
+      "214"
+    ],
+    "lines": [
+      "2790"
+    ],
+    "reason": "Reviewed operator mapping and exact leading passenger designation; ordered stop patterns validated independently.",
+    "layer": "mountain",
+    "objectId": 1,
+    "properties": {
+      "LINIENNR": "2790",
+      "KURSBUCHNR": "2790",
+      "LINIENNAME": "Unterterzen - Oberterzen - Tanzbodenalp (Flumserberg)",
+      "BEMERKUNG": "",
+      "ANGEBOT": "Tag",
+      "BERECHTIGT": "Ja",
+      "BETREIBER": "LUFAG"
+    },
+    "gtfsRoutes": [
+      "93-279-0-j26-1"
+    ],
+    "candidateRouteAdmittedTrips": 2478,
+    "status": "candidate-graph-for-admitted-patterns"
+  }
+]
