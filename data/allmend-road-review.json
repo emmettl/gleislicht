@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 1,
+  "status": "review-only-no-publication",
+  "scope": {
+    "schemaVersion": 1,
+    "batchScopeSha256": "cf993c04f006aefe5f34f36d22f39ae84daf1fa0825571687ef96721cc028aa3",
+    "classifiedSourceSha256": "f2f9f87f93126c2a3680eaddabfe4fd2dc99372d39423bc2d59598eb2147efe2",
+    "directionReviewsSha256": "f56321825fe2e842e65557fe84281ef4f9c1e1de2235e3f0f8cb2dd5d545e30d"
+  },
+  "stationId": "ZH.CH:0197",
+  "name": "Zürich: Allmendstrasse",
+  "stationPointLv95": [
+    2681889.0599999987,
+    1244799.1000000015
+  ],
+  "cityAxis": {
+    "featureId": 5329,
+    "road": "4.1",
+    "ownership": "Stadt Zürich",
+    "distanceMetres": 0,
+    "presentInClassifiedResponse": false
+  },
+  "sharedJunction": {
+    "pointLv95": [
+      2681891.4912,
+      1244801.7522500008
+    ],
+    "stationDistanceMetres": 3.6,
+    "features": [
+      {
+        "featureId": 5329,
+        "road": "4.1",
+        "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+        "ownership": "Stadt Zürich",
+        "distanceMetres": 0
+      },
+      {
+        "featureId": 7017,
+        "road": "16161",
+        "roadClass": "HLS Bund Anschluss",
+        "ownership": "Nationalstrasse",
+        "distanceMetres": 3.6
+      },
+      {
+        "featureId": 7020,
+        "road": "4.1",
+        "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+        "ownership": "Stadt Zürich",
+        "distanceMetres": 3.6
+      }
+    ]
+  },
+  "originalCandidates": [
+    {
+      "road": "ZH:A3W",
+      "pathId": "ZH:A3W:8f184a5dd42b4672",
+      "distanceMetres": 3.6,
+      "eligible": false
+    },
+    {
+      "road": "ZH:4",
+      "pathId": "ZH:4:3a2bce71b3235d64",
+      "distanceMetres": 49.27,
+      "eligible": true
+    },
+    {
+      "road": "ZH:A3",
+      "pathId": "ZH:A3:2bf34b1d35dc500a",
+      "distanceMetres": 83.93,
+      "eligible": false
+    }
+  ],
+  "geometryStatus": "city-axis-extension-and-junction-review-required",
+  "geometryFinding": "The city-owned 4.1 axis passes through the station and meets both another 4.1 feature and an A3W ramp at a shared vertex 3.6 m away. The classified response omits 4.1 and reproduces the original excluded-road-class result. Connected features near a junction do not establish detector-to-road or travel-direction assignments.",
+  "detectorDescriptions": [
+    {
+      "id": "ZH.CH:0197.01",
+      "description": "Normalspur Richtung Zürich"
+    },
+    {
+      "id": "ZH.CH:0197.02",
+      "description": "Überholspur Richtung Zürich"
+    },
+    {
+      "id": "ZH.CH:0197.03",
+      "description": "Überholspur Richtung Luzern"
+    },
+    {
+      "id": "ZH.CH:0197.04",
+      "description": "Normalspur Richtung Luzern"
+    }
+  ],
+  "adliswilDirectionReview": {
+    "originalStatus": "unresolved-direction-pair",
+    "status": "validated",
+    "detectors": [
+      {
+        "id": "ZH.CH:4087.01",
+        "description": "Normalspur Richtung Zürich",
+        "alertCDirection": "positive",
+        "status": "validated",
+        "destination": {
+          "name": "Zürich",
+          "coordinate": [
+            2682880.1500000004,
+            1248023.1
+          ],
+          "bounds": [
+            2677461.6,
+            1241764.4,
+            2688298.7,
+            1254281.8
+          ],
+          "sourceFeatureId": 314086
+        },
+        "destinationDistanceMetres": 6287.92,
+        "destinationRoadDistanceMetres": 1207.61,
+        "offsetSeparationMetres": 5785.54,
+        "bearingAgreement": 0.82,
+        "offsetMetres": 14143.43,
+        "direction": "positive",
+        "originalStatus": "destination-extent-conflict",
+        "review": {
+          "id": "adliswil-4087-opposing-lanes-2026-09-08",
+          "method": "opposing-main-carriageway-lanes",
+          "anchorDetectorId": "ZH.CH:4087.02",
+          "note": "Langnau am Albis independently validates negative path order. The two catalog detectors are opposing main-carriageway lane1 detectors with normal-lane labels. The Zürich centre passes distance, projection and bearing (0.82); only its settlement extent conflicts. The opposing lane is positive on this pinned path. This scoped inference is not a surveyed movement or a relaxation of the general gates."
+        }
+      },
+      {
+        "id": "ZH.CH:4087.02",
+        "description": "Normalspur Richtung Langnau am Albis",
+        "alertCDirection": "negative",
+        "status": "validated",
+        "direction": "negative",
+        "destination": {
+          "name": "Langnau am Albis",
+          "coordinate": [
+            2682950.35,
+            1237918.5
+          ],
+          "bounds": [
+            2682186.1,
+            1236437.6,
+            2683714.6,
+            1239399.4
+          ],
+          "sourceFeatureId": 398076
+        },
+        "destinationDistanceMetres": 4109.56,
+        "destinationRoadDistanceMetres": 626.51,
+        "offsetSeparationMetres": -4661.94,
+        "bearingAgreement": -0.99,
+        "offsetMetres": 14143.43
+      }
+    ]
+  },
+  "candidatePairs": [
+    {
+      "from": "ZH.CH:1520",
+      "to": "ZH.CH:4087",
+      "distanceMetres": 4219.72,
+      "completeMinutes": 245,
+      "longestRunMinutes": 245,
+      "hourWindows": [
+        {
+          "start": 48180,
+          "end": 62820,
+          "minutes": 245
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "endpointAudits": [
+        {
+          "id": "ZH.CH:1520",
+          "road": "ZH:4",
+          "pathId": "ZH:4:3a2bce71b3235d64",
+          "status": "unresolved-direction-pair",
+          "detectors": [
+            {
+              "id": "ZH.CH:1520.01",
+              "description": "Normalspur Richtung Adliswil",
+              "alertCDirection": "positive",
+              "status": "destination-extent-conflict",
+              "destination": {
+                "name": "Adliswil",
+                "coordinate": [
+                  2682126.2,
+                  1240485.05
+                ],
+                "bounds": [
+                  2681024.1,
+                  1238514.3,
+                  2683228.3,
+                  1242455.8
+                ],
+                "sourceFeatureId": 283996
+              },
+              "destinationDistanceMetres": 2531.61,
+              "destinationRoadDistanceMetres": 61.58,
+              "offsetSeparationMetres": 2799.06,
+              "bearingAgreement": 1,
+              "offsetMetres": 9923.71
+            },
+            {
+              "id": "ZH.CH:1520.02",
+              "description": "Normalspur Richtung Langnau am Albis",
+              "alertCDirection": "negative",
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Langnau am Albis",
+                "coordinate": [
+                  2682950.35,
+                  1237918.5
+                ],
+                "bounds": [
+                  2682186.1,
+                  1236437.6,
+                  2683714.6,
+                  1239399.4
+                ],
+                "sourceFeatureId": 398076
+              },
+              "destinationDistanceMetres": 701.95,
+              "destinationRoadDistanceMetres": 626.51,
+              "offsetSeparationMetres": -442.21,
+              "bearingAgreement": -0.07,
+              "offsetMetres": 9923.71
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:4087",
+          "road": "ZH:4",
+          "pathId": "ZH:4:3a2bce71b3235d64",
+          "status": "validated",
+          "detectors": [
+            {
+              "id": "ZH.CH:4087.01",
+              "description": "Normalspur Richtung Zürich",
+              "alertCDirection": "positive",
+              "status": "validated",
+              "destination": {
+                "name": "Zürich",
+                "coordinate": [
+                  2682880.1500000004,
+                  1248023.1
+                ],
+                "bounds": [
+                  2677461.6,
+                  1241764.4,
+                  2688298.7,
+                  1254281.8
+                ],
+                "sourceFeatureId": 314086
+              },
+              "destinationDistanceMetres": 6287.92,
+              "destinationRoadDistanceMetres": 1207.61,
+              "offsetSeparationMetres": 5785.54,
+              "bearingAgreement": 0.82,
+              "offsetMetres": 14143.43,
+              "direction": "positive",
+              "originalStatus": "destination-extent-conflict",
+              "review": {
+                "id": "adliswil-4087-opposing-lanes-2026-09-08",
+                "method": "opposing-main-carriageway-lanes",
+                "anchorDetectorId": "ZH.CH:4087.02",
+                "note": "Langnau am Albis independently validates negative path order. The two catalog detectors are opposing main-carriageway lane1 detectors with normal-lane labels. The Zürich centre passes distance, projection and bearing (0.82); only its settlement extent conflicts. The opposing lane is positive on this pinned path. This scoped inference is not a surveyed movement or a relaxation of the general gates."
+              }
+            },
+            {
+              "id": "ZH.CH:4087.02",
+              "description": "Normalspur Richtung Langnau am Albis",
+              "alertCDirection": "negative",
+              "status": "validated",
+              "direction": "negative",
+              "destination": {
+                "name": "Langnau am Albis",
+                "coordinate": [
+                  2682950.35,
+                  1237918.5
+                ],
+                "bounds": [
+                  2682186.1,
+                  1236437.6,
+                  2683714.6,
+                  1239399.4
+                ],
+                "sourceFeatureId": 398076
+              },
+              "destinationDistanceMetres": 4109.56,
+              "destinationRoadDistanceMetres": 626.51,
+              "offsetSeparationMetres": -4661.94,
+              "bearingAgreement": -0.99,
+              "offsetMetres": 14143.43
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "ZH.CH:4087",
+      "to": "ZH.CH:0197",
+      "distanceMetres": 3175.91,
+      "completeMinutes": 245,
+      "longestRunMinutes": 245,
+      "hourWindows": [
+        {
+          "start": 48180,
+          "end": 62820,
+          "minutes": 245
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "endpointAudits": [
+        {
+          "id": "ZH.CH:4087",
+          "road": "ZH:4",
+          "pathId": "ZH:4:3a2bce71b3235d64",
+          "status": "validated",
+          "detectors": [
+            {
+              "id": "ZH.CH:4087.01",
+              "description": "Normalspur Richtung Zürich",
+              "alertCDirection": "positive",
+              "status": "validated",
+              "destination": {
+                "name": "Zürich",
+                "coordinate": [
+                  2682880.1500000004,
+                  1248023.1
+                ],
+                "bounds": [
+                  2677461.6,
+                  1241764.4,
+                  2688298.7,
+                  1254281.8
+                ],
+                "sourceFeatureId": 314086
+              },
+              "destinationDistanceMetres": 6287.92,
+              "destinationRoadDistanceMetres": 1207.61,
+              "offsetSeparationMetres": 5785.54,
+              "bearingAgreement": 0.82,
+              "offsetMetres": 14143.43,
+              "direction": "positive",
+              "originalStatus": "destination-extent-conflict",
+              "review": {
+                "id": "adliswil-4087-opposing-lanes-2026-09-08",
+                "method": "opposing-main-carriageway-lanes",
+                "anchorDetectorId": "ZH.CH:4087.02",
+                "note": "Langnau am Albis independently validates negative path order. The two catalog detectors are opposing main-carriageway lane1 detectors with normal-lane labels. The Zürich centre passes distance, projection and bearing (0.82); only its settlement extent conflicts. The opposing lane is positive on this pinned path. This scoped inference is not a surveyed movement or a relaxation of the general gates."
+              }
+            },
+            {
+              "id": "ZH.CH:4087.02",
+              "description": "Normalspur Richtung Langnau am Albis",
+              "alertCDirection": "negative",
+              "status": "validated",
+              "direction": "negative",
+              "destination": {
+                "name": "Langnau am Albis",
+                "coordinate": [
+                  2682950.35,
+                  1237918.5
+                ],
+                "bounds": [
+                  2682186.1,
+                  1236437.6,
+                  2683714.6,
+                  1239399.4
+                ],
+                "sourceFeatureId": 398076
+              },
+              "destinationDistanceMetres": 4109.56,
+              "destinationRoadDistanceMetres": 626.51,
+              "offsetSeparationMetres": -4661.94,
+              "bearingAgreement": -0.99,
+              "offsetMetres": 14143.43
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:0197",
+          "status": "unmatched-geometry",
+          "candidatePaths": [
+            "ZH:A3W:8f184a5dd42b4672",
+            "ZH:4:3a2bce71b3235d64",
+            "ZH:A3:2bf34b1d35dc500a"
+          ],
+          "detectors": []
+        }
+      ]
+    }
+  ],
+  "requiredEvidence": "A reviewed city-axis network connection to ZH 4, a station-specific mapping for all four 0197 detector channels, and a junction/section audit. The separate 1520–4087 option still has a too-close Langnau reference and extent conflict at 1520.",
+  "limitation": "The saved 4087 review resolves one station only. Allmend remains unmatched and no additional section is admitted. Original geometry, direction audits and playback artifacts are unchanged; no city-road extension is synthesized from nearest projections."
+}

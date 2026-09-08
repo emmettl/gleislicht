@@ -47,4 +47,4 @@ cmp docs/assets/dietikon-road-review.svg /tmp/dietikon-road-review.svg
 npx vitest run scripts/audit-dietikon-road.test.mjs scripts/audit-cantonal-unmatched-roads.test.mjs scripts/review-cantonal-road-direction.test.mjs scripts/validate-cantonal-road-directions.test.mjs
 ```
 
-The next geometry lead is **Zürich Allmendstrasse 0197**. Its 4087–0197 pair also has 245 complete minutes, but the new queue explicitly records 4087's extent conflict alongside 0197's geometry issue. It needs both reviews, not an automatic admission after resolving the road identity.
+The subsequent [Allmendstrasse review](ALLMEND-ROAD-REVIEW.md) identifies a missing city axis beside a shared ramp junction and validates Adliswil 4087's direction issue through the existing scoped method. The 4087–0197 pair remains unapproved pending Allmendstrasse's network and detector mapping evidence.

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-09-08",
+  "hashEncoding": "JSON.stringify of parsed inputs",
+  "geometrySha256": "3647bbd230f40391ba3a1ddcba2364ec439183cd0d0cab80c84afcdcf1812e08",
+  "catalogSha256": "ffce5a7cc2681d4a87f89a7a579e1eab3dd077e15e61574a0d5506da92479a09",
+  "entries": [
+    {
+      "id": "adliswil-4087-opposing-lanes-2026-09-08",
+      "stationId": "ZH.CH:4087",
+      "pathId": "ZH:4:3a2bce71b3235d64",
+      "road": "ZH:4",
+      "method": "opposing-main-carriageway-lanes",
+      "anchorDetectorId": "ZH.CH:4087.02",
+      "reviewedDetectorId": "ZH.CH:4087.01",
+      "detectorAuditSha256": "d448ee80adc2d4312f40b34a165cf12e271a7f1164d91521c91081a55e9f0874",
+      "rationale": "Langnau am Albis independently validates negative path order. The two catalog detectors are opposing main-carriageway lane1 detectors with normal-lane labels. The Zürich centre passes distance, projection and bearing (0.82); only its settlement extent conflicts. The opposing lane is positive on this pinned path. This scoped inference is not a surveyed movement or a relaxation of the general gates."
+    }
+  ]
+}
