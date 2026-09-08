@@ -23,15 +23,34 @@ const CONTINUITY_SCORE_RATIO = 1.55
 const CONTINUITY_SCORE_MARGIN = 0.35
 const MAXIMUM_SECTION_DISTANCE_KM = 45
 
-const ROAD_DESCRIPTIONS = {
+// Axis endpoints: ASTRA 13013, catalogue I.1 (2026 edition).
+// https://www.astra.admin.ch/dam/astra/fr/dokumente/standards_fuer_nationalstrassen/astra_13013_strukturundkennzeichnungderbetriebs-undsicherheitsau.pdf.download.pdf/astra_13013f.pdf
+export const ROAD_DESCRIPTIONS = {
   N1: 'Genève · Lausanne · Bern · Zürich · St. Margrethen',
   N2: 'Basel · Gotthard · Chiasso',
   N3: 'Basel · Zürich · Sargans',
-  N4: 'Schaffhausen · Zürich · Altdorf',
-  N5: 'Yverdon · Neuchâtel · Biel',
-  N6: 'Biel · Bern · Wimmis',
-  N9: 'Vallorbe · Lausanne · Simplon',
-  N13: 'St. Margrethen · Chur · Bellinzona',
+  N4: 'Thayngen · Schaffhausen · Zürich · Altdorf',
+  N5: 'Yverdon · Neuchâtel · Biel · Luterbach',
+  N6: 'Biel · Bern · Wimmis · Gampel',
+  N7: 'Winterthur · Kreuzlingen',
+  N8: 'Spiez · Lopper',
+  N9: 'Vallorbe · Lausanne · Simplon · Gondo',
+  N11: 'Zürich · Kloten',
+  N12: 'Vevey · Fribourg · Bern',
+  N13: 'St. Margrethen · Chur · Bellinzona · Ascona',
+  N14: 'Luzern · Wädenswil',
+  N15: 'Brüttisellen · Reichenburg',
+  N16: 'Boncourt · Biel/Bienne',
+  N17: 'Niederurnen · Glarus',
+  N18: 'Delémont · Basel',
+  N20: 'Le Locle · Murten',
+  N21: 'Martigny · Tunnel du Grand-Saint-Bernard',
+  N22: 'Pratteln · Sissach',
+  N23: 'Grüneck · Meggenhus',
+  N24: 'Mendrisio · Gaggiolo',
+  N25: 'St. Gallen · Appenzell',
+  N28: 'Landquart · Klosters',
+  N29: 'Thusis-Süd · Silvaplana',
 }
 
 function argument(name, fallback) {
@@ -490,6 +509,18 @@ function pathDistanceKm(points) {
   )
 }
 
+/** Route kilometres: average paired carriageways; count undivided axes once. */
+export function roadLengthKm(paths) {
+  const lengths = { plus: 0, minus: 0, equal: 0 }
+  for (const path of paths) {
+    if (path.mainline) lengths[path.position] += pathDistanceKm(path.points)
+  }
+  const divided = lengths.plus && lengths.minus
+    ? (lengths.plus + lengths.minus) / 2
+    : lengths.plus + lengths.minus
+  return Math.round((lengths.equal + divided) * 10) / 10
+}
+
 function buildAxisPathIndex(segments) {
   const grouped = Map.groupBy(segments, ({ axisName }) => axisName)
   return new Map(
@@ -707,6 +738,7 @@ export function buildRoadTopologyArtifact(
       label: `A${road.slice(1)}`,
       officialLabel: road,
       description: ROAD_DESCRIPTIONS[road],
+      lengthKm: roadLengthKm(roadPaths),
       bounds,
       focus: [
         Number(((bounds.minLongitude + bounds.maxLongitude) / 2).toFixed(5)),

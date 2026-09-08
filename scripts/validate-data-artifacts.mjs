@@ -217,6 +217,8 @@ assert(
       (road) =>
         /^N\d+$/.test(road.id) &&
         /^A\d+$/.test(road.label) &&
+        road.description?.split(' · ').filter((place) => place.trim()).length >= 2 &&
+        Number.isFinite(road.lengthKm) && road.lengthKm > 0 &&
         road.focus.every(Number.isFinite) &&
         Number.isFinite(road.cameraScale),
     ),

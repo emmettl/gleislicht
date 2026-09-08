@@ -198,8 +198,9 @@ test('AUTO stays lazy, discloses reconstruction, and can be isolated', async ({
   await roadResult.click()
   await expect(page.locator('.road-corridor-card')).toContainText('A2')
   await expect(page.locator('.road-corridor-card')).toContainText(
-    'measurement-ready',
+    'Mapped length',
   )
+  await expect(page.locator('.road-corridor-card')).toContainText('Est. vehicles')
 })
 
 test('AUTO progressively adopts a recorded national minute chunk', async ({

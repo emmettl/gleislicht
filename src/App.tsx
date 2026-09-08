@@ -1,4 +1,5 @@
 import { networkWithRailVisibility } from './studies/network-layers.ts'
+import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
 import { CONTROL_HELP } from './control-help.ts'
 import {
   lazy,
@@ -74,6 +75,7 @@ import {
   SWITZERLAND_MAP_FRAMINGS as MAP_FRAMINGS,
 } from './editions/switzerland.ts'
 import { SWITZERLAND_AIRPORTS } from './editions/switzerland-airports.ts'
+import { SWITZERLAND_ROADS } from './editions/switzerland-roads.ts'
 import {
   SERVICE_CATEGORIES,
   SERVICE_COLORS,
@@ -597,9 +599,17 @@ export function App({ edition }: AppProps) {
     [countableTrains, networkTime],
   )
   const selectedRoad = useMemo(
-    () => roadTopology?.roads.find((road) => road.id === selectedRoadId),
+    () => (roadTopology?.roads ?? SWITZERLAND_ROADS).find((road) => road.id === selectedRoadId),
     [roadTopology, selectedRoadId],
   )
+  const selectedRoadLength = SWITZERLAND_ROADS.find(road => road.id === selectedRoadId)?.lengthKm
+  const selectedRoadTraffic = useMemo(
+    () => selectedRoadId && roadEnabled
+      ? roadTrafficSummary(selectedRoadId, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, roadSnapshot)
+      : undefined,
+    [selectedRoadId, roadEnabled, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot],
+  )
+  const roadMetricFormat = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language], { maximumFractionDigits: 1 }), [language])
   const selectedPosition = useMemo(
     () => (selectedTrain ? positionForTrain(selectedTrain, networkTime) : undefined),
     [networkTime, selectedTrain],
@@ -676,11 +686,8 @@ export function App({ edition }: AppProps) {
       .slice(0, 5)
   }, [language, routeIndex, searchQuery])
   const roadSearchResults = useMemo(
-    () =>
-      roadEnabled
-        ? searchRoadCorridors(roadTopology?.roads ?? [], searchQuery)
-        : [],
-    [roadEnabled, roadTopology?.roads, searchQuery],
+    () => searchRoadCorridors(roadTopology?.roads ?? SWITZERLAND_ROADS, searchQuery),
+    [roadTopology?.roads, searchQuery],
   )
   const airportSearchResults = useMemo(
     () => searchAirports(SWITZERLAND_AIRPORTS, searchQuery),
@@ -951,6 +958,10 @@ export function App({ edition }: AppProps) {
   }, [networkTime, releaseSelection, roadEnabled, roadSnapshot])
 
   const selectRoad = useCallback((road: RoadTopologyRoad) => {
+    setDirectorMode(false)
+    setNetworkStudy('national')
+    setNationalTimeRange('morning')
+    if (!roadEnabled) toggleRoadLayer()
     setSelectedTrainId(undefined)
     setSelectedStationName(undefined)
     setSelectedRouteId(undefined)
@@ -970,7 +981,7 @@ export function App({ edition }: AppProps) {
       focus: road.focus,
       distanceScale: road.cameraScale,
     }))
-  }, [])
+  }, [roadEnabled, toggleRoadLayer])
 
   const openTerrainCorridor = useCallback(
     (nextCorridorId: TerrainCorridorId, nextProgress = 0.015) => {
@@ -2431,11 +2442,11 @@ export function App({ edition }: AppProps) {
                   >
                     <span className="road-result-mark" aria-hidden="true">━</span>
                     <span className="result-service">
-                      {road.label} <b>{road.officialLabel}</b>
+                      {road.label}
                     </span>
                     <span className="result-route">
-                      {road.description ?? text.nationalMotorway} ·{' '}
-                      {text.roadSections(road.sectionCount)}
+                      {text.wholeMotorway}
+                      {road.description ? ` · ${road.description}` : ''}
                     </span>
                   </button>
                 )
@@ -2874,16 +2885,24 @@ export function App({ edition }: AppProps) {
           </p>
           <div className="metric-grid">
             <div>
-              <span>{text.counterSites}</span>
-              <strong>{selectedRoad.stationCount}</strong>
-              <small>{text.aligned}</small>
+              <span>{text.mappedRoadLength}</span>
+              <strong>{selectedRoadLength === undefined ? '—' : `≈${roadMetricFormat.format(selectedRoadLength)}`}</strong>
+              <small>km</small>
             </div>
             <div>
-              <span>{text.sections}</span>
-              <strong>{selectedRoad.sectionCount}</strong>
-              <small>{text.measurementReady}</small>
+              <span>{text.estimatedVehicles}</span>
+              <strong>{selectedRoadTraffic ? `≈${numberFormat.format(selectedRoadTraffic.vehicles)}` : '—'}</strong>
             </div>
           </div>
+          <p className="road-traffic-summary">
+            {selectedRoadTraffic
+              ? <>
+                  <span>{text.roadDensitySummary(roadMetricFormat.format(selectedRoadTraffic.density))}</span>
+                  <span>{text.roadCoverageSummary(roadMetricFormat.format(selectedRoadTraffic.carriagewayKm))}</span>
+                  <span>{selectedRoadTraffic.representative ? text.representativeRoadTraffic : text.counterRoadTraffic}</span>
+                </>
+              : roadLoadState === 'loading' ? text.loadingRoad : text.noRoadTraffic}
+          </p>
         </section>
       ) : isNetwork ? (
         <section
