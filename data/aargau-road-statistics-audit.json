@@ -1,0 +1,119 @@
+{
+  "metadata": {
+    "schemaVersion": 1,
+    "source": "AGIS.avk_vkzsmeas",
+    "acquiredDate": "2026-09-08",
+    "archiveSha256": "b23af52c18bc3b294c086dcb8abbebfe89ad64f1d7226ab0ec7b2b7365ceaac5",
+    "csvMember": "AGIS.avk_vkzsmeas/avk_vkzsmeas_20260803.csv",
+    "attribution": "Daten des Kantons Aargau",
+    "sourceManifest": "data/regional-road-expansion-sources/2026-09-08/manifest.json",
+    "reportReviews": "data/aargau-road-statistics-reviews.json",
+    "productType": "road-survey-statistics",
+    "playbackEligible": false,
+    "publicDisplayAdmitted": false,
+    "metricDefinitions": {
+      "DTV": {
+        "basis": "annualized-daily-mean",
+        "unit": "vehicles/day"
+      },
+      "DTV24": {
+        "basis": "survey-period-daily-mean",
+        "unit": "vehicles/day"
+      },
+      "DWV24": {
+        "basis": "survey-period-weekday-daily-mean",
+        "unit": "vehicles/day"
+      },
+      "DTVt": {
+        "basis": "survey-period-daytime-mean",
+        "unit": "vehicles/06:00-22:00"
+      },
+      "DTVn": {
+        "basis": "survey-period-nighttime-mean",
+        "unit": "vehicles/22:00-06:00"
+      },
+      "MSPW": {
+        "basis": "average-weekday-morning-peak",
+        "unit": "vehicles/07:00-08:00"
+      },
+      "ASPW": {
+        "basis": "average-weekday-evening-peak",
+        "unit": "vehicles/17:00-18:00"
+      }
+    },
+    "classMetricsStatus": "Retained as original source fields; no cross-scheme aggregation admitted.",
+    "aggregationPolicy": "Do not add both-direction records to their component directions or combine survey periods."
+  },
+  "sourceRows": 10222,
+  "importedMivRows": 10093,
+  "excludedCycleRows": 129,
+  "stations": 911,
+  "periodStatus": {
+    "available": 4868,
+    "invalid": 3,
+    "missing": 5222
+  },
+  "qualityStatus": {
+    "report-reviewed-with-substitution": 3,
+    "report-unreviewed": 10090
+  },
+  "missingMetrics": {
+    "DTV": 0,
+    "DTV24": 4766,
+    "DWV24": 4784,
+    "DTVt": 5395,
+    "DTVn": 5395,
+    "MSPW": 4818,
+    "ASPW": 4818
+  },
+  "flaggedRecords": [
+    {
+      "id": "agis:217069e7301426fc928231883d3f8106e9adaf6e154eef75893a89596089b2f6",
+      "stationId": "AG1000",
+      "sourceRow": 3,
+      "issues": [
+        "holiday-data-substitution"
+      ]
+    },
+    {
+      "id": "agis:6d64bcc3b176a98ebcc6e39a584879ec3ab07166f07d9c9cc2e6ff0f338d1bea",
+      "stationId": "AG1000",
+      "sourceRow": 4,
+      "issues": [
+        "holiday-data-substitution"
+      ]
+    },
+    {
+      "id": "agis:c15a45567ea717be71964eef0f7f3a1cd3874340bf5b475a25c39a41e2978eb8",
+      "stationId": "AG1000",
+      "sourceRow": 2,
+      "issues": [
+        "holiday-data-substitution"
+      ]
+    },
+    {
+      "id": "agis:89b728258919d2685d9791305ede1d64c578ccca50fcf0e42aa1530b217ac097",
+      "stationId": "ZH1390",
+      "sourceRow": 907,
+      "issues": [
+        "invalid-survey-period"
+      ]
+    },
+    {
+      "id": "agis:bc8b783586f5e96f4866abf8809a251b3a9b5be034bcfc654d4a868837aaaadb",
+      "stationId": "ZH1390",
+      "sourceRow": 905,
+      "issues": [
+        "invalid-survey-period"
+      ]
+    },
+    {
+      "id": "agis:fc0194e1f0008ce2d0c43526580fb5e80c1f06d52ad89ca6c8aa701b64064a37",
+      "stationId": "ZH1390",
+      "sourceRow": 906,
+      "issues": [
+        "invalid-survey-period"
+      ]
+    }
+  ]
+}

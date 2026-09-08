@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "reports": {
+    "20260430_I_1000.pdf": {
+      "id": "fislisbach-2026-holiday-substitution",
+      "stationId": "AG1000",
+      "startLocal": "2026-04-30T00:00:00",
+      "endExclusiveLocal": "2026-05-14T00:00:00",
+      "pinnedSource": "aargau-fislisbach-2026.pdf",
+      "sha256": "b16e8c627135bfd8e10ae64b627dd932b9702ad9fbedc3c61b5784fc1bb1512d",
+      "page": 1,
+      "reviewedDate": "2026-09-08",
+      "issues": [
+        "holiday-data-substitution"
+      ],
+      "note": "The report states that 1 May 2026 data were replaced with 8 May 2026 data. Applies to the reported survey, including both directional records. Hourly report values are average weekday profiles, not dated observations.",
+      "substitutedDate": "2026-05-01",
+      "replacementDate": "2026-05-08"
+    }
+  }
+}

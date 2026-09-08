@@ -12,6 +12,8 @@ Checked **8 September 2026**. Actual public responses, exports and two sample re
 
 These totals describe different things and must not be added together as coverage. Inventories include other owners and historical or inactive stations. Nothing from this survey has been added to public playback.
 
+**9 September implementation:** the [Aargau statistical importer](AARGAU-ROAD-STATISTICS.md) now retains all 10,093 MIV records, separates annual/period metrics, preserves missing dates, flags three invalid periods and attaches the reviewed holiday substitution. Public display remains unadmitted.
+
 ## Geneva
 
 The [SITG counter catalogue](https://sitg.ge.ch/donnees/otc-comptage-trafic) exposes a queryable [ArcGIS layer](https://vector.sitg.ge.ch/arcgis/rest/services/OTC_COMPTAGE_TRAFIC/FeatureServer/0?f=pjson). A full LV95 point query returned 694 features, matching the independent count query without a transfer-limit flag.
