@@ -4,6 +4,128 @@
     "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
   },
   "sources": {
+    "accessRoads": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceDirectory": "data/solothurn-access-roads",
+        "sourceSha256": "eb09493bd3a1dbb42bc9e84317cfcb81302a6b3a54ff24d141deee3077b26cee",
+        "cacheSha256": "407d5559788eeb751b0d97243f1ae6abbf0b7c748f3585123362288ca3614417",
+        "limits": {
+          "detourRatio": 3,
+          "detourFloorMetres": 600
+        },
+        "pairs": [
+          {
+            "routeId": "96-131-1-j26-1",
+            "agencyId": "801",
+            "line": "111",
+            "fromId": "ch:1:sloid:3662:0:869147",
+            "toId": "ch:1:sloid:72212:1:4",
+            "geometrySha256": "8b64f5a45f63cf857ce4bf0b8b4976425442228c5041157b846376d5c80f9f0f"
+          },
+          {
+            "routeId": "92-EV6-R-j26-1",
+            "agencyId": "7231",
+            "line": "EV6",
+            "fromId": "ch:1:sloid:77943",
+            "toId": "ch:1:sloid:10672",
+            "geometrySha256": "a646d4fa0fc7db64a99ba651418e43f0f48fcc854e79fb8b798e62346edf1a0c"
+          },
+          {
+            "routeId": "92-EV6-R-j26-1",
+            "agencyId": "7231",
+            "line": "EV6",
+            "fromId": "ch:1:sloid:10672",
+            "toId": "ch:1:sloid:77943",
+            "geometrySha256": "cc1f8c882bf4e702e1d896ef9917fdb059323b700a88d42f505ed2c8e3049816"
+          },
+          {
+            "routeId": "92-M11-j26-1",
+            "agencyId": "883",
+            "line": "M11",
+            "fromId": "ch:1:sloid:72373:0:1",
+            "toId": "ch:1:sloid:78092",
+            "geometrySha256": "047f4411c9fd31638260f898799b3b58db538097ad01fb4c4cfd04e7cdf01b93"
+          },
+          {
+            "routeId": "92-N22-j26-1",
+            "agencyId": "840",
+            "line": "N22",
+            "fromId": "ch:1:sloid:72388",
+            "toId": "ch:1:sloid:94930::2",
+            "geometrySha256": "0758e332331e045aa3f4917833c3069b3aa316096ebd05ce85ebad82a2db8f57"
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "agencyId": "801",
+            "line": "111",
+            "fromId": "ch:1:sloid:3662",
+            "toId": "ch:1:sloid:72212",
+            "geometrySha256": "b5a081d9b86fc6951d497badcfe0ab7c5fcfc3256651b492e8946184c24a0655"
+          }
+        ],
+        "method": "Only these previously missing six route/operator-specific directed pairs can use the tighter-candidate service-road consensus. Every complete pattern on all eight reviewed routes is retained, including unsuccessful alternatives. Existing successful cantonal and supplementary paths take priority. No matcher fallback, missing call, failed consensus or detour override is admitted."
+      },
+      "policySha256": "cdff351fa6841dd97caa37b36d680e0a8217d9c42aa2702d06f2f90a7b0d8e56",
+      "source": {
+        "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+        "sourceDate": "2026-09-02",
+        "parentPbfSha256": "39257b1c92a45da38ca94ddb745bdcf53551d0e66b02d89f3de3e7c064c3a29f",
+        "osmSha256": "1c5a33efb2fffcdca46e3c0e6c8bdaaec2d9ce3dbb2ea8ee18834f630b3fedc7",
+        "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+        "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+        "args": [
+          "-x",
+          "/private/tmp/gleislicht-switzerland-260902.osm.pbf",
+          "-c",
+          "data/solothurn-access-roads/filter.cfg",
+          "-i",
+          "/private/tmp/solothurn-access-feed",
+          "-m",
+          "bus",
+          "-X",
+          "/private/tmp/solothurn-access-network.osm"
+        ],
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "licenseUrl": "https://www.openstreetmap.org/copyright",
+        "method": "Input-dependent pfaedle extraction from the pinned Swiss PBF, adding service roads with original access/direction/turn rules. Routing profile tightens stop candidates to 20 m. No current operator itinerary or physical access certification.",
+        "description": "Geofabrik Switzerland 2026-09-02; Solothurn eight-route service-road review with 20 m stop candidates",
+        "matcher": {
+          "schemaVersion": 1,
+          "completed": true,
+          "noTrie": true,
+          "warnings": true,
+          "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+          "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+          "configSha256": "b83f29bb3f3435cdd138a7aaf0609eac69877c67ce2776243f8372979e49b2de",
+          "osmSha256": "1c5a33efb2fffcdca46e3c0e6c8bdaaec2d9ce3dbb2ea8ee18834f630b3fedc7",
+          "patternsSha256": "c5f62d56bcea466af24103dc56cad873c6fff5435f0d39d51b7ad6592561b676",
+          "logSha256": "827da87d7505e400f09cd1837d5069a9bcc8283f91b368675cbdb61d11b02b09",
+          "shapesSha256": "32d1f175601107013b98bcec03a01c32175add7ef2f43edfd876702cea819b82",
+          "tripsSha256": "245eb1f5a9873e70f62d23251da41df92eafdb5c5a3780d5281a15666d289392",
+          "stopTimesSha256": "b3c0d1e6df171888bdb337500e41ec374554fc975a4191d637a14301ff5b0c4d",
+          "elapsedSeconds": 10
+        },
+        "files": {
+          "parent-source.json": "4d47d6dbfa4844545d7030b0de512df36da4b95f224b222a8bff19b0e4aa1509",
+          "graph-source.json": "74aed260961d0f93e512baf6f6868071ecda8a65bb488a92ba1f408934b26c27",
+          "selection.json": "063cdd033a5cac3b1df3e3f19d2716f0d6f1128beb9ae40451b098d321008ef3",
+          "filter.cfg": "2f768e1f73689795430ae71365cbb11dc5ae798a8c5004bb13b56fd42b51ca38",
+          "routing.cfg": "b83f29bb3f3435cdd138a7aaf0609eac69877c67ce2776243f8372979e49b2de",
+          "pfaedle-LICENSE": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "network.osm.gz": "bb5385fa4de58cd2ca9ccd492e072b66021bfe17451bcaa37880a7a59b5bf512",
+          "filtering.log.gz": "b89031643f7bb0de3bf30f64ff999a4abe6caf931edec30259eb0850812aae0c",
+          "filter-patterns.json.gz": "dd0dd4d812fd37fe8cf090244ccd5fe17f4522fb53b14015c5cf619821ef9fc3",
+          "routing-input.json.gz": "d88f6c2ddd8cc20284e5e8f863bee7663d43dde208ca91369645a79247e2e267",
+          "evidence.json.gz": "3b03098f5abbcfa3b591cca2a2a2ee4e8eebbff736dee0fb237c2765bc05a780"
+        },
+        "configurationAttribution": "pfaedle configuration, University of Freiburg / Patrick Brosi et al., GPL v3; service-road and strict-candidate profile retained from the Luzern study. No access/direction/turn rules removed."
+      },
+      "patterns": 72,
+      "matcherIssues": [],
+      "maximumImportedSnapMetres": 24.25261527965005
+    },
     "busJunction": {
       "policy": {
         "schemaVersion": 1,
@@ -706,23 +828,23 @@
       },
       "after": {
         "trips": 7156,
-        "admittedTrips": 6955,
+        "admittedTrips": 6989,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5877,
+        "admittedScheduledTrips": 5911,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97063,
+        "matchedScheduledSegmentOccurrences": 97097,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98141,
-        "admittedSegmentOccurrences": 91880,
+        "matchedSegmentOccurrences": 98175,
+        "admittedSegmentOccurrences": 93159,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4239,
+        "matchedDirectedPairs": 4240,
         "patterns": 921,
-        "completePatterns": 874,
-        "admittedPatterns": 874,
+        "completePatterns": 877,
+        "admittedPatterns": 877,
         "excludedTrips": {
-          "incomplete-directed-pattern": 201
+          "incomplete-directed-pattern": 167
         }
       },
       "lostAdmittedPatterns": [],
@@ -14865,6 +14987,31 @@
           ]
         },
         {
+          "id": "407d32a0437bbf519f81b2d7",
+          "routeId": "96-131-1-j26-1",
+          "line": "111",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:775:0:815608",
+            "ch:1:sloid:72210:0:992563",
+            "ch:1:sloid:72211:0:439842",
+            "ch:1:sloid:972:0:971618",
+            "ch:1:sloid:72220:0:649198",
+            "ch:1:sloid:80933:0:594726",
+            "ch:1:sloid:72224:0:299008",
+            "ch:1:sloid:72223:0:160522",
+            "ch:1:sloid:72222:0:399982",
+            "ch:1:sloid:72221:0:603972",
+            "ch:1:sloid:3662:0:869147",
+            "ch:1:sloid:72212:1:4"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "osm-solothurn-access-road-inference",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "e7835d137c8afaca0b424b59",
           "routeId": "96-131-1-j26-1",
           "line": "111",
@@ -14913,6 +15060,40 @@
           "admittedTrips": 9,
           "geometrySources": [
             "osm-road-inference",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "705a8cee4c7ddec2bb54d69a",
+          "routeId": "96-131-1-j26-1",
+          "line": "111",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:765:0:809629",
+            "ch:1:sloid:72133:0:653646",
+            "ch:1:sloid:82119:0:644725",
+            "ch:1:sloid:72135:0:455515",
+            "ch:1:sloid:753:0:356622",
+            "ch:1:sloid:72136:0:803562",
+            "ch:1:sloid:72137:0:322660",
+            "ch:1:sloid:72138:0:964507",
+            "ch:1:sloid:72140:0:607563",
+            "ch:1:sloid:775:0:815608",
+            "ch:1:sloid:72210:0:992563",
+            "ch:1:sloid:72211:0:439842",
+            "ch:1:sloid:972:0:971618",
+            "ch:1:sloid:72220:0:649198",
+            "ch:1:sloid:80933:0:594726",
+            "ch:1:sloid:72224:0:299008",
+            "ch:1:sloid:72223:0:160522",
+            "ch:1:sloid:72222:0:399982",
+            "ch:1:sloid:72221:0:603972",
+            "ch:1:sloid:3662:0:869147",
+            "ch:1:sloid:72212:1:4"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "osm-solothurn-access-road-inference",
             "solothurn-network"
           ]
         },
@@ -14988,6 +15169,60 @@
           "admittedTrips": 1,
           "geometrySources": [
             "osm-road-inference",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "b4496d83e363694ef522f88a",
+          "routeId": "96-131-1-j26-1",
+          "line": "111",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72113:0:489065",
+            "ch:1:sloid:72168:0:180359",
+            "ch:1:sloid:80734:0:509064",
+            "ch:1:sloid:72169:0:962819",
+            "ch:1:sloid:72170:0:110785",
+            "ch:1:sloid:958:0:893032",
+            "ch:1:sloid:72115:0:708906",
+            "ch:1:sloid:752:0:58095",
+            "ch:1:sloid:72116:0:380685",
+            "ch:1:sloid:82411:0:670907",
+            "ch:1:sloid:72117:0:5243",
+            "ch:1:sloid:967:0:600753",
+            "ch:1:sloid:72118:0:306446",
+            "ch:1:sloid:72119:0:407741",
+            "ch:1:sloid:72120:0:668973",
+            "ch:1:sloid:72119:0:978527",
+            "ch:1:sloid:72121:0:64956",
+            "ch:1:sloid:969:0:74709",
+            "ch:1:sloid:72122:0:366552",
+            "ch:1:sloid:765:0:809629",
+            "ch:1:sloid:72133:0:653646",
+            "ch:1:sloid:82119:0:644725",
+            "ch:1:sloid:72135:0:455515",
+            "ch:1:sloid:753:0:356622",
+            "ch:1:sloid:72136:0:803562",
+            "ch:1:sloid:72137:0:322660",
+            "ch:1:sloid:72138:0:964507",
+            "ch:1:sloid:72140:0:607563",
+            "ch:1:sloid:775:0:815608",
+            "ch:1:sloid:72210:0:992563",
+            "ch:1:sloid:72211:0:439842",
+            "ch:1:sloid:972:0:971618",
+            "ch:1:sloid:72220:0:649198",
+            "ch:1:sloid:80933:0:594726",
+            "ch:1:sloid:72224:0:299008",
+            "ch:1:sloid:72223:0:160522",
+            "ch:1:sloid:72222:0:399982",
+            "ch:1:sloid:72221:0:603972",
+            "ch:1:sloid:3662:0:869147",
+            "ch:1:sloid:72212:1:4"
+          ],
+          "admittedTrips": 32,
+          "geometrySources": [
+            "osm-road-inference",
+            "osm-solothurn-access-road-inference",
             "solothurn-network"
           ]
         },
@@ -18031,7 +18266,7 @@
         },
         "solothurn-network": {
           "directedPairs": 3004,
-          "admittedOccurrences": 76890
+          "admittedOccurrences": 78103
         },
         "bern-official-413": {
           "directedPairs": 10,
@@ -18051,11 +18286,15 @@
         },
         "osm-road-inference": {
           "directedPairs": 266,
-          "admittedOccurrences": 5556
+          "admittedOccurrences": 5588
         },
         "bern-official-boat-3216": {
           "directedPairs": 14,
           "admittedOccurrences": 28
+        },
+        "osm-solothurn-access-road-inference": {
+          "directedPairs": 1,
+          "admittedOccurrences": 34
         },
         "solothurn-reviewed-bus-junction": {
           "directedPairs": 1,
@@ -18090,24 +18329,24 @@
       },
       "after": {
         "trips": 5819,
-        "admittedTrips": 5525,
+        "admittedTrips": 5644,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4417,
+        "admittedScheduledTrips": 4536,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67708,
+        "matchedScheduledSegmentOccurrences": 67827,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68816,
-        "admittedSegmentOccurrences": 62997,
+        "matchedSegmentOccurrences": 68935,
+        "admittedSegmentOccurrences": 64475,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4444,
+        "matchedDirectedPairs": 4450,
         "patterns": 777,
-        "completePatterns": 724,
-        "admittedPatterns": 724,
+        "completePatterns": 733,
+        "admittedPatterns": 733,
         "excludedTrips": {
-          "incomplete-directed-pattern": 285,
-          "night-network-excluded-by-source": 9
+          "incomplete-directed-pattern": 173,
+          "night-network-excluded-by-source": 2
         }
       },
       "lostAdmittedPatterns": [],
@@ -28302,6 +28541,38 @@
           ]
         },
         {
+          "id": "790fa60169fceb188f320456",
+          "routeId": "92-EV6-R-j26-1",
+          "line": "EV6",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:77914:0:3",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:10672"
+          ],
+          "admittedTrips": 38,
+          "geometrySources": [
+            "osm-solothurn-access-road-inference",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "edc3c849deacb0f3bae9e524",
+          "routeId": "92-EV6-R-j26-1",
+          "line": "EV6",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:10672",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:77914:0:1517"
+          ],
+          "admittedTrips": 41,
+          "geometrySources": [
+            "osm-solothurn-access-road-inference",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "47f9ed3f6c2f4faa906c1044",
           "routeId": "92-EV7-j26-1",
           "line": "EV7",
@@ -28468,6 +28739,87 @@
           "admittedTrips": 2,
           "geometrySources": [
             "osm-road-inference"
+          ]
+        },
+        {
+          "id": "fe0f239f107ed73685157637",
+          "routeId": "92-M11-j26-1",
+          "line": "M11",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:494:0:1",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:72373:0:1",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78094",
+            "ch:1:sloid:78095",
+            "ch:1:sloid:78096",
+            "ch:1:sloid:78097",
+            "ch:1:sloid:71480",
+            "ch:1:sloid:78142",
+            "ch:1:sloid:78140",
+            "ch:1:sloid:81761",
+            "ch:1:sloid:78138",
+            "ch:1:sloid:89040",
+            "ch:1:sloid:89025",
+            "ch:1:sloid:87810",
+            "ch:1:sloid:89028",
+            "ch:1:sloid:81330",
+            "ch:1:sloid:89045",
+            "ch:1:sloid:89042",
+            "ch:1:sloid:89052",
+            "ch:1:sloid:71392:0:714037",
+            "ch:1:sloid:76646:0:15"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "osm-road-inference",
+            "osm-solothurn-access-road-inference"
+          ]
+        },
+        {
+          "id": "b12c1fd04762f3e215f6fd03",
+          "routeId": "92-M11-j26-1",
+          "line": "M11",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72373:0:1",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78094",
+            "ch:1:sloid:78095",
+            "ch:1:sloid:78096",
+            "ch:1:sloid:78097",
+            "ch:1:sloid:71480",
+            "ch:1:sloid:78142",
+            "ch:1:sloid:78140",
+            "ch:1:sloid:81761",
+            "ch:1:sloid:78138",
+            "ch:1:sloid:89040",
+            "ch:1:sloid:89025",
+            "ch:1:sloid:87810",
+            "ch:1:sloid:89028",
+            "ch:1:sloid:81330",
+            "ch:1:sloid:89045",
+            "ch:1:sloid:89042",
+            "ch:1:sloid:89052",
+            "ch:1:sloid:71392:0:714037",
+            "ch:1:sloid:89049:0:1",
+            "ch:1:sloid:76980",
+            "ch:1:sloid:76981",
+            "ch:1:sloid:76982",
+            "ch:1:sloid:89542:0:8",
+            "ch:1:sloid:7636",
+            "ch:1:sloid:7638",
+            "ch:1:sloid:76646:0:15"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "osm-road-inference",
+            "osm-solothurn-access-road-inference"
           ]
         },
         {
@@ -28893,6 +29245,64 @@
           "admittedTrips": 1,
           "geometrySources": [
             "osm-road-inference"
+          ]
+        },
+        {
+          "id": "d28fdb70a7894edb82963cb4",
+          "routeId": "92-N22-j26-1",
+          "line": "N22",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:78652",
+            "ch:1:sloid:78651",
+            "ch:1:sloid:78650",
+            "ch:1:sloid:78649",
+            "ch:1:sloid:78007",
+            "ch:1:sloid:78647",
+            "ch:1:sloid:78646",
+            "ch:1:sloid:78645",
+            "ch:1:sloid:72388",
+            "ch:1:sloid:94930::2",
+            "ch:1:sloid:2996::2"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "osm-road-inference",
+            "osm-solothurn-access-road-inference"
+          ]
+        },
+        {
+          "id": "c3036191a03e57efbc9ad2cd",
+          "routeId": "92-N22-j26-1",
+          "line": "N22",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:78652",
+            "ch:1:sloid:78651",
+            "ch:1:sloid:78650",
+            "ch:1:sloid:78649",
+            "ch:1:sloid:78007",
+            "ch:1:sloid:78647",
+            "ch:1:sloid:78646",
+            "ch:1:sloid:78645",
+            "ch:1:sloid:72388",
+            "ch:1:sloid:94930::2",
+            "ch:1:sloid:94929::2",
+            "ch:1:sloid:2996:0:604264",
+            "ch:1:sloid:90134",
+            "ch:1:sloid:90156",
+            "ch:1:sloid:90138",
+            "ch:1:sloid:90151",
+            "ch:1:sloid:90260",
+            "ch:1:sloid:90258",
+            "ch:1:sloid:90259",
+            "ch:1:sloid:90257",
+            "ch:1:sloid:90261"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "osm-road-inference",
+            "osm-solothurn-access-road-inference"
           ]
         },
         {
@@ -29493,6 +29903,31 @@
           ]
         },
         {
+          "id": "407d32a0437bbf519f81b2d7",
+          "routeId": "96-131-1-j26-1",
+          "line": "111",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:775:0:815608",
+            "ch:1:sloid:72210:0:992563",
+            "ch:1:sloid:72211:0:439842",
+            "ch:1:sloid:972:0:971618",
+            "ch:1:sloid:72220:0:649198",
+            "ch:1:sloid:80933:0:594726",
+            "ch:1:sloid:72224:0:299008",
+            "ch:1:sloid:72223:0:160522",
+            "ch:1:sloid:72222:0:399982",
+            "ch:1:sloid:72221:0:603972",
+            "ch:1:sloid:3662:0:869147",
+            "ch:1:sloid:72212:1:4"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "osm-solothurn-access-road-inference",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "b7d603e27bcd1a48101822ff",
           "routeId": "96-131-1-j26-1",
           "line": "111",
@@ -29757,6 +30192,40 @@
           ]
         },
         {
+          "id": "103e81ab170c57885eb91194",
+          "routeId": "96-131-1-j26-1",
+          "line": "111",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:765",
+            "ch:1:sloid:72133",
+            "ch:1:sloid:82119",
+            "ch:1:sloid:72135",
+            "ch:1:sloid:753",
+            "ch:1:sloid:72136",
+            "ch:1:sloid:72137",
+            "ch:1:sloid:72138",
+            "ch:1:sloid:72140",
+            "ch:1:sloid:775",
+            "ch:1:sloid:72210",
+            "ch:1:sloid:72211",
+            "ch:1:sloid:972",
+            "ch:1:sloid:72220",
+            "ch:1:sloid:80933",
+            "ch:1:sloid:72224",
+            "ch:1:sloid:72223",
+            "ch:1:sloid:72222",
+            "ch:1:sloid:72221",
+            "ch:1:sloid:3662",
+            "ch:1:sloid:72212"
+          ],
+          "admittedTrips": 4,
+          "geometrySources": [
+            "osm-solothurn-access-road-inference",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "e7835d137c8afaca0b424b59",
           "routeId": "96-131-1-j26-1",
           "line": "111",
@@ -29880,6 +30349,60 @@
           "admittedTrips": 1,
           "geometrySources": [
             "osm-road-inference",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "b4496d83e363694ef522f88a",
+          "routeId": "96-131-1-j26-1",
+          "line": "111",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72113:0:489065",
+            "ch:1:sloid:72168:0:180359",
+            "ch:1:sloid:80734:0:509064",
+            "ch:1:sloid:72169:0:962819",
+            "ch:1:sloid:72170:0:110785",
+            "ch:1:sloid:958:0:893032",
+            "ch:1:sloid:72115:0:708906",
+            "ch:1:sloid:752:0:58095",
+            "ch:1:sloid:72116:0:380685",
+            "ch:1:sloid:82411:0:670907",
+            "ch:1:sloid:72117:0:5243",
+            "ch:1:sloid:967:0:600753",
+            "ch:1:sloid:72118:0:306446",
+            "ch:1:sloid:72119:0:407741",
+            "ch:1:sloid:72120:0:668973",
+            "ch:1:sloid:72119:0:978527",
+            "ch:1:sloid:72121:0:64956",
+            "ch:1:sloid:969:0:74709",
+            "ch:1:sloid:72122:0:366552",
+            "ch:1:sloid:765:0:809629",
+            "ch:1:sloid:72133:0:653646",
+            "ch:1:sloid:82119:0:644725",
+            "ch:1:sloid:72135:0:455515",
+            "ch:1:sloid:753:0:356622",
+            "ch:1:sloid:72136:0:803562",
+            "ch:1:sloid:72137:0:322660",
+            "ch:1:sloid:72138:0:964507",
+            "ch:1:sloid:72140:0:607563",
+            "ch:1:sloid:775:0:815608",
+            "ch:1:sloid:72210:0:992563",
+            "ch:1:sloid:72211:0:439842",
+            "ch:1:sloid:972:0:971618",
+            "ch:1:sloid:72220:0:649198",
+            "ch:1:sloid:80933:0:594726",
+            "ch:1:sloid:72224:0:299008",
+            "ch:1:sloid:72223:0:160522",
+            "ch:1:sloid:72222:0:399982",
+            "ch:1:sloid:72221:0:603972",
+            "ch:1:sloid:3662:0:869147",
+            "ch:1:sloid:72212:1:4"
+          ],
+          "admittedTrips": 28,
+          "geometrySources": [
+            "osm-road-inference",
+            "osm-solothurn-access-road-inference",
             "solothurn-network"
           ]
         },
@@ -32433,7 +32956,7 @@
         },
         "solothurn-network": {
           "directedPairs": 2611,
-          "admittedOccurrences": 49321
+          "admittedOccurrences": 50522
         },
         "bern-official-413": {
           "directedPairs": 10,
@@ -32449,7 +32972,11 @@
         },
         "osm-road-inference": {
           "directedPairs": 824,
-          "admittedOccurrences": 5096
+          "admittedOccurrences": 5254
+        },
+        "osm-solothurn-access-road-inference": {
+          "directedPairs": 6,
+          "admittedOccurrences": 119
         },
         "bern-official-boat-3216": {
           "directedPairs": 14,

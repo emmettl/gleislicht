@@ -8,6 +8,7 @@ import { loadSolothurnCorridors } from './solothurn-corridor-geometry.mjs'
 import { loadSolothurnS29Precedence } from './solothurn-s29-precedence.mjs'
 import { loadSolothurnRailReview } from './solothurn-rail-review.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
+import { loadSolothurnAccessRoads } from './solothurn-access-roads.mjs'
 import { loadSolothurnBusJunction } from './solothurn-bus-junction.mjs'
 import { loadSolothurnRoads } from './solothurn-road-geometry.mjs'
 import { hashFile } from './solothurn-timetable.mjs'
@@ -72,15 +73,17 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
     }
   }
   const pairs = supplementConsensus(candidates)
+  const accessRoads = roads ? await loadSolothurnAccessRoads(context, { verifyEvidence }) : undefined
   let road
   if (roads) {
     road = await loadSolothurnRoads(context, { verifyEvidence })
     for (const [key, value] of road.pairs) pairs.set(key, value)
   }
-  return { pairs, policy, s29PrecedenceReview: [...s29Precedence.review.values()], metadata: { busJunction: busJunction.metadata, s29Precedence: s29Precedence.metadata, railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
+  return { pairs, policy, s29PrecedenceReview: [...s29Precedence.review.values()], accessRoadReview: accessRoads ? [...accessRoads.all].map(([key, { path, ...assessment }]) => ({ key, ...assessment, pathSha256: path ? sha(path) : null, selected: accessRoads.pairs.has(key) })) : [], metadata: { ...(accessRoads ? { accessRoads: accessRoads.metadata } : {}), busJunction: busJunction.metadata, s29Precedence: s29Precedence.metadata, railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
     ...(road ? { road: road.metadata, roadCacheSha256: road.sha256 } : {}) },
     match(route, from, to) {
-      const value = busJunction.match(route, from, to, pairs.get(keyOf(route, from, to)))
+      const previous = busJunction.match(route, from, to, pairs.get(keyOf(route, from, to)))
+      const value = accessRoads ? accessRoads.match(route, from, to, previous) : previous
       if (value?.path) assert.equal(value.agencyId, route.agencyId, 'Supplement changed operator identity')
       return value
     } }

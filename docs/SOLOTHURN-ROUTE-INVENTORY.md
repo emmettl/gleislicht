@@ -17,14 +17,14 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 202 | Seilbahn Weissenstein AG | 1 | 1 | 1078 / 1078 | 1108 / 1108 |
 | 723 | Aargau Verkehr AG | 1 | 1 | 0 / 0 | 4 / 4 |
 | 793 | Busbetrieb Olten-Gösgen-Gäu | 16 | 16 | 926 / 955 | 620 / 620 |
-| 801 | PostAuto AG | 30 | 30 | 1360 / 1394 | 923 / 961 |
-| 840 | Busbetrieb Aarau | 3 | 3 | 388 / 388 | 296 / 300 |
+| 801 | PostAuto AG | 30 | 30 | 1394 / 1394 | 956 / 961 |
+| 840 | Busbetrieb Aarau | 3 | 3 | 388 / 388 | 300 / 300 |
 | 850 | Autobusbetrieb RBS | 5 | 5 | 205 / 205 | 141 / 141 |
-| 883 | Busbetrieb Solothurn und Umgebung | 17 | 16 | 787 / 787 | 419 / 424 |
+| 883 | Busbetrieb Solothurn und Umgebung | 17 | 16 | 787 / 787 | 422 / 424 |
 | 894 | Busbetrieb Grenchen und Umgebung | 9 | 9 | 554 / 554 | 282 / 282 |
 | 7136 | Aare Seeland mobil Ersatzverkehr | 1 | 0 | 0 / 0 | 0 / 0 |
 | 7230 | BLS Netz AG Ersatzverkehr | 1 | 0 | 0 / 0 | 0 / 0 |
-| 7231 | SBB Infrastruktur AG Bahnersatz | 16 | 9 | 0 / 0 | 248 / 348 |
+| 7231 | SBB Infrastruktur AG Bahnersatz | 16 | 10 | 0 / 0 | 327 / 348 |
 
 ## Every route record
 
@@ -173,19 +173,19 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 92-EV3-U-j26-1 | 7231 | EV3 / bus | Lebern, Solothurn | admitted-all-dated-trips | 0 / 0 | 76 / 76 | All dated journeys pass |
 | 92-EV4-M-j26-1 | 7231 | EV4 / bus | Lebern, Solothurn | partially-admitted | 0 / 0 | 21 / 42 | incomplete-directed-pattern |
 | 92-EV5-N-j26-1 | 7231 | EV5 / bus | Solothurn | admitted-all-dated-trips | 0 / 0 | 74 / 74 | All dated journeys pass |
-| 92-EV6-R-j26-1 | 7231 | EV6 / bus | Lebern, Solothurn | excluded | 0 / 0 | 0 / 79 | incomplete-directed-pattern |
+| 92-EV6-R-j26-1 | 7231 | EV6 / bus | Lebern, Solothurn | admitted-all-dated-trips | 0 / 0 | 79 / 79 | All dated journeys pass |
 | 92-EV7-j26-1 | 7231 | EV7 / bus | Lebern, Solothurn, Wasseramt | admitted-all-dated-trips | 0 / 0 | 4 / 4 | All dated journeys pass |
 | 92-EV8-M-j26-1 | 7231 | EV8 / bus | Gäu, Lebern, Olten, Solothurn, Wasseramt | admitted-all-dated-trips | 0 / 0 | 1 / 1 | All dated journeys pass |
 | 92-EV9-D-j26-1 | 7231 | EV9 / bus | Gösgen, Olten | admitted-all-dated-trips | 0 / 0 | 4 / 4 | All dated journeys pass |
 | 92-EV9-L-j26-1 | 7231 | EV9 / bus | Lebern, Solothurn | admitted-all-dated-trips | 0 / 0 | 2 / 2 | All dated journeys pass |
 | 92-EV-Q-j26-1 | 7231 | EV / bus | Solothurn, Wasseramt | inactive-on-validation-dates | 0 / 0 | 0 / 0 | No civil-day instance on either date |
-| 92-M11-j26-1 | 883 | M11 / bus | Solothurn, Wasseramt | partially-admitted | 0 / 0 | 3 / 6 | night-network-excluded-by-source |
+| 92-M11-j26-1 | 883 | M11 / bus | Solothurn, Wasseramt | admitted-all-dated-trips | 0 / 0 | 6 / 6 | All dated journeys pass |
 | 92-M30-j26-1 | 883 | M30 / bus | Lebern, Solothurn | admitted-all-dated-trips | 0 / 0 | 4 / 4 | All dated journeys pass |
 | 92-M51-j26-1 | 883 | M51 / bus | Bucheggberg, Lebern, Solothurn, Wasseramt | admitted-all-dated-trips | 0 / 0 | 2 / 2 | All dated journeys pass |
 | 92-M52-j26-1 | 883 | M52 / bus | Gäu, Solothurn, Wasseramt | admitted-all-dated-trips | 0 / 0 | 4 / 4 | All dated journeys pass |
 | 92-M53-j26-1 | 883 | M53 / bus | Solothurn, Wasseramt | excluded | 0 / 0 | 0 / 2 | night-network-excluded-by-source |
 | 92-M54-j26-1 | 883 | M54 / bus | Bucheggberg, Solothurn, Wasseramt | admitted-all-dated-trips | 0 / 0 | 1 / 1 | All dated journeys pass |
-| 92-N22-j26-1 | 840 | N22 / bus | Gösgen | partially-admitted | 0 / 0 | 4 / 8 | night-network-excluded-by-source |
+| 92-N22-j26-1 | 840 | N22 / bus | Gösgen | admitted-all-dated-trips | 0 / 0 | 8 / 8 | All dated journeys pass |
 | 92-N23-j26-1 | 793 | N23 / bus | Olten | admitted-all-dated-trips | 0 / 0 | 4 / 4 | All dated journeys pass |
 | 92-N51-j26-1 | 793 | N51 / bus | Gäu, Olten | admitted-all-dated-trips | 0 / 0 | 7 / 7 | All dated journeys pass |
 | 92-N55-j26-1 | 793 | N55 / bus | Gäu, Olten | admitted-all-dated-trips | 0 / 0 | 6 / 6 | All dated journeys pass |
@@ -193,7 +193,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 92-N60-A-j26-1 | 723 | N60 / bus | Olten | admitted-all-dated-trips | 0 / 0 | 4 / 4 | All dated journeys pass |
 | 93-202-6-j26-1 | 202 | 2026 / cableway | Lebern | admitted-all-dated-trips | 1078 / 1078 | 1108 / 1108 | All dated journeys pass |
 | 94-321-6-j26-1 | 182 | 3216 / ferry | Lebern, Solothurn | admitted-all-dated-trips | 4 / 4 | 4 / 4 | All dated journeys pass |
-| 96-131-1-j26-1 | 801 | 111 / bus | Dorneck, Thierstein | partially-admitted | 46 / 80 | 51 / 84 | incomplete-directed-pattern |
+| 96-131-1-j26-1 | 801 | 111 / bus | Dorneck, Thierstein | admitted-all-dated-trips | 80 / 80 | 84 / 84 | All dated journeys pass |
 | 96-131-2-j26-1 | 801 | 112 / bus | Thierstein | admitted-all-dated-trips | 72 / 72 | 71 / 71 | All dated journeys pass |
 | 96-131-3-j26-1 | 801 | 113 / bus | Thierstein | admitted-all-dated-trips | 35 / 35 | 0 / 0 | All dated journeys pass |
 | 96-131-4-j26-1 | 801 | 114 / bus | Thierstein | admitted-all-dated-trips | 51 / 51 | 40 / 40 | All dated journeys pass |

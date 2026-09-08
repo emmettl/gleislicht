@@ -6,6 +6,128 @@
   },
   "sources": {
     "supplements": {
+      "accessRoads": {
+        "policy": {
+          "schemaVersion": 1,
+          "sourceDirectory": "data/solothurn-access-roads",
+          "sourceSha256": "eb09493bd3a1dbb42bc9e84317cfcb81302a6b3a54ff24d141deee3077b26cee",
+          "cacheSha256": "407d5559788eeb751b0d97243f1ae6abbf0b7c748f3585123362288ca3614417",
+          "limits": {
+            "detourRatio": 3,
+            "detourFloorMetres": 600
+          },
+          "pairs": [
+            {
+              "routeId": "96-131-1-j26-1",
+              "agencyId": "801",
+              "line": "111",
+              "fromId": "ch:1:sloid:3662:0:869147",
+              "toId": "ch:1:sloid:72212:1:4",
+              "geometrySha256": "8b64f5a45f63cf857ce4bf0b8b4976425442228c5041157b846376d5c80f9f0f"
+            },
+            {
+              "routeId": "92-EV6-R-j26-1",
+              "agencyId": "7231",
+              "line": "EV6",
+              "fromId": "ch:1:sloid:77943",
+              "toId": "ch:1:sloid:10672",
+              "geometrySha256": "a646d4fa0fc7db64a99ba651418e43f0f48fcc854e79fb8b798e62346edf1a0c"
+            },
+            {
+              "routeId": "92-EV6-R-j26-1",
+              "agencyId": "7231",
+              "line": "EV6",
+              "fromId": "ch:1:sloid:10672",
+              "toId": "ch:1:sloid:77943",
+              "geometrySha256": "cc1f8c882bf4e702e1d896ef9917fdb059323b700a88d42f505ed2c8e3049816"
+            },
+            {
+              "routeId": "92-M11-j26-1",
+              "agencyId": "883",
+              "line": "M11",
+              "fromId": "ch:1:sloid:72373:0:1",
+              "toId": "ch:1:sloid:78092",
+              "geometrySha256": "047f4411c9fd31638260f898799b3b58db538097ad01fb4c4cfd04e7cdf01b93"
+            },
+            {
+              "routeId": "92-N22-j26-1",
+              "agencyId": "840",
+              "line": "N22",
+              "fromId": "ch:1:sloid:72388",
+              "toId": "ch:1:sloid:94930::2",
+              "geometrySha256": "0758e332331e045aa3f4917833c3069b3aa316096ebd05ce85ebad82a2db8f57"
+            },
+            {
+              "routeId": "96-131-1-j26-1",
+              "agencyId": "801",
+              "line": "111",
+              "fromId": "ch:1:sloid:3662",
+              "toId": "ch:1:sloid:72212",
+              "geometrySha256": "b5a081d9b86fc6951d497badcfe0ab7c5fcfc3256651b492e8946184c24a0655"
+            }
+          ],
+          "method": "Only these previously missing six route/operator-specific directed pairs can use the tighter-candidate service-road consensus. Every complete pattern on all eight reviewed routes is retained, including unsuccessful alternatives. Existing successful cantonal and supplementary paths take priority. No matcher fallback, missing call, failed consensus or detour override is admitted."
+        },
+        "policySha256": "cdff351fa6841dd97caa37b36d680e0a8217d9c42aa2702d06f2f90a7b0d8e56",
+        "source": {
+          "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+          "sourceDate": "2026-09-02",
+          "parentPbfSha256": "39257b1c92a45da38ca94ddb745bdcf53551d0e66b02d89f3de3e7c064c3a29f",
+          "osmSha256": "1c5a33efb2fffcdca46e3c0e6c8bdaaec2d9ce3dbb2ea8ee18834f630b3fedc7",
+          "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+          "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+          "args": [
+            "-x",
+            "/private/tmp/gleislicht-switzerland-260902.osm.pbf",
+            "-c",
+            "data/solothurn-access-roads/filter.cfg",
+            "-i",
+            "/private/tmp/solothurn-access-feed",
+            "-m",
+            "bus",
+            "-X",
+            "/private/tmp/solothurn-access-network.osm"
+          ],
+          "attribution": "© OpenStreetMap contributors",
+          "license": "ODbL-1.0",
+          "licenseUrl": "https://www.openstreetmap.org/copyright",
+          "method": "Input-dependent pfaedle extraction from the pinned Swiss PBF, adding service roads with original access/direction/turn rules. Routing profile tightens stop candidates to 20 m. No current operator itinerary or physical access certification.",
+          "description": "Geofabrik Switzerland 2026-09-02; Solothurn eight-route service-road review with 20 m stop candidates",
+          "matcher": {
+            "schemaVersion": 1,
+            "completed": true,
+            "noTrie": true,
+            "warnings": true,
+            "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+            "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+            "configSha256": "b83f29bb3f3435cdd138a7aaf0609eac69877c67ce2776243f8372979e49b2de",
+            "osmSha256": "1c5a33efb2fffcdca46e3c0e6c8bdaaec2d9ce3dbb2ea8ee18834f630b3fedc7",
+            "patternsSha256": "c5f62d56bcea466af24103dc56cad873c6fff5435f0d39d51b7ad6592561b676",
+            "logSha256": "827da87d7505e400f09cd1837d5069a9bcc8283f91b368675cbdb61d11b02b09",
+            "shapesSha256": "32d1f175601107013b98bcec03a01c32175add7ef2f43edfd876702cea819b82",
+            "tripsSha256": "245eb1f5a9873e70f62d23251da41df92eafdb5c5a3780d5281a15666d289392",
+            "stopTimesSha256": "b3c0d1e6df171888bdb337500e41ec374554fc975a4191d637a14301ff5b0c4d",
+            "elapsedSeconds": 10
+          },
+          "files": {
+            "parent-source.json": "4d47d6dbfa4844545d7030b0de512df36da4b95f224b222a8bff19b0e4aa1509",
+            "graph-source.json": "74aed260961d0f93e512baf6f6868071ecda8a65bb488a92ba1f408934b26c27",
+            "selection.json": "063cdd033a5cac3b1df3e3f19d2716f0d6f1128beb9ae40451b098d321008ef3",
+            "filter.cfg": "2f768e1f73689795430ae71365cbb11dc5ae798a8c5004bb13b56fd42b51ca38",
+            "routing.cfg": "b83f29bb3f3435cdd138a7aaf0609eac69877c67ce2776243f8372979e49b2de",
+            "pfaedle-LICENSE": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+            "network.osm.gz": "bb5385fa4de58cd2ca9ccd492e072b66021bfe17451bcaa37880a7a59b5bf512",
+            "filtering.log.gz": "b89031643f7bb0de3bf30f64ff999a4abe6caf931edec30259eb0850812aae0c",
+            "filter-patterns.json.gz": "dd0dd4d812fd37fe8cf090244ccd5fe17f4522fb53b14015c5cf619821ef9fc3",
+            "routing-input.json.gz": "d88f6c2ddd8cc20284e5e8f863bee7663d43dde208ca91369645a79247e2e267",
+            "evidence.json.gz": "3b03098f5abbcfa3b591cca2a2a2ee4e8eebbff736dee0fb237c2765bc05a780"
+          },
+          "configurationAttribution": "pfaedle configuration, University of Freiburg / Patrick Brosi et al., GPL v3; service-road and strict-candidate profile retained from the Luzern study. No access/direction/turn rules removed."
+        },
+        "patterns": 72,
+        "matcherIssues": [],
+        "maximumImportedSnapMetres": 24.25261527965005
+      },
       "busJunction": {
         "policy": {
           "schemaVersion": 1,
@@ -1663,10 +1785,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 133,
-    "excluded": 5,
+    "admitted-all-dated-trips": 137,
+    "excluded": 4,
     "inactive-on-validation-dates": 42,
-    "partially-admitted": 13
+    "partially-admitted": 10
   },
   "districts": [
     {
@@ -1756,6 +1878,7 @@
         "92-A05-E-j26-1",
         "92-EV3-U-j26-1",
         "92-EV4-M-j26-1",
+        "92-EV6-R-j26-1",
         "92-EV7-j26-1",
         "92-EV8-M-j26-1",
         "92-EV9-L-j26-1",
@@ -1809,7 +1932,7 @@
         "96-137-3-j26-1",
         "96-137-7-j26-1"
       ],
-      "admittedCalledPlatforms": 154,
+      "admittedCalledPlatforms": 157,
       "admittedRouteIds": [
         "91-10-j26-1",
         "92-56-j26-1",
@@ -2307,23 +2430,23 @@
       },
       "coverage": {
         "trips": 7156,
-        "admittedTrips": 6955,
+        "admittedTrips": 6989,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5877,
+        "admittedScheduledTrips": 5911,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97063,
+        "matchedScheduledSegmentOccurrences": 97097,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98141,
-        "admittedSegmentOccurrences": 91880,
+        "matchedSegmentOccurrences": 98175,
+        "admittedSegmentOccurrences": 93159,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4239,
+        "matchedDirectedPairs": 4240,
         "patterns": 921,
-        "completePatterns": 874,
-        "admittedPatterns": 874,
+        "completePatterns": 877,
+        "admittedPatterns": 877,
         "excludedTrips": {
-          "incomplete-directed-pattern": 201
+          "incomplete-directed-pattern": 167
         }
       },
       "groups": [
@@ -2486,24 +2609,22 @@
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 1394,
-          "admittedTrips": 1360,
+          "admittedTrips": 1394,
           "scheduledTrips": 1394,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1360,
+          "admittedScheduledTrips": 1394,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 21366,
-          "matchedScheduledSegmentOccurrences": 21332,
+          "matchedScheduledSegmentOccurrences": 21366,
           "segmentOccurrences": 21366,
-          "matchedSegmentOccurrences": 21332,
-          "admittedSegmentOccurrences": 20087,
+          "matchedSegmentOccurrences": 21366,
+          "admittedSegmentOccurrences": 21366,
           "directedPairs": 1145,
-          "matchedDirectedPairs": 1144,
+          "matchedDirectedPairs": 1145,
           "patterns": 206,
-          "completePatterns": 203,
-          "admittedPatterns": 203,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 34
-          }
+          "completePatterns": 206,
+          "admittedPatterns": 206,
+          "excludedTrips": {}
         },
         {
           "id": "81:rail",
@@ -2669,7 +2790,7 @@
         "admittedNightTrips": 0
       },
       "timingResolution": {
-        "zeroDurationSegmentOccurrences": 3984,
+        "zeroDurationSegmentOccurrences": 4147,
         "zeroDurationDirectedPairs": [
           {
             "routeId": "91-10-j26-1",
@@ -3433,6 +3554,14 @@
           },
           {
             "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:972:0:971618",
+            "toId": "ch:1:sloid:72220:0:649198",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 191.72553337087507
+          },
+          {
+            "routeId": "96-131-1-j26-1",
             "fromId": "ch:1:sloid:765:0:809629",
             "toId": "ch:1:sloid:72133:0:653646",
             "seconds": 0,
@@ -4138,7 +4267,7 @@
         }
       },
       "pairFailureReasons": {
-        "disconnected-line": 2,
+        "disconnected-line": 1,
         "endpoint-gap": 15,
         "implausible-detour": 1,
         "no-compatible-source-mode": 2
@@ -4163,24 +4292,24 @@
       },
       "coverage": {
         "trips": 5819,
-        "admittedTrips": 5525,
+        "admittedTrips": 5644,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4417,
+        "admittedScheduledTrips": 4536,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67708,
+        "matchedScheduledSegmentOccurrences": 67827,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68816,
-        "admittedSegmentOccurrences": 62997,
+        "matchedSegmentOccurrences": 68935,
+        "admittedSegmentOccurrences": 64475,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4444,
+        "matchedDirectedPairs": 4450,
         "patterns": 777,
-        "completePatterns": 724,
-        "admittedPatterns": 724,
+        "completePatterns": 733,
+        "admittedPatterns": 733,
         "excludedTrips": {
-          "incomplete-directed-pattern": 285,
-          "night-network-excluded-by-source": 9
+          "incomplete-directed-pattern": 173,
+          "night-network-excluded-by-source": 2
         }
       },
       "groups": [
@@ -4320,23 +4449,23 @@
           "id": "7231:bus",
           "agency": "SBB Infrastruktur AG Bahnersatz",
           "trips": 348,
-          "admittedTrips": 248,
+          "admittedTrips": 327,
           "scheduledTrips": 348,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 248,
+          "admittedScheduledTrips": 327,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1228,
-          "matchedScheduledSegmentOccurrences": 1128,
+          "matchedScheduledSegmentOccurrences": 1207,
           "segmentOccurrences": 1228,
-          "matchedSegmentOccurrences": 1128,
-          "admittedSegmentOccurrences": 986,
+          "matchedSegmentOccurrences": 1207,
+          "admittedSegmentOccurrences": 1144,
           "directedPairs": 93,
-          "matchedDirectedPairs": 90,
+          "matchedDirectedPairs": 92,
           "patterns": 18,
-          "completePatterns": 15,
-          "admittedPatterns": 15,
+          "completePatterns": 17,
+          "admittedPatterns": 17,
           "excludedTrips": {
-            "incomplete-directed-pattern": 100
+            "incomplete-directed-pattern": 21
           }
         },
         {
@@ -4385,23 +4514,23 @@
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 961,
-          "admittedTrips": 923,
+          "admittedTrips": 956,
           "scheduledTrips": 961,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 923,
+          "admittedScheduledTrips": 956,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 15377,
-          "matchedScheduledSegmentOccurrences": 15339,
+          "matchedScheduledSegmentOccurrences": 15372,
           "segmentOccurrences": 15377,
-          "matchedSegmentOccurrences": 15339,
-          "admittedSegmentOccurrences": 14149,
+          "matchedSegmentOccurrences": 15372,
+          "admittedSegmentOccurrences": 15332,
           "directedPairs": 1274,
-          "matchedDirectedPairs": 1271,
+          "matchedDirectedPairs": 1273,
           "patterns": 167,
-          "completePatterns": 163,
-          "admittedPatterns": 163,
+          "completePatterns": 166,
+          "admittedPatterns": 166,
           "excludedTrips": {
-            "incomplete-directed-pattern": 38
+            "incomplete-directed-pattern": 5
           }
         },
         {
@@ -4452,24 +4581,22 @@
           "id": "840:bus",
           "agency": "Busbetrieb Aarau",
           "trips": 300,
-          "admittedTrips": 296,
+          "admittedTrips": 300,
           "scheduledTrips": 300,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 296,
+          "admittedScheduledTrips": 300,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 4966,
-          "matchedScheduledSegmentOccurrences": 4962,
+          "matchedScheduledSegmentOccurrences": 4966,
           "segmentOccurrences": 4966,
-          "matchedSegmentOccurrences": 4962,
-          "admittedSegmentOccurrences": 4906,
+          "matchedSegmentOccurrences": 4966,
+          "admittedSegmentOccurrences": 4966,
           "directedPairs": 131,
-          "matchedDirectedPairs": 130,
+          "matchedDirectedPairs": 131,
           "patterns": 13,
-          "completePatterns": 11,
-          "admittedPatterns": 11,
-          "excludedTrips": {
-            "night-network-excluded-by-source": 4
-          }
+          "completePatterns": 13,
+          "admittedPatterns": 13,
+          "excludedTrips": {}
         },
         {
           "id": "850:bus",
@@ -4496,23 +4623,23 @@
           "id": "883:bus",
           "agency": "Busbetrieb Solothurn und Umgebung",
           "trips": 424,
-          "admittedTrips": 419,
+          "admittedTrips": 422,
           "scheduledTrips": 424,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 419,
+          "admittedScheduledTrips": 422,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 8862,
-          "matchedScheduledSegmentOccurrences": 8857,
+          "matchedScheduledSegmentOccurrences": 8860,
           "segmentOccurrences": 8862,
-          "matchedSegmentOccurrences": 8857,
-          "admittedSegmentOccurrences": 8699,
+          "matchedSegmentOccurrences": 8860,
+          "admittedSegmentOccurrences": 8776,
           "directedPairs": 620,
-          "matchedDirectedPairs": 618,
+          "matchedDirectedPairs": 619,
           "patterns": 47,
-          "completePatterns": 44,
-          "admittedPatterns": 44,
+          "completePatterns": 46,
+          "admittedPatterns": 46,
           "excludedTrips": {
-            "night-network-excluded-by-source": 5
+            "night-network-excluded-by-source": 2
           }
         },
         {
@@ -4559,8 +4686,8 @@
         }
       ],
       "carryInTrips": 359,
-      "admittedCarryInTrips": 327,
-      "admittedOutsideCantonPlatforms": 977,
+      "admittedCarryInTrips": 341,
+      "admittedOutsideCantonPlatforms": 992,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -4569,10 +4696,10 @@
         "patternsRevisitingPlatforms": 18,
         "admittedPatternsRevisitingPlatforms": 17,
         "nightTrips": 72,
-        "admittedNightTrips": 63
+        "admittedNightTrips": 70
       },
       "timingResolution": {
-        "zeroDurationSegmentOccurrences": 3087,
+        "zeroDurationSegmentOccurrences": 3237,
         "zeroDurationDirectedPairs": [
           {
             "routeId": "91-10-j26-1",
@@ -5127,6 +5254,14 @@
             "metres": 930.626840101222
           },
           {
+            "routeId": "92-M11-j26-1",
+            "fromId": "ch:1:sloid:89049:0:1",
+            "toId": "ch:1:sloid:76980",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 260.82481529224333
+          },
+          {
             "routeId": "92-M30-j26-1",
             "fromId": "ch:1:sloid:87619:0:01",
             "toId": "ch:1:sloid:76392",
@@ -5560,6 +5695,14 @@
           },
           {
             "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:972:0:971618",
+            "toId": "ch:1:sloid:72220:0:649198",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 191.72553337087507
+          },
+          {
+            "routeId": "96-131-1-j26-1",
             "fromId": "ch:1:sloid:72168:0:180359",
             "toId": "ch:1:sloid:80734:0:509064",
             "seconds": 0,
@@ -5629,6 +5772,22 @@
             "seconds": 0,
             "mode": "bus",
             "metres": 300.6184969640494
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:765",
+            "toId": "ch:1:sloid:72133",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 390.71439462145344
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:972",
+            "toId": "ch:1:sloid:72220",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 178.13579527343583
           },
           {
             "routeId": "96-131-1-j26-1",
@@ -6385,9 +6544,8 @@
         }
       },
       "pairFailureReasons": {
-        "disconnected-line": 2,
-        "endpoint-gap": 16,
-        "night-network-excluded-by-source": 3,
+        "endpoint-gap": 14,
+        "night-network-excluded-by-source": 1,
         "no-compatible-source-mode": 2
       },
       "validation": {

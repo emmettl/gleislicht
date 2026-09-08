@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "purpose": "Retained-source diagnostics only; no additional admission or geometry correction.",
+  "purpose": "Diagnostics of the original retained cantonal and road sources. Later access-road resolution is explicitly linked; this report itself does not change geometry.",
   "sourceHashes": {
     "network": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8",
     "context": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
@@ -163,6 +163,7 @@
         ]
       }
     ],
-    "decision": "Excluded: differing complete-pattern road candidates and a source-endpoint gap far above the separately reviewed 3 mm Oberbuchsiten limit. No route-specific operating evidence resolves the alternatives."
+    "resolutionAudit": "data/solothurn-audit/access-road-review.json",
+    "decision": "Original candidates disagreed and the cantonal gap remains unconnected. The later service-road graph with tighter stop candidates supplies unanimous full-pattern road inference; see the linked access-road review. No operator itinerary certification."
   }
 }

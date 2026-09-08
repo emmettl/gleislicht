@@ -33,13 +33,13 @@ export async function solothurnLocalGapReview() {
       row.patternIds.push(patternId); candidates.set(sha256, row)
     }
   }
-  return { schemaVersion: 1, purpose: 'Retained-source diagnostics only; no additional admission or geometry correction.',
+  return { schemaVersion: 1, purpose: 'Diagnostics of the original retained cantonal and road sources. Later access-road resolution is explicitly linked; this report itself does not change geometry.',
     sourceHashes: { network: await hashFile(sourcePath), context: await hashFile(contextPath), road: await hashFile(roadPath), tram: tram.sha256 },
     arlesheim: { routeId: tram.routeId, agencyId: tram.agencyId, from, to, limits: tram.source.limits,
       assessment: matchBaselSegment(graph, from, to, tram.source.limits), decision: 'Excluded: original platform E exceeds the 80 m tram attachment limit; no coordinate substitution.' },
     liestal: { routeId: '96-131-1-j26-1', agencyId: '801', from: stops.get('ch:1:sloid:3662:0:869147'), to: stops.get('ch:1:sloid:72212:1:4'),
       endpoints, gapMetres: Math.hypot(a[0] - b[0], a[1] - b[1]), roadCandidates: [...candidates.values()],
-      decision: 'Excluded: differing complete-pattern road candidates and a source-endpoint gap far above the separately reviewed 3 mm Oberbuchsiten limit. No route-specific operating evidence resolves the alternatives.' } }
+      resolutionAudit: 'data/solothurn-audit/access-road-review.json', decision: 'Original candidates disagreed and the cantonal gap remains unconnected. The later service-road graph with tighter stop candidates supplies unanimous full-pattern road inference; see the linked access-road review. No operator itinerary certification.' } }
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const report = await solothurnLocalGapReview()

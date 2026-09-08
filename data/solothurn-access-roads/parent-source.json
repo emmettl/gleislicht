@@ -1,0 +1,26 @@
+{
+  "description": "Geofabrik Switzerland 2026-09-02; bus graph with service roads and strict stop candidates",
+  "swissDate": "2026-09-02",
+  "retrievedOn": "2026-09-08",
+  "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+  "parentPbfSha256": "39257b1c92a45da38ca94ddb745bdcf53551d0e66b02d89f3de3e7c064c3a29f",
+  "osmSha256": "941011f1604f03c910adc330b5e3772a66d088a998bc10d52291c27bc54c693f",
+  "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+  "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "filtering": "pfaedle -X type/tag filter using retained filter.cfg and filter-patterns.json. The national filtered graph is retained, not claimed to be spatially clipped. Matching covers the complete three-route fixture scope; no border supplement required. Filter profile adds highway=service; original access, turn and road-class rules remain.",
+  "routing": "Retained routing.cfg adds highway=service to the keep list and tightens bus OSM station-candidate and edge-snap distances to 20 m. Original road-access/turn penalties retained; no official bus-access certification.",
+  "qualification": "Inferred bus corridors, including explicit short GTFS-platform attachments. Not operator-verified directions or temporary diversions.",
+  "files": {
+    "filter-input.zip": "e3418624829af9440421ee3aace2ce5677b5a976f38d96d81b77363c720d5799",
+    "filter-patterns.json": "584df7586eef20236ba5949d105dca74059256c867bc91fcf787a284eb5ab11b",
+    "filter.cfg": "2f768e1f73689795430ae71365cbb11dc5ae798a8c5004bb13b56fd42b51ca38",
+    "network.osm.gz": "4ebc61941e854cdfe9d866cb6deef36b9ae7f83ac51aa5161915966994efdd3f",
+    "pfaedle-LICENSE": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "routing.cfg": "b83f29bb3f3435cdd138a7aaf0609eac69877c67ce2776243f8372979e49b2de"
+  },
+  "matcherSourceUrl": "https://github.com/ad-freiburg/pfaedle/tree/99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+  "configurationAttribution": "pfaedle configuration, University of Freiburg / Patrick Brosi et al.; GNU GPL v3 license retained in pfaedle-LICENSE. Luzern bus-profile modifications by Gleislicht."
+}
