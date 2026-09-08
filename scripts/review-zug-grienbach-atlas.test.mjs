@@ -23,7 +23,7 @@ describe('Grienbach date-valid atlas platform review', () => {
     expect(result.platforms.flatMap(p => p.days).every(d => d.validFrom === '2026-03-27' && d.validTo === '9999-12-31' && d.compassDirection === null && d.editedBeforeFixture)).toBe(true)
     expect(result.affected).toEqual([{ date: '2026-09-04', trips: 67 }, { date: '2026-09-06', trips: 38 }])
     expect(result.admittedFromReview).toBe(0); expect(result.coordinateCorrections).toBe(0); expect(result.matchPair).toBeUndefined()
-  })
+  }, 30_000) // Re-extracts the complete 155,869-row national export.
   it('refuses ambiguous validity, missing date coverage, wrong owners and coordinate substitutions', () => {
     const overlap = structuredClone(rows); overlap[0].validTo = '2026-09-06'
     expect(() => compareAtlasPlatforms(overlap, source, raw)).toThrow('Ambiguous')

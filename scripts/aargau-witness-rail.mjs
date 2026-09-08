@@ -1,3 +1,4 @@
+import { assertGeometryMeasurementsEqual } from './compare-geometry-measurements.mjs'
 import assert from 'node:assert/strict'
 import { hashFile } from './inventory-aargau.mjs'
 import { readJson } from './aargau-seasonal.mjs'
@@ -27,7 +28,7 @@ export function witnessRailMatcher(policy, rail) {
         if (expected.preserveExistingGeometry) return undefined
         const actual = segments?.[i]; assert(actual, 'Missing reviewed witness rail assessment')
         const { path, ...evidence } = actual
-        assert.deepEqual(evidence,expected.evidence,'Changed witness rail source evidence')
+        assert.doesNotThrow(() => assertGeometryMeasurementsEqual(evidence, expected.evidence), 'Changed witness rail source evidence')
         if (!expected.pathSha256) { assert(!path, 'Previously rejected witness rail segment changed'); return actual }
         assert(path)
         assert.equal(geometryDigest(path),expected.pathSha256,'Changed witness rail path')

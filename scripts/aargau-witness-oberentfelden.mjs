@@ -1,5 +1,5 @@
-import assert from 'node:assert/strict'
 import { assertGeometryMeasurementsEqual } from './compare-geometry-measurements.mjs'
+import assert from 'node:assert/strict'
 import { readJson,readGzipJson } from './aargau-seasonal.mjs'
 import { hashFile } from './inventory-aargau.mjs'
 import { geometryDigest } from './aargau-alignment-corrections.mjs'
@@ -48,8 +48,7 @@ export function oberentfeldenMatcher(policy,evaluate){
   const actual=evaluate(t,stops)
   return r.segments.map((expected,i)=>{
    const {path,...evidence}=actual[i];assert(path)
-   assert.equal(geometryDigest(path),expected.pathSha256,'Changed Oberentfelden candidate path')
-   assert.doesNotThrow(()=>assertGeometryMeasurementsEqual(evidence,expected.evidence),'Changed Oberentfelden road evidence')
+   assert.equal(geometryDigest(path),expected.pathSha256,'Changed Oberentfelden candidate path');assert.doesNotThrow(() => assertGeometryMeasurementsEqual(evidence, expected.evidence), 'Changed Oberentfelden road evidence')
    const clearance=minimumPolylineDistance(path,policy.closure.points)
    assert.equal(clearance,expected.minimumClosureDistanceMetres,'Changed closure clearance')
    if(clearance<=CLOSURE_CLEARANCE_METRES){assert.equal(expected.disposition,'hold-closed-road-crossing');return undefined}
