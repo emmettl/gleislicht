@@ -2,7 +2,7 @@
 
 Fixture audit: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#fr).
 
-The entire canton is inventoried against the pinned annual national GTFS: **207 route records, 17 agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **5,281 Friday journeys and 3,592 Sunday journeys** with complete directed stop patterns from cantonal lines and explicitly tagged inferred OSM road and FOT/SBB rail fallback. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
+The entire canton is inventoried against the pinned annual national GTFS: **207 route records, 17 agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **5,301 Friday journeys and 3,612 Sunday journeys** with complete directed stop patterns from cantonal lines and explicitly tagged inferred OSM road and FOT/SBB rail fallback. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
 
 The [regional feed index](../data/fribourg-region/index.json) points to both civil-day manifests, twelve two-hour chunks per date, and 06:45–08:45 extracts. It uses the existing network snapshot format, **not a new GTFS ZIP**. It is saved under `data/` as a **local archival research artifact**. The exact matching cantonal OGD service explicitly permits attributed vector redistribution. Geometry vintage and physical direction remain unverified; this archival study is not added to public hosting or the application's study selector.
 
@@ -42,19 +42,19 @@ Civil days are **Friday 4 September and Sunday 6 September 2026**, with calendar
 | Representative headway instances | 2,744 | 2,264 |
 | Admitted instances before OSM fallback | 2,595 | 1,692 |
 | Additional admitted instances from OSM fallback | 2,063 | 1,216 |
-| Additional admitted instances from rail fallback including reviewed mappings | 623 | 684 |
-| Admitted scheduled instances | 5,281 | 3,592 |
+| Additional admitted instances from rail fallback including reviewed mappings | 643 | 704 |
+| Admitted scheduled instances | 5,301 | 3,612 |
 | Admitted headway instances | 0 | 0 |
 | Directed patterns tested | 849 | 588 |
-| Complete/admitted directed patterns | 707 | 484 |
-| Matched unique directed route/platform pairs | 4,196 / 4,509 (93.1%) | 4,342 / 4,607 (94.2%) |
-| Matched scheduled segment occurrences (before whole-pattern exclusion) | 87,235 / 89,328 (97.7%) | 60,549 / 62,231 (97.3%) |
-| Matched occurrences including representative headways | 87,235 / 92,072 (94.7%) | 60,549 / 64,495 (93.9%) |
-| Segment occurrences retained in admitted complete journeys | 81,630 | 56,731 |
+| Complete/admitted directed patterns | 713 | 493 |
+| Matched unique directed route/platform pairs | 4,201 / 4,509 (93.2%) | 4,349 / 4,607 (94.4%) |
+| Matched scheduled segment occurrences (before whole-pattern exclusion) | 87,255 / 89,328 (97.7%) | 60,569 / 62,231 (97.3%) |
+| Matched occurrences including representative headways | 87,255 / 92,072 (94.8%) | 60,569 / 64,495 (93.9%) |
+| Segment occurrences retained in admitted complete journeys | 81,784 | 56,889 |
 | Inferred road occurrences retained in admitted journeys | 5,593 | 3,240 |
-| Inferred rail occurrences retained in admitted journeys | 3,709 | 3,490 |
+| Inferred rail occurrences retained in admitted journeys | 3,863 | 3,630 |
 | Official-only matched directed pairs before OSM fallback | 3,350 / 4,509 | 3,424 / 4,607 |
-| Carry-in instances / admitted | 97 / 88 | 179 / 150 |
+| Carry-in instances / admitted | 97 / 89 | 179 / 152 |
 | Night instances / admitted | 0 / 0 | 53 / 44 |
 | Patterns revisiting platforms / admitted | 9 / 6 | 6 / 2 |
 
@@ -84,8 +84,8 @@ GTFS times remain unchanged. Among admitted journeys there are **5,699 Friday an
 
 | Agency ID | National feed identity | Annual route records | Friday admitted / all instances | Sunday admitted / all instances |
 | --- | --- | --- | --- | --- |
-| 11 | Schweizerische Bundesbahnen SBB | 23 | 331 / 334 | 330 / 334 |
-| 33 | BLS AG (bls) | 8 | 426 / 443 | 366 / 384 |
+| 11 | Schweizerische Bundesbahnen SBB | 23 | 334 / 334 | 332 / 334 |
+| 33 | BLS AG (bls) | 8 | 443 / 443 | 384 / 384 |
 | 53 | Transports publics fribourgeois | 14 | 170 / 265 | 243 / 280 |
 | 64 | Montreux-Oberland Bernois | 6 | 0 / 50 | 0 / 50 |
 | 182 | Bielersee-Schifffahrts-Gesellschaft AG | 1 | 0 / 2 | 0 / 2 |
@@ -104,17 +104,17 @@ GTFS times remain unchanged. Among admitted journeys there are **5,699 Friday an
 
 | Route status across both dates | Records |
 | --- | --- |
-| Partially admitted | 31 |
+| All dated trips admitted | 112 |
 | Inactive on both dates | 48 |
-| All dated trips admitted | 107 |
+| Partially admitted | 26 |
 | Excluded | 21 |
 
 | Failed segment reason | Friday directed pairs / occurrences | Sunday directed pairs / occurrences |
 | --- | --- | --- |
 | collapsed-path | 3 / 32 | 1 / 16 |
-| endpoint-gap | 26 / 266 | 14 / 155 |
+| endpoint-gap | 26 / 266 | 12 / 153 |
 | implausible-detour | 3 / 74 | 3 / 57 |
-| missing-line | 281 / 4,465 | 247 / 3,718 |
+| missing-line | 276 / 4,445 | 242 / 3,700 |
 
 Failures remain route-scoped and directed. The machine audit names both original platforms and records projection gaps, detour lengths and fallback projection choices when available. `missing-line` means no verified source identity; it does not claim that a road or railway is absent. `endpoint-gap`, `disconnected-line`, `implausible-detour` and `collapsed-path` cause whole-pattern exclusion. Night, replacement, mountain and boat services are not silently dropped from the denominator. This adapter supplies no boat or mountain-mode geometry, and no rail geometry is repurposed for replacement buses.
 
@@ -153,25 +153,24 @@ The four urban panels were rendered and visually inspected for continuity, exten
 
 The [rail adapter](../scripts/fribourg-rail-geometry.mjs) tests **412 full directed patterns across 35 annual route identities**: SBB, BLS and explicitly reviewed TPF S20/S21/RE2/RE3. The [complete input call chains](../data/fribourg-rail-inputs.json), [pattern results](../data/fribourg-audit/rail-patterns.json) and [all 3424 source segment assessments](../data/fribourg-audit/rail-source-segments.json) are retained. Metre-gauge TPF and MOB, gauge-changing GPX and unreviewed TPF special services remain outside this supplement.
 
-The pinned [FOT railway network](https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf) has **3210 operating-point nodes and 3424 infrastructure segments**. Exact operating-point identifiers attach original GTFS platforms within 350 m. No nearest-name station substitute or general platform override is allowed; the two hashed Kerzers platform mappings described below are explicit exceptions. Infrastructure attachments must be within 120 m; source gauge must include 1435 mm and source validity fields must permit both dates. FOT geometry is simplified by 5 m; the reviewed SBB curve retains all 44 input vertices before output-coordinate rounding. The Fribourg supplement rejects paths above max(3,000 m, **2.5 × direct distance**); the stricter guard rejects the implausible approximately 41 km Olten–Aarau alternative. The later reviewed SBB Däniken curve supplies the missing permitted-gauge connection without changing the rejected FOT record.
+The pinned [FOT railway network](https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf) has **3210 operating-point nodes and 3424 infrastructure segments**. Exact operating-point identifiers attach original GTFS platforms within 350 m. No nearest-name station substitute or general platform override is allowed; the hashed Kerzers mappings and Bern western-terminal clipping described below are explicit exceptions. Infrastructure attachments must be within 120 m; source gauge must include 1435 mm and source validity fields must permit both dates. FOT geometry is simplified by 5 m; the reviewed SBB curve retains all 44 input vertices before output-coordinate rounding. The Fribourg supplement rejects paths above max(3,000 m, **2.5 × direct distance**); the stricter guard rejects the implausible approximately 41 km Olten–Aarau alternative. The later reviewed SBB Däniken curve supplies the missing permitted-gauge connection without changing the rejected FOT record.
 
 All full pattern contexts must agree on the same directed source segment chain and path. Other called operating points are blocked when routing an intervening pair, preventing out-of-order shortcuts. Every previously accepted cantonal path is retained. The original failure, directed infrastructure IDs, attachment distances, contributing pattern IDs and resulting geometry hash accompany each inferred pair. A single remaining failure excludes the complete journey. Journeys tag their inferred rail segment count, and the checker reproduces every emitted path from the pinned XTF and, for the reviewed Däniken connection, the retained SBB curve.
 
 | Measure | Friday | Sunday |
 | --- | --- | --- |
 | All rail instances | 1,092 | 1,048 |
-| Admitted rail instances | 927 | 939 |
-| Additional admitted journeys from rail fallback including review | 623 | 684 |
-| FOT-backed directed pairs | 313 | 409 |
+| Admitted rail instances | 947 | 959 |
+| Additional admitted journeys from rail fallback including review | 643 | 704 |
+| FOT-backed directed pairs | 318 | 416 |
 | Lost previously admitted journeys | 0 | 0 |
 | rail-missing-exact-operating-point — remaining directed pairs | 0 | 2 |
-| rail-station-attachment-too-far — remaining directed pairs | 5 | 7 |
 
 The [TPF 2026 standard-gauge network statement, version 3.5](../data/fribourg-rail-sources/tpf-network-statement-2026-vn.pdf), dated **1 January 2026**, identifies Fribourg–Morat–Anet and Broc-Chocolaterie–Romont as its normal-gauge network; section 3.5.2 specifies 1435 mm. This supports route gauge review, not a claim that old FOT alignments reflect every rebuilt section. Catalogue date **6 July 2021** and asset update **18 January 2025** remain explicit; September 2026 alignment validity is unknown. Running track, signal direction and actual train paths remain inferred.
 
 TPF's [La Verrerie–Vaulruz-Sud works notice](https://www.tpf.ch/fr/horaires-et-reseaux/perturbations-et-travaux/travaux-sur-le-troncon-ferroviaire-la-verrerie-vaulruz-sud) reports metre-gauge rebuilding during 2025–2027 and **no S50/S51 rail service between Bulle and Semsales after 21:00 on Sunday 6 September 2026**. The [reproducible works audit](../data/fribourg-audit/works.json) retains complete S50/S51 calls from both dates. It finds **48 corridor segment occurrences on 12 Friday trains, and 0 on Sunday**, in the same 21:00–24:00 window. The builder fails if Sunday calls contradict the notice. This is one dated consistency check, not a comprehensive diversion census; replacement bus geometry remains independently assessed by the road adapter. No new FOT paths are admitted on the altered metre-gauge corridor.
 
-Remaining rail exclusions include IR66 journeys still failing the Bern platform-distance guard, some IC1/IR15/SN and short S1/S2 patterns, most TPF S50/S51, unlabelled TPF special journeys and all MOB/GPX journeys. The route inventory records exact dated counts rather than treating an admitted route label as proof of every branch.
+Remaining rail exclusions include the Sunday SN pattern through Avry-Matran (missing exact operating point in the pinned FOT source), most TPF S50/S51, unlabelled TPF special journeys and all MOB/GPX journeys. The route inventory records exact dated counts rather than treating an admitted route label as proof of every branch.
 
 ![Rail corridor geometry review](assets/fribourg-rail-review.svg)
 
@@ -179,12 +178,31 @@ The S20, S21, RE2 and IC1 panels were rendered and visually inspected for contin
 
 ### Kerzers and Däniken review
 
-The [review policy](../data/fribourg-rail-review-policy.json), [source snapshots](../data/fribourg-rail-review-sources/sources.json) and [complete review audit](../data/fribourg-audit/rail-review.json) pin two independent corrections. Every originally accepted path remains unchanged. The review retains **53 full directed patterns** for IR66 and IC1, including contexts that still fail; all contexts must agree before a directed pair is reused. It adds **26 Friday / 25 Sunday journeys** beyond the original FOT supplement.
+The [review policy](../data/fribourg-rail-review-policy.json), [source snapshots](../data/fribourg-rail-review-sources/sources.json) and [complete review audit](../data/fribourg-audit/rail-review.json) pin two independent corrections. Every originally accepted path remains unchanged. The review retains **53 full directed patterns** for IR66 and IC1, including contexts that still fail; all contexts must agree before a directed pair is reused. At commit 007a946 this review added **26 Friday / 25 Sunday journeys** beyond the original FOT supplement; the following Bern review extends admission further.
 
-- **Kerzers:** the [BLS platform table](../data/fribourg-rail-review-sources/bls-platforms-2026.pdf), state 28 May 2026 and valid from 6 June 2026, assigns physical tracks 4 and 6 to the Bern–Neuchâtel line. The [official station plan](../data/fribourg-rail-review-sources/bls-kerzers.svg), version 1.0 dated 9 March 2023, places those tracks on the western branch, separately from tracks 1 and 3. Only IR66 calls at original platforms `ch:1:sloid:4400:2:4` and `ch:1:sloid:4400:3:6` map to the existing FOT **Kerzers BLS operating point 8516192**. GTFS station identity 8504400, original call IDs, coordinates and times remain intact. Unknown platforms and other routes do not inherit the exception. No connection is invented across the two railway branches. IR66 admission becomes **23/40 Friday and 22/38 Sunday**; Bern tracks 49/50 still exceed the unchanged 350 m guard.
+- **Kerzers:** the [BLS platform table](../data/fribourg-rail-review-sources/bls-platforms-2026.pdf), state 28 May 2026 and valid from 6 June 2026, assigns physical tracks 4 and 6 to the Bern–Neuchâtel line. The [official station plan](../data/fribourg-rail-review-sources/bls-kerzers.svg), version 1.0 dated 9 March 2023, places those tracks on the western branch, separately from tracks 1 and 3. Only IR66 calls at original platforms `ch:1:sloid:4400:2:4` and `ch:1:sloid:4400:3:6` map to the existing FOT **Kerzers BLS operating point 8516192**. GTFS station identity 8504400, original call IDs, coordinates and times remain intact. Unknown platforms and other routes do not inherit the exception. No connection is invented across the two railway branches. That checkpoint admitted **23/40 Friday and 22/38 Sunday** IR66 journeys; the remaining Bern 49/50 terminal failures are resolved by the separate review below.
 - **Däniken:** the original FOT segment `ch14uvag00087837` remains rejected with its raw **mm1000** attribute. The independently published [SBB line geometry query](https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22D%C3%A4niken%22%29&limit=100) returns 21 records. Only line **540**, operating points **DK → DKO**, km positions **45673.43 → 46100**, contributes its **44 original vertices** and **N (normal-gauge)** classification. The other 20 query results are inventoried and excluded. Exact named endpoint nodes and bounded attachments (9.6 / 10.0 m) bind the curve to the FOT graph; no global gauge relabelling occurs. The review is restricted to IC1 and restores three Olten–Aarau journeys per date within the unchanged 2.5× detour guard.
 
-The [commit-baseline regression](../data/fribourg-audit/rail-review-regression.json) checks all 8,822 previously admitted journeys and 137,966 original segment occurrences against commit 0f9e9a3; calls, times, direction and geometry are unchanged. All 51 added dated journeys carry review markers. The BLS table and station plan were visually inspected. The source records, rejected primary rail assessment, reviewed platform IDs or SBB segment identity, full pattern IDs and path hashes remain in the pair audit. Affected journeys carry explicit `railReviewKinds` markers. SBB metadata reports processing on **2026-09-02T03:01:34+00:00** and modification on **2026-07-29T06:16:28+00:00**; neither proves feature survey vintage or a specific train's running track. Geometry credits now include **SBB Infrastructure / data.sbb.ch**, with attribution-required commercial and noncommercial reuse terms preserved. BLS documents are supporting platform evidence rather than a geometry licence.
+The BLS table and station plan were visually inspected. The source records, rejected primary rail assessment, reviewed platform IDs or SBB segment identity, full pattern IDs and path hashes remain in the pair audit. Affected journeys carry explicit `railReviewKinds` markers. SBB metadata reports processing on **2026-09-02T03:01:34+00:00** and modification on **2026-07-29T06:16:28+00:00**; neither proves feature survey vintage or a specific train's running track. Geometry credits now include **SBB Infrastructure / data.sbb.ch**, with attribution-required commercial and noncommercial reuse terms preserved. BLS documents are supporting platform evidence rather than a geometry licence.
+
+### Bern western-terminal review
+
+The [August 2026 SBB station plan](../data/fribourg-bern-platform-sources/sbb-bern-plan-2026-08.pdf), exterior plan on page 3, locates tracks **49/50 at the western end** of Bern. Their exact GTFS coordinates are 446.0 / 427.8 m from the FOT station point, beyond the unchanged 350 m guard. The [hashed review policy](../data/fribourg-bern-platform-policy.json) covers only the two original platform IDs, five route identities (IR15, IC1, S1, S2 and IR66), and a **single Bern call at the start or end of the complete journey**. Intermediate, repeated or unknown Bern platform calls receive no exception.
+
+Each eligible platform projects onto one explicitly pinned FOT western approach: Bern–JKLM for IR15/IC1/S1/S2, or Bern–Weyermannshaus for IR66. Projection is limited to **75 m**, and the clipped source length to **200–600 m**. The local graph replaces the Bern station point with the projection, retaining operating-point identity 8507000, clips only the selected approach, and removes **all four original station-centre connections**. This prevents an inferred movement back through the station centre or an invented link to an eastern approach. The original graph, GTFS call coordinates and source bytes remain unchanged. Standard gauge, source validity, the 350 m station / 120 m topology limits and the 2.5× detour guard still apply. The already reviewed Kerzers mapping composes with the IR66 terminal graph.
+
+| FOT approach | Track | Platform-to-curve connector | Source curve trimmed |
+| --- | --- | --- | --- |
+| ch14uvag00087328 | 49 | 33.9 m | 427.2 m |
+| ch14uvag00087328 | 50 | 38.6 m | 408.2 m |
+| ch14uvag00087196 | 50 | 52.2 m | 379.8 m |
+| ch14uvag00087196 | 49 | 62.3 m | 396.5 m |
+
+The [full-pattern audit](../data/fribourg-audit/bern-platforms.json) retains 156 complete directed pattern contexts, all projections, original station/segment identities and prior rail failures. It adds **20 Friday and 20 Sunday journeys**. IR66 now admits **40/40 and 38/38** dated journeys; all dated IR15, IC1, S1 and S2 journeys also have complete geometry. Every added journey carries the `bern-western-terminal` review marker. This remains centreline inference, not a surveyed running track or switch route.
+
+The [commit-baseline regression](../data/fribourg-audit/rail-review-regression.json) compares against **007a946**: all **8,873 previously admitted journeys and 138,361 segment occurrences** retain identical calls, coordinates, times, directions and geometry. All 40 additions carry the Bern terminal marker. The SBB plan and the derived clipping diagram were visually inspected. The separate SBB station-description page returned HTTP 403 on direct acquisition and is explicitly unused as retained evidence.
+
+![Bern western-terminal geometry review](assets/fribourg-bern-platforms.svg)
 
 ## Dates, reuse and attribution
 
@@ -196,6 +214,7 @@ The [commit-baseline regression](../data/fribourg-audit/rail-review-regression.j
 | OGD catalogue item | Created 2024-09-20T13:26:30.775000+00:00; modified 2026-07-08T14:41:59.462000+00:00 | Catalogue timestamps, not geometry vintage |
 | OSM road supplement | Swiss extract 2026-09-02; border retrieved 2026-09-08 | © OpenStreetMap contributors; ODbL 1.0; inferred geometry database |
 | SBB reviewed Däniken curve | 2026-09-02T03:01:34+00:00; individual survey vintage unknown | SBB Infrastructure / data.sbb.ch; terms_by, reference required |
+| Bern platform evidence | SBB station plan 08/2026; acquired September 2026 | SBB / OpenStreetMap; identity and extent evidence, no map geometry extracted |
 | BLS Kerzers platform evidence | Table state 2026-05-28, valid 2026-06-06; plan state 2023-03-09 | BLS Netz AG; supporting identity evidence |
 | FOT railway network | 2021-07-06T00:00:00Z; asset updated 2025-01-18T04:23:13.735821Z; 2026 alignment validity unknown | © Federal Office of Transport (FOT); attribution-required OGD terms |
 | TPF gauge / works evidence | Network statement 2026 v3.5 (2026-01-01); works page retrieved September 2026 | TPF; supporting documents, not geometry licences |
@@ -234,13 +253,15 @@ node scripts/check-fribourg-rail-review-regression.mjs
 node scripts/audit-fribourg-topology.mjs
 node scripts/review-fribourg-roads.mjs
 node scripts/review-fribourg-rail.mjs
+node scripts/review-fribourg-bern-platforms.mjs
 node scripts/write-fribourg-audit.mjs
 python3 scripts/test_fribourg_sources.py
-npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
 
 # Optional rail-input regeneration from the complete timetable cache and retained source bytes.
 node scripts/fribourg-rail-geometry.mjs /private/tmp/fribourg-timetable.json.gz
 node scripts/prepare-fribourg-rail-review.mjs
+node scripts/prepare-fribourg-bern-platforms.mjs
 
 # Optional offline road rebuild: prepare all patterns, match each agency directory
 # with scripts/match-postbus-roads.mjs --no-trie/-W wrapper and the pinned extract,

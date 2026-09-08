@@ -4,13 +4,13 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 
 | Agency | Line | GTFS route ID | Mode | Districts | Source feature IDs | Friday trips; patterns | Sunday trips; patterns | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 11 | IR15 | 91-15-B-j26-1 | rail | La Glâne, La Sarine, Sense | — | 42/44; 23/25 | 42/44; 19/21 | Partially admitted |
-| 11 | IC1 | 91-1-D-j26-1 | rail | La Glâne, La Sarine | — | 36/37; 21/22 | 27/27; 18/18 | Partially admitted |
+| 11 | IR15 | 91-15-B-j26-1 | rail | La Glâne, La Sarine, Sense | — | 44/44; 25/25 | 44/44; 21/21 | All dated trips admitted |
+| 11 | IC1 | 91-1-D-j26-1 | rail | La Glâne, La Sarine | — | 37/37; 22/22 | 27/27; 18/18 | All dated trips admitted |
 | 33 | S | 91-1D-Y-j26-1 | rail | Sense | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
-| 33 | S1 | 91-1-E-j26-1 | rail | La Sarine, Sense | 12 | 80/80; 14/14 | 81/82; 20/21 | Partially admitted |
+| 33 | S1 | 91-1-E-j26-1 | rail | La Sarine, Sense | 12 | 80/80; 14/14 | 82/82; 21/21 | All dated trips admitted |
 | 53 | S20 | 91-20-B-j26-1 | rail | La Sarine, See | 10 | 43/43; 14/14 | 78/78; 14/14 | All dated trips admitted |
 | 53 | S21 | 91-21-A-j26-1 | rail | La Sarine, See | 10 | 44/44; 16/16 | 78/78; 11/11 | All dated trips admitted |
-| 33 | S2 | 91-2-A-j26-1 | rail | Sense | 13 | 77/77; 12/12 | 77/78; 19/20 | Partially admitted |
+| 33 | S2 | 91-2-A-j26-1 | rail | Sense | 13 | 77/77; 12/12 | 78/78; 20/20 | All dated trips admitted |
 | 11 | SN | 91-2B-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 1/3; 1/3 | Partially admitted |
 | 11 | IC | 91-2H-Y-j26-1 | rail | La Sarine | — | 0/0; 0/0 | 10/10; 9/9 | All dated trips admitted |
 | 53 | RE2 | 91-2-M-j26-1 | rail | La Glâne, La Gruyère, La Sarine, Sense | 3 | 40/40; 13/13 | 39/39; 10/10 | All dated trips admitted |
@@ -35,7 +35,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 33 | S52 | 91-52-j26-1 | rail | La Broye, See | 15 | 90/90; 20/20 | 40/40; 8/8 | All dated trips admitted |
 | 33 | S5 | 91-5-j26-1 | rail | See | 14 | 118/118; 23/23 | 108/108; 18/18 | All dated trips admitted |
 | 33 | S | 91-5O-Y-j26-1 | rail | See | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
-| 33 | IR66 | 91-66-A-j26-1 | rail | See | — | 23/40; 8/11 | 22/38; 8/13 | Partially admitted |
+| 33 | IR66 | 91-66-A-j26-1 | rail | See | — | 40/40; 11/11 | 38/38; 13/13 | All dated trips admitted |
 | 53 | EXT | 91-7C-Y-j26-1 | rail | La Broye, La Sarine | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 11 | R7 | 91-7-N-j26-1 | rail | La Glâne | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 11 | EXT | 91-7N-Y-j26-1 | rail | La Broye, La Glâne, See | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |

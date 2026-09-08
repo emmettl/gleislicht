@@ -1,0 +1,15 @@
+import { readFile, writeFile } from 'node:fs/promises'
+const audit = JSON.parse(await readFile('data/fribourg-audit/bern-platforms.json'))
+const panels = audit.policy.corridors.map((c, i) => {
+  const a = audit.assessments.find(a => a.sourceSegmentId === c.segment.id && a.stopId.endsWith(':49'))
+  const points = [...c.segment.points, audit.policy.node.coordinate, ...audit.policy.stops.map(s => [s.stop_lon, s.stop_lat])]
+  const xs = points.map(p => p[0] * 0.683), ys = points.map(p => p[1])
+  const x = Math.min(...xs), y = Math.max(...ys), w = Math.max(...xs) - x, h = y - Math.min(...ys), scale = Math.min(530 / w, 270 / h)
+  const xy = p => [35 + (530 - w * scale) / 2 + (p[0] * 0.683 - x) * scale, 100 + (270 - h * scale) / 2 + (y - p[1]) * scale]
+  const path = (p, color, width) => `<path d="${p.map((q, j) => `${j ? 'L' : 'M'}${xy(q).join(',')}`).join(' ')}" stroke="${color}" stroke-width="${width}" fill="none"/>`
+  const marker = (p, color, label, dy = -10) => `<circle cx="${xy(p)[0]}" cy="${xy(p)[1]}" r="4" fill="${color}"/><text x="${xy(p)[0] - 8}" y="${xy(p)[1] + dy}" text-anchor="end" font-size="12">${label}</text>`
+  const stop = audit.policy.stops[0], coord = [stop.stop_lon, stop.stop_lat]
+  const draw = path(c.segment.points, '#b5bcc5', 5) + path(a.projection.retainedPoints, '#158477', 3) + path([coord, a.projection.point], '#e87928', 2)
+  return `<g transform="translate(${20 + i * 620},100)"><rect width="600" height="440" rx="9" fill="white" stroke="#ced6df"/><text x="24" y="34" font-size="20" font-weight="bold">${i ? 'IR66: Weyermannshaus approach' : 'IR15 / IC1 / S1 / S2: JKLM approach'}</text><text x="24" y="61" font-size="14">Track 49 example · ${a.projection.attachmentMetres.toFixed(1)} m connector · ${a.projection.removedMetres.toFixed(1)} m trimmed</text>${draw}${marker(audit.policy.node.coordinate, '#4b5563', 'Original Bern point', -14)}${marker(coord, '#e87928', 'Original GTFS platform', i ? 24 : -14)}${marker(a.projection.point, '#158477', 'Curve projection', i ? -14 : 22)}<text x="24" y="414" font-size="13">All station-centre connections removed in this terminal-only graph.</text></g>`
+})
+await writeFile('docs/assets/fribourg-bern-platforms.svg', `<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="610"><rect width="1260" height="610" fill="#eef3f6"/><g font-family="Arial, sans-serif" fill="#263547"><text x="24" y="35" font-size="25" font-weight="bold">Bern western terminal geometry review</text><text x="24" y="64" font-size="15">Grey: original FOT approach. Teal: retained curve. Orange: bounded connector to original platform.</text><text x="24" y="85" font-size="13">North up · separate panel scales · schematic source-centreline inference; running tracks and switches are not certified.</text>${panels.join('')}<text x="24" y="575" font-size="13">Tracks 49 and 50: all four platform/corridor combinations checked; only terminal calls on five pinned route identities qualify.</text><text x="24" y="597" font-size="12">Geometry © Federal Office of Transport (FOT) · timetable opentransportdata.swiss · platform evidence SBB station plan 08/2026</text></g></svg>`)

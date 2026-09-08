@@ -2,13 +2,19 @@
   "schemaVersion": 1,
   "date": "2026-09-04",
   "originalManifestSha256": "54f90c5ba7a1a0b6e7df150e2e5f7ea286928ce629d9cdf88aa43e252001b26d",
-  "candidateManifestSha256": "2f2c826413589b1789fa04747c5db8315993bb40720b4642121dc10fe5e30529",
-  "policySha256": "1e1a9a24056c45b6592eccd256bbfba0c60e37a18f8eacdd77f35450525e089b",
+  "candidateManifestSha256": "70f0ce15c81c1664114b62baa9465d481b069f39798be0436aef06eec51a8a79",
+  "policySha256": "23b04e6eea6283eadd4aa75338bf2690ab4588a97f173f4d592517ae8fb93879",
   "originalAuditSha256": "daa9d08e47da73400166ff9159d3fced8edf13998956ea9682ed39ac2cfa7727",
-  "candidateAuditSha256": "a4cd49ab05aed3f9b3e4fa64749b6f9ad905ea9c6e5c6ac32605b2a7d317d9f6",
+  "candidateAuditSha256": "887ddf06661eeb82a5ace93600fed1f79eb98cd25209b58c9d98e6ca99e067b1",
+  "previousCandidateManifestSha256": "2f2c826413589b1789fa04747c5db8315993bb40720b4642121dc10fe5e30529",
+  "previousCorrectionsPreserved": true,
+  "countsByRule": {
+    "136-wittnau-bypass": 1,
+    "358-seesteg-direct": 3
+  },
   "journeys": 11193,
-  "preservedOccurrences": 173105,
-  "correctedOccurrences": 1,
+  "preservedOccurrences": 173102,
+  "correctedOccurrences": 4,
   "corrections": [
     {
       "id": "136-wittnau-bypass",
@@ -21,6 +27,42 @@
       "replacementPathSha256": "41ef022e7cd62c982957b6be812a25d2bdcd2a7b0e014e3a71a1dd7f09c8c5f7",
       "originalMetres": 6926.856640615816,
       "replacementMetres": 3586.7530339639006
+    },
+    {
+      "id": "358-seesteg-direct",
+      "trainId": "2026-09-04:.ojp-96-167-7.1.TA.29.j26",
+      "patternId": "ba67a6b897cd1bf0b14f",
+      "segmentIndex": 5,
+      "fromId": "ch:1:sloid:78781:0:27020",
+      "toId": "ch:1:sloid:72503:0:720584",
+      "originalPathSha256": "2b08bfaac6bfeda5ae5535ee8017ebe600081315e382265bdde23fb051fda282",
+      "replacementPathSha256": "42964af0d67ae1165e6ef10a7d71b6ba863a2576dc80856a68e63134d7e5f674",
+      "originalMetres": 1950.1608945873304,
+      "replacementMetres": 931.3592006399684
+    },
+    {
+      "id": "358-seesteg-direct",
+      "trainId": "2026-09-04:.ojp-96-167-7.1.TA.30.j26",
+      "patternId": "ba67a6b897cd1bf0b14f",
+      "segmentIndex": 5,
+      "fromId": "ch:1:sloid:78781:0:27020",
+      "toId": "ch:1:sloid:72503:0:720584",
+      "originalPathSha256": "2b08bfaac6bfeda5ae5535ee8017ebe600081315e382265bdde23fb051fda282",
+      "replacementPathSha256": "42964af0d67ae1165e6ef10a7d71b6ba863a2576dc80856a68e63134d7e5f674",
+      "originalMetres": 1950.1608945873304,
+      "replacementMetres": 931.3592006399684
+    },
+    {
+      "id": "358-seesteg-direct",
+      "trainId": "2026-09-04:.ojp-96-167-7.1.TA.28.j26",
+      "patternId": "ba67a6b897cd1bf0b14f",
+      "segmentIndex": 5,
+      "fromId": "ch:1:sloid:78781:0:27020",
+      "toId": "ch:1:sloid:72503:0:720584",
+      "originalPathSha256": "2b08bfaac6bfeda5ae5535ee8017ebe600081315e382265bdde23fb051fda282",
+      "replacementPathSha256": "42964af0d67ae1165e6ef10a7d71b6ba863a2576dc80856a68e63134d7e5f674",
+      "originalMetres": 1950.1608945873304,
+      "replacementMetres": 931.3592006399684
     }
   ],
   "completeSourceJourneysPreserved": true,

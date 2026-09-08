@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-08",
+  "scope": "One reviewed Friday directed stop pattern and one adjacent segment only. Replace the pinned AGIS path containing an unserved branch with the pinned full-pattern OSM inference. No generic speed-based admission, route alias or distance-limit change. The archived September feed remains unchanged; use this policy to build a separate review candidate.",
+  "inputTimetableHashes": {
+    "2026-09-04": "5b19b53e396d6b21686cd6e3c4dc438eefbfc503e69fa2c71b1454982ca2a952"
+  },
+  "files": {
+    "data/aargau-road-cache.json": "2a3424668d719989390175a1c50b3338dfc060b6a7ffbf83257310e7bc13a47d",
+    "data/aargau-alignment-sources/50.136-2026.pdf": "0a5ec5b5ae5243e49483c1eed3aeaa8994e0d547248abc47f11554bd25ffc479",
+    "data/aargau-alignment-sources/oberes-fricktal-2026.pdf": "2fe4f561b2d131f8f902ea51764461c23deb2a7150720896e133172555adfe4b",
+    "data/aargau-alignment-sources/postauto-changes-2026.html.gz": "23ae5af913e9d2c2677db6442158f7b0935d1830ed9280272964bba8bfd6bd8f",
+    "data/aargau-alignment-sources/50.344-2026.pdf": "a8ca877a25e384b2200489e56367d39849ea3937444ee9d60b4d069cae75165a",
+    "data/aargau-alignment-sources/freiamt-2026.pdf": "7d974878e647d7758e88677e36860f04e464bb1a71b9f7a84ff7c9e1ec91a3f0"
+  },
+  "evidence": [
+    {
+      "file": "data/aargau-alignment-sources/50.136-2026.pdf",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/50.136.pdf",
+      "publisher": "opentransportdata.swiss / official timetable field, PostAuto AG",
+      "sourceDate": "2025-12-03",
+      "page": 2,
+      "finding": "Field 50.136, course 36051: 11:44 departure via Frick Ebnet, then Gipf-Oberfrick and directly Wölflinswil with no Wittnau branch calls. The annual PDF has 11:48 to 11:51 on the reviewed pair; pinned September GTFS has 11:50 to 11:53. Both allocate three minutes. GTFS times remain authoritative in the feed."
+    },
+    {
+      "file": "data/aargau-alignment-sources/oberes-fricktal-2026.pdf",
+      "url": "https://www.postauto.ch/-/media/postauto/fahrplan-und-netz/liniennetz/dokumente/nordschweiz/liniennetz-oberes-fricktal-26.pdf?vs=4",
+      "publisher": "PostAuto AG / A-Welle / TNW",
+      "validFrom": "2025-12-14",
+      "page": 1,
+      "finding": "The operator map distinguishes the direct Gipf-Oberfrick–Wölflinswil corridor from the Wittnau Obere Gasse branch. This schematic corroborates itinerary choice, not exact lane geometry."
+    },
+    {
+      "file": "data/aargau-alignment-sources/postauto-changes-2026.html.gz",
+      "url": "https://fahrplanwechsel.postauto.ch/de/mittelland/aargau",
+      "publisher": "PostAuto AG",
+      "validFrom": "2025-12-14",
+      "sourceDate": null,
+      "finding": "The 2026 service-change page confirms line 136 has separate express and Wittnau workings. It is context, not sole evidence for the exact midday trip."
+    },
+    {
+      "file": "data/aargau-alignment-sources/50.344-2026.pdf",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/50.344.pdf",
+      "publisher": "opentransportdata.swiss / official timetable field, PostAuto AG",
+      "sourceDate": "2025-11-07",
+      "page": 1,
+      "finding": "Reviewed as a remaining lead: distinguishes direct early trips, Benzenschwil branch and school workings. No line 344 correction is admitted by this policy."
+    },
+    {
+      "file": "data/aargau-alignment-sources/freiamt-2026.pdf",
+      "url": "https://www.postauto.ch/-/media/postauto/fahrplan-und-netz/liniennetz/dokumente/nordschweiz/liniennetz-freiamt-26.pdf",
+      "publisher": "PostAuto AG / A-Welle",
+      "validFrom": "2025-12-14",
+      "page": 1,
+      "finding": "Line 344 schematic shows the Benzenschwil spur and the Wallenschwil/Rüstenschwil corridor. Sparse-call alternatives remain under review; this map alone does not establish their exact roads."
+    }
+  ],
+  "rules": [
+    {
+      "id": "136-wittnau-bypass",
+      "date": "2026-09-04",
+      "patternId": "1aa7430503a1ed2ceeb6",
+      "agencyId": "801",
+      "routeId": "96-156-1-j26-1",
+      "line": "136",
+      "mode": "bus",
+      "directionId": "0",
+      "stops": [
+        [
+          8.01294538,
+          47.50682031,
+          "Frick, Bahnhof",
+          "C",
+          "ch:1:sloid:583:0:404925"
+        ],
+        [
+          8.01237046,
+          47.5036041,
+          "Frick, Ebnet",
+          "",
+          "ch:1:sloid:72413:0:811011"
+        ],
+        [
+          8.00496835,
+          47.49948948,
+          "Gipf-Oberfrick, Brücke",
+          "",
+          "ch:1:sloid:72412:0:8097"
+        ],
+        [
+          8.00113254,
+          47.49663698,
+          "Gipf-Oberfrick, alte Post",
+          "",
+          "ch:1:sloid:792:0:354239"
+        ],
+        [
+          7.99920116,
+          47.49391179,
+          "Gipf-Oberfrick, Rösslibrücke",
+          "",
+          "ch:1:sloid:72411:0:633035"
+        ],
+        [
+          7.99603011,
+          47.46454476,
+          "Wölflinswil, Unterdorf",
+          "",
+          "ch:1:sloid:72407:0:820731"
+        ],
+        [
+          7.99802437,
+          47.46090082,
+          "Wölflinswil, Dorfplatz",
+          "",
+          "ch:1:sloid:794:0:380220"
+        ],
+        [
+          7.99945269,
+          47.45708048,
+          "Wölflinswil, Mühlmatt",
+          "",
+          "ch:1:sloid:72406:0:415634"
+        ],
+        [
+          8.00583073,
+          47.45160762,
+          "Oberhof, Adlerplatz",
+          "",
+          "ch:1:sloid:795:0:583228"
+        ]
+      ],
+      "segmentIndex": 4,
+      "sourceFeatureId": 43,
+      "sourcePart": 0,
+      "originalPathSha256": "0267f2b2461b37bd3b2d3473693f6e94afded09864c8791700b12f570c913c9d",
+      "replacementPathSha256": "41ef022e7cd62c982957b6be812a25d2bdcd2a7b0e014e3a71a1dd7f09c8c5f7",
+      "originalMetres": 6926.856640615816,
+      "replacementMetres": 3586.7530339639006,
+      "sourceTravelSeconds": 180,
+      "originalImpliedKph": 138.53713281231632,
+      "replacementImpliedKph": 71.73506067927802,
+      "reason": "AGIS part traverses the Wittnau branch absent from this exact source stop pattern. The operator timetable and map corroborate the direct working; the 6.9 km branch path is inconsistent with its three-minute source interval. The replacement is still an OSM inference, not measured vehicle travel."
+    }
+  ]
+}

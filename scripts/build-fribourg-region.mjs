@@ -61,11 +61,15 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
   if (rail) {
     hashes.rail = crosswalk.rail.sourceMetadataSha256
     hashes.railInputs = crosswalk.rail.inputsSha256
+    if (rail.bernPlatforms) {
+      hashes.bernPlatforms = rail.bernPlatforms.policySha256
+      await writeJson(join(auditDirectory, 'bern-platforms.json'), rail.bernPlatforms, true)
+    }
     if (rail.review) {
       hashes.railReview = rail.review.policySha256
       await writeJson(join(auditDirectory, 'rail-review.json'), rail.review, true)
     }
-    provenance.rail = { ...rail.source, ...(rail.review ? { reviewedSupplement: { policySha256: rail.review.policySha256, source: rail.review.source, policy: rail.review.policy } } : {}), policy: crosswalk.rail, completePatternsTested: rail.patterns.length }
+    provenance.rail = { ...rail.source, ...(rail.bernPlatforms ? { bernPlatforms: rail.bernPlatforms.policy } : {}), ...(rail.review ? { reviewedSupplement: { policySha256: rail.review.policySha256, source: rail.review.source, policy: rail.review.policy } } : {}), policy: crosswalk.rail, completePatternsTested: rail.patterns.length }
     await writeJson(join(auditDirectory, 'rail-patterns.json'), rail.patterns)
     await writeJson(join(auditDirectory, 'rail-source-segments.json'), rail.sourceInventory, true)
   }

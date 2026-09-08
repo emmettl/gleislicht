@@ -2311,10 +2311,10 @@
       "method": "Exact date/agency/route/direction/full platform coordinate pattern. Fill only existing gaps, with 120 m projection guard. All earlier geometry stays unchanged."
     },
     "alignmentCorrections": {
-      "policySha256": "1e1a9a24056c45b6592eccd256bbfba0c60e37a18f8eacdd77f35450525e089b",
+      "policySha256": "23b04e6eea6283eadd4aa75338bf2690ab4588a97f173f4d592517ae8fb93879",
       "schemaVersion": 1,
       "checkedOn": "2026-09-08",
-      "scope": "One reviewed Friday directed stop pattern and one adjacent segment only. Replace the pinned AGIS path containing an unserved branch with the pinned full-pattern OSM inference. No generic speed-based admission, route alias or distance-limit change. The archived September feed remains unchanged; use this policy to build a separate review candidate.",
+      "scope": "Two reviewed Friday directed stop patterns, one adjacent segment in each, covering four occurrences only. Line 358 additionally requires the three exact source journeys and complete call times. Replace the pinned AGIS path containing an unserved branch with the pinned full-pattern OSM inference. No generic speed-based admission, route alias or distance-limit change. The archived September feed remains unchanged; use this policy to build a separate review candidate.",
       "inputTimetableHashes": {
         "2026-09-04": "5b19b53e396d6b21686cd6e3c4dc438eefbfc503e69fa2c71b1454982ca2a952"
       },
@@ -2324,7 +2324,11 @@
         "data/aargau-alignment-sources/oberes-fricktal-2026.pdf": "2fe4f561b2d131f8f902ea51764461c23deb2a7150720896e133172555adfe4b",
         "data/aargau-alignment-sources/postauto-changes-2026.html.gz": "23ae5af913e9d2c2677db6442158f7b0935d1830ed9280272964bba8bfd6bd8f",
         "data/aargau-alignment-sources/50.344-2026.pdf": "a8ca877a25e384b2200489e56367d39849ea3937444ee9d60b4d069cae75165a",
-        "data/aargau-alignment-sources/freiamt-2026.pdf": "7d974878e647d7758e88677e36860f04e464bb1a71b9f7a84ff7c9e1ec91a3f0"
+        "data/aargau-alignment-sources/freiamt-2026.pdf": "7d974878e647d7758e88677e36860f04e464bb1a71b9f7a84ff7c9e1ec91a3f0",
+        "data/aargau-alignment-sources/50.358-2026.pdf": "3e6be69fbe132a6b9094896a467afae2bb1297e3dd55207510f39f906fc1c91e",
+        "data/aargau-alignment-sources/baden-nord-2026.pdf": "47191d300f8cca42e5c95bae7fc8c1cf3ae4d5704ded4812c409c48409d03856",
+        "data/aargau-alignment-sources/pre-358-policy.json": "1e1a9a24056c45b6592eccd256bbfba0c60e37a18f8eacdd77f35450525e089b",
+        "data/aargau-alignment-sources/pre-358-regression.json": "49374a4b35289ad11a3888c9e796cb25664ee4689f18405156de2e87ca389192"
       },
       "evidence": [
         {
@@ -2349,7 +2353,7 @@
           "publisher": "PostAuto AG",
           "validFrom": "2025-12-14",
           "sourceDate": null,
-          "finding": "The 2026 service-change page confirms line 136 has separate express and Wittnau workings. It is context, not sole evidence for the exact midday trip."
+          "finding": "The 2026 service-change page confirms line 136 has separate express and Wittnau workings. For line 136 it is context, not sole evidence for the exact midday trip. For line 358 it explicitly says the Monday–Friday 14:45, 15:45 and 16:45 departures from Baldingen run directly from Bad Zurzach Seesteg to Bahnhof for the S27 connection."
         },
         {
           "file": "data/aargau-alignment-sources/50.344-2026.pdf",
@@ -2366,6 +2370,25 @@
           "validFrom": "2025-12-14",
           "page": 1,
           "finding": "Line 344 schematic shows the Benzenschwil spur and the Wallenschwil/Rüstenschwil corridor. Sparse-call alternatives remain under review; this map alone does not establish their exact roads."
+        },
+        {
+          "file": "data/aargau-alignment-sources/50.358-2026.pdf",
+          "url": "https://widgets.oev-info.ch/publikation/jahresfpl/50.358.pdf",
+          "publisher": "opentransportdata.swiss / official timetable field, PostAuto AG",
+          "sourceDate": "2025-11-07",
+          "pages": [
+            1,
+            2
+          ],
+          "finding": "Courses 35836, 35840 and 35846 depart Baldingen at 14:45, 15:45 and 16:45. Seesteg departures 14:53, 15:53 and 16:53 reach Bahnhof three minutes later, without Oberflecken, Höfli or Thermalbad calls. These exact times agree with the pinned September GTFS."
+        },
+        {
+          "file": "data/aargau-alignment-sources/baden-nord-2026.pdf",
+          "url": "https://www.postauto.ch/-/media/postauto/fahrplan-und-netz/liniennetz/dokumente/nordschweiz/liniennetz-baden-nord-26.pdf?vs=2",
+          "publisher": "PostAuto AG / A-Welle",
+          "validFrom": "2025-12-14",
+          "page": 1,
+          "finding": "Schematic context for the local Zurzach and Baldingen/Böbikon branches. It does not certify exact road or lane geometry; the explicit service-change notice establishes the reviewed direct variant."
         }
       ],
       "rules": [
@@ -2454,8 +2477,256 @@
           "originalImpliedKph": 138.53713281231632,
           "replacementImpliedKph": 71.73506067927802,
           "reason": "AGIS part traverses the Wittnau branch absent from this exact source stop pattern. The operator timetable and map corroborate the direct working; the 6.9 km branch path is inconsistent with its three-minute source interval. The replacement is still an OSM inference, not measured vehicle travel."
+        },
+        {
+          "id": "358-seesteg-direct",
+          "date": "2026-09-04",
+          "patternId": "ba67a6b897cd1bf0b14f",
+          "agencyId": "801",
+          "routeId": "96-167-7-j26-1",
+          "line": "358",
+          "mode": "bus",
+          "directionId": "1",
+          "stops": [
+            [
+              8.31454576,
+              47.55512474,
+              "Baldingen, Oberdorf",
+              "",
+              "ch:1:sloid:78788:0:120853"
+            ],
+            [
+              8.31700714,
+              47.55505806,
+              "Baldingen, Mitteldorf",
+              "",
+              "ch:1:sloid:78787:0:543615"
+            ],
+            [
+              8.31972005,
+              47.55540968,
+              "Baldingen, Unterdorf",
+              "",
+              "ch:1:sloid:78786:0:125213"
+            ],
+            [
+              8.32159753,
+              47.57001226,
+              "Rekingen AG, Dorf",
+              "",
+              "ch:1:sloid:78783:0:42063"
+            ],
+            [
+              8.31696223,
+              47.57490313,
+              "Rekingen AG, Rainächer",
+              "",
+              "ch:1:sloid:83559:0:393946"
+            ],
+            [
+              8.30386479,
+              47.58379884,
+              "Bad Zurzach, Seesteg",
+              "",
+              "ch:1:sloid:78781:0:27020"
+            ],
+            [
+              8.29536673,
+              47.58825825,
+              "Bad Zurzach, Bahnhof",
+              "",
+              "ch:1:sloid:72503:0:720584"
+            ]
+          ],
+          "segmentIndex": 5,
+          "sourceFeatureId": 193,
+          "sourcePart": 1,
+          "journeys": [
+            {
+              "sourceTripId": ".ojp-96-167-7.1.TA.28.j26",
+              "sourceServiceDate": "2026-09-04",
+              "shortName": "35846",
+              "calls": [
+                [
+                  "ch:1:sloid:78788:0:120853",
+                  60300,
+                  60300,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78787:0:543615",
+                  60300,
+                  60300,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78786:0:125213",
+                  60360,
+                  60360,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78783:0:42063",
+                  60540,
+                  60540,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:83559:0:393946",
+                  60600,
+                  60600,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78781:0:27020",
+                  60780,
+                  60780,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:72503:0:720584",
+                  60960,
+                  60960,
+                  "0",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "sourceTripId": ".ojp-96-167-7.1.TA.29.j26",
+              "sourceServiceDate": "2026-09-04",
+              "shortName": "35840",
+              "calls": [
+                [
+                  "ch:1:sloid:78788:0:120853",
+                  56700,
+                  56700,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78787:0:543615",
+                  56700,
+                  56700,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78786:0:125213",
+                  56760,
+                  56760,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78783:0:42063",
+                  56940,
+                  56940,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:83559:0:393946",
+                  57000,
+                  57000,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78781:0:27020",
+                  57180,
+                  57180,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:72503:0:720584",
+                  57360,
+                  57360,
+                  "0",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "sourceTripId": ".ojp-96-167-7.1.TA.30.j26",
+              "sourceServiceDate": "2026-09-04",
+              "shortName": "35836",
+              "calls": [
+                [
+                  "ch:1:sloid:78788:0:120853",
+                  53100,
+                  53100,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78787:0:543615",
+                  53100,
+                  53100,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78786:0:125213",
+                  53160,
+                  53160,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78783:0:42063",
+                  53340,
+                  53340,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:83559:0:393946",
+                  53400,
+                  53400,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:78781:0:27020",
+                  53580,
+                  53580,
+                  "0",
+                  "0"
+                ],
+                [
+                  "ch:1:sloid:72503:0:720584",
+                  53760,
+                  53760,
+                  "0",
+                  "0"
+                ]
+              ]
+            }
+          ],
+          "originalPathSha256": "2b08bfaac6bfeda5ae5535ee8017ebe600081315e382265bdde23fb051fda282",
+          "replacementPathSha256": "42964af0d67ae1165e6ef10a7d71b6ba863a2576dc80856a68e63134d7e5f674",
+          "originalMetres": 1950.1608945873304,
+          "replacementMetres": 931.3592006399684,
+          "sourceTravelSeconds": 180,
+          "reason": "PostAuto explicitly identifies these three weekday afternoon departures as direct Seesteg–Bahnhof workings for the S27 connection. Field 50.358 confirms their exact courses and times with no local-loop calls. AGIS feature 193 part 1 retains the local loop; replace only this final segment with the pinned full-pattern OSM direct inference. Earlier Baldingen–Rekingen geometry remains unresolved and unchanged; the replacement is not measured vehicle travel."
         }
-      ]
+      ],
+      "expectedOccurrencesByRule": {
+        "136-wittnau-bypass": 1,
+        "358-seesteg-direct": 3
+      },
+      "previousReview": {
+        "policyFile": "data/aargau-alignment-sources/pre-358-policy.json",
+        "regressionFile": "data/aargau-alignment-sources/pre-358-regression.json"
+      }
     }
   },
   "scope": "All national GTFS route records. Canton membership requires at least one scheduled call inside the complete Aargau polygon on any archived trip, independent of operator or selected dates. Each daily feed retains only trips that themselves call in Aargau, with their entire stop chain. Non-stopping through traffic and services absent from this GTFS are outside the timetable denominator.",
@@ -2527,8 +2798,8 @@
   "totals": {
     "trips": 11193,
     "matched": 173106,
-    "officialMatched": 160103,
-    "roadMatched": 9173,
+    "officialMatched": 160100,
+    "roadMatched": 9176,
     "railMatched": 3830,
     "total": 173106,
     "cantonAdjacentMatched": 145261,
@@ -2890,8 +3161,8 @@
       "mode": "bus",
       "trips": 4793,
       "matched": 70862,
-      "officialMatched": 66061,
-      "roadMatched": 4801,
+      "officialMatched": 66058,
+      "roadMatched": 4804,
       "railMatched": 0,
       "total": 70862,
       "cantonAdjacentMatched": 62403,
@@ -5704,8 +5975,8 @@
       "mode": "bus",
       "trips": 30,
       "matched": 280,
-      "officialMatched": 177,
-      "roadMatched": 103,
+      "officialMatched": 174,
+      "roadMatched": 106,
       "railMatched": 0,
       "total": 280,
       "cantonAdjacentMatched": 280,
@@ -238467,9 +238738,19 @@
           "toId": "ch:1:sloid:72503:0:720584",
           "pathIndex": 5131,
           "accepted": true,
-          "pathMetres": 1950.1608945873304,
-          "maximumSnapMetres": 4.630319091344684,
-          "geometrySource": "agis"
+          "geometrySource": "osm",
+          "roadPatternId": "3bad241dac554542e8aff503",
+          "pathMetres": 931.3592006399684,
+          "endpointAdjustmentMetres": 0.03443034578251096,
+          "alignmentCorrectionId": "358-seesteg-direct",
+          "agisRejection": "reviewed-unserved-branch",
+          "supersededGeometry": {
+            "geometrySource": "agis",
+            "pathSha256": "2b08bfaac6bfeda5ae5535ee8017ebe600081315e382265bdde23fb051fda282",
+            "pathMetres": 1950.1608945873304,
+            "featureId": 193,
+            "part": 1
+          }
         }
       ],
       "completeGeometry": true
@@ -380453,7 +380734,7 @@
         "96-167-7-j26-1"
       ],
       "usedPatterns": 7,
-      "acceptedOccurrences": 175,
+      "acceptedOccurrences": 172,
       "status": "geometry-admitted"
     },
     {
@@ -386139,8 +386420,8 @@
     }
   ],
   "payload": {
-    "manifestGzipBytes": 473752,
-    "morningGzipBytes": 676488,
+    "manifestGzipBytes": 475128,
+    "morningGzipBytes": 677975,
     "chunks": [
       {
         "id": "00-02",

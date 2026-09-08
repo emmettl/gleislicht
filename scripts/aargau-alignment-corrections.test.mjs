@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import { expect, test } from 'vitest'
 import { loadAargauAlignmentCorrections } from './aargau-alignment-corrections.mjs'
-import { buildAargauStudy } from './build-aargau-study.mjs'
+import { applyAargauGeometry, buildAargauStudy } from './build-aargau-study.mjs'
 const file = 'data/aargau-alignment-policy.json'
 const corrections = await loadAargauAlignmentCorrections(file, '2026-09-04')
 const rule = corrections.policy.rules[0]
@@ -36,4 +36,40 @@ test('a changed source path or unreviewed date cannot inherit the correction', a
 test('a correction cannot be exported without road provenance and attribution', async () => {
   await expect(buildAargauStudy({ sources: 'data/aargau-sources', inventoryDirectory: 'data/aargau', date: '2026-09-04',
     alignmentPolicyPath: file, output: '/private/tmp/aargau-unused-rejected-export' })).rejects.toThrow('Alignment corrections require road provenance and attribution')
+})
+
+test('Seesteg direct correction admits exactly the three dated source courses', async () => {
+  const direct = corrections.policy.rules.find(r => r.id === '358-seesteg-direct')
+  const segment = audit.patterns.find(p => p.id === direct.patternId).segments[direct.segmentIndex]
+  const prior = { ...segment, path: manifest.paths[segment.pathIndex] }
+  const identity = { agencyId: direct.agencyId, routeId: direct.routeId, route: direct.line, category: direct.mode, directionId: direct.directionId }
+  const otherDate = await loadAargauAlignmentCorrections(file, '2026-09-06')
+  for (const journey of direct.journeys) {
+    const t = { ...identity, ...journey }
+    const result = corrections.overrideSegment(t, direct.stops, 5, prior)
+    expect(result.alignmentCorrectionId).toBe(direct.id)
+    expect(result.pathMetres).toBeCloseTo(931.3592, 3)
+    expect(result.supersededGeometry.featureId).toBe(193)
+    expect(() => corrections.assertJourneyScope(t, direct.stops)).not.toThrow()
+    expect(otherDate.overrideSegment(t, direct.stops, 5, prior)).toBe(prior)
+    const calls = structuredClone(t.calls); calls[5][2]++
+    for (const changed of [{ sourceTripId: 'another-trip' }, { shortName: '35810' }, { sourceServiceDate: '2026-09-06' }, { calls }]) {
+      const unreviewed = { ...t, ...changed }
+      expect(corrections.overrideSegment(unreviewed, direct.stops, 5, prior)).toBe(prior)
+      expect(() => corrections.assertJourneyScope(unreviewed, direct.stops)).toThrow('Unreviewed journey')
+    }
+    const moved = structuredClone(direct.stops); moved[5][0] += .00001
+    expect(corrections.overrideSegment(t, moved, 5, prior)).toBe(prior)
+    expect(corrections.overrideSegment({ ...t, directionId: '0' }, direct.stops, 5, prior)).toBe(prior)
+    expect(corrections.overrideSegment(t, direct.stops, 2, prior)).toBe(prior)
+  }
+})
+
+
+test('shared-pattern geometry cache cannot bypass the per-journey review guard', () => {
+  const r = corrections.policy.rules.find(r => r.id === '358-seesteg-direct')
+  const t = { ...r.journeys[0], id: 'reviewed', agencyId: r.agencyId, routeId: r.routeId, route: r.line, category: r.mode, directionId: r.directionId }
+  const invalid = { ...t, id: 'unreviewed', sourceTripId: 'another-trip' }
+  const guardOnly = { assertJourneyScope: corrections.assertJourneyScope, overrideSegment: (_t, _s, _i, segment) => segment }
+  expect(() => applyAargauGeometry({ stops: r.stops, trains: [t, invalid] }, new Map(), [], undefined, undefined, undefined, undefined, guardOnly)).toThrow('Unreviewed journey')
 })

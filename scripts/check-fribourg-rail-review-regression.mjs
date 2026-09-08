@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
 import { readFile, writeFile } from 'node:fs/promises'
 
-const baseline = '0f9e9a3'
+const baseline = '007a946'
 const old = file => JSON.parse(execFileSync('git', ['show', `${baseline}:${file}`], { maxBuffer: 128 * 1024 * 1024 }))
 const current = async file => JSON.parse(await readFile(file))
 const days = []
@@ -20,7 +20,7 @@ for (const date of ['2026-09-04', '2026-09-06']) {
     unchangedSegments += t.pathSegments.length
   }
   const added = [...present.values()].filter(t => !previous.has(t.id))
-  assert(added.every(t => t.railReviewKinds?.length), 'New journey outside reviewed evidence')
+  assert(added.every(t => t.railReviewKinds?.includes('bern-western-terminal')), 'New journey outside Bern terminal evidence')
   days.push({ date, previousJourneys: previous.size, presentJourneys: present.size, addedJourneys: added.length,
     unchangedOriginalSegmentOccurrences: unchangedSegments, lostJourneys: 0,
     newJourneys: added.map(t => ({ id: t.id, routeId: t.routeId, reviewKinds: t.railReviewKinds })) })

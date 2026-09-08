@@ -360,6 +360,230 @@
         "retrievedAt": "2026-09-08T19:34:51.906Z"
       }
     ],
+    "bernPlatforms": {
+      "schemaVersion": 1,
+      "id": "bern-western-terminal",
+      "sourceDirectory": "data/fribourg-bern-platform-sources",
+      "sources": [
+        {
+          "file": "sbb-bern-plan-2026-08.pdf",
+          "sha256": "fc8996f20bd75a4293448ccf96a11b443f5df2419282ab75cea80efd252486eb",
+          "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnhofplaene/plan-bern-a4.pdf",
+          "retrievedAt": "2026-09-08T20:18:29.309Z",
+          "documentDate": "2026-08",
+          "role": "SBB station plan, exterior page 3: tracks 49/50 at western end of Bern. Visual identity/extent evidence only; source curves remain FOT."
+        }
+      ],
+      "fotSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "inputsSha256": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+      "previousReviewSha256": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64",
+      "node": {
+        "id": "ch14uvag00088813",
+        "number": "8507000",
+        "name": "Bern",
+        "coordinate": [
+          7.439136,
+          46.948831
+        ]
+      },
+      "stops": [
+        {
+          "stop_id": "ch:1:sloid:7000:55:49",
+          "stop_name": "Bern",
+          "platform_code": "49",
+          "stop_lon": 7.4333344,
+          "stop_lat": 46.94822398
+        },
+        {
+          "stop_id": "ch:1:sloid:7000:55:50",
+          "stop_name": "Bern",
+          "platform_code": "50",
+          "stop_lon": 7.43355898,
+          "stop_lat": 46.94830984
+        }
+      ],
+      "maximumProjectionMetres": 75,
+      "minimumTrimMetres": 200,
+      "maximumTrimMetres": 600,
+      "corridors": [
+        {
+          "routeIds": [
+            "91-15-B-j26-1",
+            "91-1-D-j26-1",
+            "91-1-E-j26-1",
+            "91-2-A-j26-1"
+          ],
+          "segment": {
+            "id": "ch14uvag00087328",
+            "start": "ch14uvag00089324",
+            "end": "ch14uvag00088813",
+            "length": 781.1577614377883,
+            "points": [
+              [
+                7.428931,
+                46.948284
+              ],
+              [
+                7.429906,
+                46.948018
+              ],
+              [
+                7.430804,
+                46.947885
+              ],
+              [
+                7.432114,
+                46.947828
+              ],
+              [
+                7.433162,
+                46.947876
+              ],
+              [
+                7.437213,
+                46.948635
+              ],
+              [
+                7.43793,
+                46.948857
+              ],
+              [
+                7.438694,
+                46.949225
+              ]
+            ],
+            "gauge": "mm1435",
+            "sourceDate": "2021-07-06",
+            "validFrom": "2005-02-11",
+            "operator": "SBB CFF FFS"
+          }
+        },
+        {
+          "routeIds": [
+            "91-66-A-j26-1"
+          ],
+          "segment": {
+            "id": "ch14uvag00087196",
+            "start": "ch14uvag00088813",
+            "end": "ch14uvag00088913",
+            "length": 2128.401851430273,
+            "points": [
+              [
+                7.438289,
+                46.949588
+              ],
+              [
+                7.43717,
+                46.949121
+              ],
+              [
+                7.435561,
+                46.948736
+              ],
+              [
+                7.433202,
+                46.948787
+              ],
+              [
+                7.431265,
+                46.948551
+              ],
+              [
+                7.430218,
+                46.948582
+              ],
+              [
+                7.428588,
+                46.948927
+              ],
+              [
+                7.427751,
+                46.949185
+              ],
+              [
+                7.425089,
+                46.950648
+              ],
+              [
+                7.422562,
+                46.951779
+              ],
+              [
+                7.421327,
+                46.952078
+              ],
+              [
+                7.420151,
+                46.952138
+              ],
+              [
+                7.418594,
+                46.951989
+              ],
+              [
+                7.417162,
+                46.951548
+              ],
+              [
+                7.416435,
+                46.951163
+              ],
+              [
+                7.415103,
+                46.95017
+              ],
+              [
+                7.413671,
+                46.949264
+              ]
+            ],
+            "gauge": "mm1435",
+            "sourceDate": "2021-07-06",
+            "validFrom": "2005-02-11",
+            "operator": "BLSN"
+          }
+        }
+      ],
+      "routes": [
+        {
+          "routeId": "91-1-D-j26-1",
+          "agencyId": "11",
+          "line": "IC1",
+          "gauge": "mm1435"
+        },
+        {
+          "routeId": "91-1-E-j26-1",
+          "agencyId": "33",
+          "line": "S1",
+          "gauge": "mm1435"
+        },
+        {
+          "routeId": "91-15-B-j26-1",
+          "agencyId": "11",
+          "line": "IR15",
+          "gauge": "mm1435"
+        },
+        {
+          "routeId": "91-2-A-j26-1",
+          "agencyId": "33",
+          "line": "S2",
+          "gauge": "mm1435"
+        },
+        {
+          "routeId": "91-66-A-j26-1",
+          "agencyId": "33",
+          "line": "IR66",
+          "gauge": "mm1435"
+        }
+      ],
+      "admission": "Only a single terminal Bern call on the two exact reviewed platforms may project onto its pinned western approach. Clip the source curve at the projection and remove all other station-centre connections in that pattern-local graph. Preserve original stop identity, coordinates, times, source bytes and prior accepted paths. Full pattern consensus, 350 m station / 120 m topology / 2.5× detour guards remain; no inferred running-track or switch certification.",
+      "excludedEvidence": [
+        {
+          "url": "https://www.sbb.ch/de/reiseinformationen/bahnhoefe/bahnhof-finden/bahnhof-bern/bahnhofsbeschrieb.html",
+          "reason": "Direct acquisition returned HTTP 403; not used as retained evidence."
+        }
+      ]
+    },
     "reviewedSupplement": {
       "policySha256": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64",
       "source": {
@@ -745,7 +969,7 @@
           "gauge": "mm1435"
         }
       ],
-      "admission": "Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No general nearest-station or operator-name substitution; only separately hashed Kerzers platform and SBB Däniken reviews may fill the original failures. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.",
+      "admission": "Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No general nearest-station or operator-name substitution; only separately hashed Kerzers platform, SBB Däniken and Bern terminal reviews may fill the original failures. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.",
       "inputs": "data/fribourg-rail-inputs.json",
       "timetableSourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
@@ -755,6 +979,10 @@
       "review": {
         "file": "data/fribourg-rail-review-policy.json",
         "sha256": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
+      },
+      "bernPlatforms": {
+        "file": "data/fribourg-bern-platform-policy.json",
+        "sha256": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac"
       }
     },
     "completePatternsTested": 412

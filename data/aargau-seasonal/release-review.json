@@ -11,11 +11,11 @@
     "seasonal-rail": 68
   },
   "seasonalGapPolicySha256": "e138ec216c2c4119941c675ed92660842df52a35b8bb9ab6f5d0db33581b9539",
-  "correctionPolicySha256": "1e1a9a24056c45b6592eccd256bbfba0c60e37a18f8eacdd77f35450525e089b",
-  "correctionRegressionSha256": "49374a4b35289ad11a3888c9e796cb25664ee4689f18405156de2e87ca389192",
+  "correctionPolicySha256": "23b04e6eea6283eadd4aa75338bf2690ab4588a97f173f4d592517ae8fb93879",
+  "correctionRegressionSha256": "ccbbf0d2b1930e7642ae5974f997ba23e38dcfe60409fe56ec74accdb79d5e09",
   "reviewCandidate": "fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json",
   "addedRoadOccurrences": 16364,
-  "pendingAlignmentFlags": 223,
+  "pendingAlignmentFlags": 222,
   "summarySha256": "dcf7e625e8d08087bf3fa65538ab09f2b274ef20ee23ce25e10e4677d547621c",
   "alignmentReviewSha256": "2551f3e874e4ad883860253973ec5745c0999420311e4d6822f8ab7444ceed5a",
   "publicationReady": false,
@@ -318,7 +318,7 @@
           "date": "2026-09-04",
           "patternId": "ba67a6b897cd1bf0b14f",
           "occurrences": 3,
-          "correctionId": null
+          "correctionId": "358-seesteg-direct"
         }
       ]
     },

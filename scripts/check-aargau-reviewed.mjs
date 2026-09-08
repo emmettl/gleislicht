@@ -64,7 +64,12 @@ for (const train of current.trains.values()) {
     else assert.fail('Missing geometry source')
   }
 }
-assert.equal(changed, 1)
+const countsByRule = Object.fromEntries(corrections.policy.rules.map(r => [r.id, correctionsSeen.filter(c => c.id === r.id).length]))
+assert.deepEqual(countsByRule, corrections.policy.expectedOccurrencesByRule)
+const priorPolicy = await read(corrections.policy.previousReview.policyFile), priorRegression = await read(corrections.policy.previousReview.regressionFile)
+assert.equal(await hashFile(corrections.policy.previousReview.policyFile), priorRegression.policySha256)
+for (const r of priorPolicy.rules) assert.deepEqual(corrections.policy.rules.find(now => now.id === r.id), r)
+for (const c of priorRegression.corrections) assert.deepEqual(correctionsSeen.find(now => now.id === c.id && now.trainId === c.trainId && now.segmentIndex === c.segmentIndex), c)
 assert.equal(changed + preserved, audit.totals.total)
 assert.equal(audit.totals.matched, audit.totals.total)
 assert.equal(agis, audit.totals.officialMatched); assert.equal(osm, audit.totals.roadMatched); assert.equal(fot, audit.totals.railMatched)
@@ -75,9 +80,10 @@ assert.deepEqual(new Set(morning.trains.map(t => t.id)), new Set([...current.tra
 const report = { schemaVersion: 1, date, originalManifestSha256: await hashFile(`${originalDirectory}/aargau-region-day-manifest.json`),
   candidateManifestSha256: await hashFile(`${directory}/aargau-region-day-manifest.json`), policySha256: await hashFile(policyFile),
   originalAuditSha256: await hashFile(`${originalDirectory}/audit.json`), candidateAuditSha256: await hashFile(`${directory}/audit.json`),
+  previousCandidateManifestSha256: priorRegression.candidateManifestSha256, previousCorrectionsPreserved: true, countsByRule,
   journeys: current.trains.size, preservedOccurrences: preserved, correctedOccurrences: changed, corrections: correctionsSeen,
   completeSourceJourneysPreserved: true, allOtherGeometryPreserved: true, passed: true, publicationReady: false }
 const reportPath = 'data/aargau-seasonal/alignment-correction-regression.json'
 if (process.argv.includes('--write')) await writeFile(reportPath, JSON.stringify(report, null, 2) + '\n')
 else assert.deepEqual(await read(reportPath), report)
-console.log(`Verified ${report.journeys} unchanged journeys, ${preserved} preserved segments and ${changed} exact reviewed correction`)
+console.log(`Verified ${report.journeys} unchanged journeys, ${preserved} preserved segments and ${changed} exact reviewed corrections`)
