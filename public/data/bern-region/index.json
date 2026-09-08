@@ -1,0 +1,22 @@
+{
+  "label": "Bern canton regional feed",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
+    "crosswalk": "af3ac979612923ad376715cde247552a73f01aefbbd36a4998cbe8ecdc81244a",
+    "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19"
+  },
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "manifest": "2026-09-04/bern-region-day-manifest.json",
+      "morning": "2026-09-04/bern-region-morning.json"
+    },
+    {
+      "date": "2026-09-06",
+      "manifest": "2026-09-06/bern-region-day-manifest.json",
+      "morning": "2026-09-06/bern-region-morning.json"
+    }
+  ],
+  "admission": "Complete geometry patterns only; see docs/BERN-STUDY.md and data/bern-audit for exclusions."
+}

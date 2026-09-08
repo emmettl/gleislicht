@@ -88,7 +88,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 | Canton | Local geometry evidence | Main network/product references |
 | --- | --- | --- |
 | [ZH — Zürich](#zh) | Existing integration in part | ZVV, Z-Pass |
-| [BE — Bern](#be) | Download inspected | Libero |
+| [BE — Bern](#be) | Cantonal adapter; partial service admission | Libero |
 | [LU — Luzern](#lu) | Vector sample verified | Passepartout |
 | [UR — Uri](#ur) | No line export verified | UriTicket (supplementary product) |
 | [SZ — Schwyz](#sz) | No line export verified | Tarifverbund Schwyz, Z-Pass, OSTWIND (edge services) |
@@ -142,7 +142,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 **Reuse:** Packaged terms dated 20 January 2026 allow free private/commercial use and reproduction with attribution. Online applications must link metadata; pass terms on with redistributed data. Layer credit: Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern.
 
-**Next action:** Build an explicit operator/line crosswalk and test directed stop patterns across the whole canton, not only BERNMOBIL/RBS. Representative GTFS agencies: `11`, `33`, `38`, `56`, `64`, `81`, `88`, `101`, `827`, `850`, `859`, `870`, `871`, `889`.
+**Implementation follow-up:** The [Bern cantonal study](BERN-STUDY.md) now inventories all 705 canton-serving GTFS route records across 101 agency identities, tests Friday/Sunday directed patterns, and emits a regional feed containing complete matched patterns. See the [full admission/exclusion inventory](BERN-ROUTE-INVENTORY.md) and [machine-readable audit](../data/bern-audit/summary.json). This is a whole-canton source census with partial service admission; it does not establish complete or year-round geometry coverage. Representative GTFS agencies from the original survey: `11`, `33`, `38`, `56`, `64`, `81`, `88`, `101`, `827`, `850`, `859`, `870`, `871`, `889`.
 
 **Checked references:** [be-metadata](https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct), [be-product-pdf](https://www.geo2.apps.be.ch/de/pdf/geoproduct/OEVTP), [be-gpkg](https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip), [be-lines](https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp_linie.parquet).
 

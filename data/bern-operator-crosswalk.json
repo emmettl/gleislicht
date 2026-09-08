@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "basis": "Explicit OEVTP TUCODE/TUNAME to pinned GTFS agency identities, checked against data/swiss-transit-agencies.json. Mode and passenger line must also match; these mappings do not select canton membership.",
+  "operators": {
+    "Bernmobil": [
+      "827"
+    ],
+    "RBS": [
+      "88",
+      "850"
+    ],
+    "Busland": [
+      "871"
+    ],
+    "PostAuto": [
+      "801"
+    ],
+    "CarPostal": [
+      "801"
+    ],
+    "PostAutio / STI": [
+      "859"
+    ],
+    "STI": [
+      "146",
+      "605",
+      "859"
+    ],
+    "ASm": [
+      "38",
+      "56",
+      "81",
+      "128",
+      "870"
+    ],
+    "VB/TPB": [
+      "101",
+      "103",
+      "889"
+    ],
+    "BLS": [
+      "33",
+      "183",
+      "192"
+    ],
+    "SBB": [
+      "11"
+    ],
+    "CFF": [
+      "11"
+    ],
+    "TPF": [
+      "53",
+      "834"
+    ],
+    "CJ": [
+      "43",
+      "833"
+    ],
+    "MOB": [
+      "64"
+    ],
+    "ZB": [
+      "86"
+    ],
+    "OeBB": [
+      "68"
+    ],
+    "BOB": [
+      "35",
+      "822"
+    ],
+    "BLM": [
+      "32"
+    ],
+    "WAB": [
+      "157",
+      "200"
+    ],
+    "JB": [
+      "124",
+      "200"
+    ],
+    "SPB": [
+      "140"
+    ],
+    "BRB": [
+      "104"
+    ],
+    "BSG": [
+      "182"
+    ],
+    "LNM": [
+      "189"
+    ],
+    "AFA": [
+      "813"
+    ],
+    "BGU": [
+      "894"
+    ],
+    "BSU": [
+      "883"
+    ],
+    "BOGG": [
+      "793"
+    ],
+    "BDWM": [
+      "899"
+    ],
+    "GWB": [
+      "859",
+      "605"
+    ],
+    "BKG": [
+      "7025"
+    ],
+    "FCK": [
+      "7055"
+    ],
+    "FRG": [
+      "7049"
+    ],
+    "Bürgerbus WETA": [
+      "710"
+    ],
+    "Gde Gondiswil": [
+      "7045"
+    ],
+    "Gde Rüderswil": [
+      "7087"
+    ],
+    "OUW": [
+      "7046"
+    ],
+    "Pro Regio Huttwil": [
+      "7079"
+    ],
+    "THP": [
+      "7088"
+    ],
+    "Bus alpin": [
+      "7080"
+    ],
+    "TWS": [
+      "7070"
+    ],
+    "Luftseilbahn Elsigenalp AG": [
+      "7038"
+    ],
+    "transN": [
+      "153",
+      "156",
+      "792",
+      "796",
+      "15300"
+    ],
+    "BA": [
+      "602",
+      "603",
+      "800"
+    ],
+    "BDGAG": [
+      "225"
+    ],
+    "BEAG": [
+      "282"
+    ],
+    "BGF": [
+      "201"
+    ],
+    "BMH": [
+      "307"
+    ],
+    "CMA": [
+      "245"
+    ],
+    "DIH": [
+      "159"
+    ],
+    "DMB": [
+      "119"
+    ],
+    "GB": [
+      "122"
+    ],
+    "GGM": [
+      "312"
+    ],
+    "GKO": [
+      "323"
+    ],
+    "GLIS": [
+      "3085"
+    ],
+    "GbB": [
+      "120"
+    ],
+    "Glacier 3000": [
+      "261"
+    ],
+    "HB": [
+      "123"
+    ],
+    "KWS": [
+      "3121"
+    ],
+    "LABB": [
+      "306"
+    ],
+    "LB": [
+      "298"
+    ],
+    "LEE": [
+      "614"
+    ],
+    "LESt": [
+      "264"
+    ],
+    "LGP": [
+      "272"
+    ],
+    "LMM": [
+      "273"
+    ],
+    "LSBR": [
+      "283"
+    ],
+    "LSKA": [
+      "228",
+      "346"
+    ],
+    "LSMS": [
+      "256",
+      "268"
+    ],
+    "LWM": [
+      "216"
+    ],
+    "NB": [
+      "135"
+    ],
+    "NHB": [
+      "149",
+      "239"
+    ],
+    "RfB": [
+      "3087"
+    ],
+    "SKRa": [
+      "3070"
+    ],
+    "SMA": [
+      "141"
+    ],
+    "SMtS": [
+      "143"
+    ],
+    "Tschentenalpbahn AG": [
+      "613"
+    ],
+    "BET": [
+      "114"
+    ]
+  },
+  "nightOperators": {
+    "Aare Seeland mobil, 4900 Langenthal": [
+      "870"
+    ],
+    "Automobilverkehr Frutigen - Adelboden AG, 3715 Adelboden": [
+      "813"
+    ],
+    "Bernmobil, 3000 Bern": [
+      "827"
+    ],
+    "Busbetrieb Solothurn und Umgebung, 3048 Worblaufen": [
+      "883"
+    ],
+    "Busland AG, 3400 Burgdorf": [
+      "871"
+    ],
+    "Grindelwald Bus AG, 3818 Grindelwald": [
+      "859"
+    ],
+    "Postauto Region Bern, 3001 Bern": [
+      "801"
+    ],
+    "Regionalverkehr Bern - Solothurn, 3048 Worblaufen": [
+      "850"
+    ],
+    "STI Bus AG, 3601 Thun; Bernmobil, 3000 Bern": [
+      "146",
+      "827"
+    ],
+    "STI Bus AG, 3602 Thun": [
+      "146"
+    ],
+    "Transports publics fribourgeois, 1701 Fribourg": [
+      "834"
+    ],
+    "Verkehrsbetriebe Biel / Transports publics biennois, 2500 Biel/Bienne": [
+      "889"
+    ],
+    "Verkehrsbetriebe Biel / Transports publics biennois, 2500 Biel/Bienne; Postauto Region Bern, 3001 Bern": [
+      "889",
+      "801"
+    ],
+    "Verkehrsbetriebe Biel / Transports publics biennois, 2500 Biel/Bienne; Regionalverkehr Bern - Solothurn, 3048 Worblaufen": [
+      "889",
+      "850"
+    ]
+  },
+  "unresolvedOperators": {
+    "BGH": "No verified pinned agency identity for Portenier; do not infer from the Adelboden brand.",
+    "KWO": "Several transport installations share this owner; require installation-specific identity."
+  },
+  "featureOverrides": {
+    "31_311": {
+      "agencyIds": [
+        "822"
+      ],
+      "lines": [
+        "311"
+      ],
+      "reason": "Source WAB replacement is published by Busbetrieb BOB in GTFS."
+    },
+    "31_312": {
+      "agencyIds": [
+        "859"
+      ],
+      "lines": [
+        "312"
+      ],
+      "reason": "Source BOB replacement is published by STI in GTFS."
+    },
+    "50_608": {
+      "agencyIds": [
+        "723"
+      ],
+      "lines": [
+        "608"
+      ],
+      "reason": "Source BDWM line 8 / Kursbuch 50.608 is GTFS Aargau Verkehr agency 723 line 608."
+    },
+    "313_b": {
+      "agencyIds": [
+        "32"
+      ],
+      "lines": [
+        "2461"
+      ],
+      "reason": "Lauterbrunnen–Grütschalp cable section of Kursbuch 313."
+    },
+    "2022_1": {
+      "agencyIds": [
+        "103"
+      ],
+      "lines": [
+        "22"
+      ],
+      "reason": "Biel–Magglingen funicular, Kursbuch 22.022."
+    },
+    "2023_1": {
+      "agencyIds": [
+        "101"
+      ],
+      "lines": [
+        "23"
+      ],
+      "reason": "Biel–Evilard funicular, Kursbuch 22.023."
+    },
+    "2395_1": {
+      "agencyIds": [
+        "225"
+      ],
+      "lines": [
+        "2395"
+      ],
+      "reason": "Gstaad–Eggli installation; source kubunr is nn, code retains 2395."
+    },
+    "3470": {
+      "agencyIds": [
+        "183"
+      ],
+      "allLines": true,
+      "reason": "BLS Brienzersee timetable names denote individual cruises; all must pass the full stop-chain geometry gate."
+    },
+    "3310": {
+      "agencyIds": [
+        "192"
+      ],
+      "allLines": true,
+      "reason": "BLS Thunersee timetable names denote individual cruises; all must pass the full stop-chain geometry gate."
+    },
+    "475": {
+      "agencyIds": [
+        "104"
+      ],
+      "lines": [
+        "7",
+        "T7"
+      ],
+      "reason": "Brienz–Rothorn cog railway uses GTFS line 7/T7, source display number 0."
+    },
+    "470_IR": {
+      "agencyIds": [
+        "86"
+      ],
+      "lines": [
+        "IRLIX",
+        "LIX"
+      ],
+      "reason": "Luzern–Interlaken Express source IR corridor; exact ordered calls still required."
+    },
+    "2445_1": {
+      "agencyIds": [
+        "312"
+      ],
+      "lines": [
+        "2445",
+        "GGM"
+      ],
+      "reason": "Gondelbahn Grindelwald–Männlichen: published GTFS name GGM on the same installation; endpoints and ordered intermediate calls must still pass."
+    }
+  },
+  "expectedAgencyNames": {
+    "101": "Verkehrsbetriebe Biel",
+    "103": "Verkehrsbetriebe Biel",
+    "104": "Brienz Rothorn Bahn AG",
+    "11": "Schweizerische Bundesbahnen SBB",
+    "114": "Engelberg-Trübsee-Titlis",
+    "119": "Drahtseilbahn Marzili-Stadt Bern AG",
+    "120": "Parkhotel Giessbach AG",
+    "122": "Gurtenbahn",
+    "123": "Harderbahn",
+    "124": "Jungfraubahn",
+    "128": "Aare Seeland mobil (ltb)",
+    "135": "Niesenbahn",
+    "140": "Berner Oberland-Bahnen",
+    "141": "Schilthornbahn (sbm)",
+    "143": "Funiculaire Saint-Imier-Mont-Soleil SA",
+    "146": "STI Bus AG",
+    "149": "Niederhornbahn AG",
+    "153": "Transports Publics Neuchâtelois SA (tn)",
+    "15300": "Transports Publics Neuchâtelois SA",
+    "156": "Service d'automobiles TRN (vr)",
+    "157": "Wengernalpbahn",
+    "159": "Interlaken-Heimwehfluh",
+    "182": "Bielersee-Schifffahrts-Gesellschaft AG",
+    "183": "BLS Schifffahrt AG (brs)",
+    "189": "Lacs de Neuchâtel et Morat",
+    "192": "BLS Schifffahrt AG (ths)",
+    "200": "Wengernalpbahn Grindelwald Grund - Eigergletscher",
+    "201": "Grindelwald-First",
+    "216": "Wengen-Männlichen",
+    "225": "Bergbahnen Destination Gstaad AG",
+    "228": "Luftseilbahn Kandersteg-Sunnbüel (Gemmi) AG",
+    "239": "Niederhornbahn AG",
+    "245": "Remontées Mécaniques Crans-Montana-Aminona",
+    "256": "Stechelberg-Mürren-Schilthorn (lsms)",
+    "261": "Gstaad 3000 AG",
+    "264": "Stockhornbahn AG",
+    "268": "Luftseilbahn Mürren-Schilthorn",
+    "272": "Grindelwald-Pfingstegg",
+    "273": "Marbach-Marbachegg",
+    "282": "Bergbahnen Engstligenalp AG",
+    "283": "Bergbahnen Sörenberg AG",
+    "298": "Lenk Bergbahnen",
+    "306": "Lauchernalp Bergbahnen AG",
+    "307": "Bergbahnen Meiringen-Hasliberg",
+    "3070": "Sesselbahn Kiental-Ramslauenen",
+    "3085": "Genossenschaft Luftseilbahn Sulwald",
+    "3087": "Reichenbachfall-Bahn",
+    "312": "Gondelbahn Grindelwald-Männlichen AG",
+    "3121": "Kraftwerk Sanetsch AG",
+    "32": "Lauterbrunnen-Mürren",
+    "323": "Gondelbahn Kandersteg-Oeschinensee",
+    "33": "BLS AG (bls)",
+    "346": "Luftseilbahn Kandersteg-Allmenalp",
+    "35": "Berner Oberland-Bahnen",
+    "38": "Aare Seeland mobil (bti)",
+    "43": "Chemins de fer du Jura",
+    "53": "Transports publics fribourgeois",
+    "56": "Aare Seeland mobil (rvo)",
+    "602": "Bergbahnen Adelboden AG",
+    "603": "Bergbahnen Adelboden AG",
+    "605": "STI Bus AG",
+    "613": "Tschentenbahnen AG",
+    "614": "Elsigenalpbahnen AG Frutigen, Luftseilbahn und Skilifte",
+    "64": "Montreux-Oberland Bernois",
+    "68": "Oensingen-Balsthal-Bahn",
+    "7025": "Busbetrieb Kandersteg - Gasterntal",
+    "7038": "Autobusbetrieb LEE",
+    "7045": "Bürgerbus Gondiswil-Huttwil-Ufhusen",
+    "7046": "Bürgerbus Kleindietwil-Oeschenbach-Walterswil",
+    "7049": "Förderverein Region Gantrisch",
+    "7055": "Funicar AG",
+    "7070": "Taxi, Bau- und Traxarbeiten Willi Schaad",
+    "7079": "PRO REGIO HUTTWIL Verkehrsverein",
+    "7080": "Bus alpin Lombachalp",
+    "7087": "Bürgerbus Rüderswil",
+    "7088": "Trägerverein Historische Postautolinie",
+    "710": "Bürgerbus Walperswil-Epsach-Täuffelen-Aarberg",
+    "723": "Aargau Verkehr AG",
+    "792": "Transports Publics Neuchâtelois SA (tc)",
+    "793": "Busbetrieb Olten-Gösgen-Gäu",
+    "796": "Service d'automobiles TRN (rvt Auto)",
+    "800": "Bergbahnen Adelboden-Lenk AG",
+    "801": "PostAuto AG",
+    "81": "Aare Seeland mobil (snb)",
+    "813": "AFA Bus AG",
+    "822": "Busbetrieb BOB",
+    "827": "Städtische Verkehrsbetriebe Bern",
+    "833": "Automobiles CJ",
+    "834": "Service d'automobiles TPF",
+    "850": "Autobusbetrieb RBS",
+    "859": "STI Bus AG",
+    "86": "Zentralbahn",
+    "870": "Automobildienste Aare Seeland mobil",
+    "871": "Busland AG",
+    "88": "Regionalverkehr Bern-Solothurn",
+    "883": "Busbetrieb Solothurn und Umgebung",
+    "889": "Verkehrsbetriebe Biel",
+    "894": "Busbetrieb Grenchen und Umgebung",
+    "899": "Aargau Verkehr AG"
+  }
+}
