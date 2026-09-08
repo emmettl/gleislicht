@@ -1,0 +1,2007 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "serviceDate": "2026-09-08",
+    "feedVersion": "20260905",
+    "dayModel": "civil day with preceding service-day spillover",
+    "sourceServiceDates": [
+      "2026-09-07",
+      "2026-09-08"
+    ],
+    "sourceHashes": {
+      "archive": "4fa074044fc3a1ceae3c91597b72cf42b9bbce0477b9d43b7b4f658e3e9acfa5",
+      "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "snapshot": "3e16a5b15885ffe0307d5adc8039deb134df2a50a424e9fa9f53d86c5837a1c9",
+      "busCache": "a67d9ec3bd72665a421c6ebb327618a6b3329dc68dd417f1add9fb6901ae3e37"
+    },
+    "nodeVersion": "v24.20.0"
+  },
+  "scope": {
+    "bounds": "6.45,46.48,6.85,46.71",
+    "description": "Lausanne region: tl buses, m1/m2, LEB and rail inside the study bounds; excludes lake services and funiculars. Not canton-wide Vaud coverage.",
+    "extractedTrips": 9267,
+    "candidateTrips": 8848,
+    "excludedTrips": 419,
+    "platforms": 1077,
+    "namedStops": 506
+  },
+  "groups": [
+    {
+      "id": "tl-bus",
+      "trips": 6866,
+      "routes": [
+        "92-1-V-j26-1",
+        "92-13-H-j26-1",
+        "92-16-E-j26-1",
+        "92-17-D-j26-1",
+        "92-18-B-j26-1",
+        "92-19-D-j26-1",
+        "92-2-T-j26-1",
+        "92-20-C-j26-1",
+        "92-21-I-j26-1",
+        "92-24-G-j26-1",
+        "92-25-E-j26-1",
+        "92-3-S-j26-1",
+        "92-31-I-j26-1",
+        "92-32-I-j26-1",
+        "92-33-G-j26-1",
+        "92-35-D-j26-1",
+        "92-36-D-j26-1",
+        "92-38-E-j26-1",
+        "92-4-T-j26-1",
+        "92-41-G-j26-1",
+        "92-42-E-j26-1",
+        "92-44-F-j26-1",
+        "92-45-C-j26-1",
+        "92-46-F-j26-1",
+        "92-47-D-j26-1",
+        "92-48-E-j26-1",
+        "92-49-j26-1",
+        "92-54-B-j26-1",
+        "92-56-A-j26-1",
+        "92-58-C-j26-1",
+        "92-6-Q-j26-1",
+        "92-60-C-j26-1",
+        "92-64-F-j26-1",
+        "92-68-A-j26-1",
+        "92-69-A-j26-1",
+        "92-7-P-j26-1",
+        "92-8-L-j26-1",
+        "92-9-P-j26-1"
+      ],
+      "totalSegments": 114089,
+      "indexedSegments": 114089,
+      "acceptedSegments": 114089,
+      "issues": [],
+      "coverage": 1
+    },
+    {
+      "id": "m1",
+      "trips": 339,
+      "routes": [
+        "91-m1-j26-1"
+      ],
+      "totalSegments": 4570,
+      "indexedSegments": 4570,
+      "acceptedSegments": 4570,
+      "issues": [],
+      "coverage": 1
+    },
+    {
+      "id": "m2",
+      "trips": 763,
+      "routes": [
+        "91-m2-j26-1"
+      ],
+      "totalSegments": 8371,
+      "indexedSegments": 8371,
+      "acceptedSegments": 8371,
+      "issues": [],
+      "coverage": 1
+    },
+    {
+      "id": "leb",
+      "trips": 147,
+      "routes": [
+        "91-20-I-j26-1"
+      ],
+      "totalSegments": 2248,
+      "indexedSegments": 2248,
+      "acceptedSegments": 2248,
+      "issues": [],
+      "coverage": 1
+    },
+    {
+      "id": "rail",
+      "trips": 733,
+      "routes": [
+        "91-1-D-j26-1",
+        "91-1-M-j26-1",
+        "91-15-B-j26-1",
+        "91-2-R-j26-1",
+        "91-2Q-Y-j26-1",
+        "91-3-T-j26-1",
+        "91-33-C-j26-1",
+        "91-4-L-j26-1",
+        "91-40-C-j26-1",
+        "91-41-D-j26-1",
+        "91-5-A-j26-1",
+        "91-51-B-j26-1",
+        "91-56-A-j26-1",
+        "91-7-N-j26-1",
+        "91-7-Y-j26-1",
+        "91-8-J-j26-1",
+        "91-9-K-j26-1",
+        "91-90-j26-1",
+        "91-95-j26-1",
+        "91-B-Y-j26-1"
+      ],
+      "totalSegments": 4172,
+      "indexedSegments": 4172,
+      "acceptedSegments": 4172,
+      "issues": [],
+      "coverage": 1
+    }
+  ],
+  "baselineRailGroups": [
+    {
+      "id": "m1",
+      "trips": 339,
+      "routes": [
+        "91-m1-j26-1"
+      ],
+      "totalSegments": 4570,
+      "indexedSegments": 4570,
+      "acceptedSegments": 4235,
+      "issues": [
+        {
+          "routeId": "91-m1-j26-1",
+          "route": "m1",
+          "from": "Renens VD, gare",
+          "to": "Ecublens VD, Epenex",
+          "fromId": "ch:1:sloid:30749:0:1734",
+          "toId": "ch:1:sloid:1218:0:1789",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 128.8,
+          "occurrences": 168
+        },
+        {
+          "routeId": "91-m1-j26-1",
+          "route": "m1",
+          "from": "Ecublens VD, Epenex",
+          "to": "Renens VD, gare",
+          "fromId": "ch:1:sloid:1218:0:1778",
+          "toId": "ch:1:sloid:30749:0:1734",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 128.8,
+          "occurrences": 167
+        }
+      ],
+      "coverage": 0.9266958424507659
+    },
+    {
+      "id": "m2",
+      "trips": 763,
+      "routes": [
+        "91-m2-j26-1"
+      ],
+      "totalSegments": 8371,
+      "indexedSegments": 5763,
+      "acceptedSegments": 5222,
+      "issues": [
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, gare",
+          "to": "Lausanne, Flon",
+          "fromId": "ch:1:sloid:92050:0:1096",
+          "toId": "ch:1:sloid:91818:0:1061",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 382
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Flon",
+          "to": "Lausanne, Riponne-M. Béjart",
+          "fromId": "ch:1:sloid:91818:0:1061",
+          "toId": "ch:1:sloid:90442:0:1026",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 382
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Jordils",
+          "to": "Lausanne, Délices",
+          "fromId": "ch:1:sloid:92061:0:1159",
+          "toId": "ch:1:sloid:92028:0:1139",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 271
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Délices",
+          "to": "Lausanne, Grancy",
+          "fromId": "ch:1:sloid:92028:0:1139",
+          "toId": "ch:1:sloid:92052:0:1121",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 255.5,
+          "occurrences": 271
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Grancy",
+          "to": "Lausanne, gare",
+          "fromId": "ch:1:sloid:92052:0:1121",
+          "toId": "ch:1:sloid:92050:0:1096",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 271
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Riponne-M. Béjart",
+          "to": "Lausanne, Flon",
+          "fromId": "ch:1:sloid:90442:0:1025",
+          "toId": "ch:1:sloid:91818:0:1063",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 381
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Flon",
+          "to": "Lausanne, gare",
+          "fromId": "ch:1:sloid:91818:0:1063",
+          "toId": "ch:1:sloid:92050:0:1096",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 111
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Flon",
+          "to": "Lausanne, gare",
+          "fromId": "ch:1:sloid:91818:0:1063",
+          "toId": "ch:1:sloid:92050:0:1101",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 270
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, gare",
+          "to": "Lausanne, Grancy",
+          "fromId": "ch:1:sloid:92050:0:1101",
+          "toId": "ch:1:sloid:92052:0:1122",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 270
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Grancy",
+          "to": "Lausanne, Délices",
+          "fromId": "ch:1:sloid:92052:0:1122",
+          "toId": "ch:1:sloid:92028:0:1141",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 254.2,
+          "occurrences": 270
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Délices",
+          "to": "Lausanne, Jordils",
+          "fromId": "ch:1:sloid:92028:0:1141",
+          "toId": "ch:1:sloid:92061:0:1161",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 270
+        }
+      ],
+      "coverage": 0.623820332098913
+    },
+    {
+      "id": "leb",
+      "trips": 147,
+      "routes": [
+        "91-20-I-j26-1"
+      ],
+      "totalSegments": 2248,
+      "indexedSegments": 2248,
+      "acceptedSegments": 1825,
+      "issues": [
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Cheseaux",
+          "to": "Les Ripes",
+          "fromId": "ch:1:sloid:1169:0:1421",
+          "toId": "ch:1:sloid:87727:0:1388",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 137.6,
+          "occurrences": 71
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Les Ripes",
+          "to": "Etagnières",
+          "fromId": "ch:1:sloid:87727:0:1388",
+          "toId": "ch:1:sloid:1171:0:1321",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 71
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Etagnières",
+          "to": "Assens",
+          "fromId": "ch:1:sloid:1171:0:1321",
+          "toId": "ch:1:sloid:1172:0:1325",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 71
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Assens",
+          "to": "Etagnières",
+          "fromId": "ch:1:sloid:1172:0:1238",
+          "toId": "ch:1:sloid:1171:0:1321",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 70
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Etagnières",
+          "to": "Les Ripes",
+          "fromId": "ch:1:sloid:1171:0:1321",
+          "toId": "ch:1:sloid:87727:0:1387",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 70
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Les Ripes",
+          "to": "Cheseaux",
+          "fromId": "ch:1:sloid:87727:0:1387",
+          "toId": "ch:1:sloid:1169:0:1529",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 137.6,
+          "occurrences": 70
+        }
+      ],
+      "coverage": 0.8118327402135231
+    },
+    {
+      "id": "rail",
+      "trips": 733,
+      "routes": [
+        "91-1-D-j26-1",
+        "91-1-M-j26-1",
+        "91-15-B-j26-1",
+        "91-2-R-j26-1",
+        "91-2Q-Y-j26-1",
+        "91-3-T-j26-1",
+        "91-33-C-j26-1",
+        "91-4-L-j26-1",
+        "91-40-C-j26-1",
+        "91-41-D-j26-1",
+        "91-5-A-j26-1",
+        "91-51-B-j26-1",
+        "91-56-A-j26-1",
+        "91-7-N-j26-1",
+        "91-7-Y-j26-1",
+        "91-8-J-j26-1",
+        "91-9-K-j26-1",
+        "91-90-j26-1",
+        "91-95-j26-1",
+        "91-B-Y-j26-1"
+      ],
+      "totalSegments": 4172,
+      "indexedSegments": 4103,
+      "acceptedSegments": 3867,
+      "issues": [
+        {
+          "routeId": "91-1-M-j26-1",
+          "route": "R1",
+          "from": "Chavornay",
+          "to": "Bavois",
+          "fromId": "ch:1:sloid:1112:3:3",
+          "toId": "ch:1:sloid:1113:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 121.6,
+          "occurrences": 21
+        },
+        {
+          "routeId": "91-1-M-j26-1",
+          "route": "R1",
+          "from": "Bavois",
+          "to": "Chavornay",
+          "fromId": "ch:1:sloid:1113:1:1",
+          "toId": "ch:1:sloid:1112:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 120.3,
+          "occurrences": 21
+        },
+        {
+          "routeId": "91-15-B-j26-1",
+          "route": "IR15",
+          "from": "Lausanne",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1120:0:42631",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 14
+        },
+        {
+          "routeId": "91-2-R-j26-1",
+          "route": "R2",
+          "from": "Chavornay",
+          "to": "Bavois",
+          "fromId": "ch:1:sloid:1112:3:3",
+          "toId": "ch:1:sloid:1113:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 121.6,
+          "occurrences": 21
+        },
+        {
+          "routeId": "91-2-R-j26-1",
+          "route": "R2",
+          "from": "Bavois",
+          "to": "Chavornay",
+          "fromId": "ch:1:sloid:1113:1:1",
+          "toId": "ch:1:sloid:1112:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 120.3,
+          "occurrences": 21
+        },
+        {
+          "routeId": "91-2Q-Y-j26-1",
+          "route": "IR",
+          "from": "Lausanne",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1120:0:638488",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-33-C-j26-1",
+          "route": "RE33",
+          "from": "Renens VD",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1118:2:2",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 40
+        },
+        {
+          "routeId": "91-40-C-j26-1",
+          "route": "S40",
+          "from": "Pully-Nord",
+          "to": "Lausanne",
+          "fromId": "ch:1:sloid:4000:1:1",
+          "toId": "ch:1:sloid:1120:0:20298",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 19
+        },
+        {
+          "routeId": "91-40-C-j26-1",
+          "route": "S40",
+          "from": "Lausanne",
+          "to": "Pully-Nord",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4000:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 18
+        },
+        {
+          "routeId": "91-41-D-j26-1",
+          "route": "S41",
+          "from": "Lausanne",
+          "to": "Pully-Nord",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4000:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 20
+        },
+        {
+          "routeId": "91-41-D-j26-1",
+          "route": "S41",
+          "from": "Pully-Nord",
+          "to": "Lausanne",
+          "fromId": "ch:1:sloid:4000:1:1",
+          "toId": "ch:1:sloid:1120:0:20298",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 18
+        },
+        {
+          "routeId": "91-56-A-j26-1",
+          "route": "R56",
+          "from": "Morges",
+          "to": "La Gottaz",
+          "fromId": "ch:1:sloid:1037:4:5",
+          "toId": "ch:1:sloid:1054:0:319603",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 35
+        },
+        {
+          "routeId": "91-56-A-j26-1",
+          "route": "R56",
+          "from": "La Gottaz",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1054:0:319603",
+          "toId": "ch:1:sloid:1037:4:5",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 34
+        },
+        {
+          "routeId": "91-9-K-j26-1",
+          "route": "R9",
+          "from": "Lausanne",
+          "to": "Puidoux",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4012:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-95-j26-1",
+          "route": "IR95",
+          "from": "Lausanne",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1120:0:840061",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 3
+        },
+        {
+          "routeId": "91-95-j26-1",
+          "route": "IR95",
+          "from": "Renens VD",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1118:2:2",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 15
+        },
+        {
+          "routeId": "91-95-j26-1",
+          "route": "IR95",
+          "from": "Renens VD",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1118:3:5",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-8-J-j26-1",
+          "route": "R8",
+          "from": "Lonay-Préverenges",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1048:1:1",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-8-J-j26-1",
+          "route": "R8",
+          "from": "Morges",
+          "to": "St-Prex",
+          "fromId": "ch:1:sloid:1037:1:1",
+          "toId": "ch:1:sloid:1036:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 1
+        }
+      ],
+      "coverage": 0.9268935762224353
+    }
+  ],
+  "railProjection": {
+    "limits": {
+      "snapMetres": 120,
+      "maxDetourRatio": 4.5,
+      "detourAllowanceMetres": 3000
+    },
+    "snaps": [
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1118:3:5",
+        "stop": "Renens VD",
+        "segmentId": "ch14uvag00087034",
+        "snapMetres": 31.14
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1120:0:668579",
+        "stop": "Lausanne",
+        "segmentId": "ch14uvag00086958",
+        "snapMetres": 6.59
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1120:0:860143",
+        "stop": "Lausanne",
+        "segmentId": "ch14uvag00086958",
+        "snapMetres": 14.53
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1120:0:42631",
+        "stop": "Lausanne",
+        "segmentId": "ch14uvag00086958",
+        "snapMetres": 24.36
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1121:1:1",
+        "stop": "Pully",
+        "segmentId": "ch14uvag00086959",
+        "snapMetres": 4.89
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1122:2:2",
+        "stop": "Lutry",
+        "segmentId": "ch14uvag00086960",
+        "snapMetres": 2.2
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1124:1:1",
+        "stop": "Cully",
+        "segmentId": "ch14uvag00086962",
+        "snapMetres": 3.72
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1112:3:3",
+        "stop": "Chavornay",
+        "segmentId": "ch14uvag00087152",
+        "snapMetres": 7.27
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1113:2:2",
+        "stop": "Bavois",
+        "segmentId": "ch14uvag00087151",
+        "snapMetres": 4.83
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1114:2:2",
+        "stop": "Eclépens",
+        "segmentId": "ch14uvag00087148",
+        "snapMetres": 4.31
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1115:2:2",
+        "stop": "Cossonay-Penthalaz",
+        "segmentId": "ch14uvag00087136",
+        "snapMetres": 0.33
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1116:1:1",
+        "stop": "Vufflens-la-Ville",
+        "segmentId": "ch14uvag00087135",
+        "snapMetres": 10.53
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1117:2:3",
+        "stop": "Bussigny",
+        "segmentId": "ch14uvag00087135",
+        "snapMetres": 9.07
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:18452:2:2",
+        "stop": "Prilly-Malley",
+        "segmentId": "ch14uvag00087031",
+        "snapMetres": 15.46
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1120:0:37997",
+        "stop": "Lausanne",
+        "segmentId": "ch14uvag00086958",
+        "snapMetres": 31.15
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1121:2:2",
+        "stop": "Pully",
+        "segmentId": "ch14uvag00086960",
+        "snapMetres": 3.29
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1125:1:1",
+        "stop": "Epesses",
+        "segmentId": "ch14uvag00086964",
+        "snapMetres": 5.28
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1118:3:4",
+        "stop": "Renens VD",
+        "segmentId": "ch14uvag00087034",
+        "snapMetres": 21.79
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1124:2:2",
+        "stop": "Cully",
+        "segmentId": "ch14uvag00086962",
+        "snapMetres": 5.48
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1125:2:2",
+        "stop": "Epesses",
+        "segmentId": "ch14uvag00086964",
+        "snapMetres": 2.89
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1124:2:3",
+        "stop": "Cully",
+        "segmentId": "ch14uvag00086962",
+        "snapMetres": 13.51
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1122:1:1",
+        "stop": "Lutry",
+        "segmentId": "ch14uvag00086960",
+        "snapMetres": 5.41
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1120:0:638488",
+        "stop": "Lausanne",
+        "segmentId": "ch14uvag00086958",
+        "snapMetres": 44.28
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:18452:1:1",
+        "stop": "Prilly-Malley",
+        "segmentId": "ch14uvag00087031",
+        "snapMetres": 22.84
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1118:1:1",
+        "stop": "Renens VD",
+        "segmentId": "ch14uvag00087033",
+        "snapMetres": 5.24
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1117:2:4",
+        "stop": "Bussigny",
+        "segmentId": "ch14uvag00087135",
+        "snapMetres": 0.68
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1116:2:2",
+        "stop": "Vufflens-la-Ville",
+        "segmentId": "ch14uvag00087135",
+        "snapMetres": 3.33
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1115:1:1",
+        "stop": "Cossonay-Penthalaz",
+        "segmentId": "ch14uvag00087137",
+        "snapMetres": 3.09
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1114:1:1",
+        "stop": "Eclépens",
+        "segmentId": "ch14uvag00087148",
+        "snapMetres": 3.1
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1113:1:1",
+        "stop": "Bavois",
+        "segmentId": "ch14uvag00087151",
+        "snapMetres": 2.99
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1112:2:2",
+        "stop": "Chavornay",
+        "segmentId": "ch14uvag00087152",
+        "snapMetres": 0.12
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1120:0:840061",
+        "stop": "Lausanne",
+        "segmentId": "ch14uvag00086958",
+        "snapMetres": 38.14
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:18452:2:3",
+        "stop": "Prilly-Malley",
+        "segmentId": "ch14uvag00087031",
+        "snapMetres": 4.38
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4014:1:1",
+        "stop": "Palézieux",
+        "segmentId": "ch14uvag00087298",
+        "snapMetres": 0.78
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1120:0:276884",
+        "stop": "Lausanne",
+        "segmentId": "ch14uvag00086958",
+        "snapMetres": 6.22
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1037:1:1",
+        "stop": "Morges",
+        "segmentId": "ch14uvag00087043",
+        "snapMetres": 3.54
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1037:2:2",
+        "stop": "Morges",
+        "segmentId": "ch14uvag00087043",
+        "snapMetres": 0.56
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4014:2:2",
+        "stop": "Palézieux",
+        "segmentId": "ch14uvag00087297",
+        "snapMetres": 5.92
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1037:2:3",
+        "stop": "Morges",
+        "segmentId": "ch14uvag00087043",
+        "snapMetres": 6.76
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:18452:3:4",
+        "stop": "Prilly-Malley",
+        "segmentId": "ch14uvag00087031",
+        "snapMetres": 3.93
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1118:2:2",
+        "stop": "Renens VD",
+        "segmentId": "ch14uvag00087034",
+        "snapMetres": 4.05
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1123:1:1",
+        "stop": "Villette VD",
+        "segmentId": "ch14uvag00086961",
+        "snapMetres": 4.25
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1108:1:1",
+        "stop": "La Sarraz",
+        "segmentId": "ch14uvag00087139",
+        "snapMetres": 2.18
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1107:0:824",
+        "stop": "Arnex",
+        "segmentId": "ch14uvag00087141",
+        "snapMetres": 0.24
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1106:1:1",
+        "stop": "Croy-Romainmôtier",
+        "segmentId": "ch14uvag00087142",
+        "snapMetres": 3.09
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1106:2:2",
+        "stop": "Croy-Romainmôtier",
+        "segmentId": "ch14uvag00087141",
+        "snapMetres": 5.55
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1107:0:924",
+        "stop": "Arnex",
+        "segmentId": "ch14uvag00087140",
+        "snapMetres": 5.68
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1108:2:2",
+        "stop": "La Sarraz",
+        "segmentId": "ch14uvag00087139",
+        "snapMetres": 5.53
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1123:2:2",
+        "stop": "Villette VD",
+        "segmentId": "ch14uvag00086962",
+        "snapMetres": 6.53
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1118:2:3",
+        "stop": "Renens VD",
+        "segmentId": "ch14uvag00087034",
+        "snapMetres": 13.4
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4012:2:2",
+        "stop": "Puidoux",
+        "segmentId": "ch14uvag00087295",
+        "snapMetres": 4.91
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4011:2:3",
+        "stop": "Grandvaux",
+        "segmentId": "ch14uvag00087294",
+        "snapMetres": 5.34
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4010:2:2",
+        "stop": "La Conversion",
+        "segmentId": "ch14uvag00087293",
+        "snapMetres": 4.66
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4000:1:1",
+        "stop": "Pully-Nord",
+        "segmentId": "ch14uvag00087292",
+        "snapMetres": 2.91
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1120:0:20298",
+        "stop": "Lausanne",
+        "segmentId": "ch14uvag00086958",
+        "snapMetres": 21.69
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4000:2:2",
+        "stop": "Pully-Nord",
+        "segmentId": "ch14uvag00087292",
+        "snapMetres": 3.96
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4010:1:1",
+        "stop": "La Conversion",
+        "segmentId": "ch14uvag00087293",
+        "snapMetres": 2.63
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4011:1:2",
+        "stop": "Grandvaux",
+        "segmentId": "ch14uvag00087294",
+        "snapMetres": 2.84
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4012:1:1",
+        "stop": "Puidoux",
+        "segmentId": "ch14uvag00087295",
+        "snapMetres": 3.33
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4003:1:1",
+        "stop": "Bossière",
+        "segmentId": "ch14uvag00087293",
+        "snapMetres": 3.78
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4007:2:2",
+        "stop": "Moreillon",
+        "segmentId": "ch14uvag00087297",
+        "snapMetres": 3.34
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4020:1:1",
+        "stop": "Oron",
+        "segmentId": "ch14uvag00087299",
+        "snapMetres": 6.59
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4020:2:2",
+        "stop": "Oron",
+        "segmentId": "ch14uvag00087299",
+        "snapMetres": 3
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4007:1:1",
+        "stop": "Moreillon",
+        "segmentId": "ch14uvag00087296",
+        "snapMetres": 3.91
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4003:2:2",
+        "stop": "Bossière",
+        "segmentId": "ch14uvag00087293",
+        "snapMetres": 3.11
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4013:0:1",
+        "stop": "Chexbres-Village",
+        "segmentId": "ch14uvag00068079",
+        "snapMetres": 1.3
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4012:2:3",
+        "stop": "Puidoux",
+        "segmentId": "ch14uvag00068081",
+        "snapMetres": 1.68
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4014:0:955170",
+        "stop": "Palézieux",
+        "segmentId": "ch14uvag00087297",
+        "snapMetres": 13.41
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4121:2:2",
+        "stop": "Lucens",
+        "segmentId": "ch14uvag00087335",
+        "snapMetres": 6.87
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4120",
+        "stop": "Moudon",
+        "segmentId": "ch14uvag00087333",
+        "snapMetres": 6.5
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4018:2:2",
+        "stop": "Ecublens-Rue",
+        "segmentId": "ch14uvag00087331",
+        "snapMetres": 6.21
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4017:0:606720",
+        "stop": "Châtillens",
+        "segmentId": "ch14uvag00087331",
+        "snapMetres": 4.2
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4016:0:1",
+        "stop": "Palézieux-Village",
+        "segmentId": "ch14uvag00087329",
+        "snapMetres": 0.86
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1045:2:1",
+        "stop": "Denges-Echandens",
+        "segmentId": "ch14uvag00087039",
+        "snapMetres": 5.34
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1048:1:1",
+        "stop": "Lonay-Préverenges",
+        "segmentId": "ch14uvag00087042",
+        "snapMetres": 3.42
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1036:1:1",
+        "stop": "St-Prex",
+        "segmentId": "ch14uvag00087046",
+        "snapMetres": 6.39
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1048:2:2",
+        "stop": "Lonay-Préverenges",
+        "segmentId": "ch14uvag00087042",
+        "snapMetres": 4.95
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1045:1:2",
+        "stop": "Denges-Echandens",
+        "segmentId": "ch14uvag00087039",
+        "snapMetres": 1.99
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1036:2:2",
+        "stop": "St-Prex",
+        "segmentId": "ch14uvag00087046",
+        "snapMetres": 1.33
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4018:1:1",
+        "stop": "Ecublens-Rue",
+        "segmentId": "ch14uvag00087331",
+        "snapMetres": 1.64
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:4121:1:1",
+        "stop": "Lucens",
+        "segmentId": "ch14uvag00087335",
+        "snapMetres": 1.5
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1037:3:4",
+        "stop": "Morges",
+        "segmentId": "ch14uvag00087043",
+        "snapMetres": 15.78
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1047:1:1",
+        "stop": "Morges-St-Jean",
+        "segmentId": "ch14uvag00087042",
+        "snapMetres": 4.1
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1047:2:2",
+        "stop": "Morges-St-Jean",
+        "segmentId": "ch14uvag00087042",
+        "snapMetres": 2.57
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1117:1:1",
+        "stop": "Bussigny",
+        "segmentId": "ch14uvag00087135",
+        "snapMetres": 17.59
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:1036:2:3",
+        "stop": "St-Prex",
+        "segmentId": "ch14uvag00087046",
+        "snapMetres": 5.02
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1181:0:1083",
+        "stop": "Lausanne-Flon",
+        "segmentId": "ch14uvag00165807",
+        "snapMetres": 19.27
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1160:0:1191",
+        "stop": "Lausanne-Chauderon",
+        "segmentId": "ch14uvag00067617",
+        "snapMetres": 10.11
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1162:0:1375",
+        "stop": "Union-Prilly",
+        "segmentId": "ch14uvag00067874",
+        "snapMetres": 8.91
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1163:0:1408",
+        "stop": "Prilly-Chasseur",
+        "segmentId": "ch14uvag00067696",
+        "snapMetres": 1.23
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1164:0:1454",
+        "stop": "Cery-Fleur-de-Lys",
+        "segmentId": "ch14uvag00068214",
+        "snapMetres": 1.01
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1165:0:1508",
+        "stop": "Jouxtens-Mézery",
+        "segmentId": "ch14uvag00068382",
+        "snapMetres": 0.26
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1166:0:1482",
+        "stop": "Romanel-sur-Lausanne",
+        "segmentId": "ch14uvag00067896",
+        "snapMetres": 0.53
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1168:0:1448",
+        "stop": "Vernand-Camarès",
+        "segmentId": "ch14uvag00067896",
+        "snapMetres": 4.31
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1170:0:1425",
+        "stop": "Bel-Air LEB",
+        "segmentId": "ch14uvag00068229",
+        "snapMetres": 1.41
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1169:0:1421",
+        "stop": "Cheseaux",
+        "segmentId": "ch14uvag00068509",
+        "snapMetres": 1.35
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:87727:0:1388",
+        "stop": "Les Ripes",
+        "segmentId": "ch14uvag00068509",
+        "snapMetres": 5.92
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1171:0:1321",
+        "stop": "Etagnières",
+        "segmentId": "ch14uvag00068118",
+        "snapMetres": 9.9
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1172:0:1325",
+        "stop": "Assens",
+        "segmentId": "ch14uvag00068118",
+        "snapMetres": 2.97
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1173:0:939",
+        "stop": "Echallens",
+        "segmentId": "ch14uvag00068263",
+        "snapMetres": 4.11
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1174:0:824",
+        "stop": "Sur Roche",
+        "segmentId": "ch14uvag00067836",
+        "snapMetres": 1.12
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1178:0:781",
+        "stop": "Grésaley",
+        "segmentId": "ch14uvag00068336",
+        "snapMetres": 0.12
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1175:0:441",
+        "stop": "Sugnens",
+        "segmentId": "ch14uvag00067830",
+        "snapMetres": 0.88
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1176:0:282",
+        "stop": "Fey",
+        "segmentId": "ch14uvag00068287",
+        "snapMetres": 0.17
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1177:0:174",
+        "stop": "Bercher",
+        "segmentId": "ch14uvag00068142",
+        "snapMetres": 2.72
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1175:0:450",
+        "stop": "Sugnens",
+        "segmentId": "ch14uvag00067830",
+        "snapMetres": 0.88
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1173:0:965",
+        "stop": "Echallens",
+        "segmentId": "ch14uvag00068263",
+        "snapMetres": 4.11
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1172:0:1238",
+        "stop": "Assens",
+        "segmentId": "ch14uvag00068118",
+        "snapMetres": 2.97
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:87727:0:1387",
+        "stop": "Les Ripes",
+        "segmentId": "ch14uvag00068509",
+        "snapMetres": 5.92
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1169:0:1529",
+        "stop": "Cheseaux",
+        "segmentId": "ch14uvag00068509",
+        "snapMetres": 1.35
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1166:0:1480",
+        "stop": "Romanel-sur-Lausanne",
+        "segmentId": "ch14uvag00067896",
+        "snapMetres": 0.53
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1165:0:1499",
+        "stop": "Jouxtens-Mézery",
+        "segmentId": "ch14uvag00068382",
+        "snapMetres": 0.26
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1162:0:1369",
+        "stop": "Union-Prilly",
+        "segmentId": "ch14uvag00067874",
+        "snapMetres": 8.91
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1160:0:1193",
+        "stop": "Lausanne-Chauderon",
+        "segmentId": "ch14uvag00067617",
+        "snapMetres": 10.11
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1181:0:1082",
+        "stop": "Lausanne-Flon",
+        "segmentId": "ch14uvag00165807",
+        "snapMetres": 26.13
+      },
+      {
+        "group": "leb",
+        "stopId": "ch:1:sloid:1173:0:945",
+        "stop": "Echallens",
+        "segmentId": "ch14uvag00068263",
+        "snapMetres": 4.11
+      },
+      {
+        "group": "mbc",
+        "stopId": "ch:1:sloid:1037:4:5",
+        "stop": "Morges",
+        "segmentId": "ch14uvag00067628",
+        "snapMetres": 43.8
+      },
+      {
+        "group": "mbc",
+        "stopId": "ch:1:sloid:1054:0:319603",
+        "stop": "La Gottaz",
+        "segmentId": "ch14uvag00068415",
+        "snapMetres": 1.41
+      },
+      {
+        "group": "mbc",
+        "stopId": "ch:1:sloid:1090:0:765524",
+        "stop": "Prélionne",
+        "segmentId": "ch14uvag00068415",
+        "snapMetres": 0.18
+      },
+      {
+        "group": "mbc",
+        "stopId": "ch:1:sloid:1081:0:801876",
+        "stop": "Chigny",
+        "segmentId": "ch14uvag00068232",
+        "snapMetres": 4.97
+      },
+      {
+        "group": "mbc",
+        "stopId": "ch:1:sloid:1091:0:933479",
+        "stop": "Vufflens-le-Château",
+        "segmentId": "ch14uvag00068232",
+        "snapMetres": 1.81
+      },
+      {
+        "group": "mbc",
+        "stopId": "ch:1:sloid:1080:0:59981",
+        "stop": "Le Marais",
+        "segmentId": "ch14uvag00068459",
+        "snapMetres": 0.96
+      },
+      {
+        "group": "mbc",
+        "stopId": "ch:1:sloid:1081:0:114547",
+        "stop": "Chigny",
+        "segmentId": "ch14uvag00068232",
+        "snapMetres": 1.14
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:30749:0:1734",
+        "stop": "Renens VD, gare",
+        "segmentId": "ch14uvag00068273",
+        "snapMetres": 1.55
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1218:0:1789",
+        "stop": "Ecublens VD, Epenex",
+        "segmentId": "ch14uvag00068248",
+        "snapMetres": 3.16
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1217:0:1836",
+        "stop": "Chavannes-R., Crochy",
+        "segmentId": "ch14uvag00068248",
+        "snapMetres": 0.49
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1216:0:1880",
+        "stop": "Ecublens VD, Cerisaie",
+        "segmentId": "ch14uvag00068213",
+        "snapMetres": 2.14
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1215:0:1910",
+        "stop": "Ecublens VD, Bassenges",
+        "segmentId": "ch14uvag00068274",
+        "snapMetres": 0.23
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1214:0:1892",
+        "stop": "Ecublens VD, EPFL",
+        "segmentId": "ch14uvag00067873",
+        "snapMetres": 2.76
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1213:0:1794",
+        "stop": "Ecublens VD, UNIL-Sorge",
+        "segmentId": "ch14uvag00067632",
+        "snapMetres": 3.99
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1212:0:1710",
+        "stop": "Chavannes-R., UNIL-Mouline",
+        "segmentId": "ch14uvag00067872",
+        "snapMetres": 1.41
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1211:0:1655",
+        "stop": "Chavannes-R., UNIL-Chamberonne",
+        "segmentId": "ch14uvag00068176",
+        "snapMetres": 2.68
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1210:0:1600",
+        "stop": "Lausanne, Bourdonnette",
+        "segmentId": "ch14uvag00068533",
+        "snapMetres": 7.15
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1209:0:1490",
+        "stop": "Lausanne, Malley",
+        "segmentId": "ch14uvag00067698",
+        "snapMetres": 8.78
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1208:0:1386",
+        "stop": "Lausanne, Provence",
+        "segmentId": "ch14uvag00067616",
+        "snapMetres": 1.89
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1207:0:1335",
+        "stop": "Lausanne, Montelly",
+        "segmentId": "ch14uvag00067616",
+        "snapMetres": 7.55
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:92133:0:1214",
+        "stop": "Lausanne, Vigie",
+        "segmentId": "ch14uvag00067615",
+        "snapMetres": 6.92
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:91818:0:1108",
+        "stop": "Lausanne, Flon",
+        "segmentId": "ch14uvag00067615",
+        "snapMetres": 9.87
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1214:0:1901",
+        "stop": "Ecublens VD, EPFL",
+        "segmentId": "ch14uvag00068274",
+        "snapMetres": 5.8
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1215:0:1905",
+        "stop": "Ecublens VD, Bassenges",
+        "segmentId": "ch14uvag00068132",
+        "snapMetres": 1.45
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1216:0:1866",
+        "stop": "Ecublens VD, Cerisaie",
+        "segmentId": "ch14uvag00068213",
+        "snapMetres": 3.99
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1217:0:1831",
+        "stop": "Chavannes-R., Crochy",
+        "segmentId": "ch14uvag00068248",
+        "snapMetres": 6.63
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1218:0:1778",
+        "stop": "Ecublens VD, Epenex",
+        "segmentId": "ch14uvag00068273",
+        "snapMetres": 3.54
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:92133:0:1221",
+        "stop": "Lausanne, Vigie",
+        "segmentId": "ch14uvag00067615",
+        "snapMetres": 2.94
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1207:0:1338",
+        "stop": "Lausanne, Montelly",
+        "segmentId": "ch14uvag00067616",
+        "snapMetres": 1.43
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1208:0:1395",
+        "stop": "Lausanne, Provence",
+        "segmentId": "ch14uvag00067698",
+        "snapMetres": 1.71
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1209:0:1498",
+        "stop": "Lausanne, Malley",
+        "segmentId": "ch14uvag00068533",
+        "snapMetres": 8.07
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1210:0:1610",
+        "stop": "Lausanne, Bourdonnette",
+        "segmentId": "ch14uvag00068176",
+        "snapMetres": 1.71
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1211:0:1660",
+        "stop": "Chavannes-R., UNIL-Chamberonne",
+        "segmentId": "ch14uvag00067872",
+        "snapMetres": 2.56
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1212:0:1726",
+        "stop": "Chavannes-R., UNIL-Mouline",
+        "segmentId": "ch14uvag00067632",
+        "snapMetres": 2.47
+      },
+      {
+        "group": "m1",
+        "stopId": "ch:1:sloid:1213:0:1796",
+        "stop": "Ecublens VD, UNIL-Sorge",
+        "segmentId": "ch14uvag00067873",
+        "snapMetres": 4.61
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92050:0:1096",
+        "stop": "Lausanne, gare",
+        "segmentId": "ch14uvag00068444",
+        "snapMetres": 1.49
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:91818:0:1061",
+        "stop": "Lausanne, Flon",
+        "segmentId": "ch14uvag00068579",
+        "snapMetres": 2.56
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:90442:0:1026",
+        "stop": "Lausanne, Riponne-M. Béjart",
+        "segmentId": "ch14uvag00068579",
+        "snapMetres": 2.46
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:89523:0:892",
+        "stop": "Lausanne, Bessières",
+        "segmentId": "ch14uvag00068581",
+        "snapMetres": 1.94
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:79237:0:834",
+        "stop": "Lausanne, Ours",
+        "segmentId": "ch14uvag00068583",
+        "snapMetres": 2.41
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92017:0:799",
+        "stop": "Lausanne, CHUV",
+        "segmentId": "ch14uvag00068587",
+        "snapMetres": 5.22
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:79238:0:754",
+        "stop": "Lausanne, Sallaz",
+        "segmentId": "ch14uvag00068589",
+        "snapMetres": 6.08
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92086:0:1173",
+        "stop": "Lausanne, Ouchy-Olympique",
+        "segmentId": "ch14uvag00068381",
+        "snapMetres": 1.6
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92061:0:1159",
+        "stop": "Lausanne, Jordils",
+        "segmentId": "ch14uvag00068381",
+        "snapMetres": 0.66
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92028:0:1139",
+        "stop": "Lausanne, Délices",
+        "segmentId": "ch14uvag00165870",
+        "snapMetres": 2.14
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92052:0:1121",
+        "stop": "Lausanne, Grancy",
+        "segmentId": "ch14uvag00165870",
+        "snapMetres": 1.89
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92048:0:649",
+        "stop": "Lausanne, Fourmi",
+        "segmentId": "ch14uvag00068591",
+        "snapMetres": 3.04
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92128:0:581",
+        "stop": "Lausanne, Vennes",
+        "segmentId": "ch14uvag00068591",
+        "snapMetres": 5.38
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:79239:0:514",
+        "stop": "Epalinges, Croisettes",
+        "segmentId": "ch14uvag00068593",
+        "snapMetres": 17.41
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:79238:0:758",
+        "stop": "Lausanne, Sallaz",
+        "segmentId": "ch14uvag00068589",
+        "snapMetres": 3.75
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92017:0:801",
+        "stop": "Lausanne, CHUV",
+        "segmentId": "ch14uvag00068587",
+        "snapMetres": 0.54
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:79237:0:835",
+        "stop": "Lausanne, Ours",
+        "segmentId": "ch14uvag00068585",
+        "snapMetres": 0.59
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:89523:0:890",
+        "stop": "Lausanne, Bessières",
+        "segmentId": "ch14uvag00068581",
+        "snapMetres": 1.47
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:90442:0:1025",
+        "stop": "Lausanne, Riponne-M. Béjart",
+        "segmentId": "ch14uvag00068579",
+        "snapMetres": 0.13
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:91818:0:1063",
+        "stop": "Lausanne, Flon",
+        "segmentId": "ch14uvag00068579",
+        "snapMetres": 0.27
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92128:0:582",
+        "stop": "Lausanne, Vennes",
+        "segmentId": "ch14uvag00068591",
+        "snapMetres": 1.62
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92048:0:654",
+        "stop": "Lausanne, Fourmi",
+        "segmentId": "ch14uvag00068591",
+        "snapMetres": 0.97
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92050:0:1101",
+        "stop": "Lausanne, gare",
+        "segmentId": "ch14uvag00068444",
+        "snapMetres": 1.89
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92052:0:1122",
+        "stop": "Lausanne, Grancy",
+        "segmentId": "ch14uvag00165870",
+        "snapMetres": 1.74
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92028:0:1141",
+        "stop": "Lausanne, Délices",
+        "segmentId": "ch14uvag00165870",
+        "snapMetres": 1.09
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92061:0:1161",
+        "stop": "Lausanne, Jordils",
+        "segmentId": "ch14uvag00068381",
+        "snapMetres": 2.18
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:79239:0:513",
+        "stop": "Epalinges, Croisettes",
+        "segmentId": "ch14uvag00068593",
+        "snapMetres": 21.81
+      },
+      {
+        "group": "m2",
+        "stopId": "ch:1:sloid:92086:0:1172",
+        "stop": "Lausanne, Ouchy-Olympique",
+        "segmentId": "ch14uvag00068381",
+        "snapMetres": 3.26
+      }
+    ],
+    "issues": []
+  },
+  "payload": {
+    "manifestGzipBytes": 79986,
+    "morningGzipBytes": 193374,
+    "chunks": [
+      {
+        "id": "00-02",
+        "trips": 315,
+        "gzipBytes": 30002
+      },
+      {
+        "id": "02-04",
+        "trips": 1,
+        "gzipBytes": 278
+      },
+      {
+        "id": "04-06",
+        "trips": 360,
+        "gzipBytes": 34306
+      },
+      {
+        "id": "06-08",
+        "trips": 1189,
+        "gzipBytes": 106253
+      },
+      {
+        "id": "08-10",
+        "trips": 1218,
+        "gzipBytes": 112195
+      },
+      {
+        "id": "10-12",
+        "trips": 1086,
+        "gzipBytes": 103916
+      },
+      {
+        "id": "12-14",
+        "trips": 1113,
+        "gzipBytes": 104796
+      },
+      {
+        "id": "14-16",
+        "trips": 1173,
+        "gzipBytes": 109118
+      },
+      {
+        "id": "16-18",
+        "trips": 1249,
+        "gzipBytes": 114784
+      },
+      {
+        "id": "18-20",
+        "trips": 1207,
+        "gzipBytes": 109781
+      },
+      {
+        "id": "20-22",
+        "trips": 941,
+        "gzipBytes": 87590
+      },
+      {
+        "id": "22-24",
+        "trips": 731,
+        "gzipBytes": 69206
+      }
+    ]
+  },
+  "gate": {
+    "passed": true,
+    "failures": [],
+    "limits": {
+      "minimumGeometryCoveragePerGroup": 0.95,
+      "maximumEndpointGapMetres": 120,
+      "gzipBytes": {
+        "manifest": 665600,
+        "chunk": 460800,
+        "morning": 1638400
+      }
+    },
+    "publicationStatus": "Technical audit only; visual and hosted verification are recorded separately in docs/LAUSANNE-STUDY.md"
+  }
+}

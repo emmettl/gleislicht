@@ -21,7 +21,7 @@ The original three fixtures use national GTFS `20260902` on **4 September 2026**
 | Genève / TPG | 10,805 | 96.7% |
 
 Lausanne adds **8,848 trips** for **8 September 2026**, feed `20260905`, with
-99.93% inferred bus geometry and 100% rail/métro geometry. Its civil-day import
+100% accepted inferred bus geometry and 100% rail/métro geometry on the audited weekday and Sunday. Its civil-day import
 includes preceding-day overnight services. It opens the full day by default;
 see [LAUSANNE-STUDY.md](LAUSANNE-STUDY.md) for scope and provenance.
 

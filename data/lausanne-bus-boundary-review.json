@@ -1,0 +1,21 @@
+{
+  "sourceHashes": {
+    "archive": "4fa074044fc3a1ceae3c91597b72cf42b9bbce0477b9d43b7b4f658e3e9acfa5",
+    "weekday": "3e16a5b15885ffe0307d5adc8039deb134df2a50a424e9fa9f53d86c5837a1c9",
+    "sunday": "1afc8b0b4f85d04ad164d1537dfd4db15270fd3ce0343c9551fffec57dd11daf"
+  },
+  "dates": [
+    {
+      "date": "2026-09-08",
+      "trips": 6866,
+      "completeSourceSequences": 6866,
+      "clipped": []
+    },
+    {
+      "date": "2026-09-13",
+      "trips": 5470,
+      "completeSourceSequences": 5470,
+      "clipped": []
+    }
+  ]
+}

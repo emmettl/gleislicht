@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 1,
+  "serviceDates": [
+    "2026-09-08",
+    "2026-09-13"
+  ],
+  "graphSha256": "2ff129472eb5cb90f205e0afcb2bb4265b240eb2566420bfea7634ae2d744795",
+  "matcher": {
+    "schemaVersion": 1,
+    "completed": true,
+    "noTrie": true,
+    "warnings": true,
+    "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+    "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+    "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "patternsSha256": "d87ec0dea4439f5fd05e3815a48b14015df8aad5bd311f0fcc276ca430d928c7",
+    "logSha256": "dc40967e0ced23eb581e78652e1c7f0233baae70ab7750895da3837417fb5a81",
+    "shapesSha256": "205e54896f883c1166e959ee03ca4ce9e853855d4029452bbce3d7aebd1da08e",
+    "tripsSha256": "3dda87035f632bb5f222a116837faff6b5d4cb4612b1bbc9e6d85030b1dc1510",
+    "stopTimesSha256": "5ecaddbf039ff0fbac3ece6b33fd968a7aa7cf898b597a0e32691dc9793de44f",
+    "elapsedSeconds": 4
+  },
+  "maximumSnapMetres": 116.58178884034058,
+  "largestSnaps": [
+    {
+      "id": "ch:1:sloid:92035:0:1234",
+      "name": "Lausanne, Gymnase de Beaulieu",
+      "stop": [
+        6.62211976,
+        46.52555184
+      ],
+      "road": [
+        6.622763,
+        46.526501
+      ],
+      "metres": 116.58178884034058,
+      "route": "4",
+      "pattern": "32f24063e1a222242d6d33af"
+    },
+    {
+      "id": "ch:1:sloid:92098:0:1164",
+      "name": "Lausanne, Port-Franc",
+      "stop": [
+        6.62701558,
+        46.52215236
+      ],
+      "road": [
+        6.626654,
+        46.523132
+      ],
+      "metres": 112.51538032311133,
+      "route": "17",
+      "pattern": "a98a669f91e7995d93a10afa"
+    },
+    {
+      "id": "ch:1:sloid:92008:0:664",
+      "name": "Lausanne, Champ-Rond",
+      "stop": [
+        6.64851227,
+        46.53197938
+      ],
+      "road": [
+        6.648384,
+        46.532902
+      ],
+      "metres": 103.17474937757639,
+      "route": "42",
+      "pattern": "0afd20f84360e428b8105d25"
+    },
+    {
+      "id": "ch:1:sloid:92097:0:1280",
+      "name": "Lausanne, Pont Marc Dufour",
+      "stop": [
+        6.61840972,
+        46.51914827
+      ],
+      "road": [
+        6.619636,
+        46.519489
+      ],
+      "metres": 101.30251496104506,
+      "route": "6",
+      "pattern": "534bd16f4b386b6e2d351bda"
+    },
+    {
+      "id": "ch:1:sloid:88839:0:1698",
+      "name": "Renens VD, 14 Avril",
+      "stop": [
+        6.57871317,
+        46.53948132
+      ],
+      "road": [
+        6.58,
+        46.539326
+      ],
+      "metres": 100.04072844094661,
+      "route": "19",
+      "pattern": "78d683a3ddef572692d156dc"
+    },
+    {
+      "id": "ch:1:sloid:92178:0:1541",
+      "name": "Renens VD, Temple de Broye",
+      "stop": [
+        6.59779339,
+        46.53924652
+      ],
+      "road": [
+        6.598913,
+        46.538948
+      ],
+      "metres": 91.94661629880494,
+      "route": "9",
+      "pattern": "2b681d2f97d8447509729f8e"
+    },
+    {
+      "id": "ch:1:sloid:92213:0:1647",
+      "name": "Renens VD, Hôtel-de-Ville/ECAL",
+      "stop": [
+        6.58554036,
+        46.53611361
+      ],
+      "road": [
+        6.586303,
+        46.536644
+      ],
+      "metres": 83.04612672110449,
+      "route": "N4",
+      "pattern": "2709cf81685d6cc8ad7fe4ba"
+    },
+    {
+      "id": "ch:1:sloid:88842:0:1725",
+      "name": "Crissier, Place Centrale",
+      "stop": [
+        6.5785874,
+        46.55078173
+      ],
+      "road": [
+        6.579272,
+        46.55027
+      ],
+      "metres": 77.40776302468916,
+      "route": "32",
+      "pattern": "009e3f71c851188c6fe18152"
+    },
+    {
+      "id": "ch:1:sloid:92103:0:3047",
+      "name": "Lausanne, Halle de Sébeillon",
+      "stop": [
+        6.60895944,
+        46.52634296
+      ],
+      "road": [
+        6.60813,
+        46.526714
+      ],
+      "metres": 75.77410556604309,
+      "route": "17",
+      "pattern": "3309f87e1fc5fda4b8b69165"
+    },
+    {
+      "id": "ch:1:sloid:93815:0:1770",
+      "name": "Crissier, Jura",
+      "stop": [
+        6.57420363,
+        46.54097047
+      ],
+      "road": [
+        6.573358,
+        46.541019
+      ],
+      "metres": 64.97473153510646,
+      "route": "N4",
+      "pattern": "2709cf81685d6cc8ad7fe4ba"
+    },
+    {
+      "id": "ch:1:sloid:70132:0:447683",
+      "name": "Penthaz, La Vaux",
+      "stop": [
+        6.53210857,
+        46.6018976
+      ],
+      "road": [
+        6.531331,
+        46.6021
+      ],
+      "metres": 63.59646327962434,
+      "route": "58",
+      "pattern": "60f74fce9404c029b3c7a3b9"
+    },
+    {
+      "id": "ch:1:sloid:7632:0:2805",
+      "name": "Crissier, Montremoën",
+      "stop": [
+        6.57766214,
+        46.56240096
+      ],
+      "road": [
+        6.577641,
+        46.561832
+      ],
+      "metres": 63.35729201853903,
+      "route": "54",
+      "pattern": "4fcae61f2602f3e381d31bb5"
+    },
+    {
+      "id": "ch:1:sloid:11875:0:3362",
+      "name": "Renens VD, gare/Epenex",
+      "stop": [
+        6.57762621,
+        46.53669448
+      ],
+      "road": [
+        6.577884,
+        46.537235
+      ],
+      "metres": 63.326100648068376,
+      "route": "N5",
+      "pattern": "63dd10c43f969c76a09fb67b"
+    },
+    {
+      "id": "ch:1:sloid:91962:0:425",
+      "name": "Epalinges, Ballègue",
+      "stop": [
+        6.66952386,
+        46.55439563
+      ],
+      "road": [
+        6.669892,
+        46.554848
+      ],
+      "metres": 57.707010197763005,
+      "route": "46",
+      "pattern": "6a0682564abb4dd04738db9a"
+    },
+    {
+      "id": "ch:1:sloid:95004:0:1027",
+      "name": "Lausanne, Entre-Bois",
+      "stop": [
+        6.63213598,
+        46.54076656
+      ],
+      "road": [
+        6.631516,
+        46.541039
+      ],
+      "metres": 56.332629722782926,
+      "route": "3",
+      "pattern": "4c98ac0c0693d0f8cf61cb2e"
+    },
+    {
+      "id": "ch:1:sloid:92173:0:2342",
+      "name": "Prilly, centre",
+      "stop": [
+        6.60495296,
+        46.53489624
+      ],
+      "road": [
+        6.604454,
+        46.535259
+      ],
+      "metres": 55.59409796524064,
+      "route": "N4",
+      "pattern": "f809edb9d4b557f211e31dcf"
+    },
+    {
+      "id": "ch:1:sloid:95516:0:1776",
+      "name": "Crissier, Mongevon",
+      "stop": [
+        6.57370057,
+        46.54822405
+      ],
+      "road": [
+        6.573177,
+        46.548561
+      ],
+      "metres": 54.89707876349586,
+      "route": "58",
+      "pattern": "60f74fce9404c029b3c7a3b9"
+    },
+    {
+      "id": "ch:1:sloid:92058:0:289",
+      "name": "Lausanne, Haute Combe",
+      "stop": [
+        6.68455268,
+        46.54465299
+      ],
+      "road": [
+        6.684002,
+        46.544346
+      ],
+      "metres": 54.27309564827277,
+      "route": "64",
+      "pattern": "98851c959fafd4080c8bd336"
+    },
+    {
+      "id": "ch:1:sloid:92010:0:1170",
+      "name": "Lausanne, Chauderon",
+      "stop": [
+        6.62652151,
+        46.52337619
+      ],
+      "road": [
+        6.625863,
+        46.523483
+      ],
+      "metres": 51.820822731181536,
+      "route": "19",
+      "pattern": "0a5ed384e3f8d4cf0ef99803"
+    },
+    {
+      "id": "ch:1:sloid:95937:0:1642",
+      "name": "Lausanne, sports UNIL-EPFL",
+      "stop": [
+        6.5860524,
+        46.5209594
+      ],
+      "road": [
+        6.585893,
+        46.521389
+      ],
+      "metres": 49.35709340301737,
+      "route": "24",
+      "pattern": "4955bfbe5e4619afb4ce971e"
+    }
+  ],
+  "panels": [
+    {
+      "name": "Lausanne, Gymnase de Beaulieu · 116.6 m",
+      "centre": [
+        6.62211976,
+        46.52555184
+      ],
+      "radius": 0.0026,
+      "routes": [
+        "4"
+      ],
+      "snap": {
+        "id": "ch:1:sloid:92035:0:1234",
+        "name": "Lausanne, Gymnase de Beaulieu",
+        "stop": [
+          6.62211976,
+          46.52555184
+        ],
+        "road": [
+          6.622763,
+          46.526501
+        ],
+        "metres": 116.58178884034058,
+        "route": "4",
+        "pattern": "32f24063e1a222242d6d33af"
+      },
+      "bounds": [
+        6.61951976,
+        46.52375784,
+        6.6247197600000005,
+        46.527345839999995
+      ]
+    },
+    {
+      "name": "Lausanne, Port-Franc · 112.5 m",
+      "centre": [
+        6.62701558,
+        46.52215236
+      ],
+      "radius": 0.0026,
+      "routes": [
+        "17"
+      ],
+      "snap": {
+        "id": "ch:1:sloid:92098:0:1164",
+        "name": "Lausanne, Port-Franc",
+        "stop": [
+          6.62701558,
+          46.52215236
+        ],
+        "road": [
+          6.626654,
+          46.523132
+        ],
+        "metres": 112.51538032311133,
+        "route": "17",
+        "pattern": "a98a669f91e7995d93a10afa"
+      },
+      "bounds": [
+        6.62441558,
+        46.52035836,
+        6.62961558,
+        46.52394636
+      ]
+    },
+    {
+      "name": "Lausanne, Champ-Rond · 103.2 m",
+      "centre": [
+        6.64851227,
+        46.53197938
+      ],
+      "radius": 0.0026,
+      "routes": [
+        "42"
+      ],
+      "snap": {
+        "id": "ch:1:sloid:92008:0:664",
+        "name": "Lausanne, Champ-Rond",
+        "stop": [
+          6.64851227,
+          46.53197938
+        ],
+        "road": [
+          6.648384,
+          46.532902
+        ],
+        "metres": 103.17474937757639,
+        "route": "42",
+        "pattern": "0afd20f84360e428b8105d25"
+      },
+      "bounds": [
+        6.64591227,
+        46.530185380000006,
+        6.6511122700000005,
+        46.53377338
+      ]
+    },
+    {
+      "name": "Renens station · directions",
+      "centre": [
+        6.57757231,
+        46.53773261
+      ],
+      "radius": 0.006,
+      "routes": [
+        "31",
+        "32"
+      ],
+      "bounds": [
+        6.57157231,
+        46.53359261,
+        6.58357231,
+        46.54187261
+      ]
+    },
+    {
+      "name": "Flon / Bel-Air · line 18",
+      "centre": [
+        6.62814746,
+        46.52264066
+      ],
+      "radius": 0.004,
+      "routes": [
+        "18"
+      ],
+      "bounds": [
+        6.6241474600000005,
+        46.51988066,
+        6.63214746,
+        46.52540066
+      ]
+    },
+    {
+      "name": "Saint-François · lines 1 / 9",
+      "centre": [
+        6.63347447,
+        46.51934608
+      ],
+      "radius": 0.004,
+      "routes": [
+        "1",
+        "9"
+      ],
+      "bounds": [
+        6.629474470000001,
+        46.516586079999996,
+        6.63747447,
+        46.52210608
+      ]
+    },
+    {
+      "name": "Croisettes · hill routes 45 / 64",
+      "centre": [
+        6.66123241,
+        46.54293533
+      ],
+      "radius": 0.006,
+      "routes": [
+        "45",
+        "64"
+      ],
+      "bounds": [
+        6.65523241,
+        46.53879533,
+        6.66723241,
+        46.54707533
+      ]
+    },
+    {
+      "name": "Vers-chez-les-Blanc · night service N2",
+      "centre": [
+        6.69478449,
+        46.55454389
+      ],
+      "radius": 0.008,
+      "routes": [
+        "N2"
+      ],
+      "bounds": [
+        6.68678449,
+        46.54902389,
+        6.70278449,
+        46.560063889999995
+      ]
+    }
+  ]
+}

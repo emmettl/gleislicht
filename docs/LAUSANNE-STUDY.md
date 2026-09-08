@@ -1,256 +1,171 @@
-# Lausanne regional study: timetable and geometry
+# Lausanne regional study
 
-Lausanne is integrated locally as a lazy full-day regional study, with search,
-line selection, Now, share links and all four languages. The daily regional
-builder and verified publication recovery include it. Overnight imports include
-the preceding service day's spillover. This integration has not been deployed;
-the historical weekday/Sunday geometry audits below remain separate evidence.
+Lausanne is implemented as a lazy full-day study with m1/m2, tl buses, LEB and
+regional rail, search and line selection, Now, share links and four languages.
+The daily regional publication builder and verified recovery include it.
+The weekday and Sunday civil-day audits and bus alignment review are complete.
+Hosted verification is recorded separately below.
 
-## Integrated civil-day fixture
+## Scope and audited timetables
 
-The **8 September 2026** fixture uses feed `20260905` and calendars for both
-7 and 8 September. It contains **8,848 trips**, 1,077 platform records and 506
-named stops. The 00:00–02:00 block contains **315 trips**, including journeys
-recorded beyond 24:00 on the preceding service day. Trips beginning exactly at
-the following midnight are excluded; journeys crossing either boundary retain
-their complete stop times and distinct service-date identities.
+The study covers longitude 6.45–6.85 and latitude 46.48–46.71: Lausanne, Renens,
+Morges and the LEB corridor to Bercher. It is not complete Vaud or Mobilis
+coverage. Local buses are restricted to tl agency `151`; LEB is agency `55`.
+A [boundary comparison](../data/lausanne-bus-boundary-review.json) against the
+original GTFS stop sequences confirms that all 6,866 weekday and 5,470 Sunday tl
+bus trips retain their complete source platform sequence. Rail journeys can
+continue outside the crop. Lake services and the Cossonay
+funicular are excluded and require separate geometry work.
 
-Rail and métro geometry covers **100%** of 19,361 segment occurrences. Bus
-geometry covers **99.93%** (114,006 of 114,089); seven overnight patterns are
-absent from the retained cache and remain unshaped. This meets the unchanged
-95% gate for each group. It does not imply operator verification of inferred paths.
+Both civil days use official Swiss GTFS feed `20260905`:
 
-Node 24 gzip sizes are **78.2 KiB** for the manifest, **188.9 KiB** for the morning
-snapshot and **112.1 KiB** for the largest movement chunk. All twelve chunk hashes,
-byte lengths and references validate. The morning window remains 06:45–08:45;
-Lausanne opens the full day by default. OpenStreetMap attribution is visible on
-desktop and above the playback controls on phones.
+| Group | Tuesday 8 September | Sunday 13 September | Accepted geometry, both days |
+| --- | ---: | ---: | ---: |
+| tl buses | 6,866 | 5,470 | 100% |
+| m1 | 339 | 224 | 100% |
+| m2 | 763 | 525 | 100% |
+| LEB | 147 | 88 | 100% |
+| Other rail | 733 | 794 | 100% |
+| **Total trips** | **8,848** | **7,101** | **100%** |
 
-`--civil-day` is opt-in in the streaming GTFS importer. It evaluates both source
-calendars and exceptions independently, preserves frequency phases, and rejects
-feeds without both days or GTFS times at/above 48:00. At the annual feed boundary,
-a feed lacking the preceding date fails validation rather than claiming complete
-overnight coverage. Other studies retain their existing service-day imports.
+The weekday has 1,077 platform records and 506 named stops; Sunday has 1,031
+platform records and 487 named stops. Geometry percentages count scheduled
+stop-to-stop occurrences. They are measured against source geometry and the
+matcher limits, not independent operator verification.
 
-## Scope
+The 00:00–02:00 blocks contain **315 weekday trips** and **354 Sunday trips**.
+Sunday also has 45 trips in 02:00–04:00. The importer evaluates each preceding
+service day's calendar and exceptions independently, including Saturday's
+services after midnight on Sunday. It retains source trip IDs and service dates,
+negative crossing times and frequency phases. Trips starting exactly at the next
+midnight are excluded; journeys already in progress retain their complete times.
 
-Use `lausanne-region` for the first study: tl buses, m1/m2, LEB and rail within
-longitude 6.45–6.85, latitude 46.48–46.71. This includes Lausanne, Renens, Morges
-and the LEB corridor to Bercher. It is a rectangular regional crop, not complete
-Vaud or Mobilis coverage. Rail journeys may continue beyond the displayed area.
-Lake services and the Cossonay funicular are excluded from this first candidate;
-they need their own geometry audit.
+`--civil-day` is opt-in. Other studies keep their existing service-day imports.
+Feeds must cover both dates; times at or above 48:00 fail rather than silently
+omit older spillover. A feed lacking the preceding date at annual rollover also
+fails validation. The publication keeps its previous release if generation fails.
 
-Source route identity comes from `routes.txt` and `trips.txt`, including frequency
-template IDs where applicable. tl is agency `151`; LEB is agency `55`. Displayed
-line numbers are never used to infer an operator. The compact application
-importer normally omits rail route IDs; the audit restores them by source trip
-identity. Civil-day records also retain their source trip and service date.
+The current reports are [weekday](../data/lausanne-civil-day-audit.json) and
+[Sunday](../data/lausanne-sunday-civil-day-audit.json). They retain source hashes,
+per-group counts, platform projection evidence and chunk sizes. The earlier
+[weekday](../data/lausanne-study-audit.json) and
+[Sunday](../data/lausanne-study-sunday-audit.json) reports are historical
+service-day audits and should not be used as current civil-day totals.
 
-## Measured weekday baseline and corrected result
+## Bus geometry closure
 
-Swiss GTFS feed `20260905`, service date **2026-09-08**, Node **24.20.0**:
+The cache now covers **210 distinct route/platform patterns** across both civil
+days and 44 tl lines, including N1–N6. All seven previously missing weekday
+patterns and the sampled Sunday's missing patterns are present. The combined
+cache accepts **206,487 of 206,487** bus segment occurrences, with no rejected
+pattern segments. Updating the weekday geometry preserved every journey ID,
+source identity, stop coordinate and stop time.
 
-| Group | Trips | Source routes | Original indexed geometry | Original endpoints within 120 m |
-| --- | ---: | ---: | ---: | ---: |
-| tl buses | 6,624 | 38 | 100% | 100% |
-| m1 | 328 | 1 | 100% | 92.7% |
-| m2 | 749 | 1 | 68.8% | 62.4% |
-| LEB (R20) | 141 | 1 | 100% | 81.1% |
-| Other rail | 702 | 20 | 98.3% | 92.6% |
+The retained [road cache](../data/lausanne-road-cache.json) uses pfaedle commit
+`99f2cd466696ecc6bdb73b2b3bb9008557fcb84a`, Geofabrik Switzerland 2026-09-02
+and the retained OSM border extract dated 2026-09-08. The run took four seconds.
+Its metadata records the matcher, configuration, extract, inputs and output hashes,
+as well as both civil dates and all four source service dates. The routing-only
+union shifts negative trip times by a whole day so pfaedle receives valid GTFS;
+these synthetic routing times never replace the passenger timetable.
 
-After correction, **all five groups reach 100% accepted geometry** on this
-weekday. The audit retains the original rail results in `baselineRailGroups`,
-alongside the corrected `groups` and per-platform `railProjection` evidence.
+The [bus alignment review](assets/lausanne-bus-review.svg) overlays inferred
+paths and timetable platforms on the OSM routing graph for the largest gaps,
+Renens station, Flon/Bel-Air, Saint-François, Croisettes and night line N2 at
+Vers-chez-les-Blanc. Direction arrows show the ordered paths. The reviewed
+[junctions and largest platform gaps](../data/lausanne-bus-review.json) are retained
+with source hashes. Review found continuous source-road alignments and the
+expected separate approaches/turning paths in these samples.
 
-The candidate retains **8,544 trips**, 1,074 platform records and 506 distinct
-stop names. The initial all-mode extract contained 8,951 trips; 400 funicular and
-7 lake-service trips are outside the first study's scope.
+Three large connectors remain explicit: Gymnase de Beaulieu **116.6 m**,
+Port-Franc **112.5 m**, and Champ-Rond **103.2 m**. They are timetable-platform to
+matched-road connectors, not surveyed bus tracks. They meet the unchanged **120 m**
+limit. No limit was relaxed and no platform was relocated to conceal a gap.
+The inference and these limitations remain documented; visual review against the
+same OSM source is not an independent official route survey.
 
-Geometry percentages count scheduled stop-to-stop occurrences, not route count.
-An indexed rail path does not establish correct station matching. The separate
-120 m endpoint check is a proposed Lausanne acceptance check, not an official
-accuracy specification or proof that a route follows the correct track.
+The database is attributed to [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)
+under **ODbL 1.0**, including a visible phone attribution link. Cache reuse
+requires exact route identity, ordered platform IDs and coordinates. Changed
+patterns remain unshaped, and coverage below 95% in any group blocks publication.
+This two-day sample does not promise complete coverage of every future calendar.
 
-The corrected candidate has 12 two-hour chunks. Gzip measurements are **77.0 KiB** for the
-manifest, **181.2 KiB** for the morning snapshot and **105.6 KiB** for the largest
-movement chunk. These fit the existing regional limits of 650/1,600/450 KiB.
-These are data-only measurements; application transfer and rendering performance
-remain to be checked after UI integration. No budget ceiling has changed.
+## Rail and métro geometry
 
-The machine-readable results, input hashes, original failed directed platform
-pairs, corrected projection evidence and per-chunk measurements are in
-[`data/lausanne-study-audit.json`](../data/lausanne-study-audit.json).
+The separate Lausanne matcher selects FOT corridors by operator and stable
+operating-point identities: m2 at Flon `8519589`, m1 between Flon `8519588` and
+Renens `8501118`, LEB at Flon `8519590`, MBC at La Gottaz `8501054`, and mainline
+rail at Lausanne `8501120`, excluding the m1 corridor. Projected platforms split
+source edges before shortest-path routing. This avoids collapsing métro stations
+onto neighbouring nodes or selecting the wrong railway at shared interchanges.
 
-The same feed was also audited for **Sunday 2026-09-13**: 6,740 candidate trips,
-including 5,193 tl buses, 213 m1 trips, 505 m2 trips, 79 LEB trips and 750 other
-rail trips. The weekday road cache covers **97.5%** of Sunday bus movements;
-unknown patterns remain explicitly unshaped. All four rail/métro groups now
-reach **100% accepted geometry**, and the complete Sunday candidate passes the
-technical gate. The largest corrected Sunday chunk is 80.3 KiB gzip. See [`data/lausanne-study-sunday-audit.json`](../data/lausanne-study-sunday-audit.json).
-This is a second sampled service day, not a claim that every weekend or season
-has been covered. The report's pending checklist describes the remaining launch
-work, including broader calendar and boundary review.
-
-## Sources and bus matching
-
-- Timetable: [official Swiss GTFS](https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020).
-  The [publisher's cookbook](https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/#shapestxt)
-  explicitly says the feed does not supply `shapes.txt` and describes pfaedle as
-  an option for generating inferred shapes.
-- Rail: [Federal Office of Transport infrastructure](https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz),
-  parsed at 10 m simplification for this audit.
-- Bus geometry: the existing PostBus offline pipeline, using
-  [pfaedle](https://github.com/ad-freiburg/pfaedle) commit
-  `99f2cd466696ecc6bdb73b2b3bb9008557fcb84a`, Geofabrik Switzerland 2026-09-02
-  and the retained OSM border extract downloaded 2026-09-08.
-
-The matcher processed all **183** distinct ordered tl route/platform patterns in
-four seconds on the development Mac. All **110,388** weekday bus movements passed
-the existing fallback, 120 m snap, detour and shape-distance checks. Maximum
-pre-connector platform snap was 116.6 m. This is automated acceptance, **not visual
-or operator verification**. The next review should include the worst snaps,
-Renens, Flon, Saint-François, hill routes and directional variants.
-
-[`data/lausanne-road-cache.json`](../data/lausanne-road-cache.json) retains the
-derived paths, pattern keys, matcher hashes and rejection report. It is an
-OpenStreetMap-derived database under **ODbL 1.0**, attributed to
-[OpenStreetMap contributors](https://www.openstreetmap.org/copyright). Any eventual
-published view must display that attribution and describe the paths as inferred.
-The daily publication builder reuses this cache; browsers load only its derived
-paths in the compact study artifacts.
-
-An exact route ID, ordered platform sequence and platform coordinates are required
-to reuse a path; changed times alone do not invalidate it. Unknown patterns remain
-unmatched. No new routing service or build dependency was added.
-
-The public Lausanne map and regional catalogues were also investigated, but this
-audit did not establish a usable official bus-shape download. This does not assert
-that no such source exists.
-
-## Geometry corrections
-
-The Lausanne matcher is separate from the existing national/regional matcher;
-other studies keep their current geometry. It selects infrastructure using source
-agency identity and stable FOT operating-point numbers:
-
-- **m2:** the component anchored at Flon m2 (`8519589`), keeping LEB out of métro
-  matches. Délices and Grancy split the surveyed edges at their projected
-  positions instead of collapsing onto Jordils and Gare.
-- **m1:** the Flon m1 (`8519588`)–Renens (`8501118`) corridor. It is isolated from
-  the mainline graph even though the source networks connect at Renens.
-- **LEB:** the component anchored at Flon LEB (`8519590`). Projection fixes the
-  displaced reference-node endpoints at Les Ripes and Etagnières.
-- **MBC:** agency `29` uses the component anchored at La Gottaz (`8501054`),
-  reaching Morges on the correct local railway rather than the SBB station node.
-- **Other rail:** the component anchored at Lausanne (`8501120`), excluding the
-  m1 corridor. Platform projection corrects the mainline endpoint gaps too.
-
-Platforms must be within **120 m** of their selected corridor. The largest actual
-snap is **44.28 m** on both sampled days. The matcher inserts cuts into the source
-polylines, routes between those cuts and adds short connectors to the timetable
-platform coordinates. Paths keep their direction. Disconnected tracks, coincident
-projections, remote platforms and excessive detours remain unshaped; the detour
-limit remains the greater of 3 km or 4.5 times the direct distance. Missing or
-ambiguous FOT anchors fail the build. These limits were not loosened to pass the
-audit. Individual track/platform selection remains an inference, not an operator
-survey or a live position.
-
-Both sampled days have **zero rejected rail segments**: 18,795 weekday and 14,753
-Sunday rail/métro movements. All original trip identities, ordered stops and times
-are retained. Unused topology edges do not acquire a guessed rail path.
-
-The [alignment review](assets/lausanne-rail-review.svg) was inspected for m2 south
-of Flon, m1 at Renens, LEB at Les Ripes/Etagnières and MBC at Morges/La Gottaz.
-It overlays the corrected paths and timetable platforms on the FOT geometry.
-This verifies alignment continuity and network selection against those inputs;
-it is not independent operator verification. The retained regression fixture
-contains official source extracts, input identity, 18 journeys in both directions,
-and the affected platforms.
-
-The technical gate still requires at least 95% accepted geometry in **each** of
-five groups, alongside existing payload limits. Both weekday and Sunday now pass.
-A large bus fleet cannot conceal an incomplete métro. The audit writes its report
-and candidate for inspection; `--check` returns a failing exit status if the
-technical gate fails. Passing this gate alone is not publication approval.
+The largest rail snap is **44.28 m**. Rail limits remain 120 m for projection and
+the greater of 3 km or 4.5 times direct distance for a detour. Missing anchors,
+disconnected corridors and coincident projections fail or remain unshaped.
+The [rail review](assets/lausanne-rail-review.svg) and source regression fixture
+cover m2 Délices/Grancy, m1 Renens, LEB Les Ripes/Etagnières and MBC Morges/La Gottaz.
+All four rail/métro groups pass on both civil days.
 
 ## Reproduce
 
-Use Node 24 and keep audit candidates outside `public/`. With the official
-GTFS and FOT files retained locally:
-
-```sh
-node scripts/audit-lausanne-study.mjs \
-  --archive /path/swiss-gtfs.zip --rail /path/rail.xtf \
-  --date 2026-09-08 --output-directory /tmp/lausanne-audit \
-  --bus-cache data/lausanne-road-cache.json --prepare-bus-feed
-```
-
-The command extracts the bounded day, verifies source identity, builds the
-candidate topology and chunks, measures geometry by mode/operator and writes
-`lausanne-audit.json`. `--snapshot` can reuse a previously extracted full-day
-snapshot from the same archive/date. Source hashes are retained for both inputs.
-
-To regenerate the road cache, follow the pinned tool/extract setup in
-[`POSTBUS-ROAD-GEOMETRY.md`](POSTBUS-ROAD-GEOMETRY.md), then run:
-
-```sh
-node scripts/match-postbus-roads.mjs \
-  --pfaedle /path/pfaedle --config /path/pfaedle.cfg \
-  --osm /path/postbus-roads.osm.pbf \
-  --feed /tmp/lausanne-audit/bus-feed --output /tmp/lausanne-matched
-node --input-type=module <<'JS'
-import { writeFile } from 'node:fs/promises'
-import { importRoadShapes } from './scripts/enrich-postbus-roads.mjs'
-const cache = await importRoadShapes('/tmp/lausanne-matched',
-  'Describe the actual dated OSM extracts and pinned matcher used')
-await writeFile('/tmp/lausanne-road-cache.json', JSON.stringify(cache))
-JS
-```
-
-Re-run the audit with that cache. `--prepare-bus-feed` identifies the temporary
-feed as tl and uses French metadata; the existing PostAuto default remains
-available for its original pipeline.
-
-Verification after the rail corrections: 41 focused tests passed across Lausanne
-projection/auditing, existing rail and road matching, GTFS import and regional
-refresh/chunk suites. Both
-generated candidate days were independently checked for contiguous 24-hour
-coverage, exact byte counts and SHA-256 hashes, valid references, identical
-overlapping trips and unique day totals. This validates the candidate files;
-it does not complete the outstanding publication work.
-
-## Application build and verification
-
-To build the validated application artifacts (a supplied `--snapshot` must use
-civil-day import):
+Use Node 24 and retain the official [Swiss GTFS](https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020)
+and [FOT infrastructure](https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz)
+locally. Build a dated application artifact set:
 
 ```sh
 node scripts/build-lausanne-day.mjs \
   --archive /path/swiss-gtfs.zip --rail /path/rail.xtf \
-  --date 2026-09-08 --output-directory /tmp/lausanne-publication
+  --date 2026-09-13 --output-directory /tmp/lausanne-sunday
 ```
 
-The shared `npm run data:regional:days` invokes this same builder. Geometry gates
-and the complete fourteen-file set validate before output is written. Recovery
-loads the complete published set; only a missing Lausanne manifest (404) permits
-the first deployment to use the complete dated committed fixture. A missing chunk
-in an already published Lausanne study fails recovery. No files are mixed across
-those two sources and no retained service date is rewritten.
+For a report and candidate, use `scripts/audit-lausanne-study.mjs` with the same
+inputs, `--bus-cache data/lausanne-road-cache.json`, an output outside `public/`,
+and `--check`. Both builders accept `--snapshot` for a previously extracted civil
+day with the same feed/date. Rail is simplified to 10 metres before matching.
 
-The complete unit suite passes **307 tests**, including civil-day calendar
-exceptions, frequency identity, midnight boundaries and feed coverage failures.
-All **14 browser cases** for Lausanne and regional exploration pass in desktop
-Chromium and emulated iPhone WebKit: lazy selection, métro and station search,
-chunk seeking, sharing, overnight Now, recovery and language switching. These
-checks do not establish performance on physical phones.
+Rebuild the routing union from civil-day snapshots or manifests:
 
-A fresh build through the regional refresh entry point passed using the retained
-official sources. Read-only recovery against the published site also succeeded,
-retaining the three published regions and bootstrapping Lausanne from its
-validated fixture. All 56 assembled regional files validate.
+```sh
+node scripts/prepare-lausanne-road-feed.mjs \
+  --snapshot /path/weekday-manifest.json --snapshot /path/sunday-manifest.json \
+  --output /tmp/lausanne-bus-feed
+node scripts/match-postbus-roads.mjs \
+  --pfaedle /path/pfaedle --config /path/pfaedle.cfg --osm /path/roads.osm.pbf \
+  --feed /tmp/lausanne-bus-feed --output /tmp/lausanne-matched
+```
 
-Before calling this launched, deploy the integration and verify its hosted
-refresh. Further source review should cover the worst inferred bus snaps,
-directional variants and the seven missing overnight patterns, plus a civil-day
-Sunday build. The historical Sunday audit above used the service-day importer.
+Import with `importRoadShapes` from `scripts/enrich-postbus-roads.mjs`, preserving
+the actual dated source description and audited dates. The pinned routing setup
+is described in [POSTBUS-ROAD-GEOMETRY.md](POSTBUS-ROAD-GEOMETRY.md).
+To regenerate the visual review, produce a routing graph with pfaedle's
+`--write-graph -d /tmp/graph` against the same feed/config/extract, then run:
+
+```sh
+node scripts/review-lausanne-bus-geometry.mjs \
+  --matched /tmp/lausanne-matched --cache data/lausanne-road-cache.json \
+  --graph /tmp/graph/graph.json --output /tmp/lausanne-review
+```
+
+## Publication and verification
+
+The regional builder validates each complete fourteen-file set before replacing
+outputs. Both civil-day sets pass twelve-chunk coverage, SHA-256/byte checks,
+unique trip counts, stop/path indices and the unchanged gzip budgets (650 KiB
+manifest, 450 KiB chunk, 1,600 KiB morning). The largest weekday/Sunday chunks are
+112.1/85.4 KiB. Morning remains 06:45–08:45; Lausanne defaults to the full day.
+
+Recovery retains published service dates. Only a missing Lausanne manifest (404)
+allows the first deployment to use a complete validated committed fixture;
+a missing chunk in an already published study fails recovery without mixing data.
+Desktop Chromium and iPhone WebKit checks cover lazy entry, search, full-day
+station labels, sharing, overnight Now, chunk retry, languages and attribution.
+The data checks include calendar exceptions, feed boundaries, frequency identity,
+and unchanged routing-pattern identity when normalizing negative times.
+
+To repeat the bus boundary comparison against extracted civil-day snapshots:
+
+```sh
+node scripts/audit-lausanne-bus-boundaries.mjs \
+  --archive /path/swiss-gtfs.zip --weekday /path/weekday-raw.json \
+  --sunday /path/sunday-raw.json --output /tmp/boundary-review.json
+```
