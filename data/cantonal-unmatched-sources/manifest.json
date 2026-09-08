@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "sources": {
+    "axes": {
+      "url": "https://maps.zh.ch/wfs/TBAStrZHWFS?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms:strassenachsen&SRSNAME=EPSG:2056&OUTPUTFORMAT=application%2Fjson&COUNT=100000",
+      "file": "data/cantonal-unmatched-sources/axes.json.gz",
+      "responseSha256": "f79caa2d48735c7b813e07b9141339c9832d0938b9dfa2a779f47985fbd0ce22",
+      "responseBytes": 13381352,
+      "fetchedAt": "2026-09-08T21:15:59.812637+00:00"
+    },
+    "stations": {
+      "url": "https://maps.zh.ch/wfs/TBAVMSZHWFS?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms:verkehrszaehlstellen&SRSNAME=EPSG:2056&OUTPUTFORMAT=application%2Fjson&COUNT=10000",
+      "file": "data/cantonal-unmatched-sources/stations.json.gz",
+      "responseSha256": "5453bd8de0c3865a2edc0e69561dab15743ddccd40ad1d23c8a01df338c88eb3",
+      "responseBytes": 119924,
+      "fetchedAt": "2026-09-08T21:16:14.370478+00:00"
+    },
+    "collectors": {
+      "url": "https://vdp.zh.ch/pws/public-service/readCollectorsCfg",
+      "file": "data/cantonal-unmatched-sources/collectors.json.gz",
+      "responseSha256": "7510b31f60ccd2dd26ee381ec7a9a4df1a42761bea14f501ae57b0677495c230",
+      "responseBytes": 101139,
+      "fetchedAt": "2026-09-08T21:16:16.398853+00:00"
+    }
+  }
+}
