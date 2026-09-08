@@ -3849,7 +3849,7 @@ export function App({ edition }: AppProps) {
       {exploreOpen && <Suspense fallback={null}><StudyBrowser language={language} study={networkStudy} onClose={() => setExploreOpen(false)} onSelect={id => { setRegionalRange('day'); selectNetworkStudy(id, 'day'); setExploreOpen(false) }} /></Suspense>}
       <section className="transport" aria-label={text.playbackControls}>
         {isSolothurn && <a className="mobile-map-attribution" href={editionDataUrl('solothurn-region/sources.json')} target="_blank" rel="noreferrer">Kanton Solothurn · © OpenStreetMap contributors · FOT · Kantone Bern / Basel-Stadt</a>}
-        {isBern && <a className="mobile-map-attribution" href="https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct" target="_blank" rel="noreferrer">Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern</a>}
+        {isBern && <span className="mobile-map-attribution"><a href="https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct" target="_blank" rel="noreferrer">Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a> · <a href={editionDataUrl('bern-region/fot-cableways/source.json')} target="_blank" rel="noreferrer">© FOT / BAV</a></span>}
         {(isLausanne || isBasel || isNyon) && <span className="mobile-map-attribution"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL</a>{isBasel && <> · <a href="https://www.swisstopo.admin.ch">© swisstopo</a></>}</span>}
       {isTimetable && !selectedTrain && !selectedAirTrack && !selectedRoute && (
         <div
@@ -4269,6 +4269,8 @@ export function App({ edition }: AppProps) {
             {isNetwork && (isLausanne || isBasel || isNyon) && <a href="https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz" target="_blank" rel="noreferrer">Rail · BAV / OFT</a>}
             {isNetwork && isSolothurn && <a href={editionDataUrl('solothurn-region/terms.html')} target="_blank" rel="noreferrer">{text.bernTerms} · SO</a>}
             {isNetwork && isSolothurn && <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL</a>}
+            {isNetwork && isBern && <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL</a>}
+            {isNetwork && isBern && <a href={editionDataUrl('bern-region/fot-cableways/source.json')} target="_blank" rel="noreferrer">© Federal Office of Transport (FOT)</a>}
             {isNetwork && isBern && <a href={editionDataUrl('bern-region/terms_of_use_de.pdf')} target="_blank" rel="noreferrer">{text.bernTerms} · DE</a>}
             {isNetwork && isBern && <a href={editionDataUrl('bern-region/terms_of_use_fr.pdf')} target="_blank" rel="noreferrer">{text.bernTerms} · FR</a>}
             {isNetwork && isBasel && <a href="https://wfs.geo.bs.ch/" target="_blank" rel="noreferrer">Geodaten Kanton Basel-Stadt</a>}

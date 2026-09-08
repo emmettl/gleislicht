@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "sourceValidity": [
+    "2026-08-29",
+    "2026-10-11"
+  ],
+  "documents": [
+    {
+      "file": "bernmobil-thunstrasse-notice-20260811.html",
+      "url": "https://www.bernmobil.ch/de/2908-111026-bauarbeiten-untere-thunstrasse",
+      "publicationDate": "2026-08-11",
+      "retrieved": "2026-09-08",
+      "sha256": "59aecec58ca5b7d9184eab3d488b0c8739a8262442613dddf4819d7db2c78550",
+      "attribution": "BERNMOBIL",
+      "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+    },
+    {
+      "file": "bernmobil-thunstrasse-detail-20260908.html",
+      "url": "https://www.bernmobil.ch/de/verkehrsinformationen/baustellen/untere-thunstrasse",
+      "publicationDate": null,
+      "retrieved": "2026-09-08",
+      "sha256": "eb1694b49c34b29e29975cf2be9f106dfb6c8679559c55fee13775895540dd44",
+      "attribution": "BERNMOBIL",
+      "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+    },
+    {
+      "file": "bernmobil-thunstrasse-diversion-2026.jpg",
+      "url": "https://www.bernmobil.ch/sites/default/files/2026-08/Umleitungsplan_Sanierung_Thunstrasse_August_2026.jpg",
+      "publicationDate": null,
+      "retrieved": "2026-09-08",
+      "sha256": "b21d83cdf5e68d3a07ec621f9e8c5287cd0fe1b4836d3b45111bfd89689abd27",
+      "attribution": "BERNMOBIL",
+      "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+    },
+    {
+      "file": "bernmobil-bahnhof-platforms-20260318.pdf",
+      "url": "https://www.bernmobil.ch/sites/default/files/2026-08/Kantenplan%2520Bern%2520Bahnhof.pdf",
+      "publicationDate": "2026-03-18",
+      "retrieved": "2026-09-08",
+      "sha256": "8e6c082b55e1a4b9bb77a56848989b46e8b5ed0eca6d21da996df5ca51afe6da",
+      "attribution": "BERNMOBIL",
+      "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+    }
+  ],
+  "roadSource": {
+    "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+    "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+    "swissDate": "2026-09-02",
+    "borderRetrieved": "2026-09-08",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+    "attribution": "© OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "licenseUrl": "https://www.openstreetmap.org/copyright"
+  },
+  "roadRouteIds": [
+    "92-2-D-j26-1",
+    "92-3-F-j26-1",
+    "92-6-F-j26-1",
+    "92-1-H-j26-1",
+    "92-2-F-j26-1"
+  ],
+  "roadRule": "Only missing directed pairs on these existing operator/line crosswalks; all full-pattern contexts on both dates must agree on the identical valid path. 80 m snap, 4.5 detour ratio / 1200 m floor. Failed and context-dependent paths remain excluded. No road direction or temporary-diversion certification.",
+  "tramPairs": [
+    [
+      "91-6-A-j26-1",
+      "ch:1:sloid:76646:0:10",
+      "ch:1:sloid:79896:0:1"
+    ],
+    [
+      "91-6-A-j26-1",
+      "ch:1:sloid:79896:0:2",
+      "ch:1:sloid:76646:0:10"
+    ]
+  ],
+  "tramRule": "Only the two Bahnhof J / Hirschengraben directed platform pairs. Cantonal tram line 30_003 supplies the station loop shown in the dated BERNMOBIL diversion plan; retain every previously matched line 6 segment. Other line 6 depot/Guisanplatz gaps remain excluded.",
+  "exclusions": [
+    {
+      "routeIds": [
+        "92-7A-j26-1",
+        "92-8A-j26-1"
+      ],
+      "reason": "temporary-platform-coordinate-conflict",
+      "stopIds": [
+        "ch:1:sloid:90006:0:2371",
+        "ch:1:sloid:90006:0:2372"
+      ],
+      "sourceCoordinate": [
+        7.45325005,
+        46.94237333
+      ],
+      "finding": "Both temporary Luisenstrasse records share a coordinate on the closed lower Thunstrasse. Operator specifies inbound Marienstrasse 23 and outbound Kirchenfeldstrasse at Mottastrasse. The inferred paths follow the closed corridor. No stop relocation or increased tolerance is authorized by the source model; both routes remain excluded.",
+      "approximateNearestRoadMetres": {
+        "Kirchenfeldstrasse": 226.55,
+        "Marienstrasse": 149.06,
+        "Thunstrasse": 0.96
+      }
+    }
+  ]
+}

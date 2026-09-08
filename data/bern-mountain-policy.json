@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "sourceDirectory": "data/bern-sources/fot-cableways",
+  "sourceMetadataSha256": "ce888707930121bc29e57336d22e93a431ede9c97af84499854309d9f0a06126",
+  "admittedRouteIds": [
+    "93-236-5-j26-1"
+  ],
+  "stationSnapMetres": 80,
+  "topologySnapMetres": 5,
+  "bindings": [
+    {
+      "routeId": "93-236-5-j26-1",
+      "agencyId": "3046",
+      "line": "2365",
+      "installation": "73.213",
+      "operator": "1222",
+      "vehicle": "Sessel",
+      "stops": {
+        "ch:1:sloid:31438": "8531438",
+        "ch:1:sloid:31439": "8531439"
+      }
+    },
+    {
+      "routeId": "93-244-4-j26-1",
+      "agencyId": "200",
+      "line": "2444",
+      "installation": "75.014",
+      "operator": "219",
+      "vehicle": "Kabine",
+      "stops": {
+        "ch:1:sloid:5226": "8505294",
+        "ch:1:sloid:7361": "8505295"
+      }
+    },
+    {
+      "routeId": "93-GGM-j26-1",
+      "agencyId": "312",
+      "line": "GGM",
+      "installation": "72.153",
+      "operator": "1074",
+      "vehicle": "Kabine",
+      "stops": {
+        "ch:1:sloid:5226": "8507370",
+        "ch:1:sloid:7391": "8507391"
+      }
+    },
+    {
+      "routeId": "93-GGM-j26-1",
+      "agencyId": "312",
+      "line": "GGM",
+      "installation": "72.154",
+      "operator": "1074",
+      "vehicle": "Kabine",
+      "stops": {
+        "ch:1:sloid:7391": "8507391",
+        "ch:1:sloid:7371": "8507371"
+      }
+    }
+  ],
+  "stationAliases": "Eiger and GGM use shared timetable interchange IDs; installation-specific FOT station numbers are explicit review candidates, never substituted for source coordinates. The 80 m limit still applies.",
+  "matte": {
+    "routeId": "93-235-2-j26-1",
+    "status": "excluded-no-2d-axis",
+    "sourceUrl": "https://www.mattelift.ch/der-mattelift/technik/",
+    "checkedOn": "2026-09-08",
+    "sourceMethod": "Operator technical page read through web retrieval; direct host download unavailable",
+    "finding": "Operator specifies a vertical passenger lift with 29.90 m rise and two opposite entrances. The roughly 4 m horizontal separation of GTFS stop coordinates does not establish a transport axis. No horizontal line is invented."
+  }
+}

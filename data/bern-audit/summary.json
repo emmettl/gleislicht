@@ -4,7 +4,10 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
     "crosswalk": "1f8b973c671575202eceecb9f89b1443e9a7f162630cb3beb208e5e5727180f8",
-    "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19"
+    "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+    "mountainPolicy": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89",
+    "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
+    "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
   },
   "sources": {
     "schemaVersion": 1,
@@ -95,6 +98,214 @@
       "processedBy": "Gleislicht",
       "archivalStudy": true,
       "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
+    },
+    "mountainSupplement": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceDirectory": "data/bern-sources/fot-cableways",
+        "sourceMetadataSha256": "ce888707930121bc29e57336d22e93a431ede9c97af84499854309d9f0a06126",
+        "admittedRouteIds": [
+          "93-236-5-j26-1"
+        ],
+        "stationSnapMetres": 80,
+        "topologySnapMetres": 5,
+        "bindings": [
+          {
+            "routeId": "93-236-5-j26-1",
+            "agencyId": "3046",
+            "line": "2365",
+            "installation": "73.213",
+            "operator": "1222",
+            "vehicle": "Sessel",
+            "stops": {
+              "ch:1:sloid:31438": "8531438",
+              "ch:1:sloid:31439": "8531439"
+            }
+          },
+          {
+            "routeId": "93-244-4-j26-1",
+            "agencyId": "200",
+            "line": "2444",
+            "installation": "75.014",
+            "operator": "219",
+            "vehicle": "Kabine",
+            "stops": {
+              "ch:1:sloid:5226": "8505294",
+              "ch:1:sloid:7361": "8505295"
+            }
+          },
+          {
+            "routeId": "93-GGM-j26-1",
+            "agencyId": "312",
+            "line": "GGM",
+            "installation": "72.153",
+            "operator": "1074",
+            "vehicle": "Kabine",
+            "stops": {
+              "ch:1:sloid:5226": "8507370",
+              "ch:1:sloid:7391": "8507391"
+            }
+          },
+          {
+            "routeId": "93-GGM-j26-1",
+            "agencyId": "312",
+            "line": "GGM",
+            "installation": "72.154",
+            "operator": "1074",
+            "vehicle": "Kabine",
+            "stops": {
+              "ch:1:sloid:7391": "8507391",
+              "ch:1:sloid:7371": "8507371"
+            }
+          }
+        ],
+        "stationAliases": "Eiger and GGM use shared timetable interchange IDs; installation-specific FOT station numbers are explicit review candidates, never substituted for source coordinates. The 80 m limit still applies.",
+        "matte": {
+          "routeId": "93-235-2-j26-1",
+          "status": "excluded-no-2d-axis",
+          "sourceUrl": "https://www.mattelift.ch/der-mattelift/technik/",
+          "checkedOn": "2026-09-08",
+          "sourceMethod": "Operator technical page read through web retrieval; direct host download unavailable",
+          "finding": "Operator specifies a vertical passenger lift with 29.90 m rise and two opposite entrances. The roughly 4 m horizontal separation of GTFS stop coordinates does not establish a transport axis. No horizontal line is invented."
+        }
+      },
+      "source": {
+        "publisher": "Federal Office of Transport - FOT",
+        "attribution": "© Federal Office of Transport (FOT)",
+        "catalogueLicense": "proprietary",
+        "termsUrl": "https://opendata.swiss/en/terms-of-use/#terms_by",
+        "sourceUrl": "https://data.geo.admin.ch/ch.bav.seilbahnen-bundeskonzession/seilbahnen-bundeskonzession/seilbahnen-bundeskonzession_2056_de.xtf.zip",
+        "catalogueDate": "2025-11-07T00:00:00Z",
+        "assetUpdated": "2026-01-29T06:46:40.489123Z",
+        "checkedOn": "2026-09-08T18:41:41.256Z",
+        "archiveMember": "Seilbahnen_20260105.xtf",
+        "sha256": "eb2c04bbb481fcac1ae472527a237ce9294f227047f340288e79c18cd0e14ddf",
+        "xmlSha256": "8cf0ecb4a7df444145c1134910c61d4608c52989a4e7b518d7f519f67b8d0ace",
+        "counts": {
+          "installations": 653,
+          "stations": 1349,
+          "segments": 653
+        },
+        "files": {
+          "source.xtf.zip": "eb2c04bbb481fcac1ae472527a237ce9294f227047f340288e79c18cd0e14ddf",
+          "catalogue.json": "de38eaf969be840f974795f6ebc78344d4823107a6b473c87e8371cdc0d5e9a8",
+          "collection.json": "83bd7103bc5730788052d9b034f1827e77f4121dc2ca0f5f83938d0dd27a4525",
+          "decoded.json.gz": "339573f741524a7dead00780154b24946b8281a498dfb815e49ec5e798b458e5"
+        },
+        "interpretation": "Complete national FOT cableway installation, station and axis census retained; Bern applies only separately reviewed installation bindings. No altitude, sag or observed motion.",
+        "transformation": "Approximate swisstopo LV95-to-WGS84 polynomial, seven decimals, no geometry simplification.",
+        "decoder": "scripts/prepare-bern-mountain-sources.py"
+      },
+      "policySha256": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89"
+    },
+    "urbanSupplement": {
+      "policy": {
+        "schemaVersion": 1,
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "sourceValidity": [
+          "2026-08-29",
+          "2026-10-11"
+        ],
+        "documents": [
+          {
+            "file": "bernmobil-thunstrasse-notice-20260811.html",
+            "url": "https://www.bernmobil.ch/de/2908-111026-bauarbeiten-untere-thunstrasse",
+            "publicationDate": "2026-08-11",
+            "retrieved": "2026-09-08",
+            "sha256": "59aecec58ca5b7d9184eab3d488b0c8739a8262442613dddf4819d7db2c78550",
+            "attribution": "BERNMOBIL",
+            "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+          },
+          {
+            "file": "bernmobil-thunstrasse-detail-20260908.html",
+            "url": "https://www.bernmobil.ch/de/verkehrsinformationen/baustellen/untere-thunstrasse",
+            "publicationDate": null,
+            "retrieved": "2026-09-08",
+            "sha256": "eb1694b49c34b29e29975cf2be9f106dfb6c8679559c55fee13775895540dd44",
+            "attribution": "BERNMOBIL",
+            "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+          },
+          {
+            "file": "bernmobil-thunstrasse-diversion-2026.jpg",
+            "url": "https://www.bernmobil.ch/sites/default/files/2026-08/Umleitungsplan_Sanierung_Thunstrasse_August_2026.jpg",
+            "publicationDate": null,
+            "retrieved": "2026-09-08",
+            "sha256": "b21d83cdf5e68d3a07ec621f9e8c5287cd0fe1b4836d3b45111bfd89689abd27",
+            "attribution": "BERNMOBIL",
+            "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+          },
+          {
+            "file": "bernmobil-bahnhof-platforms-20260318.pdf",
+            "url": "https://www.bernmobil.ch/sites/default/files/2026-08/Kantenplan%2520Bern%2520Bahnhof.pdf",
+            "publicationDate": "2026-03-18",
+            "retrieved": "2026-09-08",
+            "sha256": "8e6c082b55e1a4b9bb77a56848989b46e8b5ed0eca6d21da996df5ca51afe6da",
+            "attribution": "BERNMOBIL",
+            "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+          }
+        ],
+        "roadSource": {
+          "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+          "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+          "swissDate": "2026-09-02",
+          "borderRetrieved": "2026-09-08",
+          "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+          "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "ODbL-1.0",
+          "licenseUrl": "https://www.openstreetmap.org/copyright"
+        },
+        "roadRouteIds": [
+          "92-2-D-j26-1",
+          "92-3-F-j26-1",
+          "92-6-F-j26-1",
+          "92-1-H-j26-1",
+          "92-2-F-j26-1"
+        ],
+        "roadRule": "Only missing directed pairs on these existing operator/line crosswalks; all full-pattern contexts on both dates must agree on the identical valid path. 80 m snap, 4.5 detour ratio / 1200 m floor. Failed and context-dependent paths remain excluded. No road direction or temporary-diversion certification.",
+        "tramPairs": [
+          [
+            "91-6-A-j26-1",
+            "ch:1:sloid:76646:0:10",
+            "ch:1:sloid:79896:0:1"
+          ],
+          [
+            "91-6-A-j26-1",
+            "ch:1:sloid:79896:0:2",
+            "ch:1:sloid:76646:0:10"
+          ]
+        ],
+        "tramRule": "Only the two Bahnhof J / Hirschengraben directed platform pairs. Cantonal tram line 30_003 supplies the station loop shown in the dated BERNMOBIL diversion plan; retain every previously matched line 6 segment. Other line 6 depot/Guisanplatz gaps remain excluded.",
+        "exclusions": [
+          {
+            "routeIds": [
+              "92-7A-j26-1",
+              "92-8A-j26-1"
+            ],
+            "reason": "temporary-platform-coordinate-conflict",
+            "stopIds": [
+              "ch:1:sloid:90006:0:2371",
+              "ch:1:sloid:90006:0:2372"
+            ],
+            "sourceCoordinate": [
+              7.45325005,
+              46.94237333
+            ],
+            "finding": "Both temporary Luisenstrasse records share a coordinate on the closed lower Thunstrasse. Operator specifies inbound Marienstrasse 23 and outbound Kirchenfeldstrasse at Mottastrasse. The inferred paths follow the closed corridor. No stop relocation or increased tolerance is authorized by the source model; both routes remain excluded.",
+            "approximateNearestRoadMetres": {
+              "Kirchenfeldstrasse": 226.55,
+              "Marienstrasse": 149.06,
+              "Thunstrasse": 0.96
+            }
+          }
+        ]
+      },
+      "cacheSha256": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
+      "policySha256": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb",
+      "model": "Missing-pair supplements only. OSM paths are inferred, not operator-certified; tram station approaches use separately identified cantonal line 30_003."
     }
   },
   "census": {
@@ -147,9 +358,9 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 284,
-    "excluded": 137,
-    "partially-admitted": 101,
+    "admitted-all-dated-trips": 289,
+    "excluded": 134,
+    "partially-admitted": 99,
     "inactive-on-validation-dates": 183
   },
   "districts": [
@@ -1194,28 +1405,31 @@
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
         "crosswalk": "1f8b973c671575202eceecb9f89b1443e9a7f162630cb3beb208e5e5727180f8",
-        "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19"
+        "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+        "mountainPolicy": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89",
+        "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
+        "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
       },
       "coverage": {
         "trips": 43653,
-        "admittedTrips": 33276,
+        "admittedTrips": 35126,
         "scheduledTrips": 28696,
         "representativeHeadwayTrips": 14957,
-        "admittedScheduledTrips": 19249,
-        "admittedRepresentativeHeadwayTrips": 14027,
+        "admittedScheduledTrips": 20169,
+        "admittedRepresentativeHeadwayTrips": 14957,
         "scheduledSegmentOccurrences": 295359,
-        "matchedScheduledSegmentOccurrences": 271447,
+        "matchedScheduledSegmentOccurrences": 272768,
         "segmentOccurrences": 314668,
-        "matchedSegmentOccurrences": 289826,
-        "admittedSegmentOccurrences": 232169,
+        "matchedSegmentOccurrences": 292077,
+        "admittedSegmentOccurrences": 253400,
         "directedPairs": 12321,
-        "matchedDirectedPairs": 10540,
+        "matchedDirectedPairs": 10558,
         "patterns": 2582,
-        "completePatterns": 1732,
-        "admittedPatterns": 1732,
+        "completePatterns": 1756,
+        "admittedPatterns": 1756,
         "excludedTrips": {
-          "incomplete-directed-pattern": 6338,
-          "no-verified-operator-line-crosswalk": 4039
+          "incomplete-directed-pattern": 5418,
+          "no-verified-operator-line-crosswalk": 3109
         }
       },
       "groups": [
@@ -1564,23 +1778,23 @@
           "id": "146:bus",
           "agency": "STI Bus AG",
           "trips": 2023,
-          "admittedTrips": 1584,
+          "admittedTrips": 1795,
           "scheduledTrips": 2023,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1584,
+          "admittedScheduledTrips": 1795,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 32053,
-          "matchedScheduledSegmentOccurrences": 31138,
+          "matchedScheduledSegmentOccurrences": 31560,
           "segmentOccurrences": 32053,
-          "matchedSegmentOccurrences": 31138,
-          "admittedSegmentOccurrences": 24065,
+          "matchedSegmentOccurrences": 31560,
+          "admittedSegmentOccurrences": 29172,
           "directedPairs": 1116,
-          "matchedDirectedPairs": 1065,
+          "matchedDirectedPairs": 1071,
           "patterns": 171,
-          "completePatterns": 152,
-          "admittedPatterns": 152,
+          "completePatterns": 158,
+          "admittedPatterns": 158,
           "excludedTrips": {
-            "incomplete-directed-pattern": 439
+            "incomplete-directed-pattern": 228
           }
         },
         {
@@ -1994,24 +2208,22 @@
           "id": "3046:cableway",
           "agency": "Sesselbahn Riedli - Nüegg (Wiriehorn)",
           "trips": 930,
-          "admittedTrips": 0,
+          "admittedTrips": 930,
           "scheduledTrips": 0,
           "representativeHeadwayTrips": 930,
           "admittedScheduledTrips": 0,
-          "admittedRepresentativeHeadwayTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 930,
           "scheduledSegmentOccurrences": 0,
           "matchedScheduledSegmentOccurrences": 0,
           "segmentOccurrences": 930,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 930,
+          "admittedSegmentOccurrences": 930,
           "directedPairs": 2,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 2,
           "patterns": 2,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "no-verified-operator-line-crosswalk": 930
-          }
+          "completePatterns": 2,
+          "admittedPatterns": 2,
+          "excludedTrips": {}
         },
         {
           "id": "307:cableway",
@@ -2849,23 +3061,23 @@
           "id": "827:tram",
           "agency": "Städtische Verkehrsbetriebe Bern",
           "trips": 1588,
-          "admittedTrips": 1340,
+          "admittedTrips": 1550,
           "scheduledTrips": 1588,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1340,
+          "admittedScheduledTrips": 1550,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 19100,
-          "matchedScheduledSegmentOccurrences": 18757,
+          "matchedScheduledSegmentOccurrences": 18967,
           "segmentOccurrences": 19100,
-          "matchedSegmentOccurrences": 18757,
-          "admittedSegmentOccurrences": 17360,
+          "matchedSegmentOccurrences": 18967,
+          "admittedSegmentOccurrences": 18935,
           "directedPairs": 205,
-          "matchedDirectedPairs": 160,
+          "matchedDirectedPairs": 162,
           "patterns": 48,
-          "completePatterns": 32,
-          "admittedPatterns": 32,
+          "completePatterns": 34,
+          "admittedPatterns": 34,
           "excludedTrips": {
-            "incomplete-directed-pattern": 248
+            "incomplete-directed-pattern": 38
           }
         },
         {
@@ -3080,23 +3292,23 @@
           "id": "889:bus",
           "agency": "Verkehrsbetriebe Biel",
           "trips": 1421,
-          "admittedTrips": 727,
+          "admittedTrips": 1226,
           "scheduledTrips": 1421,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 727,
+          "admittedScheduledTrips": 1226,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 29982,
-          "matchedScheduledSegmentOccurrences": 29032,
+          "matchedScheduledSegmentOccurrences": 29721,
           "segmentOccurrences": 29982,
-          "matchedSegmentOccurrences": 29032,
-          "admittedSegmentOccurrences": 13249,
+          "matchedSegmentOccurrences": 29721,
+          "admittedSegmentOccurrences": 26868,
           "directedPairs": 444,
-          "matchedDirectedPairs": 426,
+          "matchedDirectedPairs": 434,
           "patterns": 43,
-          "completePatterns": 18,
-          "admittedPatterns": 18,
+          "completePatterns": 32,
+          "admittedPatterns": 32,
           "excludedTrips": {
-            "incomplete-directed-pattern": 694
+            "incomplete-directed-pattern": 195
           }
         },
         {
@@ -3145,7 +3357,7 @@
         }
       ],
       "carryInTrips": 334,
-      "admittedCarryInTrips": 204,
+      "admittedCarryInTrips": 223,
       "admittedOutsideCantonPlatforms": 677,
       "directedPatternChecks": {
         "directionIds": [
@@ -3159,12 +3371,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 7658599,
-          "gzipBytes": 1599616
+          "bytes": 7743120,
+          "gzipBytes": 1618108
         },
         "morning": {
-          "trips": 3057,
-          "gzipBytes": 1877168
+          "trips": 3186,
+          "gzipBytes": 1913498
         },
         "chunks": [
           {
@@ -3172,10 +3384,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 208,
-            "bytes": 163292,
-            "sha256": "ff92b28f86989e9c36b127a9576e81b49bc45aa134622147f64d5368cd65108f",
-            "gzipBytes": 27810
+            "tripCount": 227,
+            "bytes": 182592,
+            "sha256": "8b60068df5076a34f7afeb94cc2a2a053137b6b32fb8899cf3c37c1313180ed3",
+            "gzipBytes": 30969
           },
           {
             "id": "02-04",
@@ -3192,100 +3404,100 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 506,
-            "bytes": 421512,
-            "sha256": "9094ebaea4d1fe6ee466080a57fe1642999be320489f60fe2fdd42137156e697",
-            "gzipBytes": 66011
+            "tripCount": 538,
+            "bytes": 458784,
+            "sha256": "431f21a33b72b8bed6b6f2f2bcf1276ce7f96429a5772af4b969aee3f44e1c0f",
+            "gzipBytes": 71422
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 2739,
-            "bytes": 2256619,
-            "sha256": "2b2400665dccd7fadadf182a2d0d55121af2c47867f7200304da259de4f4edcd",
-            "gzipBytes": 264339
+            "tripCount": 2862,
+            "bytes": 2394963,
+            "sha256": "ac72d4c0019b9093283dabc332c641aafbccfe7cd25d9bbf13b3b4c89d3980bf",
+            "gzipBytes": 280712
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 4602,
-            "bytes": 3398013,
-            "sha256": "2308ab21e0424e1ea13a4f99a8670eb1edcd9240d6a110826097597991e2dac6",
-            "gzipBytes": 299788
+            "tripCount": 4850,
+            "bytes": 3619915,
+            "sha256": "7c2085acf370472b522f58364dc06f38aac334b78fb8c54e29820b305621d6cb",
+            "gzipBytes": 318921
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 6581,
-            "bytes": 4616819,
-            "sha256": "8e79edff9e7c5a27163100d5dbce2757b75a5db770e97031433c24bceb737e32",
-            "gzipBytes": 340713
+            "tripCount": 6969,
+            "bytes": 4928660,
+            "sha256": "420c49c3b0293a532791fc6269baf009ca81d9b63fafc7635f413fc209b3ff70",
+            "gzipBytes": 363731
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 6730,
-            "bytes": 4733301,
-            "sha256": "7764ef7c97f8b3ed07fabda549a0f7f008f462c3f53cf7af83c44945208d1b47",
-            "gzipBytes": 354082
+            "tripCount": 7118,
+            "bytes": 5045152,
+            "sha256": "5d160397318df26a7304c26a8a74c275f50b9449eb8f65e8261f420bc39aefd4",
+            "gzipBytes": 376801
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 6647,
-            "bytes": 4661247,
-            "sha256": "7587937015c939dfa66d0e94b9dbd41427c133d65415577c575e1b00f06528fd",
-            "gzipBytes": 345557
+            "tripCount": 7035,
+            "bytes": 4973370,
+            "sha256": "3aa3304e6643cf37de37351eaeddef124fdc0180459812871832f18705d0c34c",
+            "gzipBytes": 368301
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 4992,
-            "bytes": 3720838,
-            "sha256": "fc3decf39c456b2bebd2e957e87d830ec27004d46538c45d0c7d9e40bbb58adb",
-            "gzipBytes": 330126
+            "tripCount": 5230,
+            "bytes": 3937953,
+            "sha256": "6b7192ba91063d94988ed72317890a78cb1a102a57731d047058fb962c8898ba",
+            "gzipBytes": 350528
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 2645,
-            "bytes": 2161092,
-            "sha256": "bc712618cb8d0fee5e0b0f07c452ded3d01177fb3528e64b1d7df4eb9eaaccbf",
-            "gzipBytes": 248670
+            "tripCount": 2771,
+            "bytes": 2306310,
+            "sha256": "335f1d901a3d79dbc0199f4598c0dc081888149d7ba5faf1a97d9a19f2754059",
+            "gzipBytes": 265946
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 1515,
-            "bytes": 1256255,
-            "sha256": "83bbae0cdb1b23c053b439ce33f68beef7c12fab72067e9dcdb2f06ee35c3c89",
-            "gzipBytes": 153380
+            "tripCount": 1618,
+            "bytes": 1374294,
+            "sha256": "c08739e99462b8306f2e60a5c7bd14bac157fd795f1643130daf0a715b281971",
+            "gzipBytes": 167707
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 916,
-            "bytes": 782281,
-            "sha256": "5179149f5d3528122abe6ea3205d46a62e97b832a526dd705f16dc8ebafb68a9",
-            "gzipBytes": 104492
+            "tripCount": 988,
+            "bytes": 859080,
+            "sha256": "241447815d235e843635f5a4bda249f338a513fb97f37666a3954df3f2ed23a7",
+            "gzipBytes": 113970
           }
         ]
       },
@@ -3307,28 +3519,31 @@
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
         "crosswalk": "1f8b973c671575202eceecb9f89b1443e9a7f162630cb3beb208e5e5727180f8",
-        "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19"
+        "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+        "mountainPolicy": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89",
+        "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
+        "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
       },
       "coverage": {
         "trips": 38587,
-        "admittedTrips": 29203,
+        "admittedTrips": 30811,
         "scheduledTrips": 22462,
         "representativeHeadwayTrips": 16125,
-        "admittedScheduledTrips": 14008,
-        "admittedRepresentativeHeadwayTrips": 15195,
+        "admittedScheduledTrips": 14686,
+        "admittedRepresentativeHeadwayTrips": 16125,
         "scheduledSegmentOccurrences": 209388,
-        "matchedScheduledSegmentOccurrences": 188392,
+        "matchedScheduledSegmentOccurrences": 189312,
         "segmentOccurrences": 229859,
-        "matchedSegmentOccurrences": 207933,
-        "admittedSegmentOccurrences": 164869,
+        "matchedSegmentOccurrences": 209783,
+        "admittedSegmentOccurrences": 180549,
         "directedPairs": 13244,
-        "matchedDirectedPairs": 11259,
+        "matchedDirectedPairs": 11275,
         "patterns": 2108,
-        "completePatterns": 1348,
-        "admittedPatterns": 1348,
+        "completePatterns": 1369,
+        "admittedPatterns": 1369,
         "excludedTrips": {
-          "incomplete-directed-pattern": 5319,
-          "no-verified-operator-line-crosswalk": 4065
+          "incomplete-directed-pattern": 4641,
+          "no-verified-operator-line-crosswalk": 3135
         }
       },
       "groups": [
@@ -3677,23 +3892,23 @@
           "id": "146:bus",
           "agency": "STI Bus AG",
           "trips": 1367,
-          "admittedTrips": 1060,
+          "admittedTrips": 1202,
           "scheduledTrips": 1367,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1060,
+          "admittedScheduledTrips": 1202,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 22813,
-          "matchedScheduledSegmentOccurrences": 22173,
+          "matchedScheduledSegmentOccurrences": 22457,
           "segmentOccurrences": 22813,
-          "matchedSegmentOccurrences": 22173,
-          "admittedSegmentOccurrences": 16779,
+          "matchedSegmentOccurrences": 22457,
+          "admittedSegmentOccurrences": 20493,
           "directedPairs": 1458,
-          "matchedDirectedPairs": 1397,
+          "matchedDirectedPairs": 1401,
           "patterns": 133,
-          "completePatterns": 107,
-          "admittedPatterns": 107,
+          "completePatterns": 111,
+          "admittedPatterns": 111,
           "excludedTrips": {
-            "incomplete-directed-pattern": 307
+            "incomplete-directed-pattern": 165
           }
         },
         {
@@ -4107,24 +4322,22 @@
           "id": "3046:cableway",
           "agency": "Sesselbahn Riedli - Nüegg (Wiriehorn)",
           "trips": 930,
-          "admittedTrips": 0,
+          "admittedTrips": 930,
           "scheduledTrips": 0,
           "representativeHeadwayTrips": 930,
           "admittedScheduledTrips": 0,
-          "admittedRepresentativeHeadwayTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 930,
           "scheduledSegmentOccurrences": 0,
           "matchedScheduledSegmentOccurrences": 0,
           "segmentOccurrences": 930,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 930,
+          "admittedSegmentOccurrences": 930,
           "directedPairs": 2,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 2,
           "patterns": 2,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "no-verified-operator-line-crosswalk": 930
-          }
+          "completePatterns": 2,
+          "admittedPatterns": 2,
+          "excludedTrips": {}
         },
         {
           "id": "3070:cableway",
@@ -5031,23 +5244,23 @@
           "id": "827:tram",
           "agency": "Städtische Verkehrsbetriebe Bern",
           "trips": 1252,
-          "admittedTrips": 1064,
+          "admittedTrips": 1220,
           "scheduledTrips": 1252,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1064,
+          "admittedScheduledTrips": 1220,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 14672,
-          "matchedScheduledSegmentOccurrences": 14399,
+          "matchedScheduledSegmentOccurrences": 14555,
           "segmentOccurrences": 14672,
-          "matchedSegmentOccurrences": 14399,
-          "admittedSegmentOccurrences": 13357,
+          "matchedSegmentOccurrences": 14555,
+          "admittedSegmentOccurrences": 14527,
           "directedPairs": 220,
-          "matchedDirectedPairs": 162,
+          "matchedDirectedPairs": 164,
           "patterns": 50,
-          "completePatterns": 33,
-          "admittedPatterns": 33,
+          "completePatterns": 35,
+          "admittedPatterns": 35,
           "excludedTrips": {
-            "incomplete-directed-pattern": 188
+            "incomplete-directed-pattern": 32
           }
         },
         {
@@ -5261,23 +5474,23 @@
           "id": "889:bus",
           "agency": "Verkehrsbetriebe Biel",
           "trips": 1160,
-          "admittedTrips": 628,
+          "admittedTrips": 1008,
           "scheduledTrips": 1160,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 628,
+          "admittedScheduledTrips": 1008,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 23511,
-          "matchedScheduledSegmentOccurrences": 22829,
+          "matchedScheduledSegmentOccurrences": 23309,
           "segmentOccurrences": 23511,
-          "matchedSegmentOccurrences": 22829,
-          "admittedSegmentOccurrences": 10951,
+          "matchedSegmentOccurrences": 23309,
+          "admittedSegmentOccurrences": 20817,
           "directedPairs": 744,
-          "matchedDirectedPairs": 716,
+          "matchedDirectedPairs": 724,
           "patterns": 53,
-          "completePatterns": 24,
-          "admittedPatterns": 24,
+          "completePatterns": 37,
+          "admittedPatterns": 37,
           "excludedTrips": {
-            "incomplete-directed-pattern": 532
+            "incomplete-directed-pattern": 152
           }
         },
         {
@@ -5326,7 +5539,7 @@
         }
       ],
       "carryInTrips": 816,
-      "admittedCarryInTrips": 489,
+      "admittedCarryInTrips": 514,
       "admittedOutsideCantonPlatforms": 695,
       "directedPatternChecks": {
         "directionIds": [
@@ -5340,12 +5553,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 7686701,
-          "gzipBytes": 1681178
+          "bytes": 7771336,
+          "gzipBytes": 1700715
         },
         "morning": {
-          "trips": 1904,
-          "gzipBytes": 1835353
+          "trips": 1980,
+          "gzipBytes": 1864926
         },
         "chunks": [
           {
@@ -5353,10 +5566,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 389,
-            "bytes": 322960,
-            "sha256": "ca13bcf5bd04a79e77fd6642fede175b579b007e03e799c37650e1cdcb37fbad",
-            "gzipBytes": 52054
+            "tripCount": 414,
+            "bytes": 346251,
+            "sha256": "cc91ddbd9ae323969d8ace32c3713de775d926ff709ad41b385586ce97cd55ff",
+            "gzipBytes": 55578
           },
           {
             "id": "02-04",
@@ -5365,108 +5578,108 @@
             "path": "day-chunks/02-04.json",
             "tripCount": 125,
             "bytes": 121932,
-            "sha256": "d6c4ed96d8da8939f8cfcb4b0e207cbc32b0d124952d8bc2f8de43ec061a7afe",
-            "gzipBytes": 20018
+            "sha256": "c9818cc6f2f6cc771a6cf5dbb9a8a3850fcbce6238673153a3bb938201d03f25",
+            "gzipBytes": 20008
           },
           {
             "id": "04-06",
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 215,
-            "bytes": 179765,
-            "sha256": "b3dc5a0510676320c1c0dba565ae055bd1588ccfdca2306b9b3a53b5df656be1",
-            "gzipBytes": 31113
+            "tripCount": 233,
+            "bytes": 199123,
+            "sha256": "709bebce697ba510778cdc4202c6d0047739ced4855e70d9d3cb1b0575f6f960",
+            "gzipBytes": 34115
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 1256,
-            "bytes": 985570,
-            "sha256": "3842761c1090dc81dd0f7de29016ccd34625c3a6b8e1380c8452fb523c6189c2",
-            "gzipBytes": 120955
+            "tripCount": 1332,
+            "bytes": 1068238,
+            "sha256": "a7721bfcd9c01be9c399dd87b0ae08fbe1913ff61cf03e447584ee8672e3dba5",
+            "gzipBytes": 131015
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 4187,
-            "bytes": 2920590,
-            "sha256": "275dd3471186e9f1c7be6c98b7f9cc1ae1e61976187b73606d509f8369b04d92",
-            "gzipBytes": 226907
+            "tripCount": 4388,
+            "bytes": 3089247,
+            "sha256": "20664c0078d31d63d230f508eddb7b756b2c2a66a0e6e6e60edd35de5e11120f",
+            "gzipBytes": 241692
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 6263,
-            "bytes": 4255291,
-            "sha256": "bc7126e07043867489d9beefbb55b974832463ab09411351babc1f2ec5a8803d",
-            "gzipBytes": 286980
+            "tripCount": 6615,
+            "bytes": 4525743,
+            "sha256": "4a94035c2bb0163e2f693ad37afe52fe037a7f842242a0c2e16a7fc130073314",
+            "gzipBytes": 306239
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 6295,
-            "bytes": 4294168,
-            "sha256": "a481808baeff0caf8a12936dd8a7489646815c0e34b811b8a9f66a5e4cad9434",
-            "gzipBytes": 290396
+            "tripCount": 6655,
+            "bytes": 4574542,
+            "sha256": "87f24b37481806b714c8633e7d0e054c695ced0878aa90123ffbad2b96bf4546",
+            "gzipBytes": 309920
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 6346,
-            "bytes": 4337885,
-            "sha256": "60d4ddf25ebefeffe2ef407ddeb9025111eea2abd84f2db33649083c096ab202",
-            "gzipBytes": 294909
+            "tripCount": 6706,
+            "bytes": 4618259,
+            "sha256": "64ea7752c70bc723c5ff0df825b1b457e926b2be703e753f96c1037714a8700b",
+            "gzipBytes": 313900
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 4210,
-            "bytes": 3024115,
-            "sha256": "92e77443953f5c74ec329b6713afbc8587b9ea536340d3edabcc58d54aa7c5d9",
-            "gzipBytes": 248148
+            "tripCount": 4418,
+            "bytes": 3207735,
+            "sha256": "2fc8e303468f787cfce83fee7fae816058ce094aac906b2ff8c0641f7c667b62",
+            "gzipBytes": 264101
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 1815,
-            "bytes": 1458244,
-            "sha256": "9dcba709b42f45790f9124d2fed7d581f8be577c96eb73f653f0af5d85459fa5",
-            "gzipBytes": 170399
+            "tripCount": 1911,
+            "bytes": 1568921,
+            "sha256": "6ac7599624c00a46be39be78ca7f14477d0ba552dfeec6783f6d2d04682649fd",
+            "gzipBytes": 183600
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 1238,
-            "bytes": 1025658,
-            "sha256": "c43b5d06171398e4364f2d04ddeecb652039ef69581df0e619d86b0fd1f39d5a",
-            "gzipBytes": 126212
+            "tripCount": 1315,
+            "bytes": 1109014,
+            "sha256": "41fd8472f93c0d1d6badb26078217ebd05193f3a0e2df318e5f85d4f99842fda",
+            "gzipBytes": 136407
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 815,
-            "bytes": 690756,
-            "sha256": "ece6d746f9608c63277d3dc076fbd1cea46f2e665b72199c228353d1995b7d47",
-            "gzipBytes": 93104
+            "tripCount": 879,
+            "bytes": 758503,
+            "sha256": "1faf4000e5c437cb33805fc25c4b2c7fa62f9694c3e173121c88cc9d46a102c3",
+            "gzipBytes": 101096
           }
         ]
       },
@@ -5486,6 +5699,6 @@
     "GTFS fixed-stop archive and all OEVTP line records inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.",
     "Two September civil days do not establish holiday, winter or year-round pattern coverage.",
     "Cross-boundary journeys keep all calls. Entire patterns failing any segment are excluded, including source extents shorter than their timetable journeys.",
-    "Geometry is official-line centreline inference, not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation."
+    "Geometry uses official-line centrelines plus identified OSM road supplements; not observed movement, legal one-way validation or running-track selection. Dated diversion evidence is limited to the reviewed tram 6 station approach."
   ]
 }

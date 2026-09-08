@@ -1,0 +1,27 @@
+{
+  "publisher": "Federal Office of Transport - FOT",
+  "attribution": "© Federal Office of Transport (FOT)",
+  "catalogueLicense": "proprietary",
+  "termsUrl": "https://opendata.swiss/en/terms-of-use/#terms_by",
+  "sourceUrl": "https://data.geo.admin.ch/ch.bav.seilbahnen-bundeskonzession/seilbahnen-bundeskonzession/seilbahnen-bundeskonzession_2056_de.xtf.zip",
+  "catalogueDate": "2025-11-07T00:00:00Z",
+  "assetUpdated": "2026-01-29T06:46:40.489123Z",
+  "checkedOn": "2026-09-08T18:41:41.256Z",
+  "archiveMember": "Seilbahnen_20260105.xtf",
+  "sha256": "eb2c04bbb481fcac1ae472527a237ce9294f227047f340288e79c18cd0e14ddf",
+  "xmlSha256": "8cf0ecb4a7df444145c1134910c61d4608c52989a4e7b518d7f519f67b8d0ace",
+  "counts": {
+    "installations": 653,
+    "stations": 1349,
+    "segments": 653
+  },
+  "files": {
+    "source.xtf.zip": "eb2c04bbb481fcac1ae472527a237ce9294f227047f340288e79c18cd0e14ddf",
+    "catalogue.json": "de38eaf969be840f974795f6ebc78344d4823107a6b473c87e8371cdc0d5e9a8",
+    "collection.json": "83bd7103bc5730788052d9b034f1827e77f4121dc2ca0f5f83938d0dd27a4525",
+    "decoded.json.gz": "339573f741524a7dead00780154b24946b8281a498dfb815e49ec5e798b458e5"
+  },
+  "interpretation": "Complete national FOT cableway installation, station and axis census retained; Bern applies only separately reviewed installation bindings. No altitude, sag or observed motion.",
+  "transformation": "Approximate swisstopo LV95-to-WGS84 polynomial, seven decimals, no geometry simplification.",
+  "decoder": "scripts/prepare-bern-mountain-sources.py"
+}

@@ -1,0 +1,1018 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "0c129804feb831b8f8b72300e3bbc3137baf166a",
+  "urbanSources": {
+    "policy": {
+      "schemaVersion": 1,
+      "dates": [
+        "2026-09-04",
+        "2026-09-06"
+      ],
+      "sourceValidity": [
+        "2026-08-29",
+        "2026-10-11"
+      ],
+      "documents": [
+        {
+          "file": "bernmobil-thunstrasse-notice-20260811.html",
+          "url": "https://www.bernmobil.ch/de/2908-111026-bauarbeiten-untere-thunstrasse",
+          "publicationDate": "2026-08-11",
+          "retrieved": "2026-09-08",
+          "sha256": "59aecec58ca5b7d9184eab3d488b0c8739a8262442613dddf4819d7db2c78550",
+          "attribution": "BERNMOBIL",
+          "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+        },
+        {
+          "file": "bernmobil-thunstrasse-detail-20260908.html",
+          "url": "https://www.bernmobil.ch/de/verkehrsinformationen/baustellen/untere-thunstrasse",
+          "publicationDate": null,
+          "retrieved": "2026-09-08",
+          "sha256": "eb1694b49c34b29e29975cf2be9f106dfb6c8679559c55fee13775895540dd44",
+          "attribution": "BERNMOBIL",
+          "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+        },
+        {
+          "file": "bernmobil-thunstrasse-diversion-2026.jpg",
+          "url": "https://www.bernmobil.ch/sites/default/files/2026-08/Umleitungsplan_Sanierung_Thunstrasse_August_2026.jpg",
+          "publicationDate": null,
+          "retrieved": "2026-09-08",
+          "sha256": "b21d83cdf5e68d3a07ec621f9e8c5287cd0fe1b4836d3b45111bfd89689abd27",
+          "attribution": "BERNMOBIL",
+          "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+        },
+        {
+          "file": "bernmobil-bahnhof-platforms-20260318.pdf",
+          "url": "https://www.bernmobil.ch/sites/default/files/2026-08/Kantenplan%2520Bern%2520Bahnhof.pdf",
+          "publicationDate": "2026-03-18",
+          "retrieved": "2026-09-08",
+          "sha256": "8e6c082b55e1a4b9bb77a56848989b46e8b5ed0eca6d21da996df5ca51afe6da",
+          "attribution": "BERNMOBIL",
+          "purpose": "Dated diversion and temporary platform review; source evidence, not a geometry licence"
+        }
+      ],
+      "roadSource": {
+        "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+        "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+        "swissDate": "2026-09-02",
+        "borderRetrieved": "2026-09-08",
+        "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+        "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "licenseUrl": "https://www.openstreetmap.org/copyright"
+      },
+      "roadRouteIds": [
+        "92-2-D-j26-1",
+        "92-3-F-j26-1",
+        "92-6-F-j26-1",
+        "92-1-H-j26-1",
+        "92-2-F-j26-1"
+      ],
+      "roadRule": "Only missing directed pairs on these existing operator/line crosswalks; all full-pattern contexts on both dates must agree on the identical valid path. 80 m snap, 4.5 detour ratio / 1200 m floor. Failed and context-dependent paths remain excluded. No road direction or temporary-diversion certification.",
+      "tramPairs": [
+        [
+          "91-6-A-j26-1",
+          "ch:1:sloid:76646:0:10",
+          "ch:1:sloid:79896:0:1"
+        ],
+        [
+          "91-6-A-j26-1",
+          "ch:1:sloid:79896:0:2",
+          "ch:1:sloid:76646:0:10"
+        ]
+      ],
+      "tramRule": "Only the two Bahnhof J / Hirschengraben directed platform pairs. Cantonal tram line 30_003 supplies the station loop shown in the dated BERNMOBIL diversion plan; retain every previously matched line 6 segment. Other line 6 depot/Guisanplatz gaps remain excluded.",
+      "exclusions": [
+        {
+          "routeIds": [
+            "92-7A-j26-1",
+            "92-8A-j26-1"
+          ],
+          "reason": "temporary-platform-coordinate-conflict",
+          "stopIds": [
+            "ch:1:sloid:90006:0:2371",
+            "ch:1:sloid:90006:0:2372"
+          ],
+          "sourceCoordinate": [
+            7.45325005,
+            46.94237333
+          ],
+          "finding": "Both temporary Luisenstrasse records share a coordinate on the closed lower Thunstrasse. Operator specifies inbound Marienstrasse 23 and outbound Kirchenfeldstrasse at Mottastrasse. The inferred paths follow the closed corridor. No stop relocation or increased tolerance is authorized by the source model; both routes remain excluded.",
+          "approximateNearestRoadMetres": {
+            "Kirchenfeldstrasse": 226.55,
+            "Marienstrasse": 149.06,
+            "Thunstrasse": 0.96
+          }
+        }
+      ]
+    },
+    "cacheSha256": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
+    "policySha256": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb",
+    "model": "Missing-pair supplements only. OSM paths are inferred, not operator-certified; tram station approaches use separately identified cantonal line 30_003."
+  },
+  "mountainSources": {
+    "policy": {
+      "schemaVersion": 1,
+      "sourceDirectory": "data/bern-sources/fot-cableways",
+      "sourceMetadataSha256": "ce888707930121bc29e57336d22e93a431ede9c97af84499854309d9f0a06126",
+      "admittedRouteIds": [
+        "93-236-5-j26-1"
+      ],
+      "stationSnapMetres": 80,
+      "topologySnapMetres": 5,
+      "bindings": [
+        {
+          "routeId": "93-236-5-j26-1",
+          "agencyId": "3046",
+          "line": "2365",
+          "installation": "73.213",
+          "operator": "1222",
+          "vehicle": "Sessel",
+          "stops": {
+            "ch:1:sloid:31438": "8531438",
+            "ch:1:sloid:31439": "8531439"
+          }
+        },
+        {
+          "routeId": "93-244-4-j26-1",
+          "agencyId": "200",
+          "line": "2444",
+          "installation": "75.014",
+          "operator": "219",
+          "vehicle": "Kabine",
+          "stops": {
+            "ch:1:sloid:5226": "8505294",
+            "ch:1:sloid:7361": "8505295"
+          }
+        },
+        {
+          "routeId": "93-GGM-j26-1",
+          "agencyId": "312",
+          "line": "GGM",
+          "installation": "72.153",
+          "operator": "1074",
+          "vehicle": "Kabine",
+          "stops": {
+            "ch:1:sloid:5226": "8507370",
+            "ch:1:sloid:7391": "8507391"
+          }
+        },
+        {
+          "routeId": "93-GGM-j26-1",
+          "agencyId": "312",
+          "line": "GGM",
+          "installation": "72.154",
+          "operator": "1074",
+          "vehicle": "Kabine",
+          "stops": {
+            "ch:1:sloid:7391": "8507391",
+            "ch:1:sloid:7371": "8507371"
+          }
+        }
+      ],
+      "stationAliases": "Eiger and GGM use shared timetable interchange IDs; installation-specific FOT station numbers are explicit review candidates, never substituted for source coordinates. The 80 m limit still applies.",
+      "matte": {
+        "routeId": "93-235-2-j26-1",
+        "status": "excluded-no-2d-axis",
+        "sourceUrl": "https://www.mattelift.ch/der-mattelift/technik/",
+        "checkedOn": "2026-09-08",
+        "sourceMethod": "Operator technical page read through web retrieval; direct host download unavailable",
+        "finding": "Operator specifies a vertical passenger lift with 29.90 m rise and two opposite entrances. The roughly 4 m horizontal separation of GTFS stop coordinates does not establish a transport axis. No horizontal line is invented."
+      }
+    },
+    "source": {
+      "publisher": "Federal Office of Transport - FOT",
+      "attribution": "© Federal Office of Transport (FOT)",
+      "catalogueLicense": "proprietary",
+      "termsUrl": "https://opendata.swiss/en/terms-of-use/#terms_by",
+      "sourceUrl": "https://data.geo.admin.ch/ch.bav.seilbahnen-bundeskonzession/seilbahnen-bundeskonzession/seilbahnen-bundeskonzession_2056_de.xtf.zip",
+      "catalogueDate": "2025-11-07T00:00:00Z",
+      "assetUpdated": "2026-01-29T06:46:40.489123Z",
+      "checkedOn": "2026-09-08T18:41:41.256Z",
+      "archiveMember": "Seilbahnen_20260105.xtf",
+      "sha256": "eb2c04bbb481fcac1ae472527a237ce9294f227047f340288e79c18cd0e14ddf",
+      "xmlSha256": "8cf0ecb4a7df444145c1134910c61d4608c52989a4e7b518d7f519f67b8d0ace",
+      "counts": {
+        "installations": 653,
+        "stations": 1349,
+        "segments": 653
+      },
+      "files": {
+        "source.xtf.zip": "eb2c04bbb481fcac1ae472527a237ce9294f227047f340288e79c18cd0e14ddf",
+        "catalogue.json": "de38eaf969be840f974795f6ebc78344d4823107a6b473c87e8371cdc0d5e9a8",
+        "collection.json": "83bd7103bc5730788052d9b034f1827e77f4121dc2ca0f5f83938d0dd27a4525",
+        "decoded.json.gz": "339573f741524a7dead00780154b24946b8281a498dfb815e49ec5e798b458e5"
+      },
+      "interpretation": "Complete national FOT cableway installation, station and axis census retained; Bern applies only separately reviewed installation bindings. No altitude, sag or observed motion.",
+      "transformation": "Approximate swisstopo LV95-to-WGS84 polynomial, seven decimals, no geometry simplification.",
+      "decoder": "scripts/prepare-bern-mountain-sources.py"
+    },
+    "policySha256": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89"
+  },
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "previousJourneysPreserved": 33276,
+      "addedJourneys": 1850,
+      "totalAdmittedJourneys": 35126,
+      "reproducedSupplementPairs": 18,
+      "routes": [
+        {
+          "routeId": "92-2-D-j26-1",
+          "line": "2",
+          "addedScheduledJourneys": 210,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-04",
+          "trips": 210,
+          "admittedTrips": 210,
+          "scheduledTrips": 210,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 210,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 6909,
+          "matchedScheduledSegmentOccurrences": 6909,
+          "segmentOccurrences": 6909,
+          "matchedSegmentOccurrences": 6909,
+          "admittedSegmentOccurrences": 6909,
+          "directedPairs": 68,
+          "matchedDirectedPairs": 68,
+          "patterns": 5,
+          "completePatterns": 5,
+          "admittedPatterns": 5,
+          "excludedTrips": {}
+        },
+        {
+          "routeId": "92-3-F-j26-1",
+          "line": "3",
+          "addedScheduledJourneys": 143,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-04",
+          "trips": 143,
+          "admittedTrips": 143,
+          "scheduledTrips": 143,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 143,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 3280,
+          "matchedScheduledSegmentOccurrences": 3280,
+          "segmentOccurrences": 3280,
+          "matchedSegmentOccurrences": 3280,
+          "admittedSegmentOccurrences": 3280,
+          "directedPairs": 46,
+          "matchedDirectedPairs": 46,
+          "patterns": 3,
+          "completePatterns": 3,
+          "admittedPatterns": 3,
+          "excludedTrips": {}
+        },
+        {
+          "routeId": "92-6-F-j26-1",
+          "line": "6",
+          "addedScheduledJourneys": 146,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-04",
+          "trips": 148,
+          "admittedTrips": 148,
+          "scheduledTrips": 148,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 148,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 3444,
+          "matchedScheduledSegmentOccurrences": 3444,
+          "segmentOccurrences": 3444,
+          "matchedSegmentOccurrences": 3444,
+          "admittedSegmentOccurrences": 3444,
+          "directedPairs": 49,
+          "matchedDirectedPairs": 49,
+          "patterns": 7,
+          "completePatterns": 7,
+          "admittedPatterns": 7,
+          "excludedTrips": {}
+        },
+        {
+          "routeId": "92-1-H-j26-1",
+          "line": "1",
+          "addedScheduledJourneys": 207,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-04",
+          "trips": 242,
+          "admittedTrips": 242,
+          "scheduledTrips": 242,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 242,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 5545,
+          "matchedScheduledSegmentOccurrences": 5545,
+          "segmentOccurrences": 5545,
+          "matchedSegmentOccurrences": 5545,
+          "admittedSegmentOccurrences": 5545,
+          "directedPairs": 74,
+          "matchedDirectedPairs": 74,
+          "patterns": 12,
+          "completePatterns": 12,
+          "admittedPatterns": 12,
+          "excludedTrips": {}
+        },
+        {
+          "routeId": "92-2-F-j26-1",
+          "line": "2",
+          "addedScheduledJourneys": 4,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-04",
+          "trips": 214,
+          "admittedTrips": 9,
+          "scheduledTrips": 214,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 9,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 2518,
+          "matchedScheduledSegmentOccurrences": 2108,
+          "segmentOccurrences": 2518,
+          "matchedSegmentOccurrences": 2108,
+          "admittedSegmentOccurrences": 58,
+          "directedPairs": 30,
+          "matchedDirectedPairs": 26,
+          "patterns": 6,
+          "completePatterns": 2,
+          "admittedPatterns": 2,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 205
+          }
+        },
+        {
+          "routeId": "91-6-A-j26-1",
+          "line": "6",
+          "addedScheduledJourneys": 210,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-04",
+          "trips": 434,
+          "admittedTrips": 428,
+          "scheduledTrips": 434,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 428,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 3725,
+          "matchedScheduledSegmentOccurrences": 3702,
+          "segmentOccurrences": 3725,
+          "matchedSegmentOccurrences": 3702,
+          "admittedSegmentOccurrences": 3696,
+          "directedPairs": 54,
+          "matchedDirectedPairs": 41,
+          "patterns": 14,
+          "completePatterns": 10,
+          "admittedPatterns": 10,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 6
+          }
+        },
+        {
+          "routeId": "93-236-5-j26-1",
+          "line": "2365",
+          "addedScheduledJourneys": 0,
+          "addedHeadwayJourneys": 930,
+          "date": "2026-09-04",
+          "trips": 930,
+          "admittedTrips": 930,
+          "scheduledTrips": 0,
+          "representativeHeadwayTrips": 930,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 930,
+          "scheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 930,
+          "matchedSegmentOccurrences": 930,
+          "admittedSegmentOccurrences": 930,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 2,
+          "patterns": 2,
+          "completePatterns": 2,
+          "admittedPatterns": 2,
+          "excludedTrips": {}
+        }
+      ],
+      "checks": {
+        "allPreviousCallsTimesIdentitiesAndPathsUnchanged": true,
+        "unrelatedPairDecisionsUnchanged": true,
+        "allAdmittedSupplementPathsReproduced": true,
+        "sourceAndThresholdsUnchanged": true,
+        "knownConflictingRoutesStillExcluded": true
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "previousJourneysPreserved": 29203,
+      "addedJourneys": 1608,
+      "totalAdmittedJourneys": 30811,
+      "reproducedSupplementPairs": 16,
+      "routes": [
+        {
+          "routeId": "92-2-D-j26-1",
+          "line": "2",
+          "addedScheduledJourneys": 147,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-06",
+          "trips": 147,
+          "admittedTrips": 147,
+          "scheduledTrips": 147,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 147,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 4481,
+          "matchedScheduledSegmentOccurrences": 4481,
+          "segmentOccurrences": 4481,
+          "matchedSegmentOccurrences": 4481,
+          "admittedSegmentOccurrences": 4481,
+          "directedPairs": 68,
+          "matchedDirectedPairs": 68,
+          "patterns": 4,
+          "completePatterns": 4,
+          "admittedPatterns": 4,
+          "excludedTrips": {}
+        },
+        {
+          "routeId": "92-3-F-j26-1",
+          "line": "3",
+          "addedScheduledJourneys": 115,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-06",
+          "trips": 115,
+          "admittedTrips": 115,
+          "scheduledTrips": 115,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 115,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 2627,
+          "matchedScheduledSegmentOccurrences": 2627,
+          "segmentOccurrences": 2627,
+          "matchedSegmentOccurrences": 2627,
+          "admittedSegmentOccurrences": 2627,
+          "directedPairs": 46,
+          "matchedDirectedPairs": 46,
+          "patterns": 3,
+          "completePatterns": 3,
+          "admittedPatterns": 3,
+          "excludedTrips": {}
+        },
+        {
+          "routeId": "92-6-F-j26-1",
+          "line": "6",
+          "addedScheduledJourneys": 118,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-06",
+          "trips": 120,
+          "admittedTrips": 120,
+          "scheduledTrips": 120,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 120,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 2772,
+          "matchedScheduledSegmentOccurrences": 2772,
+          "segmentOccurrences": 2772,
+          "matchedSegmentOccurrences": 2772,
+          "admittedSegmentOccurrences": 2772,
+          "directedPairs": 49,
+          "matchedDirectedPairs": 49,
+          "patterns": 7,
+          "completePatterns": 7,
+          "admittedPatterns": 7,
+          "excludedTrips": {}
+        },
+        {
+          "routeId": "92-1-H-j26-1",
+          "line": "1",
+          "addedScheduledJourneys": 142,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-06",
+          "trips": 144,
+          "admittedTrips": 144,
+          "scheduledTrips": 144,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 144,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 3753,
+          "matchedScheduledSegmentOccurrences": 3753,
+          "segmentOccurrences": 3753,
+          "matchedSegmentOccurrences": 3753,
+          "admittedSegmentOccurrences": 3753,
+          "directedPairs": 64,
+          "matchedDirectedPairs": 64,
+          "patterns": 6,
+          "completePatterns": 6,
+          "admittedPatterns": 6,
+          "excludedTrips": {}
+        },
+        {
+          "routeId": "92-2-F-j26-1",
+          "line": "2",
+          "addedScheduledJourneys": 0,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-06",
+          "trips": 140,
+          "admittedTrips": 0,
+          "scheduledTrips": 140,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 1680,
+          "matchedScheduledSegmentOccurrences": 1400,
+          "segmentOccurrences": 1680,
+          "matchedSegmentOccurrences": 1400,
+          "admittedSegmentOccurrences": 0,
+          "directedPairs": 26,
+          "matchedDirectedPairs": 22,
+          "patterns": 3,
+          "completePatterns": 0,
+          "admittedPatterns": 0,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 140
+          }
+        },
+        {
+          "routeId": "91-6-A-j26-1",
+          "line": "6",
+          "addedScheduledJourneys": 156,
+          "addedHeadwayJourneys": 0,
+          "date": "2026-09-06",
+          "trips": 320,
+          "admittedTrips": 316,
+          "scheduledTrips": 320,
+          "representativeHeadwayTrips": 0,
+          "admittedScheduledTrips": 316,
+          "admittedRepresentativeHeadwayTrips": 0,
+          "scheduledSegmentOccurrences": 2691,
+          "matchedScheduledSegmentOccurrences": 2675,
+          "segmentOccurrences": 2691,
+          "matchedSegmentOccurrences": 2675,
+          "admittedSegmentOccurrences": 2670,
+          "directedPairs": 52,
+          "matchedDirectedPairs": 41,
+          "patterns": 12,
+          "completePatterns": 9,
+          "admittedPatterns": 9,
+          "excludedTrips": {
+            "incomplete-directed-pattern": 4
+          }
+        },
+        {
+          "routeId": "93-236-5-j26-1",
+          "line": "2365",
+          "addedScheduledJourneys": 0,
+          "addedHeadwayJourneys": 930,
+          "date": "2026-09-06",
+          "trips": 930,
+          "admittedTrips": 930,
+          "scheduledTrips": 0,
+          "representativeHeadwayTrips": 930,
+          "admittedScheduledTrips": 0,
+          "admittedRepresentativeHeadwayTrips": 930,
+          "scheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 0,
+          "segmentOccurrences": 930,
+          "matchedSegmentOccurrences": 930,
+          "admittedSegmentOccurrences": 930,
+          "directedPairs": 2,
+          "matchedDirectedPairs": 2,
+          "patterns": 2,
+          "completePatterns": 2,
+          "admittedPatterns": 2,
+          "excludedTrips": {}
+        }
+      ],
+      "checks": {
+        "allPreviousCallsTimesIdentitiesAndPathsUnchanged": true,
+        "unrelatedPairDecisionsUnchanged": true,
+        "allAdmittedSupplementPathsReproduced": true,
+        "sourceAndThresholdsUnchanged": true,
+        "knownConflictingRoutesStillExcluded": true
+      }
+    }
+  ],
+  "mountainReview": [
+    {
+      "date": "2026-09-04",
+      "directedPairs": [
+        {
+          "routeId": "93-236-5-j26-1",
+          "from": "Diemtigen Nüegg",
+          "fromId": "ch:1:sloid:31439",
+          "to": "Diemtigen Riedli",
+          "toId": "ch:1:sloid:31438",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "73.213",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8531439",
+            "8531438"
+          ],
+          "maximumSnapMetres": 0.46325317083004913,
+          "stationGaps": [
+            0.46325317083004913,
+            0.44963754611356904
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "pathMetres": 1362.8222417244501,
+          "passesGeometry": true,
+          "admittedSupplement": true
+        },
+        {
+          "routeId": "93-236-5-j26-1",
+          "from": "Diemtigen Riedli",
+          "fromId": "ch:1:sloid:31438",
+          "to": "Diemtigen Nüegg",
+          "toId": "ch:1:sloid:31439",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "73.213",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8531438",
+            "8531439"
+          ],
+          "maximumSnapMetres": 0.46325317083004913,
+          "stationGaps": [
+            0.44963754611356904,
+            0.46325317083004913
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "pathMetres": 1362.8222417244501,
+          "passesGeometry": true,
+          "admittedSupplement": true
+        },
+        {
+          "routeId": "93-244-4-j26-1",
+          "from": "Grindelwald Terminal",
+          "fromId": "ch:1:sloid:5226",
+          "to": "Eigergletscher",
+          "toId": "ch:1:sloid:7361",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "75.014",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8505294",
+            "8505295"
+          ],
+          "maximumSnapMetres": 213.59664487165068,
+          "stationGaps": [
+            213.59664487165068,
+            135.5556866470315
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "reason": "mountain-endpoint-gap",
+          "passesGeometry": false,
+          "admittedSupplement": false
+        },
+        {
+          "routeId": "93-244-4-j26-1",
+          "from": "Eigergletscher",
+          "fromId": "ch:1:sloid:7361",
+          "to": "Grindelwald Terminal",
+          "toId": "ch:1:sloid:5226",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "75.014",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8505295",
+            "8505294"
+          ],
+          "maximumSnapMetres": 213.59664487165068,
+          "stationGaps": [
+            135.5556866470315,
+            213.59664487165068
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "reason": "mountain-endpoint-gap",
+          "passesGeometry": false,
+          "admittedSupplement": false
+        },
+        {
+          "routeId": "93-GGM-j26-1",
+          "from": "Grindelwald Terminal",
+          "fromId": "ch:1:sloid:5226",
+          "to": "Holenstein",
+          "toId": "ch:1:sloid:7391",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "72.153",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8507370",
+            "8507391"
+          ],
+          "maximumSnapMetres": 142.9733363530756,
+          "stationGaps": [
+            142.9733363530756,
+            23.256850253383615
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "reason": "mountain-endpoint-gap",
+          "passesGeometry": false,
+          "admittedSupplement": false
+        },
+        {
+          "routeId": "93-GGM-j26-1",
+          "from": "Holenstein",
+          "fromId": "ch:1:sloid:7391",
+          "to": "Männlichen (Gondelbahn)",
+          "toId": "ch:1:sloid:7371",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "72.154",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8507391",
+            "8507371"
+          ],
+          "maximumSnapMetres": 22.042158425719677,
+          "stationGaps": [
+            6.7693082943678275,
+            22.042158425719677
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "pathMetres": 3014.270651951008,
+          "passesGeometry": true,
+          "admittedSupplement": false
+        },
+        {
+          "routeId": "93-GGM-j26-1",
+          "from": "Männlichen (Gondelbahn)",
+          "fromId": "ch:1:sloid:7371",
+          "to": "Holenstein",
+          "toId": "ch:1:sloid:7391",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "72.154",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8507371",
+            "8507391"
+          ],
+          "maximumSnapMetres": 22.042158425719677,
+          "stationGaps": [
+            22.042158425719677,
+            6.7693082943678275
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "pathMetres": 3014.2706519510084,
+          "passesGeometry": true,
+          "admittedSupplement": false
+        },
+        {
+          "routeId": "93-GGM-j26-1",
+          "from": "Holenstein",
+          "fromId": "ch:1:sloid:7391",
+          "to": "Grindelwald Terminal",
+          "toId": "ch:1:sloid:5226",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "72.153",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8507391",
+            "8507370"
+          ],
+          "maximumSnapMetres": 142.9733363530756,
+          "stationGaps": [
+            23.256850253383615,
+            142.9733363530756
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "reason": "mountain-endpoint-gap",
+          "passesGeometry": false,
+          "admittedSupplement": false
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "directedPairs": [
+        {
+          "routeId": "93-236-5-j26-1",
+          "from": "Diemtigen Nüegg",
+          "fromId": "ch:1:sloid:31439",
+          "to": "Diemtigen Riedli",
+          "toId": "ch:1:sloid:31438",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "73.213",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8531439",
+            "8531438"
+          ],
+          "maximumSnapMetres": 0.46325317083004913,
+          "stationGaps": [
+            0.46325317083004913,
+            0.44963754611356904
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "pathMetres": 1362.8222417244501,
+          "passesGeometry": true,
+          "admittedSupplement": true
+        },
+        {
+          "routeId": "93-236-5-j26-1",
+          "from": "Diemtigen Riedli",
+          "fromId": "ch:1:sloid:31438",
+          "to": "Diemtigen Nüegg",
+          "toId": "ch:1:sloid:31439",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "73.213",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8531438",
+            "8531439"
+          ],
+          "maximumSnapMetres": 0.46325317083004913,
+          "stationGaps": [
+            0.44963754611356904,
+            0.46325317083004913
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "pathMetres": 1362.8222417244501,
+          "passesGeometry": true,
+          "admittedSupplement": true
+        },
+        {
+          "routeId": "93-244-4-j26-1",
+          "from": "Grindelwald Terminal",
+          "fromId": "ch:1:sloid:5226",
+          "to": "Eigergletscher",
+          "toId": "ch:1:sloid:7361",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "75.014",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8505294",
+            "8505295"
+          ],
+          "maximumSnapMetres": 213.59664487165068,
+          "stationGaps": [
+            213.59664487165068,
+            135.5556866470315
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "reason": "mountain-endpoint-gap",
+          "passesGeometry": false,
+          "admittedSupplement": false
+        },
+        {
+          "routeId": "93-244-4-j26-1",
+          "from": "Eigergletscher",
+          "fromId": "ch:1:sloid:7361",
+          "to": "Grindelwald Terminal",
+          "toId": "ch:1:sloid:5226",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "75.014",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8505295",
+            "8505294"
+          ],
+          "maximumSnapMetres": 213.59664487165068,
+          "stationGaps": [
+            135.5556866470315,
+            213.59664487165068
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "reason": "mountain-endpoint-gap",
+          "passesGeometry": false,
+          "admittedSupplement": false
+        },
+        {
+          "routeId": "93-GGM-j26-1",
+          "from": "Grindelwald Terminal",
+          "fromId": "ch:1:sloid:5226",
+          "to": "Holenstein",
+          "toId": "ch:1:sloid:7391",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "72.153",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8507370",
+            "8507391"
+          ],
+          "maximumSnapMetres": 142.9733363530756,
+          "stationGaps": [
+            142.9733363530756,
+            23.256850253383615
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "reason": "mountain-endpoint-gap",
+          "passesGeometry": false,
+          "admittedSupplement": false
+        },
+        {
+          "routeId": "93-GGM-j26-1",
+          "from": "Holenstein",
+          "fromId": "ch:1:sloid:7391",
+          "to": "Männlichen (Gondelbahn)",
+          "toId": "ch:1:sloid:7371",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "72.154",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8507391",
+            "8507371"
+          ],
+          "maximumSnapMetres": 22.042158425719677,
+          "stationGaps": [
+            6.7693082943678275,
+            22.042158425719677
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "pathMetres": 3014.270651951008,
+          "passesGeometry": true,
+          "admittedSupplement": false
+        },
+        {
+          "routeId": "93-GGM-j26-1",
+          "from": "Männlichen (Gondelbahn)",
+          "fromId": "ch:1:sloid:7371",
+          "to": "Holenstein",
+          "toId": "ch:1:sloid:7391",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "72.154",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8507371",
+            "8507391"
+          ],
+          "maximumSnapMetres": 22.042158425719677,
+          "stationGaps": [
+            22.042158425719677,
+            6.7693082943678275
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "pathMetres": 3014.2706519510084,
+          "passesGeometry": true,
+          "admittedSupplement": false
+        },
+        {
+          "routeId": "93-GGM-j26-1",
+          "from": "Holenstein",
+          "fromId": "ch:1:sloid:7391",
+          "to": "Grindelwald Terminal",
+          "toId": "ch:1:sloid:5226",
+          "sourceKind": "fot-cableway-axis",
+          "sourceId": "72.153",
+          "sourceDate": "2025-01-01",
+          "sourceStationNumbers": [
+            "8507391",
+            "8507370"
+          ],
+          "maximumSnapMetres": 142.9733363530756,
+          "stationGaps": [
+            23.256850253383615,
+            142.9733363530756
+          ],
+          "topologyGaps": [
+            0,
+            0
+          ],
+          "reason": "mountain-endpoint-gap",
+          "passesGeometry": false,
+          "admittedSupplement": false
+        }
+      ]
+    }
+  ]
+}

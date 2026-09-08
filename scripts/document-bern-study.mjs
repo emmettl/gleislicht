@@ -4,6 +4,8 @@ const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const summary = await json('data/bern-audit/summary.json'), routes = await json('data/bern-audit/routes.json')
 const displayRelease = await json('data/bern-audit/display-release.json')
 const sourceLines = await json('data/bern-audit/source-lines.json')
+const supplement = await json('data/bern-audit/supplement-followup.json')
+const seasonal = await json('data/bern-audit/seasonal-summary.json')
 const days = await Promise.all(summary.days.map(d => json(`data/bern-audit/${d.serviceDate}.json`)))
 const n = value => value.toLocaleString('en-GB')
 const pct = (a, b) => `${(100 * a / b).toFixed(2)}%`
@@ -93,9 +95,9 @@ ${table(['Mode', 'Maximum platform snap', 'Maximum path length'], [
   ['Ferry', '150 m', 'max(1,200 m, 4.5 × straight distance)'],
 ])}
 
-Alternative source-part projections may be at most 5 m farther from each endpoint than its nearest projection, and must still satisfy the snap limit. Collapsed paths fail. Every segment is oriented from its actual preceding call to its next call; the final artifact checker verifies endpoint orientation after all stop/path reindexing. A pattern is admitted only if **every segment** passes. Boats use official water-line geometry and mountain transport its own mode-compatible line. No road-routing, generic rail-infrastructure or straight-line fallback is inserted.
+Alternative source-part projections may be at most 5 m farther from each endpoint than its nearest projection, and must still satisfy the snap limit. Collapsed paths fail. Every segment is oriented from its actual preceding call to its next call; the final artifact checker verifies endpoint orientation after all stop/path reindexing. A pattern is admitted only if **every segment** passes. Boats use official water-line geometry and mountain transport its own mode-compatible line. Missing pairs on five explicitly selected Biel/Thun bus routes may use retained OSM road matches. Every complete input-pattern context must agree on the identical valid path; 80 m endpoint and existing detour limits still apply. Tram 6 has two separately identified station-loop pairs from OEVTP line 30_003. Wiriehorn uses the reviewed federal axis 73.213. These supplements keep distinct provenance and never manufacture OEVTP line codes. No unsourced straight-line fallback is inserted.
 
-**Physical limits:** these are undirected official centrelines with directions inferred from GTFS calls. They do not certify one-way road legality, a particular running track, tunnel level, boat navigation safety or current diversions. They are suitable as dated schematic movement candidates, not operational navigation. No authenticated realtime feed or temporary-diversion layer was exercised. Two September days do not establish winter pass, holiday or year-round service coverage.
+**Physical limits:** these are official centrelines and identified road/cableway supplements with directions inferred from GTFS calls. They do not certify one-way road legality, a particular running track, tunnel level, boat navigation safety or current diversions. They are suitable as dated schematic movement candidates, not operational navigation. No authenticated realtime feed was exercised. The dated BERNMOBIL notice authorizes only the reviewed tram 6 station approach; the replacement-bus conflict below remains excluded. Seven additional winter/holiday fixtures are audited separately and do not establish every calendar day or seasonal alignment.
 
 ## Exclusions and review evidence
 
@@ -105,16 +107,16 @@ ${table(['Unmatched geometry reason', 'Friday directed pairs / occurrences', 'Su
 
 Concrete cases preserved for follow-up:
 
-- **BERNMOBIL 7A/8A buses:** no reviewed mode-compatible line crosswalk. The source tram 7/8 paths are not treated as bus geometry. Some tram 6 patterns also fail endpoint matching.
+- **BERNMOBIL 7A/8A buses:** the dated operator map conflicts with the temporary Luisenstrasse GTFS coordinates. Both platform IDs share a point on closed lower Thunstrasse; the operator specifies inbound Marienstrasse and outbound Kirchenfeldstrasse. Candidate road matching follows the wrong corridor. Both routes remain excluded without relocating source stops. Tram 6’s Bahnhof J approaches are resolved, while its remaining depot/Guisanplatz patterns stay excluded.
 - **RBS S8 — resolved in the follow-up:** the OEVTP S8 record ends at Jegenstorf, but [official 2026 timetable field 308](../data/bern-sources/rbs-corridor-308-2026.pdf), dated 3 September 2025, establishes the shared S8/RE5 corridor through Bätterkinden to Solothurn. The explicit agency-88 rail-only crosswalk now permits the preserved 308_RE centreline for S8. All 148 Friday and 118 Sunday S8 journeys pass every directed segment with unchanged limits, admitting 76 additional Friday and 75 additional Sunday journeys. This does not grant other RBS lines or buses access to that corridor. The evidence file hash and attribution accompany the feed.
 - **Eiger Express 2444:** its two directed endpoint pairs have a maximum snap of **215.3 m**, exceeding the cable limit. **Grindelwald–Männlichen GGM** has **93.4 m** terminal mismatch. Matching the installation’s identity does not authorize moving its source stops or raising the threshold.
 - **Schilthorn:** the Gimmelwald–Mürren split record 24602 is now resolved by field 2460 and the existing 2460_1 geometry. The upper 24603/24604 identifiers remain unreviewed and inactive on these two dates; neither the matched 2460 nor 24602 records establishes their coverage.
-- **Matte lift 2352 and Wiriehorn 2365:** no matching acquired OEVTP line. **SBB/BLS/SOB and MOB long-distance or changed labels**, replacement buses, and complete journeys beyond the source extent remain explicitly excluded or partial. No whole operator is claimed complete from its admitted subset.
+- **Matte lift 2352:** a vertical passenger lift with no acquired transport axis suitable for the 2D model; no short horizontal segment is invented. **Wiriehorn 2365 is resolved** by federal installation 73.213, with a 0.47 m maximum station gap. **SBB/BLS/SOB and MOB long-distance or changed labels**, replacement buses, and complete journeys beyond the source extent remain explicitly excluded or partial. No whole operator is claimed complete from its admitted subset.
 - **Biel/Seeland, Oberaargau, Emmental and regional bus terminal/platform gaps:** many routes have high segment coverage yet fail whole-pattern admission. The route and directed-pair files identify each failure; high occurrence coverage does not excuse a missing terminal movement.
 
 ## Reviewed corridor aliases: IR65, R71 and Gimmelwald–Mürren
 
-The [corridor follow-up audit](../data/bern-audit/corridor-followup.json) compares against committed release 21ea85e. It admits **190 additional Friday and 188 additional Sunday scheduled journeys**, with no new headway instances. Every one of the previous **33,086 / 29,015 journeys** retains exactly the same source identity, call sequence, arrival/departure times, projected stops and full-detail path coordinates. All unrelated directed-pair decisions are identical. The GTFS, canton boundary, original geometry and distance limits are unchanged.
+The [corridor follow-up audit](../data/bern-audit/corridor-followup.json) compares against committed release 21ea85e. It admits **190 additional Friday and 188 additional Sunday scheduled journeys**, with no new headway instances. Every one of the previous **33,086 / 29,015 journeys** retains exactly the same source identity, call sequence, arrival/departure times, original stops and full-detail path coordinates. All unrelated directed-pair decisions are identical. The GTFS, canton boundary, original geometry and distance limits are unchanged.
 
 | Exact route / operator | Official evidence and source geometry | Friday added | Sunday added |
 | --- | --- | ---: | ---: |
@@ -128,7 +130,7 @@ The generic IR-labelled 303_RE geometry alone leaves Bern platform offsets of up
 
 ## Application display release
 
-Bern is selectable as **Bern · canton and Alpine connections**, with full-day loading by default, morning playback, stop/route search, links that restore the date and selection, and retry after failed loads. English, German, French and Italian labels identify partial coverage and representative motion. The default application timetable is **4 September 2026**. An unavailable linked date is explicitly reported; it is never silently stamped onto older journeys. A Sunday display release can be built from the separately audited 6 September fixture. Winter, holidays and other dates still require a new admission audit.
+Bern is selectable as **Bern · canton and Alpine connections**, with full-day loading by default, morning playback, stop/route search, links that restore the date and selection, and retry after failed loads. English, German, French and Italian labels identify partial coverage and representative motion. The default application timetable is **4 September 2026**. An unavailable linked date is explicitly reported; it is never silently stamped onto older journeys. A Sunday display release can be built from the separately audited 6 September fixture. The seven additional winter/holiday dates below have separate pattern audits; publication as an application feed still requires a reviewed release for each date.
 
 The [display-release audit](../data/bern-audit/display-release.json) records both dates, original manifest and admission-audit hashes, movement counts, geometry error and payloads. Display geometry uses Douglas–Peucker with a **5 m maximum distance to each retained chord in approximate LV95**. A separate verifier checks every original subchain, retained vertex order and exact segment endpoints. This bounds display position, not arc-length distortion or survey accuracy. All original source calls, journey identities, schedules, frequency semantics, directed segment indices and chunk bytes remain unchanged. Admission still uses the unsimplified geometry.
 
@@ -142,19 +144,42 @@ The delivered [application manifest](../public/data/bern-region-day-manifest.jso
 
 The integration checks reproduced both dates byte-for-byte at the movement level and exercised tampered geometry/counts/credit, excessive simplification, changed dates, first publication and damaged recovery. Desktop Chromium and iPhone WebKit checks cover lazy selection, S8 and Solothurn search, sharing, afternoon seeking, midnight retry, morning retry and all four languages. The production build and original cantonal audit checks pass.
 
-A follow-up inspection of the separately retained [BAV Eiger Express source](../data/jungfrau-cableway-source.json) and its [endpoint audit](../data/jungfrau-study-audit.json) found approximately 213.3 m / 135.9 m offsets at the shared timetable stops. This does not resolve the 80 m Bern endpoint gate. It remains excluded here; the Jungfrau study's installation-specific display policy must not silently weaken the canton adapter. The other route-specific and seasonal exclusions above remain open research work.
+A follow-up inspection of the separately retained [BAV Eiger Express source](../data/jungfrau-cableway-source.json) and its [endpoint audit](../data/jungfrau-study-audit.json) found approximately 213.3 m / 135.9 m offsets at the shared timetable stops. This does not resolve the 80 m Bern endpoint gate. It remains excluded here; the Jungfrau study's installation-specific display policy must not silently weaken the canton adapter. The federal XML review below independently confirms the Eiger endpoint conflict and documents Männlichen, Wiriehorn and Matte.
+
+## Urban and mountain supplement review
+
+The [supplement audit](../data/bern-audit/supplement-followup.json) compares against committed release 0c12980. **All 33,276 Friday and 29,203 Sunday previously admitted journeys keep identical calls, times, identities and full-detail paths.** Source archives, original platform coordinates and distance limits are unchanged. The additions are **1,850 Friday / 1,608 Sunday**: 920 / 678 scheduled urban journeys and 930 / 930 representative Wiriehorn headway instances.
+
+${table(['Exact route', 'Friday added: scheduled / headway', 'Sunday added: scheduled / headway'], supplement.dates[0].routes.map((r, i) => [r.routeId, `${r.addedScheduledJourneys} / ${r.addedHeadwayJourneys}`, `${supplement.dates[1].routes[i].addedScheduledJourneys} / ${supplement.dates[1].routes[i].addedHeadwayJourneys}`]))}
+
+Biel buses 2/3/6 and Thun 1 now admit every dated journey. Thun 2 retains 9 / 214 Friday journeys and 0 / 140 Sunday journeys: road candidates at Mattenstrasse miss by 108.6–111.3 m, above the 80 m gate. Matcher failures and differing full-pattern contexts cannot be hidden by choosing another successful occurrence. The [road cache](../data/bern-urban-cache.json) and compressed raw evidence cover all 39 complete patterns on seven investigated routes, including rejected 7A/8A candidates.
+
+Tram 6 gains the two directed Bahnhof J / Hirschengraben pairs using the original official 30_003 station loop, with maximum gaps 0.47 m / 4.21 m. [BERNMOBIL’s notice](../data/bern-sources/bernmobil-thunstrasse-notice-20260811.html), [diversion map](../data/bern-sources/bernmobil-thunstrasse-diversion-2026.jpg) and [platform plan](../data/bern-sources/bernmobil-bahnhof-platforms-20260318.pdf) support the dated use. The 7A/8A Luisenstrasse point is approximately 149 m from Marienstrasse and 227 m from Kirchenfeldstrasse; it cannot satisfy the source-coordinate rule. Source tram 7/8 geometry is never relabelled as bus geometry.
+
+The [mountain policy](../data/bern-mountain-policy.json) reviews exact installation/operator/station identities against the complete federal archive (653 installations). Wiriehorn’s 73.213 axis attaches within 0.47 m and retains both original GTFS endpoints. Eiger Express 75.014 still misses by up to 213.6 m. Grindelwald–Holenstein 72.153 misses the shared Terminal by 143.0 m; its upper 72.154 section fits, but the complete GGM journey still fails. Neither case authorizes replacing timetable interchange coordinates with installation station coordinates. [Mattelift’s operator description](https://www.mattelift.ch/der-mattelift/technik/) identifies a vertical lift with 29.90 m rise; the roughly 4 m horizontal GTFS separation does not establish an axis in this 2D feed.
+
+## Winter and holiday fixtures
+
+The [seasonal audit](../data/bern-audit/seasonal-summary.json) and [ordered-pattern evidence](../data/bern-audit/seasonal-patterns.json.gz) cover seven extra civil days. Every admitted pattern passes complete original call, permission, timing and directed-path checks. September road contexts and construction geometry are disabled for these dates; Wiriehorn’s dated federal installation remains independently checked.
+
+${table(['Date', 'Admitted / candidate journeys', 'Patterns absent from both September fixtures', 'Admitted new patterns'], seasonal.days.map(d => [d.date, `${n(d.admittedTrips)} / ${n(d.trips)}`, n(d.patternsAbsentFromSeptember), n(d.admittedPatternsAbsentFromSeptember)]))}
+
+Of the 183 routes inactive in September, **${seasonal.newlyActiveRoutes.length} operate on at least one additional fixture** and **${seasonal.stillInactiveRoutes.length} remain inactive across all nine sampled dates**. The route-by-date matrix distinguishes absence from geometry exclusion. These are sample audits, not year-round physical route certification or published seasonal application feeds. Christmas lies outside this archive’s 12 December end date and needs a later source release.
 
 ## Source dates, attribution and reuse
 
 ${table(['Source', 'Data vintage / release', 'Preserved evidence and attribution'], [
   ['National GTFS', 'Feed 20260902; valid 2025-12-14 to 2026-12-12', 'opentransportdata.swiss; original platform IDs, calendar and frequency semantics'],
   ['Bern OEVTP lines and stops', 'Updated 2026-01-01; package published 2026-07-09; acquired 2026-09-08', 'Original ZIP, decoded records, metadata PDFs and terms in data/bern-sources'],
+  ['OSM road extract', 'Switzerland 2026-09-02; border extract retrieved 2026-09-08', '© OpenStreetMap contributors; ODbL; retained matcher output and run hashes'],
+  ['FOT federal cableways', 'Installation Stand 2025-01-01; XML 2026-01-05; asset updated 2026-01-29; retrieved 2026-09-08', '© FOT; complete archive, station/installation records, catalogue and checksum'],
+  ['BERNMOBIL diversion', 'Notice 2026-08-11; valid 2026-08-29–2026-10-11; platform plan 2026-03-18', 'BERNMOBIL; original notice, detailed stop instructions, diversion image and station PDF'],
   ['swissBOUNDARIES3D', '2026-01 edition', '© swisstopo; complete Bern and ten district rows preserved with original geometry blobs'],
 ])}
 
 **Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern.** The [official metadata](https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct) and packaged [line metadata PDF](../data/bern-sources/metadata_oevtp_linie_de.pdf) identify the data vintage. Free private/commercial use and reproduction require attribution; online applications must link the metadata and recipients must receive the terms. [German terms](../public/data/bern-region/terms_of_use_de.pdf) and [French terms](../public/data/bern-region/terms_of_use_fr.pdf), dated **20 January 2026**, accompany the feed. No generic CC licence is assigned to these cantonal data. The original acquired archive is kept because the download URL is mutable.
 
-Timetable data: **opentransportdata.swiss**; processed feed and analysis: **Gleislicht**. The [platform terms](https://opentransportdata.swiss/en/terms-of-use/) require attribution, refresh of raw data and the data user’s authorship for processed results. This delivery is explicitly an archival two-date study; it must be rebuilt and re-audited before being presented as current service. Administrative boundaries: **© swisstopo**, under the [official OGD terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices). No OpenStreetMap geometry is used in this adapter.
+Timetable data: **opentransportdata.swiss**; processed feed and analysis: **Gleislicht**. The [platform terms](https://opentransportdata.swiss/en/terms-of-use/) require attribution, refresh of raw data and the data user’s authorship for processed results. This delivery is explicitly an archival two-date study; it must be rebuilt and re-audited before being presented as current service. Administrative boundaries: **© swisstopo**, under the [official OGD terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices). Road supplements: **© OpenStreetMap contributors**, [ODbL](https://www.openstreetmap.org/copyright), with source/matcher/input/output hashes and full-pattern evidence retained. Cableway supplement: **© Federal Office of Transport (FOT)**, with [source catalogue and attribution terms](../public/data/bern-region/fot-cableways/source.json). Operator diversion evidence: **BERNMOBIL**, retained with its publication/validity dates; it is evidence rather than a geometry licence.
 
 SHA-256 identities:
 
@@ -183,12 +208,15 @@ npm run data:bern -- --archive /private/tmp/GTFS_FP2026_20260902.zip
 
 # Independent offline checks of emitted bytes and all audit denominators.
 npm run data:bern:check
-node scripts/check-bern-corridor-followup.mjs
+node scripts/check-bern-corridor-followup.mjs # historical alias-only release
+node scripts/check-bern-supplement-followup.mjs data/bern-audit/timetable-cache.json.gz
+node scripts/audit-bern-seasonal.mjs --archive /private/tmp/GTFS_FP2026_20260902.zip
+node scripts/check-bern-seasonal.mjs
 # Publish the reviewed Friday display, or build the Sunday release separately.
 npm run data:bern:release
 npm run data:bern:docs
 npm run data:bern:release -- --date 2026-09-06 --output /private/tmp/bern-sunday-display
-npx vitest run scripts/bern-release.test.mjs scripts/regional-refresh.test.mjs
+npx vitest run scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/regional-refresh.test.mjs
 npx playwright test e2e/bern.spec.ts
 npx vitest run scripts/bern-region.test.mjs scripts/basel-line-geometry.test.mjs \\
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
@@ -204,7 +232,8 @@ await writeFile('docs/BERN-STUDY.md', doc)
 const routeRows = [...routes].sort((a, b) => Number(a.agencyId) - Number(b.agencyId) || a.name.localeCompare(b.name, 'en', { numeric: true }) || a.id.localeCompare(b.id)).map(r => [
   r.id, `${r.agencyId}: ${r.name || '(blank)'}`, r.mode, r.status,
   ...r.days.map(d => `${n(d.admittedTrips)} / ${n(d.trips)}`), r.sourceLines.join(', ') || '—',
+  [...new Set(days.flatMap(d => d.patterns.filter(p => p.routeId === r.id).flatMap(p => p.supplementalSources ?? [])))].join(', ') || '—',
   [...new Set(r.days.flatMap(d => Object.keys(d.excludedTrips)))].join(', ') || (r.status === 'inactive-on-validation-dates' ? 'Not active on these dates' : '—'),
 ])
-await writeFile('docs/BERN-ROUTE-INVENTORY.md', `# Bern: complete route and operator inventory\n\nGenerated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate journey instances, including representative headway instances; they are not all exact scheduled departures. All ${routes.length} annual canton-serving route records and ${operatorRows.length} source agency identities are shown. A zero on both dates means inactive in the two validation fixtures, not absent from the annual inventory. A partial route retains only complete source stop patterns.\n\n## Operators\n\n${table(['GTFS agency', 'Source name', 'Annual route records', 'Friday admitted / candidate', 'Sunday admitted / candidate'], operatorRows)}\n\n## Routes\n\n${table(['GTFS route ID', 'Agency: line', 'Mode', 'Admission status', 'Friday', 'Sunday', 'OEVTP line codes', 'Exclusion reasons'], routeRows)}\n`)
+await writeFile('docs/BERN-ROUTE-INVENTORY.md', `# Bern: complete route and operator inventory\n\nGenerated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate journey instances, including representative headway instances; they are not all exact scheduled departures. All ${routes.length} annual canton-serving route records and ${operatorRows.length} source agency identities are shown. A zero on both dates means inactive in the two validation fixtures, not absent from the annual inventory. A partial route retains only complete source stop patterns.\n\n## Operators\n\n${table(['GTFS agency', 'Source name', 'Annual route records', 'Friday admitted / candidate', 'Sunday admitted / candidate'], operatorRows)}\n\n## Routes\n\n${table(['GTFS route ID', 'Agency: line', 'Mode', 'Admission status', 'Friday', 'Sunday', 'OEVTP line codes', 'Supplemental geometry IDs', 'Exclusion reasons'], routeRows)}\n`)
 console.log('Wrote docs/BERN-STUDY.md and docs/BERN-ROUTE-INVENTORY.md')

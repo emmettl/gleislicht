@@ -96,7 +96,7 @@ export function fallbackHops(log) {
   return fallbacks
 }
 
-export async function importRoadShapes(directory, source) {
+export async function importRoadShapes(directory, source, limits = ROAD_LIMITS) {
   const read = name => readFile(resolve(directory, name))
   const run = JSON.parse(await read('routing-run.json'))
   assert(run.completed && run.noTrie && run.warnings, 'Use match-postbus-roads.mjs to retain a complete fallback audit')
@@ -138,7 +138,7 @@ export async function importRoadShapes(directory, source) {
       const from = input.stops[pattern.stops[i - 1][0]], to = input.stops[pattern.stops[i][0]]
       const result = failed.has(`${pattern.id}:${from[4]}:${to[4]}`)
         ? { reason: 'matcher-fallback' }
-        : assessRoad(sliceShape(shapes.get(trip?.shape), times?.[i - 1]?.distance, times?.[i]?.distance), from, to)
+        : assessRoad(sliceShape(shapes.get(trip?.shape), times?.[i - 1]?.distance, times?.[i]?.distance), from, to, limits)
       total += pattern.tripCount
       route.total += pattern.tripCount
       if (result.path) {
@@ -163,7 +163,7 @@ export async function importRoadShapes(directory, source) {
     feedVersion: run.osmSha256.slice(0, 12), sourceSha256: run.osmSha256,
     license: 'ODbL-1.0', model: 'pfaedle bus map matching; inferred paths, not operator-verified routes',
     source, matcher: run, timetableFeedVersion: input.metadata.feedVersion,
-    serviceDate: input.metadata.serviceDate, limits: ROAD_LIMITS, pilotRoutes: input.pilotRoutes,
+    serviceDate: input.metadata.serviceDate, limits, pilotRoutes: input.pilotRoutes,
   }, paths, patterns, report: { matchedSegments: matched, totalSegments: total,
     coverage: total ? matched / total : 0, routes: [...routes.values()], maxSnapMetres: maxSnap,
     rejectedPatternSegments: issues.length, issues } }

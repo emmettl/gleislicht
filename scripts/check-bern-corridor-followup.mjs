@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
-import { readFile, writeFile } from 'node:fs/promises'
+import { writeFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
@@ -9,7 +9,9 @@ const BASELINE = '21ea85eed20ad79bac7e371a8564f89ce58b508a'
 const ROUTES = ['91-65-j26-1', '91-71-j26-1', '93-246-D-j26-1']
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 const baseline = path => execFileSync('git', ['show', `${BASELINE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
-const current = path => readFile(path)
+// Verify this historical alias-only release even after later supplements land.
+const RELEASE = '0c129804feb831b8f8b72300e3bbc3137baf166a'
+const current = path => execFileSync('git', ['show', `${RELEASE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
 async function day(read, date) {
   const directory = `public/data/bern-region/${date}`
   const manifest = JSON.parse(await read(join(directory, 'bern-region-day-manifest.json'))), trains = new Map()
@@ -36,7 +38,7 @@ export async function checkBernCorridorFollowup() {
     }
     const added = [...after.trains.values()].filter(t => !before.trains.has(t.id))
     assert(added.every(t => ROUTES.includes(t.routeId) && t.frequency?.exactTimes !== 0), 'Unexpected route or representative headway addition')
-    const report = JSON.parse(await readFile(`data/bern-audit/${date}.json`))
+    const report = JSON.parse(await current(`data/bern-audit/${date}.json`))
     const oldReport = JSON.parse(baseline(`data/bern-audit/${date}.json`))
     // Rematching an alias must not change the geometry decisions of unrelated routes.
     assert.deepEqual(report.directedPairs.filter(p => !ROUTES.includes(p.routeId)), oldReport.directedPairs.filter(p => !ROUTES.includes(p.routeId)))

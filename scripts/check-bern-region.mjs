@@ -6,6 +6,8 @@ import { pathToFileURL } from 'node:url'
 import { gunzipSync } from 'node:zlib'
 import { bernFeatureMatch, bernPatternId } from './bern-line-geometry.mjs'
 import { validateBernSnapshot, validateBernChunks } from './build-bern-region.mjs'
+import { loadBernUrban } from './bern-urban-geometry.mjs'
+import { loadBernMountains } from './bern-mountain-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -16,6 +18,15 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
   const sourceLines = await json(join(audit, 'source-lines.json'))
   const decodedBytes = await readFile(join(sources, 'decoded.json.gz')), decoded = JSON.parse(gunzipSync(decodedBytes))
   const crosswalk = await json('data/bern-operator-crosswalk.json')
+  const urban = await loadBernUrban()
+  const mountain = await loadBernMountains()
+  assert.equal(summary.sourceHashes.mountainPolicy, mountain.metadata.policySha256)
+  assert.deepEqual(summary.sources.mountainSupplement, mountain.metadata)
+  for (const file of ['source.json', ...Object.keys(mountain.metadata.source.files)]) assert.deepEqual(await readFile(join(output, 'fot-cableways', file)), await readFile(join(mountain.policy.sourceDirectory, file)))
+  assert.equal(urban.metadata.cacheSha256, summary.sourceHashes.urbanCache)
+  assert.equal(urban.metadata.policySha256, summary.sourceHashes.urbanPolicy)
+  assert.deepEqual(summary.sources.urbanSupplement, urban.metadata)
+  for (const document of urban.policy.documents) assert.equal(sha(await readFile(join(output, document.file))), document.sha256)
   assert.equal(sha(decodedBytes), summary.sourceHashes.source)
   assert.equal(sha(await readFile(join(sources, 'oevtp.gpkg.zip'))), summary.sourceHashes.geometryArchive)
   assert.equal(sha(await readFile('data/bern-operator-crosswalk.json')), summary.sourceHashes.crosswalk)
@@ -52,6 +63,10 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
       assert.equal(sum(Object.values(p.decisions), n => n), p.trips)
       assert.equal(p.decisions.admitted ?? 0, p.admittedTrips)
       if (p.admittedTrips) assert.equal(p.matchedSegments, p.segmentCount)
+      if (p.admittedTrips && !p.sourceLines.length) {
+        assert(p.supplementalBinding && mountain.policy.admittedRouteIds.includes(p.routeId))
+        assert(p.supplementalSources.every(id => mountain.policy.bindings.some(b => b.routeId === p.routeId && b.installation === id)))
+      }
       for (let i = 1; i < p.stopIds.length; i++) {
         const key = JSON.stringify([p.routeId, p.stopIds[i - 1], p.stopIds[i]])
         const pair = pairCounts.get(key) ?? { occurrences: 0, admitted: 0, matched: p.matchedMask[i - 1] }
@@ -61,6 +76,18 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
     }
     assert.equal(pairCounts.size, report.directedPairs.length)
     for (const p of report.directedPairs) {
+      if (p.sourceKind === 'osm-road-inference') {
+        assert(urban.policy.roadRouteIds.includes(p.routeId) && p.matched && p.originalAssessment.reason)
+        const candidate = urban.roads.get(JSON.stringify([p.routeId, p.fromId, p.toId]))
+        assert(candidate?.path)
+        assert.deepEqual(p.roadPatternIds, candidate.roadPatternIds)
+      } else if (p.sourceKind === 'dated-cantonal-tram-corridor') {
+        assert(urban.policy.tramPairs.some(pair => JSON.stringify(pair) === JSON.stringify([p.routeId, p.fromId, p.toId])))
+        assert.equal(p.sourceId, '30_003'); assert(p.matched && p.maximumSnapMetres <= 80)
+      } else if (p.sourceKind === 'fot-cableway-axis') {
+        assert(mountain.policy.admittedRouteIds.includes(p.routeId) && p.matched && p.maximumSnapMetres <= 80)
+        assert(mountain.policy.bindings.some(b => b.routeId === p.routeId && b.installation === p.sourceId))
+      } else assert(!p.sourceKind)
       assert.deepEqual(pairCounts.get(JSON.stringify([p.routeId, p.fromId, p.toId])), { occurrences: p.occurrences, admitted: p.admittedOccurrences, matched: p.matched })
       if (!p.matched) assert(['missing-line', 'endpoint-gap', 'disconnected-line', 'implausible-detour', 'collapsed-path'].includes(p.reason))
     }
