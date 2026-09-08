@@ -26,7 +26,7 @@ The published installation height difference and inclined length do not supply a
 
 The [operator’s funicular page](https://www.mob.ch/en/stories/territet-glion-funicular) identifies the railway. The [2026 operator timetable](https://assets.contenthub.dev/h24dbpy2mqzk/75a4c44f69d16cd96d6a20a43e5c5c00/WEB_Horaire_2026.pdf), table **2054**, is retained as context; the exact imported calls establish this study’s date.
 
-Glion (funi), `ch:1:sloid:30031`, and the Rochers railway’s Glion, `ch:1:sloid:1370`, remain distinct source places. The [Glion interchange audit](GLION-INTERCHANGE.md) establishes an explicit 60-second GTFS minimum in each direction and qualifying funicular connections for all 20 dated summit services. Walking geometry and a waiting guarantee are not established. Combined playback is the next implementation step.
+Glion (funi), `ch:1:sloid:30031`, and the Rochers railway’s Glion, `ch:1:sloid:1370`, remain distinct source places. The [Glion interchange audit and combined playback](GLION-INTERCHANGE.md) establish an explicit 60-second GTFS minimum in each direction and qualifying funicular connections for all 20 dated summit services. “Continue to Rochers-de-Naye” offers those combined journeys with separate vehicle/interchange phases, exact calls, shared links and four-language controls. Walking geometry and a waiting guarantee are not established.
 
 ## Reproduction and artifacts
 

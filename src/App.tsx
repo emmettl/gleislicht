@@ -152,6 +152,7 @@ const JungfrauGuide = lazy(() => import('./studies/JungfrauGuide.tsx'))
 const MeasuredTerrainScene = lazy(() => import('./studies/MeasuredTerrainScene.tsx'))
 const PilatusJourney = lazy(() => import('./studies/PilatusJourney.tsx'))
 const RochersJourney = lazy(() => import('./studies/RochersJourney.tsx'))
+const GlionJourney = lazy(() => import('./studies/GlionJourney.tsx'))
 const TerritetJourney = lazy(() => import('./studies/TerritetJourney.tsx'))
 const GornergratAscent = lazy(() => import('./studies/GornergratAscent.tsx'))
 const JungfrauAscent = lazy(() => import('./studies/JungfrauAscent.tsx'))
@@ -349,6 +350,9 @@ export function App({ edition, suspended = false }: AppProps) {
   const [territetNetwork, setTerritetNetwork] = useState<NetworkSnapshot>()
   const [territetAttempt, setTerritetAttempt] = useState(0)
   const [territetJourneyActive, setTerritetJourneyActive] = useState(false)
+  const [glionJourneyActive, setGlionJourneyActive] = useState(Boolean(initialLink.glion))
+  const [glionLink, setGlionLink] = useState<typeof initialLink | undefined>(initialLink.glion ? initialLink : undefined)
+  const [glionNetwork, setGlionNetwork] = useState<NetworkSnapshot>()
   const [gornergratNetwork, setGornergratNetwork] = useState<NetworkSnapshot>()
   const [gornergratAttempt, setGornergratAttempt] = useState(0)
   const [gornergratAscentActive, setGornergratAscentActive] = useState(false)
@@ -591,7 +595,7 @@ export function App({ edition, suspended = false }: AppProps) {
       nationalDayChunks[nationalDayChunkDescriptor.id],
   )
   const baseNetwork =
-    isRegionalDay ? regionalDay.network : isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isPilatus ? pilatusNetwork : isRochers ? rochersNetwork : isTerritet ? territetNetwork : isGornergrat ? gornergratNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
+    isRegionalDay ? regionalDay.network : isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isPilatus ? pilatusNetwork : isRochers ? rochersNetwork : isTerritet ? (glionNetwork ?? territetNetwork) : isGornergrat ? gornergratNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
       ? (zurichContrast.network ?? nationalNetwork)
       : networkStudy === 'zurich-city'
       ? (zurichCityNetwork ?? nationalNetwork)
@@ -827,8 +831,8 @@ export function App({ edition, suspended = false }: AppProps) {
   const sceneNetwork = useMemo(
     () => network && (activePilot
       ? { ...networkWithRailVisibility(network, false), trains: [], metadata: { ...network.metadata, serviceDate: activePilot.metadata.serviceDate, windowStart: activePilot.metadata.windowStart, windowEnd: activePilot.metadata.windowEnd } }
-      : (isPilatus || isRochers || isTerritet) && selectedTrain ? { ...network, trains: [selectedTrain] } : isPostbus ? postbusRouteSnapshot(network, selectedRoute) : isTicino ? { ...networkWithRailVisibility(network, railVisible), bounds: ticinoLocale?.TICINO_FOCUS_BOUNDS ?? network.bounds } : networkWithRailVisibility(network, railVisible)),
-    [network, railVisible, isTerritet, isRochers, isPilatus, selectedTrain, isPostbus, isTicino, ticinoLocale, selectedRoute, activePilot],
+      : isTerritet && glionJourneyActive ? { ...network, trains: glionNetwork ? network.trains : [] } : (isPilatus || isRochers || isTerritet) && selectedTrain ? { ...network, trains: [selectedTrain] } : isPostbus ? postbusRouteSnapshot(network, selectedRoute) : isTicino ? { ...networkWithRailVisibility(network, railVisible), bounds: ticinoLocale?.TICINO_FOCUS_BOUNDS ?? network.bounds } : networkWithRailVisibility(network, railVisible)),
+    [network, railVisible, glionNetwork, glionJourneyActive, isTerritet, isRochers, isPilatus, selectedTrain, isPostbus, isTicino, ticinoLocale, selectedRoute, activePilot],
   )
   const selectedPosition = useMemo(
     () => (selectedTrain ? positionForTrain(selectedTrain, networkTime) : undefined),
@@ -1012,11 +1016,12 @@ export function App({ edition, suspended = false }: AppProps) {
   const ignoreNetworkTime = useCallback(() => {}, [])
 
   const releaseSelection = useCallback(() => {
+    setGlionNetwork(undefined); setGlionLink(undefined)
     setGornergratTerrainBinding(undefined); setJungfrauTerrainBinding(undefined)
     setJungfrauGuideActive(false)
     setRigiRhythmActive(false)
     setRigiSequenceActive(false)
-    setPilatusJourneyActive(false); setRochersJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
+    setPilatusJourneyActive(false); setRochersJourneyActive(false); setGlionJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
     setRigiTerrainBinding(undefined)
     setSelectedTrainId(undefined)
     setSelectedStationName(undefined)
@@ -1052,6 +1057,9 @@ export function App({ edition, suspended = false }: AppProps) {
   }
   const startRochersJourney = () => {
     releaseSelection(); setSelectedCategory(undefined); setDirectorMode(false); setIsPlaying(false); setRochersJourneyActive(true)
+  }
+  const startGlionJourney = () => {
+    releaseSelection(); setSelectedCategory(undefined); setDirectorMode(false); setIsPlaying(false); setGlionJourneyActive(true)
   }
   const startTerritetJourney = () => {
     releaseSelection(); setSelectedCategory(undefined); setDirectorMode(false); setIsPlaying(false); setTerritetJourneyActive(true)
@@ -1089,7 +1097,7 @@ export function App({ edition, suspended = false }: AppProps) {
 
   const selectStation = useCallback((station: StationIndexEntry) => {
     setRigiSequenceActive(false)
-    setPilatusJourneyActive(false); setRochersJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
+    setPilatusJourneyActive(false); setRochersJourneyActive(false); setGlionJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
     setSbbEnabled(true)
     setAirCategorySelected(false)
     setRoadCategorySelected(false)
@@ -1112,7 +1120,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const selectRoute = useCallback(
     (route: NetworkRouteIndexEntry) => {
       setRigiSequenceActive(false)
-      setPilatusJourneyActive(false); setRochersJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
+      setPilatusJourneyActive(false); setRochersJourneyActive(false); setGlionJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
       setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
@@ -1138,7 +1146,7 @@ export function App({ edition, suspended = false }: AppProps) {
     (train: NetworkTrain) => {
       if (!network) return
       setRigiSequenceActive(false)
-      setPilatusJourneyActive(false); setRochersJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
+      setPilatusJourneyActive(false); setRochersJourneyActive(false); setGlionJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
       setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
@@ -1293,7 +1301,7 @@ export function App({ edition, suspended = false }: AppProps) {
       setCorridorError(false)
       setSearchOpen(false)
       setRigiSequenceActive(false)
-      setPilatusJourneyActive(false); setRochersJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
+      setPilatusJourneyActive(false); setRochersJourneyActive(false); setGlionJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
       setView('journey')
       setIsPlaying(true)
     },
@@ -2136,7 +2144,7 @@ export function App({ edition, suspended = false }: AppProps) {
   }
   const shareStudy = async () => {
     const { studyLinkUrl } = await import('./studies/share-link.ts')
-    const url = studyLinkUrl(window.location.href, activePilot ? { study: 'national', range: 'morning', recording: activePilot.metadata.recordingId, date: activePilot.metadata.serviceDate, time: networkTime } : { study: networkStudy, range: isNationalDay || isRegionalDay ? 'day' : 'morning', date: network?.metadata.serviceDate, time: networkTime, station: selectedStationName, train: selectedTrainId })
+    const url = studyLinkUrl(window.location.href, activePilot ? { study: 'national', range: 'morning', recording: activePilot.metadata.recordingId, date: activePilot.metadata.serviceDate, time: networkTime } : { study: networkStudy, range: isNationalDay || isRegionalDay ? 'day' : 'morning', date: network?.metadata.serviceDate, time: networkTime, glion: isTerritet && glionNetwork ? glionNetwork?.trains.find(t => t.route === 'R37')?.id : undefined, station: glionJourneyActive ? undefined : selectedStationName, train: glionJourneyActive ? undefined : selectedTrainId })
     setShareUrl(url)
     setShareCopied(false)
     try { await navigator.clipboard.writeText(url); setShareCopied(true) } catch { /* The visible link can still be copied manually. */ }
@@ -2316,7 +2324,7 @@ export function App({ edition, suspended = false }: AppProps) {
             selectedAirport={airEnabled ? selectedAirport : undefined}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
-              isValais ? MAP_FRAMINGS.valais : isTicino ? MAP_FRAMINGS.ticino : isGraubuenden ? MAP_FRAMINGS.graubuenden : isSolothurn ? MAP_FRAMINGS.solothurn : isBern ? MAP_FRAMINGS.bern : isNyon ? MAP_FRAMINGS.nyon : isBasel ? MAP_FRAMINGS.basel : isLausanne ? MAP_FRAMINGS.lausanne : isPilatus ? MAP_FRAMINGS.pilatus : isRochers ? MAP_FRAMINGS.rochers : isTerritet ? MAP_FRAMINGS.territet : isGornergrat ? MAP_FRAMINGS.gornergrat : isJungfrau ? MAP_FRAMINGS.jungfrau : isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
+              isValais ? MAP_FRAMINGS.valais : isTicino ? MAP_FRAMINGS.ticino : isGraubuenden ? MAP_FRAMINGS.graubuenden : isSolothurn ? MAP_FRAMINGS.solothurn : isBern ? MAP_FRAMINGS.bern : isNyon ? MAP_FRAMINGS.nyon : isBasel ? MAP_FRAMINGS.basel : isLausanne ? MAP_FRAMINGS.lausanne : isPilatus ? MAP_FRAMINGS.pilatus : isRochers ? MAP_FRAMINGS.rochers : isTerritet ? glionJourneyActive || glionNetwork ? { ...MAP_FRAMINGS.rochers, homeDistanceScale: 0.055 } : MAP_FRAMINGS.territet : isGornergrat ? MAP_FRAMINGS.gornergrat : isJungfrau ? MAP_FRAMINGS.jungfrau : isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
                 ? MAP_FRAMINGS.zurich
                 : networkStudy === 'zvv-region' && zvvRegionNetwork
                   ? MAP_FRAMINGS.zvv
@@ -3087,7 +3095,9 @@ export function App({ edition, suspended = false }: AppProps) {
         if (station) { setRigiGuideActive(false); setSelectedCategory(undefined); setRigiRhythmActive(false); selectStation(station) }
       }} /></Suspense>}
 
-      {isNetwork && isTerritet && territetJourneyActive && territetNetwork ? (
+      {isNetwork && isTerritet && glionJourneyActive && territetNetwork ? (
+        <Suspense fallback={null}><GlionJourney initialLink={glionLink} funicular={territetNetwork} railwayUrl={editionDataUrl(edition.data.regional.rochers)} language={language} time={networkTime} onNetwork={setGlionNetwork} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
+      ) : isNetwork && isTerritet && territetJourneyActive && territetNetwork ? (
         <Suspense fallback={null}><TerritetJourney network={territetNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
       ) : isNetwork && isRochers && rochersJourneyActive && rochersNetwork ? (
         <Suspense fallback={null}><RochersJourney onTerrain={setRochersTerrainBinding} network={rochersNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
@@ -3366,6 +3376,7 @@ export function App({ edition, suspended = false }: AppProps) {
           {isPilatus && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setPilatusAttempt(n => n+1) }}>{exploreCopy.retry}</button>}
           {isRochers && rochersNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startRochersJourney}>{rochersCopy?.start} →</button>}
           {isRochers && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRochersAttempt(n => n+1) }}>{exploreCopy.retry}</button>}
+          {isTerritet && territetNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startGlionJourney}>{territetCopy?.combined} →</button>}
           {isTerritet && territetNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startTerritetJourney}>{territetCopy?.start} →</button>}
           {isTerritet && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setTerritetAttempt(n => n+1) }}>{exploreCopy.retry}</button>}
           {isGornergrat && gornergratNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startGornergratAscent}>{gornergratCopy?.start} →</button>}
@@ -3973,7 +3984,7 @@ export function App({ edition, suspended = false }: AppProps) {
                     setSelectedCategory(undefined)
                     setAirCategorySelected(false)
                     setRigiSequenceActive(false)
-                    setPilatusJourneyActive(false); setRochersJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
+                    setPilatusJourneyActive(false); setRochersJourneyActive(false); setGlionJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
                     setView(isHub ? 'network' : 'hub')
                   }}
                 >
@@ -4060,7 +4071,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 setSelectedCategory(undefined)
                 setAirCategorySelected(false)
                 setRigiSequenceActive(false)
-                setPilatusJourneyActive(false); setRochersJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
+                setPilatusJourneyActive(false); setRochersJourneyActive(false); setGlionJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
                 setView(isHub ? 'network' : 'hub')
               }}
             >
@@ -4198,7 +4209,7 @@ export function App({ edition, suspended = false }: AppProps) {
           {isHub
             ? text.arrivalsDirection
             : isNetwork
-              ? isValais ? (valaisCopy?.valaisScope ?? '') : isTicino ? ticinoCopy?.model : isGraubuenden ? graubuendenCopy?.model : isSolothurn ? text.solothurnModel : isBern ? text.bernModel : isNyon ? text.nyonModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow ? text.interpolation : isPilatus ? pilatusCopy?.model : isRochers ? rochersCopy?.model : isTerritet ? territetCopy?.model : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
+              ? isValais ? (valaisCopy?.valaisScope ?? '') : isTicino ? ticinoCopy?.model : isGraubuenden ? graubuendenCopy?.model : isSolothurn ? text.solothurnModel : isBern ? text.bernModel : isNyon ? text.nyonModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow ? text.interpolation : isPilatus ? pilatusCopy?.model : isRochers ? rochersCopy?.model : isTerritet ? glionJourneyActive || glionNetwork ? territetCopy?.combinedModel : territetCopy?.model : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
               : text.simulation}
         </span>
       </footer>

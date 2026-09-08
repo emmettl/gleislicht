@@ -16,6 +16,7 @@ export function studyLinkUrl(href: string, state: StudyLink) {
   url.searchParams.set('range', state.range)
   if (state.date) url.searchParams.set('date', state.date)
   if (state.time !== undefined) url.searchParams.set('time', String(Math.floor(state.time)))
+  if (state.study === 'territet' && state.glion) url.searchParams.set('glion', state.glion)
   if (state.station) url.searchParams.set('station', state.station)
   if (state.train) url.searchParams.set('train', state.train)
   return url.href

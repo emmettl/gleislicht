@@ -8,7 +8,7 @@ export const isRegionalDayStudy = (id: SwitzerlandNetworkStudy): id is keyof typ
 export function withinStudy(location: { longitude: number; latitude: number }, bounds?: NetworkSnapshot['bounds']) {
   return Boolean(bounds && location.longitude >= bounds.minLongitude && location.longitude <= bounds.maxLongitude && location.latitude >= bounds.minLatitude && location.latitude <= bounds.maxLatitude)
 }
-export interface StudyLink { study: SwitzerlandNetworkStudy; range: 'morning' | 'day'; time?: number; date?: string; station?: string; train?: string; recording?: string; invalidRecording?: true }
+export interface StudyLink { glion?: string; study: SwitzerlandNetworkStudy; range: 'morning' | 'day'; time?: number; date?: string; station?: string; train?: string; recording?: string; invalidRecording?: true }
 export function readStudyLink(search: string): StudyLink {
   const p = new URLSearchParams(search)
   if (p.has('recording')) {
@@ -22,5 +22,6 @@ export function readStudyLink(search: string): StudyLink {
   const study = STUDY_IDS.includes(p.get('study') as SwitzerlandNetworkStudy) ? p.get('study') as SwitzerlandNetworkStudy : 'national'
   const time = p.has('time') ? Number(p.get('time')) : NaN
   const date = p.get('date') ?? ''
-  return { study, range: p.get('range') === 'day' || (['graubuenden-region', 'valais-region', 'ticino-region', 'lausanne-region', 'basel-core', 'bern-region', 'solothurn-region', 'nyon-region'].includes(study) && p.get('range') !== 'morning') ? 'day' : 'morning', time: Number.isFinite(time) && time >= 0 && time < 86400 ? time : undefined, date: /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : undefined, station: p.get('station')?.slice(0, 200) || undefined, train: p.get('train')?.slice(0, 200) || undefined }
+  const glion = study === 'territet' && /^\.ojp-91-37-F\.1\.TA\.\d+\.j26$/.test(p.get('glion') ?? '') ? p.get('glion')! : undefined
+  return { ...(glion ? {glion} : {}), study, range: p.get('range') === 'day' || (['graubuenden-region', 'valais-region', 'ticino-region', 'lausanne-region', 'basel-core', 'bern-region', 'solothurn-region', 'nyon-region'].includes(study) && p.get('range') !== 'morning') ? 'day' : 'morning', time: Number.isFinite(time) && time >= 0 && time < 86400 ? time : undefined, date: /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : undefined, station: p.get('station')?.slice(0, 200) || undefined, train: p.get('train')?.slice(0, 200) || undefined }
 }

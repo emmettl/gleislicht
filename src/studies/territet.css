@@ -13,6 +13,8 @@
 .territet-journey a { color: #b5dce9; }
 @media(min-width:701px) and (max-width:1500px) { .journey-card.territet-journey { left: 24px; width: 240px; padding: 12px; } }
 @media(max-width:700px) {
+ .glion-journey[data-expanded='false'] .glion-transfer { display: none; }
+ .territet-study:has(.glion-journey) .scene { top: clamp(48px, 18dvh, 144px); }
  .view-network .journey-card.territet-journey { top: calc(184px + env(safe-area-inset-top)); left: 16px; right: 16px; width: auto; padding: 10px 12px; max-height: calc(100dvh - 390px); }
  .territet-journey nav { grid-auto-flow: column; grid-auto-columns: 120px; overflow: auto; }
  .territet-journey nav button { flex-direction: column; align-items: start; min-height: 60px; }
@@ -26,6 +28,9 @@
 
 .territet-journey nav { max-height: 220px; overflow: auto; }
 .territet-journey header { position: sticky; top: -12px; background: #0c0b21; z-index: 1; }
+.glion-transfer { display: grid; gap: 5px; margin: 10px 0; color: #c6c4d6; font-size: .65rem; line-height: 1.5; }
+.glion-transfer button { min-height: 44px; padding: 8px; text-align: left; color: #fff0b9; background: #84733822; border: 1px solid #e5ce8666; font: inherit; cursor: pointer; }
+.glion-journey[data-phase='interchange'] .glion-transfer { border-left: 2px solid #efd490; padding-left: 8px; }
 .territet-details-toggle { display: none; }
 @media(min-width:701px) {
  .territet-study .masthead h1 { font-size: clamp(28px, 3.3vw, 46px); max-width: 650px; }
