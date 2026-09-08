@@ -64,7 +64,11 @@
     "data:road:topology:cantonal": "node scripts/ingest-cantonal-road-topology.mjs",
     "data:regional:days": "node scripts/build-regional-days.mjs",
     "data:vaud:audit": "node scripts/audit-vaud-study.mjs",
-    "prebuild": "node scripts/build-study-summaries.mjs"
+    "prebuild": "node scripts/build-study-summaries.mjs",
+    "data:luzern:census": "node scripts/luzern-timetable.mjs",
+    "data:luzern": "node scripts/build-luzern-region.mjs",
+    "data:luzern:check": "node scripts/check-luzern-region.mjs",
+    "data:luzern:report": "node scripts/write-luzern-audit.mjs"
   },
   "engines": {
     "node": ">=24.0.0"

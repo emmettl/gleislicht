@@ -169,3 +169,23 @@ node scripts/audit-lausanne-bus-boundaries.mjs \
   --archive /path/swiss-gtfs.zip --weekday /path/weekday-raw.json \
   --sunday /path/sunday-raw.json --output /tmp/boundary-review.json
 ```
+
+## Hosted closure — 8 September 2026
+
+The [release containing the Lausanne completion](https://github.com/emmettl/gleislicht/actions/runs/34257344408)
+passed every CI job and deployed successfully. At **19:48 CEST**, all fourteen
+published Lausanne files validated against the completed bus-cache hash. The
+served fixture has 8,848 trips, 315 in 00:00–02:00, zero missing bus patterns and
+100% accepted geometry in each of the five groups. This verifies the freshly
+generated release, not only the committed local example.
+
+Live desktop Chromium and emulated iPhone WebKit checks passed overnight vehicle
+activity, m2 route selection, full-day seeking, shared-link reload and visible
+OpenStreetMap attribution. There were no uncaught page errors; the rendered maps
+were visually inspected. The [verification record](../data/lausanne-hosted-verification.json)
+identifies the deployed revision, cache hash, service dates and checks.
+
+The original Lausanne follow-ups are closed for this released scope. Subsequent
+Vaud/MBC expansion has its own audits and publication checks. Repeated pushes had
+cancelled earlier launches; Pages now lets its active run finish and retains the
+newest pending push, with all existing validation gates preserved.

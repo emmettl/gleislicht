@@ -1,0 +1,1144 @@
+{
+ "currentVersion": 11.5,
+ "cimVersion": "3.5.0",
+ "id": 7,
+ "name": "Öffentlicher Verkehr: Haltestellen",
+ "type": "Feature Layer",
+ "description": "Der Verkehrsverbund Luzern (VVL) benötigt zur Berechnung eines Kostenverteilers für das kommende Fahrplanjahr eine Auswertung nach Einwohnern und Arbeitsplätzen im Einzugsbereich der Haltestellen (300m: Bushaltestellen, 1km: Bahnhöfe und Schiffshaltestellen). Anpassungen des Haltestellen-Datensatzes werden jeweils jährlich vor der Berechnung der Statistik gemäss Vorgaben VVL vorgenommen.\nDie Einwohnerzahlen beruhen auf dem kantonalen Gebäude- und Wohnungsregister (kGWR), die Arbeitsplatzzahlen auf der Bundesstatistik der Unternehmensstruktur (STATENT). METAUID: OEVHSTXX_DS",
+ "geometryType": "esriGeometryPoint",
+ "sourceSpatialReference": {
+  "wkid": 2056,
+  "latestWkid": 2056,
+  "xyTolerance": 4.0E-4,
+  "zTolerance": 4.0E-4,
+  "mTolerance": 2.0E-4,
+  "falseX": -29386400,
+  "falseY": -33067900,
+  "xyUnits": 20000,
+  "falseZ": -100000,
+  "zUnits": 20000,
+  "falseM": -100000,
+  "mUnits": 10000
+ },
+ "spatialReference": {
+  "wkid": 2056,
+  "latestWkid": 2056,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -27386400,
+  "falseY": -32067900,
+  "xyUnits": 10000,
+  "falseZ": -100000,
+  "zUnits": 10000,
+  "falseM": -100000,
+  "mUnits": 10000
+ },
+ "copyrightText": "© Verkehrsverbund Luzern",
+ "parentLayer": null,
+ "subLayers": [],
+ "minScale": 0,
+ "maxScale": 0,
+ "referenceScale": 0.0,
+ "drawingInfo": {
+  "renderer": {
+   "type": "uniqueValue",
+   "field1": "VMITTEL",
+   "uniqueValueGroups": [
+    {
+     "heading": "",
+     "classes": [
+      {
+       "label": "Bus",
+       "description": "Bus",
+       "symbol": {
+        "type": "esriPMS",
+        "url": "efe316243c34a7d343fc5129ec636aa7",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "width": 10,
+        "height": 10,
+        "angle": 0,
+        "xoffset": 0,
+        "yoffset": 0
+       },
+       "values": [
+        [
+         "2"
+        ],
+        [
+         "7"
+        ],
+        [
+         "8"
+        ],
+        [
+         "9"
+        ],
+        [
+         "3"
+        ],
+        [
+         "5"
+        ],
+        [
+         "10"
+        ],
+        [
+         "11"
+        ],
+        [
+         "12"
+        ],
+        [
+         "13"
+        ]
+       ]
+      },
+      {
+       "label": "Bahn",
+       "description": "Bahn",
+       "symbol": {
+        "type": "esriPMS",
+        "url": "db9fbd574ed52e1320054ca24d3cd288",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiElEQVQ4je3UMQrEIBBA0RGETCFsmSN4AD2AR9cb2Ih4DCunkhDYYgPZ3QlYRMjvfQwqI2Fwci4QEekqIISorbX1FCSiRSkFWmsWlnOG3vvr64R7xhjw3rNAay2klGZ+lBHJIcpHDzjDHcYYwTnHOlxK+Q/WWiGEwJ4IEX+Cgi29IzouqPv/ww3V6iItWLuBRQAAAABJRU5ErkJggg==",
+        "contentType": "image/png",
+        "width": 15,
+        "height": 15,
+        "angle": 0,
+        "xoffset": 0,
+        "yoffset": 0
+       },
+       "values": [
+        [
+         "1"
+        ]
+       ]
+      },
+      {
+       "label": "Schiff",
+       "description": "Schiff",
+       "symbol": {
+        "type": "esriPMS",
+        "url": "99428a03ea91ca2ac72ab038d041522f",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAq0lEQVQ4jWNhoDJgoamB////5yDTnJ+MjIz/UQz8//8/j0Alw2dSTeLnZGB4WMdgy8DAcATDhR9/MDDwsDMwqIsRZ9j1lwwMH78TCENjGQaGAznEGWjSx8Bw5zUBAykFLKMGUgxYKDcCFYwayMBw4SkDg8MUBqLAzVcMDMyMBMIQlJ8P3mUgGvCjlU/IBn7/38/gSLxRKOAyhoGMjIx/GRgYDpBpIBxQPdkAABquI3rmf6YxAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "width": 15,
+        "height": 15,
+        "angle": 0,
+        "xoffset": 0,
+        "yoffset": 0
+       },
+       "values": [
+        [
+         "4"
+        ]
+       ]
+      },
+      {
+       "label": "Seil- und Zahnradbahn",
+       "description": "Seil- und Zahnradbahn",
+       "symbol": {
+        "type": "esriPMS",
+        "url": "fda9e45957f17f01b60139e75a59d4fa",
+        "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVQ4jWNhoDJgGVoG2q/m+EGqAf8ZGD8eCv0ujtXAn39/sHOy8DDI86oTZdiDT9cZGBj+8eN0IQhoCBozTHM6QJSBibtMGO5/ujqUI4UagIUqpiCBUQOHQhje/nCBIWufA1GaH36+SdjAL78/Mpx/fZBoF7Ezc+A28EQEAyPRJsEBagE1+NMhANtBIZfbPp+uAAAAAElFTkSuQmCC",
+        "contentType": "image/png",
+        "width": 15,
+        "height": 15,
+        "angle": 0,
+        "xoffset": 0,
+        "yoffset": 0
+       },
+       "values": [
+        [
+         "6"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "uniqueValueInfos": [
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "efe316243c34a7d343fc5129ec636aa7",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 10,
+      "height": 10,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "2",
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "efe316243c34a7d343fc5129ec636aa7",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 10,
+      "height": 10,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "7",
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "efe316243c34a7d343fc5129ec636aa7",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 10,
+      "height": 10,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "8",
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "efe316243c34a7d343fc5129ec636aa7",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 10,
+      "height": 10,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "9",
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "efe316243c34a7d343fc5129ec636aa7",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 10,
+      "height": 10,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "3",
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "efe316243c34a7d343fc5129ec636aa7",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 10,
+      "height": 10,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "5",
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "efe316243c34a7d343fc5129ec636aa7",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 10,
+      "height": 10,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "10",
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "efe316243c34a7d343fc5129ec636aa7",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 10,
+      "height": 10,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "11",
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "efe316243c34a7d343fc5129ec636aa7",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 10,
+      "height": 10,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "12",
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "efe316243c34a7d343fc5129ec636aa7",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQoka3SMUgCURgH8C/PE+5A5NGiloM3KIFwgzQltISjm4u4iFCD0CRFBB4JTs63NIuD51BYQzeWmw3i4DU8dAne+M4E68QXYeDhYTpIf/iWD37v++B7btgy7n+FHo/nwO/3H1JK6Xg8fgEAcyOUZXmPMfZsGIYkCAJYlgXT6ZSFQqEqxvjqTxiPx0XTNI1IJOLVdR0CgcBvX9d1LpvNXoTD4e/hcHi9AiVJUrvdrrfZbIIoivbLyWQSarWaK5VKXQJAdbG2DQkhJ+l02oGWsc/nc41GoyPLsh4dcDabCQghWBeE0A7HcYgQAg4YDAbf2+32brFYXEGEEMAYA2PsddGzoSzLSqVSuavX65DJZGw0mUwgn89DNBrF/X7/bQUqinJfKBRuc7ncaaPRgEQiAZRS0DRtPumD5/nj5S0cd1RV9axUKj30er0bTdP2eZ7/isViT51O53wwGHyuhfOUy+UWAMxrY7b+qz/B3YsANeECygAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 10,
+      "height": 10,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "13",
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "db9fbd574ed52e1320054ca24d3cd288",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiElEQVQ4je3UMQrEIBBA0RGETCFsmSN4AD2AR9cb2Ih4DCunkhDYYgPZ3QlYRMjvfQwqI2Fwci4QEekqIISorbX1FCSiRSkFWmsWlnOG3vvr64R7xhjw3rNAay2klGZ+lBHJIcpHDzjDHcYYwTnHOlxK+Q/WWiGEwJ4IEX+Cgi29IzouqPv/ww3V6iItWLuBRQAAAABJRU5ErkJggg==",
+      "contentType": "image/png",
+      "width": 15,
+      "height": 15,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "1",
+     "label": "Bahn"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "99428a03ea91ca2ac72ab038d041522f",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAq0lEQVQ4jWNhoDJgoamB////5yDTnJ+MjIz/UQz8//8/j0Alw2dSTeLnZGB4WMdgy8DAcATDhR9/MDDwsDMwqIsRZ9j1lwwMH78TCENjGQaGAznEGWjSx8Bw5zUBAykFLKMGUgxYKDcCFYwayMBw4SkDg8MUBqLAzVcMDMyMBMIQlJ8P3mUgGvCjlU/IBn7/38/gSLxRKOAyhoGMjIx/GRgYDpBpIBxQPdkAABquI3rmf6YxAAAAAElFTkSuQmCC",
+      "contentType": "image/png",
+      "width": 15,
+      "height": 15,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "4",
+     "label": "Schiff"
+    },
+    {
+     "symbol": {
+      "type": "esriPMS",
+      "url": "fda9e45957f17f01b60139e75a59d4fa",
+      "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVQ4jWNhoDJgGVoG2q/m+EGqAf8ZGD8eCv0ujtXAn39/sHOy8DDI86oTZdiDT9cZGBj+8eN0IQhoCBozTHM6QJSBibtMGO5/ujqUI4UagIUqpiCBUQOHQhje/nCBIWufA1GaH36+SdjAL78/Mpx/fZBoF7Ezc+A28EQEAyPRJsEBagE1+NMhANtBIZfbPp+uAAAAAElFTkSuQmCC",
+      "contentType": "image/png",
+      "width": 15,
+      "height": 15,
+      "angle": 0,
+      "xoffset": 0,
+      "yoffset": 0
+     },
+     "value": "6",
+     "label": "Seil- und Zahnradbahn"
+    }
+   ],
+   "fieldDelimiter": ",",
+   "authoringInfo": {
+    "colorRamp": {
+     "type": "multipart",
+     "colorRamps": [
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        251,
+        197,
+        255
+       ],
+       "toColor": [
+        252,
+        251,
+        197,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        201,
+        182,
+        252,
+        255
+       ],
+       "toColor": [
+        201,
+        182,
+        252,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        197,
+        239,
+        252,
+        255
+       ],
+       "toColor": [
+        197,
+        239,
+        252,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        182,
+        185,
+        255
+       ],
+       "toColor": [
+        252,
+        182,
+        185,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        182,
+        252,
+        202,
+        255
+       ],
+       "toColor": [
+        182,
+        252,
+        202,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        210,
+        242,
+        255
+       ],
+       "toColor": [
+        252,
+        210,
+        242,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        204,
+        212,
+        252,
+        255
+       ],
+       "toColor": [
+        204,
+        212,
+        252,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        206,
+        179,
+        255
+       ],
+       "toColor": [
+        252,
+        206,
+        179,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        215,
+        252,
+        228,
+        255
+       ],
+       "toColor": [
+        215,
+        252,
+        228,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        187,
+        250,
+        255
+       ],
+       "toColor": [
+        252,
+        187,
+        250,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        213,
+        252,
+        179,
+        255
+       ],
+       "toColor": [
+        213,
+        252,
+        179,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        179,
+        212,
+        255
+       ],
+       "toColor": [
+        252,
+        179,
+        212,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        252,
+        228,
+        215,
+        255
+       ],
+       "toColor": [
+        252,
+        228,
+        215,
+        255
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "scaleSymbols": true,
+  "transparency": 0,
+  "labelingInfo": [
+   {
+    "labelExpressionInfo": {"expression": "Mid ($feature.HSTNAME, Find(',', $feature.HSTNAME))"},
+    "labelPlacement": "esriServerPointLabelPlacementAboveRight",
+    "deconflictionStrategy": "dynamicNeverRemove",
+    "allowOverlapOfFeatureInterior": "avoid",
+    "stackLabel": true,
+    "stackAlignment": "dynamic",
+    "removeDuplicates": "none",
+    "stackRowLength": 24,
+    "where": "VMITTEL IN (2, 3, 5, 7, 8, 9)",
+    "useCodedValues": true,
+    "maxScale": 0,
+    "minScale": 15000,
+    "name": "bus",
+    "priority": 1,
+    "symbol": {
+     "type": "esriTS",
+     "color": [
+      0,
+      0,
+      0,
+      255
+     ],
+     "backgroundColor": null,
+     "borderLineColor": null,
+     "borderLineSize": null,
+     "verticalAlignment": "bottom",
+     "horizontalAlignment": "center",
+     "rightToLeft": false,
+     "angle": 0,
+     "xoffset": 0,
+     "yoffset": 0,
+     "kerning": false,
+     "haloColor": [
+      255,
+      255,
+      255,
+      255
+     ],
+     "haloSize": 1,
+     "font": {
+      "family": "Arial",
+      "size": 8,
+      "style": "normal",
+      "weight": "normal",
+      "decoration": "none"
+     }
+    }
+   },
+   {
+    "labelExpressionInfo": {"expression": "Upper($feature.HSTNAME)"},
+    "labelPlacement": "esriServerPointLabelPlacementAboveRight",
+    "deconflictionStrategy": "dynamicNeverRemove",
+    "allowOverlapOfFeatureInterior": "avoid",
+    "stackLabel": true,
+    "stackAlignment": "dynamic",
+    "removeDuplicates": "none",
+    "stackRowLength": 24,
+    "where": "VMITTEL = 1",
+    "useCodedValues": true,
+    "maxScale": 0,
+    "minScale": 50000,
+    "name": "zug",
+    "priority": 3,
+    "symbol": {
+     "type": "esriTS",
+     "color": [
+      0,
+      0,
+      0,
+      255
+     ],
+     "backgroundColor": null,
+     "borderLineColor": null,
+     "borderLineSize": null,
+     "verticalAlignment": "bottom",
+     "horizontalAlignment": "center",
+     "rightToLeft": false,
+     "angle": 0,
+     "xoffset": 0,
+     "yoffset": 0,
+     "kerning": false,
+     "haloColor": [
+      255,
+      255,
+      255,
+      255
+     ],
+     "haloSize": 1,
+     "font": {
+      "family": "Arial",
+      "size": 10,
+      "style": "normal",
+      "weight": "bold",
+      "decoration": "none"
+     }
+    }
+   },
+   {
+    "labelExpressionInfo": {"expression": "$feature.HSTNAME"},
+    "labelPlacement": "esriServerPointLabelPlacementAboveRight",
+    "deconflictionStrategy": "dynamicNeverRemove",
+    "allowOverlapOfFeatureInterior": "avoid",
+    "stackLabel": true,
+    "stackAlignment": "dynamic",
+    "removeDuplicates": "none",
+    "stackRowLength": 24,
+    "where": "VMITTEL = 4",
+    "useCodedValues": true,
+    "maxScale": 0,
+    "minScale": 50000,
+    "name": "schiff",
+    "priority": 5,
+    "symbol": {
+     "type": "esriTS",
+     "color": [
+      0,
+      92,
+      230,
+      255
+     ],
+     "backgroundColor": null,
+     "borderLineColor": null,
+     "borderLineSize": null,
+     "verticalAlignment": "bottom",
+     "horizontalAlignment": "center",
+     "rightToLeft": false,
+     "angle": 0,
+     "xoffset": 0,
+     "yoffset": 0,
+     "kerning": false,
+     "haloColor": [
+      255,
+      255,
+      255,
+      255
+     ],
+     "haloSize": 1,
+     "font": {
+      "family": "Arial",
+      "size": 10,
+      "style": "normal",
+      "weight": "normal",
+      "decoration": "none"
+     }
+    }
+   },
+   {
+    "labelExpressionInfo": {"expression": "$feature.HSTNAME"},
+    "labelPlacement": "esriServerPointLabelPlacementAboveRight",
+    "deconflictionStrategy": "dynamicNeverRemove",
+    "allowOverlapOfFeatureInterior": "avoid",
+    "stackLabel": true,
+    "stackAlignment": "dynamic",
+    "removeDuplicates": "none",
+    "stackRowLength": 24,
+    "where": "VMITTEL = 6",
+    "useCodedValues": true,
+    "maxScale": 0,
+    "minScale": 50000,
+    "name": "seil- und zahnrad",
+    "priority": 6,
+    "symbol": {
+     "type": "esriTS",
+     "color": [
+      38,
+      115,
+      0,
+      255
+     ],
+     "backgroundColor": null,
+     "borderLineColor": null,
+     "borderLineSize": null,
+     "verticalAlignment": "bottom",
+     "horizontalAlignment": "center",
+     "rightToLeft": false,
+     "angle": 0,
+     "xoffset": 0,
+     "yoffset": 0,
+     "kerning": false,
+     "haloColor": [
+      255,
+      255,
+      255,
+      255
+     ],
+     "haloSize": 1,
+     "font": {
+      "family": "Arial",
+      "size": 10,
+      "style": "normal",
+      "weight": "normal",
+      "decoration": "none"
+     }
+    }
+   }
+  ]
+ },
+ "defaultVisibility": true,
+ "extent": {
+  "xmin": 2625878.6939999983,
+  "ymin": 1171121.336000003,
+  "xmax": 2693819.995000001,
+  "ymax": 1249187.6599999964,
+  "spatialReference": {
+   "wkid": 2056,
+   "latestWkid": 2056,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -27386400,
+   "falseY": -32067900,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "hasAttachments": false,
+ "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+ "displayField": "HSTNAME",
+ "typeIdField": null,
+ "subtypeFieldName": null,
+ "subtypeField": null,
+ "defaultSubtypeCode": null,
+ "fields": [
+  {
+   "name": "OBJECTID",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID",
+   "domain": null
+  },
+  {
+   "name": "UUID",
+   "type": "esriFieldTypeString",
+   "alias": "Universally Unique Identifier",
+   "length": 38,
+   "domain": null
+  },
+  {
+   "name": "HSTNAME",
+   "type": "esriFieldTypeString",
+   "alias": "Haltestellenname",
+   "length": 80,
+   "domain": null
+  },
+  {
+   "name": "VMITTEL",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Verkehrsmittel",
+   "domain": {
+    "type": "codedValue",
+    "name": "HST_VMITTEL_V3",
+    "description": "Verkehrsmittel",
+    "codedValues": [
+     {
+      "name": "Bahn",
+      "code": 1
+     },
+     {
+      "name": "Bus",
+      "code": 2
+     },
+     {
+      "name": "Schiff",
+      "code": 4
+     },
+     {
+      "name": "Trolleybus",
+      "code": 5
+     },
+     {
+      "name": "Seil- und Zahnradbahn",
+      "code": 6
+     },
+     {
+      "name": "eBus",
+      "code": 7
+     },
+     {
+      "name": "Bus, eBus",
+      "code": 8
+     },
+     {
+      "name": "Bus, eBus, Trolleybus",
+      "code": 9
+     },
+     {
+      "name": "Bus, Trolleybus",
+      "code": 3
+     },
+     {
+      "name": "Bus, eBus, teilweise eBus",
+      "code": 10
+     },
+     {
+      "name": "Bus, teilweise eBus",
+      "code": 11
+     },
+     {
+      "name": "eBus, teilweise eBus",
+      "code": 12
+     },
+     {
+      "name": "teilweise eBus",
+      "code": 13
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   }
+  },
+  {
+   "name": "BFS_NR",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "BFS-Gemeindenummer",
+   "domain": null
+  },
+  {
+   "name": "GEMEINDE",
+   "type": "esriFieldTypeString",
+   "alias": "Gemeindename",
+   "length": 30,
+   "domain": null
+  },
+  {
+   "name": "EINWOHNER",
+   "type": "esriFieldTypeInteger",
+   "alias": "Einwohner im Einzugsgebiet",
+   "domain": null
+  },
+  {
+   "name": "ARBEITSPL",
+   "type": "esriFieldTypeInteger",
+   "alias": "Arbeitsplätze im Einzugsgebiet",
+   "domain": null
+  },
+  {
+   "name": "RADIUS",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Radius [m]",
+   "domain": null
+  },
+  {
+   "name": "DIDOKNR",
+   "type": "esriFieldTypeInteger",
+   "alias": "Eidg. Haltestellen-ID",
+   "domain": null
+  },
+  {
+   "name": "ANGSTUFE",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Angebotsstufe",
+   "domain": {
+    "type": "codedValue",
+    "name": "HST_ANGSTUFE_V2",
+    "description": "Angebotsstufe",
+    "codedValues": [
+     {
+      "name": "Keine Kurspaare Werktags",
+      "code": 0
+     },
+     {
+      "name": "Angebotsstufe 1 (<1 Kurspaar/ Std./ 1-17 Kurspaare/Tag)",
+      "code": 1
+     },
+     {
+      "name": "Angebotsstufe 2 (Mind. 1 Kurspaar/ Std./ 18-31 Kurspaare/Tag)",
+      "code": 2
+     },
+     {
+      "name": "Angebotsstufe 3 (Mind. 2 Kurspaare/ Std./ 32-61 Kurspaare/Tag)",
+      "code": 3
+     },
+     {
+      "name": "Angebotsstufe 4 (Mind. 4 Kurspaare/ Std./ 62-127 Kurspaare/Tag)",
+      "code": 4
+     },
+     {
+      "name": "Angebotsstufe 5 (Mind. 8 Kurspaare/ Std./ Mind. 128 Kurspaare/Tag)",
+      "code": 5
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   }
+  },
+  {
+   "name": "SLOID",
+   "type": "esriFieldTypeString",
+   "alias": "Swiss Location Identification",
+   "length": 38,
+   "domain": null
+  },
+  {
+   "name": "TU",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Verantwortliche TU",
+   "domain": {
+    "type": "codedValue",
+    "name": "BUL_TU_V6",
+    "description": "Transportunternehmen",
+    "codedValues": [
+     {
+      "name": "Schweizerische Südostbahn AG (SOB)",
+      "code": 13
+     },
+     {
+      "name": "Schifffahrtsgesellschaft des Vierwaldstättersees AG (SGV)",
+      "code": 14
+     },
+     {
+      "name": "keine Angaben",
+      "code": 0
+     },
+     {
+      "name": "Auto AG Rothenburg (AAGR)",
+      "code": 1
+     },
+     {
+      "name": "Rottal Auto AG (ARAG)",
+      "code": 2
+     },
+     {
+      "name": "PostAuto AG (PAG)",
+      "code": 3
+     },
+     {
+      "name": "Zugerland Verkehrsbetriebe AG (ZVB)",
+      "code": 4
+     },
+     {
+      "name": "Aare Seeland mobil AG (ASM)",
+      "code": 5
+     },
+     {
+      "name": "Schweizerische Bundesbahnen (SBB)",
+      "code": 6
+     },
+     {
+      "name": "Auto AG Schwyz (AAGS)",
+      "code": 7
+     },
+     {
+      "name": "Aargau Verkehr AG (AVA)",
+      "code": 9
+     },
+     {
+      "name": "BLS AG (BLS)",
+      "code": 10
+     },
+     {
+      "name": "Zentralbahn AG (zb)",
+      "code": 12
+     },
+     {
+      "name": "RIGI BAHNEN AG",
+      "code": 15
+     },
+     {
+      "name": "Château Gütsch AG",
+      "code": 16
+     },
+     {
+      "name": "Verkehrsbetriebe Luzern AG (vbl)",
+      "code": 11
+     },
+     {
+      "name": "AUTO AG URI (AAGU)",
+      "code": 8
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   }
+  },
+  {
+   "name": "SHAPE",
+   "type": "esriFieldTypeGeometry",
+   "alias": "SHAPE",
+   "domain": null
+  }
+ ],
+ "geometryField": {
+  "name": "SHAPE",
+  "type": "esriFieldTypeGeometry",
+  "alias": "SHAPE"
+ },
+ "indexes": [
+  {
+   "name": "FDO_OBJECTID",
+   "fields": "OBJECTID",
+   "isAscending": true,
+   "isUnique": true,
+   "description": ""
+  },
+  {
+   "name": "FDO_SHAPE",
+   "fields": "SHAPE",
+   "isAscending": true,
+   "isUnique": false,
+   "description": ""
+  }
+ ],
+ "subtypes": [],
+ "relationships": [],
+ "canModifyLayer": true,
+ "canScaleSymbols": false,
+ "hasLabels": true,
+ "capabilities": "Map,Query,Data",
+ "maxRecordCount": 2000,
+ "maxSelectionCount": 2000,
+ "supportsStatistics": true,
+ "supportsExceedsLimitStatistics": true,
+ "supportsAdvancedQueries": true,
+ "supportedQueryFormats": "JSON, geoJSON, PBF",
+ "isDataVersioned": false,
+ "ownershipBasedAccessControlForFeatures": {"allowOthersToQuery": true},
+ "useStandardizedQueries": true,
+ "supportedSpatialRelationships": [
+  "esriSpatialRelIntersects",
+  "esriSpatialRelContains",
+  "esriSpatialRelCrosses",
+  "esriSpatialRelEnvelopeIntersects",
+  "esriSpatialRelIndexIntersects",
+  "esriSpatialRelOverlaps",
+  "esriSpatialRelTouches",
+  "esriSpatialRelWithin",
+  "esriSpatialRelRelation"
+ ],
+ "advancedQueryCapabilities": {
+  "useStandardizedQueries": true,
+  "supportsStatistics": true,
+  "supportsPercentileStatistics": true,
+  "supportsHavingClause": true,
+  "supportsOrderBy": true,
+  "supportsDistinct": true,
+  "supportsCountDistinct": true,
+  "supportsAdvancedQueryRelated": true,
+  "supportsQueryRelatedPagination": true,
+  "supportsPagination": true,
+  "supportsLod": false,
+  "supportsQueryWithLodSR": false,
+  "supportsTrueCurve": true,
+  "supportsQueryWithDatumTransformation": true,
+  "supportsReturningQueryExtent": true,
+  "supportsQueryWithDistance": true,
+  "supportsSqlExpression": true,
+  "supportsTimeRelation": true,
+  "supportsSqlFormat": false,
+  "supportsQueryAnalytic": false,
+  "supportsCurrentUserQueries": true
+ },
+ "supportsDatumTransformation": true,
+ "dateFieldsTimeReference": null,
+ "preferredTimeReference": null,
+ "datesInUnknownTimezone": false,
+ "hasMetadata": true,
+ "isDataArchived": false,
+ "archivingInfo": {
+  "supportsQueryWithHistoricMoment": false,
+  "startArchivingMoment": -1
+ },
+ "supportsCoordinatesQuantization": true,
+ "supportsDynamicLegends": true
+}

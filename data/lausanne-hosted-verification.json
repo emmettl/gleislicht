@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-09-08T17:48:53.564Z",
+  "lausanneCompletionCommit": "3120648",
+  "deploymentCommit": "bbcb9ba",
+  "deploymentRun": "https://github.com/emmettl/gleislicht/actions/runs/34257344408",
+  "base": "https://emmettl.github.io/gleislicht/",
+  "dates": {
+    "lausanne-region": "2026-09-08"
+  },
+  "files": 14,
+  "feedVersion": "20260905",
+  "trips": 8848,
+  "overnightTrips": 315,
+  "sourceServiceDates": [
+    "2026-09-07",
+    "2026-09-08"
+  ],
+  "busCacheSha256": "a67d9ec3bd72665a421c6ebb327618a6b3329dc68dd417f1add9fb6901ae3e37",
+  "groups": [
+    {
+      "id": "tl-bus",
+      "totalSegments": 114089,
+      "acceptedSegments": 114089
+    },
+    {
+      "id": "m1",
+      "totalSegments": 4570,
+      "acceptedSegments": 4570
+    },
+    {
+      "id": "m2",
+      "totalSegments": 8371,
+      "acceptedSegments": 8371
+    },
+    {
+      "id": "leb",
+      "totalSegments": 2248,
+      "acceptedSegments": 2248
+    },
+    {
+      "id": "rail",
+      "totalSegments": 4172,
+      "acceptedSegments": 4172
+    }
+  ],
+  "browsers": [
+    {
+      "browser": "desktop",
+      "passed": true,
+      "sharedUrl": "https://emmettl.github.io/gleislicht/?study=lausanne-region&range=day&date=2026-09-08&time=62105"
+    },
+    {
+      "browser": "phone",
+      "passed": true,
+      "sharedUrl": "https://emmettl.github.io/gleislicht/?study=lausanne-region&range=day&date=2026-09-08&time=62100"
+    }
+  ],
+  "checks": [
+    "Fourteen published files pass integrity, topology, date and geometry validation",
+    "Published cache hash matches the completed 210-pattern cache",
+    "Zero missing bus patterns and 100% accepted geometry in all five groups",
+    "Desktop Chromium and iPhone WebKit: overnight vehicles, m2 route selection, full-day seek, share reload and visible OSM attribution",
+    "No uncaught page errors; settled screenshots inspected"
+  ]
+}

@@ -1,0 +1,430 @@
+{
+ "currentVersion": 11.5,
+ "cimVersion": "3.5.0",
+ "id": 8,
+ "name": "Öffentlicher Verkehr: Buslinien",
+ "type": "Feature Layer",
+ "description": "Interessierte erhalten einen Überblick über die Linienführung sämtlicher Buslinien im Kanton Luzern. Dieser Datensatz dient zudem für die Planung von Baustellen und Schneeräumung durch die genaue Angabe des Linienverlaufs. Da Änderungen im Verlauf der Buslinien mit dem jährlichen Fahrplanwechsel im Dezember stattfinden, wird dieser Datensatz in einem Jahresrhythmus nachgeführt, um so die Aktualität des Datensatzes zu gewährleisten. METAUID: OEVBUSLN_DS",
+ "geometryType": "esriGeometryPolyline",
+ "sourceSpatialReference": {
+  "wkid": 2056,
+  "latestWkid": 2056,
+  "xyTolerance": 4.0E-4,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -29386400,
+  "falseY": -33067900,
+  "xyUnits": 20000,
+  "falseZ": -100000,
+  "zUnits": 10000,
+  "falseM": -100000,
+  "mUnits": 10000
+ },
+ "spatialReference": {
+  "wkid": 2056,
+  "latestWkid": 2056,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -27386400,
+  "falseY": -32067900,
+  "xyUnits": 10000,
+  "falseZ": -100000,
+  "zUnits": 10000,
+  "falseM": -100000,
+  "mUnits": 10000
+ },
+ "copyrightText": "© Verkehrsverbund Luzern",
+ "parentLayer": null,
+ "subLayers": [],
+ "minScale": 0,
+ "maxScale": 0,
+ "referenceScale": 0.0,
+ "drawingInfo": {
+  "renderer": {
+   "type": "simple",
+   "symbol": {
+    "type": "esriSLS",
+    "style": "esriSLSSolid",
+    "color": [
+     0,
+     77,
+     168,
+     255
+    ],
+    "width": 2
+   },
+   "label": "Buslinien"
+  },
+  "scaleSymbols": true,
+  "transparency": 0,
+  "labelingInfo": null
+ },
+ "defaultVisibility": true,
+ "extent": {
+  "xmin": 2630064.2360000014,
+  "ymin": 1183579.1560000032,
+  "xmax": 2692324.1920000017,
+  "ymax": 1239645.2651999965,
+  "spatialReference": {
+   "wkid": 2056,
+   "latestWkid": 2056,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -27386400,
+   "falseY": -32067900,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "hasAttachments": false,
+ "htmlPopupType": "esriServerHTMLPopupTypeNone",
+ "displayField": "BUL_ROUTE",
+ "typeIdField": null,
+ "subtypeFieldName": null,
+ "subtypeField": null,
+ "defaultSubtypeCode": null,
+ "fields": [
+  {
+   "name": "OBJECTID",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID",
+   "domain": null
+  },
+  {
+   "name": "SHAPE",
+   "type": "esriFieldTypeGeometry",
+   "alias": "SHAPE",
+   "domain": null
+  },
+  {
+   "name": "BUL_ROUTE",
+   "type": "esriFieldTypeString",
+   "alias": "Buslinie",
+   "length": 50,
+   "domain": null
+  },
+  {
+   "name": "FP_JAHR",
+   "type": "esriFieldTypeInteger",
+   "alias": "Fahrplanjahr",
+   "domain": null
+  },
+  {
+   "name": "KURSBUCHNR",
+   "type": "esriFieldTypeString",
+   "alias": "Kursbuchnummer",
+   "length": 50,
+   "domain": null
+  },
+  {
+   "name": "LINIENNR",
+   "type": "esriFieldTypeString",
+   "alias": "Liniennummer",
+   "length": 50,
+   "domain": null
+  },
+  {
+   "name": "LINIENBEZ",
+   "type": "esriFieldTypeString",
+   "alias": "Linienbezeichnung",
+   "length": 150,
+   "domain": null
+  },
+  {
+   "name": "FP_URL",
+   "type": "esriFieldTypeString",
+   "alias": "Link zum Fahrplan",
+   "length": 150,
+   "domain": null
+  },
+  {
+   "name": "TU",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Transportunternehmen",
+   "domain": {
+    "type": "codedValue",
+    "name": "BUL_TU_V6",
+    "description": "Transportunternehmen",
+    "codedValues": [
+     {
+      "name": "Schweizerische Südostbahn AG (SOB)",
+      "code": 13
+     },
+     {
+      "name": "Schifffahrtsgesellschaft des Vierwaldstättersees AG (SGV)",
+      "code": 14
+     },
+     {
+      "name": "keine Angaben",
+      "code": 0
+     },
+     {
+      "name": "Auto AG Rothenburg (AAGR)",
+      "code": 1
+     },
+     {
+      "name": "Rottal Auto AG (ARAG)",
+      "code": 2
+     },
+     {
+      "name": "PostAuto AG (PAG)",
+      "code": 3
+     },
+     {
+      "name": "Zugerland Verkehrsbetriebe AG (ZVB)",
+      "code": 4
+     },
+     {
+      "name": "Aare Seeland mobil AG (ASM)",
+      "code": 5
+     },
+     {
+      "name": "Schweizerische Bundesbahnen (SBB)",
+      "code": 6
+     },
+     {
+      "name": "Auto AG Schwyz (AAGS)",
+      "code": 7
+     },
+     {
+      "name": "Aargau Verkehr AG (AVA)",
+      "code": 9
+     },
+     {
+      "name": "BLS AG (BLS)",
+      "code": 10
+     },
+     {
+      "name": "Zentralbahn AG (zb)",
+      "code": 12
+     },
+     {
+      "name": "RIGI BAHNEN AG",
+      "code": 15
+     },
+     {
+      "name": "Château Gütsch AG",
+      "code": 16
+     },
+     {
+      "name": "Verkehrsbetriebe Luzern AG (vbl)",
+      "code": 11
+     },
+     {
+      "name": "AUTO AG URI (AAGU)",
+      "code": 8
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   }
+  },
+  {
+   "name": "TU_URL",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Link zum Transportunternehmen",
+   "domain": {
+    "type": "codedValue",
+    "name": "BUL_TU_URL_V4",
+    "description": "URL zum Transportunternehmen",
+    "codedValues": [
+     {
+      "name": "http://www.autoag.ch",
+      "code": 1
+     },
+     {
+      "name": "http://www.rottal.ch",
+      "code": 2
+     },
+     {
+      "name": "http://www.postauto.ch",
+      "code": 3
+     },
+     {
+      "name": "http://www.zvb.ch",
+      "code": 4
+     },
+     {
+      "name": "http://www.sbb.ch",
+      "code": 6
+     },
+     {
+      "name": "http://www.aags.ch",
+      "code": 7
+     },
+     {
+      "name": "http://www.aargauverkehr.ch",
+      "code": 9
+     },
+     {
+      "name": "keine Angaben",
+      "code": 0
+     },
+     {
+      "name": "http://www.aagu.ch",
+      "code": 8
+     },
+     {
+      "name": "https://www.bls.ch/",
+      "code": 10
+     },
+     {
+      "name": "http://www.vbl.ch",
+      "code": 11
+     },
+     {
+      "name": "https://www.zentralbahn.ch/",
+      "code": 12
+     },
+     {
+      "name": "https://www.sob.ch/",
+      "code": 13
+     },
+     {
+      "name": "https://www.lakelucerne.ch/",
+      "code": 14
+     },
+     {
+      "name": "https://www.rigi.ch/",
+      "code": 15
+     },
+     {
+      "name": "https://www.chateau-guetsch.ch/",
+      "code": 16
+     },
+     {
+      "name": "http://www.asmobil.ch",
+      "code": 5
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   }
+  },
+  {
+   "name": "TP_URL",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Link zu Tarife und Preise",
+   "domain": {
+    "type": "codedValue",
+    "name": "BUL_TP_URL_V3",
+    "description": "URL zu Tarife und Preise",
+    "codedValues": [
+     {
+      "name": "keine Angaben",
+      "code": 0
+     },
+     {
+      "name": "http://www.passepartout.ch",
+      "code": 1
+     },
+     {
+      "name": "http://www.aagu.ch/angebote-und-service/tellbus.html",
+      "code": 2
+     }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+   }
+  },
+  {
+   "name": "SHAPE_Length",
+   "type": "esriFieldTypeDouble",
+   "alias": "SHAPE_Length",
+   "domain": null
+  }
+ ],
+ "geometryField": {
+  "name": "SHAPE",
+  "type": "esriFieldTypeGeometry",
+  "alias": "SHAPE"
+ },
+ "indexes": [
+  {
+   "name": "FDO_OBJECTID",
+   "fields": "OBJECTID",
+   "isAscending": true,
+   "isUnique": true,
+   "description": ""
+  },
+  {
+   "name": "FDO_SHAPE",
+   "fields": "SHAPE",
+   "isAscending": true,
+   "isUnique": false,
+   "description": ""
+  }
+ ],
+ "subtypes": [],
+ "relationships": [],
+ "canModifyLayer": true,
+ "canScaleSymbols": false,
+ "hasLabels": false,
+ "capabilities": "Map,Query,Data",
+ "maxRecordCount": 2000,
+ "maxSelectionCount": 2000,
+ "supportsStatistics": true,
+ "supportsExceedsLimitStatistics": true,
+ "supportsAdvancedQueries": true,
+ "supportedQueryFormats": "JSON, geoJSON, PBF",
+ "isDataVersioned": false,
+ "ownershipBasedAccessControlForFeatures": {"allowOthersToQuery": true},
+ "useStandardizedQueries": true,
+ "supportedSpatialRelationships": [
+  "esriSpatialRelIntersects",
+  "esriSpatialRelContains",
+  "esriSpatialRelCrosses",
+  "esriSpatialRelEnvelopeIntersects",
+  "esriSpatialRelIndexIntersects",
+  "esriSpatialRelOverlaps",
+  "esriSpatialRelTouches",
+  "esriSpatialRelWithin",
+  "esriSpatialRelRelation"
+ ],
+ "advancedQueryCapabilities": {
+  "useStandardizedQueries": true,
+  "supportsStatistics": true,
+  "supportsPercentileStatistics": true,
+  "supportsHavingClause": true,
+  "supportsOrderBy": true,
+  "supportsDistinct": true,
+  "supportsCountDistinct": true,
+  "supportsAdvancedQueryRelated": true,
+  "supportsQueryRelatedPagination": true,
+  "supportsPagination": true,
+  "supportsLod": false,
+  "supportsQueryWithLodSR": false,
+  "supportsTrueCurve": true,
+  "supportsQueryWithDatumTransformation": true,
+  "supportsReturningQueryExtent": true,
+  "supportsQueryWithDistance": true,
+  "supportsSqlExpression": true,
+  "supportsTimeRelation": true,
+  "supportsSqlFormat": false,
+  "supportsQueryAnalytic": false,
+  "supportsCurrentUserQueries": true
+ },
+ "supportsDatumTransformation": true,
+ "dateFieldsTimeReference": null,
+ "preferredTimeReference": null,
+ "datesInUnknownTimezone": false,
+ "hasGeometryProperties": true,
+ "geometryProperties": {
+  "shapeLengthFieldName": "SHAPE_Length",
+  "units": "esriMeters",
+  "mapUnits": {"uwkid": 9001}
+ },
+ "hasMetadata": true,
+ "isDataArchived": false,
+ "archivingInfo": {
+  "supportsQueryWithHistoricMoment": false,
+  "startArchivingMoment": -1
+ },
+ "supportsCoordinatesQuantization": true,
+ "supportsDynamicLegends": true
+}

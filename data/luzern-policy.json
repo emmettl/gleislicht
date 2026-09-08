@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "feedSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "timetableYear": 2026,
+  "limits": {
+    "snapMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 1200,
+    "alternativeSnapMetres": 5
+  },
+  "operatorCrosswalk": {
+    "1": {
+      "name": "Auto AG Rothenburg (AAGR)",
+      "bus": [
+        "812"
+      ]
+    },
+    "2": {
+      "name": "Rottal Auto AG (ARAG)",
+      "bus": [
+        "819"
+      ]
+    },
+    "3": {
+      "name": "PostAuto AG (PAG)",
+      "bus": [
+        "801"
+      ]
+    },
+    "4": {
+      "name": "Zugerland Verkehrsbetriebe AG (ZVB)",
+      "bus": [
+        "839"
+      ]
+    },
+    "5": {
+      "name": "Aare Seeland mobil AG (ASM)",
+      "bus": [
+        "870"
+      ],
+      "rail": [
+        "81"
+      ]
+    },
+    "6": {
+      "name": "Schweizerische Bundesbahnen (SBB)",
+      "rail": [
+        "11"
+      ]
+    },
+    "7": {
+      "name": "Auto AG Schwyz (AAGS)",
+      "bus": [
+        "841"
+      ]
+    },
+    "8": {
+      "name": "AUTO AG URI (AAGU)",
+      "bus": [
+        "816"
+      ]
+    },
+    "9": {
+      "name": "Aargau Verkehr AG (AVA)",
+      "bus": [
+        "723",
+        "899"
+      ],
+      "rail": [
+        "31"
+      ]
+    },
+    "10": {
+      "name": "BLS AG (BLS)",
+      "rail": [
+        "33"
+      ]
+    },
+    "11": {
+      "name": "Verkehrsbetriebe Luzern AG (vbl)",
+      "bus": [
+        "820"
+      ]
+    },
+    "12": {
+      "name": "Zentralbahn AG (zb)",
+      "rail": [
+        "86"
+      ]
+    },
+    "13": {
+      "name": "Schweizerische Südostbahn AG (SOB)",
+      "rail": [
+        "82"
+      ]
+    },
+    "14": {
+      "name": "Schifffahrtsgesellschaft des Vierwaldstättersees AG (SGV)",
+      "boat": [
+        "185"
+      ]
+    },
+    "15": {
+      "name": "RIGI BAHNEN AG",
+      "mountain": [
+        "137",
+        "13700"
+      ]
+    },
+    "16": {
+      "name": "Château Gütsch AG"
+    }
+  },
+  "featureOverrides": {
+    "bus:TB": {
+      "agencyIds": [
+        "816"
+      ],
+      "lines": [
+        "493"
+      ],
+      "mode": "bus",
+      "reason": "Tellbus, Kursbuch 60.493; GTFS agency Auto AG Uri and line 493."
+    },
+    "rail:LEX": {
+      "agencyIds": [
+        "86"
+      ],
+      "lines": [
+        "IRLEX"
+      ],
+      "mode": "rail",
+      "reason": "Named Luzern–Engelberg express in source and GTFS."
+    },
+    "rail:LIX": {
+      "agencyIds": [
+        "86"
+      ],
+      "lines": [
+        "LIX",
+        "IRLIX"
+      ],
+      "mode": "rail",
+      "reason": "Named Luzern–Interlaken express; GTFS has PE and IR records."
+    },
+    "rail:VAE": {
+      "agencyIds": [
+        "82"
+      ],
+      "lines": [
+        "VAE"
+      ],
+      "mode": "rail",
+      "reason": "Named Voralpen-Express; truncated cantonal geometry must still pass every complete trip."
+    },
+    "rail:VRG": {
+      "agencyIds": [
+        "137"
+      ],
+      "lines": [
+        "82",
+        "88"
+      ],
+      "mode": "mountain",
+      "reason": "Vitznau–Rigi Kulm and Vitznau–Staffelhöhe short working: GTFS lines 82 and 88 verified against complete fixture calls; Kursbuch 603."
+    },
+    "rail:VRG2": {
+      "agencyIds": [
+        "137"
+      ],
+      "lines": [
+        "81"
+      ],
+      "mode": "mountain",
+      "reason": "Arth-Goldau–Rigi Kulm, Kursbuch 602; official inventory retained even without a Luzern stop."
+    },
+    "rail:LWRK": {
+      "agencyIds": [
+        "13700"
+      ],
+      "lines": [
+        "2562"
+      ],
+      "mode": "mountain",
+      "reason": "Weggis–Rigi Kaltbad cableway; distinct GTFS agency from cogwheel rail."
+    },
+    "rail:KSB": {
+      "agencyIds": [
+        "3090"
+      ],
+      "lines": [
+        "2515"
+      ],
+      "mode": "mountain",
+      "reason": "TU=0 is unknown, not an operator. Explicit Kursbuch 2515 and Kriens–Sonnenberg identity crosswalk."
+    },
+    "rail:Gütschlift": {
+      "agencyIds": [
+        "820"
+      ],
+      "lines": [
+        "2510"
+      ],
+      "mode": "mountain",
+      "reason": "Source owner Château Gütsch differs from the GTFS publishing agency vbl; fixture calls identify Luzern Gütsch (Talstation)–Luzern, Château Gütsch."
+    },
+    "rail:NEX": {
+      "agencyIds": [
+        "11"
+      ],
+      "lines": [
+        "N7"
+      ],
+      "mode": "rail",
+      "reason": "SBB night service: source Luzern–Zürich NEX, GTFS N7. Fixture complete ordered calls Zürich HB–Baar–Zug–Cham–Rotkreuz–Gisikon-Root–Ebikon–Luzern verify the corridor; every pair still tested."
+    }
+  },
+  "admission": "Complete directed stop patterns only, with every segment passing source identity, projection, connectivity and detour checks. Retain every original source call. No invented gap fillers. Geometry is inferred from undirected official alignments; it is not certified street direction, track assignment or observed vehicle movement.",
+  "boatExclusion": "The only cantonal boat line is dated 2015 and has no 2026 route identity; no current water route geometry validated.",
+  "scopeLimits": [
+    "Annual GTFS membership is a census of the pinned archive, not proof that all real-world or demand-responsive services are represented.",
+    "Fixture validation covers Friday and Sunday plus preceding-day carry-in, not all annual seasonal, holiday or diversion patterns.",
+    "Services crossing the canton without a stop are outside the passenger-service scope.",
+    "No realtime data, one-way street certification or individual running-track validation."
+  ]
+}
