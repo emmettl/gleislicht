@@ -20,7 +20,8 @@ export function bernInstances(id, source, date, calendars, intervals) {
   return result
 }
 
-export async function readBernTimetables(archive, dates, source) {
+// The Fribourg adapter reuses the full-archive census and civil-day machinery.
+export async function readBernTimetables(archive, dates, source, { cantonName = 'Bern', boundaryBounds = [2550000, 1115000, 2685000, 1245000] } = {}) {
   const calendars = new Map()
   for (const date of new Set(dates.flatMap(date => [previousServiceDate(date), date]))) calendars.set(date, await activeServices(archive, date))
   const anyActive = new Set([...calendars.values()].flatMap(s => [...s]))
@@ -43,18 +44,18 @@ export async function readBernTimetables(archive, dates, source) {
     stops.set(row.stop_id, { point, name: row.stop_name, platform: row.platform_code, didok: row.didok, district, inside })
     if (inside) inCanton.add(row.stop_id)
     // Flag both sides of the boundary; never silently grow the canton polygon.
-    if (xy[0] > 2550000 && xy[0] < 2685000 && xy[1] > 1115000 && xy[1] < 1245000) {
+    if (xy[0] > boundaryBounds[0] && xy[0] < boundaryBounds[2] && xy[1] > boundaryBounds[1] && xy[1] < boundaryBounds[3]) {
       const gap = bernBoundaryGap(xy, source.canton[0].geometry)
       if (gap < 10) nearBoundary.push({ id: row.stop_id, name: row.stop_name, point, inside, gapMetres: gap })
     }
   }
-  console.log(`Bern spatial census: ${inCanton.size} GTFS stop records inside the canton`)
+  console.log(`${cantonName} spatial census: ${inCanton.size} GTFS stop records inside the canton`)
   for await (const row of rowsFromArchive(archive, 'trips.txt')) {
     assert(!trips.has(row.trip_id), 'Duplicate GTFS trip')
     trips.set(row.trip_id, { routeId: row.route_id, serviceId: row.service_id, direction: row.direction_id,
       headsign: row.trip_headsign, shortName: row.trip_short_name, inside: false })
   }
-  console.log('Censusing all national stop times for all-year Bern membership…')
+  console.log(`Censusing all national stop times for all-year ${cantonName} membership…`)
   let stopTimeRows = 0
   for await (const row of rowsFromArchive(archive, 'stop_times.txt')) {
     stopTimeRows++
@@ -75,7 +76,7 @@ export async function readBernTimetables(archive, dates, source) {
     if (!route.allYearTripRecords) routes.delete(id)
     else { route.inCantonStops = [...route.inCantonStops].sort(); route.districts = [...route.districts].sort() }
   }
-  console.log(`Reading complete calls for ${trips.size} dated Bern trips, ${routes.size} all-year routes…`)
+  console.log(`Reading complete calls for ${trips.size} dated ${cantonName} trips, ${routes.size} all-year routes…`)
   const frequencies = await readFrequencyIntervals(archive, trips)
   for await (const row of rowsFromArchive(archive, 'stop_times.txt')) {
     const trip = trips.get(row.trip_id)
@@ -115,6 +116,6 @@ export async function readBernTimetables(archive, dates, source) {
   const sourceStopInventory = [...stops.entries()].filter(([, stop]) => stop.inside).map(([id, stop]) => ({ id, ...stop }))
   return { schemaVersion: 1, routes: [...routes.values()], snapshots, sourceStopInventory,
     census: { allYearTrips, stopTimeRows, selectedAllYearRoutes: routes.size, datedSourceTrips: trips.size, frequencyTemplates: frequencies.size,
-      boundaryRule: 'At least one original GTFS call coordinate in the unsimplified 2026 Bern canton polygon. Full journey retained, including every call outside Bern. No operator whitelist.',
+      boundaryRule: `At least one original GTFS call coordinate in the unsimplified 2026 ${cantonName} canton polygon. Full journey retained, including every call outside ${cantonName}. No operator whitelist.`,
       allYearMeaning: 'All trip records in the pinned annual archive, including records inactive on both validation dates; not a claim of operating every day.', nearBoundary } }
 }

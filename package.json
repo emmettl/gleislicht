@@ -77,7 +77,12 @@
     "data:zug:census": "node scripts/zug-timetable.mjs",
     "data:zug": "node scripts/build-zug-region.mjs data/zug-timetable.json.gz",
     "data:zug:check": "node scripts/check-zug-region.mjs",
-    "data:zug:report": "node scripts/write-zug-audit.mjs"
+    "data:zug:report": "node scripts/write-zug-audit.mjs",
+    "data:solothurn:sources": "python3 scripts/prepare-solothurn-sources.py",
+    "data:solothurn:census": "node --max-old-space-size=8192 scripts/solothurn-timetable.mjs",
+    "data:solothurn": "node scripts/build-solothurn-region.mjs",
+    "data:solothurn:check": "node scripts/check-solothurn-region.mjs",
+    "data:solothurn:docs": "node scripts/document-solothurn-study.mjs"
   },
   "engines": {
     "node": ">=24.0.0"

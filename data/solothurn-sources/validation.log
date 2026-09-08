@@ -1,0 +1,41 @@
+Info: ilivalidator-1.12.1-8d9b922cd26b01147d77a23d300d952d29359a30
+Info: ili2c-5.3.0-90a8da73b8eb7696cb50ce8ae0ee5b422d33fba7
+Info: iox-ili-1.21.13-0ca3feb59eff9c381b29139d8f808b4de2464d49
+Info: User <1000940000>
+Info: Start date 2025-12-17 13:49
+Info: maxMemory 1013632 KB
+Info: dataFile </home/gradle/job/workspace/avt_oeffentlicher_verkehr_pub/avt_oeffentlicher_verkehr_pub/build/SO_AVT_Oeffentlicher_Verkehr_20210205.xtf>
+Info: modeldir <%ITF_DIR;https://geo.so.ch/models/;%JAR_DIR/ilimodels>
+Info: lookup model <SO_AVT_Oeffentlicher_Verkehr_20210205> 2.3 in repository </home/gradle/job/workspace/avt_oeffentlicher_verkehr_pub/avt_oeffentlicher_verkehr_pub/build/>
+Info: lookup model <SO_AVT_Oeffentlicher_Verkehr_20210205> 2.3 in repository <https://geo.so.ch/models/>
+Info: lookup model <GeometryCHLV95_V1> 2.3 in repository </home/gradle/job/workspace/avt_oeffentlicher_verkehr_pub/avt_oeffentlicher_verkehr_pub/build/>
+Info: lookup model <GeometryCHLV95_V1> 2.3 in repository <https://geo.so.ch/models/>
+Info: lookup model <GeometryCHLV95_V1> 2.3 in repository <http://models.geo.kgk-cgc.ch/>
+Warning: model KGKCGC_FPDS2_V1_1_IT: duplicate version without precursor; version 2022-08-14 ignored
+Warning: model KGKCGC_FPDS2_V1_1_FR: duplicate version without precursor; version 2022-07-14 ignored
+Warning: model KGKCGC_FPDS2_V1_1: duplicate version without precursor; version 2022-07-14 ignored
+Info: lookup model <GeometryCHLV95_V1> 2.3 in repository <http://models.geo.admin.ch/>
+Info: lookup model <CoordSys> 2.3 in repository </home/gradle/job/workspace/avt_oeffentlicher_verkehr_pub/avt_oeffentlicher_verkehr_pub/build/>
+Info: lookup model <CoordSys> 2.3 in repository <https://geo.so.ch/models/>
+Info: lookup model <CoordSys> 2.3 in repository <http://models.geo.kgk-cgc.ch/>
+Info: lookup model <CoordSys> 2.3 in repository <http://models.geo.admin.ch/>
+Info: lookup model <CoordSys> 2.3 in repository <https://models.interlis.ch/>
+Info: lookup model <Units> 2.3 in repository </home/gradle/job/workspace/avt_oeffentlicher_verkehr_pub/avt_oeffentlicher_verkehr_pub/build/>
+Info: lookup model <Units> 2.3 in repository <https://geo.so.ch/models/>
+Info: lookup model <Units> 2.3 in repository <http://models.geo.kgk-cgc.ch/>
+Info: lookup model <Units> 2.3 in repository <http://models.geo.admin.ch/>
+Info: lookup model <Units> 2.3 in repository <https://models.interlis.ch/>
+Info: ilifile </home/gradle/.ilicache/models.interlis.ch/refhb23/Units-20120220.ili>
+Info: ilifile </home/gradle/.ilicache/models.interlis.ch/refhb23/CoordSys-20151124.ili>
+Info: ilifile </home/gradle/.ilicache/models.geo.admin.ch/CH/CHBase_Part1_GEOMETRY_V1.ili>
+Info: ilifile </home/gradle/.ilicache/geo.so.ch/models/AVT/SO_AVT_Oeffentlicher_Verkehr_20210205.ili>
+Info: validate data...
+Info: assume unknown external objects
+Info: first validation pass...
+Info: second validation pass...
+Info: object count 4726 (structured elements 7929)
+Info: /home/gradle/job/workspace/avt_oeffentlicher_verkehr_pub/avt_oeffentlicher_verkehr_pub/build/SO_AVT_Oeffentlicher_Verkehr_20210205.xtf: SO_AVT_Oeffentlicher_Verkehr_20210205.Oeffentlicher_Verkehr BID=SO_AVT_Oeffentlicher_Verkehr_20210205.Oeffentlicher_Verkehr
+Info:     775 objects in CLASS SO_AVT_Oeffentlicher_Verkehr_20210205.Oeffentlicher_Verkehr.Haltestelle
+Info:    3951 objects in CLASS SO_AVT_Oeffentlicher_Verkehr_20210205.Oeffentlicher_Verkehr.Netz
+Info: ...validation done
+Info: End date 2025-12-17 13:49 validation took 00h:00m:03s.0496ms

@@ -42,3 +42,16 @@
 
 .jungfrau-guide header { position: sticky; top: -20px; z-index: 2; background: #0b1020; padding: 4px 0; }
 @media (max-width: 700px) { .jungfrau-guide header { top: -12px; } }
+.jungfrau-terrain-control { border-top: 1px solid #c1ccff33; padding-top: 8px; }
+.jungfrau-terrain-control > button { width: 100%; text-align: center; }
+.jungfrau-terrain-control > button[aria-pressed='true'] { color: #a9e2cf; border-color: #a9e2cf88; }
+.jungfrau-study.has-timed-rigi-terrain .map-navigation,
+.jungfrau-study.has-timed-rigi-terrain .mobile-map-tools,
+.jungfrau-study.has-timed-rigi-terrain .prototype-note,
+.jungfrau-study.has-timed-rigi-terrain .north-marker { display: none; }
+.jungfrau-ascent[data-compact='true'] > label,
+.jungfrau-ascent[data-compact='true'] > nav,
+.jungfrau-ascent[data-compact='true'] > p,
+.jungfrau-ascent[data-compact='true'] > details { display: none; }
+.jungfrau-ascent[data-compact='true'] .jungfrau-terrain-control { border-top: 0; padding-top: 2px; }
+.jungfrau-ascent .terrain-leg-label { color: #fff0b9; }

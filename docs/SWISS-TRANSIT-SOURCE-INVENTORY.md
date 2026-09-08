@@ -97,7 +97,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 | [GL — Glarus](#gl) | No line export verified | OSTWIND |
 | [ZG — Zug](#zg) | Cantonal inventory and bus adapter; partial admission | Tarifverbund Zug, Z-Pass |
 | [FR — Fribourg / Freiburg](#fr) | Vector sample verified | Frimobil |
-| [SO — Solothurn](#so) | Download inspected | Libero, A-Welle, TNW |
+| [SO — Solothurn](#so) | Network adapter; partial service admission | Libero, A-Welle, TNW |
 | [BS — Basel-Stadt](#bs) | Existing integration in part | TNW, Triregio, HochRhein Ticket |
 | [BL — Basel-Landschaft](#bl) | Metadata / export unresolved | TNW, Triregio |
 | [SH — Schaffhausen](#sh) | No line export verified | OSTWIND, Z-Pass, Bodensee Ticket |
@@ -276,11 +276,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 **Next action:** Acquire all pages and metadata/terms, map timetable-field IDs to agency/route IDs, and measure TPF bus patterns. This supersedes the earlier no-export-found result. Representative GTFS agencies: `11`, `53`, `801`, `834`, `3004`.
 
-**Checked references:** [fr-layer](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2?f=pjson), [fr-count](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnCountOnly=true&f=json), [fr-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-bus-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=TYPE_LIGNE_VALEUR%20LIKE%20%27%25Bus%25%27&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-catalogue](https://geo.fr.ch/), [fr-terms-canonical](https://map.geo.fr.ch/help/fr/conditions_utilisation.htm).
-
-<a id="so"></a>
-
-### SO — Solothurn
+**Checked references:** [fr-layer](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2?f=pjson), [fr-count](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnCountOnly=true&f=json), [fr-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-bus-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=TYPE_LIGNE_VALEUR%20LIKE%20%27%25Bus%25%27&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-catalogue](https://geo.fr.ch/), [fr-terms-canonical](https://map.geo.fr.ch/help/fr/conditions_utilisation.### SO — Solothurn
 
 **Authority/publisher:** Amt für Verkehr und Tiefbau; Amt für Geoinformation Solothurn. **Review areas:** Solothurn/Grenchen; Olten/Gösgen/Gäu; Thal; Dorneck/Thierstein.
 
@@ -290,9 +286,11 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 **Reuse:** Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.
 
-**Next action:** Use this as a mode-filtered network graph, not a line-to-route lookup. Measure topology and ordered-stop routing; add missing night-service paths explicitly. Representative GTFS agencies: `38`, `56`, `68`, `81`, `88`, `793`, `850`, `870`, `883`, `894`.
+**Implementation follow-up:** The [Solothurn cantonal study](SOLOTHURN-STUDY.md) inventories all **193 canton-serving GTFS route records across 19 agency identities and all ten districts**, retaining full cross-canton calls. Its mode-filtered network adapter validates Friday/Sunday directed patterns and emits **2,723 / 2,385** complete geometry movements, including **1,078 / 1,108** representative Weissenstein headway instances. **50 route records** contribute admitted journeys. The [route inventory](SOLOTHURN-ROUTE-INVENTORY.md) and [machine audit](../data/solothurn-audit/summary.json) retain all exclusions and inactive routes. Night services, unsupported tram/ferry geometry and incomplete patterns are excluded. Geometry is inferred from the official network, not a verified operator itinerary or physical one-way/running-track alignment; two dates do not establish year-round coverage. Original representative agency IDs were survey leads, not the implemented membership denominator.
 
 **Checked references:** [so-publications](https://data.geo.so.ch/themepublications?query=ch.so.avt.oev), [so-lines](https://files.geo.so.ch/ch.so.avt.oev/aktuell/ch.so.avt.oev.gpkg.zip), [so-metadata](https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html), [so-terms](https://files.geo.so.ch/nutzungsbedingungen.html).
+
+ungsbedingungen.html).
 
 <a id="bs"></a>
 

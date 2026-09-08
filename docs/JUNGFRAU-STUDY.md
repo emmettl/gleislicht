@@ -1,8 +1,8 @@
-# Jungfrau: the first full-day map
+# Jungfrau: full-day map and measured outdoor ascent
 
 Select **JUNG** in the desktop study strip or the phone study picker, or choose **Jungfrau · valleys to summit** in Explore studies. The first separately loaded **2D** study covers Interlaken Ost’s two valley branches, both Wengernalp approaches through Lauterbrunnen/Wengen and Grindelwald, Jungfraubahn to Jungfraujoch, and Eiger Express. Search stations, operators and services, isolate regional rail, cogwheel or cableway, follow a selected timetable record, or use **Explore the approaches** for six station entry points. Controls and disclosures are available in EN / DE / FR / IT. Source place names remain unchanged.
 
-This is the first implemented increment, not the completed measured-terrain mountain experience. No Jungfrau terrain, tunnel heights, cable sag, pedestrian geometry or guaranteed interchange sequence is implied. Physical-device review and publication remain separate steps.
+The Wengen ascent also offers optional measured outdoor terrain, described below. Tunnel and covered sections retain the 2D map. Cable sag, pedestrian geometry and guaranteed interchange sequences are not implied. Physical-device review and publication remain separate steps.
 
 ## Dated scope and operating semantics
 
@@ -41,7 +41,7 @@ The retained [FOT cableway query](https://api3.geo.admin.ch/rest/services/ech/Ma
 
 The timetable reuses stop roots `ch:1:sloid:5226` at Grindelwald Terminal and `ch:1:sloid:7361` at Eigergletscher. Their coordinates differ from the cable alignment endpoints by **213.3 m** and **135.9 m**, respectively. The builder preserves those source coordinates and the mapped cable alignment. It does not snap the railway station to the cableway or draw a walking connector. The reviewed endpoint limits for these exact identities are 225 m and 150 m; other endpoint identities or larger differences fail generation. This is a disclosed source-location difference, not evidence of a zero-distance interchange.
 
-The map follows the **2D** mapped rail and cableway geometry. Rail segments through the mountain are not raised to surface terrain. Tunnel depth, track elevation, cabin height and sag await their own evidence before a 3D ascent is added.
+The map follows the **2D** mapped rail and cableway geometry. Rail segments through the mountain are not raised to surface terrain. The optional Wengen terrain view uses separately audited railway elevations and masks underground or covered sections; cabin height and sag remain outside the model.
 
 ## Payload, reproduction and checks
 
@@ -87,11 +87,40 @@ The shared clock drives train following, stationary interchange focus, backward 
 node scripts/audit-jungfrau-ascent.mjs --archive /path/GTFS_FP2026_20260902.zip
 ```
 
-This increment adds the authored map journey. Measured terrain, tunnel-aware heights, Eiger Express ascent playback and independently audited operating dates remain future increments.
+The same authored journey now supports measured outdoor terrain. Eiger Express ascent playback and independently audited operating dates remain future increments.
+
+## Measured outdoor terrain and tunnel semantics
+
+Within **Follow the ascent via Wengen**, select **Follow in measured terrain**. The choice preserves the selected departure, clock, playback rate and pause state. The train stays at its mapped station position during a dwell. Interchange waits remain on the map. Terrain automatically returns on audited outdoor sections; tunnels, galleries, underpasses, station buildings and uncertain alignments continue in 2D without pausing the timetable. **Return to map** preserves the clock. Journey details can be expanded while the terrain preference is retained.
+
+The landscape uses [swissALTIRegio](https://www.swisstopo.admin.ch/en/height-model-swissaltiregio), release **2026-05-28**, EPSG:2056 / LN02. A bounded native **10 m** raster is sampled into a **193 × 251** display grid covering **16.3 × 21.2 km**, about **85 m** between displayed samples. It is a generalised landscape, not track-bed geometry. The camera clears the sampled landscape. Horizontal and vertical scales are equal. An enlarged train marker and route overlay remain legible over the simplified mesh; neither is a surveyed vehicle envelope or a claim of exact clearance.
+
+Railway heights come from **PolylineZ** axes in [swissTLM3D 2026-02](https://www.swisstopo.admin.ch/en/landscape-model-swisstlm3d), not from the ground raster. The bounded retained source contains **669 railway features**, including the mapped underground Jungfraubahn. The extractor pins the federal archive identity and all four railway member hashes, downloads only the relevant ZIP members through bounded range requests, validates ZIP CRCs, and retains the original attributes and XYZ coordinates. A 2D display API response is not used to infer altitude. The object catalogue's `STUFE` relative ordering is not treated as height.
+
+The matcher samples the oriented FOT plan alignment at intervals no larger than **15 m**, then interpolates height on the nearest active narrow-gauge swissTLM3D segment. Both upper legs additionally require the source cogwheel flag. Samples beyond **60 m** from a compatible axis fail generation. Outdoor playback requires source structure class `Keine` or `Bruecke` and offset at most **25 m**. All other structure classes and larger offsets are masked. Masks extend by 30 m around neighbouring samples and merge across gaps up to 60 m to avoid brief flashes between nearby covered structures. These are conservative editorial visibility margins, not surveyed portal positions.
+
+| Leg | Source points | Maximum axis offset | Mapped endpoint elevations (LN02) |
+| --- | ---: | ---: | --- |
+| Interlaken Ost → Lauterbrunnen | 862 | 40.8 m; offsets over 25 m masked | 566.8 → 795.8 m |
+| Lauterbrunnen → Kleine Scheidegg | 730 | 11.7 m | 795.8 → 2,061.0 m |
+| Kleine Scheidegg → Jungfraujoch | 645 | 26.4 m; offsets over 25 m masked | 2,061.0 → 3,453.5 m |
+
+The summit railway endpoint is **3,453.5 m**, while the native ground sample there is **3,476.6 m**. The source classifies this final alignment as tunnel; it stays on the map. No train is draped across the mountain surface and no tunnel interior is invented. Progress between calls follows cumulative three-dimensional rail distance with linear interpolation, without spline overshoot. Only unmasked rail segments are drawn in terrain. Source uncertainty and the generalised terrain remain visible in the four-language evidence notes.
+
+`public/data/jungfrau-ascent-terrain.json` is **108.7 KiB gzip**, requested only when terrain is enabled, below an independent **220 KiB** ceiling. The UI validates the source date, feed, timetable hash, route and stop identities, finite geometry, grid bounds and mask ordering before binding it to any of the 17 compositions. Request or validation failures retain the ascent map and expose a retry. `data/jungfrau-terrain-audit.json` records source hashes, native raster hash, source feature IDs/years, alignment offsets, masks and station rail/ground comparisons.
+
+```sh
+python3 scripts/prepare-jungfrau-terrain-source.py
+node scripts/ingest-jungfrau-terrain.mjs
+npx vitest run scripts/jungfrau-terrain.test.ts scripts/jungfrau-ascent.test.ts
+npx playwright test e2e/jungfrau-terrain.spec.ts e2e/jungfrau-ascent.spec.ts --workers=1
+```
+
+The first command's cache is pinned to the retained source edition. The second command reuses a local bounded raster cache only when its bounds and source checksum match. Source and render simplification do not establish future service availability or exact engineering clearance. All data retain FOT and swisstopo attribution.
 
 ## Next Jungfrau increments
 
 1. Extend the completed approach guide and Wengen ascent with independently audited Grindelwald and Eiger Express compositions, retaining transfer and boarding constraints.
-2. Add measured terrain for open-air railway sections. Establish tunnel-aware vertical semantics before extending terrain to the Jungfraujoch section.
+2. Assess further mountain railways using the outdoor-terrain and explicit tunnel fallback established here; independently audit each alignment and timetable.
 3. Audit Eiger Express vertical geometry and operating semantics before introducing an illustrative continuous cabin system.
 4. Compare independently generated operating dates and quiet periods. Audit Mürren, First, Männlichen and other branches separately before expanding this composition.

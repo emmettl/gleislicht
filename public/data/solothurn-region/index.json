@@ -1,0 +1,20 @@
+{
+  "label": "Solothurn canton regional feed",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "manifest": "2026-09-04/solothurn-region-day-manifest.json",
+      "morning": "2026-09-04/solothurn-region-morning.json"
+    },
+    {
+      "date": "2026-09-06",
+      "manifest": "2026-09-06/solothurn-region-day-manifest.json",
+      "morning": "2026-09-06/solothurn-region-morning.json"
+    }
+  ],
+  "admission": "Complete directed patterns with inferred official-network geometry; exclusions in docs/SOLOTHURN-STUDY.md and data/solothurn-audit."
+}

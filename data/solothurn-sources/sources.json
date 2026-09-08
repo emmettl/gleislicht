@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "sourceCrs": "EPSG:2056",
+  "records": [
+    {
+      "file": "ch.so.avt.oev.gpkg.zip",
+      "url": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/ch.so.avt.oev.gpkg.zip",
+      "sha256": "e1114b1dfcbd75f57a85da70da00185d64123d72c745c0379c6a8470f48c5045",
+      "bytes": 671829,
+      "acquiredAt": "2026-09-08T17:03:54.515155+00:00"
+    },
+    {
+      "file": "metadata.html",
+      "url": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html",
+      "sha256": "72a20b0a2757c30d72ee5d04f07f82b354220f434eba4b2ffac1328c847c9c97",
+      "bytes": 125613,
+      "acquiredAt": "2026-09-08T17:03:54.454634+00:00"
+    },
+    {
+      "file": "terms.html",
+      "url": "https://files.geo.so.ch/nutzungsbedingungen.html",
+      "sha256": "0154479bfb178f7c5011cb4da7b861110fabd0803709ecc7b8f04bc6d6b82f15",
+      "bytes": 120820,
+      "acquiredAt": "2026-09-08T17:10:59.082656+00:00"
+    },
+    {
+      "file": "publications.json",
+      "url": "https://data.geo.so.ch/themepublications?query=ch.so.avt.oev",
+      "sha256": "37645f96c2d70ca4e65fcef91477df2b21edb0b0fcbb8e5dd4861d2bb5b6481b",
+      "bytes": 3647,
+      "acquiredAt": "2026-09-08T17:02:37.178652+00:00"
+    }
+  ],
+  "packagePublished": "2025-12-17",
+  "geometrySurveyDate": null,
+  "vintageNote": "Publication date is not a survey date; no per-edge survey date supplied.",
+  "archiveSha256": "e1114b1dfcbd75f57a85da70da00185d64123d72c745c0379c6a8470f48c5045",
+  "geopackageSha256": "3e7a43cfa528866880d2bba61d9b309f5bbc660f7252914c9373f66096f2a263",
+  "attribution": "Öffentlicher Verkehr — Amt für Verkehr und Tiefbau / Amt für Geoinformation, Kanton Solothurn",
+  "metadataUrl": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html",
+  "termsUrl": "https://files.geo.so.ch/nutzungsbedingungen.html",
+  "license": "Free commercial and noncommercial use; attribution recommended. No Creative Commons licence assigned.",
+  "sourceExclusion": "Night services explicitly excluded by publisher.",
+  "boundary": {
+    "edition": "2026-01",
+    "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+    "snapshotSha256": "68ad054cb9830453e9a90345d57a7bbde9b458dcc0160dce5903ce88a4811d28",
+    "attribution": "© swisstopo",
+    "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+    "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+  }
+}
