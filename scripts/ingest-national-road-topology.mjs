@@ -123,7 +123,7 @@ export function simplifyRoadPath(points, toleranceMetres = 70) {
   return [...first.slice(0, -1), ...second]
 }
 
-function lv95ToWgs84([east, north]) {
+export function lv95ToWgs84([east, north]) {
   const y = (east - 2_600_000) / 1_000_000
   const x = (north - 1_200_000) / 1_000_000
   const longitudeSeconds =

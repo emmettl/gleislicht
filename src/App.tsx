@@ -644,7 +644,10 @@ export function App({ edition }: AppProps) {
     () => (roadTopology?.roads ?? SWITZERLAND_ROADS).find((road) => road.id === selectedRoadId),
     [roadTopology, selectedRoadId],
   )
-  const selectedRoadLength = SWITZERLAND_ROADS.find(road => road.id === selectedRoadId)?.lengthKm
+  const selectedRoadLength = selectedRoad && 'lengthKm' in selectedRoad && typeof selectedRoad.lengthKm === 'number'
+    ? selectedRoad.lengthKm
+    : SWITZERLAND_ROADS.find(road => road.id === selectedRoadId)?.lengthKm
+  const selectedRoadGeometryOnly = selectedRoad?.id.startsWith('ZH:') ?? false
   const selectedRoadTraffic = useMemo(
     () => selectedRoadId && roadEnabled
       ? roadTrafficSummary(selectedRoadId, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, roadSnapshot)
@@ -1369,7 +1372,9 @@ export function App({ edition }: AppProps) {
         if (!response.ok) {
           throw new Error(`Road topology returned ${response.status}`)
         }
-        return response.json() as Promise<RoadTopologySnapshot>
+        return (response.json() as Promise<RoadTopologySnapshot>).then(async topology =>
+          (await import('./studies/cantonal-road-topology.ts')).loadCantonalRoadGeometry(topology, editionDataUrl('zurich-cantonal-road-topology.json'), controller.signal),
+        )
       }),
     ])
       .then(([snapshot, topology]) => {
@@ -2998,27 +3003,29 @@ export function App({ edition }: AppProps) {
           <p className="between">
             {selectedRoad.description ?? text.nationalMotorway}
           </p>
-          <Suspense fallback={<p className="road-traffic-summary">{text.loadingRoad}</p>}>
+          {selectedRoadGeometryOnly ? <p className="road-traffic-summary">{text.cantonalGeometryOnly}</p> : <Suspense fallback={<p className="road-traffic-summary">{text.loadingRoad}</p>}>
             <RoadTrafficHistory road={selectedRoad.id} manifest={nationalRoad.manifest} fallback={roadSnapshot}
               time={networkTime} language={language} onTime={time => {
                 setIsPlaying(false)
                 handleNetworkTime(time)
                 roadHistorySeekRef.current = { time, at: performance.now() }
               }} />
-          </Suspense>
+          </Suspense>}
           <div className="metric-grid">
             <div>
               <span>{text.mappedRoadLength}</span>
               <strong>{selectedRoadLength === undefined ? '—' : `≈${roadMetricFormat.format(selectedRoadLength)}`}</strong>
               <small>km</small>
             </div>
-            <div>
+            {!selectedRoadGeometryOnly && <div>
               <span>{text.estimatedVehicles}</span>
               <strong>{selectedRoadTraffic ? `≈${numberFormat.format(selectedRoadTraffic.vehicles)}` : '—'}</strong>
-            </div>
+            </div>}
           </div>
           <p className="road-traffic-summary">
-            {selectedRoadTraffic
+            {selectedRoadGeometryOnly
+              ? <a href="https://geolion.zh.ch/geodatensatz/3177" target="_blank" rel="noreferrer">AUTO · Kanton Zürich</a>
+              : selectedRoadTraffic
               ? <>
                   <span>{text.roadDensitySummary(roadMetricFormat.format(selectedRoadTraffic.density))}</span>
                   <span>{text.roadCoverageSummary(roadMetricFormat.format(selectedRoadTraffic.carriagewayKm))}</span>
@@ -3909,6 +3916,9 @@ export function App({ edition }: AppProps) {
               >
                 AUTO · ASTRA / FEDRO
               </a>
+            )}
+            {isNetwork && roadEnabled && roadTopology?.roads.some(road => road.id.startsWith('ZH:')) && (
+              <a href="https://geolion.zh.ch/geodatensatz/3177" target="_blank" rel="noreferrer">AUTO · Kanton Zürich</a>
             )}
             {isRigi && <a href="https://map.geo.admin.ch/?layers=ch.bav.seilbahnen-bundeskonzession,ch.bav.schienennetz" target="_blank" rel="noreferrer">FOT · Rail / Cableway</a>}
             <a href="./methodology.html">{text.methodology}</a>

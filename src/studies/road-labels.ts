@@ -48,7 +48,7 @@ export function visibleRoadLabels(
     if (occupied.some(other => other.road === anchor.road
       // Hysteresis stops badges blinking at a zoom threshold.
       ? Math.hypot(x - other.x, y - other.y) < (retained && other.retained ? 130 : 180)
-      : Math.abs(x - other.x) < 50 && Math.abs(y - other.y) < 31)) return false
+      : Math.abs(x - other.x) < (anchor.road.startsWith('ZH:') || other.road.startsWith('ZH:') ? 86 : 50) && Math.abs(y - other.y) < 31)) return false
     occupied.push({ x, y, road: anchor.road, retained })
     return true
   })

@@ -503,6 +503,10 @@
   display: block;
 }
 
+.road-traffic-summary a {
+  color: var(--ink);
+}
+
 .road-card-mark {
   font-size: 1.05rem;
 }

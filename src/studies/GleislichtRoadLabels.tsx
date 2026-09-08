@@ -10,13 +10,14 @@ const LABEL_WIDTH = 38
 const LABEL_HEIGHT = 19
 
 function routeBadge(road: string) {
+  const width = road.startsWith('ZH ') ? 76 : LABEL_WIDTH
   const canvas = document.createElement('canvas')
-  canvas.width = LABEL_WIDTH * 3
+  canvas.width = width * 3
   canvas.height = LABEL_HEIGHT * 3
   const context = canvas.getContext('2d')!
   context.scale(3, 3)
   context.beginPath()
-  context.roundRect(0.75, 0.75, LABEL_WIDTH - 1.5, LABEL_HEIGHT - 1.5, 4)
+  context.roundRect(0.75, 0.75, width - 1.5, LABEL_HEIGHT - 1.5, 4)
   context.fillStyle = '#171522'
   context.fill()
   context.strokeStyle = '#ab8463'
@@ -26,13 +27,13 @@ function routeBadge(road: string) {
   context.textAlign = 'center'
   context.textBaseline = 'middle'
   context.fillStyle = '#ffe0b3'
-  context.fillText(road, LABEL_WIDTH / 2, LABEL_HEIGHT / 2 + 0.5)
+  context.fillText(road, width / 2, LABEL_HEIGHT / 2 + 0.5)
   const texture = new THREE.CanvasTexture(canvas)
   texture.colorSpace = THREE.SRGBColorSpace
   return texture
 }
 
-/** Motorway shields fixed to road coordinates, thinned as the camera pulls back. */
+/** Road labels fixed to road coordinates, thinned as the camera pulls back. */
 export function GleislichtRoadLabels({ topology, projection, selectedRoadId, subdued = false }: {
   topology: RoadTopologySnapshot
   projection: NetworkProjection
@@ -104,7 +105,7 @@ export function GleislichtRoadLabels({ topology, projection, selectedRoadId, sub
     const pixelScale = 2 / (camera.projectionMatrix.elements[5] * size.height)
     for (const entry of resources.entries) {
       for (const { anchor, sprite } of entry.sprites) {
-        sprite.scale.set(LABEL_WIDTH * pixelScale, LABEL_HEIGHT * pixelScale, 1)
+        sprite.scale.set((anchor.road.startsWith('ZH:') ? 76 : LABEL_WIDTH) * pixelScale, LABEL_HEIGHT * pixelScale, 1)
         // oxlint-disable-next-line react/immutability -- Three.js scene objects are updated imperatively in useFrame.
         sprite.visible = resources.visible.has(anchor.id)
         if (sprite.visible && sprite.parent !== resources.group) resources.group.add(sprite)

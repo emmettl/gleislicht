@@ -59,7 +59,8 @@
     "data:postbus:roads:prepare": "node scripts/prepare-postbus-road-feed.mjs",
     "data:postbus:roads:match": "node scripts/match-postbus-roads.mjs",
     "data:postbus:roads": "node scripts/enrich-postbus-roads.mjs --apply",
-    "data:road:catalog:cantonal": "node scripts/ingest-cantonal-road-counters.mjs"
+    "data:road:catalog:cantonal": "node scripts/ingest-cantonal-road-counters.mjs",
+    "data:road:topology:cantonal": "node scripts/ingest-cantonal-road-topology.mjs"
   },
   "engines": {
     "node": ">=24.0.0"
