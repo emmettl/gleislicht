@@ -1,0 +1,32 @@
+{
+  "publisher": "Federal Office of Transport (FOT)",
+  "layer": "ch.bav.seilbahnen-bundeskonzession",
+  "attribution": "© Federal Office of Transport (FOT)",
+  "license": "proprietary",
+  "termsUrl": "https://opendata.swiss/en/terms-of-use/#terms_by",
+  "collectionDate": "2025-11-07T00:00:00Z",
+  "collectionUpdated": "2026-01-29T06:50:29.460765Z",
+  "retrieved": "2026-09-08",
+  "alignmentValidity": "API feature has no individual source date or September 2026 validity statement; collection date is not proof of individual alignment vintage.",
+  "geometry": "Complete 22-vertex WGS84 LineString as returned; GTFS endpoint attachments inferred separately; no elevation interpolation.",
+  "files": [
+    {
+      "file": "identify.json",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.50,47.12,8.57,47.18&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.50,47.12,8.57,47.18&tolerance=0&layers=all:ch.bav.seilbahnen-bundeskonzession&returnGeometry=true&limit=200&sr=4326",
+      "retrieved": "2026-09-08",
+      "sha256": "1b6f512a58ac11009de87946b93e3ecdaeb7dfadb31f0ed89a5ae16ffb5e3c37"
+    },
+    {
+      "file": "layer.json",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.bav.seilbahnen-bundeskonzession?lang=en",
+      "retrieved": "2026-09-08",
+      "sha256": "585cef449014a35c59e1eb02db0461600804908495fe2ab758f1868651c23275"
+    },
+    {
+      "file": "collection.json",
+      "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.seilbahnen-bundeskonzession",
+      "retrieved": "2026-09-08",
+      "sha256": "83bd7103bc5730788052d9b034f1827e77f4121dc2ca0f5f83938d0dd27a4525"
+    }
+  ]
+}

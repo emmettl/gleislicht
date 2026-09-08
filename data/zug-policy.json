@@ -212,12 +212,12 @@
       "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
     }
   },
-  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop.",
+  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop. Zugerbergbahn uses exact federal installation and operating-point identities, retaining its full curve and reporting GTFS endpoint connectors.",
   "scopeLimits": [
     "Annual membership is complete for the pinned national timetable and official canton polygon, not proof of unrepresented real-world services.",
     "Friday/Sunday plus preceding-day carry-in do not establish seasonal, holiday or year-round coverage.",
     "No-stop through traffic is outside this passenger-service inventory.",
-    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements and standard-gauge FOT infrastructure. Mountain, boat and unresolved rail/bus patterns remain in the coverage denominator.",
+    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements, standard-gauge FOT infrastructure and the exact federal Zugerbergbahn installation. Boat and unresolved rail/bus patterns remain in the coverage denominator.",
     "The WFS matches the archive within 1 mm but proves no 2026 alignment validity. No realtime."
   ],
   "topologyJoins": {
@@ -476,5 +476,27 @@
         "operator": "PostAuto AG (PAG)"
       }
     ]
+  },
+  "mountain": {
+    "sourceDirectory": "data/zug-mountain-sources",
+    "sourceSha256": "1ec6a519ba2d94c1b6de8118ab3d84bb1ec04b01e74f84ab2f2f85f685c0ff75",
+    "routeId": "93-256-6-j26-1",
+    "agencyId": "158",
+    "line": "2566",
+    "routeType": 1400,
+    "installation": "61.051",
+    "operator": "ZBB",
+    "featureId": 676,
+    "stationFeatureIds": [
+      3254,
+      3248
+    ],
+    "operatingPointIds": [
+      "8502291",
+      "8502292"
+    ],
+    "stationAttachmentMetres": 25,
+    "detourRatio": 2,
+    "detourFloorMetres": 1500
   }
 }

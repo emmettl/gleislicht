@@ -7,6 +7,7 @@ import { validateZugSnapshot } from './build-zug-region.mjs'
 import { reviewedZugJoins, zugGraphs, directedPatternKey, zugRouteKey } from './zug-line-geometry.mjs'
 import { gunzipSync } from 'node:zlib'
 import { loadZugBusSupplement, matchZugBusPair } from './zug-bus-supplement.mjs'
+import { loadZugMountain } from './zug-mountain-geometry.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { inCanton } from './zug-timetable.mjs'
 
@@ -49,6 +50,10 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
   assert.equal(audit.sourceHashes.rail, audit.policy.rail.sourceSha256)
   assert.deepEqual(audit.railSource, rail.source)
   assert.deepEqual(audit.railSourceInventory, rail.sourceInventory)
+  const mountain = await loadZugMountain(audit.policy.mountain)
+  assert.equal(audit.sourceHashes.mountain, audit.policy.mountain.sourceSha256)
+  assert.deepEqual(audit.mountainSource, mountain.source)
+  assert.deepEqual(audit.mountainInventory, mountain.inventory)
   const repairIds = new Set(repairs.map(r => r.id))
   for (const route of audit.inventory) for (const key of route.sourceFeatures) assert(sourceKeys.has(key))
   let raw
@@ -169,11 +174,12 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
       const r = rawRoutes.get(p.routeId), a = sourceStops.get(p.fromId), b = sourceStops.get(p.toId)
       const pattern = p.contextPatternId ? patterns.get(p.contextPatternId) : undefined
       const train = pattern ? { routeId: pattern.routeId, directionId: pattern.directionId, calls: pattern.stopIds.map((id, i) => ({ id, pickupType: pattern.callRules[i][0], dropOffType: pattern.callRules[i][1] })) } : undefined
-      const result = train ? rail.matchPattern(train, sourceStops, r)[p.pairIndex] : r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugBusPair(graphs.get(zugRouteKey(r)), supplement.graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
+      const result = train ? rail.matchPattern(train, sourceStops, r)[p.pairIndex] : r.mode === 'mountain' ? mountain.matchPair(r, a, b) : r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugBusPair(graphs.get(zugRouteKey(r)), supplement.graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
       assert.equal(Boolean(result.path), p.matched)
       assert.equal(result.reason, p.reason)
       assert.equal(result.geometrySource, p.geometrySource)
       assert.deepEqual(result.primaryFailure, p.primaryFailure)
+      if (r.mode === 'mountain') for (const field of ['sourceFeatures', 'installation', 'operatingPointIds', 'attachmentMetres']) assert.deepEqual(result[field], p[field])
       assert.equal(result.path ? sha256(JSON.stringify(result.path)) : null, p.geometrySha256)
     }
     const patternTrips = new Map(), pairOccurrences = new Map(), admittedOccurrences = new Map()
