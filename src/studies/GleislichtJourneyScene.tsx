@@ -28,6 +28,8 @@ export interface JourneyEnvironment {
 
 const HORIZONTAL_METRES_PER_UNIT = 1800
 const VERTICAL_METRES_PER_UNIT = 390
+// Keep the original corridor models close to the newer terrain-study markers.
+const CORRIDOR_VEHICLE_SCALE = 0.15
 
 function horizontalScale(corridor?: CorridorSnapshot) {
   return corridor?.id === 'kiental-griesalp' || isRigiCorridorId(corridor?.id) ? 650 : HORIZONTAL_METRES_PER_UNIT
@@ -488,7 +490,7 @@ function RailVehicle() {
     3.18,
   ]
   return (
-    <group scale={0.42}>
+    <group scale={0.42 * CORRIDOR_VEHICLE_SCALE}>
       <mesh position={[0, 0.37, -0.08]}>
         <boxGeometry args={[0.56, 0.5, 2.45]} />
         <meshStandardMaterial
@@ -610,14 +612,14 @@ function RailVehicle() {
       </group>
       <pointLight
         color="#ff4fdf"
-        intensity={8}
-        distance={5}
+        intensity={8 * CORRIDOR_VEHICLE_SCALE ** 2}
+        distance={5 * CORRIDOR_VEHICLE_SCALE}
         position={[0, 0.5, 3.84]}
       />
       <pointLight
         color="#78f7ff"
-        intensity={5}
-        distance={4}
+        intensity={5 * CORRIDOR_VEHICLE_SCALE ** 2}
+        distance={4 * CORRIDOR_VEHICLE_SCALE}
         position={[0, 0.38, -1.1]}
       />
     </group>
@@ -627,7 +629,7 @@ function RailVehicle() {
 function PostBusVehicle() {
   const sideWindows = [-0.42, -0.12, 0.18, 0.48]
   return (
-    <group scale={0.62}>
+    <group scale={0.62 * CORRIDOR_VEHICLE_SCALE}>
       <mesh position={[0, 0.36, 0]}>
         <boxGeometry args={[0.62, 0.58, 1.42]} />
         <meshStandardMaterial
@@ -675,8 +677,8 @@ function PostBusVehicle() {
           <meshBasicMaterial color="#fff3a6" toneMapped={false} />
         </mesh>
       ))}
-      <pointLight color="#ff9b43" intensity={7} distance={4} position={[0, 0.48, 0.9]} />
-      <pointLight color="#78f7ff" intensity={4} distance={3} position={[0, 0.4, -0.7]} />
+      <pointLight color="#ff9b43" intensity={7 * CORRIDOR_VEHICLE_SCALE ** 2} distance={4 * CORRIDOR_VEHICLE_SCALE} position={[0, 0.48, 0.9]} />
+      <pointLight color="#78f7ff" intensity={4 * CORRIDOR_VEHICLE_SCALE ** 2} distance={3 * CORRIDOR_VEHICLE_SCALE} position={[0, 0.4, -0.7]} />
     </group>
   )
 }
