@@ -3,10 +3,18 @@ import { resolveSwissNow, swissInstant } from './swiss-now.ts'
 import { describe, expect, it } from 'vitest'
 import { readStudyLink, withinStudy } from './explore.ts'
 import { STUDY_IDS, REGIONAL_DAYS } from './explore.ts'
+import { STUDY_ORDER, studyOrder } from './study-order.ts'
 import { EXPLORE_COPY } from './explore-copy.ts'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 const metadata = (date: string, start = 0, end = 86400) => ({ serviceDate: date, windowStart: start, windowEnd: end }) as NetworkSnapshot['metadata']
 describe('Swiss Now and study links', () => {
+  it('includes every study once in the shared display order and keeps national ranges together', () => {
+    expect([...STUDY_ORDER].sort()).toEqual([...STUDY_IDS].sort())
+    const options = [...STUDY_IDS.filter(id => id !== 'national'), 'national-day', 'national-morning']
+      .sort((a, b) => studyOrder(a) - studyOrder(b))
+    expect(options.slice(0, 2)).toEqual(['national-morning', 'national-day'])
+    expect(options.slice(2)).toEqual(STUDY_ORDER.filter(id => id !== 'national'))
+  })
   it('opens and shares the dated Riviera study in both playback ranges', () => {
     expect(readStudyLink('?study=riviera-region')).toMatchObject({ study: 'riviera-region', range: 'day' })
     for (const range of ['morning', 'day'] as const) {

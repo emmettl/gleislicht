@@ -15,6 +15,7 @@ import { createActiveTrainCounter, orderTrainSearchMatches, trainSearchResults }
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
 import { TransportIcon } from './TransportIcon.tsx'
 import { observeMasthead } from './studies/masthead-layout.ts'
+import { studyOrder } from './studies/study-order.ts'
 import {
   lazy,
   Suspense,
@@ -2203,6 +2204,51 @@ export function App({ edition, suspended = false }: AppProps) {
     setShareCopied(false)
     try { await navigator.clipboard.writeText(url); setShareCopied(true) } catch { /* The visible link can still be copied manually. */ }
   }
+  const studyPickerValue = networkStudy === 'national' ? `national-${nationalTimeRange}` : networkStudy
+  const selectStudyOption = (value: string) => {
+    if (value === 'national-morning' || value === 'national-day') {
+      selectNetworkStudy('national', value === 'national-day' ? 'day' : 'morning')
+    } else selectNetworkStudy(value as NetworkStudy)
+  }
+  const studyOptions: { value: NetworkStudy | 'national-morning' | 'national-day'; label: string; detail?: string; ariaLabel?: string; desktop?: boolean }[] = [
+    {
+      value: 'national-morning', ariaLabel: text.showSwissMorningNetwork,
+      label: 'CH',
+      detail: text.swissMorningNetwork,
+    },
+    {
+      value: 'national-day', ariaLabel: text.showSwissDayNetwork,
+      label: '24H',
+      detail: text.swissDayNetwork,
+    },
+    {
+      value: 'contrast', ariaLabel: text.showContrastNetwork,
+      label: '↔',
+      detail: text.contrastNetwork,
+    },
+    { value: 'postbus', label: 'PA', detail: text.postbusNetwork },
+    ...ADDITIONAL_REGION_IDS.map(id => ({ value: id, label: ADDITIONAL_REGIONS[id].code, detail: additionalLocale?.additionalRegionCopy(language, id).name ?? ADDITIONAL_REGIONS[id].name })),
+    { value: 'valais-region', desktop: false, label: 'VS', detail: valaisLabel },
+    { value: 'ticino-region', label: 'TI', detail: (ticinoCopy?.network ?? 'Ticino') },
+    { value: 'graubuenden-region', label: 'GR', detail: graubuendenCopy?.network ?? 'Graubünden' },
+    { value: 'solothurn-region', label: 'SO', detail: text.solothurnNetwork },
+    { value: 'bern-region', label: 'BE', detail: text.bernNetwork },
+    { value: 'riviera-region', label: 'RV', detail: rivieraLabel },
+    { value: 'nyon-region', label: 'NY', detail: text.nyonNetwork },
+    { value: 'basel-core', label: 'BS', detail: text.baselNetwork },
+    { value: 'lausanne-region', label: 'LS', detail: text.lausanneNetwork },
+    { value: 'jungfrau', label: 'JUNG', detail: jungfrauSelect },
+    { value: 'pilatus', desktop: false, label: 'PIL', detail: pilatusCopy?.select ?? 'Pilatus' },
+    { value: 'rochers', desktop: false, label: 'RDN', detail: rochersCopy?.select ?? 'Rochers' },
+    { value: 'territet', desktop: false, label: 'TGL', detail: territetCopy?.select ?? 'Territet' },
+    { value: 'gornergrat', desktop: false, label: 'GGR', detail: gornergratCopy?.select ?? 'Gornergrat' },
+    { value: 'rigi-lake', label: 'RIGI', detail: rigiCopy.select },
+    { value: 'zvv-region', ariaLabel: text.showZvvNetwork, label: 'ZVV', detail: text.zvvNetwork },
+    { value: 'zurich-city', ariaLabel: text.showZurichNetwork, label: 'ZH', detail: text.zurichNetwork },
+    { value: 'geneva-tpg', ariaLabel: text.showGenevaNetwork, label: 'GE', detail: text.genevaNetwork },
+  ]
+  studyOptions.sort((a, b) => studyOrder(a.value) - studyOrder(b.value))
+
   const linkedNetworkReady = network && (!isRegionalDay || regionalDay.chunkReady) && (!isNationalDay || nationalDayChunkReady) && (!isPostbus || postbusDay.chunkReady) && (networkStudy === 'national' || isPostbus || isRegionalDay || !regionalNetworkLoading)
   if (linkPending && linkedNetworkReady && network) {
     setLinkPending(false)
@@ -2732,77 +2778,16 @@ export function App({ edition, suspended = false }: AppProps) {
               </button>
             )}
             <nav className="network-study-picker" aria-label={text.networkStudy}>
-              {ADDITIONAL_REGION_IDS.map(id => <button key={id} type="button" aria-label={additionalLocale?.additionalRegionCopy(language, id).name ?? ADDITIONAL_REGIONS[id].name} data-tooltip={ADDITIONAL_REGIONS[id].name} aria-pressed={networkStudy === id} onClick={() => selectNetworkStudy(id)}>{ADDITIONAL_REGIONS[id].code}</button>)}
-              <button type="button" aria-label={(ticinoCopy?.network ?? 'Ticino')} data-tooltip={(ticinoCopy?.network ?? 'Ticino')} aria-pressed={isTicino} onClick={() => selectNetworkStudy('ticino-region')}>TI</button>
-              <button type="button" aria-label={graubuendenCopy?.network} data-tooltip={graubuendenCopy?.network} aria-pressed={isGraubuenden} onClick={() => selectNetworkStudy('graubuenden-region')}>GR</button>
-              <button type="button" aria-label={text.solothurnNetwork} data-tooltip={text.solothurnNetwork} aria-pressed={isSolothurn} onClick={() => selectNetworkStudy('solothurn-region')}>SO</button>
-              <button type="button" aria-label={text.bernNetwork} data-tooltip={text.bernNetwork} aria-pressed={isBern} onClick={() => selectNetworkStudy('bern-region')}>BE</button>
-              <button type="button" aria-label={rivieraLabel} data-tooltip={rivieraLabel} aria-pressed={isRiviera} onClick={() => selectNetworkStudy('riviera-region')}>RV</button>
-              <button type="button" aria-label={text.nyonNetwork} data-tooltip={text.nyonNetwork} aria-pressed={isNyon} onClick={() => selectNetworkStudy('nyon-region')}>NY</button>
-              <button type="button" aria-label={text.baselNetwork} data-tooltip={text.baselNetwork} aria-pressed={isBasel} onClick={() => selectNetworkStudy('basel-core')}>BS</button>
-              <button type="button" aria-label={text.lausanneNetwork} data-tooltip={text.lausanneNetwork} aria-pressed={isLausanne} onClick={() => selectNetworkStudy('lausanne-region')}>LS</button>
-              <button type="button" aria-label={jungfrauSelect} data-tooltip={jungfrauSelect} aria-pressed={isJungfrau} onClick={() => selectNetworkStudy('jungfrau')}>JUNG</button>
-              <button type="button" aria-label={rigiCopy.select} data-tooltip={rigiCopy.select} aria-pressed={isRigi} onClick={() => selectNetworkStudy('rigi-lake')}>RIGI</button>
-              <button type="button" className="postbus-study-toggle" aria-label={text.postbusNetwork} data-tooltip={text.postbusNetwork} aria-pressed={isPostbus} onClick={() => selectNetworkStudy('postbus')}>PA</button>
               <span className="sr-only">{text.scale}</span>
-              <button
+              {studyOptions.filter(option => option.desktop !== false).map(option => <button
+                key={option.value}
                 type="button"
-                data-tooltip={text.showSwissMorningNetwork}
-                aria-label={text.showSwissMorningNetwork}
-                aria-pressed={
-                  networkStudy === 'national' && nationalTimeRange === 'morning'
-                }
-                onClick={() => selectNetworkStudy('national', 'morning')}
-              >
-                CH
-              </button>
-              <button
-                type="button"
-                data-tooltip={text.showSwissDayNetwork}
-                aria-label={text.showSwissDayNetwork}
-                aria-pressed={
-                  networkStudy === 'national' && nationalTimeRange === 'day'
-                }
-                onClick={() => selectNetworkStudy('national', 'day')}
-              >
-                24H
-              </button>
-              <button
-                type="button"
-                data-tooltip={text.showContrastNetwork}
-                aria-label={text.showContrastNetwork}
-                aria-pressed={isContrast}
-                onClick={() => selectNetworkStudy('contrast')}
-              >
-                ↔
-              </button>
-              <button
-                type="button"
-                data-tooltip={text.showZvvNetwork}
-                aria-label={text.showZvvNetwork}
-                aria-pressed={networkStudy === 'zvv-region'}
-                onClick={() => selectNetworkStudy('zvv-region')}
-              >
-                ZVV
-              </button>
-              <button
-                type="button"
-                data-tooltip={text.showZurichNetwork}
-                aria-label={text.showZurichNetwork}
-                aria-pressed={networkStudy === 'zurich-city'}
-                onClick={() => selectNetworkStudy('zurich-city')}
-              >
-                ZH
-              </button>
-              <button
-                type="button"
-                data-tooltip={text.showGenevaNetwork}
-                aria-label={text.showGenevaNetwork}
-                aria-pressed={networkStudy === 'geneva-tpg'}
-                onClick={() => selectNetworkStudy('geneva-tpg')}
-              >
-                GE
-              </button>
+                className={option.value === 'postbus' ? 'postbus-study-toggle' : undefined}
+                aria-label={option.ariaLabel ?? option.detail}
+                data-tooltip={option.ariaLabel ?? option.detail}
+                aria-pressed={studyPickerValue === option.value}
+                onClick={() => selectStudyOption(option.value)}
+              >{option.label}</button>)}
               <button
                 className="sbb-toggle"
                 type="button"
@@ -2841,50 +2826,8 @@ export function App({ edition, suspended = false }: AppProps) {
               <MobilePicker
                 className="mobile-study-picker"
                 ariaLabel={text.networkStudy}
-                value={
-                  isContrast
-                    ? 'contrast'
-                    : networkStudy === 'national'
-                      ? `national-${nationalTimeRange}`
-                      : networkStudy
-                }
-                options={[
-                  {
-                    value: 'national-morning',
-                    label: 'CH',
-                    detail: text.swissMorningNetwork,
-                  },
-                  {
-                    value: 'national-day',
-                    label: '24H',
-                    detail: text.swissDayNetwork,
-                  },
-                  {
-                    value: 'contrast',
-                    label: '↔',
-                    detail: text.contrastNetwork,
-                  },
-                  { value: 'postbus', label: 'PA', detail: text.postbusNetwork },
-                  ...ADDITIONAL_REGION_IDS.map(id => ({ value: id, label: ADDITIONAL_REGIONS[id].code, detail: additionalLocale?.additionalRegionCopy(language, id).name ?? ADDITIONAL_REGIONS[id].name })),
-                  { value: 'valais-region', label: 'VS', detail: valaisLabel },
-                  { value: 'ticino-region', label: 'TI', detail: (ticinoCopy?.network ?? 'Ticino') },
-                  { value: 'graubuenden-region', label: 'GR', detail: graubuendenCopy?.network },
-                  { value: 'solothurn-region', label: 'SO', detail: text.solothurnNetwork },
-                  { value: 'bern-region', label: 'BE', detail: text.bernNetwork },
-                  { value: 'riviera-region', label: 'RV', detail: rivieraLabel },
-                  { value: 'nyon-region', label: 'NY', detail: text.nyonNetwork },
-                  { value: 'basel-core', label: 'BS', detail: text.baselNetwork },
-                  { value: 'lausanne-region', label: 'LS', detail: text.lausanneNetwork },
-                  { value: 'jungfrau', label: 'JUNG', detail: jungfrauSelect },
-                  { value: 'pilatus', label: 'PIL', detail: pilatusCopy?.select ?? 'Pilatus' },
-                  { value: 'rochers', label: 'RDN', detail: rochersCopy?.select ?? 'Rochers' },
-                  { value: 'territet', label: 'TGL', detail: territetCopy?.select ?? 'Territet' },
-                  { value: 'gornergrat', label: 'GGR', detail: gornergratCopy?.select ?? 'Gornergrat' },
-                  { value: 'rigi-lake', label: 'RIGI', detail: rigiCopy.select },
-                  { value: 'zvv-region', label: 'ZVV', detail: text.zvvNetwork },
-                  { value: 'zurich-city', label: 'ZH', detail: text.zurichNetwork },
-                  { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
-                ]}
+                value={studyPickerValue}
+                options={studyOptions}
                 triggerLabel={
                   additionalRegion ? additionalRegion.code : isValais ? 'VS' : isTicino ? 'TI' : isGraubuenden ? 'GR' : isSolothurn ? 'SO' : isBern ? 'BE' : isRiviera ? 'RV' : isNyon ? 'NY' : isBasel ? 'BS' : isLausanne ? 'LS' : isPilatus ? 'PIL' : isRochers ? 'RDN' : isTerritet ? 'TGL' : isGornergrat ? 'GGR' : isJungfrau ? 'JUNG' : isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
                     ? '↔'
@@ -2898,17 +2841,7 @@ export function App({ edition, suspended = false }: AppProps) {
                             ? 'GE'
                             : 'ZH'
                 }
-                onChange={(study) => {
-                  if (study === 'national-morning') {
-                    selectNetworkStudy('national', 'morning')
-                  } else if (study === 'national-day') {
-                    selectNetworkStudy('national', 'day')
-                  } else if (study === 'contrast') {
-                    selectNetworkStudy('contrast')
-                  } else {
-                    selectNetworkStudy(study as NetworkStudy)
-                  }
-                }}
+                onChange={selectStudyOption}
               />
               <button
                 className="mobile-sbb-toggle"
