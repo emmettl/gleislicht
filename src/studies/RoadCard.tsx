@@ -46,7 +46,7 @@ export default function RoadCard({ selectedRoad, activePilot, selectedRoadGeomet
           </div>
           <p className="road-traffic-summary">
             {selectedRoadGeometryOnly || activePilot
-              ? <a href="https://geolion.zh.ch/geodatensatz/3177" target="_blank" rel="noreferrer">AUTO · Kanton Zürich</a>
+              ? <a href="https://geolion.zh.ch/geodatensatz/3177" target="_blank" rel="noreferrer">{text.zurichRoadCredit}</a>
               : selectedRoadTraffic
               ? <>
                   <span>{text.roadDensitySummary(roadMetricFormat.format(selectedRoadTraffic.density))}</span>

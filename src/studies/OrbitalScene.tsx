@@ -14,7 +14,7 @@ export interface OrbitalPlayback { time: number; playing: boolean; speed: number
 export interface OrbitalGeography { rings: number[][][]; lakes: { id: string; polygons: number[][][][] }[] }
 const coordinate = ([lon, lat]: number[], height = 0): [number, number, number] => [(lon - 8.23) * Math.cos(46.8 * Math.PI / 180) * 12, height, -(lat - 46.8) * 12]
 
-function Camera({ playback, reset, altitude }: { playback: MutableRefObject<OrbitalPlayback>; reset: number; altitude: RefObject<HTMLOutputElement | null> }) {
+function Camera({ playback, reset, altitude, formatAltitude }: { formatAltitude: (height: number) => string; playback: MutableRefObject<OrbitalPlayback>; reset: number; altitude: RefObject<HTMLOutputElement | null> }) {
   const { camera, gl, size } = useThree()
   const controlRef = useRef<OrbitControls | null>(null)
   const altitudeElapsed = useRef(0.1)
@@ -69,7 +69,7 @@ function Camera({ playback, reset, altitude }: { playback: MutableRefObject<Orbi
     if (altitude.current && altitudeElapsed.current >= 0.1) {
       // Invert the same vertical scale used by terrain elevations. Camera y is
       // height above the sea-level plane, not distance to the orbit target.
-      const value = `≈ ${(camera.position.y / ORBITAL_HEIGHT_SCALE / 1000).toFixed(1)} km ASL`
+      const value = formatAltitude(camera.position.y / ORBITAL_HEIGHT_SCALE / 1000)
       if (altitude.current.textContent !== value) altitude.current.textContent = value
       altitudeElapsed.current = 0
     }
@@ -223,12 +223,12 @@ function Movement({ chunk, playback, surface, onStats }: { chunk: OrbitalChunk; 
     <points geometry={buffers.points} frustumCulled={false}><pointsMaterial map={texture} vertexColors size={2.6} sizeAttenuation={false} transparent opacity={1} blending={THREE.AdditiveBlending} depthWrite={false} /></points>
   </group>
 }
-export default function OrbitalScene({ geography, terrain, movementSource, playback, reset, onStats, sunlight, cityLabels, cameraAltitude, snowEnabled, snowline }: { cameraAltitude: RefObject<HTMLOutputElement | null>; snowEnabled: boolean; snowline: number; cityLabels: RefObject<HTMLDivElement | null>; sunlight: boolean; geography: OrbitalGeography; terrain: OrbitalTerrain; movementSource: () => OrbitalChunk | undefined; playback: MutableRefObject<OrbitalPlayback>; reset: number; onStats: (active: number, fps: number, time: number) => void }) {
+export default function OrbitalScene({ geography, terrain, movementSource, playback, reset, onStats, sunlight, cityLabels, cameraAltitude, snowEnabled, snowline, formatAltitude }: { formatAltitude: (height: number) => string; cameraAltitude: RefObject<HTMLOutputElement | null>; snowEnabled: boolean; snowline: number; cityLabels: RefObject<HTMLDivElement | null>; sunlight: boolean; geography: OrbitalGeography; terrain: OrbitalTerrain; movementSource: () => OrbitalChunk | undefined; playback: MutableRefObject<OrbitalPlayback>; reset: number; onStats: (active: number, fps: number, time: number) => void }) {
   const chunk = movementSource()
   const surface = useMemo(() => createOrbitalSurface(terrain), [terrain])
   return <>
     <color attach="background" args={['#03060d']} />
-    <Camera playback={playback} reset={reset} altitude={cameraAltitude} />
+    <Camera playback={playback} reset={reset} altitude={cameraAltitude} formatAltitude={formatAltitude} />
     <OrbitalCityLabels surface={surface} root={cityLabels} />
     <OrbitalLighting sunlight={sunlight} playback={playback} />
     <Geography geography={geography} terrain={terrain} surface={surface} sunlight={sunlight} snowEnabled={snowEnabled} snowline={snowline} />

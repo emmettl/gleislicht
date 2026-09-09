@@ -1,3 +1,5 @@
+import { useUiLanguage } from '../use-ui-language.ts'
+import { useUiText } from '../use-ui-text.ts'
 /* oxlint-disable react/set-state-in-effect -- Synchronize asynchronous scene readiness with the external camera flight channel. */
 import { useEffect, useRef, useState, useSyncExternalStore, type ComponentType, type RefObject, type Dispatch, type SetStateAction } from 'react'
 import { orbitalFlight, type FlightPose } from './orbital-flight.ts'
@@ -15,8 +17,10 @@ export interface OrbitalTransitionProps {
 }
 
 export default function OrbitalTransition({ wanted, setWanted, directOrbit, atlasMounted, setAtlasMounted, atlas, returnUrl, returnFocus }: OrbitalTransitionProps) {
+  const [language] = useUiLanguage()
+  const text = useUiText(language)
   const [Orbit, setOrbit] = useState<ComponentType<OrbitalViewProps>>()
-  const [ready, setReady] = useState(false), [error, setError] = useState('')
+  const [ready, setReady] = useState(false), [error, setError] = useState<'orbitLoadError' | 'orbitTimeout' | ''>('')
   const phase = useSyncExternalStore(orbitalFlight.subscribe, orbitalFlight.snapshot)
   const orbit = useRef<HTMLDivElement>(null)
   const saved = useRef<FlightPose | null>(null), atlasTitle = useRef(document.title)
@@ -28,7 +32,7 @@ export default function OrbitalTransition({ wanted, setWanted, directOrbit, atla
     let cancelled = false
     Promise.all([import('./OrbitalView.tsx'), import('./orbital-flight-animation.ts')]).then(([module, flight]) => {
       if (!cancelled) { animate.current = flight.animateOrbitalFlight; setOrbit(() => module.default) }
-    }).catch(() => { if (!cancelled) { setError('The orbital view could not load. Please try again.'); setWanted(false); history.replaceState(null, '', returnUrl.current) } })
+    }).catch(() => { if (!cancelled) { setError('orbitLoadError'); setWanted(false); history.replaceState(null, '', returnUrl.current) } })
     return () => { cancelled = true }
   }, [wanted, phase, Orbit, returnUrl, setWanted])
 
@@ -57,7 +61,7 @@ export default function OrbitalTransition({ wanted, setWanted, directOrbit, atla
   useEffect(() => {
     if (phase !== 'loading') return
     const timeout = window.setTimeout(() => {
-      setError('Orbit is taking too long to prepare. Your atlas is still here; please try again.')
+      setError('orbitTimeout')
       history.replaceState(null, '', returnUrl.current); setWanted(false)
     }, 45000)
     return () => window.clearTimeout(timeout)
@@ -75,12 +79,12 @@ export default function OrbitalTransition({ wanted, setWanted, directOrbit, atla
   const busy = phase === 'loading' || phase === 'departing' || phase === 'returning'
   return <>
     {hasOrbit && <div ref={orbit} className="flight-orbit" inert={phase !== 'orbital'} aria-hidden={phase !== 'orbital'}>
-      {Orbit && <Orbit onReady={() => setReady(true)} onLoadError={message => {
+      {Orbit && <Orbit onReady={() => setReady(true)} onLoadError={() => {
         if (orbitalFlight.phase !== 'loading') return
-        setError(message); history.replaceState(null, '', returnUrl.current); setWanted(false)
+        setError('orbitLoadError'); history.replaceState(null, '', returnUrl.current); setWanted(false)
       }} />}
     </div>}
-    {busy && <div className="flight-shield" aria-busy="true"><div className="flight-status" role="status">{phase === 'loading' ? 'Preparing the orbital view…' : phase === 'departing' ? 'Ascending to orbit' : 'Returning to your atlas'}{phase === 'loading' && <button onClick={() => { history.replaceState(null, '', returnUrl.current); setWanted(false) }}>Cancel</button>}</div></div>}
-    {error && phase === 'atlas' && <div className="flight-error" role="alert">{error}<button onClick={() => setError('')} aria-label="Dismiss message">×</button></div>}
+    {busy && <div className="flight-shield" aria-busy="true"><div className="flight-status" role="status">{phase === 'loading' ? text.orbitLoading : phase === 'departing' ? text.orbitAscending : text.orbitReturning}{phase === 'loading' && <button onClick={() => { history.replaceState(null, '', returnUrl.current); setWanted(false) }}>{text.cancel}</button>}</div></div>}
+    {error && phase === 'atlas' && <div className="flight-error" role="alert">{text[error]}<button onClick={() => setError('')} aria-label={text.dismissMessage}>×</button></div>}
   </>
 }

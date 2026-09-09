@@ -1,3 +1,4 @@
+import { useUiLanguage } from './use-ui-language.ts'
 import { ADDITIONAL_REGION_IDS, ADDITIONAL_REGIONS, additionalRegionDate, additionalRegionKey, isAdditionalRegion } from './studies/additional-regions.ts'
 import { useUiText } from './use-ui-text.ts'
 import { useNowClock } from '@motionstudies/web/use-now-clock'
@@ -112,8 +113,8 @@ import {
 } from '@motionstudies/core/road-search'
 import {
   LANGUAGE_LOCALES,
-  resolveUiLanguage,
   serviceCategoryLabel,
+  sourceCredit,
   UI_LANGUAGES,
   type UiLanguage,
 } from './i18n.ts'
@@ -227,16 +228,6 @@ const DAY_PRESETS = [
   { id: 'night', time: 22 * 3600 + 30 * 60 },
 ] as const
 
-function initialUiLanguage(edition: SwitzerlandEdition): UiLanguage {
-  let savedLanguage: string | null = null
-  try {
-    savedLanguage = window.localStorage.getItem(edition.languageStorageKey)
-  } catch {
-    // A blocked storage API should not prevent the interface from loading.
-  }
-  return resolveUiLanguage([savedLanguage, ...navigator.languages])
-}
-
 function formatPercent(value: number): string {
   return `${Math.round(value * 100)}%`
 }
@@ -286,9 +277,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const [performanceEnabled] = useState(() =>
     new URLSearchParams(window.location.search).has('perf'),
   )
-  const [language, setLanguage] = useState<UiLanguage>(() =>
-    initialUiLanguage(edition),
-  )
+  const [language, setLanguage] = useUiLanguage(edition.languageStorageKey)
   const [initialLink] = useState(() => readStudyLink(window.location.search))
   const linkedPilot = cantonalPilotForRecording(initialLink.recording)
   const [pilotLinkPending, setPilotLinkPending] = useState(Boolean(linkedPilot))
@@ -300,7 +289,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const [shareUrl, setShareUrl] = useState('')
   const [shareCopied, setShareCopied] = useState(false)
   const shareButton = useRef<HTMLButtonElement>(null)
-  const [exploreNotice, setExploreNotice] = useState('')
+  const [exploreNotice, setExploreNotice] = useState<'dateMismatch' | 'focusMissing' | ''>('')
   const [regionalRange, setRegionalRange] = useState<'morning' | 'day'>(initialLink.range)
   const [regionalRetry, setRegionalRetry] = useState(true)
   const [playbackEnabled, setIsPlaying] = useState(initialLink.time === undefined && !initialLink.invalidRecording)
@@ -484,11 +473,11 @@ export function App({ edition, suspended = false }: AppProps) {
   const roadHistorySeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const postbusSeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const text = useUiText(language)
-  const [translatedExploreCopy, setTranslatedExploreCopy] = useState<ExploreUiCopy>(EXPLORE_EN)
-  const exploreCopy = language === 'en' ? EXPLORE_EN : translatedExploreCopy
+  const [translatedExploreCopy, setTranslatedExploreCopy] = useState<{ language: UiLanguage; copy: ExploreUiCopy }>({ language: 'en', copy: EXPLORE_EN })
+  const exploreCopy = translatedExploreCopy.language === language ? translatedExploreCopy.copy : EXPLORE_EN
   useEffect(() => {
     let current = true
-    if (language !== 'en') void import('./studies/explore-copy.ts').then(module => { if (current) setTranslatedExploreCopy(module.EXPLORE_COPY[language]) })
+    if (language !== 'en') void import('./studies/explore-copy.ts').then(module => { if (current) setTranslatedExploreCopy({ language, copy: module.EXPLORE_COPY[language] }) }).catch(() => { /* Retain English if the translation cannot load. */ })
     return () => { current = false }
   }, [language])
   const help = text.controlHelp
@@ -556,7 +545,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const [rigiLocale, setRigiLocale] = useState<typeof import('./studies/rigi-copy.ts')>()
   useEffect(() => { if (isRigi) void import('./studies/rigi-copy.ts').then(setRigiLocale) }, [isRigi])
   const rigiSelect = { en: 'Explore Lake Lucerne and Rigi', de: 'Vierwaldstättersee und Rigi entdecken', fr: 'Explorer le lac des Quatre-Cantons et le Rigi', it: 'Esplora il Lago dei Quattro Cantoni e il Rigi' }[language]
-  const rigiCopy = rigiLocale?.RIGI_COPY[language] ?? { connections: '', rhythm: 'A day on lake and mountain', sequence: '', select: rigiSelect, title: 'Rigi', placeholder: rigiSelect, modes: '', loading: text.loading, unavailable: text.loading, water: '', cable: '' }
+  const rigiCopy = rigiLocale?.RIGI_COPY[language] ?? { connections: '', rhythm: text.loading, sequence: '', select: rigiSelect, title: 'Rigi', placeholder: rigiSelect, modes: '', loading: text.loading, unavailable: text.loading, water: '', cable: '' }
   const isRigiTerrain = isRigiCorridorId(journeyCorridorId)
   const rigiOrigin = isRigiTerrain ? RIGI_ASCENTS[journeyCorridorId].name : 'Vitznau'
   const rigiTerrainCopy = { enter: text.rigiTerrainEnter.replace('{origin}', rigiOrigin), unavailable: text.rigiTerrainUnavailable }
@@ -1551,17 +1540,13 @@ export function App({ edition, suspended = false }: AppProps) {
   }, [edition.id, recordingState])
 
   useEffect(() => {
+    if (suspended) return
     document.documentElement.lang = language
     document.title = text.pageTitle
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute('content', text.pageDescription)
-    try {
-      window.localStorage.setItem(edition.languageStorageKey, language)
-    } catch {
-      // Language still applies for this visit when storage is unavailable.
-    }
-  }, [edition.languageStorageKey, language, text.pageDescription, text.pageTitle])
+  }, [suspended, language, text.pageDescription, text.pageTitle])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -2254,17 +2239,17 @@ export function App({ edition, suspended = false }: AppProps) {
   const linkedNetworkReady = network && (!isRegionalDay || regionalDay.chunkReady) && (!isNationalDay || nationalDayChunkReady) && (!isPostbus || postbusDay.chunkReady) && (networkStudy === 'national' || isPostbus || isRegionalDay || !regionalNetworkLoading)
   if (linkPending && linkedNetworkReady && network) {
     setLinkPending(false)
-    if (initialLink.date && initialLink.date !== network.metadata.serviceDate) setExploreNotice(exploreCopy.dateMismatch)
+    if (initialLink.date && initialLink.date !== network.metadata.serviceDate) setExploreNotice('dateMismatch')
     if (initialLink.time !== undefined) setNetworkTime(Math.max(network.metadata.windowStart, Math.min(network.metadata.windowEnd - 1, initialLink.time)))
     if (initialLink.station) {
       const station = stationIndex.find(entry => entry.name === initialLink.station)
       if (station) { setSelectedStationName(station.name); setSearchQuery(station.name) }
-      else setExploreNotice(exploreCopy.focusMissing)
+      else setExploreNotice('focusMissing')
     }
     if (initialLink.train) {
       const train = network.trains.find(entry => entry.id === initialLink.train)
       if (train) { setSelectedTrainId(train.id); setSearchQuery(train.shortName) }
-      else setExploreNotice(exploreCopy.focusMissing)
+      else setExploreNotice('focusMissing')
     }
   }
 
@@ -3258,7 +3243,7 @@ export function App({ edition, suspended = false }: AppProps) {
             )}
           </div>
           <p className="between">
-              {isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${network?.metadata.geometry?.publisher ?? 'SBB'}` : additionalId ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : additionalCopy?.modes : isGraubuenden ? regionalNetworkError ? graubuendenCopy?.unavailable : regionalNetworkLoading ? text.loading : graubuendenCopy?.modes : isValais ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : valaisLabel : isTicino ? regionalNetworkError ? ticinoCopy?.unavailable : regionalNetworkLoading ? text.loading : ticinoCopy?.modes : isSolothurn ? regionalNetworkError ? text.solothurnUnavailable : regionalNetworkLoading ? text.loading : text.solothurnModes : isBern ? regionalNetworkError ? text.bernUnavailable : regionalNetworkLoading ? text.loading : text.bernModes : isRiviera ? regionalNetworkError ? (rivieraCopy?.unavailable ?? exploreCopy.error) : regionalNetworkLoading ? text.loading : rivieraCopy?.modes : isNyon ? regionalNetworkError ? text.nyonUnavailable : regionalNetworkLoading ? text.loading : text.nyonModes : isBasel ? regionalNetworkError ? text.baselUnavailable : regionalNetworkLoading ? text.loading : text.baselModes : isLausanne ? regionalNetworkError ? text.lausanneUnavailable : regionalNetworkLoading ? text.loading : text.lausanneModes : isPilatus ? regionalNetworkError ? pilatusCopy?.unavailable : regionalNetworkLoading ? pilatusCopy?.loading : pilatusCopy?.modes : isRochers ? regionalNetworkError ? rochersCopy?.unavailable : regionalNetworkLoading ? rochersCopy?.loading : rochersCopy?.modes : isTerritet ? regionalNetworkError ? territetCopy?.unavailable : regionalNetworkLoading ? territetCopy?.loading : territetCopy?.modes : isGornergrat ? regionalNetworkError ? gornergratCopy?.unavailable : regionalNetworkLoading ? gornergratCopy?.loading : gornergratCopy?.modes : isJungfrau ? regionalNetworkError ? jungfrauCopy?.unavailable : regionalNetworkLoading ? jungfrauCopy?.loading : jungfrauCopy?.modes : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
+              {isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${sourceCredit(language, network?.metadata.geometry?.publisher ?? 'SBB')}` : additionalId ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : additionalCopy?.modes : isGraubuenden ? regionalNetworkError ? graubuendenCopy?.unavailable : regionalNetworkLoading ? text.loading : graubuendenCopy?.modes : isValais ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : valaisLabel : isTicino ? regionalNetworkError ? ticinoCopy?.unavailable : regionalNetworkLoading ? text.loading : ticinoCopy?.modes : isSolothurn ? regionalNetworkError ? text.solothurnUnavailable : regionalNetworkLoading ? text.loading : text.solothurnModes : isBern ? regionalNetworkError ? text.bernUnavailable : regionalNetworkLoading ? text.loading : text.bernModes : isRiviera ? regionalNetworkError ? (rivieraCopy?.unavailable ?? exploreCopy.error) : regionalNetworkLoading ? text.loading : rivieraCopy?.modes : isNyon ? regionalNetworkError ? text.nyonUnavailable : regionalNetworkLoading ? text.loading : text.nyonModes : isBasel ? regionalNetworkError ? text.baselUnavailable : regionalNetworkLoading ? text.loading : text.baselModes : isLausanne ? regionalNetworkError ? text.lausanneUnavailable : regionalNetworkLoading ? text.loading : text.lausanneModes : isPilatus ? regionalNetworkError ? pilatusCopy?.unavailable : regionalNetworkLoading ? pilatusCopy?.loading : pilatusCopy?.modes : isRochers ? regionalNetworkError ? rochersCopy?.unavailable : regionalNetworkLoading ? rochersCopy?.loading : rochersCopy?.modes : isTerritet ? regionalNetworkError ? territetCopy?.unavailable : regionalNetworkLoading ? territetCopy?.loading : territetCopy?.modes : isGornergrat ? regionalNetworkError ? gornergratCopy?.unavailable : regionalNetworkLoading ? gornergratCopy?.loading : gornergratCopy?.modes : isJungfrau ? regionalNetworkError ? jungfrauCopy?.unavailable : regionalNetworkLoading ? jungfrauCopy?.loading : jungfrauCopy?.modes : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
                 ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus
                   : network?.metadata.geometry
                     ? text.postbusRoadModes.replace('{coverage}', (100 * network.metadata.geometry.matchedSegments / network.metadata.geometry.totalSegments).toFixed(1))
@@ -3559,10 +3544,10 @@ export function App({ edition, suspended = false }: AppProps) {
       {roadRecordingsOpen && <Suspense fallback={null}><CantonalRecordingPicker language={language} recording={activePilot?.metadata.recordingId} onClose={() => { setRoadRecordingsOpen(false); roadRecordingsButton.current?.focus() }} /></Suspense>}
       {exploreOpen && <Suspense fallback={null}><StudyBrowser language={language} study={networkStudy} onClose={() => setExploreOpen(false)} onSelect={id => { setRegionalRange('day'); selectNetworkStudy(id, 'day'); setExploreOpen(false) }} /></Suspense>}
       <section className="transport" aria-label={text.playbackControls}>
-        {(isValais || isTicino || isGraubuenden) && <a className="mobile-map-attribution" href={editionDataUrl(`${networkStudy}/sources.json`)} target="_blank" rel="noreferrer">SBB · FOT · © swisstopo · © OpenStreetMap contributors · ODbL</a>}
-        {isSolothurn && <a className="mobile-map-attribution" href={editionDataUrl('solothurn-region/sources.json')} target="_blank" rel="noreferrer">Kanton Solothurn · © OpenStreetMap contributors · FOT · Kantone Bern / Basel-Stadt</a>}
-        {isBern && <span className="mobile-map-attribution"><a href="https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct" target="_blank" rel="noreferrer">Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a> · <a href={editionDataUrl('bern-region/sources.json')} target="_blank" rel="noreferrer">© FOT / BAV</a></span>}
-        {(isLausanne || isBasel || isNyon || isRiviera) && <span className="mobile-map-attribution"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL</a>{isBasel && <> · <a href="https://www.swisstopo.admin.ch">© swisstopo</a></>}</span>}
+        {(isValais || isTicino || isGraubuenden) && <a className="mobile-map-attribution" href={editionDataUrl(`${networkStudy}/sources.json`)} target="_blank" rel="noreferrer">{text.mapCredit}</a>}
+        {isSolothurn && <a className="mobile-map-attribution" href={editionDataUrl('solothurn-region/sources.json')} target="_blank" rel="noreferrer">{text.solothurnCredit}</a>}
+        {isBern && <span className="mobile-map-attribution"><a href="https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct" target="_blank" rel="noreferrer">{text.bernCredit}</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">{text.osmCredit}</a> · <a href={editionDataUrl('bern-region/sources.json')} target="_blank" rel="noreferrer">© FOT / BAV</a></span>}
+        {(isLausanne || isBasel || isNyon || isRiviera) && <span className="mobile-map-attribution"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">{text.osmCredit} · ODbL</a>{isBasel && <> · <a href="https://www.swisstopo.admin.ch">© swisstopo</a></>}</span>}
       {isTimetable && !selectedTrain && !selectedAirTrack && !selectedRoute && (
         <div
           className={`service-legend${selectedCategory || isCogwheel || airCategorySelected || roadCategorySelected ? ' has-filter' : ''}`}
@@ -3671,7 +3656,7 @@ export function App({ edition, suspended = false }: AppProps) {
           {browserLocation.status !== 'idle' && <p className="explore-status" role="status">{browserLocation.status === 'locating' ? exploreCopy.locating : browserLocation.status === 'denied' ? exploreCopy.denied : browserLocation.status === 'timeout' ? exploreCopy.timeout : browserLocation.status === 'unavailable' ? exploreCopy.locationError : validLocation ? `${exploreCopy.accuracy}: ±${Math.round(validLocation.accuracy)} m` : exploreCopy.outside}</p>}
           {(initialLink.invalidRecording || pilotLinkUnavailable) && <p className="explore-status" role="status">{text.pilotLinkUnavailable}</p>}
           {pilotLinkUnavailable && <button type="button" onClick={() => window.location.reload()}>{exploreCopy.retry}</button>}
-          {exploreNotice && <p className="explore-status" role="status">{exploreNotice}</p>}
+          {exploreNotice && <p className="explore-status" role="status">{exploreCopy[exploreNotice]}</p>}
           {shareUrl && <div id="study-share" role="group" aria-label={exploreCopy.share} onKeyDown={event => {
             if (event.key === 'Escape') {
               event.preventDefault()
@@ -3951,7 +3936,7 @@ export function App({ edition, suspended = false }: AppProps) {
               target="_blank"
               rel="noreferrer"
             >
-              {isBern || isSolothurn ? 'opentransportdata.swiss · GTFS' : 'Swiss GTFS'} · {network?.metadata.feedVersion ?? text.loading}
+              {isBern || isSolothurn ? 'opentransportdata.swiss · GTFS' : text.swissGtfs} · {network?.metadata.feedVersion ?? text.loading}
             </a>
             {isNetwork && network?.metadata.geometry && (
               <a
@@ -3962,7 +3947,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 target="_blank"
                 rel="noreferrer"
               >
-                {additionalRegion ? additionalRegion.credit : isValais || isTicino ? 'SBB · FOT · © swisstopo · © OpenStreetMap contributors · ODbL' : isSolothurn ? 'Kanton Solothurn · © OpenStreetMap contributors · FOT · Kantone Bern / Basel-Stadt' : isBern ? 'Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern' : isPostbus || isLausanne || isBasel || isNyon || isRiviera ? '© OpenStreetMap contributors · ODbL' : <>{text.stopGeometry} ·{' '}
+                {additionalRegion ? sourceCredit(language, additionalRegion.credit) : isValais || isTicino ? text.mapCredit : isSolothurn ? text.solothurnCredit : isBern ? text.bernCredit : isPostbus || isLausanne || isBasel || isNyon || isRiviera ? `${text.osmCredit} · ODbL` : <>{text.stopGeometry} ·{' '}
                 {networkStudy === 'national'
                   ? 'BAV / OFT'
                   : networkStudy === 'geneva-tpg'
@@ -3970,26 +3955,26 @@ export function App({ edition, suspended = false }: AppProps) {
                     : 'ZVV'}</>}
               </a>
             )}
-            {isNetwork && isRiviera && <a href="https://map.geo.admin.ch/?layers=ch.bav.seilbahnen-bundeskonzession" target="_blank" rel="noreferrer">Funiculars · BAV / OFT</a>}
-            {isNetwork && (isLausanne || isBasel || isNyon || isRiviera) && <a href="https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz" target="_blank" rel="noreferrer">Rail · BAV / OFT</a>}
-            {isNetwork && isValais && <a href={editionDataUrl('valais-region/road-paths.json')} target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL · {valaisLabel}</a>}
-            {isNetwork && isGraubuenden && <a href={editionDataUrl('graubuenden-region/road-paths.json')} target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL · {graubuendenCopy?.view}</a>}
+            {isNetwork && isRiviera && <a href="https://map.geo.admin.ch/?layers=ch.bav.seilbahnen-bundeskonzession" target="_blank" rel="noreferrer">{text.funicularSource}</a>}
+            {isNetwork && (isLausanne || isBasel || isNyon || isRiviera) && <a href="https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz" target="_blank" rel="noreferrer">{text.railSource}</a>}
+            {isNetwork && isValais && <a href={editionDataUrl('valais-region/road-paths.json')} target="_blank" rel="noreferrer">{text.osmCredit} · ODbL · {valaisLabel}</a>}
+            {isNetwork && isGraubuenden && <a href={editionDataUrl('graubuenden-region/road-paths.json')} target="_blank" rel="noreferrer">{text.osmCredit} · ODbL · {graubuendenCopy?.view}</a>}
             {isNetwork && isSolothurn && <a href={editionDataUrl('solothurn-region/terms.html')} target="_blank" rel="noreferrer">{text.bernTerms} · SO</a>}
-            {isNetwork && isSolothurn && <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL</a>}
-            {isNetwork && isBern && <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL</a>}
-            {isNetwork && isBern && <a href={editionDataUrl('bern-region/sources.json')} target="_blank" rel="noreferrer">© Federal Office of Transport (FOT)</a>}
+            {isNetwork && isSolothurn && <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">{text.osmCredit} · ODbL</a>}
+            {isNetwork && isBern && <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">{text.osmCredit} · ODbL</a>}
+            {isNetwork && isBern && <a href={editionDataUrl('bern-region/sources.json')} target="_blank" rel="noreferrer">{text.fotCredit}</a>}
             {isNetwork && isBern && <a href={editionDataUrl('bern-region/terms_of_use_de.pdf')} target="_blank" rel="noreferrer">{text.bernTerms} · DE</a>}
             {isNetwork && isBern && <a href={editionDataUrl('bern-region/terms_of_use_fr.pdf')} target="_blank" rel="noreferrer">{text.bernTerms} · FR</a>}
-            {isNetwork && isBasel && <a href="https://wfs.geo.bs.ch/" target="_blank" rel="noreferrer">Geodaten Kanton Basel-Stadt</a>}
+            {isNetwork && isBasel && <a href="https://wfs.geo.bs.ch/" target="_blank" rel="noreferrer">{text.baselGeoCredit}</a>}
             {isNetwork && isBasel && <a href="https://www.swisstopo.admin.ch">© swisstopo</a>}
             {isNetwork && networkStudy === 'national' && boundary && (
               <a href={boundary.metadata.productUrl} target="_blank" rel="noreferrer">
-                {text.border} · {boundary.metadata.attribution}
+                {text.border} · {sourceCredit(language, boundary.metadata.attribution)}
               </a>
             )}
             {isNetwork && lakes && (
               <a href={lakes.metadata.productUrl} target="_blank" rel="noreferrer">
-                {text.lakes} · {lakes.metadata.attribution}
+                {text.lakes} · {sourceCredit(language, lakes.metadata.attribution)}
               </a>
             )}
             {isNetwork && airEnabled && activeAirSnapshot && (
@@ -4011,9 +3996,9 @@ export function App({ edition, suspended = false }: AppProps) {
               </a>
             )}
             {isNetwork && roadEnabled && roadTopology?.roads.some(road => road.id.startsWith('ZH:')) && (
-              <a href="https://geolion.zh.ch/geodatensatz/3177" target="_blank" rel="noreferrer">AUTO · Kanton Zürich</a>
+              <a href="https://geolion.zh.ch/geodatensatz/3177" target="_blank" rel="noreferrer">{text.zurichRoadCredit}</a>
             )}
-            {isMountainStudy && <a href="https://map.geo.admin.ch/?layers=ch.bav.seilbahnen-bundeskonzession,ch.bav.schienennetz" target="_blank" rel="noreferrer">FOT · Rail / Cableway</a>}
+            {isMountainStudy && <a href="https://map.geo.admin.ch/?layers=ch.bav.seilbahnen-bundeskonzession,ch.bav.schienennetz" target="_blank" rel="noreferrer">{text.mountainSource}</a>}
             <a href="./methodology.html">{text.methodology}</a>
           </span>
         ) : (
@@ -4021,7 +4006,7 @@ export function App({ edition, suspended = false }: AppProps) {
             {corridor ? (
               <>
                 <a href={corridor.metadata.productUrl} target="_blank" rel="noreferrer">
-                  Terrain · © swisstopo
+                  {text.groundSource}
                 </a>
                 {corridor.metadata.routeProductUrl && (
                   <a
@@ -4029,10 +4014,10 @@ export function App({ edition, suspended = false }: AppProps) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Route · {isRigiTerrain ? 'FOT / BAV' : '© OpenStreetMap contributors'}
+                    {text.routeSource} · {isRigiTerrain ? 'FOT / BAV' : text.osmCredit}
                   </a>
                 )}
-                {isRigiTerrain && lakes && <a href={lakes.metadata.productUrl} target="_blank" rel="noreferrer">{text.lakes} · {lakes.metadata.attribution}</a>}
+                {isRigiTerrain && lakes && <a href={lakes.metadata.productUrl} target="_blank" rel="noreferrer">{text.lakes} · {sourceCredit(language, lakes.metadata.attribution)}</a>}
                 {isRigiTerrain && <a href="./methodology.html">{text.methodology}</a>}
                 {corridor.metadata.tunnelProductUrl && (
                   <a
@@ -4040,7 +4025,7 @@ export function App({ edition, suspended = false }: AppProps) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Tunnels · SBB Infrastruktur
+                    {text.communityTunnels}
                   </a>
                 )}
               </>

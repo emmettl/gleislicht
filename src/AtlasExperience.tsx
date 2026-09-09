@@ -1,3 +1,5 @@
+import { useUiLanguage } from './use-ui-language.ts'
+import { useUiText } from './use-ui-text.ts'
 import { memo, useCallback, useEffect, useRef, useState, useSyncExternalStore, type ComponentType, type MouseEvent } from 'react'
 import { App } from './App.tsx'
 import { SWITZERLAND_EDITION } from './editions/switzerland.ts'
@@ -9,11 +11,13 @@ const isOrbitUrl = () => new URLSearchParams(window.location.search).get('view')
 const atlasUrl = () => { const url = new URL(window.location.href); url.searchParams.delete('view'); return url.pathname + url.search + url.hash }
 
 export default function AtlasExperience() {
+  const [language] = useUiLanguage()
+  const text = useUiText(language)
   const [directOrbit] = useState(isOrbitUrl)
   const [wanted, setWanted] = useState(directOrbit)
   const [atlasMounted, setAtlasMounted] = useState(!directOrbit)
   const [Transition, setTransition] = useState<ComponentType<OrbitalTransitionProps>>()
-  const [error, setError] = useState('')
+  const [error, setError] = useState(false)
   const phase = useSyncExternalStore(orbitalFlight.subscribe, orbitalFlight.snapshot)
   const atlas = useRef<HTMLDivElement>(null), returnUrl = useRef(atlasUrl())
   const returnFocus = useRef<HTMLElement | null>(null)
@@ -36,7 +40,7 @@ export default function AtlasExperience() {
       if (current) setTransition(() => module.default)
     }).catch(() => {
       if (!current) return
-      setError('The orbital view could not load. Please try again.')
+      setError(true)
       cancel()
     })
     return () => { current = false }
@@ -57,7 +61,7 @@ export default function AtlasExperience() {
       returnFocus.current = link
       atlas.current?.querySelectorAll('dialog[open]').forEach(dialog => (dialog as HTMLDialogElement).close())
       history.pushState({ orbitalFlight: true }, '', url.pathname + url.search + url.hash)
-      setError(''); setWanted(true)
+      setError(false); setWanted(true)
     } else {
       if (history.state?.orbitalFlight) history.back()
       else { history.pushState(null, '', returnUrl.current); setWanted(false) }
@@ -66,7 +70,7 @@ export default function AtlasExperience() {
   return <div className={`atlas-experience flight-${phase}`} onClickCapture={navigate}>
     {atlasMounted && <div ref={atlas} className="flight-atlas" inert={hasOrbit} aria-hidden={hasOrbit}><Atlas edition={SWITZERLAND_EDITION} suspended={hasOrbit} /></div>}
     {Transition && <Transition wanted={wanted} setWanted={setWanted} directOrbit={directOrbit} atlasMounted={atlasMounted} setAtlasMounted={setAtlasMounted} atlas={atlas} returnUrl={returnUrl} returnFocus={returnFocus} />}
-    {wanted && !Transition && <div className="flight-shield" aria-busy="true"><div className="flight-status" role="status">Preparing the orbital view…<button onClick={cancel}>Cancel</button></div></div>}
-    {error && <div className="flight-error" role="alert">{error}<button onClick={() => setError('')} aria-label="Dismiss message">×</button></div>}
+    {wanted && !Transition && <div className="flight-shield" aria-busy="true"><div className="flight-status" role="status">{text.orbitLoading}<button onClick={cancel}>{text.cancel}</button></div></div>}
+    {error && <div className="flight-error" role="alert">{text.orbitLoadError}<button onClick={() => setError(false)} aria-label={text.dismissMessage}>×</button></div>}
   </div>
 }

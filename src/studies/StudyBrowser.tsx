@@ -13,7 +13,7 @@ export default function StudyBrowser({ language, study, onSelect, onClose }: { l
   useEffect(() => { dialog.current?.showModal() }, [])
   return <dialog className="study-browser" ref={dialog} onCancel={onClose} onClose={onClose} aria-labelledby="study-browser-title">
     <header><h2 id="study-browser-title">{copy.browse}</h2><button type="button" onClick={onClose}>{copy.close} ×</button></header>
-    <a className="study-orbital-entry" href="?view=orbital"><div><strong>{copy.orbital} ↗</strong><span>{copy.orbitalDescription}</span></div><small>EXPERIMENT</small></a>
+    <a className="study-orbital-entry" href="?view=orbital"><div><strong>{copy.orbital} ↗</strong><span>{copy.orbitalDescription}</span></div><small>{copy.experiment}</small></a>
     <div className="study-browser-grid">{STUDY_ORDER.map(id => {
       // Copy and preview artwork retain their identity when display order changes.
       const index = STUDY_IDS.indexOf(id)

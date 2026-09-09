@@ -2,7 +2,7 @@
 import './dom.ts'
 import { act, renderHook, waitFor } from '@testing-library/react'
 import { expect, it, vi } from 'vitest'
-import { useUiText } from '../use-ui-text.ts'
+import { loadUiText, useUiText } from '../use-ui-text.ts'
 import type { UiLanguage } from '../i18n.ts'
 
 const german = vi.hoisted(() => {
@@ -20,11 +20,11 @@ it('ignores a fully settled older language, caches it, and keeps readable fallba
   expect(hook.result.current.pageTitle).toBe('Gleislicht — Switzerland in motion')
   hook.rerender({ language: 'fr' })
   await waitFor(() => expect(hook.result.current.pageTitle).toBe('Gleislicht — La Suisse en mouvement'))
-  await act(async () => { german.release(); await import('../locales/de.ts') })
+  await act(async () => { german.release(); await loadUiText('de') })
   expect(hook.result.current.pageTitle).toBe('Gleislicht — La Suisse en mouvement')
   hook.rerender({ language: 'de' })
   expect(hook.result.current.pageTitle).toBe('Gleislicht — Schweiz in Bewegung')
   hook.rerender({ language: 'it' })
-  await act(async () => { await import('../locales/it.ts').catch(() => {}) })
+  await act(async () => { await loadUiText('it').catch(() => {}) })
   expect(hook.result.current.pageTitle).toBe('Gleislicht — Switzerland in motion')
 })

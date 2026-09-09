@@ -33,7 +33,7 @@ export const AIRPORT_LABELS = {
     "retry": "Erneut versuchen",
     "studyTime": "Studienzeit",
     "boardWindow": "Zeitfenster",
-    "outsideWindow": "Außerhalb des Zeitfensters"
+    "outsideWindow": "Ausserhalb des Zeitfensters"
   },
   "it": {
     "airport": "Aeroporto",
@@ -53,7 +53,24 @@ export const AIRPORT_LABELS = {
     "boardWindow": "Finestra del tabellone",
     "outsideWindow": "Fuori dalla finestra dello studio"
   },
-  "en": {}
+  "en": {
+    "airport": "Airport",
+    "departures": "Departures",
+    "arrivals": "Arrivals",
+    "time": "Time",
+    "service": "Flight",
+    "destination": "To",
+    "origin": "From",
+    "stand": "Gate",
+    "status": "Remarks",
+    "emptyDepartures": "No departures in this window.",
+    "emptyArrivals": "No arrivals in this window.",
+    "loading": "Loading airport movements\u2026",
+    "retry": "Retry",
+    "studyTime": "Study time",
+    "boardWindow": "Board window",
+    "outsideWindow": "Outside study window"
+}
 }
 
 export const AIRPORT_NOTES = {

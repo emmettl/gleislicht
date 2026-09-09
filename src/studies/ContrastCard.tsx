@@ -38,7 +38,7 @@ export default function ContrastCard({ zurichReady, kientalReady, zurichContrast
                   ? numberFormat.format(kientalContrastActiveCount)
                   : '—'}
               </strong>
-              <small>PostBus 220</small>
+              <small>{text.postbusBrand} 220</small>
             </div>
           </div>
           <p className="between">

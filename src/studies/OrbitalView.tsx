@@ -1,3 +1,7 @@
+import { useUiLanguage } from '../use-ui-language.ts'
+import { useUiText } from '../use-ui-text.ts'
+import { LANGUAGE_LOCALES, UI_LANGUAGES, serviceCategoryLabel } from '../i18n.ts'
+import { ORBITAL_COPY, type OrbitalCopy } from './orbital-copy.ts'
 import { Component, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { Canvas } from '@react-three/fiber'
 import OrbitalScene, { type OrbitalGeography, type OrbitalPlayback } from './OrbitalScene.tsx'
@@ -8,23 +12,26 @@ import { orbitalSun } from './orbital-sun.ts'
 import './orbital.css'
 import './orbital-flight.css'
 
-class OrbitalBoundary extends Component<{ children: ReactNode; onError?: (message: string) => void }, { error: boolean }> {
+class OrbitalBoundary extends Component<{ children: ReactNode; copy: OrbitalCopy; onError?: (message: string) => void }, { error: boolean }> {
   state = { error: false }
   static getDerivedStateFromError() { return { error: true } }
-  componentDidCatch() { this.props.onError?.('The orbital renderer couldn’t start. Your atlas has been restored.') }
-  render() { return this.state.error ? <div className="orbital-message" role="alert"><h2>The orbital view couldn’t start</h2><p>Try reloading in a browser with WebGL enabled.</p><a href="?">Return to the atlas</a></div> : this.props.children }
+  componentDidCatch() { this.props.onError?.(this.props.copy.failedRestored) }
+  render() { return this.state.error ? <div className="orbital-message" role="alert"><h2>{this.props.copy.failed}</h2><p>{this.props.copy.webglHelp}</p><a href="?">{this.props.copy.returnAtlas}</a></div> : this.props.children }
 }
 async function json<T>(file: string, signal: AbortSignal): Promise<T> {
   const response = await fetch(editionDataUrl(file), { signal })
   if (!response.ok) throw new Error(`Could not load ${file}`)
   return response.json() as Promise<T>
 }
-const integer = new Intl.NumberFormat('en-CH')
 const ORBITAL_CAMERA = { position: [0, 39, 24] as [number, number, number], fov: 43, near: 0.1, far: 400 }
 const COMPACT_VIEW = '(max-width: 700px), (max-width: 1000px) and (max-height: 500px)'
 const ORBITAL_GL = { antialias: true, alpha: false, powerPreference: 'high-performance' as const }
 export interface OrbitalViewProps { onReady?: () => void; onLoadError?: (message: string) => void }
 export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) {
+  const [language, setLanguage] = useUiLanguage()
+  const copy = ORBITAL_COPY[language], text = useUiText(language)
+  const integer = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language]), [language])
+  const formatAltitude = useCallback((height: number) => copy.altitudeValue.replace('{height}', new Intl.NumberFormat(LANGUAGE_LOCALES[language], { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(height)), [copy, language])
   const [compact, setCompact] = useState(() => window.matchMedia(COMPACT_VIEW).matches)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const settingsDialog = useRef<HTMLDialogElement>(null)
@@ -51,14 +58,14 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
   const [chunk, setChunk] = useState<OrbitalChunk>()
   const [hiddenTransports, setHiddenTransports] = useState<string[]>([])
   const [terrainDetail, setTerrainDetail] = useState<'standard' | 'detailed'>('standard')
-  const [terrainLoading, setTerrainLoading] = useState(false), [terrainError, setTerrainError] = useState('')
+  const [terrainLoading, setTerrainLoading] = useState(false), [terrainError, setTerrainError] = useState(false)
   const terrainCache = useRef(new Map<string, OrbitalTerrain>())
   const terrainRequest = useRef<AbortController | null>(null)
   const [time, setTime] = useState(27900), [block, setBlock] = useState(3)
   const [playing, setPlaying] = useState(!reduced), [speed, setSpeed] = useState(60), [trail, setTrail] = useState(120)
   const [drift, setDrift] = useState(!reduced), [reset, setReset] = useState(0)
   const [stats, setStats] = useState({ active: 0, fps: 0 })
-  const [error, setError] = useState(''), [attempt, setAttempt] = useState(0), [about, setAbout] = useState(false)
+  const [error, setError] = useState<'dataError' | 'movementError' | ''>(''), [attempt, setAttempt] = useState(0), [about, setAbout] = useState(false)
   const [focused, setFocused] = useState(false)
   const focusButton = useRef<HTMLButtonElement>(null), exitFocusButton = useRef<HTMLButtonElement>(null)
   const wasFocused = useRef(false)
@@ -67,13 +74,13 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
   const movementSource = useCallback(() => chunk, [chunk])
   const ready = Boolean(terrain && chunk && chunk.start === block * 7200)
   useEffect(() => { if (ready && stats.fps > 0) onReady?.() }, [ready, stats.fps, onReady])
-  useEffect(() => { if (error) onLoadError?.(error) }, [error, onLoadError])
+  useEffect(() => { if (error) onLoadError?.(copy[error]) }, [error, copy, onLoadError])
   const rhythmPath = useMemo(() => {
     if (!manifest) return ''
     const peak = Math.max(1, ...manifest.active)
     return `M0,42 ${manifest.active.map((n, i) => `L${i},${42 - n / peak * 38}`).join(' ')} L1440,42Z`
   }, [manifest])
-  useEffect(() => { document.title = 'All Switzerland · Gleislicht' }, [])
+  useEffect(() => { document.title = copy.pageTitle; document.documentElement.lang = language; document.querySelector('meta[name="description"]')?.setAttribute('content', copy.pageDescription) }, [copy, language])
   useEffect(() => {
     const controller = new AbortController()
     Promise.all([
@@ -84,7 +91,7 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
     ]).then(([m, boundary, lakes, terrainData]) => {
       if (m.version !== 1 || m.chunks.length !== 12) throw new Error('Unsupported orbital data')
       setManifest(m); setTerrain(terrainData); terrainCache.current.set('standard', terrainData); setGeography({ rings: boundary.rings, lakes: lakes.lakes })
-    }).catch(e => { if (!controller.signal.aborted) setError(String(e.message)) })
+    }).catch(() => { if (!controller.signal.aborted) setError('dataError') })
     return () => controller.abort()
   }, [attempt])
   useEffect(() => {
@@ -109,14 +116,14 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
       setChunk(result); playback.current.ready = true
       // One adjacent block, never the full day, is prefetched.
       void load((block + 1) % 12).catch(() => {})
-    }).catch(e => { if (!controller.signal.aborted) setError(String(e.message)) })
+    }).catch(() => { if (!controller.signal.aborted) setError('movementError') })
     return () => { controller.abort(); state.ready = false }
   }, [manifest, block, attempt])
   useEffect(() => () => terrainRequest.current?.abort(), [])
   async function selectTerrain(detail: 'standard' | 'detailed') {
     terrainRequest.current?.abort()
     const controller = new AbortController(); terrainRequest.current = controller
-    setTerrainError('')
+    setTerrainError(false)
     const cached = terrainCache.current.get(detail)
     if (cached) { setTerrain(cached); setTerrainDetail(detail); setTerrainLoading(false); return }
     setTerrainLoading(true)
@@ -125,7 +132,7 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
       if (result.version !== 1 || result.columns * result.rows !== result.elevations.length || !result.elevations.every(v => Number.isFinite(v) && v >= 0 && v < 6000)) throw new Error('Invalid detailed terrain')
       if (controller.signal.aborted) return
       terrainCache.current.set(detail, result); setTerrain(result); setTerrainDetail(detail); setTerrainLoading(false)
-    } catch { if (!controller.signal.aborted) { setTerrainError('Fine terrain couldn’t load. Try again.'); setTerrainLoading(false) } }
+    } catch { if (!controller.signal.aborted) { setTerrainError(true); setTerrainLoading(false) } }
   }
   function toggleTransport(id: string) {
     const hidden = hiddenTransports.includes(id) ? hiddenTransports.filter(value => value !== id) : [...hiddenTransports, id]
@@ -170,64 +177,64 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
     setStats({ active, fps }); setTime(value); setBlock(orbitalBlock(value)); setDrift(playback.current.drift)
   }, [])
   const sunPosition = sunlight ? orbitalSun(time) : null
-  const snowControls = <div className="orbital-snow-control" inert={focused} aria-hidden={focused} role="group" aria-label="Simulated snow cover">
-      <button aria-pressed={snowEnabled} onClick={() => setSnowEnabled(value => !value)}>Snow {snowEnabled ? 'on' : 'off'}</button>
-      <label htmlFor="orbital-snowline">Snowline <output>{integer.format(snowline)} m</output></label>
-      <input id="orbital-snowline" aria-label="Snowline altitude" aria-valuetext={`${snowline} metres above sea level`} type="range" min={800} max={4200} step={100} value={snowline} disabled={!snowEnabled} onChange={event => setSnowline(Number(event.target.value))} />
-      <small>Simulated cover</small>
+  const snowControls = <div className="orbital-snow-control" inert={focused} aria-hidden={focused} role="group" aria-label={copy.snowCover}>
+      <button aria-pressed={snowEnabled} onClick={() => setSnowEnabled(value => !value)}>{copy.snow}{' '}{snowEnabled ? text.on : text.off}</button>
+      <label htmlFor="orbital-snowline">{copy.snowline}{' '}<output>{integer.format(snowline)} m</output></label>
+      <input id="orbital-snowline" aria-label={copy.snowlineAltitude} aria-valuetext={copy.metresAboveSea.replace('{height}', integer.format(snowline))} type="range" min={800} max={4200} step={100} value={snowline} disabled={!snowEnabled} onChange={event => setSnowline(Number(event.target.value))} />
+      <small>{copy.simulatedCover}</small>
     </div>
-  const viewControls = <aside className="orbital-side" inert={focused} aria-hidden={focused} aria-label="View controls">
-      <div className="orbital-detail" role="group" aria-label="Mountain detail">
-        <span>Mountain detail</span>
-        <button aria-pressed={terrainDetail === 'standard'} onClick={() => void selectTerrain('standard')}>Standard · ~500 m</button>
-        <button aria-pressed={terrainDetail === 'detailed'} onClick={() => void selectTerrain('detailed')}>{terrainLoading ? 'Loading fine terrain…' : 'Fine · ~170 m'}</button>
-        {terrainError && <small role="alert">{terrainError}</small>}
+  const viewControls = <aside className="orbital-side" inert={focused} aria-hidden={focused} aria-label={copy.viewControls}>
+      <div className="orbital-detail" role="group" aria-label={copy.mountainDetail}>
+        <span>{copy.mountainDetail}</span>
+        <button aria-pressed={terrainDetail === 'standard'} onClick={() => void selectTerrain('standard')}>{copy.standard}</button>
+        <button aria-pressed={terrainDetail === 'detailed'} onClick={() => void selectTerrain('detailed')}>{terrainLoading ? copy.loadingFine : copy.fine}</button>
+        {terrainError && <small role="alert">{copy.fineError}</small>}
       </div>
       <div className="orbital-sun-control">
-        <button aria-pressed={sunlight} onClick={() => setSunlight(value => !value)}>Sunlight {sunlight ? 'on' : 'off'}</button>
-        {sunPosition && <small>8 Sep 2026 · CEST<br />{sunPosition.altitude > 0 ? `${Math.round(sunPosition.altitude)}° above horizon · ${Math.round(sunPosition.azimuth)}° bearing` : 'Sun below horizon'}</small>}
+        <button aria-pressed={sunlight} onClick={() => setSunlight(value => !value)}>{copy.sunlight}{' '}{sunlight ? text.on : text.off}</button>
+        {sunPosition && <small>{new Intl.DateTimeFormat(LANGUAGE_LOCALES[language], { dateStyle: 'medium', timeZone: 'Europe/Zurich' }).format(new Date('2026-09-08T12:00:00Z'))} · CEST<br />{sunPosition.altitude > 0 ? copy.sunPosition.replace('{altitude}', integer.format(Math.round(sunPosition.altitude))).replace('{azimuth}', integer.format(Math.round(sunPosition.azimuth))) : copy.sunBelow}</small>}
       </div>
-      <button aria-pressed={drift} onClick={() => { playback.current.drift = !drift; setDrift(!drift) }}>Drift {drift ? 'on' : 'off'}</button>
-      <button onClick={() => setReset(n => n + 1)}>Return to orbit</button>
-      <button ref={compact ? undefined : focusButton} aria-pressed={focused} aria-keyshortcuts="F" title="Hide controls (F)" onClick={toggleFocus}>Focus view</button>
-      <button aria-expanded={about} aria-controls="orbital-notes" onClick={() => { setSettingsOpen(false); setAbout(!about) }}>About this view</button>
+      <button aria-pressed={drift} onClick={() => { playback.current.drift = !drift; setDrift(!drift) }}>{copy.drift}{' '}{drift ? text.on : text.off}</button>
+      <button onClick={() => setReset(n => n + 1)}>{copy.returnOrbit}</button>
+      <button ref={compact ? undefined : focusButton} aria-pressed={focused} aria-keyshortcuts="F" title={copy.hideControls} onClick={toggleFocus}>{copy.focusView}</button>
+      <button aria-expanded={about} aria-controls="orbital-notes" onClick={() => { setSettingsOpen(false); setAbout(!about) }}>{copy.about}</button>
     </aside>
-  const transportControls = <div className="orbital-legend" role="group" aria-label="Transport types">{ORBITAL_TRANSPORTS.map(mode => <button type="button" key={mode.id} aria-pressed={!hiddenTransports.includes(mode.id)} title={`${hiddenTransports.includes(mode.id) ? 'Show' : 'Hide'} ${mode.label.toLowerCase()}`} style={{ '--swatch': mode.color } as CSSProperties} onClick={() => toggleTransport(mode.id)}>{mode.label}</button>)}</div>
-  const playbackControls = <><label>Speed <select value={speed} onChange={e => { const value = Number(e.target.value); playback.current.speed = value; setSpeed(value) }}>{[1, 30, 60, 180, 600].map(n => <option key={n} value={n}>{n}×</option>)}</select></label><label className="orbital-trail">Trails <input aria-label="Trail duration" type="range" min={0} max={600} step={30} value={trail} onChange={e => { const value = Number(e.target.value); playback.current.trail = value; setTrail(value) }} /><output>{trail ? `${trail / 60} min` : 'Off'}</output></label></>
+  const transportControls = <div className="orbital-legend" role="group" aria-label={copy.transportTypes}>{ORBITAL_TRANSPORTS.map(mode => <button type="button" key={mode.id} aria-pressed={!hiddenTransports.includes(mode.id)} title={(hiddenTransports.includes(mode.id) ? copy.show : copy.hide).replace('{mode}', mode.id === 'rail' || mode.id === 'boat' ? copy[mode.id] : serviceCategoryLabel(language, mode.id))} style={{ '--swatch': mode.color } as CSSProperties} onClick={() => toggleTransport(mode.id)}>{mode.id === 'rail' || mode.id === 'boat' ? copy[mode.id] : serviceCategoryLabel(language, mode.id)}</button>)}</div>
+  const playbackControls = <><label>{copy.speed}{' '}<select value={speed} onChange={e => { const value = Number(e.target.value); playback.current.speed = value; setSpeed(value) }}>{[1, 30, 60, 180, 600].map(n => <option key={n} value={n}>{n}×</option>)}</select></label><label className="orbital-trail">{copy.trails}{' '}<input aria-label={copy.trailDuration} type="range" min={0} max={600} step={30} value={trail} onChange={e => { const value = Number(e.target.value); playback.current.trail = value; setTrail(value) }} /><output>{trail ? `${integer.format(trail / 60)} min` : text.off}</output></label></>
   return <main className={`orbital-view${focused ? ' is-focused' : ''}`}>
-    <div className="orbital-canvas" aria-label="An orbital map of Switzerland showing moving public transport services">
-      <OrbitalBoundary onError={onLoadError}>{geography && terrain && <Canvas shadows={sunlight} dpr={[1, 1.5]} camera={ORBITAL_CAMERA} gl={ORBITAL_GL} fallback={<div className="orbital-message">This experiment needs WebGL. <a href="?">Return to the atlas</a></div>}>
-        <OrbitalScene geography={geography} terrain={terrain} movementSource={movementSource} playback={playback} reset={reset} onStats={onStats} sunlight={sunlight} cityLabels={cityLabels} cameraAltitude={cameraAltitude} snowEnabled={snowEnabled} snowline={snowline} />
+    <div className="orbital-canvas" aria-label={copy.pageDescription}>
+      <OrbitalBoundary copy={copy} onError={onLoadError}>{geography && terrain && <Canvas shadows={sunlight} dpr={[1, 1.5]} camera={ORBITAL_CAMERA} gl={ORBITAL_GL} fallback={<div className="orbital-message">{copy.webglRequired}{' '}<a href="?">{copy.returnAtlas}</a></div>}>
+        <OrbitalScene geography={geography} terrain={terrain} movementSource={movementSource} playback={playback} reset={reset} onStats={onStats} sunlight={sunlight} cityLabels={cityLabels} cameraAltitude={cameraAltitude} snowEnabled={snowEnabled} snowline={snowline} formatAltitude={formatAltitude} />
       </Canvas>}</OrbitalBoundary>
     </div>
     <div className="orbital-city-labels" ref={cityLabels} aria-hidden="true" />
     <header className="orbital-header" inert={focused} aria-hidden={focused}>
-      <div><a className="orbital-back" href="?">← Gleislicht</a><p className="orbital-eyebrow">ORBITAL EXPERIMENT / 01</p><h1>All Switzerland<span>in motion.</span></h1><p className="orbital-subtitle">One country. Every available connection.</p></div>
-      <div className="orbital-live"><span className="orbital-pulse" /><strong>{ready ? integer.format(stats.active) : '—'}</strong><span>{hiddenTransports.length ? 'visible services' : 'active services'}</span><small>{ready && stats.fps ? `${stats.fps} FPS` : 'PREPARING ORBIT'}</small><div className="orbital-altitude" title="Approximate height above sea level, calculated from the scene’s vertical scale with the 4.5× terrain exaggeration removed."><span>Camera altitude</span><output ref={cameraAltitude} aria-label="Camera altitude above sea level" aria-live="off">—</output></div></div>
+      <div><a className="orbital-back" href="?">← Gleislicht</a><p className="orbital-eyebrow">{copy.experiment}</p><h1>{copy.country}<span>{copy.inMotion}</span></h1><p className="orbital-subtitle">{copy.subtitle}</p></div>
+      <div className="orbital-live"><nav className="language-picker" aria-label={text.languagePicker}>{UI_LANGUAGES.map(option => <button key={option.id} type="button" lang={option.id} title={option.name} aria-pressed={language === option.id} onClick={() => setLanguage(option.id)}>{option.label}</button>)}</nav><span className="orbital-pulse" /><strong>{ready ? integer.format(stats.active) : '—'}</strong><span>{hiddenTransports.length ? copy.visibleServices : copy.activeServices}</span><small>{ready && stats.fps ? `${stats.fps} FPS` : copy.preparing}</small><div className="orbital-altitude" title={copy.altitudeHelp}><span>{copy.cameraAltitude}</span><output ref={cameraAltitude} aria-label={copy.cameraAltitudeSea} aria-live="off">—</output></div></div>
     </header>
-    {!ready && <div className="orbital-message" role={error ? 'alert' : 'status'}>{error ? <><h2>We couldn’t load this part of the day.</h2><p>{error}</p><button onClick={() => { cache.current.clear(); setError(''); setAttempt(a => a + 1) }}>Try again</button></> : <><span className="orbital-loader" /><p>Gathering the country’s movements…</p><small>{manifest ? `${orbitalClock(block * 7200)}–${orbitalClock((block + 1) * 7200)} · ${integer.format(manifest.journeyCount)} journeys across the day` : 'National rail, PostBus and regional networks'}</small></>}</div>}
+    {!ready && <div className="orbital-message" role={error ? 'alert' : 'status'}>{error ? <><h2>{copy.loadFailed}</h2><p>{copy[error]}</p><button onClick={() => { cache.current.clear(); setError(''); setAttempt(a => a + 1) }}>{copy.retry}</button></> : <><span className="orbital-loader" /><p>{copy.gathering}</p><small>{manifest ? `${orbitalClock(block * 7200)}–${orbitalClock((block + 1) * 7200)} · ${copy.journeysDay.replace('{count}', integer.format(manifest.journeyCount))}` : copy.networks}</small></>}</div>}
     {!compact && <>{snowControls}{viewControls}</>}
-    {about && <section className="orbital-notes" id="orbital-notes"><button className="orbital-close" aria-label="Close about this view" onClick={() => setAbout(false)}>×</button><h2>A country made of journeys</h2><p>{manifest ? integer.format(manifest.journeyCount) : '…'} distinct journey representations from {manifest?.sources.length ?? '…'} public studies. Shared services appear once, using their longest available journey.</p><p>A composite weekday from 4 and 8 September 2026. These are timetable movements, not live positions. Cableways and other frequency services include representative departures.</p><p>Real swisstopo terrain at {terrainDetail === 'detailed' ? 'roughly 170–195' : 'roughly 500–585'}-metre spacing, shown with 4.5× vertical exaggeration. Lake surfaces use approximate terrain-derived levels and stylised moonlight. Lights follow the ground surface, fading out through mapped rail tunnels and back in at their exits. Tunnel passages are approximate matches to OpenStreetMap; coarse Simplon and Gotthard summit paths use projected portal positions. Bridge and cable heights are not surveyed here. Paths follow the source study’s geometry, simplified for this distant view. Unmatched sections retain timetable interpolation. Coverage includes only the available public feeds.</p><p>The adjustable snowline is simulated cover, using ground elevation with a soft boundary and less accumulation on steep slopes. It does not represent observed snow, glaciers or a weather forecast.</p><p>Optional sunlight follows an approximate astronomical sun position for 8 September 2026, using Swiss local time (CEST) at the centre of Switzerland. Warmth and twilight are illustrative clear-sky lighting. Terrain shadows inherit the 4.5× exaggerated relief; weather, atmospheric refraction and local horizon corrections are not modelled.</p><p>Data: opentransportdata.swiss, FOT, ZVV, TPG/SITG and regional publishers; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a>; © swisstopo; FOEN lakes.</p><a href="methodology.html" target="_blank" rel="noreferrer">Sources and methodology ↗</a></section>}
+    {about && <section className="orbital-notes" id="orbital-notes"><button className="orbital-close" aria-label={copy.closeAbout} onClick={() => setAbout(false)}>×</button><h2>{copy.aboutTitle}</h2><p>{copy.aboutJourneys.replace('{journeys}', manifest ? integer.format(manifest.journeyCount) : '…').replace('{studies}', manifest ? integer.format(manifest.sources.length) : '…')}</p><p>{copy.aboutTimetable}</p><p>{copy.aboutTerrain.replace('{spacing}', terrainDetail === 'detailed' ? '170–195' : '500–585')}</p><p>{copy.aboutSnow}</p><p>{copy.aboutSun}</p><p>{copy.dataCredit}{' '}<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">{text.osmCredit}</a>; © swisstopo; {copy.lakeCredit}.</p><a href="methodology.html" target="_blank" rel="noreferrer">{copy.sources} ↗</a></section>}
     <footer className="orbital-console" inert={focused} aria-hidden={focused}>
-      {!compact && <div className="orbital-clock-row"><div><span className="orbital-eyebrow">COMPOSITE WEEKDAY · SWISS LOCAL TIME</span><output className="orbital-time" aria-label="Playback time">{orbitalClock(time)}</output></div>{transportControls}</div>}
-      {compact && <div className="orbital-mobile-toolbar"><output className="orbital-time" aria-label="Playback time">{orbitalClock(time)}</output><button disabled={!ready} onClick={togglePlay} aria-label={playing ? 'Pause playback' : 'Play playback'}>{playing ? 'Ⅱ Pause' : '▶ Play'}</button><button ref={focusButton} onClick={toggleFocus}>Focus</button><button aria-haspopup="dialog" aria-expanded={settingsOpen} aria-controls="orbital-settings" onClick={() => setSettingsOpen(true)}>Controls</button></div>}
+      {!compact && <div className="orbital-clock-row"><div><span className="orbital-eyebrow">{copy.weekday}</span><output className="orbital-time" aria-label={copy.playbackTime}>{orbitalClock(time)}</output></div>{transportControls}</div>}
+      {compact && <div className="orbital-mobile-toolbar"><output className="orbital-time" aria-label={copy.playbackTime}>{orbitalClock(time)}</output><button disabled={!ready} onClick={togglePlay} aria-label={playing ? copy.pausePlayback : copy.playPlayback}>{playing ? `Ⅱ ${copy.pause}` : `▶ ${copy.play}`}</button><button ref={focusButton} onClick={toggleFocus}>{copy.focus}</button><button aria-haspopup="dialog" aria-expanded={settingsOpen} aria-controls="orbital-settings" onClick={() => setSettingsOpen(true)}>{copy.controls}</button></div>}
       <div className="orbital-timeline">
         {manifest && <svg viewBox="0 0 1440 42" preserveAspectRatio="none" aria-hidden="true"><path d={rhythmPath} /></svg>}
-        <input aria-label="Time of day" aria-valuetext={orbitalClock(time)} type="range" min={0} max={86399} step={60} value={time} onChange={e => seek(Number(e.target.value))} />
+        <input aria-label={text.timeOfDay} aria-valuetext={orbitalClock(time)} type="range" min={0} max={86399} step={60} value={time} onChange={e => seek(Number(e.target.value))} />
         <div className="orbital-hours"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
       </div>
-      {!compact && <div className="orbital-controls"><button className="orbital-play" disabled={!ready} onClick={togglePlay} aria-label={playing ? 'Pause playback' : 'Play playback'}>{playing ? 'Ⅱ Pause' : '▶ Play'}</button>{playbackControls}<span className="orbital-hint">Drag to explore · scroll to descend</span></div>}
-      {compact && <div className="orbital-mobile-caption">Composite weekday · Swiss local time</div>}
+      {!compact && <div className="orbital-controls"><button className="orbital-play" disabled={!ready} onClick={togglePlay} aria-label={playing ? copy.pausePlayback : copy.playPlayback}>{playing ? `Ⅱ ${copy.pause}` : `▶ ${copy.play}`}</button>{playbackControls}<span className="orbital-hint">{copy.dragHint}</span></div>}
+      {compact && <div className="orbital-mobile-caption">{copy.weekday}</div>}
     </footer>
     {compact && <dialog ref={settingsDialog} id="orbital-settings" className="orbital-settings" aria-labelledby="orbital-settings-title" onCancel={() => setSettingsOpen(false)} onClose={() => setSettingsOpen(false)} onClick={event => { if (event.target === event.currentTarget) setSettingsOpen(false) }}>
       <div className="orbital-settings-inner">
-        <div className="orbital-settings-heading"><h2 id="orbital-settings-title">View controls</h2><button autoFocus aria-label="Close controls" onClick={() => setSettingsOpen(false)}>Done</button></div>
-        <p className="orbital-touch-hint">One finger to orbit · pinch to zoom<br />Two fingers to pan · tap a city to name it</p>
-        <section className="orbital-settings-section"><h3>Transport</h3>{transportControls}</section>
-        <section className="orbital-settings-section orbital-settings-playback"><h3>Playback</h3>{playbackControls}</section>
+        <div className="orbital-settings-heading"><h2 id="orbital-settings-title">{copy.viewControls}</h2><button autoFocus aria-label={copy.closeControls} onClick={() => setSettingsOpen(false)}>{copy.done}</button></div>
+        <p className="orbital-touch-hint">{copy.touchOrbit}<br />{copy.touchPan}</p>
+        <section className="orbital-settings-section"><h3>{copy.transport}</h3>{transportControls}</section>
+        <section className="orbital-settings-section orbital-settings-playback"><h3>{copy.playback}</h3>{playbackControls}</section>
         {snowControls}{viewControls}
       </div>
     </dialog>}
-    {focused && <button ref={exitFocusButton} className="orbital-exit-focus" aria-label="Exit focus mode" aria-keyshortcuts="Escape F" title="Show controls (Esc)" onClick={toggleFocus}>Show controls</button>}
+    {focused && <button ref={exitFocusButton} className="orbital-exit-focus" aria-label={copy.exitFocus} aria-keyshortcuts="Escape F" title={copy.showControlsHint} onClick={toggleFocus}>{copy.showControls}</button>}
   </main>
 }

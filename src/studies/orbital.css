@@ -183,3 +183,5 @@
   .orbital-hours { display: none; }
   .orbital-settings { inset: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) auto; width: min(430px, calc(100% - 32px)); height: calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); max-height: calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
 }
+
+.orbital-live .language-picker { display: flex; grid-column: 1 / -1; justify-self: end; margin-bottom: 12px; pointer-events: auto; }

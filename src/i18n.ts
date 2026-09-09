@@ -106,3 +106,15 @@ export function serviceCategoryLabel(
 ): string {
   return CATEGORY_LABELS[language][category]
 }
+
+/** Translate attribution wording without modifying official product or agency names. */
+export function sourceCredit(language: UiLanguage, credit: string): string {
+  const words = {
+    en: ['OpenStreetMap contributors', 'FOT', 'FOEN', 'Source:'],
+    de: ['OpenStreetMap-Mitwirkende', 'BAV', 'BAFU', 'Quelle:'],
+    fr: ['contributeurs OpenStreetMap', 'OFT', 'OFEV', 'Source :'],
+    it: ['collaboratori OpenStreetMap', 'UFT', 'UFAM', 'Fonte:'],
+  }[language]
+  return credit.replaceAll('OpenStreetMap contributors', words[0]).replace(/\bFOT\b/g, words[1])
+    .replace(/\bFOEN\b/g, words[2]).replace(/(?:Quelle|Source):/g, words[3])
+}
