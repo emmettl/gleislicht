@@ -70,6 +70,8 @@ Deployment `b013bd36-d449-4042-ac8c-8140fec8ff9f` completed at 13:23:54 CEST. An
 
 The first published national morning is 8 September 2026 from 06:45 through 08:45 CEST. All 121 expected minute snapshots passed the compiler's continuity gate, and accepted-site coverage ranged from 84.1% upward. The generated manifest and progressive chunks are public static artifacts; the raw R2 archive remains private.
 
+On 9 September the same recording was extended to the complete 8 September civil day: all 1,440 snapshots from 7 September 22:00 UTC through 8 September 21:59 UTC passed compilation with `--minimum-samples=1440`. No minute is missing, and minimum accepted-site coverage remains 84.1%. The output contains 24 hourly chunks with identical observed samples overlapping at hour boundaries for interpolation. AUTO is available in both the morning and full-day national views. The cantonal pilots are unchanged.
+
 To export a complete Swiss civil day for compilation, create an R2 object read token scoped to `gleislicht-observations`, then expose its S3-compatible values only to the command process:
 
 ```sh

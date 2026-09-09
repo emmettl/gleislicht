@@ -1273,6 +1273,7 @@ export function App({ edition, suspended = false }: AppProps) {
     setRoadLoadState(roadSnapshot ? 'ready' : 'loading')
     setRoadEnabled(true)
     if (
+      !isNationalDay &&
       roadSnapshot &&
       (networkTime < roadSnapshot.metadata.windowStart ||
         networkTime > roadSnapshot.metadata.windowEnd)
@@ -1281,12 +1282,12 @@ export function App({ edition, suspended = false }: AppProps) {
         (roadSnapshot.metadata.windowStart + roadSnapshot.metadata.windowEnd) / 2,
       )
     }
-  }, [networkTime, releaseSelection, roadEnabled, roadSnapshot])
+  }, [isNationalDay, networkTime, releaseSelection, roadEnabled, roadSnapshot])
 
   const selectRoad = useCallback((road: RoadTopologyRoad) => {
     setDirectorMode(false)
     setNetworkStudy('national')
-    setNationalTimeRange('morning')
+    if (networkStudy !== 'national') setNationalTimeRange('day')
     if (!roadEnabled) toggleRoadLayer()
     setSelectedTrainId(undefined)
     setSelectedStationName(undefined)
@@ -1307,7 +1308,7 @@ export function App({ edition, suspended = false }: AppProps) {
       focus: road.focus,
       distanceScale: road.cameraScale,
     }))
-  }, [setDirectorMode, setSelectedCategory, setAirCategorySelected, roadEnabled, toggleRoadLayer])
+  }, [networkStudy, setDirectorMode, setSelectedCategory, setAirCategorySelected, roadEnabled, toggleRoadLayer])
 
   const openTerrainCorridor = useCallback(
     (nextCorridorId: TerrainCorridorId, nextProgress = 0.015) => {
@@ -1364,8 +1365,8 @@ export function App({ edition, suspended = false }: AppProps) {
       releaseSelection()
       if (study !== 'national') setAirEnabled(false)
       if (study !== 'national') setAirCategorySelected(false)
-      if (study !== 'national' || timeRange === 'day') setRoadEnabled(false)
-      if (study !== 'national' || timeRange === 'day') {
+      if (study !== 'national') setRoadEnabled(false)
+      if (study !== 'national') {
         setRoadCategorySelected(false)
       }
       if (isAdditionalRegion(study) || study === 'graubuenden-region' || study === 'valais-region' || study === 'ticino-region' || study === 'solothurn-region' || study === 'bern-region' || study === 'lausanne-region' || study === 'basel-core' || study === 'nyon-region' || study === 'riviera-region') setRegionalRange('day')
@@ -1653,8 +1654,9 @@ export function App({ edition, suspended = false }: AppProps) {
         setRoadTopology(topology)
         setRoadLoadState('ready')
         if (
-          timelineTimeRef.current < snapshot.metadata.windowStart ||
-          timelineTimeRef.current > snapshot.metadata.windowEnd
+          !isNationalDay &&
+          (timelineTimeRef.current < snapshot.metadata.windowStart ||
+            timelineTimeRef.current > snapshot.metadata.windowEnd)
         ) {
           setNetworkTime(
             (snapshot.metadata.windowStart + snapshot.metadata.windowEnd) / 2,
@@ -1670,6 +1672,7 @@ export function App({ edition, suspended = false }: AppProps) {
   }, [
     edition.data.road.morning,
     edition.data.road.topology,
+    isNationalDay,
     roadEnabled,
     roadSnapshot,
     roadTopology,
@@ -2800,10 +2803,10 @@ export function App({ edition, suspended = false }: AppProps) {
               <button
                 className="road-toggle"
                 type="button"
-                data-tooltip={networkStudy !== 'national' || isNationalDay ? help.roadUnavailable : roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
+                data-tooltip={networkStudy !== 'national' ? help.roadUnavailable : roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
                 aria-label={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
                 aria-pressed={roadEnabled}
-                disabled={networkStudy !== 'national' || isNationalDay}
+                disabled={networkStudy !== 'national'}
                 onClick={toggleRoadLayer}
               >
                 {text.auto}
@@ -2855,10 +2858,10 @@ export function App({ edition, suspended = false }: AppProps) {
               <button
                 className="mobile-road-toggle"
                 type="button"
-                data-tooltip={networkStudy !== 'national' || isNationalDay ? help.roadUnavailable : roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
+                data-tooltip={networkStudy !== 'national' ? help.roadUnavailable : roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
                 aria-label={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
                 aria-pressed={roadEnabled}
-                disabled={networkStudy !== 'national' || isNationalDay}
+                disabled={networkStudy !== 'national'}
                 onClick={toggleRoadLayer}
               >
                 {text.auto}
@@ -3163,6 +3166,7 @@ export function App({ edition, suspended = false }: AppProps) {
             <RoadTrafficHistory road={selectedRoad.id} manifest={nationalRoad.manifest} fallback={roadSnapshot}
               time={networkTime} language={language} onTime={time => {
                 setIsPlaying(false)
+                if (network && (time < network.metadata.windowStart || time > network.metadata.windowEnd)) setNationalTimeRange('day')
                 handleNetworkTime(time)
                 roadHistorySeekRef.current = { time, at: performance.now() }
               }} />
@@ -3407,7 +3411,7 @@ export function App({ edition, suspended = false }: AppProps) {
             {roadEnabled && (
               <span>
                 {activePilot ? `AUTO · Kanton Zürich · ${activePilot.metadata.completeMinutes} min` : nationalRoad.snapshot && nationalRoadInWindow
-                  ? text.astraRecorded
+                  ? `${text.astraRecorded} · ${nationalRoad.snapshot.metadata.serviceDate}`
                   : text.astraCalibration}
                 {roadTopology && !activePilot
                   ? ` · ${text.astraTopology(

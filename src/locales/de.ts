@@ -51,7 +51,7 @@ const text = {
   "speed": "Wiedergabegeschwindigkeit einstellen",
   "jump": "Zu dieser Tageszeit springen",
   "airUnavailable": "AIR ist in der nationalen Bahnstudie verfügbar",
-  "roadUnavailable": "Strassenverkehr ist in der nationalen Morgenstudie verfügbar"
+  "roadUnavailable": "Strassenverkehr ist in der Schweiz-Studie verfügbar"
 },
   solothurnScope: "Teilabdeckung · ≈ repräsentative Fahrten",
   solothurnSubtitle: "Solothurn in Bewegung",

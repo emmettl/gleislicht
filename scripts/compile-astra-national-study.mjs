@@ -126,7 +126,10 @@ function compileCounterRoadStudy(
       const measurementsById = new Map(measurements.map(m => [m.siteId, m]))
       const values = acceptedSites.flatMap((site, index) => {
         if (recordingScope === 'zurich-cantonal' && site.detectorIds.some(id => cantonalMeasurementIssues(measurementsById.get(id)).length)) return []
-        const conditions = aggregateDirection(measurements, [site.detectorIds])
+        // Index the national minute once; only aggregate this site's lanes.
+        // Rebuilding a map of every detector per site makes a full day quadratic.
+        const lanes = site.detectorIds.flatMap(id => measurementsById.has(id) ? [measurementsById.get(id)] : [])
+        const conditions = aggregateDirection(lanes, [site.detectorIds])
         if (!Number.isFinite(conditions.lightFlowPerHour)) return []
         return [
           [
@@ -217,12 +220,17 @@ export function splitNationalRoadStudy(
     minutes.push(minute)
     chunkGroups.set(chunkStart, minutes)
   }
-  const chunks = [...chunkGroups.entries()].map(([windowStart, minutes]) => {
+  const groups = [...chunkGroups.entries()]
+  const chunks = groups.map(([windowStart, groupMinutes], index) => {
     const windowEnd = Math.min(
       study.metadata.windowEnd,
       windowStart + chunkSeconds,
     )
     const id = `${chunkTimeLabel(windowStart)}-${chunkTimeLabel(windowEnd)}`
+    // Carry the next observed boundary into this chunk for the final minute's
+    // interpolation. It is the same measurement, not an additional observation.
+    const nextMinute = groups[index + 1]?.[1][0]
+    const minutes = nextMinute?.[0] === windowEnd ? [...groupMinutes, nextMinute] : groupMinutes
     return {
       descriptor: {
         id,

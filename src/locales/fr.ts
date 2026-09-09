@@ -51,7 +51,7 @@ const text = {
   "speed": "Régler la vitesse de lecture",
   "jump": "Passer à cette heure de la journée",
   "airUnavailable": "AIR est disponible dans l’étude ferroviaire nationale",
-  "roadUnavailable": "Le trafic routier est disponible dans l’étude nationale du matin"
+  "roadUnavailable": "Le trafic routier est disponible dans l’étude Suisse"
 },
   solothurnScope: "Couverture partielle · ≈ mouvements représentatifs",
   solothurnSubtitle: "Soleure en mouvement",

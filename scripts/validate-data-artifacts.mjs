@@ -264,11 +264,11 @@ assert(
   'Recorded national road study is missing its observation disclosure',
 )
 assert(
-  nationalRoad.metadata?.windowStart === 24_300 &&
-    nationalRoad.metadata?.windowEnd === 31_500 &&
+  nationalRoad.metadata?.windowStart === 0 &&
+    nationalRoad.metadata?.windowEnd === 86_340 &&
     nationalRoad.metadata?.sampleIntervalSeconds === 60 &&
-    nationalRoad.metadata?.completeMinutes === 121,
-  'Recorded national road study does not cover the complete 06:45–08:45 window',
+    nationalRoad.metadata?.completeMinutes === 1440,
+  'Recorded national road study does not cover every minute from 00:00–23:59',
 )
 assert(
   nationalRoad.metadata?.minimumSiteCoverage >= 0.6 &&
@@ -278,7 +278,7 @@ assert(
 )
 assert(
   Array.isArray(nationalRoad.chunks) &&
-    nationalRoad.chunks.length >= 2 &&
+    nationalRoad.chunks.length === 24 &&
     nationalRoad.chunks[0].windowStart === nationalRoad.metadata.windowStart &&
     nationalRoad.chunks.at(-1).windowEnd === nationalRoad.metadata.windowEnd,
   'Recorded national road study has incomplete progressive chunks',
@@ -301,7 +301,11 @@ for (const [index, descriptor] of nationalRoad.chunks.entries()) {
       `${descriptor.id} is not contiguous with the preceding chunk`,
     )
   }
-  nationalRoadMinutes.push(...chunk.minutes)
+  const previous = nationalRoadMinutes.at(-1)
+  if (previous && previous[0] === chunk.minutes[0]?.[0]) {
+    assert(JSON.stringify(previous) === JSON.stringify(chunk.minutes[0]), `${descriptor.id} has a conflicting boundary observation`)
+    nationalRoadMinutes.push(...chunk.minutes.slice(1))
+  } else nationalRoadMinutes.push(...chunk.minutes)
 }
 assert(
   nationalRoadMinutes.length === nationalRoad.metadata.completeMinutes &&

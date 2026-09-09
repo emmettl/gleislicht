@@ -49,7 +49,7 @@ const text = {
   "speed": "Set the playback speed",
   "jump": "Jump to this time of day",
   "airUnavailable": "AIR is available in the national rail study",
-  "roadUnavailable": "Road traffic is available in the national morning study"
+  "roadUnavailable": "Road traffic is available in the Switzerland study"
 },
   solothurnScope: "Partial canton coverage · ≈ representative movements",
   solothurnSubtitle: "Solothurn in motion",

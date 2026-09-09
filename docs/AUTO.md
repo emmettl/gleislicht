@@ -14,7 +14,7 @@ The [regional road source survey](REGIONAL-ROAD-SOURCE-SURVEY.md) documents pote
 
 The first study follows the A1 through the Zürich region, from the Aargau side through Zürich to Winterthur. Its path is anchored by georeferenced sites in the current ASTRA / Federal Roads Office Measurement Site Table. It shares the national 06:45–08:45 clock and is a separately loaded static JSON artifact, so the railway-first opening payload is unchanged.
 
-The public national study uses **recorded observations** from 8 September 2026. It contains every minute from 06:45 through 08:45 CEST, covering 718 accepted directional sites and 609 sections; the weakest accepted minute still covers 84.1% of sites. ASTRA's realtime feed retains only the latest complete minute, so Gleislicht records an append-only historical series before compilation. Authenticated A1 collection began on 6 September 2026 and expanded nationally on 7 September.
+The national study uses **recorded observations** from the complete Swiss civil day of 8 September 2026. It contains all 1,440 minutes from 00:00 through 23:59 CEST, covering 718 accepted directional sites and 609 sections; the weakest accepted minute still covers 84.1% of sites. Choose **CH · 24H**, then **AUTO**, to explore the day. ASTRA's realtime feed retains only the latest complete minute, so Gleislicht records an append-only historical series before compilation. Authenticated A1 collection began on 6 September 2026 and expanded nationally on 7 September.
 
 The artifact says this in machine-readable metadata:
 
@@ -34,7 +34,7 @@ The number shown in the status card is an approximate corridor occupancy derived
 - Builder: `npm run data:road:compile:national`
 - Output: `public/data/swiss-road-national-manifest.json` and `public/data/swiss-road-national/`
 - Cadence: one minute
-- Window: 06:45–08:45 on the shared study day
+- Window: 00:00–23:59 CEST on 8 September 2026, also available in the morning view
 - Loading: only after AUTO is selected
 
 ## National motorway topology audit
@@ -85,12 +85,12 @@ Once at least 60 complete national minutes exist, the national compiler validate
 ```sh
 npm run data:road:compile:national -- \
   --input=recordings/astra-national \
-  --date=2026-09-05
+  --date=2026-09-08 --minimum-samples=1440
 ```
 
-The national renderer uses at most 1,500 light and 520 heavy vehicle marks across the network. Combined with hourly data chunks loaded on demand, this bounds the client workload while preserving one-minute source measurements. Road selection increases the visual sampling density of the selected corridor. These limits are implementation bounds, not a substitute for checking frame times on real devices.
+The national renderer uses at most 1,500 light and 520 heavy vehicle marks across the network. Combined with 24 hourly data chunks loaded on demand, this bounds the client workload while preserving one-minute source measurements. Each non-final chunk includes the next hour's first observed minute for continuous boundary interpolation; this overlap does not increase the unique observation count. Opening a road's history loads the full recording for its daily comparison. Road selection increases the visual sampling density of the selected corridor. These limits are implementation bounds, not a substitute for checking frame times on real devices.
 
-The recorded output remains separate from the A1 calibration. AUTO detects the manifest automatically and replaces the fallback particles with observed minute conditions while retaining the disclosure that individual vehicles are synthetic. The first public road recording is dated 8 September 2026; the currently committed rail and air studies retain their own source dates and share only the 06:45–08:45 playback clock.
+The recorded output remains separate from the A1 calibration. AUTO detects the manifest automatically and replaces the fallback particles with observed minute conditions while retaining the disclosure that individual vehicles are synthetic. The road recording is dated 8 September 2026; rail and air retain their own source dates and share the playback clock. The last road observation is at 23:59; playback after that timestamp has no recorded road conditions. This is full-day temporal coverage of accepted national-road counters, not coverage of every Swiss road. Zürich cantonal pilots retain their separately audited windows.
 
 Each directional cross-section can contain several lanes. The compiler sums those parallel lane flows and uses a flow-weighted lane speed. The A1 compiler then takes the median across successive counter sites, because summing those sites would count essentially the same motorway stream repeatedly. A minute is usable only when at least 60% of the configured sites in both A1 directions, or 60% of accepted national directional sites, report usable light and heavy conditions. An explicitly zero vehicle flow remains usable when mean speed is absent: the compiled numeric speed is zero as an empty-class playback placeholder. Missing flows and positive flows without speed remain incomplete. The first national samples had approximately 88% usable directional-site coverage.
 
@@ -103,7 +103,7 @@ npm run data:road:compile -- \
 
 Compilation requires at least 60 complete, consecutive minutes by default and rejects gaps over 75 seconds, mixed Swiss service dates and sparse directions. Its output uses the existing browser contract but declares `measurementKind: recorded` plus the precise UTC range, complete-minute count and minimum coverage. Publishing the manifest does not overwrite the calibration artifact, which remains a resilient fallback.
 
-Possible later studies include the A2 Gotthard approach and a full recorded day. `Fahrstrom` remains an appealing artwork title, but AUTO is the unambiguous interface name while the project also depicts railway traction infrastructure.
+Possible later studies include a focused A2 Gotthard approach recording. `Fahrstrom` remains an appealing artwork title, but AUTO is the unambiguous interface name while the project also depicts railway traction infrastructure.
 
 ## Selecting roads and comparing traffic
 

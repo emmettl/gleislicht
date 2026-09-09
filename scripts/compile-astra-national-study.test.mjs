@@ -59,6 +59,30 @@ function snapshot(minute) {
 }
 
 describe('national ASTRA study compilation', () => {
+  it('compiles every minute of a Swiss civil day across the UTC partition boundary', () => {
+    const start = Date.parse('2026-09-07T22:00:00Z')
+    const snapshots = Array.from({ length: 1440 }, (_, minute) => {
+      const recorded = snapshot('00')
+      for (const measurement of recorded.measurements) {
+        measurement.measurementTime = new Date(start + minute * 60_000).toISOString()
+      }
+      return recorded
+    })
+    const study = compileNationalRoadStudy(snapshots, topology, { serviceDate: '2026-09-08', minimumSamples: 1440 })
+    expect(study.metadata).toMatchObject({
+      serviceDate: '2026-09-08', windowStart: 0, windowEnd: 86340, completeMinutes: 1440,
+      firstMeasurementTime: '2026-09-07T22:00:00.000Z', lastMeasurementTime: '2026-09-08T21:59:00.000Z',
+    })
+    const split = splitNationalRoadStudy(study)
+    expect(split.chunks).toHaveLength(24)
+    expect([...new Map(split.chunks.flatMap(chunk => chunk.body.minutes).map(minute => [minute[0], minute])).values()]).toEqual(study.minutes)
+    expect(split.chunks.slice(0, -1).every(chunk => chunk.descriptor.minuteCount === 61)).toBe(true)
+    expect(split.chunks.at(-1).descriptor.minuteCount).toBe(60)
+    expect(split.chunks[0].body.minutes.at(-1)).toEqual(split.chunks[1].body.minutes[0])
+    expect(() => compileNationalRoadStudy(snapshots.filter((_, i) => i !== 720), topology, { serviceDate: '2026-09-08', minimumSamples: 1440 })).toThrow('not continuous')
+    expect(() => compileNationalRoadStudy(snapshots.slice(1), topology, { serviceDate: '2026-09-08', minimumSamples: 1440 })).toThrow('1440 required')
+  })
+
   it('compiles accepted sites and section references without unresolved records', () => {
     const result = compileNationalRoadStudy(
       [snapshot('45'), snapshot('46')],
@@ -112,7 +136,7 @@ describe('national ASTRA study compilation', () => {
     }
     const split = splitNationalRoadStudy(study, { chunkSeconds: 3_600 })
     expect(split.manifest.chunks.map(({ id, minuteCount }) => [id, minuteCount])).toEqual([
-      ['0645-0745', 1],
+      ['0645-0745', 2],
       ['0745-0845', 2],
     ])
   })
