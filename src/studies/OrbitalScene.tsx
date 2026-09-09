@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, type MutableRefObject, type RefObject } fro
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import OrbitalClouds from './OrbitalClouds.tsx'
+import { createCloudMaterialResources, updateCloudMaterialResources, disposeCloudMaterialResources, type CloudMaterialResources } from './orbital-cloud-material.ts'
 import type { CloudField } from './orbital-clouds.ts'
 import OrbitalLighting from './OrbitalLighting.tsx'
 import OrbitalSnowMaterial from './OrbitalSnowMaterial.tsx'
@@ -79,7 +80,7 @@ function Camera({ playback, reset, altitude, formatAltitude }: { formatAltitude:
   return null
 }
 
-function Geography({ geography, terrain, surface, sunlight, snowEnabled, snowline }: { snowEnabled: boolean; snowline: number; geography: OrbitalGeography; terrain: OrbitalTerrain; surface: OrbitalSurface; sunlight: boolean }) {
+function Geography({ geography, terrain, surface, sunlight, snowEnabled, snowline, clouds }: { clouds?: CloudMaterialResources; snowEnabled: boolean; snowline: number; geography: OrbitalGeography; terrain: OrbitalTerrain; surface: OrbitalSurface; sunlight: boolean }) {
   const geometry = useMemo(() => {
     const outline: number[] = [], shore: number[] = [], waterPositions: number[] = [], waterIndices: number[] = []
     const land = new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(surface.positions, 3))
@@ -122,7 +123,7 @@ function Geography({ geography, terrain, surface, sunlight, snowEnabled, snowlin
   }, [geography, terrain, surface])
   useEffect(() => () => Object.values(geometry).forEach(g => g.dispose()), [geometry])
   return <group>
-    <mesh geometry={geometry.land} receiveShadow={sunlight}><OrbitalSnowMaterial enabled={snowEnabled} altitude={snowline} /></mesh>
+    <mesh geometry={geometry.land} receiveShadow={sunlight}><OrbitalSnowMaterial enabled={snowEnabled} altitude={snowline} clouds={clouds} /></mesh>
     {sunlight && <mesh geometry={geometry.shadow} castShadow><meshBasicMaterial colorWrite={false} depthWrite={false} /></mesh>}
     <mesh geometry={geometry.water} receiveShadow={sunlight}><meshPhongMaterial color="#123b56" specular="#355570" shininess={65} side={THREE.DoubleSide} /></mesh>
     <lineSegments geometry={geometry.shore}><lineBasicMaterial color="#65a5c4" transparent opacity={0.28} depthWrite={false} /></lineSegments>
@@ -228,13 +229,16 @@ function Movement({ chunk, playback, surface, onStats }: { chunk: OrbitalChunk; 
 export default function OrbitalScene({ geography, terrain, movementSource, playback, reset, onStats, sunlight, cityLabels, cameraAltitude, snowEnabled, snowline, formatAltitude, cloudField, cloudOpacity }: { cloudField?: CloudField; cloudOpacity: number; formatAltitude: (height: number) => string; cameraAltitude: RefObject<HTMLOutputElement | null>; snowEnabled: boolean; snowline: number; cityLabels: RefObject<HTMLDivElement | null>; sunlight: boolean; geography: OrbitalGeography; terrain: OrbitalTerrain; movementSource: () => OrbitalChunk | undefined; playback: MutableRefObject<OrbitalPlayback>; reset: number; onStats: (active: number, fps: number, time: number) => void }) {
   const chunk = movementSource()
   const surface = useMemo(() => createOrbitalSurface(terrain), [terrain])
+  const clouds = useMemo(() => cloudField ? createCloudMaterialResources(cloudField) : undefined, [cloudField])
+  useEffect(() => () => { if (clouds) disposeCloudMaterialResources(clouds) }, [clouds])
+  useFrame(() => { if (clouds) updateCloudMaterialResources(clouds, playback.current.time, cloudOpacity, sunlight) })
   return <>
     <color attach="background" args={['#03060d']} />
     <Camera playback={playback} reset={reset} altitude={cameraAltitude} formatAltitude={formatAltitude} />
     <OrbitalCityLabels surface={surface} root={cityLabels} />
     <OrbitalLighting sunlight={sunlight} playback={playback} />
-    <Geography geography={geography} terrain={terrain} surface={surface} sunlight={sunlight} snowEnabled={snowEnabled} snowline={snowline} />
-    {cloudField && <OrbitalClouds field={cloudField} playback={playback} opacity={cloudOpacity} sunlight={sunlight} />}
+    <Geography geography={geography} terrain={terrain} surface={surface} sunlight={sunlight} snowEnabled={snowEnabled} snowline={snowline} clouds={clouds} />
+    {clouds && <OrbitalClouds resources={clouds} />}
     {chunk && <Movement key={chunk.start} chunk={chunk} playback={playback} surface={surface} onStats={onStats} />}
   </>
 }

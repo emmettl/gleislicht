@@ -138,6 +138,7 @@ import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road
 const CantonalRecordingPicker = lazy(() => import('./studies/CantonalRecordingPicker.tsx'))
 const DetailCard = lazy(() => import('./studies/DetailCard.tsx'))
 const StudyBrowser = lazy(() => import('./studies/StudyBrowser.tsx'))
+const SearchResults = lazy(() => import('./studies/SearchResults.tsx'))
 
 const CantonalPilotControls = lazy(() => import('./studies/CantonalPilotControls.tsx'))
 
@@ -2869,175 +2870,43 @@ export function App({ edition, suspended = false }: AppProps) {
             </div>
           </form>
           {searchOpen && searchQuery.trim() && (
-            <div
-              id="train-search-results"
-              className="search-results"
-              role="listbox"
-              aria-label={
-                airEnabled ? text.matchingAirResults : text.matchingResults
-              }
-            >
-              {stationSearchResults.map((station, index) => (
-                <button
-                  id={`train-search-result-${index}`}
-                  className={`station-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
-                  key={`station:${station.name}`}
-                  type="button"
-                  role="option"
-                  aria-selected={station.name === selectedStationName}
-                  onMouseEnter={() => setActiveSearchIndex(index)}
-                  onClick={() => selectStation(station)}
-                >
-                  <span className="station-result-mark" aria-hidden="true">◎</span>
-                  <span className="result-service">{station.name}</span>
-                  <span className="result-route">
-                    {text.routesAndCalls(
-                      station.routes.length,
-                      station.trainIds.length,
-                    )}
-                  </span>
-                </button>
-              ))}
-              {routeSearchResults.map((route, routeIndex) => {
-                const index = stationSearchResults.length + routeIndex
-                return (
-                  <button
-                    id={`train-search-result-${index}`}
-                    className={`route-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
-                    key={route.id}
-                    type="button"
-                    role="option"
-                    aria-selected={route.id === selectedRouteId}
-                    onMouseEnter={() => setActiveSearchIndex(index)}
-                    onClick={() => selectRoute(route)}
-                  >
-                    <TransportIcon mode={isCogwheel || isMountainStudy && route.category === 'other' ? 'cogwheel' : route.category} color={serviceColors[route.category]} />
-                    <span className="result-service">
-                      {isCogwheel ? cogwheelCopy.label : categoryLabel(route.category)} {route.name}
-                    </span>
-                    <span className="result-route">
-                      {isPostbus && <>{route.headsigns.slice(0, 2).join(' / ')} · </>}
-                      {numberFormat.format(route.trainIds.length)} {text.trips.toLocaleLowerCase(LANGUAGE_LOCALES[language])}
-                      {' · '}
-                      {numberFormat.format(route.stopIndexes.length)} {text.stops.toLocaleLowerCase(LANGUAGE_LOCALES[language])}
-                    </span>
-                  </button>
-                )
-              })}
-              {roadSearchResults.map((road, roadIndex) => {
-                const index =
-                  stationSearchResults.length +
-                  routeSearchResults.length +
-                  roadIndex
-                return (
-                  <button
-                    id={`train-search-result-${index}`}
-                    className={`road-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
-                    key={`road:${road.id}`}
-                    type="button"
-                    role="option"
-                    aria-selected={road.id === selectedRoadId}
-                    onMouseEnter={() => setActiveSearchIndex(index)}
-                    onClick={() => selectRoad(road)}
-                  >
-                    <TransportIcon mode="road" color="#ffb36b" />
-                    <span className="result-service">
-                      {road.label}
-                    </span>
-                    <span className="result-route">
-                      {text.wholeMotorway}
-                      {road.description ? ` · ${road.description}` : ''}
-                    </span>
-                  </button>
-                )
-              })}
-              {airportSearchResults.map((airport, airportIndex) => {
-                const index = stationSearchResults.length + routeSearchResults.length +
-                  roadSearchResults.length + airportIndex
-                return (
-                  <button
-                    id={`train-search-result-${index}`}
-                    className={`air-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
-                    key={`airport:${airport.id}`}
-                    type="button"
-                    role="option"
-                    aria-selected={airport.id === selectedAirport?.id}
-                    onMouseEnter={() => setActiveSearchIndex(index)}
-                    onClick={() => selectAirport(airport)}
-                  >
-                    <TransportIcon mode="air" color="#ff5edb" />
-                    <span className="result-service">{airport.name}</span>
-                    <span className="result-route">{airport.iata} · {airport.icao}</span>
-                  </button>
-                )
-              })}
-              {airSearchResults.map((track, airIndex) => {
-                const index =
-                  stationSearchResults.length +
-                  routeSearchResults.length +
-                  roadSearchResults.length +
-                  airportSearchResults.length +
-                  airIndex
-                return (
-                  <button
-                    id={`train-search-result-${index}`}
-                    className={`air-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
-                    key={`air:${track.id}`}
-                    type="button"
-                    role="option"
-                    aria-selected={track.id === selectedAirTrackId}
-                    onMouseEnter={() => setActiveSearchIndex(index)}
-                    onClick={() => selectAirTrack(track.id)}
-                  >
-                    <TransportIcon mode="air" color="#ff5edb" />
-                    <span className="result-service">{track.callsign}</span>
-                    <span className="result-route">
-                      {text.luftraum} ·{' '}
-                      {(track.icaoAddress ?? track.id).toUpperCase()} ·{' '}
-                      {formatServiceTime(track.start)}–{formatServiceTime(track.end)}
-                    </span>
-                  </button>
-                )
-              })}
-              {searchResults.map((train, trainIndex) => {
-                  const origin = network?.stops[train.stops[0]?.[0]]?.[2]
-                  const index =
-                    stationSearchResults.length +
-                    routeSearchResults.length +
-                    roadSearchResults.length +
-                    airportSearchResults.length +
-                    airSearchResults.length +
-                    trainIndex
-                  return (
-                    <button
-                      id={`train-search-result-${index}`}
-                      className={resolvedActiveSearchIndex === index ? 'is-active' : undefined}
-                      key={train.id}
-                      type="button"
-                      role="option"
-                      aria-selected={train.id === selectedTrainId}
-                      onMouseEnter={() => setActiveSearchIndex(index)}
-                      onClick={() => selectTrain(train)}
-                    >
-                      <TransportIcon mode={isCogwheel || isMountainStudy && train.category === 'other' ? 'cogwheel' : train.category} color={serviceColors[train.category]} />
-                      <span className="result-service">
-                        {train.route} <b>{train.shortName}</b>
-                      </span>
-                      <span className="result-route">
-                        {isHeadwayTrain(train) ? `${frequencyCopy.label} · ≈` : ''}{formatServiceTime(train.start)} · {origin} → {train.headsign}
-                      </span>
-                    </button>
-                  )
-                })}
-              {!stationSearchResults.length &&
-                !routeSearchResults.length &&
-                !roadSearchResults.length &&
-                !airportSearchResults.length &&
-                !airSearchResults.length &&
-                !searchResults.length && (
-                <p>{isNationalDay || isMountainStudy ? text.noResultsDay : text.noResults}</p>
-              )}
-            </div>
+            <Suspense fallback={<div id="train-search-results" className="search-results" role="status">{text.loading}</div>}>
+              <SearchResults
+                stationSearchResults={stationSearchResults}
+                routeSearchResults={routeSearchResults}
+                roadSearchResults={roadSearchResults}
+                airportSearchResults={airportSearchResults}
+                airSearchResults={airSearchResults}
+                searchResults={searchResults}
+                resolvedActiveSearchIndex={resolvedActiveSearchIndex}
+                selectedStationName={selectedStationName}
+                selectedRouteId={selectedRouteId}
+                selectedRoadId={selectedRoadId}
+                selectedAirport={selectedAirport}
+                selectedAirTrackId={selectedAirTrackId}
+                selectedTrainId={selectedTrainId}
+                airEnabled={airEnabled}
+                isCogwheel={isCogwheel}
+                isMountainStudy={isMountainStudy}
+                isPostbus={isPostbus}
+                isNationalDay={isNationalDay}
+                cogwheelCopy={cogwheelCopy}
+                frequencyCopy={frequencyCopy}
+                categoryLabel={categoryLabel}
+                serviceColors={serviceColors}
+                numberFormat={numberFormat}
+                language={language}
+                network={network}
+                text={text}
+                setActiveSearchIndex={setActiveSearchIndex}
+                selectStation={selectStation}
+                selectRoute={selectRoute}
+                selectRoad={selectRoad}
+                selectAirport={selectAirport}
+                selectAirTrack={selectAirTrack}
+                selectTrain={selectTrain}
+              />
+            </Suspense>
           )}
         </section>
       )}
