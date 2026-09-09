@@ -23,15 +23,16 @@ export function createOrbitalSurface(terrain: OrbitalTerrain): OrbitalSurface {
     positions[i * 3 + 1] = elevations[i] * ORBITAL_HEIGHT_SCALE
     positions[i * 3 + 2] = north + row / (rows - 1) * (south - north)
   }
+  const gridX = (columns - 1) / (east - west), gridY = (rows - 1) / (south - north)
   return { positions, columns, rows, height(x, z) {
     if (x < west || x > east || z < north || z > south) return 0
-    const gx = (x - west) / (east - west) * (columns - 1), gy = (z - north) / (south - north) * (rows - 1)
+    const gx = (x - west) * gridX, gy = (z - north) * gridY
     const col = Math.min(columns - 2, Math.floor(gx)), row = Math.min(rows - 2, Math.floor(gy)), fx = gx - col, fy = gy - row
     const a = row * columns + col, b = a + 1, c = a + columns, d = c + 1
-    const h = (i: number) => positions[i * 3 + 1]
+    const ha = positions[a * 3 + 1], hb = positions[b * 3 + 1], hc = positions[c * 3 + 1], hd = positions[d * 3 + 1]
     // Match the two actual mesh triangles rather than a bilinear patch, so
     // moving lights and trail samples cannot sink into a non-planar cell.
-    return fx + fy <= 1 ? h(a) + (h(b) - h(a)) * fx + (h(c) - h(a)) * fy : h(d) + (h(b) - h(d)) * (1 - fy) + (h(c) - h(d)) * (1 - fx)
+    return fx + fy <= 1 ? ha + (hb - ha) * fx + (hc - ha) * fy : hd + (hb - hd) * (1 - fy) + (hc - hd) * (1 - fx)
   } }
 }
 export function insideOrbitalRing(x: number, z: number, ring: readonly (readonly number[])[]): boolean {

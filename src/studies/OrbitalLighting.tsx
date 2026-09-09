@@ -4,6 +4,8 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import type { OrbitalPlayback } from './OrbitalScene.tsx'
 import { orbitalSun } from './orbital-sun.ts'
+import { OrbitalShadowBudget } from './orbital-performance.ts'
+import type { OrbitalTerrain } from './orbital-terrain.ts'
 
 const ease = (value: number, low: number, high: number) => {
   const t = Math.max(0, Math.min(1, (value - low) / (high - low)))
@@ -12,12 +14,18 @@ const ease = (value: number, low: number, high: number) => {
 const WARM = new THREE.Color('#ffab63'), DAY = new THREE.Color('#fff5e5')
 const NIGHT_SKY = new THREE.Color('#829ac2'), DAY_SKY = new THREE.Color('#c1daff')
 
-export default function OrbitalLighting({ sunlight, playback }: { sunlight: boolean; playback: MutableRefObject<OrbitalPlayback> }) {
+export default function OrbitalLighting({ sunlight, playback, terrain }: { sunlight: boolean; playback: MutableRefObject<OrbitalPlayback>; terrain: OrbitalTerrain }) {
   const sun = useRef<THREE.DirectionalLight>(null), sky = useRef<THREE.HemisphereLight>(null)
   const key = useRef<THREE.DirectionalLight>(null), fill = useRef<THREE.DirectionalLight>(null), moon = useRef<THREE.DirectionalLight>(null)
   const blend = useRef(0)
+  const shadowBudget = useRef(new OrbitalShadowBudget())
   useFrame((_, delta) => {
     if (!sun.current || !sky.current || !key.current || !fill.current || !moon.current) return
+    sun.current.shadow.autoUpdate = false
+    if (!sunlight) {
+      shadowBudget.current.shouldUpdate(playback.current.time, terrain, false)
+      sun.current.shadow.needsUpdate = false
+    }
     blend.current += ((sunlight ? 1 : 0) - blend.current) * (1 - Math.exp(-6 * Math.min(delta, 0.1)))
     const mix = blend.current
     key.current.intensity = 2.3 * (1 - mix); fill.current.intensity = 0.45 * (1 - mix); moon.current.intensity = 0.5 * (1 - mix)
@@ -27,6 +35,7 @@ export default function OrbitalLighting({ sunlight, playback }: { sunlight: bool
     // clear-sky approximation; the geometric sun is off below the horizon.
     const daylight = ease(position.altitude, -6, 12)
     const direct = ease(position.altitude, 0, 12)
+    sun.current.shadow.needsUpdate = shadowBudget.current.shouldUpdate(playback.current.time, terrain, sunlight && direct > 0)
     sun.current.position.set(...position.direction).multiplyScalar(80)
     sun.current.intensity = 4.5 * direct * mix
     sun.current.color.copy(WARM).lerp(DAY, ease(position.altitude, 0, 30))

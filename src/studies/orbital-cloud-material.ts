@@ -52,11 +52,13 @@ export function createCloudMaterialResources(field: CloudField) {
     orbitalCloudShadow: { value: 0 },
     strength: { value: 0.65 }, daylight: { value: 1 }, illumination: { value: 1 },
   }
-  return { field, a, b, uniforms, west, south, east, north, frame: 0 }
+  return { field, a, b, uniforms, west, south, east, north, frame: 0, time: NaN, opacity: NaN, sunlight: false }
 }
 export type CloudMaterialResources = ReturnType<typeof createCloudMaterialResources>
 
 export function updateCloudMaterialResources(resources: CloudMaterialResources, time: number, opacity: number, sunlight: boolean) {
+  if (resources.time === time && resources.opacity === opacity && resources.sunlight === sunlight) return
+  resources.time = time; resources.opacity = opacity; resources.sunlight = sunlight
   const [first, second, blend] = cloudFramePair(time)
   if (resources.frame !== first) {
     resources.a.image.data!.set(cloudTextureFrame(resources.field, first)); resources.a.needsUpdate = true

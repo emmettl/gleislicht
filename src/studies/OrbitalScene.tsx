@@ -3,6 +3,8 @@ import { useEffect, useMemo, useRef, type MutableRefObject, type RefObject } fro
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import OrbitalClouds from './OrbitalClouds.tsx'
+import { TrailFrameBudget } from './trail-frame-budget.ts'
+import OrbitalPerformance from './OrbitalPerformance.tsx'
 import { createCloudMaterialResources, updateCloudMaterialResources, disposeCloudMaterialResources, type CloudMaterialResources } from './orbital-cloud-material.ts'
 import type { CloudField } from './orbital-clouds.ts'
 import OrbitalLighting from './OrbitalLighting.tsx'
@@ -160,6 +162,9 @@ function Movement({ chunk, playback, surface, onStats }: { chunk: OrbitalChunk; 
   const stats = useRef({ elapsed: 0, frames: 0 })
   const categoryOpacity = useRef(new Float32Array(playback.current.categories.map(enabled => enabled ? 1 : 0)))
   const lastVisibleTime = useRef(chunk.start)
+  const lastFrame = useRef({ time: NaN, trail: NaN, speed: NaN, surface, visible: 0, trailsDirty: false })
+  const trailBudget = useMemo(() => new TrailFrameBudget(), [])
+  const trailElapsed = useRef(0)
   useEffect(() => () => { buffers.points.dispose(); buffers.tails.dispose() }, [buffers])
   useEffect(() => () => texture.dispose(), [texture])
   useFrame((_, delta) => {
@@ -171,11 +176,29 @@ function Movement({ chunk, playback, surface, onStats }: { chunk: OrbitalChunk; 
     const colors = buffers.points.getAttribute('color') as THREE.BufferAttribute
     const trailPositions = buffers.tails.getAttribute('position') as THREE.BufferAttribute
     const trailColors = buffers.tails.getAttribute('color') as THREE.BufferAttribute
-    let active = 0, visible = 0, vertices = 0
+    stats.current.elapsed += delta; stats.current.frames++
+    if (stats.current.elapsed >= 0.25) {
+      onStats(lastFrame.current.visible, Math.round(stats.current.frames / stats.current.elapsed), p.time)
+      stats.current.elapsed = 0; stats.current.frames = 0
+    }
+    let categoryChanged = false
     for (let category = 0; category < categoryOpacity.current.length; category++) {
       const target = p.categories[category] ? 1 : 0
-      categoryOpacity.current[category] += (target - categoryOpacity.current[category]) * (1 - Math.exp(-Math.min(delta, 0.1) * 12))
+      const previous = categoryOpacity.current[category]
+      const next = previous + (target - previous) * (1 - Math.exp(-Math.min(delta, 0.1) * 12))
+      categoryOpacity.current[category] = Math.abs(target - next) < 0.001 ? target : next
+      categoryChanged ||= previous !== categoryOpacity.current[category]
     }
+    const last = lastFrame.current
+    const settingsChanged = last.trail !== p.trail || last.speed !== p.speed || last.surface !== surface
+    trailElapsed.current += delta
+    const trailDue = trailBudget.shouldUpdateTrail(delta, trailElapsed.current)
+    if (last.time === time && !settingsChanged && !categoryChanged && !(last.trailsDirty && (trailDue || !p.playing))) return
+    // Markers remain at display cadence. Expensive trails keep all their detail,
+    // but rebuild at 30 Hz (15 Hz under load). Seeks and controls apply at once.
+    const sought = !Number.isFinite(last.time) || time < last.time || Math.abs(time - last.time) > Math.min(delta, 0.1) * Math.abs(p.speed) + 1
+    const updateTrails = trailDue || sought || !p.playing || settingsChanged
+    let active = 0, visible = 0, vertices = 0
     for (const train of chunk.journeys) {
       const modeOpacity = categoryOpacity.current[train.category]
       if (modeOpacity < 0.001) continue
@@ -187,7 +210,7 @@ function Movement({ chunk, playback, surface, onStats }: { chunk: OrbitalChunk; 
         colors.setXYZ(active, c.r * opacity, c.g * opacity, c.b * opacity); active++
         if (p.categories[train.category]) visible++
       }
-      if (p.trail <= 0) continue
+      if (!updateTrails || p.trail <= 0) continue
       const tailEnd = Math.min(time, train.end), tailStart = Math.max(time - p.trail, train.start)
       if (tailEnd <= tailStart) continue
       for (let step = 1; step <= TRAIL_STEPS; step++) {
@@ -210,15 +233,19 @@ function Movement({ chunk, playback, surface, onStats }: { chunk: OrbitalChunk; 
         }
       }
     }
-    for (const [attribute, count] of [[positions, active * 3], [colors, active * 3], [trailPositions, vertices * 3], [trailColors, vertices * 3]] as const) {
-      attribute.clearUpdateRanges(); if (count) attribute.addUpdateRange(0, count); attribute.needsUpdate = true
+    const upload = (attribute: THREE.BufferAttribute, count: number) => {
+      // A zero update range means "upload everything" to Three. Empty geometry
+      // needs only its draw range cleared, leaving the GPU buffer untouched.
+      if (!count) return
+      attribute.clearUpdateRanges(); attribute.addUpdateRange(0, count); attribute.needsUpdate = true
     }
-    buffers.points.setDrawRange(0, active); buffers.tails.setDrawRange(0, vertices)
-    stats.current.elapsed += delta; stats.current.frames++
-    if (stats.current.elapsed >= 0.25) {
-      onStats(visible, Math.round(stats.current.frames / stats.current.elapsed), p.time)
-      stats.current = { elapsed: 0, frames: 0 }
+    upload(positions, active * 3); upload(colors, active * 3)
+    buffers.points.setDrawRange(0, active)
+    if (updateTrails) {
+      upload(trailPositions, vertices * 3); upload(trailColors, vertices * 3)
+      buffers.tails.setDrawRange(0, vertices); trailElapsed.current = 0
     }
+    last.time = time; last.speed = p.speed; last.trail = p.trail; last.surface = surface; last.visible = visible; last.trailsDirty = !updateTrails
   })
   return <group>
     <lineSegments geometry={buffers.tails} frustumCulled={false}><lineBasicMaterial vertexColors transparent opacity={0.65} blending={THREE.AdditiveBlending} depthWrite={false} /></lineSegments>
@@ -226,17 +253,18 @@ function Movement({ chunk, playback, surface, onStats }: { chunk: OrbitalChunk; 
     <points geometry={buffers.points} frustumCulled={false}><pointsMaterial map={texture} vertexColors size={2.6} sizeAttenuation={false} transparent opacity={1} blending={THREE.AdditiveBlending} depthWrite={false} /></points>
   </group>
 }
-export default function OrbitalScene({ geography, terrain, movementSource, playback, reset, onStats, sunlight, cityLabels, cameraAltitude, snowEnabled, snowline, formatAltitude, cloudField, cloudOpacity }: { cloudField?: CloudField; cloudOpacity: number; formatAltitude: (height: number) => string; cameraAltitude: RefObject<HTMLOutputElement | null>; snowEnabled: boolean; snowline: number; cityLabels: RefObject<HTMLDivElement | null>; sunlight: boolean; geography: OrbitalGeography; terrain: OrbitalTerrain; movementSource: () => OrbitalChunk | undefined; playback: MutableRefObject<OrbitalPlayback>; reset: number; onStats: (active: number, fps: number, time: number) => void }) {
+export default function OrbitalScene({ onResolution, geography, terrain, movementSource, playback, reset, onStats, sunlight, cityLabels, cameraAltitude, snowEnabled, snowline, formatAltitude, cloudField, cloudOpacity }: { onResolution: (dpr: number) => void; cloudField?: CloudField; cloudOpacity: number; formatAltitude: (height: number) => string; cameraAltitude: RefObject<HTMLOutputElement | null>; snowEnabled: boolean; snowline: number; cityLabels: RefObject<HTMLDivElement | null>; sunlight: boolean; geography: OrbitalGeography; terrain: OrbitalTerrain; movementSource: () => OrbitalChunk | undefined; playback: MutableRefObject<OrbitalPlayback>; reset: number; onStats: (active: number, fps: number, time: number) => void }) {
   const chunk = movementSource()
   const surface = useMemo(() => createOrbitalSurface(terrain), [terrain])
   const clouds = useMemo(() => cloudField ? createCloudMaterialResources(cloudField) : undefined, [cloudField])
   useEffect(() => () => { if (clouds) disposeCloudMaterialResources(clouds) }, [clouds])
   useFrame(() => { if (clouds) updateCloudMaterialResources(clouds, playback.current.time, cloudOpacity, sunlight) })
   return <>
+    <OrbitalPerformance onResolution={onResolution} />
     <color attach="background" args={['#03060d']} />
     <Camera playback={playback} reset={reset} altitude={cameraAltitude} formatAltitude={formatAltitude} />
     <OrbitalCityLabels surface={surface} root={cityLabels} />
-    <OrbitalLighting sunlight={sunlight} playback={playback} />
+    <OrbitalLighting sunlight={sunlight} playback={playback} terrain={terrain} />
     <Geography geography={geography} terrain={terrain} surface={surface} sunlight={sunlight} snowEnabled={snowEnabled} snowline={snowline} clouds={clouds} />
     {clouds && <OrbitalClouds resources={clouds} />}
     {chunk && <Movement key={chunk.start} chunk={chunk} playback={playback} surface={surface} onStats={onStats} />}

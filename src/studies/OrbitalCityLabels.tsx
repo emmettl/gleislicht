@@ -28,7 +28,7 @@ export default function OrbitalCityLabels({ surface, root }: { surface: OrbitalS
       container.appendChild(node)
       return node
     })
-    nodes.current = labels
+    nodes.current = labels; selected.current = -1
     return () => { labels.forEach(node => node.remove()); nodes.current = [] }
   }, [anchors, root])
   useEffect(() => {
@@ -55,23 +55,32 @@ export default function OrbitalCityLabels({ surface, root }: { surface: OrbitalS
     const mouse = pointer.current.state
     let nearest = -1, distance = mouse.touch ? 32 : 24
     if (mouse.touch && performance.now() > mouse.holdUntil) mouse.inside = false
-    for (let i = 0; i < anchors.length; i++) {
+    const previous = selected.current
+    let selectedX = 0, selectedY = 0
+    for (let i = 0; mouse.inside && !mouse.dragging && i < anchors.length; i++) {
       const node = nodes.current[i]
       if (!node) continue
       projected.copy(anchors[i].point).project(camera)
       const x = (projected.x + 1) * size.width / 2, y = (1 - projected.y) * size.height / 2
       const visible = projected.z >= -1 && projected.z <= 1 && x >= 0 && x <= size.width && y >= 28 && y <= size.height
-      const labelX = Math.max(90, Math.min(size.width - 90, x))
-      node.style.transform = `translate(${labelX}px, ${y - 16}px) translate(-50%, -100%)`
-      node.style.setProperty('--city-offset', `${x - labelX}px`)
       if (!visible || !mouse.inside || mouse.dragging) continue
-      if (mouse.touch && !mouse.tap) { if (selected.current === i) nearest = i; continue }
+      if (mouse.touch && !mouse.tap) { if (selected.current === i) { nearest = i; selectedX = x; selectedY = y }; continue }
       // A small preference for the existing city avoids flicker between close
       // neighbours, without casting rays through the entire mountain mesh.
       const proximity = Math.hypot(x - mouse.x, y - mouse.y) - (selected.current === i ? 3 : 0)
-      if (proximity < distance) { distance = proximity; nearest = i }
+      if (proximity < distance) { distance = proximity; nearest = i; selectedX = x; selectedY = y }
     }
-    for (let i = 0; i < nodes.current.length; i++) nodes.current[i].classList.toggle('is-visible', i === nearest)
+    if (previous !== nearest) {
+      nodes.current[previous]?.classList.remove('is-visible')
+      nodes.current[nearest]?.classList.add('is-visible')
+    }
+    const node = nodes.current[nearest]
+    if (node) {
+      const labelX = Math.max(90, Math.min(size.width - 90, selectedX))
+      const transform = `translate(${labelX}px, ${selectedY - 16}px) translate(-50%, -100%)`
+      if (node.style.transform !== transform) node.style.transform = transform
+      node.style.setProperty('--city-offset', `${selectedX - labelX}px`)
+    }
     selected.current = nearest
     mouse.tap = false
   })

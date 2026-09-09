@@ -34,8 +34,16 @@ export interface OrbitalViewProps { onReady?: () => void; onLoadError?: (message
 export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) {
   const [language] = useUiLanguage()
   const copy = ORBITAL_COPY[language], text = useUiText(language)
+  const [visible, setVisible] = useState(() => !document.hidden)
+  useEffect(() => {
+    const visibility = () => setVisible(!document.hidden)
+    document.addEventListener('visibilitychange', visibility)
+    return () => document.removeEventListener('visibilitychange', visibility)
+  }, [])
+  const [resolution, setResolution] = useState(() => Math.max(1, Math.min(1.5, window.devicePixelRatio || 1)))
   const integer = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language]), [language])
-  const formatAltitude = useCallback((height: number) => copy.altitudeValue.replace('{height}', new Intl.NumberFormat(LANGUAGE_LOCALES[language], { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(height)), [copy, language])
+  const altitudeNumber = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language], { minimumFractionDigits: 1, maximumFractionDigits: 1 }), [language])
+  const formatAltitude = useCallback((height: number) => copy.altitudeValue.replace('{height}', altitudeNumber.format(height)), [copy, altitudeNumber])
   const [compact, setCompact] = useState(() => window.matchMedia(COMPACT_VIEW).matches)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const settingsDialog = useRef<HTMLDialogElement>(null)
@@ -257,8 +265,8 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
   const playbackControls = <><label>{copy.speed}{' '}<select value={speed} onChange={e => { const value = Number(e.target.value); playback.current.speed = value; setSpeed(value) }}>{[1, 30, 60, 180, 600].map(n => <option key={n} value={n}>{n}×</option>)}</select></label><label className="orbital-trail">{copy.trails}{' '}<input aria-label={copy.trailDuration} type="range" min={0} max={600} step={30} value={trail} onChange={e => { const value = Number(e.target.value); playback.current.trail = value; setTrail(value) }} /><output>{trail ? `${integer.format(trail / 60)} min` : text.off}</output></label></>
   return <main className={`orbital-view${focused ? ' is-focused' : ''}`}>
     <div className="orbital-canvas" aria-label={copy.pageDescription}>
-      <OrbitalBoundary copy={copy} onError={onLoadError}>{geography && terrain && <Canvas shadows={sunlight} dpr={[1, 1.5]} camera={ORBITAL_CAMERA} gl={ORBITAL_GL} fallback={<div className="orbital-message">{copy.webglRequired}{' '}<a href="?">{copy.returnAtlas}</a></div>}>
-        <OrbitalScene geography={geography} terrain={terrain} movementSource={movementSource} playback={playback} reset={reset} onStats={onStats} sunlight={sunlight} cityLabels={cityLabels} cameraAltitude={cameraAltitude} snowEnabled={snowEnabled} snowline={snowline} formatAltitude={formatAltitude} cloudField={cloudsEnabled && cloudField?.day.date === cloudDate ? cloudField : undefined} cloudOpacity={cloudOpacity} />
+      <OrbitalBoundary copy={copy} onError={onLoadError}>{geography && terrain && <Canvas frameloop={visible ? 'always' : 'never'} shadows={sunlight ? 'percentage' : false} dpr={resolution} camera={ORBITAL_CAMERA} gl={ORBITAL_GL} fallback={<div className="orbital-message">{copy.webglRequired}{' '}<a href="?">{copy.returnAtlas}</a></div>}>
+        <OrbitalScene onResolution={setResolution} geography={geography} terrain={terrain} movementSource={movementSource} playback={playback} reset={reset} onStats={onStats} sunlight={sunlight} cityLabels={cityLabels} cameraAltitude={cameraAltitude} snowEnabled={snowEnabled} snowline={snowline} formatAltitude={formatAltitude} cloudField={cloudsEnabled && cloudField?.day.date === cloudDate ? cloudField : undefined} cloudOpacity={cloudOpacity} />
       </Canvas>}</OrbitalBoundary>
     </div>
     <div className="orbital-city-labels" ref={cityLabels} aria-hidden="true" />
