@@ -14,6 +14,7 @@ import { isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './stu
 import { createActiveTrainCounter, orderTrainSearchMatches, trainSearchResults } from './studies/network-ui-index.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
 import { TransportIcon } from './TransportIcon.tsx'
+import { observeMasthead } from './studies/masthead-layout.ts'
 import {
   lazy,
   Suspense,
@@ -2440,7 +2441,7 @@ export function App({ edition, suspended = false }: AppProps) {
       <div className="scanlines" />
       {quietMap && <Suspense fallback={null}><AlpineQuiet language={language} /></Suspense>}
 
-      <header className="masthead">
+      <header className="masthead" ref={observeMasthead}>
         <div>
           <p className="eyebrow">
             {isNetwork && networkStudy === 'national' && airEnabled && roadEnabled

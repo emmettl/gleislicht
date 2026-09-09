@@ -89,7 +89,6 @@
   inset: 0 0 auto;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   gap: 24px;
   padding: clamp(24px, 4vw, 58px);
   z-index: 2;
@@ -414,8 +413,11 @@
   background: linear-gradient(135deg, rgba(43, 30, 22, 0.8), rgba(7, 13, 20, 0.52));
 }
 
-.journey-card.network-card {
-  top: clamp(170px, 24vh, 220px);
+@media (min-width: 701px) {
+  .experience .train-search,
+  .experience .journey-card.network-card {
+    top: max(clamp(164px, 20vh, 190px), var(--masthead-clearance, 0px));
+  }
 }
 
 .contrast-card {
@@ -444,8 +446,7 @@
 
 @media (min-width: 1100px) {
 
-  .experience .hub-picker,
-.journey-card.network-card {
+  .experience .hub-picker {
     top: clamp(164px, 20vh, 190px);
   }
 }
@@ -1207,13 +1208,6 @@
     top: 12px;
     bottom: auto;
     left: 12px;
-  }
-
-  .masthead {
-    align-items: flex-start;
-    padding: calc(16px + env(safe-area-inset-top))
-      calc(16px + env(safe-area-inset-right)) 0
-      calc(16px + env(safe-area-inset-left));
   }
 
   .masthead-topline .study-meta {
