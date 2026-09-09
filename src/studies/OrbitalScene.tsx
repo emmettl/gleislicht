@@ -2,6 +2,8 @@
 import { useEffect, useMemo, useRef, type MutableRefObject, type RefObject } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
+import OrbitalClouds from './OrbitalClouds.tsx'
+import type { CloudField } from './orbital-clouds.ts'
 import OrbitalLighting from './OrbitalLighting.tsx'
 import OrbitalSnowMaterial from './OrbitalSnowMaterial.tsx'
 import OrbitalCityLabels from './OrbitalCityLabels.tsx'
@@ -223,7 +225,7 @@ function Movement({ chunk, playback, surface, onStats }: { chunk: OrbitalChunk; 
     <points geometry={buffers.points} frustumCulled={false}><pointsMaterial map={texture} vertexColors size={2.6} sizeAttenuation={false} transparent opacity={1} blending={THREE.AdditiveBlending} depthWrite={false} /></points>
   </group>
 }
-export default function OrbitalScene({ geography, terrain, movementSource, playback, reset, onStats, sunlight, cityLabels, cameraAltitude, snowEnabled, snowline, formatAltitude }: { formatAltitude: (height: number) => string; cameraAltitude: RefObject<HTMLOutputElement | null>; snowEnabled: boolean; snowline: number; cityLabels: RefObject<HTMLDivElement | null>; sunlight: boolean; geography: OrbitalGeography; terrain: OrbitalTerrain; movementSource: () => OrbitalChunk | undefined; playback: MutableRefObject<OrbitalPlayback>; reset: number; onStats: (active: number, fps: number, time: number) => void }) {
+export default function OrbitalScene({ geography, terrain, movementSource, playback, reset, onStats, sunlight, cityLabels, cameraAltitude, snowEnabled, snowline, formatAltitude, cloudField, cloudOpacity }: { cloudField?: CloudField; cloudOpacity: number; formatAltitude: (height: number) => string; cameraAltitude: RefObject<HTMLOutputElement | null>; snowEnabled: boolean; snowline: number; cityLabels: RefObject<HTMLDivElement | null>; sunlight: boolean; geography: OrbitalGeography; terrain: OrbitalTerrain; movementSource: () => OrbitalChunk | undefined; playback: MutableRefObject<OrbitalPlayback>; reset: number; onStats: (active: number, fps: number, time: number) => void }) {
   const chunk = movementSource()
   const surface = useMemo(() => createOrbitalSurface(terrain), [terrain])
   return <>
@@ -232,6 +234,7 @@ export default function OrbitalScene({ geography, terrain, movementSource, playb
     <OrbitalCityLabels surface={surface} root={cityLabels} />
     <OrbitalLighting sunlight={sunlight} playback={playback} />
     <Geography geography={geography} terrain={terrain} surface={surface} sunlight={sunlight} snowEnabled={snowEnabled} snowline={snowline} />
+    {cloudField && <OrbitalClouds field={cloudField} playback={playback} opacity={cloudOpacity} sunlight={sunlight} />}
     {chunk && <Movement key={chunk.start} chunk={chunk} playback={playback} surface={surface} onStats={onStats} />}
   </>
 }

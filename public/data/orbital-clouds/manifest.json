@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "columns": 241,
+  "rows": 103,
+  "bounds": {
+    "west": 5.75,
+    "east": 10.75,
+    "south": 45.75,
+    "north": 47.875
+  },
+  "timezone": "Europe/Zurich",
+  "intervalSeconds": 3600,
+  "missingValue": 255,
+  "attribution": "Source: MeteoSwiss",
+  "sourceUrl": "https://opendatadocs.meteoswiss.ch/c-climate-data/c4-satellite-based-climate-data",
+  "product": "MSG / SEVIRI Cloud Fractional Cover v4.2.0; preliminary hourly satellite-derived fields",
+  "retrieved": "2026-09-09T09:35:34.106698+02:00",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "available": true,
+      "file": "2026-09-04.bin.gz",
+      "frames": 25,
+      "startUtc": "2026-09-03T22:00:00Z",
+      "endUtc": "2026-09-04T22:00:00Z",
+      "bytes": 121908,
+      "decodedBytes": 620575,
+      "sha256": "5fd390cc26d5d68aac2533c8a23b2db591f14cc293e33118e84a0905dea19c98",
+      "missingCells": 0
+    },
+    {
+      "date": "2026-09-06",
+      "available": true,
+      "file": "2026-09-06.bin.gz",
+      "frames": 25,
+      "startUtc": "2026-09-05T22:00:00Z",
+      "endUtc": "2026-09-06T22:00:00Z",
+      "bytes": 190451,
+      "decodedBytes": 620575,
+      "sha256": "a7291d6c3b59b154286bb864b3b29cbc51580d4bc090e2f1e18b32875a3738d0",
+      "missingCells": 0
+    },
+    {
+      "date": "2026-09-08",
+      "available": false,
+      "reason": "MeteoSwiss hourly files not yet published",
+      "missingTimes": [
+        "2026-09-08T00:00:00Z",
+        "2026-09-08T01:00:00Z",
+        "2026-09-08T02:00:00Z",
+        "2026-09-08T03:00:00Z",
+        "2026-09-08T04:00:00Z",
+        "2026-09-08T05:00:00Z",
+        "2026-09-08T06:00:00Z",
+        "2026-09-08T07:00:00Z",
+        "2026-09-08T08:00:00Z",
+        "2026-09-08T09:00:00Z",
+        "2026-09-08T10:00:00Z",
+        "2026-09-08T11:00:00Z",
+        "2026-09-08T12:00:00Z",
+        "2026-09-08T13:00:00Z",
+        "2026-09-08T14:00:00Z",
+        "2026-09-08T15:00:00Z",
+        "2026-09-08T16:00:00Z",
+        "2026-09-08T17:00:00Z",
+        "2026-09-08T18:00:00Z",
+        "2026-09-08T19:00:00Z",
+        "2026-09-08T20:00:00Z",
+        "2026-09-08T21:00:00Z",
+        "2026-09-08T22:00:00Z"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+.orbital-cloud-control { margin-top: 16px; padding-top: 16px; border-top: 1px solid #718ca438; }
+.orbital-cloud-control select { width: 100%; min-width: 0; margin: 7px 0; padding: 7px 5px; font-size: 12px; }
+.orbital-cloud-control small { display: block; line-height: 1.5; }
+.orbital-cloud-control small button { margin-top: 6px; }
+.orbital-settings .orbital-cloud-control { padding-top: 20px; }
+.orbital-settings .orbital-cloud-control select { font-size: 16px; }
+@media (min-width: 701px) and (min-height: 501px) {
+  .orbital-snow-control:has(.orbital-cloud-control) { width: 205px; max-height: max(180px, calc(100dvh - 490px)); overflow-y: auto; scrollbar-width: thin; }
+}

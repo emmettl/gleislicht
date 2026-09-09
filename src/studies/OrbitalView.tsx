@@ -8,7 +8,11 @@ import OrbitalScene, { type OrbitalGeography, type OrbitalPlayback } from './Orb
 import { decodeOrbitalPayload, orbitalBlock, orbitalClock, ORBITAL_TRANSPORTS, type OrbitalChunk, type OrbitalManifest } from './orbital-data.ts'
 import { editionDataUrl } from '../editions/data-url.ts'
 import type { OrbitalTerrain } from './orbital-terrain.ts'
+import { readTerrainDetail, saveTerrainDetail, type TerrainDetail } from './orbital-settings.ts'
 import { orbitalSun } from './orbital-sun.ts'
+import { decodeCloudField, validateCloudManifest, type CloudManifest, type CloudField } from './orbital-clouds.ts'
+import { CLOUD_COPY } from './orbital-cloud-copy.ts'
+import './orbital-clouds.css'
 import './orbital.css'
 import './orbital-flight.css'
 
@@ -48,6 +52,14 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
   }, [compact, settingsOpen])
   const [reduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const playback = useRef<OrbitalPlayback>({ time: 27900, speed: 60, playing: !reduced, trail: 120, drift: !reduced, ready: false, categories: Array(13).fill(true) })
+  const cloudCopy = CLOUD_COPY[language]
+  const [cloudsEnabled, setCloudsEnabled] = useState(true)
+  const [cloudDate, setCloudDate] = useState('2026-09-04')
+  const [cloudOpacity, setCloudOpacity] = useState(0.65)
+  const [cloudManifest, setCloudManifest] = useState<CloudManifest>()
+  const [cloudField, setCloudField] = useState<CloudField>()
+  const [cloudError, setCloudError] = useState(false), [cloudAttempt, setCloudAttempt] = useState(0)
+  const cloudCache = useRef(new Map<string, CloudField>())
   const [sunlight, setSunlight] = useState(true)
   const [snowEnabled, setSnowEnabled] = useState(true), [snowline, setSnowline] = useState(2600)
   const cityLabels = useRef<HTMLDivElement>(null)
@@ -57,7 +69,7 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
   const [terrain, setTerrain] = useState<OrbitalTerrain>()
   const [chunk, setChunk] = useState<OrbitalChunk>()
   const [hiddenTransports, setHiddenTransports] = useState<string[]>([])
-  const [terrainDetail, setTerrainDetail] = useState<'standard' | 'detailed'>('standard')
+  const [terrainDetail, setTerrainDetail] = useState<TerrainDetail>('standard')
   const [terrainLoading, setTerrainLoading] = useState(false), [terrainError, setTerrainError] = useState(false)
   const terrainCache = useRef(new Map<string, OrbitalTerrain>())
   const terrainRequest = useRef<AbortController | null>(null)
@@ -80,6 +92,20 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
     const peak = Math.max(1, ...manifest.active)
     return `M0,42 ${manifest.active.map((n, i) => `L${i},${42 - n / peak * 38}`).join(' ')} L1440,42Z`
   }, [manifest])
+  const selectTerrain = useCallback(async (detail: TerrainDetail) => {
+    terrainRequest.current?.abort()
+    const controller = new AbortController(); terrainRequest.current = controller
+    setTerrainError(false)
+    const cached = terrainCache.current.get(detail)
+    if (cached) { setTerrain(cached); setTerrainDetail(detail); setTerrainLoading(false); saveTerrainDetail(detail); return }
+    setTerrainLoading(true)
+    try {
+      const result = await json<OrbitalTerrain>(`orbital-terrain${detail === 'detailed' ? '-detailed' : ''}.json`, controller.signal)
+      if (result.version !== 1 || result.columns * result.rows !== result.elevations.length || !result.elevations.every(v => Number.isFinite(v) && v >= 0 && v < 6000)) throw new Error('Invalid detailed terrain')
+      if (controller.signal.aborted) return
+      terrainCache.current.set(detail, result); setTerrain(result); setTerrainDetail(detail); setTerrainLoading(false); saveTerrainDetail(detail)
+    } catch { if (!controller.signal.aborted) { setTerrainError(true); setTerrainLoading(false) } }
+  }, [])
   useEffect(() => { document.title = copy.pageTitle; document.documentElement.lang = language; document.querySelector('meta[name="description"]')?.setAttribute('content', copy.pageDescription) }, [copy, language])
   useEffect(() => {
     const controller = new AbortController()
@@ -89,11 +115,15 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
       json<{ lakes: OrbitalGeography['lakes'] }>('swiss-lakes.json', controller.signal),
       json<OrbitalTerrain>('orbital-terrain.json', controller.signal),
     ]).then(([m, boundary, lakes, terrainData]) => {
+      if (controller.signal.aborted) return
       if (m.version !== 1 || m.chunks.length !== 12) throw new Error('Unsupported orbital data')
-      setManifest(m); setTerrain(terrainData); terrainCache.current.set('standard', terrainData); setGeography({ rings: boundary.rings, lakes: lakes.lakes })
+      setManifest(m); setTerrain(terrainData); setTerrainDetail('standard'); terrainCache.current.set('standard', terrainData); setGeography({ rings: boundary.rings, lakes: lakes.lakes })
+      // Keep standard terrain usable while restoring fine geometry. A failed
+      // fine download preserves the saved preference for the next visit.
+      void selectTerrain(readTerrainDetail())
     }).catch(() => { if (!controller.signal.aborted) setError('dataError') })
     return () => controller.abort()
-  }, [attempt])
+  }, [attempt, selectTerrain])
   useEffect(() => {
     if (!manifest) return
     const controller = new AbortController()
@@ -119,21 +149,29 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
     }).catch(() => { if (!controller.signal.aborted) setError('movementError') })
     return () => { controller.abort(); state.ready = false }
   }, [manifest, block, attempt])
-  useEffect(() => () => terrainRequest.current?.abort(), [])
-  async function selectTerrain(detail: 'standard' | 'detailed') {
-    terrainRequest.current?.abort()
-    const controller = new AbortController(); terrainRequest.current = controller
-    setTerrainError(false)
-    const cached = terrainCache.current.get(detail)
-    if (cached) { setTerrain(cached); setTerrainDetail(detail); setTerrainLoading(false); return }
-    setTerrainLoading(true)
-    try {
-      const result = await json<OrbitalTerrain>(`orbital-terrain${detail === 'detailed' ? '-detailed' : ''}.json`, controller.signal)
-      if (result.version !== 1 || result.columns * result.rows !== result.elevations.length || !result.elevations.every(v => Number.isFinite(v) && v >= 0 && v < 6000)) throw new Error('Invalid detailed terrain')
+  useEffect(() => {
+    if (!cloudsEnabled) return
+    const controller = new AbortController()
+    async function load() {
+      const m = cloudManifest ?? validateCloudManifest(await json<CloudManifest>('orbital-clouds/manifest.json', controller.signal))
       if (controller.signal.aborted) return
-      terrainCache.current.set(detail, result); setTerrain(result); setTerrainDetail(detail); setTerrainLoading(false)
-    } catch { if (!controller.signal.aborted) { setTerrainError(true); setTerrainLoading(false) } }
-  }
+      setCloudManifest(m)
+      const day = m.days.find(day => day.date === cloudDate)
+      if (!day?.available) { setCloudField(undefined); return }
+      let field = cloudCache.current.get(cloudDate)
+      if (!field) {
+        const response = await fetch(editionDataUrl(`orbital-clouds/${day.file}`), { signal: controller.signal })
+        if (!response.ok) throw new Error('Cloud download failed')
+        field = await decodeCloudField(await response.arrayBuffer(), m, day)
+        if (controller.signal.aborted) return
+        cloudCache.current.set(cloudDate, field)
+      }
+      setCloudField(field); setCloudError(false)
+    }
+    void load().catch(() => { if (!controller.signal.aborted) { setCloudField(undefined); setCloudError(true) } })
+    return () => controller.abort()
+  }, [cloudsEnabled, cloudDate, cloudManifest, cloudAttempt])
+  useEffect(() => () => terrainRequest.current?.abort(), [])
   function toggleTransport(id: string) {
     const hidden = hiddenTransports.includes(id) ? hiddenTransports.filter(value => value !== id) : [...hiddenTransports, id]
     setHiddenTransports(hidden)
@@ -177,17 +215,33 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
     setStats({ active, fps }); setTime(value); setBlock(orbitalBlock(value)); setDrift(playback.current.drift)
   }, [])
   const sunPosition = sunlight ? orbitalSun(time) : null
+  const cloudControls = <div className="orbital-cloud-control" role="group" aria-label={cloudCopy.clouds}>
+    <button aria-pressed={cloudsEnabled} onClick={() => { setCloudsEnabled(value => !value); setCloudError(false) }}>{cloudCopy.clouds} {cloudsEnabled ? text.on : text.off}</button>
+    {cloudsEnabled && <>
+      <label htmlFor="orbital-cloud-date">{cloudCopy.date}</label>
+      <select id="orbital-cloud-date" value={cloudDate} onChange={event => { setCloudError(false); setCloudField(undefined); setCloudDate(event.target.value) }}>
+        {(cloudManifest?.days ?? [{ date: cloudDate, available: true }]).map(day => <option key={day.date} value={day.date}>{new Intl.DateTimeFormat(LANGUAGE_LOCALES[language], { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${day.date}T12:00:00Z`))}{!day.available ? ` · ${cloudCopy.unavailable}` : ''}</option>)}
+      </select>
+      <small>CEST · {cloudCopy.source}</small>
+      {cloudManifest?.days.find(day => day.date === cloudDate)?.available === false ? <small role="status">{cloudCopy.unavailable}</small> : cloudError ? <small role="alert">{cloudCopy.error} <button onClick={() => { setCloudError(false); setCloudAttempt(value => value + 1) }}>{copy.retry}</button></small> : cloudField?.day.date !== cloudDate ? <small role="status">{cloudCopy.loading}</small> : <>
+        <label htmlFor="orbital-cloud-opacity">{cloudCopy.opacity} <output>{integer.format(Math.round(cloudOpacity * 100))}%</output></label>
+        <input id="orbital-cloud-opacity" type="range" min={0.15} max={0.9} step={0.05} value={cloudOpacity} onChange={event => setCloudOpacity(Number(event.target.value))} />
+        <small>{cloudCopy.detail}</small>
+      </>}
+    </>}
+  </div>
   const snowControls = <div className="orbital-snow-control" inert={focused} aria-hidden={focused} role="group" aria-label={copy.snowCover}>
       <button aria-pressed={snowEnabled} onClick={() => setSnowEnabled(value => !value)}>{copy.snow}{' '}{snowEnabled ? text.on : text.off}</button>
       <label htmlFor="orbital-snowline">{copy.snowline}{' '}<output>{integer.format(snowline)} m</output></label>
       <input id="orbital-snowline" aria-label={copy.snowlineAltitude} aria-valuetext={copy.metresAboveSea.replace('{height}', integer.format(snowline))} type="range" min={800} max={4200} step={100} value={snowline} disabled={!snowEnabled} onChange={event => setSnowline(Number(event.target.value))} />
       <small>{copy.simulatedCover}</small>
+      {cloudControls}
     </div>
   const viewControls = <aside className="orbital-side" inert={focused} aria-hidden={focused} aria-label={copy.viewControls}>
       <div className="orbital-detail" role="group" aria-label={copy.mountainDetail}>
         <span>{copy.mountainDetail}</span>
-        <button aria-pressed={terrainDetail === 'standard'} onClick={() => void selectTerrain('standard')}>{copy.standard}</button>
-        <button aria-pressed={terrainDetail === 'detailed'} onClick={() => void selectTerrain('detailed')}>{terrainLoading ? copy.loadingFine : copy.fine}</button>
+        <button disabled={!terrain} aria-pressed={terrainDetail === 'standard'} onClick={() => void selectTerrain('standard')}>{copy.standard}</button>
+        <button disabled={!terrain} aria-pressed={terrainDetail === 'detailed'} onClick={() => void selectTerrain('detailed')}>{terrainLoading ? copy.loadingFine : copy.fine}</button>
         {terrainError && <small role="alert">{copy.fineError}</small>}
       </div>
       <div className="orbital-sun-control">
@@ -204,7 +258,7 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
   return <main className={`orbital-view${focused ? ' is-focused' : ''}`}>
     <div className="orbital-canvas" aria-label={copy.pageDescription}>
       <OrbitalBoundary copy={copy} onError={onLoadError}>{geography && terrain && <Canvas shadows={sunlight} dpr={[1, 1.5]} camera={ORBITAL_CAMERA} gl={ORBITAL_GL} fallback={<div className="orbital-message">{copy.webglRequired}{' '}<a href="?">{copy.returnAtlas}</a></div>}>
-        <OrbitalScene geography={geography} terrain={terrain} movementSource={movementSource} playback={playback} reset={reset} onStats={onStats} sunlight={sunlight} cityLabels={cityLabels} cameraAltitude={cameraAltitude} snowEnabled={snowEnabled} snowline={snowline} formatAltitude={formatAltitude} />
+        <OrbitalScene geography={geography} terrain={terrain} movementSource={movementSource} playback={playback} reset={reset} onStats={onStats} sunlight={sunlight} cityLabels={cityLabels} cameraAltitude={cameraAltitude} snowEnabled={snowEnabled} snowline={snowline} formatAltitude={formatAltitude} cloudField={cloudsEnabled && cloudField?.day.date === cloudDate ? cloudField : undefined} cloudOpacity={cloudOpacity} />
       </Canvas>}</OrbitalBoundary>
     </div>
     <div className="orbital-city-labels" ref={cityLabels} aria-hidden="true" />
@@ -214,7 +268,7 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
     </header>
     {!ready && <div className="orbital-message" role={error ? 'alert' : 'status'}>{error ? <><h2>{copy.loadFailed}</h2><p>{copy[error]}</p><button onClick={() => { cache.current.clear(); setError(''); setAttempt(a => a + 1) }}>{copy.retry}</button></> : <><span className="orbital-loader" /><p>{copy.gathering}</p><small>{manifest ? `${orbitalClock(block * 7200)}–${orbitalClock((block + 1) * 7200)} · ${copy.journeysDay.replace('{count}', integer.format(manifest.journeyCount))}` : copy.networks}</small></>}</div>}
     {!compact && <>{snowControls}{viewControls}</>}
-    {about && <section className="orbital-notes" id="orbital-notes"><button className="orbital-close" aria-label={copy.closeAbout} onClick={() => setAbout(false)}>×</button><h2>{copy.aboutTitle}</h2><p>{copy.aboutJourneys.replace('{journeys}', manifest ? integer.format(manifest.journeyCount) : '…').replace('{studies}', manifest ? integer.format(manifest.sources.length) : '…')}</p><p>{copy.aboutTimetable}</p><p>{copy.aboutTerrain.replace('{spacing}', terrainDetail === 'detailed' ? '170–195' : '500–585')}</p><p>{copy.aboutSnow}</p><p>{copy.aboutSun}</p><p>{copy.dataCredit}{' '}<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">{text.osmCredit}</a>; © swisstopo; {copy.lakeCredit}.</p><a href="methodology.html" target="_blank" rel="noreferrer">{copy.sources} ↗</a></section>}
+    {about && <section className="orbital-notes" id="orbital-notes"><button className="orbital-close" aria-label={copy.closeAbout} onClick={() => setAbout(false)}>×</button><h2>{copy.aboutTitle}</h2><p>{copy.aboutJourneys.replace('{journeys}', manifest ? integer.format(manifest.journeyCount) : '…').replace('{studies}', manifest ? integer.format(manifest.sources.length) : '…')}</p><p>{copy.aboutTimetable}</p><p>{copy.aboutTerrain.replace('{spacing}', terrainDetail === 'detailed' ? '170–195' : '500–585')}</p><p>{copy.aboutSnow}</p><p>{copy.aboutSun}</p><p>{cloudCopy.about} <a href="https://opendatadocs.meteoswiss.ch/c-climate-data/c4-satellite-based-climate-data" target="_blank" rel="noreferrer">{cloudCopy.credit}</a>.</p><p>{copy.dataCredit}{' '}<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">{text.osmCredit}</a>; © swisstopo; {copy.lakeCredit}.</p><a href="methodology.html" target="_blank" rel="noreferrer">{copy.sources} ↗</a></section>}
     <footer className="orbital-console" inert={focused} aria-hidden={focused}>
       {!compact && <div className="orbital-clock-row"><div><span className="orbital-eyebrow">{copy.weekday}</span><output className="orbital-time" aria-label={copy.playbackTime}>{orbitalClock(time)}</output></div>{transportControls}</div>}
       {compact && <div className="orbital-mobile-toolbar"><output className="orbital-time" aria-label={copy.playbackTime}>{orbitalClock(time)}</output><button disabled={!ready} onClick={togglePlay} aria-label={playing ? copy.pausePlayback : copy.playPlayback}>{playing ? `Ⅱ ${copy.pause}` : `▶ ${copy.play}`}</button><button ref={focusButton} onClick={toggleFocus}>{copy.focus}</button><button aria-haspopup="dialog" aria-expanded={settingsOpen} aria-controls="orbital-settings" onClick={() => setSettingsOpen(true)}>{copy.controls}</button></div>}
