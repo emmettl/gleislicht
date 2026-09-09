@@ -57,7 +57,7 @@ export function solothurnSimplonMatcher(osm, stationPage, policy, context) {
         if (value.path) return value
         const pair = pairs.find(p => p.from[4] === calls[i][4] && p.to[4] === calls[i+1][4])
         if (!pair) return value
-        const { from, to, contextPatternIds, ...result } = pair
+        const { from: _from, to: _to, contextPatternIds: _contextPatternIds, ...result } = pair
         return { ...result, reviewedPatternId: pattern.id, previousSupplementFailure: value.reason }
       })
     } }
@@ -73,5 +73,5 @@ export async function loadSolothurnSimplonRail(context) {
   assert((await readFile(`${dir}/rail.overpass`, 'utf8')).includes(`[date:"${policy.graph.snapshot}"]`))
   const matcher = solothurnSimplonMatcher(JSON.parse(gunzipSync(await readFile(`${dir}/osm.json.gz`))), JSON.parse(await readFile(`${dir}/sbb-domodossola-stations.json`)), policy, context)
   return { ...matcher, metadata: { policy, policySha256: await hashFile(file), source, identityEvidence: matcher.identityEvidence,
-    patterns: matcher.patterns, pairEvidence: matcher.pairs.map(({path,directedSourceSegments,...p})=>({...p,directedSourceSegmentsSha256:hash(JSON.stringify(directedSourceSegments))})) } }
+    patterns: matcher.patterns, pairEvidence: matcher.pairs.map(({path: _path,directedSourceSegments,...p})=>({...p,directedSourceSegmentsSha256:hash(JSON.stringify(directedSourceSegments))})) } }
 }

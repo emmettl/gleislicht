@@ -78,7 +78,7 @@ export async function reviewSolothurnResidualGaps() {
   for (const p of completion.patterns.filter(p => ['92-507-j26-1', '92-N51-j26-1', '92-A01-T-j26-1'].includes(p.routeId)))
     p.pathSegments.forEach((v, i) => { if (v === null) assessedRoadKeys.add(JSON.stringify([p.routeId, p.stopIds[i], p.stopIds[i + 1]])) })
   const seasonalRoadAssessments = [...assessedRoadKeys].sort().map(key => {
-    const [routeId, fromId, toId] = JSON.parse(key), { path, ...assessment } = seasonalRoads.all.get(key)
+    const [routeId, fromId, toId] = JSON.parse(key), { path: _path, ...assessment } = seasonalRoads.all.get(key)
     const variants = assessment.roadPatternIds.map(id => {
       const identity = seasonalRoads.cache.agencies.all.identities[id], stops = identity.stops
       const index = stops.findIndex((s, i) => s[4] === fromId && stops[i + 1]?.[4] === toId); assert(index >= 0)

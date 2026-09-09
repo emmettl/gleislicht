@@ -56,7 +56,7 @@ export function solothurnComoMatcher(osm, policy, context) {
         if (value.path) return value
         const pair = pairs.find(p => p.from[4] === calls[i][4] && p.to[4] === calls[i + 1][4])
         if (!pair) return value
-        const { from, to, contextPatternIds, ...result } = pair
+        const { from: _from, to: _to, contextPatternIds: _contextPatternIds, ...result } = pair
         return { ...result, reviewedPatternId: pattern.id, previousSupplementFailure: value.reason }
       })
     } }
@@ -87,5 +87,5 @@ export async function loadSolothurnComoRail(context) {
       maximumVertexGapMetres, use: reviewed ? 'independent-corridor-review-only' : 'outside-reviewed-corridor' }
   })
   return { ...matcher, metadata: { policy, policySha256: await hashFile(file), source,
-    comparisonInventory, patterns: matcher.patterns, pairEvidence: matcher.pairs.map(({ path, directedSourceSegments, ...p }) => ({ ...p, directedSourceSegmentsSha256: hash(JSON.stringify(directedSourceSegments)) })) } }
+    comparisonInventory, patterns: matcher.patterns, pairEvidence: matcher.pairs.map(({ path: _path, directedSourceSegments, ...p }) => ({ ...p, directedSourceSegmentsSha256: hash(JSON.stringify(directedSourceSegments)) })) } }
 }

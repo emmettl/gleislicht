@@ -52,10 +52,5 @@ export const TICINO_COPY = {
   },
 } as const
 
-export function TicinoDatePicker({language,date,onDate}: {language: keyof typeof TICINO_COPY; date: string; onDate: (date: string) => void}) {
-  return <select aria-label={TICINO_COPY[language].date} value={date} onChange={event => onDate(event.target.value)}>
-    {['2026-09-04','2026-09-06'].map(value => <option key={value} value={value}>{value}</option>)}
-  </select>
-}
 
 export const attribution = 'opentransportdata.swiss · © FOT · © OpenStreetMap contributors · ODbL'

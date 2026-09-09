@@ -140,6 +140,8 @@ const CantonalPilotControls = lazy(() => import('./studies/CantonalPilotControls
 
 const RoadTrafficHistory = lazy(() => import('./studies/RoadTrafficHistory.tsx').then(module => ({ default: module.RoadTrafficHistory })))
 
+const TicinoDatePicker = lazy(() => import('./studies/TicinoDatePicker.tsx').then(module => ({ default: module.TicinoDatePicker })))
+const RegionalStudyDetails = lazy(() => import('./studies/RegionalStudyDetails.tsx').then(module => ({ default: module.RegionalStudyDetails })))
 const AirportHeroCard = lazy(() => import('./studies/AirportCard.tsx'))
 
 const AlpineQuiet = lazy(() =>
@@ -287,9 +289,9 @@ export function App({ edition, suspended = false }: AppProps) {
   )
   const [initialLink] = useState(() => readStudyLink(window.location.search))
   const linkedPilot = cantonalPilotForRecording(initialLink.recording)
-  const pilotLinkPending = useRef(Boolean(linkedPilot))
+  const [pilotLinkPending, setPilotLinkPending] = useState(Boolean(linkedPilot))
   const [pilotLinkUnavailable, setPilotLinkUnavailable] = useState(false)
-  const linkPending = useRef(!linkedPilot && Boolean(initialLink.date || initialLink.time !== undefined || initialLink.station || initialLink.train))
+  const [linkPending, setLinkPending] = useState(!linkedPilot && Boolean(initialLink.date || initialLink.time !== undefined || initialLink.station || initialLink.train))
   const [exploreOpen, setExploreOpen] = useState(false)
   const [roadRecordingsOpen, setRoadRecordingsOpen] = useState(false)
   const roadRecordingsButton = useRef<HTMLButtonElement>(null)
@@ -445,9 +447,12 @@ export function App({ edition, suspended = false }: AppProps) {
   const selectedPilotDefinition = cantonalPilotForRoad(selectedRoadId, cantonalPilot?.metadata.recordingId ?? linkedPilot?.id)
   const activePilot = cantonalPilot && roadEnabled && selectedPilotDefinition?.id === cantonalPilot.metadata.recordingId && !sbbEnabled && !airEnabled && view === 'network' && networkStudy === 'national' ? cantonalPilot : undefined
   const playbackTopology = useMemo(() => roadTopology && activePilot ? topologyWithPilot(roadTopology, activePilot) : roadTopology, [roadTopology, activePilot])
-  useEffect(() => {
-    if (cantonalPilot && !activePilot) { pilotClockBounds.current = undefined; setCantonalPilot(undefined); setNetworkTime(edition.defaultNetworkTime); setIsPlaying(false) }
-  }, [cantonalPilot, activePilot, edition.defaultNetworkTime])
+  if (cantonalPilot && !activePilot) {
+    setCantonalPilot(undefined)
+    setNetworkTime(edition.defaultNetworkTime)
+    setIsPlaying(false)
+  }
+  useEffect(() => { if (!activePilot) pilotClockBounds.current = undefined }, [activePilot])
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
   const [hubStudy, setHubStudy] = useState<HubStudy>('pulse')
   const [showTaktOverlay, setShowTaktOverlay] = useState(true)
@@ -477,19 +482,19 @@ export function App({ edition, suspended = false }: AppProps) {
   const roadHistorySeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const postbusSeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const text = useUiText(language)
-  const [exploreCopy, setExploreCopy] = useState<ExploreUiCopy>(EXPLORE_EN)
+  const [translatedExploreCopy, setTranslatedExploreCopy] = useState<ExploreUiCopy>(EXPLORE_EN)
+  const exploreCopy = language === 'en' ? EXPLORE_EN : translatedExploreCopy
   useEffect(() => {
     let current = true
-    if (language === 'en') setExploreCopy(EXPLORE_EN)
-    else void import('./studies/explore-copy.ts').then(module => { if (current) setExploreCopy(module.EXPLORE_COPY[language]) })
+    if (language !== 'en') void import('./studies/explore-copy.ts').then(module => { if (current) setTranslatedExploreCopy(module.EXPLORE_COPY[language]) })
     return () => { current = false }
   }, [language])
   const help = text.controlHelp
   const additionalId = isAdditionalRegion(networkStudy) ? networkStudy : undefined
   const additionalKey = additionalId ? additionalRegionKey(additionalId, additionalDates[additionalId]) : undefined
   const additionalNetwork = additionalSnapshot?.key === additionalKey ? additionalSnapshot?.network : undefined
-  const [additionalLocale, setAdditionalLocale] = useState<typeof import('./studies/additional-regions-copy.tsx')>()
-  useEffect(() => { if (additionalId) void import('./studies/additional-regions-copy.tsx').then(setAdditionalLocale) }, [additionalId])
+  const [additionalLocale, setAdditionalLocale] = useState<typeof import('./studies/additional-regions-copy.ts')>()
+  useEffect(() => { if (additionalId) void import('./studies/additional-regions-copy.ts').then(setAdditionalLocale) }, [additionalId])
   const additionalRegion = additionalId ? additionalLocale?.ADDITIONAL_REGION_DETAILS[additionalId] : undefined
   const additionalCopy = additionalId ? additionalLocale?.additionalRegionCopy(language, additionalId) : undefined
   const additionalLabel = additionalCopy?.name.split(' · ')[0] ?? (additionalId ? ADDITIONAL_REGIONS[additionalId].name : undefined)
@@ -500,8 +505,8 @@ export function App({ edition, suspended = false }: AppProps) {
   const valaisCopy = valaisLocale?.VALAIS_COPY[language]
   const valaisLabel = valaisCopy?.valaisNetwork ?? 'Valais'
   const isTicino = networkStudy === 'ticino-region'
-  const [ticinoLocale, setTicinoLocale] = useState<typeof import('./studies/ticino-copy.tsx')>()
-  useEffect(() => { if (isTicino) void import('./studies/ticino-copy.tsx').then(setTicinoLocale) }, [isTicino])
+  const [ticinoLocale, setTicinoLocale] = useState<typeof import('./studies/ticino-copy.ts')>()
+  useEffect(() => { if (isTicino) void import('./studies/ticino-copy.ts').then(setTicinoLocale) }, [isTicino])
   const ticinoCopy = ticinoLocale?.TICINO_COPY[language]
   const isGraubuenden = networkStudy === 'graubuenden-region'
   const [graubuendenLocale, setGraubuendenLocale] = useState<typeof import('./studies/graubuenden-copy.ts')>()
@@ -559,7 +564,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const isRegionalDay = isRegionalDayStudy(networkStudy) && regionalRange === 'day'
   const regionalDate = additionalId ? additionalDates[additionalId] : isValais ? valaisDate : isTicino ? ticinoDate : isGraubuenden ? graubuendenDate : undefined
   const regionalPrefix = additionalKey ? `${additionalKey}/` : regionalDate ? `${networkStudy}/${regionalDate}/` : ''
-  const regionalAssetUrl = useCallback((path: string) => editionDataUrl(regionalPrefix && !path.startsWith(`${networkStudy}/`) ? `${regionalPrefix}${path}` : path), [regionalPrefix, networkStudy, editionDataUrl])
+  const regionalAssetUrl = useCallback((path: string) => editionDataUrl(regionalPrefix && !path.startsWith(`${networkStudy}/`) ? `${regionalPrefix}${path}` : path), [regionalPrefix, networkStudy])
   const regionalDay = useProgressiveNetworkDay(regionalPrefix ? `${regionalPrefix}${networkStudy}-day-manifest.json` : isRegionalDayStudy(networkStudy) ? REGIONAL_DAYS[networkStudy] : REGIONAL_DAYS['zvv-region'], isRegionalDay && regionalRetry, networkTime, regionalAssetUrl)
   const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus, networkTime, editionDataUrl)
   const isNationalDay =
@@ -632,13 +637,17 @@ export function App({ edition, suspended = false }: AppProps) {
 
   useEffect(() => { nowMetadata.current = view === 'network' && !isContrast && !airEnabled && !roadEnabled ? baseNetwork?.metadata : undefined }, [view, isContrast, airEnabled, roadEnabled, baseNetwork?.metadata])
   const validLocation = browserLocation.location && withinStudy(browserLocation.location, baseNetwork?.bounds) ? browserLocation.location : undefined
-  useEffect(() => {
-    if (!nowActive && nowUnavailable && nowTime !== null) { setNetworkTime(nowTime); setIsPlaying(false) }
-  }, [nowActive, nowUnavailable, nowTime])
-  useEffect(() => {
-    if (!validLocation) return
-    setMapCameraCommand(current => ({ id: current.id + 1, action: 'focus-location', focus: [validLocation.longitude, validLocation.latitude], distanceScale: 0.025 }))
-  }, [validLocation])
+  const unavailableNowTime = !nowActive && nowUnavailable ? nowTime : null
+  const [lastUnavailableNowTime, setLastUnavailableNowTime] = useState(unavailableNowTime)
+  if (unavailableNowTime !== lastUnavailableNowTime) {
+    setLastUnavailableNowTime(unavailableNowTime)
+    if (unavailableNowTime !== null) { setNetworkTime(unavailableNowTime); setIsPlaying(false) }
+  }
+  const [focusedLocation, setFocusedLocation] = useState(validLocation)
+  if (validLocation !== focusedLocation) {
+    setFocusedLocation(validLocation)
+    if (validLocation) setMapCameraCommand(current => ({ id: current.id + 1, action: 'focus-location', focus: [validLocation.longitude, validLocation.latitude], distanceScale: 0.025 }))
+  }
   useEffect(() => { clearBrowserLocation() }, [networkStudy, clearBrowserLocation])
 
   const regionalViewLabel = additionalId ? additionalLabel : isValais ? valaisLabel : isTicino ? ticinoCopy?.view : isGraubuenden ? graubuendenCopy?.view : isSolothurn ? text.solothurnView : isBern ? text.bernView : isRiviera ? (rivieraCopy?.view ?? rivieraLabel) : isNyon ? text.nyonView : isBasel ? text.baselView : isLausanne ? text.lausanneView : isPostbus ? text.postbusNetwork : networkStudy === 'zvv-region'
@@ -1054,7 +1063,7 @@ export function App({ edition, suspended = false }: AppProps) {
     setSelectedRoadId(undefined)
     setSearchQuery('')
     setActiveSearchIndex(-1)
-  }, [setRigiSequenceActive, setJungfrauAscentActive, setJungfrauGuideActive])
+  }, [setPilatusJourneyActive, setRochersJourneyActive, setGlionJourneyActive, setTerritetJourneyActive, setGornergratAscentActive, setRigiSequenceActive, setJungfrauAscentActive, setJungfrauGuideActive])
 
   const seekMountainSequence = useCallback((time: number) => {
     setNetworkTime(time)
@@ -1116,7 +1125,7 @@ export function App({ edition, suspended = false }: AppProps) {
     setAirCategorySelected(false)
     setRoadCategorySelected(false)
     releaseSelection()
-  }, [releaseSelection])
+  }, [setSelectedCategory, setAirCategorySelected, releaseSelection])
 
   const selectStation = useCallback((station: StationIndexEntry) => {
     setRigiSequenceActive(false)
@@ -1138,7 +1147,7 @@ export function App({ edition, suspended = false }: AppProps) {
       id: current.id + 1,
       action: 'reveal-station',
     }))
-  }, [setRigiSequenceActive, setJungfrauAscentActive])
+  }, [setPilatusJourneyActive, setRochersJourneyActive, setGlionJourneyActive, setTerritetJourneyActive, setGornergratAscentActive, setAirCategorySelected, setRigiSequenceActive, setJungfrauAscentActive])
 
   const selectRoute = useCallback(
     (route: NetworkRouteIndexEntry) => {
@@ -1162,7 +1171,7 @@ export function App({ edition, suspended = false }: AppProps) {
       setView('network')
       setIsPlaying(true)
     },
-    [categoryLabel, setRigiSequenceActive, setJungfrauAscentActive],
+    [setPilatusJourneyActive, setRochersJourneyActive, setGlionJourneyActive, setTerritetJourneyActive, setGornergratAscentActive, setAirCategorySelected, setSelectedCategory, categoryLabel, setRigiSequenceActive, setJungfrauAscentActive],
   )
 
   const selectTrain = useCallback(
@@ -1194,7 +1203,7 @@ export function App({ edition, suspended = false }: AppProps) {
       setView('network')
       setIsPlaying(true)
     },
-    [network, networkTime, setRigiSequenceActive, setJungfrauAscentActive],
+    [setPilatusJourneyActive, setRochersJourneyActive, setGlionJourneyActive, setTerritetJourneyActive, setGornergratAscentActive, setAirCategorySelected, network, networkTime, setRigiSequenceActive, setJungfrauAscentActive],
   )
 
   const selectAirTrack = useCallback(
@@ -1223,7 +1232,7 @@ export function App({ edition, suspended = false }: AppProps) {
       setActiveSearchIndex(-1)
       setIsPlaying(true)
     },
-    [activeAirSnapshot, airDay.manifest],
+    [setAirCategorySelected, setSelectedCategory, activeAirSnapshot, airDay.manifest],
   )
 
   const toggleSbbLayer = useCallback(() => {
@@ -1235,7 +1244,7 @@ export function App({ edition, suspended = false }: AppProps) {
     setSearchQuery('')
     setSearchOpen(false)
     setActiveSearchIndex(-1)
-  }, [])
+  }, [setSelectedCategory])
 
   const toggleAirLayer = useCallback(() => {
     if (airEnabled) {
@@ -1258,7 +1267,7 @@ export function App({ edition, suspended = false }: AppProps) {
         (airSnapshot.metadata.windowStart + airSnapshot.metadata.windowEnd) / 2,
       )
     }
-  }, [airEnabled, airSnapshot, isNationalDay, networkTime, releaseSelection])
+  }, [setAirCategorySelected, airEnabled, airSnapshot, isNationalDay, networkTime, releaseSelection])
 
   const toggleRoadLayer = useCallback(() => {
     if (roadEnabled) {
@@ -1305,7 +1314,7 @@ export function App({ edition, suspended = false }: AppProps) {
       focus: road.focus,
       distanceScale: road.cameraScale,
     }))
-  }, [roadEnabled, toggleRoadLayer])
+  }, [setDirectorMode, setSelectedCategory, setAirCategorySelected, roadEnabled, toggleRoadLayer])
 
   const openTerrainCorridor = useCallback(
     (nextCorridorId: TerrainCorridorId, nextProgress = 0.015) => {
@@ -1328,7 +1337,7 @@ export function App({ edition, suspended = false }: AppProps) {
       setView('journey')
       setIsPlaying(true)
     },
-    [setRigiSequenceActive, setJungfrauAscentActive],
+    [setPilatusJourneyActive, setRochersJourneyActive, setGlionJourneyActive, setTerritetJourneyActive, setGornergratAscentActive, setRigiSequenceActive, setJungfrauAscentActive],
   )
 
   const enterTerrainCorridor = useCallback(() => {
@@ -1350,7 +1359,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const selectNetworkStudy = useCallback(
     (study: NetworkStudy, timeRange: NationalTimeRange = nationalTimeRange) => {
       stopNow()
-      linkPending.current = false
+      setLinkPending(false)
       setExploreNotice('')
       setRegionalRetry(true)
       setDirectorMode(false)
@@ -1405,6 +1414,9 @@ export function App({ edition, suspended = false }: AppProps) {
       if (snapshot) setNetworkTime(snapshot.metadata.focusTime)
     },
     [
+      setDirectorMode,
+      setSelectedCategory,
+      setAirCategorySelected,
       stopNow,
       additionalSnapshot,
       additionalDates,
@@ -1450,7 +1462,7 @@ export function App({ edition, suspended = false }: AppProps) {
       focus: [airport.longitude, airport.latitude],
       distanceScale: 0.12,
     }))
-  }, [airEnabled, selectNetworkStudy, toggleAirLayer])
+  }, [setAirCategorySelected, airEnabled, selectNetworkStudy, toggleAirLayer])
 
   const handleContextAction = useCallback(() => {
     setDirectorMode(false)
@@ -1468,6 +1480,7 @@ export function App({ edition, suspended = false }: AppProps) {
     }
     setView((value) => (value === 'network' ? 'journey' : 'network'))
   }, [
+    setDirectorMode,
     releaseSelection,
     selectedAirTrackId,
     selectedAirport,
@@ -2051,9 +2064,14 @@ export function App({ edition, suspended = false }: AppProps) {
     [],
   )
 
+  const nowViewSupported = view === 'network' && !airEnabled && !roadEnabled && !selectedTrainId && !directorMode
+  if (!nowViewSupported && nowActive && nowTime !== null && playbackTime !== nowTime) {
+    setNetworkTime(nowTime)
+  }
+  // Preserve the displayed time above, then stop the external clock loop.
   useEffect(() => {
-    if (view !== 'network' || airEnabled || roadEnabled || selectedTrainId || directorMode) stopNow()
-  }, [view, airEnabled, roadEnabled, selectedTrainId, directorMode, stopNow])
+    if (!nowViewSupported) { stopNowClock(); nowRequested.current = false }
+  }, [nowViewSupported, nowActive, stopNowClock])
 
   const isNetwork = view === 'network'
   const isHub = view === 'hub'
@@ -2162,18 +2180,17 @@ export function App({ edition, suspended = false }: AppProps) {
     setIsPlaying(true)
     if (!nowRequested.current) startNowClock()
   }
-  useEffect(() => {
-    if (!pilotLinkPending.current || !linkedPilot) return
+  if (pilotLinkPending && linkedPilot) {
     if (!roadEnabled || selectedRoadId !== linkedPilot.road || view !== 'network' || networkStudy !== 'national' || sbbEnabled || airEnabled) {
-      pilotLinkPending.current = false
+      setPilotLinkPending(false)
     } else if (roadLoadState === 'error' || (roadLoadState === 'ready' && !selectedRoad)) {
-      pilotLinkPending.current = false
+      setPilotLinkPending(false)
       setPilotLinkUnavailable(true)
       setSelectedRoadId(undefined)
       setRoadEnabled(false)
       setSbbEnabled(true)
     }
-  }, [linkedPilot, roadEnabled, selectedRoadId, view, networkStudy, sbbEnabled, airEnabled, roadLoadState, selectedRoad])
+  }
   const dismissShare = () => {
     setShareUrl('')
     shareButton.current?.focus()
@@ -2185,9 +2202,9 @@ export function App({ edition, suspended = false }: AppProps) {
     setShareCopied(false)
     try { await navigator.clipboard.writeText(url); setShareCopied(true) } catch { /* The visible link can still be copied manually. */ }
   }
-  useEffect(() => {
-    if (!linkPending.current || !network || (isRegionalDay && !regionalDay.chunkReady) || (isNationalDay && !nationalDayChunkReady) || (isPostbus && !postbusDay.chunkReady) || (networkStudy !== 'national' && !isPostbus && !isRegionalDay && regionalNetworkLoading)) return
-    linkPending.current = false
+  const linkedNetworkReady = network && (!isRegionalDay || regionalDay.chunkReady) && (!isNationalDay || nationalDayChunkReady) && (!isPostbus || postbusDay.chunkReady) && (networkStudy === 'national' || isPostbus || isRegionalDay || !regionalNetworkLoading)
+  if (linkPending && linkedNetworkReady && network) {
+    setLinkPending(false)
     if (initialLink.date && initialLink.date !== network.metadata.serviceDate) setExploreNotice(exploreCopy.dateMismatch)
     if (initialLink.time !== undefined) setNetworkTime(Math.max(network.metadata.windowStart, Math.min(network.metadata.windowEnd - 1, initialLink.time)))
     if (initialLink.station) {
@@ -2200,7 +2217,7 @@ export function App({ edition, suspended = false }: AppProps) {
       if (train) { setSelectedTrainId(train.id); setSearchQuery(train.shortName) }
       else setExploreNotice(exploreCopy.focusMissing)
     }
-  }, [network, initialLink, isRegionalDay, regionalDay.chunkReady, isNationalDay, nationalDayChunkReady, isPostbus, postbusDay.chunkReady, networkStudy, regionalNetworkLoading, stationIndex, exploreCopy])
+  }
 
   return (
     <main
@@ -2362,6 +2379,7 @@ export function App({ edition, suspended = false }: AppProps) {
             selectedRoadId={selectedRoadId}
             selectedAirTrack={selectedAirTrack}
             selectedAirport={airEnabled ? selectedAirport : undefined}
+            onSelectAirport={networkStudy === 'national' && airEnabled ? selectAirport : undefined}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
               additionalRegion ? { homeDistanceScale: additionalRegion.scale, minimumDistanceScale: 0.006, portraitMinimumDistanceScale: 0.004, localDetailHierarchy: true } : isValais ? MAP_FRAMINGS.valais : isTicino ? MAP_FRAMINGS.ticino : isGraubuenden ? MAP_FRAMINGS.graubuenden : isSolothurn ? MAP_FRAMINGS.solothurn : isBern ? MAP_FRAMINGS.bern : isRiviera ? MAP_FRAMINGS.riviera : isNyon ? MAP_FRAMINGS.nyon : isBasel ? MAP_FRAMINGS.basel : isLausanne ? MAP_FRAMINGS.lausanne : isPilatus ? MAP_FRAMINGS.pilatus : isRochers ? MAP_FRAMINGS.rochers : isTerritet ? glionJourneyActive || glionNetwork ? { ...MAP_FRAMINGS.rochers, homeDistanceScale: 0.055 } : MAP_FRAMINGS.territet : isGornergrat ? MAP_FRAMINGS.gornergrat : isJungfrau ? MAP_FRAMINGS.jungfrau : isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
@@ -3194,8 +3212,8 @@ export function App({ edition, suspended = false }: AppProps) {
       ) : isNetwork && selectedRoad ? (
         <Suspense fallback={null}><DetailCard kind="RoadCard" selectedRoad={selectedRoad} activePilot={activePilot} selectedRoadGeometryOnly={selectedRoadGeometryOnly} selectedRoadLength={selectedRoadLength} selectedRoadTraffic={selectedRoadTraffic} roadLoadState={roadLoadState} roadMetricFormat={roadMetricFormat} numberFormat={numberFormat} text={text}>
           {selectedPilotDefinition && <Suspense fallback={null}><CantonalPilotControls key={`${selectedPilotDefinition.id}:${sbbEnabled}:${airEnabled}:${roadEnabled}`} definition={selectedPilotDefinition} pilot={activePilot} time={networkTime} language={language}
-            autoStartTime={pilotLinkPending.current && linkedPilot?.id === selectedPilotDefinition.id ? initialLink.time : undefined}
-            onAutoStart={() => { pilotLinkPending.current = false }}
+            autoStartTime={pilotLinkPending && linkedPilot?.id === selectedPilotDefinition.id ? initialLink.time : undefined}
+            onAutoStart={() => { setPilotLinkPending(false) }}
             onStart={(pilot, initialTime) => {
               pilotClockBounds.current = pilot.metadata
               roadHistorySeekRef.current = { time: initialTime, at: performance.now() }
@@ -3695,16 +3713,16 @@ export function App({ edition, suspended = false }: AppProps) {
             {nowActive && <button type="button" onClick={browserLocation.locate} disabled={browserLocation.status === 'locating'}>{exploreCopy.locate}</button>}
             {browserLocation.status !== 'idle' && <button type="button" onClick={clearBrowserLocation}>{exploreCopy.clear}</button>}
             {isRegionalDayStudy(networkStudy) && <button type="button" aria-pressed={isRegionalDay} onClick={() => { stopNow(); setRegionalRange(value => value === 'day' ? 'morning' : 'day'); setNetworkTime(edition.defaultNetworkTime); setRegionalRetry(true) }}>{exploreCopy.day}</button>}
-            {isValais && valaisLocale && <valaisLocale.ValaisDateSelect label={valaisLocale.VALAIS_COPY[language].valaisDate} value={valaisDate} onChange={date => { stopNow(); linkPending.current = false; setValaisDate(date); setValaisRegionNetwork(undefined); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} />}
-            {isTicino && ticinoLocale && <ticinoLocale.TicinoDatePicker language={language} date={ticinoDate} onDate={date => { stopNow(); linkPending.current = false; setTicinoDate(date); setTicinoRegionNetwork(undefined); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} />}
+            {isValais && valaisLocale && <valaisLocale.ValaisDateSelect label={valaisLocale.VALAIS_COPY[language].valaisDate} value={valaisDate} onChange={date => { stopNow(); setLinkPending(false); setValaisDate(date); setValaisRegionNetwork(undefined); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} />}
+            {isTicino && ticinoLocale && <Suspense fallback={null}><TicinoDatePicker language={language} date={ticinoDate} onDate={date => { stopNow(); setLinkPending(false); setTicinoDate(date); setTicinoRegionNetwork(undefined); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} /></Suspense>}
             <button ref={shareButton} type="button" aria-expanded={Boolean(shareUrl)} aria-controls={shareUrl ? 'study-share' : undefined} disabled={!network && !activePilot} onClick={() => void shareStudy()}>{exploreCopy.share}</button>
           </div>
-          {additionalId && additionalLocale && <additionalLocale.RegionalStudyDetails id={additionalId} language={language} date={additionalDates[additionalId]} serviceDate={network?.metadata.serviceDate} headway={hasHeadwayMotion} sourcesUrl={editionDataUrl(`${additionalId}/study-sources.json`)} onDate={date => { stopNow(); linkPending.current = false; setAdditionalDates(values => ({ ...values, [additionalId]: date })); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} />}
+          {additionalId && additionalLocale && <Suspense fallback={null}><RegionalStudyDetails id={additionalId} language={language} date={additionalDates[additionalId]} serviceDate={network?.metadata.serviceDate} headway={hasHeadwayMotion} sourcesUrl={editionDataUrl(`${additionalId}/study-sources.json`)} onDate={date => { stopNow(); setLinkPending(false); setAdditionalDates(values => ({ ...values, [additionalId]: date })); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} /></Suspense>}
           {isValais && <p className="explore-status">{(valaisCopy?.valaisScope ?? '')} · {network?.metadata.serviceDate}</p>}
           {isTicino && <p className="explore-status">{ticinoCopy?.scope} · {network?.metadata.serviceDate}</p>}
           {isGraubuenden && <>
             <p className="explore-status">{graubuendenCopy?.scope} · {network?.metadata.serviceDate}</p>
-            <div className="explore-actions">{['2026-09-04', '2026-09-06'].map(date => <button key={date} type="button" aria-pressed={graubuendenDate === date} onClick={() => { stopNow(); releaseSelection(); setGraubuendenRegionNetwork(undefined); setGraubuendenDate(date); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); linkPending.current = false }}>{date}</button>)}
+            <div className="explore-actions">{['2026-09-04', '2026-09-06'].map(date => <button key={date} type="button" aria-pressed={graubuendenDate === date} onClick={() => { stopNow(); releaseSelection(); setGraubuendenRegionNetwork(undefined); setGraubuendenDate(date); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); setLinkPending(false) }}>{date}</button>)}
               {regionalNetworkError && <button type="button" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setGraubuendenAttempt(n => n + 1) }}>{exploreCopy.retry}</button>}
             </div>
           </>}

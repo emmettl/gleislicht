@@ -110,7 +110,7 @@ export async function buildGraubuendenRegion({ output = 'public/data/graubuenden
     for (const r of inventory) r.days.push({ date: day.date, ...coverage(pp.filter(p => p.routeId === r.routeId)) })
     const groups = field => [...new Set(raw.inventory.map(r => r[field]))].sort().map(id => ({ id, ...(field === 'agencyId' ? { agency: raw.inventory.find(r => r.agencyId === id).agency } : {}), ...coverage(pp.filter(p => p[field] === id)) }))
     const report = { date: day.date, sourceHashes, ...counts, byMode: groups('mode'), byAgency: groups('agencyId'),
-      patterns: pp.map(({ pathSegments, ...p }) => p),
+      patterns: pp.map(({ pathSegments: _pathSegments, ...p }) => p),
       outsideCantonStopRecords: snapshot.stops.filter(s => !raw.cantonStops.some(c => c.stop_id === s[4])).length,
       zeroDurationAdmittedSegments: snapshot.trains.reduce((n, t) => n + t.stops.slice(1).filter((c, i) => c[1] === t.stops[i][2]).length, 0) }
     await saveJson(join(audit, `${day.date}.json`), report)

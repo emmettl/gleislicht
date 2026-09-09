@@ -1,6 +1,6 @@
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 import type { UiLanguage } from '../i18n.ts'
-import { REGIONAL_FIXTURE_DATES, type AdditionalRegionId } from './additional-regions.ts'
+import type { AdditionalRegionId } from './additional-regions.ts'
 
 const COPY = {
   en: {
@@ -43,12 +43,6 @@ export function additionalRegionCopy(language: UiLanguage, id: AdditionalRegionI
   return { ...copy, name: copy.names[index], modes: copy.modes[index] }
 }
 
-export function RegionalDatePicker({ label, date, onDate }: { label: string; date: string; onDate: (date: string) => void }) {
-  return <select aria-label={label} value={date} onChange={event => onDate(event.target.value)}>
-    {REGIONAL_FIXTURE_DATES.map(value => <option key={value} value={value}>{value}</option>)}
-  </select>
-}
-
 // Editorial home framing only. Complete cross-canton journeys remain in the feed.
 export const ADDITIONAL_REGION_DETAILS = {
   'luzern-region': { name: 'Luzern', code: 'LU', scale: 0.28, bounds: { minLongitude: 7.82, maxLongitude: 8.60, minLatitude: 46.76, maxLatitude: 47.30 }, credit: 'SBB · © rawi Kanton Luzern · © Verkehrsverbund Luzern · FOT · swisstopo · FOEN · OpenStreetMap contributors · ODbL' },
@@ -56,15 +50,3 @@ export const ADDITIONAL_REGION_DETAILS = {
   'thurgau-region': { name: 'Thurgau', code: 'TG', scale: 0.22, bounds: { minLongitude: 8.66, maxLongitude: 9.57, minLatitude: 47.36, maxLatitude: 47.72 }, credit: 'SBB · Kanton Thurgau · FOT · swisstopo · OpenStreetMap contributors · ODbL' },
   'fribourg-region': { name: 'Fribourg', code: 'FR', scale: 0.28, bounds: { minLongitude: 6.72, maxLongitude: 7.40, minLatitude: 46.42, maxLatitude: 47.01 }, credit: 'SBB · Source: Etat de Fribourg · FOT · swisstopo · OpenStreetMap contributors · ODbL' },
 } as const satisfies Record<AdditionalRegionId, { name: string; code: string; scale: number; bounds: NetworkSnapshot['bounds']; credit: string }>
-
-
-export function RegionalStudyDetails({ id, language, date, serviceDate, headway, sourcesUrl, onDate }: {
-  id: AdditionalRegionId; language: UiLanguage; date: string; serviceDate?: string; headway: boolean; sourcesUrl: string; onDate: (date: string) => void
-}) {
-  const copy = additionalRegionCopy(language, id), region = ADDITIONAL_REGION_DETAILS[id]
-  return <>
-    <div className="explore-actions"><RegionalDatePicker label={`${region.name} ${copy.date}`} date={date} onDate={onDate} /></div>
-    <p className="explore-status">{copy.scope} · {serviceDate}{headway ? ` · ${copy.frequency}` : ''}</p>
-    <a className="explore-status" href={sourcesUrl} target="_blank" rel="noreferrer">{copy.sources} · {region.credit}</a>
-  </>
-}

@@ -142,7 +142,7 @@ export async function reviewStGallenEndpoints() {
       dayAuditSha256: sha256(JSON.stringify(day)) }
   })
   return { schemaVersion: 1, scope: 'Every remaining bus endpoint-gap pair across the two pinned St. Gallen civil-day fixtures.',
-    sourceHashes: audit.sourceHashes, evidence: evidence.map(({ required, expectedSha256, ...e }) => e), externalInventory: await vmobilInventory(),
+    sourceHashes: audit.sourceHashes, evidence: evidence.map(({ required: _required, expectedSha256: _expectedSha256, ...e }) => e), externalInventory: await vmobilInventory(),
     method: 'Replay each production graph. Diagnose every other individual regional/city bus record mapped to the same GTFS agency with unchanged limits. Candidate geometry hashes establish reproducibility, not route authority. No operator union, external shapes, changed stop locations or relaxed limits are used for admission.',
     pairs, routes, days, validation: { passed: true, feedChanged: false, admissionLimitsChanged: false, directionCertified: false } }
 }

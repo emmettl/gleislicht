@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises'
+import { readFile, writeFile, mkdtemp, rm } from 'node:fs/promises'
 import { join } from 'node:path'
 import { gunzipSync } from 'node:zlib'
 import { tmpdir } from 'node:os'
@@ -18,7 +18,7 @@ assert.equal(summary.sourceHashes.timetable, policy.timetableSha256)
 assert.equal(raw.sourceHashes.archive, policy.feedSha256)
 assert.equal(raw.sourceHashes.boundary, sha256(await readFile('data/graubuenden-sources/boundary.json')))
 assert.equal(summary.sourceHashes.policy, sha256(await readFile('data/graubuenden-policy.json')))
-assert.deepEqual(inventory.map(({ days, status, ...r }) => r), raw.inventory, 'Every annual candidate must remain in inventory')
+assert.deepEqual(inventory.map(({ days: _days, status: _status, ...r }) => r), raw.inventory, 'Every annual candidate must remain in inventory')
 assert.equal(summary.annualAgencies, new Set(inventory.map(r => r.agencyId)).size)
 assert.equal(raw.scope.annualScopedTripRecords, inventory.reduce((n, r) => n + r.annualTripRecords, 0))
 const geometry = await loadGraubuendenGeometry(policy, raw), routes = new Map(raw.inventory.map(r => [r.routeId, r])), memo = new Map()

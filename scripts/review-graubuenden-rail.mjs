@@ -24,7 +24,7 @@ for (const day of raw.snapshots) {
     if (oldOk) { assert.deepEqual(b, a, 'Previously complete journey changed'); unchangedCompleteJourneys++ }
     if (!patterns.has(key)) patterns.set(key, { id: sha256(key).slice(0, 20), routeId: route.routeId, line: route.line, agencyId: route.agencyId,
       stopIds: t.calls.map(c => c.id), originallyAdmitted: oldOk, admitted: ok, trips: 0,
-      originalFailures: a.filter(p => !p.path).map(({ path, ...e }) => e), remainingReasons: [...new Set(b.filter(p => !p.path).map(p => p.reason))],
+      originalFailures: a.filter(p => !p.path).map(({ path: _path, ...e }) => e), remainingReasons: [...new Set(b.filter(p => !p.path).map(p => p.reason))],
       anchorReviews: [...new Set(b.flatMap(p => (p.reviewedSourceSlices ?? []).map(s => s.reviewId)))] })
     patterns.get(key).trips++
   }
@@ -74,4 +74,4 @@ for (const [i, r] of review.anchors.entries()) {
 }
 svg.push('<text x="30" y="633" class="small">© FOT · timetable: SBB / opentransportdata.swiss · teal: FOT curve · amber: derived anchor · pink: timetable stop</text></svg>')
 await mkdir('docs/assets', { recursive: true }); await writeFile('docs/assets/graubuenden-rail-anchors.svg', svg.join('\n'))
-console.log(JSON.stringify(days.map(({ gainedPatterns, remainingExcludedPatterns, ...d }) => d)))
+console.log(JSON.stringify(days.map(({ gainedPatterns: _gainedPatterns, remainingExcludedPatterns: _remainingExcludedPatterns, ...d }) => d)))

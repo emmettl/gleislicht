@@ -58,7 +58,7 @@ export async function loadSolothurnM53(context, access) {
     assert(index >= 0)
     assert.deepEqual(access.cache.agencies.all.cache.paths[access.cache.agencies.all.cache.patterns[r.id][index]], r.path, 'Changed reviewed road alternative')
   }
-  const { path, ...pair } = matcher.result
+  const { path: _path, ...pair } = matcher.result
   return { ...matcher, metadata: { policy, policySha256: await hashFile(file), source, patterns: matcher.patterns,
     pair: { ...pair, geometrySha256: policy.geometrySha256, priorRoadAssessment: matcher.original },
     roadContextReview: differences.map(({rows,...r}) => ({ ...r, variants: rows.map(({ path, stops, ...v }) => ({ ...v, geometrySha256: hash(path), stopCount: stops.length })) })) } }

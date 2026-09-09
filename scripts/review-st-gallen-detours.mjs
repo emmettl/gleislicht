@@ -139,7 +139,7 @@ export async function reviewStGallenDetours() {
       dayAuditSha256: sha256(JSON.stringify(day)) }
   })
   return { schemaVersion: 1, scope: 'Every bus implausible-detour failure on the two pinned St. Gallen fixtures; not every exclusion reason.',
-    sourceHashes: audit.sourceHashes, operatorEvidence: evidence.map(({ required, ...s }) => s),
+    sourceHashes: audit.sourceHashes, operatorEvidence: evidence.map(({ required: _required, ...s }) => s),
     method: 'Replay exact route graphs, compare all edge projections within the unchanged 5 m allowance, then diagnose the exact-vertex union of BOS regional bus records. The union is not an admissible route graph. No geometry coordinates are redistributed.',
     pairs, days, validation: { passed: true, feedChanged: false, admissionLimitsChanged: false, directionCertified: false } }
 }

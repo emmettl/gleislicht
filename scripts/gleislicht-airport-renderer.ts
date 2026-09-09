@@ -19,12 +19,21 @@ export function gleislichtAirportRenderer(): Plugin {
         const marker = source.slice(start, end)
         const labelOrder = 'ref: label, renderOrder: 20,'
         if (marker.split(labelOrder).length !== 2) throw new Error('Gleislicht airport label priority hook needs review')
-        return {
-          code: (source.slice(0, start) + marker
+        let code = (source.slice(0, start) + marker
             .replace('function AirportMarker(', 'export function AirportMarker(')
-            .replace(labelOrder, 'ref: label, name: `airport-label:${airport.id}`, renderOrder: 30,')
+            .replace(labelOrder, 'ref: label, name: `airport-label:${airport.id}`, renderOrder: 30, userData: { pickAirport: airport },')
             .replaceAll('depthTest: false, depthWrite: false', 'depthTest: false, depthWrite: false, fog: false')
-            + source.slice(end)).replace(airportMap, 'null'),
+            + source.slice(end)).replace(airportMap, 'null')
+        for (const [before, after] of [
+          ['ref: marker, position: position, renderOrder: 19,', 'ref: marker, position: position, renderOrder: 19, userData: { pickAirport: airport },'],
+          ['const aircraftRef = useRef(currentAircraft(snapshot, time, projection));', 'const { scene, camera, gl } = useThree();\n    const aircraftRef = useRef(currentAircraft(snapshot, time, projection));'],
+          ['onPointerDown: (event) => {\n                    if (event.instanceId === undefined)', 'onClick: (event) => {\n                    if (event.delta > 5 || pickAirportTarget(scene, camera, gl.domElement.getBoundingClientRect(), event.clientX, event.clientY, event.pointerType === "touch")) return;\n                    if (event.instanceId === undefined)'],
+        ]) {
+          if (code.split(before).length !== 2) throw new Error(`Gleislicht airport picking hook needs review: ${before}`)
+          code = code.replace(before, after)
+        }
+        return {
+          code: 'import { pickAirportTarget } from "/src/studies/map-selection.ts";\n' + code,
           map: null,
         }
       }

@@ -1,12 +1,64 @@
 import { describe, expect, it } from 'vitest'
 import * as THREE from 'three'
 import type { NetworkTrain, StationIndexEntry } from '@motionstudies/core/domain/network'
-import { MapTapGesture, pickMapTarget } from './map-selection.ts'
+import { MapTapGesture, pickMapTarget, pickAirportTarget } from './map-selection.ts'
+import { SWITZERLAND_AIRPORTS } from '../editions/switzerland-airports.ts'
 
 const station: StationIndexEntry = { name: 'Waterloo', stopIndexes: [0], trainIds: [], routes: [] }
 const train: NetworkTrain = { id: 'moving', route: 'Northern', shortName: '123', headsign: 'Morden', category: 'metro', start: 0, end: 100, stops: [] }
 const rect = { left: 90, top: 40, width: 800, height: 600 }
 const stations = new Map([[0, station]])
+
+describe('airport picking', () => {
+  it('keeps click and touch targets generous across zoom and pan', () => {
+    const { scene, camera, screen } = setup()
+    const airport = SWITZERLAND_AIRPORTS[0], marker = new THREE.Group()
+    marker.userData.pickAirport = airport
+    scene.add(marker); scene.updateMatrixWorld()
+    for (const height of [30, 10, 2]) {
+      camera.position.set(1, height, height * 0.6); camera.lookAt(0, 0, 0); camera.updateMatrixWorld()
+      const [x, y] = screen(0, 0, 0)
+      expect(pickAirportTarget(scene, camera, rect, x + 21, y, false)).toBe(airport)
+      expect(pickAirportTarget(scene, camera, rect, x + 23, y, false)).toBeUndefined()
+      expect(pickAirportTarget(scene, camera, rect, x + 27, y, true)).toBe(airport)
+      expect(pickAirportTarget(scene, camera, rect, x + 29, y, true)).toBeUndefined()
+    }
+    marker.visible = false
+    expect(pickAirportTarget(scene, camera, rect, ...screen(0, 0, 0), false)).toBeUndefined()
+  })
+
+  it('makes the full visible label clickable and ignores hidden labels', () => {
+    const { scene, camera, screen } = setup(), airport = SWITZERLAND_AIRPORTS[0]
+    const label = new THREE.Sprite(new THREE.SpriteMaterial())
+    label.userData.pickAirport = airport
+    label.position.set(3, 1, 0); label.scale.set(5, 1, 1)
+    scene.add(label); scene.updateMatrixWorld()
+    const [x, y] = screen(4.5, 1, 0)
+    expect(pickAirportTarget(scene, camera, rect, x, y, false)).toBe(airport)
+    label.material.opacity = 0
+    expect(pickAirportTarget(scene, camera, rect, x, y, false)).toBeUndefined()
+    label.material.opacity = 1; label.visible = false
+    expect(pickAirportTarget(scene, camera, rect, x, y, false)).toBeUndefined()
+  })
+
+  it('prefers airport labels over other airport markers and ignores non-airport targets', () => {
+    const { scene, camera, screen } = setup()
+    const [x, y] = screen(0, 0.085, 0)
+    expect(pickAirportTarget(scene, camera, rect, x, y, false)).toBeUndefined()
+    const marker = new THREE.Group()
+    marker.userData.pickAirport = SWITZERLAND_AIRPORTS[1]
+    marker.position.set(0, 0.085, 0)
+    const label = new THREE.Sprite(new THREE.SpriteMaterial())
+    label.userData.pickAirport = SWITZERLAND_AIRPORTS[0]
+    label.position.copy(marker.position); label.scale.set(2, 1, 1)
+    scene.add(marker, label); scene.updateMatrixWorld()
+    expect(pickAirportTarget(scene, camera, rect, x, y, false)).toBe(SWITZERLAND_AIRPORTS[0])
+    label.visible = false
+    expect(pickAirportTarget(scene, camera, rect, x, y, false)).toBe(SWITZERLAND_AIRPORTS[1])
+    expect(pickAirportTarget(scene, camera, rect, rect.left - 1, y, true)).toBeUndefined()
+    expect(pickAirportTarget(scene, camera, { ...rect, width: 0 }, x, y, false)).toBeUndefined()
+  })
+})
 
 function setup() {
   const scene = new THREE.Scene()

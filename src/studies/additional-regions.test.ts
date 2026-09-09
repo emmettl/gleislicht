@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { ADDITIONAL_REGION_IDS, additionalRegionDate, additionalRegionKey } from './additional-regions.ts'
-import { additionalRegionCopy } from './additional-regions-copy.tsx'
+import { additionalRegionCopy } from './additional-regions-copy.ts'
 import { readStudyLink, REGIONAL_DAYS, STUDY_IDS } from './explore.ts'
 import { SWITZERLAND_EDITION } from '../editions/switzerland.ts'
 import { studyLinkUrl } from './share-link.ts'

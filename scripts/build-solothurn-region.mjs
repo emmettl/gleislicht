@@ -92,84 +92,84 @@ export async function buildSolothurnRegion() {
     const accessLost = [...accessPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(accessLost.length, 0, 'Access-road review regressed an admitted pattern')
     accessReview.days.push({ date: raw.metadata.serviceDate, before: accessBefore.coverage, after: coverage, lostAdmittedPatterns: accessLost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !accessPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-access-road-inference').map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !accessPrevious.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-access-road-inference').map(({ pathIndex: _pathIndex, ...p }) => p) })
     const terminalBefore = terminalBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const terminalPrevious = new Set(terminalBefore.admittedPatternIds)
     const terminalLost = [...terminalPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(terminalLost.length, 0, 'Bern terminal review regressed an admitted pattern')
     terminalReview.days.push({ date: raw.metadata.serviceDate, before: terminalBefore.coverage, after: coverage, lostAdmittedPatterns: terminalLost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !terminalPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => p.geometrySource === 'fot-reviewed-bern-eastern-terminal').map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !terminalPrevious.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'fot-reviewed-bern-eastern-terminal').map(({ pathIndex: _pathIndex, ...p }) => p) })
     const s26Before = s26Baseline.days.find(d => d.date === raw.metadata.serviceDate)
     const s26Previous = new Set(s26Before.admittedPatternIds)
     const s26Lost = [...s26Previous].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(s26Lost.length, 0, 'S26 review regressed an admitted pattern')
     s26Review.days.push({ date: raw.metadata.serviceDate, before: s26Before.coverage, after: coverage, lostAdmittedPatterns: s26Lost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !s26Previous.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => p.geometrySource === 'fot-sbb-reviewed-s26').map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !s26Previous.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'fot-sbb-reviewed-s26').map(({ pathIndex: _pathIndex, ...p }) => p) })
     const comoBefore = comoBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const comoPrevious = new Set(comoBefore.admittedPatternIds)
     const comoLost = [...comoPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(comoLost.length, 0, 'Como review regressed an admitted pattern')
     comoReview.days.push({ date: raw.metadata.serviceDate, before: comoBefore.coverage, after: coverage, lostAdmittedPatterns: comoLost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !comoPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-como-rail-inference').map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !comoPrevious.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-como-rail-inference').map(({ pathIndex: _pathIndex, ...p }) => p) })
     const simplonBefore = simplonBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const simplonPrevious = new Set(simplonBefore.admittedPatternIds)
     const simplonLost = [...simplonPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(simplonLost.length, 0, 'Simplon review regressed an admitted pattern')
     simplonReview.days.push({ date: raw.metadata.serviceDate, before: simplonBefore.coverage, after: coverage, lostAdmittedPatterns: simplonLost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !simplonPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-simplon-inference').map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !simplonPrevious.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-simplon-inference').map(({ pathIndex: _pathIndex, ...p }) => p) })
     const delleBefore = delleBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const dellePrevious = new Set(delleBefore.admittedPatternIds)
     const delleLost = [...dellePrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(delleLost.length, 0, 'Delle review regressed an admitted pattern')
     delleReview.days.push({ date: raw.metadata.serviceDate, before: delleBefore.coverage, after: coverage, lostAdmittedPatterns: delleLost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !dellePrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-delle-rail-inference').map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !dellePrevious.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-delle-rail-inference').map(({ pathIndex: _pathIndex, ...p }) => p) })
     const roadDetourBefore = roadDetourBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const roadDetourPrevious = new Set(roadDetourBefore.admittedPatternIds)
     const roadDetourLost = [...roadDetourPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(roadDetourLost.length, 0, 'Road detour review regressed an admitted pattern')
     roadDetourReview.days.push({ date: raw.metadata.serviceDate, before: roadDetourBefore.coverage, after: coverage, lostAdmittedPatterns: roadDetourLost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !roadDetourPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-reviewed-road-detour').map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !roadDetourPrevious.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-reviewed-road-detour').map(({ pathIndex: _pathIndex, ...p }) => p) })
     const m53Before = m53Baseline.days.find(d => d.date === raw.metadata.serviceDate)
     const m53Previous = new Set(m53Before.admittedPatternIds)
     const m53Lost = [...m53Previous].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(m53Lost.length, 0, 'M53 review regressed an admitted pattern')
     m53Review.days.push({ date: raw.metadata.serviceDate, before: m53Before.coverage, after: coverage, lostAdmittedPatterns: m53Lost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !m53Previous.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => p.geometrySource === 'bern-official-m53-corridor').map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !m53Previous.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'bern-official-m53-corridor').map(({ pathIndex: _pathIndex, ...p }) => p) })
     const busBefore = busBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const busPrevious = new Set(busBefore.admittedPatternIds)
     const busLost = [...busPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(busLost.length, 0, 'Reviewed bus junction regressed an admitted pattern')
     busReview.days.push({ date: raw.metadata.serviceDate, before: busBefore.coverage, after: coverage, lostAdmittedPatterns: busLost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !busPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => p.geometrySource === 'solothurn-reviewed-bus-junction').map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !busPrevious.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'solothurn-reviewed-bus-junction').map(({ pathIndex: _pathIndex, ...p }) => p) })
     const s29Before = s29Baseline.days.find(d => d.date === raw.metadata.serviceDate)
     const s29Previous = new Set(s29Before.admittedPatternIds)
     const s29Lost = [...s29Previous].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(s29Lost.length, 0, 'S29 precedence regressed an admitted pattern')
     s29Review.days.push({ date: raw.metadata.serviceDate, before: s29Before.coverage, after: coverage, lostAdmittedPatterns: s29Lost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !s29Previous.has(p.id)).map(({ pathSegments, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !s29Previous.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p) })
     const railBefore = railBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const railPrevious = new Set(railBefore.admittedPatternIds)
     const railLost = [...railPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(railLost.length, 0, 'Rail platform review regressed an admitted pattern')
     railReview.days.push({ date: raw.metadata.serviceDate, before: railBefore.coverage, after: coverage, lostAdmittedPatterns: railLost,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !railPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => p.geometrySource === 'fot-reviewed-interlaken-platforms').map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !railPrevious.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'fot-reviewed-interlaken-platforms').map(({ pathIndex: _pathIndex, ...p }) => p) })
     const previous = corridorBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const previousIds = new Set(previous.admittedPatternIds)
     const lostCorridorPatterns = [...previousIds].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(lostCorridorPatterns.length, 0, 'Corridor supplement regressed an admitted pattern')
     corridorReview.days.push({ date: raw.metadata.serviceDate, before: previous.coverage, after: coverage, lostAdmittedPatterns: lostCorridorPatterns,
-      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !previousIds.has(p.id)).map(({ pathSegments, ...p }) => p),
-      sourcePairs: result.pairs.filter(p => ['bern-official-413', 'bern-official-450_S_b', 'sbb-rail-inference'].includes(p.geometrySource)).map(({ pathIndex, ...p }) => p) })
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !previousIds.has(p.id)).map(({ pathSegments: _pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => ['bern-official-413', 'bern-official-450_S_b', 'sbb-rail-inference'].includes(p.geometrySource)).map(({ pathIndex: _pathIndex, ...p }) => p) })
     const baseIds = new Set(baseResult.patterns.filter(p => p.admittedTrips).map(p => p.id))
     const lostBase = [...baseIds].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(lostBase.length, 0, 'Supplement regressed an admitted cantonal pattern')

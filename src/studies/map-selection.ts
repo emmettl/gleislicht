@@ -1,10 +1,42 @@
 import * as THREE from 'three'
 import type { NetworkTrain, StationIndexEntry } from '@motionstudies/core/domain/network'
+import type { StudyAirport } from '@motionstudies/core/domain/airport'
 
 export type MapSelection =
   | { kind: 'road'; value: string }
   | { kind: 'station'; value: StationIndexEntry }
   | { kind: 'train'; value: NetworkTrain }
+  | { kind: 'airport'; value: StudyAirport }
+
+/** Pick airport overlays before aircraft, with a 44px mouse / 56px touch
+ * marker target independent of camera zoom and the full visible label. */
+export function pickAirportTarget(scene: THREE.Scene, camera: THREE.Camera,
+  rect: { left: number; top: number; width: number; height: number },
+  clientX: number, clientY: number, touch: boolean): StudyAirport | undefined {
+  const x = clientX - rect.left, y = clientY - rect.top
+  if (rect.width <= 0 || rect.height <= 0 || x < 0 || y < 0 || x > rect.width || y > rect.height) return
+  const ray = new THREE.Raycaster()
+  ray.setFromCamera(new THREE.Vector2(x / rect.width * 2 - 1, 1 - y / rect.height * 2), camera)
+  const point = new THREE.Vector3()
+  let marker: StudyAirport | undefined, nearest = touch ? 28 : 22
+  let label: { airport: StudyAirport; order: number } | undefined
+  scene.traverseVisible(object => {
+    const airport = object.userData.pickAirport as StudyAirport | undefined
+    if (!airport) return
+    if (object instanceof THREE.Sprite) {
+      if (!object.material.visible || object.material.opacity < 0.1) return
+      if (ray.intersectObject(object, false).length && (!label || object.renderOrder > label.order)) {
+        label = { airport, order: object.renderOrder }
+      }
+      return
+    }
+    object.getWorldPosition(point).project(camera)
+    if (!Number.isFinite(point.x + point.y + point.z) || point.z < -1 || point.z > 1) return
+    const distance = Math.hypot((point.x * 0.5 + 0.5) * rect.width - x, (0.5 - point.y * 0.5) * rect.height - y)
+    if (distance <= nearest) { nearest = distance; marker = airport }
+  })
+  return label?.airport ?? marker
+}
 
 /** CSS-pixel picking: Three's world-space Points threshold grows with zoom. */
 export function pickMapTarget(scene: THREE.Scene, camera: THREE.Camera,
