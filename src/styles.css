@@ -90,8 +90,20 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  gap: 24px;
   padding: clamp(24px, 4vw, 58px);
   z-index: 2;
+}
+
+.masthead > :first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.masthead h1 {
+  /* Wrap at the available header width, not the shared shell's fixed cap. */
+  max-width: none;
+  overflow-wrap: break-word;
 }
 
 .study-meta,
@@ -142,6 +154,7 @@
 
 .masthead-meta {
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   align-items: flex-end;
   gap: 14px;
@@ -1539,6 +1552,7 @@
 }
 @media (max-width: 700px) {
   .masthead {
+    gap: 8px;
     padding: calc(12px + env(safe-area-inset-top))
       calc(12px + env(safe-area-inset-right)) 0
       calc(12px + env(safe-area-inset-left));
