@@ -628,11 +628,11 @@ export function App({ edition, suspended = false }: AppProps) {
     isRegionalDay ? regionalDay.network : additionalId ? additionalNetwork : isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isRiviera ? rivieraRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isPilatus ? pilatusNetwork : isRochers ? rochersNetwork : isTerritet ? (glionNetwork ?? territetNetwork) : isGornergrat ? gornergratNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
       ? (zurichContrast.network ?? nationalNetwork)
       : networkStudy === 'zurich-city'
-      ? (zurichCityNetwork ?? nationalNetwork)
+      ? zurichCityNetwork
       : networkStudy === 'zvv-region'
-        ? (zvvRegionNetwork ?? nationalNetwork)
+        ? zvvRegionNetwork
         : networkStudy === 'geneva-tpg'
-          ? (genevaTpgNetwork ?? nationalNetwork)
+          ? genevaTpgNetwork
           : nationalTimeRange === 'day'
             ? (nationalDayNetwork ?? nationalNetwork)
             : nationalNetwork
@@ -2359,7 +2359,7 @@ export function App({ edition, suspended = false }: AppProps) {
               </div>
             </section>
           </div>
-        ) : isNetwork && sceneNetwork ? (
+        ) : isNetwork && sceneNetwork && nationalNetwork ? (
           <NationalNetworkScene
             boundary={boundary}
             lakes={lakes}
@@ -2367,7 +2367,7 @@ export function App({ edition, suspended = false }: AppProps) {
             routeColors={isPostbus ? POSTBUS_ROUTE_COLORS : isCogwheel || isMountainStudy ? COGWHEEL_ROUTE_COLORS : undefined}
             snapshot={sceneNetwork}
             trafficOverviewEmphasis={isPostbus ? 0.65 : undefined}
-            referenceSnapshot={nationalNetwork ?? sceneNetwork}
+            referenceSnapshot={nationalNetwork}
             contextSnapshot={
               networkStudy !== 'national' && !isPostbus && !isMountainStudy &&
               (additionalId ? baseNetwork : isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isRiviera ? rivieraRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : networkStudy === 'zurich-city'
@@ -2431,11 +2431,11 @@ export function App({ edition, suspended = false }: AppProps) {
             onSelectAirport={networkStudy === 'national' && airEnabled ? selectAirport : undefined}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
-              additionalRegion ? { homeDistanceScale: additionalRegion.scale, minimumDistanceScale: 0.006, portraitMinimumDistanceScale: 0.004, localDetailHierarchy: true } : isValais ? MAP_FRAMINGS.valais : isTicino ? MAP_FRAMINGS.ticino : isGraubuenden ? MAP_FRAMINGS.graubuenden : isSolothurn ? MAP_FRAMINGS.solothurn : isBern ? MAP_FRAMINGS.bern : isRiviera ? MAP_FRAMINGS.riviera : isNyon ? MAP_FRAMINGS.nyon : isBasel ? MAP_FRAMINGS.basel : isLausanne ? MAP_FRAMINGS.lausanne : isPilatus ? MAP_FRAMINGS.pilatus : isRochers ? MAP_FRAMINGS.rochers : isTerritet ? glionJourneyActive || glionNetwork ? { ...MAP_FRAMINGS.rochers, homeDistanceScale: 0.055 } : MAP_FRAMINGS.territet : isGornergrat ? MAP_FRAMINGS.gornergrat : isJungfrau ? MAP_FRAMINGS.jungfrau : isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
+              additionalRegion ? { homeDistanceScale: additionalRegion.scale, minimumDistanceScale: 0.006, portraitMinimumDistanceScale: 0.004, localDetailHierarchy: true } : isValais ? MAP_FRAMINGS.valais : isTicino ? MAP_FRAMINGS.ticino : isGraubuenden ? MAP_FRAMINGS.graubuenden : isSolothurn ? MAP_FRAMINGS.solothurn : isBern ? MAP_FRAMINGS.bern : isRiviera ? MAP_FRAMINGS.riviera : isNyon ? MAP_FRAMINGS.nyon : isBasel ? MAP_FRAMINGS.basel : isLausanne ? MAP_FRAMINGS.lausanne : isPilatus ? MAP_FRAMINGS.pilatus : isRochers ? MAP_FRAMINGS.rochers : isTerritet ? glionJourneyActive || glionNetwork ? { ...MAP_FRAMINGS.rochers, homeDistanceScale: 0.055 } : MAP_FRAMINGS.territet : isGornergrat ? MAP_FRAMINGS.gornergrat : isJungfrau ? MAP_FRAMINGS.jungfrau : isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city'
                 ? MAP_FRAMINGS.zurich
-                : networkStudy === 'zvv-region' && zvvRegionNetwork
+                : networkStudy === 'zvv-region'
                   ? MAP_FRAMINGS.zvv
-                  : networkStudy === 'geneva-tpg' && genevaTpgNetwork
+                  : networkStudy === 'geneva-tpg'
                     ? MAP_FRAMINGS.geneva
                     : MAP_FRAMINGS.national
             }

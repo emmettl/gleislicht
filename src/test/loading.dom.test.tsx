@@ -5,6 +5,54 @@ import { expect, it } from 'vitest'
 import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road-study'
 import { mountApp, element, clock } from './app-harness.tsx'
 import { deferred, fixture, fixtureFetch } from './fixtures.ts'
+import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
+import { SWITZERLAND_MAP_FRAMINGS } from '../editions/switzerland.ts'
+
+it.each([
+  ['zurich-city', 'zurich'], ['zvv-region', 'zvv'], ['geneva-tpg', 'geneva'],
+] as const)('%s frames the full-day map independently of its morning response', async (study, framing) => {
+  const { overrides, requests } = fixtureFetch(), pending = deferred<Response>()
+  const morning = `${study}-morning.json`
+  overrides.set(morning, () => pending.promise)
+  mountApp(`?study=${study}&range=day`)
+  const scene = await screen.findByTestId('map-scene')
+  await waitFor(() => expect(requests).toContain(morning))
+  const bounds = JSON.stringify(fixture<NetworkSnapshot>(`${study}-day-manifest.json`).bounds)
+  const reference = JSON.stringify(fixture<NetworkSnapshot>('swiss-rail-morning.json').bounds)
+  expect(scene.dataset.cameraScale).toBe(String(SWITZERLAND_MAP_FRAMINGS[framing].homeDistanceScale))
+  expect(scene.dataset.bounds).toBe(bounds)
+  expect(scene.dataset.referenceBounds).toBe(reference)
+  await act(async () => { pending.resolve(Response.json(fixture(morning))); await pending.promise })
+  expect(scene.dataset.cameraScale).toBe(String(SWITZERLAND_MAP_FRAMINGS[framing].homeDistanceScale))
+  expect(scene.dataset.bounds).toBe(bounds)
+  expect(scene.dataset.referenceBounds).toBe(reference)
+})
+
+it('waits for the shared map projection before showing a directly linked Zürich map', async () => {
+  const { overrides, requests } = fixtureFetch(), pending = deferred<Response>()
+  overrides.set('swiss-rail-morning.json', () => pending.promise)
+  mountApp('?study=zurich-city&range=day')
+  await waitFor(() => expect(requests.some(path => path.startsWith('zurich-city-day-chunks/'))).toBe(true))
+  expect(screen.queryByTestId('map-scene')).toBeNull()
+  await act(async () => { pending.resolve(Response.json(fixture('swiss-rail-morning.json'))); await pending.promise })
+  const scene = await screen.findByTestId('map-scene')
+  expect(scene.dataset.cameraScale).toBe(String(SWITZERLAND_MAP_FRAMINGS.zurich.homeDistanceScale))
+  expect(scene.dataset.referenceBounds).toBe(JSON.stringify(fixture<NetworkSnapshot>('swiss-rail-morning.json').bounds))
+})
+
+it('does not substitute the national map while Zürich morning data is loading', async () => {
+  const { overrides } = fixtureFetch(), pending = deferred<Response>()
+  overrides.set('zurich-city-morning.json', () => pending.promise)
+  mountApp()
+  await screen.findByTestId('map-scene')
+  fireEvent.click(screen.getByRole('button', { name: 'Show Zürich city multimodal network' }))
+  fireEvent.click(screen.getByRole('button', { name: 'Full day' }))
+  expect(screen.queryByTestId('map-scene')).toBeNull()
+  await act(async () => { pending.resolve(Response.json(fixture('zurich-city-morning.json'))); await pending.promise })
+  const scene = await screen.findByTestId('map-scene')
+  expect(scene.dataset.bounds).toBe(JSON.stringify(fixture<NetworkSnapshot>('zurich-city-morning.json').bounds))
+  expect(scene.dataset.cameraScale).toBe(String(SWITZERLAND_MAP_FRAMINGS.zurich.homeDistanceScale))
+})
 
 it('adopts the loaded national minute values rather than only changing attribution text', async () => {
   const { overrides, requests } = fixtureFetch(), pending = deferred<Response>()
