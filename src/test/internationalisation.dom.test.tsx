@@ -32,13 +32,14 @@ it.each(['en', 'de', 'fr', 'it'] as const)('localizes orbital controls, notes an
   expect(document.body.textContent).not.toMatch(/\{(?:height|mode|journeys|studies|spacing)\}/)
 })
 
-it('updates an existing orbital error and the shared language when switching languages', async () => {
+it('follows the shared atlas language without an orbital language selector', async () => {
   await loadUiText('fr')
   vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('Network offline')))
   const otherView = renderHook(() => useUiLanguage())
   render(<OrbitalView />)
   await screen.findByText(ORBITAL_COPY.en.dataError)
-  fireEvent.click(screen.getByRole('button', { name: 'FR' }))
+  expect(document.querySelector('.language-picker')).toBeNull()
+  act(() => otherView.result.current[1]('fr'))
   await screen.findByText(ORBITAL_COPY.fr.dataError)
   expect(screen.queryByText(ORBITAL_COPY.en.dataError)).toBeNull()
   expect(otherView.result.current[0]).toBe('fr')

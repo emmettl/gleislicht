@@ -1,6 +1,6 @@
 import { useUiLanguage } from '../use-ui-language.ts'
 import { useUiText } from '../use-ui-text.ts'
-import { LANGUAGE_LOCALES, UI_LANGUAGES, serviceCategoryLabel } from '../i18n.ts'
+import { LANGUAGE_LOCALES, serviceCategoryLabel } from '../i18n.ts'
 import { ORBITAL_COPY, type OrbitalCopy } from './orbital-copy.ts'
 import { Component, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { Canvas } from '@react-three/fiber'
@@ -28,7 +28,7 @@ const COMPACT_VIEW = '(max-width: 700px), (max-width: 1000px) and (max-height: 5
 const ORBITAL_GL = { antialias: true, alpha: false, powerPreference: 'high-performance' as const }
 export interface OrbitalViewProps { onReady?: () => void; onLoadError?: (message: string) => void }
 export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) {
-  const [language, setLanguage] = useUiLanguage()
+  const [language] = useUiLanguage()
   const copy = ORBITAL_COPY[language], text = useUiText(language)
   const integer = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language]), [language])
   const formatAltitude = useCallback((height: number) => copy.altitudeValue.replace('{height}', new Intl.NumberFormat(LANGUAGE_LOCALES[language], { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(height)), [copy, language])
@@ -210,7 +210,7 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
     <div className="orbital-city-labels" ref={cityLabels} aria-hidden="true" />
     <header className="orbital-header" inert={focused} aria-hidden={focused}>
       <div><a className="orbital-back" href="?">← Gleislicht</a><p className="orbital-eyebrow">{copy.experiment}</p><h1>{copy.country}<span>{copy.inMotion}</span></h1><p className="orbital-subtitle">{copy.subtitle}</p></div>
-      <div className="orbital-live"><nav className="language-picker" aria-label={text.languagePicker}>{UI_LANGUAGES.map(option => <button key={option.id} type="button" lang={option.id} title={option.name} aria-pressed={language === option.id} onClick={() => setLanguage(option.id)}>{option.label}</button>)}</nav><span className="orbital-pulse" /><strong>{ready ? integer.format(stats.active) : '—'}</strong><span>{hiddenTransports.length ? copy.visibleServices : copy.activeServices}</span><small>{ready && stats.fps ? `${stats.fps} FPS` : copy.preparing}</small><div className="orbital-altitude" title={copy.altitudeHelp}><span>{copy.cameraAltitude}</span><output ref={cameraAltitude} aria-label={copy.cameraAltitudeSea} aria-live="off">—</output></div></div>
+      <div className="orbital-live"><span className="orbital-pulse" /><strong>{ready ? integer.format(stats.active) : '—'}</strong><span>{hiddenTransports.length ? copy.visibleServices : copy.activeServices}</span><small>{ready && stats.fps ? `${stats.fps} FPS` : copy.preparing}</small><div className="orbital-altitude" title={copy.altitudeHelp}><span>{copy.cameraAltitude}</span><output ref={cameraAltitude} aria-label={copy.cameraAltitudeSea} aria-live="off">—</output></div></div>
     </header>
     {!ready && <div className="orbital-message" role={error ? 'alert' : 'status'}>{error ? <><h2>{copy.loadFailed}</h2><p>{copy[error]}</p><button onClick={() => { cache.current.clear(); setError(''); setAttempt(a => a + 1) }}>{copy.retry}</button></> : <><span className="orbital-loader" /><p>{copy.gathering}</p><small>{manifest ? `${orbitalClock(block * 7200)}–${orbitalClock((block + 1) * 7200)} · ${copy.journeysDay.replace('{count}', integer.format(manifest.journeyCount))}` : copy.networks}</small></>}</div>}
     {!compact && <>{snowControls}{viewControls}</>}
