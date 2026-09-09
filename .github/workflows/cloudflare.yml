@@ -1,4 +1,4 @@
-name: Publish Cloudflare pilot
+name: Publish to Cloudflare
 
 on:
   workflow_run:
@@ -17,7 +17,7 @@ permissions:
   actions: read
 
 concurrency:
-  group: cloudflare-gleislicht-pilot
+  group: cloudflare-gleislicht
   cancel-in-progress: false
 
 jobs:
@@ -30,16 +30,17 @@ jobs:
         contains(fromJSON('["push","schedule","workflow_dispatch"]'), github.event.workflow_run.event)))
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # Keep the established encrypted secret and main-only deployment restriction.
     environment:
       name: cloudflare-pilot
-      url: https://motionstudies.app/gleislicht-pilot/
+      url: https://motionstudies.app/gleislicht/
     steps:
       # Use trusted publishing code, not code from the downloaded Pages artifact.
       - name: Check out pinned hosting tools
         uses: actions/checkout@v7
         with:
           repository: emmettl/motionstudies
-          ref: f0d91db50f373fb408511d607f470d79171df829
+          ref: 712c538a6f0094b1bb9c698871166008708c68a0
           path: hosting-tools
           persist-credentials: false
       - name: Set up Node
@@ -47,7 +48,7 @@ jobs:
         with:
           node-version-file: hosting-tools/.nvmrc
       - name: Verify publishing gates
-        run: python3 hosting-tools/scripts/test-gleislicht-pilot.py
+        run: python3 hosting-tools/scripts/test-gleislicht.py
       - name: Publish verified Pages artifact and check live headers
         env:
           GH_TOKEN: ${{ github.token }}
@@ -58,11 +59,11 @@ jobs:
             echo '::error::Set CLOUDFLARE_API_TOKEN in the cloudflare-pilot environment.'
             exit 1
           fi
-          python3 hosting-tools/scripts/publish-gleislicht-pilot.py \
+          python3 hosting-tools/scripts/publish-gleislicht.py \
             --run "$SOURCE_RUN_ID" --require-latest --deploy
-      - name: Link pilot and release provenance
+      - name: Link edition and release provenance
         run: |
           printf '%s\n' \
-            '[Open Cloudflare pilot](https://motionstudies.app/gleislicht-pilot/)' \
-            '[Inspect live release metadata](https://motionstudies.app/gleislicht-pilot/_release.json)' \
+            '[Open Gleislicht](https://motionstudies.app/gleislicht/)' \
+            '[Inspect live release metadata](https://motionstudies.app/gleislicht/_release.json)' \
             >> "$GITHUB_STEP_SUMMARY"
