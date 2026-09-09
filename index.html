@@ -43,5 +43,15 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+  <!-- Cloudflare Web Analytics: motionstudies.app uses automatic injection. -->
+    <script>
+      if (window.location.hostname === 'emmettl.github.io') {
+        const beacon = document.createElement('script')
+        beacon.type = 'module'
+        beacon.src = 'https://static.cloudflareinsights.com/beacon.min.js'
+        beacon.dataset.cfBeacon = JSON.stringify({ token: '4ccf90b57ee64eaa93f8ceaaaf90b41e' })
+        document.body.appendChild(beacon)
+      }
+    </script>
   </body>
 </html>
