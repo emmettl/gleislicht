@@ -1,0 +1,68 @@
+name: Publish Cloudflare pilot
+
+on:
+  workflow_run:
+    workflows: [Deploy to GitHub Pages]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Successful main-branch Pages run to publish
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: cloudflare-gleislicht-pilot
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.head_repository.full_name == github.repository &&
+        contains(fromJSON('["push","schedule","workflow_dispatch"]'), github.event.workflow_run.event)))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: cloudflare-pilot
+      url: https://motionstudies.app/gleislicht-pilot/
+    steps:
+      # Use trusted publishing code, not code from the downloaded Pages artifact.
+      - name: Check out pinned hosting tools
+        uses: actions/checkout@v7
+        with:
+          repository: emmettl/motionstudies
+          ref: f0d91db50f373fb408511d607f470d79171df829
+          path: hosting-tools
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: hosting-tools/.nvmrc
+      - name: Verify publishing gates
+        run: python3 hosting-tools/scripts/test-gleislicht-pilot.py
+      - name: Publish verified Pages artifact and check live headers
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id || github.event.workflow_run.id }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo '::error::Set CLOUDFLARE_API_TOKEN in the cloudflare-pilot environment.'
+            exit 1
+          fi
+          python3 hosting-tools/scripts/publish-gleislicht-pilot.py \
+            --run "$SOURCE_RUN_ID" --require-latest --deploy
+      - name: Link pilot and release provenance
+        run: |
+          printf '%s\n' \
+            '[Open Cloudflare pilot](https://motionstudies.app/gleislicht-pilot/)' \
+            '[Inspect live release metadata](https://motionstudies.app/gleislicht-pilot/_release.json)' \
+            >> "$GITHUB_STEP_SUMMARY"
