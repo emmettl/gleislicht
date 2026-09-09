@@ -26,6 +26,24 @@ export function gleislichtSurfaceRenderer(): Plugin {
         replace('position: [0, -0.072, 0]', 'position: [0, 0, 0]')
         replace('position: [0, 0.007, 0]', 'position: [0, 0.00004, 0]')
         replace('position: [0, 0.014, 0]', 'position: [0, 0.00008, 0]')
+        // At national zoom these nearly coplanar layers collapse to the same
+        // depth values on Safari. Composite the transparent basemap in a fixed
+        // order before the network, without writing depth for subsequent layers.
+        // Keep depth testing so genuinely raised, opaque markers still occlude it.
+        replace('rotation: [-Math.PI / 2, 0, 0], children:',
+          'rotation: [-Math.PI / 2, 0, 0], renderOrder: -5, children:')
+        replace('position: [0, 0.00002, 0], children:',
+          'position: [0, 0.00002, 0], renderOrder: -4, children:')
+        replace('color: "#090b1f", transparent: true, opacity: 0.7',
+          'color: "#090b1f", transparent: true, opacity: 0.7, depthWrite: false')
+        replace('color: "#424b98", transparent: true, opacity: 0.1, wireframe: true',
+          'color: "#424b98", transparent: true, opacity: 0.1, wireframe: true, depthWrite: false')
+        replace('geometry: geometry.fill, renderOrder: 1,',
+          'geometry: geometry.fill, renderOrder: -3,')
+        replace('position: [0, 0.00004, 0], renderOrder: 1,',
+          'position: [0, 0.00004, 0], renderOrder: -2,')
+        replace('position: [0, 0.00008, 0], renderOrder: 2,',
+          'position: [0, 0.00008, 0], renderOrder: -1,')
         replace('const STATION_SURFACE_Y = 0.005;', 'const STATION_SURFACE_Y = MAP_SURFACE_Y;')
         replace('path?.points ?? detour?.points ?? [from, to], 0);',
           'path?.points ?? detour?.points ?? [from, to], MAP_SURFACE_Y);')
