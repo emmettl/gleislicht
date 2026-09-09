@@ -969,6 +969,8 @@ export function App({ edition, suspended = false }: AppProps) {
   const resolvedActiveSearchIndex =
     activeSearchIndex < searchResultCount ? activeSearchIndex : -1
   const visibleServiceCategories = useMemo(() => {
+    // Filters describe the whole study, even while the cogwheel lens is loading
+    // or showing a subset. Otherwise users lose the options for switching modes.
     const present = new Set(
       view === 'hub'
         ? hubCalls.map((call) => call.train.category)
@@ -981,12 +983,12 @@ export function App({ edition, suspended = false }: AppProps) {
                 (train) => train.category,
               ) ?? []),
             ]
-          : (network?.trains.map((train) => train.category) ?? []),
+          : (unfilteredNetwork?.trains.map((train) => train.category) ?? []),
     )
     return SERVICE_CATEGORIES.filter(
       (category) => (category.id !== 'other' || isMountainStudy || Boolean(additionalId)) && present.has(category.id),
     )
-  }, [additionalId, hubCalls, isMountainStudy, isContrast, kientalContrast.network, network, view, zurichContrast.network])
+  }, [additionalId, hubCalls, isMountainStudy, isContrast, kientalContrast.network, unfilteredNetwork, view, zurichContrast.network])
 
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
