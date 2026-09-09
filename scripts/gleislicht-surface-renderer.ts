@@ -6,6 +6,13 @@ export function gleislichtSurfaceRenderer(): Plugin {
     name: 'gleislicht-surface', enforce: 'pre',
     transform(source, id) {
       const moduleId = id.split('?')[0].replaceAll('\\', '/')
+      if (moduleId.endsWith('/@motionstudies/three/regional-lod.js')) {
+        // Home framing can move closer without moving the visibility thresholds
+        // along with it. Other studies retain the renderer's home-relative detail.
+        const before = 'cameraHeight / homeMapDistanceScale(framing)'
+        if (source.split(before).length !== 2) throw new Error('Gleislicht regional detail hook needs review')
+        return { code: source.replace(before, 'cameraHeight / (framing.localDetailDistanceScale ?? homeMapDistanceScale(framing))'), map: null }
+      }
       if (!moduleId.endsWith('/@motionstudies/three/NationalNetworkScene.js') &&
           !moduleId.endsWith('/@motionstudies/three/RoadTrafficLayer.js')) return
       let code = source

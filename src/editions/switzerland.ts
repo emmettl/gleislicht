@@ -106,7 +106,9 @@ export const SWITZERLAND_MAP_FRAMINGS = {
     localDetailHierarchy: true,
   },
   geneva: {
-    homeDistanceScale: 0.13,
+    homeDistanceScale: 0.1,
+    // Preserve the detail thresholds while opening close enough to show trams.
+    localDetailDistanceScale: 0.13,
     minimumDistanceScale: 0.01,
     portraitMinimumDistanceScale: 0.008,
     localDetailHierarchy: true,
@@ -119,7 +121,7 @@ export const SWITZERLAND_MAP_FRAMINGS = {
     stationLabelPrefix: 'Zürich',
     stationLabelPrimaryName: 'Zürich HB',
   },
-} as const satisfies Readonly<Record<string, MapCameraFraming>>
+} as const satisfies Readonly<Record<string, MapCameraFraming & { readonly localDetailDistanceScale?: number }>>
 
 export type SwitzerlandRegionalStudyId =
   | 'pilatus'

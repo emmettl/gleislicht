@@ -5,8 +5,34 @@ import { expect, it } from 'vitest'
 import { MAP_SURFACE_Y } from '../src/studies/map-surface.ts'
 import { gleislichtSurfaceRenderer } from './gleislicht-surface-renderer.ts'
 import { gleislichtSelectionRenderer } from './gleislicht-selection-renderer.ts'
+import { SWITZERLAND_MAP_FRAMINGS } from '../src/editions/switzerland.ts'
+import { homeMapDistanceScale } from '@motionstudies/three/map-camera'
 
 type Element = ReactElement<{ children?: Element | Element[]; renderOrder?: number; geometry?: THREE.BufferGeometry }>
+
+it('shows Geneva trams at the home/reset zoom without changing other regional detail thresholds', () => {
+  const id = '/node_modules/@motionstudies/three/regional-lod.js'
+  const source = readFileSync(`.${id}`, 'utf8')
+  const transform = gleislichtSurfaceRenderer().transform as (source: string, id: string) => { code: string }
+  const evaluate = (code: string) => new Function('homeMapDistanceScale',
+    `${code.slice(code.indexOf('export function')).replaceAll('export ', '')}; return { vehicleIsVisibleAtZoom, localNetworkDetailAtZoom };`)(homeMapDistanceScale)
+  const original = evaluate(source), patched = evaluate(transform(source, id).code)
+  const geneva = SWITZERLAND_MAP_FRAMINGS.geneva
+  const homeHeight = 37 * homeMapDistanceScale(geneva)
+  expect(original.vehicleIsVisibleAtZoom('tram', homeHeight, geneva)).toBe(false)
+  expect(patched.vehicleIsVisibleAtZoom('tram', homeHeight, geneva)).toBe(true)
+  expect(patched.vehicleIsVisibleAtZoom('bus', homeHeight, geneva)).toBe(false)
+  expect(patched.vehicleIsVisibleAtZoom('tram', 37 * geneva.localDetailDistanceScale, geneva)).toBe(false)
+  for (const [id, framing] of Object.entries(SWITZERLAND_MAP_FRAMINGS)) {
+    if (id === 'geneva') continue
+    for (const height of [0.2, 1, 4, 8, 37]) {
+      for (const category of ['tram', 'bus', 'intercity']) {
+        expect(patched.vehicleIsVisibleAtZoom(category, height, framing)).toBe(original.vehicleIsVisibleAtZoom(category, height, framing))
+      }
+      expect(patched.localNetworkDetailAtZoom(height, framing)).toBe(original.localNetworkDetailAtZoom(height, framing))
+    }
+  }
+})
 
 it('composites the flat basemap below the network without depth conflicts between its layers', () => {
   const id = '/node_modules/@motionstudies/three/NationalNetworkScene.js'
