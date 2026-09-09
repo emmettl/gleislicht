@@ -1,0 +1,15 @@
+{
+  "verifiedAt": "2026-09-09T20:07:38.697Z",
+  "bucket": "gleislicht-observations",
+  "manifestKey": "road-history/v1/national/2026-09-08/380a4f1ee75f63376183830c72be0e8a268ebe814bcefcd70c42d032bf13e192/manifest.json",
+  "serviceDate": "2026-09-08",
+  "complete": true,
+  "expectedMinutes": 1440,
+  "verifiedMinutes": 1440,
+  "verifiedChunkHashes": 24,
+  "hourlyRows": 17232,
+  "counters": 718,
+  "fullyObservedCounters": 385,
+  "minimumSiteCoverage": 0.841225626740947,
+  "topologyHash": "380a4f1ee75f63376183830c72be0e8a268ebe814bcefcd70c42d032bf13e192"
+}

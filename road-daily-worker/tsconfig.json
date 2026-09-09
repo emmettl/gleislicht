@@ -1,0 +1,4 @@
+{
+  "extends": "../astra-worker/tsconfig.json",
+  "include": ["index.ts", "analysis.ts"]
+}

@@ -107,6 +107,10 @@ Possible later studies include a focused A2 Gotthard approach recording. `Fahrst
 
 ## Selecting roads and comparing traffic
 
+For unattended historical collection, dated archives and counter-level hourly/day
+comparisons, see [Daily road archive and trend analysis](ROAD-HISTORY.md). This
+private archive advances independently of the curated public playback recording.
+
 Click a visible motorway line or A-road shield to select it (touch uses a larger
 screen-space tolerance). The road card plots estimated vehicles per kilometre per
 direction for the complete available recording, on a zero-based scale that stays

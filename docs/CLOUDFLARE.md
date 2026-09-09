@@ -1,9 +1,10 @@
 # Cloudflare operations
 
-GitHub Pages remains the public static host. This repository owns two Cloudflare services against the private `gleislicht-observations` R2 bucket:
+GitHub Pages remains the public static host. This repository owns three Cloudflare services against the private `gleislicht-observations` R2 bucket:
 
 - `gleislicht-realtime` polls Swiss GTFS-RT once per minute, normalizes it and serves the central `gtfs-rt/latest.json` object at `/realtime.json`.
 - `gleislicht-astra-recorder` waits until 24 seconds after each minute publication and writes append-only gzip snapshots below `astra/<scope>/<UTC date>/`.
+- `gleislicht-road-daily` compiles yesterday's national recordings at 03:17 UTC, retries at 06:17 UTC, and retains dated minute chunks, hourly CSV and daily counter summaries under private `road-history/` keys. It promotes only complete days and never deletes source recordings. See [daily road history](ROAD-HISTORY.md).
 
 The London observation Worker shares this bucket; its [operating guide](https://github.com/emmettl/allchange/blob/main/docs/CLOUDFLARE.md) and deployment commands now live in All Change.
 
@@ -87,7 +88,7 @@ The exporter reads the adjacent UTC partitions needed to cover the requested Eur
 
 Use `--scope=zurich-cantonal` to export the archive into `recordings/astra-zurich-cantonal/`. Audit availability with `scripts/audit-cantonal-road-coverage.mjs`, then use the separate cantonal compiler and pinned pilot builder described in [Cantonal roads](CANTONAL-ROADS.md). Seven recordings across six reviewed corridors are published; exporting later observations does not automatically extend their catalog windows or authorize additional road geometry.
 
-Do not add an automatic deletion rule until R2 download and daily compilation have been exercised. Once that path is proven, retain compiled, audited day chunks and expire raw national minute objects on an explicit rolling window. The GTFS latest object is overwritten and needs no lifecycle rule.
+Retain raw national and cantonal minute objects for historical analysis. No automatic expiry is configured; the existing lifecycle rule aborts only unfinished multipart uploads. Dated derived summaries and minute chunks are also retained. The GTFS latest object is overwritten and needs no lifecycle rule.
 
 ## Local checks
 

@@ -60,6 +60,9 @@ jobs:
       - name: Check realtime edge adapter
         run: npm run worker:check && npm run worker:build
 
+      - name: Check daily road archive
+        run: npx tsc -p road-daily-worker/tsconfig.json && npx wrangler deploy --config wrangler.road-daily.jsonc --dry-run --outdir .worker-dist/road-daily
+
       # Catch code and payload regressions before starting the expensive jobs.
       - name: Build committed fixtures and check publication budgets
         run: npm run build && npm run check:bundle && npm run pages:prepare
