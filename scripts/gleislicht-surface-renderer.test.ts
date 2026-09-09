@@ -16,20 +16,21 @@ it('composites the flat basemap below the network without depth conflicts betwee
   const code = transform(selection(source, id).code, id).code
   // Evaluate the installed renderer's actual basemap components with synchronous
   // hooks, then inspect the objects/materials they supply to R3F.
-  const components = code.slice(code.indexOf('function NationalGround('), code.indexOf('function DiagramWaterLayer('))
+  const components = code.slice(code.indexOf('function NationalGround('), code.indexOf('function RailGraph('))
   const jsx = (type: string, props: object) => createElement(type, props)
-  const { NationalGround, LakeLayer } = new Function(
+  const { NationalGround, LakeLayer, CountryBorder } = new Function(
     '_jsx', '_jsxs', 'useMemo', 'useEffect', 'THREE', 'MAP_SURFACE_Y', 'projectCoordinate', 'appendLineSegments',
-    `${components}; return { NationalGround, LakeLayer };`,
+    `${components}; return { NationalGround, LakeLayer, CountryBorder };`,
   )(jsx, jsx, (build: () => unknown) => build(), () => {}, THREE, MAP_SURFACE_Y,
-    ([x, z]: number[]) => [x, 0, z], (target: number[], points: number[][]) => target.push(...points.flat()))
+    ([x, z]: number[], _projection: unknown, height = 0) => [x, height, z], (target: number[], points: number[][]) => target.push(...points.flat()))
   const children = (element: Element) => [element.props.children].flat().filter(Boolean) as Element[]
   const ground = children(NationalGround({}))
   const water = children(LakeLayer({ lakes: { lakes: [{ polygons: [[[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]]]] }] }, subdued: false }))
-  const layers = [...ground, ...water]
-  expect(layers).toHaveLength(5)
+  const border = children(CountryBorder({ boundary: { rings: [[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]]] }, subdued: false })).flatMap(children)
+  const layers = [...ground, ...water, ...border]
+  expect(layers).toHaveLength(7)
   const orders = layers.map(layer => layer.props.renderOrder ?? 0)
-  // Ground, grid, fill, highlight, shoreline must have distinct increasing
+  // Ground, grid, fill, highlight, shoreline, border glow/core must have increasing
   // orders below the default network order, even when their depths quantize.
   expect(orders.every((order, i) => order < 0 && (i === 0 || order > orders[i - 1]))).toBe(true)
   for (const layer of layers) {
@@ -37,5 +38,5 @@ it('composites the flat basemap below the network without depth conflicts betwee
     expect(material.props).toMatchObject({ transparent: true, depthWrite: false })
     expect(material.props).not.toMatchObject({ depthTest: false })
   }
-  new Set(water.map(layer => layer.props.geometry)).forEach(geometry => geometry?.dispose())
+  new Set([...water, ...border].map(layer => layer.props.geometry)).forEach(geometry => geometry?.dispose())
 })

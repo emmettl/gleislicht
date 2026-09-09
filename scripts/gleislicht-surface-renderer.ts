@@ -31,19 +31,23 @@ export function gleislichtSurfaceRenderer(): Plugin {
         // order before the network, without writing depth for subsequent layers.
         // Keep depth testing so genuinely raised, opaque markers still occlude it.
         replace('rotation: [-Math.PI / 2, 0, 0], children:',
-          'rotation: [-Math.PI / 2, 0, 0], renderOrder: -5, children:')
+          'rotation: [-Math.PI / 2, 0, 0], renderOrder: -7, children:')
         replace('position: [0, 0.00002, 0], children:',
-          'position: [0, 0.00002, 0], renderOrder: -4, children:')
+          'position: [0, 0.00002, 0], renderOrder: -6, children:')
         replace('color: "#090b1f", transparent: true, opacity: 0.7',
           'color: "#090b1f", transparent: true, opacity: 0.7, depthWrite: false')
         replace('color: "#424b98", transparent: true, opacity: 0.1, wireframe: true',
           'color: "#424b98", transparent: true, opacity: 0.1, wireframe: true, depthWrite: false')
         replace('geometry: geometry.fill, renderOrder: 1,',
-          'geometry: geometry.fill, renderOrder: -3,')
+          'geometry: geometry.fill, renderOrder: -5,')
         replace('position: [0, 0.00004, 0], renderOrder: 1,',
-          'position: [0, 0.00004, 0], renderOrder: -2,')
+          'position: [0, 0.00004, 0], renderOrder: -4,')
         replace('position: [0, 0.00008, 0], renderOrder: 2,',
-          'position: [0, 0.00008, 0], renderOrder: -1,')
+          'position: [0, 0.00008, 0], renderOrder: -3,')
+        // The border must also precede the depth-writing rail graph: its flat
+        // glow/core otherwise flicker where distant geometry shares a depth value.
+        replace('geometry: glow, children:', 'geometry: glow, renderOrder: -2, children:')
+        replace('geometry: core, renderOrder: 2,', 'geometry: core, renderOrder: -1,')
         replace('const STATION_SURFACE_Y = 0.005;', 'const STATION_SURFACE_Y = MAP_SURFACE_Y;')
         replace('path?.points ?? detour?.points ?? [from, to], 0);',
           'path?.points ?? detour?.points ?? [from, to], MAP_SURFACE_Y);')
