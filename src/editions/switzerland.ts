@@ -94,7 +94,8 @@ export const SWITZERLAND_MAP_FRAMINGS = {
   riviera: { homeDistanceScale: 0.34, minimumDistanceScale: 0.006, portraitMinimumDistanceScale: 0.006, localDetailHierarchy: true },
   nyon: { homeDistanceScale: 0.16, minimumDistanceScale: 0.006, portraitMinimumDistanceScale: 0.006, localDetailHierarchy: true },
   basel: {
-    homeDistanceScale: 0.18,
+    homeDistanceScale: 0.14,
+    localDetailDistanceScale: 0.18,
     minimumDistanceScale: 0.008,
     portraitMinimumDistanceScale: 0.006,
     localDetailHierarchy: true,
