@@ -14,9 +14,10 @@ export interface OrbitalTransitionProps {
   atlas: RefObject<HTMLDivElement | null>
   returnUrl: RefObject<string>
   returnFocus: RefObject<HTMLElement | null>
+  focusNavigation: RefObject<boolean>
 }
 
-export default function OrbitalTransition({ wanted, setWanted, directOrbit, atlasMounted, setAtlasMounted, atlas, returnUrl, returnFocus }: OrbitalTransitionProps) {
+export default function OrbitalTransition({ wanted, setWanted, directOrbit, atlasMounted, setAtlasMounted, atlas, returnUrl, returnFocus, focusNavigation }: OrbitalTransitionProps) {
   const [language] = useUiLanguage()
   const text = useUiText(language)
   const [Orbit, setOrbit] = useState<ComponentType<OrbitalViewProps>>()
@@ -72,9 +73,9 @@ export default function OrbitalTransition({ wanted, setWanted, directOrbit, atla
     return animate.current?.({
       departing: phase === 'departing', saved: saved.current,
       orbit: orbit.current, atlas: atlas.current, focus: returnFocus.current,
-      title: atlasTitle.current,
+      title: atlasTitle.current, restoreFocus: focusNavigation.current,
     })
-  }, [phase, atlas, returnFocus])
+  }, [phase, atlas, returnFocus, focusNavigation])
 
   const busy = phase === 'loading' || phase === 'departing' || phase === 'returning'
   return <>

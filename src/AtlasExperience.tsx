@@ -20,6 +20,7 @@ export default function AtlasExperience() {
   const [error, setError] = useState(false)
   const phase = useSyncExternalStore(orbitalFlight.subscribe, orbitalFlight.snapshot)
   const atlas = useRef<HTMLDivElement>(null), returnUrl = useRef(atlasUrl())
+  const focusNavigation = useRef(false)
   const returnFocus = useRef<HTMLElement | null>(null)
   const hasOrbit = phase !== 'atlas'
   const cancel = useCallback(() => {
@@ -55,6 +56,7 @@ export default function AtlasExperience() {
     const entering = url.searchParams.get('view') === 'orbital'
     if (!entering && !link.closest('.flight-orbit')) return
     event.preventDefault()
+    focusNavigation.current = event.detail === 0
     if (entering) {
       if (phase !== 'atlas') return
       returnUrl.current = location.pathname + location.search + location.hash
@@ -69,7 +71,7 @@ export default function AtlasExperience() {
   }
   return <div className={`atlas-experience flight-${phase}`} onClickCapture={navigate}>
     {atlasMounted && <div ref={atlas} className="flight-atlas" inert={hasOrbit} aria-hidden={hasOrbit}><Atlas edition={SWITZERLAND_EDITION} suspended={hasOrbit} /></div>}
-    {Transition && <Transition wanted={wanted} setWanted={setWanted} directOrbit={directOrbit} atlasMounted={atlasMounted} setAtlasMounted={setAtlasMounted} atlas={atlas} returnUrl={returnUrl} returnFocus={returnFocus} />}
+    {Transition && <Transition wanted={wanted} setWanted={setWanted} directOrbit={directOrbit} atlasMounted={atlasMounted} setAtlasMounted={setAtlasMounted} atlas={atlas} returnUrl={returnUrl} returnFocus={returnFocus} focusNavigation={focusNavigation} />}
     {wanted && !Transition && <div className="flight-shield" aria-busy="true"><div className="flight-status" role="status">{text.orbitLoading}<button onClick={cancel}>{text.cancel}</button></div></div>}
     {error && <div className="flight-error" role="alert">{text.orbitLoadError}<button onClick={() => setError(false)} aria-label={text.dismissMessage}>×</button></div>}
   </div>

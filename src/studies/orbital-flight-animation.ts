@@ -2,9 +2,9 @@ import { orbitalFlight, type FlightPose } from './orbital-flight.ts'
 import { flightOpacity, flightPose, initialOrbitPose } from './orbital-flight-path.ts'
 
 // Loaded with orbit, so the atlas's first view pays only for the camera bridge.
-export function animateOrbitalFlight({ departing, saved, orbit, atlas, focus, title }: {
+export function animateOrbitalFlight({ departing, saved, orbit, atlas, focus, title, restoreFocus }: {
   departing: boolean; saved: FlightPose | null; orbit: HTMLDivElement | null;
-  atlas: HTMLDivElement | null; focus: HTMLElement | null; title: string;
+  atlas: HTMLDivElement | null; focus: HTMLElement | null; title: string; restoreFocus: boolean;
 }) {
   const home = initialOrbitPose(window.innerWidth, window.innerHeight)
   const from = departing ? saved ?? home : orbitalFlight.orbit?.capture() ?? home
@@ -24,7 +24,7 @@ export function animateOrbitalFlight({ departing, saved, orbit, atlas, focus, ti
         orbitalFlight.pose = null
         orbitalFlight.setPhase(departing ? 'orbital' : 'atlas')
         if (!departing) document.title = title
-        requestAnimationFrame(() => {
+        if (restoreFocus) requestAnimationFrame(() => {
           if (departing) orbit?.querySelector<HTMLAnchorElement>('.orbital-back')?.focus({ preventScroll: true })
           else (focus?.isConnected ? focus : atlas?.querySelector<HTMLElement>('.masthead-orbital'))?.focus({ preventScroll: true })
         })

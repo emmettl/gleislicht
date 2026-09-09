@@ -150,7 +150,7 @@
   .orbital-view input[type=range] { height: 44px; min-width: 0; touch-action: pan-y; margin: 0; }
   .orbital-view select { font-size: 16px; }
   .orbital-header { top: max(8px, env(safe-area-inset-top)); left: max(16px, env(safe-area-inset-left)); right: max(16px, env(safe-area-inset-right)); gap: 8px; }
-  .orbital-back { display: inline-flex; align-items: center; margin: 0; font-size: 13px; }
+  .orbital-back { display: inline-flex; align-items: center; margin: 0 0 8px; padding: 0 10px; border: 1px solid #718ca438; border-radius: 8px; background: #09111bb3; font-size: 13px; }
   .orbital-header h1 { margin: 0; font-size: 18px; letter-spacing: -.04em; }
   .orbital-header h1 span, .orbital-header .orbital-eyebrow, .orbital-subtitle, .orbital-live small, .orbital-pulse { display: none; }
   .orbital-live { display: flex; flex-direction: column; gap: 3px; padding-top: 10px; }
