@@ -660,16 +660,16 @@ export function App({ edition, suspended = false }: AppProps) {
         0,
         realtimeClock -
           Date.parse(
-            realtimeSnapshot.metadata.receivedAt ??
-              realtimeSnapshot.metadata.generatedAt,
+            realtimeSnapshot.metadata.generatedAt,
           ),
       )
     : 0
   const realtimeStale =
     realtimeSnapshot?.metadata.kind === 'live' &&
-    realtimeAgeMs > REALTIME_STALE_AFTER_MS
+    (!Number.isFinite(realtimeAgeMs) || realtimeAgeMs > REALTIME_STALE_AFTER_MS ||
+      Date.parse(realtimeSnapshot.metadata.generatedAt) > realtimeClock)
   const realtimeActive = Boolean(
-    realtimeApplication?.compatible && !realtimeStale,
+    realtimeLoadState === 'ready' && realtimeApplication?.compatible && !realtimeStale,
   )
   const unfilteredNetwork = realtimeActive ? realtimeApplication?.network : baseNetwork
   const isCogwheel = cogwheelEnabled && networkStudy === 'national' && view === 'network'

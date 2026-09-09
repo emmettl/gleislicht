@@ -1,6 +1,6 @@
 # Cloudflare operations
 
-GitHub Pages remains the public static host. This repository owns three Cloudflare services against the private `gleislicht-observations` R2 bucket:
+The public static home is https://motionstudies.app/gleislicht/. GitHub Pages supplies the validated release artifact and remains an available mirror; see [publishing](PUBLISHING.md). The realtime and recording services use the private `gleislicht-observations` R2 bucket:
 
 - `gleislicht-realtime` polls Swiss GTFS-RT once per minute, normalizes it and serves the central `gtfs-rt/latest.json` object at `/realtime.json`.
 - `gleislicht-astra-recorder` waits until 24 seconds after each minute publication and writes append-only gzip snapshots below `astra/<scope>/<UTC date>/`.
@@ -9,6 +9,10 @@ GitHub Pages remains the public static host. This repository owns three Cloudfla
 The London observation Worker shares this bucket; its [operating guide](https://github.com/emmettl/allchange/blob/main/docs/CLOUDFLARE.md) and deployment commands now live in All Change.
 
 No API token enters the browser, GitHub Pages artifact or repository. Each upstream product has its own Worker secret.
+
+## Provisioned services and maintenance
+
+The account, R2 bucket, realtime credential and ASTRA credential are already provisioned. The realtime Worker is aligned to published static feed `20260905`; deployment still checks the actual feed and service date before enabling LIVE. The original setup instructions below are for recovery or a new account, not unfinished project tasks. When a new static feed is adopted, review and update `STATIC_FEED_VERSION`, deploy the Worker, wait for a fresh scheduled snapshot, and verify the release compatibility gate. Credentials are retained as Worker secrets.
 
 ## One-time account setup
 

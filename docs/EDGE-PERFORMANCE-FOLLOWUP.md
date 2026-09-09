@@ -1,5 +1,13 @@
 # Edge follow-up: invisible scene work
 
+**Status — 9 September 2026:** the owner accepts current performance after
+hands-on review on iPhone 17 Pro, Fairphone 6, their main Mac and MacBook Neo.
+The Windows laptop still struggles in some areas, but substantial further
+optimisation is deferred by owner decision. Physical-device review is complete
+for this release. See [the device acceptance record](ORBITAL-PERFORMANCE.md#physical-device-acceptance--9-september-2026).
+The measurement requests and optimisation investigations below are retained as
+historical evidence, not outstanding release requirements.
+
 The first performance changes improved the reported Windows Edge experience, but
 the laptop still struggled with various layer combinations. The first follow-up
 below used LUFT + Auto; the later screenshot identified vehicle trails as a

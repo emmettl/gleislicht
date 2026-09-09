@@ -1,6 +1,6 @@
 # Motion Studies 005 — Gleislicht
 
-**[Open Gleislicht](https://emmettl.github.io/gleislicht/)** · [Motion Studies catalogue](https://emmettl.github.io/motionstudies/)
+**[Open Gleislicht](https://motionstudies.app/gleislicht/)** · [Motion Studies catalogue](https://emmettl.github.io/motionstudies/)
 
 [Study brief](https://github.com/emmettl/motionstudies/blob/main/docs/GLEISLICHT.md) · [Project goals](https://github.com/emmettl/motionstudies/blob/main/docs/VISION.md) · [Roadmap](https://github.com/emmettl/motionstudies/blob/main/ROADMAP.md)
 
@@ -18,11 +18,17 @@ The mobile first view has an enforced 790 KiB compressed transfer ceiling coveri
 
 The complete interface is available in English, German, French and Italian. It follows the visitor's supported browser language, falls back to English, and remembers changes made with the **EN / DE / FR / IT** switch.
 
-The national card also carries a compact **PLAN / DEMO / LIVE** operations switch. The bundled demo applies representative delays, a cancellation and a skipped stop to the exactly matching static feed so the interaction remains reviewable without a credential or invented GPS positions. A separate Cloudflare Worker adapter is ready to decode the official GTFS-RT Trip Updates feed at the edge; it falls back to the schedule on feed-version mismatch, stale data or failure. Production LIVE activation intentionally remains off until a feed key and a current matching static service day are configured. See [docs/REALTIME.md](./docs/REALTIME.md).
+The national card also carries a compact **PLAN / DEMO / LIVE** operations switch. The bundled demo applies representative delays, a cancellation and a skipped stop to the exactly matching static feed so the interaction remains reviewable without a credential or invented GPS positions. A separate Cloudflare Worker adapter is ready to decode the official GTFS-RT Trip Updates feed at the edge; it falls back to the schedule on feed-version mismatch, stale data or failure. The production Worker is provisioned and polls once per minute. Releases enable LIVE by default only when its fresh feed version and service date exactly match the published national timetable; otherwise the schedule and labelled demo remain available. LIVE corrects timetable interpolation, not GPS positions, and the current feed is not a historical delay archive. See [docs/REALTIME.md](./docs/REALTIME.md).
 
 The national atlas also offers **LUFT**, a deliberately optional historical ADS-B study. The opening view lazy-loads observed aircraft positions across the complete 06:45–08:45 morning window; **CH · 24H** switches to a searchable day manifest and progressively streams one-hour aircraft blocks. Dim magenta needles leave three-minute ephemeral trails above the brighter railway lattice. Altitude is real but visually compressed; aircraft can be found across the day by callsign or ICAO address, and selecting one moves the clock to its observation and reveals altitude, groundspeed and heading in a tilted follow view. See [docs/LUFTRAUM.md](./docs/LUFTRAUM.md).
 
 **AUTO** completes the first transport-data triad with recorded ASTRA conditions across Switzerland's national-road network. Warm-white light traffic and larger amber heavy vehicles are synthetic particles reconstructed from observed directional flow and mean speed (`density = flow / speed`), not tracked automobiles. **CH · 24H** now includes all 1,440 minute observations from 00:00 through 23:59 CEST on 8 September 2026 across 718 accepted directional sites and 609 counter-to-counter sections. Hourly chunks load on demand, with at least 84.1% of accepted sites usable in every minute. A clearly disclosed representative A1 Zürich morning calibration remains the fallback when the recorded artifact is unavailable. See [docs/AUTO.md](./docs/AUTO.md).
+
+## Delivery status — 9 September 2026
+
+The original Swiss study is implemented across the national atlas, regional and city networks, terrain journeys, soundtrack, four interface languages, aircraft and recorded road traffic. Physical-device review is complete: the owner accepts iPhone 17 Pro and Fairphone 6 performance, reports smooth operation on both Macs, and accepts the remaining Windows laptop limitations. Substantial further Windows optimisation is deferred. See [performance acceptance](docs/ORBITAL-PERFORMANCE.md).
+
+National AUTO already includes all 1,440 recorded minutes of 8 September. Further cantonal studies and unresolved geometry are optional coverage work; Aargau and St Gallen remain subject to their documented release gates. Service-alert presentation is a separate next increment after Trip Updates. See [regional release decisions](docs/REGIONAL-FEED-INTEGRATION.md), [realtime operations](docs/REALTIME.md) and [daily road archives](docs/ROAD-HISTORY.md).
 
 ## Run it
 
@@ -62,7 +68,7 @@ The ZVV and Genève overviews deliberately open with a rail-led hierarchy: weigh
 
 Luzern, Zug, Thurgau and Fribourg now have selectable regional studies, with archived Friday/Sunday full-day playback, search and shared links. See [existing-feed integration](docs/REGIONAL-FEED-INTEGRATION.md) for coverage, source attribution, reproducible packaging and feeds still awaiting release.
 
-The [regional network survey](docs/REGIONAL-NETWORK-SURVEY.md) documents eight candidates beyond the ongoing Lausanne work, including official data sources, verified downloads, geometry gaps and a recommended Basel–Bern–Luzern sequence.
+The [regional network survey](docs/REGIONAL-NETWORK-SURVEY.md) preserves the initial source-discovery work. Many candidates are now selectable; use [current regional integration decisions](docs/REGIONAL-FEED-INTEGRATION.md) and [the eleven-canton review](docs/UNSTUDIED-CANTONS.md) for remaining coverage work.
 
 The **PA** study expands PostBus to its nationwide scheduled network: 32,390 daily trips across 821 active source routes on 8 September 2026. A separate topology and three-hour movement chunks load only when selected. Buses remain visible from the national overview, and destination-aware route search separates repeated line numbers across regions. Postgelb markers follow inferred OpenStreetMap road paths for 99.79% of scheduled stop-to-stop movements; unresolved segments retain the stop-based fallback. See [docs/POSTBUS-NATIONAL.md](./docs/POSTBUS-NATIONAL.md) for coverage, payload budgets and measured rendering performance.
 
@@ -86,7 +92,7 @@ Sound is optional and off by default. Turning on the adaptive score lazily loads
 
 The committed GTFS and geography snapshots are regenerated with `npm run data:gtfs`, `npm run data:day`, `npm run data:rail:shapes`, `npm run data:zvv`, `npm run data:zvv:shapes`, `npm run data:geneva`, `npm run data:geneva:shapes`, `npm run data:postbus:kiental`, `npm run data:corridor:kiental`, `npm run data:zurich`, `npm run data:zurich:shapes`, `npm run data:zurich:day`, `npm run data:zurich:day:shapes`, `npm run data:boundary`, `npm run data:lakes`, `npm run data:corridor`, `npm run data:air` and `npm run data:road`. The national AUTO topology accepts 379 federal sites into 609 directed sections, with the final interchange ambiguity resolved from official FEDRO TMC road references; a separate compiler emits progressively loaded observed-minute chunks once recording begins. `npm run data:validate` checks the shared national artifact set, the Alpine corridor, historical air snapshots and the disclosed road calibration, and a twice-weekly workflow publishes validated national refreshes to a dedicated review branch; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
 
-The public static deployment is GitHub Pages. Authenticated realtime polling and unattended ASTRA recording run as separate Cloudflare Workers backed by a private R2 bucket; see [docs/PUBLISHING.md](./docs/PUBLISHING.md) and [docs/CLOUDFLARE.md](./docs/CLOUDFLARE.md).
+The public home is https://motionstudies.app/gleislicht/. GitHub Pages remains available and supplies the validated release artifact that is subsequently published to Cloudflare. Authenticated realtime polling and unattended ASTRA recording run as separate Cloudflare Workers backed by a private R2 bucket; see [docs/PUBLISHING.md](./docs/PUBLISHING.md) and [docs/CLOUDFLARE.md](./docs/CLOUDFLARE.md).
 
 ## Technical shape
 

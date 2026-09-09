@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { liveCompatibility } from './configure-live-pages.mjs'
+import { checkLiveEndpoint, liveCompatibility } from './configure-live-pages.mjs'
 
 const now = Date.parse('2026-09-07T08:02:00Z')
 const snapshot = {
@@ -30,5 +30,19 @@ describe('live Pages compatibility gate', () => {
     expect(
       liveCompatibility(snapshot, { ...health, generatedAt: '2026-09-07T07:58:00Z' }, now),
     ).toMatchObject({ compatible: false, reason: 'worker-stale' })
+  })
+
+  it('uses the same 150-second freshness ceiling as the client', () => {
+    expect(liveCompatibility(snapshot, { ...health, generatedAt: new Date(now - 151_000).toISOString() }, now)).toMatchObject({ compatible: false })
+  })
+
+  it('retains static publication when health is unreachable or malformed', async () => {
+    for (const fetcher of [
+      async () => { throw new Error('network unavailable') },
+      async () => new Response('invalid json'),
+    ]) {
+      expect(await checkLiveEndpoint(snapshot, 'https://realtime.test', fetcher)).toEqual({ compatible: false, reason: 'worker-unavailable' })
+    }
+    expect(await checkLiveEndpoint(snapshot, 'https://realtime.test', async () => new Response('', { status: 503 }))).toEqual({ compatible: false, reason: 'worker-http-503' })
   })
 })

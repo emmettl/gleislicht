@@ -2,7 +2,7 @@ import { appendFile, readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const MAXIMUM_HEALTH_AGE_MS = 3 * 60_000
+const MAXIMUM_HEALTH_AGE_MS = 150_000
 
 function argument(name) {
   const index = process.argv.indexOf(`--${name}`)
@@ -28,6 +28,21 @@ export function liveCompatibility(snapshot, health, now = Date.now()) {
   return { compatible: true }
 }
 
+export async function checkLiveEndpoint(snapshot, endpoint, fetcher = fetch) {
+  try {
+    const response = await fetcher(new URL('/health', endpoint), {
+      headers: { Origin: 'https://motionstudies.app' },
+      signal: AbortSignal.timeout(15_000),
+    })
+    if (!response.ok) return { compatible: false, reason: `worker-http-${response.status}` }
+    return liveCompatibility(snapshot, await response.json())
+  } catch {
+    // Realtime is optional. A network failure or invalid health response must
+    // not prevent a validated static timetable from being published.
+    return { compatible: false, reason: 'worker-unavailable' }
+  }
+}
+
 async function main() {
   const endpoint = argument('endpoint')
   const snapshotPath = argument('snapshot')
@@ -39,16 +54,7 @@ async function main() {
   }
 
   const snapshot = JSON.parse(await readFile(resolve(snapshotPath), 'utf8'))
-  const healthUrl = new URL('/health', endpoint)
-  const response = await fetch(healthUrl, {
-    headers: { Origin: 'https://emmettl.github.io' },
-  })
-  if (!response.ok) {
-    console.log(`Live mode remains disabled: Worker health returned ${response.status}.`)
-    return
-  }
-  const health = await response.json()
-  const result = liveCompatibility(snapshot, health)
+  const result = await checkLiveEndpoint(snapshot, endpoint)
   if (!result.compatible) {
     console.log(`Live mode remains disabled: ${result.reason}.`)
     return
@@ -62,7 +68,7 @@ async function main() {
     process.stdout.write(assignment)
   }
   console.log(
-    `Live mode enabled for ${health.serviceDate}, static feed ${health.staticFeedVersion}.`,
+    `Live mode enabled for ${snapshot.metadata.serviceDate}, static feed ${snapshot.metadata.feedVersion}.`,
   )
 }
 

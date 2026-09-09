@@ -1,5 +1,26 @@
 # Orbital rendering performance
 
+## Physical-device acceptance — 9 September 2026
+
+The project owner has completed hands-on review of Gleislicht and accepts the
+current performance:
+
+- iPhone 17 Pro: happy with performance.
+- Fairphone 6: acceptable.
+- Main Mac: described as perfect.
+- MacBook Neo: smooth.
+- Windows laptop: struggles in some areas; the owner accepts this limitation and
+  does not want substantial further optimisation work.
+
+These are qualitative reports of the experience, not measured frame-rate or
+thermal benchmarks for every study. Physical-device performance review is
+complete for this release. Further Windows optimisation is deferred by owner
+decision; earlier requests for Windows measurements are historical follow-up
+notes, not outstanding release requirements. Existing regression and bundle
+checks remain in place.
+
+## Rendering changes
+
 September 2026 pass: preserve terrain detail, cloud shaders, lighting, transport
 coverage, tunnel masking and the 20 segments per trail while avoiding repeated work.
 
