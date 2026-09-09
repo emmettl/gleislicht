@@ -118,7 +118,8 @@ node scripts/build-basel-day.mjs \
   --candidate /tmp/basel-core/2026-09-08 \
   --output-directory public/data
 npx vitest run scripts/basel-release.test.mjs scripts/regional-refresh.test.mjs
-npx playwright test basel.spec.ts
+npx vitest run src/test/regions.dom.test.tsx -t basel-core
+npx playwright test e2e/regional-layout.spec.ts --workers=1
 ```
 
 To rebuild the supplemental cache, first run the builder with `--supplemental-bus-cache none`, then pass both generated **core manifests** to `prepare-basel-road-feeds.mjs` as described in the [bus pipeline](BASEL-GEOMETRY-PIPELINE.md). Use the pinned original `pfaedle.cfg` and replace its single literal `osm_max_station_cand_distance: 200` with `osm_max_station_cand_distance: 50`. Assert that exactly one replacement occurs; all other bytes remain unchanged. The resulting configuration SHA-256 is **`190cb02a00faeaf6a84638293984a3947b11673fab48dae10634a0e6c2e29c49`**. Match both agency feeds with the existing `--no-trie -W` wrapper, import using `basel-road-geometry.mjs`, then rerun the builder with `--supplemental-bus-cache /path/new-cache.json`. Policy exclusions still apply to rebuilt caches until explicitly reviewed.

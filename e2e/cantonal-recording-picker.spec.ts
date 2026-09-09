@@ -1,7 +1,7 @@
 import pilots from '../data/cantonal-road-pilots.json' with { type: 'json' }
 import { expect, test } from '@playwright/test'
 
-test('road recordings are discoverable without fetching playback until selected', async ({ page }, info) => {
+test('road recordings are discoverable without fetching playback until selected', async ({ page }) => {
   const requests: string[] = []
   page.on('request', request => { if (/road-pilot\.json/.test(request.url())) requests.push(request.url()) })
   await page.goto('/?latitude=47&longitude=8#private')
@@ -15,7 +15,7 @@ test('road recordings are discoverable without fetching playback until selected'
   await expect(dialog).toContainText('No observation gaps')
   expect(requests).toEqual([])
   for (const link of await dialog.getByRole('link').all()) expect(await link.getAttribute('href')).not.toMatch(/latitude|longitude|private/)
-  await page.screenshot({ path: info.outputPath('road-recordings.png') })
+
   await dialog.getByRole('button', { name: 'Close ×', exact: true }).click()
   await expect(dialog).toHaveCount(0)
   await expect(open).toBeFocused()

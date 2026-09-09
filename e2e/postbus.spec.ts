@@ -48,19 +48,3 @@ test('national PostBus stays lazy, renders the full network and follows the 24-h
   await expect(page.locator('.route-card')).toBeVisible()
   expect(errors).toEqual([])
 })
-
-test('corrupt movement data enters an error state instead of rendering it', async ({ page, isMobile }) => {
-  await page.route('**/postbus-national-day-chunks/06-09.json', route => route.fulfill({ json: { trains: [] } }))
-  await page.goto('/')
-  await openPostbus(page, isMobile)
-  await expect(page.locator('.network-card')).toContainText('PostBus timetable unavailable')
-  await expect(page.locator('.network-count-row strong').first()).toHaveText('—')
-})
-
-test('missing PostBus data is disclosed without showing rail counts as buses', async ({ page, isMobile }) => {
-  await page.route('**/postbus-national-day-manifest.json', route => route.fulfill({ status: 503, body: '' }))
-  await page.goto('/')
-  await openPostbus(page, isMobile)
-  await expect(page.locator('.network-card')).toContainText('PostBus timetable unavailable')
-  await expect(page.locator('.network-count-row strong').first()).toHaveText('—')
-})

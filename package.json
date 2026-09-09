@@ -123,7 +123,8 @@
     "data:ticino": "node --max-old-space-size=8192 scripts/build-ticino-region.mjs",
     "data:ticino:check": "node scripts/check-ticino-region.mjs",
     "data:ticino:docs": "node scripts/document-ticino-study.mjs",
-    "data:graubuenden:cableway-sources": "node scripts/prepare-graubuenden-cableways.mjs"
+    "data:graubuenden:cableway-sources": "node scripts/prepare-graubuenden-cableways.mjs",
+    "test:components": "vitest run src/test"
   },
   "engines": {
     "node": ">=24.0.0"
@@ -144,12 +145,15 @@
     "@cloudflare/workers-types": "^5.20260905.1",
     "@motionstudies/data": "0.1.0-alpha.6",
     "@playwright/test": "^1.62.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^26.5.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@types/three": "^0.185.4",
     "@vitejs/plugin-react": "^6.1.1",
     "geotiff": "^3.0.5",
     "gtfs-realtime-bindings": "^2.2.0",
+    "jsdom": "^30.0.1",
     "oxlint": "^1.81.0",
     "typescript": "~7.0.2",
     "vite": "^8.2.2",

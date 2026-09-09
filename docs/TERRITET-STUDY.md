@@ -36,7 +36,8 @@ node scripts/build-territet-study.mjs \
   --rail-source data/territet-funicular-source.json
 node scripts/build-study-summaries.mjs
 npx vitest run scripts/territet.test.ts src/editions/edition.test.ts src/studies/explore.test.ts
-npx playwright test e2e/territet.spec.ts --workers=1
+npx vitest run src/test/journeys.dom.test.tsx -t territet
+npx playwright test e2e/terrain-smoke.spec.ts -g territet --workers=1
 ```
 
 Artifacts:

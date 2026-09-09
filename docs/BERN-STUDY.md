@@ -492,7 +492,8 @@ npm run data:bern:release
 npm run data:bern:docs
 npm run data:bern:release -- --date 2026-09-06 --output /private/tmp/bern-sunday-display
 npx vitest run scripts/bern-ic61-geometry.test.mjs scripts/bern-interlaken-geometry.test.mjs scripts/bern-morges-geometry.test.mjs scripts/bern-tpf-terminal.test.mjs scripts/bern-ir16-geometry.test.mjs scripts/bern-ir66-geometry.test.mjs scripts/bern-crosscanton-rail.test.mjs scripts/bern-regional-rail.test.mjs scripts/bern-rail-geometry.test.mjs scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/bern-regional-roads.test.mjs scripts/regional-refresh.test.mjs
-npx playwright test e2e/bern.spec.ts
+npx vitest run src/test/regions.dom.test.tsx -t bern-region
+npx playwright test e2e/regional-layout.spec.ts --workers=1
 npx vitest run scripts/bern-region.test.mjs scripts/basel-line-geometry.test.mjs \
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
 python3 scripts/test_bern_sources.py

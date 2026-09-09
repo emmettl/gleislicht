@@ -20,7 +20,7 @@ async function hubLines(page: Page) {
   })
 }
 
-test('hub batches retain every clock tick and respond to category selection', async ({ page, isMobile }, testInfo) => {
+test('hub batches retain every clock tick and respond to category selection', async ({ page, isMobile }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
@@ -44,6 +44,6 @@ test('hub batches retain every clock tick and respond to category selection', as
     await expect.poll(async () => (await hubLines(page))?.some(line => line.opacity === 0.025)).toBe(true)
     expect((await hubLines(page))!.reduce((sum, line) => sum + line.vertices, 0)).toBe(before.reduce((sum, line) => sum + line.vertices, 0))
   }
-  await page.screenshot({ path: testInfo.outputPath('batched-hub.png') })
+
   expect(errors).toEqual([])
 })

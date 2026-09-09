@@ -48,7 +48,8 @@ node scripts/check-basel-geometry-regression.mjs \
   --output data/basel-geometry-regression.json
 npx vitest run scripts/basel-reviewed-geometry.test.mjs \
   scripts/basel-core.test.mjs scripts/basel-release.test.mjs
-npx playwright test basel.spec.ts
+npx vitest run src/test/regions.dom.test.tsx -t basel-core
+npx playwright test e2e/regional-layout.spec.ts --workers=1
 ```
 
 The initial [regression result](../data/basel-geometry-regression.json) verifies every source instance: all **148,577 / 100,850** previously accepted movement paths are unchanged, as are all calls, times, platform coordinates, journey identities and rail clipping ranges. Both complete release sets pass validation. Six Basel desktop/iPhone cases pass; focused geometry tests, TypeScript, production build, edition boundaries, lint and the mobile bundle budget also pass. A broader shared-workspace run found an unrelated Bern release count mismatch and an empty in-progress St. Gallen test file; it is not recorded as a passing full-suite run.

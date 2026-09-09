@@ -53,10 +53,11 @@ npm run typecheck
 npm run build
 npm run check:bundle
 npx vitest run src/studies/additional-regions.test.ts scripts/package-regional-studies.test.mjs src/editions/edition.test.ts
-npx playwright test e2e/additional-regions.spec.ts --project=desktop-chromium --project=iphone-webkit
+npx vitest run src/test/regions.dom.test.tsx src/test/loading.dom.test.tsx
+npx playwright test e2e/regional-layout.spec.ts --project=desktop-chromium --project=iphone-webkit
 ```
 
-All four source validators passed for the delivered fixtures. Luzern’s optional source-call replay was not run because the large original timetable cache was not supplied; its retained geometry, chunk and coverage checks passed. The focused application/packaging tests pass. Browser coverage checks lazy discovery, Friday/Sunday switching, station search, afternoon chunk loading, restored shares, attribution, unavailable dates, failed-request retry and switching back to the morning extract.
+All four source validators passed for the delivered fixtures. Luzern’s optional source-call replay was not run because the large original timetable cache was not supplied; its retained geometry, chunk and coverage checks passed. The focused application/packaging tests pass. Combined component and browser coverage checks lazy discovery, Friday/Sunday switching, station search, afternoon chunk loading, restored shares, attribution, unavailable dates, failed-request retry and switching back to the morning extract.
 
 Latest-main verification on 9 September 2026: **1,220 unit tests pass**, along with typecheck, lint, edition-boundary checks, both worker dry-run builds and the Pages artifact check. First-view transfer budgets on CI’s Node 24.20.0 runtime pass: **358.8 KiB JavaScript against 360 KiB**, **9.9 KiB CSS against 10 KiB**, **394.1 KiB opening data against 450 KiB**, and **762.9 KiB total against 790 KiB**. Aircraft and airport rendering is deferred until the air layer opens, keeping the additional studies within the existing budget. Airport-label tests verify no renderer request before enabling Air, then visible labels before flight data arrives.
 

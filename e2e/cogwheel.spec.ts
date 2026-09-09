@@ -15,7 +15,7 @@ async function chooseCogwheel(page: Page, mobile: boolean, enable = true) {
   await expect(page.locator('main')).toHaveAttribute('data-cogwheel-enabled', String(enable))
 }
 
-test('cogwheel discovery is lazy, source-backed, searchable and survives day changes', async ({ page, isMobile }, testInfo) => {
+test('cogwheel discovery is lazy, source-backed, searchable and survives day changes', async ({ page, isMobile }) => {
   const requests: string[] = [], errors: string[] = []
   page.on('request', request => { if (request.url().includes('swiss-cogwheel')) requests.push(request.url()) })
   page.on('pageerror', error => errors.push(error.message))
@@ -44,20 +44,6 @@ test('cogwheel discovery is lazy, source-backed, searchable and survives day cha
   await expect(page.locator('.selected-card')).toContainText('Rigi Bahnen AG')
   await expect(page.locator('.selected-card')).toContainText('Cogwheel')
   await expect.poll(async () => Number(await page.locator('.scrubber input').inputValue())).toBeGreaterThanOrEqual(36000)
-  await page.screenshot({ path: testInfo.outputPath('cogwheel-selected.png') })
-  expect(errors).toEqual([])
-})
 
-for (const failure of ['missing', 'mismatch']) test(`cogwheel ${failure} catalogue is disclosed and the national view can be restored`, async ({ page, isMobile }) => {
-  await page.route('**/swiss-cogwheel-catalogue.json', route => failure === 'missing'
-    ? route.fulfill({ status: 503, body: '' })
-    : route.fulfill({ json: { metadata: { feedVersion: 'wrong', serviceDate: '2020-01-01' }, routes: {}, trips: {} } }))
-  await page.goto('/')
-  await expect(page.locator('.network-count-row strong').first()).not.toHaveText('—')
-  await chooseCogwheel(page, isMobile)
-  await expect(page.locator('.network-card')).toContainText('Cogwheel catalogue unavailable')
-  await expect(page.locator('.network-count-row strong').first()).toHaveText('—')
-  await chooseCogwheel(page, isMobile, false)
-  await expect(page.locator('.network-count-row strong').first()).not.toHaveText('—')
-  await expect(page.locator('.network-count-row strong').first()).not.toHaveText('0')
+  expect(errors).toEqual([])
 })

@@ -48,18 +48,3 @@ test('trail worker returns geometry, follows seeks, and releases old study worke
   await expect.poll(async () => (await stats()).terminated).toBeGreaterThan(terminatedBefore)
   expect(errors).toEqual([])
 })
-
-test('playback remains usable when workers are unavailable', async ({ page }) => {
-  await page.addInitScript(() => { window.Worker = class { constructor() { throw new Error('Worker blocked for fallback test') } } as unknown as typeof Worker })
-  const errors: string[] = []
-  page.on('pageerror', error => errors.push(error.message))
-  await page.goto('/')
-  await expect(page.locator('.scene canvas')).toBeVisible()
-  const scrubber = page.locator('.scrubber input')
-  const start = Number(await scrubber.inputValue())
-  await expect.poll(async () => Number(await scrubber.inputValue())).toBeGreaterThan(start)
-  await page.getByRole('button', { name: /Pause motion/i }).click()
-  await scrubber.fill('28000')
-  await expect(scrubber).toHaveValue('28000')
-  expect(errors).toEqual([])
-})

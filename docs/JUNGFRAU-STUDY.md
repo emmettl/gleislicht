@@ -113,7 +113,8 @@ The summit railway endpoint is **3,453.5 m**, while the native ground sample the
 python3 scripts/prepare-jungfrau-terrain-source.py
 node scripts/ingest-jungfrau-terrain.mjs
 npx vitest run scripts/jungfrau-terrain.test.ts scripts/jungfrau-ascent.test.ts
-npx playwright test e2e/jungfrau-terrain.spec.ts e2e/jungfrau-ascent.spec.ts --workers=1
+npx vitest run src/test/journeys.dom.test.tsx src/test/terrain-state.dom.test.tsx -t "Jungfrau|jungfrau"
+npx playwright test e2e/terrain-smoke.spec.ts -g "Jungfrau|jungfrau" --workers=1
 ```
 
 The first command's cache is pinned to the retained source edition. The second command reuses a local bounded raster cache only when its bounds and source checksum match. Source and render simplification do not establish future service availability or exact engineering clearance. All data retain FOT and swisstopo attribution.

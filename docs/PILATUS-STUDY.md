@@ -32,7 +32,8 @@ node scripts/build-pilatus-study.mjs \
   --date 2026-09-04
 node scripts/build-study-summaries.mjs
 npx vitest run scripts/pilatus.test.ts scripts/pilatus-geometry.test.mjs
-npx playwright test e2e/pilatus.spec.ts --workers=1
+npx vitest run src/test/journeys.dom.test.tsx -t pilatus
+npx playwright test e2e/terrain-smoke.spec.ts -g pilatus --workers=1
 ```
 
 Artifacts:
@@ -67,7 +68,8 @@ python3 scripts/prepare-jungfrau-terrain-source.py \
   --output data/pilatus-terrain-source.json
 node scripts/ingest-pilatus-terrain.mjs
 npx vitest run scripts/pilatus-terrain.test.ts scripts/pilatus-terrain-geometry.test.mjs
-npx playwright test e2e/pilatus-terrain.spec.ts --workers=1
+npx vitest run src/test/journeys.dom.test.tsx -t pilatus
+npx playwright test e2e/terrain-smoke.spec.ts -g pilatus --workers=1
 ```
 
 New evidence is in `data/pilatus-terrain-source.json` and `data/pilatus-terrain-audit.json`; the requested runtime artifact is `public/data/pilatus-ascent-terrain.json` (shared by both directions). Further dates, Kriens cableways and boat connections remain separate work.

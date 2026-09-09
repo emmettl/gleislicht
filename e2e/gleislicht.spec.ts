@@ -1,42 +1,13 @@
-import { expect, test } from '@playwright/test'
+import { expect, test, type Page } from '@playwright/test'
 
-test.beforeEach(async ({ page }) => {
+async function openStudy(page: Page) {
   await page.goto('/')
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Switzerland in motion',
   )
   await expect(page.locator('.study-meta')).toContainText('MOTION STUDIES · 005')
   await expect(page.locator('.scene canvas')).toBeVisible()
-})
-
-test('methodology and provenance remain available without the visual client', async ({
-  page,
-}) => {
-  await page.goto('/methodology.html')
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Data in.')
-  await expect(page.getByRole('heading', { name: 'Sources and packaging' })).toBeVisible()
-  await expect(page.getByText(/no analytics, advertising, accounts/i)).toBeVisible()
-})
-
-test('local performance telemetry is opt-in and remains on-device', async ({ page }) => {
-  await page.goto('/?perf=1')
-  const monitor = page.getByLabel('Local performance monitor')
-  await expect(monitor).toContainText('Local only · no analytics')
-  await expect(monitor).toContainText(/measuring|FPS/)
-})
-
-test('the operations demo is explicit and returns cleanly to the schedule', async ({
-  page,
-}) => {
-  const operations = page.getByRole('button', {
-    name: 'Toggle scheduled and operations view',
-  })
-  await expect(operations).toHaveText('DEMO')
-  await expect(page.locator('.network-card')).toContainText('Operations demo')
-  await operations.click()
-  await expect(operations).toHaveText('PLAN')
-  await expect(page.locator('.network-card')).toContainText('Scheduled rail')
-})
+}
 
 test('LUFTRAUM stays lazy and matches the national morning window', async ({
   page,
@@ -47,8 +18,9 @@ test('LUFTRAUM stays lazy and matches the national morning window', async ({
       airRequests.push(request.url())
     }
   })
+  await openStudy(page)
 
-  await page.waitForTimeout(150)
+
   expect(airRequests).toEqual([])
 
   const toggle = page.locator(
@@ -93,44 +65,6 @@ test('LUFTRAUM stays lazy and matches the national morning window', async ({
   await expect(page.locator('.air-card')).toContainText('MSR783')
 })
 
-test('LUFT can be isolated like a rail service category', async ({
-  page,
-}, testInfo) => {
-  const toggle = page.locator(
-    testInfo.project.name === 'iphone-webkit'
-      ? '.mobile-air-toggle'
-      : '.network-study-picker .air-toggle',
-  )
-  await toggle.click()
-  await expect(page.locator('.network-card .air-count')).toHaveAttribute(
-    'aria-label',
-    /Aircraft aloft/,
-  )
-
-  if (testInfo.project.name === 'iphone-webkit') {
-    const tools = page.locator('.mobile-map-tools details')
-    await tools.locator('summary').click()
-    const services = tools.locator('.mobile-tool-field').first().locator('.mobile-picker')
-    await services.locator('.mobile-picker__trigger').click()
-    await services.getByRole('option', { name: 'LUFT' }).click()
-    await expect(services.locator('.mobile-picker__trigger')).toContainText('LUFT')
-    await services.locator('.mobile-picker__trigger').click()
-    await services.getByRole('option', { name: 'IC', exact: true }).click()
-    await expect(services.locator('.mobile-picker__trigger')).toContainText('IC')
-  } else {
-    const legend = page.locator('.service-legend')
-    const airCategory = legend.getByRole('button', { name: 'LUFT' })
-    const intercity = legend.getByRole('button', { name: 'IC', exact: true })
-    await airCategory.click()
-    await expect(airCategory).toHaveAttribute('aria-pressed', 'true')
-    await expect(legend).toHaveClass(/has-filter/)
-    await expect(intercity).toHaveCSS('opacity', '0.14')
-    await intercity.click()
-    await expect(intercity).toHaveAttribute('aria-pressed', 'true')
-    await expect(airCategory).toHaveAttribute('aria-pressed', 'false')
-  }
-})
-
 test('AUTO stays lazy, discloses recorded reconstruction, and can be isolated', async ({
   page,
 }, testInfo) => {
@@ -143,8 +77,9 @@ test('AUTO stays lazy, discloses recorded reconstruction, and can be isolated', 
       roadRequests.push(request.url())
     }
   })
+  await openStudy(page)
 
-  await page.waitForTimeout(150)
+
   expect(roadRequests).toEqual([])
 
   const toggle = page.locator(
@@ -203,91 +138,8 @@ test('AUTO stays lazy, discloses recorded reconstruction, and can be isolated', 
   await expect(page.locator('.road-corridor-card')).toContainText('Est. vehicles')
 })
 
-test('AUTO progressively adopts a recorded national minute chunk', async ({
-  page,
-}, testInfo) => {
-  await page.route('**/data/swiss-road-national-manifest.json', async (route) => {
-    await route.fulfill({
-      contentType: 'application/json',
-      body: JSON.stringify({
-        metadata: {
-          publisher: 'Federal Roads Office (ASTRA / FEDRO)',
-          serviceDate: '2026-09-04',
-          windowStart: 24_300,
-          windowEnd: 31_500,
-          sourceUrl: 'https://opentransportdata.swiss/',
-          measurementSiteTableVersion: 23,
-          measurementKind: 'recorded',
-          model: 'Section traffic-flow reconstruction / no vehicle tracking',
-          sampleIntervalSeconds: 60,
-          acceptedSites: 2,
-          sections: 1,
-          minimumSiteCoverage: 1,
-          firstMeasurementTime: '2026-09-04T04:45:00Z',
-          lastMeasurementTime: '2026-09-04T06:45:00Z',
-          completeMinutes: 121,
-        },
-        siteIds: ['CH:0017:positive', 'CH:0072:positive'],
-        sections: [
-          {
-            id: 'N1:positive:CH:0017:CH:0072',
-            road: 'N1',
-            direction: 'positive',
-            fromSiteIndex: 0,
-            toSiteIndex: 1,
-            distanceKm: 1.11,
-          },
-        ],
-        chunks: [
-          {
-            id: '06-09',
-            windowStart: 24_300,
-            windowEnd: 31_500,
-            path: 'swiss-road-national/test.json',
-            minuteCount: 2,
-            valueCount: 4,
-          },
-        ],
-      }),
-    })
-  })
-  await page.route('**/data/swiss-road-national/test.json', async (route) => {
-    await route.fulfill({
-      contentType: 'application/json',
-      body: JSON.stringify({
-        windowStart: 24_300,
-        windowEnd: 31_500,
-        minutes: [
-          [27_900, [[0, 1_000, 80, 100, 70], [1, 1_100, 78, 110, 68]]],
-          [27_960, [[0, 1_020, 79, 102, 69], [1, 1_120, 77, 112, 67]]],
-        ],
-      }),
-    })
-  })
-
-  const toggle = page.locator(
-    testInfo.project.name === 'iphone-webkit'
-      ? '.mobile-road-toggle'
-      : '.network-study-picker .road-toggle',
-  )
-  await toggle.click()
-  await expect(page.locator('.prototype-note')).toContainText(
-    'ASTRA one-minute observations',
-  )
-})
-
-test('search selects a station and exposes its serving routes', async ({ page }) => {
-  const search = page.locator('.train-search input[type="search"]')
-  await search.fill('Bern')
-  const result = page.locator('.search-results .station-result').first()
-  await expect(result).toContainText('Bern')
-  await result.click()
-
-  await expect(page.locator('.station-card')).toContainText('Bern')
-  await expect(page.locator('.station-route-strip > span').first()).toBeVisible()
-})
-
 test('keyboard search selection remains complete', async ({ page }) => {
+  await openStudy(page)
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('Basel SBB')
   await expect(page.locator('.search-results .station-result').first()).toContainText(
@@ -300,6 +152,7 @@ test('keyboard search selection remains complete', async ({ page }) => {
 })
 
 test('typing in search never triggers global keyboard shortcuts', async ({ page }) => {
+  await openStudy(page)
   const search = page.locator('.train-search input[type="search"]')
   await search.pressSequentially('c p')
 
@@ -309,6 +162,7 @@ test('typing in search never triggers global keyboard shortcuts', async ({ page 
 })
 
 test('a Zürich–Chur train descends into measured terrain', async ({ page }) => {
+  await openStudy(page)
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('2355')
   await page.locator('.search-results button').filter({ hasText: '2355' }).click()
@@ -330,6 +184,7 @@ test('the iPhone journey chrome leaves the landscape dominant', async ({
   page,
 }, testInfo) => {
   test.skip(testInfo.project.name !== 'iphone-webkit')
+  await openStudy(page)
 
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('2355')
@@ -353,6 +208,7 @@ test('the iPhone journey chrome leaves the landscape dominant', async ({
 test('the city–valley comparison opens the measured Kiental road journey', async ({
   page,
 }, testInfo) => {
+  await openStudy(page)
   if (testInfo.project.name === 'iphone-webkit') {
     const picker = page.locator('.mobile-study-picker')
     await picker.locator('.mobile-picker__trigger').click()
@@ -373,24 +229,10 @@ test('the city–valley comparison opens the measured Kiental road journey', asy
   ).toHaveAttribute('aria-pressed', 'true')
 })
 
-test('region selection changes the active study', async ({ page }, testInfo) => {
-  if (testInfo.project.name === 'iphone-webkit') {
-    const picker = page.locator('.mobile-study-picker')
-    await picker.locator('.mobile-picker__trigger').click()
-    await picker.getByRole('option').filter({ hasText: 'ZH' }).click()
-  } else {
-    await page.locator('.network-study-picker button').filter({ hasText: 'ZH' }).click()
-  }
-
-  await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'Zürich in motion',
-  )
-  await expect(page.locator('.network-card')).toContainText('Vehicles in motion')
-})
-
 test('a Zürich tram line remains selectable at every layout', async ({
   page,
 }, testInfo) => {
+  await openStudy(page)
   if (testInfo.project.name === 'iphone-webkit') {
     const picker = page.locator('.mobile-study-picker')
     await picker.locator('.mobile-picker__trigger').click()
@@ -407,26 +249,6 @@ test('a Zürich tram line remains selectable at every layout', async ({
   await expect(search).toHaveValue('Tram 10')
 })
 
-test('the 24-hour study exposes authored day moments and a director loop', async ({
-  page,
-}, testInfo) => {
-  test.skip(
-    testInfo.project.name === 'iphone-webkit',
-    'Desktop controls are covered directly; mobile uses the same actions',
-  )
-  await page.getByRole('button', { name: /24-hour Switzerland study/i }).click()
-  const evening = page.getByRole('button', { name: /Evening rush · 17:15/i })
-  await expect(evening).toBeVisible()
-  await evening.click()
-  const scrubber = page.locator('.scrubber input[type="range"]')
-  await expect.poll(async () => Number(await scrubber.inputValue())).toBeGreaterThanOrEqual(17 * 3600 + 15 * 60)
-  const director = page.locator('.director-toggle')
-  await expect(director).toHaveAccessibleName('Director loop')
-  await director.click()
-  await expect(director).toHaveAttribute('aria-pressed', 'true')
-  await expect(director).toHaveAccessibleName('Stop director')
-})
-
 test('24-hour LUFT streams hourly motion and searches the complete day', async ({
   page,
 }, testInfo) => {
@@ -434,6 +256,7 @@ test('24-hour LUFT streams hourly motion and searches the complete day', async (
   page.on('request', (request) => {
     if (request.url().includes('swiss-air-')) requested.push(request.url())
   })
+  await openStudy(page)
 
   if (testInfo.project.name === 'iphone-webkit') {
     const picker = page.locator('.mobile-study-picker')
@@ -470,19 +293,11 @@ test('24-hour LUFT streams hourly motion and searches the complete day', async (
   await expect.poll(async () => Number(await page.locator('.scrubber input').inputValue())).toBeLessThan(3_600)
 })
 
-test('the hub clock exposes its quarter-hour structure', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name === 'iphone-webkit')
-  await page.getByRole('button', { name: 'Takt hubs' }).click()
-  const quarterGrid = page.getByRole('button', { name: '¼ grid' })
-  await expect(quarterGrid).toHaveAttribute('aria-pressed', 'true')
-  await quarterGrid.click()
-  await expect(quarterGrid).toHaveAttribute('aria-pressed', 'false')
-})
-
 test('the mobile Takt chrome leaves the clock visible and usable', async ({
   page,
 }, testInfo) => {
   test.skip(testInfo.project.name !== 'iphone-webkit')
+  await openStudy(page)
 
   const moreControls = page.locator('.mobile-more-controls')
   await moreControls.locator('summary').click()
@@ -524,6 +339,7 @@ test('wide and compact desktop layouts keep primary overlays separated', async (
   page,
 }, testInfo) => {
   test.skip(testInfo.project.name === 'iphone-webkit')
+  await openStudy(page)
   for (const viewport of [
     { width: 1440, height: 900 },
     { width: 1024, height: 640 },
@@ -559,6 +375,7 @@ test('the mobile shell keeps header, search and timeline in one viewport', async
   page,
 }, testInfo) => {
   test.skip(testInfo.project.name !== 'iphone-webkit')
+  await openStudy(page)
 
   const viewport = page.viewportSize()
   expect(viewport).not.toBeNull()

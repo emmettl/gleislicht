@@ -33,7 +33,8 @@ node scripts/build-rochers-study.mjs \
   --rail-source /path/schienennetz_2056_de.xtf
 node scripts/build-study-summaries.mjs
 npx vitest run scripts/rochers.test.ts scripts/rochers-geometry.test.mjs
-npx playwright test e2e/rochers.spec.ts --workers=1
+npx vitest run src/test/journeys.dom.test.tsx -t rochers
+npx playwright test e2e/terrain-smoke.spec.ts -g rochers --workers=1
 ```
 
 - `public/data/rochers-day.json`: optional map, **5.8 KiB gzip**, below the 40 KiB ceiling.
@@ -72,7 +73,8 @@ python3 scripts/prepare-jungfrau-terrain-source.py \
   --output data/rochers-terrain-source.json
 node scripts/ingest-rochers-terrain.mjs
 npx vitest run scripts/rochers-terrain.test.ts scripts/rochers-terrain-geometry.test.mjs
-npx playwright test e2e/rochers-terrain.spec.ts --workers=1
+npx vitest run src/test/journeys.dom.test.tsx -t rochers
+npx playwright test e2e/terrain-smoke.spec.ts -g rochers --workers=1
 ```
 
 Artifacts: `data/rochers-terrain-source.json`, `data/rochers-terrain-audit.json` and `public/data/rochers-ascent-terrain.json`. The audit retains network/source/raster hashes, both trip lists, station rail/ground comparisons, source feature IDs/years and every masked range. Landscape and railway XYZ: © swisstopo; plan alignment: Federal Office of Transport. Product references: [swissTLM3D](https://www.swisstopo.admin.ch/en/landscape-model-swisstlm3d) and [swissALTIRegio](https://www.swisstopo.admin.ch/en/height-model-swissaltiregio).

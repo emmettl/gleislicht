@@ -72,10 +72,10 @@ A failed or rejected terrain file affects only its own leg. The other validated 
 npx vitest run scripts/glion-terrain.test.ts scripts/territet-terrain.test.ts \
   scripts/glion-playback.test.ts scripts/glion-interchange.test.mjs \
   scripts/rochers-terrain.test.ts scripts/territet.test.ts --exclude '**/.claude/**'
-npx playwright test e2e/glion-terrain.spec.ts e2e/glion.spec.ts \
-  e2e/territet-terrain.spec.ts --workers=1
+npx vitest run src/test/journeys.dom.test.tsx src/test/terrain-state.dom.test.tsx -t "Glion|territet"
+npx playwright test e2e/terrain-smoke.spec.ts -g "Glion|territet" --workers=1
 ```
 
-**26 focused tests** verify both original bindings for every pair, separate grids and camera scales, unchanged progress/heights and masks, all exact calls, no terrain during the interchange, directional authorisation and rejection of mismatched source pairs or crossed terrain artifacts. Browser validation covers both directions, live terrain-to-interchange transitions, partial failures on either leg, retry without clock movement or successful-asset refetch, malformed branches, source attribution, seeking, replay, departure selection and guide cleanup.
+**26 focused tests** verify both original bindings for every pair, separate grids and camera scales, unchanged progress/heights and masks, all exact calls, no terrain during the interchange, directional authorisation and rejection of mismatched source pairs or crossed terrain artifacts. Combined component and browser validation covers both directions, live terrain-to-interchange transitions, partial failures on either leg, retry without clock movement or successful-asset refetch, malformed branches, source attribution, seeking, replay, departure selection and guide cleanup.
 
 See [Territet terrain evidence](TERRITET-TERRAIN.md) and [Rochers terrain evidence](ROCHERS-STUDY.md) for their independent source audits. Other dates, real-time connection reliability, fares and physical access geometry remain separate work.

@@ -30,22 +30,3 @@ test('translations load only when selected and survive a reload', async ({ page,
   await selectLanguage(page, isMobile, 'EN')
   await expect(page).toHaveTitle('Gleislicht — Switzerland in motion')
 })
-
-test('a delayed translation cannot replace a newer language selection', async ({ page, isMobile }) => {
-  let release!: () => void
-  const gate = new Promise<void>(resolve => { release = resolve })
-  await page.route('**/src/locales/de.ts*', async route => { await gate; await route.continue() })
-  await page.goto('/')
-  await expect(page).toHaveTitle('Gleislicht — Switzerland in motion')
-  const germanRequested = page.waitForRequest('**/src/locales/de.ts*')
-  await selectLanguage(page, isMobile, 'DE')
-  await germanRequested
-  await selectLanguage(page, isMobile, 'FR')
-  await expect(page).toHaveTitle('Gleislicht — La Suisse en mouvement')
-  const germanLoaded = page.waitForResponse('**/src/locales/de.ts*')
-  release()
-  await germanLoaded
-  await expect(page).toHaveTitle('Gleislicht — La Suisse en mouvement')
-  await selectLanguage(page, isMobile, 'DE')
-  await expect(page).toHaveTitle('Gleislicht — Schweiz in Bewegung')
-})

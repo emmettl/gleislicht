@@ -24,7 +24,7 @@ async function renderedAirports(page: Page) {
   })
 }
 
-test('Air keeps airport labels above other labels through loading, filters and vehicle-label changes', async ({ page, isMobile }, testInfo) => {
+test('Air keeps airport labels above other labels through loading, filters and vehicle-label changes', async ({ page, isMobile }) => {
   const errors: string[] = []
   const rendererRequests: string[] = []
   page.on('request', request => { if (request.url().includes('/AirTrafficLayer.js')) rendererRequests.push(request.url()) })
@@ -80,29 +80,10 @@ test('Air keeps airport labels above other labels through loading, filters and v
     await expect(labels).toContainText('off')
   }
   await assertAirports()
-  await page.screenshot({ path: testInfo.outputPath('airport-priority.png') })
+
   await toggle.click()
   await expect.poll(async () => (await renderedAirports(page))?.airports.length).toBe(0)
   await toggle.click()
   await assertAirports()
   expect(errors).toEqual([])
-})
-
-
-test('airport hero follows the study clock with observed destinations in both directions', async ({ page }, testInfo) => {
-  await page.goto('/')
-  const search = page.getByRole('combobox')
-  await search.fill('ZRH')
-  await page.getByRole('option', { name: /ZRH/ }).first().click()
-  const card = page.locator('.ms-airport-hero')
-  await expect(card).toContainText('ZRH')
-  await expect(card.locator('tbody button').first()).toBeVisible()
-  await expect(card.locator('.ms-airport-hero__window')).toContainText('Board window')
-  await card.getByRole('button', { name: 'Arrivals' }).click()
-  await expect(card.getByRole('region', { name: 'ZRH Arrivals' })).toBeVisible()
-  await expect(card.locator('tbody button').first()).toBeVisible()
-  await page.waitForTimeout(1000) // Capture the settled characters after switching direction.
-  await page.screenshot({ path: testInfo.outputPath('airport-hero.png') })
-  await card.locator('tbody button').first().click()
-  await expect(card).toHaveCount(0)
 })

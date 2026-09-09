@@ -67,7 +67,8 @@ python3 scripts/prepare-jungfrau-terrain-source.py \
   --output data/gornergrat-terrain-source.json
 node scripts/ingest-gornergrat-terrain.mjs
 npx vitest run scripts/gornergrat*.test.* scripts/jungfrau-terrain*.test.*
-npx playwright test e2e/gornergrat.spec.ts e2e/gornergrat-terrain.spec.ts e2e/gornergrat-descent.spec.ts e2e/jungfrau-terrain.spec.ts --workers=1
+npx vitest run src/test/journeys.dom.test.tsx src/test/terrain-state.dom.test.tsx -t "gornergrat|jungfrau"
+npx playwright test e2e/terrain-smoke.spec.ts -g "gornergrat|jungfrau" --workers=1
 ```
 
 Artifacts:

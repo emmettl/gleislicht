@@ -30,7 +30,7 @@ async function renderedRoads(page: Page) {
   })
 }
 
-test('motorway geometry and fixed labels survive empty traffic and road selection', async ({ page, isMobile }, testInfo) => {
+test('motorway geometry and fixed labels survive empty traffic and road selection', async ({ page, isMobile }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.route('**/data/swiss-road-morning.json', async route => {
@@ -78,11 +78,11 @@ test('motorway geometry and fixed labels survive empty traffic and road selectio
   // The road focus animates the camera; label world coordinates stay fixed.
   await expect.poll(async () => (await renderedRoads(page))?.camera).not.toEqual(overview.camera)
   await expect.poll(async () => (await renderedRoads(page))?.visible.length ?? 0).toBeGreaterThan(0)
-  await page.screenshot({ path: testInfo.outputPath('empty-traffic-roads.png') })
+
   expect(errors).toEqual([])
 })
 
-test('click a motorway badge or road line and explore its traffic history', async ({ page, isMobile }, testInfo) => {
+test('click a motorway badge or road line and explore its traffic history', async ({ page, isMobile }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
@@ -123,7 +123,7 @@ test('click a motorway badge or road line and explore its traffic history', asyn
   await slider.fill('27000')
   await expect(card.locator('.road-history time')).toHaveText('07:30')
   await expect(card.locator('.road-chart-current')).toBeVisible()
-  await page.screenshot({ path: testInfo.outputPath('road-traffic-history.png') })
+
   await slider.fill('31500')
   await expect(card.locator('.road-history time')).toHaveText('08:45')
   await page.getByRole('button', { name: /Resume motion/i }).click()

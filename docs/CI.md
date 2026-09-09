@@ -4,7 +4,7 @@ The Pages workflow checks code and committed fixture budgets before starting the
 
 - Chromium shard 1/2.
 - Chromium shard 2/2.
-- iPhone WebKit, the complete suite.
+- iPhone WebKit, the touch/layout/lifecycle suite.
 - Today's national timetable.
 - Today's Zürich city, ZVV and Genève morning/full-day timetables.
 
@@ -42,7 +42,7 @@ CI=1 npm run test:e2e:ci -- --project=desktop-chromium --shard=2/2 --workers=1
 CI=1 npm run test:e2e:ci -- --project=iphone-webkit --shard=1/1 --workers=1
 ```
 
-Append `--list` to inspect a partition without starting browsers. All partitions together must equal the unsharded discovery list, with no duplicated project/test pairs. As of this change the working tree discovers 106 cases: 27 and 26 Chromium cases, and 53 WebKit cases, including their existing device-specific skips.
+Append `--list` to inspect a partition without starting browsers. All partitions together must equal the unsharded discovery list, with no duplicated project/test pairs. After the [E2E migration](E2E-TEST-MIGRATION.md), discovery contains 94 registrations: 25 and 24 Chromium cases, and 45 WebKit cases, including device-specific skips. The 106 replacement component/hook tests run with the existing `npm test` gate.
 
 Each hosted job uploads an `e2e-report-<project>-<shard>` artifact. Its Actions summary includes wall time, total test time including retries, failures, flaky outcomes and the ten slowest tests. Use those measured durations to assess future changes to the split. The summary reporter has tests covering retries, timing order, failed assertions and setup failures.
 
@@ -52,7 +52,7 @@ References: [Playwright test sharding](https://playwright.dev/docs/test-sharding
 
 ## Node version and language payloads
 
-Use the Node version selected by `.nvmrc` for local bundle checks. Node 24.20.0 reproduced the hosted JavaScript measurement of 361.0 KiB for commit `5404341`; Node 26's gzip output understated it by about 1 KiB. The 360 KiB JavaScript limit remains unchanged. German, French and Italian interface dictionaries now load individually when selected, with English available immediately and retained if a translation cannot load. Browser regressions cover lazy requests, all four languages, saved language restoration and a delayed translation arriving after another selection.
+Use the Node version selected by `.nvmrc` for local bundle checks. Node 24.20.0 reproduced the hosted JavaScript measurement of 361.0 KiB for commit `5404341`; Node 26's gzip output understated it by about 1 KiB. The 360 KiB JavaScript limit remains unchanged. German, French and Italian interface dictionaries now load individually when selected, with English available immediately and retained if a translation cannot load. Browser regressions cover lazy requests, all four languages and saved language restoration; mounted Vitests cover a delayed translation arriving after another selection and failed translation fallback.
 
 On Node 24.20.0 the isolated fix measures 351.8 KiB of opening JavaScript. The language regression also exposed a phone menu beneath the search controls; the open language menu now raises the masthead above them.
 

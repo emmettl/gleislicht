@@ -481,7 +481,8 @@ node scripts/review-solothurn-residual-gaps.mjs --check
 node scripts/review-solothurn-station-access.mjs --check
 npm run data:solothurn:docs
 npx vitest run scripts/solothurn-region.test.mjs scripts/solothurn-corridor.test.mjs scripts/solothurn-rail-review.test.mjs scripts/solothurn-s29-precedence.test.mjs scripts/solothurn-bus-junction.test.mjs scripts/solothurn-access-roads.test.mjs scripts/solothurn-bern-terminal.test.mjs scripts/solothurn-s26-review.test.mjs scripts/solothurn-como-rail.test.mjs scripts/solothurn-simplon-rail.test.mjs scripts/solothurn-delle-rail.test.mjs scripts/solothurn-road-detours.test.mjs scripts/solothurn-m53-corridor.test.mjs scripts/solothurn-residual-gaps.test.mjs scripts/solothurn-seasonal-roads.test.mjs scripts/solothurn-release.test.mjs
-npx playwright test --config playwright.solothurn.config.ts
+npx vitest run src/test/regions.dom.test.tsx -t solothurn-region
+npx playwright test e2e/regional-layout.spec.ts --workers=1
 python3 -m unittest discover -s scripts -p 'test_bern_sources.py'
 ```
 

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-test('Rigi connections guide selects both approaches, distinct interchanges and the shared summit', async ({ page, isMobile }, info) => {
+test('Rigi connections guide supports pointer and keyboard selection and restores focus', async ({ page, isMobile }) => {
   const loaded: string[] = [], errors: string[] = []
   page.on('request', r => { if (r.url().includes('RigiGuide') || r.url().includes('-corridor.json')) loaded.push(r.url()) })
   page.on('pageerror', e => errors.push(e.message))
@@ -16,8 +16,8 @@ test('Rigi connections guide selects both approaches, distinct interchanges and 
   await expect(dialog.locator('.rigi-guide-stop')).toHaveCount(11)
   await expect(dialog.locator('path')).toHaveCount(12)
   await expect(dialog).toContainText('schematic, not to scale')
-  await page.screenshot({ path: info.outputPath('rigi-connections.png') })
-  for (const [id, name] of [['arth', 'Arth-Goldau RB'], ['staffel', 'Rigi Staffel'], ['kulm', 'Rigi Kulm'], ['kaltbadRail', 'Rigi Kaltbad-First'], ['kaltbadCable', 'Rigi Kaltbad (Luftseilbahn)'], ['weggisCable', 'Weggis (Luftseilbahn)'], ['weggisPier', 'Weggis'], ['vitznau', 'Vitznau'], ['luzern', 'Luzern Bahnhofquai']]) {
+
+  for (const [id, name] of [['arth', 'Arth-Goldau RB'], ['kaltbadCable', 'Rigi Kaltbad (Luftseilbahn)']]) {
     await dialog.locator(`[data-stop="${id}"]`).click()
     await expect(dialog).toHaveCount(0)
     await expect(page.locator('.station-card .service')).toHaveText(name)
