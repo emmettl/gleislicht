@@ -3,6 +3,8 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
+import { publishedDataRoot } from './published-data-root.mjs'
+
 const PUBLISHED_DATA = 'https://emmettl.github.io/gleislicht/data/'
 const ROOT_FILES = ['swiss-rail-morning.json', 'swiss-rail-day-manifest.json', 'swiss-hub-day.json']
 
@@ -11,10 +13,10 @@ function assert(condition, message) {
 }
 
 /** Recover only a complete, internally consistent national timetable. */
-export async function readPublishedNationalData(fetchData = fetch) {
+export async function readPublishedNationalData(fetchData = fetch, baseUrl = PUBLISHED_DATA) {
   const files = new Map()
   async function read(path) {
-    const response = await fetchData(new URL(path, PUBLISHED_DATA), { signal: AbortSignal.timeout(30_000) })
+    const response = await fetchData(new URL(path, baseUrl), { signal: AbortSignal.timeout(30_000) })
     assert(response.ok, `${path} returned ${response.status}`)
     const bytes = Buffer.from(await response.arrayBuffer())
     const value = JSON.parse(bytes.toString('utf8'))
@@ -90,7 +92,7 @@ export async function readPublishedNationalData(fetchData = fetch) {
 async function main() {
   const index = process.argv.indexOf('--output-directory')
   const output = resolve(index < 0 ? 'public/data' : process.argv[index + 1])
-  const { files, serviceDate, feedVersion, repaired } = await readPublishedNationalData()
+  const { files, serviceDate, feedVersion, repaired } = await readPublishedNationalData(fetch, await publishedDataRoot())
   // Validate every download before replacing any local artifact. Any failure
   // leaves the build stopped; source dates and provenance are never rewritten.
   for (const [path, bytes] of files) {

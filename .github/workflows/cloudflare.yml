@@ -36,11 +36,10 @@ jobs:
       url: https://motionstudies.app/gleislicht/
     steps:
       # Use trusted publishing code, not code from the downloaded Pages artifact.
-      - name: Check out pinned hosting tools
+      - name: Check out trusted main-branch publishing tools
         uses: actions/checkout@v7
         with:
-          repository: emmettl/motionstudies
-          ref: 712c538a6f0094b1bb9c698871166008708c68a0
+          ref: ${{ github.sha }}
           path: hosting-tools
           persist-credentials: false
       - name: Set up Node

@@ -37,3 +37,6 @@ data/solothurn-audit/seasonal-timetable-cache.json.gz
 
 # Generated opt-in orbital movement blocks (rebuilt by prebuild).
 public/data/orbital/
+
+# Prepared and verified object-storage releases.
+.data-release/

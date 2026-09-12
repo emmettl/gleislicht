@@ -6,7 +6,7 @@
   "description": "Switzerland in motion \u2014 a cinematic railway visualisation built from Swiss open transport data.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -p tsconfig.build.json && vite build",
     "check:bundle": "node scripts/check-bundle-budget.mjs",
     "pages:prepare": "node scripts/prepare-pages-artifact.mjs",
     "check:architecture": "node scripts/check-edition-boundaries.mjs",
@@ -65,7 +65,6 @@
     "data:regional:studies": "node scripts/package-regional-studies.mjs",
     "data:regional:days": "node scripts/build-regional-days.mjs",
     "data:vaud:audit": "node scripts/audit-vaud-study.mjs",
-    "prebuild": "node scripts/build-study-summaries.mjs && node --max-old-space-size=8192 scripts/build-orbital-study.mjs",
     "data:orbital": "node --max-old-space-size=8192 scripts/build-orbital-study.mjs",
     "data:bern:sources": "python3 scripts/prepare-bern-sources.py",
     "data:bern": "node --max-old-space-size=8192 scripts/build-bern-region.mjs",
@@ -124,7 +123,11 @@
     "data:ticino:check": "node scripts/check-ticino-region.mjs",
     "data:ticino:docs": "node scripts/document-ticino-study.mjs",
     "data:graubuenden:cableway-sources": "node scripts/prepare-graubuenden-cableways.mjs",
-    "test:components": "vitest run src/test"
+    "test:components": "vitest run src/test",
+    "data:prepare": "node scripts/prepare-app-catalogues.mjs && node --max-old-space-size=8192 scripts/build-orbital-study.mjs",
+    "data:release:prepare": "node scripts/data-release.mjs",
+    "data:release:publish": "node scripts/publish-data-release.mjs",
+    "build:fixtures": "VITE_GLEISLICHT_BUNDLE_DATA=1 npm run build"
   },
   "engines": {
     "node": ">=24.0.0"

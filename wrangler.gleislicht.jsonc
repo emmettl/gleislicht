@@ -1,0 +1,18 @@
+{
+  "name": "gleislicht-hosting",
+  "account_id": "8cac82a07417990e553f88793670f361",
+  "compatibility_date": "2026-09-09",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "motionstudies.app/gleislicht*",
+      "zone_name": "motionstudies.app"
+    }
+  ],
+  "assets": {
+    "directory": ".hosting-assets",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

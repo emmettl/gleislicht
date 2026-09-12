@@ -1882,7 +1882,7 @@ export function App({ edition, suspended = false }: AppProps) {
     Promise.all(
       targets.map(async (descriptor) => {
         const response = await fetch(
-          `${import.meta.env.BASE_URL}data/${descriptor.path}`,
+          editionDataUrl(descriptor.path),
           { signal: controller.signal },
         )
         if (!response.ok) {

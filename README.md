@@ -30,6 +30,8 @@ The original Swiss study is implemented across the national atlas, regional and 
 
 National AUTO already includes all 1,440 recorded minutes of 8 September. Further cantonal studies and unresolved geometry are optional coverage work; Aargau and St Gallen remain subject to their documented release gates. Service-alert presentation is a separate next increment after Trip Updates. See [regional release decisions](docs/REGIONAL-FEED-INTEGRATION.md), [realtime operations](docs/REALTIME.md) and [daily road archives](docs/ROAD-HISTORY.md).
 
+The production app pins immutable public data releases on R2 at `data.motionstudies.app`. App builds omit the datasets; see [data hosting and release procedures](docs/data-hosting.md).
+
 ## Run it
 
 Use Node 24 LTS (`nvm use`) and npm 11.19.0.
@@ -54,7 +56,7 @@ npm run worker:build
 npm run check:bundle
 ```
 
-CI checks the fixture build and payload budget first, then runs two Chromium shards, one iPhone WebKit runner and the live timetable build concurrently. Each browser runner uses one worker; deployment waits for every browser shard and the live publication gates. Reports include wall time and the ten slowest tests. See [CI timings and local shard commands](docs/CI.md).
+CI checks the fixture build and payload budget first, then runs two Chromium shards, one iPhone WebKit runner and the live timetable build concurrently. Each browser runner uses one worker; deployment waits for every browser shard, the live publication gates, and Chromium/iPhone WebKit checks against the final R2-backed production build. Reports include wall time and the ten slowest tests. See [CI timings and local shard commands](docs/CI.md).
 
 Keyboard controls: `Space` pauses or resumes; `C` returns to or switches from the national view.
 
@@ -90,7 +92,7 @@ Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève acros
 
 Sound is optional and off by default. Turning on the adaptive score lazily loads the Driftbox synthesis engine and plays one of three Gleislicht arrangements: **Night Grid** for the national map, **Taktwerk** for station pulses, and **Valley Signal** for corridor or train-follow views. Mode changes crossfade between two live transports. Inside a journey, speed, terrain openness and tunnel state continuously shape a restrained spatial filter without changing the timeline or musical tempo. See [docs/SOUNDTRACK.md](./docs/SOUNDTRACK.md) for the musical and technical design.
 
-The committed GTFS and geography snapshots are regenerated with `npm run data:gtfs`, `npm run data:day`, `npm run data:rail:shapes`, `npm run data:zvv`, `npm run data:zvv:shapes`, `npm run data:geneva`, `npm run data:geneva:shapes`, `npm run data:postbus:kiental`, `npm run data:corridor:kiental`, `npm run data:zurich`, `npm run data:zurich:shapes`, `npm run data:zurich:day`, `npm run data:zurich:day:shapes`, `npm run data:boundary`, `npm run data:lakes`, `npm run data:corridor`, `npm run data:air` and `npm run data:road`. The national AUTO topology accepts 379 federal sites into 609 directed sections, with the final interchange ambiguity resolved from official FEDRO TMC road references; a separate compiler emits progressively loaded observed-minute chunks once recording begins. `npm run data:validate` checks the shared national artifact set, the Alpine corridor, historical air snapshots and the disclosed road calibration, and a twice-weekly workflow publishes validated national refreshes to a dedicated review branch; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
+The committed GTFS and geography snapshots are regenerated with `npm run data:gtfs`, `npm run data:day`, `npm run data:rail:shapes`, `npm run data:zvv`, `npm run data:zvv:shapes`, `npm run data:geneva`, `npm run data:geneva:shapes`, `npm run data:postbus:kiental`, `npm run data:corridor:kiental`, `npm run data:zurich`, `npm run data:zurich:shapes`, `npm run data:zurich:day`, `npm run data:zurich:day:shapes`, `npm run data:boundary`, `npm run data:lakes`, `npm run data:corridor`, `npm run data:air` and `npm run data:road`. The national AUTO topology accepts 379 federal sites into 609 directed sections, with the final interchange ambiguity resolved from official FEDRO TMC road references; a separate compiler emits progressively loaded observed-minute chunks once recording begins. `npm run data:validate` checks the shared national artifact set, the Alpine corridor, historical air snapshots and the disclosed road calibration, and a manual-only workflow prepares validated national test-fixture refreshes on a dedicated review branch; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
 
 The public home is https://motionstudies.app/gleislicht/. GitHub Pages remains available and supplies the validated release artifact that is subsequently published to Cloudflare. Authenticated realtime polling and unattended ASTRA recording run as separate Cloudflare Workers backed by a private R2 bucket; see [docs/PUBLISHING.md](./docs/PUBLISHING.md) and [docs/CLOUDFLARE.md](./docs/CLOUDFLARE.md).
 

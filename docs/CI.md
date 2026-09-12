@@ -8,13 +8,13 @@ The Pages workflow checks code and committed fixture budgets before starting the
 - Today's national timetable.
 - Today's Zürich city, ZVV and Genève morning/full-day timetables.
 
-A final build job combines the two verified data artifacts, regenerates the study-browser dates from their metadata, checks realtime compatibility, and builds the Pages artifact. Regional work overlaps national generation and browser tests.
+A final build job waits for the browser shards, combines the two verified data artifacts, explicitly prepares app catalogues and orbital blocks, checks realtime compatibility, and publishes the immutable R2 release using bucket-scoped S3 credentials. It then builds the small app pinned to that release. Regional work overlaps national generation and browser tests.
 
 Each browser runner installs only its own engine and uses one worker. `fullyParallel` is enabled in CI so Playwright splits individual tests across shards, including tests in the large `gleislicht.spec.ts` file. The worker limit still prevents simultaneous software WebGL scenes on one runner. Local runs retain the existing two-worker, file-level behaviour.
 
 Deployment requires both the live build and **every** browser shard to succeed. Browser failures do not cancel sibling shards, so their diagnostics remain available. The live build still downloads current official sources, verifies fallback data if the download fails, checks realtime compatibility, and enforces the final payload and publication gates.
 
-Browser tests retain the committed demo data and Vite development server: selection, label and geometry assertions inspect the development React Three Fiber module. They cannot simply use the production preview server. The fixture build in the initial check job catches compile and payload failures; the later live build uses the refreshed data and resolved realtime configuration.
+Browser tests retain the committed demo data and Vite development server: selection, label and geometry assertions inspect the development React Three Fiber module. They cannot simply use the production preview server. A separate final smoke suite (`e2e/remote-data.spec.ts`) runs against the production preview in Chromium and iPhone WebKit, checking successful R2 timetable/chunk loading, no same-origin data fallback, and orbital decompression before publication. The initial check explicitly runs `npm run data:prepare && npm run build:fixtures` to catch compile and payload failures; the later live build uses the refreshed data and resolved realtime configuration.
 
 ## Measured baseline
 
@@ -71,3 +71,12 @@ newest revision; no validation or browser test is bypassed. This follows
 [Run 34290968691](https://github.com/emmettl/gleislicht/actions/runs/34290968691) failed four unit tests. Schupfart’s evidence replay and Oberentfelden’s detour diagnostic now allow only sub-micrometre/sub-nanosecond floating-point differences in derived measurements; source coordinates, ordered edges, identities, admission decisions and geometry hashes remain exact. A mutation test rejects meaningful measurement drift and non-finite values. Solothurn’s display files and release proof were regenerated after the shared simplifier changed; unchanged chunk bytes, source calls, endpoints and the 5 m bound remain checked. The ZH 3 regression now explicitly lists all three reviewed recordings, including Horgen evening. Local test discovery excludes nested worktrees and their dependency tests.
 
 Dependabot’s same-revision update failed because Miniflare pins `sharp` 0.35.2 exactly. A scoped npm override selects the patched 0.35.4 while retaining Wrangler’s existing version. Remove it when Miniflare adopts a patched version. The installed tree passes `npm audit`, native image encoding and both worker dry-run builds.
+
+## R2 production smoke checks
+
+```bash
+npm run build
+E2E_PREVIEW=1 npm run test:e2e:ci -- e2e/remote-data.spec.ts --workers=1
+```
+
+Use `E2E_PORT` when another preview already uses port 4180. Production builds omit local datasets and do not regenerate fixtures. `npm run typecheck` continues to check application and test code together.

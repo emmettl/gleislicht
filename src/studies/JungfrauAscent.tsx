@@ -1,3 +1,4 @@
+import { editionDataUrl } from '../editions/data-url.ts'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { formatServiceTime, type NetworkSnapshot } from '@motionstudies/core/domain/network'
 import type { UiLanguage } from '../i18n.ts'
@@ -17,7 +18,7 @@ export default function JungfrauAscent({ network, language, time, onSeek, onFoll
   useEffect(() => {
     if (!terrainWanted || terrainData) return
     const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/jungfrau-ascent-terrain.json`, { signal: controller.signal }).then(response => {
+    fetch(editionDataUrl('jungfrau-ascent-terrain.json'), { signal: controller.signal }).then(response => {
       if (!response.ok) throw new Error('Terrain unavailable')
       return response.json()
     }).then(value => setTerrainData({ value })).catch(error => { if (error.name !== 'AbortError') setTerrainError(true) })

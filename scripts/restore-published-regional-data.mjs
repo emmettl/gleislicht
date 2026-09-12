@@ -3,11 +3,13 @@ import { dirname, join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { readRegionalArtifacts, readRegionalDirectory, REGIONAL_IDS } from './regional-artifacts.mjs'
 
-export async function restorePublishedRegionalData(output, fetchData = fetch, bootstrapDirectory = 'public/data', ids = REGIONAL_IDS) {
+import { publishedDataRoot } from './published-data-root.mjs'
+
+export async function restorePublishedRegionalData(output, fetchData = fetch, bootstrapDirectory = 'public/data', ids = REGIONAL_IDS, baseUrl = 'https://emmettl.github.io/gleislicht/data/') {
   let bootstrap
   const { files, dates } = await readRegionalArtifacts(async path => {
     if (bootstrap?.has(path)) return bootstrap.get(path)
-    const url = new URL(path, 'https://emmettl.github.io/gleislicht/data/')
+    const url = new URL(path, baseUrl)
     const response = await fetchData(url, { signal: AbortSignal.timeout(30_000) })
     // On a study's first deployment there is no published fallback yet.
     // Only a missing manifest can select the complete, validated dated fixture;
@@ -30,5 +32,5 @@ export async function restorePublishedRegionalData(output, fetchData = fetch, bo
   return { files, dates }
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
-  await restorePublishedRegionalData(resolve(process.argv[2] ?? 'public/data'))
+  await restorePublishedRegionalData(resolve(process.argv[2] ?? 'public/data'), fetch, 'public/data', REGIONAL_IDS, await publishedDataRoot())
 }
