@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { applyRoadCache, assessRoad, enrichPostbusRoads, fallbackHops, simplifyRoad, sliceShape } from './enrich-postbus-roads.mjs'
-import { prepareRoadFeed, roadPatternId, roadPatterns } from './prepare-postbus-road-feed.mjs'
+import { mergeRoadDays, prepareRoadFeed, roadPatternId, roadPatterns } from './prepare-postbus-road-feed.mjs'
 
 const stops = [[8, 47, 'A', '', 'a'], [8.01, 47, 'B', '', 'b'], [8.005, 47.003, 'Loop', '', 'c']]
 const train = { id: 'one', routeId: 'region-a-220', route: '220', headsign: 'B', category: 'bus',
@@ -23,6 +23,24 @@ describe('PostBus road geometry', () => {
     expect(roadPatternId({ ...train, stops: [train.stops[0], [2, 200, 200], train.stops[1]] }, stops)).not.toBe(key)
     expect(roadPatternId(train, [[8.0001, ...stops[0].slice(1)], ...stops.slice(1)])).not.toBe(key)
     expect(roadPatterns([train, { ...train, id: 'second' }], stops)).toHaveLength(1)
+  })
+
+  it('unions weekday and weekend patterns across local stop indexes and rejects conflicting platforms', () => {
+    const weekendStops = [stops[1], stops[0], [8.006, 47.003, 'Weekend', '', 'd']]
+    const weekend = { ...train, id: 'weekend', stops: [[1, 500, 500], [2, 600, 600], [0, 700, 700]] }
+    const result = mergeRoadDays([
+      { manifest, trains: [train] },
+      { manifest: { ...manifest, stops: weekendStops, metadata: { ...manifest.metadata, serviceDate: '2026-09-12' } }, trains: [weekend] },
+    ])
+    expect(result.manifest.metadata.serviceDates).toEqual(['2026-09-08', '2026-09-12'])
+    expect(result.manifest.metadata.feedVersions).toEqual(['test'])
+    expect(result.manifest.stops).toHaveLength(4)
+    expect(roadPatterns(result.trains, result.manifest.stops).map(p => p.id).sort()).toEqual([
+      roadPatternId(train, stops), roadPatternId(weekend, weekendStops),
+    ].sort())
+    expect(result.trains[1].stops.map(([i]) => result.manifest.stops[i][4])).toEqual(['a', 'd', 'b'])
+    expect(() => mergeRoadDays([{ manifest, trains: [train] }, { manifest: { ...manifest, stops: [[8.001, ...stops[0].slice(1)]] }, trains: [] }])).toThrow('Conflicting coordinates')
+    expect(() => mergeRoadDays([{ manifest, trains: [train] }, { manifest: { ...manifest, metadata: { ...manifest.metadata, feedVersion: 'other' } }, trains: [] }])).toThrow('different timetable releases')
   })
 
   it('slices a repeated-location loop by shape distance without jumping to the first visit', () => {

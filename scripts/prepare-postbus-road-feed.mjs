@@ -1,3 +1,4 @@
+import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
@@ -13,6 +14,33 @@ export async function readPostbusDay(path = DEFAULT_MANIFEST) {
   })))
   const trains = [...new Map(chunks.flatMap(chunk => chunk.payload.trains).map(train => [train.id, train])).values()]
   return { manifest, chunks, trains }
+}
+
+// Match the union of service days so weekend-only variants do not disappear.
+// Remap by the complete platform identity and position, never just stop index.
+export function mergeRoadDays(days) {
+  assert(days.length > 0, 'At least one timetable day is required')
+  const stops = [], indexes = new Map(), platforms = new Map(), trains = []
+  const serviceDates = new Set(), feedVersions = new Set()
+  for (const { manifest, trains: dayTrains } of days) {
+    assert.equal(manifest.metadata.sourceUrl, days[0].manifest.metadata.sourceUrl, 'Cannot combine different timetable sources')
+    assert.equal(manifest.metadata.feedVersion, days[0].manifest.metadata.feedVersion, 'Cannot combine different timetable releases')
+    serviceDates.add(manifest.metadata.serviceDate)
+    feedVersions.add(manifest.metadata.feedVersion)
+    const remap = manifest.stops.map(stop => {
+      const key = JSON.stringify([stop[4], stop[0], stop[1]])
+      assert(!platforms.has(stop[4]) || platforms.get(stop[4]) === key, `Conflicting coordinates for platform ${stop[4]}`)
+      platforms.set(stop[4], key)
+      if (!indexes.has(key)) { indexes.set(key, stops.length); stops.push(stop) }
+      return indexes.get(key)
+    })
+    for (const train of dayTrains) trains.push({ ...train,
+      stops: train.stops.map(([index, ...times]) => [remap[index], ...times]),
+    })
+  }
+  return { manifest: { ...days[0].manifest, stops, metadata: { ...days[0].manifest.metadata,
+    serviceDates: [...serviceDates].sort(), feedVersions: [...feedVersions].sort(),
+  } }, trains }
 }
 
 // Timetable IDs change between releases; the route identity, complete ordered
@@ -110,11 +138,12 @@ export async function prepareRoadFeed({ manifest, trains, output, pilot = 0, age
 if (import.meta.url === `file://${process.argv[1]}`) {
   const argument = (name, fallback) => process.argv.includes(`--${name}`) ? process.argv[process.argv.indexOf(`--${name}`) + 1] : fallback
   if (process.argv.includes('--help')) {
-    console.log('Prepare one GTFS trip per distinct PostBus stop pattern. --output DIRECTORY [--snapshot MANIFEST] [--pilot 30]')
+    console.log('Prepare one GTFS trip per distinct PostBus stop pattern. --output DIRECTORY [--snapshot MANIFEST ...] [--pilot 30]')
   } else {
     const output = argument('output')
     if (!output) throw new Error('--output DIRECTORY is required')
-    const day = await readPostbusDay(argument('snapshot', DEFAULT_MANIFEST))
+    const snapshots = process.argv.flatMap((value, index) => value === '--snapshot' ? [process.argv[index + 1]] : [])
+    const day = mergeRoadDays(await Promise.all((snapshots.length ? snapshots : [DEFAULT_MANIFEST]).map(readPostbusDay)))
     console.log(await prepareRoadFeed({ ...day, output, pilot: Number(argument('pilot', 0)) }))
   }
 }

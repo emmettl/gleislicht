@@ -23,7 +23,7 @@ Coverage is weighted by actual scheduled stop-to-stop movements, not the percent
 
 All routes and trips remain present. Rejected and unknown segments retain the existing stop-based/lake-avoidance fallback. Their roads are not counted as matched. Paths are plausible OSM inferences, not operator-verified routes. The timetable cannot distinguish two journeys that have the same route identity and ordered platforms but secretly take different roads between those stops. Timings remain scheduled interpolation, including coarse minute resolution; this is not GPS tracking or a realistic acceleration model.
 
-The cache's `report.issues` contains every rejected pattern segment, its route and stop identifiers, reason, and number of daily occurrences. Current rejected occurrences:
+The cache's `report.issues` contains every rejected pattern segment, its route and stop identifiers, reason, and number of daily occurrences. Original rejected occurrences:
 
 | Reason | Occurrences |
 | --- | ---: |
@@ -57,6 +57,41 @@ node scripts/audit-postbus.mjs
 Both refresh workflows apply the committed `data/postbus-road-cache.json` after timetable generation. A cache key hashes the source route ID, complete ordered platform IDs and coordinates. Changed timetable times can reuse it; changed coordinates, directions, stop sequences or route identities cannot. No join is made solely on the displayed line number or a global stop pair. New patterns remain unshaped until rebuilt. An aggregate coverage gate of 95% fails before any enriched artifacts are written, so a stale cache cannot silently publish a heavily degraded road view.
 
 The audit also checks path references and endpoints, coverage counts, ODbL provenance, 500,000 maximum vertices, topology under 3 MiB gzip and each movement chunk under 1 MiB gzip. Chunk sizes and hashes are recalculated from the exact enriched bytes; the manifest is replaced last.
+
+## September 12 cache refresh
+
+The first Saturday publication with GTFS release `20260909` exposed the limits of the original Tuesday-only cache: 548 unknown patterns affected 1,766 trips, leaving **92.80%** of Saturday's movements shaped. Sunday's old-cache coverage was **91.12%**. The 95% gate correctly stopped publication before writing enriched artifacts.
+
+The cache now matches the union of **12–18 September 2026** from the current official feed: **5,936 patterns across 851 route identities**. The existing pinned OSM extract, matcher binary, configuration, snap/detour limits and explicit fallback rejection are unchanged. The importer verifies all matcher-output hashes. It never treats a straight-line routing fallback as a successful road match.
+
+| Service day | Previous cache | Refreshed cache |
+| --- | ---: | ---: |
+| Saturday 12 | 92.80% | 99.79% |
+| Sunday 13 | 91.12% | 99.79% |
+| Monday 14 | 98.11% | 99.79% |
+| Tuesday 15 | 98.27% | 99.79% |
+| Wednesday 16 | 98.04% | 99.80% |
+| Thursday 17 | 98.12% | 99.79% |
+| Friday 18 | 97.75% | 99.79% |
+
+All seven freshly generated days passed `audit-postbus.mjs`, including platform endpoints, boundary-trip preservation, chunk hashes, the 95% coverage threshold and existing transfer/vertex limits. No current-week trip lacks a cached pattern; individually rejected segments still use the existing fallback. Maximum topology gzip size is 2,285,219 bytes, maximum chunk gzip size is 757,827 bytes and maximum vertex count is 292,632. The recorded September 8 study artifacts remain unchanged; applying the new cache to that older feed still clears the gate at 98.48%.
+
+The [refresh receipt](../data/postbus-road-refresh-20260912.json) records source/cache hashes, matcher provenance and per-day measurements. The full unit suite (1,396 tests), typecheck, lint and edition-boundary checks pass. The cache still needs rebuilding when future releases introduce enough new or moved platform patterns; this weekly sample does not claim coverage of every seasonal service.
+
+`prepare-postbus-road-feed.mjs` now accepts repeated `--snapshot` arguments. Generate each day's manifest into a separate directory from the same archive, then prepare one matcher input, for example:
+
+```sh
+node scripts/prepare-postbus-road-feed.mjs --output /tmp/postbus-week-feed \
+  --snapshot /tmp/postbus-week/2026-09-12/postbus-national-day-manifest.json \
+  --snapshot /tmp/postbus-week/2026-09-13/postbus-national-day-manifest.json \
+  --snapshot /tmp/postbus-week/2026-09-14/postbus-national-day-manifest.json \
+  --snapshot /tmp/postbus-week/2026-09-15/postbus-national-day-manifest.json \
+  --snapshot /tmp/postbus-week/2026-09-16/postbus-national-day-manifest.json \
+  --snapshot /tmp/postbus-week/2026-09-17/postbus-national-day-manifest.json \
+  --snapshot /tmp/postbus-week/2026-09-18/postbus-national-day-manifest.json
+```
+
+Continue with the matching/import commands below and audit every input day after applying the result. The union retains full ordered platform patterns and remaps day-local stop indexes. Conflicting coordinates for one platform or mixed timetable releases fail preparation; no line-number or global stop-pair shortcut is introduced.
 
 ## Rebuild the road cache
 

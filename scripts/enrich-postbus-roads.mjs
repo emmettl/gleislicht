@@ -163,7 +163,10 @@ export async function importRoadShapes(directory, source, limits = ROAD_LIMITS) 
     feedVersion: run.osmSha256.slice(0, 12), sourceSha256: run.osmSha256,
     license: 'ODbL-1.0', model: 'pfaedle bus map matching; inferred paths, not operator-verified routes',
     source, matcher: run, timetableFeedVersion: input.metadata.feedVersion,
-    serviceDate: input.metadata.serviceDate, limits, pilotRoutes: input.pilotRoutes,
+    serviceDate: input.metadata.serviceDate,
+    ...(input.metadata.serviceDates ? { serviceDates: input.metadata.serviceDates,
+      timetableFeedVersions: input.metadata.feedVersions } : {}),
+    limits, pilotRoutes: input.pilotRoutes,
   }, paths, patterns, report: { matchedSegments: matched, totalSegments: total,
     coverage: total ? matched / total : 0, routes: [...routes.values()], maxSnapMetres: maxSnap,
     rejectedPatternSegments: issues.length, issues } }

@@ -1,0 +1,120 @@
+{
+  "days": [
+    {
+      "date": "2026-09-12",
+      "trips": 23537,
+      "routes": 737,
+      "before": 0.9279507564393777,
+      "after": 0.997948184974071,
+      "matched": 372562,
+      "total": 373328,
+      "vertices": 265067,
+      "topologyGzipBytes": 2086221,
+      "maxChunkGzipBytes": 578025
+    },
+    {
+      "date": "2026-09-13",
+      "trips": 19630,
+      "routes": 683,
+      "before": 0.9112135282892524,
+      "after": 0.997852802203157,
+      "matched": 317406,
+      "total": 318089,
+      "vertices": 249844,
+      "topologyGzipBytes": 1923722,
+      "maxChunkGzipBytes": 507117
+    },
+    {
+      "date": "2026-09-14",
+      "trips": 32401,
+      "routes": 819,
+      "before": 0.9811243559747859,
+      "after": 0.997882375193773,
+      "matched": 485364,
+      "total": 486394,
+      "vertices": 286304,
+      "topologyGzipBytes": 2196404,
+      "maxChunkGzipBytes": 757285
+    },
+    {
+      "date": "2026-09-15",
+      "trips": 32420,
+      "routes": 821,
+      "before": 0.9827079445207225,
+      "after": 0.9978993842030404,
+      "matched": 485502,
+      "total": 486524,
+      "vertices": 286199,
+      "topologyGzipBytes": 2190619,
+      "maxChunkGzipBytes": 757721
+    },
+    {
+      "date": "2026-09-16",
+      "trips": 32199,
+      "routes": 823,
+      "before": 0.9804355317651768,
+      "after": 0.9979921709110344,
+      "matched": 483630,
+      "total": 484603,
+      "vertices": 286867,
+      "topologyGzipBytes": 2193938,
+      "maxChunkGzipBytes": 745540
+    },
+    {
+      "date": "2026-09-17",
+      "trips": 32429,
+      "routes": 821,
+      "before": 0.981228192029328,
+      "after": 0.9978957491667249,
+      "matched": 485610,
+      "total": 486634,
+      "vertices": 286315,
+      "topologyGzipBytes": 2191289,
+      "maxChunkGzipBytes": 757213
+    },
+    {
+      "date": "2026-09-18",
+      "trips": 32605,
+      "routes": 830,
+      "before": 0.9774783429881975,
+      "after": 0.9979027754497994,
+      "matched": 488192,
+      "total": 489218,
+      "vertices": 292632,
+      "topologyGzipBytes": 2285219,
+      "maxChunkGzipBytes": 757827
+    }
+  ],
+  "originalStudy": {
+    "date": "2026-09-08",
+    "coverage": 0.9847991915905702
+  },
+  "schemaVersion": 1,
+  "reason": "Daily publication on Saturday encountered patterns absent from the original Tuesday-only cache. Rebuilt from seven service days of the current timetable.",
+  "timetable": {
+    "url": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020/permalink",
+    "retrievedDate": "2026-09-12",
+    "feedVersion": "20260909",
+    "sha256": "8d625f4236f30bc8ae1ec742025b5e29d36af9602c6d7055c219a918d49e7a6a"
+  },
+  "previousCacheSha256": "176994c28dbcb3510b5e77b871d832c4841ed3b5b768d7e95b0e4b3518698df1",
+  "cacheSha256": "603a8e813d1184e84a4bbe830e82962bb8f214aea26c5f625f5056c7bd2c4503",
+  "matching": {
+    "schemaVersion": 1,
+    "completed": true,
+    "noTrie": true,
+    "warnings": true,
+    "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+    "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+    "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "patternsSha256": "f0b1a580ad1e4d78541e4f12a29ba105fa23600a80ee4a3098fc363b2c6041d7",
+    "logSha256": "634ed86ead7f061b2d8d2f39ca536350774c8c946f64d1e2d530cdd56d4effc5",
+    "shapesSha256": "07cbbae17a175c09a5260cc04df55d93fa55457d7a764aa268b23dc3657c3fc8",
+    "tripsSha256": "5eaa31a222ebb8b2f47fe23b266312a557300e74da1f6da4bb8ead646a23fecc",
+    "stopTimesSha256": "65bbe6c2482aeec8c0435b44e97bb5880712f90a244071698a646e6ac2fb9772",
+    "elapsedSeconds": 28
+  },
+  "minimumCoverage": 0.95,
+  "missingPatternTrips": 0
+}
