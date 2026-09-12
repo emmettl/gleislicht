@@ -2228,7 +2228,7 @@ export function App({ edition, suspended = false }: AppProps) {
 
   const resumeNow = useRef(new URLSearchParams(window.location.search).get('now') === '1')
   useEffect(() => {
-    if (resumeNow.current && timelineReady) {
+    if (resumeNow.current && timelineReady && (!isNationalDay || nationalDayChunkReady) && (!isRegionalDay || regionalDay.chunkReady)) {
       resumeNow.current = false
       void startNow()
     }

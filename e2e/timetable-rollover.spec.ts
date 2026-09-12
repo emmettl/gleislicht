@@ -23,6 +23,8 @@ test('Now crosses Swiss midnight into one prepared new-day session', async ({ pa
   await expect(now).toBeEnabled()
   await now.click()
   await expect(now).toHaveAttribute('aria-pressed', 'true')
+  // Let prefetched old-day chunks settle before intentionally replacing the document.
+  await page.waitForLoadState('networkidle')
   await page.clock.fastForward(30_000)
   await expect(page).toHaveURL(/now=1/)
   await expect.poll(() => requests.some(path => path.includes('calendar/2026-09-05/swiss-rail-day-chunks/'))).toBe(true)
