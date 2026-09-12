@@ -69,7 +69,9 @@ test('AUTO stays lazy, discloses recorded reconstruction, and can be isolated', 
   page,
 }, testInfo) => {
   const roadRequests: string[] = []
+  const roadRendererRequests: string[] = []
   page.on('request', (request) => {
+    if (request.url().includes('RoadTrafficLayer')) roadRendererRequests.push(request.url())
     if (
       request.url().includes('swiss-road-morning.json') ||
       request.url().includes('swiss-road-topology.json')
@@ -81,6 +83,7 @@ test('AUTO stays lazy, discloses recorded reconstruction, and can be isolated', 
 
 
   expect(roadRequests).toEqual([])
+  expect(roadRendererRequests).toEqual([])
 
   const toggle = page.locator(
     testInfo.project.name === 'iphone-webkit'
@@ -94,6 +97,7 @@ test('AUTO stays lazy, discloses recorded reconstruction, and can be isolated', 
   await response
 
   await expect(toggle).toHaveAttribute('aria-pressed', 'true')
+  await expect.poll(() => roadRendererRequests.length).toBeGreaterThan(0)
   await expect(page.locator('.network-card .road-count')).toContainText('AUTO')
   await expect(page.locator('.network-card .road-count')).toHaveAttribute(
     'aria-label',
@@ -217,6 +221,8 @@ test('the city–valley comparison opens the measured Kiental road journey', asy
     await page.getByRole('button', { name: /synchronized city.+valley comparison/i }).click()
   }
 
+  await expect(page.locator('.contrast-scenes')).toHaveCSS('display', 'grid')
+  await expect(page.locator('.contrast-caption').first()).toHaveCSS('position', 'absolute')
   const descent = page.getByRole('button', { name: /Kiental–Griesalp/i })
   await expect(descent).toBeVisible()
   await descent.click()

@@ -561,6 +561,9 @@ export function App({ edition, suspended = false }: AppProps) {
   const rigiTerrainCopy = { enter: text.rigiTerrainEnter.replace('{origin}', rigiOrigin), unavailable: text.rigiTerrainUnavailable }
   const isPostbus = networkStudy === 'postbus'
   const isContrast = networkStudy === 'contrast'
+  useEffect(() => {
+    if (isContrast) void import('./studies/contrast-layout.css')
+  }, [isContrast])
   const serviceColors = useMemo(() => isPostbus || postbusVisible || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : (isMountainStudy || cogwheelEnabled && networkStudy === 'national' && view === 'network') ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, postbusVisible, isContrast, isMountainStudy, cogwheelEnabled, networkStudy, view])
   const isRegionalDay = isRegionalDayStudy(networkStudy) && regionalRange === 'day'
   const regionalDate = additionalId ? additionalDates[additionalId] : isValais ? valaisDate : isTicino ? ticinoDate : isGraubuenden ? graubuendenDate : undefined

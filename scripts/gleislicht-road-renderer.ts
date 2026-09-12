@@ -8,7 +8,17 @@ export function gleislichtRoadRenderer(): Plugin {
   return {
     name: 'gleislicht-roads', enforce: 'pre',
     transform(source, id) {
-      if (!id.split('?')[0].replaceAll('\\', '/').endsWith('/@motionstudies/three/RoadTrafficLayer.js')) return
+      const moduleId = id.split('?')[0].replaceAll('\\', '/')
+      if (moduleId.endsWith('/@motionstudies/three/NationalNetworkScene.js')) {
+        const imported = "import { RoadTrafficLayer } from './RoadTrafficLayer.js';"
+        if (source.split(imported).length !== 2) throw new Error('Gleislicht deferred road layer hook needs review')
+        // The opening rail map does not render roads. Keep their meshes and
+        // geometry helpers deferred until a road snapshot or topology is shown.
+        return { code: source.replace(imported, `import { lazy as lazyRoad, Suspense as RoadSuspense } from 'react';
+const LazyRoadTrafficLayer = lazyRoad(() => import('./RoadTrafficLayer.js').then(module => ({ default: module.RoadTrafficLayer })));
+const RoadTrafficLayer = props => _jsx(RoadSuspense, { fallback: null, children: _jsx(LazyRoadTrafficLayer, { ...props }) });`), map: null }
+      }
+      if (!moduleId.endsWith('/@motionstudies/three/RoadTrafficLayer.js')) return
       let code = source
       const replace = (before: string, after: string, count = 1) => {
         if (code.split(before).length !== count + 1) throw new Error(`Gleislicht road hook needs review: ${before}`)
