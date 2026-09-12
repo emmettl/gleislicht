@@ -30,9 +30,11 @@ test('national PostBus stays lazy, renders the full network and follows the 24-h
   // entire CI timeout on software WebGL; use scripts/benchmark-postbus.mjs for
   // renderer-qualified performance measurements outside the functional gate.
   const scrubber = page.locator('.scrubber input')
-  await page.getByRole('button', { name: 'Resume motion', exact: true }).click()
+  await page.getByRole('button', { name: /Resume motion/i }).click()
   const initialTime = Number(await scrubber.inputValue())
   await expect.poll(async () => Number(await scrubber.inputValue())).toBeGreaterThan(initialTime)
+  // Stop the clock before deterministic seeks and route selection.
+  await page.getByRole('button', { name: /Pause motion/i }).click()
   await scrubber.fill('62100')
   await expect(page.locator('.network-card .between')).toContainText('Scheduled PostBus')
   await expect.poll(() => requests.some(url => url.endsWith('15-18.json'))).toBe(true)
