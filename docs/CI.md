@@ -8,11 +8,11 @@ The Pages workflow checks code and committed fixture budgets before starting the
 - Today's national timetable.
 - Today's Zürich city, ZVV and Genève morning/full-day timetables.
 
-A final build job waits for the browser shards, combines the two verified data artifacts, explicitly prepares app catalogues and orbital blocks, checks realtime compatibility, and publishes the immutable R2 release using bucket-scoped S3 credentials. It then builds the small app pinned to that release. Regional work overlaps national generation and browser tests.
+A final build job waits for the browser shards, combines national and regional artifacts for today and tomorrow, explicitly prepares app catalogues and orbital blocks, prepares the validated realtime calendar, and publishes the immutable R2 release using bucket-scoped S3 credentials. It then builds the small app pinned to that release. Regional work overlaps national generation and browser tests.
 
 Each browser runner installs only its own engine and uses one worker. `fullyParallel` is enabled in CI so Playwright splits individual tests across shards, including tests in the large `gleislicht.spec.ts` file. The worker limit still prevents simultaneous software WebGL scenes on one runner. Local runs retain the existing two-worker, file-level behaviour.
 
-Deployment requires both the live build and **every** browser shard to succeed. Browser failures do not cancel sibling shards, so their diagnostics remain available. The live build still downloads current official sources, verifies fallback data if the download fails, checks realtime compatibility, and enforces the final payload and publication gates.
+Deployment requires both the live build and **every** browser shard to succeed. Browser failures do not cancel sibling shards, so their diagnostics remain available. The live build still downloads current official sources, verifies fallback data if the download fails, prepares the validated realtime calendar, and enforces the final payload and publication gates.
 
 Browser tests retain the committed demo data and Vite development server: selection, label and geometry assertions inspect the development React Three Fiber module. They cannot simply use the production preview server. A separate final smoke suite (`e2e/remote-data.spec.ts`) runs against the production preview in Chromium and iPhone WebKit, checking successful R2 timetable/chunk loading, no same-origin data fallback, and orbital decompression before publication. The initial check explicitly runs `npm run data:prepare && npm run build:fixtures` to catch compile and payload failures; the later live build uses the refreshed data and resolved realtime configuration.
 
@@ -80,3 +80,5 @@ E2E_PREVIEW=1 npm run test:e2e:ci -- e2e/remote-data.spec.ts --workers=1
 ```
 
 Use `E2E_PORT` when another preview already uses port 4180. Production builds omit local datasets and do not regenerate fixtures. `npm run typecheck` continues to check application and test code together.
+
+The timetable workflow runs at 03:37 and 18:37 UTC. Calendar assembly rejects old-date fallbacks for the daily studies, while reviewed archival regions retain their existing policies. An hourly public freshness workflow also runs after Cloudflare publication. See [regular refreshes](REGULAR-REFRESHES.md) for the midnight and monitoring contracts.

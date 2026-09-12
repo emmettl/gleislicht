@@ -12,5 +12,6 @@ export function serviceDate(input, now = new Date()) {
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const { date, timetableYear } = serviceDate(process.argv[2])
-  console.log(`service_date=${date}\ntimetable_year=${timetableYear}`)
+  const tomorrow = serviceDate(new Date(Date.parse(`${date}T12:00:00Z`) + 86400000).toISOString().slice(0, 10))
+  console.log(`service_date=${date}\ntimetable_year=${timetableYear}\ntomorrow_date=${tomorrow.date}\ntomorrow_year=${tomorrow.timetableYear}`)
 }

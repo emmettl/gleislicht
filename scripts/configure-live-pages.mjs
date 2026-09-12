@@ -54,7 +54,16 @@ async function main() {
   }
 
   const snapshot = JSON.parse(await readFile(resolve(snapshotPath), 'utf8'))
-  const result = await checkLiveEndpoint(snapshot, endpoint)
+  // A prepared calendar makes the endpoint a recoverable runtime capability.
+  // It must be enabled before the new static release is visible to the Worker.
+  // Runtime date/version/freshness checks still gate every applied update.
+  const calendarPath = argument('calendar')
+  let result
+  if (calendarPath) {
+    const calendar = JSON.parse(await readFile(resolve(calendarPath), 'utf8'))
+    if (calendar.schemaVersion !== 1 || calendar.days.length !== 2 || !calendar.days.some(day => day.date === snapshot.metadata.serviceDate && day.feedVersion === snapshot.metadata.feedVersion && /^[a-f0-9]{64}$/.test(day.indexSha256))) throw new Error('Invalid prepared realtime calendar')
+    result = { compatible: true }
+  } else result = await checkLiveEndpoint(snapshot, endpoint)
   if (!result.compatible) {
     console.log(`Live mode remains disabled: ${result.reason}.`)
     return

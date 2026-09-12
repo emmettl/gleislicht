@@ -49,7 +49,7 @@ export async function validateReferences(directory, files) {
       const name = chunk.path ?? chunk.file
       if (typeof name !== 'string') continue
       if (name.startsWith('/') || name.split('/').includes('..') || name.includes('://')) throw new Error(`Unsafe chunk reference in ${file.path}`)
-      const target = byPath.get(name) ?? byPath.get(posix.join(posix.dirname(file.path), name))
+      const target = byPath.get(posix.join(posix.dirname(file.path), name)) ?? byPath.get(name)
       if (!target) throw new Error(`Missing chunk ${name} referenced by ${file.path}`)
       if (chunk.bytes !== undefined && chunk.bytes !== target.bytes) throw new Error(`Chunk size mismatch: ${target.path}`)
       if (chunk.sha256 && chunk.sha256 !== target.sha256) throw new Error(`Chunk checksum mismatch: ${target.path}`)

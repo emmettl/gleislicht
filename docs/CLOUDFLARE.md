@@ -12,7 +12,7 @@ No API token enters the browser, GitHub Pages artifact or repository. Each upstr
 
 ## Provisioned services and maintenance
 
-The account, R2 bucket, realtime credential and ASTRA credential are already provisioned. The realtime Worker is aligned to published static feed `20260905`; deployment still checks the actual feed and service date before enabling LIVE. The original setup instructions below are for recovery or a new account, not unfinished project tasks. When a new static feed is adopted, review and update `STATIC_FEED_VERSION`, deploy the Worker, wait for a fresh scheduled snapshot, and verify the release compatibility gate. Credentials are retained as Worker secrets.
+The account, R2 bucket, realtime credential and ASTRA credential are already provisioned. The upgraded realtime Worker validates its pairing against the canonical app's prepared timetable calendar and trip/stop identity index; static feed upgrades no longer need a manually changed version setting. Publish the first calendar release, deploy the upgraded Worker once, and check the public freshness workflow. Credentials remain Worker secrets. See [regular refreshes](REGULAR-REFRESHES.md) for rollout and failure behavior.
 
 ## One-time account setup
 
@@ -29,7 +29,7 @@ The account, R2 bucket, realtime credential and ASTRA credential are already pro
    npx wrangler r2 bucket create gleislicht-observations
    ```
 
-4. Confirm that `STATIC_FEED_VERSION` in `wrangler.realtime.jsonc` exactly matches the GTFS Static version used by the currently published Swiss artifact.
+4. Confirm that the public `_timetable-calendar.json` contains today and a checksum-verified rail identity index in its immutable data release.
 5. Add the product-specific secrets. Each command prompts without echoing or saving the token locally:
 
    ```sh

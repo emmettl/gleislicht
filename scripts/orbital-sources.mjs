@@ -16,7 +16,7 @@ export async function discoverOrbitalSources(root, namedSources = []) {
   async function visit(directory = '') {
     for (const entry of await readdir(join(root, directory), { withFileTypes: true })) {
       const file = directory ? `${directory}/${entry.name}` : entry.name
-      if (entry.isDirectory() && file !== 'orbital') await visit(file)
+      if (entry.isDirectory() && !['orbital', 'calendar'].includes(file)) await visit(file)
       else if (entry.isFile() && /-day(?:-manifest)?\.json$/.test(entry.name)) candidates.push(file)
     }
   }
