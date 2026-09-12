@@ -26,11 +26,8 @@ test('trail worker returns geometry, follows seeks, and releases old study worke
     }
   })
   await page.goto('/')
-  if (isMobile) {
-    await page.locator('.mobile-study-picker button').first().click()
-    await page.getByRole('option', { name: /PA/ }).click()
-  } else await page.getByRole('button', { name: 'PostBus · all Switzerland · 24 hours', exact: true }).click()
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Switzerland by PostBus')
+  await page.locator(isMobile ? '.mobile-postbus-toggle' : '.postbus-toggle').click()
+  await expect(page.locator('.experience')).toHaveAttribute('data-postbus-enabled', 'true')
   const stats = () => page.evaluate(() => (window as unknown as { trailWorkerTest: { frames: number; populated: number; invalid: boolean; terminated: number; time: number } }).trailWorkerTest)
   await expect.poll(async () => (await stats()).populated, { timeout: 45_000 }).toBeGreaterThan(1)
   await page.getByRole('button', { name: /Pause motion/i }).click()
@@ -39,12 +36,10 @@ test('trail worker returns geometry, follows seeks, and releases old study worke
   await page.locator('.scrubber input').fill('27900')
   await expect.poll(async () => (await stats()).time).toBe(27900)
   expect((await stats()).invalid).toBe(false)
-  // A different projection must discard the previous worker and its geometry.
+  // Removing bus geometry must discard the previous worker and its geometry.
   const terminatedBefore = (await stats()).terminated
-  if (isMobile) {
-    await page.locator('.mobile-study-picker button').first().click()
-    await page.getByRole('option', { name: /^CH/ }).click()
-  } else await page.locator('.network-study-picker button').filter({ hasText: /^CH$/ }).click()
+  await page.locator(isMobile ? '.mobile-postbus-toggle' : '.postbus-toggle').click()
+  await expect(page.locator('.experience')).toHaveAttribute('data-postbus-enabled', 'false')
   await expect.poll(async () => (await stats()).terminated).toBeGreaterThan(terminatedBefore)
   expect(errors).toEqual([])
 })

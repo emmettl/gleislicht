@@ -14,6 +14,10 @@ export function studyLinkUrl(href: string, state: StudyLink) {
   }
   url.searchParams.set('study', state.study)
   url.searchParams.set('range', state.range)
+  if (state.study === 'national' && state.postbus) {
+    url.searchParams.set('postbus', '1')
+    if (state.sbb === false) url.searchParams.set('sbb', '0')
+  }
   if (state.date) url.searchParams.set('date', state.date)
   if (state.time !== undefined) url.searchParams.set('time', String(Math.floor(state.time)))
   if (state.study === 'territet' && state.glion) url.searchParams.set('glion', state.glion)

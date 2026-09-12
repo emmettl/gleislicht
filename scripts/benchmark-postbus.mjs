@@ -42,7 +42,8 @@ try {
   }
   const rail = await sample('rail')
   const started = performance.now()
-  await page.getByRole('button', { name: 'PostBus · all Switzerland · 24 hours', exact: true }).click()
+  await page.locator('.sbb-toggle').click()
+  await page.locator('.postbus-toggle').click()
   await page.waitForFunction(() => document.querySelector('.network-card .between')?.textContent.includes('Scheduled PostBus'))
   const loadMs = performance.now() - started
   const postbus = await sample('postbus')

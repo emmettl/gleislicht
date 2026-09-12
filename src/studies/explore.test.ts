@@ -9,8 +9,8 @@ import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 const metadata = (date: string, start = 0, end = 86400) => ({ serviceDate: date, windowStart: start, windowEnd: end }) as NetworkSnapshot['metadata']
 describe('Swiss Now and study links', () => {
   it('includes every study once in the shared display order and keeps national ranges together', () => {
-    expect([...STUDY_ORDER].sort()).toEqual([...STUDY_IDS].sort())
-    const options = [...STUDY_IDS.filter(id => id !== 'national'), 'national-day', 'national-morning']
+    expect([...STUDY_ORDER].sort()).toEqual(STUDY_IDS.filter(id => id !== 'postbus').sort())
+    const options = [...STUDY_IDS.filter(id => id !== 'national' && id !== 'postbus'), 'national-day', 'national-morning']
       .sort((a, b) => studyOrder(a) - studyOrder(b))
     expect(options.slice(0, 2)).toEqual(['national-morning', 'national-day'])
     expect(options.slice(2)).toEqual(STUDY_ORDER.filter(id => id !== 'national'))
@@ -119,4 +119,14 @@ it('preserves both Ticino fixture dates in morning and full-day shares', () => {
     expect(copy.names).toHaveLength(STUDY_IDS.length)
     expect(copy.descriptions).toHaveLength(STUDY_IDS.length)
   }
+})
+
+
+it('opens legacy PostBus links as a national layer and shares independent bus visibility', () => {
+  expect(readStudyLink('?study=postbus&time=62100&train=bus-trip')).toMatchObject({ study: 'national', range: 'day', postbus: true, sbb: false, time: 62100, train: 'bus-trip' })
+  for (const sbb of [true, false]) {
+    const state = { study: 'national', range: 'day', postbus: true, sbb, time: 27900 } as const
+    expect(readStudyLink(new URL(studyLinkUrl('https://example.org/', state)).search)).toMatchObject(state)
+  }
+  expect(readStudyLink('?study=zvv-region&postbus=1').postbus).toBeUndefined()
 })

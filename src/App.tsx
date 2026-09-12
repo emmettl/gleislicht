@@ -5,7 +5,7 @@ import { useNowClock } from '@motionstudies/web/use-now-clock'
 import { useBrowserLocation } from '@motionstudies/web/use-browser-location'
 import { REGIONAL_DAYS, isRegionalDayStudy, readStudyLink, withinStudy } from './studies/explore.ts'
 import { EXPLORE_EN, type ExploreUiCopy } from './studies/explore-ui-en.ts'
-import { networkWithRailVisibility } from './studies/network-layers.ts'
+import { networkWithRailVisibility, networkWithTimetableLayer } from './studies/network-layers.ts'
 import { COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
 import type { MeasuredTerrainBinding } from './studies/measured-terrain.ts'
@@ -414,7 +414,16 @@ export function App({ edition, suspended = false }: AppProps) {
   const [selectedTrainId, setSelectedTrainId] = useState<string>()
   const [selectedStationName, setSelectedStationName] = useState<string>()
   const [selectedRouteId, setSelectedRouteId] = useState<string>()
-  const [sbbEnabled, setSbbEnabled] = useState(!linkedPilot)
+  const [sbbEnabled, setSbbEnabled] = useState(!linkedPilot && initialLink.sbb !== false)
+  const [postbusEnabled, setPostbusEnabled] = useState(Boolean(initialLink.postbus))
+  const postbusVisible = postbusEnabled && networkStudy === 'national' && view === 'network'
+  const timetableVisible = sbbEnabled || networkStudy !== 'national' || postbusVisible
+  const postbusLayerCopy = {
+    en: { show: 'Show PostBus layer', hide: 'Hide PostBus layer', unavailable: 'PostBus is available on the Switzerland map' },
+    de: { show: 'PostAuto-Ebene anzeigen', hide: 'PostAuto-Ebene ausblenden', unavailable: 'PostAuto ist auf der Schweiz-Karte verfügbar' },
+    fr: { show: 'Afficher la couche CarPostal', hide: 'Masquer la couche CarPostal', unavailable: 'CarPostal est disponible sur la carte de la Suisse' },
+    it: { show: 'Mostra il livello AutoPostale', hide: 'Nascondi il livello AutoPostale', unavailable: 'AutoPostale è disponibile sulla mappa della Svizzera' },
+  }[language]
   const railVisible = sbbEnabled || networkStudy !== 'national'
   const [airEnabled, setAirEnabled] = useState(false)
   const [airCategorySelected, setAirCategorySelected] = useState(false)
@@ -437,7 +446,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const pilotClockBounds = useRef<{ windowStart: number; windowEnd: number } | undefined>(undefined)
   const [cantonalPilot, setCantonalPilot] = useState<CantonalPilot>()
   const selectedPilotDefinition = cantonalPilotForRoad(selectedRoadId, cantonalPilot?.metadata.recordingId ?? linkedPilot?.id)
-  const activePilot = cantonalPilot && roadEnabled && selectedPilotDefinition?.id === cantonalPilot.metadata.recordingId && !sbbEnabled && !airEnabled && view === 'network' && networkStudy === 'national' ? cantonalPilot : undefined
+  const activePilot = cantonalPilot && roadEnabled && selectedPilotDefinition?.id === cantonalPilot.metadata.recordingId && !sbbEnabled && !postbusVisible && !airEnabled && view === 'network' && networkStudy === 'national' ? cantonalPilot : undefined
   const playbackTopology = useMemo(() => roadTopology && activePilot ? topologyWithPilot(roadTopology, activePilot) : roadTopology, [roadTopology, activePilot])
   if (cantonalPilot && !activePilot) {
     setCantonalPilot(undefined)
@@ -552,13 +561,13 @@ export function App({ edition, suspended = false }: AppProps) {
   const rigiTerrainCopy = { enter: text.rigiTerrainEnter.replace('{origin}', rigiOrigin), unavailable: text.rigiTerrainUnavailable }
   const isPostbus = networkStudy === 'postbus'
   const isContrast = networkStudy === 'contrast'
-  const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : (isMountainStudy || cogwheelEnabled && networkStudy === 'national' && view === 'network') ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, isContrast, isMountainStudy, cogwheelEnabled, networkStudy, view])
+  const serviceColors = useMemo(() => isPostbus || postbusVisible || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : (isMountainStudy || cogwheelEnabled && networkStudy === 'national' && view === 'network') ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, postbusVisible, isContrast, isMountainStudy, cogwheelEnabled, networkStudy, view])
   const isRegionalDay = isRegionalDayStudy(networkStudy) && regionalRange === 'day'
   const regionalDate = additionalId ? additionalDates[additionalId] : isValais ? valaisDate : isTicino ? ticinoDate : isGraubuenden ? graubuendenDate : undefined
   const regionalPrefix = additionalKey ? `${additionalKey}/` : regionalDate ? `${networkStudy}/${regionalDate}/` : ''
   const regionalAssetUrl = useCallback((path: string) => editionDataUrl(regionalPrefix && !path.startsWith(`${networkStudy}/`) ? `${regionalPrefix}${path}` : path), [regionalPrefix, networkStudy])
   const regionalDay = useProgressiveNetworkDay(regionalPrefix ? `${regionalPrefix}${networkStudy}-day-manifest.json` : isRegionalDayStudy(networkStudy) ? REGIONAL_DAYS[networkStudy] : REGIONAL_DAYS['zvv-region'], isRegionalDay && regionalRetry, networkTime, regionalAssetUrl)
-  const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus, networkTime, editionDataUrl)
+  const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus || postbusVisible, networkTime, editionDataUrl)
   const isNationalDay =
     networkStudy === 'national' && nationalTimeRange === 'day'
   const airDay = useProgressiveAirDay(
@@ -627,7 +636,7 @@ export function App({ edition, suspended = false }: AppProps) {
             ? (nationalDayNetwork ?? nationalNetwork)
             : nationalNetwork
 
-  useEffect(() => { nowMetadata.current = view === 'network' && !isContrast && !airEnabled && !roadEnabled ? baseNetwork?.metadata : undefined }, [view, isContrast, airEnabled, roadEnabled, baseNetwork?.metadata])
+  useEffect(() => { nowMetadata.current = view === 'network' && !isContrast && !airEnabled && !roadEnabled && !postbusVisible ? baseNetwork?.metadata : undefined }, [view, isContrast, airEnabled, roadEnabled, postbusVisible, baseNetwork?.metadata])
   const validLocation = browserLocation.location && withinStudy(browserLocation.location, baseNetwork?.bounds) ? browserLocation.location : undefined
   const unavailableNowTime = !nowActive && nowUnavailable ? nowTime : null
   const [lastUnavailableNowTime, setLastUnavailableNowTime] = useState(unavailableNowTime)
@@ -680,18 +689,41 @@ export function App({ edition, suspended = false }: AppProps) {
   const cogwheelLabel = { en: 'Cogwheel', de: 'Zahnrad', fr: 'Crémaillère', it: 'Cremagliera' }[language]
   const cogwheelCopy = cogwheelLocale?.COGWHEEL_COPY[language] ?? { label: cogwheelLabel, description: cogwheelLabel, placeholder: cogwheelLabel, loading: text.loading, unavailable: text.loading }
   const categoryLabel = useCallback((category: ServiceCategory) => isMountainStudy && category === 'other' ? cogwheelCopy.label : serviceCategoryLabel(language, category), [isMountainStudy, cogwheelCopy.label, language])
-  const network = useMemo(() => unfilteredNetwork && isCogwheel
+  const railNetwork = useMemo(() => unfilteredNetwork && isCogwheel
     ? cogwheelNetwork(unfilteredNetwork, cogwheelCatalogue)
     : unfilteredNetwork && withFrequencyFerryPaths(unfilteredNetwork), [unfilteredNetwork, isCogwheel, cogwheelCatalogue])
+  const network = useMemo(() => {
+    if (!railNetwork || networkStudy !== 'national' || view !== 'network') return railNetwork
+    const buses = postbusVisible ? postbusDay.network : undefined
+    const combined = networkWithTimetableLayer(networkWithRailVisibility(railNetwork, railVisible), buses)
+    if (railVisible || !buses) return combined
+    return { ...combined, metadata: { ...buses.metadata,
+      windowStart: railNetwork.metadata.windowStart, windowEnd: railNetwork.metadata.windowEnd,
+      focusTime: railNetwork.metadata.focusTime,
+    } }
+  }, [railNetwork, networkStudy, view, railVisible, postbusVisible, postbusDay.network])
+  const nationalLayerTripCount = useMemo(() => {
+    if (!postbusVisible || !network || !postbusDay.manifest) return undefined
+    if (!isNationalDay) return network.trains.filter(train => train.end >= network.metadata.windowStart && train.start < network.metadata.windowEnd).length
+    const railTrips = !railVisible ? 0 : isCogwheel ? Object.keys(cogwheelCatalogue?.trips ?? {}).length : nationalDayManifest?.tripCount
+    return railTrips === undefined ? undefined : railTrips + postbusDay.manifest.tripCount
+  }, [postbusVisible, network, postbusDay.manifest, isNationalDay, railVisible, isCogwheel, cogwheelCatalogue, nationalDayManifest])
+  const postbusDescription = postbusDay.error ? text.postbusUnavailable : !postbusDay.chunkReady ? text.loadingPostbus : postbusDay.network?.metadata.geometry
+    ? text.postbusRoadModes.replace('{coverage}', (100 * postbusDay.network.metadata.geometry.matchedSegments / postbusDay.network.metadata.geometry.totalSegments).toFixed(1))
+    : text.postbusModes
+  const postbusDateLabel = postbusDay.manifest ? formatStudyDate(postbusDay.manifest.metadata.serviceDate, LANGUAGE_LOCALES[language]) : ''
+  const timetableRouteColors = useMemo(() => isPostbus || postbusVisible
+    ? { ...(isCogwheel ? COGWHEEL_ROUTE_COLORS : {}), ...POSTBUS_ROUTE_COLORS }
+    : isCogwheel || isMountainStudy ? COGWHEEL_ROUTE_COLORS : undefined, [isPostbus, postbusVisible, isCogwheel, isMountainStudy])
   const hasHeadwayMotion = useMemo(() => network?.trains.some(isHeadwayTrain) ?? false, [network])
   const [frequencyLocale, setFrequencyLocale] = useState<typeof import('./studies/frequency-copy.ts')>()
   useEffect(() => { if (hasHeadwayMotion) void import('./studies/frequency-copy.ts').then(setFrequencyLocale) }, [hasHeadwayMotion])
   const frequencyCopy = frequencyLocale?.FREQUENCY_COPY[language] ?? { label: '≈', mixed: '≈', arrival: '≈', note: '≈', interpolation: '≈' }
   const quietMap = view === 'network' && networkStudy === 'national' &&
-    !sbbEnabled && !airEnabled && !roadEnabled && Boolean(network) && !dataError && webglAvailable
+    !sbbEnabled && !postbusVisible && !airEnabled && !roadEnabled && Boolean(network) && !dataError && webglAvailable
   const activeAirSnapshot = isNationalDay ? airDay.snapshot : airSnapshot
-  const airOnly = view === 'network' && networkStudy === 'national' && airEnabled && !sbbEnabled && !roadEnabled
-  const roadOnly = view === 'network' && networkStudy === 'national' && roadEnabled && !sbbEnabled && !airEnabled
+  const airOnly = view === 'network' && networkStudy === 'national' && airEnabled && !sbbEnabled && !postbusVisible && !roadEnabled
+  const roadOnly = view === 'network' && networkStudy === 'national' && roadEnabled && !sbbEnabled && !postbusVisible && !airEnabled
   const activeAirLoadState: AirLoadState = !airEnabled
     ? 'idle'
     : isNationalDay
@@ -798,8 +830,11 @@ export function App({ edition, suspended = false }: AppProps) {
     [network],
   )
   const routeIndex = useMemo(
-    () => (network ? isPostbus ? postbusRouteIndex(network) : buildRouteIndex(network) : []),
-    [network, isPostbus],
+    () => (network ? isPostbus ? postbusRouteIndex(network) : postbusVisible ? [
+      ...buildRouteIndex({ ...network, trains: network.trains.filter(train => train.category !== 'bus') }),
+      ...postbusRouteIndex({ ...network, trains: network.trains.filter(train => train.category === 'bus') }),
+    ] : buildRouteIndex(network) : []),
+    [network, isPostbus, postbusVisible],
   )
   const trainSearchDocuments = useMemo(
     () =>
@@ -821,13 +856,13 @@ export function App({ edition, suspended = false }: AppProps) {
     const stationTrainIds = selectedStationName
       ? new Set(selectedStation?.trainIds ?? [])
       : undefined
-    if (!railVisible) return []
+    if (!timetableVisible) return []
     return network?.trains.filter((train) =>
       (!selectedCategory || train.category === selectedCategory) &&
       (!stationTrainIds || stationTrainIds.has(train.id)) &&
-      (!selectedRoute || (train.route === selectedRoute.name && train.category === selectedRoute.category)),
+      (!selectedRoute || selectedRoute.trainIds.includes(train.id)),
     ) ?? []
-  }, [network, railVisible, selectedCategory, selectedRoute, selectedStation, selectedStationName])
+  }, [network, timetableVisible, selectedCategory, selectedRoute, selectedStation, selectedStationName])
   const selectionHasHeadwayMotion = useMemo(() => countableTrains.some(isHeadwayTrain), [countableTrains])
   const activeTrainCounter = useMemo(() => createActiveTrainCounter(countableTrains), [countableTrains])
   const activeTrainCount = activeTrainCounter(networkTime)
@@ -855,8 +890,8 @@ export function App({ edition, suspended = false }: AppProps) {
   const sceneNetwork = useMemo(
     () => network && (activePilot
       ? { ...networkWithRailVisibility(network, false), trains: [], metadata: { ...network.metadata, serviceDate: activePilot.metadata.serviceDate, windowStart: activePilot.metadata.windowStart, windowEnd: activePilot.metadata.windowEnd } }
-      : isTerritet && glionJourneyActive ? { ...network, trains: glionNetwork ? network.trains : [] } : (isPilatus || isRochers || isTerritet) && selectedTrain ? { ...network, trains: [selectedTrain] } : isPostbus ? postbusRouteSnapshot(network, selectedRoute) : additionalRegion ? { ...networkWithRailVisibility(network, railVisible), bounds: additionalRegion.bounds } : isTicino ? { ...networkWithRailVisibility(network, railVisible), bounds: ticinoLocale?.TICINO_FOCUS_BOUNDS ?? network.bounds } : networkWithRailVisibility(network, railVisible)),
-    [additionalRegion, network, railVisible, glionNetwork, glionJourneyActive, isTerritet, isRochers, isPilatus, selectedTrain, isPostbus, isTicino, ticinoLocale, selectedRoute, activePilot],
+      : isTerritet && glionJourneyActive ? { ...network, trains: glionNetwork ? network.trains : [] } : (isPilatus || isRochers || isTerritet) && selectedTrain ? { ...network, trains: [selectedTrain] } : isPostbus || postbusVisible ? postbusRouteSnapshot(network, selectedRoute) : additionalRegion ? { ...networkWithRailVisibility(network, railVisible), bounds: additionalRegion.bounds } : isTicino ? { ...networkWithRailVisibility(network, railVisible), bounds: ticinoLocale?.TICINO_FOCUS_BOUNDS ?? network.bounds } : networkWithRailVisibility(network, railVisible)),
+    [additionalRegion, network, railVisible, glionNetwork, glionJourneyActive, isTerritet, isRochers, isPilatus, selectedTrain, isPostbus, postbusVisible, isTicino, ticinoLocale, selectedRoute, activePilot],
   )
   const selectedPosition = useMemo(
     () => (selectedTrain ? positionForTrain(selectedTrain, networkTime) : undefined),
@@ -912,7 +947,7 @@ export function App({ edition, suspended = false }: AppProps) {
     return routeIndex
       .filter((route) =>
         foldSearchText(
-          `${categoryLabel(route.category)} ${route.category.replaceAll('-', ' ')} ${route.name} ${isPostbus ? route.headsigns.join(' ') : ''} ${isCogwheel ? route.trainIds.map(id => cogwheelCatalogue?.routes[cogwheelCatalogue.trips[id]]?.operator ?? '').join(' ') : ''}`,
+          `${categoryLabel(route.category)} ${route.category.replaceAll('-', ' ')} ${route.name} ${isPostbus || postbusVisible ? route.headsigns.join(' ') : ''} ${isCogwheel ? route.trainIds.map(id => cogwheelCatalogue?.routes[cogwheelCatalogue.trips[id]]?.operator ?? '').join(' ') : ''}`,
         ).includes(query),
       )
       .sort(
@@ -923,7 +958,7 @@ export function App({ edition, suspended = false }: AppProps) {
           }),
       )
       .slice(0, 5)
-  }, [categoryLabel, isPostbus, isCogwheel, cogwheelCatalogue, language, routeIndex, searchQuery])
+  }, [categoryLabel, isPostbus, postbusVisible, isCogwheel, cogwheelCatalogue, language, routeIndex, searchQuery])
   const roadSearchResults = useMemo(
     () => searchRoadsWithPilots(roadTopology?.roads ?? roadCatalogue?.SWITZERLAND_ROADS ?? [], searchQuery),
     [roadTopology?.roads, roadCatalogue, searchQuery],
@@ -973,12 +1008,12 @@ export function App({ edition, suspended = false }: AppProps) {
                 (train) => train.category,
               ) ?? []),
             ]
-          : (unfilteredNetwork?.trains.map((train) => train.category) ?? []),
+          : ((postbusVisible ? network : unfilteredNetwork)?.trains.map((train) => train.category) ?? []),
     )
     return SERVICE_CATEGORIES.filter(
       (category) => (category.id !== 'other' || isMountainStudy || Boolean(additionalId)) && present.has(category.id),
     )
-  }, [additionalId, hubCalls, isMountainStudy, isContrast, kientalContrast.network, unfilteredNetwork, view, zurichContrast.network])
+  }, [postbusVisible, network, additionalId, hubCalls, isMountainStudy, isContrast, kientalContrast.network, unfilteredNetwork, view, zurichContrast.network])
 
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
@@ -996,7 +1031,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const handleNetworkTime = useCallback(
     (nextTime: number) => {
       roadHistorySeekRef.current = undefined
-      if (isPostbus || isRegionalDay) postbusSeekRef.current = { time: nextTime, at: performance.now() }
+      if (isPostbus || postbusVisible || isRegionalDay) postbusSeekRef.current = { time: nextTime, at: performance.now() }
       if (
         networkStudy === 'national' &&
         nationalTimeRange === 'day' &&
@@ -1012,6 +1047,7 @@ export function App({ edition, suspended = false }: AppProps) {
     },
     [
       isPostbus,
+      postbusVisible,
       isRegionalDay,
       nationalDayChunks,
       nationalDayManifest,
@@ -1025,12 +1061,12 @@ export function App({ edition, suspended = false }: AppProps) {
     const roadSeek = roadHistorySeekRef.current
     if (roadSeek && !postbusTickFollowsSeek(nextTime, roadSeek.time, (performance.now() - roadSeek.at) / 1000, playbackRate)) return
     roadHistorySeekRef.current = undefined
-    if (!isPostbus && !isRegionalDay) { handleNetworkTime(nextTime); return }
+    if (!isPostbus && !postbusVisible && !isRegionalDay) { handleNetworkTime(nextTime); return }
     const seek = postbusSeekRef.current
     if (seek && !postbusTickFollowsSeek(nextTime, seek.time, (performance.now() - seek.at) / 1000, playbackRate)) return
     postbusSeekRef.current = undefined
     setNetworkTime(nextTime)
-  }, [handleNetworkTime, isPostbus, isRegionalDay, playbackRate])
+  }, [handleNetworkTime, isPostbus, postbusVisible, isRegionalDay, playbackRate])
   useEffect(() => {
     // Resuming may wrap the two-hour study. The paused seek has already been
     // applied, so subsequent scene ticks can own the playback clock again.
@@ -1124,7 +1160,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const selectStation = useCallback((station: StationIndexEntry) => {
     setRigiSequenceActive(false)
     setPilatusJourneyActive(false); setRochersJourneyActive(false); setGlionJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
-    setSbbEnabled(true)
+    if (station.routes.some(route => route.category !== 'bus')) setSbbEnabled(true)
     setAirCategorySelected(false)
     setRoadCategorySelected(false)
     setSelectedAirTrackId(undefined)
@@ -1147,7 +1183,7 @@ export function App({ edition, suspended = false }: AppProps) {
     (route: NetworkRouteIndexEntry) => {
       setRigiSequenceActive(false)
       setPilatusJourneyActive(false); setRochersJourneyActive(false); setGlionJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
-      setSbbEnabled(true)
+      if (route.category !== 'bus') setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
       setSelectedTrainId(undefined)
@@ -1173,7 +1209,7 @@ export function App({ edition, suspended = false }: AppProps) {
       if (!network) return
       setRigiSequenceActive(false)
       setPilatusJourneyActive(false); setRochersJourneyActive(false); setGlionJourneyActive(false); setTerritetJourneyActive(false); setGornergratAscentActive(false); setJungfrauAscentActive(false)
-      setSbbEnabled(true)
+      if (train.category !== 'bus') setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
       const currentTimeIsActive = train.start <= networkTime && train.end >= networkTime
@@ -1228,6 +1264,13 @@ export function App({ edition, suspended = false }: AppProps) {
     },
     [setAirCategorySelected, setSelectedCategory, activeAirSnapshot, airDay.manifest],
   )
+
+  const togglePostbusLayer = useCallback(() => {
+    stopNow()
+    releaseSelection()
+    setSelectedCategory(undefined)
+    setPostbusEnabled(current => !current)
+  }, [stopNow, releaseSelection, setSelectedCategory])
 
   const toggleSbbLayer = useCallback(() => {
     setSbbEnabled((current) => !current)
@@ -1364,6 +1407,7 @@ export function App({ edition, suspended = false }: AppProps) {
       setView('network')
       setSelectedCategory(undefined)
       releaseSelection()
+      if (study !== 'national') setPostbusEnabled(false)
       if (study !== 'national') setAirEnabled(false)
       if (study !== 'national') setAirCategorySelected(false)
       if (study !== 'national') setRoadEnabled(false)
@@ -2057,7 +2101,7 @@ export function App({ edition, suspended = false }: AppProps) {
     [],
   )
 
-  const nowViewSupported = view === 'network' && !airEnabled && !roadEnabled && !selectedTrainId && !directorMode
+  const nowViewSupported = view === 'network' && !airEnabled && !roadEnabled && !postbusVisible && !selectedTrainId && !directorMode
   if (!nowViewSupported && nowActive && nowTime !== null && playbackTime !== nowTime) {
     setNetworkTime(nowTime)
   }
@@ -2190,7 +2234,7 @@ export function App({ edition, suspended = false }: AppProps) {
   }
   const shareStudy = async () => {
     const { studyLinkUrl } = await import('./studies/share-link.ts')
-    const url = studyLinkUrl(window.location.href, activePilot ? { study: 'national', range: 'morning', recording: activePilot.metadata.recordingId, date: activePilot.metadata.serviceDate, time: networkTime } : { study: networkStudy, range: isNationalDay || isRegionalDay ? 'day' : 'morning', date: network?.metadata.serviceDate, time: networkTime, glion: isTerritet && glionNetwork ? glionNetwork?.trains.find(t => t.route === 'R37')?.id : undefined, station: glionJourneyActive ? undefined : selectedStationName, train: glionJourneyActive ? undefined : selectedTrainId })
+    const url = studyLinkUrl(window.location.href, activePilot ? { study: 'national', range: 'morning', recording: activePilot.metadata.recordingId, date: activePilot.metadata.serviceDate, time: networkTime } : { study: networkStudy, postbus: postbusVisible || undefined, sbb: postbusVisible ? sbbEnabled : undefined, range: isNationalDay || isRegionalDay ? 'day' : 'morning', date: network?.metadata.serviceDate, time: networkTime, glion: isTerritet && glionNetwork ? glionNetwork?.trains.find(t => t.route === 'R37')?.id : undefined, station: glionJourneyActive ? undefined : selectedStationName, train: glionJourneyActive ? undefined : selectedTrainId })
     setShareUrl(url)
     setShareCopied(false)
     try { await navigator.clipboard.writeText(url); setShareCopied(true) } catch { /* The visible link can still be copied manually. */ }
@@ -2217,7 +2261,6 @@ export function App({ edition, suspended = false }: AppProps) {
       label: '↔',
       detail: text.contrastNetwork,
     },
-    { value: 'postbus', label: 'PA', detail: text.postbusNetwork },
     ...ADDITIONAL_REGION_IDS.map(id => ({ value: id, label: ADDITIONAL_REGIONS[id].code, detail: additionalLocale?.additionalRegionCopy(language, id).name ?? ADDITIONAL_REGIONS[id].name })),
     { value: 'valais-region', desktop: false, label: 'VS', detail: valaisLabel },
     { value: 'ticino-region', label: 'TI', detail: (ticinoCopy?.network ?? 'Ticino') },
@@ -2240,7 +2283,7 @@ export function App({ edition, suspended = false }: AppProps) {
   ]
   studyOptions.sort((a, b) => studyOrder(a.value) - studyOrder(b.value))
 
-  const linkedNetworkReady = network && (!isRegionalDay || regionalDay.chunkReady) && (!isNationalDay || nationalDayChunkReady) && (!isPostbus || postbusDay.chunkReady) && (networkStudy === 'national' || isPostbus || isRegionalDay || !regionalNetworkLoading)
+  const linkedNetworkReady = network && (!isRegionalDay || regionalDay.chunkReady) && (!isNationalDay || nationalDayChunkReady) && (!(isPostbus || postbusVisible) || postbusDay.chunkReady) && (networkStudy === 'national' || isPostbus || isRegionalDay || !regionalNetworkLoading)
   if (linkPending && linkedNetworkReady && network) {
     setLinkPending(false)
     if (initialLink.date && initialLink.date !== network.metadata.serviceDate) setExploreNotice('dateMismatch')
@@ -2260,6 +2303,7 @@ export function App({ edition, suspended = false }: AppProps) {
   return (
     <main
       data-sbb-enabled={sbbEnabled}
+      data-postbus-enabled={postbusVisible}
       data-cogwheel-enabled={isCogwheel}
       data-quiet-map={quietMap}
       data-quiet-playing={quietMap ? isPlaying : undefined}
@@ -2353,7 +2397,7 @@ export function App({ edition, suspended = false }: AppProps) {
             boundary={boundary}
             lakes={lakes}
             groundStyle={quietMap ? 'quiet' : 'grid'}
-            routeColors={isPostbus ? POSTBUS_ROUTE_COLORS : isCogwheel || isMountainStudy ? COGWHEEL_ROUTE_COLORS : undefined}
+            routeColors={timetableRouteColors}
             snapshot={sceneNetwork}
             trafficOverviewEmphasis={isPostbus ? 0.65 : undefined}
             referenceSnapshot={nationalNetwork}
@@ -2367,9 +2411,9 @@ export function App({ edition, suspended = false }: AppProps) {
                 ? nationalNetwork
                 : undefined
             }
-            stations={railVisible ? stationIndex : []}
+            stations={timetableVisible ? stationIndex : []}
             trainLabelMode={trainLabelMode}
-            isPlaying={isPlaying && !nowActive && (!isPostbus || postbusDay.chunkReady) && (!isRegionalDay || regionalDay.chunkReady)}
+            isPlaying={isPlaying && !nowActive && (!(isPostbus || postbusVisible) || postbusDay.chunkReady) && (!isRegionalDay || regionalDay.chunkReady)}
             userLocation={validLocation}
             time={networkTime}
             selectedTrain={isPilatus || isRochers || isTerritet ? undefined : selectedTrain}
@@ -2683,7 +2727,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 placeholder={
                   additionalId ? additionalCopy?.search : isValais ? (valaisCopy?.valaisPlaceholder ?? 'Valais') : isTicino ? ticinoCopy?.placeholder : isGraubuenden ? graubuendenCopy?.placeholder : isSolothurn ? text.solothurnPlaceholder : isBern ? text.bernPlaceholder : isRiviera ? (rivieraCopy?.placeholder ?? rivieraLabel) : isNyon ? text.nyonPlaceholder : isBasel ? text.baselPlaceholder : isLausanne ? text.lausannePlaceholder : isPilatus ? pilatusCopy?.placeholder ?? 'Pilatus' : isRochers ? rochersCopy?.placeholder ?? 'Rochers' : isTerritet ? territetCopy?.placeholder ?? 'Territet' : isGornergrat ? gornergratCopy?.placeholder ?? 'Gornergrat' : isJungfrau ? jungfrauCopy?.placeholder ?? jungfrauSelect : isRigi ? rigiCopy.placeholder : isCogwheel ? cogwheelCopy.placeholder : isContrast
                     ? text.contrastPlaceholder
-                    : isPostbus ? text.postbusPlaceholder : airEnabled
+                    : isPostbus || postbusVisible ? text.postbusPlaceholder : airEnabled
                       ? text.airSearchPlaceholder
                     : networkStudy === 'national'
                     ? text.nationalPlaceholder
@@ -2773,7 +2817,6 @@ export function App({ edition, suspended = false }: AppProps) {
               {studyOptions.filter(option => option.desktop !== false).map(option => <button
                 key={option.value}
                 type="button"
-                className={option.value === 'postbus' ? 'postbus-study-toggle' : undefined}
                 aria-label={option.ariaLabel ?? option.detail}
                 data-tooltip={option.ariaLabel ?? option.detail}
                 aria-pressed={studyPickerValue === option.value}
@@ -2789,6 +2832,17 @@ export function App({ edition, suspended = false }: AppProps) {
                 onClick={toggleSbbLayer}
               >
                 SBB
+              </button>
+              <button
+                className="postbus-toggle"
+                type="button"
+                data-tooltip={networkStudy !== 'national' ? postbusLayerCopy.unavailable : postbusVisible ? postbusLayerCopy.hide : postbusLayerCopy.show}
+                aria-label={postbusVisible ? postbusLayerCopy.hide : postbusLayerCopy.show}
+                aria-pressed={postbusVisible}
+                disabled={networkStudy !== 'national'}
+                onClick={togglePostbusLayer}
+              >
+                PA
               </button>
               <button
                 className="air-toggle"
@@ -2846,6 +2900,17 @@ export function App({ edition, suspended = false }: AppProps) {
                 SBB
               </button>
               <button
+                className="mobile-postbus-toggle"
+                type="button"
+                data-tooltip={networkStudy !== 'national' ? postbusLayerCopy.unavailable : postbusVisible ? postbusLayerCopy.hide : postbusLayerCopy.show}
+                aria-label={postbusVisible ? postbusLayerCopy.hide : postbusLayerCopy.show}
+                aria-pressed={postbusVisible}
+                disabled={networkStudy !== 'national'}
+                onClick={togglePostbusLayer}
+              >
+                PA
+              </button>
+              <button
                 className="mobile-air-toggle"
                 type="button"
                 data-tooltip={networkStudy !== 'national' ? help.airUnavailable : airEnabled ? text.hideAirLayer : text.showAirLayer}
@@ -2888,7 +2953,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 airEnabled={airEnabled}
                 isCogwheel={isCogwheel}
                 isMountainStudy={isMountainStudy}
-                isPostbus={isPostbus}
+                isPostbus={isPostbus || postbusVisible}
                 isNationalDay={isNationalDay}
                 cogwheelCopy={cogwheelCopy}
                 frequencyCopy={frequencyCopy}
@@ -3060,16 +3125,16 @@ export function App({ edition, suspended = false }: AppProps) {
         >
           <div className="network-count-row">
             <strong>
-              {network && (!isCogwheel || cogwheelCatalogue) && (!isNationalDay || nationalDayChunkReady) && (!isPostbus || postbusDay.chunkReady) && (!isRegionalDay || regionalDay.chunkReady)
+              {network && (!isCogwheel || cogwheelCatalogue) && (!isNationalDay || nationalDayChunkReady) && (!(isPostbus || postbusVisible) || postbusDay.chunkReady) && (!isRegionalDay || regionalDay.chunkReady)
                 ? numberFormat.format(activeTrainCount)
                 : '—'}
             </strong>
             <span>
-              {networkStudy === 'national'
+              {networkStudy === 'national' && !postbusVisible
                 ? text.trainsInMotion
                 : isJungfrau ? jungfrauCopy?.movements : text.vehiclesInMotion}
             </span>
-            {networkStudy === 'national' && (
+            {networkStudy === 'national' && railVisible && (
               <button
                 type="button"
                 className={`operations-badge ${realtimeActive ? 'is-active' : ''}`}
@@ -3116,7 +3181,7 @@ export function App({ edition, suspended = false }: AppProps) {
             )}
           </div>
           <p className="between">
-              {isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${sourceCredit(language, network?.metadata.geometry?.publisher ?? 'SBB')}` : additionalId ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : additionalCopy?.modes : isGraubuenden ? regionalNetworkError ? graubuendenCopy?.unavailable : regionalNetworkLoading ? text.loading : graubuendenCopy?.modes : isValais ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : valaisLabel : isTicino ? regionalNetworkError ? ticinoCopy?.unavailable : regionalNetworkLoading ? text.loading : ticinoCopy?.modes : isSolothurn ? regionalNetworkError ? text.solothurnUnavailable : regionalNetworkLoading ? text.loading : text.solothurnModes : isBern ? regionalNetworkError ? text.bernUnavailable : regionalNetworkLoading ? text.loading : text.bernModes : isRiviera ? regionalNetworkError ? (rivieraCopy?.unavailable ?? exploreCopy.error) : regionalNetworkLoading ? text.loading : rivieraCopy?.modes : isNyon ? regionalNetworkError ? text.nyonUnavailable : regionalNetworkLoading ? text.loading : text.nyonModes : isBasel ? regionalNetworkError ? text.baselUnavailable : regionalNetworkLoading ? text.loading : text.baselModes : isLausanne ? regionalNetworkError ? text.lausanneUnavailable : regionalNetworkLoading ? text.loading : text.lausanneModes : isPilatus ? regionalNetworkError ? pilatusCopy?.unavailable : regionalNetworkLoading ? pilatusCopy?.loading : pilatusCopy?.modes : isRochers ? regionalNetworkError ? rochersCopy?.unavailable : regionalNetworkLoading ? rochersCopy?.loading : rochersCopy?.modes : isTerritet ? regionalNetworkError ? territetCopy?.unavailable : regionalNetworkLoading ? territetCopy?.loading : territetCopy?.modes : isGornergrat ? regionalNetworkError ? gornergratCopy?.unavailable : regionalNetworkLoading ? gornergratCopy?.loading : gornergratCopy?.modes : isJungfrau ? regionalNetworkError ? jungfrauCopy?.unavailable : regionalNetworkLoading ? jungfrauCopy?.loading : jungfrauCopy?.modes : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
+              {postbusVisible && !railVisible ? postbusDescription : isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${sourceCredit(language, network?.metadata.geometry?.publisher ?? 'SBB')}` : additionalId ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : additionalCopy?.modes : isGraubuenden ? regionalNetworkError ? graubuendenCopy?.unavailable : regionalNetworkLoading ? text.loading : graubuendenCopy?.modes : isValais ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : valaisLabel : isTicino ? regionalNetworkError ? ticinoCopy?.unavailable : regionalNetworkLoading ? text.loading : ticinoCopy?.modes : isSolothurn ? regionalNetworkError ? text.solothurnUnavailable : regionalNetworkLoading ? text.loading : text.solothurnModes : isBern ? regionalNetworkError ? text.bernUnavailable : regionalNetworkLoading ? text.loading : text.bernModes : isRiviera ? regionalNetworkError ? (rivieraCopy?.unavailable ?? exploreCopy.error) : regionalNetworkLoading ? text.loading : rivieraCopy?.modes : isNyon ? regionalNetworkError ? text.nyonUnavailable : regionalNetworkLoading ? text.loading : text.nyonModes : isBasel ? regionalNetworkError ? text.baselUnavailable : regionalNetworkLoading ? text.loading : text.baselModes : isLausanne ? regionalNetworkError ? text.lausanneUnavailable : regionalNetworkLoading ? text.loading : text.lausanneModes : isPilatus ? regionalNetworkError ? pilatusCopy?.unavailable : regionalNetworkLoading ? pilatusCopy?.loading : pilatusCopy?.modes : isRochers ? regionalNetworkError ? rochersCopy?.unavailable : regionalNetworkLoading ? rochersCopy?.loading : rochersCopy?.modes : isTerritet ? regionalNetworkError ? territetCopy?.unavailable : regionalNetworkLoading ? territetCopy?.loading : territetCopy?.modes : isGornergrat ? regionalNetworkError ? gornergratCopy?.unavailable : regionalNetworkLoading ? gornergratCopy?.loading : gornergratCopy?.modes : isJungfrau ? regionalNetworkError ? jungfrauCopy?.unavailable : regionalNetworkLoading ? jungfrauCopy?.loading : jungfrauCopy?.modes : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
                 ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus
                   : network?.metadata.geometry
                     ? text.postbusRoadModes.replace('{coverage}', (100 * network.metadata.geometry.matchedSegments / network.metadata.geometry.totalSegments).toFixed(1))
@@ -3150,6 +3215,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 : dataError
                   ? text.scheduleUnavailable
                   : text.scheduledRail}
+              {postbusVisible && <>{railVisible && <> · {postbusDescription}</>}{postbusDateLabel && <> · PA {postbusDateLabel}</>}</>}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
           {isPilatus && pilatusNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startPilatusJourney}>{pilatusCopy?.start} →</button>}
@@ -3174,7 +3240,7 @@ export function App({ edition, suspended = false }: AppProps) {
             <div>
               <span>{text.trips}</span>
               <strong>
-                {isRegionalDay ? regionalDay.manifest ? numberFormat.format(regionalDay.manifest.tripCount) : '—' : isCogwheel ? cogwheelCatalogue ? numberFormat.format(isNationalDay ? Object.keys(cogwheelCatalogue.trips).length : network?.trains.length ?? 0) : '—' : isPostbus ? postbusDay.manifest ? numberFormat.format(postbusDay.manifest.tripCount) : '—' : isNationalDay
+                {postbusVisible ? nationalLayerTripCount === undefined ? '—' : numberFormat.format(nationalLayerTripCount) : isRegionalDay ? regionalDay.manifest ? numberFormat.format(regionalDay.manifest.tripCount) : '—' : isCogwheel ? cogwheelCatalogue ? numberFormat.format(isNationalDay ? Object.keys(cogwheelCatalogue.trips).length : network?.trains.length ?? 0) : '—' : isPostbus ? postbusDay.manifest ? numberFormat.format(postbusDay.manifest.tripCount) : '—' : isNationalDay
                   ? nationalDayManifest
                     ? numberFormat.format(nationalDayManifest.tripCount)
                     : '—'
@@ -3388,7 +3454,7 @@ export function App({ edition, suspended = false }: AppProps) {
             <summary aria-label={text.mapControls}>⌖</summary>
             {mobileMapToolsOpen && <Suspense fallback={null}><DetailCard kind="map-tools" hasSelection={Boolean(selectedTrain || selectedAirTrack)} moveMapCamera={moveMapCamera}
               isCogwheel={isCogwheel} roadCategorySelected={roadCategorySelected} airCategorySelected={airCategorySelected} selectedCategory={selectedCategory}
-              isNational={networkStudy === 'national'} railVisible={railVisible} visibleServiceCategories={visibleServiceCategories} categoryLabel={categoryLabel} serviceColors={serviceColors}
+              isNational={networkStudy === 'national'} railVisible={timetableVisible} visibleServiceCategories={visibleServiceCategories} categoryLabel={categoryLabel} serviceColors={serviceColors}
               isMountainStudy={isMountainStudy} cogwheelLabel={cogwheelCopy.label} airEnabled={airEnabled} roadEnabled={roadEnabled} trainLabelMode={trainLabelMode}
               selectedRoadId={selectedRoadId} roads={roadEnabled ? roadTopology?.roads : undefined} onLabelChange={setTrainLabelMode} text={text}
                   onCategoryChange={(category) => {
@@ -3434,7 +3500,7 @@ export function App({ edition, suspended = false }: AppProps) {
               <TransportIcon mode="cogwheel" />{cogwheelCopy.label}
             </button>
           )}
-          {(isNetwork && !railVisible ? [] : visibleServiceCategories).map((category) => (
+          {(isNetwork && !timetableVisible ? [] : visibleServiceCategories).map((category) => (
               <button
                 key={category.id}
                 type="button"
@@ -3503,7 +3569,7 @@ export function App({ edition, suspended = false }: AppProps) {
           <div className="explore-actions">
             <button type="button" onClick={() => setExploreOpen(true)}>{exploreCopy.browse}</button>
             <button ref={roadRecordingsButton} type="button" onClick={() => setRoadRecordingsOpen(true)}>{text.roadRecordingsTitle}</button>
-            {!isContrast && !airEnabled && !roadEnabled && <button type="button" aria-pressed={nowActive} disabled={!network || (isRegionalDay && !regionalDay.chunkReady) || (isNationalDay && !nationalDayChunkReady)} onClick={nowActive ? stopNow : startNow}>{exploreCopy.now}</button>}
+            {!isContrast && !airEnabled && !roadEnabled && !postbusVisible && <button type="button" aria-pressed={nowActive} disabled={!network || (isRegionalDay && !regionalDay.chunkReady) || (isNationalDay && !nationalDayChunkReady)} onClick={nowActive ? stopNow : startNow}>{exploreCopy.now}</button>}
             {nowActive && <button type="button" onClick={browserLocation.locate} disabled={browserLocation.status === 'locating'}>{exploreCopy.locate}</button>}
             {browserLocation.status !== 'idle' && <button type="button" onClick={clearBrowserLocation}>{exploreCopy.clear}</button>}
             {isRegionalDayStudy(networkStudy) && <button type="button" aria-pressed={isRegionalDay} onClick={() => { stopNow(); setRegionalRange(value => value === 'day' ? 'morning' : 'day'); setNetworkTime(edition.defaultNetworkTime); setRegionalRetry(true) }}>{exploreCopy.day}</button>}
@@ -3820,7 +3886,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 target="_blank"
                 rel="noreferrer"
               >
-                {additionalRegion ? sourceCredit(language, additionalRegion.credit) : isValais || isTicino ? text.mapCredit : isSolothurn ? text.solothurnCredit : isBern ? text.bernCredit : isPostbus || isLausanne || isBasel || isNyon || isRiviera ? `${text.osmCredit} · ODbL` : <>{text.stopGeometry} ·{' '}
+                {additionalRegion ? sourceCredit(language, additionalRegion.credit) : isValais || isTicino ? text.mapCredit : isSolothurn ? text.solothurnCredit : isBern ? text.bernCredit : isPostbus || postbusVisible || isLausanne || isBasel || isNyon || isRiviera ? `${text.osmCredit} · ODbL` : <>{text.stopGeometry} ·{' '}
                 {networkStudy === 'national'
                   ? 'BAV / OFT'
                   : networkStudy === 'geneva-tpg'

@@ -8,7 +8,10 @@ try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 720 } })
     const errors = []; page.on('pageerror', error => errors.push(error.message))
     await page.goto(url)
-    if (study === 'PA') await page.getByRole('button', { name: 'PostBus · all Switzerland · 24 hours', exact: true }).click()
+    if (study === 'PA') {
+      await page.locator('.sbb-toggle').click()
+      await page.locator('.postbus-toggle').click()
+    }
     await page.getByRole('button', { name: /Pause motion/i }).click()
     await page.locator('.scrubber input').fill('27900')
     await page.waitForLoadState('networkidle')

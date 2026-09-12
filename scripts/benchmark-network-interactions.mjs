@@ -8,7 +8,7 @@ try {
   const errors = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto(url)
-  const button = page.getByRole('button', { name: 'PostBus · all Switzerland · 24 hours', exact: true })
+  const button = page.locator('.postbus-toggle')
   await button.click()
   await page.waitForLoadState('networkidle')
   await page.waitForTimeout(2000)
@@ -17,7 +17,7 @@ try {
   await page.evaluate(() => {
     window.__interactionSamples = []
     new PerformanceObserver(list => {
-      for (const event of list.getEntries()) if (event.interactionId && event.target?.matches('.postbus-study-toggle')) {
+      for (const event of list.getEntries()) if (event.interactionId && event.target?.matches('.postbus-toggle')) {
         window.__interactionSamples.push({ interactionId: event.interactionId, name: event.name, duration: event.duration,
           inputDelay: event.processingStart - event.startTime,
           processing: event.processingEnd - event.processingStart })

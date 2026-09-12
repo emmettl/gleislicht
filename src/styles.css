@@ -200,6 +200,7 @@
 .mobile-search-controls,
 .mobile-study-picker,
 .mobile-sbb-toggle,
+.mobile-postbus-toggle,
 .mobile-air-toggle,
 .mobile-road-toggle,
 .mobile-hub-picker,
@@ -1608,6 +1609,7 @@
   }
 
   .mobile-sbb-toggle,
+.mobile-postbus-toggle,
 .mobile-air-toggle,
 .mobile-road-toggle {
     display: flex;
@@ -2125,3 +2127,9 @@
 .masthead-orbital:hover { color: #fff; border-color: #a6f3ea; background: #15333b; }
 .masthead-orbital:focus-visible { outline: 2px solid #a6f3ea; outline-offset: 3px; }
 @media (max-width: 700px) { .experience .train-search { top: var(--masthead-clearance, calc(112px + env(safe-area-inset-top))); } .masthead-orbital { min-height: 44px; margin-top: 4px; padding: 0 10px; font-size: 11px; touch-action: manipulation; } }
+
+.network-study-picker .postbus-toggle,
+.mobile-postbus-toggle { color: #ffcc00; background: #332d16; }
+.network-study-picker .postbus-toggle[aria-pressed='true'],
+.mobile-postbus-toggle[aria-pressed='true'] { color: #fff4bc; background: #5a4819; box-shadow: inset 0 -2px #ffcc00; }
+@media (max-width: 700px) { .mobile-postbus-toggle:disabled { display: none; } }
