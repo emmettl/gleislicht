@@ -8,7 +8,7 @@ National rail, hubs, the cogwheel catalogue, national PostBus, Zürich city, ZVV
 
 `scripts/timetable-calendar.mjs` requires exact dates, national feed agreement, complete national chunk coverage and checksums, source stop identities, and the existing regional geometry/size checks. It builds a rail identity index from the validated movement chunks. A missing tomorrow or a fallback with an older date fails assembly: the existing published release remains available and is never relabelled as current.
 
-Both days are copied into `calendar/YYYY-MM-DD/` inside one immutable R2 release. Top-level aliases remain available to existing consumers. Orbital discovery excludes the calendar copies so preparing tomorrow cannot change its composite weekday policy. The app emits `_timetable-calendar.json` containing the prepared dates, identity checksums, exact immutable data root and configured realtime endpoint.
+Both days are copied into `calendar/YYYY-MM-DD/` inside one immutable R2 release. Top-level aliases remain available to existing consumers. Before replacing live aliases, the build retains the checkout's reviewed weekday inputs under `weekday/YYYY-MM-DD/`. Orbital chooses these when today's aliases are weekend data, or a newer weekday alias when available. Orbital discovery excludes the calendar copies so preparing tomorrow cannot change its composite weekday policy. The app emits `_timetable-calendar.json` containing the prepared dates, identity checksums, exact immutable data root and configured realtime endpoint.
 
 ## Midnight
 

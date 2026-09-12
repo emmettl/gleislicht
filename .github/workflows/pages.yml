@@ -281,6 +281,9 @@ jobs:
         run: npm install --global npm@11.19.0 --ignore-scripts
       - name: Install dependencies
         run: npm ci
+      - name: Preserve reviewed weekday sources for weekend orbital builds
+        run: node scripts/preserve-orbital-weekdays.mjs public/data
+
       - name: Assemble verified timetables
         uses: actions/download-artifact@v8
         with:
