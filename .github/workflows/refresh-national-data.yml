@@ -1,12 +1,12 @@
-name: Refresh national timetable data
+name: Refresh national test fixtures
 
 on:
-  schedule:
-    - cron: '17 5 * * 3,6'
+  # Live data are refreshed and published to R2 by pages.yml. Fixture updates
+  # remain an explicit review operation rather than a second scheduled refresh.
   workflow_dispatch:
     inputs:
       service_date:
-        description: Service day to publish (YYYY-MM-DD)
+        description: Service day for reviewed test fixtures (YYYY-MM-DD)
         required: false
 
 permissions:
@@ -83,9 +83,10 @@ jobs:
       - name: Validate generated artifacts and application
         run: |
           npm run data:validate
+          npm run data:prepare
           npm test
           npm run typecheck
-          npm run build
+          npm run build:fixtures
           npm run check:bundle
 
       - name: Publish validated review branch

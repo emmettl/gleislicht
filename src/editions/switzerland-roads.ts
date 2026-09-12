@@ -1,5 +1,5 @@
 import type { RoadTopologyRoad } from '@motionstudies/core/domain/road'
-import { roads } from '../../public/data/swiss-road-topology.json'
+import { roads } from './switzerland-road-catalogue.json'
 
 // Import only the small catalogue; production builds exclude the geometry and observations.
 // Sharing the topology source keeps names and camera targets in sync on refresh.

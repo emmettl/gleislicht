@@ -78,7 +78,16 @@ if (workers.length !== 1) throw new Error('Expected one bundled trail worker')
 initial.scripts.push(...workers.map(file => `assets/${file}`))
 const javaScript = await totalGzipSize(DIST_DIRECTORY, initial.scripts)
 const css = await totalGzipSize(DIST_DIRECTORY, initial.styles)
-const data = await totalGzipSize(DIST_DIRECTORY, INITIAL_DATA_FILES)
+// Measure the actual pinned first-view payload even when it lives outside dist.
+const remote = (await readdir(DIST_DIRECTORY)).includes('_data-release.json')
+const dataRoot = remote ? JSON.parse(await readFile(resolve(DIST_DIRECTORY, '_data-release.json'), 'utf8')).baseUrl : undefined
+const data = remote
+  ? (await Promise.all(INITIAL_DATA_FILES.map(async file => {
+    const response = await fetch(new URL(file.slice(5), dataRoot), { signal: AbortSignal.timeout(30_000) })
+    if (!response.ok) throw new Error(`Data budget request failed: ${file} HTTP ${response.status}`)
+    return gzipSync(Buffer.from(await response.arrayBuffer()), { level: 9 }).byteLength
+  }))).reduce((sum, size) => sum + size, 0)
+  : await totalGzipSize(DIST_DIRECTORY, INITIAL_DATA_FILES)
 const total = javaScript + css + data
 const measurements = { javaScript, css, data, total }
 

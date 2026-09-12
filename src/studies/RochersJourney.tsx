@@ -1,3 +1,4 @@
+import { editionDataUrl } from '../editions/data-url.ts'
 import {useEffect,useMemo,useRef,useState} from 'react'
 import {formatServiceTime,type NetworkSnapshot} from '@motionstudies/core/domain/network'
 import type {UiLanguage} from '../i18n.ts'
@@ -15,7 +16,7 @@ export default function RochersJourney({network,language,time,onSeek,onFollow,on
  useEffect(()=>{
   if(!terrainWanted || terrainData)return
   const controller=new AbortController()
-  fetch(`${import.meta.env.BASE_URL}data/rochers-ascent-terrain.json`,{signal:controller.signal}).then(response=>{if(!response.ok)throw new Error('Terrain unavailable');return response.json()}).then(value=>setTerrainData({value})).catch(error=>{if(error.name!=='AbortError')setTerrainError(true)})
+  fetch(editionDataUrl('rochers-ascent-terrain.json'),{signal:controller.signal}).then(response=>{if(!response.ok)throw new Error('Terrain unavailable');return response.json()}).then(value=>setTerrainData({value})).catch(error=>{if(error.name!=='AbortError')setTerrainError(true)})
   return()=>controller.abort()
  },[terrainWanted,terrainData,attempt])
  const terrain=useMemo(()=>train && terrainData?bindRochersTerrain(terrainData.value,network,train):undefined,[terrainData,network,train])
