@@ -81,13 +81,27 @@ const css = await totalGzipSize(DIST_DIRECTORY, initial.styles)
 // Measure the actual pinned first-view payload even when it lives outside dist.
 const remote = (await readdir(DIST_DIRECTORY)).includes('_data-release.json')
 const dataRoot = remote ? JSON.parse(await readFile(resolve(DIST_DIRECTORY, '_data-release.json'), 'utf8')).baseUrl : undefined
-const data = remote
-  ? (await Promise.all(INITIAL_DATA_FILES.map(async file => {
-    const response = await fetch(new URL(file.slice(5), dataRoot), { signal: AbortSignal.timeout(30_000) })
-    if (!response.ok) throw new Error(`Data budget request failed: ${file} HTTP ${response.status}`)
-    return gzipSync(Buffer.from(await response.arrayBuffer()), { level: 9 }).byteLength
-  }))).reduce((sum, size) => sum + size, 0)
-  : await totalGzipSize(DIST_DIRECTORY, INITIAL_DATA_FILES)
+const calendar = remote && (await readdir(DIST_DIRECTORY)).includes('_timetable-calendar.json')
+  ? JSON.parse(await readFile(resolve(DIST_DIRECTORY, '_timetable-calendar.json'), 'utf8')) : undefined
+const dataDays = calendar?.days?.length ? calendar.days : [{ prefix: '', date: 'fixture' }]
+const sizes = new Map()
+const dataByDay = await Promise.all(dataDays.map(async day => {
+  if (day.prefix && day.prefix !== `calendar/${day.date}/`) throw new Error('Unsafe budget calendar prefix')
+  const files = INITIAL_DATA_FILES.map(file => file === 'data/swiss-rail-morning.json' ? `data/${day.prefix}swiss-rail-morning.json` : file)
+  const bytes = remote ? (await Promise.all(files.map(file => {
+    if (!sizes.has(file)) sizes.set(file, (async () => {
+      const response = await fetch(new URL(file.slice(5), dataRoot), { signal: AbortSignal.timeout(30_000) })
+      if (!response.ok) throw new Error(`Data budget request failed: ${file} HTTP ${response.status}`)
+      return gzipSync(Buffer.from(await response.arrayBuffer()), { level: 9 }).byteLength
+    })())
+    return sizes.get(file)
+  }))).reduce((sum, size) => sum + size, 0) : await totalGzipSize(DIST_DIRECTORY, files)
+  return { date: day.date, bytes }
+}))
+// Tomorrow must fit the same first-view limit as today's opening scene.
+const data = Math.max(...dataByDay.map(day => day.bytes))
+if (calendar) for (const day of dataByDay) console.log(`  ${day.date} first-view data: ${kibibytes(day.bytes)}`)
+
 const total = javaScript + css + data
 const measurements = { javaScript, css, data, total }
 

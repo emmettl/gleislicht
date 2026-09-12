@@ -40,3 +40,8 @@ public/data/orbital/
 
 # Prepared and verified object-storage releases.
 .data-release/
+
+# Two prepared service days and the verified realtime identity index.
+public/data/calendar/
+public/data/timetable-calendar.json
+public/data/swiss-rail-realtime-index.json

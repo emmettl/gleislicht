@@ -131,3 +131,5 @@ After ingesting the base air study, regenerate the enrichment with `npm run data
 ### Valais / Wallis initial regional study
 
 The **VS** study integrates 5,102 Friday and 3,445 Sunday complete journeys from the pinned September 2026 timetable, reviewed FOT rail and attributed OSM bus matching. Its whole-canton inventory includes 385 annual route records, 78 agencies and all 13 districts. [Study, source investigation and reuse terms](docs/VALAIS-STUDY.md) · [all routes and exclusions](docs/VALAIS-ROUTE-INVENTORY.md). Rebuild with `npm run data:valais`, verify with `npm run data:valais:check`. The two dated fixtures are archival and deliberately partial; they are not part of automatic latest-timetable refresh.
+
+Regular timetable maintenance prepares today and tomorrow together, selects the Swiss service date at runtime, and validates realtime against published trip/stop identities. Hourly public checks report stale or incomplete publication. Reviewed archives remain dated. See [regular refreshes](docs/REGULAR-REFRESHES.md) for scope and the initial Worker rollout.

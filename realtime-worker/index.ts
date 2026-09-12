@@ -1,3 +1,4 @@
+import { ALIGNMENT, matchesTimetable, publishedTimetable } from './timetable.ts'
 import bindings from 'gtfs-realtime-bindings'
 import type {
   RealtimeSnapshot,
@@ -11,7 +12,6 @@ const USER_AGENT = 'gleislicht/0.0.1 (+https://emmettl.github.io/gleislicht/)'
 
 interface Env {
   readonly OPENTRANSPORTDATA_API_KEY: string
-  readonly STATIC_FEED_VERSION: string
   readonly ALLOWED_ORIGINS?: string
   readonly OBSERVATIONS: R2Bucket
 }
@@ -112,6 +112,7 @@ export function normalizeFeed(
     })
   }
   const timestampSeconds = Number(feed.header.timestamp?.toString() ?? 0)
+  if (!Number.isFinite(timestampSeconds) || timestampSeconds <= 0) throw new Error('Upstream feed has no valid timestamp')
   return {
     metadata: {
       kind: 'live',
@@ -129,10 +130,11 @@ export function normalizeFeed(
 }
 
 async function refreshRealtime(env: Env): Promise<void> {
-  if (!env.OPENTRANSPORTDATA_API_KEY || !env.STATIC_FEED_VERSION) {
+  if (!env.OPENTRANSPORTDATA_API_KEY) {
     throw new Error('Realtime feed is not configured')
   }
 
+  const paired = await publishedTimetable(zurichDate())
   const upstream = await fetch(SOURCE_URL, {
     headers: {
       Authorization: `Bearer ${env.OPENTRANSPORTDATA_API_KEY}`,
@@ -147,11 +149,15 @@ async function refreshRealtime(env: Env): Promise<void> {
   }
 
   const receivedAt = new Date().toISOString()
-  const snapshot = normalizeFeed(
+  const raw = normalizeFeed(
     await upstream.arrayBuffer(),
     receivedAt,
-    env.STATIC_FEED_VERSION,
+    paired.index.feedVersion,
   )
+  if (raw.metadata.serviceDate !== paired.index.serviceDate) throw new Error('Service date changed while polling')
+  const age = Date.now() - Date.parse(raw.metadata.generatedAt)
+  if (age < 0 || age > 150_000) throw new Error('Upstream realtime is stale')
+  const snapshot = { ...raw, updates: raw.updates.filter(update => matchesTimetable(update, paired.index)) }
   await env.OBSERVATIONS.put(LATEST_OBJECT_KEY, JSON.stringify(snapshot), {
     httpMetadata: {
       contentType: 'application/json; charset=utf-8',
@@ -160,7 +166,10 @@ async function refreshRealtime(env: Env): Promise<void> {
     customMetadata: {
       generatedAt: snapshot.metadata.generatedAt,
       receivedAt,
-      staticFeedVersion: env.STATIC_FEED_VERSION,
+      alignment: ALIGNMENT,
+      indexSha256: paired.sha256,
+      matchedTrips: String(snapshot.updates.length),
+      staticFeedVersion: paired.index.feedVersion,
       serviceDate: snapshot.metadata.serviceDate,
     },
   })
@@ -169,11 +178,14 @@ async function refreshRealtime(env: Env): Promise<void> {
 async function health(request: Request, env: Env): Promise<Response> {
   const latest = await env.OBSERVATIONS.head(LATEST_OBJECT_KEY)
   if (!latest) {
-    return json({ status: 'waiting' }, 503, request, env)
+    return json({ status: 'waiting', alignment: ALIGNMENT }, 503, request, env)
   }
   return json(
     {
       status: 'ok',
+      alignment: ALIGNMENT,
+      indexSha256: latest.customMetadata?.indexSha256,
+      matchedTrips: Number(latest.customMetadata?.matchedTrips ?? 0),
       generatedAt: latest.customMetadata?.generatedAt,
       receivedAt: latest.customMetadata?.receivedAt,
       staticFeedVersion: latest.customMetadata?.staticFeedVersion,

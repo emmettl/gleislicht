@@ -1,3 +1,4 @@
+import { watchTimetableRollover } from './editions/timetable-rollover.ts'
 import { useUiLanguage } from './use-ui-language.ts'
 import { ADDITIONAL_REGION_IDS, ADDITIONAL_REGIONS, additionalRegionDate, additionalRegionKey, isAdditionalRegion } from './studies/additional-regions.ts'
 import { useUiText } from './use-ui-text.ts'
@@ -313,7 +314,9 @@ export function App({ edition, suspended = false }: AppProps) {
   const browserLocation = useBrowserLocation()
   const clearBrowserLocation = browserLocation.clear
   const networkTime = nowActive && nowTime !== null ? nowTime : playbackTime
+  const nowSession = useRef(false)
   const stopNow = useCallback(() => {
+    nowSession.current = false
     if (nowActive && nowTime !== null) setNetworkTime(nowTime)
     stopNowClock()
     nowRequested.current = false
@@ -323,6 +326,7 @@ export function App({ edition, suspended = false }: AppProps) {
 
   const [hubTime, setHubTime] = useState(edition.defaultHubTime)
   const [networkStudy, setNetworkStudy] = useState<NetworkStudy>(initialLink.study)
+  useEffect(() => watchTimetableRollover(networkStudy, () => nowSession.current), [networkStudy])
   const [nationalTimeRange, setNationalTimeRange] =
     useState<NationalTimeRange>(initialLink.range)
   const [nationalNetwork, setNationalNetwork] = useState<NetworkSnapshot>()
@@ -2110,7 +2114,7 @@ export function App({ edition, suspended = false }: AppProps) {
   }
   // Preserve the displayed time above, then stop the external clock loop.
   useEffect(() => {
-    if (!nowViewSupported) { stopNowClock(); nowRequested.current = false }
+    if (!nowViewSupported) { nowSession.current = false; stopNowClock(); nowRequested.current = false }
   }, [nowViewSupported, nowActive, stopNowClock])
 
   const isNetwork = view === 'network'
@@ -2202,6 +2206,7 @@ export function App({ edition, suspended = false }: AppProps) {
     }
   }, [isNationalDay, nationalDayChunkReady, isRegionalDay, regionalDay.chunkReady, startNowClock])
   const startNow = async () => {
+    nowSession.current = true
     const clock = await import('./studies/swiss-now.ts')
     nowResolver.current = clock
     setNowDate(clock.swissInstant(new Date()).date)
@@ -2220,6 +2225,16 @@ export function App({ edition, suspended = false }: AppProps) {
     setIsPlaying(true)
     if (!nowRequested.current) startNowClock()
   }
+
+  const resumeNow = useRef(new URLSearchParams(window.location.search).get('now') === '1')
+  useEffect(() => {
+    if (resumeNow.current && timelineReady) {
+      resumeNow.current = false
+      void startNow()
+    }
+  })
+
+
   if (pilotLinkPending && linkedPilot) {
     if (!roadEnabled || selectedRoadId !== linkedPilot.road || view !== 'network' || networkStudy !== 'national' || sbbEnabled || airEnabled) {
       setPilotLinkPending(false)

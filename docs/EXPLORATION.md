@@ -52,7 +52,7 @@ Unit and data checks cover clock transitions, representative eligibility, URL va
 
 ## Automatic publication
 
-The existing daily Pages run (03:37 UTC), pushes to `main`, and manual runs now refresh Zürich city, ZVV, Genève and Lausanne alongside national rail and PostBus. A single Swiss civil date feeds both parallel data jobs. The annual source year changes on the second Sunday of December. The committed examples remain deterministic; fresh data are assembled in the publication runner.
+The Pages runs at 03:37 and 18:37 UTC, pushes to `main`, and manual runs refresh Zürich city, ZVV, Genève and Lausanne alongside national rail and PostBus. Each run prepares today and tomorrow in Europe/Zurich, with national and regional jobs for each date. The annual source year changes on the second Sunday of December. The committed examples remain deterministic; fresh data are assembled in the publication runner.
 
 `node scripts/download-regional-sources.mjs /path/sources YYYY-MM-DD` downloads national GTFS, the matching ZVV archive, FOT rail geometry and all TPG line features. TPG retrieval first enumerates IDs, then checks every bounded batch to reject truncated responses. The builder accepts `--source-catalogue /path/sources/sources.json` to retain the exact source URLs and `--output-directory /path/output` for isolated builds. It generates all four full days and derives their 06:45–08:45 morning windows from the same source and geometry. Morning geometry coverage labels refer to the full-day join. Every requested study validates before any output is replaced; intermediate files are removed afterwards.
 
@@ -61,3 +61,5 @@ Each pair must have matching service dates and feed versions. Checks cover twelv
 If a download fails, `node scripts/restore-published-regional-data.mjs /path/output` retrieves and validates the complete published set before writing anything. It retains the original dates, so the existing Now disclosure distinguishes today's timetable from a representative one. For Lausanne’s first deployment, a missing published manifest (404) permits a complete validated committed fixture; missing published chunks do not. Failed generation, invalid fallback data or exceeded budgets stop deployment and leave the current site available. No aircraft, road-recording, Rigi, or contrast fixture is silently advanced to today's date.
 
 The final build regenerates `study-summaries.json` from the actual national, PostBus, regional, Rigi and contrast artifacts. This also updates dates after national recovery or review-branch generation; a summary cannot claim a requested date that its source does not contain.
+
+The [prepared timetable calendar](REGULAR-REFRESHES.md) keeps each session on one immutable date, switches active Now sessions at Swiss midnight, pairs realtime by published trip/stop identities and checks public freshness hourly.

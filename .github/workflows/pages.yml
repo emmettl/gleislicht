@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '37 3 * * *'
+    - cron: '37 3,18 * * *'
   workflow_dispatch:
 
 permissions:
@@ -24,6 +24,8 @@ jobs:
     outputs:
       service_date: ${{ steps.edition.outputs.service_date }}
       timetable_year: ${{ steps.edition.outputs.timetable_year }}
+      tomorrow_date: ${{ steps.edition.outputs.tomorrow_date }}
+      tomorrow_year: ${{ steps.edition.outputs.tomorrow_year }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -133,6 +135,13 @@ jobs:
 
   national:
     needs: check
+    strategy:
+      fail-fast: false
+      matrix:
+        day: [today, tomorrow]
+    env:
+      SERVICE_DATE: ${{ matrix.day == 'today' && needs.check.outputs.service_date || needs.check.outputs.tomorrow_date }}
+      TIMETABLE_YEAR: ${{ matrix.day == 'today' && needs.check.outputs.timetable_year || needs.check.outputs.tomorrow_year }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -155,25 +164,25 @@ jobs:
         continue-on-error: true
         run: |
           curl --fail --location --retry 3 \
-            "https://data.opentransportdata.swiss/en/dataset/timetable-${{ needs.check.outputs.timetable_year }}-gtfs2020/permalink" \
+            "https://data.opentransportdata.swiss/en/dataset/timetable-$TIMETABLE_YEAR-gtfs2020/permalink" \
             --output "$RUNNER_TEMP/swiss-gtfs.zip"
           curl --fail --location --retry 3 \
             "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf" \
             --output "$RUNNER_TEMP/schienennetz_2056_de.xtf"
           unzip -t "$RUNNER_TEMP/swiss-gtfs.zip" >/dev/null
 
-      - name: Build today's Swiss timetable
+      - name: Build the selected day’s Swiss timetable
         if: steps.sources.outcome == 'success'
         run: |
           npm run data:gtfs -- \
             --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
-            --date "${{ needs.check.outputs.service_date }}"
+            --date "$SERVICE_DATE"
           npm run data:day -- \
             --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
-            --date "${{ needs.check.outputs.service_date }}"
+            --date "$SERVICE_DATE"
           npm run data:postbus:national -- \
             --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
-            --date "${{ needs.check.outputs.service_date }}"
+            --date "$SERVICE_DATE"
           npm run data:postbus:roads
           node scripts/audit-postbus.mjs
           npm run data:rail:shapes -- \
@@ -194,7 +203,7 @@ jobs:
       - name: Upload national timetable
         uses: actions/upload-artifact@v7
         with:
-          name: national-timetable
+          name: national-timetable-${{ matrix.day }}
           retention-days: 2
           if-no-files-found: error
           path: |
@@ -208,6 +217,13 @@ jobs:
 
   regional:
     needs: check
+    strategy:
+      fail-fast: false
+      matrix:
+        day: [today, tomorrow]
+    env:
+      SERVICE_DATE: ${{ matrix.day == 'today' && needs.check.outputs.service_date || needs.check.outputs.tomorrow_date }}
+      TIMETABLE_YEAR: ${{ matrix.day == 'today' && needs.check.outputs.timetable_year || needs.check.outputs.tomorrow_year }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -224,8 +240,8 @@ jobs:
       - name: Download regional timetable and geometry sources
         id: sources
         continue-on-error: true
-        run: node scripts/download-regional-sources.mjs "$RUNNER_TEMP/regional-sources" "${{ needs.check.outputs.service_date }}"
-      - name: Build and validate today's regional studies
+        run: node scripts/download-regional-sources.mjs "$RUNNER_TEMP/regional-sources" "$SERVICE_DATE"
+      - name: Build and validate the selected day’s regional studies
         if: steps.sources.outcome == 'success'
         run: |
           npm run data:regional:days -- \
@@ -234,7 +250,7 @@ jobs:
             --tpg "$RUNNER_TEMP/regional-sources/tpg.geojson" \
             --rail "$RUNNER_TEMP/regional-sources/rail.xtf" \
             --source-catalogue "$RUNNER_TEMP/regional-sources/sources.json" \
-            --date "${{ needs.check.outputs.service_date }}" \
+            --date "$SERVICE_DATE" \
             --output-directory "$RUNNER_TEMP/regional-data"
       - name: Retain verified published regions when sources are unavailable
         if: steps.sources.outcome == 'failure'
@@ -244,13 +260,13 @@ jobs:
       - name: Upload regional timetable
         uses: actions/upload-artifact@v7
         with:
-          name: regional-timetable
+          name: regional-timetable-${{ matrix.day }}
           path: ${{ runner.temp }}/regional-data/
           retention-days: 2
           if-no-files-found: error
 
   build:
-    needs: [national, regional, e2e]
+    needs: [check, national, regional, e2e]
     environment: cloudflare-pilot
     runs-on: ubuntu-latest
     steps:
@@ -268,9 +284,19 @@ jobs:
       - name: Assemble verified timetables
         uses: actions/download-artifact@v8
         with:
-          pattern: '*-timetable'
+          pattern: '*-timetable-today'
           merge-multiple: true
           path: public/data
+
+      - name: Assemble tomorrow's timetables
+        uses: actions/download-artifact@v8
+        with:
+          pattern: '*-timetable-tomorrow'
+          merge-multiple: true
+          path: ${{ runner.temp }}/tomorrow-data
+
+      - name: Verify both dates and prepare the timetable calendar
+        run: node scripts/timetable-calendar.mjs public/data "$RUNNER_TEMP/tomorrow-data" "${{ needs.check.outputs.service_date }}"
 
       - name: Verify assembled regional timetables
         run: node scripts/regional-artifacts.mjs public/data
@@ -280,6 +306,7 @@ jobs:
           node scripts/configure-live-pages.mjs \
             --endpoint https://gleislicht-realtime.louis-emmett.workers.dev \
             --snapshot public/data/swiss-rail-morning.json \
+            --calendar src/editions/timetable-calendar.json \
             --github-env "$GITHUB_ENV"
 
       - name: Prepare and publish immutable timetable release
