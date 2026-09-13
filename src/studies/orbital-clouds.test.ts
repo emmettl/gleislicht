@@ -17,7 +17,7 @@ describe('satellite cloud playback', () => {
     const field = { manifest: { ...manifest, columns: 2, rows: 2 }, day: manifest.days[0], values: new Uint8Array([0, 50, 100, 255]) }
     expect(Array.from(cloudTextureFrame(field, 0))).toEqual([0, 0, 0, 255, 127, 0, 0, 255, 255, 0, 0, 255, 0, 0, 0, 0])
   })
-  it('verifies complete, distinct dated source grids and explicit unavailable coverage', () => {
+  it('verifies complete, distinct dated source grids for all three archived days', () => {
     expect(validateCloudManifest(manifest)).toBe(manifest)
     const hashes = new Set<string>()
     for (const day of manifest.days.filter(day => day.available)) {
@@ -28,8 +28,12 @@ describe('satellite cloud playback', () => {
       expect(new Set(bytes).size).toBeGreaterThan(50)
       hashes.add(day.sha256!)
     }
-    expect(hashes.size).toBe(2)
-    expect(manifest.days.find(day => day.date === '2026-09-08')?.available).toBe(false)
+    expect(hashes.size).toBe(3)
+    expect(manifest.days.filter(day => day.available).map(day => day.date)).toEqual(['2026-09-04', '2026-09-06', '2026-09-08'])
+  })
+  it('rejects unavailable days without substituting another date', async () => {
+    const day = { date: '2026-09-09', available: false }
+    await expect(decodeCloudField(new ArrayBuffer(0), manifest, day)).rejects.toThrow('Cloud day unavailable')
   })
   it('decodes the distributed gzip and rejects a wrong integrity hash', async () => {
     const day = manifest.days[0]

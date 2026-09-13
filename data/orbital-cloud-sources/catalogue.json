@@ -1778,10 +1778,10 @@
       47.81
     ],
     "properties": {
-      "datetime": "2026-09-09T04:00:14.762878Z",
+      "datetime": "2026-09-13T04:00:28.107766Z",
       "title": "CH at 08.09.2026",
       "created": "2026-09-07T04:01:41.549865Z",
-      "updated": "2026-09-07T04:01:41.519321Z",
+      "updated": "2026-09-09T12:19:24.951234Z",
       "expires": "2026-11-08T00:11:00Z"
     },
     "stac_extensions": [
@@ -1811,6 +1811,280 @@
         "href": "https://data.geo.admin.ch/browser/index.html#/collections/ch.meteoschweiz.ogd-satellite-derived-grid/items/20260908-ch"
       }
     ],
-    "assets": {}
+    "assets": {
+      "ogd-satellite-derived-grid.msg.alb.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.alb.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:17:29.358438Z",
+        "updated": "2026-09-09T12:17:30.033498Z",
+        "file:checksum": "12205daffb2ef6309cd81f2ca3855fec280945300af8c1febaa3f31b816bc0fe6b50"
+      },
+      "ogd-satellite-derived-grid.msg.alb.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.alb.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:30.220317Z",
+        "updated": "2026-09-09T12:17:32.709404Z",
+        "file:checksum": "122004a3fa7291d925335d3e7c6069b0883cfc199feebe7d10dd2c31933c587a83e4"
+      },
+      "ogd-satellite-derived-grid.msg.cfc.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.cfc.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:17:30.095857Z",
+        "updated": "2026-09-09T12:17:31.480451Z",
+        "file:checksum": "1220f992ddffa6a558959352765a1dc69f36c6b27d73c2c4dadf554a4326cbe26f1d"
+      },
+      "ogd-satellite-derived-grid.msg.cfc.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.cfc.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:27.303036Z",
+        "updated": "2026-09-09T12:17:28.913338Z",
+        "file:checksum": "12201d340a22c0bba05cdb2c12cb23773faee329dc5a570628d4d42e49c2ed3defdc"
+      },
+      "ogd-satellite-derived-grid.msg.cmask.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.cmask.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:30.242239Z",
+        "updated": "2026-09-09T12:17:32.594164Z",
+        "file:checksum": "12208670d56e11b4dbdc59cd52b1586b2e719206c85b0544b6371032a7f9a4f34cc6"
+      },
+      "ogd-satellite-derived-grid.msg.cmaskscore.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.cmaskscore.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:29.868193Z",
+        "updated": "2026-09-09T12:17:31.596644Z",
+        "file:checksum": "12200fc297465a447ab8f7b208cf43bd7fcdc78d4690e1bc0d3330cc10d890e20c43"
+      },
+      "ogd-satellite-derived-grid.msg.ki.h_ch02.lonlat_20260908050000_20260908170000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.ki.h_ch02.lonlat_20260908050000_20260908170000.nc",
+        "created": "2026-09-09T12:17:31.457531Z",
+        "updated": "2026-09-09T12:17:34.393960Z",
+        "file:checksum": "122069964421395dedaa69b13e3f784936afc1d411f31502d1fd863db760d769493e"
+      },
+      "ogd-satellite-derived-grid.msg.lst-pmw.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.lst-pmw.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:31.195751Z",
+        "updated": "2026-09-09T12:17:34.065919Z",
+        "file:checksum": "1220f704bd3f7c7415f4bf1bda96f5189409120bdf22fe99dc2b65f3280bd07e0d4f"
+      },
+      "ogd-satellite-derived-grid.msg.nlr.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.nlr.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:17:29.966051Z",
+        "updated": "2026-09-09T12:17:31.481619Z",
+        "file:checksum": "1220dcb00d6dac5a4bec2529fe85ff54a8ef87390a7867b2189dcd9eb6c996f874ba"
+      },
+      "ogd-satellite-derived-grid.msg.nlr.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.nlr.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:31.290336Z",
+        "updated": "2026-09-09T12:17:32.981792Z",
+        "file:checksum": "122012bbed4180261157a37babad03bc6ed2363aa40d95985cde2ffbaaa40bb36249"
+      },
+      "ogd-satellite-derived-grid.msg.nsr.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.nsr.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:17:29.231016Z",
+        "updated": "2026-09-09T12:17:30.011880Z",
+        "file:checksum": "12200c7a5392051fd83111c2541b754b6c78719670ecc45affb09e28a53426a899b9"
+      },
+      "ogd-satellite-derived-grid.msg.nsr.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.nsr.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:29.359534Z",
+        "updated": "2026-09-09T12:17:31.251109Z",
+        "file:checksum": "122095d4d00d4c971d257c77f8c90484b6dca926c245768b2fd0e2207da8fdf87f81"
+      },
+      "ogd-satellite-derived-grid.msg.pcfc.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.pcfc.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:19:22.615277Z",
+        "updated": "2026-09-09T12:19:23.421797Z",
+        "file:checksum": "12201df1049bf6686d02e283a373483157e4d65230d961a1cc82a9433fc330e2c5e7"
+      },
+      "ogd-satellite-derived-grid.msg.saa.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.saa.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:19:22.616414Z",
+        "updated": "2026-09-09T12:19:24.951234Z",
+        "file:checksum": "1220b35e4b213fc31be5a782d013e64466afed6c27080608acf01ca170816dbc91c5"
+      },
+      "ogd-satellite-derived-grid.msg.sdl.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sdl.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:19:22.678806Z",
+        "updated": "2026-09-09T12:19:23.506207Z",
+        "file:checksum": "12209c7cc350e0f8932c1705d25e84e7941db90cc94945824cd73b9c79a6dbcacea1"
+      },
+      "ogd-satellite-derived-grid.msg.sdl.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sdl.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:19:23.626519Z",
+        "updated": "2026-09-09T12:19:24.397457Z",
+        "file:checksum": "1220cdc0f4b7a9327bfc916f8724374be22b0e23cb2eb892dec64e0c1c02d1a6924c"
+      },
+      "ogd-satellite-derived-grid.msg.siscf.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.siscf.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:19:22.607081Z",
+        "updated": "2026-09-09T12:19:23.403190Z",
+        "file:checksum": "12206c27fba05896d12bad920bbdb045ac00c43abcab75e66088a38b41c8fed0cbef"
+      },
+      "ogd-satellite-derived-grid.msg.siscf.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.siscf.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:19:22.590545Z",
+        "updated": "2026-09-09T12:19:23.716460Z",
+        "file:checksum": "12204dbde95e7d73a120b6d590e769454337eac74cf91a6ef82102c53f129f26a63e"
+      },
+      "ogd-satellite-derived-grid.msg.siscf-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.siscf-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:31.879252Z",
+        "updated": "2026-09-09T12:17:35.293599Z",
+        "file:checksum": "12209b206b81da74dfef0ecbf2775b5e363619cfe51fa1b3fad95396e06f544728ed"
+      },
+      "ogd-satellite-derived-grid.msg.sis.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sis.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:17:31.144278Z",
+        "updated": "2026-09-09T12:17:32.704211Z",
+        "file:checksum": "1220195d67bd585223f66e6f1c1b32c6db8b6f44643f83b8d9ddf1255cf667001187"
+      },
+      "ogd-satellite-derived-grid.msg.sisdif.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdif.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:19:22.589885Z",
+        "updated": "2026-09-09T12:19:23.497070Z",
+        "file:checksum": "1220e0eb4ccdb36ea4fe87cd38573e0b5cbfa82be4a8f4a3b9d27c7865d73bc688d1"
+      },
+      "ogd-satellite-derived-grid.msg.sisdif-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdif-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:32.064798Z",
+        "updated": "2026-09-09T12:17:35.396192Z",
+        "file:checksum": "1220949e5cffc714fcb797f7354365637c877223283290fc82368592491e809fe96b"
+      },
+      "ogd-satellite-derived-grid.msg.sisdircf.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdircf.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:19:22.546757Z",
+        "updated": "2026-09-09T12:19:23.214729Z",
+        "file:checksum": "122031a9043a8074ce800192e372e85e3061de823e68c3ef6e6f4d6459ec34685200"
+      },
+      "ogd-satellite-derived-grid.msg.sisdircf.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdircf.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:19:22.680843Z",
+        "updated": "2026-09-09T12:19:23.953034Z",
+        "file:checksum": "1220601f819898ab0b36445783f61d3b6718b40b5bf6e829a2e4a3df6b9a6932e904"
+      },
+      "ogd-satellite-derived-grid.msg.sisdircf-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdircf-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:37.165884Z",
+        "updated": "2026-09-09T12:17:38.201755Z",
+        "file:checksum": "12205a62ae9b30550001bc4b53079e60422d4590b55cebe6c49635f1b48be5b099ee"
+      },
+      "ogd-satellite-derived-grid.msg.sisdir.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdir.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:17:32.154017Z",
+        "updated": "2026-09-09T12:17:35.192636Z",
+        "file:checksum": "1220ae7a5edb7278af636630a7c0b104dad4f02f9e870b4faea590ca19c53be9a88b"
+      },
+      "ogd-satellite-derived-grid.msg.sisdir.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdir.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:37.138188Z",
+        "updated": "2026-09-09T12:17:38.088122Z",
+        "file:checksum": "1220d7c55aaee35957c83f65497ea2e55fe452f79a14cb828b26616889cdabcfaba1"
+      },
+      "ogd-satellite-derived-grid.msg.sisdir-no-horizon.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdir-no-horizon.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:17:32.059205Z",
+        "updated": "2026-09-09T12:17:34.690162Z",
+        "file:checksum": "1220c8b97b22b6d43d45d61c4c8a9b64d57efecf97c94ce046788f484f543db5bc50"
+      },
+      "ogd-satellite-derived-grid.msg.sisdir-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdir-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:32.176668Z",
+        "updated": "2026-09-09T12:17:35.389384Z",
+        "file:checksum": "1220703ed01c5db4c370afc0923c293e7b4be1494f04df896518121cb19f31a609e0"
+      },
+      "ogd-satellite-derived-grid.msg.sisdni.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdni.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:19:22.620932Z",
+        "updated": "2026-09-09T12:19:23.610337Z",
+        "file:checksum": "12202de77a102452933d6c2f30e784fcc2b14c781471118e29bec816805c3c13a31f"
+      },
+      "ogd-satellite-derived-grid.msg.sisdni-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sisdni-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:17:37.241614Z",
+        "updated": "2026-09-09T12:17:38.178810Z",
+        "file:checksum": "1220062a5e7bee726cb2f609969d33e513077a266410e1b955ba1efdfe4934819b8b"
+      },
+      "ogd-satellite-derived-grid.msg.sis.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sis.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:15:20.826367Z",
+        "updated": "2026-09-09T12:15:22.331358Z",
+        "file:checksum": "122021bbba0717d1dec9db0fcfc6ae8b3eb35a3aec8777d2e80636fe60d1de0ec844"
+      },
+      "ogd-satellite-derived-grid.msg.sis-no-horizon.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sis-no-horizon.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:17:31.421120Z",
+        "updated": "2026-09-09T12:17:34.410506Z",
+        "file:checksum": "122080fc103fb8e5993190d970a04a73b6c88c080ca8b6f345dd313a0f535784072c"
+      },
+      "ogd-satellite-derived-grid.msg.sis-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sis-no-horizon.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:15:20.808875Z",
+        "updated": "2026-09-09T12:15:21.997118Z",
+        "file:checksum": "1220f8690984eec851209af6d19d3c37b764c1a99980798b16cf2d918f0a0868f8ec"
+      },
+      "ogd-satellite-derived-grid.msg.sol.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sol.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:19:22.588563Z",
+        "updated": "2026-09-09T12:19:23.328234Z",
+        "file:checksum": "1220f369e3b3de317660eac3955d2e0b7bef4628feaf9f5aa8475ec36f8c745a26b1"
+      },
+      "ogd-satellite-derived-grid.msg.sol.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sol.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:19:22.602219Z",
+        "updated": "2026-09-09T12:19:23.561282Z",
+        "file:checksum": "1220e838eb47a6fa69e586cb3b780a54a8cec2ed4b55add73c0eaf2dfa892ab059de"
+      },
+      "ogd-satellite-derived-grid.msg.srb.d_ch02.lonlat_20260908000000_20260908000000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.srb.d_ch02.lonlat_20260908000000_20260908000000.nc",
+        "created": "2026-09-09T12:19:22.574822Z",
+        "updated": "2026-09-09T12:19:23.234296Z",
+        "file:checksum": "12207e922526c4170ddb9651c932ea9ef89d30da47d238c1e91358e5b4663b5144a3"
+      },
+      "ogd-satellite-derived-grid.msg.srb.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.srb.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:19:22.605261Z",
+        "updated": "2026-09-09T12:19:23.629226Z",
+        "file:checksum": "12201338187c2fb1cffe2cd55fa18c4fef7715b71fc799ee65840719bf833f78a4c7"
+      },
+      "ogd-satellite-derived-grid.msg.sza.h_ch02.lonlat_20260908000000_20260908230000.nc": {
+        "type": "application/x-netcdf",
+        "href": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-satellite-derived-grid/20260908-ch/ogd-satellite-derived-grid.msg.sza.h_ch02.lonlat_20260908000000_20260908230000.nc",
+        "created": "2026-09-09T12:19:22.627317Z",
+        "updated": "2026-09-09T12:19:23.593539Z",
+        "file:checksum": "12202ac4686ce1bb569d2ab602e6e9f1778873983ad6512c00ae9bdecd6fda821580"
+      }
+    }
   }
 ]
