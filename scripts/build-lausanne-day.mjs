@@ -5,10 +5,10 @@ import { join, dirname, resolve } from 'node:path'
 import { auditLausanneStudy } from './audit-lausanne-study.mjs'
 import { readRegionalDirectory } from './regional-artifacts.mjs'
 
-export async function buildLausanneDay({ archive, railPath, date, output, snapshotPath, mbcSnapshotPath, busCachePath = 'data/lausanne-road-cache.json' }) {
+export async function buildLausanneDay({ archive, railPath, date, output, snapshotPath, mbcSnapshotPath, busCachePath = 'data/lausanne-road-cache.json', busCachePaths = ['data/lausanne-weekly-road-cache.json'] }) {
   const staged = await mkdtemp(join(tmpdir(), 'lausanne-publish-'))
   try {
-    const report = await auditLausanneStudy({ archive, railPath, date, output: staged, snapshotPath, busCachePath, includeMbc: true, mbcSnapshotPath })
+    const report = await auditLausanneStudy({ archive, railPath, date, output: staged, snapshotPath, busCachePath, busCachePaths, includeMbc: true, mbcSnapshotPath })
     assert(report.gate.passed, `Lausanne failed validation: ${report.gate.failures.join('; ')}`)
     for (const name of ['lausanne-region-day-manifest.json', 'lausanne-region-morning.json']) {
       const value = JSON.parse(await readFile(join(staged, name), 'utf8'))

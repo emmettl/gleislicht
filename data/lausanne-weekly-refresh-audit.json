@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "feedVersion": "20260909",
+  "sourceHashes": {
+    "archive": "8d625f4236f30bc8ae1ec742025b5e29d36af9602c6d7055c219a918d49e7a6a",
+    "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+    "snapshot": "2856dc9291521dad0ed21218de5c3e301c7c92956af9fbe67c3e8cfc54da1653",
+    "busCache": "a67d9ec3bd72665a421c6ebb327618a6b3329dc68dd417f1add9fb6901ae3e37",
+    "busCacheSupplement0": "3f0dfe6f24b1c3cf8fa307ae32561a649305d6e114ecab8dc2ac93dea5e27a02",
+    "mbcSnapshot": "c86d6bbe41fbc2b4786ae5a92cd347f0fbf77499f3fbcd1ebdbe907776103443",
+    "mbcBusCache0": "3a7c3479aa3924b3eec3e1f610e205cd62f318611e1dcbbcad543b2ab24839d2",
+    "mbcBusCache1": "c23f977a7aecc53ae995c544c2366840f3b25ef5da836001d50acbbe574bf827",
+    "mbcSupplementGeometry": "ee620ef1bd60797c933c126edbc4d008be7d000cf8b0644a048c0d907696179d"
+  },
+  "cacheSha256": "3f0dfe6f24b1c3cf8fa307ae32561a649305d6e114ecab8dc2ac93dea5e27a02",
+  "serviceDates": [
+    "2026-09-13",
+    "2026-09-14",
+    "2026-09-15",
+    "2026-09-16",
+    "2026-09-17",
+    "2026-09-18",
+    "2026-09-19"
+  ],
+  "patterns": 248,
+  "weeklyBusCoverage": [
+    {
+      "date": "2026-09-13",
+      "trips": 5470,
+      "before": 1,
+      "after": 1,
+      "matched": 92398,
+      "total": 92398,
+      "missing": 0
+    },
+    {
+      "date": "2026-09-14",
+      "trips": 6845,
+      "before": 0.8537083636554935,
+      "after": 1,
+      "matched": 114053,
+      "total": 114053,
+      "missing": 0
+    },
+    {
+      "date": "2026-09-15",
+      "trips": 6854,
+      "before": 0.8479018834866404,
+      "after": 1,
+      "matched": 114150,
+      "total": 114150,
+      "missing": 0
+    },
+    {
+      "date": "2026-09-16",
+      "trips": 6855,
+      "before": 0.8479231995515303,
+      "after": 1,
+      "matched": 114166,
+      "total": 114166,
+      "missing": 0
+    },
+    {
+      "date": "2026-09-17",
+      "trips": 6854,
+      "before": 0.8479018834866404,
+      "after": 1,
+      "matched": 114150,
+      "total": 114150,
+      "missing": 0
+    },
+    {
+      "date": "2026-09-18",
+      "trips": 6854,
+      "before": 0.8479018834866404,
+      "after": 1,
+      "matched": 114150,
+      "total": 114150,
+      "missing": 0
+    },
+    {
+      "date": "2026-09-19",
+      "trips": 5849,
+      "before": 0.8434577317715427,
+      "after": 1,
+      "matched": 99117,
+      "total": 99117,
+      "missing": 0
+    }
+  ],
+  "monday": {
+    "scope": {
+      "description": "Lausanne regional crop plus complete MBC rail and bus journeys through Morges, Bière and Cossonay. Includes the Cossonay funicular; lake services excluded; not canton-wide Vaud coverage.",
+      "extractedTrips": 10522,
+      "candidateTrips": 10515,
+      "excludedTrips": 7,
+      "platforms": 1463,
+      "namedStops": 712,
+      "baseBounds": "6.45,46.48,6.85,46.71",
+      "candidateBounds": {
+        "minLongitude": 6.33631177,
+        "maxLongitude": 6.84271006,
+        "minLatitude": 46.46977962,
+        "maxLatitude": 46.70902375
+      },
+      "completeAgencyIds": [
+        "29",
+        "764",
+        "344"
+      ]
+    },
+    "groups": [
+      {
+        "id": "tl-bus",
+        "trips": 6845,
+        "routes": [
+          "92-1-V-j26-1",
+          "92-13-H-j26-1",
+          "92-16-E-j26-1",
+          "92-17-D-j26-1",
+          "92-18-B-j26-1",
+          "92-19-D-j26-1",
+          "92-2-T-j26-1",
+          "92-20-C-j26-1",
+          "92-21-I-j26-1",
+          "92-24-G-j26-1",
+          "92-25-E-j26-1",
+          "92-3-S-j26-1",
+          "92-31-I-j26-1",
+          "92-32-I-j26-1",
+          "92-33-G-j26-1",
+          "92-35-D-j26-1",
+          "92-36-D-j26-1",
+          "92-38-E-j26-1",
+          "92-4-T-j26-1",
+          "92-41-G-j26-1",
+          "92-42-E-j26-1",
+          "92-44-F-j26-1",
+          "92-45-C-j26-1",
+          "92-46-F-j26-1",
+          "92-47-D-j26-1",
+          "92-48-E-j26-1",
+          "92-49-j26-1",
+          "92-54-B-j26-1",
+          "92-56-A-j26-1",
+          "92-58-C-j26-1",
+          "92-6-Q-j26-1",
+          "92-60-C-j26-1",
+          "92-64-F-j26-1",
+          "92-68-A-j26-1",
+          "92-69-A-j26-1",
+          "92-7-P-j26-1",
+          "92-8-L-j26-1",
+          "92-9-P-j26-1"
+        ],
+        "totalSegments": 114053,
+        "indexedSegments": 114053,
+        "acceptedSegments": 114053,
+        "coverage": 1
+      },
+      {
+        "id": "mbc-bus",
+        "trips": 1237,
+        "routes": [
+          "92-701-j26-1",
+          "92-702-j26-1",
+          "92-703-j26-1",
+          "92-704-j26-1",
+          "92-705-j26-1",
+          "92-724-j26-1",
+          "92-726-j26-1",
+          "92-730-j26-1",
+          "92-735-j26-1",
+          "92-736-D-j26-1",
+          "92-740-j26-1",
+          "92-742-j26-1",
+          "92-750-j26-1",
+          "92-760-j26-1"
+        ],
+        "totalSegments": 21094,
+        "indexedSegments": 21094,
+        "acceptedSegments": 21094,
+        "coverage": 1
+      },
+      {
+        "id": "m1",
+        "trips": 339,
+        "routes": [
+          "91-m1-j26-1"
+        ],
+        "totalSegments": 4570,
+        "indexedSegments": 4570,
+        "acceptedSegments": 4570,
+        "coverage": 1
+      },
+      {
+        "id": "m2",
+        "trips": 763,
+        "routes": [
+          "91-m2-j26-1"
+        ],
+        "totalSegments": 8371,
+        "indexedSegments": 8371,
+        "acceptedSegments": 8371,
+        "coverage": 1
+      },
+      {
+        "id": "leb",
+        "trips": 147,
+        "routes": [
+          "91-20-I-j26-1"
+        ],
+        "totalSegments": 2248,
+        "indexedSegments": 2248,
+        "acceptedSegments": 2248,
+        "coverage": 1
+      },
+      {
+        "id": "mbc-rail",
+        "trips": 106,
+        "routes": [
+          "91-56-A-j26-1",
+          "91-57-j26-1"
+        ],
+        "totalSegments": 1126,
+        "indexedSegments": 1126,
+        "acceptedSegments": 1126,
+        "coverage": 1
+      },
+      {
+        "id": "rail",
+        "trips": 666,
+        "routes": [
+          "91-1-D-j26-1",
+          "91-1-M-j26-1",
+          "91-15-B-j26-1",
+          "91-2-R-j26-1",
+          "91-2Q-Y-j26-1",
+          "91-3-T-j26-1",
+          "91-33-C-j26-1",
+          "91-4-L-j26-1",
+          "91-40-C-j26-1",
+          "91-41-D-j26-1",
+          "91-5-A-j26-1",
+          "91-51-B-j26-1",
+          "91-7-N-j26-1",
+          "91-7-Y-j26-1",
+          "91-8-J-j26-1",
+          "91-9-K-j26-1",
+          "91-90-j26-1",
+          "91-95-j26-1",
+          "91-B-Y-j26-1"
+        ],
+        "totalSegments": 3845,
+        "indexedSegments": 3845,
+        "acceptedSegments": 3845,
+        "coverage": 1
+      },
+      {
+        "id": "cossonay-funicular",
+        "trips": 412,
+        "routes": [
+          "93-200-3-j26-1"
+        ],
+        "totalSegments": 412,
+        "indexedSegments": 412,
+        "acceptedSegments": 412,
+        "coverage": 1
+      }
+    ],
+    "payload": {
+      "manifestGzipBytes": 119822,
+      "morningGzipBytes": 257971,
+      "chunks": [
+        {
+          "id": "00-02",
+          "trips": 332,
+          "gzipBytes": 31749
+        },
+        {
+          "id": "02-04",
+          "trips": 1,
+          "gzipBytes": 275
+        },
+        {
+          "id": "04-06",
+          "trips": 419,
+          "gzipBytes": 40414
+        },
+        {
+          "id": "06-08",
+          "trips": 1442,
+          "gzipBytes": 129178
+        },
+        {
+          "id": "08-10",
+          "trips": 1454,
+          "gzipBytes": 134621
+        },
+        {
+          "id": "10-12",
+          "trips": 1289,
+          "gzipBytes": 123756
+        },
+        {
+          "id": "12-14",
+          "trips": 1322,
+          "gzipBytes": 125730
+        },
+        {
+          "id": "14-16",
+          "trips": 1390,
+          "gzipBytes": 130364
+        },
+        {
+          "id": "16-18",
+          "trips": 1511,
+          "gzipBytes": 139620
+        },
+        {
+          "id": "18-20",
+          "trips": 1449,
+          "gzipBytes": 133287
+        },
+        {
+          "id": "20-22",
+          "trips": 1074,
+          "gzipBytes": 101482
+        },
+        {
+          "id": "22-24",
+          "trips": 835,
+          "gzipBytes": 79690
+        }
+      ]
+    },
+    "gate": {
+      "passed": true,
+      "failures": [],
+      "limits": {
+        "minimumGeometryCoveragePerGroup": 0.95,
+        "maximumEndpointGapMetres": 120,
+        "gzipBytes": {
+          "manifest": 665600,
+          "chunk": 460800,
+          "morning": 1638400
+        }
+      },
+      "publicationStatus": "Technical audit only; visual and hosted verification are recorded separately in docs/LAUSANNE-STUDY.md"
+    }
+  },
+  "matcher": {
+    "schemaVersion": 1,
+    "completed": true,
+    "noTrie": true,
+    "warnings": true,
+    "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+    "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+    "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+    "osmSha256": "2a37a2568a8ebec663fa06eb224c8fc7797504ec6e1861f3d5ea5f931d01cb82",
+    "patternsSha256": "4bc39b633e83cf8c1dbd820b80943e660edb960d21bdff45998413a8af625100",
+    "logSha256": "494bf5bf53c94e9e8858f82aec887b99f8d6ae95cb0119936f453cfbca3b6da7",
+    "shapesSha256": "7d7788e18a86839a3f2e79922cbe6ba1d8cf663a515f2a71ceacc13f4ef43b3d",
+    "tripsSha256": "24471dc722ec9c9701a9f1230d1325fac434e28a27fb829477424057c716014d",
+    "stopTimesSha256": "a1986030d0f9d502d7e019fbeb49da749d83e4d1666471812aef3c805e68072a",
+    "elapsedSeconds": 22
+  }
+}

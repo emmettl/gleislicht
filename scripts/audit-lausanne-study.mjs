@@ -99,14 +99,14 @@ export function summarizeLausanneGeometry(snapshot, routes, includeMbc = false) 
 
 export function lausanneTechnicalGate(groups, payload) {
   return [
-    ...groups.filter(group => !group.trips || group.coverage < 0.95).map(group => `${group.id}: requires services and at least 95% geometry with endpoints within 120 m`),
+    ...groups.filter(group => !group.trips || group.coverage < 0.95).map(group => `${group.id}: ${(group.coverage * 100).toFixed(2)}% geometry; requires services and at least 95% geometry with endpoints within 120 m`),
     ...(payload.manifestGzipBytes > GZIP_LIMITS.manifest ? ['Manifest exceeds existing regional budget'] : []),
     ...(payload.morningGzipBytes > GZIP_LIMITS.morning ? ['Morning exceeds existing regional budget'] : []),
     ...payload.chunks.filter(chunk => chunk.gzipBytes > GZIP_LIMITS.chunk).map(chunk => `${chunk.id} exceeds existing regional chunk budget`),
   ]
 }
 
-export async function auditLausanneStudy({ archive, railPath, date, output, busCachePath, snapshotPath, prepareBusFeed = false, includeMbc = false, mbcSnapshotPath, mbcBusCachePaths = MBC_BUS_CACHES }) {
+export async function auditLausanneStudy({ archive, railPath, date, output, busCachePath, busCachePaths = [], snapshotPath, prepareBusFeed = false, includeMbc = false, mbcSnapshotPath, mbcBusCachePaths = MBC_BUS_CACHES }) {
   serviceDate(date)
   const workspace = await mkdtemp(join(tmpdir(), 'gleislicht-lausanne-'))
   try {
@@ -161,7 +161,7 @@ export async function auditLausanneStudy({ archive, railPath, date, output, busC
     const baselineRail = applyRailGeometry({ ...snapshot, trains: railTrains }, rail)
     const baselineRailGroups = summarizeLausanneGeometry({ ...snapshot, ...baselineRail }, routes, includeMbc).filter(group => !group.id.endsWith('-bus'))
     const busTrains = snapshot.trains.filter(train => train.category === 'bus')
-    const cachePaths = [...(busCachePath ? [busCachePath] : []), ...(includeMbc ? mbcBusCachePaths : [])]
+    const cachePaths = [...(busCachePath ? [busCachePath] : []), ...busCachePaths, ...(includeMbc ? mbcBusCachePaths : [])]
     const caches = await Promise.all(cachePaths.map(async path => JSON.parse(await readFile(path, 'utf8'))))
     const cache = caches.length > 1 ? combineRoadCaches(caches) : caches[0]
     if (cache) {
@@ -182,7 +182,7 @@ export async function auditLausanneStudy({ archive, railPath, date, output, busC
     const railPairs = new Set(railTrains.flatMap(train => train.stops.slice(1).map(([to], index) => [train.stops[index][0], to].sort((a, b) => a - b).join(':'))))
     snapshot.edgePaths = snapshot.edges.map(([a, b], i) => funicularGeometry.edgePaths[i] !== null ? funicularGeometry.edgePaths[i] + offset + busGeometry.paths.length : busGeometry.edgePaths[i] !== null ? busGeometry.edgePaths[i] + offset : railPairs.has(`${a}:${b}`) ? railGeometry.edgePaths[i] : null)
     snapshot.metadata.note = 'AUDIT CANDIDATE. Scheduled motion; frequency-based services are representative. Rail and métro stops project onto their matched FOT corridors with short platform connectors. Bus paths are OSM/pfaedle inferences, not operator-verified routes. Unmatched segments retain stop interpolation. Not approved for publication.'
-    const sourceHashes = { archive: await fileHash(archive), rail: await fileHash(railPath), snapshot: await fileHash(rawPath), ...(busCachePath ? { busCache: await fileHash(busCachePath) } : {}), ...(mbc ? { mbcSnapshot: await fileHash(mbcPath), ...Object.fromEntries(await Promise.all(mbcBusCachePaths.map(async (path, i) => [`mbcBusCache${i}`, await fileHash(path)]))) } : {}) }
+    const sourceHashes = { archive: await fileHash(archive), rail: await fileHash(railPath), snapshot: await fileHash(rawPath), ...(busCachePath ? { busCache: await fileHash(busCachePath) } : {}), ...Object.fromEntries(await Promise.all(busCachePaths.map(async (path, i) => [`busCacheSupplement${i}`, await fileHash(path)]))), ...(mbc ? { mbcSnapshot: await fileHash(mbcPath), ...Object.fromEntries(await Promise.all(mbcBusCachePaths.map(async (path, i) => [`mbcBusCache${i}`, await fileHash(path)]))) } : {}) }
     if (mbcSource) {
       sourceHashes.mbcSupplementGeometry = mbcSource.sha256
       snapshot.metadata.funicularGeometry = { publisher: mbcSource.source.publisher, sourceUrl: mbcSource.source.sourceUrl, license: mbcSource.source.license, sha256: mbcSource.sha256, model: 'Platform projection onto the isolated OSM Cossonay funicular track, with inferred passing-loop track selection', matchedSegments: funicularGeometry.matchedSegments, totalSegments: funicularGeometry.totalSegments, maximumSnapMetres: Math.max(...funicularGeometry.projectionAudit.snaps.map(s => s.snapMetres ?? 0)), wayIds: osmSegments(mbcSource.source).filter(s => s.tags.railway === 'funicular').map(s => s.id) }
@@ -229,7 +229,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     for (const name of ['archive', 'rail', 'date', 'output-directory']) assert(arg(name), `Missing --${name}`)
     const output = resolve(arg('output-directory'))
     assert(output !== resolve('public') && !output.startsWith(resolve('public') + '/'), 'Audit candidates must remain outside public/')
-    const report = await auditLausanneStudy({ archive: resolve(arg('archive')), railPath: resolve(arg('rail')), date: arg('date'), output, busCachePath: arg('bus-cache'), snapshotPath: arg('snapshot'), prepareBusFeed: process.argv.includes('--prepare-bus-feed'), includeMbc: process.argv.includes('--include-mbc'), mbcSnapshotPath: arg('mbc-snapshot') })
+    const report = await auditLausanneStudy({ archive: resolve(arg('archive')), railPath: resolve(arg('rail')), date: arg('date'), output, busCachePath: arg('bus-cache'), busCachePaths: process.argv.flatMap((value, i) => value === '--bus-cache-supplement' ? [process.argv[i + 1]] : []), snapshotPath: arg('snapshot'), prepareBusFeed: process.argv.includes('--prepare-bus-feed'), includeMbc: process.argv.includes('--include-mbc'), mbcSnapshotPath: arg('mbc-snapshot') })
     console.log(JSON.stringify({ scope: report.scope, groups: report.groups.map(({ issues: _issues, routes, ...group }) => ({ ...group, routes: routes.length })), payload: report.payload, gate: report.gate }, null, 2))
     if (process.argv.includes('--check') && !report.gate.passed) process.exitCode = 1
   }
