@@ -12,5 +12,5 @@ type Props = Omit<ComponentProps<typeof AirportHeroCard>, 'departures' | 'arriva
 }
 export default function AirportCard({ language, aircraft, ...props }: Props) {
   const movements = useMemo(() => airportBoardMovements(aircraft, props.airport), [aircraft, props.airport])
-  return <AirportHeroCard {...props} {...movements} labels={AIRPORT_LABELS[language]} note={<><a href="https://www.adsb.lol/docs/open-data/historical/">ADSB.lol</a> · ODbL · <a href="https://ourairports.com/data/">OurAirports</a> · {AIRPORT_NOTES[language]}</>} />
+  return <AirportHeroCard {...props} {...movements} density="compact" labels={AIRPORT_LABELS[language]} note={<><a href="https://www.adsb.lol/docs/open-data/historical/">ADSB.lol</a> · ODbL · <a href="https://ourairports.com/data/">OurAirports</a> · {AIRPORT_NOTES[language]}</>} />
 }

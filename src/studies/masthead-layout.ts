@@ -44,13 +44,20 @@ export function observePlayback(controls: HTMLElement | null) {
     const bottom = Number.parseFloat(getComputedStyle(controls).bottom) || 0
     shell.style.setProperty('--playback-clearance', `${controls.offsetHeight + bottom + 12}px`)
   }
-  const observer = new ResizeObserver(measure)
+  // Footer measurement can change the playback bottom inset in the same
+  // observer delivery. Read it next frame, after those CSS variables settle.
+  let frame = 0
+  const observer = new ResizeObserver(() => {
+    cancelAnimationFrame(frame)
+    frame = requestAnimationFrame(measure)
+  })
   observer.observe(controls)
   observer.observe(shell)
   const footer = shell.querySelector('footer')
   if (footer) observer.observe(footer)
   measure()
   return () => {
+    cancelAnimationFrame(frame)
     observer.disconnect()
     shell.style.removeProperty('--playback-clearance')
   }

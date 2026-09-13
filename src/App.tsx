@@ -2335,7 +2335,7 @@ export function App({ edition, suspended = false }: AppProps) {
       data-cogwheel-enabled={isCogwheel}
       data-quiet-map={quietMap}
       data-quiet-playing={quietMap ? isPlaying : undefined}
-      className={`experience view-${view}${isJungfrau ? ' jungfrau-study' : ''}${isGornergrat ? ' gornergrat-study' : ''}${isTerritet ? ' territet-study' : ''}${isRochers ? ' rochers-study' : ''}${isPilatus ? ' pilatus-study' : ''}${timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow || glionTerrainWindow || territetTerrainWindow ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience ms-study-layout view-${view}${isJungfrau ? ' jungfrau-study' : ''}${isGornergrat ? ' gornergrat-study' : ''}${isTerritet ? ' territet-study' : ''}${isRochers ? ' rochers-study' : ''}${isPilatus ? ' pilatus-study' : ''}${timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow || glionTerrainWindow || territetTerrainWindow ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -3066,7 +3066,7 @@ export function App({ edition, suspended = false }: AppProps) {
       ) : isNetwork && isContrast ? (
         <Suspense fallback={null}><DetailCard kind="ContrastCard" zurichReady={zurichContrast.chunkReady} kientalReady={kientalContrast.chunkReady} zurichContrastActiveCount={zurichContrastActiveCount} kientalContrastActiveCount={kientalContrastActiveCount} error={Boolean(zurichContrast.error || kientalContrast.error)} loading={zurichContrast.loading || kientalContrast.loading} enterKientalCorridor={enterKientalCorridor} numberFormat={numberFormat} language={language} text={text} /></Suspense>
       ) : isNetwork && selectedAirport ? (
-        <Suspense fallback={null}><AirportHeroCard key={selectedAirport.id} className="edition-airport-card"
+        <Suspense fallback={null}><AirportHeroCard key={selectedAirport.id} className="edition-airport-card ms-study-panel"
           airport={selectedAirport} language={language} aircraft={isNationalDay ? airDay.manifest?.aircraft ?? [] : activeAirSnapshot?.tracks ?? []}
           study={{ time: networkTime, windowStart: Math.max(network?.metadata.windowStart ?? 0, activeAirSnapshot?.metadata.windowStart ?? 0), windowEnd: Math.min(network?.metadata.windowEnd ?? 86400, activeAirSnapshot?.metadata.windowEnd ?? 86400) }}
           maxRows={4} dateLabel="04.09.2026"
