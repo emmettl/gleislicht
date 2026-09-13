@@ -17,7 +17,7 @@ import { createActiveTrainCounter, orderTrainSearchMatches, trainSearchResults }
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_CATEGORY_COLORS } from './studies/postbus.ts'
 import { TransportIcon } from './TransportIcon.tsx'
 import { PlaybackOptions } from './studies/PlaybackOptions.tsx'
-import { observeFooter, observeMasthead } from './studies/masthead-layout.ts'
+import { observeFooter, observeMasthead, observePlayback } from './studies/masthead-layout.ts'
 import { studyOrder } from './studies/study-order.ts'
 import {
   lazy,
@@ -3500,7 +3500,7 @@ export function App({ edition, suspended = false }: AppProps) {
 
       {roadRecordingsOpen && <Suspense fallback={null}><CantonalRecordingPicker language={language} recording={activePilot?.metadata.recordingId} onClose={() => { setRoadRecordingsOpen(false); roadRecordingsButton.current?.focus() }} /></Suspense>}
       {exploreOpen && <Suspense fallback={null}><StudyBrowser language={language} study={networkStudy} onClose={() => setExploreOpen(false)} onSelect={id => { setRegionalRange('day'); selectNetworkStudy(id, 'day'); setExploreOpen(false) }} /></Suspense>}
-      <section className="transport" aria-label={text.playbackControls}>
+      <section className="transport" aria-label={text.playbackControls} ref={observePlayback}>
         {(isValais || isTicino || isGraubuenden) && <a className="mobile-map-attribution" href={editionDataUrl(`${networkStudy}/sources.json`)} target="_blank" rel="noreferrer">{text.mapCredit}</a>}
         {isSolothurn && <a className="mobile-map-attribution" href={editionDataUrl('solothurn-region/sources.json')} target="_blank" rel="noreferrer">{text.solothurnCredit}</a>}
         {isBern && <span className="mobile-map-attribution"><a href="https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct" target="_blank" rel="noreferrer">{text.bernCredit}</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">{text.osmCredit}</a> · <a href={editionDataUrl('bern-region/sources.json')} target="_blank" rel="noreferrer">© FOT / BAV</a></span>}
