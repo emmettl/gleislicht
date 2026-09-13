@@ -57,6 +57,28 @@ class PublicationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Invalid immutable'):
             publisher.stage_artifact(self.archive(pointer=pointer), self.root / 'assets', self.run)
 
+    def test_pointer_verification_identifies_the_publisher_and_checks_browser_access(self):
+        from unittest.mock import patch
+        pointer = {'schemaVersion': 1, 'id': 'a' * 64, 'baseUrl': 'https://data.motionstudies.app/gleislicht/releases/' + 'a' * 64 + '/'}
+
+        def response_for(request, **kwargs):
+            self.assertEqual(request.get_header('User-agent'), 'Gleislicht-Hosting-CI/1.0')
+            self.assertEqual(request.get_header('Origin'), 'https://motionstudies.app')
+            response = io.BytesIO(json.dumps(pointer).encode())
+            response.headers = {'Access-Control-Allow-Origin': '*'}
+            return response
+
+        with patch.object(publisher.urllib.request, 'urlopen', side_effect=response_for):
+            publisher.verify_data_pointer(pointer)
+
+        def inaccessible_response(request, **kwargs):
+            response = response_for(request, **kwargs)
+            response.headers = {}
+            return response
+
+        with patch.object(publisher.urllib.request, 'urlopen', side_effect=inaccessible_response), self.assertRaisesRegex(ValueError, 'incomplete or inaccessible'):
+            publisher.verify_data_pointer(pointer)
+
     def test_rejects_mixed_external_and_bundled_data(self):
         pointer = {'schemaVersion': 1, 'id': 'a' * 64, 'baseUrl': 'https://data.motionstudies.app/gleislicht/releases/' + 'a' * 64 + '/'}
         extra = tarfile.TarInfo('data/chunk.json')
