@@ -16,10 +16,13 @@ async function renderedTarget(page: Page, kind: 'station' | 'train', touch: bool
     const { scene, camera, gl } = root.store.getState() as RootState
     const moduleUrl = '/src/studies/map-selection.ts'
     const { pickMapTarget } = await import(moduleUrl) as typeof import('../src/studies/map-selection.ts')
+    const metadataUrl = performance.getEntriesByType('resource').find(entry => entry.name.includes('scene-picking'))?.name
+    if (!metadataUrl) return
+    const { scenePickMetadata } = await import(metadataUrl) as typeof import('@motionstudies/three/scene-picking')
     const rect = gl.domElement.getBoundingClientRect()
     const stations = new Map<number, StationIndexEntry>()
     scene.traverseVisible(object => {
-      const target = object.userData.pickTarget
+      const target = scenePickMetadata(object)?.target
       if (target?.kind === 'station') for (const index of target.value.stopIndexes) stations.set(index, target.value)
     })
     const candidates: { x: number; y: number; text: string }[] = []
@@ -37,15 +40,16 @@ async function renderedTarget(page: Page, kind: 'station' | 'train', touch: bool
     }
     scene.traverseVisible(object => {
       const sprite = object as THREE.Sprite
-      if (kind === 'station' && sprite.isSprite && sprite.userData.pickTarget?.kind === kind) {
+      const target = scenePickMetadata(sprite)?.target
+      if (kind === 'station' && sprite.isSprite && target?.kind === 'station') {
         const position = sprite.position.clone()
         const right = position.clone().set(1, 0, 0).applyQuaternion(camera.quaternion)
         position.addScaledVector(right, sprite.scale.x * (0.5 - sprite.center.x))
-        add(position, sprite.userData.pickTarget.value.name)
+        add(position, target.value.name)
       }
       const points = object as THREE.Points
-      if (kind === 'train' && points.isPoints && points.geometry.userData.pickTrains) {
-        const trains = points.geometry.userData.pickTrains
+      const trains = points.isPoints ? scenePickMetadata(points.geometry)?.trains : undefined
+      if (kind === 'train' && trains) {
         for (let index = 0; index < points.geometry.drawRange.count; index++) {
           const train = trains[index]
           if (!train) continue

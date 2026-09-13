@@ -11,10 +11,8 @@ export function gleislichtSelectionRenderer(): Plugin {
         if (code.split(before).length !== count + 1) throw new Error(`Gleislicht selection hook needs review: ${before}`)
         code = code.replaceAll(before, after)
       }
-      replace('sprite.position.copy(label.position);',
-        "sprite.position.copy(label.position);\n            sprite.userData.pickTarget = { kind: 'station', value: label.station };")
       replace('sprite.position.set(candidate.position[0], elevation + comparisonOffset, candidate.position[2]);',
-        "sprite.position.set(...candidate.position);\n            sprite.center.set(0.5, 0.5 + labelOffset / screenHeight);\n            sprite.userData.pickTarget = { kind: 'train', value: candidate.train };")
+        "sprite.position.set(...candidate.position);\n            sprite.center.set(0.5, 0.5 + labelOffset / screenHeight);")
       // World-space lift becomes hundreds of pixels in city views. Keep map
       // overlays on one surface; renderOrder already provides their layering.
       replace('const STATION_SURFACE_Y = 0.035;', 'const STATION_SURFACE_Y = 0.005;')
@@ -41,16 +39,12 @@ export function gleislichtSelectionRenderer(): Plugin {
                 : candidate.comparisonIndex === 0
                     ? -0.22
                     : 0.22;\n`, '')
-      replace('const offset = activeCounts[markerKind] * 3;',
-        'const offset = activeCounts[markerKind] * 3;\n            (mutableGeometry.userData.pickTrains ??= [])[activeCounts[markerKind]] = train;')
-      replace('mutableColors[offset] = color.r * intensity;',
-        'if (intensity < 0.1) mutableGeometry.userData.pickTrains[activeCounts[markerKind]] = undefined;\n            mutableColors[offset] = color.r * intensity;')
       // Regional studies render a separate national context graph. Its stop
       // indexes belong to another snapshot and must not select regional stops.
       replace('function RailGraph({ snapshot,', 'function RailGraph({ snapshot, pickable = true,')
       replace('_jsx(RailGraph, { snapshot: props.contextSnapshot,', '_jsx(RailGraph, { snapshot: props.contextSnapshot, pickable: false,')
       replace('setScenePickMetadata(geometry, { stopIndexes: projectedStops.map((_, index) => index) });\n        return geometry;\n    }, [projectedStops]);',
-        'setScenePickMetadata(geometry, pickable ? { stopIndexes: projectedStops.map((_, index) => index) } : undefined);\n        geometry.userData.pickStops = pickable ? projectedStops.map((_, index) => index) : undefined;\n        return geometry;\n    }, [projectedStops, pickable]);')
+        'setScenePickMetadata(geometry, pickable ? { stopIndexes: projectedStops.map((_, index) => index) } : undefined);\n        return geometry;\n    }, [projectedStops, pickable]);')
       // Fixed world-size meshes overwhelm GE/ZH. Preserve overview sizes, but
       // cap the station ring at 10px and the pulsing train core at ~4px radius.
       replace('function SelectedStationRoutes({ station, snapshot, projectedStops, projectedPaths, selectedCategory, }) {',

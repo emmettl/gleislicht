@@ -23,7 +23,7 @@ export function pickAirportTarget(scene: THREE.Scene, camera: THREE.Camera,
   let label: { airport: StudyAirport; order: number } | undefined
   scene.traverseVisible(object => {
     const target = scenePickMetadata(object)?.target
-    const airport = target?.kind === 'airport' ? target.value : object.userData.pickAirport as StudyAirport | undefined
+    const airport = target?.kind === 'airport' ? target.value : undefined
     if (!airport) return
     if (object instanceof THREE.Sprite) {
       if (!object.material.visible || object.material.opacity < 0.1) return
@@ -56,7 +56,8 @@ export function pickMapTarget(scene: THREE.Scene, camera: THREE.Camera,
   let label: { target: MapSelection; order: number } | undefined
   scene.traverseVisible(object => {
     if (object instanceof THREE.Sprite) {
-      const target = object.userData.pickTarget as MapSelection | undefined
+      // Road badges are edition-owned; shared train/station labels expose public metadata.
+      const target = scenePickMetadata(object)?.target ?? object.userData.pickTarget as MapSelection | undefined
       if (!target || (roadsOnly && target.kind !== 'road') || !object.material.visible || object.material.opacity < 0.1) return
       if (ray.intersectObject(object, false).length && (!label || object.renderOrder > label.order)) {
         label = { target, order: object.renderOrder }
@@ -84,7 +85,8 @@ export function pickMapTarget(scene: THREE.Scene, camera: THREE.Camera,
     if (roadsOnly) return
     if (!(object instanceof THREE.Points || object instanceof THREE.Mesh)) return
     const geometry = object.geometry
-    const { pickTrains, pickStops } = geometry.userData
+    const metadata = scenePickMetadata(geometry)
+    const pickTrains = metadata?.trains, pickStops = metadata?.stopIndexes
     if (!pickTrains && !pickStops) return
     const material = object.material
     if (Array.isArray(material) || !material.visible || material.opacity < 0.01) return
@@ -101,7 +103,8 @@ export function pickMapTarget(scene: THREE.Scene, camera: THREE.Camera,
     const end = Math.min(positions.count, geometry.drawRange.start + geometry.drawRange.count)
     for (let index = geometry.drawRange.start; index < end; index++) {
       const train = pickTrains?.[index] as NetworkTrain | undefined
-      const station = stations.get(pickStops?.[index])
+      const stopIndex = pickStops?.[index]
+      const station = stopIndex === undefined ? undefined : stations.get(stopIndex)
       if (!train && !station) continue
       point.fromBufferAttribute(positions, index).applyMatrix4(object.matrixWorld).project(camera)
       if (!Number.isFinite(point.x + point.y + point.z) || point.z < -1 || point.z > 1) continue
