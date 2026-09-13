@@ -24,8 +24,6 @@ const RoadTrafficLayer = props => _jsx(RoadSuspense, { fallback: null, children:
         if (code.split(before).length !== count + 1) throw new Error(`Gleislicht road hook needs review: ${before}`)
         code = code.replaceAll(before, after)
       }
-      replace("import { nationalRoadConditionsAtTime, } from '@motionstudies/core/domain/road-day';",
-        'import { nationalRoadConditionsAtTime } from "/src/studies/road-conditions.ts";')
       replace(`const coordinates = topologySection.path ?? [
                 topologySection.fromCoordinate,
                 topologySection.toCoordinate,

@@ -1,10 +1,11 @@
+import type { TrailBackend } from '@motionstudies/three/scene-extensions'
 import { trailDataChunks, type TrailBuffers, type TrailDataset } from './trail-worker-data'
 
 const emptyFrame = (): TrailBuffers => ({ positions: [], colors: [], counts: [0, 0, 0] })
 type Request = { type: 'frame'; revision: number; time: number; ids: string[] }
 
 /** One in-flight calculation and one latest request; never accumulate stale work. */
-export class TrailWorkerClient {
+export class TrailWorkerClient implements TrailBackend {
   private worker?: Worker
   private timer?: ReturnType<typeof setTimeout>
   private ready = false

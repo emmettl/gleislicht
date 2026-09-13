@@ -1,24 +1,8 @@
 import type { NetworkTrain } from '@motionstudies/core/domain/network'
 import { positionForTrain } from './train-position'
 
-export type TrailPoint = readonly [number, number, number]
-export interface TrailPath {
-  readonly points: readonly TrailPoint[]
-  readonly cumulativeDistances: readonly number[]
-  readonly length: number
-}
-export interface TrailDataset {
-  trains: readonly NetworkTrain[]
-  stops: readonly TrailPoint[]
-  paths: readonly TrailPath[]
-  detours: readonly (readonly [string, TrailPath])[]
-  colors: readonly (readonly number[])[]
-}
-export interface TrailBuffers {
-  positions: Float32Array[]
-  colors: Float32Array[]
-  counts: number[]
-}
+import type { ProjectedPoint as TrailPoint, ProjectedNetworkPath as TrailPath, TrailDataset, TrailFrame as TrailBuffers } from '@motionstudies/three/scene-extensions'
+export type { TrailDataset, TrailFrame as TrailBuffers } from '@motionstudies/three/scene-extensions'
 
 /** Batch clones by record and geometry size; a single large record stays intact. */
 export function* trailDataChunks(data: TrailDataset): Generator<Partial<TrailDataset>> {

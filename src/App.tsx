@@ -27,7 +27,6 @@ import {
   useRef,
   useState,
   type CSSProperties,
-  type ComponentType,
 } from 'react'
 import type {
   GleislichtSoundtrack,
@@ -120,11 +119,9 @@ import {
   type UiLanguage,
 } from './i18n.ts'
 import type {
-  NationalNetworkSceneProps,
   MapCameraAction,
   MapCameraCommand,
 } from '@motionstudies/three/NationalNetworkScene'
-import type { MapSelectionSceneExtension } from './studies/GleislichtMapSelection.tsx'
 import type { TrainLabelMode } from '@motionstudies/three/train-labels'
 import type { JourneyEnvironment } from './studies/GleislichtJourneyScene.tsx'
 import {
@@ -172,11 +169,8 @@ const GleislichtScene = lazy(() =>
     default: Scene,
   })),
 )
-const NationalNetworkScene = lazy(() =>
-  import('@motionstudies/three/NationalNetworkScene').then(
-    ({ NationalNetworkScene: Scene }) => ({ default: Scene as ComponentType<NationalNetworkSceneProps & MapSelectionSceneExtension> }),
-  ),
-)
+const NationalNetworkScene = lazy(() => import('./studies/GleislichtNetworkScene.tsx').then(({ GleislichtNetworkScene }) => ({ default: GleislichtNetworkScene })))
+
 const HubPulseScene = lazy(() =>
   import('@motionstudies/three/HubPulseScene').then(({ HubPulseScene: Scene }) => ({
     default: Scene,
