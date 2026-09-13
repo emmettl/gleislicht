@@ -102,13 +102,11 @@ import {
 import type { MapBoundary } from '@motionstudies/core/domain/boundary'
 import type { MapWaterBodies } from '@motionstudies/core/domain/lakes'
 import {
-  reconstructedVehicleCount,
   type RoadTopologyRoad,
   type RoadTopologySnapshot,
   type RoadTrafficSnapshot,
 } from '@motionstudies/core/domain/road'
-import { reconstructedNationalVehicleCount } from './studies/road-conditions.ts'
-import { cantonalPilotForRecording, cantonalPilotForRoad, cantonalPilotWindow, searchRoadsWithPilots, topologyWithPilot, type CantonalPilot } from './studies/cantonal-road-pilot.ts'
+import { cantonalPilotForRecording, cantonalPilotForRoad, type CantonalPilot } from './studies/cantonal-road-pilot.ts'
 import {
   roadCorridorSearchValue,
 } from '@motionstudies/core/road-search'
@@ -436,7 +434,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const [selectedAirport, setSelectedAirport] = useState<StudyAirport>()
   const [roadSummary, setRoadSummary] = useState<typeof import('./studies/road-traffic-summary.ts')>()
   const [roadEnabled, setRoadEnabled] = useState(Boolean(linkedPilot))
-  useEffect(() => { if (roadEnabled) void import('./studies/road-traffic-summary.ts').then(setRoadSummary) }, [roadEnabled])
+  useEffect(() => { if (roadEnabled || searchQuery.trim()) void import('./studies/road-traffic-summary.ts').then(setRoadSummary) }, [roadEnabled, searchQuery])
   const [roadCatalogue, setRoadCatalogue] = useState<typeof import('./editions/switzerland-roads.ts')>()
   useEffect(() => {
     if (roadEnabled || searchQuery.trim()) void import('./editions/switzerland-roads.ts').then(setRoadCatalogue)
@@ -450,7 +448,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const [cantonalPilot, setCantonalPilot] = useState<CantonalPilot>()
   const selectedPilotDefinition = cantonalPilotForRoad(selectedRoadId, cantonalPilot?.metadata.recordingId ?? linkedPilot?.id)
   const activePilot = cantonalPilot && roadEnabled && selectedPilotDefinition?.id === cantonalPilot.metadata.recordingId && !sbbEnabled && !postbusVisible && !airEnabled && view === 'network' && networkStudy === 'national' ? cantonalPilot : undefined
-  const playbackTopology = useMemo(() => roadTopology && activePilot ? topologyWithPilot(roadTopology, activePilot) : roadTopology, [roadTopology, activePilot])
+  const playbackTopology = useMemo(() => roadTopology && activePilot && roadSummary ? roadSummary.topologyWithPilot(roadTopology, activePilot) : roadTopology, [roadTopology, activePilot, roadSummary])
   if (cantonalPilot && !activePilot) {
     setCantonalPilot(undefined)
     setNetworkTime(edition.defaultNetworkTime)
@@ -588,7 +586,7 @@ export function App({ edition, suspended = false }: AppProps) {
     networkTime,
     editionDataUrl,
   )
-  const pilotWindow = activePilot ? cantonalPilotWindow(activePilot, networkTime) : undefined
+  const pilotWindow = activePilot ? roadSummary?.cantonalPilotWindow(activePilot, networkTime) : undefined
   const nationalRoad = activePilot ? { snapshot: pilotWindow, chunkReady: Boolean(pilotWindow), manifest: undefined } : federalRoad
   const zurichContrast = useProgressiveNetworkDay(
     edition.data.contrast.cityDayManifest,
@@ -803,16 +801,17 @@ export function App({ edition, suspended = false }: AppProps) {
   const activeRoadVehicleCount = useMemo(
     () =>
       roadEnabled && nationalRoad.snapshot && nationalRoadInWindow
-        ? reconstructedNationalVehicleCount(
+        ? roadSummary?.reconstructedNationalVehicleCount(
             nationalRoad.snapshot,
             networkTime,
             selectedRoadId,
-          )
+          ) ?? 0
         : roadEnabled && roadSnapshot && !activePilot
-          ? reconstructedVehicleCount(roadSnapshot, networkTime)
+          ? roadSummary?.reconstructedVehicleCount(roadSnapshot, networkTime) ?? 0
         : 0,
     [
       activePilot,
+      roadSummary,
       nationalRoadInWindow,
       nationalRoad.snapshot,
       networkTime,
@@ -972,8 +971,8 @@ export function App({ edition, suspended = false }: AppProps) {
       .slice(0, 5)
   }, [categoryLabel, isPostbus, postbusVisible, isCogwheel, cogwheelCatalogue, language, routeIndex, searchQuery])
   const roadSearchResults = useMemo(
-    () => searchRoadsWithPilots(roadTopology?.roads ?? roadCatalogue?.SWITZERLAND_ROADS ?? [], searchQuery),
-    [roadTopology?.roads, roadCatalogue, searchQuery],
+    () => roadSummary?.searchRoadsWithPilots(roadTopology?.roads ?? roadCatalogue?.SWITZERLAND_ROADS ?? [], searchQuery) ?? [],
+    [roadTopology?.roads, roadCatalogue, searchQuery, roadSummary],
   )
   const airportSearchResults = useMemo(
     () => searchAirports(SWITZERLAND_AIRPORTS, searchQuery),
@@ -2474,9 +2473,11 @@ export function App({ edition, suspended = false }: AppProps) {
                 ? roadSnapshot
                 : undefined
             }
+            roadConditions={roadSummary?.nationalRoadConditionsAtTime}
             nationalRoadSnapshot={
               networkStudy === 'national' &&
               roadEnabled &&
+              roadSummary &&
               nationalRoadInWindow
                 ? nationalRoad.snapshot
                 : undefined

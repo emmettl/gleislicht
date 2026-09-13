@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import * as THREE from 'three'
 import type { NetworkTrain, StationIndexEntry } from '@motionstudies/core/domain/network'
+import { setScenePickMetadata } from '@motionstudies/three/scene-picking'
 import { MapTapGesture, pickMapTarget, pickAirportTarget } from './map-selection.ts'
 import { SWITZERLAND_AIRPORTS } from '../editions/switzerland-airports.ts'
 
@@ -13,7 +14,7 @@ describe('airport picking', () => {
   it('keeps click and touch targets generous across zoom and pan', () => {
     const { scene, camera, screen } = setup()
     const airport = SWITZERLAND_AIRPORTS[0], marker = new THREE.Group()
-    marker.userData.pickAirport = airport
+    setScenePickMetadata(marker, { target: { kind: 'airport', value: airport } })
     scene.add(marker); scene.updateMatrixWorld()
     for (const height of [30, 10, 2]) {
       camera.position.set(1, height, height * 0.6); camera.lookAt(0, 0, 0); camera.updateMatrixWorld()

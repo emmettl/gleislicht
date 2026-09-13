@@ -1,7 +1,8 @@
 import { expect, it } from 'vitest'
 import source from '../../public/data/bauma-wila-road-pilot.json'
 import { validateCantonalPilot } from './validate-cantonal-pilot.ts'
-import { cantonalPilotForRoad, cantonalPilotWindow, type CantonalPilot } from './cantonal-road-pilot.ts'
+import { cantonalPilotForRoad, type CantonalPilot } from './cantonal-road-pilot.ts'
+import { cantonalPilotWindow } from './cantonal-road-runtime.ts'
 import { readStudyLink } from './explore.ts'
 import { studyLinkUrl } from './share-link.ts'
 const pilot = source as unknown as CantonalPilot

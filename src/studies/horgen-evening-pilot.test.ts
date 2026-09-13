@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest'
 import eveningSource from '../../public/data/horgen-evening-road-pilot.json'
 import afternoonSource from '../../public/data/zurich-cantonal-road-pilot.json'
 import coverage from '../../data/zurich-cantonal-evening-coverage-audit.json'
-import { cantonalPilotForRecording, cantonalPilotWindow, type CantonalPilot } from './cantonal-road-pilot.ts'
+import { cantonalPilotForRecording, type CantonalPilot } from './cantonal-road-pilot.ts'
+import { cantonalPilotWindow } from './cantonal-road-runtime.ts'
 import { validateCantonalPilot } from './validate-cantonal-pilot.ts'
 
 const evening = eveningSource as unknown as CantonalPilot

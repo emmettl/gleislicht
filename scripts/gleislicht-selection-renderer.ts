@@ -11,12 +11,6 @@ export function gleislichtSelectionRenderer(): Plugin {
         if (code.split(before).length !== count + 1) throw new Error(`Gleislicht selection hook needs review: ${before}`)
         code = code.replaceAll(before, after)
       }
-      const start = code.indexOf('function StationTapTarget(')
-      const end = code.indexOf('function StationLabels(', start)
-      if (start < 0 || end < 0) throw new Error('Gleislicht selection component hook needs review')
-      code = code.slice(0, start) + code.slice(end)
-      replace('_jsx(StationTapTarget, { stations: props.stations, projectedStops: projectedStops, cameraFraming: props.cameraFraming, onSelectStation: props.airCategorySelected ? undefined : props.onSelectStation })',
-        '_jsx(GleislichtMapSelection, { stations: props.stations, onSelectStation: props.onSelectStation, onSelectTrain: props.onSelectTrain, onSelectRoad: props.onSelectRoad, onSelectAirport: props.onSelectAirport, roadsOnly: props.roadCategorySelected, disabled: props.airCategorySelected })')
       replace('sprite.position.copy(label.position);',
         "sprite.position.copy(label.position);\n            sprite.userData.pickTarget = { kind: 'station', value: label.station };")
       replace('sprite.position.set(candidate.position[0], elevation + comparisonOffset, candidate.position[2]);',
@@ -35,7 +29,6 @@ export function gleislichtSelectionRenderer(): Plugin {
       replace('appendLineSegments(pathPositions, points, 0.15);', 'appendLineSegments(pathPositions, points, STATION_SURFACE_Y);')
       replace('[stop[0], 0.2, stop[2]]', '[stop[0], STATION_SURFACE_Y, stop[2]]')
       replace('[stop[0], 0.19, stop[2]]', '[stop[0], STATION_SURFACE_Y, stop[2]]')
-      replace('position: [0, -0.035, 0]', 'position: [0, 0, 0]')
       // Anchor badges to their vehicles with a four-pixel gap. Use the same
       // screen offset for collision boxes, including stacked comparison labels.
       replace('const width = trainLabelScreenWidth(text, screenHeight) * (labelStyle?.collisionWidthScale ?? 1);',
@@ -56,8 +49,8 @@ export function gleislichtSelectionRenderer(): Plugin {
       // indexes belong to another snapshot and must not select regional stops.
       replace('function RailGraph({ snapshot,', 'function RailGraph({ snapshot, pickable = true,')
       replace('_jsx(RailGraph, { snapshot: props.contextSnapshot,', '_jsx(RailGraph, { snapshot: props.contextSnapshot, pickable: false,')
-      replace("geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));\n        return geometry;\n    }, [projectedStops]);",
-        "geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));\n        geometry.userData.pickStops = pickable ? projectedStops.map((_, index) => index) : undefined;\n        return geometry;\n    }, [projectedStops, pickable]);")
+      replace('setScenePickMetadata(geometry, { stopIndexes: projectedStops.map((_, index) => index) });\n        return geometry;\n    }, [projectedStops]);',
+        'setScenePickMetadata(geometry, pickable ? { stopIndexes: projectedStops.map((_, index) => index) } : undefined);\n        geometry.userData.pickStops = pickable ? projectedStops.map((_, index) => index) : undefined;\n        return geometry;\n    }, [projectedStops, pickable]);')
       // Fixed world-size meshes overwhelm GE/ZH. Preserve overview sizes, but
       // cap the station ring at 10px and the pulsing train core at ~4px radius.
       replace('function SelectedStationRoutes({ station, snapshot, projectedStops, projectedPaths, selectedCategory, }) {',
@@ -71,7 +64,7 @@ export function gleislichtSelectionRenderer(): Plugin {
         '_jsxs("group", { ref: selectionMarker, position: [centre.x, STATION_SURFACE_Y, centre.z], children:')
       replace('marker.current.scale.setScalar(pulse);',
         'marker.current.scale.setScalar(pulse * selectionMarkerScale(state.camera, marker.current.position, state.size.height, 0.24, 3.5));')
-      return { code: 'import { GleislichtMapSelection } from "/src/studies/GleislichtMapSelection.tsx";\nimport { selectionMarkerScale } from "/src/studies/selection-marker-scale.ts";\n' + code, map: null }
+      return { code: 'import { selectionMarkerScale } from "/src/studies/selection-marker-scale.ts";\n' + code, map: null }
     },
   }
 }

@@ -68,3 +68,7 @@ export function roadTrafficSummary(road: string | undefined, time: number,
   }
   return carriagewayKm ? { vehicles: Math.round(vehicles), density: vehicles / carriagewayKm, carriagewayKm, representative } : undefined
 }
+
+export { nationalRoadConditionsAtTime, reconstructedNationalVehicleCount } from './road-conditions.ts'
+export { reconstructedVehicleCount } from '@motionstudies/core/domain/road'
+export { searchRoadsWithPilots, cantonalPilotWindow, topologyWithPilot } from './cantonal-road-runtime.ts'

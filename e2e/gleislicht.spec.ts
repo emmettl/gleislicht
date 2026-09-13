@@ -70,7 +70,9 @@ test('AUTO stays lazy, discloses recorded reconstruction, and can be isolated', 
 }, testInfo) => {
   const roadRequests: string[] = []
   const roadRendererRequests: string[] = []
+  const roadHelperRequests: string[] = []
   page.on('request', (request) => {
+    if (request.url().includes('road-traffic-summary')) roadHelperRequests.push(request.url())
     if (request.url().includes('RoadTrafficLayer')) roadRendererRequests.push(request.url())
     if (
       request.url().includes('swiss-road-morning.json') ||
@@ -84,6 +86,7 @@ test('AUTO stays lazy, discloses recorded reconstruction, and can be isolated', 
 
   expect(roadRequests).toEqual([])
   expect(roadRendererRequests).toEqual([])
+  expect(roadHelperRequests).toEqual([])
 
   const toggle = page.locator(
     testInfo.project.name === 'iphone-webkit'
@@ -98,6 +101,7 @@ test('AUTO stays lazy, discloses recorded reconstruction, and can be isolated', 
 
   await expect(toggle).toHaveAttribute('aria-pressed', 'true')
   await expect.poll(() => roadRendererRequests.length).toBeGreaterThan(0)
+  await expect.poll(() => roadHelperRequests.length).toBeGreaterThan(0)
   await expect(page.locator('.network-card .road-count')).toContainText('AUTO')
   await expect(page.locator('.network-card .road-count')).toHaveAttribute(
     'aria-label',

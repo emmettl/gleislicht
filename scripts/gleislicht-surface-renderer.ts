@@ -59,9 +59,9 @@ export function gleislichtSurfaceRenderer(): Plugin {
         replace('path?.points ?? detour?.points ?? [from, to], 0);',
           'path?.points ?? detour?.points ?? [from, to], MAP_SURFACE_Y);')
         replace('position: [0, 0.055, 0]', 'position: [0, MAP_SURFACE_Y, 0]')
-        replace('offsetProjectedPath(points, laneOffset), 0.075)', 'offsetProjectedPath(points, laneOffset), MAP_SURFACE_Y)')
-        replace('diagramRibbonGeometry(record.positions, 0.16, 0.072)', 'diagramRibbonGeometry(record.positions, 0.16, MAP_SURFACE_Y)')
-        replace('diagramRibbonGeometry(record.positions, 0.1, 0.078)', 'diagramRibbonGeometry(record.positions, 0.1, MAP_SURFACE_Y)')
+        replace('laneOffset), 0.075)', 'laneOffset), MAP_SURFACE_Y)')
+        replace('diagramRibbonGeometry(record.positions, diagram?.casingWidth ?? 0.16, 0.072)', 'diagramRibbonGeometry(record.positions, diagram?.casingWidth ?? 0.16, MAP_SURFACE_Y)')
+        replace('diagramRibbonGeometry(record.positions, diagram?.coreWidth ?? 0.1, 0.078)', 'diagramRibbonGeometry(record.positions, diagram?.coreWidth ?? 0.1, MAP_SURFACE_Y)')
         for (const lift of ['0.09', '0.1', '0.08']) {
           replace(`STATION_SURFACE_Y + ${lift},`, 'STATION_SURFACE_Y,')
         }

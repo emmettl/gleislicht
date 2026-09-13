@@ -49,14 +49,8 @@ const RoadTrafficLayer = props => _jsx(RoadSuspense, { fallback: null, children:
       replace('target.push(first, second);', 'target.push(first, second);\n                if (path.mainline) pickRoads.push(path.road, path.road);')
       replace('mainline: new THREE.BufferGeometry().setFromPoints(mainlinePoints),',
         'mainline: Object.assign(new THREE.BufferGeometry().setFromPoints(mainlinePoints), { userData: { pickRoads } }),')
-      // Geometry stays visible with no observations, including during selection.
-      replace('color: "#ffb36b", transparent: true, opacity: selectedRoadId ? 0.008 : subdued ? 0.018 : 0.062, blending: THREE.AdditiveBlending, depthWrite: false',
-        'color: "#a0a6b2", transparent: true, opacity: selectedRoadId ? 0.25 : subdued ? 0.2 : 0.45, blending: THREE.AdditiveBlending, depthTest: false, depthWrite: false, toneMapped: false')
-      replace('color: "#bc8058", transparent: true, opacity: selectedRoadId ? 0.003 : subdued ? 0.008 : 0.018, depthWrite: false',
-        'color: "#a0a6b2", transparent: true, opacity: subdued ? 0.15 : 0.3, depthTest: false, depthWrite: false, toneMapped: false')
-      replace('color: "#fff1cf", transparent: true, opacity: 0.92, blending: THREE.AdditiveBlending',
-        'color: "#a0a6b2", transparent: true, opacity: 0.65, blending: THREE.AdditiveBlending')
-      const topology = 'topology && (_jsx(RoadTopology, { snapshot: topology, projection: projection, subdued: subdued, selectedRoadId: selectedRoadId }))'
+      // Material policy is supplied through the public mapStyle.roads contract.
+      const topology = 'topology && (_jsx(RoadTopology, { style: style, snapshot: topology, projection: projection, subdued: subdued, selectedRoadId: selectedRoadId }))'
       replace(topology, `${topology}, topology && _jsx(GleislichtRoadLabels, { topology, projection, subdued, selectedRoadId })`)
       return { code: 'import { RoadPolyline, roadPathOnTopology } from "/src/studies/road-geometry.ts";\nimport { GleislichtRoadLabels } from "/src/studies/GleislichtRoadLabels.tsx";\n' + code, map: null }
     },
