@@ -1,26 +1,6 @@
 import type { NetworkTrain } from '@motionstudies/core/domain/network'
 
-/** Count inclusive timetable intervals without scanning every trip per clock tick. */
-export function createActiveTrainCounter(trains: readonly NetworkTrain[]) {
-  const starts: number[] = [], ends: number[] = []
-  for (const train of trains) {
-    if (train.realtime?.status === 'cancelled' || !(train.start <= train.end)) continue
-    starts.push(train.start)
-    ends.push(train.end)
-  }
-  starts.sort((a, b) => a - b)
-  ends.sort((a, b) => a - b)
-  const before = (values: number[], time: number, inclusive: boolean) => {
-    let low = 0, high = values.length
-    while (low < high) {
-      const middle = (low + high) >>> 1
-      if (values[middle] < time || inclusive && values[middle] === time) low = middle + 1
-      else high = middle
-    }
-    return low
-  }
-  return (time: number) => before(starts, time, true) - before(ends, time, false)
-}
+export { createActiveTimetableVehicleCounter as createActiveTrainCounter } from '@motionstudies/core/domain/vehicle-counts'
 
 /** This order depends on query/data/language; only active priority depends on time. */
 export function orderTrainSearchMatches(trains: readonly NetworkTrain[], locale: string) {
