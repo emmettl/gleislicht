@@ -305,8 +305,11 @@ export function App({ edition, suspended = false }: AppProps) {
   const nowRequested = useRef(false)
   const nowResolver = useRef<typeof import('./studies/swiss-now.ts') | undefined>(undefined)
   const [nowDate, setNowDate] = useState('')
-  const nowMetadata = useRef<NetworkSnapshot['metadata'] | undefined>(undefined)
-  const { active: nowActive, time: nowTime, unavailable: nowUnavailable, start: startNowClock, stop: stopNowClock } = useNowClock(useCallback((instant: Date) => nowResolver.current?.resolveSwissNow(instant, nowMetadata.current) ?? null, []))
+  const nowMetadata = useRef<(NetworkSnapshot['metadata'] | undefined)[]>([])
+  const { active: nowActive, time: nowTime, unavailable: nowUnavailable, start: startNowClock, stop: stopNowClock } = useNowClock(useCallback((instant: Date) => {
+    const times = nowMetadata.current.map(metadata => nowResolver.current?.resolveSwissNow(instant, metadata) ?? null)
+    return times.length && times.every(time => time !== null) ? times[0] : null
+  }, []))
   const browserLocation = useBrowserLocation()
   const clearBrowserLocation = browserLocation.clear
   const networkTime = nowActive && nowTime !== null ? nowTime : playbackTime
@@ -639,7 +642,13 @@ export function App({ edition, suspended = false }: AppProps) {
             ? (nationalDayNetwork ?? nationalNetwork)
             : nationalNetwork
 
-  useEffect(() => { nowMetadata.current = view === 'network' && !isContrast && !airEnabled && !roadEnabled && !postbusVisible ? baseNetwork?.metadata : undefined }, [view, isContrast, airEnabled, roadEnabled, postbusVisible, baseNetwork?.metadata])
+  useEffect(() => {
+    nowMetadata.current = view === 'network' && !isContrast && !airEnabled && !roadEnabled
+      ? postbusVisible
+        ? [...(railVisible ? [baseNetwork?.metadata] : []), postbusDay.network?.metadata]
+        : [baseNetwork?.metadata]
+      : []
+  }, [view, isContrast, airEnabled, roadEnabled, postbusVisible, railVisible, baseNetwork?.metadata, postbusDay.network?.metadata])
   const validLocation = browserLocation.location && withinStudy(browserLocation.location, baseNetwork?.bounds) ? browserLocation.location : undefined
   const unavailableNowTime = !nowActive && nowUnavailable ? nowTime : null
   const [lastUnavailableNowTime, setLastUnavailableNowTime] = useState(unavailableNowTime)
@@ -2104,7 +2113,7 @@ export function App({ edition, suspended = false }: AppProps) {
     [],
   )
 
-  const nowViewSupported = view === 'network' && !airEnabled && !roadEnabled && !postbusVisible && !selectedTrainId && !directorMode
+  const nowViewSupported = view === 'network' && !airEnabled && !roadEnabled && !selectedTrainId && !directorMode
   if (!nowViewSupported && nowActive && nowTime !== null && playbackTime !== nowTime) {
     setNetworkTime(nowTime)
   }
@@ -2195,12 +2204,14 @@ export function App({ edition, suspended = false }: AppProps) {
     moveMapCamera,
   ])
 
+  const nowTimetableReady = Boolean(network) && (!isNationalDay || nationalDayChunkReady) &&
+    (!isRegionalDay || regionalDay.chunkReady) && (!(isPostbus || postbusVisible) || postbusDay.chunkReady)
   useEffect(() => {
-    if (nowRequested.current && ((isNationalDay && nationalDayChunkReady) || (isRegionalDay && regionalDay.chunkReady))) {
+    if (nowRequested.current && (isNationalDay || isRegionalDay) && nowTimetableReady) {
       nowRequested.current = false
       startNowClock()
     }
-  }, [isNationalDay, nationalDayChunkReady, isRegionalDay, regionalDay.chunkReady, startNowClock])
+  }, [isNationalDay, isRegionalDay, nowTimetableReady, startNowClock])
   const startNow = async () => {
     nowSession.current = true
     const clock = await import('./studies/swiss-now.ts')
@@ -2224,7 +2235,7 @@ export function App({ edition, suspended = false }: AppProps) {
 
   const resumeNow = useRef(new URLSearchParams(window.location.search).get('now') === '1')
   useEffect(() => {
-    if (resumeNow.current && timelineReady && (!isNationalDay || nationalDayChunkReady) && (!isRegionalDay || regionalDay.chunkReady)) {
+    if (resumeNow.current && timelineReady && nowTimetableReady) {
       resumeNow.current = false
       void startNow()
     }
@@ -3587,7 +3598,7 @@ export function App({ edition, suspended = false }: AppProps) {
           <div className="explore-actions">
             <button type="button" onClick={() => setExploreOpen(true)}>{exploreCopy.browse}</button>
             <button ref={roadRecordingsButton} type="button" onClick={() => setRoadRecordingsOpen(true)}>{text.roadRecordingsTitle}</button>
-            {!isContrast && !airEnabled && !roadEnabled && !postbusVisible && <button type="button" aria-pressed={nowActive} disabled={!network || (isRegionalDay && !regionalDay.chunkReady) || (isNationalDay && !nationalDayChunkReady)} onClick={nowActive ? stopNow : startNow}>{exploreCopy.now}</button>}
+            {!isContrast && !airEnabled && !roadEnabled && <button type="button" aria-pressed={nowActive} disabled={!nowTimetableReady} onClick={nowActive ? stopNow : startNow}>{exploreCopy.now}</button>}
             {nowActive && <button type="button" onClick={browserLocation.locate} disabled={browserLocation.status === 'locating'}>{exploreCopy.locate}</button>}
             {browserLocation.status !== 'idle' && <button type="button" onClick={clearBrowserLocation}>{exploreCopy.clear}</button>}
             {isRegionalDayStudy(networkStudy) && <button type="button" aria-pressed={isRegionalDay} onClick={() => { stopNow(); setRegionalRange(value => value === 'day' ? 'morning' : 'day'); setNetworkTime(edition.defaultNetworkTime); setRegionalRetry(true) }}>{exploreCopy.day}</button>}
