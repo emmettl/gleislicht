@@ -1,3 +1,4 @@
 .experience .journey-card.vehicle-hero-card { width: min(480px, calc(100vw - 96px)); max-height: calc(100svh - 300px); overflow: auto; padding: 0; clip-path: none; }
 .vehicle-hero-card > .between { padding: 12px 16px; }
+@media (min-width: 761px) { .experience .journey-card.vehicle-hero-card { max-height: min(calc(100svh - 300px), calc(69svh - var(--playback-clearance, 200px))); } }
 @media (max-width: 760px) { .experience.view-network.has-selection .journey-card.vehicle-hero-card { top: 210px; bottom: auto; left: 12px; width: calc(100vw - 72px); max-height: calc(100svh - 375px); } }

@@ -35,3 +35,23 @@ export function observeFooter(footer: HTMLElement | null) {
     shell.style.removeProperty('--footer-clearance')
   }
 }
+
+/** Keep scrollable journey details above the current playback controls. */
+export function observePlayback(controls: HTMLElement | null) {
+  const shell = controls?.parentElement
+  if (!controls || !shell || typeof ResizeObserver === 'undefined') return
+  const measure = () => {
+    const bottom = Number.parseFloat(getComputedStyle(controls).bottom) || 0
+    shell.style.setProperty('--playback-clearance', `${controls.offsetHeight + bottom + 12}px`)
+  }
+  const observer = new ResizeObserver(measure)
+  observer.observe(controls)
+  observer.observe(shell)
+  const footer = shell.querySelector('footer')
+  if (footer) observer.observe(footer)
+  measure()
+  return () => {
+    observer.disconnect()
+    shell.style.removeProperty('--playback-clearance')
+  }
+}
