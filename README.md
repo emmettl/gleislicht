@@ -8,7 +8,7 @@ A cinematic browser visualisation of Switzerland's transport networks, built fro
 
 **Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.15`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
 
-Other editions have independent repositories: [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances), and a private Local / Express proof whose publication hold remains in place. This repository builds only Switzerland. The former `/london.html` and `/paris.html` URLs redirect to the independent sites.
+Other editions have independent repositories: [All Change](https://github.com/emmettl/allchange) and [Correspondances](https://github.com/emmettl/correspondances). This repository builds only Switzerland.
 
 Public studies: [Gleislicht](https://motionstudies.app/gleislicht/) · [All Change](https://emmettl.github.io/allchange/) · [Correspondances](https://emmettl.github.io/correspondances/).
 
