@@ -1,11 +1,17 @@
 import type { ReactNode } from 'react'
-import type { NetworkTrain } from '@motionstudies/core/domain/network'
+import { NetworkVehicleHeroCard } from '@motionstudies/web/components/NetworkVehicleHeroCard'
+import '@motionstudies/web/vehicle-hero-card.css'
+import './vehicle-hero.css'
+import type { NetworkSnapshot, NetworkTrain } from '@motionstudies/core/domain/network'
 import { formatServiceTime } from '@motionstudies/core/domain/network'
 import { TransportIcon } from '../TransportIcon.tsx'
 import type { ServiceFrequency } from './frequency.ts'
 import type { UiText } from '../locales/en.ts'
 
 interface Props {
+  snapshot?: NetworkSnapshot
+  time?: number
+  language?: string
   selectedTrain: NetworkTrain
   selectedFrom?: string
   selectedTo?: string
@@ -20,7 +26,16 @@ interface Props {
   children?: ReactNode
 }
 
-export default function TrainCard({ selectedTrain, selectedFrom, selectedTo, selectedHeadway, selectedFrequency, frequency, cogwheel, color, categoryName, numberFormat, text, children }: Props) {
+export default function TrainCard({ snapshot, time = 0, language = 'en', selectedTrain, selectedFrom, selectedTo, selectedHeadway, selectedFrequency, frequency, cogwheel, color, categoryName, numberFormat, text, children }: Props) {
+  const copy = language === 'de' ? { atStop: 'Am Halt', rail: 'Zug', destination: 'Nach', destinationUnknown: 'Ziel nicht verfügbar', nextStop: 'Nächster Halt', callingAt: 'Weitere Halte', terminus: 'Endstation', platform: 'Gleis', empty: 'Keine weiteren Halte in den geladenen Daten.' }
+    : language === 'fr' ? { atStop: 'À l’arrêt', rail: 'Train', destination: 'Destination', destinationUnknown: 'Destination indisponible', nextStop: 'Prochain arrêt', callingAt: 'Arrêts suivants', terminus: 'Terminus', platform: 'Voie', empty: 'Aucun autre arrêt dans les données chargées.' }
+    : language === 'it' ? { atStop: 'Alla fermata', rail: 'Treno', destination: 'Destinazione', destinationUnknown: 'Destinazione non disponibile', nextStop: 'Prossima fermata', callingAt: 'Fermate successive', terminus: 'Capolinea', platform: 'Binario', empty: 'Nessun’altra fermata nei dati caricati.' }
+    : { atStop: 'At stop' }
+  if (snapshot && !cogwheel && !['ferry', 'cableway', 'funicular', 'other'].includes(selectedTrain.category)) return <section className="journey-card selected-card vehicle-hero-card" aria-label={text.selectedTrain}>
+    <NetworkVehicleHeroCard snapshot={snapshot} train={selectedTrain} time={time} showTimes={!selectedHeadway} atStopLabel={copy.atStop} labels={copy}
+      presentation={selectedTrain.category === 'bus' ? 'yellow-bus' : 'sbb'} note={<>{text.allScheduledPaths}{selectedHeadway && <> · {frequency.note}</>}</>} />
+    {children}
+  </section>
   return (
         <section className="journey-card selected-card" aria-label={text.selectedTrain}>
           <div className="service-row">
