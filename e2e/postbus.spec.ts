@@ -8,6 +8,9 @@ async function openPostbus(page: Page, isMobile: boolean) {
 }
 
 test('national PostBus stays lazy, renders the full network and follows the 24-hour clock', async ({ page, isMobile }) => {
+  // CI's software WebGL completes the full scenario in roughly 95 seconds.
+  // Keep per-assertion timeouts unchanged while allowing the sequential work.
+  test.setTimeout(120_000)
   const errors: string[] = []
   const requests: string[] = []
   page.on('pageerror', error => errors.push(error.message))
