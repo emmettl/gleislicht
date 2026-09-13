@@ -1,5 +1,9 @@
 # Regular timetable refreshes
 
+## Production status
+
+The calendar rollout and realtime Worker upgrade completed on 13 September 2026. The public calendar contains 13 and 14 September on feed `20260909`. [Pages run 34754297683](https://github.com/emmettl/gleislicht/actions/runs/34754297683) passed all timetable, browser and production gates; [Cloudflare run 34755830825](https://github.com/emmettl/gleislicht/actions/runs/34755830825) published its artifact. [Public freshness run 34755866693](https://github.com/emmettl/gleislicht/actions/runs/34755866693) passed after the Worker upgrade. The manual check observed 1,847 matching Trip Updates; that count varies with the upstream feed.
+
 ## Release contract
 
 The Pages workflow runs at 03:37 and 18:37 UTC. Each run resolves today's date in Europe/Zurich and builds both today and tomorrow, with the correct timetable year for each date. The evening run gives another opportunity to publish before midnight; correctness does not depend on a build finishing at midnight.
@@ -22,7 +26,7 @@ The Worker reads the canonical app calendar on its existing once-per-minute poll
 
 There is no `STATIC_FEED_VERSION` setting to maintain. The app's calendar build enables the endpoint before publication; runtime feed/date and 150-second source freshness checks still decide whether corrections can apply. This avoids needing a Worker already paired to an unpublished release. Worker failures leave the last stored snapshot untouched; the browser rejects it once stale or incompatible and returns to scheduled playback.
 
-Deploy the updated Worker once with `npm run worker:deploy:realtime` after the first calendar release is publicly available. Its existing API secret and private R2 binding remain in place. Subsequent timetable releases need no Worker configuration changes. Until that deployment, the public monitor reports the missing alignment capability. Worker code changes continue to use the existing explicit deployment command.
+The initial Worker upgrade is deployed, with its existing API secret and private R2 binding retained. Subsequent timetable releases need no Worker configuration changes. Worker code changes continue to use `npm run worker:deploy:realtime`; any new calendar dependency must be publicly available before deploying code that requires it.
 
 ## Public monitoring
 
