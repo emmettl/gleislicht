@@ -3,21 +3,19 @@ import { expect, it } from 'vitest'
 import * as THREE from 'three'
 import { SERVICE_COLORS } from '@motionstudies/core/theme'
 import { batchHubLines } from '../src/studies/batch-hub-lines.ts'
-import { gleislichtPerformanceRenderer } from './gleislicht-performance-renderer.ts'
 
 it('batches installed hub geometry without changing segments, colours or category emphasis', () => {
   const id = '/node_modules/@motionstudies/three/HubPulseScene.js'
   const source = readFileSync(`.${id}`, 'utf8')
-  const transform = gleislichtPerformanceRenderer().transform as (source: string, id: string) => { code: string }
   const calls = Array.from({ length: 80 }, (_, index) => ({
     hubStop: [8.5, 47.3], previousStop: [8 + index * 0.01, 47.5], nextStop: [8.3, 47 + index * 0.02],
     train: { category: ['intercity', 'regional', 's-bahn'][index % 3] },
   }))
-  const evaluate = (code: string, selectedCategory?: string) => {
+  const evaluate = (code: string, selectedCategory?: string, batch: unknown = batchHubLines) => {
     const clean = code.replace(/^import .*;$/gm, '').replaceAll('export ', '')
     return new Function('THREE', 'SERVICE_COLORS', 'batchHubLines', 'useMemo', 'useEffect', '_jsx', 'calls', 'selectedCategory',
       `${clean}; return { ticks: TickMarks().object.children, spokes: CorridorSpokes({ calls, selectedCategory }).map(entry => entry.object) };`
-    )(THREE, SERVICE_COLORS, batchHubLines, (factory: () => unknown) => factory(), () => {}, (_type: unknown, props: unknown) => props, calls, selectedCategory)
+    )(THREE, SERVICE_COLORS, batch, (factory: () => unknown) => factory(), () => {}, (_type: unknown, props: unknown) => props, calls, selectedCategory)
   }
   const segments = (lines: THREE.Line[]) => lines.flatMap(line => {
     const material = line.material as THREE.LineBasicMaterial
@@ -29,8 +27,8 @@ it('batches installed hub geometry without changing segments, colours or categor
     }))
   }).sort()
   for (const selectedCategory of [undefined, 'intercity', 'bus']) {
-    const original = evaluate(source, selectedCategory)
-    const optimized = evaluate(transform(source, id).code, selectedCategory)
+    const original = evaluate(source, selectedCategory, (lines: unknown[]) => [...lines])
+    const optimized = evaluate(source, selectedCategory)
     expect(original.ticks).toHaveLength(60)
     expect(optimized.ticks).toHaveLength(3)
     expect(optimized.spokes.length).toBeLessThan(original.spokes.length)
