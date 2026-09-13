@@ -2872,7 +2872,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 disabled={networkStudy !== 'national'}
                 onClick={togglePostbusLayer}
               >
-                PA
+                BUS
               </button>
               <button
                 className="air-toggle"
@@ -2904,7 +2904,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 value={studyPickerValue}
                 options={studyOptions}
                 triggerLabel={
-                  additionalRegion ? additionalRegion.code : isValais ? 'VS' : isTicino ? 'TI' : isGraubuenden ? 'GR' : isSolothurn ? 'SO' : isBern ? 'BE' : isRiviera ? 'RV' : isNyon ? 'NY' : isBasel ? 'BS' : isLausanne ? 'LS' : isPilatus ? 'PIL' : isRochers ? 'RDN' : isTerritet ? 'TGL' : isGornergrat ? 'GGR' : isJungfrau ? 'JUNG' : isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
+                  additionalRegion ? additionalRegion.code : isValais ? 'VS' : isTicino ? 'TI' : isGraubuenden ? 'GR' : isSolothurn ? 'SO' : isBern ? 'BE' : isRiviera ? 'RV' : isNyon ? 'NY' : isBasel ? 'BS' : isLausanne ? 'LS' : isPilatus ? 'PIL' : isRochers ? 'RDN' : isTerritet ? 'TGL' : isGornergrat ? 'GGR' : isJungfrau ? 'JUNG' : isRigi ? 'RIGI' : isPostbus ? 'BUS' : isContrast
                     ? '↔'
                     : networkStudy === 'national' && nationalTimeRange === 'day'
                       ? '24H'
@@ -2938,7 +2938,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 disabled={networkStudy !== 'national'}
                 onClick={togglePostbusLayer}
               >
-                PA
+                BUS
               </button>
               <button
                 className="mobile-air-toggle"
@@ -3245,7 +3245,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 : dataError
                   ? text.scheduleUnavailable
                   : text.scheduledRail}
-              {postbusVisible && <>{railVisible && <> · {postbusDescription}</>}{postbusDateLabel && <> · PA {postbusDateLabel}</>}</>}
+              {postbusVisible && <>{railVisible && <> · {postbusDescription}</>}{postbusDateLabel && <> · BUS {postbusDateLabel}</>}</>}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
           {isPilatus && pilatusNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startPilatusJourney}>{pilatusCopy?.start} →</button>}
