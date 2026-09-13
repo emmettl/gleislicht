@@ -1,6 +1,6 @@
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 
-export const COGWHEEL_ROUTE_COLORS = { 'category:other': '#fff3a6' } as const
+export const COGWHEEL_CATEGORY_COLORS = { other: '#fff3a6' } as const
 
 export interface CogwheelCatalogue {
   readonly metadata: { readonly feedVersion: string; readonly serviceDate: string }

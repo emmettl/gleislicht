@@ -8,8 +8,8 @@ async function openPostbus(page: Page, isMobile: boolean) {
 }
 
 test('national PostBus stays lazy, renders the full network and follows the 24-hour clock', async ({ page, isMobile }) => {
-  // CI's software WebGL completes the full scenario in roughly 95 seconds.
-  // Keep per-assertion timeouts unchanged while allowing the sequential work.
+  // Keep playback/seek and selection as separate scenarios: software WebGL
+  // can exhaust a combined scenario's budget before its final assertions.
   test.setTimeout(120_000)
   const errors: string[] = []
   const requests: string[] = []
@@ -47,6 +47,17 @@ test('national PostBus stays lazy, renders the full network and follows the 24-h
   await expect(page.locator('.network-card .between')).toContainText('Scheduled PostBus')
   await scrubber.fill('27900')
   await expect(page.locator('.network-count-row strong').first()).not.toHaveText('0')
+  expect(errors).toEqual([])
+})
+
+test('PostBus route selection clears when its layer is disabled', async ({ page, isMobile }) => {
+  test.setTimeout(120_000)
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  await page.goto('/?study=national&range=day&time=27900&perf=1')
+  await openPostbus(page, isMobile)
+  await page.locator(isMobile ? '.mobile-sbb-toggle' : '.sbb-toggle').click()
+  await expect(page.locator('.network-card .between')).toContainText('Scheduled PostBus')
   const search = page.locator('.train-search input')
   await search.fill('220')
   await expect(page.locator('.route-result .result-route').first()).toContainText(/Bahnhof|Griesalp|Reichenbach/)

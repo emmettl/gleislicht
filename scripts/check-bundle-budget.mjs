@@ -20,7 +20,9 @@ const BUDGETS = {
   // alignment without a runtime map dependency. Keep enough headroom for feed
   // churn while retaining a hard mobile ceiling for accidental expansion.
   data: 450 * 1024,
-  total: 790 * 1024,
+  // Shared map styles add under 1 KiB to the national renderer. Keep the
+  // individual 360/10/450 KiB ceilings and allow 2 KiB in the combined gate.
+  total: 792 * 1024,
 }
 
 async function gzipSize(filePath) {

@@ -19,7 +19,7 @@ export function gleislichtSelectionRenderer(): Plugin {
         '_jsx(GleislichtMapSelection, { stations: props.stations, onSelectStation: props.onSelectStation, onSelectTrain: props.onSelectTrain, onSelectRoad: props.onSelectRoad, onSelectAirport: props.onSelectAirport, roadsOnly: props.roadCategorySelected, disabled: props.airCategorySelected })')
       replace('sprite.position.copy(label.position);',
         "sprite.position.copy(label.position);\n            sprite.userData.pickTarget = { kind: 'station', value: label.station };")
-      replace('sprite.position.set(candidate.position[0], 0.76 + comparisonOffset, candidate.position[2]);',
+      replace('sprite.position.set(candidate.position[0], elevation + comparisonOffset, candidate.position[2]);',
         "sprite.position.set(...candidate.position);\n            sprite.center.set(0.5, 0.5 + labelOffset / screenHeight);\n            sprite.userData.pickTarget = { kind: 'train', value: candidate.train };")
       // World-space lift becomes hundreds of pixels in city views. Keep map
       // overlays on one surface; renderOrder already provides their layering.
@@ -27,7 +27,7 @@ export function gleislichtSelectionRenderer(): Plugin {
       replace('return [point[0], 0.2, point[2]];', 'return [point[0], STATION_SURFACE_Y, point[2]];', 2)
       replace('        0.2,\n        THREE.MathUtils.lerp(from[2]',
         '        STATION_SURFACE_Y,\n        THREE.MathUtils.lerp(from[2]')
-      replace('projected.set(position[0], 0.76, position[2]);', 'projected.set(...position);')
+      replace('projected.set(position[0], elevation, position[2]);', 'projected.set(...position);')
       replace('new THREE.Vector3(centre.x, 0.29, centre.z)', 'new THREE.Vector3(centre.x, STATION_SURFACE_Y, centre.z)')
       replace('[centre.x, 0.3, centre.z]', '[centre.x, STATION_SURFACE_Y, centre.z]')
       replace('new THREE.Vector3(x, 0.12, z)', 'new THREE.Vector3(x, STATION_SURFACE_Y, z)')
@@ -38,11 +38,11 @@ export function gleislichtSelectionRenderer(): Plugin {
       replace('position: [0, -0.035, 0]', 'position: [0, 0, 0]')
       // Anchor badges to their vehicles with a four-pixel gap. Use the same
       // screen offset for collision boxes, including stacked comparison labels.
-      replace('const width = trainLabelScreenWidth(text, screenHeight);',
-        `const width = trainLabelScreenWidth(text, screenHeight);
+      replace('const width = trainLabelScreenWidth(text, screenHeight) * (labelStyle?.collisionWidthScale ?? 1);',
+        `const width = trainLabelScreenWidth(text, screenHeight) * (labelStyle?.collisionWidthScale ?? 1);
             const labelOffset = screenHeight / 2 + 4 + Math.max(0, candidate.comparisonIndex) * (screenHeight + 4);`)
-      replace('top: candidate.y - screenHeight / 2,\n                bottom: candidate.y + screenHeight / 2,',
-        'top: candidate.y - labelOffset - screenHeight / 2,\n                bottom: candidate.y - labelOffset + screenHeight / 2,')
+      replace('const box = trainLabelCollisionBox(candidate.x, candidate.y, width, screenHeight, anchorY);',
+        'const box = trainLabelCollisionBox(candidate.x, candidate.y - labelOffset, width, screenHeight, 0.5);')
       replace(`            const comparisonOffset = candidate.comparisonIndex < 0
                 ? 0
                 : candidate.comparisonIndex === 0

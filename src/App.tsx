@@ -7,14 +7,14 @@ import { useBrowserLocation } from '@motionstudies/web/use-browser-location'
 import { REGIONAL_DAYS, isRegionalDayStudy, readStudyLink, withinStudy } from './studies/explore.ts'
 import { EXPLORE_EN, type ExploreUiCopy } from './studies/explore-ui-en.ts'
 import { networkWithRailVisibility, networkWithTimetableLayer } from './studies/network-layers.ts'
-import { COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
+import { COGWHEEL_CATEGORY_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
 import type { MeasuredTerrainBinding } from './studies/measured-terrain.ts'
 import type { RigiTerrainBinding } from './studies/rigi-timetable-terrain.ts'
 import { rigiOperator } from './studies/rigi.ts'
 import { isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
 import { createActiveTrainCounter, orderTrainSearchMatches, trainSearchResults } from './studies/network-ui-index.ts'
-import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
+import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_CATEGORY_COLORS } from './studies/postbus.ts'
 import { TransportIcon } from './TransportIcon.tsx'
 import { observeMasthead } from './studies/masthead-layout.ts'
 import { studyOrder } from './studies/study-order.ts'
@@ -169,6 +169,7 @@ const GleislichtScene = lazy(() =>
     default: Scene,
   })),
 )
+const POSTBUS_MAP_STYLE = { categoryColors: POSTBUS_CATEGORY_COLORS }
 const NationalNetworkScene = lazy(() => import('./studies/GleislichtNetworkScene.tsx').then(({ GleislichtNetworkScene }) => ({ default: GleislichtNetworkScene })))
 
 const HubPulseScene = lazy(() =>
@@ -713,9 +714,9 @@ export function App({ edition, suspended = false }: AppProps) {
     ? text.postbusRoadModes.replace('{coverage}', (100 * postbusDay.network.metadata.geometry.matchedSegments / postbusDay.network.metadata.geometry.totalSegments).toFixed(1))
     : text.postbusModes
   const postbusDateLabel = postbusDay.manifest ? formatStudyDate(postbusDay.manifest.metadata.serviceDate, LANGUAGE_LOCALES[language]) : ''
-  const timetableRouteColors = useMemo(() => isPostbus || postbusVisible
-    ? { ...(isCogwheel ? COGWHEEL_ROUTE_COLORS : {}), ...POSTBUS_ROUTE_COLORS }
-    : isCogwheel || isMountainStudy ? COGWHEEL_ROUTE_COLORS : undefined, [isPostbus, postbusVisible, isCogwheel, isMountainStudy])
+  const timetableMapStyle = useMemo(() => ({ categoryColors: isPostbus || postbusVisible
+    ? { ...(isCogwheel ? COGWHEEL_CATEGORY_COLORS : {}), ...POSTBUS_CATEGORY_COLORS }
+    : isCogwheel || isMountainStudy ? COGWHEEL_CATEGORY_COLORS : undefined }), [isPostbus, postbusVisible, isCogwheel, isMountainStudy])
   const hasHeadwayMotion = useMemo(() => network?.trains.some(isHeadwayTrain) ?? false, [network])
   const [frequencyLocale, setFrequencyLocale] = useState<typeof import('./studies/frequency-copy.ts')>()
   useEffect(() => { if (hasHeadwayMotion) void import('./studies/frequency-copy.ts').then(setFrequencyLocale) }, [hasHeadwayMotion])
@@ -2377,7 +2378,7 @@ export function App({ edition, suspended = false }: AppProps) {
             <section className="contrast-panel contrast-panel-valley">
               {kientalContrast.network ? (
                 <NationalNetworkScene
-                  routeColors={POSTBUS_ROUTE_COLORS}
+                  mapStyle={POSTBUS_MAP_STYLE}
                   snapshot={kientalContrast.network}
                   referenceSnapshot={kientalContrast.network}
                   stations={kientalContrastStations}
@@ -2409,7 +2410,7 @@ export function App({ edition, suspended = false }: AppProps) {
             boundary={boundary}
             lakes={lakes}
             groundStyle={quietMap ? 'quiet' : 'grid'}
-            routeColors={timetableRouteColors}
+            mapStyle={timetableMapStyle}
             snapshot={sceneNetwork}
             trafficOverviewEmphasis={isPostbus ? 0.65 : undefined}
             referenceSnapshot={nationalNetwork}

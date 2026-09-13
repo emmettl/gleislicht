@@ -1,4 +1,5 @@
-import type { ComponentType } from 'react'
+import { useMemo, type ComponentType } from 'react'
+import { SERVICE_COLORS } from '@motionstudies/core/theme'
 import { NationalNetworkScene, type NationalNetworkSceneProps } from '@motionstudies/three/NationalNetworkScene'
 import type { NetworkSceneExtensions } from '@motionstudies/three/scene-extensions'
 import { TrailWorkerClient } from './trail-worker-client.ts'
@@ -15,5 +16,6 @@ const Scene = NationalNetworkScene as ComponentType<NationalNetworkSceneProps & 
 
 export function GleislichtNetworkScene(props: NationalNetworkSceneProps & MapSelectionSceneExtension) {
   const frameloop = useAtlasFlightLoop()
-  return <Scene {...props} extensions={extensions} frameloop={frameloop} />
+  const mapStyle = useMemo(() => ({ ...props.mapStyle, categoryColors: props.mapStyle?.categoryColors ?? SERVICE_COLORS }), [props.mapStyle])
+  return <Scene {...props} extensions={extensions} frameloop={frameloop} mapStyle={mapStyle} />
 }
