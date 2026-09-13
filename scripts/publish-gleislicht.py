@@ -33,7 +33,7 @@ def validate_data_pointer(pointer):
 
 def verify_data_pointer(pointer):
     validate_data_pointer(pointer)
-    request = urllib.request.Request(pointer["baseUrl"] + "_release.json", headers={"Origin": "https://motionstudies.app"})
+    request = urllib.request.Request(pointer["baseUrl"] + "_release.json", headers={"Origin": "https://motionstudies.app", "User-Agent": "Gleislicht-Hosting-CI/1.0"})
     with urllib.request.urlopen(request, timeout=30) as response:
         manifest = json.load(response)
         if manifest.get("id") != pointer["id"] or manifest.get("baseUrl") != pointer["baseUrl"] or response.headers.get("Access-Control-Allow-Origin") != "*":
