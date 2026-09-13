@@ -18,3 +18,20 @@ export function observeMasthead(header: HTMLElement | null) {
     shell.style.removeProperty('--search-height')
   }
 }
+
+/** Source credits can wrap across several lines in regional and translated views. */
+export function observeFooter(footer: HTMLElement | null) {
+  const shell = footer?.parentElement
+  if (!footer || !shell || typeof ResizeObserver === 'undefined') return
+  const measure = () => {
+    const bottom = Number.parseFloat(getComputedStyle(footer).bottom) || 0
+    shell.style.setProperty('--footer-clearance', `${footer.offsetHeight + bottom + 8}px`)
+  }
+  const observer = new ResizeObserver(measure)
+  observer.observe(footer)
+  measure()
+  return () => {
+    observer.disconnect()
+    shell.style.removeProperty('--footer-clearance')
+  }
+}

@@ -16,7 +16,8 @@ import { isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './stu
 import { createActiveTrainCounter, orderTrainSearchMatches, trainSearchResults } from './studies/network-ui-index.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_CATEGORY_COLORS } from './studies/postbus.ts'
 import { TransportIcon } from './TransportIcon.tsx'
-import { observeMasthead } from './studies/masthead-layout.ts'
+import { PlaybackOptions } from './studies/PlaybackOptions.tsx'
+import { observeFooter, observeMasthead } from './studies/masthead-layout.ts'
 import { studyOrder } from './studies/study-order.ts'
 import {
   lazy,
@@ -2313,6 +2314,10 @@ export function App({ edition, suspended = false }: AppProps) {
     }
   }
 
+  useEffect(() => {
+    if (!isTimetable || isHub || isContrast || selectedTrain || airEnabled || roadEnabled || performanceEnabled || soundtrackState === 'on') void import('./studies/detail-controls.css').catch(() => {})
+  }, [isTimetable, isHub, isContrast, selectedTrain, airEnabled, roadEnabled, performanceEnabled, soundtrackState])
+
   return (
     <main
       data-sbb-enabled={sbbEnabled}
@@ -3663,6 +3668,7 @@ export function App({ edition, suspended = false }: AppProps) {
             {timelineReady ? formatServiceTime(timelineTime) : formatPercent(journeyProgress)}
           </span>
         </label>
+        {isTimetable && <PlaybackOptions label={text.moreControls} rate={PLAYBACK_RATES.find(rate => rate.value === playbackRate)?.label ?? String(playbackRate)}>
         {isTimetable && hasFullDayTimeline && (
           <div className="time-presets" aria-label={text.timePresets}>
             <span>{text.day}</span>
@@ -3707,6 +3713,7 @@ export function App({ edition, suspended = false }: AppProps) {
             </div>
           </div>
         )}
+        </PlaybackOptions>}
         <div className="mobile-transport-actions">
           <button
             className="mobile-play"
@@ -3880,7 +3887,7 @@ export function App({ edition, suspended = false }: AppProps) {
         <Suspense fallback={null}><DetailCard kind="performance" /></Suspense>
       )}
 
-      <footer>
+      <footer ref={observeFooter}>
         {isTimetable ? (
           <span className="source-links">
             <a

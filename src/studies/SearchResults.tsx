@@ -1,3 +1,4 @@
+import './detail-controls.css'
 import { formatServiceTime, type NetworkSnapshot, type NetworkTrain, type NetworkRouteIndexEntry, type StationIndexEntry, type ServiceCategory } from '@motionstudies/core/domain/network'
 import type { RoadTopologyRoad } from '@motionstudies/core/domain/road'
 import type { StudyAirport } from '@motionstudies/core/domain/airport'

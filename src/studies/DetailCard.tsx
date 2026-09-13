@@ -1,3 +1,4 @@
+import './detail-controls.css'
 import MobileMapTools from './MobileMapTools.tsx'
 import RoadCard from './RoadCard.tsx'
 import AirOverviewCard from './AirOverviewCard.tsx'

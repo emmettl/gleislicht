@@ -1,0 +1,109 @@
+@import './desktop-navigation.css';
+
+/* Compact desktop chrome: spend the available height on the map. Keep the
+   existing touch layout below 701px and the spacious layout on large displays. */
+@media (min-width: 701px) and (max-width: 1500px), (min-width: 701px) and (max-height: 850px) {
+  .experience { --desktop-gutter: 20px; }
+
+  .masthead {
+    gap: 20px;
+    padding: 18px var(--desktop-gutter) 10px;
+    pointer-events: none;
+  }
+  .masthead :is(a, button, input) { pointer-events: auto; }
+  .masthead > :first-child {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 4px 16px;
+  }
+  .masthead .eyebrow { grid-column: 1 / -1; }
+  .masthead h1 { font-size: clamp(1.5rem, 2.5vw, 2.25rem); line-height: 1.08; }
+  .masthead-orbital { margin: 0; min-height: 32px; }
+  .masthead-meta { gap: 6px; }
+  .masthead-topline { gap: 12px; align-items: center; }
+  .study-meta { gap: 3px 8px; font-size: 0.625rem; }
+  .soundtrack-control { width: 180px; }
+  .soundtrack-control > button { min-height: 32px; padding: 4px 8px; }
+  .soundtrack-control:not(.is-error) .sound-copy small { display: none; }
+  .volume-control { padding-top: 3px; }
+
+  .experience .train-search,
+  .experience .journey-card.network-card,
+  .experience .hub-picker,
+  .experience .journey-picker {
+    top: var(--masthead-clearance, 104px);
+  }
+  .experience .train-search { width: min(540px, calc(100vw - 640px)); }
+  .train-search input[type='search'] { min-height: 36px; }
+  .train-search form { min-height: 38px; }
+  .network-study-picker { padding: 3px; }
+  .journey-card { left: var(--desktop-gutter); width: 270px; padding: 12px 14px; }
+  .network-count-row strong { font-size: 1.75rem; }
+  .between { margin-bottom: 12px; }
+  .metric-grid { gap: 8px; }
+  .metric-grid > div { padding-top: 7px; }
+  .metric-grid strong { font-size: 1.3rem; }
+  .map-navigation { top: calc(var(--masthead-clearance, 104px) + 38px); right: var(--desktop-gutter); }
+  .north-marker { top: var(--masthead-clearance, 104px); right: var(--desktop-gutter); height: 28px; }
+  .north-marker::after { height: 12px; }
+  .prototype-note { right: var(--desktop-gutter); }
+
+  .transport {
+    right: var(--desktop-gutter);
+    bottom: max(42px, var(--footer-clearance, 60px));
+    left: var(--desktop-gutter);
+    max-width: 820px;
+  }
+  .transport .service-legend { flex-wrap: wrap; gap: 2px 8px; margin-bottom: 4px; max-width: none; }
+  .transport .service-legend button { min-height: 28px; }
+  .transport > .explore-actions { margin-bottom: 5px; }
+  .transport .explore-actions :is(button, select) { min-height: 30px; }
+  .progress-copy { margin-bottom: 3px; }
+  .transport .scrubber { min-height: 32px; }
+  .transport:has(.playback-options) .scrubber { padding-right: 200px; }
+  .transport .progress-value { display: none; }
+  .button-row { gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+  .button-row > button { min-height: 34px; padding: 0 10px; }
+  .button-row kbd { display: none; }
+
+  .playback-options { display: block; position: relative; height: 0; }
+  .playback-options__trigger {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-height: 32px;
+    gap: 8px;
+    padding: 0 10px;
+    font-size: 0.75rem;
+  }
+  .playback-options__trigger > span:first-child { color: var(--cyan); }
+  .playback-options__panel {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 40px;
+    max-width: calc(100vw - 40px);
+    padding: 12px;
+    border: 1px solid var(--line);
+    background: rgba(7, 7, 22, 0.96);
+    box-shadow: 0 8px 32px #0006;
+    backdrop-filter: blur(16px);
+    z-index: 9;
+  }
+  .playback-options__panel[data-open='true'] { display: grid; gap: 10px; }
+  .playback-options :is(.time-presets, .speed-picker) { margin: 0; justify-content: space-between; }
+  .playback-options :is(.time-presets, .speed-picker) > div { flex-wrap: wrap; justify-content: flex-end; }
+  .playback-options :is(.time-presets, .speed-picker) button { min-height: 32px; }
+  .experience footer { right: var(--desktop-gutter); left: var(--desktop-gutter); bottom: 12px; gap: 16px; }
+  .source-links { gap: 3px 12px; }
+}
+
+/* Narrow desktop windows need a full search row below the compact heading. */
+@media (min-width: 701px) and (max-width: 1100px) {
+  .masthead > :first-child { display: block; }
+  .masthead-orbital { margin-top: 6px; }
+  .experience .train-search { width: min(440px, calc(100vw - 48px)); }
+  .experience .journey-card.network-card { top: calc(var(--masthead-clearance, 104px) + var(--search-height, 82px) + 12px); }
+}
