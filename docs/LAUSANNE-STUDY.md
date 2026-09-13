@@ -200,3 +200,15 @@ The original Lausanne follow-ups are closed for this released scope. Subsequent
 Vaud/MBC expansion has its own audits and publication checks. Repeated pushes had
 cancelled earlier launches; Pages now lets its active run finish and retains the
 newest pending push, with all existing validation gates preserved.
+
+## Weekly refresh repair — 13 September 2026
+
+The first two-day release exposed a missing weekday pattern set: feed `20260909` on Monday 14 September matched only 97,368 of 114,053 tl bus segments (85.37%) against the existing cache. The unchanged 95% geometry gate correctly blocked publication.
+
+The supplementary `data/lausanne-weekly-road-cache.json` covers civil dates 13–19 September from the exact same GTFS archive used by CI. Its 248 patterns cover 44 route identities and 45,581 dated bus trips; 47 patterns were absent from the original cache. Matching uses the same pinned pfaedle binary/profile and snap/detour limits. The original dated Geofabrik download was no longer available, so this supplement records a new Swiss extract retrieved on 13 September (Last-Modified 11 September 2026, 23:41:48 UTC), including its exact hash. It needs no border supplement for this Swiss tl scope.
+
+The original cache has precedence. Previously reviewed pattern paths, including explicit rejections, cannot be replaced by the supplement. Only absent exact route/platform patterns are admitted from it. Each tested day now has 100% accepted tl bus segments, with no missing patterns. The complete Monday release contains 10,515 journeys and passes all eight modal geometry groups, twelve chunk checks and existing transfer limits. This remains inferred OSM routing, not operator verification or GPS.
+
+The [weekly audit](../data/lausanne-weekly-refresh-audit.json) records before/after coverage, CI-matching source hashes, Monday release gates and matcher provenance. The [geometry review](lausanne-weekly-bus-review.svg) and [review metadata](../data/lausanne-weekly-bus-review.json) cover the largest platform connectors and representative station, city, hill and night-service paths. The largest connector remains below 120 metres. The regression fixture preserves a real Monday journey that had no original cached pattern.
+
+The existing extraction/routing commands above can build another dated union. To validate a candidate supplement before changing the default builder, add `--bus-cache-supplement /path/cache.json` to `audit-lausanne-study.mjs`, alongside `--bus-cache data/lausanne-road-cache.json`. Source/geometry changes still require this offline refresh and review; daily publication never relaxes the gate to make a new date pass.
