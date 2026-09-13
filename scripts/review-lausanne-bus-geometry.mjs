@@ -58,7 +58,9 @@ for (const [name, pattern, routes, radius] of [
   panels.push({ name, centre: stop.slice(0, 2), radius, routes })
 }
 const esc = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;')
-let svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1700" viewBox="0 0 1100 1700"><rect width="1100" height="1700" fill="#080e19"/><style>text{font-family:Arial,sans-serif;fill:#e1e9f5} .road{fill:none;stroke:#526078;stroke-width:1.6} .path{fill:none;stroke-width:2.5}</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="#fff"/></marker></defs><text x="28" y="34" font-size="23">Lausanne bus alignment review · civil dates 8 / 13 September 2026</text><text x="28" y="61" font-size="13">Grey: OSM routing graph · colour: inferred bus paths · white: timetable platforms · pink: road connector</text>'
+const dates = input.metadata.serviceDates ?? [input.metadata.serviceDate]
+const dateLabel = dates.length > 1 ? `${dates[0]}–${dates.at(-1)}` : dates[0]
+let svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1700" viewBox="0 0 1100 1700"><rect width="1100" height="1700" fill="#080e19"/><style>text{font-family:Arial,sans-serif;fill:#e1e9f5} .road{fill:none;stroke:#526078;stroke-width:1.6} .path{fill:none;stroke-width:2.5}</style><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="#fff"/></marker></defs><text x="28" y="34" font-size="23">Lausanne bus alignment review · civil dates ' + esc(dateLabel) + '</text><text x="28" y="61" font-size="13">Grey: OSM routing graph · colour: inferred bus paths · white: timetable platforms · pink: road connector</text>'
 for (const [index, panel] of panels.entries()) {
   const x = 24 + (index % 2) * 548, y = 88 + Math.floor(index / 2) * 388, w = 528, h = 354
   const bounds = [panel.centre[0] - panel.radius, panel.centre[1] - panel.radius * .69, panel.centre[0] + panel.radius, panel.centre[1] + panel.radius * .69]
