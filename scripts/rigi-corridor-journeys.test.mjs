@@ -1,6 +1,7 @@
+import { journeyForSwissCorridor } from '../src/editions/switzerland-corridor-journey.ts'
 import { it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
-import { rigiCorridorForTrain, rigiPendingJourney, isRigiCorridorId, journeyForSwissCorridor, vehicleKindForSwissCorridor } from '../src/editions/switzerland-corridors.ts'
+import { rigiCorridorForTrain, rigiPendingJourney, isRigiCorridorId, vehicleKindForSwissCorridor } from '../src/editions/switzerland-corridors.ts'
 
 it('keeps the two Rigi approaches and their selected timetables separate', () => {
   const rigiNetwork = JSON.parse(readFileSync(new URL('../public/data/rigi-day.json', import.meta.url), 'utf8'))

@@ -170,7 +170,10 @@ test('typing in search never triggers global keyboard shortcuts', async ({ page 
 })
 
 test('a Zürich–Chur train descends into measured terrain', async ({ page }) => {
+  const helpers: string[] = []
+  page.on('request', request => { if (request.url().includes('switzerland-corridor-journey')) helpers.push(request.url()) })
   await openStudy(page)
+  expect(helpers).toEqual([])
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('2355')
   await page.locator('.search-results button').filter({ hasText: '2355' }).click()
@@ -181,6 +184,7 @@ test('a Zürich–Chur train descends into measured terrain', async ({ page }) =
 
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Zürich → Chur')
   await expect(page.locator('.prototype-note')).toContainText('swissALTIRegio')
+  expect(helpers.length).toBeGreaterThan(0)
   await expect(page.locator('footer a[href*="swissaltiregio"]')).toBeAttached()
   await expect(page.getByRole('navigation', { name: 'Measured journeys' })).toBeVisible()
   await page.locator('.scrubber input[type="range"]').fill('0.04')

@@ -7,7 +7,7 @@ import { useBrowserLocation } from '@motionstudies/web/use-browser-location'
 import { REGIONAL_DAYS, isRegionalDayStudy, readStudyLink, withinStudy } from './studies/explore.ts'
 import { EXPLORE_EN, type ExploreUiCopy } from './studies/explore-ui-en.ts'
 import { networkWithRailVisibility, networkWithTimetableLayer } from './studies/network-layers.ts'
-import { COGWHEEL_CATEGORY_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
+import { COGWHEEL_CATEGORY_COLORS } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
 import type { MeasuredTerrainBinding } from './studies/measured-terrain.ts'
 import type { RigiTerrainBinding } from './studies/rigi-timetable-terrain.ts'
@@ -55,7 +55,6 @@ import {
   RIGI_ASCENTS,
   type RigiCorridorId,
   isZurichChurTrain,
-  journeyForSwissCorridor,
   SWITZERLAND_PROTOTYPE_JOURNEY,
   swissCorridorProgressForTime,
 } from './editions/switzerland-corridors.ts'
@@ -394,6 +393,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const [regionalNetworkError, setRegionalNetworkError] = useState(false)
   const [boundary, setBoundary] = useState<MapBoundary>()
   const [lakes, setLakes] = useState<MapWaterBodies>()
+  const [corridorTools, setCorridorTools] = useState<typeof import('./editions/switzerland-corridor-journey.ts')>()
   const [corridor, setCorridor] = useState<CorridorSnapshot>()
   const [journeyCorridorId, setJourneyCorridorId] =
     useState<TerrainCorridorId>('zurich-chur')
@@ -700,8 +700,8 @@ export function App({ edition, suspended = false }: AppProps) {
   const cogwheelCopy = cogwheelLocale?.COGWHEEL_COPY[language] ?? { label: cogwheelLabel, description: cogwheelLabel, placeholder: cogwheelLabel, loading: text.loading, unavailable: text.loading }
   const categoryLabel = useCallback((category: ServiceCategory) => isMountainStudy && category === 'other' ? cogwheelCopy.label : serviceCategoryLabel(language, category), [isMountainStudy, cogwheelCopy.label, language])
   const railNetwork = useMemo(() => unfilteredNetwork && isCogwheel
-    ? cogwheelNetwork(unfilteredNetwork, cogwheelCatalogue)
-    : unfilteredNetwork && withFrequencyFerryPaths(unfilteredNetwork), [unfilteredNetwork, isCogwheel, cogwheelCatalogue])
+    ? cogwheel.network
+    : unfilteredNetwork && withFrequencyFerryPaths(unfilteredNetwork), [unfilteredNetwork, isCogwheel, cogwheel.network])
   const network = useMemo(() => {
     if (!railNetwork || networkStudy !== 'national' || view !== 'network') return railNetwork
     const buses = postbusVisible ? postbusDay.network : undefined
@@ -827,10 +827,10 @@ export function App({ edition, suspended = false }: AppProps) {
     Boolean(selectedRigiCorridor)
   const activeJourney = useMemo(
     () =>
-      corridor
-        ? journeyForSwissCorridor(corridor, selectedTrain, network)
+      corridor && corridorTools
+        ? corridorTools.journeyForSwissCorridor(corridor, selectedTrain, network)
         : isRigiTerrain ? rigiPendingJourney(journeyCorridorId) : SWITZERLAND_PROTOTYPE_JOURNEY,
-    [corridor, isRigiTerrain, journeyCorridorId, network, selectedTrain],
+    [corridor, corridorTools, isRigiTerrain, journeyCorridorId, network, selectedTrain],
   )
   const journeyPosition = useMemo(
     () => positionOnJourney(activeJourney, journeyProgress),
@@ -1810,18 +1810,20 @@ export function App({ edition, suspended = false }: AppProps) {
   useEffect(() => {
     if (view !== 'journey' || corridor || corridorError) return
     const controller = new AbortController()
-    fetch(editionDataUrl(edition.data.corridors[journeyCorridorId]), {
-      signal: controller.signal,
-    })
-      .then((response) => {
+    Promise.all([
+      fetch(editionDataUrl(edition.data.corridors[journeyCorridorId]), { signal: controller.signal }),
+      import('./editions/switzerland-corridor-journey.ts'),
+    ])
+      .then(async ([response, tools]) => {
         if (!response.ok) {
           throw new Error(`Terrain corridor returned ${response.status}`)
         }
-        return response.json() as Promise<CorridorSnapshot>
+        return { snapshot: await response.json() as CorridorSnapshot, tools }
       })
-      .then((snapshot) => {
+      .then(({ snapshot, tools }) => {
         if (controller.signal.aborted) return
         if (snapshot.id !== journeyCorridorId || !snapshot.route?.points?.length || !snapshot.terrain?.elevations?.length) throw new Error('Incomplete or mismatched terrain corridor')
+        setCorridorTools(tools)
         setCorridor(snapshot)
       })
       .catch((error: unknown) => {

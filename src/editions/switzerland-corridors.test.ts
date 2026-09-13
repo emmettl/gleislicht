@@ -1,10 +1,10 @@
+import { journeyForSwissCorridor } from './switzerland-corridor-journey.ts'
 import { describe, expect, it } from 'vitest'
 import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import type { NetworkSnapshot, NetworkTrain } from '@motionstudies/core/domain/network'
 import {
   isZurichChurTrain,
   isVitznauRigiTrain,
-  journeyForSwissCorridor,
   swissCorridorProgressForTime,
   vehicleKindForSwissCorridor,
 } from './switzerland-corridors.ts'

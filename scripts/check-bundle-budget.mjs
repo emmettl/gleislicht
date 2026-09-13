@@ -77,24 +77,29 @@ const workers = (await readdir(resolve(DIST_DIRECTORY, 'assets')))
   .filter(file => /^trail\.worker-[\w-]+\.js$/.test(file))
 if (workers.length !== 1) throw new Error('Expected one bundled trail worker')
 initial.scripts.push(...workers.map(file => `assets/${file}`))
-// The rail opening does not use road sampling or pilot-search helpers.
-const roadHelpers = manifest['src/studies/road-traffic-summary.ts']
-if (!roadHelpers?.isDynamicEntry || initial.scripts.includes(roadHelpers.file)) throw new Error('Road helpers must remain optional')
-const optionalRoadScripts = new Set(), optionalVisited = new Set()
-function visitRoadHelpers(key) {
-  if (optionalVisited.has(key)) return
-  optionalVisited.add(key)
-  const chunk = manifest[key]
-  if (!chunk) throw new Error(`Missing road helper dependency: ${key}`)
-  if (initial.scripts.includes(chunk.file)) return
-  if (chunk.dynamicImports?.length) throw new Error('Unbudgeted dynamic road helper dependency')
-  optionalRoadScripts.add(chunk.file)
-  for (const dependency of chunk.imports ?? []) visitRoadHelpers(dependency)
+// Optional study helpers must stay outside the opening and retain bounded closures.
+async function checkOptionalHelpers(key, label, limitKiB) {
+  const entry = manifest[key]
+  if (!entry?.isDynamicEntry || initial.scripts.includes(entry.file)) throw new Error(`${label} must remain optional`)
+  const scripts = new Set(), visited = new Set()
+  const visit = key => {
+    if (visited.has(key)) return
+    visited.add(key)
+    const chunk = manifest[key]
+    if (!chunk) throw new Error(`Missing ${label} dependency: ${key}`)
+    if (initial.scripts.includes(chunk.file)) return
+    if (chunk.dynamicImports?.length) throw new Error(`Unbudgeted dynamic ${label} dependency`)
+    scripts.add(chunk.file)
+    for (const dependency of chunk.imports ?? []) visit(dependency)
+  }
+  visit(key)
+  const bytes = await totalGzipSize(DIST_DIRECTORY, scripts)
+  if (bytes > limitKiB * 1024) throw new Error(`${label} exceed ${limitKiB} KiB gzip`)
+  console.log(`${label}: ${bytes} bytes gzip / ${limitKiB} KiB`)
 }
-visitRoadHelpers('src/studies/road-traffic-summary.ts')
-const roadHelperBytes = await totalGzipSize(DIST_DIRECTORY, optionalRoadScripts)
-if (roadHelperBytes > 5 * 1024) throw new Error('Optional road helpers exceed 5 KiB gzip')
-console.log(`Optional road helpers: ${roadHelperBytes} bytes gzip / 5 KiB`)
+await checkOptionalHelpers('src/studies/road-traffic-summary.ts', 'Optional road helpers', 5)
+await checkOptionalHelpers('src/studies/cogwheel-runtime.ts', 'Optional cogwheel helpers', 3)
+await checkOptionalHelpers('src/editions/switzerland-corridor-journey.ts', 'Optional terrain journey helpers', 3)
 const javaScript = await totalGzipSize(DIST_DIRECTORY, initial.scripts)
 const css = await totalGzipSize(DIST_DIRECTORY, initial.styles)
 // Measure the actual pinned first-view payload even when it lives outside dist.

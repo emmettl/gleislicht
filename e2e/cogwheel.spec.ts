@@ -16,15 +16,18 @@ async function chooseCogwheel(page: Page, mobile: boolean, enable = true) {
 }
 
 test('cogwheel discovery is lazy, source-backed, searchable and survives day changes', async ({ page, isMobile }) => {
-  const requests: string[] = [], errors: string[] = []
+  const requests: string[] = [], helpers: string[] = [], errors: string[] = []
   page.on('request', request => { if (request.url().includes('swiss-cogwheel')) requests.push(request.url()) })
+  page.on('request', request => { if (request.url().includes('cogwheel-runtime')) helpers.push(request.url()) })
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
   await expect(page.locator('.network-count-row strong').first()).not.toHaveText('—')
   expect(requests).toEqual([])
+  expect(helpers).toEqual([])
   await chooseCogwheel(page, isMobile)
   await expect(page.locator('.network-card .between')).toContainText('Cogwheel railways')
   expect(requests.length).toBeGreaterThan(0)
+  expect(helpers.length).toBeGreaterThan(0)
   await expect(page.locator('.network-count-row strong').first()).not.toHaveText('—')
   if (isMobile) {
     await page.locator('.mobile-study-picker .mobile-picker__trigger').click()

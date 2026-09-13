@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
-import { cogwheelNetwork, compatibleCogwheelCatalogue, type CogwheelCatalogue } from './cogwheel.ts'
+import { cogwheelNetwork, compatibleCogwheelCatalogue, type CogwheelCatalogue } from './cogwheel-runtime.ts'
 
 const metadata = { feedVersion: 'v1', serviceDate: '2026-09-04', publisher: 'SBB', sourceUrl: '', model: '', note: '', windowStart: 0, windowEnd: 86400, focusTime: 36000 }
 const catalogue: CogwheelCatalogue = {
