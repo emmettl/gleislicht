@@ -37,7 +37,7 @@ npm run worker:check
 npm run worker:build
 ```
 
-For the initial calendar rollout, publish the prepared calendar and then deploy the upgraded Worker with `npm run worker:deploy:realtime`. Subsequent timetable refreshes require no Worker configuration change. Rotate the existing secret only when needed with `npx wrangler secret put OPENTRANSPORTDATA_API_KEY --config wrangler.realtime.jsonc`. The public freshness workflow checks the resulting app/data/Worker pairing.
+The initial calendar rollout and Worker upgrade completed on 13 September 2026, with public freshness verification passing. Subsequent timetable refreshes require no Worker configuration change. Deploy future Worker code changes with `npm run worker:deploy:realtime`. Rotate the existing secret only when needed with `npx wrangler secret put OPENTRANSPORTDATA_API_KEY --config wrangler.realtime.jsonc`. The public freshness workflow checks the resulting app/data/Worker pairing.
 
 The endpoint URL is public configuration; the Bearer key and R2 bucket stay at the edge. The browser polls once per minute, marks a response stale after 150 seconds, and keeps the last published schedule usable throughout. The Worker excludes updates explicitly dated for another Swiss service day. See [CLOUDFLARE.md](./CLOUDFLARE.md) for account setup and operational checks.
 
