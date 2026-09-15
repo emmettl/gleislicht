@@ -3,13 +3,11 @@ import { SERVICE_COLORS } from '@motionstudies/core/theme'
 import { NationalNetworkScene, type NationalNetworkSceneProps } from '@motionstudies/three/NationalNetworkScene'
 import type { NetworkSceneExtensions } from '@motionstudies/three/scene-extensions'
 import type { NetworkMapStyle } from '@motionstudies/three/scene-style'
-import { TrailWorkerClient } from './trail-worker-client.ts'
 import { createAtlasFlightCamera, useAtlasFlightLoop } from './atlas-flight-camera.ts'
 import { GleislichtMapSelection, type MapSelectionSceneExtension } from './GleislichtMapSelection.tsx'
 import { pickAirportTarget } from './map-selection.ts'
 
 const extensions: NetworkSceneExtensions = {
-  createTrailBackend: () => new TrailWorkerClient(),
   createCameraDriver: createAtlasFlightCamera,
   stationPicking: 'custom',
   aircraftPicking: { event: 'click', accepts: event => event.dragDistance <= 5 && !pickAirportTarget(event.scene, event.camera, event.canvas.getBoundingClientRect(), event.clientX, event.clientY, event.touch) },

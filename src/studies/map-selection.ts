@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import type { NetworkTrain, StationIndexEntry } from '@motionstudies/core/domain/network'
 import type { StudyAirport } from '@motionstudies/core/domain/airport'
-import { scenePickMetadata } from '@motionstudies/three/scene-picking'
+import { scenePickMetadata, scenePickVertex } from '@motionstudies/three/scene-picking'
 
 export type MapSelection =
   | { kind: 'road'; value: string }
@@ -106,7 +106,8 @@ export function pickMapTarget(scene: THREE.Scene, camera: THREE.Camera,
       const stopIndex = pickStops?.[index]
       const station = stopIndex === undefined ? undefined : stations.get(stopIndex)
       if (!train && !station) continue
-      point.fromBufferAttribute(positions, index).applyMatrix4(object.matrixWorld).project(camera)
+      // Vehicle markers interpolate on the GPU; read the displayed vertex.
+      scenePickVertex(geometry, index, point).applyMatrix4(object.matrixWorld).project(camera)
       if (!Number.isFinite(point.x + point.y + point.z) || point.z < -1 || point.z > 1) continue
       const distance = Math.hypot((point.x * 0.5 + 0.5) * rect.width - x, (0.5 - point.y * 0.5) * rect.height - y)
       const radius = touch ? 14 : train ? 6 : 5

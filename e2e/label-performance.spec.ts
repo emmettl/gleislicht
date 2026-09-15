@@ -33,9 +33,7 @@ async function sceneSample(page: Page) {
   })
 }
 
-for (const blockedWorker of [false, true]) {
-test(`paused geometry stays unchanged and follows seeks (${blockedWorker ? 'synchronous trails' : 'worker trails'})`, async ({ page }) => {
-  if (blockedWorker) await page.addInitScript(() => { window.Worker = class { constructor() { throw new Error('Worker blocked for fallback test') } } as unknown as typeof Worker })
+test('paused geometry stays unchanged and follows seeks', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
@@ -61,4 +59,3 @@ test(`paused geometry stays unchanged and follows seeks (${blockedWorker ? 'sync
   await expect.poll(async () => JSON.stringify((await sceneSample(page))?.labels)).not.toBe(JSON.stringify(sought?.labels))
   expect(errors).toEqual([])
 })
-}

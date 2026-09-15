@@ -71,12 +71,11 @@ const manifest = JSON.parse(
   await readFile(resolve(DIST_DIRECTORY, '.vite/manifest.json'), 'utf8'),
 )
 const initial = collectInitialFiles(manifest)
-// Vite's worker assets are not listed as imports in its main manifest, but the
-// national scene starts this worker on first view, so include its transfer cost.
+// The shared renderer computes trails from sampled history since alpha.16;
+// no worker asset belongs to the opening transfer.
 const workers = (await readdir(resolve(DIST_DIRECTORY, 'assets')))
-  .filter(file => /^trail\.worker-[\w-]+\.js$/.test(file))
-if (workers.length !== 1) throw new Error('Expected one bundled trail worker')
-initial.scripts.push(...workers.map(file => `assets/${file}`))
+  .filter(file => /\.worker-[\w-]+\.js$/.test(file))
+if (workers.length) throw new Error(`Unexpected bundled workers: ${workers.join(', ')}`)
 // Optional study helpers must stay outside the opening and retain bounded closures.
 async function checkOptionalHelpers(key, label, limitKiB) {
   const entry = manifest[key]
