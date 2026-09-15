@@ -46,7 +46,8 @@ describe('satellite cloud playback', () => {
     for (const day of manifest.days.filter(day => day.available)) {
       const bytes = new Uint8Array(gunzipSync(readFileSync(`public/data/orbital-clouds/${day.file}`))).buffer
       const field = await decodeCloudField(bytes, manifest, day)
-      expect(field.values).toEqual(new Uint8Array(bytes))
+      // Element-wise toEqual over 620 KiB per day exceeds the 5 s limit on CI runners.
+      expect(Buffer.from(field.values).equals(Buffer.from(bytes))).toBe(true)
       const corrupted = bytes.slice(0)
       new Uint8Array(corrupted)[0] ^= 1
       await expect(decodeCloudField(corrupted, manifest, day)).rejects.toThrow('verification')
