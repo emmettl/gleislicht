@@ -12,7 +12,7 @@
 .road-chart-sample { fill: #ffbe78; }
 .road-chart-cursor { stroke: #fff1cf99; stroke-dasharray: 3 3; }
 .road-chart-current { fill: #fff1cf; stroke: #432b20; stroke-width: 2; }
-.road-history input[type='range'] { display: block; width: 100%; height: 24px; margin: 0; accent-color: #ffbe78; cursor: ew-resize; }
+.road-history .ms-timeline-scrubber { --ms-timeline-accent: #ffbe78; }
 .road-history-intensity { display: flex; align-items: center; gap: 9px; margin-top: 7px; }
 .road-history-intensity > div { flex: 1; position: relative; height: 4px; border-radius: 2px; background: linear-gradient(90deg, #725f48, #ffc57d); }
 .road-history-intensity i { position: absolute; top: -3px; width: 3px; height: 10px; transform: translateX(-50%); background: #fff5dd; }

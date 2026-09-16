@@ -1,3 +1,5 @@
+import { TimelineScrubber } from '@motionstudies/web/components/TimelineScrubber'
+import '@motionstudies/web/timeline-scrubber.css'
 import { useUiLanguage } from '../use-ui-language.ts'
 import { useUiText } from '../use-ui-text.ts'
 import { LANGUAGE_LOCALES, serviceCategoryLabel } from '../i18n.ts'
@@ -282,7 +284,7 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
       {compact && <div className="orbital-mobile-toolbar"><output className="orbital-time" aria-label={copy.playbackTime}>{orbitalClock(time)}</output><button disabled={!ready} onClick={togglePlay} aria-label={playing ? copy.pausePlayback : copy.playPlayback}>{playing ? `Ⅱ ${copy.pause}` : `▶ ${copy.play}`}</button><button ref={focusButton} onClick={toggleFocus}>{copy.focus}</button><button aria-haspopup="dialog" aria-expanded={settingsOpen} aria-controls="orbital-settings" onClick={() => setSettingsOpen(true)}>{copy.controls}</button></div>}
       <div className="orbital-timeline">
         {manifest && <svg viewBox="0 0 1440 42" preserveAspectRatio="none" aria-hidden="true"><path d={rhythmPath} /></svg>}
-        <input aria-label={text.timeOfDay} aria-valuetext={orbitalClock(time)} type="range" min={0} max={86399} step={60} value={time} onChange={e => seek(Number(e.target.value))} />
+        <TimelineScrubber ariaLabel={text.timeOfDay} ariaValueText={orbitalClock(time)} windowStart={0} windowEnd={86399} step={60} time={time} onSeek={seek} />
         <div className="orbital-hours"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
       </div>
       {!compact && <div className="orbital-controls"><button className="orbital-play" disabled={!ready} onClick={togglePlay} aria-label={playing ? copy.pausePlayback : copy.playPlayback}>{playing ? `Ⅱ ${copy.pause}` : `▶ ${copy.play}`}</button>{playbackControls}<span className="orbital-hint">{copy.dragHint}</span></div>}

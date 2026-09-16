@@ -1,3 +1,5 @@
+import { TimelineScrubber } from '@motionstudies/web/components/TimelineScrubber'
+import '@motionstudies/web/timeline-scrubber.css'
 import { useUiText } from '../use-ui-text.ts'
 import { useEffect, useMemo, useState } from 'react'
 import type { NationalRoadMinuteChunk, NationalRoadStudyManifest, NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day'
@@ -73,7 +75,7 @@ export function RoadTrafficHistory({ road, manifest, fallback, time, language, o
       {current && time >= start && time <= end && <circle cx={x(time)} cy={y(current.density)} r="3.5" className="road-chart-current" />}
       <text x="30" y="131">{formatServiceTime(start)}</text><text x="316" y="131" textAnchor="end">{formatServiceTime(end)}</text>
     </svg>
-    <input type="range" min={start} max={end} step={source.metadata.sampleIntervalSeconds} value={Math.max(start, Math.min(end, time))} aria-label={copy.seek} aria-valuetext={formatServiceTime(time)} onChange={event => onTime(Number(event.target.value))} />
+    <TimelineScrubber windowStart={start} windowEnd={end} step={source.metadata.sampleIntervalSeconds} time={time} ariaLabel={copy.seek} ariaValueText={formatServiceTime(time)} onSeek={onTime} />
     <div className="road-history-intensity" aria-hidden="true"><span>{copy.quiet}</span><div>{percent !== undefined && <i style={{ left: `${percent}%` }} />}</div><span>{copy.busy}</span></div>
     <p className="road-history-comparison">{percent === undefined ? text.noRoadTraffic : `${percent}% ${relativeLabel}`}</p>
     <p>{peakLabel}: <strong>{number.format(peak.summary.density)}</strong> · {formatServiceTime(peak.time)}<br />{source.metadata.serviceDate} · {copy.note}</p>

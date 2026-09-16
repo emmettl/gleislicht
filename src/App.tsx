@@ -1,3 +1,5 @@
+import { TimelineScrubber } from '@motionstudies/web/components/TimelineScrubber'
+import '@motionstudies/web/timeline-scrubber.css'
 import { watchTimetableRollover } from './editions/timetable-rollover.ts'
 import { useUiLanguage } from './use-ui-language.ts'
 import { ADDITIONAL_REGION_IDS, ADDITIONAL_REGIONS, additionalRegionDate, additionalRegionKey, isAdditionalRegion } from './studies/additional-regions.ts'
@@ -3663,15 +3665,15 @@ export function App({ edition, suspended = false }: AppProps) {
           <span className="sr-only">
             {isTimetable ? text.timeOfDay : text.journeyProgress}
           </span>
-          <input
-            type="range"
-            min={timelineReady ? timeline.windowStart : 0}
-            max={timelineReady ? timeline.windowEnd : 1}
+          <TimelineScrubber
+            ariaLabel={isTimetable ? text.timeOfDay : text.journeyProgress}
+            ariaValueText={timelineReady ? formatServiceTime(timelineTime) : formatPercent(journeyProgress)}
+            windowStart={timelineReady ? timeline.windowStart : 0}
+            windowEnd={timelineReady ? timeline.windowEnd : 1}
             step={timelineReady ? 10 : 0.001}
-            value={timelineReady ? timelineTime : journeyProgress}
+            time={timelineReady ? timelineTime : journeyProgress}
             disabled={isTimetable && !network}
-            onChange={(event) => {
-              const value = Number(event.target.value)
+            onSeek={value => {
               stopNow()
               if (isHub) setHubTime(value)
               else if (timelineReady) handleNetworkTime(value)

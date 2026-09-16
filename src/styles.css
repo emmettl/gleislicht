@@ -450,9 +450,7 @@
   gap: 14px;
 }
 
-.scrubber input[type='range'] {
-  height: 48px;
-}
+.scrubber .ms-timeline-scrubber { flex: 1; min-height: 48px; --ms-timeline-accent: var(--cyan); --ms-timeline-track: var(--line, #334650); }
 
 .progress-value {
   min-width: 35px;
