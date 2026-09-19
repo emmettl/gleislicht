@@ -479,7 +479,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const recordingRef = useRef<{ stop: () => void; cancel: () => void } | null>(null)
   const [mobileMapToolsOpen, setMobileMapToolsOpen] = useState(false)
   const mobileMapToolsRef = useRef<HTMLDetailsElement>(null)
-  const searchInteractionRef = useRef(false)
+  const searchRef = useRef<HTMLElement>(null)
   const timelineTimeRef = useRef(networkTime)
   const roadHistorySeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const postbusSeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
@@ -2038,6 +2038,25 @@ export function App({ edition, suspended = false }: AppProps) {
   ])
 
   useEffect(() => {
+    if (!searchOpen) return
+    // Keyboard dismissal alone is not an outside action: iOS may blur before
+    // delivering the result tap. Dismiss only for an actual outside interaction.
+    const outside = (event: Event) => {
+      if (event.target instanceof Node && !searchRef.current?.contains(event.target)) {
+        setSearchOpen(false)
+        setActiveSearchIndex(-1)
+        if (event.type === 'pointerdown') searchRef.current?.querySelector('input')?.blur()
+      }
+    }
+    document.addEventListener('pointerdown', outside, true)
+    document.addEventListener('focusin', outside)
+    return () => {
+      document.removeEventListener('pointerdown', outside, true)
+      document.removeEventListener('focusin', outside)
+    }
+  }, [searchOpen])
+
+  useEffect(() => {
     if (!searchOpen || resolvedActiveSearchIndex < 0) return
     document
       .getElementById(`train-search-result-${resolvedActiveSearchIndex}`)
@@ -2715,24 +2734,7 @@ export function App({ edition, suspended = false }: AppProps) {
             setSearchOpen(true)
             if (mobileMapToolsRef.current) mobileMapToolsRef.current.open = false
           }}
-          onPointerDownCapture={() => {
-            searchInteractionRef.current = true
-          }}
-          onPointerUpCapture={() => {
-            window.setTimeout(() => {
-              searchInteractionRef.current = false
-            }, 0)
-          }}
-          onPointerCancelCapture={() => {
-            searchInteractionRef.current = false
-          }}
-          onBlur={(event) => {
-            if (searchInteractionRef.current) return
-            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-              setSearchOpen(false)
-              setActiveSearchIndex(-1)
-            }
-          }}
+          ref={searchRef}
         >
           <form
             role="search"
