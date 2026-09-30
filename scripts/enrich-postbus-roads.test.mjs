@@ -85,6 +85,27 @@ describe('PostBus road geometry', () => {
     expect(result.missingPatterns).toBe(1)
   })
 
+  it('enforces the unchanged 95% floor and reports missing exact patterns', async () => {
+    const directory = await mkdtemp(join(tmpdir(), 'postbus-coverage-'))
+    try {
+      const trains = Array.from({ length: 20 }, (_, i) => ({ ...train, id: String(i),
+        routeId: i < 19 ? train.routeId : 'unknown' }))
+      const chunkPath = join(directory, 'day.json')
+      const snapshot = join(directory, 'manifest.json')
+      const reset = async () => {
+        await writeFile(chunkPath, JSON.stringify({ trains }))
+        await writeFile(snapshot, JSON.stringify({ ...manifest, chunks: [{ path: 'day.json' }] }))
+      }
+      await reset()
+      expect((await enrichPostbusRoads(snapshot, cache)).coverage).toBe(0.95)
+      trains[18].routeId = 'also-unknown'
+      await reset()
+      const before = await Promise.all([readFile(snapshot), readFile(chunkPath)])
+      await expect(enrichPostbusRoads(snapshot, cache)).rejects.toThrow('18/20 matched segments, 2/20 trips missing exact road patterns')
+      expect(await Promise.all([readFile(snapshot), readFile(chunkPath)])).toEqual(before)
+    } finally { await rm(directory, { recursive: true, force: true }) }
+  })
+
   it('writes a minimal matcher feed retaining platform IDs, route names and service times', async () => {
     const directory = await mkdtemp(join(tmpdir(), 'postbus-feed-'))
     try {
@@ -104,6 +125,7 @@ describe('PostBus road geometry', () => {
       await writeFile(snapshot, JSON.stringify(document))
       await expect(enrichPostbusRoads(snapshot, { ...cache, patterns: {} })).rejects.toThrow('No artifacts written')
       expect(JSON.parse(await readFile(snapshot, 'utf8'))).toEqual(document)
+      for (const name of ['a.json', 'b.json']) expect(await readFile(join(directory, name), 'utf8')).toBe(JSON.stringify(chunk))
       const result = await enrichPostbusRoads(snapshot, cache)
       expect(result.coverage).toBe(1)
       const enriched = JSON.parse(await readFile(snapshot, 'utf8'))

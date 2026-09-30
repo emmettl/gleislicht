@@ -1,6 +1,9 @@
+import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { createHash } from 'node:crypto'
 import { describe, expect, it } from 'vitest'
-import { readPublishedNationalData } from './restore-published-national-data.mjs'
+import { readPublishedNationalData, restorePublishedNationalData } from './restore-published-national-data.mjs'
 
 function published() {
   const metadata = { serviceDate: '2026-09-07', feedVersion: '20260905', windowStart: 0, windowEnd: 86_400 }
@@ -12,6 +15,26 @@ function published() {
     'swiss-rail-day-manifest.json': { metadata, ...topology, chunks: [descriptor] },
     'swiss-hub-day.json': { metadata, hubs: Object.fromEntries(['zurich', 'bern', 'basel', 'geneva'].map((id) => [id, [{}]])) },
     [descriptor.path]: chunk,
+  }
+  // A small synthetic national dataset that passes the real production audit.
+  const busStops = [[8, 47, 'A', '', 'a'], [8.01, 47, 'B', '', 'b']]
+  const buses = Array.from({ length: 10001 }, (_, i) => ({ id: `bus-${i}`, category: 'bus',
+    routeId: `route-${i % 501}`, start: 1, end: 61, stops: [[0, 1, 1], [1, 61, 61]], pathSegments: [0] }))
+  const busChunks = Array.from({ length: 8 }, (_, i) => {
+    const path = `postbus-national-day-chunks/${String(i * 3).padStart(2, '0')}-${String(i * 3 + 3).padStart(2, '0')}.json`
+    const payload = { windowStart: i * 10800, windowEnd: (i + 1) * 10800, trains: i ? [] : buses }
+    const bytes = JSON.stringify(payload)
+    documents[path] = bytes
+    return { id: String(i), path, windowStart: payload.windowStart, windowEnd: payload.windowEnd,
+      tripCount: payload.trains.length, bytes: Buffer.byteLength(bytes), sha256: createHash('sha256').update(bytes).digest('hex') }
+  })
+  documents['postbus-national-day-manifest.json'] = {
+    metadata: { ...metadata, localAgencyIds: ['801'], modes: ['bus'], geometry: {
+      publisher: 'OpenStreetMap contributors', license: 'ODbL-1.0', sourceSha256: 'a'.repeat(64),
+      matchedSegments: buses.length, totalSegments: buses.length,
+    } },
+    stops: busStops, edges: [[0, 1]], edgePaths: [0], tripCount: buses.length,
+    paths: Array.from({ length: 10001 }, () => busStops.map(stop => stop.slice(0, 2))), chunks: busChunks,
   }
   const requested = []
   const fetchData = async (url) => {
@@ -35,7 +58,7 @@ describe('published national timetable recovery', () => {
     const fixture = published()
     const result = await readPublishedNationalData(fixture.fetchData)
     expect(result).toMatchObject({ serviceDate: '2026-09-07', feedVersion: '20260905' })
-    expect(result.files.size).toBe(4)
+    expect(result.files.size).toBe(13)
     expect(result.files.get(fixture.descriptor.path).toString()).toBe(fixture.documents[fixture.descriptor.path])
   })
 
@@ -43,7 +66,7 @@ describe('published national timetable recovery', () => {
     const fixture = published()
     fixture.documents['swiss-hub-day.json'].metadata = { serviceDate: '2026-09-06', feedVersion: '20260905' }
     await expect(readPublishedNationalData(fixture.fetchData)).rejects.toThrow('mixed service dates')
-    expect(fixture.requested).toHaveLength(3)
+    expect(fixture.requested).toHaveLength(4)
   })
 
   it('rejects corrupted chunks and missing downloads', async () => {
@@ -58,10 +81,65 @@ describe('published national timetable recovery', () => {
     const fixture = published()
     fixture.descriptor.path = '../outside.json'
     await expect(readPublishedNationalData(fixture.fetchData)).rejects.toThrow('unexpected chunk path')
-    expect(fixture.requested).toHaveLength(3)
+    expect(fixture.requested).toHaveLength(4)
     fixture.descriptor.path = 'swiss-rail-day-chunks/00-24.json'
     fixture.descriptor.windowEnd = 43_200
     await expect(readPublishedNationalData(fixture.fetchData)).rejects.toThrow('do not cover 24 hours')
+  })
+
+
+  it('rejects missing, mixed-date, unsafe and corrupt PostBus recovery', async () => {
+    const fixture = published()
+    const bus = fixture.documents['postbus-national-day-manifest.json']
+    bus.metadata.serviceDate = '2026-09-08'
+    await expect(readPublishedNationalData(fixture.fetchData)).rejects.toThrow('mixed service dates')
+    bus.metadata.serviceDate = '2026-09-07'
+    const path = bus.chunks[0].path
+    bus.chunks[0].path = '../outside.json'
+    await expect(readPublishedNationalData(fixture.fetchData)).rejects.toThrow('unexpected PostBus chunk path')
+    bus.chunks[0].path = path
+    fixture.documents[path] += ' '
+    await expect(readPublishedNationalData(fixture.fetchData)).rejects.toThrow()
+    delete fixture.documents[path]
+    await expect(readPublishedNationalData(fixture.fetchData)).rejects.toThrow('returned 404')
+  })
+
+  it('rejects published PostBus below 95% even when hashes and reported counts agree', async () => {
+    const fixture = published()
+    const bus = fixture.documents['postbus-national-day-manifest.json']
+    const descriptor = bus.chunks[0]
+    const payload = JSON.parse(fixture.documents[descriptor.path])
+    for (const train of payload.trains.slice(0, 1000)) train.pathSegments = [null]
+    const bytes = JSON.stringify(payload)
+    fixture.documents[descriptor.path] = bytes
+    descriptor.bytes = Buffer.byteLength(bytes)
+    descriptor.sha256 = createHash('sha256').update(bytes).digest('hex')
+    bus.metadata.geometry.matchedSegments -= 1000
+    await expect(readPublishedNationalData(fixture.fetchData)).rejects.toThrow('below 95%')
+  })
+
+  it('replaces a partial candidate completely only after recovery validates, retaining original dates', async () => {
+    const fixture = published()
+    const directory = await mkdtemp(join(tmpdir(), 'national-recovery-'))
+    try {
+      const manifest = join(directory, 'postbus-national-day-manifest.json')
+      await writeFile(manifest, 'candidate')
+      await mkdir(join(directory, 'postbus-national-day-chunks'))
+      await writeFile(join(directory, 'postbus-national-day-chunks/leftover.json'), 'candidate chunk')
+      await writeFile(join(directory, 'swiss-cogwheel-catalogue.json'), 'candidate catalogue')
+      const path = fixture.documents['postbus-national-day-manifest.json'].chunks[0].path
+      const valid = fixture.documents[path]
+      fixture.documents[path] += ' '
+      await expect(restorePublishedNationalData(directory, fixture.fetchData)).rejects.toThrow()
+      expect(await readFile(manifest, 'utf8')).toBe('candidate')
+      expect(await readFile(join(directory, 'swiss-cogwheel-catalogue.json'), 'utf8')).toBe('candidate catalogue')
+      fixture.documents[path] = valid
+      const result = await restorePublishedNationalData(directory, fixture.fetchData)
+      for (const [path, bytes] of result.files) expect(await readFile(join(directory, path))).toEqual(bytes)
+      expect(JSON.parse(await readFile(manifest, 'utf8')).metadata.serviceDate).toBe('2026-09-07')
+      expect(await readdir(join(directory, 'postbus-national-day-chunks'))).toHaveLength(8)
+      await expect(readFile(join(directory, 'swiss-cogwheel-catalogue.json'))).rejects.toThrow('ENOENT')
+    } finally { await rm(directory, { recursive: true, force: true }) }
   })
 
   it('repairs only the verified legacy geometry transformation', async () => {

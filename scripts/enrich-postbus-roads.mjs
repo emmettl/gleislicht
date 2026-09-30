@@ -209,7 +209,7 @@ export async function enrichPostbusRoads(snapshotPath, cache, minimumCoverage = 
   const { manifest, chunks, trains } = await readPostbusDay(snapshotPath)
   const geometry = applyRoadCache(manifest, trains, cache)
   const coverage = geometry.total ? geometry.matched / geometry.total : 0
-  assert(coverage >= minimumCoverage, `Only ${(coverage * 100).toFixed(2)}% road coverage; need ${(minimumCoverage * 100).toFixed(1)}%. No artifacts written.`)
+  assert(coverage >= minimumCoverage, `Only ${(coverage * 100).toFixed(2)}% road coverage; need ${(minimumCoverage * 100).toFixed(1)}%. No artifacts written. Feed ${manifest.metadata.feedVersion}, cache timetable ${cache.metadata.timetableFeedVersion}: ${geometry.matched}/${geometry.total} matched segments, ${geometry.missingPatterns}/${trains.length} trips missing exact road patterns; refresh the geometry cache.`)
   const updated = new Map(geometry.trains.map(train => [train.id, train]))
   const writes = chunks.map(chunk => {
     const bytes = Buffer.from(JSON.stringify({ ...chunk.payload, trains: chunk.payload.trains.map(train => updated.get(train.id)) }))

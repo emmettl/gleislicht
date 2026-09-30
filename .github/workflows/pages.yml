@@ -172,6 +172,8 @@ jobs:
           unzip -t "$RUNNER_TEMP/swiss-gtfs.zip" >/dev/null
 
       - name: Build the selected day’s Swiss timetable
+        id: timetable
+        continue-on-error: true
         if: steps.sources.outcome == 'success'
         run: |
           npm run data:gtfs -- \
@@ -194,10 +196,12 @@ jobs:
             --tolerance 160
           npm run data:mountains -- --archive "$RUNNER_TEMP/swiss-gtfs.zip"
 
-      - name: Retain published timetable when the source download is unavailable
-        if: steps.sources.outcome == 'failure'
+      # A downloaded feed is only a candidate until all enrichment/audits pass.
+      # Recovery retains source dates; the calendar still rejects stale days.
+      - name: Retain verified published timetable when refresh fails
+        if: ${{ !cancelled() && (steps.sources.outcome == 'failure' || steps.timetable.outcome == 'failure') }}
         run: |
-          echo '::warning::Official timetable download unavailable; retaining the last verified published national timetable with its original service date.'
+          echo '::warning::National timetable download or validation failed; recovering the complete last verified published timetable with its original service date. Stale recovery cannot pass the calendar publication gate.'
           node scripts/restore-published-national-data.mjs
 
       - name: Upload national timetable
