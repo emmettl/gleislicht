@@ -46,17 +46,27 @@ On the Apple M4 Max at 1280×720 with ANGLE Metal, the paired PostBus measuremen
 
 **Software rendering is a real limitation:** an isolated SwiftShader run measured 4.9 FPS for the road-enriched PostBus view versus 13.7 FPS for the rail opening. The many static road vertices are materially heavier for a software renderer. Hardware-backed rendering needed no fleet reduction or renderer replacement. Future work for machines without usable WebGL acceleration should investigate geometry detail levels; cold network transfer and lower-end physical devices also remain to be measured.
 
-## Regular timetable refresh
+## Automatic timetable refresh
+
+The scheduled Pages job and the national fixture workflow run:
 
 ```sh
 npm run data:postbus:national -- --archive /path/swiss-gtfs.zip --date YYYY-MM-DD
-npm run data:postbus:roads
-node scripts/audit-postbus.mjs
+node scripts/refresh-postbus-roads.mjs --work-directory /tmp/postbus-build \
+  --reusable-cache /tmp/postbus-road-cache/cache.json
 ```
 
-Both refresh workflows apply the committed `data/postbus-road-cache.json` after timetable generation. A cache key hashes the source route ID, complete ordered platform IDs and coordinates. Changed timetable times can reuse it; changed coordinates, directions, stop sequences or route identities cannot. No join is made solely on the displayed line number or a global stop pair. New patterns remain unshaped until rebuilt. An aggregate coverage gate of 95% fails before any enriched artifacts are written, so a stale cache cannot silently publish a heavily degraded road view.
+The refresh first tries the last automatically verified cache, then the committed `data/postbus-road-cache.json`. Cache keys still hash the source route ID, complete ordered platform IDs and coordinates. Changed times can reuse geometry; moved platforms, different directions, stop sequences or route identities cannot. There is no line-number or global stop-pair shortcut.
 
-The audit also checks path references and endpoints, coverage counts, ODbL provenance, 500,000 maximum vertices, topology under 3 MiB gzip and each movement chunk under 1 MiB gzip. Chunk sizes and hashes are recalculated from the exact enriched bytes; the manifest is replaced last.
+If neither cache reaches the unchanged 95% floor, the same job automatically builds the pinned pfaedle revision, prepares all patterns for the exact service day and matches current OSM extracts. It resolves dated snapshots from each provider replication-state timestamp and downloads Geofabrik Switzerland, Alps, Baden-Wuerttemberg, Alsace, Franche-Comte and Rhone-Alpes extracts sequentially, filters each to the timetable and merges by OSM identity/version. This covers the Swiss network and neighbouring road corridors without depending on large recurring Overpass queries. Raw downloads are capped at 3 GiB each, retried at most twice, filtered, then removed before the next download. The native pipeline is limited to 30 minutes, and the national job to 50 minutes.
+
+Every result, including a CI cache hit, is applied to a staging copy and audited before replacing any candidate timetable files. The audit checks exact chunk hashes, complete day/boundary trips, route/operator scope, path references and platform endpoints, coverage counts, ODbL provenance, the 95% floor, 500,000 maximum vertices, topology under 3 MiB gzip and each movement chunk under 1 MiB gzip. A failed rebuild or audit leaves the inputs and last reusable geometry untouched. The main publishing workflow then attempts complete verified published-timetable recovery, preserving original dates; the calendar cannot publish stale recovery as today.
+
+Successful geometry is included in the immutable timetable release and reused through a bounded daily Actions cache. No generated cache commit, review PR, manual matcher invocation or manual fixture refresh is required for ordinary upstream timetable changes. Cache eviction only causes another automatic rebuild. Each requested date is checked independently, including weekends and seasonal variants. Source URLs, resolved snapshot URLs, byte counts and raw SHA-256 hashes are retained alongside binary, configuration, merged OSM, matcher-output and ordered-pattern hashes in the geometry provenance. Raw extracts and native build tools are temporary and never enter app assets.
+
+An upstream outage or a result that still fails the quality gates cannot be made safe merely by retrying. Those runs retain the verified publication, fail visibly and are attempted again at the next scheduled refresh. The public freshness check remains independent and continues to flag stale published dates.
+
+The manual commands below remain available for investigating matcher/source changes.
 
 ## September 12 cache refresh
 
