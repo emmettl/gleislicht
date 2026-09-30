@@ -25,7 +25,8 @@ describe('national refresh recovery wiring', () => {
   it('handles a rejected build but never tolerates a failed recovery or bypasses the calendar gate', () => {
     expect(build).toContain('id: timetable\n        continue-on-error: true')
     expect(build).toContain("if: steps.sources.outcome == 'success'")
-    expect(build).toContain('npm run data:postbus:roads\n          node scripts/audit-postbus.mjs')
+    expect(build).toContain('node scripts/refresh-postbus-roads.mjs')
+    expect(build).toContain('--reusable-cache')
     expect(recovery).toContain('node scripts/restore-published-national-data.mjs')
     expect(recovery).not.toContain('continue-on-error')
     const upload = steps.find(step => step.startsWith('Upload national timetable'))

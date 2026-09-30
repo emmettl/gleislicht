@@ -50,6 +50,9 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: Test bounded road source downloads
+        run: python3 -m unittest discover -s scripts -p 'test_download_postbus_road_source.py'
+
       - name: Typecheck
         run: npm run typecheck
 
@@ -142,7 +145,8 @@ jobs:
     env:
       SERVICE_DATE: ${{ matrix.day == 'today' && needs.check.outputs.service_date || needs.check.outputs.tomorrow_date }}
       TIMETABLE_YEAR: ${{ matrix.day == 'today' && needs.check.outputs.timetable_year || needs.check.outputs.tomorrow_year }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -158,6 +162,16 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      # A cache hit is still subjected to exact-pattern matching and the full
+      # audit. The date key is bounded; restore older geometry only as a hint.
+      - name: Restore automatically verified PostBus road cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/postbus-road-cache
+          key: postbus-roads-v1-${{ matrix.day }}-${{ hashFiles('scripts/*postbus*', 'scripts/merge-postbus-osm.py') }}-${{ needs.check.outputs.service_date }}
+          restore-keys: |
+            postbus-roads-v1-${{ matrix.day }}-${{ hashFiles('scripts/*postbus*', 'scripts/merge-postbus-osm.py') }}-
 
       - name: Download current Swiss timetable sources
         id: sources
@@ -185,8 +199,9 @@ jobs:
           npm run data:postbus:national -- \
             --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
             --date "$SERVICE_DATE"
-          npm run data:postbus:roads
-          node scripts/audit-postbus.mjs
+          node scripts/refresh-postbus-roads.mjs \
+            --work-directory "$RUNNER_TEMP/postbus-road-build" \
+            --reusable-cache "$RUNNER_TEMP/postbus-road-cache/cache.json"
           npm run data:rail:shapes -- \
             --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
             --tolerance 160

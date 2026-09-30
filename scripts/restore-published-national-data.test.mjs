@@ -135,7 +135,7 @@ describe('published national timetable recovery', () => {
       expect(await readFile(join(directory, 'swiss-cogwheel-catalogue.json'), 'utf8')).toBe('candidate catalogue')
       fixture.documents[path] = valid
       const result = await restorePublishedNationalData(directory, fixture.fetchData)
-      for (const [path, bytes] of result.files) expect(await readFile(join(directory, path))).toEqual(bytes)
+      for (const [path, bytes] of result.files) expect((await readFile(join(directory, path))).equals(bytes)).toBe(true)
       expect(JSON.parse(await readFile(manifest, 'utf8')).metadata.serviceDate).toBe('2026-09-07')
       expect(await readdir(join(directory, 'postbus-national-day-chunks'))).toHaveLength(8)
       await expect(readFile(join(directory, 'swiss-cogwheel-catalogue.json'))).rejects.toThrow('ENOENT')

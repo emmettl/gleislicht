@@ -9,12 +9,13 @@ import osmium
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--switzerland', required=True)
 parser.add_argument('--border', required=True)
+parser.add_argument('--supplement', nargs='*', default=[])
 parser.add_argument('--output', required=True)
 args = parser.parse_args()
 
 merge = osmium.MergeInputReader()
-merge.add_file(args.switzerland)
-merge.add_file(args.border)
+for path in [args.switzerland, args.border, *args.supplement]:
+    merge.add_file(path)
 writer = osmium.SimpleWriter(args.output)
 
 
