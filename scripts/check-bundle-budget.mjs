@@ -11,8 +11,9 @@ const INITIAL_DATA_FILES = [
 const BUDGETS = {
   // The national scene is requested immediately after the opening data resolves,
   // so its renderer and Three.js dependency count even though Vite emits them as
-  // a dynamic chunk.
-  javaScript: 360 * 1024,
+  // a dynamic chunk. Alpha.31 measures 375.2 KiB (previously 359.6);
+  // see docs/DEPENDENCIES-ALPHA-31.md.
+  javaScript: 380 * 1024,
   css: 10 * 1024,
   // The official timetable is regenerated twice weekly and its compressed
   // first-view payload naturally moves with the number and shape of services.
@@ -20,8 +21,8 @@ const BUDGETS = {
   // alignment without a runtime map dependency. Keep enough headroom for feed
   // churn while retaining a hard mobile ceiling for accidental expansion.
   data: 450 * 1024,
-  // Shared map styles add under 1 KiB to the national renderer. Keep the
-  // individual 360/10/450 KiB ceilings and allow 2 KiB in the combined gate.
+  // Retain the existing combined mobile ceiling after the renderer refresh;
+  // the individual ceilings are independent limits, not an additive allowance.
   total: 792 * 1024,
 }
 

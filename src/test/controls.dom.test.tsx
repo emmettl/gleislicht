@@ -158,7 +158,7 @@ it.each([0, 1])('frequency exactTimes=%i renders the correct selected-card contr
     expect(document.querySelector('.frequency-note')).toBeNull()
     expect(element('.selected-card').textContent).toContain('Plan')
   } else {
-    expect(element('.selected-card').textContent).toContain('Illustrated arrival')
+    await waitFor(() => expect(element('.selected-card').textContent).toContain('Illustrated arrival'))
     expect(element('.frequency-note').textContent).toContain('10 min')
   }
 })
