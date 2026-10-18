@@ -31,3 +31,9 @@ npx vitest run scripts/geneva-luzern-statistics-ui.test.tsx scripts/aargau-road-
 [The audit](../data/geneva-luzern-statistics-audit.json) records completeness, missing values, distinct identities, rounding differences and public-file hashes. [Public assets](../public/data/geneva-luzern-statistics/index.json) are deterministic and fetched only on opening the view, with region/schema and byte/SHA-256 checks before display. Tests cover reproduction, source integrity, missing versus zero, independent reference years, direction rounding, limited profile scope, localization and failed requests.
 
 Further Luzern reports need their own period, direction and qualification reviews. Geneva's underlying dated observations and road-graph joins remain unverified. These changes add public statistical assets and interface code; deployment remains a separate step.
+
+
+The [verified-loading pilot](AARGAU-ROAD-STATISTICS.md#verified-json-loading--19-october-2026)
+shares only request, byte verification and JSON decoding with Aargau. Geneva/Luzern
+schema validation, source discrepancies, region selection and explicit retry stay
+in this edition's existing modules.

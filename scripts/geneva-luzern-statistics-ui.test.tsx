@@ -67,3 +67,16 @@ it('propagates unavailable responses and cancellation', async () => {
   vi.stubGlobal('fetch', vi.fn((_url, options) => options.signal.throwIfAborted()))
   await expect(loadSummary('/data/', 'geneva', controller.signal)).rejects.toThrow()
 })
+
+it('does not request a payload after cancellation while its index was pending', async () => {
+  let release!: (response: Response) => void
+  const late = new Promise<Response>(resolve => { release = resolve })
+  const fetch = vi.fn().mockReturnValue(late)
+  vi.stubGlobal('fetch', fetch)
+  const controller = new AbortController()
+  const result = loadSummary('/data/', 'geneva', controller.signal)
+  controller.abort()
+  release(new Response(JSON.stringify(index)))
+  await expect(result).rejects.toMatchObject({ name: 'AbortError' })
+  expect(fetch).toHaveBeenCalledOnce()
+})

@@ -1,3 +1,5 @@
+import { loadVerifiedJson } from './verified-json.ts'
+
 export const STATISTIC_METRICS = ['DTV', 'DTV24', 'DWV24', 'DTVt', 'DTVn', 'MSPW', 'ASPW'] as const
 export type StatisticMetric = typeof STATISTIC_METRICS[number]
 export interface StatisticStation { id: string; name: string; municipality: string; owner: string; road: string; shard: string; records: number }
@@ -70,12 +72,11 @@ export async function loadStatisticIndex(base: string, signal: AbortSignal) {
 }
 export async function loadStatisticShard(base: string, station: StatisticStation, index: StatisticIndex, signal: AbortSignal) {
   const file = index.files[station.shard]
-  const response = await fetch(base + file.path, { signal })
-  if (!response.ok) throw new Error('Statistics unavailable')
-  const bytes = await response.arrayBuffer()
-  const digest = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(n => n.toString(16).padStart(2, '0')).join('')
-  if (bytes.byteLength !== file.bytes || digest !== file.sha256) throw new Error('Statistics integrity failure')
-  return validateStatisticShard(JSON.parse(new TextDecoder().decode(bytes)), station.shard, index)[station.id]
+  return loadVerifiedJson(base + file.path, file, {
+    signal,
+    parse: value => validateStatisticShard(value, station.shard, index)[station.id],
+    errors: { unavailable: 'Statistics unavailable', integrity: 'Statistics integrity failure' },
+  })
 }
 export function defaultStatisticRecord(records: StatisticRecord[]) {
   return [...records].sort((a, b) => Number(b.latestPlausible) - Number(a.latestPlausible) || b.year - a.year || Number(a.direction.scope !== 'both') - Number(b.direction.scope !== 'both') || (b.period.startLocal ?? '').localeCompare(a.period.startLocal ?? '') || a.id.localeCompare(b.id))[0]

@@ -39,3 +39,41 @@ The interface labels estimated annual daily averages separately from survey-peri
 [Public assets](../public/data/aargau-road-statistics/index.json) contain a station index and 16 bounded files loaded on selection, with byte/hash verification before presentation. The compiler retains the seven core metrics and qualifications from every imported MIV record while omitting source class fields and geometry. The raw import's `publicDisplayAdmitted: false` remains its original gate; this separate compiler and qualified statistical presentation define the narrower display admission. They do not admit the raw dataset to the hourly-recording model. Public assets are committed; deployment is a separate step.
 
 Next: resolve invalid periods and cross-source counter overlap before combining coverage. Keep class comparisons and profile extraction out of admission until their source definitions and report notes have been reviewed. A separate [Geneva/Luzern view](GENEVA-LUZERN-ROAD-STATISTICS.md) now presents Geneva annual summaries and one reviewed Luzern weekday profile.
+
+
+## Verified JSON loading — 19 October 2026
+
+Aargau survey shards and the Geneva/Luzern products use the local
+[`loadVerifiedJson`](../src/studies/verified-json.ts) pilot. It verifies the exact
+byte length before hashing, checks SHA-256 before decoding JSON, then invokes the
+caller's existing schema validator. Fetches retain their AbortSignal; cancellation
+between response, body and hash completion prevents stale validation. HTTP and
+integrity error text remains unchanged, and schema errors propagate from the
+original validators.
+
+The helper has no cache, automatic retry or React state. Each explorer still owns
+its index, selected source, explicit retry and teardown. Statistical meaning,
+source URLs, missing values, periods and report qualifications remain in the
+existing source-specific validators and components. No source data is regenerated.
+This proves the common mechanism in two local consumers before any shared-package
+export or wider loader migration.
+
+Focused verification:
+
+```sh
+npx vitest run src/studies/verified-json.test.ts src/test/statistics-loading.dom.test.tsx scripts/aargau-road-statistics-ui.test.tsx scripts/geneva-luzern-statistics-ui.test.tsx
+npx playwright test e2e/statistics-loading.spec.ts --workers=1
+```
+
+The regressions cover invalid metadata, corrupt bytes, invalid JSON/schema,
+manual retry, cancellation during each asynchronous stage and a late Geneva
+response after selecting Luzern. Browser journeys exercise deferred loading and
+corrupt-download recovery in both explorers, preserving their source labels.
+
+
+Local validation on 19 October: 33 focused unit/DOM checks and all four new
+Chromium/WebKit browser journeys pass, alongside type, lint, boundary, build and
+payload gates. The full unit run passed 1,442 cases and hit two existing
+five-second timeouts in Basel-release and Ticino-region tests; both passed in
+isolated reruns without assertion or timeout changes. Opening JavaScript remains
+376.5 KiB gzip against its 380 KiB limit.

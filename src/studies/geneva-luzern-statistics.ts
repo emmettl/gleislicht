@@ -1,3 +1,5 @@
+import { loadVerifiedJson } from './verified-json.ts'
+
 export type SummaryRegion = 'geneva' | 'luzern'
 export interface GenevaSummary {
   id: string; name: string; road: string | null; direction: string | null; siredo: number
@@ -57,10 +59,9 @@ export async function loadSummary(base: string, region: SummaryRegion, signal: A
   const manifest = await fetch(base + 'index.json', { signal })
   if (!manifest.ok) throw new Error('Statistics unavailable')
   const index = validateSummaryIndex(await manifest.json()), file = index.files[region]
-  const response = await fetch(base + file.path, { signal })
-  if (!response.ok) throw new Error('Statistics unavailable')
-  const bytes = await response.arrayBuffer()
-  const hash = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(n => n.toString(16).padStart(2, '0')).join('')
-  if (bytes.byteLength !== file.bytes || hash !== file.sha256) throw new Error('Statistics integrity failure')
-  return validateSummary(JSON.parse(new TextDecoder().decode(bytes)), region)
+  return loadVerifiedJson(base + file.path, file, {
+    signal,
+    parse: value => validateSummary(value, region),
+    errors: { unavailable: 'Statistics unavailable', integrity: 'Statistics integrity failure' },
+  })
 }
