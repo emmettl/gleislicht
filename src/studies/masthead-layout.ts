@@ -1,14 +1,4 @@
-/** Read and write layout after ResizeObserver delivery, coalescing resize bursts. */
-function observeLayout(elements: Element[], measure: () => void) {
-  let frame = 0
-  const observer = new ResizeObserver(() => {
-    if (frame) return
-    frame = requestAnimationFrame(() => { frame = 0; measure() })
-  })
-  elements.forEach(element => observer.observe(element))
-  measure()
-  return () => { cancelAnimationFrame(frame); observer.disconnect() }
-}
+import { observeLayout } from '@motionstudies/web/observe-layout'
 
 function measurePlayback(controls: HTMLElement, shell: HTMLElement) {
   const bottom = Number.parseFloat(getComputedStyle(controls).bottom) || 0
