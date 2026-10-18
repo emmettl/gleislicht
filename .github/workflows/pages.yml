@@ -75,16 +75,17 @@ jobs:
   e2e:
     needs: check
     name: Browser tests (${{ matrix.project }}, ${{ matrix.shard }}/${{ matrix.shards }})
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
         # Chromium took ~15 minutes versus WebKit's ~6 in run 34226664670.
         # Split individual Chromium tests; keep one WebGL worker per machine.
         include:
-          - { project: desktop-chromium, browser: chromium, shard: 1, shards: 2 }
-          - { project: desktop-chromium, browser: chromium, shard: 2, shards: 2 }
-          - { project: iphone-webkit, browser: webkit, shard: 1, shards: 1 }
+          - { project: desktop-chromium, browser: chromium, shard: 1, shards: 2, runner: ubuntu-latest }
+          - { project: desktop-chromium, browser: chromium, shard: 2, shards: 2, runner: ubuntu-latest }
+          - { project: iphone-webkit, browser: webkit, shard: 1, shards: 1, runner: macos-26 }
     env:
       E2E_SUITE: ${{ matrix.project }}-${{ matrix.shard }}
       E2E_PROJECT: ${{ matrix.project }}
@@ -113,6 +114,7 @@ jobs:
       - name: Prepare orbital browser fixtures
         run: npm run data:orbital
 
+      # Run iPhone WebKit on macOS, matching the native engine used locally.
       # Renderer assertions inspect Vite's development R3F module. Each runner
       # retains the committed demo fixtures, independently of the live refresh.
       - name: Browser regression tests
