@@ -1,12 +1,12 @@
 # Motion Studies 005 — Gleislicht
 
-**[Open Gleislicht](https://motionstudies.app/gleislicht/)** · [Motion Studies catalogue](https://emmettl.github.io/motionstudies/)
+**[Open Gleislicht](https://motionstudies.app/gleislicht/)** · [Motion Studies catalogue](https://motionstudies.app/)
 
 [Study brief](https://github.com/emmettl/motionstudies/blob/main/docs/GLEISLICHT.md) · [Project goals](https://github.com/emmettl/motionstudies/blob/main/docs/VISION.md) · [Roadmap](https://github.com/emmettl/motionstudies/blob/main/ROADMAP.md)
 
 A cinematic browser visualisation of Switzerland's transport networks, built from open timetable data, recorded aircraft and road observations, and real topography. Move between the national atlas, regional networks, camera-led terrain journeys and an orbital view of public transport above the Swiss Alps.
 
-**Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.15`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
+**Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.31`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
 
 Other editions have independent repositories: [All Change](https://github.com/emmettl/allchange) and [Correspondances](https://github.com/emmettl/correspondances). This repository builds only Switzerland.
 
@@ -34,7 +34,7 @@ The production app pins immutable public data releases on R2 at `data.motionstud
 
 ## Run it
 
-Use Node 24 LTS (`nvm use`) and npm 11.19.0.
+Use Node 24 LTS (`nvm use`) and npm 11.21.1.
 
 The Pages workflow refreshes national and regional timetables at 03:37 and 18:37 UTC, preparing both today and tomorrow in Europe/Zurich. Recovery after an upstream download failure verifies the published artifacts' dates, feed versions, chunk coverage and checksums. Calendar assembly rejects older-date fallbacks for daily studies, so a failed refresh leaves the existing release available without relabelling old data. Reviewed regional archives, aircraft observations and road recordings retain their own dates.
 

@@ -1,5 +1,7 @@
 # Shared transport cards · alpha.8
 
+> Historical alpha.8 adoption record. Current exact package versions are in `package.json` and the lockfile; see the [README](../README.md) for current setup and scope. This record does not imply that every consumer uses an airport or rail board.
+
 Exact npm `0.1.0-alpha.8` packages provide responsive SBB-style rail and matrix bus cards in station selection. Cards use departures from the current snapshot, omit terminal arrivals, preserve missing platforms and status, and select the corresponding train. English, German, French and Italian labels follow the edition language. Other transport summaries and connection actions remain available.
 
 Station movement counts remain visible. Cards scroll within the available panel and adapt row counts to their measured board size. Scheduled/headway provenance remains edition-owned; snapshot-adjusted times are not adjusted twice.

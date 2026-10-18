@@ -1,12 +1,12 @@
 # CI build time
 
-The Pages workflow checks code and committed fixture budgets before starting the expensive work. Once those checks pass, five runners work independently:
+The Pages workflow checks code and committed fixture budgets before starting the expensive work. Once those checks pass, seven runners work independently:
 
 - Chromium shard 1/2.
 - Chromium shard 2/2.
-- iPhone WebKit, the touch/layout/lifecycle suite.
-- Today's national timetable.
-- Today's Zürich city, ZVV and Genève morning/full-day timetables.
+- iPhone WebKit on macOS, the touch/layout/lifecycle suite (25-minute job limit).
+- National timetable generation for today and tomorrow (two runners).
+- Regional timetable generation for today and tomorrow (two runners).
 
 A final build job waits for the browser shards, combines national and regional artifacts for today and tomorrow, explicitly prepares app catalogues and orbital blocks, prepares the validated realtime calendar, and publishes the immutable R2 release using bucket-scoped S3 credentials. It then builds the small app pinned to that release. Regional work overlaps national generation and browser tests.
 
@@ -16,7 +16,7 @@ Deployment requires both the live build and **every** browser shard to succeed. 
 
 Browser tests retain the committed demo data and Vite development server: selection, label and geometry assertions inspect the development React Three Fiber module. They cannot simply use the production preview server. A separate final smoke suite (`e2e/remote-data.spec.ts`) runs against the production preview in Chromium and iPhone WebKit, checking successful R2 timetable/chunk loading, no same-origin data fallback, and orbital decompression before publication. The initial check explicitly runs `npm run data:prepare && npm run build:fixtures` to catch compile and payload failures; the later live build uses the refreshed data and resolved realtime configuration.
 
-## Measured baseline
+## Historical measured baseline — September 2026
 
 [Run 34226664670](https://github.com/emmettl/gleislicht/actions/runs/34226664670), 8 September 2026:
 
@@ -42,7 +42,7 @@ CI=1 npm run test:e2e:ci -- --project=desktop-chromium --shard=2/2 --workers=1
 CI=1 npm run test:e2e:ci -- --project=iphone-webkit --shard=1/1 --workers=1
 ```
 
-Append `--list` to inspect a partition without starting browsers. All partitions together must equal the unsharded discovery list, with no duplicated project/test pairs. After the [E2E migration](E2E-TEST-MIGRATION.md), discovery contains 94 registrations: 25 and 24 Chromium cases, and 45 WebKit cases, including device-specific skips. The 106 replacement component/hook tests run with the existing `npm test` gate.
+Append `--list` to inspect a partition without starting browsers. All partitions together must equal the unsharded discovery list, with no duplicated project/test pairs. At the September [E2E migration](E2E-TEST-MIGRATION.md), discovery contained 94 registrations: 25 and 24 Chromium cases, and 45 WebKit cases, including device-specific skips. The 106 replacement component/hook tests added then run with the existing `npm test` gate; current counts are reported by discovery rather than this retained baseline.
 
 Each hosted job uploads an `e2e-report-<project>-<shard>` artifact. Its Actions summary includes wall time, total test time including retries, failures, flaky outcomes and the ten slowest tests. Use those measured durations to assess future changes to the split. The summary reporter has tests covering retries, timing order, failed assertions and setup failures.
 
@@ -70,7 +70,7 @@ newest revision; no validation or browser test is bypassed. This follows
 
 [Run 34290968691](https://github.com/emmettl/gleislicht/actions/runs/34290968691) failed four unit tests. Schupfart’s evidence replay and Oberentfelden’s detour diagnostic now allow only sub-micrometre/sub-nanosecond floating-point differences in derived measurements; source coordinates, ordered edges, identities, admission decisions and geometry hashes remain exact. A mutation test rejects meaningful measurement drift and non-finite values. Solothurn’s display files and release proof were regenerated after the shared simplifier changed; unchanged chunk bytes, source calls, endpoints and the 5 m bound remain checked. The ZH 3 regression now explicitly lists all three reviewed recordings, including Horgen evening. Local test discovery excludes nested worktrees and their dependency tests.
 
-Dependabot’s same-revision update failed because Miniflare pins `sharp` 0.35.2 exactly. A scoped npm override selects the patched 0.35.4 while retaining Wrangler’s existing version. Remove it when Miniflare adopts a patched version. The installed tree passes `npm audit`, native image encoding and both worker dry-run builds.
+Dependabot’s same-revision update failed because Miniflare pins `sharp` 0.35.2 exactly. A scoped npm override selects the patched 0.35.4 while retaining Wrangler’s existing version. Remove it when Miniflare adopts a patched version. That installed tree passed `npm audit`, native image encoding and both worker dry-run builds. The October dependency refresh now uses a sharp 0.35.5 override.
 
 ## R2 production smoke checks
 
