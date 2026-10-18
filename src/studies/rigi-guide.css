@@ -1,5 +1,5 @@
 .rigi-guide { width: min(470px, calc(100vw - 24px)); max-height: 88dvh; padding: 18px; overflow: auto; border: 1px solid #9dcdd64d; border-radius: 14px; color: #f8f7ff; background: #0b1020; box-shadow: 0 30px 100px #000b; }
-.rigi-guide::backdrop { background: #020410b8; backdrop-filter: blur(6px); }
+.rigi-guide::backdrop { background: #020410b8; }
 .rigi-guide header { position: sticky; top: -18px; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #0b1020; padding: 4px 0; }
 .rigi-guide h2 { font-size: 18px; margin: 0; font-weight: 500; }
 .rigi-guide header button { min-width: 44px; min-height: 44px; border: 0; background: transparent; color: inherit; font-size: 26px; cursor: pointer; }

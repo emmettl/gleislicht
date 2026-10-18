@@ -26,7 +26,7 @@ export function GleislichtNetworkScene(props: NationalNetworkSceneProps & MapSel
       selected: { color: '#a0a6b2', opacity: 0.65 },
     },
   }), [props.mapStyle])
-  return <NationalNetworkScene {...props} extensions={sceneExtensions} frameloop={frameloop} mapStyle={mapStyle}>
+  return <NationalNetworkScene {...props} extensions={sceneExtensions} frameloop={frameloop === 'never' ? 'never' : props.frameloop ?? frameloop} mapStyle={mapStyle}>
     {props.children}
     <GleislichtMapSelection stations={props.stations} onSelectStation={props.onSelectStation} onSelectTrain={props.onSelectTrain} onSelectRoad={props.onSelectRoad} onSelectAirport={props.onSelectAirport} roadsOnly={props.roadCategorySelected} disabled={props.airCategorySelected} />
   </NationalNetworkScene>

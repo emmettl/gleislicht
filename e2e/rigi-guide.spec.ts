@@ -4,6 +4,16 @@ test('Rigi connections guide supports pointer and keyboard selection and restore
   const loaded: string[] = [], errors: string[] = []
   page.on('request', r => { if (r.url().includes('RigiGuide') || r.url().includes('-corridor.json')) loaded.push(r.url()) })
   page.on('pageerror', e => errors.push(e.message))
+  await page.addInitScript(() => {
+    let draws = 0
+    Object.defineProperty(window, '__rigiDraws', { get: () => draws })
+    const original = WebGL2RenderingContext.prototype.drawElements
+    WebGL2RenderingContext.prototype.drawElements = function (...args: Parameters<typeof original>) {
+      draws++
+      return original.apply(this, args)
+    }
+  })
+  const drawCount = () => page.evaluate(() => Number(Reflect.get(window, '__rigiDraws')))
   await page.goto('/?study=rigi-lake&time=43200')
   const opener = page.getByRole('button', { name: 'Explore the Rigi connections →', exact: true }), dialog = page.getByRole('dialog')
   await expect(opener).toBeVisible()
@@ -11,15 +21,23 @@ test('Rigi connections guide supports pointer and keyboard selection and restore
   const pause = page.getByRole('button', { name: /Pause motion/i })
   if (await pause.isVisible()) await pause.click()
   await page.locator('.scrubber input').fill('43200')
+  await expect.poll(drawCount).toBeGreaterThan(0)
   await opener.click()
   await expect(dialog).toBeVisible()
   await expect(dialog.locator('.rigi-guide-stop')).toHaveCount(11)
   await expect(dialog.locator('path')).toHaveCount(12)
   await expect(dialog).toContainText('schematic, not to scale')
+  // The inert map must stop drawing behind the dialog, then resume on dismissal.
+  await page.waitForTimeout(100)
+  const heldDraws = await drawCount()
+  await page.waitForTimeout(400)
+  expect(await drawCount()).toBe(heldDraws)
+
 
   for (const [id, name] of [['arth', 'Arth-Goldau RB'], ['kaltbadCable', 'Rigi Kaltbad (Luftseilbahn)']]) {
     await dialog.locator(`[data-stop="${id}"]`).click()
     await expect(dialog).toHaveCount(0)
+    await expect.poll(drawCount).toBeGreaterThan(heldDraws)
     await expect(page.locator('.station-card .service')).toHaveText(name)
     await expect(page.locator('.scrubber input')).toHaveValue('43200')
     await expect(page.getByRole('button', { name: /Resume motion/i })).toBeVisible()

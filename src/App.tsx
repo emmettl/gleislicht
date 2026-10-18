@@ -2445,6 +2445,7 @@ export function App({ edition, suspended = false }: AppProps) {
           </div>
         ) : isNetwork && sceneNetwork && nationalNetwork ? (
           <NationalNetworkScene
+            frameloop={rigiGuideActive ? 'never' : undefined}
             boundary={boundary}
             lakes={lakes}
             groundStyle={quietMap ? 'quiet' : 'grid'}
@@ -2464,7 +2465,7 @@ export function App({ edition, suspended = false }: AppProps) {
             }
             stations={timetableVisible ? stationIndex : []}
             trainLabelMode={trainLabelMode}
-            isPlaying={isPlaying && !nowActive && (!(isPostbus || postbusVisible) || postbusDay.chunkReady) && (!isRegionalDay || regionalDay.chunkReady)}
+            isPlaying={isPlaying && !rigiGuideActive && !nowActive && (!(isPostbus || postbusVisible) || postbusDay.chunkReady) && (!isRegionalDay || regionalDay.chunkReady)}
             userLocation={validLocation}
             time={networkTime}
             selectedTrain={isPilatus || isRochers || isTerritet ? undefined : selectedTrain}
