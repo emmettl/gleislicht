@@ -38,7 +38,7 @@ jobs:
           cache: npm
 
       - name: Set up npm
-        run: npm install --global npm@11.19.0 --ignore-scripts
+        run: npm install --global npm@11.21.0 --ignore-scripts
 
       - name: Install dependencies
         run: npm ci
@@ -49,6 +49,9 @@ jobs:
 
       - name: Test
         run: npm test
+
+      - name: Test bounded road source downloads
+        run: python3 -m unittest discover -s scripts -p 'test_download_postbus_road_source.py'
 
       - name: Typecheck
         run: npm run typecheck
@@ -97,7 +100,7 @@ jobs:
           cache: npm
 
       - name: Set up npm
-        run: npm install --global npm@11.19.0 --ignore-scripts
+        run: npm install --global npm@11.21.0 --ignore-scripts
 
       - name: Install dependencies
         run: npm ci
@@ -142,7 +145,8 @@ jobs:
     env:
       SERVICE_DATE: ${{ matrix.day == 'today' && needs.check.outputs.service_date || needs.check.outputs.tomorrow_date }}
       TIMETABLE_YEAR: ${{ matrix.day == 'today' && needs.check.outputs.timetable_year || needs.check.outputs.tomorrow_year }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -154,10 +158,20 @@ jobs:
           cache: npm
 
       - name: Set up npm
-        run: npm install --global npm@11.19.0 --ignore-scripts
+        run: npm install --global npm@11.21.0 --ignore-scripts
 
       - name: Install dependencies
         run: npm ci
+
+      # A cache hit is still subjected to exact-pattern matching and the full
+      # audit. The date key is bounded; restore older geometry only as a hint.
+      - name: Restore automatically verified PostBus road cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/postbus-road-cache
+          key: postbus-roads-v1-${{ matrix.day }}-${{ hashFiles('scripts/*postbus*', 'scripts/merge-postbus-osm.py') }}-${{ needs.check.outputs.service_date }}
+          restore-keys: |
+            postbus-roads-v1-${{ matrix.day }}-${{ hashFiles('scripts/*postbus*', 'scripts/merge-postbus-osm.py') }}-
 
       - name: Download current Swiss timetable sources
         id: sources
@@ -172,6 +186,8 @@ jobs:
           unzip -t "$RUNNER_TEMP/swiss-gtfs.zip" >/dev/null
 
       - name: Build the selected day’s Swiss timetable
+        id: timetable
+        continue-on-error: true
         if: steps.sources.outcome == 'success'
         run: |
           npm run data:gtfs -- \
@@ -183,8 +199,9 @@ jobs:
           npm run data:postbus:national -- \
             --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
             --date "$SERVICE_DATE"
-          npm run data:postbus:roads
-          node scripts/audit-postbus.mjs
+          node scripts/refresh-postbus-roads.mjs \
+            --work-directory "$RUNNER_TEMP/postbus-road-build" \
+            --reusable-cache "$RUNNER_TEMP/postbus-road-cache/cache.json"
           npm run data:rail:shapes -- \
             --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
             --tolerance 160
@@ -194,10 +211,12 @@ jobs:
             --tolerance 160
           npm run data:mountains -- --archive "$RUNNER_TEMP/swiss-gtfs.zip"
 
-      - name: Retain published timetable when the source download is unavailable
-        if: steps.sources.outcome == 'failure'
+      # A downloaded feed is only a candidate until all enrichment/audits pass.
+      # Recovery retains source dates; the calendar still rejects stale days.
+      - name: Retain verified published timetable when refresh fails
+        if: ${{ !cancelled() && (steps.sources.outcome == 'failure' || steps.timetable.outcome == 'failure') }}
         run: |
-          echo '::warning::Official timetable download unavailable; retaining the last verified published national timetable with its original service date.'
+          echo '::warning::National timetable download or validation failed; recovering the complete last verified published timetable with its original service date. Stale recovery cannot pass the calendar publication gate.'
           node scripts/restore-published-national-data.mjs
 
       - name: Upload national timetable
@@ -234,7 +253,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - name: Set up npm
-        run: npm install --global npm@11.19.0 --ignore-scripts
+        run: npm install --global npm@11.21.0 --ignore-scripts
       - name: Install dependencies
         run: npm ci
       - name: Download regional timetable and geometry sources
@@ -278,7 +297,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - name: Set up npm
-        run: npm install --global npm@11.19.0 --ignore-scripts
+        run: npm install --global npm@11.21.0 --ignore-scripts
       - name: Install dependencies
         run: npm ci
       - name: Preserve reviewed weekday sources for weekend orbital builds

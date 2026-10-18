@@ -12,9 +12,13 @@ const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 export async function checkPublicFreshness({ now, fetcher = fetch } = {}) {
   const { date } = serviceDate(undefined, now ?? new Date())
   const request = async url => {
-    const response = await fetcher(url, { cache: 'no-store', headers: { Origin: 'https://motionstudies.app' }, signal: AbortSignal.timeout(30_000) })
-    assert(response.ok, `${url}: HTTP ${response.status}`)
-    return Buffer.from(await response.arrayBuffer())
+    try {
+      const response = await fetcher(url, { cache: 'no-store', headers: { Origin: 'https://motionstudies.app' }, signal: AbortSignal.timeout(30_000) })
+      assert(response.ok, `HTTP ${response.status}`)
+      return Buffer.from(await response.arrayBuffer())
+    } catch (error) {
+      throw new Error(`${url}: ${error.message}`, { cause: error })
+    }
   }
   const json = async url => JSON.parse(await request(url))
   const calendar = await json(SITE + '_timetable-calendar.json')

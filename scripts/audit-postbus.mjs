@@ -5,8 +5,8 @@ import { dirname, resolve } from 'node:path'
 import { gzipSync } from 'node:zlib'
 import { distanceMetres } from './enrich-postbus-roads.mjs'
 
-export async function auditPostbus(path = 'public/data/postbus-national-day-manifest.json') {
-  const bytes = await readFile(path)
+export async function auditPostbus(path = 'public/data/postbus-national-day-manifest.json', read = readFile) {
+  const bytes = await read(path)
   const manifest = JSON.parse(bytes)
   assert.deepEqual(manifest.metadata.localAgencyIds, ['801'])
   assert.deepEqual(manifest.metadata.modes, ['bus'])
@@ -41,7 +41,7 @@ export async function auditPostbus(path = 'public/data/postbus-national-day-mani
     assert.equal(descriptor.windowEnd - descriptor.windowStart, 10800)
     expectedStart = descriptor.windowEnd
     assert.match(descriptor.path, /^postbus-national-day-chunks\/\d{2}-\d{2}\.json$/)
-    const payload = await readFile(resolve(directory, descriptor.path))
+    const payload = await read(resolve(directory, descriptor.path))
     assert.equal(payload.length, descriptor.bytes)
     assert.equal(createHash('sha256').update(payload).digest('hex'), descriptor.sha256)
     const chunk = JSON.parse(payload)

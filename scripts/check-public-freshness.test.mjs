@@ -32,6 +32,19 @@ describe('public freshness monitor', () => {
   it('verifies the published app/data/realtime chain and accepts quiet overnight feeds', async () => {
     expect(await checkPublicFreshness(fixture())).toContain('tomorrow ready')
   })
+  it('identifies the URL for both connection and response-body timeouts', async () => {
+    for (const body of [false, true]) {
+      const f = fixture()
+      const failure = new DOMException('The operation was aborted due to timeout', 'TimeoutError')
+      f.fetcher = async () => {
+        if (body) return { ok: true, arrayBuffer: async () => { throw failure } }
+        throw failure
+      }
+      await expect(checkPublicFreshness(f)).rejects.toMatchObject({
+        message: `${f.site}_timetable-calendar.json: ${failure.message}`, cause: failure,
+      })
+    }
+  })
   it('fails on stale realtime, missing tomorrow, disabled LIVE or corrupt movement bytes', async () => {
     for (const failure of ['stale', 'tomorrow', 'disabled', 'corrupt', 'wrong-index']) {
       const f = fixture()

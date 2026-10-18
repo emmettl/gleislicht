@@ -18,7 +18,7 @@ async function renderedTarget(page: Page, kind: 'station' | 'train', touch: bool
     const { pickMapTarget } = await import(moduleUrl) as typeof import('../src/studies/map-selection.ts')
     const metadataUrl = performance.getEntriesByType('resource').find(entry => entry.name.includes('scene-picking'))?.name
     if (!metadataUrl) return
-    const { scenePickMetadata } = await import(metadataUrl) as typeof import('@motionstudies/three/scene-picking')
+    const { scenePickMetadata, scenePickVertex } = await import(metadataUrl) as typeof import('@motionstudies/three/scene-picking')
     const rect = gl.domElement.getBoundingClientRect()
     const stations = new Map<number, StationIndexEntry>()
     scene.traverseVisible(object => {
@@ -28,7 +28,7 @@ async function renderedTarget(page: Page, kind: 'station' | 'train', touch: bool
     const candidates: { x: number; y: number; text: string }[] = []
     const add = (position: THREE.Vector3, text: string) => {
       position.project(camera)
-      if (position.z < -1 || position.z > 1) return
+      if (!Number.isFinite(position.x + position.y + position.z) || position.z < -1 || position.z > 1) return
       // Validate the integer coordinates that Playwright actually taps.
       const x = Math.round(rect.left + (position.x * 0.5 + 0.5) * rect.width)
       const y = Math.round(rect.top + (0.5 - position.y * 0.5) * rect.height)
@@ -53,7 +53,8 @@ async function renderedTarget(page: Page, kind: 'station' | 'train', touch: bool
         for (let index = 0; index < points.geometry.drawRange.count; index++) {
           const train = trains[index]
           if (!train) continue
-          const position = points.position.clone().fromBufferAttribute(points.geometry.getAttribute('position'), index).applyMatrix4(points.matrixWorld)
+          // Match the GPU-interpolated marker, including the phase frozen by pause.
+          const position = scenePickVertex(points.geometry, index, points.position.clone()).applyMatrix4(points.matrixWorld)
           add(position, `${train.route} ${train.shortName} → ${train.headsign}`)
         }
       }

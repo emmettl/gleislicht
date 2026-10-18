@@ -1,4 +1,5 @@
 import './detail-controls.css'
+import { SearchResultButton } from './SearchResultButton.tsx'
 import { formatServiceTime, type NetworkSnapshot, type NetworkTrain, type NetworkRouteIndexEntry, type StationIndexEntry, type ServiceCategory } from '@motionstudies/core/domain/network'
 import type { RoadTopologyRoad } from '@motionstudies/core/domain/road'
 import type { StudyAirport } from '@motionstudies/core/domain/airport'
@@ -57,7 +58,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
               }
             >
               {stationSearchResults.map((station, index) => (
-                <button
+                <SearchResultButton
                   id={`train-search-result-${index}`}
                   className={`station-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
                   key={`station:${station.name}`}
@@ -65,7 +66,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                   role="option"
                   aria-selected={station.name === selectedStationName}
                   onMouseEnter={() => setActiveSearchIndex(index)}
-                  onClick={() => selectStation(station)}
+                  onSelect={() => selectStation(station)}
                 >
                   <span className="station-result-mark" aria-hidden="true">◎</span>
                   <span className="result-service">{station.name}</span>
@@ -75,12 +76,12 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                       station.trainIds.length,
                     )}
                   </span>
-                </button>
+                </SearchResultButton>
               ))}
               {routeSearchResults.map((route, routeIndex) => {
                 const index = stationSearchResults.length + routeIndex
                 return (
-                  <button
+                  <SearchResultButton
                     id={`train-search-result-${index}`}
                     className={`route-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
                     key={route.id}
@@ -88,7 +89,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                     role="option"
                     aria-selected={route.id === selectedRouteId}
                     onMouseEnter={() => setActiveSearchIndex(index)}
-                    onClick={() => selectRoute(route)}
+                    onSelect={() => selectRoute(route)}
                   >
                     <TransportIcon mode={isCogwheel || isMountainStudy && route.category === 'other' ? 'cogwheel' : route.category} color={serviceColors[route.category]} />
                     <span className="result-service">
@@ -100,7 +101,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                       {' · '}
                       {numberFormat.format(route.stopIndexes.length)} {text.stops.toLocaleLowerCase(LANGUAGE_LOCALES[language])}
                     </span>
-                  </button>
+                  </SearchResultButton>
                 )
               })}
               {roadSearchResults.map((road, roadIndex) => {
@@ -109,7 +110,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                   routeSearchResults.length +
                   roadIndex
                 return (
-                  <button
+                  <SearchResultButton
                     id={`train-search-result-${index}`}
                     className={`road-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
                     key={`road:${road.id}`}
@@ -117,7 +118,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                     role="option"
                     aria-selected={road.id === selectedRoadId}
                     onMouseEnter={() => setActiveSearchIndex(index)}
-                    onClick={() => selectRoad(road)}
+                    onSelect={() => selectRoad(road)}
                   >
                     <TransportIcon mode="road" color="#ffb36b" />
                     <span className="result-service">
@@ -127,14 +128,14 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                       {text.wholeMotorway}
                       {road.description ? ` · ${road.description}` : ''}
                     </span>
-                  </button>
+                  </SearchResultButton>
                 )
               })}
               {airportSearchResults.map((airport, airportIndex) => {
                 const index = stationSearchResults.length + routeSearchResults.length +
                   roadSearchResults.length + airportIndex
                 return (
-                  <button
+                  <SearchResultButton
                     id={`train-search-result-${index}`}
                     className={`air-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
                     key={`airport:${airport.id}`}
@@ -142,12 +143,12 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                     role="option"
                     aria-selected={airport.id === selectedAirport?.id}
                     onMouseEnter={() => setActiveSearchIndex(index)}
-                    onClick={() => selectAirport(airport)}
+                    onSelect={() => selectAirport(airport)}
                   >
                     <TransportIcon mode="air" color="#ff5edb" />
                     <span className="result-service">{airport.name}</span>
                     <span className="result-route">{airport.iata} · {airport.icao}</span>
-                  </button>
+                  </SearchResultButton>
                 )
               })}
               {airSearchResults.map((track, airIndex) => {
@@ -158,7 +159,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                   airportSearchResults.length +
                   airIndex
                 return (
-                  <button
+                  <SearchResultButton
                     id={`train-search-result-${index}`}
                     className={`air-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
                     key={`air:${track.id}`}
@@ -166,7 +167,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                     role="option"
                     aria-selected={track.id === selectedAirTrackId}
                     onMouseEnter={() => setActiveSearchIndex(index)}
-                    onClick={() => selectAirTrack(track.id)}
+                    onSelect={() => selectAirTrack(track.id)}
                   >
                     <TransportIcon mode="air" color="#ff5edb" />
                     <span className="result-service">{track.callsign}</span>
@@ -175,7 +176,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                       {(track.icaoAddress ?? track.id).toUpperCase()} ·{' '}
                       {formatServiceTime(track.start)}–{formatServiceTime(track.end)}
                     </span>
-                  </button>
+                  </SearchResultButton>
                 )
               })}
               {searchResults.map((train, trainIndex) => {
@@ -188,7 +189,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                     airSearchResults.length +
                     trainIndex
                   return (
-                    <button
+                    <SearchResultButton
                       id={`train-search-result-${index}`}
                       className={resolvedActiveSearchIndex === index ? 'is-active' : undefined}
                       key={train.id}
@@ -196,7 +197,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                       role="option"
                       aria-selected={train.id === selectedTrainId}
                       onMouseEnter={() => setActiveSearchIndex(index)}
-                      onClick={() => selectTrain(train)}
+                      onSelect={() => selectTrain(train)}
                     >
                       <TransportIcon mode={isCogwheel || isMountainStudy && train.category === 'other' ? 'cogwheel' : train.category} color={serviceColors[train.category]} />
                       <span className="result-service">
@@ -205,7 +206,7 @@ export default function SearchResults({ stationSearchResults, routeSearchResults
                       <span className="result-route">
                         {isHeadwayTrain(train) ? `${frequencyCopy.label} · ≈` : ''}{formatServiceTime(train.start)} · {origin} → {train.headsign}
                       </span>
-                    </button>
+                    </SearchResultButton>
                   )
                 })}
               {!stationSearchResults.length &&

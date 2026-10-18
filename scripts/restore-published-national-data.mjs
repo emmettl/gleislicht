@@ -1,12 +1,13 @@
 import { createHash } from 'node:crypto'
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, rm, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
+import { auditPostbus } from './audit-postbus.mjs'
 import { publishedDataRoot } from './published-data-root.mjs'
 
 const PUBLISHED_DATA = 'https://emmettl.github.io/gleislicht/data/'
-const ROOT_FILES = ['swiss-rail-morning.json', 'swiss-rail-day-manifest.json', 'swiss-hub-day.json']
+const ROOT_FILES = ['swiss-rail-morning.json', 'swiss-rail-day-manifest.json', 'swiss-hub-day.json', 'postbus-national-day-manifest.json']
 
 function assert(condition, message) {
   if (!condition) throw new Error(`Published timetable recovery: ${message}`)
@@ -23,11 +24,11 @@ export async function readPublishedNationalData(fetchData = fetch, baseUrl = PUB
     files.set(path, bytes)
     return value
   }
-  const [morning, day, hubs] = await Promise.all(ROOT_FILES.map(read))
+  const [morning, day, hubs, postbus] = await Promise.all(ROOT_FILES.map(read))
   const { serviceDate, feedVersion } = morning.metadata ?? {}
   assert(/^\d{4}-\d{2}-\d{2}$/.test(serviceDate ?? ''), 'missing service date')
   assert(typeof feedVersion === 'string' && feedVersion.length > 0, 'missing feed version')
-  for (const artifact of [morning, day, hubs]) {
+  for (const artifact of [morning, day, hubs, postbus]) {
     assert(artifact.metadata?.serviceDate === serviceDate && artifact.metadata?.feedVersion === feedVersion, 'mixed service dates or feed versions')
   }
   for (const artifact of [morning, day]) {
@@ -73,6 +74,24 @@ export async function readPublishedNationalData(fetchData = fetch, baseUrl = PUB
     }
   }))
   if (repaired) files.set(ROOT_FILES[1], Buffer.from(JSON.stringify(day)))
+  // PostBus is part of the national artifact too. Never leave behind fresh,
+  // unenriched candidate chunks when the rail timetable has been recovered.
+  assert(Array.isArray(postbus.chunks) && postbus.chunks.length === 8, 'invalid PostBus chunks')
+  const postbusPaths = new Set()
+  for (const chunk of postbus.chunks) {
+    assert(/^postbus-national-day-chunks\/\d{2}-\d{2}\.json$/.test(chunk.path), 'unexpected PostBus chunk path')
+    assert(!postbusPaths.has(chunk.path), 'duplicate PostBus chunk path')
+    postbusPaths.add(chunk.path)
+  }
+  await Promise.all(postbus.chunks.map(chunk => read(chunk.path)))
+  // Run the same integrity, geometry, coverage and completeness gates used
+  // for a fresh build, against downloaded bytes before any local writes.
+  const verified = new Map([...files].map(([path, bytes]) => [resolve(path), bytes]))
+  await auditPostbus('postbus-national-day-manifest.json', async path => {
+    const bytes = verified.get(resolve(path))
+    assert(bytes, `missing PostBus file: ${path}`)
+    return bytes
+  })
   // Optional discovery metadata follows the recovered timetable when available.
   // Older published sets remain recoverable; the UI rejects an incompatible local catalogue.
   const cataloguePath = 'swiss-cogwheel-catalogue.json'
@@ -89,17 +108,26 @@ export async function readPublishedNationalData(fetchData = fetch, baseUrl = PUB
   return { files, serviceDate, feedVersion, repaired }
 }
 
-async function main() {
-  const index = process.argv.indexOf('--output-directory')
-  const output = resolve(index < 0 ? 'public/data' : process.argv[index + 1])
-  const { files, serviceDate, feedVersion, repaired } = await readPublishedNationalData(fetch, await publishedDataRoot())
+export async function restorePublishedNationalData(output, fetchData = fetch, baseUrl = PUBLISHED_DATA) {
+  const result = await readPublishedNationalData(fetchData, baseUrl)
   // Validate every download before replacing any local artifact. Any failure
   // leaves the build stopped; source dates and provenance are never rewritten.
-  for (const [path, bytes] of files) {
+  // Remove candidate-only chunks and an incompatible optional catalogue.
+  for (const path of ['swiss-rail-day-chunks', 'postbus-national-day-chunks', 'swiss-cogwheel-catalogue.json']) {
+    await rm(resolve(output, path), { recursive: true, force: true })
+  }
+  for (const [path, bytes] of result.files) {
     const destination = resolve(output, path)
     await mkdir(dirname(destination), { recursive: true })
     await writeFile(destination, bytes)
   }
+  return result
+}
+
+async function main() {
+  const index = process.argv.indexOf('--output-directory')
+  const output = resolve(index < 0 ? 'public/data' : process.argv[index + 1])
+  const { files, serviceDate, feedVersion, repaired } = await restorePublishedNationalData(output, fetch, await publishedDataRoot())
   console.log(`Retained published Swiss timetable: service ${serviceDate}, feed ${feedVersion}, ${files.size} verified files from ${PUBLISHED_DATA}`)
   if (repaired) console.log(`Repaired ${repaired} legacy geometry checksums after verifying their original timetable hashes.`)
 }
