@@ -63,17 +63,10 @@ import {
   swissCorridorProgressForTime,
 } from './editions/switzerland-corridors.ts'
 import {
-  adjacentDayChunks,
-  dayChunkForTime,
-  networkSnapshotForDayChunk,
-} from '@motionstudies/core/domain/network-day'
-import {
   buildRouteIndex,
   buildStationIndex,
   formatServiceTime,
   positionForTrain,
-  type NetworkDayChunk,
-  type NetworkDayManifest,
   type NetworkSnapshot,
   type NetworkRouteIndexEntry,
   type NetworkTrain,
@@ -327,13 +320,6 @@ export function App({ edition, suspended = false }: AppProps) {
   useEffect(() => watchTimetableRollover(networkStudy, () => nowSession.current), [networkStudy])
   const [nationalTimeRange, setNationalTimeRange] =
     useState<NationalTimeRange>(initialLink.range)
-  const [nationalDayManifest, setNationalDayManifest] =
-    useState<NetworkDayManifest>()
-  const [nationalDayChunks, setNationalDayChunks] = useState<
-    Readonly<Record<string, NetworkDayChunk>>
-  >({})
-  const [nationalDayLoading, setNationalDayLoading] = useState(false)
-  const [nationalDayError, setNationalDayError] = useState(false)
   const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
   const [rigiNetwork, setRigiNetwork] = useState<NetworkSnapshot>()
   const [pilatusNetwork, setPilatusNetwork] = useState<NetworkSnapshot>()
@@ -569,16 +555,18 @@ export function App({ edition, suspended = false }: AppProps) {
   const regionalAssetUrl = useCallback((path: string) => editionDataUrl(regionalPrefix && !path.startsWith(`${networkStudy}/`) ? `${regionalPrefix}${path}` : path), [regionalPrefix, networkStudy])
   const regionalDay = useProgressiveNetworkDay(regionalPrefix ? `${regionalPrefix}${networkStudy}-day-manifest.json` : isRegionalDayStudy(networkStudy) ? REGIONAL_DAYS[networkStudy] : REGIONAL_DAYS['zvv-region'], isRegionalDay, networkTime, regionalAssetUrl)
   const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus || postbusVisible, networkTime, editionDataUrl)
+  const isNationalDay = networkStudy === 'national' && nationalTimeRange === 'day'
+  const nationalDay = useProgressiveNetworkDay(edition.data.nationalDayManifest, isNationalDay, networkTime, editionDataUrl)
+  const { manifest: nationalDayManifest, network: nationalDayNetwork, chunkReady: nationalDayChunkReady,
+    loading: nationalDayLoading, error: nationalDayError, retry: retryNationalDay } = nationalDay
   const { seek: seekChunkedTime, tick: tickChunkedTime, reset: resetChunkedSeek, canPlay: chunkedCanPlay } = useChunkedPlayback({
-    source: `${networkStudy}:${regionalPrefix}:${regionalRange}:${postbusVisible}`,
-    enabled: isPostbus || postbusVisible || isRegionalDay,
-    ready: (!isRegionalDay || regionalDay.chunkReady) && (!(isPostbus || postbusVisible) || postbusDay.chunkReady),
+    source: `${networkStudy}:${regionalPrefix}:${regionalRange}:${nationalTimeRange}:${postbusVisible}`,
+    enabled: isNationalDay || isPostbus || postbusVisible || isRegionalDay,
+    ready: (!isNationalDay || nationalDayChunkReady) && (!isRegionalDay || regionalDay.chunkReady) && (!(isPostbus || postbusVisible) || postbusDay.chunkReady),
     playing: isPlaying,
     rate: playbackRate,
     onTime: setNetworkTime,
   })
-  const isNationalDay =
-    networkStudy === 'national' && nationalTimeRange === 'day'
   const airDay = useProgressiveAirDay(
     edition.data.air.dayManifest,
     airEnabled && isNationalDay,
@@ -608,29 +596,6 @@ export function App({ edition, suspended = false }: AppProps) {
   const numberFormat = useMemo(
     () => new Intl.NumberFormat(LANGUAGE_LOCALES[language]),
     [language],
-  )
-  const nationalDayChunkDescriptor = useMemo(
-    () =>
-      nationalDayManifest
-        ? dayChunkForTime(nationalDayManifest, networkTime)
-        : undefined,
-    [nationalDayManifest, networkTime],
-  )
-  const nationalDayNetwork = useMemo(
-    () =>
-      nationalDayManifest
-        ? networkSnapshotForDayChunk(
-            nationalDayManifest,
-            nationalDayChunkDescriptor
-              ? nationalDayChunks[nationalDayChunkDescriptor.id]
-              : undefined,
-          )
-        : undefined,
-    [nationalDayChunkDescriptor, nationalDayChunks, nationalDayManifest],
-  )
-  const nationalDayChunkReady = Boolean(
-    nationalDayChunkDescriptor &&
-      nationalDayChunks[nationalDayChunkDescriptor.id],
   )
   const baseNetwork =
     isRegionalDay ? regionalDay.network : additionalId ? additionalNetwork : isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isRiviera ? rivieraRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isPilatus ? pilatusNetwork : isRochers ? rochersNetwork : isTerritet ? (glionNetwork ?? territetNetwork) : isGornergrat ? gornergratNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
@@ -1047,25 +1012,10 @@ export function App({ edition, suspended = false }: AppProps) {
   const handleNetworkTime = useCallback(
     (nextTime: number) => {
       roadHistorySeekRef.current = undefined
-      if (
-        networkStudy === 'national' &&
-        nationalTimeRange === 'day' &&
-        nationalDayManifest
-      ) {
-        const descriptor = dayChunkForTime(nationalDayManifest, nextTime)
-        if (!nationalDayChunks[descriptor.id]) {
-          setNationalDayLoading(true)
-          setNationalDayError(false)
-        }
-      }
       seekChunkedTime(nextTime)
     },
     [
       seekChunkedTime,
-      nationalDayChunks,
-      nationalDayManifest,
-      nationalTimeRange,
-      networkStudy,
     ],
   )
   const handleSceneNetworkTime = useCallback((nextTime: number) => {
@@ -1074,9 +1024,9 @@ export function App({ edition, suspended = false }: AppProps) {
     const roadSeek = roadHistorySeekRef.current
     if (roadSeek && !postbusTickFollowsSeek(nextTime, roadSeek.time, (performance.now() - roadSeek.at) / 1000, playbackRate)) return
     roadHistorySeekRef.current = undefined
-    if (!isPostbus && !postbusVisible && !isRegionalDay) { handleNetworkTime(nextTime); return }
+    if (!isNationalDay && !isPostbus && !postbusVisible && !isRegionalDay) { handleNetworkTime(nextTime); return }
     tickChunkedTime(nextTime)
-  }, [handleNetworkTime, isPostbus, postbusVisible, isRegionalDay, playbackRate, tickChunkedTime])
+  }, [handleNetworkTime, isNationalDay, isPostbus, postbusVisible, isRegionalDay, playbackRate, tickChunkedTime])
   useEffect(() => {
     // Resuming may wrap the two-hour study. The paused seek has already been
     // applied, so subsequent scene ticks can own the playback clock again.
@@ -1448,10 +1398,6 @@ export function App({ edition, suspended = false }: AppProps) {
       if (study === 'contrast' || study === 'rigi-lake' || study === 'jungfrau' || study === 'gornergrat' || study === 'pilatus' || study === 'rochers') setNetworkTime(12 * 3600)
       if (study === 'territet') setNetworkTime(43440)
       if (study === 'postbus') setNetworkTime(edition.defaultNetworkTime)
-      if (study === 'national' && timeRange === 'day') {
-        setNationalDayError(false)
-        if (!nationalDayManifest) setNationalDayLoading(true)
-      }
       const snapshot =
         regionalSnapshot ??
         (study === 'national' && timeRange === 'day'
@@ -1486,7 +1432,6 @@ export function App({ edition, suspended = false }: AppProps) {
       rochersNetwork,
       territetNetwork,
       gornergratNetwork,
-      nationalDayManifest,
       nationalNetwork,
       nationalTimeRange,
       resetChunkedSeek,
@@ -1789,97 +1734,6 @@ export function App({ edition, suspended = false }: AppProps) {
       })
     return () => controller.abort()
   }, [corridor, corridorError, edition.data.corridors, journeyCorridorId, view])
-
-  useEffect(() => {
-    if (
-      networkStudy !== 'national' ||
-      nationalTimeRange !== 'day' ||
-      nationalDayManifest
-    ) {
-      return
-    }
-    const controller = new AbortController()
-    fetch(editionDataUrl(edition.data.nationalDayManifest), {
-      signal: controller.signal,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Full-day GTFS manifest returned ${response.status}`)
-        }
-        return response.json() as Promise<NetworkDayManifest>
-      })
-      .then((manifest) => {
-        setNationalDayManifest(manifest)
-        setNationalDayLoading(true)
-      })
-      .catch((error: unknown) => {
-        if (error instanceof DOMException && error.name === 'AbortError') return
-        setNationalDayError(true)
-      })
-      .finally(() => {
-        if (!controller.signal.aborted) setNationalDayLoading(false)
-    })
-    return () => controller.abort()
-  }, [
-    edition.data.nationalDayManifest,
-    nationalDayManifest,
-    nationalTimeRange,
-    networkStudy,
-  ])
-
-  useEffect(() => {
-    if (
-      networkStudy !== 'national' ||
-      nationalTimeRange !== 'day' ||
-      !nationalDayManifest ||
-      !nationalDayChunkDescriptor
-    ) {
-      return
-    }
-    const currentMissing = !nationalDayChunks[nationalDayChunkDescriptor.id]
-    const targets = currentMissing
-      ? [nationalDayChunkDescriptor]
-      : adjacentDayChunks(nationalDayManifest, nationalDayChunkDescriptor).filter(
-          (chunk) => !nationalDayChunks[chunk.id],
-        )
-    if (!targets.length) return
-
-    const controller = new AbortController()
-    Promise.all(
-      targets.map(async (descriptor) => {
-        const response = await fetch(
-          editionDataUrl(descriptor.path),
-          { signal: controller.signal },
-        )
-        if (!response.ok) {
-          throw new Error(`Full-day GTFS chunk returned ${response.status}`)
-        }
-        return [descriptor.id, await response.json()] as const
-      }),
-    )
-      .then((entries) => {
-        setNationalDayChunks((current) => ({
-          ...current,
-          ...Object.fromEntries(entries),
-        }))
-      })
-      .catch((error: unknown) => {
-        if (error instanceof DOMException && error.name === 'AbortError') return
-        if (currentMissing) setNationalDayError(true)
-      })
-      .finally(() => {
-        if (currentMissing && !controller.signal.aborted) {
-          setNationalDayLoading(false)
-        }
-      })
-    return () => controller.abort()
-  }, [
-    nationalDayChunkDescriptor,
-    nationalDayChunks,
-    nationalDayManifest,
-    nationalTimeRange,
-    networkStudy,
-  ])
 
   useEffect(() => {
     if (networkStudy === 'national' || networkStudy === 'contrast' || networkStudy === 'postbus' || (additionalId && isRegionalDay)) return
@@ -3209,6 +3063,7 @@ export function App({ edition, suspended = false }: AppProps) {
               {postbusVisible && <>{railVisible && <> · {postbusDescription}</>}{postbusDateLabel && <> · BUS {postbusDateLabel}</>}</>}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
+          {isNationalDay && nationalDayError && <button type="button" className="corridor-entry" onClick={retryNationalDay}>{exploreCopy.retry}</button>}
           {isPilatus && pilatusNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startPilatusJourney}>{pilatusCopy?.start} →</button>}
           {isPilatus && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setPilatusAttempt(n => n+1) }}>{exploreCopy.retry}</button>}
           {isRochers && rochersNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startRochersJourney}>{rochersCopy?.start} →</button>}

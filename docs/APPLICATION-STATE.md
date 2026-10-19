@@ -40,10 +40,24 @@ dated shares and PostBus route/layer transitions remain covered by integration
 and browser journeys.
 
 This is a local coordination hook, not a shared controller or a new npm API.
-National-day loading and the other source-specific state remain separate.
+National-day loading now uses the same published progressive network-day hook.
+It preserves the national morning fallback until a manifest is available, then
+uses the full-day metadata with empty traffic while the requested chunk is
+pending. Current chunk readiness gates scene playback, with the same paused-seek
+handoff used by regional and PostBus views. Failed manifests/chunks expose an
+explicit Retry button without changing time or playback intent. Successful
+neighbour prefetches survive another neighbour's failure; obsolete responses
+cannot affect a later seek or another study. Other source-specific state remains
+separate.
 
 Validation: 59 focused unit/DOM cases and 14 Chromium/WebKit journeys passed,
 including a held regional response released after pause, explicit retry, dated
 regional searches/shares, and PostBus playback/selection. Type, lint,
 architecture, fixture build and bundle checks passed; lint retains three existing
 Date-purity warnings. Opening JavaScript: 376.9 KiB gzip / 380 KiB limit.
+
+
+National-day migration checks: nine new app regressions cover fallback, manifest
+and chunk retry, pause during loading, midnight/end-of-day boundaries, repeated
+seeks, study switches and independent neighbouring prefetches. The focused set
+covers 68 unit/DOM cases. Opening JavaScript is 376.6 KiB gzip / 380 KiB limit.

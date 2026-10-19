@@ -92,3 +92,27 @@ test('a regional chunk arriving after pause preserves the seek until explicit re
   await page.getByRole('button', { name: /Resume motion/ }).click()
   await expect.poll(async () => Number(await scrubber.inputValue())).toBeGreaterThan(62100)
 })
+
+test('national day retries a failed chunk and preserves pause when a later chunk arrives', async ({ page }) => {
+  let fail = true, requested = false
+  let release!: () => void
+  const held = new Promise<void>(resolve => { release = resolve })
+  await page.route('**/swiss-rail-day-chunks/06-09.json', route => fail ? route.fulfill({ status: 503, body: '' }) : route.continue())
+  await page.route('**/swiss-rail-day-chunks/15-18.json', async route => { requested = true; await held; await route.continue() })
+  await page.goto('/?study=national&range=day&time=27900')
+  await expect(page.getByRole('button', { name: 'Retry', exact: true })).toBeVisible()
+  fail = false
+  await page.getByRole('button', { name: 'Retry', exact: true }).click()
+  await expect(page.locator('.network-count-row strong').first()).not.toHaveText('—')
+  const scrubber = page.locator('.scrubber input')
+  await expect(scrubber).toHaveValue('27900')
+  await page.getByRole('button', { name: /Resume motion/ }).click()
+  await scrubber.fill('62100')
+  await expect.poll(() => requested).toBe(true)
+  await page.getByRole('button', { name: /Pause motion/ }).click()
+  release()
+  await expect(page.locator('.network-count-row strong').first()).not.toHaveText('—')
+  await expect(scrubber).toHaveValue('62100')
+  await page.getByRole('button', { name: /Resume motion/ }).click()
+  await expect.poll(async () => Number(await scrubber.inputValue())).toBeGreaterThan(62100)
+})
