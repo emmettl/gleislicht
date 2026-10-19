@@ -1,3 +1,4 @@
+import { useStartupAssets } from './studies/use-startup-assets.ts'
 import { TimelineScrubber } from '@motionstudies/web/components/TimelineScrubber'
 import '@motionstudies/web/timeline-scrubber.css'
 import { watchTimetableRollover } from './editions/timetable-rollover.ts'
@@ -100,8 +101,6 @@ import {
   type RealtimeApplication,
   type RealtimeSnapshot,
 } from '@motionstudies/core/domain/realtime'
-import type { MapBoundary } from '@motionstudies/core/domain/boundary'
-import type { MapWaterBodies } from '@motionstudies/core/domain/lakes'
 import {
   type RoadTopologyRoad,
   type RoadTopologySnapshot,
@@ -270,6 +269,7 @@ interface AppProps {
 }
 
 export function App({ edition, suspended = false }: AppProps) {
+  const { nationalNetwork, boundary, lakes, dataError } = useStartupAssets(edition.data)
   const [webglAvailable] = useState(supportsWebGL)
   const [performanceEnabled] = useState(() =>
     new URLSearchParams(window.location.search).has('perf'),
@@ -327,7 +327,6 @@ export function App({ edition, suspended = false }: AppProps) {
   useEffect(() => watchTimetableRollover(networkStudy, () => nowSession.current), [networkStudy])
   const [nationalTimeRange, setNationalTimeRange] =
     useState<NationalTimeRange>(initialLink.range)
-  const [nationalNetwork, setNationalNetwork] = useState<NetworkSnapshot>()
   const [nationalDayManifest, setNationalDayManifest] =
     useState<NetworkDayManifest>()
   const [nationalDayChunks, setNationalDayChunks] = useState<
@@ -393,8 +392,6 @@ export function App({ edition, suspended = false }: AppProps) {
   const [genevaTpgNetwork, setGenevaTpgNetwork] = useState<NetworkSnapshot>()
   const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(initialLink.study !== 'national' && initialLink.study !== 'postbus' && initialLink.study !== 'contrast')
   const [regionalNetworkError, setRegionalNetworkError] = useState(false)
-  const [boundary, setBoundary] = useState<MapBoundary>()
-  const [lakes, setLakes] = useState<MapWaterBodies>()
   const [corridorTools, setCorridorTools] = useState<typeof import('./editions/switzerland-corridor-journey.ts')>()
   const [corridor, setCorridor] = useState<CorridorSnapshot>()
   const [journeyCorridorId, setJourneyCorridorId] =
@@ -403,7 +400,6 @@ export function App({ edition, suspended = false }: AppProps) {
   const [hubFunctions, setHubFunctions] = useState<typeof import('@motionstudies/core/domain/hub')>()
   useEffect(() => { if (view === 'hub') { void import('@motionstudies/core/domain/hub').then(setHubFunctions); void import('./studies/hub-layout.css') } }, [view])
   const [hubDay, setHubDay] = useState<HubDaySnapshot>()
-  const [dataError, setDataError] = useState(false)
   const [operationsMode, setOperationsMode] = useState<OperationsMode>(
     REALTIME_ENDPOINT ? 'live' : 'demo',
   )
@@ -1606,49 +1602,6 @@ export function App({ edition, suspended = false }: AppProps) {
       .querySelector('meta[name="description"]')
       ?.setAttribute('content', text.pageDescription)
   }, [suspended, language, text.pageDescription, text.pageTitle])
-
-  useEffect(() => {
-    const controller = new AbortController()
-    fetch(editionDataUrl(edition.data.nationalMorning), {
-      signal: controller.signal,
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error(`GTFS snapshot returned ${response.status}`)
-        return response.json() as Promise<NetworkSnapshot>
-      })
-      .then((snapshot) => {
-        setNationalNetwork(snapshot)
-      })
-      .catch((error: unknown) => {
-        if (error instanceof DOMException && error.name === 'AbortError') return
-        setDataError(true)
-      })
-    fetch(editionDataUrl(edition.data.boundary), {
-      signal: controller.signal,
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error(`Boundary snapshot returned ${response.status}`)
-        return response.json() as Promise<MapBoundary>
-      })
-      .then(setBoundary)
-      .catch((error: unknown) => {
-        if (error instanceof DOMException && error.name === 'AbortError') return
-        console.warn('Unable to load the Swiss national boundary', error)
-      })
-    fetch(editionDataUrl(edition.data.water), {
-      signal: controller.signal,
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error(`Lake snapshot returned ${response.status}`)
-        return response.json() as Promise<MapWaterBodies>
-      })
-      .then(setLakes)
-      .catch((error: unknown) => {
-        if (error instanceof DOMException && error.name === 'AbortError') return
-        console.warn('Unable to load the Swiss lake layer', error)
-      })
-    return () => controller.abort()
-  }, [edition.data.boundary, edition.data.nationalMorning, edition.data.water])
 
   useEffect(() => {
     if (!airEnabled || isNationalDay || airSnapshot) return
