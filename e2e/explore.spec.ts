@@ -66,3 +66,29 @@ test('unavailable linked date and out-of-area location are disclosed', async ({ 
   await page.getByRole('button', { name: 'Near me', exact: true }).click()
   await expect(page.getByText('Your location is outside this study.', { exact: true })).toBeVisible()
 })
+
+test('a regional chunk arriving after pause preserves the seek until explicit resume', async ({ page }) => {
+  let release!: () => void
+  const held = new Promise<void>(resolve => { release = resolve })
+  let requested = false
+  await page.route('**/geneva-tpg-day-chunks/16-18.json', async route => {
+    requested = true
+    await held
+    await route.continue()
+  })
+  await page.goto('/?study=geneva-tpg&range=day&time=27900')
+  await expect(page.locator('.scene canvas')).toBeVisible()
+  await expect(page.locator('.network-count-row strong').first()).not.toHaveText('—')
+  await page.getByRole('button', { name: /Resume motion/ }).click()
+  const scrubber = page.locator('.scrubber input')
+  await scrubber.fill('62100')
+  await expect.poll(() => requested).toBe(true)
+  await page.getByRole('button', { name: /Pause motion/ }).click()
+  release()
+  await expect(page.locator('.network-card .between')).toContainText('Full day')
+  await expect(page.locator('.network-count-row strong').first()).not.toHaveText('—')
+  await expect(scrubber).toHaveValue('62100')
+  await expect(page.getByRole('button', { name: /Resume motion/ })).toBeVisible()
+  await page.getByRole('button', { name: /Resume motion/ }).click()
+  await expect.poll(async () => Number(await scrubber.inputValue())).toBeGreaterThan(62100)
+})

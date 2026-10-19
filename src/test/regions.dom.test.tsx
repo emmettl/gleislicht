@@ -65,7 +65,7 @@ it.each(['basel-core', 'bern-region', 'solothurn-region', 'lausanne-region'])('%
   fireEvent.click(screen.getByRole('button', { name: 'Retry' }))
   await waitFor(() => expect(screen.queryByRole('button', { name: 'Retry' })).toBeNull())
   expect(clock().value).toBe('600')
-  expect(Number(element('.network-count-row > strong').textContent?.replace(/\D/g, ''))).toBeGreaterThan(0)
+  await waitFor(() => expect(Number(element('.network-count-row > strong').textContent?.replace(/\D/g, ''))).toBeGreaterThan(0))
   expect(requests.filter(path => path === file).length).toBeGreaterThan(1)
   const priorDayIds: Record<string, string> = {
     'basel-core': 'service:2026-09-07:.ojp-91-10.1.TA.2542.j26',

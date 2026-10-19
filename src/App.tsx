@@ -1,3 +1,4 @@
+import { useChunkedPlayback } from './studies/use-chunked-playback.ts'
 import { useStartupAssets } from './studies/use-startup-assets.ts'
 import { TimelineScrubber } from '@motionstudies/web/components/TimelineScrubber'
 import '@motionstudies/web/timeline-scrubber.css'
@@ -288,7 +289,6 @@ export function App({ edition, suspended = false }: AppProps) {
   const shareButton = useRef<HTMLButtonElement>(null)
   const [exploreNotice, setExploreNotice] = useState<'dateMismatch' | 'focusMissing' | ''>('')
   const [regionalRange, setRegionalRange] = useState<'morning' | 'day'>(initialLink.range)
-  const [regionalRetry, setRegionalRetry] = useState(true)
   const [playbackEnabled, setIsPlaying] = useState(initialLink.time === undefined && !initialLink.invalidRecording)
   const isPlaying = playbackEnabled && !suspended
   const [view, setView] = useState<View>('network')
@@ -480,7 +480,6 @@ export function App({ edition, suspended = false }: AppProps) {
   const searchRef = useRef<HTMLElement>(null)
   const timelineTimeRef = useRef(networkTime)
   const roadHistorySeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
-  const postbusSeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const text = useUiText(language)
   const [translatedExploreCopy, setTranslatedExploreCopy] = useState<{ language: UiLanguage; copy: ExploreUiCopy }>({ language: 'en', copy: EXPLORE_EN })
   const exploreCopy = translatedExploreCopy.language === language ? translatedExploreCopy.copy : EXPLORE_EN
@@ -568,8 +567,16 @@ export function App({ edition, suspended = false }: AppProps) {
   const regionalDate = additionalId ? additionalDates[additionalId] : isValais ? valaisDate : isTicino ? ticinoDate : isGraubuenden ? graubuendenDate : undefined
   const regionalPrefix = additionalKey ? `${additionalKey}/` : regionalDate ? `${networkStudy}/${regionalDate}/` : ''
   const regionalAssetUrl = useCallback((path: string) => editionDataUrl(regionalPrefix && !path.startsWith(`${networkStudy}/`) ? `${regionalPrefix}${path}` : path), [regionalPrefix, networkStudy])
-  const regionalDay = useProgressiveNetworkDay(regionalPrefix ? `${regionalPrefix}${networkStudy}-day-manifest.json` : isRegionalDayStudy(networkStudy) ? REGIONAL_DAYS[networkStudy] : REGIONAL_DAYS['zvv-region'], isRegionalDay && regionalRetry, networkTime, regionalAssetUrl)
+  const regionalDay = useProgressiveNetworkDay(regionalPrefix ? `${regionalPrefix}${networkStudy}-day-manifest.json` : isRegionalDayStudy(networkStudy) ? REGIONAL_DAYS[networkStudy] : REGIONAL_DAYS['zvv-region'], isRegionalDay, networkTime, regionalAssetUrl)
   const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus || postbusVisible, networkTime, editionDataUrl)
+  const { seek: seekChunkedTime, tick: tickChunkedTime, reset: resetChunkedSeek, canPlay: chunkedCanPlay } = useChunkedPlayback({
+    source: `${networkStudy}:${regionalPrefix}:${regionalRange}:${postbusVisible}`,
+    enabled: isPostbus || postbusVisible || isRegionalDay,
+    ready: (!isRegionalDay || regionalDay.chunkReady) && (!(isPostbus || postbusVisible) || postbusDay.chunkReady),
+    playing: isPlaying,
+    rate: playbackRate,
+    onTime: setNetworkTime,
+  })
   const isNationalDay =
     networkStudy === 'national' && nationalTimeRange === 'day'
   const airDay = useProgressiveAirDay(
@@ -1040,7 +1047,6 @@ export function App({ edition, suspended = false }: AppProps) {
   const handleNetworkTime = useCallback(
     (nextTime: number) => {
       roadHistorySeekRef.current = undefined
-      if (isPostbus || postbusVisible || isRegionalDay) postbusSeekRef.current = { time: nextTime, at: performance.now() }
       if (
         networkStudy === 'national' &&
         nationalTimeRange === 'day' &&
@@ -1052,12 +1058,10 @@ export function App({ edition, suspended = false }: AppProps) {
           setNationalDayError(false)
         }
       }
-      setNetworkTime(nextTime)
+      seekChunkedTime(nextTime)
     },
     [
-      isPostbus,
-      postbusVisible,
-      isRegionalDay,
+      seekChunkedTime,
       nationalDayChunks,
       nationalDayManifest,
       nationalTimeRange,
@@ -1071,11 +1075,8 @@ export function App({ edition, suspended = false }: AppProps) {
     if (roadSeek && !postbusTickFollowsSeek(nextTime, roadSeek.time, (performance.now() - roadSeek.at) / 1000, playbackRate)) return
     roadHistorySeekRef.current = undefined
     if (!isPostbus && !postbusVisible && !isRegionalDay) { handleNetworkTime(nextTime); return }
-    const seek = postbusSeekRef.current
-    if (seek && !postbusTickFollowsSeek(nextTime, seek.time, (performance.now() - seek.at) / 1000, playbackRate)) return
-    postbusSeekRef.current = undefined
-    setNetworkTime(nextTime)
-  }, [handleNetworkTime, isPostbus, postbusVisible, isRegionalDay, playbackRate])
+    tickChunkedTime(nextTime)
+  }, [handleNetworkTime, isPostbus, postbusVisible, isRegionalDay, playbackRate, tickChunkedTime])
   useEffect(() => {
     // Resuming may wrap the two-hour study. The paused seek has already been
     // applied, so subsequent scene ticks can own the playback clock again.
@@ -1408,9 +1409,8 @@ export function App({ edition, suspended = false }: AppProps) {
       stopNow()
       setLinkPending(false)
       setExploreNotice('')
-      setRegionalRetry(true)
       setDirectorMode(false)
-      postbusSeekRef.current = undefined
+      resetChunkedSeek()
       setNetworkStudy(study)
       if (study !== 'national') setCogwheelEnabled(false)
       setView('network')
@@ -1489,6 +1489,7 @@ export function App({ edition, suspended = false }: AppProps) {
       nationalDayManifest,
       nationalNetwork,
       nationalTimeRange,
+      resetChunkedSeek,
       releaseSelection,
       zurichCityNetwork,
       zvvRegionNetwork,
@@ -1926,7 +1927,7 @@ export function App({ edition, suspended = false }: AppProps) {
       })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') return
-        setRegionalNetworkError(true)
+        if (!controller.signal.aborted) setRegionalNetworkError(true)
       })
       .finally(() => {
         if (!controller.signal.aborted) setRegionalNetworkLoading(false)
@@ -2418,7 +2419,7 @@ export function App({ edition, suspended = false }: AppProps) {
             }
             stations={timetableVisible ? stationIndex : []}
             trainLabelMode={trainLabelMode}
-            isPlaying={isPlaying && !rigiGuideActive && !nowActive && (!(isPostbus || postbusVisible) || postbusDay.chunkReady) && (!isRegionalDay || regionalDay.chunkReady)}
+            isPlaying={chunkedCanPlay && !rigiGuideActive && !nowActive}
             userLocation={validLocation}
             time={networkTime}
             selectedTrain={isPilatus || isRochers || isTerritet ? undefined : selectedTrain}
@@ -3562,17 +3563,17 @@ export function App({ edition, suspended = false }: AppProps) {
             {!isContrast && !airEnabled && !roadEnabled && <button type="button" aria-pressed={nowActive} disabled={!nowTimetableReady} onClick={nowActive ? stopNow : startNow}>{exploreCopy.now}</button>}
             {nowActive && <button type="button" onClick={browserLocation.locate} disabled={browserLocation.status === 'locating'}>{exploreCopy.locate}</button>}
             {browserLocation.status !== 'idle' && <button type="button" onClick={clearBrowserLocation}>{exploreCopy.clear}</button>}
-            {isRegionalDayStudy(networkStudy) && <button type="button" aria-pressed={isRegionalDay} onClick={() => { stopNow(); setRegionalRange(value => value === 'day' ? 'morning' : 'day'); setNetworkTime(edition.defaultNetworkTime); setRegionalRetry(true) }}>{exploreCopy.day}</button>}
-            {isValais && valaisLocale && <valaisLocale.ValaisDateSelect label={valaisLocale.VALAIS_COPY[language].valaisDate} value={valaisDate} onChange={date => { stopNow(); setLinkPending(false); setValaisDate(date); setValaisRegionNetwork(undefined); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} />}
-            {isTicino && ticinoLocale && <Suspense fallback={null}><TicinoDatePicker language={language} date={ticinoDate} onDate={date => { stopNow(); setLinkPending(false); setTicinoDate(date); setTicinoRegionNetwork(undefined); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} /></Suspense>}
+            {isRegionalDayStudy(networkStudy) && <button type="button" aria-pressed={isRegionalDay} onClick={() => { stopNow(); setRegionalRange(value => value === 'day' ? 'morning' : 'day'); setNetworkTime(edition.defaultNetworkTime) }}>{exploreCopy.day}</button>}
+            {isValais && valaisLocale && <valaisLocale.ValaisDateSelect label={valaisLocale.VALAIS_COPY[language].valaisDate} value={valaisDate} onChange={date => { stopNow(); setLinkPending(false); setValaisDate(date); setValaisRegionNetwork(undefined); setRegionalNetworkError(false); setRegionalNetworkLoading(true); releaseSelection() }} />}
+            {isTicino && ticinoLocale && <Suspense fallback={null}><TicinoDatePicker language={language} date={ticinoDate} onDate={date => { stopNow(); setLinkPending(false); setTicinoDate(date); setTicinoRegionNetwork(undefined); setRegionalNetworkError(false); setRegionalNetworkLoading(true); releaseSelection() }} /></Suspense>}
             <button ref={shareButton} type="button" aria-expanded={Boolean(shareUrl)} aria-controls={shareUrl ? 'study-share' : undefined} disabled={!network && !activePilot} onClick={() => void shareStudy()}>{exploreCopy.share}</button>
           </div>
-          {additionalId && additionalLocale && <Suspense fallback={null}><RegionalStudyDetails id={additionalId} language={language} date={additionalDates[additionalId]} serviceDate={network?.metadata.serviceDate} headway={hasHeadwayMotion} sourcesUrl={editionDataUrl(`${additionalId}/study-sources.json`)} onDate={date => { stopNow(); setLinkPending(false); setAdditionalDates(values => ({ ...values, [additionalId]: date })); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} /></Suspense>}
+          {additionalId && additionalLocale && <Suspense fallback={null}><RegionalStudyDetails id={additionalId} language={language} date={additionalDates[additionalId]} serviceDate={network?.metadata.serviceDate} headway={hasHeadwayMotion} sourcesUrl={editionDataUrl(`${additionalId}/study-sources.json`)} onDate={date => { stopNow(); setLinkPending(false); setAdditionalDates(values => ({ ...values, [additionalId]: date })); setRegionalNetworkError(false); setRegionalNetworkLoading(true); releaseSelection() }} /></Suspense>}
           {isValais && <p className="explore-status">{(valaisCopy?.valaisScope ?? '')} · {network?.metadata.serviceDate}</p>}
           {isTicino && <p className="explore-status">{ticinoCopy?.scope} · {network?.metadata.serviceDate}</p>}
           {isGraubuenden && <>
             <p className="explore-status">{graubuendenCopy?.scope} · {network?.metadata.serviceDate}</p>
-            <div className="explore-actions">{['2026-09-04', '2026-09-06'].map(date => <button key={date} type="button" aria-pressed={graubuendenDate === date} onClick={() => { stopNow(); releaseSelection(); setGraubuendenRegionNetwork(undefined); setGraubuendenDate(date); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); setLinkPending(false) }}>{date}</button>)}
+            <div className="explore-actions">{['2026-09-04', '2026-09-06'].map(date => <button key={date} type="button" aria-pressed={graubuendenDate === date} onClick={() => { stopNow(); releaseSelection(); setGraubuendenRegionNetwork(undefined); setGraubuendenDate(date); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setLinkPending(false) }}>{date}</button>)}
               {regionalNetworkError && <button type="button" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setGraubuendenAttempt(n => n + 1) }}>{exploreCopy.retry}</button>}
             </div>
           </>}
@@ -3599,7 +3600,7 @@ export function App({ edition, suspended = false }: AppProps) {
               <button type="button" onClick={dismissShare}>{exploreCopy.close}</button>
             </div>
           </div>}
-          {isRegionalDay && regionalDay.error && <div className="explore-actions"><span role="status">{exploreCopy.error}</span><button type="button" onClick={() => { setRegionalRetry(false); window.setTimeout(() => setRegionalRetry(true), 0) }}>{exploreCopy.retry}</button></div>}
+          {isRegionalDay && regionalDay.error && <div className="explore-actions"><span role="status">{exploreCopy.error}</span><button type="button" onClick={regionalDay.retry}>{exploreCopy.retry}</button></div>}
         </>}
 
         <div className="progress-copy">

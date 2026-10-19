@@ -17,7 +17,33 @@ protect pause, seek and suspension; startup tests protect independent assets,
 blocking versus optional failures, source changes and teardown.
 
 This is a local responsibility boundary, not a shared application controller.
-The regional/day loaders and their time-clamping effects still require separate
-transition analysis before extraction. In particular, a future change must trace
-pause while a chunk is pending, study changes during a request, and selection
-through view switches rather than moving the whole app state into a context.
+Regional/PostBus clock handoff now lives in
+`src/studies/use-chunked-playback.ts`. It owns the pending explicit seek and the
+handoff back to scene ticks. The shared `useProgressiveNetworkDay` hook continues
+to own manifests, chunks, integrity checking and request cancellation. The app
+retains play/pause intent, source selection, Now mode, road-specific seeks and
+selection/view commands.
+
+| Transition | Result |
+| --- | --- |
+| Seek into an unloaded chunk | Display the requested time immediately; gate scene playback until ready. |
+| Pause before the chunk arrives | Keep paused intent and the sought time when data arrives; only explicit resume restarts playback. |
+| Seek again while waiting | The latest seek wins; a queued frame from the old time cannot undo it. |
+| Change study, date, range or PostBus layer | A new clock owner rejects old scene commands, including after returning to the original study. |
+| Retry a failed chunk | Use the shared loader's explicit retry; retain time, selection and play/pause intent. |
+| Unmount or suspend | Reject retired callbacks or paused scene ticks. |
+
+Regional retry no longer toggles activation with a timer. Optional morning
+requests also ignore obsolete failures after cancellation, matching their existing
+success guard. Existing selection/view ownership is unchanged; regional searches,
+dated shares and PostBus route/layer transitions remain covered by integration
+and browser journeys.
+
+This is a local coordination hook, not a shared controller or a new npm API.
+National-day loading and the other source-specific state remain separate.
+
+Validation: 59 focused unit/DOM cases and 14 Chromium/WebKit journeys passed,
+including a held regional response released after pause, explicit retry, dated
+regional searches/shares, and PostBus playback/selection. Type, lint,
+architecture, fixture build and bundle checks passed; lint retains three existing
+Date-purity warnings. Opening JavaScript: 376.9 KiB gzip / 380 KiB limit.
