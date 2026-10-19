@@ -29,6 +29,7 @@ it.each([manifest, chunk('06-09')])('explicitly retries %s without resuming or s
   await screen.findByRole('button', { name: 'Retry' })
   overrides.delete(path)
   fireEvent.click(screen.getByRole('button', { name: 'Retry' }))
+  await waitFor(() => expect(clock().max).toBe('86400'))
   await loaded()
   await waitFor(() => expect(screen.queryByRole('button', { name: 'Retry' })).toBeNull())
   expect(requests.filter(value => value === path).length).toBeGreaterThan(1)
