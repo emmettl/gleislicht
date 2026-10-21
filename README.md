@@ -6,7 +6,7 @@
 
 A cinematic browser visualisation of Switzerland's transport networks, built from open timetable data, recorded aircraft and road observations, and real topography. Move between the national atlas, regional networks, camera-led terrain journeys and an orbital view of public transport above the Swiss Alps.
 
-**Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.34`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
+**Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.42`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
 
 Other editions have independent repositories: [All Change](https://github.com/emmettl/allchange) and [Correspondances](https://github.com/emmettl/correspondances). This repository builds only Switzerland.
 

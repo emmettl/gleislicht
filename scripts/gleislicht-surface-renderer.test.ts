@@ -4,7 +4,6 @@ import * as THREE from 'three'
 import { expect, it } from 'vitest'
 import { MAP_SURFACE_Y } from '../src/studies/map-surface.ts'
 import { gleislichtSurfaceRenderer } from './gleislicht-surface-renderer.ts'
-import { gleislichtSelectionRenderer } from './gleislicht-selection-renderer.ts'
 import { SWITZERLAND_MAP_FRAMINGS } from '../src/editions/switzerland.ts'
 import { homeMapDistanceScale } from '@motionstudies/three/map-camera'
 
@@ -36,20 +35,20 @@ it('shows Geneva and Basel trams at the home/reset zoom without changing other r
 })
 
 it('composites the flat basemap below the network without depth conflicts between its layers', () => {
-  const id = '/node_modules/@motionstudies/three/NationalNetworkScene.js'
+  const id = '/node_modules/@motionstudies/three/scene-context-layers.js'
   const source = readFileSync(`.${id}`, 'utf8')
   const transform = gleislichtSurfaceRenderer().transform as (source: string, id: string) => { code: string }
-  const selection = gleislichtSelectionRenderer().transform as typeof transform
-  const code = transform(selection(source, id).code, id).code
+  const code = transform(source, id).code
   // Evaluate the installed renderer's actual basemap components with synchronous
   // hooks, then inspect the objects/materials they supply to R3F.
-  const components = code.slice(code.indexOf('function NationalGround('), code.indexOf('function RailGraph('))
+  const components = code.slice(code.indexOf('export function NationalGround(')).replaceAll('export ', '')
   const jsx = (type: string, props: object) => createElement(type, props)
   const { NationalGround, LakeLayer, CountryBorder } = new Function(
-    '_jsx', '_jsxs', 'useMemo', 'useEffect', 'THREE', 'MAP_SURFACE_Y', 'projectCoordinate', 'appendLineSegments',
+    '_jsx', '_jsxs', 'useMemo', 'useEffect', 'THREE', 'MAP_SURFACE_Y', 'projectCoordinate', 'appendLineSegments', 'useNetworkScene', 'useMapStyle', 'useSpatialGeometryMorph', 'useRef', 'useFrame',
     `${components}; return { NationalGround, LakeLayer, CountryBorder };`,
   )(jsx, jsx, (build: () => unknown) => build(), () => {}, THREE, MAP_SURFACE_Y,
-    ([x, z]: number[], _projection: unknown, height = 0) => [x, height, z], (target: number[], points: number[][]) => target.push(...points.flat()))
+    ([x, z]: number[], _projection: unknown, height = 0) => [x, height, z], (target: number[], points: number[][]) => target.push(...points.flat()),
+    () => ({ props: {} }), () => ({}), () => {}, () => ({ current: null }), () => {})
   const children = (element: Element) => [element.props.children].flat().filter(Boolean) as Element[]
   const ground = children(NationalGround({}))
   const water = children(LakeLayer({ lakes: { lakes: [{ polygons: [[[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]]]] }] }, subdued: false }))
