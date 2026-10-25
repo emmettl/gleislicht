@@ -212,3 +212,32 @@ The original cache has precedence. Previously reviewed pattern paths, including 
 The [weekly audit](../data/lausanne-weekly-refresh-audit.json) records before/after coverage, CI-matching source hashes, Monday release gates and matcher provenance. The [geometry review](lausanne-weekly-bus-review.svg) and [review metadata](../data/lausanne-weekly-bus-review.json) cover the largest platform connectors and representative station, city, hill and night-service paths. The largest connector remains below 120 metres. The regression fixture preserves a real Monday journey that had no original cached pattern.
 
 The existing extraction/routing commands above can build another dated union. To validate a candidate supplement before changing the default builder, add `--bus-cache-supplement /path/cache.json` to `audit-lausanne-study.mjs`, alongside `--bus-cache data/lausanne-road-cache.json`. Source/geometry changes still require this offline refresh and review; daily publication never relaxes the gate to make a new date pass.
+
+## October refresh repair — 25 October 2026
+
+The current `20261021` GTFS feed exposed another absent exact-pattern set on
+25 October: the committed tl caches accepted 87.5799% of 88,993 bus segment
+occurrences. The unchanged 95% geometry floor correctly blocked the daily
+publication and, consequently, the public freshness check.
+
+`data/lausanne-2026-10-road-cache.json` adds a dated supplement for the 25–31
+October routing-only union. It uses the existing pinned pfaedle revision
+`99f2cd466696ecc6bdb73b2b3bb9008557fcb84a`, a hashed Geofabrik Switzerland
+24 October extract retrieved on 25 October, and the unchanged 120 m snap,
+detour and simplification limits. All 236 patterns match without rejected
+segments; the largest connector is 116.6 m. Earlier caches retain precedence,
+including their explicit rejections. No journey, platform or time is changed.
+
+All seven dates now have 100% tl bus segment coverage and no missing patterns.
+Complete today/tomorrow Lausanne/MBC audits pass all eight groups and existing
+payload limits; MBC bus coverage is 98.50% / 98.86%, with the other groups at
+100%. The [audit](../data/lausanne-october-refresh-audit.json) records source
+hashes and per-date counts. The [source alignment review](assets/lausanne-october-bus-review.svg)
+and [review metadata](../data/lausanne-october-bus-review.json) cover the largest
+connectors, Renens, Flon/Bel-Air, Saint-François, hill routes and night service.
+These remain inferred OSM paths, not independent operator verification or GPS.
+A real October-gap fixture verifies restored paths, strict coordinate identity
+and preservation of previously reviewed geometry.
+
+Hosted publication and freshness are checked separately after this repair is
+pushed; the local audits do not establish a deployed release.
