@@ -207,7 +207,7 @@ describe('motorway picking', () => {
   it('picks rendered line interiors with a CSS-pixel tolerance, including in road-only mode', () => {
     const { scene, camera, screen } = setup()
     const geometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-4, 0, 0), new THREE.Vector3(4, 0, 0)])
-    geometry.userData.pickRoads = ['N1', 'N1']
+    setScenePickMetadata(geometry, { roadIds: ['N1', 'N1'] })
     const line = new THREE.LineSegments(geometry, new THREE.LineBasicMaterial())
     scene.add(line); scene.updateMatrixWorld()
     for (const height of [30, 5]) {

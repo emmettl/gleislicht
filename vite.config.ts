@@ -3,10 +3,6 @@ import { defineConfig, loadEnv, type Plugin } from 'vite'
 import { cp, readdir } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import react from '@vitejs/plugin-react'
-import { gleislichtSelectionRenderer } from './scripts/gleislicht-selection-renderer.ts'
-import { gleislichtRoadRenderer } from './scripts/gleislicht-road-renderer.ts'
-import { gleislichtAirportRenderer } from './scripts/gleislicht-airport-renderer.ts'
-import { gleislichtSurfaceRenderer } from './scripts/gleislicht-surface-renderer.ts'
 import release from './src/editions/data-release.json' with { type: 'json' }
 import { resolveDataRoot } from './src/editions/data-root.ts'
 /** Copy public documents and icons, while datasets have their own release. */
@@ -34,7 +30,7 @@ export default defineConfig(({ command, mode }) => {
   const dataRoot = resolveDataRoot({ override: env.VITE_GLEISLICHT_DATA_URL, published: release.baseUrl, local: './data/', development: bundledData })
   return {
     define: { 'import.meta.env.VITE_GLEISLICHT_RESOLVED_DATA_URL': JSON.stringify(dataRoot) },
-    plugins: [...(bundledData ? [] : [publicAppAssets(dataRoot, env.VITE_GLEISLICHT_REALTIME_URL)]), gleislichtSelectionRenderer(), gleislichtRoadRenderer(), gleislichtAirportRenderer(), gleislichtSurfaceRenderer(), react()],
+    plugins: [...(bundledData ? [] : [publicAppAssets(dataRoot, env.VITE_GLEISLICHT_REALTIME_URL)]), react()],
     optimizeDeps: {
       // Archived source HTML under data/ is evidence, not an application entry.
       entries: ['index.html'],

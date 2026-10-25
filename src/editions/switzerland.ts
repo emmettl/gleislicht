@@ -122,7 +122,7 @@ export const SWITZERLAND_MAP_FRAMINGS = {
     stationLabelPrefix: 'Zürich',
     stationLabelPrimaryName: 'Zürich HB',
   },
-} as const satisfies Readonly<Record<string, MapCameraFraming & { readonly localDetailDistanceScale?: number }>>
+} as const satisfies Readonly<Record<string, MapCameraFraming>>
 
 export type SwitzerlandRegionalStudyId =
   | 'pilatus'

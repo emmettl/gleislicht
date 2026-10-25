@@ -64,7 +64,8 @@ export function pickMapTarget(scene: THREE.Scene, camera: THREE.Camera,
       }
       return
     }
-    if (object instanceof THREE.LineSegments && object.geometry.userData.pickRoads) {
+    const roadIds = object instanceof THREE.LineSegments ? scenePickMetadata(object.geometry)?.roadIds : undefined
+    if (object instanceof THREE.LineSegments && roadIds) {
       if (Array.isArray(object.material) || !object.material.visible || object.material.opacity < 0.1) return
       const positions = object.geometry.getAttribute('position')
       const end = Math.min(positions.count, object.geometry.drawRange.start + object.geometry.drawRange.count)
@@ -77,7 +78,7 @@ export function pickMapTarget(scene: THREE.Scene, camera: THREE.Camera,
         const t = THREE.MathUtils.clamp(((x - ax) * dx + (y - ay) * dy) / (dx * dx + dy * dy || 1), 0, 1)
         const distance = Math.hypot(x - ax - t * dx, y - ay - t * dy)
         if (distance <= (touch ? 12 : 6) && (!road || distance < road.distance)) {
-          road = { target: { kind: 'road', value: object.geometry.userData.pickRoads[i] }, distance }
+          road = { target: { kind: 'road', value: roadIds[i] }, distance }
         }
       }
       return

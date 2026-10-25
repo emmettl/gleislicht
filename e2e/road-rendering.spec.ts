@@ -135,10 +135,12 @@ test('click a motorway badge or road line and explore its traffic history', asyn
     const { _roots } = await import(fiberUrl)
     const { scene, camera, gl } = [..._roots.values()][0].store.getState() as RootState
     const rect = gl.domElement.getBoundingClientRect()
+    const pickingUrl = performance.getEntriesByType('resource').find(entry => entry.name.includes('scene-picking'))!.name
+    const { scenePickMetadata } = await import(pickingUrl)
     let found: { x: number; y: number; road: string } | undefined
     scene.traverseVisible(object => {
       const line = object as THREE.LineSegments
-      const roads = line.geometry?.userData.pickRoads as string[] | undefined
+      const roads = line.geometry ? scenePickMetadata(line.geometry)?.roadIds : undefined
       if (found || !roads) return
       const positions = line.geometry.getAttribute('position')
       const point = camera.position.clone(), end = point.clone()
