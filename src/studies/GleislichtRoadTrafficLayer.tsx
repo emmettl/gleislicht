@@ -3,7 +3,7 @@ import { RoadPolyline, roadPathOnTopology } from './road-geometry.ts'
 import { GleislichtRoadLabels } from './GleislichtRoadLabels.tsx'
 
 /** Use matched official road segments; absent paths stay absent rather than becoming chords. */
-export const resolveSwissRoadPath: RoadPathResolver = ({ topology, road, from, to, fromSiteId, toSiteId }) => {
+const resolveSwissRoadPath: RoadPathResolver = ({ topology, road, from, to, fromSiteId, toSiteId }) => {
   if (!topology) return null
   const origin = fromSiteId ? topology.sites.find(site => site.id === fromSiteId)?.match : undefined
   const destination = toSiteId ? topology.sites.find(site => site.id === toSiteId)?.match : undefined

@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { gleislichtMapStyle } from '../src/studies/GleislichtNetworkScene.tsx'
+import { gleislichtMapStyle } from '../src/studies/gleislicht-map-style.ts'
 import { SWITZERLAND_MAP_FRAMINGS } from '../src/editions/switzerland.ts'
 import { homeMapDistanceScale } from '@motionstudies/three/map-camera'
 
