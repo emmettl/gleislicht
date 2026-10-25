@@ -7,7 +7,12 @@ test('production loads the pinned R2 timetable without local data fallback', asy
   const failures: string[] = []
   const loadedChunks: string[] = []
   page.on('request', request => requested.push(request.url()))
-  page.on('requestfailed', request => failures.push(request.url()))
+  page.on('requestfailed', request => {
+    // Progressive loading cancels obsolete adjacent-chunk prefetches when the
+    // active chunk changes. WebKit reports those AbortController cleanups.
+    const reason = request.failure()?.errorText ?? 'unknown transport failure'
+    if (reason !== 'cancelled' && reason !== 'net::ERR_ABORTED') failures.push(`${request.url()} (${reason})`)
+  })
   page.on('response', response => {
     if (!response.url().startsWith(release.baseUrl)) return
     if (!response.ok()) failures.push(response.url())
