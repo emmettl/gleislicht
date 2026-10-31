@@ -144,7 +144,6 @@
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "3.1152.0",
-    "@babel/parser": "7.29.9",
     "@cloudflare/workers-types": "5.20261018.1",
     "@motionstudies/data": "0.1.0-alpha.43",
     "@playwright/test": "1.64.1",
