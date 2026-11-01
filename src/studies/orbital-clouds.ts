@@ -1,3 +1,5 @@
+import { cloudCoveragePixels } from '@motionstudies/core/domain/weather-field'
+import { decodeWeatherBytes } from '@motionstudies/web/weather-assets'
 export interface CloudDay {
   date: string
   available: boolean
@@ -29,16 +31,10 @@ export function validateCloudManifest(manifest: CloudManifest): CloudManifest {
 export async function decodeCloudField(bytes: ArrayBuffer, manifest: CloudManifest, day: CloudDay): Promise<CloudField> {
   validateCloudManifest(manifest)
   if (!day.available) throw new Error('Cloud day unavailable')
-  // Fetch decodes Content-Encoding: gzip automatically, whereas some static
-  // hosts serve the gzip bytes unchanged. Inspect the payload, not the suffix.
-  const prefix = new Uint8Array(bytes, 0, Math.min(2, bytes.byteLength))
-  const compressed = prefix[0] === 0x1f && prefix[1] === 0x8b
-  const buffer = compressed
-    ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer()
-    : bytes
-  const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', buffer)), n => n.toString(16).padStart(2, '0')).join('')
-  const values = new Uint8Array(buffer)
-  if (values.length !== day.decodedBytes || hash !== day.sha256 || values.some(n => n > 100 && n !== 255)) throw new Error('Cloud data failed verification')
+  let values: Uint8Array
+  try { values=await decodeWeatherBytes(bytes,{decodedBytes:day.decodedBytes!,sha256:day.sha256!}) }
+  catch { throw new Error('Cloud data failed verification') }
+  if (values.some(n => n > 100 && n !== 255)) throw new Error('Cloud data failed verification')
   return { manifest, day, values }
 }
 
@@ -51,11 +47,5 @@ export function cloudFramePair(seconds: number): [number, number, number] {
 
 // Premultiplied coverage and validity keep missing cells from appearing as clear sky.
 export function cloudTextureFrame(field: CloudField, frame: number): Uint8Array {
-  const cells = field.manifest.columns * field.manifest.rows, pixels = new Uint8Array(cells * 4)
-  for (let i = 0; i < cells; i++) {
-    const value = field.values[frame * cells + i]
-    pixels[i * 4] = value === 255 ? 0 : Math.round(value * 2.55)
-    pixels[i * 4 + 3] = value === 255 ? 0 : 255
-  }
-  return pixels
+  return cloudCoveragePixels(field.values, frame, field.manifest.columns * field.manifest.rows)
 }
