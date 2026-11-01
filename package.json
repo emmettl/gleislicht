@@ -134,9 +134,9 @@
   },
   "dependencies": {
     "@driftbox/engine": "^0.6.0",
-    "@motionstudies/core": "0.1.0-alpha.43",
-    "@motionstudies/three": "0.1.0-alpha.43",
-    "@motionstudies/web": "0.1.0-alpha.43",
+    "@motionstudies/core": "0.1.0-alpha.46",
+    "@motionstudies/three": "0.1.0-alpha.46",
+    "@motionstudies/web": "0.1.0-alpha.46",
     "@react-three/fiber": "^9.8.2",
     "react": "19.3.1",
     "react-dom": "19.3.1",
@@ -145,7 +145,7 @@
   "devDependencies": {
     "@aws-sdk/client-s3": "3.1152.0",
     "@cloudflare/workers-types": "5.20261018.1",
-    "@motionstudies/data": "0.1.0-alpha.43",
+    "@motionstudies/data": "0.1.0-alpha.46",
     "@playwright/test": "1.64.1",
     "@testing-library/react": "^16.3.3",
     "@types/node": "26.6.5",

@@ -1,3 +1,4 @@
+import { createGridTexturePair } from '@motionstudies/three/weather-textures'
 import * as THREE from 'three'
 import { cloudFramePair, cloudTextureFrame, type CloudField } from './orbital-clouds.ts'
 import { orbitalXZ } from './orbital-terrain.ts'
@@ -36,15 +37,11 @@ export const ORBITAL_CLOUD_GLSL = `
 
 export function createCloudMaterialResources(field: CloudField) {
   const { columns, rows, bounds } = field.manifest
-  const texture = (frame: number) => {
-    const result = new THREE.DataTexture(cloudTextureFrame(field, frame), columns, rows, THREE.RGBAFormat)
-    result.magFilter = THREE.LinearFilter; result.minFilter = THREE.LinearFilter; result.needsUpdate = true
-    return result
-  }
+  const pair=createGridTexturePair({width:columns,height:rows,times:Array.from({length:field.day.frames??25},(_,i)=>new Date(i*3600000).toISOString()),type:THREE.UnsignedByteType,frame:i=>cloudTextureFrame(field,i)})
   const [west, south] = orbitalXZ(bounds.west, bounds.south), [east, north] = orbitalXZ(bounds.east, bounds.north)
-  const a = texture(0), b = texture(1)
+  const {a,b}=pair
   const uniforms = {
-    orbitalCloudA: { value: a }, orbitalCloudB: { value: b }, orbitalCloudBlend: { value: 0 },
+    orbitalCloudA: { value: a }, orbitalCloudB: { value: b }, orbitalCloudBlend: pair.uniforms.weatherBlend,
     orbitalCloudGrid: { value: new THREE.Vector2(columns, rows) },
     orbitalCloudExtent: { value: new THREE.Vector2(east - west, south - north) },
     orbitalCloudOrigin: { value: new THREE.Vector2(west, south) },
@@ -52,7 +49,7 @@ export function createCloudMaterialResources(field: CloudField) {
     orbitalCloudShadow: { value: 0 },
     strength: { value: 0.65 }, daylight: { value: 1 }, illumination: { value: 1 },
   }
-  return { field, a, b, uniforms, west, south, east, north, frame: 0, time: NaN, opacity: NaN, sunlight: false }
+  return { field, a, b, pair, uniforms, west, south, east, north, frame: 0, time: NaN, opacity: NaN, sunlight: false }
 }
 export type CloudMaterialResources = ReturnType<typeof createCloudMaterialResources>
 
@@ -60,11 +57,8 @@ export function updateCloudMaterialResources(resources: CloudMaterialResources, 
   if (resources.time === time && resources.opacity === opacity && resources.sunlight === sunlight) return
   resources.time = time; resources.opacity = opacity; resources.sunlight = sunlight
   const [first, second, blend] = cloudFramePair(time)
-  if (resources.frame !== first) {
-    resources.a.image.data!.set(cloudTextureFrame(resources.field, first)); resources.a.needsUpdate = true
-    resources.b.image.data!.set(cloudTextureFrame(resources.field, second)); resources.b.needsUpdate = true
-    resources.frame = first
-  }
+  resources.pair.setFrames({a:first,b:second,fraction:blend})
+  resources.frame=first
   const uniforms = resources.uniforms, sun = orbitalSun(time)
   uniforms.orbitalCloudBlend.value = blend; uniforms.strength.value = opacity
   uniforms.daylight.value = sunlight ? THREE.MathUtils.smoothstep(sun.altitude, -8, 18) : 0.75
@@ -77,5 +71,5 @@ export function updateCloudMaterialResources(resources: CloudMaterialResources, 
 }
 
 export function disposeCloudMaterialResources(resources: CloudMaterialResources) {
-  resources.a.dispose(); resources.b.dispose()
+  resources.pair.dispose()
 }
