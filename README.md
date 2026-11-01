@@ -151,3 +151,11 @@ Orbital combines reviewed weekday timetables from multiple source dates and remo
 ### Valais / Wallis initial regional study
 
 The **VS** study integrates 5,102 Friday and 3,445 Sunday complete journeys from the pinned September 2026 timetable, reviewed FOT rail and attributed OSM bus matching. Its whole-canton inventory includes 385 annual route records, 78 agencies and all 13 districts. [Study, source investigation and reuse terms](docs/VALAIS-STUDY.md) · [all routes and exclusions](docs/VALAIS-ROUTE-INVENTORY.md). Rebuild with `npm run data:valais`, verify with `npm run data:valais:check`. The two dated fixtures are archival and deliberately partial; they are not part of automatic latest-timetable refresh.
+
+## Opt-in GPU debugging
+
+The alpha.48 integration adds a shared debug panel through public `@motionstudies/three/debug` entry points. Nothing is enabled on an ordinary URL. Append `?debug=capture` for frame capture and JSON export, `?debug=perf` for the Fiber profiler, or `?debug=perf,capture` for both. The profiler applies to Fiber canvases; raw Weather uses capture and renderer observations.
+
+Natural rendering is preserved. Continuous Fiber profiling requires the additional `&debugLoop=continuous` flag. Exit debugging through the reload link before comparing baseline performance. Capture metadata records the edition build, data release, playback time, selection, layers, buffer dimensions and pixel ratio; Fiber captures also record the camera transform/projection. It describes the capture request rather than automatically restoring application state. Local dirty builds are marked in the build identifier.
+
+This branch is prepared against alpha.48 release candidates. The shared release must be published through Motion Studies' normal main-branch workflow before the pinned registry dependencies can be installed on another machine.

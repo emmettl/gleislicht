@@ -1,3 +1,4 @@
+import { initializeEditionDebug } from './debug.ts'
 import AtlasExperience from './AtlasExperience.tsx'
 import { SWITZERLAND_EDITION } from './editions/switzerland.ts'
 import { mountMotionStudy } from '@motionstudies/web/mount-motion-study'
@@ -13,4 +14,5 @@ const loadDesktopChrome = () => {
 }
 compactDesktop.addEventListener('change', loadDesktopChrome)
 loadDesktopChrome()
+await initializeEditionDebug()
 mountMotionStudy(SWITZERLAND_EDITION, <AtlasExperience />)

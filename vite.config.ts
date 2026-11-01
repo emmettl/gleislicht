@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process'
 import calendar from './src/editions/timetable-calendar.json' with { type: 'json' }
 import { defineConfig, loadEnv, type Plugin } from 'vite'
 import { cp, readdir } from 'node:fs/promises'
@@ -29,7 +30,7 @@ export default defineConfig(({ command, mode }) => {
   const bundledData = command === 'serve' || env.VITE_GLEISLICHT_BUNDLE_DATA === '1'
   const dataRoot = resolveDataRoot({ override: env.VITE_GLEISLICHT_DATA_URL, published: release.baseUrl, local: './data/', development: bundledData })
   return {
-    define: { 'import.meta.env.VITE_GLEISLICHT_RESOLVED_DATA_URL': JSON.stringify(dataRoot) },
+    define: { __EDITION_BUILD__: JSON.stringify(execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim() + (execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }).trim() ? '-dirty' : '')), 'import.meta.env.VITE_GLEISLICHT_RESOLVED_DATA_URL': JSON.stringify(dataRoot) },
     plugins: [...(bundledData ? [] : [publicAppAssets(dataRoot, env.VITE_GLEISLICHT_REALTIME_URL)]), react()],
     optimizeDeps: {
       // Archived source HTML under data/ is evidence, not an application entry.
