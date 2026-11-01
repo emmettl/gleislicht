@@ -14,5 +14,4 @@ const loadDesktopChrome = () => {
 }
 compactDesktop.addEventListener('change', loadDesktopChrome)
 loadDesktopChrome()
-await initializeEditionDebug()
-mountMotionStudy(SWITZERLAND_EDITION, <AtlasExperience />)
+void initializeEditionDebug().then(() => mountMotionStudy(SWITZERLAND_EDITION, <AtlasExperience />))
