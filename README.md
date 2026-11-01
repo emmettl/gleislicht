@@ -158,4 +158,4 @@ The alpha.48 integration adds a shared debug panel through public `@motionstudie
 
 Natural rendering is preserved. Continuous Fiber profiling requires the additional `&debugLoop=continuous` flag. Exit debugging through the reload link before comparing baseline performance. Capture metadata records the edition build, data release, playback time, selection, layers, buffer dimensions and pixel ratio; Fiber captures also record the camera transform/projection. It describes the capture request rather than automatically restoring application state. Local dirty builds are marked in the build identifier.
 
-This branch is prepared against alpha.48 release candidates. The shared release must be published through Motion Studies' normal main-branch workflow before the pinned registry dependencies can be installed on another machine.
+Uses the verified `0.1.0-alpha.48` registry release, published through [trusted release run 41320101094](https://github.com/emmettl/motionstudies/actions/runs/41320101094). The lockfile hashes match the CI-tested published archives; a clean registry install and browser checks pass.
