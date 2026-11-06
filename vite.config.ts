@@ -36,7 +36,8 @@ export default defineConfig(({ command, mode }) => {
       // Archived source HTML under data/ is evidence, not an application entry.
       entries: ['index.html'],
       exclude: ['@motionstudies/three'],
-      include: ['@react-three/fiber', 'three'],
+      // The lazy capture runtime imports this CommonJS package from an excluded SDK.
+      include: ['@react-three/fiber', 'three', 'spectorjs'],
     },
     base: './',
     build: { manifest: true, target: 'es2022', copyPublicDir: bundledData },
