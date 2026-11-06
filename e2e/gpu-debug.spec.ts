@@ -6,7 +6,7 @@ test('normal edition loads no GPU debug tools', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('canvas').first()).toBeVisible()
   await expect(page.getByRole('complementary', { name: 'Edition GPU debugging' })).toHaveCount(0)
-  expect(requests.some(url => /debug-runtime|spector|debug-fiber|r3f-perf/.test(url))).toBe(false)
+  expect(requests.some(url => /debug-bootstrap|debug-runtime|spector|debug-fiber|r3f-perf/.test(url))).toBe(false)
 })
 
 test('capture contains actual draw commands and current edition reproduction metadata', async ({ page }) => {
@@ -41,4 +41,14 @@ test('Fiber profiler is opt-in and natural rendering is the default', async ({ p
   await panel.getByRole('link', { name: 'Continuous Fiber profiling (reload)' }).click()
   await expect(panel).toContainText('Continuous profiling requested')
   await expect(page.locator('.ms-edition-perf')).toBeVisible()
+})
+
+test('an unavailable debug bootstrap preserves the usable study', async ({ page }) => {
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  await page.route(/debug-bootstrap/, route => route.abort())
+  await page.goto('/?debug=capture')
+  await expect(page.locator('.scene canvas')).toBeVisible()
+  await expect(page.getByRole('complementary', { name: 'Edition GPU debugging' })).toHaveCount(0)
+  expect(errors).toEqual([])
 })
