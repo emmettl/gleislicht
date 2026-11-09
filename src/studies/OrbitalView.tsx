@@ -1,10 +1,11 @@
+import { useMediaQuery } from '@motionstudies/web/use-media-query'
 import { TimelineScrubber } from '@motionstudies/web/components/TimelineScrubber'
 import '@motionstudies/web/timeline-scrubber.css'
 import { useUiLanguage } from '../use-ui-language.ts'
 import { useUiText } from '../use-ui-text.ts'
 import { LANGUAGE_LOCALES, serviceCategoryLabel } from '../i18n.ts'
 import { ORBITAL_COPY, type OrbitalCopy } from './orbital-copy.ts'
-import { Component, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { Component, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { Canvas } from '@react-three/fiber'
 import OrbitalScene, { type OrbitalGeography, type OrbitalPlayback } from './OrbitalScene.tsx'
 import { decodeOrbitalPayload, orbitalBlock, orbitalClock, ORBITAL_TRANSPORTS, type OrbitalChunk, type OrbitalManifest } from './orbital-data.ts'
@@ -46,15 +47,14 @@ export default function OrbitalView({ onReady, onLoadError }: OrbitalViewProps) 
   const integer = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language]), [language])
   const altitudeNumber = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language], { minimumFractionDigits: 1, maximumFractionDigits: 1 }), [language])
   const formatAltitude = useCallback((height: number) => copy.altitudeValue.replace('{height}', altitudeNumber.format(height)), [copy, altitudeNumber])
-  const [compact, setCompact] = useState(() => window.matchMedia(COMPACT_VIEW).matches)
+  const compact = useMediaQuery(COMPACT_VIEW)
+  const previousCompact = useRef(compact)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const settingsDialog = useRef<HTMLDialogElement>(null)
-  useEffect(() => {
-    const query = window.matchMedia(COMPACT_VIEW)
-    const change = () => { setCompact(query.matches); setSettingsOpen(false) }
-    query.addEventListener('change', change)
-    return () => query.removeEventListener('change', change)
-  }, [])
+  useLayoutEffect(() => {
+    if (compact !== previousCompact.current) setSettingsOpen(false)
+    previousCompact.current = compact
+  }, [compact])
   useEffect(() => {
     const dialog = settingsDialog.current
     if (compact && settingsOpen) dialog?.showModal()

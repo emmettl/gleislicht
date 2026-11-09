@@ -1,0 +1,20 @@
+import { expect, test } from '@playwright/test'
+
+test('orbital controls close on a layout change and remain closed on return', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.setViewportSize({ width: 600, height: 850 })
+  await page.goto('/?view=orbital')
+  const toolbar = page.locator('.orbital-mobile-toolbar')
+  const controls = toolbar.getByRole('button', { name: 'Controls', exact: true })
+  await expect(controls).toBeVisible({ timeout: 60000 })
+  await controls.click()
+  await expect(page.locator('#orbital-settings')).toBeVisible()
+  await page.setViewportSize({ width: 1200, height: 850 })
+  await expect(toolbar).toHaveCount(0)
+  await expect(page.locator('#orbital-settings')).toHaveCount(0)
+  await page.setViewportSize({ width: 600, height: 850 })
+  await expect(controls).toHaveAttribute('aria-expanded', 'false')
+  await expect(page.locator('#orbital-settings')).not.toBeVisible()
+  await controls.click()
+  await expect(page.locator('#orbital-settings')).toBeVisible()
+})
