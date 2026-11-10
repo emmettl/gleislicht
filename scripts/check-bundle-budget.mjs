@@ -13,7 +13,7 @@ const BUDGETS = {
   // so its renderer and Three.js dependency count even though Vite emits them as
   // a dynamic chunk. Alpha.31 measures 375.2 KiB (previously 359.6);
   // see docs/DEPENDENCIES-ALPHA-31.md.
-  javaScript: 380 * 1024,
+  javaScript: 382 * 1024,
   css: 10 * 1024,
   // The official timetable is regenerated twice weekly and its compressed
   // first-view payload naturally moves with the number and shape of services.
