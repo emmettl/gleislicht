@@ -59,7 +59,7 @@ The small `scripts/fixtures/rail-network-v2.xtf` fixture retains two nodes and
 their connecting segment from the official source retrieved on 11 November 2026.
 Its source is the Federal Office of Transport (FOT), via
 <https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf>.
-The full input SHA-256 is `e977a25f14e3943556fb4e53774551dd3cf3ef3d114e6b7d536833356de4ad07`.
+The full input SHA-256 is `f4831e6c3eeaac1974c0dd57cbf3afd45aa61ba934d992295619bdfa81e30830`.
 The fixture SHA-256 is `23750125dd10fa976d116c9b493380e1548f03d9def6c22e866fe5bf24d23dfb`.
 It tests real source fields independently of the synthetic routing fixture.
 Differential tests retain legacy/current routing equality, and a regional
