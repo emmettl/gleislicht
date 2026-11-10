@@ -34,7 +34,7 @@ The production app pins immutable public data releases on R2 at `data.motionstud
 
 ## Run it
 
-Use Node 24 LTS (`nvm use`) and npm 12.2.2.
+Use Node 26 (`nvm use`) and npm 12.2.2.
 
 The Pages workflow refreshes national and regional timetables at 03:37 and 18:37 UTC, preparing both today and tomorrow in Europe/Zurich. Recovery after an upstream download failure verifies the published artifacts' dates, feed versions, chunk coverage and checksums. Calendar assembly rejects older-date fallbacks for daily studies, so a failed refresh leaves the existing release available without relabelling old data. Reviewed regional archives, aircraft observations and road recordings retain their own dates.
 
