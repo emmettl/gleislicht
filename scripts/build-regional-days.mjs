@@ -61,7 +61,7 @@ try {
     snapshot.metadata.note = 'Scheduled full-day regional transport. Local tram and bus paths use official operator geometry; rail follows matched FOT infrastructure. Unmatched segments retain stop interpolation. Headway services are representative, not exact departures.'
     snapshot.metadata.sourceHashes = Object.fromEntries(await Promise.all(['archive', id === 'geneva-tpg' ? 'tpg' : 'zvv'].map(async name => [name, createHash('sha256').update(await readFile(arg(name))).digest('hex')])))
     if (sourceUrls) snapshot.metadata.sourceUrls = sourceUrls
-    snapshot.metadata.railGeometry = { publisher: 'Federal Office of Transport', sourceUrl: 'https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz', sha256: createHash('sha256').update(railXml).digest('hex'), matchedSegments: geometry.matchedSegments, totalSegments: geometry.totalSegments }
+    snapshot.metadata.railGeometry = { publisher: 'Federal Office of Transport', sourceModel: rail.model, modelVersion: rail.modelVersion, sourceUrl: 'https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz', sha256: createHash('sha256').update(railXml).digest('hex'), matchedSegments: geometry.matchedSegments, totalSegments: geometry.totalSegments }
     snapshot.trains.sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0)
     const morning = extractNetworkWindow(snapshot, 24300, 31500, 27900)
     morning.metadata.geometry = { ...morning.metadata.geometry, coverageWindow: 'full day' }

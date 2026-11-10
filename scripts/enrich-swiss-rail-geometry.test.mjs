@@ -20,6 +20,37 @@ const xtf = `
 <Schienennetz_LV95_V1_3.Schienennetz.Netzsegment TID="bc"><Geometrie><POLYLINE><COORD><C1>2684300</C1><C2>1248900</C2></COORD><COORD><C1>2684800</C1><C2>1248500</C2></COORD><COORD><C1>2685300</C1><C2>1247900</C2></COORD></POLYLINE></Geometrie><rAnfangsknoten REF="b"></rAnfangsknoten><rEndknoten REF="c"></rEndknoten></Schienennetz_LV95_V1_3.Schienennetz.Netzsegment>`
 
 describe('Swiss rail geometry enrichment', () => {
+  it('reads the current official V2 source fields and LV95 geometry', async () => {
+    const xml = await readFile('scripts/fixtures/rail-network-v2.xtf', 'utf8')
+    const network = parseRailNetworkXtf(xml, 0)
+    expect(network.model).toBe('Schienennetz_V2_0')
+    expect(network.modelVersion).toBe('2026-10-19')
+    expect(network.nodes.size).toBe(2)
+    expect(network.segments).toHaveLength(1)
+    expect(network.segments[0]).toMatchObject({ id: 'ch14uvag00097285', start: 'ch14uvag00097276', end: 'ch14uvag00097278' })
+    expect(network.segments[0].length).toBeCloseTo(158.928, 3)
+    expect(network.nodes.get('ch14uvag00097276').number).toBe('8587918')
+    expect(network.nodes.get('ch14uvag00097278').number).toBe('8519475')
+    expect(network.segments[0].points[0][0]).toBeGreaterThan(5.9)
+    expect(network.segments[0].points[0][0]).toBeLessThan(6.1)
+  })
+
+  it('preserves identical routing and occurrence coverage across the two supported models', () => {
+    const legacy = parseRailNetworkXtf(xtf, 20)
+    const current = parseRailNetworkXtf(xtf.replaceAll('Schienennetz_LV95_V1_3', 'Schienennetz_V2_0'), 20)
+    expect(current.nodes).toEqual(legacy.nodes)
+    expect(current.segments).toEqual(legacy.segments)
+    const snapshot = { stops: [legacy.nodes.get('a').coordinate, legacy.nodes.get('c').coordinate], edges: [[0, 1]], trains: [{ stops: [[0, 0, 0], [1, 600, 600]] }] }
+    expect(applyRailGeometry(snapshot, current)).toEqual(applyRailGeometry(snapshot, legacy))
+  })
+
+  it('rejects unsupported, mixed and empty source geometry explicitly', () => {
+    expect(() => parseRailNetworkXtf(xtf.replaceAll('Schienennetz_LV95_V1_3', 'Schienennetz_V3_0'))).toThrow('Unsupported or mixed')
+    expect(() => parseRailNetworkXtf(xtf + xtf.replaceAll('Schienennetz_LV95_V1_3', 'Schienennetz_V2_0'))).toThrow('Unsupported or mixed')
+    expect(() => parseRailNetworkXtf('<TRANSFER></TRANSFER>')).toThrow('Unsupported or mixed')
+    expect(() => parseRailNetworkXtf(xtf.slice(0, xtf.indexOf('<Schienennetz_LV95_V1_3.Schienennetz.Netzsegment')))).toThrow('no usable nodes or segments')
+  })
+
   it('writes day-chunk integrity for the enriched bytes that the browser receives', async () => {
     const directory = await mkdtemp(join(tmpdir(), 'swiss-geometry-test-'))
     try {

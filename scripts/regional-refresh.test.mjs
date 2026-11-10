@@ -93,6 +93,13 @@ describe('regional refresh', () => {
     partial = true
     await expect(downloadTpg(fetchData)).rejects.toThrow('missing or duplicating')
   })
+  it('retains the 65% rail occurrence coverage gate for refreshed regions', async () => {
+    const files = fixture()
+    for (const name of ['zurich-city-day-manifest.json', 'zurich-city-morning.json']) modify(files, name, value => {
+      value.metadata.railGeometry = { ...value.metadata.railGeometry, matchedSegments: 649, totalSegments: 1000 }
+    })
+    await expect(readRegionalArtifacts(path => files.get(path), ['zurich-city'])).rejects.toThrow('insufficient rail geometry')
+  })
   it('validates complete bytes and preserves the service date', async () => {
     const files = fixture()
     const result = await readRegionalArtifacts(path => files.get(path), ['zurich-city'], '2026-09-08')

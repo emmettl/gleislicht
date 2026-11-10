@@ -106,9 +106,15 @@ function coordinatePairs(body) {
 }
 
 export function parseRailNetworkXtf(xml, toleranceMetres = 100) {
+  // The official LV95 endpoint now serves Schienennetz_V2_0.
+  // Both models retain the node/segment fields consumed here; reject any other
+  // model rather than silently turning a source-format change into zero coverage.
+  const models = ['Schienennetz_LV95_V1_3', 'Schienennetz_V2_0']
+    .filter(model => xml.includes(`<${model}.Schienennetz.Netzknoten `))
+  if (models.length !== 1) throw new Error('Unsupported or mixed FOT rail network model')
+  const model = models[0].replaceAll('.', '\\.')
   const nodes = new Map()
-  const nodePattern =
-    /<Schienennetz_LV95_V1_3\.Schienennetz\.Netzknoten TID="([^"]+)">([\s\S]*?)<\/Schienennetz_LV95_V1_3\.Schienennetz\.Netzknoten>/g
+  const nodePattern = new RegExp(`<${model}\\.Schienennetz\\.Netzknoten TID="([^"]+)">([\\s\\S]*?)</${model}\\.Schienennetz\\.Netzknoten>`, 'g')
   for (const match of xml.matchAll(nodePattern)) {
     const coordinates = coordinatePairs(match[2])
     if (!coordinates.length) continue
@@ -121,8 +127,7 @@ export function parseRailNetworkXtf(xml, toleranceMetres = 100) {
   }
 
   const segments = []
-  const segmentPattern =
-    /<Schienennetz_LV95_V1_3\.Schienennetz\.Netzsegment TID="([^"]+)">([\s\S]*?)<\/Schienennetz_LV95_V1_3\.Schienennetz\.Netzsegment>/g
+  const segmentPattern = new RegExp(`<${model}\\.Schienennetz\\.Netzsegment TID="([^"]+)">([\\s\\S]*?)</${model}\\.Schienennetz\\.Netzsegment>`, 'g')
   for (const match of xml.matchAll(segmentPattern)) {
     const start = match[2].match(/<rAnfangsknoten REF="([^"]+)">/)?.[1]
     const end = match[2].match(/<rEndknoten REF="([^"]+)">/)?.[1]
@@ -142,7 +147,9 @@ export function parseRailNetworkXtf(xml, toleranceMetres = 100) {
       points: simplified.map(lv95ToWgs84),
     })
   }
-  return { nodes, segments }
+  if (!nodes.size || !segments.length) throw new Error('FOT rail network contains no usable nodes or segments')
+  const modelVersion = xml.match(new RegExp(`<MODEL NAME="${model}" VERSION="([^"]+)"`))?.[1]
+  return { nodes, segments, model: models[0], modelVersion }
 }
 
 function normalName(value) {
@@ -465,7 +472,8 @@ async function main() {
       'Movement follows matched Federal Office of Transport rail infrastructure geometry where available; unmatched and cross-border segments retain direct scheduled interpolation.',
     geometry: {
       publisher: 'Federal Office of Transport (FOT)',
-      feedVersion: '2021-07-06',
+      sourceModel: network.model,
+      feedVersion: network.modelVersion ?? 'unspecified',
       sourceUrl: SOURCE_URL,
       productUrl: PRODUCT_URL,
       model: 'shortest valid infrastructure path between matched timetable stops',
