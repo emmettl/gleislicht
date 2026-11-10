@@ -45,7 +45,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v7
         with:
-          node-version-file: hosting-tools/.nvmrc
+          node-version: 26
       - name: Verify publishing gates
         run: python3 hosting-tools/scripts/test-gleislicht.py
       - name: Publish verified Pages artifact and check live headers

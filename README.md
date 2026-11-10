@@ -34,7 +34,7 @@ The production app pins immutable public data releases on R2 at `data.motionstud
 
 ## Run it
 
-Use Node 24 LTS (`nvm use`) and npm 11.21.1.
+Use Node 24 LTS (`nvm use`) and npm 12.2.2.
 
 The Pages workflow refreshes national and regional timetables at 03:37 and 18:37 UTC, preparing both today and tomorrow in Europe/Zurich. Recovery after an upstream download failure verifies the published artifacts' dates, feed versions, chunk coverage and checksums. Calendar assembly rejects older-date fallbacks for daily studies, so a failed refresh leaves the existing release available without relabelling old data. Reviewed regional archives, aircraft observations and road recordings retain their own dates.
 
@@ -159,3 +159,5 @@ The alpha.48 integration adds a shared debug panel through public `@motionstudie
 Natural rendering is preserved. Continuous Fiber profiling requires the additional `&debugLoop=continuous` flag. Exit debugging through the reload link before comparing baseline performance. Capture metadata records the edition build, data release, playback time, selection, layers, buffer dimensions and pixel ratio; Fiber captures also record the camera transform/projection. It describes the capture request rather than automatically restoring application state. Local dirty builds are marked in the build identifier.
 
 Uses the verified `0.1.0-alpha.48` registry release, published through [trusted release run 41320101094](https://github.com/emmettl/motionstudies/actions/runs/41320101094). The lockfile hashes match the CI-tested published archives; a clean registry install and browser checks pass.
+
+Development targets Node 26 and npm 12.2.2. Shared Motion Studies packages are pinned to 1.0.0; `npm run check:stack` validates the adopted baseline through `@motionstudies/tooling`. Edition-specific data, boundary and publication checks remain local.

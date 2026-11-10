@@ -1,0 +1,130 @@
+name: Check Gleislicht
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    outputs:
+      service_date: ${{ steps.edition.outputs.service_date }}
+      timetable_year: ${{ steps.edition.outputs.timetable_year }}
+      tomorrow_date: ${{ steps.edition.outputs.tomorrow_date }}
+      tomorrow_year: ${{ steps.edition.outputs.tomorrow_year }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Set up npm
+        run: npm install --global npm@12.2.2 --ignore-scripts
+
+      - name: Install dependencies
+        run: npm ci
+      - run: npm run check:stack
+
+      - name: Resolve current Swiss service date
+        id: edition
+        run: node scripts/service-date.mjs >> "$GITHUB_OUTPUT"
+
+      - name: Test
+        run: npm test
+
+      - name: Test bounded road source downloads
+        run: python3 -m unittest discover -s scripts -p 'test_download_postbus_road_source.py'
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Check edition boundaries
+        run: npm run check:architecture
+
+      - name: Check realtime edge adapter
+        run: npm run worker:check && npm run worker:build
+
+      - name: Check daily road archive
+        run: npx tsc -p road-daily-worker/tsconfig.json && npx wrangler deploy --config wrangler.road-daily.jsonc --dry-run --outdir .worker-dist/road-daily
+
+      # Catch code and payload regressions before starting the expensive jobs.
+      - name: Build committed fixtures and check publication budgets
+        run: npm run data:prepare && npm run build:fixtures && npm run check:bundle && npm run pages:prepare
+
+  e2e:
+    needs: check
+    name: Browser tests (${{ matrix.project }}, ${{ matrix.shard }}/${{ matrix.shards }})
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        # Chromium took ~15 minutes versus WebKit's ~6 in run 34226664670.
+        # Split individual Chromium tests; keep one WebGL worker per machine.
+        include:
+          - { project: desktop-chromium, browser: chromium, shard: 1, shards: 2, runner: ubuntu-latest }
+          - { project: desktop-chromium, browser: chromium, shard: 2, shards: 2, runner: ubuntu-latest }
+          - { project: iphone-webkit, browser: webkit, shard: 1, shards: 1, runner: macos-26 }
+    env:
+      E2E_SUITE: ${{ matrix.project }}-${{ matrix.shard }}
+      E2E_PROJECT: ${{ matrix.project }}
+      E2E_SHARD: ${{ matrix.shard }}/${{ matrix.shards }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Set up npm
+        run: npm install --global npm@12.2.2 --ignore-scripts
+
+      - name: Install dependencies
+        run: npm ci
+      - run: npm run check:stack
+
+      - name: Install browser test engine
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      # Orbital blocks are gitignored and generated separately from app builds.
+      # E2E serves Vite directly, so a clean checkout needs them explicitly.
+      - name: Prepare orbital browser fixtures
+        run: npm run data:orbital
+
+      # Run iPhone WebKit on macOS, matching the native engine used locally.
+      # Renderer assertions inspect Vite's development R3F module. Each runner
+      # retains the committed demo fixtures, independently of the live refresh.
+      - name: Browser regression tests
+        id: e2e
+        run: npm run test:e2e:ci -- --project="$E2E_PROJECT" --shard="$E2E_SHARD" --workers=1
+      - name: Upload E2E report, screenshots and traces
+        id: e2e-report
+        if: ${{ !cancelled() && (steps.e2e.outcome == 'success' || steps.e2e.outcome == 'failure') }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: e2e-report-${{ matrix.project }}-${{ matrix.shard }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Link E2E report in run summary
+        if: ${{ !cancelled() && steps.e2e-report.outputs.artifact-url != '' }}
+        env:
+          REPORT_URL: ${{ steps.e2e-report.outputs.artifact-url }}
+        run: |
+          printf '\n[Download E2E reports, screenshots and traces](%s)\n' "$REPORT_URL" >> "$GITHUB_STEP_SUMMARY"
+
