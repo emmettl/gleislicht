@@ -38,10 +38,11 @@ jobs:
           cache: npm
 
       - name: Set up npm
-        run: npm install --global npm@11.21.1 --ignore-scripts
+        run: npm install --global npm@12.2.2 --ignore-scripts
 
       - name: Install dependencies
         run: npm ci
+      - run: npm run check:stack
 
       - name: Resolve current Swiss service date
         id: edition
@@ -101,10 +102,11 @@ jobs:
           cache: npm
 
       - name: Set up npm
-        run: npm install --global npm@11.21.1 --ignore-scripts
+        run: npm install --global npm@12.2.2 --ignore-scripts
 
       - name: Install dependencies
         run: npm ci
+      - run: npm run check:stack
 
       - name: Install browser test engine
         run: npx playwright install --with-deps ${{ matrix.browser }}
@@ -160,10 +162,11 @@ jobs:
           cache: npm
 
       - name: Set up npm
-        run: npm install --global npm@11.21.1 --ignore-scripts
+        run: npm install --global npm@12.2.2 --ignore-scripts
 
       - name: Install dependencies
         run: npm ci
+      - run: npm run check:stack
 
       # A cache hit is still subjected to exact-pattern matching and the full
       # audit. The date key is bounded; restore older geometry only as a hint.
@@ -255,9 +258,10 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - name: Set up npm
-        run: npm install --global npm@11.21.1 --ignore-scripts
+        run: npm install --global npm@12.2.2 --ignore-scripts
       - name: Install dependencies
         run: npm ci
+      - run: npm run check:stack
       - name: Download regional timetable and geometry sources
         id: sources
         continue-on-error: true
@@ -299,9 +303,10 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - name: Set up npm
-        run: npm install --global npm@11.21.1 --ignore-scripts
+        run: npm install --global npm@12.2.2 --ignore-scripts
       - name: Install dependencies
         run: npm ci
+      - run: npm run check:stack
       - name: Preserve reviewed weekday sources for weekend orbital builds
         run: node scripts/preserve-orbital-weekdays.mjs public/data
 
