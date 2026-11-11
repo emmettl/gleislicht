@@ -42,3 +42,25 @@ Rebuild or redeploy an earlier app artifact to use its existing data release. Fo
 - `npm run data:prepare && npm run build:fixtures`: explicitly regenerate app catalogues and orbital fixtures, then build an offline app. Catalogue generation changes tracked source files; restore them after temporary fixture experiments before building the pinned production release.
 - `public/data` remains the fixture/source input directory, not a second production data store. Do not delete it until dependent tests have smaller replacement fixtures.
 - `.data-release` is ignored staging output. Keep completed R2 releases available; local staging cleanup does not require deleting published objects.
+
+## FOT rail format compatibility · 11 November 2026
+
+The official `schienennetz_2056_de.xtf` endpoint now declares
+`Schienennetz_V2_0`, model version `2026-10-19`. The old reader recognised only
+`Schienennetz_LV95_V1_3`, silently reading zero nodes and segments and failing
+the regional rail-coverage gate. The reader now supports both named models,
+using their LV95 node coordinates, operating-point numbers and segment endpoint
+references. Unsupported/mixed models and empty usable networks fail explicitly.
+The rail occurrence coverage gate remains **65%**; routing distances, matching
+tolerances, unmatched-segment labels, date checks and chunk integrity are unchanged.
+Source model/version metadata comes from the input rather than a fixed old date.
+
+The small `scripts/fixtures/rail-network-v2.xtf` fixture retains two nodes and
+their connecting segment from the official source retrieved on 11 November 2026.
+Its source is the Federal Office of Transport (FOT), via
+<https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf>.
+The full input SHA-256 is `f4831e6c3eeaac1974c0dd57cbf3afd45aa61ba934d992295619bdfa81e30830`.
+The fixture SHA-256 is `23750125dd10fa976d116c9b493380e1548f03d9def6c22e866fe5bf24d23dfb`.
+It tests real source fields independently of the synthetic routing fixture.
+Differential tests retain legacy/current routing equality, and a regional
+regression test confirms that 64.9% coverage still fails.
